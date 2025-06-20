@@ -20,13 +20,13 @@
 #include <thread>
 #include <memory>
 #include <iostream>
+#include <queue>
 
 #include "surface/window.h"
 #include "native_buffer.h"
 #include "iconsumer_surface.h"
 #include "sync_fence.h"
 #include "video_processing.h"
-#include "video_processing_native.h"
 
 typedef struct VideoProcessParam {
     OH_NativeBuffer_Format inFmt;

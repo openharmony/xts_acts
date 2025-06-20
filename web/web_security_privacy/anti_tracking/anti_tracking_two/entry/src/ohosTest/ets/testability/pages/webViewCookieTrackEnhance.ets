@@ -14,7 +14,7 @@
  */
 import events_emitter from '@ohos.events.emitter';
 import web_webview from '@ohos.web.webview';
-
+import business_error from '@ohos.base'
 import Utils from '../../test/Utils';
 import promptAction from '@ohos.promptAction';
 
@@ -120,33 +120,83 @@ struct webViewCookieTrack {
                 this.cookie = ''
                 switch (this.emitKey) {
                   case 'emitWebViewCookieTrackEnableTrue': {
-                      this.controller.enableIntelligentTrackingPrevention(true)
-                      this.controller.refresh()
-                      await Utils.sleep(2000)
-                      Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 3001)
+                    try {
+                        this.controller.enableIntelligentTrackingPrevention(true)
+                        this.controller.refresh()
+                        await Utils.sleep(2000)
+                        Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 3001)
+                    } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        await Utils.sleep(1000)
+                        if(e.code == 801) {
+                          console.log(`emitWebViewCookieTrackEnableTrue The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          Utils.emitEvent(true, 3001)
+                        } else {
+                          Utils.emitEvent(false, 3001)
+                        }
+                    }
+                    break;
                   }
                   case 'emitWebViewCookieTrackEnableFalse': {
-                    this.controller.enableIntelligentTrackingPrevention(false)
-                    this.controller.refresh()
-                    Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == false, 3002)
+                    try {
+                        this.controller.enableIntelligentTrackingPrevention(false)
+                        this.controller.refresh()
+                        Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == false, 3002)
+                    } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        await Utils.sleep(1000)
+                        if(e.code == 801) {
+                          console.log(`emitWebViewCookieTrackEnableFalse The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          Utils.emitEvent(true, 3002)
+                        } else {
+                          Utils.emitEvent(false, 3002)
+                        }
+                    }
                     break;
                   }
                   case 'emitWebViewCookieTrackEnabled': {
-                    this.controller.enableIntelligentTrackingPrevention(true)
-                    this.controller.refresh()
-                    await Utils.sleep(2000)
-                    Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 3003)
+                    try {
+                        this.controller.enableIntelligentTrackingPrevention(true)
+                        this.controller.refresh()
+                        await Utils.sleep(2000)
+                        Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 3003)
+                    } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        await Utils.sleep(1000)
+                        if(e.code == 801) {
+                          console.log(`emitWebViewCookieTrackEnabled The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          Utils.emitEvent(true, 3003)
+                        } else {
+                          Utils.emitEvent(false, 3003)
+                        }
+                    }
+                    break;
                   }
                   case 'emitNoCookieTrackingPrevention': {
-                    this.controller.enableIntelligentTrackingPrevention(true);
-                    web_webview.WebCookieManager.putAcceptThirdPartyCookieEnabled(true);
-                    console.log('当前状态：' + this.controller.isIntelligentTrackingPreventionEnabled())
-                    web_webview.WebCookieManager.clearAllCookiesSync()
-                    this.controller.removeCache(true);
-                    this.controller.loadUrl(this.webUrl)
-                    let beforeTraceLength = this.traceHosts.length
-                    console.log('this.traceHosts before: ' + this.traceHosts)
-                    Utils.emitEvent(beforeTraceLength == 0, 3008)
+                    try {
+                        this.controller.enableIntelligentTrackingPrevention(true);
+                        web_webview.WebCookieManager.putAcceptThirdPartyCookieEnabled(true);
+                        console.log('当前状态：' + this.controller.isIntelligentTrackingPreventionEnabled())
+                        web_webview.WebCookieManager.clearAllCookiesSync()
+                        this.controller.removeCache(true);
+                        this.controller.loadUrl(this.webUrl)
+                        let beforeTraceLength = this.traceHosts.length
+                        console.log('this.traceHosts before: ' + this.traceHosts)
+                        Utils.emitEvent(beforeTraceLength == 0, 3008)
+                    } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        await Utils.sleep(1000)
+                        if(e.code == 801) {
+                          console.log(`emitNoCookieTrackingPrevention The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          Utils.emitEvent(true, 3008)
+                        } else {
+                          Utils.emitEvent(false, 3008)
+                        }
+                    }
                     break;
                   }
                 }

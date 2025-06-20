@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import appManager from "@ohos.application.appManager"
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 export default function ActsAmsCallBackThirdScene() {
     describe('ActsAmsCallBackThirdScene', function () {
         console.info('----ActsAmsCallBackThirdScene----');
@@ -23,7 +23,7 @@ export default function ActsAmsCallBackThirdScene() {
         * @tc.name      : getProcessRunningInfos : Get All Running Processes Info
         * @tc.desc      : Get All Running Processes Info(by CallBack)
         */
-        it('Acts_Ams_test_3400', 0, async function (done) {
+        it('Acts_Ams_test_3400', Level.LEVEL0, async function (done) {
             appManager.getProcessRunningInfos(
                 (error, info) => {
                     console.info('Acts_Ams_test_3400 getProcessRunningInfos error.code \

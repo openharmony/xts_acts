@@ -12,13 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { SymbolSpanModifier } from '@kit.ArkUI';
+
+class SymbolSpanModifier implements AttributeModifier<SymbolSpanAttribute> {
+  applyNormalAttribute(SymbolSpanInstance: SymbolSpanAttribute): void {
+    SymbolSpanInstance.fontSize(100);
+  }
+}
 
 @Entry
 @Component
 struct SymbolSpanModifier1 {
   @State value: string = 'init'
-  @State modifier: SymbolSpanModifier = new SymbolSpanModifier($r('sys.symbol.ohos_wifi')).fontSize(100);
+  @State modifier: SymbolSpanModifier = new SymbolSpanModifier();
 
   aboutToAppear(): void {
     this.value = (typeof SymbolSpanInstance).toString()
@@ -27,7 +32,7 @@ struct SymbolSpanModifier1 {
   build() {
     Column({ space: 5 }) {
       Text() {
-        SymbolSpan(undefined).attributeModifier(this.modifier)
+        SymbolSpan($r('sys.symbol.ohos_wifi')).attributeModifier(this.modifier)
           .id('SymbolSpanModifier_get_fontSize')
           .height('20%')
       }

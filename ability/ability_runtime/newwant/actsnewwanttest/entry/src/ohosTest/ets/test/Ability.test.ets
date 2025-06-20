@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
@@ -23,7 +23,7 @@ import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
 let driver = Driver.create();
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let subscriberInfo:commonEventManager.CommonEventSubscribeInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
     'onWindowStageCreateMain_To_Test_CommonEvent',
@@ -80,7 +80,7 @@ export default function abilityTest() {
      * @tc.name: Starting standard Ability for the first time does not trigger onNewWant.
      * @tc.desc: Starting standard Ability for the first time does not trigger onNewWant.
      */
-    it('ACTS_NewWant_Test_0100', 0, async (done:Function) => {
+    it('ACTS_NewWant_Test_0100', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0100 --- start")
       let Subscriber:commonEventManager.CommonEventSubscriber;
       let flagOnCreate = 0;
@@ -157,7 +157,7 @@ export default function abilityTest() {
      * @tc.name: Starting singleton Ability for the first time does not trigger onNewWant.
      * @tc.desc: Starting singleton Ability for the first time does not trigger onNewWant.
      */
-    it('ACTS_NewWant_Test_0200', 0, async (done:Function) => {
+    it('ACTS_NewWant_Test_0200', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0200 --- start")
       let Subscriber:commonEventManager.CommonEventSubscriber;
       let flagOnCreate = 0;
@@ -235,9 +235,9 @@ export default function abilityTest() {
      * @tc.name: Starting standard ability the second time does not trigger onNewWant.
      * @tc.desc: Starting standard ability the second time does not trigger onNewWant.
      */
-    it('ACTS_NewWant_Test_0300', 0, async (done:Function) => {
+    it('ACTS_NewWant_Test_0300', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0300 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -319,9 +319,9 @@ export default function abilityTest() {
      * @tc.name: Two abilities of the same hap
      * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
      */
-    it('ACTS_NewWant_Test_0400', 0, async (done:Function) => {
+    it('ACTS_NewWant_Test_0400', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0400 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -404,9 +404,9 @@ export default function abilityTest() {
      * @tc.name: Two haps of the same app
      * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
      */
-    it('ACTS_NewWant_Test_0500', 0, async (done:Function) => {
+    it('ACTS_NewWant_Test_0500', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0500 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -489,9 +489,9 @@ export default function abilityTest() {
      * @tc.name: Cross-application
      * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
      */
-    it('ACTS_NewWant_Test_0600', 0, async (done:Function) => {
+    it('ACTS_NewWant_Test_0600', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0600 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -565,9 +565,9 @@ export default function abilityTest() {
      * @tc.name: Service ability
      * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
      */
-    it('ACTS_NewWant_Test_0700', 0, async (done:Function) => {
+    it('ACTS_NewWant_Test_0700', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0700 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -641,9 +641,9 @@ export default function abilityTest() {
      * @tc.name: API8 startup API7
      * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
      */
-    it('ACTS_NewWant_Test_0800', 0, async (done:Function) => {
+    it('ACTS_NewWant_Test_0800', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0800 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

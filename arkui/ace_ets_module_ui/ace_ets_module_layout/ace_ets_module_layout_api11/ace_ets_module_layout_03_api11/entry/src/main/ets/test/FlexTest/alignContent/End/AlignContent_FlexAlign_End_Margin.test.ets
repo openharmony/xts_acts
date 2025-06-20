@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -55,7 +55,7 @@ export default function AlignContent_FlexAlign_End_Margin() {
      *               set the margin for the Flex component.
      */
 
-    it('testAlignContentEndFlexMarginSatisfy', 0, async () => {
+    it('testAlignContentEndFlexMarginSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentEndFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexEndMargin_flex');
       console.log('AlignContentFlexEndMargin_flex direction is:' + JSON.parse(strJson).$attrs.constructor.direction);

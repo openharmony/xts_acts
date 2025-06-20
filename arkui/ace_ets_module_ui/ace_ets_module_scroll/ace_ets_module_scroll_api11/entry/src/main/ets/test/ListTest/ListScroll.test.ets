@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -51,7 +51,7 @@ export default function ListScrollTest() {
      *tc.name   Scroller.scrollToIndex(List) support animation
      *tc.desc   Scroller.scrollToIndex(List) support animation
      */
-    it('ArkUI_List_Scroll_0100', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_0100', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_List_Scroll_0100'
       console.info(`${SUITE} ${CASE} START`)
       let callback = (event: events_emitter.EventData) => {
@@ -74,7 +74,7 @@ export default function ListScrollTest() {
      *tc.name   Scroller.scrollToIndex(List) support animation
      *tc.desc   Scroller.scrollToIndex(List) support animation
      */
-    it('ArkUI_List_Scroll_0200', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_0200', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_List_Scroll_0200'
       console.info(`${SUITE} ${CASE} START`)
       let callback = (event: events_emitter.EventData) => {
@@ -97,7 +97,7 @@ export default function ListScrollTest() {
      *tc.name   Scroller.scrollToIndex(List) support animation
      *tc.desc   Scroller.scrollToIndex(List) support animation
      */
-    it('ArkUI_List_Scroll_0300', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_0300', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_List_Scroll_0300'
       console.info(`${SUITE} ${CASE} START`)
       let callback = (event: events_emitter.EventData) => {
@@ -120,7 +120,7 @@ export default function ListScrollTest() {
      *tc.name   Scroller.scrollToIndex(List) support animation
      *tc.desc   Scroller.scrollToIndex(List) support animation
      */
-    it('ArkUI_List_Scroll_0400', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_0400', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_List_Scroll_0400'
       console.info(`${SUITE} ${CASE} START`)
       let callback = (event: events_emitter.EventData) => {

@@ -47,9 +47,9 @@ export default function LinkedListTest() {
      * @tc.desc      : Testing LinkedList add different dataType data
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLinkedListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLinkedListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLinkedListAdd0001';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -79,9 +79,9 @@ export default function LinkedListTest() {
      * @tc.desc      : Testing LinkedList add special string
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLinkedListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLinkedListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLinkedListAdd0002';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -103,9 +103,9 @@ export default function LinkedListTest() {
      * @tc.desc      : Testing LinkedList addFirst different dataType data
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLinkedListAddFirst0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLinkedListAddFirst0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLinkedListAddFirst0001';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -135,9 +135,9 @@ export default function LinkedListTest() {
      * @tc.desc      : Testing LinkedList addFirst special string
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLinkedListAddFirst0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLinkedListAddFirst0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLinkedListAddFirst0002';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -159,9 +159,9 @@ export default function LinkedListTest() {
      * @tc.desc      : Testing LinkedList insert->addFirst->getIndexOf->removeByIndex->has
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLinkedListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLinkedListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLinkedListInsert0001';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |

@@ -1,4 +1,4 @@
-# Copyright (C) 2024 Huawei Device Co., Ltd.
+# Copyright (C) 2024-2025 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -18,6 +18,7 @@ group("device_manager_ndk") {
   if (is_standard_system) {
     deps = [
       "device_manager_ndk:device_manager_js_test",
+      "device_manager_test:ActsDeviceManagerTest",
       "devman_nopermission_ndk:device_manager_nopermission_js_test",
       "devman_normal_ndk:ActsDeviceManagerNormalAPPJSApiNdkTest",
     ]

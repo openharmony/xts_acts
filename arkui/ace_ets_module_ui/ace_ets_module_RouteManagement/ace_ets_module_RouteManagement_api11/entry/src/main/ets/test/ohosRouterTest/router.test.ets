@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 import events_emitter from '@ohos.events.emitter';
 
@@ -46,7 +46,7 @@ export default function routerStandardJsunit() {
       console.info("routerStandard after each called");
     });
 
-    it('testrouterStandard0011', 0, async (done: Function) => {
+    it('testrouterStandard0011', Level.LEVEL2, async (done: Function) => {
       console.info('routerStandard testrouterStandard0011 START');
       await Utils.sleep(2000);
       try {
@@ -71,7 +71,7 @@ export default function routerStandardJsunit() {
       done();
     });
 
-    it('testrouterSingle0001', 0, async (done: Function) => {
+    it('testrouterSingle0001', Level.LEVEL2, async (done: Function) => {
       console.info('routerSingle testrouterSingle0001 START');
       await Utils.sleep(2000);
       try {

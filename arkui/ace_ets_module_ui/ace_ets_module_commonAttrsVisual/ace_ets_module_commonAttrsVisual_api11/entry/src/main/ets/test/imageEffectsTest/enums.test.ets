@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function enumsCancelJsunit() {
@@ -50,7 +50,7 @@ export default function enumsCancelJsunit() {
      * @tc.name         testenumsCancel0001
      * @tc.desic         aceenumsCancelEtsTest0001
      */
-    it('testenumsCancel0001', 0, async (done: Function) => {
+    it('testenumsCancel0001', Level.LEVEL2, async (done: Function) => {
       console.info('enumsCancel testenumsCancel0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('HighlightText');

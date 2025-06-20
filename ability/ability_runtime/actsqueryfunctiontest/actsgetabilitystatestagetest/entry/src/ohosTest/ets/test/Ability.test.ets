@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import commonEvent from "@ohos.commonEventManager"
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from "@ohos.base";
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let subscriberInfo_MainAbility: commonEvent.CommonEventSubscribeInfo = {
   events: ["GetCurrentTopAbility"],
 };
@@ -32,7 +32,7 @@ export default function abilityTest() {
      * @tc.name    : The test framework needs to provide the following query-related functions
      * @tc.desc    : Get the status of the Ability in the BACKGROUND state
      */
-    it('ACTS_GetAbilityState_0200', 0, async (done: Function) => {
+    it('ACTS_GetAbilityState_0200', Level.LEVEL0, async (done: Function) => {
       console.log('====>start ACTS_GetAbilityState_0200====');
       let ability: UIAbility;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -40,7 +40,7 @@ export default function abilityTest() {
       let subscriber: commonEvent.CommonEventSubscriber;
       let onAbilityForegroundCallback2 = (): void => {
         console.log("====>onAbilityForegroundCallback2====");
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           console.log("====>ACTS_GetAbilityState_0200 end====");
           commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
           return;
@@ -100,7 +100,7 @@ export default function abilityTest() {
      * @tc.name    : The test framework needs to provide the following query-related functions
      * @tc.desc    : Get the status of the Ability in the FOREGROUND state
      */
-    it('ACTS_GetAbilityState_0300', 0, async (done: Function) => {
+    it('ACTS_GetAbilityState_0300', Level.LEVEL0, async (done: Function) => {
       console.log('====>start ACTS_GetAbilityState_0300====');
       let ability: UIAbility;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -108,7 +108,7 @@ export default function abilityTest() {
       let subscriber: commonEvent.CommonEventSubscriber;
       let onAbilityForegroundCallback3 = (): void => {
         console.log("====>onAbilityForegroundCallback3====");
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           console.log("====>ACTS_GetAbilityState_0300 end====");
           commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
           return;
@@ -165,7 +165,7 @@ export default function abilityTest() {
      * @tc.name    : The test framework needs to provide the following query-related functions
      * @tc.desc    : Get the status of an inactive or nonexistent Ability
      */
-    it('ACTS_GetAbilityState_0500', 0, async (done: Function) => {
+    it('ACTS_GetAbilityState_0500', Level.LEVEL0, async (done: Function) => {
       console.log('====>start ACTS_GetAbilityState_0500====');
       let ability: UIAbility | null = null;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -181,7 +181,7 @@ export default function abilityTest() {
      * @tc.name    : The test framework needs to provide the following query-related functions
      * @tc.desc    : Get the status of the Ability in the uninitialized state
      */
-    it('ACTS_GetAbilityState_0600', 0, async (done: Function) => {
+    it('ACTS_GetAbilityState_0600', Level.LEVEL0, async (done: Function) => {
       console.log('====>start ACTS_GetAbilityState_0600====');
       let ability: UIAbility;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -189,7 +189,7 @@ export default function abilityTest() {
       let subscriber: commonEvent.CommonEventSubscriber;
       let onAbilityForegroundCallback6 = (): void => {
         console.log("====>onAbilityForegroundCallback6====");
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           console.log("====>ACTS_GetAbilityState_0600 end====");
           commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
           return;

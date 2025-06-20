@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import mdns from "@ohos.net.mdns";
 import connection from "@ohos.net.connection";
@@ -94,7 +94,7 @@ export default function NetworkManagerAddAPI11() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_Http_Connection_Xts_0300", 0, async (done: Function) => {
+    it("SUB_Telephony_netstack_Http_Connection_Xts_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Connection_Xts_0300";
       let netConnect = connection.createNetConnection();
       netConnect.register((error) => {
@@ -136,7 +136,7 @@ export default function NetworkManagerAddAPI11() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_Http_Connection_Xts_0400", 0, async (done: Function) => {
+    it("SUB_Telephony_netstack_Http_Connection_Xts_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Connection_Xts_0400";
       let netConnect = connection.createNetConnection();
       netConnect.register((error) => {

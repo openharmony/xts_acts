@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -50,7 +50,7 @@ export default function Grid_RowCol_Gap() {
      * @tc.name testGridColGap
      * @tc.desc Add columnGap,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridColGap', 0, async (done: Function) => {
+    it('testGridColGap',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridColGap] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_Gap_01');
@@ -102,7 +102,7 @@ export default function Grid_RowCol_Gap() {
      * @tc.name testGridRowGap
      * @tc.desc Add rowGap,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowGap', 0, async (done: Function) => {
+    it('testGridRowGap',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowGap] START');
       globalThis.value.message.notify({
         name: 'addColumnGap', value: 0
@@ -157,7 +157,7 @@ export default function Grid_RowCol_Gap() {
      * @tc.name testGridRowColGap
      * @tc.desc Add columnGap and rowGap,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGap', 0, async (done: Function) => {
+    it('testGridRowColGap',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGap] START');
       globalThis.value.message.notify({
         name: 'addColumnGap', value: 5

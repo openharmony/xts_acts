@@ -15,7 +15,7 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -193,9 +193,9 @@ export default function audioInterrupterTest() {
      * @tc.desc      : AudioRedner in INDEPENDENT_MODE  MUSIC interrupt GAME action play both
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try{
         let listeningFlag01 = false;
         let listeningFlag02 = false;
@@ -227,9 +227,9 @@ export default function audioInterrupterTest() {
      * @tc.desc      : AudioRedner in INDEPENDENT_MODE ALARM interrupt ALARM action PAUSE already exists
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try{
         let listeningFlag01 = false;
         let listeningFlag02 = false;
@@ -275,9 +275,9 @@ export default function audioInterrupterTest() {
      * @tc.desc      : AudioRedner  in INDEPENDENT_MODE RING interrupt ALARM action STOP already exists
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try{
         let listeningFlag01 = false;
         render1 = await createAudioRenderer(renderInfo.ALARM, streamInfo.A44100, done)
@@ -317,9 +317,9 @@ export default function audioInterrupterTest() {
      * @tc.desc      : AudioRedner in INDEPENDENT_MODE ACCESSIBILITY interrupt MOVIE action DUCK already exists
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try{
         let listeningFlag01 = false;
         let listeningFlag02 = false;
@@ -365,9 +365,9 @@ export default function audioInterrupterTest() {
      * @tc.desc      : AudioRedner in INDEPENDENT_MODE VOICE_ASSISTANT interrupt RINGTONE action DENY  coming
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 
      */
-    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         render1 = await createAudioRenderer(renderInfo.RINGTONE, streamInfo.A44100, done)
         await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
@@ -392,9 +392,9 @@ export default function audioInterrupterTest() {
      * @tc.desc      : AudioRedner in INDEPENDENT_MODE MUSIC interrupt MUSIC action play both
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let listeningFlag01 = false;
         let listeningFlag02 = false;

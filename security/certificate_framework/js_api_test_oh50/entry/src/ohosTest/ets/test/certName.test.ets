@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import cert from '@ohos.security.cert';
 import * as certChainFunc from "./utils/certchain/certChainFunc";
 import * as certChainFunc3 from "./utils/certchain/certChainFunc3";
@@ -76,7 +76,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0100';
       let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
       try {
@@ -106,7 +106,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0200';
       let nameStr = 'CN=John Doe';
       try {
@@ -136,7 +136,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0300';
       let nameStr = '';
       try {
@@ -163,7 +163,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0400';
       let nameDer = certChainFunc3.nameDer;
       try {
@@ -194,7 +194,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0500';
       let nameDer = new Uint8Array([0x30, 0x82, 0x01]);
       try {
@@ -224,7 +224,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0600';
       let nameDer = new Uint8Array();
       try {
@@ -252,7 +252,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0700';
       let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
       try {
@@ -282,7 +282,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0800';
       let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
       try {
@@ -321,7 +321,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_0900';
       let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
       let nameType = 'CN';
@@ -354,7 +354,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1000';
       let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
       let nameType = 'abc';
@@ -385,7 +385,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1100';
       let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
       let nameType = '';
@@ -421,7 +421,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1200';
       let nameDer = certChainFunc3.nameDer;
       try {
@@ -453,7 +453,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1300';
       let nameDer = certChainFunc3.nameDer;
       try {
@@ -495,7 +495,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1400';
       let nameString = '/C=BE/O=GlobalSign nv-sa/CN=GlobalSign Extended Validation CA - G2';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
@@ -518,7 +518,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1500';
       let nameString = '/C=BE/O=GlobalSign nv-sa/CN=GlobalSign Extended Validation CA - G2';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
@@ -551,7 +551,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1600';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
       try {
@@ -573,7 +573,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1700';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
       try {
@@ -608,7 +608,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1800';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
       let nameString = certChainFunc3.nameString;
@@ -631,7 +631,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_1900';
       let nameString = certChainFunc3.nameString;
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
@@ -664,7 +664,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2000';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
       try {
@@ -686,7 +686,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2100';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
       try {
@@ -721,7 +721,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2200';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509Crl();
       try {
@@ -743,7 +743,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2300';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509Crl();
       try {
@@ -775,7 +775,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2400';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509Crl();
       try {
@@ -797,7 +797,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2500';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509Crl();
       try {
@@ -832,7 +832,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2600';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509CrlEntryTest1();
       try {
@@ -854,7 +854,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2700';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509CrlEntryTest1();
       try {
@@ -886,7 +886,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2800';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509CrlEntryTest1();
       try {
@@ -908,7 +908,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertName_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertName_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_CertName_Func_2900';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509CrlEntryTest1();
       try {
@@ -945,7 +945,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0100';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
       try {
@@ -968,7 +968,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0200';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509Crl();
       try {
@@ -991,7 +991,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0300';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509CrlEntryTest1();
       try {
@@ -1014,7 +1014,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0400';
       const x509CertChain: cert.X509CertChain = await certChainFunc3.createX509CertChain1();
       try {
@@ -1037,7 +1037,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0500';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
       try {
@@ -1060,7 +1060,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0600';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509Crl();
       try {
@@ -1083,7 +1083,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0700';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509CrlEntryTest1();
       try {
@@ -1106,7 +1106,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0800';
       const x509CertChain: cert.X509CertChain = await certChainFunc3.createX509CertChain1();
       try {
@@ -1129,7 +1129,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_0900';
       const x509Cert: cert.X509Cert = await certChainFunc3.createX509Cert();
       try {
@@ -1154,7 +1154,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_1000';
       const x509CRL: cert.X509CRL = await certChainFunc3.createX509Crl();
       try {
@@ -1178,7 +1178,7 @@ export default function certFrameworkCertNameJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_X509_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_X509_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'SUB_Security_Cert_Framework_X509_Func_1100';
       const x509CRLEntry: cert.X509CRL = await certChainFunc3.createX509CrlEntryTest3();
       let serialNumber = BigInt('14091103387070223745671018446433705560');

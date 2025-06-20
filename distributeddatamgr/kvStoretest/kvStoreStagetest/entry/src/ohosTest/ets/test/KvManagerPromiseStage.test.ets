@@ -92,9 +92,9 @@ export default function kvManagerPromiseStageTest(){
      * @tc.desc   : Test Js Api KVManager.GetKVStore testcase 001
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testEtsKVManagerGetKVStore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testEtsKVManagerGetKVStore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info('testKVManagerGetKVStore001');
       try {
         await kvManager.getKVStore(TEST_STORE_ID).then((store) => {
@@ -116,9 +116,9 @@ export default function kvManagerPromiseStageTest(){
      * @tc.desc   : Test Js Api KVManager.GetKVStore testcase 002
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testEtsKVManagerGetKVStore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testEtsKVManagerGetKVStore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info('testKVManagerGetKVStore002');
       try {
         await kvManager.getKVStore(options).then((store) => {
@@ -645,21 +645,20 @@ export default function kvManagerPromiseStageTest(){
      */
     it('testEtsKVManagerCloseKVStore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerCloseKVStore004');
-      await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
+      kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
         kvStore = store;
         console.info('testKVManagerCloseKVStore001 getKVStore success');
         await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID);
-      });
-      console.info('testKVManagerCloseKVStore001 closeKVStore redo.');
-      await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
+        console.info('testKVManagerCloseKVStore001 closeKVStore redo.');
+        await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then((err) => {
         console.info('testKVManagerCloseKVStore001 closeKVStore twice ');
-        expect(kvStore == null).assertTrue();
+        expect(err == null).assertTrue();
+        }).catch((err) => {
+        console.info('testKVManagerCloseKVStore001 err ' + err);
+        expect().assertFail();
+        });
         done();
-      }).catch((err) => {
-        console.info('testKVManagerCloseKVStore001 closeKVStore twice err ' + err);
-        expect(err != null).assertTrue();
       });
-      done();
     })
 
     /**

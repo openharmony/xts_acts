@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -57,7 +57,7 @@ export default function Row_FlexAlign() {
      * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.Start
      */
 
-    it('testRowJustifyContentFlexAlignStart', 0, async (done: Function) => {
+    it('testRowJustifyContentFlexAlignStart',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignStart START');
       globalThis.value.message.notify({
         name: 'justifyContent', value: FlexAlign.Start
@@ -105,7 +105,7 @@ export default function Row_FlexAlign() {
      * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.Center
      */
 
-    it('testRowJustifyContentFlexAlignCenter', 0, async (done: Function) => {
+    it('testRowJustifyContentFlexAlignCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignCenter START');
       globalThis.value.message.notify({
         name: 'justifyContent', value: FlexAlign.Center
@@ -150,7 +150,7 @@ export default function Row_FlexAlign() {
      * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.End
      */
 
-    it('testRowJustifyContentFlexAlignEnd', 0, async (done: Function) => {
+    it('testRowJustifyContentFlexAlignEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignEnd START');
       globalThis.value.message.notify({
         name: 'justifyContent', value: FlexAlign.End
@@ -196,7 +196,7 @@ export default function Row_FlexAlign() {
      * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.SpaceBetween
      */
 
-    it('testRowJustifyContentFlexAlignSpaceBetween', 0, async (done: Function) => {
+    it('testRowJustifyContentFlexAlignSpaceBetween',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignSpaceBetween START');
       globalThis.value.message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceBetween
@@ -244,7 +244,7 @@ export default function Row_FlexAlign() {
      * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.SpaceAround
      */
 
-    it('testRowJustifyContentFlexAlignSpaceAround', 0, async (done: Function) => {
+    it('testRowJustifyContentFlexAlignSpaceAround',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignSpaceAround START');
       globalThis.value.message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceAround
@@ -293,7 +293,7 @@ export default function Row_FlexAlign() {
      * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.SpaceEvenly
      */
 
-    it('testRowJustifyContentFlexAlignSpaceEvenly', 0, async (done: Function) => {
+    it('testRowJustifyContentFlexAlignSpaceEvenly',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignSpaceEvenly START');
       globalThis.value.message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceEvenly

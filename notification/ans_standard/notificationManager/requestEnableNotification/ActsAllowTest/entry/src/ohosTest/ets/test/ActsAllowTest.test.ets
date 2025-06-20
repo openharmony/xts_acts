@@ -65,12 +65,31 @@ export default function ActsAllowTest() {
     let log = logGenerator(TAG);
     log('SUB_ACTS_ALLOW_TEST START');
 
+    beforeAll(async (done: () => void) => {
+      log('SUB_ACTS_ALLOW_TEST beforeAll START');
+      await sleep(500);
+      let driver = Driver.create();
+      await sleep(500)
+      let button = await driver.findComponent(ON.type('Button').text('确定').within(ON.type('Dialog')));
+      log(`button is ${JSON.stringify(button)}`);
+      if (button !== null) {
+        await sleep(1000);
+        await button.click();
+        await sleep(500);
+        done()
+      } else {
+        log('null button');
+        done()
+      }
+      log('SUB_ACTS_ALLOW_TEST beforeAll end');
+    })
+
     /*
      * @tc.number    : Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_0100
      * @tc.name      : function requestEnableNotification(context): Promise<void>
      * @tc.desc      : requestEnableNotification allow button is clicked
      */
-    it('Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_0100', Level.LEVEL2,
+    it('Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_0100', Level.LEVEL0,
       async (done: () => void) => {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);
@@ -140,14 +159,14 @@ export default function ActsAllowTest() {
     );
 
 
-  /*
-  * @tc.number    : Sub_Notification_Ans_Publish_updateOnly_0003
-  * @tc.name      : 更新一个不存在的通知，updateOnly传true
-  * @tc.desc      : updateOnly is true
-  * @tc.size      : Large-scaleTest
-  * @tc.type      : Function test
-  * @tc.level     : Level 0
-  */
+    /*
+    * @tc.number    : Sub_Notification_Ans_Publish_updateOnly_0003
+    * @tc.name      : 更新一个不存在的通知，updateOnly传true
+    * @tc.desc      : updateOnly is true
+    * @tc.size      : Large-scaleTest
+    * @tc.type      : Function test
+    * @tc.level     : Level 0
+    */
     it('Sub_Notification_Ans_Publish_updateOnly_0003', Level.LEVEL0, (done: Function) => {
       // 通知Request对象
       let notificationRequest: notificationManager.NotificationRequest = {
@@ -189,15 +208,15 @@ export default function ActsAllowTest() {
       });
     })
 
-  /*
-  * @tc.number    : Sub_Notification_Ces_Subscriber_Subscribe_08086
-  * @tc.name      : 调用 createSubscriber 接口，创建订阅者，调用 subscribe 接口，getSubscribeInfo获取订阅者信息，subscribeInfo.publisherBundleName为订阅者包名
-  * @tc.desc      : publisherBundleName test
-  * @tc.size      : Large-scaleTest
-  * @tc.type      : Function test
-  * @tc.level     : Level 2
-  */
-    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', Level.LEVEL2, async (done: () => void) => {
+    /*
+    * @tc.number    : Sub_Notification_Ces_Subscriber_Subscribe_08086
+    * @tc.name      : 调用 createSubscriber 接口，创建订阅者，调用 subscribe 接口，getSubscribeInfo获取订阅者信息，subscribeInfo.publisherBundleName为订阅者包名
+    * @tc.desc      : publisherBundleName test
+    * @tc.size      : Large-scaleTest
+    * @tc.type      : Function test
+    * @tc.level     : Level 2
+    */
+    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', Level.LEVEL0, async (done: () => void) => {
 
       // 创建订阅者
       try {
@@ -218,6 +237,6 @@ export default function ActsAllowTest() {
         done();
       });
     })
-    
+
   });
 };

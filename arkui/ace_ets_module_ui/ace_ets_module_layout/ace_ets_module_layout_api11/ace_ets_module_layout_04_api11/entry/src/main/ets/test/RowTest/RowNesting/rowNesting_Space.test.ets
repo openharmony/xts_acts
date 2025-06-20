@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function rowNesting_Space() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to '10vp'
      */
-    it('SUB_ACE_rowNesting_Space_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_rowNesting_Space_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_rowNesting_Space_TEST_0100] START');
       await CommonFunc.sleep(3000);
       console.log('get Initial value')

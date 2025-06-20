@@ -128,6 +128,7 @@
     "MainAbility/pages/checkbox/CheckboxEnabledTest",
     "MainAbility/pages/datepicker/DatePickerEnabledTest",
     "MainAbility/pages/slider/SliderEnabledTest",
+    "MainAbility/pages/slider/SliderColorTest",
     "MainAbility/pages/text/TextEnabledTest",
     "MainAbility/pages/textpicker/TextPickerOnChangeTest",
     "MainAbility/pages/datepicker/DatePickerOnDateChangeTest",

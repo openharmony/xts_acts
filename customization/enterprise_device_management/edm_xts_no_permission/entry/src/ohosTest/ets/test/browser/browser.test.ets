@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import { ENTINFO1, SELFWANT, SELFHAPNAME, TEST_APP_ID_1, TEST_POLICY_NAME, TEST_POLICY_VALUE,
   INVALID_WANT} from '../commom.ets';
 import { util } from '@kit.ArkTS';
@@ -38,7 +38,7 @@ function testSetPolicySync() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_setpolicysync_0100", 0, async (done: Function) => {
+  it("test_setpolicysync_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       browser.setPolicySync(SELFWANT, TEST_APP_ID_1, TEST_POLICY_NAME, TEST_POLICY_VALUE);
@@ -61,7 +61,7 @@ function testSetManagedBrowserPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_setManagedBrowserPolicy_0100", 0, async (done: Function) => {
+  it("test_setManagedBrowserPolicy_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       browser.setManagedBrowserPolicy(SELFWANT, SELFHAPNAME, TEST_POLICY_NAME, TEST_POLICY_VALUE);
@@ -84,7 +84,7 @@ function testGetManagedBrowserPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_getManagedBrowserPolicy_0100", 0, async (done: Function) => {
+  it("test_getManagedBrowserPolicy_0100", Level.LEVEL2, async (done: Function) => {
     try {
       browser.getManagedBrowserPolicy(SELFWANT, SELFHAPNAME);
       expect(false).assertTrue();
@@ -102,7 +102,7 @@ function testGetManagedBrowserPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_getManagedBrowserPolicy_0200", 0, async (done: Function) => {
+  it("test_getManagedBrowserPolicy_0200", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       browser.getManagedBrowserPolicy(SELFWANT, "");
@@ -123,7 +123,7 @@ function testGetManagedBrowserPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_getManagedBrowserPolicy_0300", 0, async (done: Function) => {
+  it("test_getManagedBrowserPolicy_0300", Level.LEVEL2, async (done: Function) => {
     try {
       browser.getManagedBrowserPolicy(INVALID_WANT, SELFHAPNAME);
       expect(false).assertTrue();
@@ -143,7 +143,7 @@ function testGetSelfManagedBrowserPolicyVersion() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_getSelfManagedBrowserPolicyVersion_0100", 0, async (done: Function) => {
+  it("test_getSelfManagedBrowserPolicyVersion_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       browser.setManagedBrowserPolicy(SELFWANT, SELFHAPNAME, TEST_POLICY_NAME, TEST_POLICY_VALUE);
@@ -165,7 +165,7 @@ function testGetSelfManagedBrowserPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_getSelfManagedBrowserPolicy_0100", 0, async (done: Function) => {
+  it("test_getSelfManagedBrowserPolicy_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       browser.setManagedBrowserPolicy(SELFWANT, SELFHAPNAME, TEST_POLICY_NAME, TEST_POLICY_VALUE);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customDialogSetContentAlignmentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContentAlignment001', 0, async (done: Function) => {
+    it('testCustomDialogSetContentAlignment001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContentAlignment001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customDialogSetContentAlignmentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContentAlignment002', 0, async (done: Function) => {
+    it('testCustomDialogSetContentAlignment002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContentAlignment002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customDialogSetContentAlignmentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContentAlignment003', 0, async (done: Function) => {
+    it('testCustomDialogSetContentAlignment003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContentAlignment003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customDialogSetContentAlignmentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContentAlignment004', 0, async (done: Function) => {
+    it('testCustomDialogSetContentAlignment004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContentAlignment004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customDialogSetContentAlignmentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContentAlignment005', 0, async (done: Function) => {
+    it('testCustomDialogSetContentAlignment005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContentAlignment005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customDialogSetContentAlignmentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContentAlignment006', 0, async (done: Function) => {
+    it('testCustomDialogSetContentAlignment006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContentAlignment006()).assertEqual(0)
       done()
     })

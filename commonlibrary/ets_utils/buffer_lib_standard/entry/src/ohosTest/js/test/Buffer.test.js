@@ -23,9 +23,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAlloc0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAlloc0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf = buffer.alloc(10);
     expect(buf.length).assertEqual(10);
   });
@@ -36,9 +36,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAlloc0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAlloc0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -53,9 +53,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAlloc0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAlloc0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf1 = buffer.alloc(10);
     let buf = buffer.alloc(10).fill(buf1);
     expect(buf.length).assertEqual(10);
@@ -67,9 +67,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAlloc0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAlloc0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf = buffer.alloc(0);
     expect(buf.length).assertEqual(0);
   });
@@ -80,9 +80,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAlloc0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAlloc0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -97,9 +97,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAlloc0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAlloc0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf1 = buffer.alloc(10);
     let buf = buffer.alloc(0).fill(buf1);
     expect(buf.length).assertEqual(0);
@@ -111,9 +111,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAlloc0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAlloc0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let buf = buffer.alloc(-5);
     } catch (err) {
@@ -129,9 +129,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-   it("testAlloc0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+   it("testAlloc0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -146,9 +146,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-   it("testAlloc0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+   it("testAlloc0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -163,9 +163,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAlloc0019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAlloc0019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf = buffer.alloc(5.5);
     expect(buf.length).assertEqual(5);
   });
@@ -176,9 +176,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAllocUninitializedFromPool0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAllocUninitializedFromPool0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf = buffer.allocUninitializedFromPool(10);
     expect(buf.length).assertEqual(10);
   });
@@ -189,9 +189,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAllocUninitializedFromPool0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAllocUninitializedFromPool0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -206,9 +206,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAllocUninitializedFromPool0022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAllocUninitializedFromPool0022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf1 = buffer.allocUninitializedFromPool(10);
     let buf = buffer.allocUninitializedFromPool(10).fill(buf1);
     expect(buf.length).assertEqual(10);
@@ -220,9 +220,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAllocUninitializedFromPool0023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAllocUninitializedFromPool0023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf = buffer.allocUninitializedFromPool(0);
     expect(buf.length).assertEqual(0);
   });
@@ -233,9 +233,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-   it("testAllocUninitializedFromPool0024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+   it("testAllocUninitializedFromPool0024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -250,9 +250,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAllocUninitializedFromPool0025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAllocUninitializedFromPool0025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf1 = buffer.allocUninitializedFromPool(10);
     let buf = buffer.allocUninitializedFromPool(0).fill(buf1);
     expect(buf.length).assertEqual(0);
@@ -264,9 +264,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAllocUninitializedFromPool0026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAllocUninitializedFromPool0026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let buf = buffer.allocUninitializedFromPool(-5);
     } catch (err) {
@@ -282,9 +282,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testAllocUninitializedFromPool0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAllocUninitializedFromPool0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let buf = buffer.allocUninitializedFromPool(5.5);
     expect(buf.length).assertEqual(5);
   });
@@ -297,9 +297,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testByteLength0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testByteLength0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let byteLen = buffer.byteLength("abcd");
     expect(byteLen).assertEqual(4);
   });
@@ -312,9 +312,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testByteLength0031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testByteLength0031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let byteLen = buffer.byteLength("测试");
     expect(byteLen).assertEqual(6);
   });
@@ -327,9 +327,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testByteLength0032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testByteLength0032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let byteLen = buffer.byteLength("$&@*%");
     expect(byteLen).assertEqual(5);
   });
@@ -342,9 +342,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testByteLength0033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testByteLength0033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     let result = [4, 4, 8, 8, 4, 4, 4, 8, 8, 3, 3, 2];
@@ -362,9 +362,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-     it("testByteLength0034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+     it("testByteLength0034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       try {
         let byteLen = buffer.byteLength(10);
       } catch (err) {
@@ -382,9 +382,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 1
+   * @tc.level: Level 0
    */
-  it("testByteLength0035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testByteLength0035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let uintarr = new Uint8Array(2);
     uintarr[0] = 21;
     uintarr[1] = 31;

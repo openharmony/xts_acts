@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import {
   albumType,
   albumSubtype,
@@ -37,7 +37,7 @@ export default function albumGetAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('album_getAssets_callback_000', 0, async (done: Function) => {
+    it('album_getAssets_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAssets_callback_000';
       try {
         const fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.VIDEO);
@@ -73,7 +73,7 @@ export default function albumGetAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_getAssets_callback_001', 2, async (done: Function) => {
+    it('album_getAssets_callback_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_getAssets_callback_001';
       try {
         const fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.IMAGE);
@@ -100,7 +100,7 @@ export default function albumGetAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_getAssets_callback_002', 2, async (done: Function) => {
+    it('album_getAssets_callback_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_getAssets_callback_002';
       try {
         const fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.IMAGE);
@@ -128,7 +128,7 @@ export default function albumGetAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('album_getAssets_promise_000', 0, async (done: Function) => {
+    it('album_getAssets_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAssets_promise_000';
       try {
         const fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.VIDEO);
@@ -154,7 +154,7 @@ export default function albumGetAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_getAssets_promise_001', 2, async (done: Function) => {
+    it('album_getAssets_promise_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_getAssets_promise_001';
       try {
         const fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.IMAGE);
@@ -179,7 +179,7 @@ export default function albumGetAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_getAssets_promise_002', 2, async (done: Function) => {
+    it('album_getAssets_promise_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_getAssets_promise_002';
       try {
         const fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.IMAGE);

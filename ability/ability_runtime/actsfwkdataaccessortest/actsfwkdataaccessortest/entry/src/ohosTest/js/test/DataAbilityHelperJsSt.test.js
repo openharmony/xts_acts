@@ -14,7 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import ohosDataAbility from '@ohos.data.dataAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function ActsDataAbilityHelperTest() {
 describe('ActsDataAbilityHelperTest', function () {
@@ -65,7 +65,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: GetDataAbilityHelper : Connects an ability to a Service ability
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_AcquireDataAbilityHelper_0100', 0, async function (done) {
+    it('ACTS_AcquireDataAbilityHelper_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_AcquireDataAbilityHelper_0100====<begin');
         console.debug("=ACTS_AcquireDataAbilityHelper_0100 dataAbilityUri====>" + dataAbilityUri)
         try {
@@ -89,7 +89,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: GetDataAbilityHelper : Connects an ability to a Service ability
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_AcquireDataAbilityHelper_0200', 0, async function (done) {
+    it('ACTS_AcquireDataAbilityHelper_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_AcquireDataAbilityHelper_0200====<begin');
         try {
             var abilityHelper = featureAbility.acquireDataAbilityHelper("")
@@ -109,7 +109,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: GetDataAbilityHelper : Connects an ability to a Service ability
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_AcquireDataAbilityHelper_0300', 0, async function (done) {
+    it('ACTS_AcquireDataAbilityHelper_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_AcquireDataAbilityHelper_0300====<begin');
         try {
             var abilityHelper = featureAbility.acquireDataAbilityHelper("error")
@@ -129,7 +129,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: GetDataAbilityHelper : Connects an ability to a Service ability
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_AcquireDataAbilityHelper_0400', 0, async function (done) {
+    it('ACTS_AcquireDataAbilityHelper_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_AcquireDataAbilityHelper_0400====<begin');
         try {
             var abilityHelper = featureAbility.acquireDataAbilityHelper(undefined)
@@ -149,7 +149,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: GetDataAbilityHelper : Connects an ability to a Service ability
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_AcquireDataAbilityHelper_0500', 0, async function (done) {
+    it('ACTS_AcquireDataAbilityHelper_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_AcquireDataAbilityHelper_0500====<begin');
         try {
             var abilityHelper = featureAbility.acquireDataAbilityHelper(123456)
@@ -169,7 +169,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Insert_0100', 0, async function (done) {
+    it('ACTS_Insert_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('Insert_0100 DAHelper ====>: ' + DAHelper)
@@ -202,7 +202,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Insert_0200', 0, async function (done) {
+    it('ACTS_Insert_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -230,7 +230,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Insert_0300', 0, async function (done) {
+    it('ACTS_Insert_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('Insert_0300 DAHelper ====<: ' + JSON.stringify(DAHelper) + "," + DAHelper)
@@ -262,7 +262,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Insert_0400', 0, async function (done) {
+    it('ACTS_Insert_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -289,7 +289,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Insert_0500', 0, async function (done) {
+    it('ACTS_Insert_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0500====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('Insert_0500 DAHelper ====<: ' + JSON.stringify(DAHelper) + "," + DAHelper)
@@ -321,7 +321,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Insert_0600', 0, async function (done) {
+    it('ACTS_Insert_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -349,7 +349,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Insert_0700', 0, async function (done) {
+    it('ACTS_Insert_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0700====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('Insert_0700 DAHelper ====<: ' + JSON.stringify(DAHelper) + "," + DAHelper)
@@ -385,7 +385,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Insert_0800', 0, async function (done) {
+    it('ACTS_Insert_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -416,7 +416,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Insert_0900', 0, async function (done) {
+    it('ACTS_Insert_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_0900====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('Insert_0900 DAHelper ====<: ' + JSON.stringify(DAHelper) + "," + DAHelper)
@@ -448,7 +448,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Insert_1000', 0, async function (done) {
+    it('ACTS_Insert_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_1000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -476,7 +476,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Insert_1100', 0, async function (done) {
+    it('ACTS_Insert_1100', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_1100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('Insert_1100 DAHelper ====<: ' + JSON.stringify(DAHelper) + "," + DAHelper)
@@ -508,7 +508,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Insert_1200', 0, async function (done) {
+    it('ACTS_Insert_1200', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_1200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -535,7 +535,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Insert_1300', 0, async function (done) {
+    it('ACTS_Insert_1300', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_1300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('Insert_1300 DAHelper ====<: ' + JSON.stringify(DAHelper) + "," + DAHelper)
@@ -567,7 +567,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Insert_1400', 0, async function (done) {
+    it('ACTS_Insert_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_1400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -594,7 +594,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Insert_1500', 0, async function (done) {
+    it('ACTS_Insert_1500', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_1500====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('Insert_1500 DAHelper ====<: ' + JSON.stringify(DAHelper) + "," + DAHelper)
@@ -627,7 +627,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert : Indicates the path of the data to operate
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Insert_1600', 0, async function (done) {
+    it('ACTS_Insert_1600', Level.LEVEL0, async function (done) {
         console.log('ACTS_Insert_1600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -655,7 +655,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_BatchInsert_0100', 0, async function (done) {
+    it('ACTS_BatchInsert_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -690,7 +690,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_BatchInsert_0200', 0, async function (done) {
+    it('ACTS_BatchInsert_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -720,7 +720,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_BatchInsert_0300', 0, async function (done) {
+    it('ACTS_BatchInsert_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -755,7 +755,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_BatchInsert_0400', 0, async function (done) {
+    it('ACTS_BatchInsert_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -785,7 +785,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Inserts multiple data records into the database
 * @tc.desc: Check the return value of the interface (by Promise)
 */
-    it('ACTS_BatchInsert_0500', 0, async function (done) {
+    it('ACTS_BatchInsert_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0500====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -823,7 +823,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_BatchInsert_0600', 0, async function (done) {
+    it('ACTS_BatchInsert_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -855,7 +855,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Inserts multiple data records into the database
 * @tc.desc: Check the return value of the interface (by Promise)
 */
-    it('ACTS_BatchInsert_0700', 0, async function (done) {
+    it('ACTS_BatchInsert_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0700====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -893,7 +893,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_BatchInsert_0800', 0, async function (done) {
+    it('ACTS_BatchInsert_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -925,7 +925,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Inserts multiple data records into the database
 * @tc.desc: Check the return value of the interface (by Promise)
 */
-    it('ACTS_BatchInsert_0900', 0, async function (done) {
+    it('ACTS_BatchInsert_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_0900====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -963,7 +963,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_BatchInsert_1000', 0, async function (done) {
+    it('ACTS_BatchInsert_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_1000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -995,7 +995,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Inserts multiple data records into the database
 * @tc.desc: Check the return value of the interface (by Promise)
 */
-    it('ACTS_BatchInsert_1100', 0, async function (done) {
+    it('ACTS_BatchInsert_1100', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_1100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -1033,7 +1033,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_BatchInsert_1200', 0, async function (done) {
+    it('ACTS_BatchInsert_1200', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_1200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -1065,7 +1065,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Inserts multiple data records into the database
 * @tc.desc: Check the return value of the interface (by Promise)
 */
-    it('ACTS_BatchInsert_1300', 0, async function (done) {
+    it('ACTS_BatchInsert_1300', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_1300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -1103,7 +1103,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_BatchInsert_1400', 0, async function (done) {
+    it('ACTS_BatchInsert_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_1400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -1135,7 +1135,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Inserts multiple data records into the database
 * @tc.desc: Check the return value of the interface (by Promise)
 */
-    it('ACTS_BatchInsert_1500', 0, async function (done) {
+    it('ACTS_BatchInsert_1500', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_1500====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -1169,7 +1169,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Inserts multiple data records into the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_BatchInsert_1600', 0, async function (done) {
+    it('ACTS_BatchInsert_1600', Level.LEVEL0, async function (done) {
         console.log('ACTS_BatchInsert_1600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility BatchInsert getDataAbilityHelper ====>: ' + DAHelper)
@@ -1198,7 +1198,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Query_0100', 0, async function (done) {
+    it('ACTS_Query_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("")
@@ -1227,7 +1227,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Query_0200', 0, async function (done) {
+    it('ACTS_Query_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("")
@@ -1258,7 +1258,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Query_0300', 0, async function (done) {
+    it('ACTS_Query_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1291,7 +1291,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Query_0400', 0, async function (done) {
+    it('ACTS_Query_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1326,7 +1326,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Query_0500', 0, async function (done) {
+    it('ACTS_Query_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0500====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1359,7 +1359,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Query_0600', 0, async function (done) {
+    it('ACTS_Query_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1394,7 +1394,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Query_0700', 0, async function (done) {
+    it('ACTS_Query_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0700====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1427,7 +1427,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Query_0800', 0, async function (done) {
+    it('ACTS_Query_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1462,7 +1462,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Query_0900', 0, async function (done) {
+    it('ACTS_Query_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_0900====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1495,7 +1495,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Query_1000', 0, async function (done) {
+    it('ACTS_Query_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_1000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1530,7 +1530,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Query_1100', 0, async function (done) {
+    it('ACTS_Query_1100', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_1100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1563,7 +1563,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Query_1200', 0, async function (done) {
+    it('ACTS_Query_1200', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_1200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = new Array("value1", "value2", "value3", "value4")
@@ -1598,7 +1598,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Query_1300', 0, async function (done) {
+    it('ACTS_Query_1300', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_1300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = "value1";
@@ -1631,7 +1631,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Query_1400', 0, async function (done) {
+    it('ACTS_Query_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_Query_1400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         var columnsArray = "value1";
@@ -1666,7 +1666,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Query_1500', 0, async function (done) {
+    it('ACTS_Query_1500', Level.LEVEL0, async function (done) {
       console.log('ACTS_Query_1500====<begin');
       expect(typeof (DAHelper)).assertEqual("object");
       try {
@@ -1691,7 +1691,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Update_0100', 0, async function (done) {
+    it('ACTS_Update_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -1730,7 +1730,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Update_0200', 0, async function (done) {
+    it('ACTS_Update_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         try {
@@ -1763,7 +1763,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Update_0300', 0, async function (done) {
+    it('ACTS_Update_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -1805,7 +1805,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Update_0400', 0, async function (done) {
+    it('ACTS_Update_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -1842,7 +1842,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Update_0500', 0, async function (done) {
+    it('ACTS_Update_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0500====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -1884,7 +1884,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Update_0600', 0, async function (done) {
+    it('ACTS_Update_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -1922,7 +1922,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Update_0700', 0, async function (done) {
+    it('ACTS_Update_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0700====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -1967,7 +1967,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Update_0800', 0, async function (done) {
+    it('ACTS_Update_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -2007,7 +2007,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Update_0900', 0, async function (done) {
+    it('ACTS_Update_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_0900====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -2049,7 +2049,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Update_1000', 0, async function (done) {
+    it('ACTS_Update_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_1000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -2087,7 +2087,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Updates one or more data records in the database.
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_Update_1100', 0, async function (done) {
+    it('ACTS_Update_1100', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_1100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -2129,7 +2129,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Update_1200', 0, async function (done) {
+    it('ACTS_Update_1200', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_1200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -2166,7 +2166,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Updates one or more data records in the database.
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_Update_1300', 0, async function (done) {
+    it('ACTS_Update_1300', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_1300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -2208,7 +2208,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Update_1400', 0, async function (done) {
+    it('ACTS_Update_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_Update_1400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -2245,7 +2245,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-     it('ACTS_Update_1500', 0, async function (done) {
+     it('ACTS_Update_1500', Level.LEVEL0, async function (done) {
       console.log('ACTS_Update_1500====<begin');
       expect(typeof (DAHelper)).assertEqual("object");
       console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
@@ -2282,7 +2282,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Delete_0100', 0, async function (done) {
+    it('ACTS_Delete_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0100====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2319,7 +2319,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Delete_0200', 0, async function (done) {
+    it('ACTS_Delete_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2351,7 +2351,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Delete_0300', 0, async function (done) {
+    it('ACTS_Delete_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0300====<begin');
         try {
             let predicates = new ohosDataAbility.DataAbilityPredicates();
@@ -2390,7 +2390,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Delete_0400', 0, async function (done) {
+    it('ACTS_Delete_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2425,7 +2425,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_Delete_0500', 0, async function (done) {
+    it('ACTS_Delete_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0500====<begin');
         try {
             let predicates = new ohosDataAbility.DataAbilityPredicates();
@@ -2464,7 +2464,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Delete_0600', 0, async function (done) {
+    it('ACTS_Delete_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2500,7 +2500,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_Delete_0700', 0, async function (done) {
+    it('ACTS_Delete_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0700====<begin');
         var currentAlertTimeout;
         try {
@@ -2542,7 +2542,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Delete_0800', 0, async function (done) {
+    it('ACTS_Delete_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2580,7 +2580,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_Delete_0900', 0, async function (done) {
+    it('ACTS_Delete_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_0900====<begin');
         try {
             let predicates = new ohosDataAbility.DataAbilityPredicates();
@@ -2619,7 +2619,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Delete_1000', 0, async function (done) {
+    it('ACTS_Delete_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_1000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2654,7 +2654,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_Delete_1100', 0, async function (done) {
+    it('ACTS_Delete_1100', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_1100====<begin');
         try {
             let predicates = new ohosDataAbility.DataAbilityPredicates();
@@ -2693,7 +2693,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Delete_1200', 0, async function (done) {
+    it('ACTS_Delete_1200', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_1200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2728,7 +2728,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_Delete_1300', 0, async function (done) {
+    it('ACTS_Delete_1300', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_1300====<begin');
         try {
             let predicates = new ohosDataAbility.DataAbilityPredicates();
@@ -2767,7 +2767,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_Delete_1400', 0, async function (done) {
+    it('ACTS_Delete_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_Delete_1400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2802,7 +2802,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-         it('ACTS_Delete_1500', 0, async function (done) {
+         it('ACTS_Delete_1500', Level.LEVEL0, async function (done) {
           console.log('ACTS_Delete_1500====<begin');
           expect(typeof (DAHelper)).assertEqual("object");
           console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
@@ -2836,7 +2836,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_0100', 0, async function (done) {
+    it('ACTS_GetFileTypes_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0100====<begin');
         let mimeTypeFilter = '*/*'
         try {
@@ -2882,7 +2882,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_0200', 0, async function (done) {
+    it('ACTS_GetFileTypes_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getFileTypes getDataAbilityHelper ====>: ' + DAHelper)
@@ -2925,7 +2925,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_0300', 0, async function (done) {
+    it('ACTS_GetFileTypes_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0300====<begin');
         let mimeTypeFilter = 'image/*'
         try {
@@ -2968,7 +2968,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_0400', 0, async function (done) {
+    it('ACTS_GetFileTypes_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getFileTypes getDataAbilityHelper ====>: ' + DAHelper)
@@ -3007,7 +3007,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_0500', 0, async function (done) {
+    it('ACTS_GetFileTypes_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0500====<begin');
         let mimeTypeFilter = '*/jpg'
         try {
@@ -3049,7 +3049,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_0600', 0, async function (done) {
+    it('ACTS_GetFileTypes_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0600====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -3087,7 +3087,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_0700', 0, async function (done) {
+    it('ACTS_GetFileTypes_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0700====<begin');
         let mimeTypeFilter = '*/*'
         try {
@@ -3122,7 +3122,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_0800', 0, async function (done) {
+    it('ACTS_GetFileTypes_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getFileTypes getDataAbilityHelper ====>: ' + DAHelper)
@@ -3153,7 +3153,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_0900', 0, async function (done) {
+    it('ACTS_GetFileTypes_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_0900====<begin');
         try {
             var promise = DAHelper.getFileTypes(
@@ -3193,7 +3193,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_1000', 0, async function (done) {
+    it('ACTS_GetFileTypes_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getFileTypes getDataAbilityHelper ====>: ' + DAHelper)
@@ -3230,7 +3230,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_1100', 0, async function (done) {
+    it('ACTS_GetFileTypes_1100', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1100====<begin');
         let mimeTypeFilter = '*/*'
         try {
@@ -3265,7 +3265,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_1200', 0, async function (done) {
+    it('ACTS_GetFileTypes_1200', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getFileTypes getDataAbilityHelper ====>: ' + DAHelper)
@@ -3296,7 +3296,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_1300', 0, async function (done) {
+    it('ACTS_GetFileTypes_1300', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1300====<begin');
         let mimeTypeFilter = '*/*'
         try {
@@ -3331,7 +3331,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_1400', 0, async function (done) {
+    it('ACTS_GetFileTypes_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getFileTypes getDataAbilityHelper ====>: ' + DAHelper)
@@ -3362,7 +3362,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_1500', 0, async function (done) {
+    it('ACTS_GetFileTypes_1500', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1500====<begin');
         let mimeTypeFilter = 'asdfasdEDF)(#@*7fasdf546546a1ds3v16a4sd6v54@*(e7';
         try {
@@ -3397,7 +3397,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_1600', 0, async function (done) {
+    it('ACTS_GetFileTypes_1600', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getFileTypes getDataAbilityHelper ====>: ' + DAHelper)
@@ -3428,7 +3428,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetFileTypes_1700', 0, async function (done) {
+    it('ACTS_GetFileTypes_1700', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1700====<begin');
         let mimeTypeFilter = 'returnUndefined';
         try {
@@ -3463,7 +3463,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetFileTypes_1800', 0, async function (done) {
+    it('ACTS_GetFileTypes_1800', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetFileTypes_1800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility getFileTypes getDataAbilityHelper ====>: ' + DAHelper)
@@ -3494,7 +3494,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetType_0100', 0, async function (done) {
+    it('ACTS_GetType_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0100====<begin');
         try {
             var promise = DAHelper.getType(
@@ -3526,7 +3526,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetType_0200', 0, async function (done) {
+    it('ACTS_GetType_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0200====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility GetType getDataAbilityHelper ====>: ' + DAHelper)
@@ -3554,7 +3554,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
 * @tc.desc: Check the return value of the interface (by promise)
 */
-    it('ACTS_GetType_0300', 0, async function (done) {
+    it('ACTS_GetType_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0300====<begin');
         try {
             var promise = DAHelper.getType(
@@ -3586,7 +3586,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetType_0400', 0, async function (done) {
+    it('ACTS_GetType_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility GetType getDataAbilityHelper ====>: ' + DAHelper)
@@ -3614,7 +3614,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
 * @tc.desc: Check the return value of the interface (by promise)
 */
-    it('ACTS_GetType_0500', 0, async function (done) {
+    it('ACTS_GetType_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0500====<begin');
         try {
             var promise = DAHelper.getType(
@@ -3646,7 +3646,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetType_0600', 0, async function (done) {
+    it('ACTS_GetType_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility GetType getDataAbilityHelper ====>: ' + DAHelper)
@@ -3674,7 +3674,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetType_0700', 0, async function (done) {
+    it('ACTS_GetType_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0700====<begin');
         try {
             var promise = DAHelper.getType(
@@ -3706,7 +3706,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetType_0800', 0, async function (done) {
+    it('ACTS_GetType_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility GetType getDataAbilityHelper ====>: ' + DAHelper)
@@ -3734,7 +3734,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_GetType_0900', 0, async function (done) {
+    it('ACTS_GetType_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_0900====<begin');
         try {
             var promise = DAHelper.getType(
@@ -3766,7 +3766,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetType_1000', 0, async function (done) {
+    it('ACTS_GetType_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_GetType_1000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility GetType getDataAbilityHelper ====>: ' + DAHelper)
@@ -3794,7 +3794,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_0100', 0, async function (done) {
+    it('ACTS_OpenFile_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0100====<begin');
         let ret = false;
         var mode = "r";
@@ -3832,7 +3832,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_0200', 0, async function (done) {
+    it('ACTS_OpenFile_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0200====<begin');
         let ret = false;
         var mode = "w";
@@ -3870,7 +3870,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_0300', 0, async function (done) {
+    it('ACTS_OpenFile_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0300====<begin');
         let ret = false;
         var mode = "wt";
@@ -3909,7 +3909,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_0400', 0, async function (done) {
+    it('ACTS_OpenFile_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0400====<begin');
         let ret = false;
         var mode = "wa";
@@ -3948,7 +3948,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_0500', 0, async function (done) {
+    it('ACTS_OpenFile_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0500====<begin');
         let ret = false;
         var mode = "rw";
@@ -3987,7 +3987,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_0600', 0, async function (done) {
+    it('ACTS_OpenFile_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0600====<begin');
         let ret = false;
         var mode = "rwt";
@@ -4026,7 +4026,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_0700', 0, async function (done) {
+    it('ACTS_OpenFile_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0700====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4063,7 +4063,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_0800', 0, async function (done) {
+    it('ACTS_OpenFile_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0800====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4100,7 +4100,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_0900', 0, async function (done) {
+    it('ACTS_OpenFile_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_0900====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4137,7 +4137,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_1000', 0, async function (done) {
+    it('ACTS_OpenFile_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1000====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4174,7 +4174,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_1100', 0, async function (done) {
+    it('ACTS_OpenFile_1100', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1100====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4209,7 +4209,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_1200', 0, async function (done) {
+    it('ACTS_OpenFile_1200', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1200====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4244,7 +4244,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_1300', 0, async function (done) {
+    it('ACTS_OpenFile_1300', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1300====<begin');
         let ret = false;
         var mode = "rwt";
@@ -4282,7 +4282,7 @@ describe('ActsDataAbilityHelperTest', function () {
 * @tc.name: Opens a file. This method should be implemented by a Data ability.
 * @tc.desc: Check the return value of the interface (by AsyncCallback)
 */
-    it('ACTS_OpenFile_1400', 0, async function (done) {
+    it('ACTS_OpenFile_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1400====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4317,7 +4317,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_1500', 0, async function (done) {
+    it('ACTS_OpenFile_1500', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1500====<begin');
         try {
             DAHelper.openFile(
@@ -4349,7 +4349,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_1600', 0, async function (done) {
+    it('ACTS_OpenFile_1600', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility ACTS_OpenFile_1600 OpenFile getDataAbilityHelper ====>: ' + DAHelper)
@@ -4378,7 +4378,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_1700', 0, async function (done) {
+    it('ACTS_OpenFile_1700', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1700====<begin');
         var mode = "A1@k#4%$,.<>)(oioiu*((*&(&*giIGT^%&^Ug;sdfk;losd*7873iug8%&^$&%]ERFUy&^%&&R7";
         try {
@@ -4411,7 +4411,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_1800', 0, async function (done) {
+    it('ACTS_OpenFile_1800', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility ACTS_OpenFile_1800 OpenFile getDataAbilityHelper ====>: ' + DAHelper)
@@ -4441,7 +4441,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_OpenFile_1900', 0, async function (done) {
+    it('ACTS_OpenFile_1900', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_1900====<begin');
         var mode = "rwt";
         try {
@@ -4474,7 +4474,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Opens a file. This method should be implemented by a Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OpenFile_2000', 0, async function (done) {
+    it('ACTS_OpenFile_2000', Level.LEVEL0, async function (done) {
         console.log('ACTS_OpenFile_2000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility ACTS_OpenFile_2000 OpenFile getDataAbilityHelper ====>: ' + DAHelper)
@@ -4504,7 +4504,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_NormalizeUri_0100', 0, async function (done) {
+    it('ACTS_NormalizeUri_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0100====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4539,7 +4539,7 @@ describe('ActsDataAbilityHelperTest', function () {
    * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
    * @tc.desc: Check the return value of the interface (by AsyncCallback)
    */
-    it('ACTS_NormalizeUri_0200', 0, async function (done) {
+    it('ACTS_NormalizeUri_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0200====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4569,7 +4569,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_NormalizeUri_0300', 0, async function (done) {
+    it('ACTS_NormalizeUri_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0300====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4604,7 +4604,7 @@ describe('ActsDataAbilityHelperTest', function () {
    * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
    * @tc.desc: Check the return value of the interface (by AsyncCallback)
    */
-    it('ACTS_NormalizeUri_0400', 0, async function (done) {
+    it('ACTS_NormalizeUri_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility normalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -4632,7 +4632,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_NormalizeUri_0500', 0, async function (done) {
+    it('ACTS_NormalizeUri_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0500====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4667,7 +4667,7 @@ describe('ActsDataAbilityHelperTest', function () {
    * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
    * @tc.desc: Check the return value of the interface (by AsyncCallback)
    */
-    it('ACTS_NormalizeUri_0600', 0, async function (done) {
+    it('ACTS_NormalizeUri_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility normalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -4695,7 +4695,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_NormalizeUri_0700', 0, async function (done) {
+    it('ACTS_NormalizeUri_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0700====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4729,7 +4729,7 @@ describe('ActsDataAbilityHelperTest', function () {
    * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
    * @tc.desc: Check the return value of the interface (by AsyncCallback)
    */
-    it('ACTS_NormalizeUri_0800', 0, async function (done) {
+    it('ACTS_NormalizeUri_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility normalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -4757,7 +4757,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_NormalizeUri_0900', 0, async function (done) {
+    it('ACTS_NormalizeUri_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_0900====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4791,7 +4791,7 @@ describe('ActsDataAbilityHelperTest', function () {
    * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
    * @tc.desc: Check the return value of the interface (by AsyncCallback)
    */
-    it('ACTS_NormalizeUri_1000', 0, async function (done) {
+    it('ACTS_NormalizeUri_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_NormalizeUri_1000====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility normalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -4819,7 +4819,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_DenormalizeUri_0100', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0100====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4853,7 +4853,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DenormalizeUri_0200', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0200====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -4882,7 +4882,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_DenormalizeUri_0300', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0300====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility DenormalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -4915,7 +4915,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DenormalizeUri_0400', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0400====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility DenormalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -4943,7 +4943,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_DenormalizeUri_0500', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0500====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility DenormalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -4976,7 +4976,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DenormalizeUri_0600', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0600====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility DenormalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -5004,7 +5004,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_DenormalizeUri_0700', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0700====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility DenormalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -5037,7 +5037,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DenormalizeUri_0800', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0800====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
         console.log('featureAbility DenormalizeUri getDataAbilityHelper ====>: ' + DAHelper)
@@ -5065,7 +5065,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_DenormalizeUri_0900', 0, async function (done) {
+    it('ACTS_DenormalizeUri_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_0900====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -5099,7 +5099,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DenormalizeUri_1000', 0, async function (done) {
+    it('ACTS_DenormalizeUri_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_DenormalizeUri_1000====<begin');
         let ret = false;
         expect(typeof (DAHelper)).assertEqual("object");
@@ -5128,7 +5128,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_OnOff_0100', 0, async function (done) {
+    it('ACTS_OnOff_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0100====<begin');
         gSetTimeout = 2000;
         try {
@@ -5170,7 +5170,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_0200', 0, async function (done) {
+    it('ACTS_OnOff_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0200====<begin');
         gSetTimeout = 2000;
         try {
@@ -5221,7 +5221,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_0300', 0, async function (done) {
+    it('ACTS_OnOff_0300', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0300====<begin');
         var currentAlertTimeout;
         var flagCallback01 = 0
@@ -5293,7 +5293,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_0400', 0, async function (done) {
+    it('ACTS_OnOff_0400', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0400====<begin');
         var currentAlertTimeout;
         var flagCallback01 = 0
@@ -5359,7 +5359,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_0500', 0, async function (done) {
+    it('ACTS_OnOff_0500', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0500====<begin');
         var currentAlertTimeout;
         function onAsyncCallback0501(err) {
@@ -5442,7 +5442,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
      * @tc.desc: Check the return value of the interface ()
      */
-    it('ACTS_OnOff_0600', 0, async function (done) {
+    it('ACTS_OnOff_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0600====<begin');
         try {
             var currentAlertTimeout;
@@ -5518,7 +5518,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
      * @tc.desc: Check the return value of the interface ()
      */
-    it('ACTS_OnOff_0700', 0, async function (done) {
+    it('ACTS_OnOff_0700', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0700====<begin');
         try {
             var currentAlertTimeout;
@@ -5577,7 +5577,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_OnOff_0800', 0, async function (done) {
+    it('ACTS_OnOff_0800', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0800====<begin');
         try {
             var currentAlertTimeout;
@@ -5614,7 +5614,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_OnOff_0900', 0, async function (done) {
+    it('ACTS_OnOff_0900', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_0900====<begin');
         try {
             var currentAlertTimeout;
@@ -5665,7 +5665,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
      * @tc.desc: Check the return value of the interface ()
      */
-    it('ACTS_OnOff_1000', 0, async function (done) {
+    it('ACTS_OnOff_1000', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1000====<begin');
         try {
             var currentAlertTimeout;
@@ -5705,7 +5705,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_1100', 0, async function (done) {
+    it('ACTS_OnOff_1100', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1100====<begin');
         try {
             var currentAlertTimeout;
@@ -5757,7 +5757,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_1200', 0, async function (done) {
+    it('ACTS_OnOff_1200', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1200====<begin');
         try {
             var currentAlertTimeout;
@@ -5807,7 +5807,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_OnOff_1300', 0, async function (done) {
+    it('ACTS_OnOff_1300', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1300====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -5838,7 +5838,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_1400', 0, async function (done) {
+    it('ACTS_OnOff_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1400====<begin');
         try {
             var currentAlertTimeout;
@@ -5877,7 +5877,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_1500', 0, async function (done) {
+    it('ACTS_OnOff_1500', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1500====<begin');
         try {
             var currentAlertTimeout;
@@ -5915,7 +5915,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_OnOff_1600', 0, async function (done) {
+    it('ACTS_OnOff_1600', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1600====<begin');
         try {
             var currentAlertTimeout;
@@ -5967,7 +5967,7 @@ describe('ActsDataAbilityHelperTest', function () {
      * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
      * @tc.desc: Check the return value of the interface ()
      */
-    it('ACTS_OnOff_1700', 0, async function (done) {
+    it('ACTS_OnOff_1700', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1700====<begin');
         gSetTimeout = 2000;
         try {
@@ -6022,7 +6022,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_OnOff_1800', 0, async function (done) {
+    it('ACTS_OnOff_1800', Level.LEVEL0, async function (done) {
         console.log('ACTS_OnOff_1800====<begin');
         gSetTimeout = 2000;
         try {
@@ -6074,7 +6074,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Insert_0100', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Insert_0100', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Insert_0100====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6117,7 +6117,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Insert_0200', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Insert_0200', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Insert_0200====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6169,7 +6169,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Insert_0300', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Insert_0300', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Insert_0300====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6221,7 +6221,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Insert_0400', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Insert_0400', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Insert_0400====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6262,7 +6262,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Insert_0500', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Insert_0500', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Insert_0500====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6311,7 +6311,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Insert_0600', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Insert_0600', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Insert_0600====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6359,7 +6359,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Update_0100', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Update_0100', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Update_0100====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6417,7 +6417,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Update_0200', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Update_0200', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Update_0200====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6483,7 +6483,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Update_0300', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Update_0300', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Update_0300====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6550,7 +6550,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Update_0400', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Update_0400', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Update_0400====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6604,7 +6604,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Update_0500', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Update_0500', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Update_0500====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6666,7 +6666,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Update_0600', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Update_0600', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Update_0600====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6728,7 +6728,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Assert_0100', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Assert_0100', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Assert_0100====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6777,7 +6777,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Assert_0200', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Assert_0200', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Assert_0200====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6835,7 +6835,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Assert_0300', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Assert_0300', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Assert_0300====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6902,7 +6902,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Assert_0400', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Assert_0400', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Assert_0400====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -6948,7 +6948,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Assert_0500', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Assert_0500', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Assert_0500====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7002,7 +7002,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Assert_0600', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Assert_0600', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Assert_0600====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7064,7 +7064,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Delete_0100', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Delete_0100', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Delete_0100====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7121,7 +7121,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Delete_0200', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Delete_0200', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Delete_0200====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7187,7 +7187,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_Delete_0300', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Delete_0300', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Delete_0300====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7253,7 +7253,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Delete_0400', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Delete_0400', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Delete_0400====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7307,7 +7307,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Delete_0500', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Delete_0500', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Delete_0500====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7369,7 +7369,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_Delete_0600', 0, async function (done) {
+    it('ACTS_ExecuteBatch_Delete_0600', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_Delete_0600====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7431,7 +7431,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_0100', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0100', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0100====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7514,7 +7514,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_0200', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0200', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0200====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7593,7 +7593,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_0300', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0300', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0300====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7717,7 +7717,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_0400', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0400', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0400====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7837,7 +7837,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_0500', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0500', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0500====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7913,7 +7913,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_0600', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0600', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0600====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -7985,7 +7985,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_0700', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0700', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0700====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -8061,7 +8061,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_0800', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0800', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0800====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -8133,7 +8133,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_0900', 0, async function (done) {
+    it('ACTS_ExecuteBatch_0900', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_0900====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -8209,7 +8209,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_1000', 0, async function (done) {
+    it('ACTS_ExecuteBatch_1000', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_1000====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -8281,7 +8281,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_ExecuteBatch_1100', 0, async function (done) {
+    it('ACTS_ExecuteBatch_1100', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_1100====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");
@@ -8357,7 +8357,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: ExecuteBatch : Preforms batch operations on the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_ExecuteBatch_1200', 0, async function (done) {
+    it('ACTS_ExecuteBatch_1200', Level.LEVEL0, async function (done) {
         console.debug('ACTS_ExecuteBatch_1200====<begin');
         try {
             expect(typeof (DAHelper)).assertEqual("object");

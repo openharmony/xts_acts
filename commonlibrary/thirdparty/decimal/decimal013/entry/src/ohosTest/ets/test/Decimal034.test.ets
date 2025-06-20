@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType} from "@ohos/hypium";
 import { Decimal } from '@kit.ArkTS';
 function test_toFraction_001 (expected: string, n: string) {
     expect(expected).assertEqual(new Decimal(n).toFraction().toString());
@@ -56,7 +56,7 @@ export default function DecimalTest034() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toFraction_Func_001", 0, () => {
+    it("Decimal_toFraction_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -251,7 +251,7 @@ export default function DecimalTest034() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toFraction_Func_002", 0, () => {
+    it("Decimal_toFraction_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -277,7 +277,7 @@ export default function DecimalTest034() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_decimalPlaces_Func_003", 0, () => {
+    it("Decimal_decimalPlaces_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set({
             precision: 20,
             rounding: 4,
@@ -302,7 +302,7 @@ export default function DecimalTest034() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_sum_Func_004", 0, () => {
+    it("Decimal_sum_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         expect('0').assertEqual(Decimal.sum(0, 0, 0).valueOf());
         expect('10').assertEqual(Decimal.sum(0, 0, 0, 0, 0, 0, 10).valueOf());
         expect('600').assertEqual(Decimal.sum(100, 200, 300).valueOf());
@@ -318,7 +318,7 @@ export default function DecimalTest034() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_isPositive_Func_005", 0, () => {
+    it("Decimal_isPositive_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         expect(true).assertEqual(new Decimal(0).isPositive());
         expect(false).assertEqual(new Decimal(-2).isPositive());
       });

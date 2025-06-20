@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function radioGroupJsunit() {
@@ -50,7 +50,7 @@ export default function radioGroupJsunit() {
      * @tc.name         testradioGroup001
      * @tc.desic         aceradioGroupEtsTest001
      */
-    it('testradioGroup001', 0, async (done: Function) => {
+    it('testradioGroup001', Level.LEVEL1, async (done: Function) => {
       console.info('radioGroup testradioGroup001 START');
       await Utils.sleep(2000);
       try {

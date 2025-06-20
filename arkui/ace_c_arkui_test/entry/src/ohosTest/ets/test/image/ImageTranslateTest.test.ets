@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTranslate001', 0, async (done: Function) => {
+    it('testImageTranslate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTranslate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTranslate002', 0, async (done: Function) => {
+    it('testImageTranslate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTranslate002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTranslate003', 0, async (done: Function) => {
+    it('testImageTranslate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTranslate003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTranslate004', 0, async (done: Function) => {
+    it('testImageTranslate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTranslate004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTranslate005', 0, async (done: Function) => {
+    it('testImageTranslate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTranslate005()).assertEqual(0)
       done()
     })

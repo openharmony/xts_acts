@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEventManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import ability from '@ohos.ability.ability';
 import base from '@ohos.base';
 
-let deviceType = '';
+let deviceSupport = '';
 let TAG = '';
 let intervalId: number = -1;
 let subscriber: commonEvent.CommonEventSubscriber;
@@ -61,7 +61,7 @@ export default function abilityTest() {
   describe('AbilityTest', () => {
 
     beforeAll(() => {
-      deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+      deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
       let actsEvents = [
         'Hap2MainAbility10onForeground',
         'Hap3MainAbility3onForeground',
@@ -165,7 +165,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_WindowStageLifecycleTest_001", 0, async (done: Function) => {
+    it("Multihap_WindowStageLifecycleTest_001", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Multihap_WindowStageLifecycleTest_001 is start---------------")
       TAG = "Multihap_WindowStageLifecycleTest_001";
       let isSecondOnForegroundCount: boolean = false;
@@ -217,7 +217,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_WindowStageLifecycleTest_002", 0, async (done: Function) => {
+    it("Multihap_WindowStageLifecycleTest_002", Level.LEVEL0, async (done: Function) => {
       console.log("------------Multihap_WindowStageLifecycleTest_002 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_002";
       let isSecondOnForegroundCount: boolean = false;
@@ -273,7 +273,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_WindowStageLifecycleTest_003", 0, async (done: Function) => {
+    it("Multihap_WindowStageLifecycleTest_003", Level.LEVEL0, async (done: Function) => {
       console.log("------------Multihap_WindowStageLifecycleTest_003 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_003";
 
@@ -335,7 +335,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_WindowStageLifecycleTest_004", 0, async (done: Function) => {
+    it("Multihap_WindowStageLifecycleTest_004", Level.LEVEL0, async (done: Function) => {
       console.log("------------Multihap_WindowStageLifecycleTest_004 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_004";
       let isStartedHap2MainAbility6: boolean = false;
@@ -402,7 +402,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_WindowStageLifecycleTest_005", 0, async (done: Function) => {
+    it("Multihap_WindowStageLifecycleTest_005", Level.LEVEL0, async (done: Function) => {
       console.log("------------Multihap_WindowStageLifecycleTest_005 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_005";
       let isStartedHap2MainAbility6: boolean = false;
@@ -469,10 +469,10 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_WindowStageLifecycleTest_006", 0, async (done: Function) => {
+    it("Multihap_WindowStageLifecycleTest_006", Level.LEVEL0, async (done: Function) => {
       console.log("------------Multihap_WindowStageLifecycleTest_006 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_006";
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         let isOneStartedHap2MainAbility8: boolean = false;
         let ids: Array<number> = []
         let eventCallback = (event: string) => {
@@ -525,7 +525,7 @@ export default function abilityTest() {
           console.log(TAG + ": first MainAbility7 startAbility success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
         });
-      } else if (deviceType == '2in1') {
+      } else if (deviceSupport === 'false') {
         done();
       }
 
@@ -539,7 +539,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_WindowStageLifecycleTest_007", 0, async (done: Function) => {
+    it("Multihap_WindowStageLifecycleTest_007", Level.LEVEL0, async (done: Function) => {
       console.log("------------Multihap_WindowStageLifecycleTest_007 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_007";
       let isMainAbility6SecondOnForeground: boolean = false;
@@ -629,7 +629,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_WindowStageLifecycleTest_008", 0, async (done: Function) => {
+    it("Multihap_WindowStageLifecycleTest_008", Level.LEVEL0, async (done: Function) => {
       console.log("------------Multihap_WindowStageLifecycleTest_008 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_008";
       let isSecondMainAbility4onForeground = false;
@@ -684,10 +684,10 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('Multihap_WindowStageLifecycleTest_009', 0, async (done: Function) => {
+    it('Multihap_WindowStageLifecycleTest_009', Level.LEVEL0, async (done: Function) => {
       console.info("---------------Multihap_WindowStageLifecycleTest_009 is start---------------")
       TAG = "Multihap_WindowStageLifecycleTest_009";
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         let hap3MainAbility3onForegroundCount: number = 0;
         let isFirstMainAbility4onForeground = true;
         let eventCallback = (event: string) => {
@@ -749,7 +749,7 @@ export default function abilityTest() {
           }
         }
         handlerMessage(eventCallback);
-      } else if (deviceType == '2in1') {
+      } else if (deviceSupport === 'false') {
         done();
       }
 
@@ -771,7 +771,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('Multihap_WindowStageLifecycleTest_010', 0, async (done: Function) => {
+    it('Multihap_WindowStageLifecycleTest_010', Level.LEVEL0, async (done: Function) => {
       console.info("---------------Multihap_WindowStageLifecycleTest_010 is start---------------")
       TAG = "Multihap_WindowStageLifecycleTest_010";
       let listKeyTemp:string[] = [];

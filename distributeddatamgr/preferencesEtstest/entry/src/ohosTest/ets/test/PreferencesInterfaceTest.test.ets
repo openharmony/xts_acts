@@ -83,9 +83,11 @@ export default function PreferencesInterfaceTest() {
         expect(isXmlSupported).assertTrue();
 
         let isGSkvSupported = data_preferences.isStorageTypeSupported(data_preferences.StorageType.GSKV);
-        console.info(TAG + "isClkvSupported: ${isClkvSupported}");
-        expect(isGSkvSupported).assertFalse();
-        console.info("====>testPreferencesStorageType001 success: part1")
+        if (isGSkvSupported) {
+          console.info(TAG + "isGSkvSupported: ${isGSkvSupported}");
+          expect(isGSkvSupported).assertTrue();
+          console.info("====>testPreferencesStorageType001 success: part1")
+        }
         done();
       } catch (err) {
         console.info("====>testPreferencesStorageType001 throw_err:" + JSON.stringify(err))

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
@@ -56,7 +56,7 @@ export default function LifeCycleLinstenerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_getCurrentAppCloneIndex_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_getCurrentAppCloneIndex_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_getCurrentAppCloneIndex_0100`;
       console.log(`${tag}, it begin`);
       try {
@@ -77,7 +77,7 @@ export default function LifeCycleLinstenerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_OnApplicationStateChange_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_OnApplicationStateChange_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OnApplicationStateChange_0100`;
       console.log(`${tag}, it begin`);
       let forgoundFlag = false;
@@ -142,7 +142,7 @@ export default function LifeCycleLinstenerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_OnApplicationStateChange_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_OnApplicationStateChange_0200', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OnApplicationStateChange_0200`;
       console.log(`${tag}, it begin`);
       if (mpEnable === 'true') {

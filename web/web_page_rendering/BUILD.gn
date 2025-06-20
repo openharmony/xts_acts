@@ -10,15 +10,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import("//foundation/multimedia/player_framework/config.gni")
+import("//test/xts/tools/build/suite.gni")
 group("webPageRenderingTest") {
   testonly = true
+  deps = []
+  if (player_framework_support_screen_capture) {
+    deps += [ "screen_capture:ActsWebScreenCaptureTest" ]
+  }
   if (is_standard_system) {
-    deps = [
+    deps += [
       "basic_rendering:ActsWebBasicRenderingTest",
       "dark_color_mode:ActsWebDarkColorModeTest",
       "same_layer_rendering:ActsWebSameLayerRenderingTest",
-      "screen_capture:ActsWebScreenCaptureTest",
       "viewport_processing:ActsWebViewportProcessingTest",
       "web_page_font:ActsWebPageFontTest",
       "web_page_zoom_rotate:ActsWebPageZoomRotateTest",

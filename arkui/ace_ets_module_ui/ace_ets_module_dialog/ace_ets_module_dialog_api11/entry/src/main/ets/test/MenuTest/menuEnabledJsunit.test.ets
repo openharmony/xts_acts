@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function menuEnabledJsunit() {
       done();
     });
 
-    it('menuEnabledJsunit_0100', 0, async (done: Function) => {
+    it('menuEnabledJsunit_0100', Level.LEVEL2, async (done: Function) => {
 
       console.info('menuEnabledJsunit_0100 START');
       let driver: Driver = Driver.create();
@@ -57,7 +57,7 @@ export default function menuEnabledJsunit() {
       done();
     });
 
-    it('menuEnabledJsunit_0200', 0, async (done: Function) => {
+    it('menuEnabledJsunit_0200', Level.LEVEL2, async (done: Function) => {
 
       console.info('menuEnabledJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -67,7 +67,7 @@ export default function menuEnabledJsunit() {
       let menuEnabled = await driver.findComponent(BY.key('menuEnabled'));
       await menuEnabled.click();
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(100)),Math.round(globalThis.winTop + vp2px(100)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       let change = await driver.findComponent(BY.key('change'));
       await change.click();

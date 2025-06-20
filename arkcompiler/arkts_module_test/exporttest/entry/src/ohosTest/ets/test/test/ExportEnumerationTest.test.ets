@@ -53,9 +53,9 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('exportEnumerationTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
+    it('exportEnumerationTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
       const result = DefaultOrderStatus.Pending;
       const expectedResult = 'PENDING';
       expect(result).assertEqual(expectedResult)
@@ -67,7 +67,7 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportEnumerationTest0101', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const result = DefaultObjOrderStatus.OrderStatus.Pending;
@@ -81,7 +81,7 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportEnumerationTest0102', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const result = DefaultObjOrderStatus1.OrderStatus.Pending;
@@ -95,7 +95,7 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 1
      */
     it('exportEnumerationTest0103', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const result = EnumOrderStatus.Pending;
@@ -109,7 +109,7 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 4
+     * @tc.level Level 1
      */
     it('exportEnumerationTest0104', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const result = OrderStatus1.Pending;
@@ -123,7 +123,7 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 5
+     * @tc.level Level 1
      */
     it('exportEnumerationTest0105', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const result = OrderStatus2.Pending;
@@ -137,7 +137,7 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 5
+     * @tc.level Level 1
      */
     it('exportEnumerationTest0106', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const result = OrderStatus3.Pending;
@@ -151,7 +151,7 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 5
+     * @tc.level Level 1
      */
     it('exportEnumerationTest0107', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const result = EnumOrderStatus4.Pending;
@@ -165,7 +165,7 @@ export default function exportEnumerationTest() {
      * @tc.desc Test find method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 5
+     * @tc.level Level 1
      */
     it('exportEnumerationTest0108', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const result = OrderStatus5.EnumOrderStatus.Pending;

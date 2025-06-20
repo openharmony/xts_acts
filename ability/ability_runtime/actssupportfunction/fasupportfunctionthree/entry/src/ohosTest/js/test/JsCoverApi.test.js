@@ -14,7 +14,7 @@
  */
 
 import appManager from '@ohos.application.appManager';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function CoverApiTest() {
 describe('CoverApiTest', function () {
@@ -25,7 +25,7 @@ describe('CoverApiTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_CoverApi_0500', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_CoverApi_0500', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_CoverApi_0500-------------");
         await appManager.isRunningInStabilityTest()
             .then((data) => {

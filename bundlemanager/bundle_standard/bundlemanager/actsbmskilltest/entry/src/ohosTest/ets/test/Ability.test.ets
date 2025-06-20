@@ -28,7 +28,7 @@ export default function abilityTest() {
      * @tc.type  : Function
      * @tc.level : Level 2
      */
-    it('getBundleInfoForSelfSyncSkill', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getBundleInfoForSelfSyncSkill', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_SKILL
         | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE
         | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY

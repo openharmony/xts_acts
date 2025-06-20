@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignCenter
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.Center. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignCenter', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignCenter',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignCenter START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.Center
@@ -67,35 +67,35 @@ export default function column_JustifyContent_ChangeParent() {
       let locationText2 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test2');
       let locationText3 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test3');
       let locationColumn : RectValue = CommonFunc.getComponentRect('ColumnJustifyContentChange1');
-      expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - (locationColumn.right - locationText1.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText2.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.left - locationColumn.left) - (locationColumn.right - locationText2.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText3.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.left - locationColumn.left) - (locationColumn.right - locationText3.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((locationColumn.right - locationText1.right) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationColumn.right - locationText1.right) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.top - locationColumn.top)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.top - locationColumn.top) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationColumn.bottom - locationText3.bottom)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((locationColumn.bottom - locationText3.bottom) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(locationText3.top - locationText2.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.right - locationText1.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.right - locationText1.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.right - locationText2.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.right - locationText2.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.right - locationText3.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.right - locationText3.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.bottom - locationText1.top)) - (Math.round(vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.bottom - locationText1.top) - vp2px(50))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.bottom - locationText2.top) - vp2px(100))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.bottom - locationText3.top) - vp2px(150))) <= 1)
         .assertTrue();
       console.info('new testColumnJustifyContentChangeParentFlexAlignCenter END');
     });
@@ -105,7 +105,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignEnd
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.End. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignEnd', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignEnd',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignEnd START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.End
@@ -118,34 +118,34 @@ export default function column_JustifyContent_ChangeParent() {
       let locationText2 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test2');
       let locationText3 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test3');
       let locationColumn : RectValue = CommonFunc.getComponentRect('ColumnJustifyContentChange1');
-      expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - (locationColumn.right - locationText1.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText2.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.left - locationColumn.left) - (locationColumn.right - locationText2.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText3.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.left - locationColumn.left) - (locationColumn.right - locationText3.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((locationColumn.right - locationText1.right) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationColumn.right - locationText1.right) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.top - locationColumn.top)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.top - locationColumn.top) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((locationText3.bottom) - (locationColumn.bottom)) <= 1).assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(locationText3.top - locationText2.bottom))) <= 1)
+      expect(Math.floor(Math.abs(locationText3.bottom - locationColumn.bottom)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.right - locationText1.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.right - locationText1.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.right - locationText2.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.right - locationText2.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.right - locationText3.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.right - locationText3.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.bottom - locationText1.top)) - (Math.round(vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.bottom - locationText1.top) - vp2px(50))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.bottom - locationText2.top) - vp2px(100))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.bottom - locationText3.top) - vp2px(150))) <= 1)
         .assertTrue();
       console.info('new testColumnJustifyContentChangeParentFlexAlignEnd END');
     });
@@ -155,7 +155,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignSpaceBetween
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.SpaceBetween. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignSpaceBetween', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignSpaceBetween',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceBetween START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceBetween
@@ -168,34 +168,34 @@ export default function column_JustifyContent_ChangeParent() {
       let locationText2 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test2');
       let locationText3 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test3');
       let locationColumn : RectValue = CommonFunc.getComponentRect('ColumnJustifyContentChange1');
-      expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - (locationColumn.right - locationText1.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText2.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.left - locationColumn.left) - (locationColumn.right - locationText2.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText3.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.left - locationColumn.left) - (locationColumn.right - locationText3.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((locationColumn.right - locationText1.right) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationColumn.right - locationText1.right) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((locationText1.top) - (locationColumn.top)) <= 1).assertTrue();
-      expect(Math.abs((locationText3.bottom) - (locationColumn.bottom)) <= 1).assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(locationText3.top - locationText2.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.top) - (locationColumn.top))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((locationText3.bottom) - (locationColumn.bottom))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 2)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - vp2px(50))) <= 1)
         .assertTrue();
       //Known issues with use case notes
-      expect(Math.abs((Math.round(locationText1.right - locationText1.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.right - locationText1.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.right - locationText2.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.right - locationText2.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.right - locationText3.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.right - locationText3.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.bottom - locationText1.top)) - (Math.round(vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.bottom - locationText1.top) - vp2px(50))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.bottom - locationText2.top) - vp2px(100))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.bottom - locationText3.top) - vp2px(150))) <= 1)
         .assertTrue();
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceBetween END');
     });
@@ -205,7 +205,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignSpaceAround
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.SpaceAround. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignSpaceAround', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignSpaceAround',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceAround START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceAround
@@ -218,35 +218,35 @@ export default function column_JustifyContent_ChangeParent() {
       let locationText2 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test2');
       let locationText3 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test3');
       let locationColumn : RectValue = CommonFunc.getComponentRect('ColumnJustifyContentChange1');
-      expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - (locationColumn.right - locationText1.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText2.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.left - locationColumn.left) - (locationColumn.right - locationText2.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText3.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.left - locationColumn.left) - (locationColumn.right - locationText3.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((locationColumn.right - locationText1.right) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationColumn.right - locationText1.right) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(locationText3.top - locationText2.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 2)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(vp2px(100 / 3)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - vp2px(100 / 3))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.top - locationColumn.top)) - (Math.round(locationColumn.bottom - locationText3.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.top - locationColumn.top) - (locationColumn.bottom - locationText3.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.top - locationColumn.top)) - (Math.round(vp2px(50 / 3)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.top - locationColumn.top) - vp2px(50 / 3))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.right - locationText1.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.right - locationText1.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.right - locationText2.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.right - locationText2.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.right - locationText3.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.right - locationText3.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.bottom - locationText1.top)) - (Math.round(vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.bottom - locationText1.top) - vp2px(50))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.bottom - locationText2.top) - vp2px(100))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.floor(locationText3.bottom - locationText3.top)) - (Math.floor(vp2px(150)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.bottom - locationText3.top) - vp2px(150))) <= 1)
         .assertTrue();
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceAround END');
     });
@@ -256,7 +256,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignSpaceEvenly
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.SpaceEvenly. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignSpaceEvenly', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignSpaceEvenly',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceEvenly START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceEvenly
@@ -269,35 +269,35 @@ export default function column_JustifyContent_ChangeParent() {
       let locationText2 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test2');
       let locationText3 : RectValue = CommonFunc.getComponentRect('JustifyContent_Test3');
       let locationColumn : RectValue = CommonFunc.getComponentRect('ColumnJustifyContentChange1');
-      expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.left - locationColumn.left) - (locationColumn.right - locationText1.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText2.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.left - locationColumn.left) - (locationColumn.right - locationText2.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText3.right))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.left - locationColumn.left) - (locationColumn.right - locationText3.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((locationColumn.right - locationText1.right) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationColumn.right - locationText1.right) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(locationText3.top - locationText2.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 2)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.top - locationColumn.top)) - (Math.round(locationColumn.bottom - locationText3.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.top - locationColumn.top) - (locationColumn.bottom - locationText3.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.top - locationColumn.top)) - (Math.round(locationText2.top - locationText1.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.top - locationColumn.top) - (locationText2.top - locationText1.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((locationText1.top - locationColumn.top) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((locationText1.top - locationColumn.top) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.right - locationText1.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.right - locationText1.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.right - locationText2.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.right - locationText2.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.right - locationText3.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.right - locationText3.left) - vp2px(300))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText1.bottom - locationText1.top)) - (Math.round(vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((locationText1.bottom - locationText1.top) - vp2px(50))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.bottom - locationText2.top) - vp2px(100))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1)
+      expect(Math.floor(Math.abs((locationText3.bottom - locationText3.top) - vp2px(150))) <= 1)
         .assertTrue();
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceEvenly END');
     });

@@ -16,7 +16,7 @@
 import cameraObj from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { GlobalThis } from './Constants';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
@@ -273,7 +273,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_GET_ZOOM_RATIO_RANGE_PROMISE_0100', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_GET_ZOOM_RATIO_RANGE_PROMISE_0100', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_GET_ZOOM_RATIO_RANGE_PROMISE_0100--------------");
       try {
         let zoomRatioRange = cameraObj.sessionGetZoomRatioRange();
@@ -299,7 +299,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0100', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0100', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0100--------------");
       cameraObj.sessionSetZoomRatio((mZoomRatioMaxArray[0] + 1));
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0100 finish");
@@ -323,7 +323,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0101', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0101', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0101--------------");
       cameraObj.sessionSetZoomRatio((mZoomRatioMaxArray[0] + 1));
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0101 finish");
@@ -347,7 +347,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0102', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0102', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0102--------------");
       cameraObj.sessionSetZoomRatio((mZoomRatioMaxArray[0] + 0.1));
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0102 finish");
@@ -371,7 +371,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103--------------");
       cameraObj.sessionSetZoomRatio((mZoomRatioMinArray[0] - 1));
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103 finish");
@@ -395,7 +395,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104--------------");
       cameraObj.sessionSetZoomRatio((mZoomRatioMinArray[0] - 0.1));
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104 finish");

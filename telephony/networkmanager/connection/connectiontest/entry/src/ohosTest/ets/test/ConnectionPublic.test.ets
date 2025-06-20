@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import { BusinessError } from '@ohos.base';
 import socket from '@ohos.net.socket';
@@ -53,7 +53,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionHasDefaultNet0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionHasDefaultNet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionHasDefaultNet0100";
       console.info(`${caseName} test start`);
       try {
@@ -86,7 +86,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionHasDefaultNet0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionHasDefaultNet0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionHasDefaultNet0600";
       console.info(`${caseName} test start`);
       try {
@@ -117,7 +117,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionHasDefaultNetSync0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionHasDefaultNetSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionHasDefaultNetSync0100";
       console.info(`${caseName} test start`);
       try {
@@ -142,7 +142,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetConnected0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0100";
       console.info(`${caseName} test start`);
       try {
@@ -182,7 +182,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0400";
       console.info(`${caseName} test start`);
       try {
@@ -215,7 +215,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0500";
       console.info(`${caseName} test start`);
       try {
@@ -251,7 +251,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0600";
       console.info(`${caseName} test start`);
       try {
@@ -287,7 +287,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0700";
       console.info(`${caseName} test start`);
       try {
@@ -322,7 +322,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0800";
       console.info(`${caseName} test start`);
       try {
@@ -358,7 +358,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetConnected1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1000";
       console.info(`${caseName} test start`);
       try {
@@ -396,7 +396,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1100";
       console.info(`${caseName} test start`);
       try {
@@ -429,7 +429,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected1200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1200";
       console.info(`${caseName} test start`);
       try {
@@ -459,7 +459,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected1300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1300";
       console.info(`${caseName} test start`);
       try {
@@ -489,7 +489,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1400";
       console.info(`${caseName} test start`);
       try {
@@ -527,7 +527,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1500";
       console.info(`${caseName} test start`);
       try {
@@ -565,7 +565,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1600";
       console.info(`${caseName} test start`);
       try {
@@ -611,7 +611,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetConnected1700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetConnected1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1700";
       console.info(`${caseName} test start`);
       try {
@@ -652,7 +652,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0100";
       console.info(`${caseName} test start`);
       try {
@@ -693,7 +693,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetDisconnected0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0300";
       console.info(`${caseName} test start`);
       try {
@@ -727,7 +727,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetDisconnected0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0400";
       console.info(`${caseName} test start`);
       try {
@@ -760,7 +760,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0500";
       console.info(`${caseName} test start`);
       try {
@@ -801,7 +801,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0600";
       console.info(`${caseName} test start`);
       try {
@@ -842,7 +842,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0700";
       console.info(`${caseName} test start`);
       try {
@@ -882,7 +882,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0800";
       console.info(`${caseName} test start`);
       try {
@@ -923,7 +923,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1000";
       console.info(`${caseName} test start`);
       try {
@@ -961,7 +961,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetDisconnected1200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1200";
       console.info(`${caseName} test start`);
       try {
@@ -991,7 +991,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionReportNetDisconnected1300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1300";
       console.info(`${caseName} test start`);
       try {
@@ -1021,7 +1021,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1400";
       console.info(`${caseName} test start`);
       try {
@@ -1059,7 +1059,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1500";
       console.info(`${caseName} test start`);
       try {
@@ -1097,7 +1097,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1600";
       console.info(`${caseName} test start`);
       try {
@@ -1135,7 +1135,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionReportNetDisconnected1700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionReportNetDisconnected1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1700";
       console.info(`${caseName} test start`);
       try {
@@ -1174,7 +1174,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0100";
       console.info(`${caseName} test start`);
       try {
@@ -1198,7 +1198,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0200";
       console.info(`${caseName} test start`);
       try {
@@ -1226,7 +1226,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0300";
       console.info(`${caseName} test start`);
       try {
@@ -1254,7 +1254,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0400";
       console.info(`${caseName} test start`);
       try {
@@ -1282,7 +1282,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionCreateNetConnection0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0500";
       console.info(`${caseName} test start`);
       try {
@@ -1310,7 +1310,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0600";
       console.info(`${caseName} test start`);
       try {
@@ -1338,7 +1338,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0700";
       console.info(`${caseName} test start`);
       try {
@@ -1366,7 +1366,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0800";
       console.info(`${caseName} test start`);
       try {
@@ -1394,7 +1394,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionCreateNetConnection0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection0900";
       console.info(`${caseName} test start`);
       try {
@@ -1422,7 +1422,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection1000";
       console.info(`${caseName} test start`);
       try {
@@ -1450,7 +1450,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection1100";
       console.info(`${caseName} test start`);
       try {
@@ -1478,7 +1478,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection1200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection1200";
       console.info(`${caseName} test start`);
       try {
@@ -1506,7 +1506,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionCreateNetConnection1300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection1300";
       console.info(`${caseName} test start`);
       try {
@@ -1534,7 +1534,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection1400";
       console.info(`${caseName} test start`);
       try {
@@ -1562,7 +1562,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection1500";
       console.info(`${caseName} test start`);
       try {
@@ -1590,7 +1590,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionCreateNetConnection1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection1600";
       console.info(`${caseName} test start`);
       try {
@@ -1618,7 +1618,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionCreateNetConnection1700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionCreateNetConnection1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionCreateNetConnection1700";
       console.info(`${caseName} test start`);
       try {
@@ -1646,7 +1646,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetDefaultNetCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetDefaultNetCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetDefaultNetCallback0100";
       console.info(`${caseName} test start`);
       try {
@@ -1678,7 +1678,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetDefaultNetPromise0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetDefaultNetPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetDefaultNetPromise0100";
       console.info(`${caseName} test start`);
       try {
@@ -1709,7 +1709,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetDefaultNetSync0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetDefaultNetSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetDefaultNetSync0100";
       console.info(`${caseName} test start`);
       try {
@@ -1733,7 +1733,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionIsDefaultNetMeteredCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionIsDefaultNetMeteredCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionIsDefaultNetMeteredCallback0100";
       console.info(`${caseName} test start`);
       try {
@@ -1765,7 +1765,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionIsDefaultNetMeteredPromise0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionIsDefaultNetMeteredPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionIsDefaultNetMeteredPromise0100";
       console.info(`${caseName} test start`);
       try {
@@ -1796,7 +1796,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionIsDefaultNetMeteredSync0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionIsDefaultNetMeteredSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionIsDefaultNetMeteredSync0100";
       console.info(`${caseName} test start`);
       try {
@@ -1820,7 +1820,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetDefaultHttpProxyCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetDefaultHttpProxyCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetDefaultHttpProxyCallback0100";
       console.info(`${caseName} test start`);
       try {
@@ -1852,7 +1852,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetDefaultHttpProxyCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetDefaultHttpProxyCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetDefaultHttpProxyCallback0200";
       console.info(`${caseName} test start`);
       try {
@@ -1894,7 +1894,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetDefaultHttpProxyPromise0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetDefaultHttpProxyPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetDefaultHttpProxyPromise0100";
       console.info(`${caseName} test start`);
       try {
@@ -1925,7 +1925,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetDefaultHttpProxyPromise0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetDefaultHttpProxyPromise0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetDefaultHttpProxyPromise0200";
       console.info(`${caseName} test start`);
       try {
@@ -1972,7 +1972,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetAppNet0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAppNet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAppNet0100";
       console.info(`${caseName} test start `);
       try {
@@ -2005,7 +2005,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetAppNet0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAppNet0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAppNet0500";
       console.info(`${caseName} test start `);
       try {
@@ -2036,7 +2036,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetAppNetSync0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAppNetSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAppNetSync0100";
       console.info(`${caseName} test start `);
       try {
@@ -2061,7 +2061,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionSetAppNet0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0100";
       console.info(`${caseName} test start `);
       try {
@@ -2102,7 +2102,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0200";
       console.info(`${caseName} test start `);
       try {
@@ -2135,7 +2135,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0300";
       console.info(`${caseName} test start `);
       try {
@@ -2168,7 +2168,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0600";
       console.info(`${caseName} test start `);
       try {
@@ -2210,7 +2210,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0700";
       console.info(`${caseName} test start `);
       try {
@@ -2252,7 +2252,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0800";
       console.info(`${caseName} test start `);
       try {
@@ -2294,7 +2294,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet1700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1700";
       console.info(`${caseName} test start `);
       try {
@@ -2336,7 +2336,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionSetAppNet0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0900";
       console.info(`${caseName} test start `);
       try {
@@ -2374,7 +2374,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1000";
       console.info(`${caseName} test start `);
       try {
@@ -2405,7 +2405,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1100";
       console.info(`${caseName} test start `);
       try {
@@ -2436,7 +2436,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1400";
       console.info(`${caseName} test start `);
       try {
@@ -2475,7 +2475,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1500";
       console.info(`${caseName} test start `);
       try {
@@ -2513,7 +2513,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1600";
       console.info(`${caseName} test start `);
       try {
@@ -2551,7 +2551,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionSetAppNet1800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppNet1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1800";
       console.info(`${caseName} test start `);
       try {
@@ -2590,7 +2590,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetAllNets0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAllNets0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAllNets0100";
       console.info(`${caseName} test start `);
       try {
@@ -2623,7 +2623,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetAllNets0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAllNets0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAllNets0500";
       console.info(`${caseName} test start `);
       try {
@@ -2654,7 +2654,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetAllNetsSync0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAllNetsSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAllNetsSync0100";
       console.info(`${caseName} test start `);
       try {
@@ -2679,7 +2679,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionProperties0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0100";
       console.info(`${caseName} test start `);
       try {
@@ -2719,7 +2719,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0200";
       console.info(`${caseName} test start `);
       try {
@@ -2752,7 +2752,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0300";
       console.info(`${caseName} test start `);
       try {
@@ -2785,7 +2785,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0600";
       console.info(`${caseName} test start `);
       try {
@@ -2826,7 +2826,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0700";
       console.info(`${caseName} test start `);
       try {
@@ -2867,7 +2867,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0800";
       console.info(`${caseName} test start `);
       try {
@@ -2908,7 +2908,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties1700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1700";
       console.info(`${caseName} test start `);
       try {
@@ -2949,7 +2949,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionProperties0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0900";
       console.info(`${caseName} test start `);
       try {
@@ -2987,7 +2987,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionProperties1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1000";
       console.info(`${caseName} test start `);
       try {
@@ -3018,7 +3018,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionProperties1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1100";
       console.info(`${caseName} test start `);
       try {
@@ -3049,7 +3049,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1400";
       console.info(`${caseName} test start `);
       try {
@@ -3088,7 +3088,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1500";
       console.info(`${caseName} test start `);
       try {
@@ -3127,7 +3127,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1600";
       console.info(`${caseName} test start `);
       try {
@@ -3166,7 +3166,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetConnectionProperties1800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionProperties1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1800";
       console.info(`${caseName} test start `);
       try {
@@ -3205,7 +3205,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesSync0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0100";
       console.info(`${caseName} test start `);
       try {
@@ -3231,7 +3231,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesSync0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0200";
       console.info(`${caseName} test start `);
       try {
@@ -3256,7 +3256,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesSync0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesSync0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0300";
       console.info(`${caseName} test start `);
       try {
@@ -3281,7 +3281,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesSync0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesSync0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0600";
       console.info(`${caseName} test start `);
       try {
@@ -3308,7 +3308,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesSync0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesSync0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0700";
       console.info(`${caseName} test start `);
       try {
@@ -3335,7 +3335,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesSync0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesSync0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0800";
       console.info(`${caseName} test start `);
       try {
@@ -3362,7 +3362,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesSync0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesSync0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0900";
       console.info(`${caseName} test start `);
       try {
@@ -3389,7 +3389,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilities0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0100";
       console.info(`${caseName} test start `);
       try {
@@ -3429,7 +3429,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0200";
       console.info(`${caseName} test start `);
       try {
@@ -3462,7 +3462,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0300";
       console.info(`${caseName} test start `);
       try {
@@ -3495,7 +3495,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0600";
       console.info(`${caseName} test start `);
       try {
@@ -3536,7 +3536,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0700";
       console.info(`${caseName} test start `);
       try {
@@ -3577,7 +3577,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0800";
       console.info(`${caseName} test start `);
       try {
@@ -3618,7 +3618,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities1700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1700";
       console.info(`${caseName} test start `);
       try {
@@ -3659,7 +3659,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilities0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0900";
       console.info(`${caseName} test start `);
       try {
@@ -3697,7 +3697,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1000";
       console.info(`${caseName} test start `);
       try {
@@ -3728,7 +3728,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1100";
       console.info(`${caseName} test start `);
       try {
@@ -3759,7 +3759,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1400";
       console.info(`${caseName} test start `);
       try {
@@ -3798,7 +3798,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1500";
       console.info(`${caseName} test start `);
       try {
@@ -3837,7 +3837,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1600";
       console.info(`${caseName} test start `);
       try {
@@ -3876,7 +3876,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetNetCapabilities1800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilities1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1800";
       console.info(`${caseName} test start `);
       try {
@@ -3915,7 +3915,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesSync0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0100";
       console.info(`${caseName} test start `);
       try {
@@ -3941,7 +3941,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesSync0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0200";
       console.info(`${caseName} test start `);
       try {
@@ -3966,7 +3966,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesSync0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesSync0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0300";
       console.info(`${caseName} test start `);
       try {
@@ -3991,7 +3991,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesSync0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesSync0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0600";
       console.info(`${caseName} test start `);
       try {
@@ -4018,7 +4018,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesSync0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesSync0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0700";
       console.info(`${caseName} test start `);
       try {
@@ -4045,7 +4045,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesSync0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesSync0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0800";
       console.info(`${caseName} test start `);
       try {
@@ -4072,7 +4072,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesSync0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesSync0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0900";
       console.info(`${caseName} test start `);
       try {
@@ -4099,7 +4099,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0100';
       console.info(`${caseName}---test Start`);
       try {
@@ -4142,7 +4142,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0200';
       console.info(`${caseName}---Start`);
       try {
@@ -4185,7 +4185,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0300';
       console.info(`${caseName}---Start`);
       try {
@@ -4220,7 +4220,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0400';
       console.info(`${caseName}---Start`);
       try {
@@ -4255,7 +4255,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0500';
       console.info(`${caseName}---Start`);
       try {
@@ -4295,7 +4295,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0600';
       console.info(`${caseName}---Start`);
       try {
@@ -4335,7 +4335,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0700';
       console.info(`${caseName}---Start`);
       try {
@@ -4368,7 +4368,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0800';
       console.info(`${caseName}---Start`);
       try {
@@ -4401,7 +4401,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0900';
       console.info(`${caseName}---test Start`);
       try {
@@ -4445,7 +4445,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1000';
       console.info(`${caseName}---test Start`);
       try {
@@ -4489,7 +4489,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1100';
       console.info(`${caseName}---test Start`);
       try {
@@ -4532,7 +4532,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket1200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1200';
       console.info(`${caseName}---test Start`);
       try {
@@ -4575,7 +4575,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket1300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1300';
       console.info(`${caseName}---test Start`);
       try {
@@ -4617,7 +4617,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1400';
       console.info(`${caseName}---test Start`);
       try {
@@ -4659,7 +4659,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1500';
       console.info(`${caseName}---test Start`);
       try {
@@ -4701,7 +4701,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleBindSocket1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleBindSocket1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1600';
       console.info(`${caseName}---test Start`);
       try {
@@ -4743,7 +4743,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0100';
       console.info(`${caseName}---Start`);
       try {
@@ -4779,7 +4779,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0200';
       console.info(`${caseName}---Start`);
       try {
@@ -4815,7 +4815,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0300';
       console.info(`${caseName}---Start`);
       try {
@@ -4850,7 +4850,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0400';
       console.info(`${caseName}---Start`);
       try {
@@ -4885,7 +4885,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0500';
       console.info(`${caseName}---Start`);
       try {
@@ -4919,7 +4919,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0600';
       console.info(`${caseName}---Start`);
       try {
@@ -4948,7 +4948,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0700';
       console.info(`${caseName}---Start`);
       try {
@@ -4976,7 +4976,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0800';
       console.info(`${caseName}---Start`);
       try {
@@ -5004,7 +5004,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0900';
       console.info(`${caseName}---Start`);
       try {
@@ -5040,7 +5040,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1000';
       console.info(`${caseName}---Start`);
       try {
@@ -5074,7 +5074,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1100';
       console.info(`${caseName}---Start`);
       try {
@@ -5110,7 +5110,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1200';
       console.info(`${caseName}---Start`);
       try {
@@ -5146,7 +5146,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1300';
       console.info(`${caseName}---Start`);
       try {
@@ -5182,7 +5182,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1400';
       console.info(`${caseName}---Start`);
       try {
@@ -5218,7 +5218,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1500';
       console.info(`${caseName}---Start`);
       try {
@@ -5253,7 +5253,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1600';
       console.info(`${caseName}---Start`);
       try {
@@ -5288,7 +5288,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1700';
       console.info(`${caseName}---Start`);
       try {
@@ -5323,7 +5323,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressByName1800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressByName1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1800';
       console.info(`${caseName}---Start`);
       try {
@@ -5358,7 +5358,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0100';
       console.info(`${caseName}---Start`);
       try {
@@ -5394,7 +5394,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0200';
       console.info(`${caseName}---Start`);
       try {
@@ -5430,7 +5430,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0300';
       console.info(`${caseName}---Start`);
       try {
@@ -5465,7 +5465,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0400';
       console.info(`${caseName}---Start`);
       try {
@@ -5500,7 +5500,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0500';
       console.info(`${caseName}---Start`);
       try {
@@ -5534,7 +5534,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0600';
       console.info(`${caseName}---Start`);
       try {
@@ -5563,7 +5563,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0700';
       console.info(`${caseName}---Start`);
       try {
@@ -5591,7 +5591,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0800';
       console.info(`${caseName}---Start`);
       try {
@@ -5619,7 +5619,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName0900';
       console.info(`${caseName}---Start`);
       try {
@@ -5655,7 +5655,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1000';
       console.info(`${caseName}---Start`);
       try {
@@ -5689,7 +5689,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1100';
       console.info(`${caseName}---Start`);
       try {
@@ -5726,7 +5726,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1200';
       console.info(`${caseName}---Start`);
       try {
@@ -5763,7 +5763,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1300';
       console.info(`${caseName}---Start`);
       try {
@@ -5800,7 +5800,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1400';
       console.info(`${caseName}---Start`);
       try {
@@ -5837,7 +5837,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1500';
       console.info(`${caseName}---Start`);
       try {
@@ -5872,7 +5872,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1600';
       console.info(`${caseName}---Start`);
       try {
@@ -5907,7 +5907,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1700';
       console.info(`${caseName}---Start`);
       try {
@@ -5942,7 +5942,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionNetHandleGetAddressesByName1800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetHandleGetAddressesByName1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressesByName1800';
       console.info(`${caseName}---Start`);
       try {
@@ -5977,7 +5977,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionSetAppHttpProxy0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppHttpProxy0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionSetAppHttpProxy0100';
       console.info(`${caseName}---Start`);
       try {
@@ -6005,7 +6005,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionSetAppHttpProxy0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppHttpProxy0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionSetAppHttpProxy0200';
       console.info(`${caseName}---Start`);
       try {
@@ -6029,7 +6029,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionSetAppHttpProxy0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionSetAppHttpProxy0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionSetAppHttpProxy0300';
       console.info(`${caseName}---Start`);
       try {
@@ -6053,7 +6053,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionAddCustomDnsRule0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionAddCustomDnsRule0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionAddCustomDnsRule0100';
       console.info(`${caseName}---Start`);
       try {
@@ -6085,7 +6085,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionAddCustomDnsRule0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionAddCustomDnsRule0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionAddCustomDnsRule0200';
       console.info(`${caseName}---Start`);
       try {
@@ -6111,7 +6111,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionAddCustomDnsRule0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionAddCustomDnsRule0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionAddCustomDnsRule0300';
       console.info(`${caseName}---Start`);
       try {
@@ -6137,7 +6137,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionAddCustomDnsRule0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionAddCustomDnsRule0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionAddCustomDnsRule0400';
       console.info(`${caseName}---Start`);
       try {
@@ -6168,7 +6168,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionAddCustomDnsRule0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionAddCustomDnsRule0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionAddCustomDnsRule0500';
       console.info(`${caseName}---Start`);
       try {
@@ -6199,7 +6199,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionAddCustomDnsRule0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionAddCustomDnsRule0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionAddCustomDnsRule0600';
       console.info(`${caseName}---Start`);
       try {
@@ -6230,7 +6230,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionRemoveCustomDnsRule0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRemoveCustomDnsRule0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionRemoveCustomDnsRule0100';
       console.info(`${caseName}---Start`);
       try {
@@ -6269,7 +6269,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionRemoveCustomDnsRule0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRemoveCustomDnsRule0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionRemoveCustomDnsRule0200';
       console.info(`${caseName}---Start`);
       try {
@@ -6295,7 +6295,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionRemoveCustomDnsRule0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRemoveCustomDnsRule0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionRemoveCustomDnsRule0300';
       console.info(`${caseName}---Start`);
       try {
@@ -6321,7 +6321,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionRemoveCustomDnsRule0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRemoveCustomDnsRule0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionRemoveCustomDnsRule0400';
       console.info(`${caseName}---Start`);
       try {
@@ -6359,7 +6359,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionRemoveCustomDnsRule0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRemoveCustomDnsRule0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionRemoveCustomDnsRule0500';
       console.info(`${caseName}---Start`);
       try {
@@ -6390,7 +6390,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionRemoveCustomDnsRule0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRemoveCustomDnsRule0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionRemoveCustomDnsRule0600';
       console.info(`${caseName}---Start`);
       try {
@@ -6421,7 +6421,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionClearCustomDnsRules0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionClearCustomDnsRules0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionClearCustomDnsRules0100';
       console.info(`${caseName}---Start`);
       try {
@@ -6460,7 +6460,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionClearCustomDnsRules0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionClearCustomDnsRules0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionClearCustomDnsRules0200';
       console.info(`${caseName}---Start`);
       try {
@@ -6498,7 +6498,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionNetCap0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCap0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCap0100";
       console.info(`${caseName} test start`);
       try {
@@ -6521,7 +6521,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionNetCap0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCap0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCap0200";
       console.info(`${caseName} test start`);
       try {
@@ -6544,7 +6544,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionNetCap0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCap0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCap0300";
       console.info(`${caseName} test start`);
       try {
@@ -6567,7 +6567,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionNetCap0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCap0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCap0400";
       console.info(`${caseName} test start`);
       try {
@@ -6590,7 +6590,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionNetCap0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCap0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCap0500";
       console.info(`${caseName} test start`);
       try {
@@ -6613,7 +6613,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionNetCap0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCap0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCap0600";
       console.info(`${caseName} test start`);
       try {
@@ -6636,7 +6636,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionNetCap0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCap0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCap0700";
       console.info(`${caseName} test start`);
       try {
@@ -6659,7 +6659,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionHttpProxy0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionHttpProxy0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionHttpProxy0100';
       console.info(`${caseName}---Start`);
       try {
@@ -6689,7 +6689,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionHttpProxy0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionHttpProxy0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionHttpProxy0200';
       console.info(`${caseName}---Start`);
       try {
@@ -6719,7 +6719,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionHttpProxy0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionHttpProxy0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionHttpProxy0300';
       console.info(`${caseName}---Start`);
       try {
@@ -6749,7 +6749,7 @@ export default function ConnectionPublicTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionHttpProxy0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionHttpProxy0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionHttpProxy0400';
       console.info(`${caseName}---Start`);
       try {
@@ -6779,7 +6779,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetCapabilities0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCapabilities0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCapabilities0100";
       console.info(`${caseName} test start`);
       try {
@@ -6811,7 +6811,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetCapabilities0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCapabilities0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCapabilities0200";
       console.info(`${caseName} test start`);
       try {
@@ -6843,7 +6843,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetCapabilities0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCapabilities0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCapabilities0300";
       console.info(`${caseName} test start`);
       try {
@@ -6873,7 +6873,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetCapabilities0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetCapabilities0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetCapabilities0400";
       console.info(`${caseName} test start`);
       try {
@@ -6903,7 +6903,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0100";
       console.info(`${caseName} test start `);
       try {
@@ -6943,7 +6943,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0200";
       console.info(`${caseName} test start `);
       try {
@@ -6983,7 +6983,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0300";
       console.info(`${caseName} test start `);
       try {
@@ -7023,7 +7023,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0400";
       console.info(`${caseName} test start `);
       try {
@@ -7063,7 +7063,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0500";
       console.info(`${caseName} test start `);
       try {
@@ -7103,7 +7103,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0600";
       console.info(`${caseName} test start `);
       try {
@@ -7143,7 +7143,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0700";
       console.info(`${caseName} test start `);
       try {
@@ -7181,7 +7181,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0800";
       console.info(`${caseName} test start `);
       try {
@@ -7219,7 +7219,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties0900";
       console.info(`${caseName} test start `);
       try {
@@ -7257,7 +7257,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties1000";
       console.info(`${caseName} test start `);
       try {
@@ -7295,7 +7295,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties1100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties1100";
       console.info(`${caseName} test start `);
       try {
@@ -7333,7 +7333,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionConnectionProperties1200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionConnectionProperties1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionConnectionProperties1200";
       console.info(`${caseName} test start `);
       try {
@@ -7371,7 +7371,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0100";
       console.info(`${caseName} test start `);
       try {
@@ -7411,7 +7411,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0200";
       console.info(`${caseName} test start `);
       try {
@@ -7451,7 +7451,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0300";
       console.info(`${caseName} test start `);
       try {
@@ -7491,7 +7491,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0400";
       console.info(`${caseName} test start `);
       try {
@@ -7531,7 +7531,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0500";
       console.info(`${caseName} test start `);
       try {
@@ -7571,7 +7571,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0600";
       console.info(`${caseName} test start `);
       try {
@@ -7609,7 +7609,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0700";
       console.info(`${caseName} test start `);
       try {
@@ -7647,7 +7647,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0800";
       console.info(`${caseName} test start `);
       try {
@@ -7685,7 +7685,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo0900', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo0900";
       console.info(`${caseName} test start `);
       try {
@@ -7723,7 +7723,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRouteInfo1000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRouteInfo1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRouteInfo1000";
       console.info(`${caseName} test start `);
       try {
@@ -7761,7 +7761,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionLinkAddress0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionLinkAddress0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionLinkAddress0100";
       console.info(`${caseName} test start `);
       try {
@@ -7801,7 +7801,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionLinkAddress0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionLinkAddress0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionLinkAddress0200";
       console.info(`${caseName} test start `);
       try {
@@ -7841,7 +7841,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionLinkAddress0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionLinkAddress0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionLinkAddress0300";
       console.info(`${caseName} test start `);
       try {
@@ -7879,7 +7879,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionLinkAddress0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionLinkAddress0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionLinkAddress0400";
       console.info(`${caseName} test start `);
       try {
@@ -7917,7 +7917,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetAddress0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetAddress0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetAddress0100";
       console.info(`${caseName} test start `);
       try {
@@ -7957,7 +7957,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetAddress0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetAddress0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetAddress0200";
       console.info(`${caseName} test start `);
       try {
@@ -7997,7 +7997,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetAddress0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetAddress0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetAddress0300";
       console.info(`${caseName} test start `);
       try {
@@ -8037,7 +8037,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetAddress0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetAddress0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetAddress0400";
       console.info(`${caseName} test start `);
       try {
@@ -8075,7 +8075,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetAddress0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetAddress0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetAddress0500";
       console.info(`${caseName} test start `);
       try {
@@ -8113,7 +8113,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionNetAddress0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionNetAddress0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionNetAddress0600";
       console.info(`${caseName} test start `);
       try {
@@ -8151,7 +8151,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionOn0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionOn0100";
       console.info(`${caseName} test start`);
       try {
@@ -8188,7 +8188,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionOn0200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionOn0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionOn0200";
       console.info(`${caseName} test start`);
       try {
@@ -8225,7 +8225,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionOn0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionOn0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionOn0300";
       console.info(`${caseName} test start`);
       try {
@@ -8262,7 +8262,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetworkMgrConnectionRegister0100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRegister0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionRegister0100";
       console.info(`${caseName} test start`);
       try {
@@ -8306,7 +8306,7 @@ export default function ConnectionPublicTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionUnregister0600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionUnregister0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionUnregister0600";
       console.info(`${caseName} test start`);
       try {

@@ -13,7 +13,10 @@
 * limitations under the License.
 */
 
-import bufferTest from './buffer/Buffer.test';
+import buffer1Test from './buffer/Buffer1.test';
+import buffer2Test from './buffer/Buffer2.test';
+import fastbufferBase1Test from './fastbuffer/FastBufferBase1.test';
+import fastbufferBase2Test from './fastbuffer/FastBufferBase2.test';
 import processTest from './process/Process.test';
 import uriTest from './uri/Uri.test';
 import urlTest from './url/Url.test';
@@ -40,9 +43,17 @@ import streamTest from './stream/Stream.test';
 import specialChar from './specialchar/SpecialChar.test';
 import consoleTest from './console/Console.test';
 import LRUCacheTest from './LRUCache/LRUCache.test';
+import emojiFastBufferTest from './fastbuffer/Emoji_FastBuffer.test.ets';
+import escapeFastBufferTest from './fastbuffer/Escape_FastBuffer.test.ets';
+import fastBuffer1Test from './fastbuffer/FastBuffer1.test.ets';
+import fastBuffer2Test from './fastbuffer/FastBuffer2.test.ets';
+import fastBuffer3Test from './fastbuffer/FastBuffer3.test.ets';
 
 export default function testsuite() {
-  bufferTest();
+  buffer1Test();
+  buffer2Test();
+  fastbufferBase1Test();
+  fastbufferBase2Test();
   processTest();
   uriTest();
   urlTest();
@@ -69,4 +80,10 @@ export default function testsuite() {
   specialChar();
   consoleTest();
   LRUCacheTest();
+  //fastbuffer
+  emojiFastBufferTest();
+  escapeFastBufferTest();
+  fastBuffer1Test();
+  fastBuffer2Test();
+  fastBuffer3Test();
 }

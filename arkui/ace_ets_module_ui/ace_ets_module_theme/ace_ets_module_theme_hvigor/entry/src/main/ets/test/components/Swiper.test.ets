@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium'
+import { afterAll, beforeAll, beforeEach, describe, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import { SwiperKeys, swiperThemeProperty } from '../../MainAbility/pages/components/SwiperPage'
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme'
@@ -76,7 +76,7 @@ export default function swiperThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsSwiperThemeColors_0100`, 0, () => {
+    it(`ActsSwiperThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsSwiperThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       {
@@ -128,7 +128,7 @@ export default function swiperThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsSwiperThemeColors_0200`, 0, () => {
+    it(`ActsSwiperThemeColors_0200`, Level.LEVEL2, () => {
       let CASE: string = `ActsSwiperThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       {
@@ -183,7 +183,7 @@ export default function swiperThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsSwiperThemeColors_0300`, 0, async () => {
+    it(`ActsSwiperThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsSwiperThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

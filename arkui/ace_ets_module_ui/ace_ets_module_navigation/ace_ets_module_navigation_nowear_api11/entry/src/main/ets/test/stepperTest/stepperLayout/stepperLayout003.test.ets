@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../../MainAbility/common/Utils';
 import { Driver, } from '@ohos.UiTest';
 
@@ -51,7 +51,7 @@ export default function stepperLayout003() {
      * @tc.name         stepperLayout0030
      * @tc.desic         stepperLayout0030
      */
-    it('stepperLayout0030', 0, async (done: Function) => {
+    it('stepperLayout0030',  Level.LEVEL0, async (done: Function) => {
       console.info('stepperLayout0030 START');
       await Utils.sleep(2000);
       let stepperJson: string = getInspectorByKey('stepper3');

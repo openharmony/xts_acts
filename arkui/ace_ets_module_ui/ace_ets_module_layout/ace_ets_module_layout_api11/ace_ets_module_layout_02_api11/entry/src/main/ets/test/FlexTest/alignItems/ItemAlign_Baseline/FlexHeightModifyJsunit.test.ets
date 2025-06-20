@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -23,27 +23,27 @@ export default function flexHeightModify_BaselineJsunit() {
   describe('flexItemAlignBaselineTest6', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexHeightModify',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/ItemAlign_Baseline_FlexHeightModify',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexHeightModify state success " + JSON.stringify(pages));
-        if (!("FlexHeightModify" == pages.name)) {
-          console.info("get FlexHeightModify state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Baseline_FlexHeightModify state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Baseline_FlexHeightModify" == pages.name)) {
+          console.info("get ItemAlign_Baseline_FlexHeightModify state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexHeightModify page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Baseline_FlexHeightModify page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexHeightModify page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Baseline_FlexHeightModify page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexHeightModify after each called");
+      console.info("ItemAlign_Baseline_FlexHeightModify after each called");
     });
 
     /**
@@ -51,14 +51,14 @@ export default function flexHeightModify_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineDefaultSize
      * @tc.desc Modify the first subcomponent's height.
      */
-    it('testFlexItemAlignBaselineDefaultSize', 0, async () => {
+    it('testFlexItemAlignBaselineDefaultSize',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineDefaultSize START');
-      let strJson1 = getInspectorByKey('flexHeightModify');
+      let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexHeightModify');
 
-      let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
-      let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
-      let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
-      let flexHeightModify: RectValue = CommonFunc.getComponentRect('flexHeightModify');
+      let textHeightModify01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textHeightModify01');
+      let textHeightModify02: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textHeightModify02');
+      let textHeightModify03: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textHeightModify03');
+      let flexHeightModify: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_flexHeightModify');
       expect(Math.abs(textHeightModify01.left - flexHeightModify.left) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.left - textHeightModify01.right) <= 1).assertTrue()
       expect(Math.abs(textHeightModify03.left - textHeightModify02.right) <= 1).assertTrue()
@@ -88,18 +88,18 @@ export default function flexHeightModify_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineHeightModify
      * @tc.desc Modify the first subcomponent's height.
      */
-    it('testFlexItemAlignBaselineHeightModify', 0, async () => {
+    it('testFlexItemAlignBaselineHeightModify',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineHeightModify START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexHeightModify');
+      let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexHeightModify');
 
-      let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
-      let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
-      let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
-      let flexHeightModify: RectValue = CommonFunc.getComponentRect('flexHeightModify');
+      let textHeightModify01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textHeightModify01');
+      let textHeightModify02: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textHeightModify02');
+      let textHeightModify03: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textHeightModify03');
+      let flexHeightModify: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_flexHeightModify');
       expect(Math.abs(textHeightModify01.left - flexHeightModify.left) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.left - textHeightModify01.right) <= 1).assertTrue()
       expect(Math.abs(textHeightModify03.left - textHeightModify02.right) <= 1).assertTrue()

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as certFunc from "./utils/collection/certFunc";
 import * as crlFunc from "./utils/collection/crlFunc";
 import * as collectionFunc from "./utils/collection/collectionFunc";
@@ -49,7 +49,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         cert.createCertCRLCollection(null);
         expect(null).assertFail();
@@ -67,7 +67,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         cert.createCertCRLCollection(null, null);
         expect(null).assertFail();
@@ -85,7 +85,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let collectRes = cert.createCertCRLCollection([]);
         expect(collectRes != null).assertTrue();
@@ -103,7 +103,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const crl1 = await crlFunc.createCustomizedX509CRLPromise("pem", 1);
         const crl2 = await crlFunc.createCustomizedX509CRLPromise("pem", 2);
@@ -124,7 +124,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const cert1 = await certFunc.createCustomizedX509CertPromise("pem", 1);
         let collectRes = collectionFunc.createCertCRLCollectionWithOneParam([cert1]);
@@ -143,7 +143,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         const x509Cert = await certFunc.createCustomizedX509CertPromise("pem", 1);
         cert.createCertCRLCollection([x509Cert], null);
@@ -162,7 +162,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const x509Cert = await certFunc.createCustomizedX509CertPromise("pem", 1);
         let collectRes = cert.createCertCRLCollection([x509Cert], []);
@@ -181,7 +181,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const x509Cert = await certFunc.createCustomizedX509CertPromise("pem", 1);
         const crl = await crlFunc.createCustomizedX509CRLPromise("pem", 1);
@@ -201,7 +201,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const cert1 = await certFunc.createCustomizedX509CertPromise("pem", 1);
         const crl1 = await crlFunc.createCustomizedX509CRLPromise("pem", 1);
@@ -223,7 +223,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const cert1 = await certFunc.createCustomizedX509CertPromise("der", 1);
         const crl1 = await crlFunc.createCustomizedX509CRLPromise("der", 1);
@@ -243,7 +243,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const cert1 = await certFunc.createCustomizedX509CertPromise("der", 1);
         const crl1 = await crlFunc.createCustomizedX509CRLPromise("der", 1);
@@ -265,7 +265,7 @@ export default function certFrameworkCreateCollectionJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Create_Collection_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Create_Collection_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const cert1 = await certFunc.createCustomizedX509CertPromise("pem", 1);
         const cert2 = await certFunc.createCustomizedX509CertPromise("pem", 2);

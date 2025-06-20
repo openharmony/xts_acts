@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import router from '@ohos.router';
@@ -58,7 +58,7 @@ export default function gesturecancelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureCancelTest001', 0, async (done: Function) => {
+    it('testGestureCancelTest001', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await Utils.sleep(500);
       // inner list scroll

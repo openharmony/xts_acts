@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -45,7 +45,7 @@ export default function tabsJsunit() {
       console.info("tabs after each called");
     });
 
-    it('testTabs_0100', 0, async (done: Function) => {
+    it('testTabs_0100', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0100 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0100 component strJson:" + strJson);
@@ -56,7 +56,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_0200', 0, async (done: Function) => {
+    it('testTabs_0200', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0200 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0200 component strJson:" + strJson);
@@ -66,7 +66,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_0300', 0, async (done: Function) => {
+    it('testTabs_0300', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0300 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0300 component strJson:" + strJson);
@@ -76,7 +76,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_0400', 0, async (done: Function) => {
+    it('testTabs_0400', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0400 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0400 component strJson:" + strJson);
@@ -86,7 +86,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_0500', 0, async (done: Function) => {
+    it('testTabs_0500', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0500 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0500 component strJson:" + strJson);
@@ -96,7 +96,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_0600', 0, async (done: Function) => {
+    it('testTabs_0600', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0600 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0600 component strJson:" + strJson);
@@ -108,7 +108,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_0700', 0, async (done: Function) => {
+    it('testTabs_0700', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0700 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0700 component strJson:" + strJson);
@@ -119,7 +119,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_0800', 0, async (done: Function) => {
+    it('testTabs_0800', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0800 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -144,7 +144,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_0900', 0, async (done: Function) => {
+    it('testTabs_0900', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_0900 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -169,7 +169,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_1000', 0, async (done: Function) => {
+    it('testTabs_1000', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_1000 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -194,7 +194,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_1100', 0, async (done: Function) => {
+    it('testTabs_1100', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_1100 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -219,7 +219,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_1200', 0, async (done: Function) => {
+    it('testTabs_1200', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_1200 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -244,7 +244,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_1300', 0, async (done: Function) => {
+    it('testTabs_1300', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_1300 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -269,7 +269,7 @@ export default function tabsJsunit() {
       done();
     });
 
-    it('testTabs_1400', 0, async (done: Function) => {
+    it('testTabs_1400', Level.LEVEL1, async (done: Function) => {
       console.info('testTabs_1400 START');
       await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {

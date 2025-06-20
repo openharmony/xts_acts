@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import { Driver } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -54,7 +54,7 @@ export default function ContainerSpanModifierTest() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('ContainerSpanModifierTest0001', 0, async (done: Function) => {
+    it('ContainerSpanModifierTest0001',  Level.LEVEL0, async (done: Function) => {
       let driver = Driver.create();
       console.info('ContainerSpanModifierTest0001 START');
       await CommonFunc.sleep(1000);

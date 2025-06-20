@@ -43,10 +43,10 @@ export default function HttpHttpDataTypeTest() {
      * @tc.desc  :  test httpDataType.STRING
      * @tc.size  :  smallTest
      * @tc.type  :  Function
-     * @tc.level :  level 2
+     * @tc.level :  level 0
      */
 
-    it('testHttpDataTypeSTRING0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testHttpDataTypeSTRING0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testHttpDataTypeSTRING0100";
       console.info(`${caseName} test Start`);
       try {
@@ -89,10 +89,10 @@ export default function HttpHttpDataTypeTest() {
      * @tc.desc  :  test httpDataType.STRING
      * @tc.size  :  smallTest
      * @tc.type  :  Function
-     * @tc.level :  level 2
+     * @tc.level :  level 0
      */
 
-    it('testHttpDataTypeSTRING0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testHttpDataTypeSTRING0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testHttpDataTypeSTRING0200";
       console.info(`${caseName} test Start`);
       try {

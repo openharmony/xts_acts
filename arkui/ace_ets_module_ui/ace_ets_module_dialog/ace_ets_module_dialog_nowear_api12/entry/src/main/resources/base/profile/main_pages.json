@@ -17,6 +17,7 @@
     "MainAbility/pages/DatePickerDialog/DateButtonStyle",
     "MainAbility/pages/Popup/PopupApi/PopupApi",
     "MainAbility/pages/Popup/DismissReason",
-    "MainAbility/pages/TimePickerDialog/DateTimeOptions"
+    "MainAbility/pages/TimePickerDialog/DateTimeOptions",
+    "MainAbility/pages/AlertDialog/primary"
   ]
 }

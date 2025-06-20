@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay001', 0, async (done: Function) => {
+    it('testScrollOverlay001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay002', 0, async (done: Function) => {
+    it('testScrollOverlay002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay003', 0, async (done: Function) => {
+    it('testScrollOverlay003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay004', 0, async (done: Function) => {
+    it('testScrollOverlay004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay005', 0, async (done: Function) => {
+    it('testScrollOverlay005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay006', 0, async (done: Function) => {
+    it('testScrollOverlay006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay006()).assertEqual(0)
       done();
     });
@@ -112,7 +112,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay007', 0, async (done: Function) => {
+    it('testScrollOverlay007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay007()).assertEqual(0)
       done();
     });
@@ -125,7 +125,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay008', 0, async (done: Function) => {
+    it('testScrollOverlay008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay008()).assertEqual(0)
       done();
     });
@@ -138,7 +138,7 @@ export default function scrollOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOverlay009', 0, async (done: Function) => {
+    it('testScrollOverlay009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOverlay009()).assertEqual(0)
       done();
     });

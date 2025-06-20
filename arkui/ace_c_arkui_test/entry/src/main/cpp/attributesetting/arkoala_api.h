@@ -1537,20 +1537,6 @@ struct ArkUITabBarBackgroundBlurStyle {
     ArkUI_Int32 blurType;
 };
 
-struct ArkUITabBarBackgroundEffect {
-    ArkUI_Float32 radius;
-    ArkUI_Float32 saturation;
-    ArkUI_Float32 brightness;
-    ArkUI_Uint32 color;
-    ArkUI_Int32 adaptiveColor;
-    const ArkUI_Float32* blurValues;
-    ArkUI_Int32 blurValuesSize;
-    ArkUI_Int32 policy;
-    ArkUI_Int32 blurType;
-    ArkUI_Bool isValidColor;
-    ArkUI_Uint32 inactiveColor;
-};
-
 struct ArkUICommonModifier {
     void (*setBackgroundColor)(ArkUINodeHandle node, ArkUI_Uint32 color);
     void (*resetBackgroundColor)(ArkUINodeHandle node);
@@ -2939,9 +2925,6 @@ struct ArkUITabsModifier {
     void (*resetTabHeightAuto)(ArkUINodeHandle node);
     void (*setAnimateMode)(ArkUINodeHandle node, ArkUI_Uint32 mode);
     void (*resetAnimateMode)(ArkUINodeHandle node);
-    void (*setBarBackgroundEffect)(ArkUINodeHandle node, ArkUITabBarBackgroundEffect* effectOption);
-    void (*resetBarBackgroundEffect)(ArkUINodeHandle node);
-
 };
 
 struct ArkUIStepperItemModifier {

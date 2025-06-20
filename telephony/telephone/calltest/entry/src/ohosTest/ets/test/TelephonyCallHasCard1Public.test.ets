@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level, TestType, Size } from '@ohos/hypium'
 import call from '@ohos.telephony.call';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
@@ -85,9 +85,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Determine if there is a call.Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerHasCall1100', 0, async (done: Function) => {
+    it('testTelephonyCallManagerHasCall1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerHasCall1100';
       console.info(`${caseName} test start `);
       call.hasCall((err: BusinessError, data: boolean) => {
@@ -110,9 +110,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1640150', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1640150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1640150';
       console.info(`${caseName} test start `);
       try {
@@ -141,9 +141,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1640200', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1640200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1640200';
       console.info(`${caseName} test start `);
       try {
@@ -172,9 +172,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1640300', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1640300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1640300';
       console.info(`${caseName} test start `);
       try {
@@ -203,9 +203,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1640400', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1640400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1640400';
       console.info(`${caseName} test start `);
       try {
@@ -234,9 +234,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1640500', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1640500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1640500';
       console.info(`${caseName} test start `);
       try {
@@ -265,9 +265,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1640600', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1640600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1640600';
       console.info(`${caseName} test start `);
       try {
@@ -295,9 +295,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   :Format the phone number in E.164 representation. Use Promise asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1640800', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1640800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1640800';
       console.info(`${caseName} test start `);
       try {
@@ -326,9 +326,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   :Format the phone number in E.164 representation. Use Promise asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1640900', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1640900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1640900';
       console.info(`${caseName} test start `);
       try {
@@ -357,9 +357,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use Promise asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1641000', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1641000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1641000';
       console.info(`${caseName} test start `);
       try {
@@ -388,9 +388,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use Promise asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1641100', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1641100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1641100';
       console.info(`${caseName} test start `);
       try {
@@ -419,9 +419,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use Promise asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1641150', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1641150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1641150';
       console.info(`${caseName} test start `);
       try {
@@ -450,9 +450,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use Promise asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1641200', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1641200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1641200';
       console.info(`${caseName} test start `);
       try {
@@ -481,9 +481,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1641300', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1641300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1641300';
       console.info(`${caseName} test start `);
       try {
@@ -511,9 +511,9 @@ export default function HasCard1PublicTest() {
      * @tc.desc   : Format the phone number in E.164 representation. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testTelephonyCallManagerFormatPhoneNumberToE1641400', 0, async (done: Function) => {
+    it('testTelephonyCallManagerFormatPhoneNumberToE1641400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerFormatPhoneNumberToE1641400';
       console.info(`${caseName} test start `);
       try {

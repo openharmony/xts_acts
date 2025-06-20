@@ -14,7 +14,7 @@
  */
 
 import formProvider from "@ohos.app.form.formProvider"
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
 
@@ -33,7 +33,7 @@ export const openFormEditAbilityFuzzTest = (describeName:string, filterParameter
        * @tc.number FMS_fuzzTest_openFormEditAbility_0100 ~ FMS_fuzzTest_openFormEditAbility_0800
        * @tc.desc Check whether the openFormEditAbility interface can pass the fuzzy test.
        */
-      it(`${callbackName}_${tcNumber}`, filterParameter, () => {
+      it(`${callbackName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
         const dataType: string = DATA_TYPE_LIST[i];
         const abilityName: string = getFuzzData(dataType) as string;
         const formId: string = getFuzzData(dataType) as string;
@@ -58,7 +58,7 @@ export const openFormEditAbilityFuzzTest = (describeName:string, filterParameter
        * @tc.number FMS_fuzzTest_openFormEditAbility_0900 ~ FMS_fuzzTest_openFormEditAbility_1600
        * @tc.desc Check whether the openFormEditAbility interface can pass the fuzzy test
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, () => {
+      it(`${promiseName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
         const dataType: string = DATA_TYPE_LIST[i];
         const abilityName: string = getFuzzData(dataType) as string;
         const formId: string = getFuzzData(dataType) as string;

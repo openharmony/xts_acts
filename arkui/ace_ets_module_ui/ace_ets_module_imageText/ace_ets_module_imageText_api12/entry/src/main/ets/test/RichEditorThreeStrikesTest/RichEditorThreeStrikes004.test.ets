@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { uiAppearance } from '@kit.ArkUI'
 import {
@@ -64,7 +64,7 @@ export default function RichEditorThreeStrikes004() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('RichEditorThreeStrikes004'));
@@ -94,7 +94,7 @@ export default function RichEditorThreeStrikes004() {
      * @tc.type: Function
      * @tc.level: Level 4
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('RichEditorThreeStrikes004'));
@@ -109,9 +109,11 @@ export default function RichEditorThreeStrikes004() {
       await driver.click(getBounds.left + 150, getBounds.top + 30);
       await CommonFunc.sleep(80);
       await driver.click(getBounds.left + 150, getBounds.top + 30);
-      await CommonFunc.sleep(80);
+      await CommonFunc.sleep(1000);
       let copy = await driver.findComponent(ON.text('复制'));
-      await copy?.click();
+      if(copy){
+        await copy.click();
+      }
       await CommonFunc.sleep(1000);
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();

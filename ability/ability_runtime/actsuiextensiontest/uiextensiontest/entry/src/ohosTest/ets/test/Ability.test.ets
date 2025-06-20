@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import appManager from '@ohos.app.ability.appManager';
 import common from '@ohos.app.ability.common'
 import commonEventManager from '@ohos.commonEventManager'
@@ -77,7 +77,7 @@ export default function abilityTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('ACTS_UIExtension_TerminateSelfWithResult_001',0, async (done:Function) => {
+    it('ACTS_UIExtension_TerminateSelfWithResult_001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_TerminateSelfWithResult_001 == ';
       console.log(TAG + "begin");
 
@@ -133,7 +133,7 @@ export default function abilityTest() {
       })
     })
 
-    it('Acts_ReportDrawnCompleted_AsyncCallback_001',0, async (done:Function) => {
+    it('Acts_ReportDrawnCompleted_AsyncCallback_001', Level.LEVEL0, async (done: Function) => {
       console.log('====>Acts_ReportDrawnCompleted_AsyncCallback_001 expect start ');
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let reportDrawnCompletedEvent = 'ACTS_UIExtension_ReportDrawnCompleted';
@@ -190,7 +190,7 @@ export default function abilityTest() {
      * @tc.name    : UIExtension connect serviceAbility
      * @tc.desc    : test UIExtension connectServiceExtensionAbility api
      */
-    it('ACTS_UIExtension_ConnectAbility_001',0, async (done:Function) => {
+    it('ACTS_UIExtension_ConnectAbility_001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_ConnectAbility_001 == ';
       console.log(TAG + "begin");
 
@@ -249,7 +249,7 @@ export default function abilityTest() {
      * @tc.name    : UIExtension Connect MoreParamater
      * @tc.desc    : test UIExtension connect and disconnect serviceAbility with more paramater
      */
-    it('ACTS_UIExtension_MoreParamater_001',0, async (done:Function) => {
+    it('ACTS_UIExtension_MoreParamater_001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_MoreParamater_001 == ';
       console.log(TAG + "begin");
 
@@ -300,7 +300,7 @@ export default function abilityTest() {
      * @tc.name    : UIExtension connect serviceAbility with Exception
      * @tc.desc    : test UIExtension connect serviceAbility with Exception about error paramater
      */
-    it('ACTS_UIExtension_Exception_001',0, async (done:Function) => {
+    it('ACTS_UIExtension_Exception_001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_Exception_001 == ';
       console.log(TAG + "begin");
 
@@ -347,7 +347,7 @@ export default function abilityTest() {
      * @tc.name    : UIExtension disconnect serviceAbility
      * @tc.desc    : test UIExtension disconnectServiceExceptionAbility much example
      */
-    it('ACTS_UIExtension_DisConnectAbility_001',0, async (done:Function) => {
+    it('ACTS_UIExtension_DisConnectAbility_001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DisConnectAbility_001 == ';
       console.log(TAG + "begin");
 
@@ -394,7 +394,7 @@ export default function abilityTest() {
      * @tc.name    : UIExtension connect serviceAbility in sameApp
      * @tc.desc    : UIExtension connect serviceAbility in sameApp with callback in many example
      */
-    it('ACTS_UIExtension_SameApp_001',0, async (done:Function) => {
+    it('ACTS_UIExtension_SameApp_001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_SameApp_001 == ';
       console.log(TAG + "begin");
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
@@ -458,7 +458,7 @@ export default function abilityTest() {
      * @tc.name    : UIExtension connect serviceAbility and disconnect serviceAbility
      * @tc.desc    : UIExtension connect serviceAbility and disconnect serviceAbility in difference app with promise
      */
-    it('ACTS_UIExtension_DifferentApp_001',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_001 == ';
       console.log(TAG + "begin");
 
@@ -504,7 +504,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 002
      * @tc.desc    : UIExtension connect serviceAbility and terminal UIExtensionAbility
      */
-    it('ACTS_UIExtension_DifferentApp_002',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_002', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_002 == ';
       console.log(TAG + "begin");
 
@@ -545,7 +545,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 003
      * @tc.desc    : UIExtension connect lots of serviceAbility and terminal UIExtensionAbility
      */
-    it('ACTS_UIExtension_DifferentApp_003',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_003', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_003 == ';
       console.log(TAG + "begin");
 
@@ -598,7 +598,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 004
      * @tc.desc    : UIExtension connect serviceAbility and terminal service
      */
-    it('ACTS_UIExtension_DifferentApp_004',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_004', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_004 == ';
       console.log(TAG + "begin");
 
@@ -639,7 +639,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 005
      * @tc.desc    : UIExtension connect service1, servce1 connect service2, disconnect by self
      */
-    it('ACTS_UIExtension_DifferentApp_005',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_005', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_005 == ';
       console.log(TAG + "begin");
 
@@ -680,7 +680,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 006
      * @tc.desc    : UIExtension connect service visable and invisible with no Permission in foreground
      */
-    it('ACTS_UIExtension_DifferentApp_006',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_006', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_006 == ';
       console.log(TAG + "begin");
 
@@ -733,7 +733,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 007
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY Permission  in foreground
      */
-    it('ACTS_UIExtension_DifferentApp_007',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_007', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_007 == ';
       console.log(TAG + "begin");
       router.back()
@@ -799,7 +799,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 008
      * @tc.desc    : UIExtension connect service visable and invisible with no Permission  in background
      */
-    it('ACTS_UIExtension_DifferentApp_008',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_008', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_008 == ';
       console.log(TAG + "begin");
 
@@ -852,7 +852,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 009
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY Permission in background
      */
-    it('ACTS_UIExtension_DifferentApp_009',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_009', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_009 == ';
       console.log(TAG + "begin");
 
@@ -919,7 +919,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 010
      * @tc.desc    : different UIExtension connect same service
      */
-    it('ACTS_UIExtension_DifferentApp_010',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_010', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_010 == ';
       console.log(TAG + "begin");
 
@@ -984,7 +984,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension in DifferentApp 011
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY and START_ABILITIES_FROM_BACKGROUND Permission in background
      */
-    it('ACTS_UIExtension_DifferentApp_011',0, async (done:Function) => {
+    it('ACTS_UIExtension_DifferentApp_011', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_DifferentApp_011 == ';
       console.log(TAG + "begin");
 
@@ -1049,7 +1049,7 @@ export default function abilityTest() {
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
      */
-    it('ACTS_UIExtension_StartAbilityByType001',0, async (done:Function) => {
+    it('ACTS_UIExtension_StartAbilityByType001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_StartAbilityByType001 == ';
       console.log(TAG + "begin");
       router.back()
@@ -1110,7 +1110,7 @@ export default function abilityTest() {
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
      */
-    it('ACTS_UIExtension_StartAbilityByType002',0, async (done:Function) => {
+    it('ACTS_UIExtension_StartAbilityByType002', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_StartAbilityByType002 == ';
       console.log(TAG + "begin");
       try {
@@ -1140,7 +1140,7 @@ export default function abilityTest() {
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
      */
-    it('ACTS_UIExtension_StartAbilityByType003',0, async (done:Function) => {
+    it('ACTS_UIExtension_StartAbilityByType003', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_StartAbilityByType003 == ';
       console.log(TAG + "begin");
       try {
@@ -1168,7 +1168,7 @@ export default function abilityTest() {
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
      */
-    it('ACTS_UIExtension_StartAbilityByType004',0, async (done:Function) => {
+    it('ACTS_UIExtension_StartAbilityByType004', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_StartAbilityByType004 == ';
       console.log(TAG + "begin");
       try {
@@ -1200,7 +1200,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension back to desktop
      * @tc.desc    : UIExtension connect service successful back to desktop
      */
-    it('ACTS_UIExtension_Device_01',0, async (done:Function) => {
+    it('ACTS_UIExtension_Device_01', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_Device_01 == ';
       console.log(TAG + "begin");
       AbilityDelegatorRegistry.getAbilityDelegator().startAbility({
@@ -1256,7 +1256,7 @@ export default function abilityTest() {
      * @tc.name    : test UIExtension off the screen
      * @tc.desc    : UIExtension connect service successful then off the screen
      */
-    it('ACTS_UIExtension_Device_02',0, async (done:Function) => {
+    it('ACTS_UIExtension_Device_02', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_Device_02 == ';
       console.log(TAG + "begin");
       AbilityDelegatorRegistry.getAbilityDelegator().startAbility({

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function refreshPullToRefreshTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullToRefresh001', 0, async (done: Function) => {
+    it('testRefreshPullToRefresh001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullToRefresh001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function refreshPullToRefreshTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullToRefresh002', 0, async (done: Function) => {
+    it('testRefreshPullToRefresh002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullToRefresh002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function refreshPullToRefreshTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullToRefresh003', 0, async (done: Function) => {
+    it('testRefreshPullToRefresh003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullToRefresh003()).assertEqual(0)
       done();
     })
@@ -73,7 +73,7 @@ export default function refreshPullToRefreshTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullToRefresh004', 0, async (done: Function) => {
+    it('testRefreshPullToRefresh004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullToRefresh004()).assertEqual(0)
       done();
     })
@@ -86,7 +86,7 @@ export default function refreshPullToRefreshTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullToRefresh005', 0, async (done: Function) => {
+    it('testRefreshPullToRefresh005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullToRefresh005()).assertEqual(0)
       done();
     })
@@ -99,7 +99,7 @@ export default function refreshPullToRefreshTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullToRefresh006', 0, async (done: Function) => {
+    it('testRefreshPullToRefresh006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullToRefresh006()).assertEqual(0)
       done();
     })

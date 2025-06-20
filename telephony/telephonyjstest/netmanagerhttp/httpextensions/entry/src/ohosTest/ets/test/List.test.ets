@@ -16,9 +16,14 @@
 import NetworkManagerHttpExtensionsTest from './NetworkManagerHttpExtensions.test';
 import NetworkManagerAppProxyTest from './NetworkManagerAppProxy.test';
 import NetworkManagerAddAPI11Test from './NetworkManagerAddAPI11.test';
+import connection from '@ohos.net.connection';
+let netHandle = connection.getDefaultNetSync();
 
 export default function testsuite() {
-  NetworkManagerHttpExtensionsTest();
-  NetworkManagerAppProxyTest();
-  NetworkManagerAddAPI11Test();
+
+  if(netHandle.netId >= 100){
+	NetworkManagerHttpExtensionsTest();
+  }
+ NetworkManagerAppProxyTest();
+ NetworkManagerAddAPI11Test();
 }

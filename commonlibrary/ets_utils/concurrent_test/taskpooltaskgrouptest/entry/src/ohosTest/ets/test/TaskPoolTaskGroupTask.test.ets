@@ -83,9 +83,9 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Common tasks are exceptional
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('taskPoolTaskGroupTask0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('taskPoolTaskGroupTask0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This ApI supports three parameters: test case name, filter parameter, and test case function.hilog.info(0x0000,'testTag''%{public}s','it begin');
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -119,9 +119,9 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test GenericsTask throws exceptions
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('taskPoolTaskGroupTask0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('taskPoolTaskGroupTask0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     // Defines a test case. This ApI supports three parameters: test case name, filter parameter, and test case function.hilog.info(0x0000,'testTag''%{public}s','it begin');
       
       let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs1, 1);
@@ -157,7 +157,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test OnEnqueued callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
      let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
@@ -213,7 +213,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test OnStartExecution callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       
@@ -269,7 +269,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test OnExecutionFailed callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       
@@ -330,7 +330,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test OnExecutionSucceeded callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
@@ -386,7 +386,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test OnReceiveData callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       
@@ -443,7 +443,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Then callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -486,7 +486,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Catch callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -531,7 +531,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Finally callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -579,7 +579,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test AsyncLock callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -619,7 +619,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test AsyncLock's then callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -658,7 +658,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test AsyncLock's catch callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -697,7 +697,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test AsyncLock's finally callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -736,7 +736,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Promise callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -775,7 +775,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Promise's then callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -814,7 +814,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Promise's catch callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -853,7 +853,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Promise's finally callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -892,7 +892,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Settimeout
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -931,7 +931,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Asynchronous method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -970,7 +970,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Wait
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1008,7 +1008,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Wait's then callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1046,7 +1046,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Wait's catch callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1084,7 +1084,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Wait's finally callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1124,7 +1124,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Worker callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1166,7 +1166,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Worker callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1209,7 +1209,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Taskpool callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1246,7 +1246,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Taskpool's then callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1283,7 +1283,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Taskpool's catch callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -1320,7 +1320,7 @@ export default function taskPoolTaskGroup() {
      * @tc.desc test Taskpool's fianlly callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupTask3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function geometryTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGeometryTransition001', 0, async (done: Function) => {
+    it('testGeometryTransition001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGeometryTransition001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function geometryTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGeometryTransition002', 0, async (done: Function) => {
+    it('testGeometryTransition002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGeometryTransition002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function geometryTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGeometryTransition003', 0, async (done: Function) => {
+    it('testGeometryTransition003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGeometryTransition003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function geometryTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGeometryTransition004', 0, async (done: Function) => {
+    it('testGeometryTransition004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGeometryTransition004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function geometryTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGeometryTransition005', 0, async (done: Function) => {
+    it('testGeometryTransition005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGeometryTransition005()).assertEqual(0)
       done()
     })

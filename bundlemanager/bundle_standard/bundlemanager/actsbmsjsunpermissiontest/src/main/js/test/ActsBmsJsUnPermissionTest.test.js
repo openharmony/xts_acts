@@ -42,7 +42,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getApplicationInfoUnPermissionUserId
      * @tc.desc: test getApplicationInfo
      */
-    it('getApplicationInfoUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('getApplicationInfoUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         await bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
@@ -60,7 +60,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getApplicationInfosUnPermissionUserId
      * @tc.desc: test getAllApplicationInfo
      */
-    it('getApplicationInfosUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('getApplicationInfosUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         await bundle.getAllApplicationInfo(DEFAULT_FLAG, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
@@ -78,7 +78,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getBundleInfoUnPermissionUserId
      * @tc.desc: test getBundleInfo
      */
-    it('getBundleInfoUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('getBundleInfoUnPermissionUserId', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         await bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
@@ -96,7 +96,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.name: getAllBundleInfoUnPermission
      * @tc.desc: test getAllBundleInfo
      */
-    it('getAllBundleInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('getAllBundleInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         await bundle.getAllBundleInfo(DEFAULT_FLAG).then(data => {
             expect().assertFail();
         }).catch(err => {

@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { photoKeys, fetchOption, getPermission, driveFn, sleep } from '../common'
 import common from '@ohos.app.ability.common'
 
@@ -36,7 +36,7 @@ export default function setTitleChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_title_change_request_000', 0, async (done: Function) => {
+    it('set_title_change_request_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'set_title_change_request_000';
       try {
         let asset:ESObject = await helper.createAsset('title.jpg');
@@ -67,7 +67,7 @@ export default function setTitleChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('set_title_change_request_001', 2, async (done: Function) => {
+    it('set_title_change_request_001', Level.LEVEL2, async (done: Function) => {
       let testNum = 'set_title_change_request_001';
       try {
         let asset:ESObject = await helper.createAsset('title.jpg');
@@ -91,7 +91,7 @@ export default function setTitleChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('set_title_change_request_002', 2, async (done: Function) => {
+    it('set_title_change_request_002', Level.LEVEL2, async (done: Function) => {
       let testNum = 'set_title_change_request_002';
       try {
         let asset:ESObject = await helper.createAsset('title.jpg');

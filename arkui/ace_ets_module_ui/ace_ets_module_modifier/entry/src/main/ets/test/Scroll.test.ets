@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -49,7 +49,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0001', 0, async (done: Function) => {
+    it('testScroll0001', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0001 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -67,7 +67,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0002', 0, async (done: Function) => {
+    it('testScroll0002', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0002 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0003', 0, async (done: Function) => {
+    it('testScroll0003', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0003 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -103,7 +103,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0005', 0, async (done: Function) => {
+    it('testScroll0005', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0005 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -121,7 +121,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0006', 0, async (done: Function) => {
+    it('testScroll0006', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0006 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -139,7 +139,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0007', 0, async (done: Function) => {
+    it('testScroll0007', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0007 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -157,7 +157,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0008', 0, async (done: Function) => {
+    it('testScroll0008', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0008 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -175,7 +175,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0009', 0, async (done: Function) => {
+    it('testScroll0009', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0009 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -193,7 +193,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0010', 0, async (done: Function) => {
+    it('testScroll0010', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0010 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -211,7 +211,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testScroll0011', 0, async (done: Function) => {
+    it('testScroll0011', Level.LEVEL0, async (done: Function) => {
       console.info('testScroll0011 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

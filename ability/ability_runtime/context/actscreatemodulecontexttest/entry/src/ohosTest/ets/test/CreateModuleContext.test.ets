@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 
@@ -29,7 +29,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can be obtained
      * @tc.level: 1
      */
-    it("SUB_AA_CreateModuleContext_0100", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0100", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStage_0100 begin");
 
       createModuleContext = null;
@@ -50,7 +50,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0200", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0200", Level.LEVEL0, async (done:Function) => {
       console.log("SUB_AA_CreateModuleContext_0200 begin");
 
       createModuleContext = null;
@@ -71,7 +71,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0300", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0300", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0300 begin");
 
       createModuleContext = null;
@@ -96,7 +96,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0400", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0400", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0400 begin");
 
       createModuleContext = null;
@@ -121,7 +121,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0500", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0500", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0500 begin");
 
       createModuleContext = null;
@@ -148,7 +148,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0600", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0600", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0600 begin");
 
       createModuleContext = null;
@@ -169,7 +169,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0700", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0700", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0700 begin");
 
       createModuleContext = null;
@@ -190,7 +190,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0800", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0800", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0800 begin");
 
       createModuleContext = null;
@@ -215,7 +215,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0900", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_0900", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0900 begin");
 
       createModuleContext = null;
@@ -240,7 +240,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_1000", 0, async (done:Function) => {
+    it("SUB_AA_CreateModuleContext_1000", Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_1000 begin");
 
       createModuleContext = null;

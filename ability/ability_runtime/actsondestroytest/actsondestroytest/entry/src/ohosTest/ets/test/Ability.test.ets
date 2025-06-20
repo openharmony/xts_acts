@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import commonEvent from '@ohos.commonEventManager';
@@ -55,7 +55,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0100', 0, async (done: () => void) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0100', Level.LEVEL0, async (done: () => void) => {
 
       console.info(TAG + '_0100 start');
       let subscriber: commonEvent.CommonEventSubscriber;
@@ -117,7 +117,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0200', 0, async (done: () => void) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0200', Level.LEVEL0, async (done: () => void) => {
       console.info(TAG + '_0200 start');
       let subscriber: commonEvent.CommonEventSubscriber;
       let publishEvent = ['EntryOnDestroy', 'SecondOnDestroy'];
@@ -187,7 +187,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0300', 0, async (done: () => void) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0300', Level.LEVEL0, async (done: () => void) => {
       console.info(TAG + '_0300 start');
       let subscriber: commonEvent.CommonEventSubscriber;
       let isTerminate: boolean = false;
@@ -252,7 +252,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0400', 0, async (done: () => void) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0400', Level.LEVEL0, async (done: () => void) => {
       console.info(TAG + '_0400 start');
       let subscriber: commonEvent.CommonEventSubscriber;
 
@@ -321,7 +321,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0500', 0, async (done: () => void) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0500', Level.LEVEL0, async (done: () => void) => {
       console.info(TAG + '_0500 start');
       let subscriber: commonEvent.CommonEventSubscriber;
       let isTerminate = ['isOtherTerminte', 'isSecondOtherTerminte'];

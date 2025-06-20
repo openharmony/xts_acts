@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -62,7 +62,7 @@ export default function RichEditorTransformation002() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_003', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_003',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_003 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('RichEditorTransformation002'));
@@ -86,7 +86,7 @@ export default function RichEditorTransformation002() {
      * @tc.type: Function
      * @tc.level: Level 4
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_004', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_004',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_004 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('RichEditorTransformation002'));

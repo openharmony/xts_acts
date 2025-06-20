@@ -17,7 +17,9 @@ import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitOverviewModeAccessTrue";
 
 export default function webTwoJsunit() {
@@ -42,6 +44,11 @@ export default function webTwoJsunit() {
       done();
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();

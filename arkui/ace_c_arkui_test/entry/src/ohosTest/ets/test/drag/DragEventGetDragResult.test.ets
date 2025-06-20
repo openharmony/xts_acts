@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import { Driver } from '@kit.TestKit';
@@ -36,7 +36,7 @@ export default function DragEventGetDragResultTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragEventGetDragResultTest001', 0, async (done: Function) => {
+    it('DragEventGetDragResultTest001', Level.LEVEL1, async (done: Function) => {
       console.info('DragEventGetDragResultTest001 START');
       let rect = Utils.getDragComponentRect('GetDragResult');
       console.info("DragEventGetDragResultTest001 GetDragResult is " + JSON.stringify(rect));

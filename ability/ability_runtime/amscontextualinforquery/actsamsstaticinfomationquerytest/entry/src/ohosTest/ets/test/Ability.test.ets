@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import bundleManager from '@ohos.bundle.bundleManager'
 import commonEventManager from '@ohos.commonEventManager';
@@ -32,7 +32,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the application query abilityInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getAbilityInfo_0100', 0, async (done:Function) => {
+        it('ACTS_getAbilityInfo_0100', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_getAbilityInfo_0100 --- start ability=====>'+ globalThis.abilityContext.abilityInfo")
             checkAbilityInfo(globalThis.abilityContext.abilityInfo);
             done();
@@ -44,7 +44,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the application query applicationInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getApplicationInfo_0100', 0, async (done:Function) => {
+        it('ACTS_getApplicationInfo_0100', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_getApplicationInfo_0100 --- start ability=====>'+ globalThis.abilityContext.applicationInfo")
             checkApplicationInfo(globalThis.abilityContext.applicationInfo);
             done();
@@ -56,7 +56,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the application query currentHapModuleInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getHapModuleInfo_0100', 0, async (done:Function) => {
+        it('ACTS_getHapModuleInfo_0100', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_getHapModuleInfo_0100 --- start ability=====>'+ globalThis.abilityContext.currentHapModuleInfo")
             checkHapModuleInfo(globalThis.abilityContext.currentHapModuleInfo);
             done();
@@ -71,7 +71,7 @@ export default function abilityTest() {
          * abilityInfo、applicationInfo、currentHapModuleInfo in the configuration file,
          * and the information obtained by starting different abilities is different
          */
-        it('ACTS_getAbilityInfo_0200', 0, async (done:Function) => {
+        it('ACTS_getAbilityInfo_0200', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_getAbilityInfo_0200 --- start")
             let Subscriber:commonEventManager.CommonEventSubscriber;
             let mainHap = false;

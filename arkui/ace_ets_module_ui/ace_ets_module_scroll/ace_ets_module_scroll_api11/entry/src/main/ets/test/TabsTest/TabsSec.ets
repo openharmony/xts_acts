@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils'
 import router from '@ohos.router';
@@ -71,7 +71,7 @@ export default function tabsSec() {
      * @tc.name      Tests the barOverlap property of the tabs component.
      * @tc.desc      Gets the default values of barOverlap.
      */
-    it('ArkUI_Tabs_BarOverlap_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0100 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -86,7 +86,7 @@ export default function tabsSec() {
      * @tc.name      Tests the barOverlap property of the tabs component.
      * @tc.desc      Gets the values of barOverlap, when the value of the barOverlap is true.
      */
-    it('ArkUI_Tabs_BarOverlap_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0200 start");
       let strJson = getInspectorByKey('TabsOverlapTest2');
       console.info("ArkUI_Tabs_BarOverlap_0200: " + JSON.stringify(strJson))
@@ -119,7 +119,7 @@ export default function tabsSec() {
      * @tc.name      Tests the barOverlap property of the tabs component.
      * @tc.desc      Gets the values of barOverlap, when the value of the barOverlap is false.
      */
-    it('ArkUI_Tabs_BarOverlap_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0300 start");
       let strJson = getInspectorByKey('TabsOverlapTest2');
       console.info("ArkUI_Tabs_BarOverlap_0300: " + JSON.stringify(strJson))
@@ -152,7 +152,7 @@ export default function tabsSec() {
      * @tc.name      Tests the barOverlap property of the tabs component.
      * @tc.desc      Gets the values of barOverlap, when the value of the barOverlap is null.
      */
-    it('ArkUI_Tabs_BarOverlap_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0400 start");
       let strJson = getInspectorByKey('TabsOverlapTest2');
       console.info("ArkUI_Tabs_BarOverlap_0400: " + JSON.stringify(strJson))
@@ -185,7 +185,7 @@ export default function tabsSec() {
      * @tc.name      Tests the barOverlap property of the tabs component.
      * @tc.desc      Gets the values of barOverlap, when the value of the barOverlap is undefined.
      */
-    it('ArkUI_Tabs_BarOverlap_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0500 start");
       let strJson = getInspectorByKey('TabsOverlapTest2');
       console.info("ArkUI_Tabs_BarOverlap_0500: " + JSON.stringify(strJson))
@@ -219,7 +219,7 @@ export default function tabsSec() {
      * @tc.desc      Step1: Gets the values of barOverlap, when the value of the barOverlap is true.
      *               Step2: Gets the values of barOverlap, when the value of the barOverlap is false.
      */
-    it('ArkUI_Tabs_BarOverlap_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0600 start");
       let strJson = getInspectorByKey('TabsOverlapTest2');
       console.info("ArkUI_Tabs_BarOverlap_0600: " + JSON.stringify(strJson))
@@ -275,7 +275,7 @@ export default function tabsSec() {
      * @tc.desc      Step1: Gets the values of barOverlap, when the value of the barOverlap is true.
      *               Step2: Gets the values of barOverlap, when the value of the barOverlap is null.
      */
-    it('ArkUI_Tabs_BarOverlap_0700', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0700 start");
       let strJson = getInspectorByKey('TabsOverlapTest2');
       console.info("ArkUI_Tabs_BarOverlap_0700: " + JSON.stringify(strJson))
@@ -331,7 +331,7 @@ export default function tabsSec() {
      * @tc.desc      Step1: Gets the values of barOverlap, when the value of the barOverlap is true.
      *               Step2: Gets the values of barOverlap, when the value of the barOverlap is undefined.
      */
-    it('ArkUI_Tabs_BarOverlap_0800', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0800', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0800 start");
       let strJson = getInspectorByKey('TabsOverlapTest2');
       console.info("ArkUI_Tabs_BarOverlap_0800: " + JSON.stringify(strJson))
@@ -386,7 +386,7 @@ export default function tabsSec() {
      * @tc.name      Tests the BarBackgroundColor property of the tabs component.
      * @tc.desc      Gets the default values of barBackgroundColor.
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
       
@@ -402,7 +402,7 @@ export default function tabsSec() {
      * @tc.name      Tests the BarBackgroundColor property of the tabs component.
      * @tc.desc      Gets the values of BarBackgroundColor, when the value of the barBackgroundColor is Color.Blue.
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('BarBackgroundColorColor');
       console.info("ArkUI_Tabs_BarBackgroundColor: " + JSON.stringify(strJson))
@@ -435,7 +435,7 @@ export default function tabsSec() {
      * @tc.name      Tests the BarBackgroundColor property of the tabs component.
      * @tc.desc      Gets the values of BarBackgroundColor, when the value of the barBackgroundColor is 123.
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('BarBackgroundColorNumber');
       console.info("ArkUI_Tabs_BarBackgroundColor: " + JSON.stringify(strJson))
@@ -468,7 +468,7 @@ export default function tabsSec() {
      * @tc.name      Tests the BarBackgroundColor property of the tabs component.
      * @tc.desc      Gets the values of BarBackgroundColor, when the value of the barBackgroundColor is #0000FF.
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('BarBackgroundColorString');
       console.info("ArkUI_Tabs_BarBackgroundColor: " + JSON.stringify(strJson))
@@ -501,7 +501,7 @@ export default function tabsSec() {
      * @tc.name      Tests the BarBackgroundColor property of the tabs component.
      * @tc.desc      Gets the values of BarBackgroundColor, when the value of the barBackgroundColor is sys.color.ohos_toggle_bg.
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('BarBackgroundColorResource');
       console.info("ArkUI_Tabs_BarBackgroundColor: " + JSON.stringify(strJson))
@@ -537,7 +537,7 @@ export default function tabsSec() {
      * @tc.name      Tests the BarBackgroundColor property of the tabs component.
      * @tc.desc      Gets the values of BarBackgroundColor, when the value of the barBackgroundColor is null.
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('BarBackgroundColorColor');
       console.info("ArkUI_Tabs_BarBackgroundColor: " + JSON.stringify(strJson))
@@ -570,7 +570,7 @@ export default function tabsSec() {
      * @tc.name      Tests the BarBackgroundColor property of the tabs component.
      * @tc.desc      Gets the values of BarBackgroundColor, when the value of the barBackgroundColor is undefined.
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0700', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('BarBackgroundColorColor');
       console.info("ArkUI_Tabs_BarBackgroundColor: " + JSON.stringify(strJson))

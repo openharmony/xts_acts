@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -42,7 +42,7 @@ export default function textOneJsunit() {
       done();
     });
 
-    it('textOneJsunit_0100', 0, async (done: Function) => {
+    it('textOneJsunit_0100', Level.LEVEL1, async (done: Function) => {
        console.info('textOneJsunit_0100 START');
        await CommonFunc.sleep(1000);
        // get the text part component and test attribute
@@ -55,7 +55,7 @@ export default function textOneJsunit() {
        done();
     });
 
-   it('textOneJsunit_0200', 0, async (done: Function) => {
+   it('textOneJsunit_0200', Level.LEVEL1, async (done: Function) => {
       console.info('textOneJsunit_0200 START');
       // test the enum value of textAlign 
       globalThis.value.message.notify({name:'textAlign',value:TextAlign.Start})
@@ -73,7 +73,7 @@ export default function textOneJsunit() {
       done();
     });
 
-    it('textOneJsunit_0300', 0, async (done: Function) => {
+    it('textOneJsunit_0300', Level.LEVEL1, async (done: Function) => {
       console.info('textOneJsunit_0300 START');
       // test the illegal enum value of textAlign 
       globalThis.value.message.notify({name:'textAlign',value:4})
@@ -85,7 +85,7 @@ export default function textOneJsunit() {
       done();
     });
 
-    it('textOneJsunit_0400', 0, async (done: Function) => {
+    it('textOneJsunit_0400', Level.LEVEL1, async (done: Function) => {
       console.info('textOneJsunit_0400 START');
       // test the  enum value of textOverflow
       globalThis.value.message.notify({name:'textOverflow',value:TextOverflow.Clip})
@@ -106,7 +106,7 @@ export default function textOneJsunit() {
       done();
     });
 
-    it('textOneJsunit_0500', 0, async (done: Function) => {
+    it('textOneJsunit_0500', Level.LEVEL1, async (done: Function) => {
       console.info('textOneJsunit_0500 START');
       // test the illegal enum value of textOverflow
       globalThis.value.message.notify({name:'textOverflow',value:4})
@@ -120,7 +120,7 @@ export default function textOneJsunit() {
       done();
     });
 
-    it('textOneJsunit_0600', 0, async (done: Function) => {
+    it('textOneJsunit_0600', Level.LEVEL1, async (done: Function) => {
       console.info('textOneJsunit_0600 START');
       // test the value of lineHeight 
       globalThis.value.message.notify({name:'lineHeight',value:20})

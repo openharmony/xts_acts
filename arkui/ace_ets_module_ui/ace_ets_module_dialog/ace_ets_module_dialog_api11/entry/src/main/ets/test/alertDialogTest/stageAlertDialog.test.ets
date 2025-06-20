@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,17 @@ export default function stageAlertDialog() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('stageAlertDialog001', 0, async (done: Function) => {
+
+    /**
+     * @tc.number    stageAlertDialog001
+     * @tc.name      stageAlertDialog001
+     * @tc.desc      set api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+     
+    it('stageAlertDialog001', Level.LEVEL2, async (done: Function) => {
       console.info('stageAlertDialog001 START');
       setTimeout(() => {
         try {
@@ -82,7 +92,16 @@ export default function stageAlertDialog() {
         done();
       }, 500)
     });
-    it('stageAlertDialog002', 0, async (done: Function) => {
+
+    /**
+     * @tc.number    stageAlertDialog002
+     * @tc.name      stageAlertDialog002
+     * @tc.desc      set api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('stageAlertDialog002', Level.LEVEL2, async (done: Function) => {
       console.info('stageAlertDialog002 START');
       setTimeout(() => {
         try {
@@ -109,7 +128,16 @@ export default function stageAlertDialog() {
         done();
       }, 500)
     });
-    it('stageAlertDialog003', 0, async (done: Function) => {
+
+    /**
+     * @tc.number    stageAlertDialog003
+     * @tc.name      stageAlertDialog003
+     * @tc.desc      set api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('stageAlertDialog003', Level.LEVEL2, async (done: Function) => {
       console.info('stageAlertDialog003 START');
       setTimeout(() => {
         try {

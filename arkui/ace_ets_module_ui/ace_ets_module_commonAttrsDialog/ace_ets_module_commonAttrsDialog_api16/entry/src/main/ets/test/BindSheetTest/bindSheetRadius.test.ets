@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function BindSheetTest() {
     * @tc.desc  : Test the bindSheet component
     * @tc.level : Level 2
     */
-    it('bindSheetTest_0100', 0, async (done: Function) => {
+    it('bindSheetTest_0100', Level.LEVEL0, async (done: Function) => {
       let tagName = 'bindSheetTest_0100';
       console.info('[' + tagName + '] START============================');
       let driver = Driver.create();
@@ -87,7 +87,7 @@ export default function BindSheetTest() {
     * @tc.desc  : Test the bindSheet component
     * @tc.level : Level 2
     */
-    it('bindSheetTest_0200', 0, async (done: Function) => {
+    it('bindSheetTest_0200', Level.LEVEL0, async (done: Function) => {
       let tagName = 'bindSheetTest_0200';
       console.info('[' + tagName + '] START============================');
       let driver = Driver.create();
@@ -115,7 +115,7 @@ export default function BindSheetTest() {
     * @tc.desc  : Test the bindSheet component
     * @tc.level : Level 2
     */
-    it('bindSheetTest_0300', 0, async (done: Function) => {
+    it('bindSheetTest_0300', Level.LEVEL0, async (done: Function) => {
       let tagName = 'bindSheetTest_0300';
       console.info('[' + tagName + '] START============================');
       let driver = Driver.create();
@@ -149,7 +149,7 @@ export default function BindSheetTest() {
     * @tc.desc  : Test the bindSheet component
     * @tc.level : Level 2
     */
-    it('bindSheetTest_0400', 0, async (done: Function) => {
+    it('bindSheetTest_0400', Level.LEVEL0, async (done: Function) => {
       let tagName = 'bindSheetTest_0400';
       console.info('[' + tagName + '] START============================');
       let driver = Driver.create();

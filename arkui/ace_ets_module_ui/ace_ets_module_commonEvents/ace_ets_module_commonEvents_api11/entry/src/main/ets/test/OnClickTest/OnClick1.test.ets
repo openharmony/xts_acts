@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -60,7 +60,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('OnClick1_0100', 0, async (done: Function) => {
+    it('OnClick1_0100', Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('OnClick1_0100 START');
       let driver = await Driver.create()
@@ -79,7 +79,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('OnClick1_0200', 0, async (done: Function) => {
+    it('OnClick1_0200', Level.LEVEL0, async (done: Function) => {
       console.info('OnClick1_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

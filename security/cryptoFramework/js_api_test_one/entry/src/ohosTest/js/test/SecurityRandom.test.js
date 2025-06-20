@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import { testSecurityRandomPromise } from "./utils/securityrandom/publicSecurityRandomPromise";
 import { testSecurityRandomCallback } from "./utils/securityrandom/publicSecurityRandomCallback";
 import { testSecurityRandomEnumCommon } from "./utils/securityrandom/publicSecurityRandomCommon";
@@ -33,7 +33,7 @@ export default function SecurityRandomJsunit() {
          * @tc.name support security random and set random seed
          * @tc.desc the length of random is 32, use promise style of interface
          */
-        it("Security_crypto_framework_Random_0100", 0, async function (done) {
+        it("Security_crypto_framework_Random_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await testSecurityRandomPromise(32)
                 .then((data) => {
                     expect(data == null).assertTrue();
@@ -49,7 +49,7 @@ export default function SecurityRandomJsunit() {
          * @tc.name Support setting random number seed and restart encryption and decryption framework
          * @tc.desc the length of random is 32, use callback style of interface
          */
-        it("Security_crypto_framework_Random_0200", 0, async function (done) {
+        it("Security_crypto_framework_Random_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await testSecurityRandomCallback(32)
                 .then((data) => {
                     expect(data == null).assertTrue();
@@ -65,7 +65,7 @@ export default function SecurityRandomJsunit() {
          * @tc.name Test generateRandom with invalid input
          * @tc.desc First input 0, Second input null, Third input -1, Fourth input 2147483648
          */
-        it("Security_crypto_framework_Random_0300", 0, async function (done) {
+        it("Security_crypto_framework_Random_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let randomGenerator = cryptoFramework.createRandom();
             try {
                 await new Promise((resolve, reject) => {
@@ -113,7 +113,7 @@ export default function SecurityRandomJsunit() {
          * @tc.name Test setSeed with invalid input
          * @tc.desc First input null, Second input 0
          */
-        it("Security_crypto_framework_Random_0400", 0, async function (done) {
+        it("Security_crypto_framework_Random_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let randomGenerator = cryptoFramework.createRandom();
             try {
                 randomGenerator.setSeed(null);
@@ -135,7 +135,7 @@ export default function SecurityRandomJsunit() {
          * @tc.name test enumerated values
          * @tc.desc cover 100% Enumerated values
          */
-        it("Security_crypto_framework_Random_0500", 0, async function (done) {
+        it("Security_crypto_framework_Random_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             testSecurityRandomEnumCommon();
             done();
         });

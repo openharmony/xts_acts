@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function propJsunit() {
      * @tc.name propTest001
      * @tc.desc aceEtsTest
      */
-    it('propTest001', 0, async () => {
+    it('propTest001', Level.LEVEL2, async () => {
       console.info('propTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('Text001');
@@ -78,7 +78,7 @@ export default function propJsunit() {
      * @tc.name propTest001
      * @tc.desc aceEtsTest
      */
-    it('propTest002', 0, async () => {
+    it('propTest002', Level.LEVEL2, async () => {
       console.info('propTest002 START');
       let strJson = getInspectorByKey('Text002');
       let obj: Record<string, Object> = JSON.parse(strJson);

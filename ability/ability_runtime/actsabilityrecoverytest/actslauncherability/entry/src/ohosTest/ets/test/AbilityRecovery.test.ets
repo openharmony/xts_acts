@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
@@ -68,7 +68,7 @@ export default function abilityRecoveryTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_BackgroundRecovery_0800', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_BackgroundRecovery_0800', Level.LEVEL0, async () => {
       TAG = 'SUB_Ability_AbilityRuntime_BackgroundRecovery_0800 == ';
       console.log(TAG + 'begin');
       // get UIAbilityContext
@@ -90,7 +90,7 @@ export default function abilityRecoveryTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_BackgroundRecovery_0700', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_BackgroundRecovery_0700', Level.LEVEL0, async () => {
       TAG = 'SUB_Ability_AbilityRuntime_BackgroundRecovery_0700 == ';
       console.log(TAG + 'begin');
       // get UIAbilityContext

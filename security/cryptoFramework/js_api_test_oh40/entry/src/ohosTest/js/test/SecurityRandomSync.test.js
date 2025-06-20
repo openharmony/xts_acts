@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyRandomCommon from "./utils/securityrandom/publicSecurityRandomCommon";
 import cryptoFrameworks from "@ohos.security.cryptoFramework";
 
@@ -32,7 +32,7 @@ export default function SecurityRandomSyncJsunit() {
      */
     it(
       "Security_CryptoFramework_RandomSync_Func_0100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         var rand = cryptoFrameworks.createRandom();
         try {
@@ -59,7 +59,7 @@ export default function SecurityRandomSyncJsunit() {
      */
     it(
       "Security_CryptoFramework_RandomSync_Func_0200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         var rand = cryptoFrameworks.createRandom();
         try {
@@ -112,7 +112,7 @@ export default function SecurityRandomSyncJsunit() {
      */
     it(
       "Security_CryptoFramework_RandomSync_Func_0300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         let rand = cryptoFrameworks.createRandom();
         console.log("get rand.algName is: " + rand.algName);
@@ -126,7 +126,7 @@ export default function SecurityRandomSyncJsunit() {
      * @tc.name cover AsyKeySpecItem  AsyKeySpecType  CipherSpecItem  SignSpecItem all enum value
      * @tc.desc no parameters,use sync style of interface
      */
-    it("Security_CryptoFramework_Enum_Func_0100", 0, async function (done) {
+    it("Security_CryptoFramework_Enum_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       asyRandomCommon.testEnumCommon();
       done();
     });

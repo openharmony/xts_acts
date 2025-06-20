@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 
@@ -36,7 +36,7 @@ export default function customComponentSecondaryLayoutTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentSecondaryLayout001', 0, async (done: Function) => {
+    it('testCustomComponentSecondaryLayout001', Level.LEVEL1, async (done: Function) => {
       let dataArray: number[][] = nativeRender.getSecondaryLayoutData();
       console.log('testCustomComponentSecondaryLayout001', JSON.stringify(dataArray))
       let secondaryLayoutData: number[] = dataArray[0];

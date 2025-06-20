@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textHeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextHeight001', 0, async (done: Function) => {
+    it('testTextHeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextHeight001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textHeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextHeight002', 0, async (done: Function) => {
+    it('testTextHeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextHeight002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textHeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextHeight003', 0, async (done: Function) => {
+    it('testTextHeight003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextHeight003()).assertEqual(0)
       done()
     })

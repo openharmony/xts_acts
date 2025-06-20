@@ -171,7 +171,7 @@ struct swiper {
         .height(20)
         .width('90%')
         .justifyContent(FlexAlign.Start)
-        .margin({ top: 50 })
+        .margin({ top: 5 })
 
         Swiper(this.controller) {
           ForEach(this.data, (item: number, index) => {
@@ -202,9 +202,9 @@ struct swiper {
         .borderRadius(16)
         .backgroundColor(Color.White)
         .width('90%')
-        .height(200)
+        .height('40%')
         .flexGrow(0)
-        .margin({ top: 12 })
+        .margin({ top: 5 })
 
         Row() {
           Button('上一页')
@@ -222,9 +222,9 @@ struct swiper {
               this.count++
             })
         }
-        .margin({ top: 50 })
+        .margin({ top: 5 })
       }
-      .height('80%')
+      .height('70%')
       .width('100%')
       .backgroundColor(Color.White)
 

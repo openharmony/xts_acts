@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { childProcessManager } from '@kit.AbilityKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
@@ -41,7 +41,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_0100`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -78,7 +78,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0200', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0200`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -111,7 +111,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0300', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_0300`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -148,7 +148,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0400', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0400`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -182,7 +182,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0500', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0500`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -220,7 +220,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0600', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0600`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -253,7 +253,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0700', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0700`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -290,7 +290,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0800', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0800`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -323,7 +323,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_0900', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0900`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -360,7 +360,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_1000', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_1000`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -394,7 +394,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_1100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_1100`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){
@@ -432,7 +432,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_startChildProcess_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_startChildProcess_1200', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_1200`;
       console.log(`${tag}, it begin`);
       if(mpEnable == 'true'){

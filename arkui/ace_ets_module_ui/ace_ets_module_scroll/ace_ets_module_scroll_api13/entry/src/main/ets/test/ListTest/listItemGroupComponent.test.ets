@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {Driver} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -57,7 +57,7 @@ export default function listItemGroupComponent() {
      * @tc.type :    Function
      * @tc.size :    MediumTest
      */
-    it('listItemGroupComponent_0100', 0, async (done: Function) => {
+    it('listItemGroupComponent_0100', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await driver.delayMs(2000);
       let com1 = (JSON.parse(getInspectorByKey("buildTest1")) as attrs).$attrs.content;
@@ -74,7 +74,7 @@ export default function listItemGroupComponent() {
      * @tc.type :    Function
      * @tc.size :    MediumTest
      */
-  it('listItemGroupComponent_0101', 0, async (done: Function) => {
+  it('listItemGroupComponent_0101', Level.LEVEL1, async (done: Function) => {
     let driver = Driver.create();
     await driver.delayMs(2000);
     let com2 = (JSON.parse(getInspectorByKey("buildTest2")) as attrs).$attrs.content;

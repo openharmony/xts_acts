@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,  Level } from '@ohos/hypium';
 import router from '@system.router';
 import { Driver, ON } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -63,7 +63,7 @@ export default function ChipOnClose() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcButton_ComponentTest_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcButton_ComponentTest_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_ArcButton_ComponentTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('arcbutton01');
@@ -95,7 +95,7 @@ export default function ChipOnClose() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcButton_ComponentTest_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcButton_ComponentTest_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_ArcButton_ComponentTest_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('arcbutton02');
@@ -126,7 +126,7 @@ export default function ChipOnClose() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcButton_ComponentTest_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcButton_ComponentTest_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_ArcButton_ComponentTest_0300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('arcbutton03');
@@ -157,7 +157,7 @@ export default function ChipOnClose() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcButton_ComponentTest_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcButton_ComponentTest_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_ArcButton_ComponentTest_0400 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create()

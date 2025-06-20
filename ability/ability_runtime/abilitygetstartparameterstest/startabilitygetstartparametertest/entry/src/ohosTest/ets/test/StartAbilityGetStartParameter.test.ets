@@ -17,7 +17,7 @@ import hilog from '@ohos.hilog';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import commonEvent from '@ohos.commonEvent';
 import { BusinessError } from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import commonEventManager from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
 
@@ -90,7 +90,7 @@ export default function StartAbilityGetStartParameterTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0700", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0700", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0700';
       try {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} case begin`);
@@ -140,7 +140,7 @@ export default function StartAbilityGetStartParameterTest() {
      * @tc.type      : Function
      */
 
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0800", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0800", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0800';
       try {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} case begin`);
@@ -189,7 +189,7 @@ export default function StartAbilityGetStartParameterTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_1500", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_1500", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_1500';
       try {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} case begin`);
@@ -242,7 +242,7 @@ export default function StartAbilityGetStartParameterTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0500", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0500", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0500';
       try {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} case begin`);
@@ -290,7 +290,7 @@ export default function StartAbilityGetStartParameterTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0600", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0600", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0600';
       try {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} case begin`);
@@ -338,7 +338,7 @@ export default function StartAbilityGetStartParameterTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0300", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0300", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0300';
       try {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} case begin`);
@@ -390,7 +390,7 @@ export default function StartAbilityGetStartParameterTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0400", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0400", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_0400';
       try {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} case begin`);
@@ -438,7 +438,7 @@ export default function StartAbilityGetStartParameterTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_1400", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_1400", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_GetStartParameters_1400';
       try {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} case begin`);

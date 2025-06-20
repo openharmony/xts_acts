@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -42,7 +42,7 @@ export default function stepperUIJsunit() {
       done();
     });
 
-    it('stepperUIJsunit_0100', 0, async  (done:Function) =>{
+    it('stepperUIJsunit_0100',  Level.LEVEL0, async  (done:Function) =>{
        console.info('stepperUIJsunit_0100');
        await CommonFunc.sleep(1000);
        // get the stepperItem component and test attribute
@@ -55,7 +55,7 @@ export default function stepperUIJsunit() {
        done();
     });
 
-   it('stepperUIJsunit_0200', 0, async  (done:Function) =>{
+   it('stepperUIJsunit_0200',  Level.LEVEL0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0200 START');
       // modify the normal value of stepperItem dynamically
       globalThis.value.message.notify({name:'nextLabel',value:'hhe'});
@@ -74,7 +74,7 @@ export default function stepperUIJsunit() {
       done();   
     });
 
-    it('stepperUIJsunit_0300', 0, async  (done:Function) =>{
+    it('stepperUIJsunit_0300',  Level.LEVEL0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // test the status of enum value dynamically
@@ -93,7 +93,7 @@ export default function stepperUIJsunit() {
       done();   
    });
    
-    it('stepperUIJsunit_0400', 0, async  (done:Function) =>{
+    it('stepperUIJsunit_0400',  Level.LEVEL0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0400 START');
        await CommonFunc.sleep(1000);
       // test the status of illegal enum value dynamically
@@ -106,7 +106,7 @@ export default function stepperUIJsunit() {
       done();   
     });
 
-    it('stepperUIJsunit_0500', 0, async  (done:Function) =>{
+    it('stepperUIJsunit_0500',  Level.LEVEL0, async  (done:Function) =>{
        console.info('stepperUIJsunit_0500 START');
       // get the stepper component and test attribute
        await CommonFunc.sleep(1000);
@@ -118,7 +118,7 @@ export default function stepperUIJsunit() {
        done();
     });
 
-    it('stepperUIJsunit_0600', 0, async  (done:Function) =>{
+    it('stepperUIJsunit_0600',  Level.LEVEL0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0600 START');
       globalThis.value.message.notify({name:'status',value:ItemState.Normal});
       // test the stepper onChange onNext onPrevious event
@@ -153,7 +153,7 @@ export default function stepperUIJsunit() {
       done();
     });
 
-    it('stepperUIJsunit_0700', 0, async  (done:Function) =>{
+    it('stepperUIJsunit_0700',  Level.LEVEL0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0700 START');
       // test the stepper onFinish event
       await CommonFunc.sleep(1000);
@@ -178,7 +178,7 @@ export default function stepperUIJsunit() {
       done();
     });
     
-    it('stepperUIJsunit_0800', 0, async  (done:Function) =>{
+    it('stepperUIJsunit_0800',  Level.LEVEL0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0800');
       // test the stepper onSkip event
       await CommonFunc.sleep(1000);

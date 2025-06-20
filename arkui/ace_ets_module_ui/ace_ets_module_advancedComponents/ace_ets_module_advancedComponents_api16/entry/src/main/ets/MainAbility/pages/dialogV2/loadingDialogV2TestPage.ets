@@ -37,7 +37,8 @@ struct Index {
               promptAction.openCustomDialog({
                 builder: () => {
                   this.dialogBuilder();
-                }
+                },
+                alignment: DialogAlignment.Bottom
               });
             })
         }.margin({ bottom: 300 })

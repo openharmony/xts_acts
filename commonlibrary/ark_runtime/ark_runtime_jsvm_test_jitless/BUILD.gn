@@ -18,8 +18,8 @@ ohos_app_assist_suite("ActsArkRuntimeJsvmJitlessTest_main") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsArkRuntimeJsvmJitlessTest_main"
-  part_name = "node"
-  subsystem_name = "thirdparty"
+  part_name = "jsvm"
+  subsystem_name = "arkcompiler"
 }
 
 ohos_js_app_suite("ActsArkRuntimeJsvmJitlessTest") {
@@ -27,7 +27,7 @@ ohos_js_app_suite("ActsArkRuntimeJsvmJitlessTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsArkRuntimeJsvmJitlessTest"
-  part_name = "node"
-  subsystem_name = "thirdparty"
+  part_name = "jsvm"
+  subsystem_name = "arkcompiler"
   deps = [ ":ActsArkRuntimeJsvmJitlessTest_main" ]
 }

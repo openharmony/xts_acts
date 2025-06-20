@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont001', 0, async (done: Function) => {
+    it('testTextFont001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont002', 0, async (done: Function) => {
+    it('testTextFont002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont003', 0, async (done: Function) => {
+    it('testTextFont003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont004', 0, async (done: Function) => {
+    it('testTextFont004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont005', 0, async (done: Function) => {
+    it('testTextFont005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont006', 0, async (done: Function) => {
+    it('testTextFont006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont007', 0, async (done: Function) => {
+    it('testTextFont007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont008', 0, async (done: Function) => {
+    it('testTextFont008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont009', 0, async (done: Function) => {
+    it('testTextFont009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont010', 0, async (done: Function) => {
+    it('testTextFont010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont011', 0, async (done: Function) => {
+    it('testTextFont011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont012', 0, async (done: Function) => {
+    it('testTextFont012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont013', 0, async (done: Function) => {
+    it('testTextFont013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont014', 0, async (done: Function) => {
+    it('testTextFont014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont015', 0, async (done: Function) => {
+    it('testTextFont015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont016', 0, async (done: Function) => {
+    it('testTextFont016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextFont017', 0, async (done: Function) => {
+    it('testTextFont017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function textFontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFont018', 0, async (done: Function) => {
+    it('testTextFont018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFont018()).assertEqual(0)
       done()
     })

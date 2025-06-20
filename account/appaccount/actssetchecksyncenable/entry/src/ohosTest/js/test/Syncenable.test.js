@@ -135,7 +135,7 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.name      : Check the set synchronization flag callback form
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to true for the account
         */
-        it('ActsSetCheckSyncEnable_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsSetCheckSyncEnable_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsSetCheckSyncEnable_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -182,7 +182,7 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.name      : Check the set synchronization flag promise form
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to true for the account
         */
-        it('ActsSetCheckSyncEnable_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsSetCheckSyncEnable_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsSetCheckSyncEnable_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

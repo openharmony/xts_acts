@@ -22,6 +22,10 @@ import tabContentState from './observerTest/tabContentState.test';
 import observeTabJsunit from './observerTest/observeTabJsunit.test';
 import idScrollEvent from './observerTest/idScrollEvent.test'
 import indexTabs from './observerTest/indexTabs.test'
+import onTabUpdate from './observerTest/onTabUpdate.test'
+import uiScrollEvent from './observerTest/uiScrollEvent.test';
+import uiTabUpdate from './observerTest/uiTabUpdate.test'
+import uiIdUpdate from './observerTest/uiIdUpdate.test'
 
 export default function testsuite() {
   observerScrollTest()
@@ -34,4 +38,8 @@ export default function testsuite() {
   observeTabJsunit();
   idScrollEvent();
   indexTabs();
+  onTabUpdate();
+  uiScrollEvent();
+  uiTabUpdate();
+  uiIdUpdate();
 }

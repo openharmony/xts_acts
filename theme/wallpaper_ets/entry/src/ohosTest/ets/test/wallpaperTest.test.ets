@@ -247,7 +247,7 @@ export default function wallpaperJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetMinWidthPromise101', Level.LEVEL2, async (done: Function) => {
+        it('testGetMinWidthPromise101', Level.LEVEL0, async (done: Function) => {
             console.info('--------------testGetMinWidthPromise101 start-----------------');
             await wallpaper.getMinWidth().then((data) => {
                 console.info('====>testGetMinWidthPromise101 successful data : ' + JSON.stringify(data));

@@ -42,9 +42,9 @@ export default function processTest() {
      * @tc.desc       : Returns the digital user ID of the process.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testGetUid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testGetUid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testGetUid0001";
       try {
         let userId = process.uid;
@@ -61,9 +61,9 @@ export default function processTest() {
      * @tc.desc       : Returns the digital process ID of the process.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testGetPid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testGetPid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testGetPid0001";
       try {
         let processId = process.pid;
@@ -80,9 +80,9 @@ export default function processTest() {
      * @tc.desc       : Returns the digital thread ID of the process.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testGetTid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testGetTid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testGetTid0001";
       try {
         // 获取当前线程的线程ID
@@ -101,9 +101,9 @@ export default function processTest() {
      * @tc.desc       : Returns a boolean whether the process is isolated.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testisIsolatedProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testisIsolatedProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testisIsolatedProcess0001";
       try {
         const pres = process.isIsolatedProcess();
@@ -120,9 +120,9 @@ export default function processTest() {
      * @tc.desc       : Returns a boolean whether the process is running in a 64-bit environment.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIs64Bit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIs64Bit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testIs64Bit0001";
       try {
         const isorno = process.is64Bit();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function grid_RowCol_ItemVisibilityTest() {
      * @tc.name testGridRowColItemVisibilityNone
      * @tc.desc The second griditem set visibility to Visibility.None
      */
-    it('testGridRowColItemVisibilityNone', 0, async (done: Function) => {
+    it('testGridRowColItemVisibilityNone',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColItemVisibilityNone] START');
       globalThis.value.message.notify({
         name: 'secondGridItemVisibility', value: Visibility.None
@@ -90,7 +90,7 @@ export default function grid_RowCol_ItemVisibilityTest() {
      * @tc.name testGridRowColItemVisibilityHidden
      * @tc.desc The second griditem set visibility to Visibility.Hidden
      */
-    it('testGridRowColItemVisibilityHidden', 0, async (done: Function) => {
+    it('testGridRowColItemVisibilityHidden',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColItemVisibilityHidden] START');
       globalThis.value.message.notify({
         name: 'secondGridItemVisibility', value: Visibility.Hidden
@@ -134,7 +134,7 @@ export default function grid_RowCol_ItemVisibilityTest() {
      * @tc.name testGridRowColItemVisibilityVisible
      * @tc.desc The second griditem set visibility to Visibility.Visible
      */
-    it('testGridRowColItemVisibilityVisible', 0, async (done: Function) => {
+    it('testGridRowColItemVisibilityVisible',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColItemVisibilityVisible] START');
       globalThis.value.message.notify({
         name: 'secondGridItemVisibility', value: Visibility.Visible

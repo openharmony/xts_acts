@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as symPromise from "./utils/symmetric/publicSymmetricPromise";
 import * as symCallback from "./utils/symmetric/publicSymmetricCallback";
 import * as publicModule from  "./utils/common/publicDoString";
@@ -34,7 +34,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -63,7 +63,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -92,7 +92,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -121,7 +121,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -150,7 +150,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -179,7 +179,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -208,7 +208,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -237,7 +237,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -266,7 +266,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_0900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -295,7 +295,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_1000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -324,7 +324,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_1100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -353,7 +353,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_1200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -382,7 +382,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_1300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createSymKeyGenerator("AES257");
@@ -409,7 +409,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_1400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createCipher("AES128|NULL|PKCS7");
@@ -436,7 +436,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_1500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createCipher("AES128|GCM|NULL");
@@ -463,7 +463,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -492,7 +492,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -521,7 +521,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .encryptAndDecryptNormalProcess(
@@ -550,7 +550,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -579,7 +579,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -608,7 +608,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcess(
@@ -637,7 +637,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     let symKeyGenerator = cryptoFramework.createSymKeyGenerator("3DES192");
@@ -666,7 +666,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     let symKeyGenerator = cryptoFramework.createSymKeyGenerator("3DES192");
@@ -695,7 +695,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_2000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcessSuperdata(
@@ -724,7 +724,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_3000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let symKeyGenerator = cryptoFramework.createSymKeyGenerator("AES256");
                 expect(symKeyGenerator != null).assertTrue();
@@ -751,7 +751,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_2000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .encryptAndDecryptNormalProcessSuperdata(
@@ -780,7 +780,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_2100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .convertKeyEncryptAndDecryptProcess(
@@ -809,7 +809,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_2200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .convertKeyEncryptAndDecryptProcess(
@@ -838,7 +838,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_2300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .convertKeyEncryptAndDecryptProcess(
@@ -867,7 +867,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_2100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symCallback
                     .convertKeyEncryptAndDecryptProcess(
@@ -896,7 +896,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_3DES_2200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .convertKeyEncryptAndDecryptProcess(
@@ -925,7 +925,7 @@ export default function SymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_Symmetric_Encryption_AES_3700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await symPromise
                     .ClearMemProcess("AES256")

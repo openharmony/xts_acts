@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -51,7 +51,7 @@ export default function ColumnSetDisplayPriority_SubChange() {
      * @tc.name testColumnSetDisplayPriorityWithRateOneTwoThree
      * @tc.desc Subcomponents set display priority(1-2-3) attribute.
      */
-    it('testColumnSetDisplayPriorityWithRateOneTwoThree', 0, async () => {
+    it('testColumnSetDisplayPriorityWithRateOneTwoThree',  Level.LEVEL0, async () => {
       console.info('new testColumnSetDisplayPriorityWithRateOneTwoThree START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testpriority1', value: 1
@@ -86,7 +86,7 @@ export default function ColumnSetDisplayPriority_SubChange() {
      * @tc.name testColumnSetDisplayPriorityWithRateTwoOneTwo
      * @tc.desc Subcomponents set display priority(1-0.5-1) attribute.
      */
-    it('testColumnSetDisplayPriorityWithRateTwoOneTwo', 0, async () => {
+    it('testColumnSetDisplayPriorityWithRateTwoOneTwo',  Level.LEVEL0, async () => {
       console.info('new testColumnSetDisplayPriorityWithRateTwoOneTwo START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testpriority1', value: 1

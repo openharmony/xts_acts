@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as asyKeySyncUtils from './utils/syncAsyKey/syncAsyKeyUtils';
 import * as commonUtils from './utils/common/commonUtils';
@@ -48,7 +48,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_RSA_KEY_SPEC) {
           let algName: string = asyKeySpecs[0][0];
@@ -81,7 +81,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_ECC_KEY_SPEC_1) {
           let algName: string = asyKeySpecs;
@@ -110,7 +110,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0201", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0201", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_ECC_KEY_SPEC_2) {
           let algName: string = asyKeySpecs;
@@ -139,7 +139,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0202", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0202", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_ECC_KEY_SPEC_3) {
           let algName: string = asyKeySpecs;
@@ -168,7 +168,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DSA_KEY_SPEC_1) {
           let algName: string = asyKeySpecs;
@@ -197,7 +197,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0301", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0301", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DSA_KEY_SPEC_2) {
           let algName: string = asyKeySpecs;
@@ -226,7 +226,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_SM2_KEY_SPEC) {
           let algName: string = asyKeySpecs;
@@ -255,7 +255,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_25519_KEY_SPEC) {
           let algName: string = asyKeySpecs;
@@ -284,7 +284,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_1) {
           let algName: string = asyKeySpecs;
@@ -313,7 +313,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0601", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0601", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_2) {
           let algName: string = asyKeySpecs;
@@ -342,7 +342,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0602", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0602", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_3) {
           let algName: string = asyKeySpecs;
@@ -371,7 +371,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let sm2KeyPairSpec = asyKeySyncUtils.genSM2KeyPairSpec();
       let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(sm2KeyPairSpec);
       try {
@@ -397,7 +397,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let rsaPubKeySpec = asyKeySyncUtils.genRsa2048PubKeySpec();
         let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
@@ -428,7 +428,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let algName of asyKeySyncUtils.ASY_ECC_KEY_SPEC_1) {
           let commKeySpec = asyKeySyncUtils.genEccCommonSpec();
@@ -459,7 +459,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC256";
         let a: bigint = BigInt('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFE');
@@ -493,7 +493,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let a: bigint = BigInt('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFE');
         let b: bigint = BigInt('0xB4050A850C04B3ABF54132565044B0B7D7BFD8BA270B39432355FFB4');
@@ -522,7 +522,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let a: bigint = BigInt('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFE');
         let b: bigint = BigInt('0xB4050A850C04B3ABF54132565044B0B7D7BFD8BA270B39432355FFB4');
@@ -551,7 +551,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let a: bigint = BigInt('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFE');
         let b: bigint = BigInt('0xB4050A850C04B3ABF54132565044B0B7D7BFD8BA270B39432355FFB7');

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -62,7 +62,7 @@ export default function RichEditorAttributeStrings005() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('RichEditorAttributeStrings005'));
@@ -88,7 +88,7 @@ export default function RichEditorAttributeStrings005() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032 START');
       let driver = Driver.create();
       let imageFromStyledString = await driver.findComponent(ON.id('imageFromStyledString'));
@@ -109,7 +109,7 @@ export default function RichEditorAttributeStrings005() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033 START');
       let driver = Driver.create();
       let cusFromStyledString = await driver.findComponent(ON.id('cusFromStyledString'));
@@ -130,7 +130,7 @@ export default function RichEditorAttributeStrings005() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034 START');
       let driver = Driver.create();
       let undefinedFromStyledString = await driver.findComponent(ON.id('undefinedFromStyledString'));

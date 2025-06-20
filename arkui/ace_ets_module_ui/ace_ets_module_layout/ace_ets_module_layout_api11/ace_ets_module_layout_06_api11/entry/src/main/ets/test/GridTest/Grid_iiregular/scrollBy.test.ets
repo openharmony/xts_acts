@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -70,7 +70,7 @@ export default function scrollByJsunit() {
  * @tc.level : Level 2
  */
 
-    it('scrollByJsunit_0001', 0, async (done: Function) => {
+    it('scrollByJsunit_0001',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0000] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
@@ -110,7 +110,7 @@ export default function scrollByJsunit() {
      */
 
 
-    it('scrollByJsunit_0002', 0, async (done: Function) => {
+    it('scrollByJsunit_0002',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0002] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
@@ -147,7 +147,7 @@ export default function scrollByJsunit() {
     */
 
 
-    it('scrollByJsunit_0003', 0, async (done: Function) => {
+    it('scrollByJsunit_0003',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0003] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
@@ -178,7 +178,7 @@ export default function scrollByJsunit() {
    * @tc.desc  : Click scrollBy(150px) and slide down 150px
    * @tc.level : Level 2
    */
-    it('scrollByJsunit_0004', 0, async (done: Function) => {
+    it('scrollByJsunit_0004',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0004] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
@@ -209,7 +209,7 @@ export default function scrollByJsunit() {
    * @tc.desc  : Click scrollBy(150) and slide down 150
    * @tc.level : Level 2
    */
-    it('scrollByJsunit_0005', 0, async (done: Function) => {
+    it('scrollByJsunit_0005',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0005] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
@@ -244,7 +244,7 @@ export default function scrollByJsunit() {
    * @tc.level : Level 2
    */
 
-    it('scrollByJsunit_0006', 0, async (done: Function) => {
+    it('scrollByJsunit_0006',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0060] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
@@ -277,7 +277,7 @@ export default function scrollByJsunit() {
      * @tc.level : Level 2
      */
 
-    it('scrollByJsunit_0007', 0, async (done: Function) => {
+    it('scrollByJsunit_0007',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0070] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
@@ -309,7 +309,7 @@ export default function scrollByJsunit() {
      * @tc.desc  : Clicking on the scrollBy('aa') component does not slide
      * @tc.level : Level 2
      */
-    it('scrollByJsunit_0008', 0, async (done: Function) => {
+    it('scrollByJsunit_0008',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0080] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
@@ -344,7 +344,7 @@ export default function scrollByJsunit() {
      * @tc.desc  : Clicking on the scrollBy(undefined) component does not slide
      * @tc.level : Level 2
      */
-    it('scrollByJsunit_0009', 0, async (done: Function) => {
+    it('scrollByJsunit_0009',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollByJsunit_0090] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({

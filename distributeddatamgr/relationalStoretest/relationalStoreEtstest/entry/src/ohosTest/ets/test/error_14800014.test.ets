@@ -155,6 +155,13 @@ export default function error14800014Test() {
         console.log(TAG + "e.code:" + e.code);
         expect(e.code).assertEqual("14800014");
       }
+     try {
+        resultSet.goToLastRow();
+        expect().assertFail();
+      } catch (e) {
+        console.log(TAG + "goToLastRowe.code:" + e.code);
+        expect(e.code).assertEqual("14800014");
+      }
       await rdbStore.close();
       rdbStore = undefined;
       await data_relationalStore.deleteRdbStore(context, "Asset.db");

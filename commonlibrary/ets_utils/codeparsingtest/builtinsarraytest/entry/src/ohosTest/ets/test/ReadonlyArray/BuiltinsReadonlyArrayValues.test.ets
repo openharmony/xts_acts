@@ -45,9 +45,9 @@ export default function builtinsReadonlyArrayValuesTest() {
      * @tc.desc Testing values
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsReadonlyArrayValuesTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, (done: Function) => {
+    it('builtinsReadonlyArrayValuesTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const caseName = 'builtinsReadonlyArrayValuesTest0100';
       console.info(`${caseName} test start`);

@@ -43,9 +43,9 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.desc       : Test the Utils interface parse with input escape \b.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testParseEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testParseEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParseEscape0001";
       try {
         const escape = 'aaa\b';
@@ -65,9 +65,9 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.desc       : Test the Utils interface parse with input escape \f.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testParseEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testParseEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParseEscape0002";
       try {
         const escape = 'aaa\f';
@@ -87,9 +87,9 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.desc       : Test the Utils interface parse with input escape \n.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testParseEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testParseEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParseEscape0003";
       try {
         const escape = 'aaa\n';

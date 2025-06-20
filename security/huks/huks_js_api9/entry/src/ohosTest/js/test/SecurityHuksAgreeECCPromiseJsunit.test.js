@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, beforeEach, beforeAll, expect } from '@ohos/hypium';
+import { describe, it, beforeEach, beforeAll, expect, TestType, Size, Level } from '@ohos/hypium';
 import * as Data from './utils/data.json';
 import { stringToUint8Array, checkSoftware } from './utils/param/publicFunc';
 import { HuksAgreeECDH } from './utils/param/agree/publicAgreeParam';
@@ -52,7 +52,7 @@ export default function SecurityHuksAgreeECCPromiseJsunit() {
             console.info('test beforeEach called');
         });
 
-        it('Security_HUKS_Agree_API9_ECDH_101', 0, async function (done) {
+        it('Security_HUKS_Agree_API9_ECDH_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_01_101';
             const srcKeyAliesSecond = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_02_101';
             let huksOptionsFinish = {
@@ -80,7 +80,7 @@ export default function SecurityHuksAgreeECCPromiseJsunit() {
         });
 
         // abort
-        it('Security_HUKS_Agree_API9_ECDH_102', 0, async function (done) {
+        it('Security_HUKS_Agree_API9_ECDH_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testAgreeECDHSize256Abort63KBAgreeKeyAlias_01_101';
             const srcKeyAliesSecond = 'testAgreeECDHSize256Abort63KBAgreeKeyAlias_02_101';
             let huksOptionsFinish = {

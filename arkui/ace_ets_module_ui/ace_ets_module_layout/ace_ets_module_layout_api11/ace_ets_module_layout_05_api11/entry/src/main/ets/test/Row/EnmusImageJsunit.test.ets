@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level  } from "@ohos/hypium"
 import router from '@ohos.router';
 import Utils from '../Utils';
 
@@ -44,7 +44,7 @@ export default function enumsImageJsunit() {
       console.info('[ afterEach ] ===================enumsImageTest test after each called===================');
     });
 
-    it('enumsImageTest_0100', 0, async (done: Function) => {
+    it('enumsImageTest_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('enumsImageTest_0100 START');
       let strJson: string = getInspectorByKey('Image');
       console.info("enumsImageTest_0100 component strJson:" + strJson);
@@ -54,7 +54,7 @@ export default function enumsImageJsunit() {
       done();
     });
 
-    it('enumsImageTest_0200', 0, async (done: Function) => {
+    it('enumsImageTest_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('enumsImageTest_0200 START');
       let strJson: string = getInspectorByKey('Image');
       console.info("enumsImageTest_0200 component strJson:" + strJson);

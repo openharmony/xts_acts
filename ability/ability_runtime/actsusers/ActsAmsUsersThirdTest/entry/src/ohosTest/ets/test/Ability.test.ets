@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import osaccount from '@ohos.account.osAccount'
 import commonEventManager from '@ohos.commonEventManager';
@@ -51,7 +51,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(promise)
      */
-    it('ACTS_ThirdPartyStartAbility_0100', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbility_0100', Level.LEVEL0, async (done: Function) => {
       let startresult = false
       TAG = "ACTS_ThirdPartyStartAbility_0100";
       console.info(TAG + " start");
@@ -100,7 +100,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options failed.(promise)
      */
-    it('ACTS_ThirdPartyStartAbility_0200', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbility_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0200";
       console.info(TAG + " start");
       await globalThis.abilityContext.startAbility(
@@ -123,7 +123,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(callback)
      */
-    it('ACTS_ThirdPartyStartAbility_0300', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbility_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0300";
       console.info(TAG + " start");
       let Subscriber: commonEventManager.CommonEventSubscriber | undefined = undefined;
@@ -174,7 +174,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options failed.(callback)
      */
-    it('ACTS_ThirdPartyStartAbility_0400', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbility_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0400";
       console.info(TAG + " start");
       try {
@@ -199,7 +199,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability succeeded.(promise)
      */
-    it('ACTS_ThirdPartyStartAbility_0500', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbility_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0500";
       console.info(TAG + " start");
       let Subscriber: commonEventManager.CommonEventSubscriber | undefined = undefined;
@@ -247,7 +247,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability failed.(promise)
      */
-    it('ACTS_ThirdPartyStartAbility_0600', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbility_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0600";
       console.info(TAG + " start");
       await globalThis.abilityContext.startAbility(
@@ -268,7 +268,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability succeeded.(callback)
      */
-    it('ACTS_ThirdPartyStartAbility_0700', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbility_0700', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0700";
       console.info(TAG + " start");
       let Subscriber: commonEventManager.CommonEventSubscriber | undefined = undefined;
@@ -317,7 +317,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability failed.(callback)
      */
-    it('ACTS_ThirdPartyStartAbility_0800', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbility_0800', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbility_0800";
       console.info(TAG + " start");
       try {
@@ -340,7 +340,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(promise)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0100', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbilityForResult_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0100";
       console.info(TAG + " start");
@@ -364,7 +364,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(promise)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0200', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbilityForResult_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0200";
       console.info(TAG + "====>start startAbilityForResult====>");
       await globalThis.abilityContext.startAbilityForResult(
@@ -387,7 +387,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(callback)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0300', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbilityForResult_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0300";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000);
@@ -412,7 +412,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(callback)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0400', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbilityForResult_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0400";
       console.info(TAG + "====>start startAbilityForResult====>");
       try {
@@ -438,7 +438,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(promise)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0500', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbilityForResult_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0500";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000);
@@ -460,7 +460,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(promise)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0600', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbilityForResult_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0600";
       console.info(TAG + "====>start startAbilityForResult====>");
       await globalThis.abilityContext.startAbilityForResult(
@@ -481,7 +481,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(callback)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0700', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbilityForResult_0700', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0700";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000);
@@ -503,7 +503,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(callback)
      */
-    it('ACTS_ThirdPartyStartAbilityForResult_0800', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyStartAbilityForResult_0800', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ThirdPartyStartAbilityForResult_0800";
       console.info(TAG + "====>start startAbilityForResult====>");
       try {
@@ -527,7 +527,7 @@ export default function abilityTest() {
      * @tc.name    : Use terminateself to terminate ability
      * @tc.desc    : Starting mainability2 with startAbility then terminateself ability succeeded.(promise)
      */
-    it('ACTS_TerminateSelf_0100', 0, async (done: Function) => {
+    it('ACTS_TerminateSelf_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_TerminateSelf_0100";
       console.info(TAG + "====>start startAbilityForResult====>");
       let Subscriber: commonEventManager.CommonEventSubscriber | undefined = undefined;
@@ -575,7 +575,7 @@ export default function abilityTest() {
      * @tc.name    : Use terminateself to terminate ability
      * @tc.desc    : Starting mainability2 with startAbility then terminateself ability succeeded.(callback)
      */
-    it('ACTS_TerminateSelf_0300', 0, async (done: Function) => {
+    it('ACTS_TerminateSelf_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_TerminateSelf_0300";
       console.info(TAG + "====>start startAbilityForResult====>");
       let Subscriber: commonEventManager.CommonEventSubscriber | undefined = undefined;
@@ -624,7 +624,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityforresult
      *               then terminateself ability and return result succeeded.(promise)
      */
-    it('ACTS_TerminateSelfWithResult_0100', 0, async (done: Function) => {
+    it('ACTS_TerminateSelfWithResult_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_TerminateSelfWithResult_0100";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000);
@@ -647,7 +647,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityforresult
      *               then terminateself ability and return result succeeded.(callback)
      */
-    it('ACTS_TerminateSelfWithResult_0300', 0, async (done: Function) => {
+    it('ACTS_TerminateSelfWithResult_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_TerminateSelfWithResult_0300";
       console.info(TAG + "====>start startAbilityForResult====>");
       await sleep(2000)

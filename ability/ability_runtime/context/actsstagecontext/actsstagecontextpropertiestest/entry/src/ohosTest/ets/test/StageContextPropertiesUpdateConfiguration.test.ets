@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import ConfigurationConstant from '@ohos.app.ability.ConfigurationConstant';
 import common from '@ohos.app.ability.common';
 import { EnvironmentCallback } from '@kit.AbilityKit';
@@ -27,7 +27,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetColorMode_0100', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetColorMode_0100', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetColorMode_0100============')
       let resultTag = -1
       let environmentId:number = -1
@@ -55,7 +55,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetColorMode_0200', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetColorMode_0200', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetColorMode_0200============')
       let resultTag = -1
       let environmentId:number = -1;
@@ -83,7 +83,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0100', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0100', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetLanguage_0100============')
       try {
         applicationContext.setLanguage(undefined);
@@ -101,7 +101,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0200', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0200', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetLanguage_0200============')
       let resultTag = -1
       let environmentId:number = -1
@@ -129,7 +129,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0100', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0100', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetFont_0100============')
       try {
         applicationContext.setFont("fontName");
@@ -146,7 +146,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0200', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0200', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetFont_0200============')
       try {
         applicationContext.setFont(undefined);
@@ -164,7 +164,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0300', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0300', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetFont_0300============')
       try {
         applicationContext.setFont(null);
@@ -182,7 +182,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFontSize__0100', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFontSize__0100', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetFontSize__0100============')
       try {
         applicationContext.setFontSizeScale(undefined);
@@ -200,7 +200,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
      * @tc.desc:  Function test
      * @tc.level   1
      */
-    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFontSize__0200', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFontSize__0200', Level.LEVEL0, (done: Function) => {
       console.info('=============ApplicationContext_SetFontSize__0200============')
       try {
         applicationContext.setFontSizeScale(-1);

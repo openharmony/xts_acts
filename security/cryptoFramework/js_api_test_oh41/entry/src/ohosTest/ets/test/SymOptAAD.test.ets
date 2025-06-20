@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import * as symCallback from './utils/symmetric/publicSymmetricCallback';
 import * as symPromise from './utils/symmetric/publicSymmetricPromise';
 
@@ -46,7 +46,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES128|GCM|PKCS7
      * @tc.desc 3. Test Interface with AsyncCallback Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES128", "AES128|GCM|PKCS7", "genGcmParamsSpecNullAAD");
       } catch (err) {
@@ -63,7 +63,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES192|GCM|PKCS7
      * @tc.desc 3. Test Interface with AsyncCallback Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS7", "genGcmParamsSpecEmptyAAD");
       } catch (err) {
@@ -80,7 +80,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES128|GCM|PKCS7
      * @tc.desc 3. Test Interface with AsyncCallback Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES128", "AES128|GCM|PKCS7", "genGcmParamsSpecAADNullData");
       } catch (err) {
@@ -97,7 +97,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES192|GCM|PKCS7
      * @tc.desc 3. Test Interface with AsyncCallback Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS7", "genGcmParamsSpecWithoutAAD");
       } catch (err) {
@@ -114,7 +114,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES192|GCM|PKCS7
      * @tc.desc 3. Test Interface with AsyncCallback Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS7", "genGcmParamsSpecWithoutAADData");
       } catch (err) {
@@ -131,7 +131,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES256|GCM|PKCS7
      * @tc.desc 3. Test Interface with AsyncCallback Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS7",
           "genGcmParamsSpecWithVariableLength", 8, 13);
@@ -186,7 +186,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES256|GCM|NoPadding
      * @tc.desc 3. Test Interface with AsyncCallback Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|NoPadding",
           "genGcmParamsSpecWithVariableLength", 0, 12);
@@ -218,7 +218,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES256|GCM|PKCS5
      * @tc.desc 3. Test Interface with AsyncCallback Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symCallback.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS5",
           "genGcmParamsSpecWithVariableLength", 0, 13);
@@ -273,7 +273,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES128|GCM|NoPadding
      * @tc.desc 3. Test Interface with Promise Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_0900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES128", "AES128|GCM|NoPadding", "genGcmParamsSpecNullAAD");
       } catch (err) {
@@ -290,7 +290,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES192|GCM|PKCS5
      * @tc.desc 3. Test Interface with Promise Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_1000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS5", "genGcmParamsSpecEmptyAAD");
       } catch (err) {
@@ -307,7 +307,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES128|GCM|PKCS5
      * @tc.desc 3. Test Interface with Promise Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_1100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES128", "AES128|GCM|PKCS5", "genGcmParamsSpecAADNullData");
       } catch (err) {
@@ -324,7 +324,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES192|GCM|NoPadding
      * @tc.desc 3. Test Interface with Promise Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_1200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|NoPadding", "genGcmParamsSpecWithoutAAD");
       } catch (err) {
@@ -341,7 +341,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES192|GCM|PKCS5
      * @tc.desc 3. Test Interface with Promise Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_1300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS5", "genGcmParamsSpecWithoutAADData");
       } catch (err) {
@@ -358,7 +358,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES256|GCM|NoPadding
      * @tc.desc 3. Test Interface with Promise Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_1400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|NoPadding",
           "genGcmParamsSpecWithVariableLength", 8, 13);
@@ -413,7 +413,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES256|GCM|PKCS7
      * @tc.desc 3. Test Interface with Promise Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_1500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES256", "AES256|GCM|PKCS7",
           "genGcmParamsSpecWithVariableLength", 0, 12);
@@ -445,7 +445,7 @@ export default function cryptoSymOptAADJsTestUnit() {
      * @tc.desc 2. Cipher with algName AES192|GCM|PKCS5
      * @tc.desc 3. Test Interface with Promise Style
      */
-    it("Security_CryptoFramework_SymOptAAD_Func_1600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SymOptAAD_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await symPromise.encryptAndDecryptNormalProcess("AES192", "AES192|GCM|PKCS5",
           "genGcmParamsSpecWithVariableLength", 0, 13);

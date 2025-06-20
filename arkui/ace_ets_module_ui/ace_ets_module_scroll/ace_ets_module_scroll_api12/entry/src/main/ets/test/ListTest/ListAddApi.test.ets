@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -38,10 +38,6 @@ export default function ListAddApi() {
       console.info("ListAddApi foreEach end");
       done();
     });
-    afterEach(async (done: Function) => {
-      await CommonFunc.sleep(1000);
-      console.info("ListAddApi after each called");
-    });
 
     /*
      * @tc.number     : SUB_ACE_UI_COMPONENT_List_0010
@@ -52,7 +48,7 @@ export default function ListAddApi() {
      * @tc.level      : Level 3
      */
 
-    it('ListAddApi_001', 0, async (done: Function) => {
+    it('ListAddApi_001', Level.LEVEL1, async (done: Function) => {
       console.info('[ListAddApi_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -68,12 +64,6 @@ export default function ListAddApi() {
       console.info('[ListAddApi_001] END');
       done();
     });
-
-
-
-
-
-
 
   })
 }

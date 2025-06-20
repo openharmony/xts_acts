@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function datePickerOnDateChangeTest() {
@@ -34,7 +34,7 @@ export default function datePickerOnDateChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDatePickerOnDateChange001', 0, async (done: Function) => {
+    it('testDatePickerOnDateChange001', Level.LEVEL1, async (done: Function) => {
       await Utils.flingComponent('datePickerOnDateChangeTest', false, true);
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('datePickerOnDateChangeTest').$attrs.backgroundColor).assertEqual('#FF00FF00')

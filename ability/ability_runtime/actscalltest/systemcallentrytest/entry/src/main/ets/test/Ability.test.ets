@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterEach, it, expect } from "@ohos/hypium"
+import { describe, afterEach, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import missionManager from '@ohos.application.missionManager'
 import Want from '@ohos.app.ability.Want';
@@ -91,7 +91,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_0100', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_0100', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_0100 begin');
       let want: Want = {
         bundleName: sysABundleName,
@@ -115,7 +115,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_0300', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_0300', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_0300 begin');
       caseDepBundles = [systemAppCalleeABundleName];
 
@@ -164,7 +164,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_0400', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_0400', Level.LEVEL0, async (done : Function) => {
       caseDepBundles = [systemAppCalleeABundleName];
       console.log('ACTS_CommonComponent_Call_0400 begin');
 
@@ -201,7 +201,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_0500', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_0500', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_0500 begin');
       var caller1;
       var caller2;
@@ -258,7 +258,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_0600', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_0600', Level.LEVEL0, async (done : Function) => {
       caseDepBundles = [systemAppCalleeABundleName];
       console.log('ACTS_CommonComponent_Call_0600 begin');
 
@@ -300,7 +300,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_0700', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_0700', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_0700 begin');
       let caller;
       caseDepBundles = [systemAppCalleeABundleName];
@@ -368,7 +368,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_0800', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_0800', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_0800 begin');
       let caller;
       caseDepBundles = [systemAppCalleeABundleName];
@@ -423,7 +423,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_0900', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_0900', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_0900 begin');
       caseDepBundles = [thirdAppABundleName];
       let caller;
@@ -472,7 +472,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_1000', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_1000', Level.LEVEL0, async (done : Function) => {
       caseDepBundles = [thirdAppABundleName];
       console.log('ACTS_CommonComponent_Call_1000 begin');
       let caller;
@@ -510,7 +510,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_1700', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_1700', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_1700 begin');
       let exceptionFlag = false;
 
@@ -538,7 +538,7 @@ export default function abilityTest() {
      * @tc.name: The parameter method of the Callee.on function is an empty string.
      * @tc.desc: Verify that the parameter method of the Callee.on function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_3100', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_3100', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_3100 begin');
 
       let onTest = (data: ESObject) => {
@@ -564,7 +564,7 @@ export default function abilityTest() {
      * @tc.name: The parameter method of the Callee.on function is null.
      * @tc.desc: Verify that the parameter method of the Callee.on function is null.
      */
-    it('ACTS_CommonComponent_Call_3200', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_3200', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_3200 begin');
 
       let onTest = (data: ESObject) => {
@@ -590,7 +590,7 @@ export default function abilityTest() {
      * @tc.name: The parameter method of the Caller.callWithResult function is undefined.
      * @tc.desc: Verify that the parameter method of the Caller.callWithResult function is undefined.
      */
-    it('ACTS_CommonComponent_Call_3300', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_3300', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_3300 begin');
 
       let onTest = (data: ESObject) => {
@@ -616,7 +616,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Callee.off function is an empty string.
      * @tc.desc: Verify that the parameter "method" of the Callee.off function is an empty string.
      */
-    it('ACTS_CommonComponent_Call_3400', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_3400', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_3400 begin');
 
       let finishFlag = 0;
@@ -638,7 +638,7 @@ export default function abilityTest() {
      * @tc.name: The parameter "method" of the Callee.off function is null.
      * @tc.desc: Verify that the parameter "method" of the Callee.off function is null.
      */
-    it('ACTS_CommonComponent_Call_3500', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_3500', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_3500 begin');
 
       let finishFlag = 0;
@@ -660,7 +660,7 @@ export default function abilityTest() {
      * @tc.name: The parameter “method” of the Callee.off function is undefined.
      * @tc.desc: Verify that the parameter “method” of the Callee.off function is undefined.
      */
-    it('ACTS_CommonComponent_Call_3600', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_3600', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_3600 begin');
 
       let finishFlag = 0;
@@ -682,7 +682,7 @@ export default function abilityTest() {
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.
       * @tc.desc: Check the event data of executor page ability publishes
       */
-    it('ACTS_CommonComponent_Call_4300', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_4300', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_4300 begin');
       let finishFlag = 0;
       try {
@@ -703,7 +703,7 @@ export default function abilityTest() {
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.
       * @tc.desc: Check the event data of executor page ability publishes
       */
-    it('ACTS_CommonComponent_Call_4400', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_4400', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_4400 begin');
       let finishFlag = 0;
       try {
@@ -724,7 +724,7 @@ export default function abilityTest() {
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.
       * @tc.desc: Check the event data of executor page ability publishes
       */
-    it('ACTS_CommonComponent_Call_4500', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_4500', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_4500 begin');
       let finishFlag = 0;
       try {
@@ -745,7 +745,7 @@ export default function abilityTest() {
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.
       * @tc.desc: Check the event data of executor page ability publishes
       */
-    it('ACTS_CommonComponent_Call_5000', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5000', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5000 begin');
       let finishFlag = 0;
 
@@ -781,7 +781,7 @@ export default function abilityTest() {
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.
       * @tc.desc: Check the event data of executor page ability publishes
       */
-    it('ACTS_CommonComponent_Call_5100', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5100', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5100 begin');
       let finishFlag = 0;
 
@@ -817,7 +817,7 @@ export default function abilityTest() {
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.
       * @tc.desc: Check the event data of executor page ability publishes
       */
-    it('ACTS_CommonComponent_Call_5200', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5200', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5200 begin');
       let exceptionFlag = false;
 
@@ -843,7 +843,7 @@ export default function abilityTest() {
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.
       * @tc.desc: Check the event data of executor page ability publishes
       */
-    it('ACTS_CommonComponent_Call_5300', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5300', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5300 begin');
       let exceptionFlag = false;
 
@@ -871,7 +871,7 @@ export default function abilityTest() {
       * @tc.name: Connects a service ability, which is used to start a cloned page ability.
       * @tc.desc: Check the event data of executor page ability publishes
       */
-    it('ACTS_CommonComponent_Call_5400', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5400', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5400 begin');
       let exceptionFlag = false;
 
@@ -896,7 +896,7 @@ export default function abilityTest() {
      * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
      * @tc.desc: Verify that the caller can unregister the server's death listener.
      */
-    it('ACTS_CommonComponent_Call_5600', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5600', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5600 begin');
 
       let releaseCallback = (data: ESObject) => {
@@ -931,7 +931,7 @@ export default function abilityTest() {
      * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
      * @tc.desc: Verify that the caller can unregister the server's death listener.
      */
-    it('ACTS_CommonComponent_Call_5700', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5700', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5700 begin');
 
       let bundleNameCallee = "com.example.systemappcalleea";
@@ -960,7 +960,7 @@ export default function abilityTest() {
      * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
      * @tc.desc: Verify that the caller can unregister the server's death listener.
      */
-    it('ACTS_CommonComponent_Call_5800', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5800', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5800 begin');
 
       let releaseCallback = (data: ESObject) => {
@@ -995,7 +995,7 @@ export default function abilityTest() {
      * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
      * @tc.desc: Verify that the caller can unregister the server's death listener.
      */
-    it('ACTS_CommonComponent_Call_5900', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_5900', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_5900 begin');
 
       let bundleNameCallee = "com.example.systemappcalleea";
@@ -1024,7 +1024,7 @@ export default function abilityTest() {
      * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
      * @tc.desc: Verify that the caller can unregister the server's death listener.
      */
-    it('ACTS_CommonComponent_Call_6000', 0, async (done : Function) => {
+    it('ACTS_CommonComponent_Call_6000', Level.LEVEL0, async (done : Function) => {
       console.log('ACTS_CommonComponent_Call_6000 begin');
 
       let bundleNameCallee = "com.example.systemappcalleea";

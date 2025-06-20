@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils/Utils';
 import router from '@ohos.router'
@@ -50,7 +50,7 @@ export default function timepickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_timepicker_1000', 0, async (done: Function) => {
+    it('ArkUI_Stage_timepicker_1000', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_1000] obj is: " + JSON.stringify(obj.$attrs));
@@ -72,7 +72,7 @@ export default function timepickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_timepicker_2000', 0, async (done: Function) => {
+    it('ArkUI_Stage_timepicker_2000', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_2000] obj is: " + JSON.stringify(obj.$attrs));
@@ -93,7 +93,7 @@ export default function timepickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_timepicker_3000', 0, async (done: Function) => {
+    it('ArkUI_Stage_timepicker_3000', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_3000] obj is: " + JSON.stringify(obj.$attrs));

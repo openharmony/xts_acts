@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight001', 0, async (done: Function) => {
+    it('testSpanFontWeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight002', 0, async (done: Function) => {
+    it('testSpanFontWeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight003', 0, async (done: Function) => {
+    it('testSpanFontWeight003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight004', 0, async (done: Function) => {
+    it('testSpanFontWeight004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight005', 0, async (done: Function) => {
+    it('testSpanFontWeight005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight006', 0, async (done: Function) => {
+    it('testSpanFontWeight006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight007', 0, async (done: Function) => {
+    it('testSpanFontWeight007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight008', 0, async (done: Function) => {
+    it('testSpanFontWeight008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight009', 0, async (done: Function) => {
+    it('testSpanFontWeight009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight010', 0, async (done: Function) => {
+    it('testSpanFontWeight010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight011', 0, async (done: Function) => {
+    it('testSpanFontWeight011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight012', 0, async (done: Function) => {
+    it('testSpanFontWeight012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight013', 0, async (done: Function) => {
+    it('testSpanFontWeight013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight014', 0, async (done: Function) => {
+    it('testSpanFontWeight014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontWeight015', 0, async (done: Function) => {
+    it('testSpanFontWeight015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function spanFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testSpanFontWeight016', 0, async (done: Function) => {
+    it('testSpanFontWeight016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontWeight016()).assertEqual(0)
       done()
     })

@@ -16,6 +16,7 @@
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
+import {waitForAssert, waitForExist} from '../../test/WaitTest';
 
 @Entry
 @Component
@@ -28,6 +29,10 @@ struct WebRunJavaScriptOnDocumentStartTest {
       "   localStorage.setItem('color', 'Red');" +
       '}', scriptRules: ['*'] }
   ];
+  @State message: Array<string> = [];
+  @State isComplete: number = -1;
+  private jsStart: string =
+    'console.log("push new js on run start called")';
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -65,6 +70,18 @@ struct WebRunJavaScriptOnDocumentStartTest {
                 Utils.emitEvent(this.result, 20250221)
                 break;
               }
+              case 'emitWebRunJavaScriptOnDocumentStart002': {
+                try {
+                  await waitForExist(()=>this.isComplete, this.emitKey, 0);
+                  let check = (v1:Array<string>, v2:boolean): boolean => {
+                    return v1.includes('push new js on run start called')
+                  }
+                  await waitForAssert(()=>this.message, check, true, 2025040801, this.emitKey);
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              }
             }
           })
       }
@@ -72,6 +89,10 @@ struct WebRunJavaScriptOnDocumentStartTest {
         .javaScriptAccess(true)
         .domStorageAccess(true)
         .runJavaScriptOnDocumentStart(this.scripts)
+        .onControllerAttached(() => {
+          this.scripts.push({ script: this.jsStart, scriptRules: ['*'] });
+          console.log('runJavaScriptOnDocumentStart scripts==>' + JSON.stringify(this.scripts));
+        })
         .onPageBegin((event) => {
           if (event) {
            console.log('runJavaScriptOnDocumentStart onPageBegin url:' + event.url);
@@ -91,6 +112,8 @@ struct WebRunJavaScriptOnDocumentStartTest {
         })
         .onPageEnd((event) => {
           if (event) {
+           this.isComplete = 0;
+           console.log('runJavaScriptOnDocumentStart isComplete==>'+this.isComplete);
            console.log('runJavaScriptOnDocumentStart onPageEnd url:' + event.url);
            try {
               this.controller.runJavaScript('getResult()', (error, result) => {
@@ -106,6 +129,14 @@ struct WebRunJavaScriptOnDocumentStartTest {
               console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
             }
           }
+        })
+        .onConsole((event) => {
+          if (event) {
+            let msg = event.message.getMessage();
+            this.message.push(msg);
+            console.log('runJavaScriptOnDocumentStart message===>' + this.message);
+          }
+          return false
         })
         .width('100%')
         .height('100%')

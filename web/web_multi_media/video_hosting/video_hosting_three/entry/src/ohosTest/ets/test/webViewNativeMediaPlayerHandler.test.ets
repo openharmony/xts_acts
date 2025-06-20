@@ -17,6 +17,9 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 export default function webViewNativeMediaPlayerHandler() {
   describe('ActsAceWebViewNativeMediaPlayerHandler', () => {
@@ -42,6 +45,11 @@ export default function webViewNativeMediaPlayerHandler() {
     });
       
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
         await Utils.sleep(2000);
       console.info("webViewNativeMediaPlayerHandler beforeEach start");
       done();
@@ -53,9 +61,9 @@ export default function webViewNativeMediaPlayerHandler() {
     * @tc.desc       : test handlePlaybackRateChanged
     * @tc.size_t     : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testWebViewNativeMediaPlayerHandlePlaybackRateChanged', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerHandlePlaybackRateChanged', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerHandlePlaybackRateChanged";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerHandlePlaybackRateChanged", true, 1304, done);

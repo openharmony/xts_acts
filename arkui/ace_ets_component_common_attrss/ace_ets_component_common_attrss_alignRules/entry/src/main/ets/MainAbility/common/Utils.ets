@@ -102,6 +102,7 @@ export default class Utils {
   static getComponentRect(key: string): RectValue {
     let strJson = getInspectorByKey(key);
     console.info('[getInspectorByKey] key is: ' + key);
+    console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
     return Utils.getComponentRectByObj(JSON.parse(strJson));
   }
 

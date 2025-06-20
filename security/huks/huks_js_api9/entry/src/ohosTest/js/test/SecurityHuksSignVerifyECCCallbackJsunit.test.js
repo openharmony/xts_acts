@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it } from '@ohos/hypium';
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
 import Data from './utils/data.json';
 import { HuksSignVerifyECC } from './utils/param/signverify/publicSignverifyParam';
 import { stringToUint8Array } from './utils/param/publicFunc';
@@ -34,7 +34,7 @@ let srcData63AfterSha256 = new Uint8Array([
 
 export default function SecurityHuksSignVerifyECCCallbackJsunit() {
     describe('SecurityHuksSignVerifyECCCallbackJsunit', function () {
-        it('Security_HUKS_SignVerify_API9_ECC_001', 0, async function (done) {
+        it('Security_HUKS_SignVerify_API9_ECC_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testSignVerifyECCSize224SIGNNONEKeyAlias001';
             let HuksOptions = {
                 properties: new Array(
@@ -58,7 +58,7 @@ export default function SecurityHuksSignVerifyECCCallbackJsunit() {
             await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData63AfterSha256);
             done();
         });
-        it('Security_HUKS_SignVerify_API9_ECC_002', 0, async function (done) {
+        it('Security_HUKS_SignVerify_API9_ECC_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testSignVerifyECCSize256SIGNNONEKeyAlias002';
             let HuksOptions = {
                 properties: new Array(
@@ -72,7 +72,7 @@ export default function SecurityHuksSignVerifyECCCallbackJsunit() {
             await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
             done();
         });
-        it('Security_HUKS_SignVerify_API9_ECC_003', 0, async function (done) {
+        it('Security_HUKS_SignVerify_API9_ECC_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testSignVerifyECCSize256SIGNNONEKeyAlias003';
             let HuksOptions = {
                 properties: new Array(
@@ -96,7 +96,7 @@ export default function SecurityHuksSignVerifyECCCallbackJsunit() {
             await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Sha256);
             done();
         });
-        it('Security_HUKS_SignVerify_API9_ECC_004', 0, async function (done) {
+        it('Security_HUKS_SignVerify_API9_ECC_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testSignVerifyECCSize256SIGNNONEKeyAlias004';
             let HuksOptions = {
                 properties: new Array(

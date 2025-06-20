@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as certPromise from "./utils/certificate/publicCertificatePromise";
 import * as certCallback from "./utils/certificate/publicCertificateCallback";
 
@@ -28,7 +28,7 @@ export default function CertificateJsunit() {
      * @tc.name The X509 certificate list can be created for encryption and decryption.
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      */
-    it("Security_crypto_framework_X509Cert_0100", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .createX509CertInstancePromise("der")
         .then((data) => {
@@ -54,7 +54,7 @@ export default function CertificateJsunit() {
      * @tc.name The X509 certificate list can be created for encryption and decryption.
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509Cert_0200", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .createX509CertInstancePromise("pem")
         .then((data) => {
@@ -80,7 +80,7 @@ export default function CertificateJsunit() {
      * @tc.name verify RSA algorithm for X509 certificate
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509Cert_0300", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .verifyX509CertPromise("pem")
         .then((data) => {
@@ -105,7 +105,7 @@ export default function CertificateJsunit() {
      * @tc.name verify ECC algorithm for X509 certificate
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      */
-    it("Security_crypto_framework_X509Cert_0400", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .verifyX509CertPromise("der")
         .then((data) => {
@@ -130,7 +130,7 @@ export default function CertificateJsunit() {
      * @tc.name verify RSA algorithm for X509 certificate with invalid pubKey
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509Cert_0500", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .verifyX509CertPromise("pem", "NULL")
         .then((data) => {
@@ -155,7 +155,7 @@ export default function CertificateJsunit() {
      * @tc.name verify RSA algorithm for X509 certificate with not matched pubKey
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509Cert_0600", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .verifyX509CertPromise("pem", "wrong")
         .then((data) => {
@@ -172,7 +172,7 @@ export default function CertificateJsunit() {
      * @tc.name check getEncoded interface
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      */
-    it("Security_crypto_framework_X509Cert_0700", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .checkGetEncodedX509CertPromise("der")
         .then((data) => {
@@ -197,7 +197,7 @@ export default function CertificateJsunit() {
      * @tc.name check getPublicKey interface
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      */
-    it("Security_crypto_framework_X509Cert_0800", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .checkGetPublicKeyX509CertPromise("der")
         .then((data) => {
@@ -224,7 +224,7 @@ export default function CertificateJsunit() {
      * @tc.desc Use the Promise Style of Interface;
      * @tc.desc period of validity:2022/8/19/12:49:06 - 2032/8/16/12:49:06
      */
-    it("Security_crypto_framework_X509Cert_0900", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .checkValidityX509CertPromise("der", "20220830000000+0800")
         .then((data) => {
@@ -242,7 +242,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER,date format:20330830000000+0800(YmdHMSz)
      * @tc.desc period of validity:2022/8/19/12:49:06 - 2032/8/16/12:49:06
      */
-    it("Security_crypto_framework_X509Cert_1000", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .checkValidityX509CertCallback("der", "20330830000000+0800")
         .then((data) => {
@@ -260,7 +260,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER,date format: NULL or Exception parameters
      * @tc.desc period of validity:2022/8/19/12:49:06 - 2032/8/16/12:49:06
      */
-    it("Security_crypto_framework_X509Cert_1100", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .checkValidityX509CertCallback("der", "NULL")
         .then((data) => {
@@ -286,7 +286,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_1200", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .getX509CertInfoCallback("der", "getVersion")
         .then((data) => {
@@ -304,7 +304,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_1300", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .getX509CertInfoCallback("der", "getSerialNumber")
         .then((data) => {
@@ -322,7 +322,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_1400", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .getX509CertInfoCallback("der", "getIssuerName")
         .then((data) => {
@@ -340,7 +340,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_1500", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CertInfoPromise("der", "getSubjectName")
         .then((data) => {
@@ -358,7 +358,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_1600", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CertInfoPromise("der", "getNotBeforeTime")
         .then((data) => {
@@ -376,7 +376,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_1700", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CertInfoPromise("der", "getNotAfterTime")
         .then((data) => {
@@ -394,7 +394,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_1800", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CertInfoPromise("der", "getSignature")
         .then((data) => {
@@ -412,7 +412,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_1900", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CertInfoPromise("der", "getSignatureAlgName")
         .then((data) => {
@@ -430,7 +430,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_2000", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .getX509CertInfoCallback("der", "getSignatureAlgOid")
         .then((data) => {
@@ -448,7 +448,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_2100", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .getX509CertInfoCallback("der", "getSignatureAlgParams")
         .then((data) => {
@@ -466,7 +466,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_2400", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .getX509CertInfoCallback("der", "getKeyUsage")
         .then((data) => {
@@ -484,7 +484,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_2500", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .getX509CertInfoCallback("der", "getExtKeyUsage")
         .then((data) => {
@@ -502,7 +502,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_2600", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .getX509CertInfoCallback("der", "getBasicConstraints")
         .then((data) => {
@@ -520,7 +520,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_2700", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CertInfoPromise("der", "getSubjectAltNames")
         .then((data) => {
@@ -538,7 +538,7 @@ export default function CertificateJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509Cert_2800", 0, async function (done) {
+    it("Security_crypto_framework_X509Cert_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CertInfoPromise("der", "getIssuerAltNames")
         .then((data) => {
@@ -557,7 +557,7 @@ export default function CertificateJsunit() {
      */
     it(
       "Security_crypto_framework_CertChainValidator_0100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .checkValidateOfCertChainValidatorPromise("PKIX")
@@ -586,7 +586,7 @@ export default function CertificateJsunit() {
      */
     it(
       "Security_crypto_framework_CertChainValidator_0200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .checkValidateOfCertChainValidatorPromise("PKI111")
@@ -607,7 +607,7 @@ export default function CertificateJsunit() {
      */
     it(
       "Security_crypto_framework_CertChainValidator_0300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .checkValidateOfCertChainValidatorPromise("PKIX", "error")

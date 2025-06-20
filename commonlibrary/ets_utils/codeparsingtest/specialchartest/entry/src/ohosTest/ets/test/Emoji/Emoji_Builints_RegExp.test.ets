@@ -24,9 +24,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0001";
       try {
         const regex1 = /\ud83d\ude0a/;
@@ -45,9 +45,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0002";
       try {
         const regex1 = /\ud83d\udc64/;
@@ -66,9 +66,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83d\udc6b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0003";
       try {
         const regex1 = /\ud83d\udc6b/;
@@ -87,9 +87,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \u260e
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0004";
       try {
         const regex1 = /\u260e/;
@@ -108,9 +108,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0005";
       try {
         const regex1 = /\ud83d\udc79/;
@@ -129,9 +129,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83d\udd5b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0006";
       try {
         const regex1 = /\ud83d\udd5b/;
@@ -150,9 +150,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83c\udf4f
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0007";
       try {
         const regex1 = /\ud83c\udf4f/;
@@ -171,9 +171,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83d\udd03
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0008";
       try {
         const regex1 = /\ud83d\udd03/;
@@ -192,9 +192,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83c\udf41
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0009";
       try {
         const regex1 = /\ud83c\udf41/;
@@ -213,9 +213,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \u2666
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0010";
       try {
         const regex1 = /\u2666/;
@@ -234,9 +234,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83d\udc48
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0011";
       try {
         const regex1 = /\ud83d\udc48/;
@@ -255,9 +255,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp interface Constructor with input emoji \ud83e\udd3c\u200d\u2642\ufe0f
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testRegExpConstructorEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRegExpConstructorEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpConstructorEmoji0012";
       try {
         const regex1 = /\ud83e\udd3c\u200d\u2642\ufe0f/;
@@ -276,9 +276,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp.prototype.Symbol.matchAll method with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testRegExpPrototypeSymbolMatchAllEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testRegExpPrototypeSymbolMatchAllEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpPrototypeSymbolMatchAllEmoji0001";
       try {
         const emoji = "😊";
@@ -298,9 +298,9 @@ export default function Emoji_RegExp() {
      * @tc.desc       : Testing the RegExp.prototype.Symbol.matchAll method with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testRegExpPrototypeSymbolMatchAllEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testRegExpPrototypeSymbolMatchAllEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testRegExpPrototypeSymbolMatchAllEmoji0002";
       try {
         const emoji = "👤";

@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import imageNdkTest from './ImageNdk.test'
+import imageNdkDecodeTest from './ImageNdkDecode.test'
 export default function testsuite() {
   imageNdkTest()
+  imageNdkDecodeTest()
 }

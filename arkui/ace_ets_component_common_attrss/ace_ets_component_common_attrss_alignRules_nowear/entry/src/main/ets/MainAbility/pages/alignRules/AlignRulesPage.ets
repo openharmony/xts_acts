@@ -110,6 +110,7 @@ struct AlignRules {
           .backgroundColor(Color.Blue)
           .width(this.subassemblyWidth)
           .height(this.subassemblyHeight)
+          .expandSafeArea([], [])
           .commonStyle()
       } else if (this.targetView == 'Image') {
         Image($r('app.media.icon'))

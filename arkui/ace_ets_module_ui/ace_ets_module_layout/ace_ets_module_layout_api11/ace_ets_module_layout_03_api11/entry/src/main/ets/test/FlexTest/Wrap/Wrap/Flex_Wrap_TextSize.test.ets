@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flex_Wrap_TextSizeTest() {
      * @tc.desc The size of the parent component in the main axis direction
      *               meets the layout of the child components when the child component change size
      */
-    it('testWrapWrapTextSizeMeet', 0, async () => {
+    it('testWrapWrapTextSizeMeet',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapTextSizeMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 150
@@ -94,7 +94,7 @@ export default function flex_Wrap_TextSizeTest() {
      * @tc.desc The size of the parent component in the main axis direction
      *               is not enough for the layout of the child components when the child component change size
      */
-    it('testWrapWrapTextSizeOverflow', 0, async () => {
+    it('testWrapWrapTextSizeOverflow',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapTextSizeOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 200

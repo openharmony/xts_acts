@@ -26,8 +26,8 @@
 #include "drawing_rect.h"
 #include "drawing_region.h"
 #include "drawing_round_rect.h"
-#include "utils/scalar.h"
 #include "gtest/gtest.h"
+#include "DrawingNativeScalarCommon.h"
 
 using namespace testing;
 using namespace testing::ext;

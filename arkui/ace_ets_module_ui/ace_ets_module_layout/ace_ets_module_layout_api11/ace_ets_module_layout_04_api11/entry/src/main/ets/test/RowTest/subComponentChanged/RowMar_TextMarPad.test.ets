@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -58,7 +58,7 @@ export default function rowMar_TextMarPadTest() {
      * @tc.name testRowMarTextPad
      * @tc.desc The parent component set margin to 5,and the first subcomponent set padding to 10
      */
-    it('testRowMarTextPad', 0, async (done: Function) => {
+    it('testRowMarTextPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarTextPad] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMar_TextMarPad1');
       let firstTextTop: number = firstText.top;
@@ -78,34 +78,34 @@ export default function rowMar_TextMarPadTest() {
 
       expect(JSON.parse(rowContainerStrJson).$type).assertEqual('Row');
 
-      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1)
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
-        .assertTrue();
-
-      expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(secondText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - secondText.bottom))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1)
+      expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((Math.round((rowContainer.top - columnContainer.top) * 10) / 10) - (Math.round(vp2px(5) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((firstText.top - rowContainer.top) - (rowContainer.bottom - firstText.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((firstText.top - firstTextTop) * 10) / 10) - (Math.round(vp2px(5) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((secondText.top - rowContainer.top) - (rowContainer.bottom - secondText.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
-
-      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(thirdText.left - secondText.right))) <= 1)
+      expect(Math.floor(Math.abs((thirdText.top - rowContainer.top) - (rowContainer.bottom - thirdText.bottom))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((rowContainer.top - columnContainer.top) - vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((firstText.top - firstTextTop) - vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs(firstText.left - rowContainer.left)) <= 1).assertTrue();
+
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - (thirdText.left - secondText.right))) <= 1)
+        .assertTrue();
+
+      expect(Math.floor(Math.abs((rowContainer.right - thirdText.right) - vp2px(30))) <= 1).assertTrue();
       console.info('[testRowMarTextPad] END');
       done();
     });
@@ -114,7 +114,7 @@ export default function rowMar_TextMarPadTest() {
      * @tc.name testRowMarTextMar
      * @tc.desc The parent component set margin to 5,and the first subcomponent set margin to 10
      */
-    it('testRowMarTextMar', 0, async (done: Function) => {
+    it('testRowMarTextMar',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarTextMar] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMar_TextMarPad1');
       let firstTextTop: number = firstText.top;
@@ -134,33 +134,33 @@ export default function rowMar_TextMarPadTest() {
 
       expect(JSON.parse(rowContainerStrJson).$type).assertEqual('Row');
 
-      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1)
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
-        .assertTrue();
-
-      expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(secondText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - secondText.bottom))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1)
+      expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((Math.round((rowContainer.top - columnContainer.top) * 10) / 10) - (Math.round(vp2px(5) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((firstText.top - rowContainer.top) - (rowContainer.bottom - firstText.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((firstText.top - firstTextTop) * 10) / 10) - (Math.round(vp2px(5) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((secondText.top - rowContainer.top) - (rowContainer.bottom - secondText.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(firstText.left - rowContainer.left)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.top - rowContainer.top) - (rowContainer.bottom - thirdText.bottom))) <= 1)
+        .assertTrue();
 
-      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(thirdText.left - secondText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((rowContainer.top - columnContainer.top) - vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((firstText.top - firstTextTop) - vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((firstText.left - rowContainer.left) - vp2px(10))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(20))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.left - secondText.right) - vp2px(10))) <= 1).assertTrue();
+
+      expect(Math.floor(Math.abs((rowContainer.right - thirdText.right) - vp2px(10))) <= 1).assertTrue();
       console.info('[testRowMarTextMar] END');
       done();
     });
@@ -169,7 +169,7 @@ export default function rowMar_TextMarPadTest() {
      * @tc.name testRowMarTextMarPad
      * @tc.desc The parent component set margin to 5,and the first subcomponent set margin to 10,set padding to 10
      */
-    it('testRowMarTextMarPad', 0, async (done: Function) => {
+    it('testRowMarTextMarPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarTextMarPad] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMar_TextMarPad1');
       let firstTextTop: number = firstText.top;
@@ -192,33 +192,33 @@ export default function rowMar_TextMarPadTest() {
 
       expect(JSON.parse(rowContainerStrJson).$type).assertEqual('Row');
 
-      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1)
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
-        .assertTrue();
-
-      expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(secondText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - secondText.bottom))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1)
+      expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((Math.round((rowContainer.top - columnContainer.top) * 10) / 10) - (Math.round(vp2px(5) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((firstText.top - rowContainer.top) - (rowContainer.bottom - firstText.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((firstText.top - firstTextTop) * 10) / 10) - (Math.round(vp2px(5) * 10) / 10)) <= 1)
+      expect(Math.floor(Math.abs((secondText.top - rowContainer.top) - (rowContainer.bottom - secondText.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(firstText.left - rowContainer.left)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.top - rowContainer.top) - (rowContainer.bottom - thirdText.bottom))) <= 1)
+        .assertTrue();
 
-      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(thirdText.left - secondText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((rowContainer.top - columnContainer.top) - vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((firstText.top - firstTextTop) - vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((firstText.left - rowContainer.left) - vp2px(10))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(20))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.left - secondText.right) - vp2px(10))) <= 1).assertTrue();
+
+      expect(Math.floor(Math.abs((rowContainer.right - thirdText.right) - vp2px(10))) <= 1).assertTrue();
       console.info('[testRowMarTextMarPad] END');
       done();
     });

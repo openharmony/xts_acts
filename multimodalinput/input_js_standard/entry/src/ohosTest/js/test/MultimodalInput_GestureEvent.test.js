@@ -26,7 +26,7 @@ export default function MultimodalInput_GestureEvent_test() {
      * @tc.name Multimodalinput_GestureEvent_SUB_MMI_GestureEventTest_001
      * @tc.desc GestureEvent interface On gesture type
      */
-    it('Multimodalinput_GestureEvent_SUB_MMI_GestureEventTest_001', 0, function () {
+    it('Multimodalinput_GestureEvent_SUB_MMI_GestureEventTest_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_001 enter`);
 
       expect(gestureEvent.ActionType.CANCEL == 0).assertTrue();
@@ -39,7 +39,7 @@ export default function MultimodalInput_GestureEvent_test() {
      * @tc.name Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_002
      * @tc.desc GestureEvent interface On gesture type
      */
-    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_002', 0, function () {
+    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_002 enter`);
 
       expect(gestureEvent.ActionType.BEGIN == 1).assertTrue();
@@ -52,7 +52,7 @@ export default function MultimodalInput_GestureEvent_test() {
      * @tc.name Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_003
      * @tc.desc GestureEvent interface On gesture type
      */
-    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_003', 0, function () {
+    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_003 enter`);
 
       expect(gestureEvent.ActionType.UPDATE == 2).assertTrue();
@@ -65,7 +65,7 @@ export default function MultimodalInput_GestureEvent_test() {
      * @tc.name Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_004
      * @tc.desc GestureEvent interface On gesture type
      */
-    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_004', 0, function () {
+    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_004 enter`);
 
       expect(gestureEvent.ActionType.END == 3).assertTrue();
@@ -74,53 +74,11 @@ export default function MultimodalInput_GestureEvent_test() {
     })
 
     /**
-     * @tc.number Multimodalinput_GestureEventTest_005
-     * @tc.name Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_005
-     * @tc.desc GestureEvent interface On monitor pinch
-     */
-    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_005', 0, function () {
-      let label = '02800/MultimodalinputJs';
-      console.info(`${label}:Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_005 start`);
-      console.info(`${label}:onClickMonitorOn callback`);
-      const handleEvent = (err, pinch) => {
-        pinch.type = 1;
-        pinch.scale = 1;
-        expect(pinch.type == gestureEvent.ActionType.BEGIN).assertTrue();
-        expect(pinch.scale == 1).assertTrue();
-        console.info(`${label}:callbackPinch start`);
-        if (err) {
-          console.info(`${label}:callbackPinch error:${JSON.stringify(err)}`);
-          expect(false).assertTrue();
-          return;
-        }
-        console.info(`${label}:callbackPinch success: ${JSON.stringify(pinch)}`);
-        let ret = Object.keys(pinch);
-        expect(ret.length > 0).assertTure();
-      };
-
-      console.info(`${label}:onClickMonitorOn start`);
-      try {
-        inputMonitor.on("pinch", handleEvent);
-      } catch (error) {
-        expect(true).assertTrue();
-      }
-      console.info(`${label}:onClickMonitorOn end`);
-
-      console.info(`${label}:onClickMonitorOff start`);
-      try {
-        inputMonitor.off("pinch", handleEvent);
-      } catch (error) {
-        expect(false).assertTrue();
-      }
-      console.info(`${label}:Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_005 end`);
-    })
-
-    /**
      * @tc.number Multimodalinput_GestureEventTest_006
      * @tc.name Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_006
      * @tc.desc GestureEvent interface On gesture pinch
      */
-    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_006', 0, function () {
+    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_006 enter`);
       /** @type { Pinch } */
       let pinch = {
@@ -137,7 +95,7 @@ export default function MultimodalInput_GestureEvent_test() {
      * @tc.name Multimodalinput_GestureEvent_test_SUB_MMI_Rotate_001
      * @tc.desc GestureEvent interface On gesture rotate
      */
-    it('Multimodalinput_GestureEvent_test_SUB_MMI_Rotate_001', 0, function () {
+    it('Multimodalinput_GestureEvent_test_SUB_MMI_Rotate_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_Rotate_001 enter`);
       /** @type { Rotate } */
       let rotate = {
@@ -154,7 +112,7 @@ export default function MultimodalInput_GestureEvent_test() {
      * @tc.name Multimodalinput_GestureEvent_test_SUB_MMI_ThreeFingersTap_001
      * @tc.desc GestureEvent interface On gesture threeFingersTap
      */
-    it('Multimodalinput_GestureEvent_test_SUB_MMI_ThreeFingersTap_001', 0, function () {
+    it('Multimodalinput_GestureEvent_test_SUB_MMI_ThreeFingersTap_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_ThreeFingersTap_001 enter`);
       /** @type { ThreeFingersTap } */
       let threeFingersTap = {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameraObj from 'libentry.so'
 import image from '@ohos.multimedia.image';
 import { Camera_PreconfigType, Camera_SceneMode, Camera_MediaType, Parameter_Setting } from './Constants';
@@ -284,7 +284,7 @@ export default function CameraFunctionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PREVIEW', 0, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PREVIEW', Level.LEVEL0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PREVIEW--------------");
       await createInput();
       createCameraSessionInstance();
@@ -310,7 +310,7 @@ export default function CameraFunctionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_001', 0, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_001', Level.LEVEL0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO--------------");
       await createInput();
       createCameraSessionInstance();
@@ -338,7 +338,7 @@ export default function CameraFunctionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_002', 0, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_002', Level.LEVEL0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_002--------------");
       await createInput();
       createCameraSessionInstance();
@@ -364,7 +364,7 @@ export default function CameraFunctionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001', 0, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001', Level.LEVEL0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001--------------");
       await createInput();
       createCameraSessionInstance();
@@ -394,7 +394,7 @@ export default function CameraFunctionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002', 0, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002', Level.LEVEL0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002--------------");
       await createInput();
       createCameraSessionInstance();
@@ -424,7 +424,7 @@ export default function CameraFunctionTest() {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100', 0, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100', Level.LEVEL0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100--------------");
       if (isEmpty(camera)) {
         console.info(TAG + "Entering createInputs FAILED with NoCamera");

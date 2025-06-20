@@ -25,9 +25,9 @@ export default function abilityTest() {
      * @tc.desc       : test stackBufferOverflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanStackBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanStackBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.stackBufferOverflow();
       expect(result).assertEqual(1);
       done()
@@ -39,9 +39,9 @@ export default function abilityTest() {
      * @tc.desc       : test stackBufferUnderflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanStackBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanStackBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.stackBufferUnderflow();
       expect(result).assertEqual(1);
       done()
@@ -53,9 +53,9 @@ export default function abilityTest() {
      * @tc.desc       : test heapBufferOverflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanHeapBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanHeapBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.heapBufferOverflow();
       expect(result).assertEqual(1);
       done()
@@ -67,9 +67,9 @@ export default function abilityTest() {
      * @tc.desc       : test heapBufferUnderflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanHeapBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanHeapBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.heapBufferUnderflow();
       expect(result).assertEqual(1);
       done()
@@ -81,9 +81,9 @@ export default function abilityTest() {
      * @tc.desc       : test heapUseAfterFree
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanHeapUseAfterFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanHeapUseAfterFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.heapUseAfterFree();
       expect(result).assertEqual(1);
       done()
@@ -95,9 +95,9 @@ export default function abilityTest() {
      * @tc.desc       : test stackUseAfterScope
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanStackUseAfterScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanStackUseAfterScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.stackUseAfterScope();
       expect(result).assertEqual(1);
       done()
@@ -109,9 +109,9 @@ export default function abilityTest() {
      * @tc.desc       : test stackUseAfterReturn
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanStackUseAfterReturn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanStackUseAfterReturn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.stackUseAfterReturn();
       expect(result).assertEqual(1);
       done()
@@ -123,9 +123,9 @@ export default function abilityTest() {
      * @tc.desc       : test doubleFree
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanDoubleFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanDoubleFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.doubleFree();
       expect(result).assertEqual(1);
       done()
@@ -137,9 +137,9 @@ export default function abilityTest() {
      * @tc.desc       : test wildFree
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHWAsanWildFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHWAsanWildFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hwasan.wildFree();
       expect(result).assertEqual(1);
       done()

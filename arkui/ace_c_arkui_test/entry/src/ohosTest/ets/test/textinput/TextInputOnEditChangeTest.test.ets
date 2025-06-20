@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 export default function textInputOnEditChangeTest() {
@@ -34,7 +34,7 @@ export default function textInputOnEditChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputOnEditChange001', 0, async (done: Function) => {
+    it('testTextInputOnEditChange001', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnEditChangeTestTextInput')
       await Utils.sleep(1000)
       let dataArray: number[][] = nativeRender.getTextInputEditChangeData();

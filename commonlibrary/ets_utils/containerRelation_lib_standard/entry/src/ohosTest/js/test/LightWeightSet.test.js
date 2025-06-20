@@ -21,7 +21,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an LightWeightSet instance. For example: let lightWeightSet = new LightWeightSet().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let lightWeightSet = new LightWeightSet();
       expect(lightWeightSet != undefined).assertEqual(true);
@@ -36,7 +36,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add element to LightWeightSet instance. For example: lightWeightSet.add(1).
    */
-  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     let res = lightWeightSet.has(1);
@@ -47,7 +47,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add element to LightWeightSet instance. For example: lightWeightSet.add("a").
    */
-  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add("a");
     let res = lightWeightSet.has("a");
@@ -59,7 +59,7 @@ describe("LightWeightSetTest", function () {
    * @tc.desc: Add element to LightWeightSet instance. 
    * For example: let a = [1, 2, 3, 4]; lightWeightSet.add(a).
    */
-  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     let a = [1, 2, 3, 4];
     lightWeightSet.add(a);
@@ -72,7 +72,7 @@ describe("LightWeightSetTest", function () {
    * @tc.desc: Add element to LightWeightSet instance. 
    * For example: let a = {name: "lili", age: "13"}; lightWeightSet.add(a).
    */
-  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     let c = {name: "lili", age: "13"};
     lightWeightSet.add(c);
@@ -84,7 +84,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testAdd006
    * @tc.desc: Add element to LightWeightSet instance. For example: let c = false; lightWeightSet.add(c).
    */
-  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     let c = false;
     lightWeightSet.add(c);
@@ -96,7 +96,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testLength007
    * @tc.desc: Get the number of element in the LightWeightSet instance. For example: lightWeightSet.length.
    */
-  it("testLength007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);
@@ -111,7 +111,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testAddAll008
    * @tc.desc: Copy all element from one LightWeightSet to another.
    */
-  it("testAddAll008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAddAll008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);
@@ -138,7 +138,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testHasAll009
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
    */
-  it("testHasAll009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHasAll009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add("a");
     lightWeightSet.add("b");
@@ -156,7 +156,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testHasAll010
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
    */
-  it("testHasAll010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHasAll010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add("a");
     lightWeightSet.add("b");
@@ -173,7 +173,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testHas011
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
    */
-  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add("a");
     lightWeightSet.add("b");
@@ -190,7 +190,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testEntries012
    * @tc.desc: Get all key value pairs collection in lightWeightSet.
    */
-  it("testEntries012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testEntries012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);
@@ -209,7 +209,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testGetIndexOf013
    * @tc.desc: Get the index according to the specified element. For example: lightWeightSet.getIndexOf(2).
    */
-  it("testGetIndexOf013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetIndexOf013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);
@@ -224,7 +224,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testIsEmpty014
    * @tc.desc: Determine whether the lightWeightSet instance is empty. For example: lightWeightSet.isEmpty().
    */
-  it("testIsEmpty014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testIsEmpty014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);
@@ -239,7 +239,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testRemove015
    * @tc.desc: Delete elements according to key. For example: lightWeightMap.remove(1).
    */
-  it("testRemove015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemove015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);
@@ -262,7 +262,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testRemoveAt016
    * @tc.desc: Delete elements according to index. For example: lightWeightSet.removeAt(1).
    */
-  it("testRemoveAt016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveAt016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);
@@ -285,7 +285,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testClear017
    * @tc.desc: Clear all elements in LightWeightSet. For example: lightWeightSet.clear().
    */
-  it("testClear017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testClear017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);
@@ -301,7 +301,7 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testForEach018
    * @tc.desc: Traverse all elements in the LightWeightSet instance.
    */
-  it("testForEach018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testForEach018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightSet = new LightWeightSet();
     lightWeightSet.add(1);
     lightWeightSet.add(2);

@@ -193,7 +193,7 @@ HWTEST_F(VpeVideoApiTest, VPE_VIDEO_API_TEST_0070, TestSize.Level0)
 {
     OH_VideoProcessing_InitializeEnvironment();
     bool ret = OH_VideoProcessing_IsColorSpaceConversionSupported(&SRC_INFO, &DST_INFO);
-    if (!access("/system/lib64/ndk/libvideo_processing_capi_impl.so", 0)) {
+    if (!access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
         ASSERT_TRUE(ret);
     } else {
         ASSERT_FALSE(ret);
@@ -221,7 +221,7 @@ HWTEST_F(VpeVideoApiTest, VPE_VIDEO_API_TEST_0090, TestSize.Level0)
 {
     OH_VideoProcessing_InitializeEnvironment();
     bool ret = OH_VideoProcessing_IsMetadataGenerationSupported(&SRC_INFO);
-    if (!access("/system/lib64/ndk/libvideo_processing_capi_impl.so", 0)) {
+    if (!access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
         ASSERT_TRUE(ret);
     } else {
         ASSERT_FALSE(ret);

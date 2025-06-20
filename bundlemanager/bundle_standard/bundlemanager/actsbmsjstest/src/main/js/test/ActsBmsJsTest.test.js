@@ -40,7 +40,7 @@ describe('ActsBmsJsTest', function () {
     * @tc.desc: 1.install a js hap which has an ability with full domain name
     *           2.check the ability name by the interface of getBundleInfo
     */
-    it('Sub_Bms_Framework_Query_AppInfo_0140', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0140', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(NUM_TWO);
         if (result.abilityInfos.length == NUM_TWO) {
@@ -86,7 +86,7 @@ describe('ActsBmsJsTest', function () {
      * @tc.desc: 1.install a js hap with two ability
      *           2.check the ability name by the interface of getBundleInfo
      */
-    it('Sub_Bms_Framework_Query_AppInfo_0160', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0160', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(NUM_FOUR);
         if (result.abilityInfos.length == NUM_FOUR) {

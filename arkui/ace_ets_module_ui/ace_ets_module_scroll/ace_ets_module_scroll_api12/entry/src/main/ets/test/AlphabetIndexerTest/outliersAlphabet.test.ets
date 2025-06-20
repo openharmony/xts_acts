@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -23,6 +23,16 @@ function alphabetDefaultPopupSize(sysWidth: Resource) {
   let resourcePopupSize = getContext().resourceManager.getNumber(sysWidth.id)
   let newPopupSize: string = Math.round(px2vp(resourcePopupSize)) + '.00vp'
   return newPopupSize;
+}
+
+function spliceBgColor(sysColor: Resource, sysColor1: Resource) {
+  let resourceColor = getContext().resourceManager.getColorSync(sysColor.id)
+  let resourceColor1 = getContext().resourceManager.getNumber(sysColor1.id)
+  let numColor1 = Math.round(resourceColor1 * 255)
+  console.info("resourceColor is: " + JSON.stringify(resourceColor.toString(16)));
+  console.info("numColor1 is: " + JSON.stringify(numColor1));
+  let newArgb: string = '#' + numColor1.toString(16).toUpperCase() + resourceColor.toString(16).toUpperCase().slice(2)
+  return newArgb;
 }
 
 export default function outliersAlphabet() {
@@ -61,7 +71,7 @@ export default function outliersAlphabet() {
      * @tc.type
      * @tc.size
      */
-    it('outliersAlphabet_0100', 0, async (done: Function) => {
+    it('outliersAlphabet_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[outliersAlphabet_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('alphabetIndexer_outliers');
@@ -82,7 +92,7 @@ export default function outliersAlphabet() {
      * @tc.type
      * @tc.size
      */
-    it('outliersAlphabet_0200', 0, async (done: Function) => {
+    it('outliersAlphabet_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[outliersAlphabet_0200] START');
       await CommonFunc.sleep(3000);
       let driver: Driver = Driver.create();
@@ -108,7 +118,7 @@ export default function outliersAlphabet() {
      * @tc.type
      * @tc.size
      */
-    it('outliersAlphabet_0300', 0, async (done: Function) => {
+    it('outliersAlphabet_0300', Level.LEVEL1, async (done: Function) => {
       console.info('[outliersAlphabet_0300] START');
       await CommonFunc.sleep(5000);
       let driver: Driver = Driver.create();
@@ -134,7 +144,7 @@ export default function outliersAlphabet() {
      * @tc.type
      * @tc.size
      */
-    it('outliersAlphabet_0400', 0, async (done: Function) => {
+    it('outliersAlphabet_0400', Level.LEVEL1, async (done: Function) => {
       console.info('[outliersAlphabet_0400] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('alphabetIndexer_outliers');
@@ -154,7 +164,7 @@ export default function outliersAlphabet() {
      * @tc.type
      * @tc.size
      */
-    it('outliersAlphabet_0500', 0, async (done: Function) => {
+    it('outliersAlphabet_0500', Level.LEVEL1, async (done: Function) => {
       console.info('[outliersAlphabet_0500] START');
       await CommonFunc.sleep(3000);
       let driver: Driver = Driver.create();
@@ -168,7 +178,8 @@ export default function outliersAlphabet() {
       console.info("[outliersAlphabet_0500] selectedColor: " + JSON.stringify(JSON.parse(strJson).$attrs.selectedColor));
       console.info("[outliersAlphabet_0500] selectedBackgroundColor: " + JSON.stringify(JSON.parse(strJson).$attrs.selectedBackgroundColor));
       expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual("#FFFFFFFF");
-      expect(JSON.parse(strJson).$attrs.selectedBackgroundColor).assertEqual("#FFFFFFFF");
+      expect(JSON.parse(strJson).$attrs.selectedBackgroundColor)
+        .assertEqual(spliceBgColor($r('sys.color.ohos_id_color_text_highlight_bg'), $r('sys.float.ohos_id_alpha_normal_bg')));
       console.info('[outliersAlphabet_0500] END');
       done();
     });

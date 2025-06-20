@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign001', 0, async (done: Function) => {
+    it('testCustomComponentAlign001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign002', 0, async (done: Function) => {
+    it('testCustomComponentAlign002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign003', 0, async (done: Function) => {
+    it('testCustomComponentAlign003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign004', 0, async (done: Function) => {
+    it('testCustomComponentAlign004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign005', 0, async (done: Function) => {
+    it('testCustomComponentAlign005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign006', 0, async (done: Function) => {
+    it('testCustomComponentAlign006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign007', 0, async (done: Function) => {
+    it('testCustomComponentAlign007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign008', 0, async (done: Function) => {
+    it('testCustomComponentAlign008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign009', 0, async (done: Function) => {
+    it('testCustomComponentAlign009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAlign010', 0, async (done: Function) => {
+    it('testCustomComponentAlign010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function customComponentAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentAlign011', 0, async (done: Function) => {
+    it('testCustomComponentAlign011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAlign011()).assertEqual(0)
       done()
     })

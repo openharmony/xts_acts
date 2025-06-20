@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -49,7 +49,7 @@ export default function textArea_center() {
     * @tc.desc  : When textArea is in the middle, clicking on the top of the input box triggers the keyboard
     * @tc.level : Level 2
     */
-    it('textArea_center_001', 0, async (done: Function) => {
+    it('textArea_center_001', Level.LEVEL2, async (done: Function) => {
 
       console.info('[textArea_center_001] START');
       await CommonFunc.sleep(1000);
@@ -87,7 +87,7 @@ export default function textArea_center() {
     * @tc.desc  : When textArea is in the middle, clicking on the middle of the input box triggers the keyboard
     * @tc.level : Level 2
     */
-    it('textArea_center_002', 0, async (done: Function) => {
+    it('textArea_center_002', Level.LEVEL2, async (done: Function) => {
 
       console.info('[textArea_center_002] START');
       await CommonFunc.sleep(1000);
@@ -124,7 +124,7 @@ export default function textArea_center() {
     * @tc.desc  : When textArea is in the middle, clicking on the bottom of the input box triggers the keyboard
     * @tc.level : Level 2
     */
-    it('textArea_center_003', 0, async (done: Function) => {
+    it('textArea_center_003', Level.LEVEL2, async (done: Function) => {
 
       console.info('[textArea_center_003] START');
       await CommonFunc.sleep(1000);

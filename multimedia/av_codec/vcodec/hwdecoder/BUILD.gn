@@ -85,6 +85,7 @@ ohos_moduletest_suite("ActsHwdecoderTest") {
     "media_foundation:media_foundation",
     "media_foundation:native_media_core",
     "window_manager:libwm",
+    "openssl:libcrypto_shared",
   ]
   part_name = "av_codec"
   subsystem_name = "multimedia"

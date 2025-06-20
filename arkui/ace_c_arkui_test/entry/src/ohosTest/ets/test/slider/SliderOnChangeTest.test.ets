@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import { ComponentInfo } from '../common/Interfaces';
 import Utils from '../common/Utils';
 
@@ -35,7 +35,7 @@ export default function sliderOnChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSliderOnchange001', 0, async (done: Function) => {
+    it('testSliderOnchange001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnChangeSlider')
       await Utils.sleep(5000);
       expect(Utils.getComponentInfoByKey('OnChangeSlider').$attrs.trackColor).assertEqual('#FFFF0000')
@@ -50,7 +50,7 @@ export default function sliderOnChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSliderOnchange002', 0, async (done: Function) => {
+    it('testSliderOnchange002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnChangeSliderValue')
       await Utils.sleep(5000);
       expect(Utils.getComponentInfoByKey('OnChangeSliderValue').$attrs.trackColor).assertEqual('#FF00FF00')

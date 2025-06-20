@@ -41,7 +41,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_SetPointerVisibleSync_Test_001', 0, async function (done) {
+    it('Pointer_SetPointerVisibleSync_Test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_SetPointerVisibleSync_Test_001 enter`);
       try {
         pointer.setPointerVisibleSync(true);
@@ -60,7 +60,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_IsPointerVisibleSync_Test_002', 0, async function (done) {
+    it('Pointer_IsPointerVisibleSync_Test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_IsPointerVisibleSync_Test_002 enter`);
       try {
         let visible = pointer.isPointerVisibleSync();
@@ -80,7 +80,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_GetPointerStyleSync_Test_003', 0, async function (done) {
+    it('Pointer_GetPointerStyleSync_Test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_GetPointerStyleSync_Test_003 enter`);
       try {
         let style = pointer.getPointerStyleSync(-1);
@@ -100,7 +100,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerVisibleTest_001', 0, async function (done) {
+    it('Pointer_PointerVisibleTest_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_SetPointerVisibleTest_001 enter`);
       try {
         pointer.setPointerVisible(false, (err, data) => {
@@ -144,7 +144,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerVisibleTest_002', 0, async function (done) {
+    it('Pointer_PointerVisibleTest_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_PointerVisibleTest_002 enter`);
       var result = canIUse("SystemCapability.MultimodalInput.Input.Pointer");
       console.info('Pointer_PointerVisibleTest_002 segregate result=' + result);
@@ -196,7 +196,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_SetPointerStyle_001', 0, async function (done) {
+    it('Pointer_SetPointerStyle_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`SetPointerStyle_001 enter`);
       function getPropertiesPromise(windowClass) {
         return new Promise((resolve, reject) => {
@@ -253,7 +253,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_SetPointerStyle_002', 0, async function (done) {
+    it('Pointer_SetPointerStyle_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`SetPointerStyle_002 enter`);
       function getPropertiesPromise(windowClass) {
         return new Promise((resolve, reject) => {
@@ -316,7 +316,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_GetPointerStyle_001', 0, async function (done) {
+    it('Pointer_GetPointerStyle_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`GetPointerStyle_001 enter`);
       function getPropertiesPromise(windowClass) {
         return new Promise((resolve, reject) => {
@@ -373,7 +373,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_GetPointerStyle_002', 0, async function (done) {
+    it('Pointer_GetPointerStyle_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`GetPointerStyle_002 enter`);
       function getPropertiesPromise(windowClass) {
         return new Promise((resolve, reject) => {
@@ -434,7 +434,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerStyle_test', 0, function () {
+    it('Pointer_PointerStyle_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('Pointer_PointerStyle_test = ' + pointer.PointerStyle.DEFAULT);
       expect(pointer.PointerStyle.DEFAULT == 0).assertTrue();
 
@@ -570,7 +570,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerStyle_Loading_test', 0, function () {
+    it('Pointer_PointerStyle_Loading_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('Pointer_LOADING_test = ' + pointer.PointerStyle.LOADING);
       expect(pointer.PointerStyle.LOADING == 42).assertTrue();
     })
@@ -583,7 +583,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerStyle_Running_test', 0, function () {
+    it('Pointer_PointerStyle_Running_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('Pointer_RUNNING_test = ' + pointer.PointerStyle.RUNNING);
       expect(pointer.PointerStyle.RUNNING == 43).assertTrue();
     })
@@ -596,7 +596,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Touchpad_RightClickType_test', 0, function () {
+    it('Touchpad_RightClickType_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('Touchpad_TOUCHPAD_RIGHT_BUTTON_test = ' + pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON);
       expect(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON == 1).assertTrue();
 
@@ -615,7 +615,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerVisibleTest_Exception_Test_001', 0, async function (done) {
+    it('Pointer_PointerVisibleTest_Exception_Test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_PointerVisibleTest_Exception_Test_001 enter`);
       try {
         await pointer.setPointerVisible();
@@ -649,7 +649,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerVisibleTest_Exception_Test_002', 0, async function (done) {
+    it('Pointer_PointerVisibleTest_Exception_Test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_PointerVisibleTest_Exception_Test_002 enter`);
       try {
         pointer.setPointerVisible(`state`, (error, data) => {
@@ -686,7 +686,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerStyleTest_Exception_Test_001', 0, async function (done) {
+    it('Pointer_PointerStyleTest_Exception_Test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_PointerStyleTest_Exception_Test_001 enter`);
       try {
         await pointer.setPointerStyle(10, 10, null);
@@ -721,7 +721,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_PointerStyleTest_Exception_Test_002', 0, async function (done) {
+    it('Pointer_PointerStyleTest_Exception_Test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_PointerStyleTest_Exception_Test_002 enter`);
       try {
         await pointer.setPointerStyle().then((data) => {
@@ -756,7 +756,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_SetPointerStyleSyncTest_Test_001', 0, async function (done) {
+    it('Pointer_SetPointerStyleSyncTest_Test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_SetPointerStyleSyncTest_Test_001 enter`);
       try {
         pointer.setPointerStyleSync(10, 10);
@@ -777,7 +777,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_setCustomCursorTest_Test_001', 0, async function (done) {
+    it('Pointer_setCustomCursorTest_Test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_setCustomCursorSyncTest_Test_001 enter`);
       const color = new ArrayBuffer(96);
       let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } };
@@ -802,7 +802,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_setCustomCursorTest_Test_002', 0, async function (done) {
+    it('Pointer_setCustomCursorTest_Test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_setCustomCursorTest_Test_002 enter`);
       const color = new ArrayBuffer(96);
       let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -829,7 +829,7 @@ export default function Pointer_test() {
      * @tc.size SmallTest
      * @tc.type Function
      */
-    it('Pointer_setCustomCursorTest_Exception_Test_001', 0, async function (done) {
+    it('Pointer_setCustomCursorTest_Exception_Test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`Pointer_setCustomCursorTest_Exception_Test_001 enter`);
       try {
         pointer.setCustomCursorSync(0, 1);

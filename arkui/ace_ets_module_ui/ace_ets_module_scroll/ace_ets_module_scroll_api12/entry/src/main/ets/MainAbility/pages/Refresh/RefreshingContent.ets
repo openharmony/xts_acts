@@ -44,6 +44,7 @@ struct RefreshingContent {
       }
       .id('refresh_content')
       .backgroundColor(0x89CFF0)
+      .pullDownRatio(1)
       .pullToRefresh(true)
       .onStateChange((refreshStatus: RefreshStatus) => {
         this.refreshStatus = refreshStatus

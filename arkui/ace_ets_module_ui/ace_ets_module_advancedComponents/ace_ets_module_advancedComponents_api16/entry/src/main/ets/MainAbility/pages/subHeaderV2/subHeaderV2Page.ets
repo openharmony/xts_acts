@@ -40,6 +40,7 @@ struct SubHeaderV2Example {
   @Local subHeaderOperationType: SubHeaderV2OperationType = SubHeaderV2OperationType.BUTTON;
   @Local subHeaderOperationType2: SubHeaderV2OperationType = SubHeaderV2OperationType.TEXT_ARROW;
   @Local subHeaderOperationType3: SubHeaderV2OperationType = SubHeaderV2OperationType.ICON_GROUP;
+  @Local subHeaderOperationType4: SubHeaderV2OperationType = SubHeaderV2OperationType.LOADING;
   @Local operationItems: SubHeaderV2OperationItem[] = [];
   @Local selectedValue: string | undefined = 'selectDemo';
   @Local selectedIndex: number = 0;
@@ -89,6 +90,7 @@ struct SubHeaderV2Example {
               this.selectedIndex = index;
               this.selectedValue = value;
             },
+            defaultFocus: false,
           }),
           operationType: this.subHeaderOperationType3,
           operationItems: [new SubHeaderV2OperationItem({
@@ -105,6 +107,12 @@ struct SubHeaderV2Example {
             accessibilityDescription: '点击操作图标3',
           })],
         })
+
+        SubHeaderV2({
+          title: this.title2,
+          select: this.select,
+          operationType: this.subHeaderOperationType4,
+        });
       }.height('60%')
     }
   }

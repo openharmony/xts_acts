@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import drm from '@ohos.multimedia.drm';
 import http from '@ohos.net.http';
 import util from '@ohos.util';
@@ -133,7 +133,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_0100', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_0100', Level.LEVEL0, async (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -166,7 +166,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_0200', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_0200', Level.LEVEL0, async (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem;
             try {
                 drmMediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -194,7 +194,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0100', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0100', Level.LEVEL0, async (done:Function) => {
             let errCode = 0;
             let drmMediaKeySystem:drm.MediaKeySystem;
             try {
@@ -223,7 +223,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0200', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0200', Level.LEVEL1, async (done:Function) => {
             let errCode = 0;
             try {
                 let drmMediaKeySystem = drm.createMediaKeySystem("405E6D359B9A41E8B843DD3C6E72C42C");
@@ -242,7 +242,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0300', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0300', Level.LEVEL1, async (done:Function) => {
             let errCode = 0;
             try {
                 let drmMediaKeySystem = drm.createMediaKeySystem("");
@@ -261,7 +261,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0400', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0400', Level.LEVEL1, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported("405E6D359B9A41E8B843DD3C6E72C42C");
             expect(isSysSupport).assertFalse();
             done();
@@ -274,7 +274,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0500', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0500', Level.LEVEL1, async (done:Function) => {
             let errCode = 0;
             try {
                 let isSysSupport = drm.isMediaKeySystemSupported("");
@@ -293,7 +293,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0600', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0600', Level.LEVEL0, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported(systemName, "video/mp4");
             expect(isSysSupport).assertTrue();
             done();
@@ -306,7 +306,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0700', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0700', Level.LEVEL1, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported("405E6D359B9A41E8B843DD3C6E72C42C", "video/mp4");
             expect(isSysSupport).assertFalse();
             done();
@@ -319,7 +319,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0800', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0800', Level.LEVEL1, async (done:Function) => {
             let errCode = 0;
             try {
                 let isSysSupport = drm.isMediaKeySystemSupported("", "video/mp4");
@@ -338,7 +338,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0900', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0900', Level.LEVEL1, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported(systemName, "1111/2222");
             if (isClearPlay) {
                 expect(isSysSupport).assertFalse();
@@ -355,7 +355,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1000', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1000', Level.LEVEL1, (done:Function) => {
             let errCode = 0;
             try {
                 let isSysSupport = drm.isMediaKeySystemSupported(systemName, "");
@@ -374,7 +374,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1100', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1100', Level.LEVEL0, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported(systemName, "video/mp4", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
             expect(isSysSupport).assertTrue();
             done();
@@ -387,7 +387,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1200', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1200', Level.LEVEL0, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported(systemName, "video/mp4", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
             console.log("XX DRM_FRAMEWORK_API_1200 isSysSupport is", isSysSupport);
             expect(isSysSupport).not().assertUndefined();
@@ -401,7 +401,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1300', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1300', Level.LEVEL0, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported(systemName, "video/mp4", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_ENHANCED_HW);
             console.log("XX DRM_FRAMEWORK_API_1300 isSysSupport is", isSysSupport);
             expect(isSysSupport).not().assertUndefined();
@@ -415,7 +415,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1400', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1400', Level.LEVEL1, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported("405E6D359B9A41E8B843DD3C6E72C42C", "video/mp4", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
             expect(isSysSupport).assertFalse();
             done();
@@ -428,7 +428,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1500', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1500', Level.LEVEL1, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported(systemName, "1111/22222", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
             if (isClearPlay) {
                 expect(isSysSupport).assertFalse();
@@ -445,7 +445,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1600', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1600', Level.LEVEL1, async (done:Function) => {
             let errCode = 0;
             try {
                 let isSysSupport = drm.isMediaKeySystemSupported(systemName, "video/mp4", 7);
@@ -464,7 +464,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1700', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1700', Level.LEVEL1, async (done:Function) => {
             let errCode = 0;
             try {
                 let isSysSupport = drm.isMediaKeySystemSupported("", "video/mp4",
@@ -484,7 +484,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1800', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1800', Level.LEVEL1, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported(systemName, "", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
             expect(isSysSupport).assertFalse();
             done();
@@ -497,7 +497,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1900', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1900', Level.LEVEL0, async (done:Function) => {
             let errCode = 0;
             let drmMediaKeySystem:drm.MediaKeySystem;
             try {
@@ -528,7 +528,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2000', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2000', Level.LEVEL0, (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -571,7 +571,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2100', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2100', Level.LEVEL0, (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             let drmMaxLevel:drm.ContentProtectionLevel = drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN;
@@ -633,7 +633,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2200', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2200', Level.LEVEL0, (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             let drmMaxLevel:drm.ContentProtectionLevel = drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN;
@@ -697,7 +697,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2500', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2500', Level.LEVEL0, (done:Function) => {
             let errCode = 0;
             let drmMediaKeySystem:drm.MediaKeySystem;
             try {
@@ -729,7 +729,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2600', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2600', Level.LEVEL0, (done:Function) => {
             let errCode = 0;
             let drmMediaKeySystem:drm.MediaKeySystem;
             try {
@@ -762,7 +762,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0100', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0100', Level.LEVEL0, (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let cstatus:drm.CertificateStatus;
             try {
@@ -823,7 +823,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0200', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0200', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let cstatus:drm.CertificateStatus;
             let session:drm.MediaKeySession;
@@ -899,7 +899,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0300', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0300', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -979,7 +979,7 @@ export default function abilityTest() {
               * @tc.type      : Function test
               * @tc.level     : Level0
               */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0400', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0400', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1056,7 +1056,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0500', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0500', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1114,7 +1114,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0600', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0600', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1169,7 +1169,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0700', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0700', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1228,7 +1228,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0800', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0800', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1298,7 +1298,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0900', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0900', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1425,7 +1425,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1000', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1000', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1510,7 +1510,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1100', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1100', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1595,7 +1595,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1200', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1200', Level.LEVEL0, (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             try {
                 drmsys = drm.createMediaKeySystem(systemName);
@@ -1625,7 +1625,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1300', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1300', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             try {
                 drmsys = drm.createMediaKeySystem(systemName);
@@ -1654,7 +1654,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1400', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1400', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             try {
                 drmsys = drm.createMediaKeySystem(systemName);
@@ -1683,7 +1683,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1500', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1500', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1783,7 +1783,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1600', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1600', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1873,7 +1873,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1700', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1700', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -1958,7 +1958,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1800', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1800', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -2050,7 +2050,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1900', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_1900', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -2151,7 +2151,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2000', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2000', Level.LEVEL0, async (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -2242,7 +2242,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2100', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2100', Level.LEVEL0, (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -2287,7 +2287,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2200', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2200', Level.LEVEL0, (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
             try {
@@ -2333,7 +2333,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2300', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2300', Level.LEVEL0, (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             try {
                 drmsys = drm.createMediaKeySystem(systemName);
@@ -2363,7 +2363,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2600', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2600', Level.LEVEL0, (done:Function) => {
             let MediaKeySystemDescription = drm.getMediaKeySystems();
             for (let i = 0; i < MediaKeySystemDescription.length; i++) {
                 console.log("XX DRM_AVPLAYER_2600 name is ", MediaKeySystemDescription[i].name);
@@ -2381,7 +2381,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2700', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2700', Level.LEVEL0, (done:Function) => {
             let drmsys:drm.MediaKeySystem;
             try {
                 drmsys = drm.createMediaKeySystem(systemName);
@@ -2412,7 +2412,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2800', 0, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_2800', Level.LEVEL0, (done:Function) => {
             let drmUuid = drm.getMediaKeySystemUuid(systemName);
             console.log("XX DRM_AVPLAYER_2800 uuid is ", drmUuid);
             expect(drmUuid).not().assertUndefined();
@@ -2426,7 +2426,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0100', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0100', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2461,7 +2461,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0200', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0200', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2493,7 +2493,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0300', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0300', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2529,7 +2529,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0400', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0400', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2565,7 +2565,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0500', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0500', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2601,7 +2601,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0600', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0600', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2637,7 +2637,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0700', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0700', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2670,7 +2670,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0800', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0800', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2705,7 +2705,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0900', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_0900', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2738,7 +2738,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1100', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1100', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2774,7 +2774,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1200', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1200', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2810,7 +2810,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1300', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1300', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2852,7 +2852,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1400', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1400', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2888,7 +2888,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1500', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1500', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2924,7 +2924,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1600', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1600', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2960,7 +2960,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1700', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1700', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -2996,7 +2996,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1800', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1800', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -3032,7 +3032,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1900', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1900', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -3068,7 +3068,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_2000', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_2000', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -3104,7 +3104,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0100', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0100', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             let keySession:drm.MediaKeySession;
             try {
@@ -3190,7 +3190,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0200', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0200', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             let keySession:drm.MediaKeySession;
             try {
@@ -3276,7 +3276,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0300', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0300', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             let keySession:drm.MediaKeySession;
             try {
@@ -3368,7 +3368,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0400', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0400', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             let keySession:drm.MediaKeySession;
             try {
@@ -3461,7 +3461,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0500', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0500', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             let keySession:drm.MediaKeySession;
             try {
@@ -3607,7 +3607,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0600', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0600', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             let keySession:drm.MediaKeySession;
             try {
@@ -3760,7 +3760,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0700', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0700', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             let keySession:drm.MediaKeySession;
             try {
@@ -3865,7 +3865,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0800', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0800', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             let keySession:drm.MediaKeySession;
             try {
@@ -3971,7 +3971,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0900', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_0900', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 if(isClearPlay){
@@ -4032,7 +4032,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_1000', 1, async (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_KEY_SESSION_ON_OFF_1000', Level.LEVEL1, async (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 if(isClearPlay){
@@ -4093,7 +4093,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2300', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2300', Level.LEVEL0, async (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem[] = [];
             let errCode = 0;
             for (let i = 0; i < 64; i++) {
@@ -4120,7 +4120,7 @@ export default function abilityTest() {
         * @tc.type      : Reliability
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2400', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2400', Level.LEVEL0, async (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem;
             try {
                 drmMediaKeySystem = drm.createMediaKeySystem(systemName);
@@ -4156,7 +4156,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1000', 1, (done:Function) => {
+        it('SUB_MULTIMEDIA_DRM_SET_GET_CONFIG_1000', Level.LEVEL1, (done:Function) => {
             let mediaKeySystem:drm.MediaKeySystem;
             try {
                 mediaKeySystem = drm.createMediaKeySystem(systemName);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../../MainAbility/common/Utils';
@@ -48,7 +48,7 @@ export default function videoJsunit2() {
       console.info("video after each called");
     });
 
-    it('testVideo01', 0, async (done: Function) => {
+    it('testVideo01', Level.LEVEL1, async (done: Function) => {
       console.info('[testVideo01] START');
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
@@ -57,7 +57,7 @@ export default function videoJsunit2() {
       done();
     });
 
-    it('testVideo02', 0, async (done: Function) => {
+    it('testVideo02', Level.LEVEL1, async (done: Function) => {
       console.info('[testVideo02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -81,7 +81,7 @@ export default function videoJsunit2() {
       done();
     });
 
-    it('testVideo03', 0, async (done: Function) => {
+    it('testVideo03', Level.LEVEL1, async (done: Function) => {
       console.info('[testVideo03] START ');
       try {
         let eventData: events_emitter.EventData = {
@@ -105,7 +105,7 @@ export default function videoJsunit2() {
       done();
     });
 
-    it('testVideo04', 0, async (done: Function) => {
+    it('testVideo04', Level.LEVEL1, async (done: Function) => {
       console.info('[testVideo04] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -129,7 +129,7 @@ export default function videoJsunit2() {
       done();
     });
 
-    it('testVideo05', 0, async (done: Function) => {
+    it('testVideo05', Level.LEVEL1, async (done: Function) => {
       console.info('[testVideo05] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -154,7 +154,7 @@ export default function videoJsunit2() {
       done();
     });
 
-    it('testVideo06', 0, async (done: Function) => {
+    it('testVideo06', Level.LEVEL1, async (done: Function) => {
       console.info('[testVideo06] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -179,7 +179,7 @@ export default function videoJsunit2() {
       done();
     });
 
-    it('testVideo07', 0, async (done: Function) => {
+    it('testVideo07', Level.LEVEL1, async (done: Function) => {
       console.info('[testVideo07] START');
       try {
         let eventData: events_emitter.EventData = {

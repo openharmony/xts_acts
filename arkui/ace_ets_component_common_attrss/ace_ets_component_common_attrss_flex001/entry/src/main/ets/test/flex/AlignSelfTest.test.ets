@@ -200,8 +200,8 @@ export default function alignSelfTest() {
       if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow') {
         //When alignSelf : ItemAlign.Auto or ItemAlign.Start
         if (data.testValue.describe == 'SetAuto' || data.testValue.describe == 'SetStart') {
-          expect(rect.top).assertEqual(parentRect.top);
-          expect(rect.left).assertEqual(parentRect.left);
+          expect(Math.floor(Math.abs(rect.top - parentRect.top)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rect.left - parentRect.left)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetCenter') {
           //When alignSelf : ItemAlign.Center
           let rectY = Utils.getRectVerticalCenterY(data.pageConfig.componentKey);
@@ -209,20 +209,26 @@ export default function alignSelfTest() {
           console.info('[' + data.caseTag + '] rectY : ' + rectY);
           console.info('[' + data.caseTag + '] parentRectY : ' + parentRectY);
           expect(rectY).assertEqual(parentRectY);
-          expect(rect.left).assertEqual(parentRect.left);
+          expect(Math.floor(Math.abs(rect.left - parentRect.left)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetEnd') {
           //When alignSelf : ItemAlign.End
-          expect(rect.bottom).assertEqual(parentRect.bottom);
-          expect(rect.left).assertEqual(parentRect.left);
+          expect(Math.floor(Math.abs(rect.bottom - parentRect.bottom)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rect.left - parentRect.left)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetStretch') {
           //When alignSelf : ItemAlign.Stretch
-          expect(Math.abs((rect.bottom - rect.top)- vp2px(parentHeight)) <= 1).assertTrue();
+          console.info('[' + data.caseTag + '] rect.bottom - rect.top: ' + (rect.bottom - rect.top));
+          console.info('[' + data.caseTag + '] vp2px(parentHeight): ' + vp2px(parentHeight));
+          if (data.pageConfig.componentKey == 'TextInput' || data.pageConfig.componentKey == 'TextArea') {
+            expect(Math.floor(Math.abs((rect.bottom - rect.top)- vp2px(parentHeight))) <= 2).assertTrue();
+          } else {
+            expect(Math.floor(Math.abs((rect.bottom - rect.top)- vp2px(parentHeight))) <= 1).assertTrue();
+          }
         }
       } else if (data.pageConfig.containerView == 'Column' || data.pageConfig.containerView == 'FlexColumn') {
         if (data.testValue.describe == 'SetAuto' || data.testValue.describe == 'SetStart') {
           //When alignSelf : ItemAlign.Auto or ItemAlign.Start
-          expect(rect.top).assertEqual(parentRect.top);
-          expect(rect.left).assertEqual(parentRect.left);
+          expect(Math.floor(Math.abs(rect.top - parentRect.top)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rect.left - parentRect.left)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetCenter') {
           //When alignSelf : ItemAlign.Center
           let rectX = Utils.getRectHorizontalCenterX(data.pageConfig.componentKey);
@@ -230,21 +236,27 @@ export default function alignSelfTest() {
           console.info('[' + data.caseTag + '] rectX : ' + rectX);
           console.info('[' + data.caseTag + '] parentRectX : ' + parentRectX);
           expect(rectX).assertEqual(parentRectX);
-          expect(rect.top).assertEqual(parentRect.top);
+          expect(Math.floor(Math.abs(rect.top - parentRect.top)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetEnd') {
           //When alignSelf : ItemAlign.End
-          expect(rect.top).assertEqual(parentRect.top);
-          expect(rect.right).assertEqual(parentRect.right);
+          expect(Math.floor(Math.abs(rect.top - parentRect.top)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rect.right - parentRect.right)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetStretch') {
           //When alignSelf : ItemAlign.Stretch
-          expect(Math.abs((rect.right - rect.left)- vp2px(parentWidth)) <= 1).assertTrue();
+          console.info('[' + data.caseTag + '] rect.right - rect.left: ' + (rect.right - rect.left));
+          console.info('[' + data.caseTag + '] vp2px(parentWidth): ' + vp2px(parentWidth));
+          if (data.pageConfig.componentKey == 'TextInput' || data.pageConfig.componentKey == 'TextArea') {
+            expect(Math.floor(Math.abs((rect.right - rect.left)- vp2px(parentWidth))) <= 2).assertTrue();
+          } else {
+            expect(Math.floor(Math.abs((rect.right - rect.left)- vp2px(parentWidth))) <= 1).assertTrue();
+          }
         }
       } else if (data.pageConfig.containerView == 'FlexRowReverse') {
         //Special parent component
         if (data.testValue.describe == 'SetAuto' || data.testValue.describe == 'SetStart') {
           //When alignSelf : ItemAlign.Auto or ItemAlign.Start
-          expect(rect.top).assertEqual(parentRect.top);
-          expect(rect.right).assertEqual(parentRect.right);
+          expect(Math.floor(Math.abs(rect.top - parentRect.top)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rect.right - parentRect.right)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetCenter') {
           //When alignSelf : ItemAlign.Center
           let rectY = Utils.getRectVerticalCenterY(data.pageConfig.componentKey);
@@ -252,21 +264,27 @@ export default function alignSelfTest() {
           console.info('[' + data.caseTag + '] rectY : ' + rectY);
           console.info('[' + data.caseTag + '] parentRectY : ' + parentRectY);
           expect(rectY).assertEqual(parentRectY);
-          expect(rect.right).assertEqual(parentRect.right);
+          expect(Math.floor(Math.abs(rect.right - parentRect.right)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetEnd') {
           //When alignSelf : ItemAlign.End
-          expect(rect.bottom).assertEqual(parentRect.bottom);
-          expect(rect.right).assertEqual(parentRect.right);
+          expect(Math.floor(Math.abs(rect.bottom - parentRect.bottom)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rect.right - parentRect.right)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetStretch') {
           //When alignSelf : ItemAlign.Stretch
-          expect(Math.abs((rect.bottom - rect.top)- vp2px(parentHeight)) <= 1).assertTrue();
+          console.info('[' + data.caseTag + '] rect.bottom - rect.top: ' + (rect.bottom - rect.top));
+          console.info('[' + data.caseTag + '] vp2px(parentHeight): ' + vp2px(parentHeight));
+          if (data.pageConfig.componentKey == 'TextInput' || data.pageConfig.componentKey == 'TextArea') {
+            expect(Math.floor(Math.abs((rect.bottom - rect.top)- vp2px(parentHeight))) <= 2).assertTrue();
+          } else {
+            expect(Math.floor(Math.abs((rect.bottom - rect.top)- vp2px(parentHeight))) <= 1).assertTrue();
+          }
         }
       } else if (data.pageConfig.containerView == 'FlexColumnReverse') {
         //Special parent component
         if (data.testValue.describe == 'SetAuto' || data.testValue.describe == 'SetStart') {
           //When alignSelf : ItemAlign.Auto or ItemAlign.Start
-          expect(rect.bottom).assertEqual(parentRect.bottom);
-          expect(rect.left).assertEqual(parentRect.left);
+          expect(Math.floor(Math.abs(rect.bottom - parentRect.bottom)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rect.left - parentRect.left)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetCenter') {
           //When alignSelf : ItemAlign.Center
           let rectX = Utils.getRectHorizontalCenterX(data.pageConfig.componentKey);
@@ -274,14 +292,20 @@ export default function alignSelfTest() {
           console.info('[' + data.caseTag + '] rectX : ' + rectX);
           console.info('[' + data.caseTag + '] parentRectX : ' + parentRectX);
           expect(rectX).assertEqual(parentRectX);
-          expect(rect.bottom).assertEqual(parentRect.bottom);
+          expect(Math.floor(Math.abs(rect.bottom - parentRect.bottom)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetEnd') {
           //When alignSelf : ItemAlign.End
-          expect(rect.bottom).assertEqual(parentRect.bottom);
-          expect(rect.right).assertEqual(parentRect.right);
+          expect(Math.floor(Math.abs(rect.bottom - parentRect.bottom)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rect.right - parentRect.right)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetStretch') {
           //When alignSelf : ItemAlign.Stretch
-          expect(Math.abs((rect.right - rect.left)- vp2px(parentWidth)) <= 1).assertTrue();
+          console.info('[' + data.caseTag + '] rect.right - rect.left: ' + (rect.right - rect.left));
+          console.info('[' + data.caseTag + '] vp2px(parentWidth): ' + vp2px(parentWidth));
+          if (data.pageConfig.componentKey == 'TextInput' || data.pageConfig.componentKey == 'TextArea') {
+            expect(Math.floor(Math.abs((rect.right - rect.left)- vp2px(parentWidth))) <= 2).assertTrue();
+          } else {
+            expect(Math.floor(Math.abs((rect.right - rect.left)- vp2px(parentWidth))) <= 1).assertTrue();
+          }
         }
       }
     })

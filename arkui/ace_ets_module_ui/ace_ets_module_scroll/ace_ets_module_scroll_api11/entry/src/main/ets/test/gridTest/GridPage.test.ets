@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
 
@@ -45,7 +45,7 @@ export default function GridTest() {
      *tc.name   Test Grid with GridItemStyle.NONE
      *tc.desc   Test Grid with GridItemStyle.NONE
      */
-    it('ArkUX_Grid_api_0001', 0, async (done: Function) => {
+    it('ArkUX_Grid_api_0001', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0001'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItemStyle_NONE');
@@ -64,7 +64,7 @@ export default function GridTest() {
      *tc.name   Test Grid with GridItemStyle.PLAIN
      *tc.desc   Test Grid with GridItemStyle.PLAIN
      */
-    it('ArkUX_Grid_api_0002', 0, async (done: Function) => {
+    it('ArkUX_Grid_api_0002', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0002'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItemStyle_PLAIN');
@@ -83,7 +83,7 @@ export default function GridTest() {
      *tc.name   Test Grid with exceptional value
      *tc.desc   Test Grid with exceptional value
      */
-    it('ArkUX_Grid_api_0003', 0, async (done: Function) => {
+    it('ArkUX_Grid_api_0003', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0003'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItemStyle_EXCEPTION');
@@ -111,7 +111,7 @@ export default function GridTest() {
      *tc.name   Test Grid with value not set
      *tc.desc   Test Grid with value not set
      */
-     it('ArkUX_Grid_api_0004', 0, async (done: Function) => {
+     it('ArkUX_Grid_api_0004', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0004'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItem_VALUE_NOT_SET');
@@ -130,7 +130,7 @@ export default function GridTest() {
      *tc.name   Test Grid with exceptional value
      *tc.desc   Test Grid with exceptional value
      */
-     it('ArkUX_Grid_api_0005', 0, async (done: Function) => {
+     it('ArkUX_Grid_api_0005', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0005'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItemStyle_VALUE');

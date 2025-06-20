@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -68,7 +68,7 @@ export default function toggleJsunit() {
      * @tc.name testToggle010
      * @tc.desc aceEtsTest
      */
-    it('testToggle010', 0, async (done: Function) => {
+    it('testToggle010', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle010 START');
       let strJson = getInspectorByKey('toggle1');
       let obj: ESObject = JSON.parse(strJson);
@@ -87,7 +87,7 @@ export default function toggleJsunit() {
      * @tc.name testToggle020
      * @tc.desc aceEtsTest
      */
-    it('testToggle020', 0, async (done: Function) => {
+    it('testToggle020', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle020 START');
       let strJson = getInspectorByKey('toggle2');
       let obj: ESObject = JSON.parse(strJson);
@@ -104,7 +104,7 @@ export default function toggleJsunit() {
      * @tc.name testToggle030
      * @tc.desc aceEtsTest
      */
-    it('testToggle030', 0, async (done: Function) => {
+    it('testToggle030', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle030 START');
       let strJson = getInspectorByKey('toggle3');
       let obj: ESObject = JSON.parse(strJson);
@@ -121,7 +121,7 @@ export default function toggleJsunit() {
      * @tc.name testToggle040
      * @tc.desc aceEtsTest
      */
-    it('testToggle040', 0, async (done: Function) => {
+    it('testToggle040', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle040 START');
       let strJson = getInspectorByKey('toggle4');
       let obj: ESObject = JSON.parse(strJson);
@@ -138,7 +138,7 @@ export default function toggleJsunit() {
      * @tc.name testToggle050
      * @tc.desc aceEtsTest
      */
-    it('testToggle050', 0, async (done: Function) => {
+    it('testToggle050', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle050 START');
       let strJson = getInspectorByKey('toggle5');
       let obj: ESObject = JSON.parse(strJson);
@@ -155,7 +155,7 @@ export default function toggleJsunit() {
      * @tc.name testToggle060
      * @tc.desc aceEtsTest
      */
-    it('testToggle060', 0, async (done: Function) => {
+    it('testToggle060', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle060 START');
       let strJson = getInspectorByKey('toggle6');
       console.info('sendEventByKey result is ' + sendEventByKey('toggle6', 10, ''))

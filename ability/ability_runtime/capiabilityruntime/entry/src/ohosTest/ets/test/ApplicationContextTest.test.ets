@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 import contextConstant from '@ohos.app.ability.contextConstant';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -35,21 +35,21 @@ export default function applicationContextTest() {
     afterAll(() => {
     })
 
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetBundleName_0100', 0, () => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetBundleName_0100', Level.LEVEL0, () => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetBundleName_0100';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
       let bundleName = testNapi.getBundleName();
       expect(bundleName).assertEqual(applicationContext.applicationInfo.name);
     })
 
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetBundleName_0200', 0, () => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetBundleName_0200', Level.LEVEL0, () => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetBundleName_0200';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
       let result = testNapi.testGetBundleName(applicationContext.applicationInfo.name);
       expect(result).assertEqual(0);
     })
 
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetCacheDir_0100', 0, () => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetCacheDir_0100', Level.LEVEL0, () => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetCacheDir_0100';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
       expect(testNapi.getCacheDir()).assertEqual(applicationContext.cacheDir);
@@ -73,7 +73,7 @@ export default function applicationContextTest() {
       applicationContext.area = contextConstant.AreaMode.EL2;
     })
 
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetCacheDir_0200', 0, () => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetCacheDir_0200', Level.LEVEL0, () => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetCacheDir_0200';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
       let result = testNapi.testGetCacheDir(applicationContext.cacheDir);
@@ -103,7 +103,7 @@ export default function applicationContextTest() {
       applicationContext.area = contextConstant.AreaMode.EL2;
     })
 
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetAreaMode_0100', 0, () => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetAreaMode_0100', Level.LEVEL0, () => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetAreaMode_0100';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
       expect(testNapi.getAreaMode()).assertEqual(applicationContext.area);
@@ -127,7 +127,7 @@ export default function applicationContextTest() {
       applicationContext.area = contextConstant.AreaMode.EL2;
     })
 
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetAreaMode_0200', 0, () => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetAreaMode_0200', Level.LEVEL0, () => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetAreaMode_0200';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
       let result = testNapi.testGetAreaMode(applicationContext.area);
@@ -165,7 +165,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0100', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0100';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
       applicationContext.area = contextConstant.AreaMode.EL2;
@@ -226,7 +226,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0200', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0200';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -274,7 +274,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0300', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0300';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -336,7 +336,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0400', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0400';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -385,7 +385,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0500', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0500';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -447,7 +447,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0600', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0600';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
       getCodeArray = testNapi.testGetPreferencesDir(applicationContext.preferencesDir);
@@ -495,7 +495,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0700', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0700', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0700';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -557,7 +557,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0800', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0800', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0800';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -605,7 +605,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0900', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0900';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -667,7 +667,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1000', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1000';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -715,7 +715,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1100', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1100';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -777,7 +777,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1200', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1200';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -825,7 +825,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1300', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1300';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -887,7 +887,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1400', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1400';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 
@@ -934,7 +934,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1500', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1500';
       hilog.info(0x0000, 'testTag', tag + '%{public}s begin', tag);
 
@@ -963,7 +963,7 @@ export default function applicationContextTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1600', Level.LEVEL0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1600';
       hilog.info(0x0000, 'testTag', '%{public}s begin', tag);
 

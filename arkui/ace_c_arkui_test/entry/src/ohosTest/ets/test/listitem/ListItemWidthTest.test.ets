@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listItemWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemWidth001', 0, async (done: Function) => {
+    it('testListItemWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemWidth001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listItemWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemWidth002', 0, async (done: Function) => {
+    it('testListItemWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemWidth002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listItemWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListItemWidth003', 0, async (done: Function) => {
+    it('testListItemWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemWidth003()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -33,7 +33,7 @@ export default function systemColorFontChangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegisterSystemColorModeChangeEvent_001', 0, async (done: Function) => {
+    it('testRegisterSystemColorModeChangeEvent_001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRegisterSystemColorModeChangeEvent_001()).assertEqual(0)
       done()
     })
@@ -46,7 +46,7 @@ export default function systemColorFontChangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUnregisterSystemColorModeChangeEvent_002', 0, async (done: Function) => {
+    it('testUnregisterSystemColorModeChangeEvent_002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnregisterSystemColorModeChangeEvent_002()).assertEqual(0)
       done()
     })
@@ -59,7 +59,7 @@ export default function systemColorFontChangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegisterSystemFontStyleChangeEvent_003', 0, async (done: Function) => {
+    it('testRegisterSystemFontStyleChangeEvent_003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRegisterSystemFontStyleChangeEvent_003()).assertEqual(0)
       done()
     })
@@ -72,7 +72,7 @@ export default function systemColorFontChangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUnregisterSystemFontStyleChangeEvent_004', 0, async (done: Function) => {
+    it('testUnregisterSystemFontStyleChangeEvent_004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnregisterSystemFontStyleChangeEvent_004()).assertEqual(0)
       done()
     })
@@ -85,7 +85,7 @@ export default function systemColorFontChangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSystemFontStyleEvent_GetFontSizeScale_005', 0, async (done: Function) => {
+    it('testSystemFontStyleEvent_GetFontSizeScale_005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSystemFontStyleEvent_GetFontSizeScale_005()).assertEqual(0)
       done()
     })
@@ -98,7 +98,7 @@ export default function systemColorFontChangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSystemFontStyleEvent_GetFontWeightScale_006', 0, async (done: Function) => {
+    it('testSystemFontStyleEvent_GetFontWeightScale_006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSystemFontStyleEvent_GetFontWeightScale_006()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Level, TestType, Size} from '@ohos/hypium';
 import window from '@ohos.window';
 import {GlobalContext} from './GlobalContext.test'
 import { BusinessError } from '@ohos.base';
@@ -39,9 +39,9 @@ export default function FloatingWindowTest() {
      * @tc.desc      : preferMultWindowOrientation配置为landscap，调用disableLandscapeMultiWindow不报错
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('test_landscap_disableLandscapeMultiWindow', 2, async (done:Function) => {
+    it('test_landscap_disableLandscapeMultiWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       try{
         await window.getLastWindow(GlobalContext.getContext().getObject("context")).then(async (data) => {
           let windowClass = data;

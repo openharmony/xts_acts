@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import contextConstant from '@ohos.app.ability.contextConstant';
 import common from '@ohos.app.ability.common';
@@ -105,7 +105,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0100';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -132,7 +132,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0200';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -159,7 +159,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0300', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0300';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -194,7 +194,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0400', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_AbilityContext_Dir_Normal_0400';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -230,7 +230,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */ 
-    it('SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0500', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0500';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -256,7 +256,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0600', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0600';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -282,7 +282,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContext_Dir_Normal_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContext_Dir_Normal_0700', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_ApplicationContext_Dir_Normal_0700';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -309,7 +309,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContext_Dir_Normal_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContext_Dir_Normal_0800', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_ApplicationContext_Dir_Normal_0800';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -336,7 +336,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStageContext_Dir_Normal_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStageContext_Dir_Normal_0900', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_AbilityStageContext_Dir_Normal_0900';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
@@ -362,7 +362,7 @@ export default function ContextDirNormalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStageContext_Dir_Normal_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStageContext_Dir_Normal_1000', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_AbilityStageContext_Dir_Normal_1000';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {

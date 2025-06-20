@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 
@@ -49,14 +49,19 @@ export default function waterFlow_WaterFlowFrictionTest() {
      * @tc.name      testWaterFlowFriction
      * @tc.desc      set friction to -1
      */
-    it('testWaterFlowFriction_0100', 0, async (done: Function) => {
+    it('testWaterFlowFriction_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[testWaterFlowFriction_0100] START');
       globalThis.value.message.notify({name:'friction', value:-1})
       await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('WaterFlow_WaterFlowFriction');
       let scrollContainerObj: ESObject = JSON.parse(scrollContainerStrJson);
       expect(scrollContainerObj.$type).assertEqual('WaterFlow');
-      expect(scrollContainerObj.$attrs.friction).assertEqual(0.7);
+      console.info('[testWaterFlowFriction_0100] scrollContainerObj friction: ' + scrollContainerObj.$attrs.friction);
+
+      let flowDefJson = getInspectorByKey('waterFlow_friction_default');
+      let flowDefObj: ESObject = JSON.parse(flowDefJson);
+      console.info('[testWaterFlowFriction_0100] flowDefObj friction: ' + flowDefObj.$attrs.friction);
+      expect(scrollContainerObj.$attrs.friction).assertEqual(flowDefObj.$attrs.friction);
       console.info('[testWaterFlowFriction_0100] END');
       done();
     });
@@ -66,7 +71,7 @@ export default function waterFlow_WaterFlowFrictionTest() {
      * @tc.name      testWaterFlowFriction
      * @tc.desc      set friction to 10
      */
-    it('testWaterFlowFriction_0200', 0, async (done: Function) => {
+    it('testWaterFlowFriction_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[testWaterFlowFriction_0200] START');
       globalThis.value.message.notify({name:'friction', value:10})
       await CommonFunc.sleep(2000);

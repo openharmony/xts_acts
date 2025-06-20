@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 import cryptoFramework from "@ohos.security.cryptoFramework";
@@ -33,7 +33,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_1200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("RSA512", "RSA512|PSS|SHA384|MGF1_SHA384")
@@ -58,7 +58,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_5000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcessDataException("RSA512", "RSA512|PSS|SHA384|MGF1_SHA384", "null")
@@ -83,7 +83,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_1300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createAsyKeyGenerator("RSA256");
@@ -112,7 +112,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_1400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     let rsaGenerator = cryptoFramework.createAsyKeyGenerator("RSA3072");
@@ -154,7 +154,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_2000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .encryptAndDecryptNormalProcessSuperdata(
@@ -183,7 +183,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_2100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcessSuperdata(
@@ -213,7 +213,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_1500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     let rsaGenerator = cryptoFramework.createAsyKeyGenerator("RSA3072");
@@ -255,7 +255,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("ECC224", "ECC224|SHA256")
@@ -280,7 +280,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("ECC256", "ECC256|SHA1")
@@ -305,7 +305,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("ECC384", "ECC384|SHA224")
@@ -330,7 +330,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("ECC521", "ECC521|SHA384")
@@ -355,7 +355,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("ECC224", "ECC224|SHA512")
@@ -380,7 +380,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createAsyKeyGenerator("ECC1");
@@ -409,7 +409,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     let rsaGenerator = cryptoFramework.createAsyKeyGenerator("ECC224");
@@ -449,7 +449,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createAsyKeyGenerator("RSA3072");
@@ -487,7 +487,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDSA_0900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcessSuperdata(
@@ -516,7 +516,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDH_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .keyAgreementProcess("ECC224")
@@ -541,7 +541,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDH_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .keyAgreementProcess("ECC256")
@@ -566,7 +566,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDH_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .keyAgreementProcess("ECC384")
@@ -591,7 +591,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDH_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .keyAgreementProcess("ECC521")
@@ -616,7 +616,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDH_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createKeyAgreement("ECC5");
@@ -642,7 +642,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDH_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let rsaGenerator = cryptoFramework.createAsyKeyGenerator("ECC256");
                 let keyPair1 = await rsaGenerator.generateKeyPair();
@@ -694,7 +694,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_ECDH_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let rsaGenerator = cryptoFramework.createAsyKeyGenerator("RSA3072");
                 let keyPair1 = await rsaGenerator.generateKeyPair();
@@ -727,7 +727,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_3300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .convertKeyEncryptAndDecryptProcess("RSA3072|PRIMES_2")
@@ -752,7 +752,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_3100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .AsyPriKeyClearProcess("RSA1024|PRIMES_2")
@@ -777,7 +777,7 @@ export default function AsymmetricCryptographyJsSecondunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_1100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("RSA8192", "RSA8192|PSS|SHA512|MGF1_SHA512")

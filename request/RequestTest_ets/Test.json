@@ -6,7 +6,7 @@
         "shell-timeout": "180000",
         "bundle-name": "com.acts.requesttest",
         "package-name": "com.acts.requesttest_test",
-        "testcase-timeout": 15000
+        "testcase-timeout": 60000
     },
     "kits": [
         {

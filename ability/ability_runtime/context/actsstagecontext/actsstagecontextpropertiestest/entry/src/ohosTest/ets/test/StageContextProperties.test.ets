@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach, beforeAll, beforeEach } from '@ohos/hypium'
+import { describe, it, expect, afterEach, beforeAll, beforeEach, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEventManager'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import { Driver, ON } from '@ohos.UiTest';
@@ -85,7 +85,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0100"
       console.log(TAG + "--- start");
 
@@ -101,7 +101,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0200"
       console.log(TAG + "--- start");
       checkApplicationContextDir(abilityContext.getApplicationContext());
@@ -120,7 +120,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_0300', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0300"
       console.log(TAG + " --- start");
 
@@ -158,7 +158,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_0400', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0400"
       console.log(TAG + " --- start");
 
@@ -196,7 +196,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_0500', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0500"
       console.log(TAG + " --- start");
       checkApplicationContextDir(abilityContext.getApplicationContext());
@@ -239,7 +239,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_0600', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0600"
       console.log(TAG + " --- start");
       checkAbilityContextDir(abilityContext);
@@ -291,7 +291,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_0700', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0700', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0700"
       console.log(TAG + " --- start");
       checkAbilityStageContextDir();
@@ -343,7 +343,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_0800', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0800', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0800"
       console.log(TAG + " --- start");
       let num = 0;
@@ -412,7 +412,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 0
      */
-    it('SUB_AA_OpenHarmony_Context_0900', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_0900', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_0900"
       console.log(TAG + " --- start " + JSON.stringify(globalThis.abilityContextRes));
       let result: string = await globalThis.abilityContextRes.resourceManager.getString(50331651);
@@ -427,7 +427,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_1000', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_1000', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_1000"
       console.log(TAG + " --- start " + JSON.stringify(globalThis.abilityStageContextRes));
       console.log(TAG + " : result = " + JSON.stringify(globalThis.abilityStageContextRes));
@@ -443,7 +443,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_1100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_1100', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_1100"
       console.log(TAG + " --- start " + JSON.stringify(globalThis.abilityStageContextRes));
       console.log(TAG + " --- start " + JSON.stringify(globalThis.abilityStageContextRes33));
@@ -461,7 +461,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_1200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_1200', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_1200"
       console.log(TAG + " --- start");
 
@@ -504,7 +504,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_1300', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_1300', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_1300"
       console.log(TAG + " --- start");
       try {
@@ -522,7 +522,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_1400', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_1400', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_1400";
       console.log(TAG + "--- start");
       checkAbilityContextDir(abilityContext);
@@ -559,7 +559,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_1500', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_1500', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_1500"
       console.log(TAG + "--- start");
       checkAbilityContextDir(abilityContext);
@@ -587,7 +587,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
      * @tc.desc: Function test
      * @tc.level 3
      */
-    it('SUB_AA_OpenHarmony_Context_1600', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Context_1600', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_AA_OpenHarmony_Context_1600"
       console.log(TAG + "--- start");
       let applicationContext = abilityContext.getApplicationContext();

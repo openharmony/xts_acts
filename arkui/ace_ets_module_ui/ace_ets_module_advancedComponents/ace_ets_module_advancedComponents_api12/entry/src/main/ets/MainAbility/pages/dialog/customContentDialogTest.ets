@@ -22,6 +22,7 @@ struct CustomContentDialogTest {
     builder: CustomContentDialog({
       primaryTitle: '标题',
       secondaryTitle: '辅助文本',
+      contentAreaPadding: { top: 0, bottom: 0 },
       contentBuilder: () => {
         this.buildContent();
       },

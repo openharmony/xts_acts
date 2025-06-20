@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import cert from '@ohos.security.cert';
 import { BusinessError } from '@ohos.base';
 
@@ -28,7 +28,7 @@ export default function certFrameworkCreateTrustAnchorJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0100";
       try {
         cert.createTrustAnchorsWithKeyStore(pubKeyData, '123456').then((data) => {
@@ -55,7 +55,7 @@ export default function certFrameworkCreateTrustAnchorJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0200";
       let keystore = new Uint8Array([0x30, 0x82, 0x01]);
       try {
@@ -85,7 +85,7 @@ export default function certFrameworkCreateTrustAnchorJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0300";
       let keystore = new Uint8Array();
       try {
@@ -114,7 +114,7 @@ export default function certFrameworkCreateTrustAnchorJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0400";
       let pwd = '8888';
       try {
@@ -144,7 +144,7 @@ export default function certFrameworkCreateTrustAnchorJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Security_Cert_Framework_CreateTrustAnchor_Func_0500";
       let pwd = '';
       try {

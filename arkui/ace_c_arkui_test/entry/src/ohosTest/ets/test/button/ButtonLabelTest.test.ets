@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function buttonLabelTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonLabel001', 0, async (done: Function) => {
+    it('testButtonLabel001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ButtonLabel001Test';
       await Utils.pushPage(`button/${PAGE_TAG}`);
       expect(JSON.parse(getInspectorByKey('button001')).$attrs.label).assertEqual('label')
@@ -49,7 +49,7 @@ export default function buttonLabelTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonLabel002', 0, async (done: Function) => {
+    it('testButtonLabel002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ButtonLabel002Test';
       await Utils.pushPage(`button/${PAGE_TAG}`);
       expect(JSON.parse(getInspectorByKey('button002')).$attrs.label).assertEqual('longlonglonglonglonglonglonglong' +
@@ -65,7 +65,7 @@ export default function buttonLabelTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonLabel003', 0, async (done: Function) => {
+    it('testButtonLabel003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ButtonLabel003Test';
       await Utils.pushPage(`button/${PAGE_TAG}`);
       expect(JSON.parse(getInspectorByKey('button003')).$attrs.label).assertEqual('')
@@ -80,7 +80,7 @@ export default function buttonLabelTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonLabel004', 0, async (done: Function) => {
+    it('testButtonLabel004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ButtonLabel004Test';
       await Utils.pushPage(`button/${PAGE_TAG}`);
       expect(JSON.parse(getInspectorByKey('button004')).$attrs.width).assertEqual('100.00vp')

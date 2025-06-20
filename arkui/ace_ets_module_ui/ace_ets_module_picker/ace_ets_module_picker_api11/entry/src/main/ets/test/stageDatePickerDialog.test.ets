@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 
@@ -53,7 +53,7 @@ export default function stageDatePickerDialog() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('testDatePickerDialog001', 0, async (done: Function) => {
+    it('testDatePickerDialog001', Level.LEVEL1, async (done: Function) => {
       console.info('testDatePickerDialog001 START');
       setTimeout(() => {
         try {
@@ -81,7 +81,7 @@ export default function stageDatePickerDialog() {
       }, 500)
     });
 
-    it('testDatePickerDialog002', 0, async (done: Function) => {
+    it('testDatePickerDialog002', Level.LEVEL1, async (done: Function) => {
       console.info('testDatePickerDialog002 START');
       setTimeout(() => {
         try {
@@ -108,7 +108,7 @@ export default function stageDatePickerDialog() {
         done();
       }, 500)
     });
-    it('testDatePickerDialog003', 0, async (done: Function) => {
+    it('testDatePickerDialog003', Level.LEVEL1, async (done: Function) => {
       console.info('testDatePickerDialog003 START');
       setTimeout(() => {
         try {

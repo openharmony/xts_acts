@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function gridRowsTemplateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridRowsTemplate001', 0, async (done: Function) => {
+    it('testGridRowsTemplate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridRowsTemplate001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function gridRowsTemplateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridRowsTemplate002', 0, async (done: Function) => {
+    it('testGridRowsTemplate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridRowsTemplate002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function gridRowsTemplateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridRowsTemplate003', 0, async (done: Function) => {
+    it('testGridRowsTemplate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridRowsTemplate003()).assertEqual(0)
       done();
     })

@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, it, expect, Level } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import commonEvent from '@ohos.commonEventManager';
@@ -304,7 +304,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let errCode = 401;
@@ -363,7 +363,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let errCode = 401;
@@ -423,7 +423,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 401;
@@ -475,7 +475,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4100', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 16000050;
@@ -525,7 +525,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3000', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 401;
@@ -575,7 +575,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2900', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2900';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 401;
@@ -625,7 +625,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3900', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3900';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 401;
@@ -675,7 +675,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4000', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 401;
@@ -725,7 +725,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 401;
@@ -775,7 +775,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 401;
@@ -825,7 +825,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 401;
@@ -875,7 +875,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_3800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 16000050;
@@ -925,7 +925,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -978,7 +978,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2000', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -1057,7 +1057,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1300', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let num = 1;
@@ -1131,7 +1131,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2100', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -1181,7 +1181,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2300', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -1234,7 +1234,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2400', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2400';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -1286,7 +1286,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -1339,7 +1339,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2500', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -1393,7 +1393,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let code = 16000050;
@@ -1444,7 +1444,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1200';
       let errNum = 16000050;
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
@@ -1495,7 +1495,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1400', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1400';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let num = 1;

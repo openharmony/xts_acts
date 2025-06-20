@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight001', 0, async (done: Function) => {
+    it('testTextInputFontWeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight002', 0, async (done: Function) => {
+    it('testTextInputFontWeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight003', 0, async (done: Function) => {
+    it('testTextInputFontWeight003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight004', 0, async (done: Function) => {
+    it('testTextInputFontWeight004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight005', 0, async (done: Function) => {
+    it('testTextInputFontWeight005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight006', 0, async (done: Function) => {
+    it('testTextInputFontWeight006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight007', 0, async (done: Function) => {
+    it('testTextInputFontWeight007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight008', 0, async (done: Function) => {
+    it('testTextInputFontWeight008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight009', 0, async (done: Function) => {
+    it('testTextInputFontWeight009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight010', 0, async (done: Function) => {
+    it('testTextInputFontWeight010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight011', 0, async (done: Function) => {
+    it('testTextInputFontWeight011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight012', 0, async (done: Function) => {
+    it('testTextInputFontWeight012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight013', 0, async (done: Function) => {
+    it('testTextInputFontWeight013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight014', 0, async (done: Function) => {
+    it('testTextInputFontWeight014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontWeight015', 0, async (done: Function) => {
+    it('testTextInputFontWeight015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextInputFontWeight016', 0, async (done: Function) => {
+    it('testTextInputFontWeight016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontWeight016()).assertEqual(0)
       done()
     })

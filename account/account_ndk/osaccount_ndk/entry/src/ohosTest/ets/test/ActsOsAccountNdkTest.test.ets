@@ -27,11 +27,11 @@ export default function ActsOsAccountNdkTest() {
      * @tc.number  : SUB_Account_OsAccount_GetName_0100
      * @tc.name    : test OH_OsAccount_GetName Test Normal Scene
      * @tc.desc    : Gets the name of the OS account to which the caller process belongs.
-     * @tc.level   : Level3
+     * @tc.level   : Level0
      * @tc.size    : MediumTest
      * @tc.type    : Function
      */
-    it('SUB_Account_OsAccount_GetName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_Account_OsAccount_GetName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         console.info("====>SUB_Account_OsAccount_GetName_0100 start====");
         let result = osAccountNdk.osAccountGetAccountNameA();

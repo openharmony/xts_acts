@@ -15,7 +15,8 @@
 {
   "license": "",
   "devDependencies": {
-    "@types/libentry.so": "file:./src/main/cpp/types/libentry"
+    "@types/libentry.so": "file:./src/main/cpp/types/libentry",
+    "@types/libArriveOnNdk.so": "file:./src/main/cpp/types/libArriveOnNdk"
   },
   "author": "",
   "name": "entry",

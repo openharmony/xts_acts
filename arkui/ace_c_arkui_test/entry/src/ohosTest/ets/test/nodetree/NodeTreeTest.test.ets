@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree001', 0, async (done: Function) => {
+    it('testNodeTree001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree002', 0, async (done: Function) => {
+    it('testNodeTree002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree003', 0, async (done: Function) => {
+    it('testNodeTree003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree004', 0, async (done: Function) => {
+    it('testNodeTree004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree005', 0, async (done: Function) => {
+    it('testNodeTree005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree006', 0, async (done: Function) => {
+    it('testNodeTree006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree007', 0, async (done: Function) => {
+    it('testNodeTree007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree008', 0, async (done: Function) => {
+    it('testNodeTree008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree009', 0, async (done: Function) => {
+    it('testNodeTree009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree010', 0, async (done: Function) => {
+    it('testNodeTree010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree011', 0, async (done: Function) => {
+    it('testNodeTree011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree012', 0, async (done: Function) => {
+    it('testNodeTree012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree013', 0, async (done: Function) => {
+    it('testNodeTree013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree014', 0, async (done: Function) => {
+    it('testNodeTree014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree015', 0, async (done: Function) => {
+    it('testNodeTree015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree016', 0, async (done: Function) => {
+    it('testNodeTree016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree017', 0, async (done: Function) => {
+    it('testNodeTree017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree018', 0, async (done: Function) => {
+    it('testNodeTree018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree019', 0, async (done: Function) => {
+    it('testNodeTree019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree019()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree020', 0, async (done: Function) => {
+    it('testNodeTree020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree020()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree021', 0, async (done: Function) => {
+    it('testNodeTree021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree021()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function nodeTreeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTree022', 0, async (done: Function) => {
+    it('testNodeTree022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeTree022()).assertEqual(0)
       done()
     })

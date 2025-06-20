@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium';
 import observer from '@ohos.telephony.observer';
 import sim from '@ohos.telephony.sim';
 import call from '@ohos.telephony.call';
@@ -37,9 +37,9 @@ export default function observerManagerNotCartTest() {
      * @tc.desc  : Subscribe to call status change event.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testTelephonyObserverCallStateChangeOn0600', 0, async (done: Function) => {
+    it('testTelephonyObserverCallStateChangeOn0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverCallStateChangeOn0600';
       console.info(`${caseName} test start `);
       try {

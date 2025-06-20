@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -62,7 +62,7 @@ export default function StateClassObjectJsunit() {
       });
     });
 
-    it('StateClassObjectJsunit_0100', 0, async (done: Function) => {
+    it('StateClassObjectJsunit_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateClassObjectJsunit_0100 START');
       let strJson1 = getInspectorByKey('text_Object');
@@ -81,7 +81,7 @@ export default function StateClassObjectJsunit() {
       done();
     });
 
-    it('StateClassObjectJsunit_0200', 0, async (done: Function) => {
+    it('StateClassObjectJsunit_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateClassObjectJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -104,7 +104,7 @@ export default function StateClassObjectJsunit() {
       done();
     });
 
-    it('StateClassObjectJsunit_0300', 0, async (done: Function) => {
+    it('StateClassObjectJsunit_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateClassObjectJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -120,7 +120,7 @@ export default function StateClassObjectJsunit() {
       done();
     });
 
-    it('StateClassObjectJsunit_0400', 0, async (done: Function) => {
+    it('StateClassObjectJsunit_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateClassObjectJsunit_0400 START');
       let driver = await UiDriver.create()

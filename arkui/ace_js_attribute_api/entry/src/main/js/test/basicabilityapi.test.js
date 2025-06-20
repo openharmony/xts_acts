@@ -16,26 +16,23 @@
 import configuration from '@system.configuration';
 import prompt from '@system.prompt';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function basicabilityapi() {
-    describe('basicabilityapi', function () {
+    describe('basicabilityapi', function() {
         let testResult;
         let testResultFail;
         let test;
-        beforeAll(function () {
+        beforeAll(function() {
             testResult = true;
             testResultFail = false;
             test = "success"
         });
-        beforeEach(function () {
-        });
-        afterEach(function () {
-        });
-        afterAll(function () {
-        });
+        beforeEach(function() {});
+        afterEach(function() {});
+        afterAll(function() {});
 
-        async function backToIndex(){
+        async function backToIndex() {
             let backToIndexPromise = new Promise((resolve, reject) => {
                 setTimeout(() => {
                     router.back({
@@ -60,19 +57,19 @@ export default function basicabilityapi() {
          * @tc.name      testClearInterval
          * @tc.desc      Cancel the repetitive timing tasks previously set by setInterval.
          */
-        it('testClearInterval', 0, async function(done) {
+        it('testClearInterval', Level.LEVEL0, async function(done) {
             console.info('testClearInterval START');
             let res = 0;
             let intervalID = -1;
             let promise1 = new Promise((resolve, reject) => {
-                intervalID = setInterval(function () {
+                intervalID = setInterval(function() {
                     res++;
                     console.info('testClearInterval res = ' + res);
                     resolve();
                 }, 100);
             });
             let promise2 = new Promise((resolve, reject) => {
-                setTimeout(function () {
+                setTimeout(function() {
                     console.info('[clearInterval] start');
                     clearInterval(intervalID);
                     console.info('[clearInterval] end');
@@ -92,9 +89,9 @@ export default function basicabilityapi() {
          * @tc.name      testConsole
          * @tc.desc      Print a text message.
          */
-        it('testConsole', 0, function () {
+        it('testConsole', Level.LEVEL0, function() {
             console.info('testConsole START');
-            try{
+            try {
                 const versionCode = 1.1;
                 console.info('[console.info] versionCode: ' + versionCode);
                 console.debug('[console.debug] versionCode: ' + versionCode);
@@ -103,8 +100,7 @@ export default function basicabilityapi() {
                 console.error('[console.error] versionCode: ' + versionCode);
                 expect(test).assertEqual('success');
                 console.info('testConsole END');
-            }
-            catch(e){
+            } catch (e) {
                 console.info('testConsole ERROR' + e);
             }
         });
@@ -114,10 +110,10 @@ export default function basicabilityapi() {
          * @tc.name      testRouterPush
          * @tc.desc      Go to the specified page of the application.
          */
-        it('testRouterPush', 0, async function (done) {
+        it('testRouterPush', Level.LEVEL0, async function(done) {
             console.info('testRouterPush START');
             let options = {
-                uri : 'pages/routerPush/index'
+                uri: 'pages/routerPush/index'
             }
             let promise1 = new Promise((resolve, reject) => {
                 router.push(options);
@@ -147,7 +143,7 @@ export default function basicabilityapi() {
          * @tc.name      testRouterPushNotExist
          * @tc.desc      Test push not exist page.
          */
-        it('testRouterPushNotExist', 0, async function (done) {
+        it('testRouterPushNotExist', Level.LEVEL0, async function(done) {
             console.info('testRouterPushNotExist START');
             let promise1 = new Promise((resolve, reject) => {
                 router.push({
@@ -178,17 +174,17 @@ export default function basicabilityapi() {
          * @tc.name      testRouterReplace
          * @tc.desc      Replace the current page with a page in the application, and destroy the replaced page.
          */
-        it('testRouterReplace', 0, async function (done) {
+        it('testRouterReplace', Level.LEVEL0, async function(done) {
             console.info('testRouterReplace START');
             let options = {
-                uri : 'pages/routerPush/index'
+                uri: 'pages/routerPush/index'
             }
             let promise1 = new Promise((resolve, reject) => {
                 router.push(options);
                 resolve();
             });
             let repleasePage = {
-                uri : 'pages/routerReplace/index'
+                uri: 'pages/routerReplace/index'
             }
             let promise2 = new Promise((resolve, reject) => {
                 setTimeout(() => {
@@ -223,7 +219,7 @@ export default function basicabilityapi() {
          * @tc.name      testRouterReplaceNotExist
          * @tc.desc      Test replace not exist page.
          */
-        it('testRouterReplaceNotExist', 0, async function (done) {
+        it('testRouterReplaceNotExist', Level.LEVEL0, async function(done) {
             console.info('testRouterReplaceNotExist START');
             await setTimeout(() => {
                 router.replace({
@@ -246,7 +242,7 @@ export default function basicabilityapi() {
          * @tc.name      testRouterBack
          * @tc.desc      Return to the previous page or the specified page.
          */
-        it('testRouterBack', 0, async function (done) {
+        it('testRouterBack', Level.LEVEL0, async function(done) {
             console.info('testRouterBack START');
             let promise1 = new Promise((resolve, reject) => {
                 router.push({
@@ -287,7 +283,7 @@ export default function basicabilityapi() {
          * @tc.name      testRouterClear
          * @tc.desc      Clear all historical pages in the page stack, and only keep the current page as the top page.
          */
-        it('testRouterClear', 0, function () {
+        it('testRouterClear', Level.LEVEL0, function() {
             console.info('testRouterClear START');
             router.clear();
             console.info("[router.clear] router.getLength:" + router.getLength());
@@ -300,13 +296,13 @@ export default function basicabilityapi() {
          * @tc.name      testRouterLength
          * @tc.desc      Get the number of pages currently in the page stack.
          */
-        it('testRouterLength', 0, async function (done) {
+        it('testRouterLength', Level.LEVEL0, async function(done) {
             console.info('testRouterLength START');
             let size = router.getLength();
             console.info('[router.getLength] pages stack size = ' + size);
             expect(size).assertEqual('1');
             let options = {
-                uri : 'pages/routerPush/index'
+                uri: 'pages/routerPush/index'
             }
             let promise1 = new Promise((resolve, reject) => {
                 router.push(options);
@@ -333,7 +329,7 @@ export default function basicabilityapi() {
          * @tc.name      testRouterGetState
          * @tc.desc      Get the status information of the current page.
          */
-        it('testRouterGetState', 0, async function (done) {
+        it('testRouterGetState', Level.LEVEL0, async function(done) {
             console.info('testRouterGetState START');
             await setTimeout(() => {
                 let page = router.getState();
@@ -353,8 +349,8 @@ export default function basicabilityapi() {
          * @tc.name      testPromptShowToast
          * @tc.desc      Show text pop-up window.
          */
-        it('testPromptShowToast', 0, function () {
-            try{
+        it('testPromptShowToast', Level.LEVEL0, function() {
+            try {
                 console.info('testPromptShowToast START');
                 const delay = 5000;
                 prompt.showToast({
@@ -364,8 +360,7 @@ export default function basicabilityapi() {
                 expect(test).assertEqual('success');
                 console.info('[prompt.showToast] success');
                 console.info('testPromptShowToast END');
-            }
-            catch(e){
+            } catch (e) {
                 console.log('testPromptShowToast ERROR' + e);
             }
         });
@@ -375,34 +370,31 @@ export default function basicabilityapi() {
          * @tc.name      testPromptDialog
          * @tc.desc      Display the dialog box in the page.
          */
-        it('testPromptDialog', 0, function () {
+        it('testPromptDialog', Level.LEVEL0, function() {
             console.info('testPromptDialog START')
-            try{
+            try {
                 prompt.showDialog({
                     title: 'dialog showDialog test',
                     message: 'message of dialog',
-                    buttons: [
-                        {
-                            text: 'OK',
-                            color: '#0000ff',
-                            index: 0
-                        }
-                    ],
-                    success: function (ret) {
+                    buttons: [{
+                        text: 'OK',
+                        color: '#0000ff',
+                        index: 0
+                    }],
+                    success: function(ret) {
                         console.info("[prompt.showDialog] ret.index " + ret.index);
                         expect(testResult).toBeTrue();
                     },
-                    cancel: function () {
+                    cancel: function() {
                         console.log('[prompt.showDialog] dialog cancel callback');
                         expect(testResultFail).toBeTrue();
                     },
-                    complete: function () {
+                    complete: function() {
                         console.log('[prompt.showDialog] complete');
                     }
                 });
                 console.info('testPromptDialog END');
-            }
-            catch(e) {
+            } catch (e) {
                 console.info('testPromptDialog error ' + e);
             }
         });
@@ -412,7 +404,7 @@ export default function basicabilityapi() {
          * @tc.name      testConfigurationGetLocale
          * @tc.desc      Get the current language and region of the app. Synchronize with the language and region.
          */
-        it('testConfigurationGetLocale', 0, function () {
+        it('testConfigurationGetLocale', Level.LEVEL0, function() {
             console.info('testConfigurationGetLocale START');
             const localeInfo = configuration.getLocale();
             console.info("[configuration.getLocale] localeInfo: " + JSON.stringify(localeInfo));
@@ -429,11 +421,11 @@ export default function basicabilityapi() {
          * @tc.name      testSetTimeout
          * @tc.desc      Set up a timer that executes a function or a specified piece of code after the timer expires.
          */
-        it('testSetTimeout', 0, async function (done) {
+        it('testSetTimeout', Level.LEVEL0, async function(done) {
             console.info('testSetTimeout START');
             let startTime = new Date().getTime();
             const delay = 200;
-            await setTimeout(function (v1, v2) {
+            await setTimeout(function(v1, v2) {
                 let endTime = new Date().getTime();
                 console.info("[setTimeout] startTime: " + startTime);
                 console.info("[setTimeout] endTime: " + endTime);
@@ -453,18 +445,18 @@ export default function basicabilityapi() {
          * @tc.name      testClearTimeout
          * @tc.desc      The timer previously established by calling setTimeout() is cancelled.
          */
-        it('testClearTimeout', 0, async function (done) {
+        it('testClearTimeout', Level.LEVEL0, async function(done) {
             console.info('testClearTimeout START');
             let res = 0;
-            let timeoutID = setTimeout(function () {
+            let timeoutID = setTimeout(function() {
                 res++;
             }, 700);
-            await setTimeout(function () {
+            await setTimeout(function() {
                 console.info('testClearTimeout delay 0.5s')
                 clearTimeout(timeoutID);
                 console.info("[clearTimeout] success");
             }, 500);
-            await setTimeout(function () {
+            await setTimeout(function() {
                 expect(0).assertEqual(res);
                 console.info('testClearTimeout END');
                 done();
@@ -476,13 +468,13 @@ export default function basicabilityapi() {
          * @tc.name      testSetInterval
          * @tc.desc      Call a function or execute a code segment repeatedly, with a fixed time delay between each call.
          */
-        it('testSetInterval', 0, async function (done) {
+        it('testSetInterval', Level.LEVEL0, async function(done) {
             console.info('testSetInterval START');
             let res = 0;
-            let intervalID = setInterval(function () {
+            let intervalID = setInterval(function() {
                 res++;
             }, 100);
-            await setTimeout(function () {
+            await setTimeout(function() {
                 expect(9).assertEqual(res);
                 console.info('testSetInterval SUCCESS');
                 clearInterval(intervalID);
@@ -497,9 +489,9 @@ export default function basicabilityapi() {
          * @tc.name      testRequestAnimationFrame
          * @tc.desc      Sets a vsync after which a function will be executed.
          */
-        it('testRequestAnimationFrame', 0, async function (done) {
+        it('testRequestAnimationFrame', Level.LEVEL0, async function(done) {
             console.info('testRequestAnimationFrame START');
-            let requestId = requestAnimationFrame(function () {
+            let requestId = requestAnimationFrame(function() {
                 console.info('testRequestAnimationFrame success');
                 expect(true).assertTrue();
                 done();
@@ -511,15 +503,15 @@ export default function basicabilityapi() {
          * @tc.name      testCancelAnimationFrame
          * @tc.desc      Indicates the vsync callback ID returned by "requestAnimationFrame()".
          */
-        it('testCancelAnimationFrame', 0, async function (done) {
+        it('testCancelAnimationFrame', Level.LEVEL0, async function(done) {
             console.info('testCancelAnimationFrame START');
             let result = true;
-            let requestId = requestAnimationFrame(function () {
+            let requestId = requestAnimationFrame(function() {
                 console.info('testCancelAnimationFrame fail');
                 result = false;
             });
             cancelAnimationFrame(requestId);
-            await setTimeout(function () {
+            await setTimeout(function() {
                 expect(result).assertTrue();
                 done();
             }, 1000);

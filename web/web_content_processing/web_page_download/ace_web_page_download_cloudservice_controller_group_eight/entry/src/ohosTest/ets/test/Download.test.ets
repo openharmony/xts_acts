@@ -16,6 +16,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Test
 import Utils from './Util';
 import events_emitter from '@ohos.events.emitter';
 import { router } from '@kit.ArkUI';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function Download() {
   describe('Download', () => {
@@ -42,6 +45,11 @@ export default function Download() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(300);
       done();
     });
@@ -144,7 +152,7 @@ export default function Download() {
      * @tc.level Level 2
      */
     it("testWebView_setDownloadDelegate1004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.registerBaseEvent('testWebView_setDownloadDelegate1004', '17100002Invalid url', 403, done,
+      Utils.registerBaseEvent('testWebView_setDownloadDelegate1004', '17100002URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.', 403, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });

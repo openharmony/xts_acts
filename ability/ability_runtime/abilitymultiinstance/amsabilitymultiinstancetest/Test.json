@@ -30,8 +30,12 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/*.hap"
-            ]
+                "chmod 644 /data/*.hap",
+                "param set persist.sys.abilityms.support.ecologicalrulemgrservice false"
+            ],
+            "teardown-command": [
+              "param set persist.sys.abilityms.support.ecologicalrulemgrservice true"
+          ]
         }
     ]
 }

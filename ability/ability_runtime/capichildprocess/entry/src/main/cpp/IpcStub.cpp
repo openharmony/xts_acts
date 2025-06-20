@@ -102,7 +102,11 @@ bool IpcStub::CheckInterfaceToken(const OHIPCParcel* data)
 
 int IpcStub::HandleRequestExitChildProcess(const OHIPCParcel *data, OHIPCParcel *reply)
 {
-    int32_t ret = RequestExitChildProcess() ? 1 : 0;
+    int exitCode = 0;
+    if (OH_IPCParcel_ReadInt32(data, &exitCode) != OH_IPC_SUCCESS) {
+        return OH_IPC_PARCEL_READ_ERROR;
+    }
+    int32_t ret = RequestExitChildProcess(exitCode) ? 1 : 0;
     return OH_IPCParcel_WriteInt32(reply, ret);
 }
 

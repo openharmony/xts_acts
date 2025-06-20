@@ -42,7 +42,7 @@ export default function MultimodalInputNoPermissionTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0500", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0500";
       try {
         let CAPS_LOCK = 1;

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError }  from '@ohos.base';
 
@@ -42,7 +42,7 @@ export default function MultimodalInputCapsLockTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0100";
       try {
         let state1 = await inputDevice.isFunctionKeyEnabled(1).then((state1: boolean) => {
@@ -76,7 +76,7 @@ export default function MultimodalInputCapsLockTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0200";
       try {
         await inputDevice.setFunctionKeyEnabled(10000, true).then(() => {
@@ -103,7 +103,7 @@ export default function MultimodalInputCapsLockTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0300", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0300";
       try {
         await inputDevice.setFunctionKeyEnabled(-1, false).then(() => {
@@ -130,7 +130,7 @@ export default function MultimodalInputCapsLockTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0400", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_setFunctionKeyEnabled_0400";
       try {
         await inputDevice.setFunctionKeyEnabled(1, false).then(() => {

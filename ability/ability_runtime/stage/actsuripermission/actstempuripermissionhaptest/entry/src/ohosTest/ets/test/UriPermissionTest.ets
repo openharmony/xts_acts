@@ -19,13 +19,13 @@ import base from '@ohos.base';
 import fileUri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs'
 import wantConstant from '@ohos.ability.wantConstant';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import Want from '@ohos.app.ability.Want';
 import ability from '@ohos.ability.ability';
 import common from '@ohos.app.ability.common';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 
 function sleep(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, time))
@@ -65,7 +65,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0100", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0100", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0100 is start---------------")
       let TAG1 = "Temp_UriPermissionTest_0100";
       let filePath: string = abilityContext.filesDir + "/test_1.txt";
@@ -140,7 +140,7 @@ export default function UriPermissionTest() {
         console.info(TAG1 + ' Subscribe CallBack data:' + JSON.stringify(data));
         if (data.event === eventName1_3) {
           console.info(TAG1 + 'write file succeed.');
-          if (deviceType === '2in1') {
+          if (deviceSupport === 'false') {
             commonEvent.unsubscribe(subscriber1_2, UnSubscribeInfoCallback1_2)
             flag1_2 = true;
             return;
@@ -181,7 +181,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0200", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0200", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0200 is start---------------")
       let TAG2 = "Temp_UriPermissionTest_0200";
       let filePath: string = abilityContext.filesDir + "/test_2.txt";
@@ -311,7 +311,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0400", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0400", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0400 is start---------------")
       let TAG4 = "Temp_UriPermissionTest_0400";
       let filePath: string = abilityContext.filesDir + "/test_4.txt";
@@ -430,7 +430,7 @@ export default function UriPermissionTest() {
         console.info(TAG4 + ' Subscribe CallBack data:' + JSON.stringify(data));
         if (data.event === eventName4_5) {
           console.info(TAG4 + 'read file succeed.');
-          if (deviceType === '2in1') {
+          if (deviceSupport === 'false') {
             commonEvent.unsubscribe(subscriber4_3, UnSubscribeInfoCallback4_3)
             flag4_3 = true;
             return;
@@ -479,7 +479,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0500", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0500", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0500 is start---------------")
       let TAG5 = "Temp_UriPermissionTest_0500";
       let filePath: string = abilityContext.filesDir + "/test_5.txt";
@@ -605,9 +605,9 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0600", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0600", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0600 is start---------------")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -769,9 +769,9 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0700", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0700", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0700 is start---------------")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -905,9 +905,9 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0800", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0800", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0800 is start---------------")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1057,9 +1057,9 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1000", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1000", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1000 is start---------------")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1189,9 +1189,9 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1100", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1100", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1100 is start---------------")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1288,9 +1288,9 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1200", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1200", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1200 is start---------------")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1380,9 +1380,9 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1400", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1400", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1400 is start---------------")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1490,9 +1490,9 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1500", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1500", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1500 is start---------------")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

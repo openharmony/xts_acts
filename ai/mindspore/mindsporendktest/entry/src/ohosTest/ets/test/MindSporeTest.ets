@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium'
 import mindSpore from 'libmindspore.so'
 import fs from '@ohos.file.fs';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -111,7 +111,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMindSporeContextCreate001', 0, async (done: Function) => {
+    it('testMindSporeContextCreate001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextCreateOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -126,7 +126,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMindSporeContextDestroy001', 0, async (done: Function) => {
+    it('testMindSporeContextDestroy001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextDestroyOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -141,7 +141,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetThreadNum001', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadNum001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadNumOne(2);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(2);
@@ -156,7 +156,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeContextSetThreadNum002', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadNum002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadNumTwo(2);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -171,7 +171,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetThreadNum003', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadNum003', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadNumOne(666666);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(666666);
@@ -186,7 +186,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextGetThreadNum001', 0, async (done: Function) => {
+    it('testMindSporeContextGetThreadNum001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextGetThreadNumOne(1);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -201,7 +201,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeContextGetThreadNum002', 0, async (done: Function) => {
+    it('testMindSporeContextGetThreadNum002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextGetThreadNumTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -216,7 +216,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetThreadAffinityMode001', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadAffinityMode001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadAffinityModeOne(0);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -231,7 +231,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetThreadAffinityMode002', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadAffinityMode002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadAffinityModeOne(1);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -246,7 +246,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetThreadAffinityMode003', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadAffinityMode003', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadAffinityModeOne(2);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(2);
@@ -261,7 +261,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeContextSetThreadAffinityMode004', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadAffinityMode004', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadAffinityModeTwo(2);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -276,7 +276,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeContextSetThreadAffinityMode005', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadAffinityMode005', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadAffinityModeOne(6);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -291,7 +291,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextGetThreadAffinityMode001', 0, async (done: Function) => {
+    it('testMindSporeContextGetThreadAffinityMode001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextGetThreadAffinityModeOne(1);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -306,7 +306,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeContextGetThreadAffinityMode002', 0, async (done: Function) => {
+    it('testMindSporeContextGetThreadAffinityMode002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextGetThreadAffinityModeTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -321,7 +321,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMindSporeDeviceInfoCreate001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoCreate001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoCreateOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -336,7 +336,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetDeviceType001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetDeviceType001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetDeviceTypeOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -351,7 +351,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetDeviceType002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetDeviceType002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetDeviceTypeTwo(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -366,7 +366,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetDeviceType003', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetDeviceType003', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetDeviceTypeThree(OH_AI_DeviceType.OH_AI_DEVICETYPE_INVALID);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -382,7 +382,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoGetDeviceType004', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetDeviceType004', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetDeviceTypeFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -397,7 +397,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMindSporeDeviceInfoDestroy001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoDestroy001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoDestroyOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -412,7 +412,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetProvider001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetProvider001', Level.LEVEL0, async (done: Function) => {
       let value_data = "CPU";
       let data = mindSpore.oHAIDeviceInfoSetProviderOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -428,7 +428,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetProvider002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetProvider002', Level.LEVEL0, async (done: Function) => {
       let value_data = "NNRT";
       let data = mindSpore.oHAIDeviceInfoSetProviderTwo(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -444,7 +444,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetProvider003', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetProvider003', Level.LEVEL0, async (done: Function) => {
       let value_data = "INVALID";
       let data = mindSpore.oHAIDeviceInfoSetProviderThree(OH_AI_DeviceType.OH_AI_DEVICETYPE_INVALID, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -460,7 +460,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoSetProvider004', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetProvider004', Level.LEVEL0, async (done: Function) => {
       let value_data = "INVALID";
       let data = mindSpore.oHAIDeviceInfoSetProviderFour(OH_AI_DeviceType.OH_AI_DEVICETYPE_INVALID, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -476,7 +476,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetProvider001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetProvider001', Level.LEVEL0, async (done: Function) => {
       let value_data = "CPU";
       let data = mindSpore.oHAIDeviceInfoGetProviderOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -492,7 +492,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoGetProvider002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetProvider002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetProviderTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -507,7 +507,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetProviderDevice001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetProviderDevice001', Level.LEVEL0, async (done: Function) => {
       let value_data = "CPU";
       let data = mindSpore.oHAIDeviceInfoSetProviderDeviceOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -523,7 +523,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetProviderDevice002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetProviderDevice002', Level.LEVEL0, async (done: Function) => {
       let value_data = "NNRT";
       let data = mindSpore.oHAIDeviceInfoSetProviderDeviceTwo(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -539,7 +539,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetProviderDevice003', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetProviderDevice003', Level.LEVEL0, async (done: Function) => {
       let value_data = "INVALID";
       let data = mindSpore.oHAIDeviceInfoSetProviderDeviceThree(OH_AI_DeviceType.OH_AI_DEVICETYPE_INVALID, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -555,7 +555,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetProviderDevice001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetProviderDevice001', Level.LEVEL0, async (done: Function) => {
       let value_data = "CPU";
       let data = mindSpore.oHAIDeviceInfoGetProviderDeviceOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -571,7 +571,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoGetProviderDevice002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetProviderDevice002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetProviderDeviceTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -586,7 +586,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetEnableFP16001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetEnableFP16001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetEnableFP16One(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -601,7 +601,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetEnableFP16002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetEnableFP16002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetEnableFP16Two(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -616,7 +616,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoSetEnableFP16003', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetEnableFP16003', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetEnableFP16Three();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -631,7 +631,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetEnableFP16001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetEnableFP16001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetEnableFP16One(OH_AI_DeviceType.OH_AI_DEVICETYPE_CPU);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -646,7 +646,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoGetEnableFP16002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetEnableFP16002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetEnableFP16Two();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -661,7 +661,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetDeviceId001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetDeviceId001', Level.LEVEL0, async (done: Function) => {
       let value_data = 111;
       let data = mindSpore.oHAIDeviceInfoSetDeviceIdOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -677,7 +677,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoSetDeviceId002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetDeviceId002', Level.LEVEL0, async (done: Function) => {
       let value_data = 111;
       let data = mindSpore.oHAIDeviceInfoSetDeviceIdTwo(value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -693,7 +693,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetDeviceId001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetDeviceId001', Level.LEVEL0, async (done: Function) => {
       let value_data = 222;
       let data = mindSpore.oHAIDeviceInfoGetDeviceIdOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT, value_data);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -709,7 +709,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoGetDeviceId002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetDeviceId002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetDeviceIdTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -724,7 +724,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetPerformanceMode001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetPerformanceMode001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetPerformanceModeOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT,
         OH_AI_PerformanceMode.OH_AI_PERFORMANCE_NONE);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -740,7 +740,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetPerformanceMode002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetPerformanceMode002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetPerformanceModeTwo(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT,
         OH_AI_PerformanceMode.OH_AI_PERFORMANCE_LOW);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -756,7 +756,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetPerformanceMode003', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetPerformanceMode003', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetPerformanceModeThree(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT,
         OH_AI_PerformanceMode.OH_AI_PERFORMANCE_MEDIUM);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -772,7 +772,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetPerformanceMode004', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetPerformanceMode004', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetPerformanceModeFour(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT,
         OH_AI_PerformanceMode.OH_AI_PERFORMANCE_HIGH);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -788,7 +788,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetPerformanceMode005', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetPerformanceMode005', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetPerformanceModeFive(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT,
         OH_AI_PerformanceMode.OH_AI_PERFORMANCE_EXTREME);
       console.info("Test NAPI data= " + JSON.stringify(data));
@@ -804,7 +804,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetPerformanceMode001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetPerformanceMode001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetPerformanceModeOne(OH_AI_DeviceType.OH_AI_DEVICETYPE_NNRT,
         OH_AI_PerformanceMode.OH_AI_PERFORMANCE_NONE);
       expect(data).assertEqual(OH_AI_PerformanceMode.OH_AI_PERFORMANCE_NONE);
@@ -819,7 +819,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeDeviceInfoGetPerformanceMode002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetPerformanceMode002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoGetPerformanceModeTwo();
       expect(data).assertEqual(0);
       done()
@@ -833,7 +833,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetThreadAffinityCoreList001', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadAffinityCoreList001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadAffinityCoreListOne();
       expect(data).assertEqual(1);
       done()
@@ -847,7 +847,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextGetThreadAffinityCoreList001', 0, async (done: Function) => {
+    it('testMindSporeContextGetThreadAffinityCoreList001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextGetThreadAffinityCoreListOne();
       expect(data).assertEqual(1);
       done()
@@ -861,7 +861,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetEnableParallel001', 0, async (done: Function) => {
+    it('testMindSporeContextSetEnableParallel001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetEnableParallelOne();
       expect(data).assertEqual(1);
       done()
@@ -875,7 +875,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetEnableParallel002', 0, async (done: Function) => {
+    it('testMindSporeContextSetEnableParallel002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetEnableParallelTwo();
       expect(data).assertEqual(1);
       done()
@@ -889,7 +889,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextGetEnableParallel001', 0, async (done: Function) => {
+    it('testMindSporeContextGetEnableParallel001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextGetEnableParallelOne();
       expect(data).assertEqual(1);
       done()
@@ -903,7 +903,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMindSporeContextGetEnableParallel002', 0, async (done: Function) => {
+    it('testMindSporeContextGetEnableParallel002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextGetEnableParallelTwo();
       expect(data).assertEqual(1);
       done()
@@ -917,7 +917,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetFrequency001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetFrequency001', Level.LEVEL0, async (done: Function) => {
       let value_one = 1;
       let data = mindSpore.oHAISetFrequencyOne(value_one);
       expect(data).assertEqual(value_one);
@@ -932,7 +932,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetFrequency001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetFrequency001', Level.LEVEL0, async (done: Function) => {
       let value_one = 4;
       let data = mindSpore.oHAIGetFrequencyOne(value_one);
       expect(data).assertEqual(value_one);
@@ -947,7 +947,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelCreate001', 0, async (done: Function) => {
+    it('testMindSporeModelCreate001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelCreateOne();
       expect(data).assertEqual(1);
       done()
@@ -961,7 +961,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelDestroy001', 0, async (done: Function) => {
+    it('testMindSporeModelDestroy001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelDestroyOne();
       expect(data).assertEqual(1);
       done()
@@ -975,7 +975,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorCreate001', 0, async (done: Function) => {
+    it('testMindSporeTensorCreate001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorCreateOne();
       expect(data).assertEqual(1);
       done()
@@ -989,7 +989,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorDestroy001', 0, async (done: Function) => {
+    it('testMindSporeTensorDestroy001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorDestroyOne();
       expect(data).assertEqual(1);
       done()
@@ -1003,7 +1003,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorClone001', 0, async (done: Function) => {
+    it('testMindSporeTensorClone001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorCloneOne();
       expect(data).assertEqual(1);
       done()
@@ -1017,7 +1017,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetName001', 0, async (done: Function) => {
+    it('testMindSporeTensorSetName001', Level.LEVEL0, async (done: Function) => {
       let value_data = "new_data";
       let data = mindSpore.oHAITensorSetNameOne(value_data);
       expect(data).assertEqual(value_data);
@@ -1032,7 +1032,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetName001', 0, async (done: Function) => {
+    it('testMindSporeTensorGetName001', Level.LEVEL0, async (done: Function) => {
       let value_data = "new_get_data";
       let data = mindSpore.oHAITensorGetNameOne(value_data);
       expect(data).assertEqual(value_data);
@@ -1047,7 +1047,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetDataType001', 0, async (done: Function) => {
+    it('testMindSporeTensorSetDataType001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetDataTypeOne();
       expect(data).assertEqual(1);
       done()
@@ -1061,7 +1061,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetDataType001', 0, async (done: Function) => {
+    it('testMindSporeTensorGetDataType001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetDataTypeOne();
       expect(data).assertEqual(1);
       done()
@@ -1075,7 +1075,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetShape001', 0, async (done: Function) => {
+    it('testMindSporeTensorSetShape001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetShapeOne();
       expect(data).assertEqual(1);
       done()
@@ -1089,7 +1089,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetShape001', 0, async (done: Function) => {
+    it('testMindSporeTensorGetShape001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetShapeOne();
       expect(data).assertEqual(1);
       done()
@@ -1103,7 +1103,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetFormat001', 0, async (done: Function) => {
+    it('testMindSporeTensorSetFormat001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetFormatOne();
       expect(data).assertEqual(1);
       done()
@@ -1117,7 +1117,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetFormat001', 0, async (done: Function) => {
+    it('testMindSporeTensorGetFormat001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetFormatOne();
       expect(data).assertEqual(1);
       done()
@@ -1131,7 +1131,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetData001', 0, async (done: Function) => {
+    it('testMindSporeTensorSetData001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetDataOne();
       expect(data).assertEqual(1);
       done()
@@ -1145,7 +1145,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetData001', 0, async (done: Function) => {
+    it('testMindSporeTensorGetData001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetDataOne();
       expect(data).assertEqual(1);
       done()
@@ -1159,7 +1159,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetMutableData001', 0, async (done: Function) => {
+    it('testMindSporeTensorGetMutableData001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetMutableDataOne();
       expect(data).assertEqual(1);
       done()
@@ -1173,7 +1173,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetElementNum001', 0, async (done: Function) => {
+    it('testMindSporeTensorGetElementNum001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetElementNumOne();
       expect(data).assertEqual(1);
       done()
@@ -1187,7 +1187,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetDataSize001', 0, async (done: Function) => {
+    it('testMindSporeTensorGetDataSize001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetDataSizeOne();
       expect(data).assertEqual(1);
       done()
@@ -1201,7 +1201,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeGetAllNNRTDeviceDescs001', 0, async (done: Function) => {
+    it('testMindSporeGetAllNNRTDeviceDescs001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIGetAllNNRTDeviceDescsOne();
         expect(data).assertEqual(1);
         done()
@@ -1215,7 +1215,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDestroyAllNNRTDeviceDescs001', 0, async (done: Function) => {
+    it('testMindSporeDestroyAllNNRTDeviceDescs001', Level.LEVEL0, async (done: Function) => {
 		let data = mindSpore.oHAIDestroyAllNNRTDeviceDescsOne();
         expect(data).assertEqual(1);
         done()
@@ -1229,7 +1229,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeGetDeviceIdFromNNRTDeviceDesc001', 0, async (done: Function) => {
+    it('testMindSporeGetDeviceIdFromNNRTDeviceDesc001', Level.LEVEL0, async (done: Function) => {
         let data = mindSpore.oHAIGetDeviceIdFromNNRTDeviceDescOne();
         expect(data).assertEqual(1);
         done()
@@ -1243,7 +1243,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeGetNameFromNNRTDeviceDesc001', 0, async (done: Function) => {
+    it('testMindSporeGetNameFromNNRTDeviceDesc001', Level.LEVEL0, async (done: Function) => {
         let data = mindSpore.oHAIGetNameFromNNRTDeviceDescOne();
         expect(data).assertEqual(1);
         done()
@@ -1257,7 +1257,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeGetTypeFromNNRTDeviceDesc001', 0, async (done: Function) => {
+    it('testMindSporeGetTypeFromNNRTDeviceDesc001', Level.LEVEL0, async (done: Function) => {
         let data = mindSpore.oHAIGetTypeFromNNRTDeviceDescOne();
         expect(data).assertEqual(1);
         done()
@@ -1271,7 +1271,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeCreateNNRTDeviceInfoByName001', 0, async (done: Function) => {
+    it('testMindSporeCreateNNRTDeviceInfoByName001', Level.LEVEL0, async (done: Function) => {
         let data = mindSpore.oHAICreateNNRTDeviceInfoByNameOne();
         expect(data).assertEqual(1);
         done()
@@ -1285,7 +1285,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeCreateNNRTDeviceInfoByType001', 0, async (done: Function) => {
+    it('testMindSporeCreateNNRTDeviceInfoByType001', Level.LEVEL0, async (done: Function) => {
         let data = mindSpore.oHAICreateNNRTDeviceInfoByTypeOne();
         expect(data).assertEqual(1);
         done()
@@ -1299,7 +1299,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetPriority001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetPriority001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetPriorityOne();
       expect(data).assertEqual(1);
       done()
@@ -1313,7 +1313,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeGetElementOfNNRTDeviceDescs001', 0, async (done: Function) => {
+    it('testMindSporeGetElementOfNNRTDeviceDescs001', Level.LEVEL0, async (done: Function) => {
         let data = mindSpore.oHAIGetElementOfNNRTDeviceDescsOne();
         expect(data).assertEqual(1);
         done()
@@ -1328,7 +1328,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoAddExtension001', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoAddExtension001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoAddExtensionOne();
       expect(data).assertEqual(1);
       done()
@@ -1342,7 +1342,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextAddDeviceInfo001', 0, async (done: Function) => {
+    it('testMindSporeContextAddDeviceInfo001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextAddDeviceInfoOne();
       expect(data).assertEqual(1);
       done()
@@ -1356,7 +1356,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelBuildFromFile001', 0, async (done: Function) => {
+    it('testMindSporeModelBuildFromFile001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelBuildFromFileOne();
       expect(data).assertEqual(1);
       done()
@@ -1370,7 +1370,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelResize001', 0, async (done: Function) => {
+    it('testMindSporeModelResize001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelResizeOne();
       expect(data).assertEqual(1);
       done()
@@ -1384,7 +1384,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelPredict001', 0, async (done: Function) => {
+    it('testMindSporeModelPredict001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelPredictOne();
       expect(data).assertEqual(1);
       done()
@@ -1398,7 +1398,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelGetInputs001', 0, async (done: Function) => {
+    it('testMindSporeModelGetInputs001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelGetInputsOne();
       expect(data).assertEqual(1);
       done()
@@ -1412,7 +1412,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelGetOutputs001', 0, async (done: Function) => {
+    it('testMindSporeModelGetOutputs001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelGetOutputsOne();
       expect(data).assertEqual(1);
       done()
@@ -1426,7 +1426,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelGetInputByTensorName001', 0, async (done: Function) => {
+    it('testMindSporeModelGetInputByTensorName001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelGetInputByTensorNameOne();
       expect(data).assertEqual(1);
       done()
@@ -1440,7 +1440,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelGetOutputByTensorName001', 0, async (done: Function) => {
+    it('testMindSporeModelGetOutputByTensorName001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelGetOutputByTensorNameOne();
       expect(data).assertEqual(1);
       done()
@@ -1454,7 +1454,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetUserData001', 0, async (done: Function) => {
+    it('testMindSporeTensorSetUserData001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetUserDataOne();
       expect(data).assertEqual(1);
       done()
@@ -1468,7 +1468,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMindSporeDeviceInfoCreate002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoCreate002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoCreateTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -1483,7 +1483,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextSetThreadAffinityCoreList002', 0, async (done: Function) => {
+    it('testMindSporeContextSetThreadAffinityCoreList002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextSetThreadAffinityCoreListTwo();
       expect(data).assertEqual(1);
       done()
@@ -1497,7 +1497,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeContextGetThreadAffinityCoreList002', 0, async (done: Function) => {
+    it('testMindSporeContextGetThreadAffinityCoreList002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIContextGetThreadAffinityCoreListTwo();
       expect(data).assertEqual(1);
       done()
@@ -1511,7 +1511,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetFrequency002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetFrequency002', Level.LEVEL0, async (done: Function) => {
       let result_value = -1;
       let value_one = 1;
       let data = mindSpore.oHAISetFrequencyTwo(value_one);
@@ -1527,7 +1527,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoGetFrequency002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoGetFrequency002', Level.LEVEL0, async (done: Function) => {
       let value_one = -1;
       let data = mindSpore.oHAIGetFrequencyTwo();
       expect(data).assertEqual(value_one);
@@ -1542,7 +1542,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorCreate002', 0, async (done: Function) => {
+    it('testMindSporeTensorCreate002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorCreateTwo();
       expect(data).assertEqual(0);
       done()
@@ -1556,7 +1556,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetName002', 0, async (done: Function) => {
+    it('testMindSporeTensorSetName002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetNameTwo();
       expect(data).assertEqual(0);
       done()
@@ -1570,7 +1570,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetName002', 0, async (done: Function) => {
+    it('testMindSporeTensorGetName002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetNameTwo();
       expect(data).assertEqual(0);
       done()
@@ -1584,7 +1584,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetDataType002', 0, async (done: Function) => {
+    it('testMindSporeTensorSetDataType002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetDataTypeTwo();
       expect(data).assertEqual(1);
       done()
@@ -1598,7 +1598,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetDataType002', 0, async (done: Function) => {
+    it('testMindSporeTensorGetDataType002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetDataTypeTwo();
       expect(data).assertEqual(1);
       done()
@@ -1612,7 +1612,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetShape002', 0, async (done: Function) => {
+    it('testMindSporeTensorSetShape002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetShapeTwo();
       expect(data).assertEqual(1);
       done()
@@ -1626,7 +1626,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetShape002', 0, async (done: Function) => {
+    it('testMindSporeTensorGetShape002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetShapeTwo();
       expect(data).assertEqual(1);
       done()
@@ -1640,7 +1640,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetFormat002', 0, async (done: Function) => {
+    it('testMindSporeTensorSetFormat002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetFormatTwo();
       expect(data).assertEqual(0);
       done()
@@ -1654,7 +1654,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetFormat002', 0, async (done: Function) => {
+    it('testMindSporeTensorGetFormat002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetFormatTwo();
       expect(data).assertEqual(0);
       done()
@@ -1668,7 +1668,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorSetData002', 0, async (done: Function) => {
+    it('testMindSporeTensorSetData002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorSetDataTwo();
       expect(data).assertEqual(1);
       done()
@@ -1682,7 +1682,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetData002', 0, async (done: Function) => {
+    it('testMindSporeTensorGetData002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetDataTwo();
       expect(data).assertEqual(1);
       done()
@@ -1696,7 +1696,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetMutableData002', 0, async (done: Function) => {
+    it('testMindSporeTensorGetMutableData002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetMutableDataTwo();
       expect(data).assertEqual(1);
       done()
@@ -1710,7 +1710,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetElementNum002', 0, async (done: Function) => {
+    it('testMindSporeTensorGetElementNum002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetElementNumTwo();
       expect(data).assertEqual(1);
       done()
@@ -1724,7 +1724,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorGetDataSize002', 0, async (done: Function) => {
+    it('testMindSporeTensorGetDataSize002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorGetDataSizeTwo();
       expect(data).assertEqual(1);
       done()
@@ -1738,7 +1738,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoSetPriority002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoSetPriority002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoSetPriorityTwo();
       expect(data).assertEqual(0);
       done()
@@ -1752,7 +1752,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeTensorClone002', 0, async (done: Function) => {
+    it('testMindSporeTensorClone002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAITensorCloneTwo();
       expect(data).assertEqual(1);
       done()
@@ -1766,7 +1766,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoAddExtension002', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoAddExtension002', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoAddExtensionTwo();
       expect(data).assertEqual(1);
       done()
@@ -1780,7 +1780,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeDeviceInfoAddExtension003', 0, async (done: Function) => {
+    it('testMindSporeDeviceInfoAddExtension003', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIDeviceInfoAddExtensionThree();
       expect(data).assertEqual(1);
       done()
@@ -1794,7 +1794,7 @@ export default function mindSporeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMindSporeModelBuild001', 0, async (done: Function) => {
+    it('testMindSporeModelBuild001', Level.LEVEL0, async (done: Function) => {
       let data = mindSpore.oHAIModelBuildOne();
       expect(data).assertEqual(1);
       done()

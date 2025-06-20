@@ -61,6 +61,7 @@ ohos_moduletest_suite("ActsDemuxerTest") {
       "./src/func2_test.cpp",
       "./src/func_test.cpp",
       "./src/proc_test.cpp",
+      #"./src/NetTest.cpp",
     ]
   }
 

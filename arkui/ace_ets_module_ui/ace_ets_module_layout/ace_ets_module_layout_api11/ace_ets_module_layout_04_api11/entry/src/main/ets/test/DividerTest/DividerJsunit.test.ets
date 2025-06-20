@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 
@@ -61,7 +61,7 @@ export default function dividerJsunit() {
      * @tc.name testDividerGetInspectorByKey010
      * @tc.desc aceEtsTest
      */
-    it('testDividerGetInspectorByKey010', 0, async (done: Function) => {
+    it('testDividerGetInspectorByKey010',  Level.LEVEL0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('divider');
       let obj: ESObject = JSON.parse(strJson);
@@ -86,7 +86,7 @@ export default function dividerJsunit() {
      * @tc.name testDividerGetInspectorByKey020
      * @tc.desc aceEtsTest
      */
-    it('testDividerGetInspectorByKey020', 0, async (done: Function) => {
+    it('testDividerGetInspectorByKey020',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('divider1');
       let obj: ESObject = JSON.parse(strJson);
       console.info(" divider1 component obj is: " + JSON.stringify(obj));
@@ -102,7 +102,7 @@ export default function dividerJsunit() {
      * @tc.name testDividerGetInspectorByKey030
      * @tc.desc aceEtsTest
      */
-    it('testDividerGetInspectorByKey030', 0, async (done: Function) => {
+    it('testDividerGetInspectorByKey030',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('divider2');
       let obj: ESObject = JSON.parse(strJson);
       console.info(" divider2 component obj is: " + JSON.stringify(obj));

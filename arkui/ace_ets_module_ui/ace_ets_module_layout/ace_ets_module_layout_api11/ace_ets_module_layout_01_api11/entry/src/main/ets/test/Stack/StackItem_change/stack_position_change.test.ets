@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/utils/Common';
 
@@ -51,7 +51,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.TopStart and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentTopStart] START');
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Position_Change_01');
@@ -84,7 +84,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.Top and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentTop', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentTop] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Top
@@ -121,7 +121,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.TopEnd and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentTopEnd] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.TopEnd
@@ -157,7 +157,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.Start and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentStart', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentStart] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Start
@@ -194,7 +194,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.Center and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentCenter', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentCenter] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Center
@@ -232,7 +232,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.End and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentEnd', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentEnd] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.End
@@ -269,7 +269,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.BottomStart and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentBottomStart] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.BottomStart
@@ -305,7 +305,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.Bottom and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentBottom', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentBottom] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Bottom
@@ -342,7 +342,7 @@ export default function Stack_Position_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.BottomEnd and sets the position of
      *               the first subcomponent
      */
-    it('testStackPositionChangeWithAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackPositionChangeWithAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackPositionChangeWithAlignmentBottomEnd] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.BottomEnd

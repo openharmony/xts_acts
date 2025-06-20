@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import * as digestSyncUtils from './utils/digest/digestSyncUtils';
@@ -48,7 +48,7 @@ export default function SecurityCryptoFwDigestSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DigestSync_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let messageLen: number = 128;
         let message: cryptoFramework.DataBlob = await commonUtils.createData(messageLen);
@@ -72,7 +72,7 @@ export default function SecurityCryptoFwDigestSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DigestSync_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let messageLen: number = 128;
         let blockSize: number = 20;
@@ -101,7 +101,7 @@ export default function SecurityCryptoFwDigestSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DigestSync_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for(let algName of digestSyncUtils.DIGEST_SPEC) {
           let dataRes: digestSyncUtils.mdInfo = digestSyncUtils.doMdWithNoUpdateSync(algName);
@@ -123,7 +123,7 @@ export default function SecurityCryptoFwDigestSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DigestSync_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = '';
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -155,7 +155,7 @@ export default function SecurityCryptoFwDigestSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DigestSync_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SHA3-256";
         cryptoFramework.createMd(algName);
@@ -175,7 +175,7 @@ export default function SecurityCryptoFwDigestSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DigestSync_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let md: cryptoFramework.Md = {} as cryptoFramework.Md;
         md.digestSync()

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0100', 0, async (done: Function) => {
+    it('ScrollBarJsunit_0100', Level.LEVEL1, async (done: Function) => {
       // Get the information of the ScrollBar component
       console.info('[ScrollBarJsunit_0100] START');
       let strJson = getInspectorByKey('scrollBar');
@@ -57,7 +57,7 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0200', 0, async (done: Function) => {
+    it('ScrollBarJsunit_0200', Level.LEVEL1, async (done: Function) => {
       // Modify the direction of the ScrollBar component
       console.info('[ScrollBarJsunit_0200] START');
       globalThis.value.message.notify({name:'scrollBarDirection',value:'ScrollBarDirection.Horizontal'})
@@ -71,7 +71,7 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0300', 0, async (done: Function) => {
+    it('ScrollBarJsunit_0300', Level.LEVEL1, async (done: Function) => {
       // Modify the state of the ScrollBar component
       console.info('[ScrollBarJsunit_0300] START');
       globalThis.value.message.notify({name:'state',value:BarState.Auto})
@@ -85,7 +85,7 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0400', 0, async (done: Function) => {
+    it('ScrollBarJsunit_0400', Level.LEVEL1, async (done: Function) => {
       // Modify the backgroundColor of the ScrollBar component
       console.info('[ScrollBarJsunit_0400] START');
       globalThis.value.message.notify({name:'backColor',value:'Color.Blue'})
@@ -99,7 +99,7 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0500', 0, async (done: Function) => {
+    it('ScrollBarJsunit_0500', Level.LEVEL1, async (done: Function) => {
       // Illegal modification of attribute value of the ScrollBar component
       console.info('[ScrollBarJsunit_0500] START');
       globalThis.value.message.notify({name:'scrollBarDirection',value:'1'})
@@ -119,7 +119,7 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0600', 0, async (done: Function) => {
+    it('ScrollBarJsunit_0600', Level.LEVEL1, async (done: Function) => {
       // Modify the direction of the Scroll component and ScrollBar component
       console.info('[ScrollBarJsunit_0600] START');
       globalThis.value.message.notify({name:'ScrollDirection',value:'ScrollDirection.Horizontal'})

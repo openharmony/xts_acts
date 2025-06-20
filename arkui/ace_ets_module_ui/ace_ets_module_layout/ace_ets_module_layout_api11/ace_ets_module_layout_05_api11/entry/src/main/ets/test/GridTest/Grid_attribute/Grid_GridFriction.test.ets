@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -50,7 +50,7 @@ export default function grid_GridFrictionTest() {
      * @tc.name testGridFriction
      * @tc.desc set friction to -1
      */
-    it('testGridFriction', 0, async (done: Function) => {
+    it('testGridFriction',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridFriction] START');
       globalThis.value.message.notify({
         name: 'friction', value: -1
@@ -58,7 +58,10 @@ export default function grid_GridFrictionTest() {
       await CommonFunc.sleep(2000);
       let gridContainerStrJson = getInspectorByKey('Grid_GridFriction');
       expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
-      expect(JSON.parse(gridContainerStrJson).$attrs.friction).assertEqual(0.7);
+      console.info('[testGridFriction] gridContainerStrJson friction: ' + JSON.parse(gridContainerStrJson).$attrs.friction);
+      let gridDefJson = getInspectorByKey('grid_friction_default');
+      console.info('[testGridFriction] gridDefJson friction: ' + JSON.parse(gridDefJson).$attrs.friction);
+      expect(JSON.parse(gridContainerStrJson).$attrs.friction).assertEqual(JSON.parse(gridDefJson).$attrs.friction);
       console.info('[testGridFriction] END');
       done();
     });
@@ -68,7 +71,7 @@ export default function grid_GridFrictionTest() {
      * @tc.name testGridFriction
      * @tc.desc set friction to 10
      */
-    it('testGridFriction', 0, async (done: Function) => {
+    it('testGridFriction',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridFriction] START');
       globalThis.value.message.notify({
         name: 'friction', value: 10

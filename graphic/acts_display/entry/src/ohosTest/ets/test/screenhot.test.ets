@@ -12,8 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import screenshot from '@ohos.screenshot';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 async function sleep(time: number) {
     let timeoutId: number = 0;
@@ -32,7 +34,34 @@ export default function screenHotTest() {
             console.log('describe screenHotTest start!!!');
         });
 
-
+        /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_SCREEN_SHOT_CAPTURE_ERRORCODE_0100
+         * @tc.name      : tesScreenShot_Capture_ErrorCode201
+         * @tc.desc      : tesScreenShot_Capture_ErrorCode201 when without permission
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+        it('tesScreenShot_Capture_ErrorCode201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+            let caseName = 'tesScreenShot_Capture_ErrorCode201';
+            let msgStr = 'jsunittest ' + caseName + ' ';
+            console.log(msgStr + 'begin');
+            try {
+                let captureOptions: screenshot.CaptureOption = {
+                    "displayId": 0
+                }
+                let promise = screenshot.capture(captureOptions)
+                await promise.then((pixelMap: image.PixelMap) => {
+                    console.log(caseName + 'Succeeded in capture')
+                    expect().assertFail()
+                    done()
+                })
+            } catch (exception) {
+                console.error(caseName + 'Failed to pick Code: ' + JSON.stringify(exception));
+                expect(exception.code == 801 || exception.code == 201).assertTrue()
+                done()
+            };
+        })
 
         // /**
         //  * @tc.number    : SUB_BASIC_WMS_SPCIAL_SCREEN_HOT_0100
@@ -42,7 +71,7 @@ export default function screenHotTest() {
         //  * @tc.type      : Function
         //  * @tc.level     : Level3
         //  */
-        // it('tesScreenHot_pick', 0, async function (done) {
+        // it('tesScreenHot_pick', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         //     let caseName = 'tesScreenHot_pick';
         //     let msgStr = 'jsunittest ' + caseName + ' ';
         //     console.log(msgStr + 'begin');

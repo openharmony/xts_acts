@@ -60,7 +60,7 @@ struct ListExampleA {
         ForEach(this.arr, (item: number, index: number) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(100).fontSize(16)
+              .width('100%').height('20%').fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
           .onAppear(() => {
@@ -87,7 +87,7 @@ struct ListExampleA {
       })
       .onDidScroll((offset: number) => {
         this.scrollOffset = offset;
-        // 判断是否滚动到顶部以及不回滚次数是否达标
+        // 判断是否滚动到顶部以及回滚次数是否达标
         if (this.scrollCount === 3) {
           this.message4 = 'DidAbnormal';
         }
@@ -96,6 +96,7 @@ struct ListExampleA {
         this.message3 = 'onDidListBackToTop';
       })
       .width('70%')
+      .height('80%')
     }
     .width('100%')
     .height('100%')

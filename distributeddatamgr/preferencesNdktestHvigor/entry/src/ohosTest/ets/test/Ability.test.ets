@@ -24,11 +24,11 @@ export default function preferencesNdkTest() {
      * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0100
      * @tc.name OH_PreferencesOption_Create_0100
      * @tc.desc OH_PreferencesOption_Create_0100
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_Create_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_PreferencesOption_Create_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_Create_0100();
       console.info(TAG + "OH_PreferencesOption_Create_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -39,11 +39,11 @@ export default function preferencesNdkTest() {
      * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0200
      * @tc.name OH_PreferencesOption_SetFilePath_0100
      * @tc.desc OH_PreferencesOption_SetFilePath_0100
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_SetFilePath_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_PreferencesOption_SetFilePath_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetFilePath_0100();
       console.info(TAG + "OH_PreferencesOption_SetFilePath_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -68,11 +68,11 @@ export default function preferencesNdkTest() {
      * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_0400
      * @tc.name OH_PreferencesOption_SetBundleName_0100
      * @tc.desc OH_PreferencesOption_SetBundleName_0100
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PreferencesOption_SetBundleName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_PreferencesOption_SetBundleName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let res = testndk.OH_PreferencesOption_SetBundleName_0100();
       console.info(TAG + "OH_PreferencesOption_SetBundleName_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -385,6 +385,22 @@ export default function preferencesNdkTest() {
     it('OH_Preferences_ErrCode_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let res = testndk.OH_Preferences_ErrCode_0100();
       console.info(TAG + "OH_Preferences_ErrCode_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Preferences_SDK_NdkAPITest_2700
+     * @tc.name OH_Preferences_IsStorageTypeSupported0500
+     * @tc.desc OH_Preferences_IsStorageTypeSupported0500
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Preferences_IsStorageTypeSupported0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testndk.OH_Preferences_IsStorageTypeSupported0500();
+      console.info(TAG + "OH_Preferences_IsStorageTypeSupported0500 res=" + res );
       expect(res).assertEqual(0);
       done();
     });

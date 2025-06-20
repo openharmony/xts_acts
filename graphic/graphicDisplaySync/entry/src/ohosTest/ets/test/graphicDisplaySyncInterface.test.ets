@@ -30,9 +30,9 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.desc      : Test the function of SetExpectedFrameRateRange Promise
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testSetExpectedFrameRateRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testSetExpectedFrameRateRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       let msg = "====testSetExpectedFrameRateRange===="
       console.log(msg + ' begin')
@@ -60,9 +60,9 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.desc      : Subscribe to changes per frame
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testOnFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testOnFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       let msg = "====testOnFrame===="
       console.log(msg + ' begin')
@@ -88,9 +88,9 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.desc      : Unsubscribe from changes per frame
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testOffFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testOffFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       let msg = "====testOffFrame===="
       console.log(msg + ' begin')
@@ -116,9 +116,9 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.desc      : Unsubscribe from changes per frame after Subscribe to changes per frame
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testOnOffFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testOnOffFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       let msg = "====testOnOffFrame===="
       console.log(msg + ' begin')
@@ -145,9 +145,9 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.desc      : Start callback per frame
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testStart', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testStart', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       let msg = "====testStart===="
       console.log(msg + ' begin')
@@ -185,9 +185,9 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.desc      : Stop callback per frame
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       let msg = "====testStop===="
       console.log(msg + ' begin')
@@ -225,9 +225,9 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.desc      : Start and Stop
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testStartStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testStartStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       let msg = "====testStartStop===="
       console.log(msg + ' begin')
@@ -267,9 +267,9 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.desc      : setExpectedFrameRateRange error code
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testDisplaySyncErrprCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testDisplaySyncErrprCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msg = "====testStartStop===="
       console.log(msg + ' begin')
       try {

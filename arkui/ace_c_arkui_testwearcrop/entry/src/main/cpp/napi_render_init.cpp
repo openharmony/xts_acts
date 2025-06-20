@@ -22,6 +22,7 @@
 #include "textarea/textarea_onpaste_test.h"
 #include "textinput/textinput_oncut_test.h"
 #include "textinput/textinput_onpaste_test.h"
+#include "textinput/textinput_method_test.h"
 
 
 namespace ArkUICapiTest {
@@ -45,6 +46,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"textInputOnCutTest", nullptr, TextInputOnCutTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"textInputOnPasteTest", nullptr, TextInputOnPasteTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"InputMethodTest001", nullptr, TextInputMethodTest::InputMethodTest001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, afterEach, expect } from '@ohos/hypium';
+import { describe, it, afterEach, expect,  Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import { Component, On, MouseButton } from '@kit.TestKit';
@@ -35,7 +35,7 @@ export default function scrollBackToTopTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBackToTop001', 0, async (done: Function) => {
+    it('testScrollBackToTop001',  Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollBackToTopTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`,() => setTimeout(() => {}, 1000));
       console.info('push page success');

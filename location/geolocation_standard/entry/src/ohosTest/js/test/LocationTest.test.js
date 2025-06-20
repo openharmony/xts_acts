@@ -1310,51 +1310,59 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Gnss_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        await changedLocationMode();
-        var gnssStatusCb = (satelliteStatusInfo) => {
-            console.info('gnssStatusChange: ' + satelliteStatusInfo);
-            expect(true).assertEqual(satelliteStatusInfo != null)
-            expect(true).assertEqual(satelliteStatusInfo.satellitesNumber != -1)
-            if (satelliteStatusInfo.satellitesNumber != 0) {
-                expect(true).assertEqual(satelliteStatusInfo.satelliteIds[0] != -1)
-                expect(true).assertEqual(satelliteStatusInfo.carrierToNoiseDensitys[0] != -1)
-                expect(true).assertEqual(satelliteStatusInfo.altitudes[0] != -1)
-                expect(true).assertEqual(satelliteStatusInfo.azimuths[0] != -1)
-                expect(true).assertEqual(satelliteStatusInfo.carrierFrequencies[0] != -1)
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Gnss_0100 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            await changedLocationMode();
+            var gnssStatusCb = (satelliteStatusInfo) => {
+                console.info('gnssStatusChange: ' + satelliteStatusInfo);
+                expect(true).assertEqual(satelliteStatusInfo != null)
+                expect(true).assertEqual(satelliteStatusInfo.satellitesNumber != -1)
+                if (satelliteStatusInfo.satellitesNumber != 0) {
+                    expect(true).assertEqual(satelliteStatusInfo.satelliteIds[0] != -1)
+                    expect(true).assertEqual(satelliteStatusInfo.carrierToNoiseDensitys[0] != -1)
+                    expect(true).assertEqual(satelliteStatusInfo.altitudes[0] != -1)
+                    expect(true).assertEqual(satelliteStatusInfo.azimuths[0] != -1)
+                    expect(true).assertEqual(satelliteStatusInfo.carrierFrequencies[0] != -1)
+                }
             }
+            try {
+                geolocation.on('gnssStatusChange', gnssStatusCb);
+            } catch (error) {
+                console.info("[lbs_js] gnssStatusChangeOn1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            enableLocationSwitch();
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            var locationChange = (location) => {
+                console.log('locationChanger: data: ' + JSON.stringify(location));
+                expect(true).assertEqual(locationChange !=null);
+            };
+            try {
+                geolocation.on('locationChange', requestInfo, locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangeOn1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('gnssStatusChange', gnssStatusCb);
+            } catch (error) {
+                console.info("[lbs_js] gnssStatusChangeOff1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('locationChange', locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangeOff1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        try {
-            geolocation.on('gnssStatusChange', gnssStatusCb);
-        } catch (error) {
-            console.info("[lbs_js] gnssStatusChangeOn1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        enableLocationSwitch();
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        var locationChange = (location) => {
-            console.log('locationChanger: data: ' + JSON.stringify(location));
-            expect(true).assertEqual(locationChange !=null);
-        };
-        try {
-            geolocation.on('locationChange', requestInfo, locationChange);
-        } catch (error) {
-            console.info("[lbs_js] locationChangeOn1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('gnssStatusChange', gnssStatusCb);
-        } catch (error) {
-            console.info("[lbs_js] gnssStatusChangeOff1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('locationChange', locationChange);
-        } catch (error) {
-            console.info("[lbs_js] locationChangeOff1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1366,41 +1374,49 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Gnss_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        await changedLocationMode();
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        var nmeaCb = (str) => {
-            console.log('nmeaMessageChange: ' + str);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Gnss_0100 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            await changedLocationMode();
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            var nmeaCb = (str) => {
+                console.log('nmeaMessageChange: ' + str);
+            }
+            var locationChange = (location) => {
+                console.log('locationChanger: data: ' + JSON.stringify(location));
+                expect(true).assertEqual(locationChange !=null);
+            };
+            try {
+                geolocation.on('nmeaMessageChange', nmeaCb);
+            } catch (error) {
+                console.info("[lbs_js] nmeaChangeOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.on('locationChange', requestInfo, locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangeOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('nmeaMessageChange', nmeaCb);
+            } catch (error) {
+                console.info("[lbs_js] nmeaChangeOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('locationChange', locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangeOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        var locationChange = (location) => {
-            console.log('locationChanger: data: ' + JSON.stringify(location));
-            expect(true).assertEqual(locationChange !=null);
-        };
-        try {
-            geolocation.on('nmeaMessageChange', nmeaCb);
-        } catch (error) {
-            console.info("[lbs_js] nmeaChangeOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.on('locationChange', requestInfo, locationChange);
-        } catch (error) {
-            console.info("[lbs_js] locationChangeOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('nmeaMessageChange', nmeaCb);
-        } catch (error) {
-            console.info("[lbs_js] nmeaChangeOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('locationChange', locationChange);
-        } catch (error) {
-            console.info("[lbs_js] locationChangeOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1412,50 +1428,58 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Gnss_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        await changedLocationMode();
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        var nmeaCb1 = (str) => {
-            console.log('nmeaMessageChange1: ' + str);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Gnss_0400 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            await changedLocationMode();
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            var nmeaCb1 = (str) => {
+                console.log('nmeaMessageChange1: ' + str);
+            }
+            var nmeaCb2 = (str) => {
+                console.log('nmeaMessageChange2: ' + str);
+            }
+            var locationChange = (location) => {
+                console.log('locationChanger: data: ' + JSON.stringify(location));
+                expect(true).assertEqual(locationChange !=null);
+            };
+            try {
+                geolocation.on('nmeaMessageChange', nmeaCb1);
+            } catch (error) {
+                console.info("[lbs_js] nmeaChangeOn1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.on('nmeaMessageChange', nmeaCb2);
+            } catch (error) {
+                console.info("[lbs_js] nmeaChangeOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.on('locationChange', requestInfo, locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangeOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('nmeaMessageChange');
+            } catch (error) {
+                console.info("[lbs_js] nmeaChangeOffall try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('locationChange', locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangeOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        var nmeaCb2 = (str) => {
-            console.log('nmeaMessageChange2: ' + str);
-        }
-        var locationChange = (location) => {
-            console.log('locationChanger: data: ' + JSON.stringify(location));
-            expect(true).assertEqual(locationChange !=null);
-        };
-        try {
-            geolocation.on('nmeaMessageChange', nmeaCb1);
-        } catch (error) {
-            console.info("[lbs_js] nmeaChangeOn1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.on('nmeaMessageChange', nmeaCb2);
-        } catch (error) {
-            console.info("[lbs_js] nmeaChangeOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.on('locationChange', requestInfo, locationChange);
-        } catch (error) {
-            console.info("[lbs_js] locationChangeOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('nmeaMessageChange');
-        } catch (error) {
-            console.info("[lbs_js] nmeaChangeOffall try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('locationChange', locationChange);
-        } catch (error) {
-            console.info("[lbs_js] locationChangeOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1467,53 +1491,61 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Gnss_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        await changedLocationMode();
-        var gnssStatusCb1 = (satelliteStatusInfo) => {
-            console.info('gnssStatusChange: ' + satelliteStatusInfo);
-            expect(true).assertEqual(satelliteStatusInfo != null)
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Gnss_0500 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            await changedLocationMode();
+            var gnssStatusCb1 = (satelliteStatusInfo) => {
+                console.info('gnssStatusChange: ' + satelliteStatusInfo);
+                expect(true).assertEqual(satelliteStatusInfo != null)
+            }
+            var gnssStatusCb2 = (satelliteStatusInfo) => {
+                console.info('gnssStatusChange: ' + satelliteStatusInfo);
+                expect(true).assertEqual(satelliteStatusInfo != null)
+            }
+            try {
+                geolocation.on('gnssStatusChange', gnssStatusCb1);
+            } catch (error) {
+                console.info("[lbs_js] gnssStatusChangeOn1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.on('gnssStatusChange', gnssStatusCb2);
+            } catch (error) {
+                console.info("[lbs_js] gnssStatusChangeOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            enableLocationSwitch();
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            var locationChange = (location) => {
+                console.log('locationChanger: data: ' + JSON.stringify(location));
+                expect(true).assertEqual(locationChange !=null);
+            };
+            try {
+                geolocation.on('locationChange', requestInfo, locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangeOn1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('gnssStatusChange');
+            } catch (error) {
+                console.info("[lbs_js] gnssStatusChangeOffall try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('locationChange', locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangeOff1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        var gnssStatusCb2 = (satelliteStatusInfo) => {
-            console.info('gnssStatusChange: ' + satelliteStatusInfo);
-            expect(true).assertEqual(satelliteStatusInfo != null)
-        }
-        try {
-            geolocation.on('gnssStatusChange', gnssStatusCb1);
-        } catch (error) {
-            console.info("[lbs_js] gnssStatusChangeOn1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.on('gnssStatusChange', gnssStatusCb2);
-        } catch (error) {
-            console.info("[lbs_js] gnssStatusChangeOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        enableLocationSwitch();
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        var locationChange = (location) => {
-            console.log('locationChanger: data: ' + JSON.stringify(location));
-            expect(true).assertEqual(locationChange !=null);
-        };
-        try {
-            geolocation.on('locationChange', requestInfo, locationChange);
-        } catch (error) {
-            console.info("[lbs_js] locationChangeOn1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('gnssStatusChange');
-        } catch (error) {
-            console.info("[lbs_js] gnssStatusChangeOffall try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('locationChange', locationChange);
-        } catch (error) {
-            console.info("[lbs_js] locationChangeOff1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1525,41 +1557,49 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Batching_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        var cachedLocationsCb1 = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Batching_0100 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            var cachedLocationsCb1 = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var CachedGnssLoactionsRequest1 = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': false};
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest1, cachedLocationsCb1);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn11 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb1);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOff11 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            var cachedLocationsCb2 = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var CachedGnssLoactionsRequest2 = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': false};
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest2, cachedLocationsCb2);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn12 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb1);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOff12 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        var CachedGnssLoactionsRequest1 = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': false};
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest1, cachedLocationsCb1);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn11 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb1);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOff11 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        var cachedLocationsCb2 = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
-        }
-        var CachedGnssLoactionsRequest2 = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': false};
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest2, cachedLocationsCb2);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn12 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb1);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOff12 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1571,26 +1611,34 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Batching_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        var cachedLocationsCb = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Batching_0200 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            var cachedLocationsCb = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1602,41 +1650,49 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Batching_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        var cachedLocationsCb = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Batching_0300 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            var cachedLocationsCb = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.getCachedGnssLocationsSize((err, data) => {
+                    if (err) {
+                        console.info('[lbs_js]  getCachedGnssLocationsSize callback err:' + JSON.stringify(err));
+                        expect(true).assertEqual(err != null);
+                    }else {
+                        console.info("[lbs_js] getCachedGnssLocationsSize callback data is:" + JSON.stringify(data));
+                        expect(true).assertEqual(data != null);
+                    }
+                });
+            } catch (error) {
+                console.info("[lbs_js] getCachedGnssLocationsS callback try err:" + JSON.stringify(data));
+                expect(true).assertEqual(data != null);
+            }
+            await sleep(1000);
+            done();
         }
-        var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.getCachedGnssLocationsSize((err, data) => {
-                if (err) {
-                    console.info('[lbs_js]  getCachedGnssLocationsSize callback err:' + JSON.stringify(err));
-                    expect(true).assertEqual(err != null);
-                }else {
-                    console.info("[lbs_js] getCachedGnssLocationsSize callback data is:" + JSON.stringify(data));
-                    expect(true).assertEqual(data != null);
-                }
-            });
-        } catch (error) {
-            console.info("[lbs_js] getCachedGnssLocationsS callback try err:" + JSON.stringify(data));
-            expect(true).assertEqual(data != null);
-        }
-        await sleep(1000);
-        done();
     })
 
     /**
@@ -1648,38 +1704,46 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Batching_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        var cachedLocationsCb = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Batching_0400 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            var cachedLocationsCb = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                await geolocation.getCachedGnssLocationsSize().then((result) => {
+                    console.info('[lbs_js] getCachedGnssLocationsSiz promise '+ JSON.stringify(result));
+                    expect(true).assertEqual(result != null);
+                }).catch((error) => {
+                    console.info("[lbs_js] promise then error." + JSON.stringify(error));
+                    expect(true).assertEqual(error != null);
+                });
+            } catch (error) {
+                console.info("[lbs_js] getCachedGnssLocationsS promise try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            await geolocation.getCachedGnssLocationsSize().then((result) => {
-                console.info('[lbs_js] getCachedGnssLocationsSiz promise '+ JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-            }).catch((error) => {
-                console.info("[lbs_js] promise then error." + JSON.stringify(error));
-                expect(true).assertEqual(error != null);
-            });
-        } catch (error) {
-            console.info("[lbs_js] getCachedGnssLocationsS promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1691,41 +1755,49 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Batching_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        var cachedLocationsCb = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Batching_0500 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            var cachedLocationsCb = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.flushCachedGnssLocations((err, data) => {
+                    if (err) {
+                        console.info('[lbs_js]  flushCachedGnssLocations callback err:' + JSON.stringify(err));
+                        expect(true).assertEqual(err != null);
+                    }else {
+                        console.info("[lbs_js] flushCachedGnssLocations callback data:" + JSON.stringify(data));
+                        expect(true).assertEqual(data != null);
+                    }
+                });
+            } catch (error) {
+                console.info("[lbs_js] flushCachedGnssLoc callback try err: " + JSON.stringify(data));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            await sleep(1000);
+            done();
         }
-        var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.flushCachedGnssLocations((err, data) => {
-                if (err) {
-                    console.info('[lbs_js]  flushCachedGnssLocations callback err:' + JSON.stringify(err));
-                    expect(true).assertEqual(err != null);
-                }else {
-                    console.info("[lbs_js] flushCachedGnssLocations callback data:" + JSON.stringify(data));
-                    expect(true).assertEqual(data != null);
-                }
-            });
-        } catch (error) {
-            console.info("[lbs_js] flushCachedGnssLoc callback try err: " + JSON.stringify(data));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        await sleep(1000);
-        done();
     })
 
     /**
@@ -1737,38 +1809,46 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Batching_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        var cachedLocationsCb = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Batching_0600 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            var cachedLocationsCb = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                await geolocation.flushCachedGnssLocations().then((result) => {
+                    console.info('[lbs_js] flushCachedGnssLocations promise '+ JSON.stringify(result));
+                    expect(true).assertEqual(result != null);
+                }).catch((error) => {
+                    console.info("[lbs_js] promise then error." + JSON.stringify(error));
+                    expect(true).assertEqual(error != null);
+                });
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            await geolocation.flushCachedGnssLocations().then((result) => {
-                console.info('[lbs_js] flushCachedGnssLocations promise '+ JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-            }).catch((error) => {
-                console.info("[lbs_js] promise then error." + JSON.stringify(error));
-                expect(true).assertEqual(error != null);
-            });
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOff2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1780,36 +1860,44 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Batching_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        var cachedLocationsCb1 = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations1: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LocationSystem_Batching_0800 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            var cachedLocationsCb1 = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations1: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var cachedLocationsCb2 = (locations) => {
+                console.log('cachedGnssLocationsReporting: locations2: ' + JSON.stringify(locations));
+                expect(true).assertEqual(locations !=null);
+            }
+            var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
+            let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb1);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb2);
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('cachedGnssLocationsReporting');
+            } catch (error) {
+                console.info("[lbs_js] cachedGnssOffall try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        var cachedLocationsCb2 = (locations) => {
-            console.log('cachedGnssLocationsReporting: locations2: ' + JSON.stringify(locations));
-            expect(true).assertEqual(locations !=null);
-        }
-        var CachedGnssLoactionsRequest = {'reportingPeriodSec': 5, 'wakeUpCacheQueueFull': true};
-        let requestInfo = {"priority":request_priority_unset, "scenario":request_scenario_navigation, "timeInterval":0,
-            "distanceInterval": 0, "maxAccuracy": 0};
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb1);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb2);
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOn2 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        try {
-            geolocation.off('cachedGnssLocationsReporting');
-        } catch (error) {
-            console.info("[lbs_js] cachedGnssOffall try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
     /**
@@ -1821,41 +1909,49 @@ export default function geolocationTest_geo3() {
     * @tc.level Level 1
     */
     it('SUB_HSS_LocationSystem_GeoFence_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        await changedLocationMode();
-        let geofence = {"latitude": 31.12, "longitude": 121.11, "radius": 1, "expiration": ""};
-        let geofenceRequest = {"scenario":request_scenario_navigation, "geofence": geofence, "priority": request_priority_accuracy};
-        let want = (wantAgent) => {
-            console.log('wantAgent: ' + JSON.stringify(wantAgent));
-        };
-        try {
-            geolocation.on('fenceStatusChange', geofenceRequest,
-                (want) => {
-                    if(err){
-                        return console.info("[lbs_js] fenceStatusChangeOn callback err:" + err);
-                    }
-                    console.info("[lbs_js] fenceStatusChange callback result:  " + JSON.stringify(want));
-                    expect(true).assertEqual(want !=null);
-                    done();
-                });
-        } catch (error) {
-            console.info("[lbs_js] fenceStatusChangeOn1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Geofence");
+        console.info("SUB_HSS_LocationSystem_GeoFence_0100 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support Geofence");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            await changedLocationMode();
+            let geofence = {"latitude": 31.12, "longitude": 121.11, "radius": 1, "expiration": ""};
+            let geofenceRequest = {"scenario":request_scenario_navigation, "geofence": geofence, "priority": request_priority_accuracy};
+            let want = (wantAgent) => {
+                console.log('wantAgent: ' + JSON.stringify(wantAgent));
+            };
+            try {
+                geolocation.on('fenceStatusChange', geofenceRequest,
+                    (want) => {
+                        if(err){
+                            return console.info("[lbs_js] fenceStatusChangeOn callback err:" + err);
+                        }
+                        console.info("[lbs_js] fenceStatusChange callback result:  " + JSON.stringify(want));
+                        expect(true).assertEqual(want !=null);
+                        done();
+                    });
+            } catch (error) {
+                console.info("[lbs_js] fenceStatusChangeOn1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('fenceStatusChange',geofenceRequest,
+                    (want) => {
+                        if(err){
+                            return console.info("[lbs_js] fenceStatusChange callback err:" + err);
+                        }
+                        console.info("[lbs_js] off fenceStatusChange callback result:" + JSON.stringify(want));
+                        expect(true).assertEqual(want !=null);
+                    });
+            } catch (error) {
+                console.info("[lbs_js] fenceStatusChangeOff1 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            await sleep(1000);
+            done();
         }
-        try {
-            geolocation.off('fenceStatusChange',geofenceRequest,
-                (want) => {
-                    if(err){
-                        return console.info("[lbs_js] fenceStatusChange callback err:" + err);
-                    }
-                    console.info("[lbs_js] off fenceStatusChange callback result:" + JSON.stringify(want));
-                    expect(true).assertEqual(want !=null);
-                });
-        } catch (error) {
-            console.info("[lbs_js] fenceStatusChangeOff1 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        await sleep(1000);
-        done();
     })
 
     /**
@@ -1867,41 +1963,49 @@ export default function geolocationTest_geo3() {
      * @tc.level Level 1
      */
     it('SUB_HSS_LocationSystem_GeoFence_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        await changedLocationMode();
-        let geofence = {"latitude": 0, "longitude": 0, "radius": 0,"expiration": ""};
-        geofence.latitude = 31.12
-        geofence.longitude = 121.11
-        geofence.radius = 1
-        geofence.expiration = ""
-        let geofenceRequest = {"scenario":request_scenario_navigation, "geofence": geofence};
-        try {
-            geolocation.on('fenceStatusChange', geofenceRequest,
-                (want) => {
-                    if(err){
-                        return console.info("[lbs_js] fenceStatusChangeOn callback err:" + err);
-                    }
-                    console.info("[lbs_js] fenceStatusChange callback, result:  " + JSON.stringify(want));
-                    expect(true).assertEqual(want !=null);
-                    done();
-                });
-        } catch (error) {
-            console.info("[lbs_js] fenceStatusChangeOn5 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Geofence");
+        console.info("SUB_HSS_LocationSystem_GeoFence_0500 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support Geofence");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            await changedLocationMode();
+            let geofence = {"latitude": 0, "longitude": 0, "radius": 0,"expiration": ""};
+            geofence.latitude = 31.12
+            geofence.longitude = 121.11
+            geofence.radius = 1
+            geofence.expiration = ""
+            let geofenceRequest = {"scenario":request_scenario_navigation, "geofence": geofence};
+            try {
+                geolocation.on('fenceStatusChange', geofenceRequest,
+                    (want) => {
+                        if(err){
+                            return console.info("[lbs_js] fenceStatusChangeOn callback err:" + err);
+                        }
+                        console.info("[lbs_js] fenceStatusChange callback, result:  " + JSON.stringify(want));
+                        expect(true).assertEqual(want !=null);
+                        done();
+                    });
+            } catch (error) {
+                console.info("[lbs_js] fenceStatusChangeOn5 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            try {
+                geolocation.off('fenceStatusChange',geofenceRequest,
+                    (want) => {
+                        if(err){
+                            return console.info("[lbs_js] fenceStatusChange callback err:" + err);
+                        }
+                        console.info("[lbs_js] fenceStatusChangeOff callback result:" + JSON.stringify(want));
+                        expect(true).assertEqual(want !=null);
+                    });
+            } catch (error) {
+                console.info("[lbs_js] fenceStatusChangeOff5 try err." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
+            done();
         }
-        try {
-            geolocation.off('fenceStatusChange',geofenceRequest,
-                (want) => {
-                    if(err){
-                        return console.info("[lbs_js] fenceStatusChange callback err:" + err);
-                    }
-                    console.info("[lbs_js] fenceStatusChangeOff callback result:" + JSON.stringify(want));
-                    expect(true).assertEqual(want !=null);
-                });
-        } catch (error) {
-            console.info("[lbs_js] fenceStatusChangeOff5 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
-        done();
     })
 
      /**

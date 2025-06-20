@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function commonEventOnAreaChangeTest() {
@@ -34,7 +34,7 @@ export default function commonEventOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEventOnAreaChange001', 0, async (done: Function) => {
+    it('testCommonEventOnAreaChange001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestImageSpanSize')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestImageSpanSize').$attrs.backgroundColor)
@@ -50,7 +50,7 @@ export default function commonEventOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEventOnAreaChange002', 0, async (done: Function) => {
+    it('testCommonEventOnAreaChange002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestImageSpanMoveCompare')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestImageSpanMove').$attrs.backgroundColor)
@@ -66,7 +66,7 @@ export default function commonEventOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEventOnAreaChange003', 0, async (done: Function) => {
+    it('testCommonEventOnAreaChange003', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestImageSpanOffset')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestImageSpanOffset').$attrs.backgroundColor)

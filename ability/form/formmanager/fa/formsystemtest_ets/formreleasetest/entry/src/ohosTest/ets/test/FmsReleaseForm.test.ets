@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 
@@ -92,7 +92,7 @@ export default function test() {
          * @tc.desc: 1.release the form that formID is 1
          *           2.Verify the result is false
          */
-        it(`FMS_releaseForm_0200`, 0, async (done: () => void) => {
+        it(`FMS_releaseForm_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_releaseForm_0200 start`);
             let formId: string = '';
 
@@ -183,7 +183,7 @@ export default function test() {
          * @tc.desc: 1.release the form
          *           2.Verify the result is false
          */
-        it(`FMS_releaseForm_0300`, 0, async (done: () => void) => {
+        it(`FMS_releaseForm_0300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_releaseForm_0300 start`);
 
             let onReleasedCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -236,7 +236,7 @@ export default function test() {
         * @tc.desc: 1.release the form
         *           2.Verify the result is false
         */
-        it(`FMS_releaseForm_0400`, 0, async (done: () => void) => {
+        it(`FMS_releaseForm_0400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_releaseForm_0400 start`);
 
             let onReleaseCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -291,7 +291,7 @@ export default function test() {
         *           2.host B release the formA
         *           2.Verify the result is false
         */
-        it(`FMS_releaseForm_0500`, 0, async (done: () => void) => {
+        it(`FMS_releaseForm_0500`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_releaseForm_0500 start`);
             let formId: string = '';
 
@@ -381,7 +381,7 @@ export default function test() {
         *           2.host delete the form
         *           3.host release the form and verify the result is false
         */
-        it(`FMS_releaseForm_0600`, 0, async (done: () => void) => {
+        it(`FMS_releaseForm_0600`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_releaseForm_0600 start`);
             let formId: string = '';
 
@@ -477,7 +477,7 @@ export default function test() {
         * @tc.desc: 1.There are 2 forms created by the single host
         *           2.single host release 2 forms successfully
         */
-        it(`FMS_releaseForm_1300`, 0, async (done: () => void) => {
+        it(`FMS_releaseForm_1300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_releaseForm_1300 start`);
 
             let formIdList: string[] = [];
@@ -640,7 +640,7 @@ export default function test() {
         * @tc.desc: 1.host create one temp form
         *           2.release the form and judge the result is true
         */
-        it(`FMS_releaseForm_1400`, 0, async (done: () => void) => {
+        it(`FMS_releaseForm_1400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_releaseForm_1400 start`);
 
             let onReleasedCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {

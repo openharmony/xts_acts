@@ -45,9 +45,9 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test number array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayToLocaleStringTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('builtinsArrayToLocaleStringTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect([1, 2, 3].toLocaleString()).assertEqual("1,2,3");
     });
 
@@ -57,7 +57,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test string array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(['apple', 'banana', 'cherry'].toLocaleString()).assertEqual("apple,banana,cherry");
@@ -69,7 +69,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test empty array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([].toLocaleString()).assertEqual("");
@@ -81,7 +81,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test null/undefined elements
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, null, undefined, 3].toLocaleString()).assertEqual("1,,,3");
@@ -93,7 +93,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test sparse array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, , 3].toLocaleString()).assertEqual("1,,3");
@@ -105,7 +105,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test object elements
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const obj: Empty = {};
@@ -121,7 +121,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test nested arrays
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([[1, 2], [3, 4]].toLocaleString()).assertEqual("1,2,3,4");
@@ -133,7 +133,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test NaN
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(NaN.toLocaleString()).assertEqual("NaN");
@@ -145,7 +145,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test NaN equal
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(NaN.toLocaleString('en')).assertEqual("NaN");
@@ -157,7 +157,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test number cases
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(Math.floor(1.5).toLocaleString()).assertEqual("1");
@@ -190,7 +190,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test special characters
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect("!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".toLocaleString())
@@ -241,7 +241,7 @@ export default function builtinsArrayToLocaleStringTest() {
      * @tc.desc Test boolean conversion
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArrayToLocaleStringTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(true.toLocaleString()).assertEqual("true");

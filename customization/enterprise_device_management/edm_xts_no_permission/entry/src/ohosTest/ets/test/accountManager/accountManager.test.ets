@@ -49,7 +49,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("disallowOsAccountAddition_test_001", 0, async (done: Function) => {
+    it("disallowOsAccountAddition_test_001", Level.LEVEL2, async (done: Function) => {
       console.info(' --- disallowOsAccountAddition_test_001  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -74,7 +74,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("disallowOsAccountAddition_test_002", 0, async (done: Function) => {
+    it("disallowOsAccountAddition_test_002", Level.LEVEL2, async (done: Function) => {
       console.info(' --- disallowOsAccountAddition_test_002  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -99,7 +99,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("isOsAccountAdditionDisallowed_test_001", 0, async (done: Function) => {
+    it("isOsAccountAdditionDisallowed_test_001", Level.LEVEL2, async (done: Function) => {
       console.info(' --- isOsAccountAdditionDisallowed_test_001  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -124,7 +124,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("isOsAccountAdditionDisallowed_test_002", 0, async (done: Function) => {
+    it("isOsAccountAdditionDisallowed_test_002", Level.LEVEL2, async (done: Function) => {
       console.info(' --- isOsAccountAdditionDisallowed_test_002  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -149,7 +149,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("addOsAccountAsync_test_001", 0, async (done: Function) => {
+    it("addOsAccountAsync_test_001", Level.LEVEL2, async (done: Function) => {
       console.info(' --- addOsAccountAsync_test_001  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {

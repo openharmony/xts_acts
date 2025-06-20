@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Driver, Component, UiWindow, ON } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function valueAlphabet() {
      * @tc.type
      * @tc.size
      */
-    it('valueAlphabet_0100', 0, async (done: Function) => {
+    it('valueAlphabet_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[valueAlphabet_0100] START');
       let strJson = getInspectorByKey('alp_outliers_value');
       console.info("[valueAlphabet_0100] component obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));
@@ -71,7 +71,7 @@ export default function valueAlphabet() {
      * @tc.type
      * @tc.size
      */
-    it('valueAlphabet_0200', 0, async (done: Function) => {
+    it('valueAlphabet_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[valueAlphabet_0200] START');
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.text('B'));
@@ -93,7 +93,7 @@ export default function valueAlphabet() {
      * @tc.type
      * @tc.size
      */
-    it('valueAlphabet_0300', 0, async (done: Function) => {
+    it('valueAlphabet_0300', Level.LEVEL1, async (done: Function) => {
       console.info('[valueAlphabet_0300] START');
       let driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.text('A'));

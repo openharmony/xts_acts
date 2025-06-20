@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach } from '@ohos/hypium';
+import { describe, it, expect, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON } from '@kit.TestKit';
 import commonEventManager from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -42,7 +42,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0100', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0100 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -116,7 +116,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0200', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0200 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -187,7 +187,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0300', Level.LEVEL0, async (done: Function) => {
       try {
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
           console.info(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0300 createSubscriber data');
@@ -267,7 +267,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0400', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0400 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -338,7 +338,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0500', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0500 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -409,7 +409,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0600', Level.LEVEL0, async (done: Function) => {
       try {
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
           console.info(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0600 createSubscriber data');
@@ -479,7 +479,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0700', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0700 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -553,7 +553,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0800', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0800 start!!!')
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -629,7 +629,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_0900', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_0900 start')
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -703,7 +703,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_1000', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_1000 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -778,7 +778,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_1100', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_1100 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -853,7 +853,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_1200', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_1200 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -928,7 +928,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_GetApplicationContext_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_GetApplicationContext_1300', Level.LEVEL0, async (done: Function) => {
       try {
         console.log(TAG, 'SUB_Ability_AbilityRuntime_GetApplicationContext_1300 start');
         commonEventManager.createSubscriber(ACTS_CallFunction).then(async (data) => {

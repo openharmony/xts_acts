@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
      * @tc.name testFlexAlignSpaceEvenlyLayoutWeight01
      * @tc.desc The interface displays all subcomponents that set different layoutWeight properties
      */
-    it('testFlexAlignSpaceEvenlyLayoutWeight01', 0, async () => {
+    it('testFlexAlignSpaceEvenlyLayoutWeight01',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignSpaceEvenlyLayoutWeight01] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight1', value: 1
@@ -99,7 +99,7 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
      * @tc.name testFlexAlignSpaceEvenlyLayoutWeight02
      * @tc.desc Some subcomponents are displayed with different layoutWeight properties
      */
-    it('testFlexAlignSpaceEvenlyLayoutWeight02', 0, async () => {
+    it('testFlexAlignSpaceEvenlyLayoutWeight02',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignSpaceEvenlyLayoutWeight02] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight1', value: 1

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import accessibility from '@ohos.accessibility'
 const abilityType = 'all';
@@ -48,7 +48,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100');
             let abilityType = 'audible';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -72,7 +72,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200');
             let abilityType = 'generic';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -96,7 +96,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300');
             let abilityType = 'haptic';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -120,7 +120,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400');
             let abilityType = 'spoken';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -144,7 +144,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500');
             let abilityType = 'visual';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -168,7 +168,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600');
             let abilityType = 'all';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -192,7 +192,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700');
             let abilityType = '';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -217,7 +217,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800');
             let abilityType = null;
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -242,7 +242,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900');
             let abilityState = 'enable';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -266,7 +266,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000');
             let abilityState = 'disable';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -290,7 +290,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100');
             let abilityState = 'install';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -314,7 +314,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200');
             let abilityState = '';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -339,7 +339,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300');
             let abilityState = null;
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -364,7 +364,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400');
             let abilityType = 'audible';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -387,7 +387,7 @@ export default function AccessibleAbilityList() {
        * @tc.type    User
        * @tc.level   Level 1
        */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500');
             let abilityType = 'generic';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -410,7 +410,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600');
             let abilityType = 'haptic';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -433,7 +433,7 @@ export default function AccessibleAbilityList() {
        * @tc.type    User
        * @tc.level   Level 1
        */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700');
             let abilityType = 'spoken';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -456,7 +456,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800');
             let abilityType = 'visual';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -479,7 +479,7 @@ export default function AccessibleAbilityList() {
        * @tc.type    User
        * @tc.level   Level 1
        */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900');
             let abilityType = 'all';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -503,7 +503,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200');
             let abilityState = 'enable';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -526,7 +526,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300');
             let abilityState = 'disable';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -549,7 +549,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400');
             let abilityState = 'install';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -572,7 +572,7 @@ export default function AccessibleAbilityList() {
          * @tc.type    User
          * @tc.level   Level 1
          */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500');
             let abilityType = 'audible';
             let abilityState = 'install';
@@ -599,7 +599,7 @@ export default function AccessibleAbilityList() {
           * @tc.type    User
           * @tc.level   Level 1
           */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600');
             try {
                 let abilityType = 'generic';
@@ -623,7 +623,7 @@ export default function AccessibleAbilityList() {
        * @tc.type    User
        * @tc.level   Level 1
        */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700');
             try {
                 let abilityType = 'haptic';
@@ -647,7 +647,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800');
             try {
                 let abilityType = 'spoken';
@@ -671,7 +671,7 @@ export default function AccessibleAbilityList() {
          * @tc.type    User
          * @tc.level   Level 1
          */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900');
             try {
                 let abilityType = 'visual';
@@ -695,7 +695,7 @@ export default function AccessibleAbilityList() {
          * @tc.type    User
          * @tc.level   Level 1
          */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000');
             try {
                 let abilityType = 'all';
@@ -719,7 +719,7 @@ export default function AccessibleAbilityList() {
          * @tc.type    User
          * @tc.level   Level 1
          */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100');
             try {
                 let abilityType = '';
@@ -743,7 +743,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200');
             try {
                 let abilityType = null;
@@ -767,7 +767,7 @@ export default function AccessibleAbilityList() {
          * @tc.type    User
          * @tc.level   Level 1
          */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300');
             try {
                 let abilityState = 'enable';
@@ -791,7 +791,7 @@ export default function AccessibleAbilityList() {
          * @tc.type    User
          * @tc.level   Level 1
          */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400');
             try {
                 let abilityState = 'disable';
@@ -815,7 +815,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500');
             try {
                 let abilityState = 'install';
@@ -839,7 +839,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600');
             try {
                 let abilityState = '';
@@ -863,7 +863,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700', Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700');
             try {
                 let abilityState = null;

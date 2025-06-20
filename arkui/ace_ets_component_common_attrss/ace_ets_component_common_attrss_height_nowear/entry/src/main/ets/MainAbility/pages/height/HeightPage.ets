@@ -100,7 +100,7 @@ struct heightPage {
           src: this.src
         }).commonStyle().width(100)
       } else if (this.targetView == 'Navigation') {
-        Navigation().commonStyle().width(100)
+        Navigation().commonStyle().width(100).expandSafeArea([], [])
       } else if (this.targetView == 'NavRouter') {
         NavRouter().commonStyle().width(100)
       } else if (this.targetView == 'Progress') {

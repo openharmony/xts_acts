@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import appManager from "@ohos.application.appManager"
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 export default function ActsAmsTestFourthScene() {
     describe('ActsAmsTestFourthScene', function () {
         console.info('----ActsAmsTestFourthScene----');
@@ -32,7 +32,7 @@ export default function ActsAmsTestFourthScene() {
         * @tc.name      : getProcessRunningInfos : Get All Running Processes Info
         * @tc.desc      : Get All Running Processes Info(by Promise)
         */
-        it('Acts_Ams_test_1700', 0, async function (done) {
+        it('Acts_Ams_test_1700', Level.LEVEL0, async function (done) {
             console.info("sleep begin");
             sleep(2000);
             console.info("sleep end");

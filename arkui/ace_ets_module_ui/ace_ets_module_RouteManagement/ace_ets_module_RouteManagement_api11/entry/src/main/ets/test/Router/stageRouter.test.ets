@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { BusinessError } from '@ohos.base';
 
@@ -54,7 +54,7 @@ export default function stageRouterTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('testrouterstage0001', 0, async (done: Function) => {
+    it('testrouterstage0001', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0001 START');
       let result: ESObject;
@@ -78,7 +78,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0002', 0, async (done: Function) => {
+    it('testrouterstage0002', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0002 START');
       let result: ESObject;
@@ -108,7 +108,7 @@ export default function stageRouterTest() {
     });
 
 
-    it('testrouterstage0003', 0, async (done: Function) => {
+    it('testrouterstage0003', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0003 START');
       let result: ESObject;
@@ -136,7 +136,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0004', 0, async (done: Function) => {
+    it('testrouterstage0004', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0004 START');
       let result: ESObject;
@@ -159,7 +159,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0005', 0, async (done: Function) => {
+    it('testrouterstage0005', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0005 START');
       let result: ESObject;
@@ -184,7 +184,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0006', 0, async (done: Function) => {
+    it('testrouterstage0006', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0006 START');
       let result: ESObject;
@@ -210,7 +210,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0007', 0, async (done: Function) => {
+    it('testrouterstage0007', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0007 START');
       let result: ESObject;
@@ -235,7 +235,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0008', 0, async (done: Function) => {
+    it('testrouterstage0008', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0008 START');
       let result: ESObject;
@@ -261,7 +261,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0009', 0, async (done: Function) => {
+    it('testrouterstage0009', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0009 START');
       let result: ESObject;
@@ -278,7 +278,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0010', 0, async (done: Function) => {
+    it('testrouterstage0010', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0010 START');
       let result: ESObject;
@@ -293,7 +293,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0011', 0, async (done: Function) => {
+    it('testrouterstage0011', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0011 START');
       let result: ESObject;
@@ -308,7 +308,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0012', 0, async (done: Function) => {
+    it('testrouterstage0012', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0012 START');
       let result: ESObject;
@@ -323,7 +323,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0013', 0, async (done: Function) => {
+    it('testrouterstage0013', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0013 START');
       let result: ESObject;
@@ -340,7 +340,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0014', 0, async (done: Function) => {
+    it('testrouterstage0014', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0014 START');
       let result: ESObject;
@@ -355,7 +355,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0015', 0, async (done: Function) => {
+    it('testrouterstage0015', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0015 START');
       let result: ESObject;
@@ -370,7 +370,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0016', 0, async (done: Function) => {
+    it('testrouterstage0016', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0016 START');
       let result: ESObject;
@@ -398,7 +398,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0017', 0, async (done: Function) => {
+    it('testrouterstage0017', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0017 START');
       let result: ESObject;
@@ -427,7 +427,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0018', 0, async (done: Function) => {
+    it('testrouterstage0018', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0018 START');
       let result: ESObject;
@@ -455,7 +455,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0019', 0, async (done: Function) => {
+    it('testrouterstage0019', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0019 START');
       let result: ESObject;
@@ -484,7 +484,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0020', 0, async (done: Function) => {
+    it('testrouterstage0020', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0020 START');
       let result: ESObject;
@@ -509,7 +509,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0021', 0, async (done: Function) => {
+    it('testrouterstage0021', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0021 START');
       let result: ESObject;
@@ -535,7 +535,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0022', 0, async (done: Function) => {
+    it('testrouterstage0022', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0022 START');
       let result: ESObject;
@@ -560,7 +560,7 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0023', 0, async (done: Function) => {
+    it('testrouterstage0023', Level.LEVEL2, async (done: Function) => {
       let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0023 START');
       let result: ESObject;

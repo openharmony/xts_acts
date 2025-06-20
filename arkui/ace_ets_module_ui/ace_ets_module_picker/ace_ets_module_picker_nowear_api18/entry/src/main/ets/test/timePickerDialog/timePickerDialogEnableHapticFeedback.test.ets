@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver } from '@ohos.UiTest';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
@@ -51,7 +51,7 @@ export default function TimePickerDialogEnableHapticFeedbackTest() {
      * @tc.size
     */
 
-     it('TimePickerDialog_EnableHapticFeedback_001', 0, async (done: Function) => {
+     it('TimePickerDialog_EnableHapticFeedback_001', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TimePickerDialog_EnableHapticFeedback_001';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);
@@ -78,7 +78,7 @@ export default function TimePickerDialogEnableHapticFeedbackTest() {
      * @tc.size
     */
 
-    it('TimePickerDialog_EnableHapticFeedback_002', 0, async (done: Function) => {
+    it('TimePickerDialog_EnableHapticFeedback_002', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TimePickerDialog_EnableHapticFeedback_002';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);
@@ -105,7 +105,7 @@ export default function TimePickerDialogEnableHapticFeedbackTest() {
      * @tc.size
     */
 
-    it('TimePickerDialog_EnableHapticFeedback_003', 0, async (done: Function) => {
+    it('TimePickerDialog_EnableHapticFeedback_003', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TimePickerDialog_EnableHapticFeedback_003';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);
@@ -132,7 +132,7 @@ export default function TimePickerDialogEnableHapticFeedbackTest() {
      * @tc.size
     */
 
-    it('TimePickerDialog_EnableHapticFeedback_004', 0, async (done: Function) => {
+    it('TimePickerDialog_EnableHapticFeedback_004', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TimePickerDialog_EnableHapticFeedback_004';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);

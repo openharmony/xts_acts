@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
+import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -60,7 +60,7 @@ export default function comSizeAbilityTest_18() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_47', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_47', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_47 START')
       await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("TimePicker_Size");
@@ -104,7 +104,7 @@ export default function comSizeAbilityTest_18() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_48', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_48', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_48 START')
       await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Toggle_Size");
@@ -148,7 +148,7 @@ export default function comSizeAbilityTest_18() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_49', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_49', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_49 START')
       await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Video_Size");
@@ -192,7 +192,7 @@ export default function comSizeAbilityTest_18() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_50', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_50', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_50 START')
       await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("WaterFlow_Size");

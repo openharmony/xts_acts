@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -49,7 +49,7 @@ export default function getLayout() {
      * @tc.type
      */
 
-    it('getLayout_001', 0, async (done: Function) => {
+    it('getLayout_001',  Level.LEVEL0, async (done: Function) => {
       console.info('[getLayout_001] START');
 
       await CommonFunc.sleep(1000);
@@ -71,7 +71,7 @@ export default function getLayout() {
      * @tc.type
      */
 
-    it('getLayout_002', 0, async (done: Function) => {
+    it('getLayout_002',  Level.LEVEL0, async (done: Function) => {
       console.info('[getLayout_002] START');
 
       await CommonFunc.sleep(1000);
@@ -93,7 +93,7 @@ export default function getLayout() {
      * @tc.type
      */
 
-    it('getLayout_003', 0, async (done: Function) => {
+    it('getLayout_003',  Level.LEVEL0, async (done: Function) => {
       console.info('[getLayout_003] START');
 
       await CommonFunc.sleep(1000);
@@ -115,7 +115,7 @@ export default function getLayout() {
      * @tc.type
      */
 
-    it('getLayout_004', 0, async (done: Function) => {
+    it('getLayout_004',  Level.LEVEL0, async (done: Function) => {
       console.info('[getLayout_004] START');
 
       await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function getLayout() {
      * @tc.type
      */
 
-    it('getLayout_005', 0, async (done: Function) => {
+    it('getLayout_005',  Level.LEVEL0, async (done: Function) => {
       console.info('[getLayout_005] START');
 
       await CommonFunc.sleep(1000);
@@ -159,7 +159,7 @@ export default function getLayout() {
      * @tc.type
      */
 
-    it('getLayout_006', 0, async (done: Function) => {
+    it('getLayout_006',  Level.LEVEL0, async (done: Function) => {
       console.info('[getLayout_006] START');
 
       await CommonFunc.sleep(1000);

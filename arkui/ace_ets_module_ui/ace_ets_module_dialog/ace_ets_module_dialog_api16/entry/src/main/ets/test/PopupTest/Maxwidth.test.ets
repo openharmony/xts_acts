@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver } from '@ohos.UiTest';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
@@ -49,7 +49,7 @@ export default function MaxwidthTest() {
      * @tc.type
      * @tc.size
     */
-    it('popup_maxWidth_0101', 0, async (done: Function) => {
+    it('popup_maxWidth_0101', Level.LEVEL2, async (done: Function) => {
         console.info('popup_maxWidth_0101 START');
         await CommonFunc.sleep(1000);
         sendEventByKey('PopupApi1_btn1',10,"")
@@ -70,7 +70,7 @@ export default function MaxwidthTest() {
        * @tc.type
        * @tc.size
        */
-      it('popup_maxWidth_0102', 0, async (done: Function) => {
+      it('popup_maxWidth_0102', Level.LEVEL2, async (done: Function) => {
         console.info('popup_maxWidth_0102 START');
         let driver = await Driver.create();
         await CommonFunc.sleep(1000);
@@ -102,7 +102,7 @@ export default function MaxwidthTest() {
        * @tc.type
        * @tc.size
        */
-      it('popup_maxWidth_0103', 0, async (done: Function) => {
+      it('popup_maxWidth_0103', Level.LEVEL2, async (done: Function) => {
         console.info('popup_maxWidth_0103 START');
         let driver = await Driver.create();
         await CommonFunc.sleep(1000);

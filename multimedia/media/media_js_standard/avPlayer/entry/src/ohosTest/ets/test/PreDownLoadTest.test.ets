@@ -15,7 +15,7 @@
 import media from '@ohos.multimedia.media';
 import resourceManager from '@ohos.resourceManager';
 import MediaTestBase from './MediaTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { BusinessError } from '@kit.BasicServicesKit';
 import { HashMap } from '@kit.ArkTS';
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -326,7 +326,7 @@ export default function PreDownLoadTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FUNCTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FUNCTION_0100', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FUNCTION_0100 begin');
       let preConfig: PreDownConfig = {
         url: 'https://xxx/xx.mp4',
@@ -362,7 +362,7 @@ export default function PreDownLoadTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0100', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0100 begin');
       let preConfig: PreDownConfig = {
         url: 'https://xxx/xx.mp4',
@@ -397,7 +397,7 @@ export default function PreDownLoadTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0200', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0200 begin');
       let preConfig: PreDownConfig = {
         url: 'https://xxx/xx.mp4',
@@ -432,7 +432,7 @@ export default function PreDownLoadTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0300', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0300 begin');
       let preConfig: PreDownConfig = {
         url: 'https://xxx/xx.mp4',
@@ -465,7 +465,7 @@ export default function PreDownLoadTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0400', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0400 begin');
       let preConfig: PreDownConfig = {
         url: 'https://xxx/xx.mp4',
@@ -498,7 +498,7 @@ export default function PreDownLoadTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0500', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0500 begin');
       let preConfig: PreDownConfig = {
         url: 'https://xxx/xx.mp4',
@@ -531,7 +531,7 @@ export default function PreDownLoadTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0600', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0600 begin');
       let preConfig: PreDownConfig = {
         url: 'https://xxx/xx.mp4',
@@ -564,7 +564,7 @@ export default function PreDownLoadTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0700', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_PLAYER_PRE_DOWNLOAD_FINISH_LOADING_FUNCTION_0700 begin');
       let preConfig: PreDownConfig = {
         url: 'https://xxx/xx.mp4',

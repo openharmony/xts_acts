@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -46,7 +46,7 @@ export default function appVersionCodeJsunit() {
       console.info("appVersionCode after each called");
     });
 
-    it('testappVersionCode0011', 0, async (done: Function) => {
+    it('testappVersionCode0011', Level.LEVEL1, async (done: Function) => {
       console.info('appVersionCode testappVersionCode0011 START');
       await CommonFunc.sleep(1000);
       try {

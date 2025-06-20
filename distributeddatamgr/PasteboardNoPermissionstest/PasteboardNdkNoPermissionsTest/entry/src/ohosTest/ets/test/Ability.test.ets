@@ -33,12 +33,12 @@ export default function pasteboardTestNdkTest() {
      * @tc.number SUB_DistributedData_Pasteboard_SDK_NdkApiTest_0100
      * @tc.name OH_Pasteboard_GetMimeTypes0100
      * @tc.desc OH_PasteboardObserver_Create test
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetMimeTypes0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Pasteboard_GetMimeTypes0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let data = testndk.OH_Pasteboard_GetMimeTypes0100();
       console.info(TAG + "OH_Pasteboard_GetMimeTypes0100 data = " + data);
       expect(data).assertEqual(1);

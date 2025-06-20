@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import {
   fetchOption,
   photoType,
@@ -109,7 +109,7 @@ export default function assetCloseTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('close_callback_000', 0, async  (done:Function)=> {
+    it('close_callback_000', Level.LEVEL0, async  (done:Function)=> {
       const testNum = 'close_callback_000';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
       await closeCallbackTest(done, testNum, fetchOps);
@@ -124,7 +124,7 @@ export default function assetCloseTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('close_callback_001', 0, async  (done:Function)=> {
+    it('close_callback_001', Level.LEVEL0, async  (done:Function)=> {
       const testNum = 'close_callback_001';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
       await closeCallbackTest(done, testNum, fetchOps);

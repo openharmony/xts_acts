@@ -132,7 +132,7 @@ export default function RouterBackAlert() {
      * @tc.desc      Test router DisableAlertBeforeBackPageOptions 
      * @tc.level     Level 2
      */
-    it('RouterBackAlert_0200', 0, async (done: Function) => {
+    it('RouterBackAlert_0200', Level.LEVEL2, async (done: Function) => {
       console.info('RouterBackAlert_0200 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 52,

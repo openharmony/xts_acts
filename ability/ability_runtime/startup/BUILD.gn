@@ -18,6 +18,7 @@ group("startup") {
   if (is_standard_system) {
     deps = [
       "startupmanualhelp1:StartupManualHelp1",
+      "startupmanualhelp2:StartupManualHelp2",
       "startuptest:ActsStartUpTest",
     ]
   }

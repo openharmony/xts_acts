@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -56,7 +56,7 @@ export default function RichEditorFontFeatureJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditorFontFeatureJsunit_0100', 0, async (done: Function) => {
+    it('RichEditorFontFeatureJsunit_0100',  Level.LEVEL0, async (done: Function) => {
       // Test stop
       console.info('[RichEditorFontFeatureJsunit_0100] START');
       let driver = Driver.create();
@@ -88,7 +88,7 @@ export default function RichEditorFontFeatureJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('RichEditorFontFeatureJsunit_0200', 0, async (done: Function) => {
+    it('RichEditorFontFeatureJsunit_0200',  Level.LEVEL0, async (done: Function) => {
       // Test stop
       console.info('[RichEditorFontFeatureJsunit_0200] START');
       let driver = Driver.create();

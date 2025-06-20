@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function Grid_Col_Offset_GridColColumnOption() {
      * @tc.name testGridColOffset
      * @tc.desc Set the width of the cloumn to 40vp
      */
-    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addWidth', value: '40vp'
@@ -95,7 +95,7 @@ export default function Grid_Col_Offset_GridColColumnOption() {
      * @tc.name testGridColOffset
      * @tc.desc Set the width of the cloumn to 90vp
      */
-    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addWidth', value: '80vp'
@@ -115,19 +115,19 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1: RectValue = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left + vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left + vp2px(10)))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left))) <= 1)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - (Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - (Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left + vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left + vp2px(10)))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left))) <= 1)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - (Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - (Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left + vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left + vp2px(10)))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left))) <= 1)
         .assertTrue();
@@ -167,7 +167,7 @@ export default function Grid_Col_Offset_GridColColumnOption() {
      * @tc.name testGridColOffset
      * @tc.desc Set the width of the cloumn to 120vp
      */
-    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0300] START');
       globalThis.value.message.notify({
         name: 'addWidth', value: '130vp'
@@ -190,23 +190,23 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1: RectValue = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 3) + vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 3 + vp2px(30)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left + vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left + vp2px(10)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - (Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 3) + vp2px(40)))) <= 1)
-        .assertTrue();
-
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 3) + vp2px(30)))) <= 1)
-        .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left + vp2px(10)))) <= 1)
-        .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - (Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 3) + vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - ((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 3 + vp2px(40)))) <= 2)
         .assertTrue();
 
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 3) + vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 3 + vp2px(30)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left + vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left + vp2px(10)))) <= 2)
+        .assertTrue();
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - ((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 3 + vp2px(40)))) <= 2)
+        .assertTrue();
+
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 3 + vp2px(30)))) <= 2)
+        .assertTrue();
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left + vp2px(10)))) <= 2)
         .assertTrue();
 
 
@@ -243,7 +243,7 @@ export default function Grid_Col_Offset_GridColColumnOption() {
      * @tc.name testGridColOffset
      * @tc.desc Set the width of the cloumn to 180vp
      */
-    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0400', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0400] START');
       globalThis.value.message.notify({
         name: 'addWidth', value: '180vp'
@@ -267,21 +267,21 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1: RectValue = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 2) + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 2 + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left) * 2) + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left) * 2 + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 2) + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 2 + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 2) + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 2 + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left) * 2) + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left) * 2 + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 2) + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 2 + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 2) + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 2 + vp2px(20)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left) * 2) + vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left) * 2 + vp2px(20)))) <= 2)
         .assertTrue();
 
       console.log('assert space')
@@ -309,7 +309,7 @@ export default function Grid_Col_Offset_GridColColumnOption() {
      * @tc.name testGridColOffset
      * @tc.desc Set the width of the cloumn to 220vp
      */
-    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0500', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0500] START');
       globalThis.value.message.notify({
         name: 'addWidth', value: '230vp'
@@ -332,21 +332,21 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1: RectValue = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 5 + vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 5 + vp2px(50)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - Math.round((Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left) * 5 + vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left) * 5 + vp2px(50)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_G1.left) - Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 5 + vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 5 + vp2px(50)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 5 + vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 5 + vp2px(50)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - Math.round((Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left) * 5 + vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left) * 5 + vp2px(50)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_G1.left) - Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 5 + vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 5 + vp2px(50)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 5 + vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 5 + vp2px(50)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - Math.round((Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left) * 5 + vp2px(50)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left) * 5 + vp2px(50)))) <= 2)
         .assertTrue();
 
 
@@ -375,7 +375,7 @@ export default function Grid_Col_Offset_GridColColumnOption() {
      * @tc.name testGridColOffset
      * @tc.desc Set the width of the cloumn to 320vp
      */
-    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0600', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0600] START');
       globalThis.value.message.notify({
         name: 'addWidth', value: '330vp'
@@ -398,23 +398,23 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1: RectValue = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 3) + vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 3 + vp2px(30)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left + vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left + vp2px(10)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - (Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 3) + vp2px(40)))) <= 1)
-        .assertTrue();
-
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 3) + vp2px(30)))) <= 1)
-        .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left + vp2px(10)))) <= 1)
-        .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - (Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 3) + vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - ((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 3 + vp2px(40)))) <= 2)
         .assertTrue();
 
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 3) + vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 3 + vp2px(30)))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left + vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left + vp2px(10)))) <= 2)
+        .assertTrue();
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - ((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 3 + vp2px(40)))) <= 2)
+        .assertTrue();
+
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - ((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 3 + vp2px(30)))) <= 2)
+        .assertTrue();
+      expect(Math.floor(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left + vp2px(10)))) <= 2)
         .assertTrue();
 
 

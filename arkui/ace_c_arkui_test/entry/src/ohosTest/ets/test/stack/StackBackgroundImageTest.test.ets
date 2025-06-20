@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundImage001', 0, async (done: Function) => {
+    it('testStackBackgroundImage001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundImage001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundImage002', 0, async (done: Function) => {
+    it('testStackBackgroundImage002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundImage002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundImage003', 0, async (done: Function) => {
+    it('testStackBackgroundImage003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundImage003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundImage004', 0, async (done: Function) => {
+    it('testStackBackgroundImage004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundImage004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackBackgroundImage005', 0, async (done: Function) => {
+    it('testStackBackgroundImage005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundImage005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackBackgroundImage006', 0, async (done: Function) => {
+    it('testStackBackgroundImage006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundImage006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function stackBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundImage007', 0, async (done: Function) => {
+    it('testStackBackgroundImage007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundImage007()).assertEqual(0)
       done()
     })

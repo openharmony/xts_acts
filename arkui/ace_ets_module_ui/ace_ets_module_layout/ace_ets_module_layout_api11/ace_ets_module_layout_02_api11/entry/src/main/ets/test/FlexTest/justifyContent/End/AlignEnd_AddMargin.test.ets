@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -52,7 +52,7 @@ export default function AlignEnd_AddMargin() {
      * @tc.desc The interface display where the child component is offset by the margin setting of the parent
      * component
      */
-    it('testFlexAlignEndFlexMargin', 0, async () => {
+    it('testFlexAlignEndFlexMargin',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignEndFlexMargin] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadMargin', value: 20

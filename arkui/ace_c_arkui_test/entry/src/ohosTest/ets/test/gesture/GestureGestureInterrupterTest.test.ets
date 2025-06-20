@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function gestureGestureInterrupterTest() {
@@ -28,7 +28,7 @@ export default function gestureGestureInterrupterTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInterrupter001', 0, async (done: Function) => {
+    it('testGestureGestureInterrupter001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureGestureInterrupterTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.clickComponent('button1')
@@ -45,7 +45,7 @@ export default function gestureGestureInterrupterTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInterrupter002', 0, async (done: Function) => {
+    it('testGestureGestureInterrupter002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureGestureInterrupterTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.clickComponent('button2')
@@ -62,7 +62,7 @@ export default function gestureGestureInterrupterTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInterrupter003', 0, async (done: Function) => {
+    it('testGestureGestureInterrupter003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureGestureInterrupterTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.clickComponent('button3')
@@ -79,7 +79,7 @@ export default function gestureGestureInterrupterTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInterrupter004', 0, async (done: Function) => {
+    it('testGestureGestureInterrupter004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureGestureInterrupterTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.clickComponent('button4')
@@ -96,7 +96,7 @@ export default function gestureGestureInterrupterTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInterrupter005', 0, async (done: Function) => {
+    it('testGestureGestureInterrupter005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureGestureInterrupterTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.clickComponent('button5')

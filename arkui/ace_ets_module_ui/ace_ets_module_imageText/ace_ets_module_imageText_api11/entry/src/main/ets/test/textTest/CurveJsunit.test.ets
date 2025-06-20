@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import { GlobalContext } from '../../MainAbility/common/GlobalContext';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -51,7 +51,7 @@ export default function CurveJsunit() {
      * @tc.name         testCurve001
      * @tc.desic         aceCurveEtsTest
      */
-    it('testCurve001', 0, async (done: Function) => {
+    it('testCurve001', Level.LEVEL1, async (done: Function) => {
       console.info('curve testCurve001 START');
       let result_width: number;
       let result_height: number;
@@ -88,7 +88,7 @@ export default function CurveJsunit() {
      * @tc.name         testCurve002
      * @tc.desic         aceCurveEtsTest
      */
-    it('testCurve002', 0, async (done: Function) => {
+    it('testCurve002', Level.LEVEL1, async (done: Function) => {
       console.info('curve testCurve02 START');
       let result_height: number;
       let result_width: number;
@@ -125,7 +125,7 @@ export default function CurveJsunit() {
      * @tc.name         testCurve003
      * @tc.desic        aceCurveEtsTest
      */
-    it('testCurve003', 0, async (done: Function) => {
+    it('testCurve003', Level.LEVEL1, async (done: Function) => {
       console.info('curve testCurve003 START');
       let result_height: number;
       let result_width: number;
@@ -162,7 +162,7 @@ export default function CurveJsunit() {
      * @tc.name         testCurve004
      * @tc.desic         aceCurveEtsTest
      */
-    it('testCurve004', 0, async (done: Function) => {
+    it('testCurve004', Level.LEVEL1, async (done: Function) => {
       console.info('curve testCurve004 START');
       let result_height: number;
       let result_width: number;

@@ -16,7 +16,7 @@
 import commonEvent from '@ohos.commonEvent'
 import featureAbility from '@ohos.ability.featureAbility'
 import formBindingData from '@ohos.application.formBindingData'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 
 var getCallingBundleUri = {
@@ -48,7 +48,7 @@ describe('ApplicationInfoTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_FormBase_1000', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_FormBase_1000', Level.LEVEL0, async function (done) {
         console.info('------------start SUB_AA_OpenHarmony_FormBase_1000-------------');
         TAG = 'SUB_AA_OpenHarmony_FormBase_1000';
         var dataObj = {
@@ -86,7 +86,7 @@ describe('ApplicationInfoTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_Want_0200', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_Want_0200', Level.LEVEL0, async function (done) {
         console.info('------------start SUB_AA_OpenHarmony_Want_0200-------------');
         TAG = 'SUB_AA_OpenHarmony_Want_0200';
         var Subscriber = '';
@@ -128,7 +128,7 @@ describe('ApplicationInfoTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_Want_0300', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_Want_0300', Level.LEVEL0, async function (done) {
         console.info('------------start SUB_AA_OpenHarmony_Want_0300-------------');
         TAG = 'SUB_AA_OpenHarmony_Want_0300';
         var Subscriber = '';

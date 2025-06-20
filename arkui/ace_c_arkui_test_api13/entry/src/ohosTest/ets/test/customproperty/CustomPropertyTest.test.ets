@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -34,7 +34,7 @@ export default function customPropertyTest(){
      * @tc.level      : Level 1
      */
 
-    it('testAddCustomProperty001', 0, async (done: Function) => {
+    it('testAddCustomProperty001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestAddCustomProperty';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -60,7 +60,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRemoveCustomProperty002', 0, async (done: Function) => {
+    it('testRemoveCustomProperty002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestRemoveCustomProperty';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)

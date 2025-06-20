@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -47,7 +47,7 @@ export default function frame() {
      * @tc.type :
      * @tc.size :
      */
-    it('frame_0100', 0, async (done: Function) => {
+    it('frame_0100', Level.LEVEL2, async (done: Function) => {
       console.info('frame_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -70,7 +70,7 @@ export default function frame() {
      * @tc.type :
      * @tc.size :
      */
-    it('frame_0200', 0, async (done: Function) => {
+    it('frame_0200', Level.LEVEL2, async (done: Function) => {
       console.info('frame_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

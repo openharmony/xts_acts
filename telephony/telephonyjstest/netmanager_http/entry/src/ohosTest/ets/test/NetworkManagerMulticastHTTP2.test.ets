@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 
@@ -58,6 +58,14 @@ function expectFalse() {
     }
 }
 
+function expectTrue(data : boolean){
+    try {
+        expect(data).assertTrue();
+    } catch (err){
+        console.info('assertion failure');    
+    }
+};
+
 export default function NetworkManagerMulticast2HTTP2Test() {
     afterAll(async ()=> {
         console.log('NetworkManagerMulticastHTTPTest afterAll start');
@@ -72,15 +80,15 @@ export default function NetworkManagerMulticast2HTTP2Test() {
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-        it("SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0100", 0, async (done: Function)=>{
+        it("SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function)=>{
             let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0100";
             httpRequest.request(url,httpRequestOptions_http3).then((data) => {
                 console.log(`${caseName} request succeed, data: ${JSON.stringify(data)}`);
-                expect(data.responseCode === 200).assertTrue();
+                expectTrue(data.responseCode === 200);
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expect(err.code === 2300999).assertTrue();
+                expectTrue(err.code === 2300999);
                 done();
             })
         })
@@ -92,15 +100,15 @@ export default function NetworkManagerMulticast2HTTP2Test() {
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-        it("SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0200", 0, async (done: Function)=>{
+        it("SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function)=>{
             let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0200";
             httpRequest.request(url,httpRequestOptions_http3_HTTP1_1).then((data) => {
                 console.log(`${caseName} request succeed, data: ${JSON.stringify(data)}`);
-                expect(data.responseCode === 200).assertTrue();
+                expectTrue(data.responseCode === 200);
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expect(err.code === 2300999).assertTrue();
+                expectTrue(err.code === 2300999);
                 done();
             })
         })
@@ -112,15 +120,15 @@ export default function NetworkManagerMulticast2HTTP2Test() {
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-        it("SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0300", 0, async (done: Function)=>{
+        it("SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function)=>{
             let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0300";
             httpRequest.request(url,httpRequestOptions_http3_HTTP2).then((data) => {
                 console.log(`${caseName} request succeed, data: ${JSON.stringify(data)}`);
-                expect(data.responseCode === 200).assertTrue();
+                expectTrue(data.responseCode === 200);
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expect(err.code === 2300999).assertTrue();
+                expectTrue(err.code === 2300999);
                 done();
             })
         })

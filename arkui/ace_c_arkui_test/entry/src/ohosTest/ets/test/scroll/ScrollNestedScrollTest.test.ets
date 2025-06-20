@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver } from '@ohos.UiTest';
 
@@ -57,7 +57,7 @@ export default function scrollNestedScrollTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollNestedScroll001', 0, async (done: Function) => {
+    it('testScrollNestedScroll001', Level.LEVEL1, async (done: Function) => {
       await doIt(PAGE_TAG, 1, X, Y)
       expect(Utils.getComponentInfoByKey('compareButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
@@ -71,7 +71,7 @@ export default function scrollNestedScrollTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollNestedScroll002', 0, async (done: Function) => {
+    it('testScrollNestedScroll002', Level.LEVEL1, async (done: Function) => {
       await doIt(PAGE_TAG, 2, X, Y)
       expect(Utils.getComponentInfoByKey('compareButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
@@ -85,7 +85,7 @@ export default function scrollNestedScrollTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollNestedScroll003', 0, async (done: Function) => {
+    it('testScrollNestedScroll003', Level.LEVEL1, async (done: Function) => {
       await doIt(PAGE_TAG, 3, X, Y)
       expect(Utils.getComponentInfoByKey('compareButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
@@ -99,7 +99,7 @@ export default function scrollNestedScrollTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollNestedScroll004', 0, async (done: Function) => {
+    it('testScrollNestedScroll004', Level.LEVEL1, async (done: Function) => {
       await doIt(PAGE_TAG, 4, X, Y)
       expect(Utils.getComponentInfoByKey('compareButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
@@ -113,7 +113,7 @@ export default function scrollNestedScrollTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollNestedScroll005', 0, async (done: Function) => {
+    it('testScrollNestedScroll005', Level.LEVEL1, async (done: Function) => {
       await doIt(PAGE_TAG, 5, X, Y)
       expect(Utils.getComponentInfoByKey('compareButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
@@ -127,7 +127,7 @@ export default function scrollNestedScrollTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollNestedScroll006', 0, async (done: Function) => {
+    it('testScrollNestedScroll006', Level.LEVEL1, async (done: Function) => {
       await doIt(PAGE_TAG, 6, X, Y)
       expect(Utils.getComponentInfoByKey('compareButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
@@ -141,7 +141,7 @@ export default function scrollNestedScrollTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollNestedScroll007', 0, async (done: Function) => {
+    it('testScrollNestedScroll007', Level.LEVEL1, async (done: Function) => {
       await doIt(PAGE_TAG, 7, X, Y)
       expect(Utils.getComponentInfoByKey('compareButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
@@ -155,7 +155,7 @@ export default function scrollNestedScrollTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollNestedScroll008', 0, async (done: Function) => {
+    it('testScrollNestedScroll008', Level.LEVEL1, async (done: Function) => {
       await doIt(PAGE_TAG, 8, X, Y)
       expect(Utils.getComponentInfoByKey('compareButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()

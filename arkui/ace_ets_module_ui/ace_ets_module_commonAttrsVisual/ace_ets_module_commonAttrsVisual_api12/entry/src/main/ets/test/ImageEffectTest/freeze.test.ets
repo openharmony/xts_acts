@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {
   UiComponent,
   UiDriver,
@@ -68,7 +68,7 @@ export default function freezeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('freezeTest_0100', 0, async (done: Function) => {
+    it('freezeTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('freezeTest_0100 START');
       let strJson = getInspectorByKey('OffscreenCanvasFreeze_id');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("300.00vp");

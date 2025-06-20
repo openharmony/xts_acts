@@ -76,9 +76,9 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.desc Get mimetype of the download task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_Misc_Request_DownloadManagement_0002', Level.LEVEL2, async (done: Function) => {
+    it('SUB_Misc_Request_DownloadManagement_0002', Level.LEVEL0, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_0002 is starting---------------------");
       downloadConfig.filePath += 'SUB_Misc_Request_DownloadManagement_0002.txt';
       let flag = false;

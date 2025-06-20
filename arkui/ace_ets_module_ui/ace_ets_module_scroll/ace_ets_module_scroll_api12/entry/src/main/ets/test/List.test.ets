@@ -26,16 +26,19 @@ import scrollOffsetJsunit from './ScrollTest/scrollOffsetJsunit.test';
 import swiperCustomJsunit from './SwiperTest/swiperCustomJsunit.test';
 import tabIconJsunit from './TabsTest/tabIconJsunit.test';
 import listSwipeActionApi12Test from './ListTest/listSwipeActionApi12.test';
+import scrollSourceDrag from './ScrollTest/scrollSourceDrag.test'; 
 import ScrollSourceOther from './ScrollTest/ScrollSourceOther.test';
 import ScrollSource from './ScrollTest/ScrollSource.test';
+import ScrollSourceBar from './ScrollTest/ScrollSourceBar.test';
 import alignItemsGrid from './GridTest/alignItemsGrid.test';
 import chainAnimationList from './ListTest/chainAnimationList.test'
 import listItemGroupNone from './ListTest/listItemGroupNone.test'
 import nestedScrollSwiper from './SwiperTest/nestedScrollSwiper.test'; 
-import scrollSourceDrag from './ScrollTest/scrollSourceDrag.test'; 
 import offsetRemain from './ScrollTest/offsetRemain.test';
 import finishTransSwiper from './SwiperTest/finishTransSwiper.test';
 import preloadErrorTabs from './TabsTest/preloadErrorTabs.test'; 
+import childrenSizeError from './ListTest/childrenSizeError.test';
+import flingError from './ListTest/flingError.test';
 import symbolTabs from './TabsTest/symbolTabs.test'; 
 import TabsAp1 from './TabsTest/TabsAp1.test'
 import ScrollApi1 from './ScrollTest/ScrollApi1.test'
@@ -141,16 +144,19 @@ export default function testsuite() {
   swiperCustomJsunit();
   tabIconJsunit();
   listSwipeActionApi12Test();
+  scrollSourceDrag()
   ScrollSourceOther()
   ScrollSource();
+  ScrollSourceBar()
   alignItemsGrid()
   chainAnimationList();
   listItemGroupNone();
   nestedScrollSwiper()
-  scrollSourceDrag()
   offsetRemain()
   finishTransSwiper()
   preloadErrorTabs()
+  childrenSizeError()
+  flingError()
   symbolTabs()
   TabsAp1()
   ScrollApi1()

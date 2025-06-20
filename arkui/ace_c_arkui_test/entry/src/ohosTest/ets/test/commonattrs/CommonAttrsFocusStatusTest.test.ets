@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsFocusStatusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsFocusStatus001', 0, async (done: Function) => {
+    it('testCommonAttrsFocusStatus001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsFocusStatus001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsFocusStatusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsFocusStatus002', 0, async (done: Function) => {
+    it('testCommonAttrsFocusStatus002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`commonattrs/CommonAttrsFocusStatusTest`, done);
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('btnFocusStatus').$attrs.backgroundColor).assertEqual('#0xFF00FF00')

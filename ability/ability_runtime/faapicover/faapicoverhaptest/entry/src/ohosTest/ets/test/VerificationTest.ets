@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEventManager';
@@ -51,7 +51,7 @@ export default function verificationTest(){
          * @tc.desc    Function test
          * @tc.level   3
          */
-    it('SUB_AA_OpenHarmony_Test_HasWindowFocus_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_HasWindowFocus_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_Test_HasWindowFocus_0100 ==>';
 
       try {
@@ -105,7 +105,7 @@ export default function verificationTest(){
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_Test_AppManagerTest_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_AppManagerTest_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_Test_AppManagerTest_0100 ==>';
       try {
         appManager.isRunningInStabilityTest((err, data) => {
@@ -128,7 +128,7 @@ export default function verificationTest(){
     * @tc.desc    Function test
     * @tc.level   3
     */
-    it('SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100 ==>';
 
       try {
@@ -205,7 +205,7 @@ export default function verificationTest(){
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_Test_GetWindow_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_GetWindow_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_Test_GetWindow_0100 ==>';
       try {
         ability_featureAbility.getWindow((err, data) => {
@@ -225,7 +225,7 @@ export default function verificationTest(){
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100 ==>';
       try {
         let resultCode: number | undefined = undefined
@@ -277,7 +277,7 @@ export default function verificationTest(){
    * @tc.desc    Function test
    * @tc.level   3
    */
-    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_Test_ServiceAbility_0100 ==>';
 
       try {
@@ -326,7 +326,7 @@ export default function verificationTest(){
    * @tc.desc    Function test
    * @tc.level   3
    */
-    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_Test_ServiceAbility_0200 ==>';
 
       try {

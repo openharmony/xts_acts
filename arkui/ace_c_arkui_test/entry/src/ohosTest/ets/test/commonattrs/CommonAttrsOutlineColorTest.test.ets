@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsOutlineColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOutlineColor001', 0, async (done: Function) => {
+    it('testCommonAttrsOutlineColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOutlineColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsOutlineColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOutlineColor002', 0, async (done: Function) => {
+    it('testCommonAttrsOutlineColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOutlineColor002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsOutlineColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOutlineColor003', 0, async (done: Function) => {
+    it('testCommonAttrsOutlineColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOutlineColor003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsOutlineColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOutlineColor004', 0, async (done: Function) => {
+    it('testCommonAttrsOutlineColor004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOutlineColor004()).assertEqual(0)
       done()
     })

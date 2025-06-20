@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver } from '@kit.TestKit';
 import { WaterFlowScrollFrameBeginData } from '../../MainAbility/pages/waterflow/WaterFlowOnScrollFrameBeginTest'
@@ -68,7 +68,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnReachStart001', 0, async (done: Function) => {
+    it('testWaterFlowOnReachStart001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnReachStartTest`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -84,7 +84,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnReachEnd001', 0, async (done: Function) => {
+    it('testWaterFlowOnReachEnd001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnReachEndTest`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -100,7 +100,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnScrollStop001', 0, async (done: Function) => {
+    it('testWaterFlowOnScrollStop001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnScrollStopTest`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -116,7 +116,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnWillDidScroll001', 0, async (done: Function) => {
+    it('testWaterFlowOnWillDidScroll001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       // Fingers rolling upwards with rebound
       {
@@ -154,7 +154,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnWillDidScroll007', 0, async (done: Function) => {
+    it('testWaterFlowOnWillDidScroll007', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       // Fingers rolling downwards with rebound
       {
@@ -195,7 +195,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnWillDidScroll002', 0, async (done: Function) => {
+    it('testWaterFlowOnWillDidScroll002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       // Fingers rolling upwards without rebound
       await flingComponentV('waterFlow', true, 200, 20)
@@ -227,7 +227,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnWillDidScroll003', 0, async (done: Function) => {
+    it('testWaterFlowOnWillDidScroll003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       // Scroll the mouse backwards
       await mouseScrollV('waterFlow', true, () => {
@@ -259,7 +259,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnWillDidScroll004', 0, async (done: Function) => {
+    it('testWaterFlowOnWillDidScroll004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       // Drag the scrollbar downwards with your fingers
       await flingComponentV('waterFlow', false, 100, 60, 135)
@@ -291,7 +291,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnWillDidScroll005', 0, async (done: Function) => {
+    it('testWaterFlowOnWillDidScroll005', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       {
         await Utils.clickComponent('btn1')
@@ -339,7 +339,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnWillDidScroll006', 0, async (done: Function) => {
+    it('testWaterFlowOnWillDidScroll006', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       await flingComponentV('waterFlow', true)
       await Utils.clickComponent('waterFlow')
@@ -372,7 +372,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnScrollIndex001', 0, async (done: Function) => {
+    it('testWaterFlowOnScrollIndex001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnScrollIndexTest`);
       await flingComponentV('waterFlow', true, 4000, 95)
       await Utils.sleep(1500)
@@ -407,7 +407,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnScrollIndex002', 0, async (done: Function) => {
+    it('testWaterFlowOnScrollIndex002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnScrollIndexTest`);
       await flingComponentV('waterFlow', false, 10000, 50)
       await Utils.sleep(1500)
@@ -441,7 +441,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnScrollFrameBegin001', 0, async (done: Function) => {
+    it('testWaterFlowOnScrollFrameBegin001', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollFrameBeginData =
         new WaterFlowScrollFrameBeginData('WaterFlowOnScrollFrameBeginTest001', 10)
       await Utils.pushPageByParams(`waterflow/WaterFlowOnScrollFrameBeginTest`, option)
@@ -471,7 +471,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnScrollFrameBegin002', 0, async (done: Function) => {
+    it('testWaterFlowOnScrollFrameBegin002', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollFrameBeginData =
         new WaterFlowScrollFrameBeginData('WaterFlowOnScrollFrameBeginTest002', 10)
       await Utils.pushPageByParams(`waterflow/WaterFlowOnScrollFrameBeginTest`, option)
@@ -499,7 +499,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnScrollFrameBegin003', 0, async (done: Function) => {
+    it('testWaterFlowOnScrollFrameBegin003', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollFrameBeginData =
         new WaterFlowScrollFrameBeginData('WaterFlowOnScrollFrameBeginTest003', 10)
       await Utils.pushPageByParams(`waterflow/WaterFlowOnScrollFrameBeginTest`, option)
@@ -529,7 +529,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnScrollFrameBegin004', 0, async (done: Function) => {
+    it('testWaterFlowOnScrollFrameBegin004', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollFrameBeginData =
         new WaterFlowScrollFrameBeginData('WaterFlowOnScrollFrameBeginTest004', 10)
       await Utils.pushPageByParams(`waterflow/WaterFlowOnScrollFrameBeginTest`, option)
@@ -556,7 +556,7 @@ export default function waterFlowEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowOnScrollFrameBegin005', 0, async (done: Function) => {
+    it('testWaterFlowOnScrollFrameBegin005', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollFrameBeginData =
         new WaterFlowScrollFrameBeginData('WaterFlowOnScrollFrameBeginTest005', -10)
       await Utils.pushPageByParams(`waterflow/WaterFlowOnScrollFrameBegin2Test`, option)

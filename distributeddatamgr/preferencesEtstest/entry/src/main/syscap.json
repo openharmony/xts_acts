@@ -10,7 +10,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.DistributedDataManager.Preferences.Core"
                 ]
             }
         ]

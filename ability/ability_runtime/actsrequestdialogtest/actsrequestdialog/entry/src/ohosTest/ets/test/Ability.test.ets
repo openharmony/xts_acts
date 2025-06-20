@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEvent';
 import common from '@ohos.app.ability.common';
 import commonEventManager from '@ohos.commonEventManager';
@@ -38,7 +38,7 @@ export default function abilityTest() {
     * @tc.name: Start Recent Ability with no callback.
     * @tc.desc: reguest dialog service
     */
-    it('ACTS_requestDialog_0100', 0, async (done: Function) => {
+    it('ACTS_requestDialog_0100', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_requestDialog_0100====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
@@ -88,7 +88,7 @@ export default function abilityTest() {
     * @tc.name: Start Recent Ability with no permission.
     * @tc.desc: reguest dialog service
     */
-    it('ACTS_requestDialog_0200', 0, async (done: Function) => {
+    it('ACTS_requestDialog_0200', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_requestDialog_0200====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;

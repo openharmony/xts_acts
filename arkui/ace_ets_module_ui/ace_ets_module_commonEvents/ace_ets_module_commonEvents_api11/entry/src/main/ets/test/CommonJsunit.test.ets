@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect,beforeEach } from "@ohos/hypium"
+import { describe, beforeAll, it, expect,beforeEach, Level } from '@ohos/hypium';
 import display from '@ohos.display';
 import CommonFunc from '../MainAbility/common/Common';
 import { BusinessError } from '@ohos.base';
@@ -52,7 +52,7 @@ done();
       done()
     });
 
-    it('commonTest_0100', 0, async (done: Function) => {
+    it('commonTest_0100', Level.LEVEL0, async (done: Function) => {
 
       display.getDefaultDisplay().then(dsp => {
         console.info('getDefaultDisplay id : ' + JSON.stringify(dsp));
@@ -75,7 +75,7 @@ done();
       done();
     });
 
-    it('commonTest_0200', 0, async (done: Function) => {
+    it('commonTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_0200 START' + dpiValue);
       let a = -90;
       let ret = a * (dpiValue / 160);
@@ -87,7 +87,7 @@ done();
       done();
     });
 
-    it('commonTest_0300', 0, async (done: Function) => {
+    it('commonTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_0300 START');
       let a = '30';
       let b = vp2px(asNum(a));
@@ -97,7 +97,7 @@ done();
       done();
     });
 
-    it('commonTest_0400', 0, async (done: Function) => {
+    it('commonTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_0400 START');
       let a = 80;
       let ret = a / (dpiValue / 160);
@@ -108,7 +108,7 @@ done();
       done();
     });
 
-    it('commonTest_0500', 0, async (done: Function) => {
+    it('commonTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_0500 START');
       let a = -100000000;
       let ret = a / (dpiValue / 160);
@@ -119,7 +119,7 @@ done();
       done();
     });
 
-    it('commonTest_0600', 0, async (done: Function) => {
+    it('commonTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_0600 START');
       let a = '80';
       let b = px2vp(asNum(a));
@@ -129,7 +129,7 @@ done();
       done();
     });
 
-    it('commonTest_0700', 0, async (done: Function) => {
+    it('commonTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_0700 START');
       let a = 70;
       let ret = a * (dpiValue / 160);
@@ -140,7 +140,7 @@ done();
       done();
     });
 
-    it('commonTest_0800', 0, async (done: Function) => {
+    it('commonTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_0800 START');
       let a = -70;
       let ret = a * (dpiValue / 160);
@@ -151,7 +151,7 @@ done();
       done();
     });
 
-    it('commonTest_0900', 0, async (done: Function) => {
+    it('commonTest_0900', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_0900 START');
       let a = '70';
       let b = fp2px(asNum(a));
@@ -161,7 +161,7 @@ done();
       done();
     });
 
-    it('commonTest_1000', 0, async (done: Function) => {
+    it('commonTest_1000', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_1000 START');
       let a = 60;
       let ret = a / (dpiValue / 160);
@@ -172,7 +172,7 @@ done();
       done();
     });
 
-    it('commonTest_1100', 0, async (done: Function) => {
+    it('commonTest_1100', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_1100 START');
       let a = -60;
       let ret = a / (dpiValue / 160);
@@ -183,7 +183,7 @@ done();
       done();
     });
 
-    it('commonTest_1200', 0, async (done: Function) => {
+    it('commonTest_1200', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_1200 START');
       let a = '60';
       let b = px2fp(asNum(a));
@@ -194,7 +194,7 @@ done();
     });
 
 
-    it('commonTest_1500', 0, async (done: Function) => {
+    it('commonTest_1500', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_1500 START');
       let a = '50';
       let b = lpx2px(asNum(a));
@@ -204,7 +204,7 @@ done();
       done();
     });
 
-    it('commonTest_1800', 0, async (done: Function) => {
+    it('commonTest_1800', Level.LEVEL0, async (done: Function) => {
       console.info('commonTest_1800 START');
       let a = '40';
       let b = px2lpx(asNum(a));

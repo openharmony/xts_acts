@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common'
 
@@ -58,7 +58,7 @@ export default function AlignContent_Center_FlexP_Fixed_Offset() {
      *               the subcomponent
      */
 
-    it('testAlignContentCenterFlexPfixedOffset', 0, async () => {
+    it('testAlignContentCenterFlexPfixedOffset',  Level.LEVEL0, async () => {
       console.info('testAlignContentCenterFlexPfixedOffset START');
       let strJson = getInspectorByKey('AlignContent_Center_FlexP_Fixed_Offset_flex001');
 

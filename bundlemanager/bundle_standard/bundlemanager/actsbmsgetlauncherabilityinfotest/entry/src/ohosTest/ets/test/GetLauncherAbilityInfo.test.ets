@@ -44,7 +44,7 @@ export default function actsGetLauncherAbilityInfoTest() {
      * @tc.name: Sub_Bms_Framework_GetLauncherAbilityInfoSync_0100
      * @tc.desc: Test getLauncherAbilityInfoSync with valid value.
      */
-    it('Sub_Bms_Framework_GetLauncherAbilityInfoSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('Sub_Bms_Framework_GetLauncherAbilityInfoSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
       let osAccountManager = osAccount.getAccountManager();
       let code = SUCCESS;
@@ -127,7 +127,7 @@ export default function actsGetLauncherAbilityInfoTest() {
      * @tc.name: Sub_Bms_Framework_GetLauncherAbilityInfoSync_2000
      * @tc.desc: Test getLauncherAbilityInfoSync with parameter error return errcode 401.
      */
-    it('Sub_Bms_Framework_GetLauncherAbilityInfoSync_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('Sub_Bms_Framework_GetLauncherAbilityInfoSync_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
       let code = SUCCESS;
       try {

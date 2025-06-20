@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -68,7 +68,7 @@ export default function getGridItemRect2() {
     * @tc.desc  : set index to 3
     * @tc.level : Level 2
     */
-    it('getGridItemRect2_0100', 0, async (done: Function) => {
+    it('getGridItemRect2_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect2_0100] START');
       globalThis.value.message.notify({

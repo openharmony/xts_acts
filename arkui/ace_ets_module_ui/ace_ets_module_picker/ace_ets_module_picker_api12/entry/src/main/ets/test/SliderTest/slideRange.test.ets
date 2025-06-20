@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function slideRange() {
     * @tc.desc        Test slideRange, minResponsiveDistance
     * @tc.level       Level 2
     */
-    it('slideRange_001', 0, async (done: Function) => {
+    it('slideRange_001', Level.LEVEL1, async (done: Function) => {
       console.info('[slideRange_001] START');
       let strJson = getInspectorByKey('slideRangeValue');
       let obj: ESObject = JSON.parse(strJson);

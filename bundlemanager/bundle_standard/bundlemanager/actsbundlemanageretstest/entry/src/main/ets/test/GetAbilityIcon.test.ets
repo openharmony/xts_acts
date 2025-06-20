@@ -33,7 +33,7 @@ export default function getAbilityIcon() {
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('Sub_Bms_Framework_Query_Icon_2800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_2800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
                 console.log('Sub_Bms_Framework_Query_Icon_2800 success: ' + pixelmap.getBytesNumberPerRow());
                 expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
@@ -53,7 +53,7 @@ export default function getAbilityIcon() {
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('Sub_Bms_Framework_Query_Icon_2700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_2700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, ABILITIY_NAME).then(pixelmap => {
                 console.log('Sub_Bms_Framework_Query_Icon_2700 success: ' + pixelmap.getBytesNumberPerRow());
                 expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);

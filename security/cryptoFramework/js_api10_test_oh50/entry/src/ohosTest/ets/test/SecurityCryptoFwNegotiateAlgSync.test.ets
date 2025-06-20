@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import * as negotiateAlgSyncUtils from './utils/negotiate/negotiateAlgSync';
@@ -48,7 +48,7 @@ export default function SecurityCryptoFwAgreementSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AgreementSync_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AgreementSync_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let algName of negotiateAlgSyncUtils.ECDH_SPEC) {
           let keyAlgName: string = algName;
@@ -77,7 +77,7 @@ export default function SecurityCryptoFwAgreementSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AgreementSync_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AgreementSync_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let algName of negotiateAlgSyncUtils.X25519_SPEC) {
           let keyPair_A: cryptoFramework.KeyPair = await negotiateAlgSyncUtils.generateKey(algName);
@@ -102,7 +102,7 @@ export default function SecurityCryptoFwAgreementSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AgreementSync_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AgreementSync_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let algName of negotiateAlgSyncUtils.DH_SPEC) {
           let keyAlgName: string = algName;
@@ -131,7 +131,7 @@ export default function SecurityCryptoFwAgreementSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AgreementSync_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AgreementSync_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM2_256";
         let keyPair_A: cryptoFramework.KeyPair = await negotiateAlgSyncUtils.generateKey(algName);
@@ -153,7 +153,7 @@ export default function SecurityCryptoFwAgreementSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AgreementSync_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AgreementSync_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyAlgName_A: string = "DH_modp1536";
       let keyAlgName_B: string = "DH_modp2048";
       let keyPair_A: cryptoFramework.KeyPair = await negotiateAlgSyncUtils.generateKey(keyAlgName_A);
@@ -176,7 +176,7 @@ export default function SecurityCryptoFwAgreementSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AgreementSync_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AgreementSync_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyAlgName_A: string = "ECC224";
       let keyAlgName_B: string = "ECC256";
       let keyPair_A: cryptoFramework.KeyPair = await negotiateAlgSyncUtils.generateKey(keyAlgName_A);
@@ -199,7 +199,7 @@ export default function SecurityCryptoFwAgreementSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AgreementSync_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AgreementSync_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyAlgName_A: string = "ECC521";
       let keyAlgName_B: string = "ECC384";
       let keyPair_A: cryptoFramework.KeyPair = await negotiateAlgSyncUtils.generateKey(keyAlgName_A);
@@ -222,7 +222,7 @@ export default function SecurityCryptoFwAgreementSyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AgreementSync_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AgreementSync_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyAlgName: string = "ECC521";
       let keyAlgName_B: string = "DH_modp2048";
       let keyPair_A: cryptoFramework.KeyPair = await negotiateAlgSyncUtils.generateKey(keyAlgName);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -50,7 +50,7 @@ export default function Grid_RowCol_PadMar() {
      * @tc.name testGridRowColGridPad
      * @tc.desc Add padding,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridPad', 0, async (done: Function) => {
+    it('testGridRowColGridPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridPad] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_PadMar_01');
@@ -85,15 +85,23 @@ export default function Grid_RowCol_PadMar() {
         Math.floor(vp2px(10))) <= 1).assertTrue();
       expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_014.bottom) <= 1).assertTrue();
 
-      expect(Math.abs(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left - vp2px(140)) <= 1).assertTrue();
+      console.info(`[testGridRowColGridPad] Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left=
+        ${(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left)}`);
+      console.info(`[testGridRowColGridPad] Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left=
+        ${(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left)}`);
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left) - vp2px(140))) <= 1).assertTrue();
 
-      expect(Math.abs(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top - vp2px(140)) <= 1).assertTrue();
+      console.info(`[testGridRowColGridPad] Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top=
+        ${(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top)}`);
+      console.info(`[testGridRowColGridPad] Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top=
+        ${(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top)}`);
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top) - vp2px(140))) <= 1).assertTrue();
       console.info('[testGridRowColGridPad] END');
       done();
     });
@@ -102,7 +110,7 @@ export default function Grid_RowCol_PadMar() {
      * @tc.name testGridRowColGridMargin
      * @tc.desc Add margin,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridMargin', 0, async (done: Function) => {
+    it('testGridRowColGridMargin',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridMargin] START');
       globalThis.value.message.notify({
         name: 'addPadding', value: 0
@@ -160,7 +168,7 @@ export default function Grid_RowCol_PadMar() {
      * @tc.name testGridRowColGridPadMar
      * @tc.desc Add padding and margin,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridPadMar', 0, async (done: Function) => {
+    it('testGridRowColGridPadMar',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridPadMar] START');
       globalThis.value.message.notify({
         name: 'addPadding', value: 10
@@ -204,15 +212,23 @@ export default function Grid_RowCol_PadMar() {
       expect(Math.abs(Grid_RowCol_PadMar_Box_01.right - Grid_RowCol_PadMar_01.right - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs(Grid_RowCol_PadMar_Box_01.bottom - Grid_RowCol_PadMar_01.bottom - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.abs(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left - vp2px(140)) <= 1).assertTrue();
+      console.info(`[testGridRowColGridPadMar] Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left=
+        ${(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left)}`);
+      console.info(`[testGridRowColGridPadMar] Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left=
+        ${(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left)}`);
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left) - vp2px(140))) <= 1).assertTrue();
 
-      expect(Math.abs(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top - vp2px(140)) <= 1).assertTrue();
-      expect(Math.abs(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top - vp2px(140)) <= 1).assertTrue();
+      console.info(`[testGridRowColGridPadMar] Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top=
+        ${(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top)}`);
+      console.info(`[testGridRowColGridPadMar] Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top=
+        ${(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top)}`);
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top) - vp2px(140))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top) - vp2px(140))) <= 1).assertTrue();
 
       console.info('[testGridRowColGridPadMar] END');
       done();

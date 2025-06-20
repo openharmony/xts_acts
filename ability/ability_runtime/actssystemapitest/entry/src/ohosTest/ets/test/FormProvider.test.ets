@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import formProvider from '@ohos.app.form.formProvider'
 import formBindingData from '@ohos.app.form.formBindingData'
 import { BusinessError } from '@ohos.base';
@@ -28,7 +28,7 @@ export default function formProviderTest() {
      * @tc.desc:  Test the third-party application call requestPublishForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Provider_0100',0, async (done:Function) => {
+    it('System_API_Test_Form_Provider_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Provider_0100';
       try {
         let obj = formBindingData.createFormBindingData({temperature:"22c", time:"22:00"});
@@ -61,7 +61,7 @@ export default function formProviderTest() {
      * @tc.desc:  Test the third-party application call requestPublishForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Provider_0200',0, async (done:Function) => {
+    it('System_API_Test_Form_Provider_0200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Provider_0200';
       try {
         let obj = formBindingData.createFormBindingData({temperature:"22c", time:"22:00"});
@@ -92,7 +92,7 @@ export default function formProviderTest() {
      * @tc.desc:  Test the third-party application call requestPublishForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Provider_0300',0, async (done:Function) => {
+    it('System_API_Test_Form_Provider_0300', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Provider_0300';
       let want : Want = {
         abilityName: "FormAbility",
@@ -123,7 +123,7 @@ export default function formProviderTest() {
      * @tc.desc:  Test the third-party application call isRequestPublishFormSupported will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Provider_0400',0, async (done:Function) => {
+    it('System_API_Test_Form_Provider_0400', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Provider_0400';
       try {
         formProvider.isRequestPublishFormSupported((error, data) => {
@@ -146,7 +146,7 @@ export default function formProviderTest() {
      * @tc.desc:  Test the third-party application call isRequestPublishFormSupported will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Provider_0500',0, async (done:Function) => {
+    it('System_API_Test_Form_Provider_0500', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Provider_0500';
       try {
         formProvider.isRequestPublishFormSupported().then((data) => {

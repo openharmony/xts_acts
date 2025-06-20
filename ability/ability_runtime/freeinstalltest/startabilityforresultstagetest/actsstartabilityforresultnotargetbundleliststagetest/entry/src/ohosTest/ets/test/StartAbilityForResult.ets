@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import wantConstant from '@ohos.ability.wantConstant'
 import ability from '@ohos.ability.ability';
 import base from '@ohos.base';
@@ -72,7 +72,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_2500", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_2500", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_2500-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_2500";
       let cmd6 = "bm install -p data/test/AtomizationResultStageEntry.hap";

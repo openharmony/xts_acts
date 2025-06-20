@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import { BusinessError } from '@ohos.base';
 import commonEventManager from '@ohos.commonEventManager';
@@ -43,7 +43,7 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by startAbility.
      */
-    it('Acts_StopServiceExtension_0100', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_0100', Level.LEVEL0, async (done : Function) => {
       let subscriber: ESObject;
       let flag = false;
       let want: Want = {
@@ -93,7 +93,7 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by startAbility.
      */
-    it('Acts_StopServiceExtension_0200', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_0200', Level.LEVEL0, async (done : Function) => {
       let subscriber: ESObject;
       let flag = false;
       let count = 0;
@@ -156,7 +156,7 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by startServiceExtensionAbility.
      */
-    it('Acts_StopServiceExtension_0300', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_0300', Level.LEVEL0, async (done : Function) => {
       let subscriber: ESObject;
       let flag = false;
       let want: Want = {
@@ -207,7 +207,7 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by startServiceExtensionAbility.
      */
-    it('Acts_StopServiceExtension_0400', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_0400', Level.LEVEL0, async (done : Function) => {
       let subscriber: ESObject;
       let flag = false;
       let count = 0;
@@ -270,7 +270,7 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by connectServiceExtensionAbility.
      */
-    it('Acts_StopServiceExtension_0500', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_0500', Level.LEVEL0, async (done : Function) => {
       let subscriber: ESObject;
       let flag = false;
       let disConnect = false;
@@ -338,7 +338,7 @@ export default function abilityTest() {
      * @tc.desc: Local device usage StopServiceExtensionAbility Stop the ServiceExtension application
      *           started by connectServiceExtensionAbility.
      */
-    it('Acts_StopServiceExtension_0600', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_0600', Level.LEVEL0, async (done : Function) => {
       console.info("====>Acts_StopServiceExtension_0600 start");
       let subscriber: ESObject;
       let count = 0;
@@ -397,7 +397,7 @@ export default function abilityTest() {
      * @tc.desc: Calling stopServiceExtensionAbility to stop the remote device ServiceExtension application
      *           without distributed permissions returns an error value.
      */
-    it('Acts_StopServiceExtension_0700', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_0700', Level.LEVEL0, async (done : Function) => {
       console.info("====>Acts_StopServiceExtension_0700 start");
       let want: Want = {
         deviceId: "abcdefg12345678",
@@ -418,7 +418,7 @@ export default function abilityTest() {
      * @tc.desc: Calling stopServiceExtensionAbility to stop the remote device ServiceExtension application
      *           without distributed permissions returns an error value.
      */
-    it('Acts_StopServiceExtension_0800', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_0800', Level.LEVEL0, async (done : Function) => {
       let subscriber: ESObject;
       let flag = false;
       console.info("====>Acts_StopServiceExtension_0800 start");
@@ -471,7 +471,7 @@ export default function abilityTest() {
      * @tc.desc: The local device does not have distributed permissions. The device ID is undefined. Call
      *           stopServiceExtensionAbility to stop the ServiceExtension application and return an error value.
      */
-    it('Acts_StopServiceExtension_1700', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_1700', Level.LEVEL0, async (done : Function) => {
       console.info("====>Acts_StopServiceExtension_1700 start");
       let want: Want = {
         deviceId: undefined,
@@ -492,7 +492,7 @@ export default function abilityTest() {
      * @tc.desc: The local device does not have distributed permissions. The device ID is undefined. Call
      *           stopServiceExtensionAbility to stop the ServiceExtension application and return an error value.
      */
-    it('Acts_StopServiceExtension_1800', 0, async (done : Function) => {
+    it('Acts_StopServiceExtension_1800', Level.LEVEL0, async (done : Function) => {
       let subscriber: ESObject;
       let flag = false;
       console.info("====>Acts_StopServiceExtension_1800 start");

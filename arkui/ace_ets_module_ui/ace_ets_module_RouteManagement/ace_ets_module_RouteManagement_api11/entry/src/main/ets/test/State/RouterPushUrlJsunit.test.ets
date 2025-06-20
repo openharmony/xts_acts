@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -60,7 +60,16 @@ export default function RouterPushUrlJsunit() {
       router.clear()
     });
 
-    it('RouterPushUrlJsunit_0001', 0, async (done: Function) => {
+    /**
+     * @tc.number RouterPushUrlJsunit_0001
+     * @tc.name RouterPushUrlJsunit_0001
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
+
+    it('RouterPushUrlJsunit_0001', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0001] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -75,7 +84,16 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0002', 0, async (done: Function) => {
+    /**
+     * @tc.number RouterPushUrlJsunit_0002
+     * @tc.name RouterPushUrlJsunit_0002
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
+
+    it('RouterPushUrlJsunit_0002', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0002] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -90,8 +108,16 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
+    /**
+     * @tc.number RouterPushUrlJsunit_0003
+     * @tc.name RouterPushUrlJsunit_0003
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
 
-    it('RouterPushUrlJsunit_0003', 0, async (done: Function) => {
+    it('RouterPushUrlJsunit_0003', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0003] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -116,8 +142,16 @@ export default function RouterPushUrlJsunit() {
       done()
     });
 
+    /**
+     * @tc.number RouterPushUrlJsunit_0004
+     * @tc.name RouterPushUrlJsunit_0004
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
 
-    it('RouterPushUrlJsunit_0004', 0, async (done: Function) => {
+    it('RouterPushUrlJsunit_0004', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0004] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -142,7 +176,16 @@ export default function RouterPushUrlJsunit() {
       done()
     });
 
-    it('RouterPushUrlJsunit_0005', 0, async (done: Function) => {
+    /**
+     * @tc.number RouterPushUrlJsunit_0005
+     * @tc.name RouterPushUrlJsunit_0005
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
+
+    it('RouterPushUrlJsunit_0005', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0005] START');
       let driver = Driver.create();
       let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -160,7 +203,16 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0006', 0, async (done: Function) => {
+    /**
+     * @tc.number RouterPushUrlJsunit_0006
+     * @tc.name RouterPushUrlJsunit_0006
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
+
+    it('RouterPushUrlJsunit_0006', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0006] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -179,7 +231,16 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0007', 0, async (done: Function) => {
+    /**
+     * @tc.number RouterPushUrlJsunit_0007
+     * @tc.name RouterPushUrlJsunit_0007
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
+
+    it('RouterPushUrlJsunit_0007', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0007] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -196,7 +257,16 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0008', 0, async (done: Function) => {
+    /**
+     * @tc.number RouterPushUrlJsunit_0008
+     * @tc.name RouterPushUrlJsunit_0008
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
+
+    it('RouterPushUrlJsunit_0008', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0008] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -213,8 +283,16 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
+    /**
+     * @tc.number RouterPushUrlJsunit_0009
+     * @tc.name RouterPushUrlJsunit_0009
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
 
-    it('RouterPushUrlJsunit_0009', 0, async (done: Function) => {
+    it('RouterPushUrlJsunit_0009', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0009] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -241,8 +319,16 @@ export default function RouterPushUrlJsunit() {
       done()
     });
 
+    /**
+     * @tc.number RouterPushUrlJsunit_0010
+     * @tc.name RouterPushUrlJsunit_0010
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
 
-    it('RouterPushUrlJsunit_0010', 0, async (done: Function) => {
+    it('RouterPushUrlJsunit_0010', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0010] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -269,7 +355,16 @@ export default function RouterPushUrlJsunit() {
       done()
     });
 
-    it('RouterPushUrlJsunit_0011', 0, async (done: Function) => {
+    /**
+     * @tc.number RouterPushUrlJsunit_0011
+     * @tc.name RouterPushUrlJsunit_0011
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
+
+    it('RouterPushUrlJsunit_0011', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0011] START');
       let driver = Driver.create();
       let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -287,7 +382,16 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0012', 0, async (done: Function) => {
+    /**
+     * @tc.number RouterPushUrlJsunit_0012
+     * @tc.name RouterPushUrlJsunit_0012
+     * @tc.desc api
+     * @tc.level Level 2
+     * @tc.type
+     * @tc.size
+     */
+
+    it('RouterPushUrlJsunit_0012', Level.LEVEL2, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0012] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);

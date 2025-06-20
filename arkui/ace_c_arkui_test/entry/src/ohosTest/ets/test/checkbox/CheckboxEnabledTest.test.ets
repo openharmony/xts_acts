@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function checkboxEnabledTest() {
@@ -34,7 +34,7 @@ export default function checkboxEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCheckboxEnabled001', 0, async (done: Function) => {
+    it('testCheckboxEnabled001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickEnabledCheckbox')
       await Utils.sleep(1000)
       focusControl.requestFocus('OnBlurEnabledCheckbox')
@@ -57,7 +57,7 @@ export default function checkboxEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCheckboxEnabled002', 0, async (done: Function) => {
+    it('testCheckboxEnabled002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickDisabledCheckbox')
       await Utils.sleep(1000)
       focusControl.requestFocus('OnBlurDisabledCheckbox')
@@ -80,7 +80,7 @@ export default function checkboxEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testCheckboxEnabled003', 0, async (done: Function) => {
+    it('testCheckboxEnabled003', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickAbnormalCheckbox')
       await Utils.sleep(1000)
       focusControl.requestFocus('OnBlurAbnormalCheckbox')

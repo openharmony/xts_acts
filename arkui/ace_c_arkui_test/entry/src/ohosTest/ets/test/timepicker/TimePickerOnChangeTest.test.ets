@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function timePickerOnChangeTest() {
@@ -34,7 +34,7 @@ export default function timePickerOnChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTimePickerOnChange001', 0, async (done: Function) => {
+    it('testTimePickerOnChange001', Level.LEVEL1, async (done: Function) => {
       await Utils.flingComponent('timePickerOnChangeTest', false, true);
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('timePickerOnChangeTest').$attrs.backgroundColor).assertEqual('#FF00FF00')

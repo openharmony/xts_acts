@@ -68,6 +68,17 @@ export default class MoveAbilityToBackground extends EmbeddableUIAbility {
       });
     }).catch((err: BusinessError) => {
       console.log(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
+      let options: commonEventManager.CommonEventPublishData = {
+        code: err?.code,
+        data: JSON.stringify(key),
+      };
+      commonEventManager.publish('moveAbilityToBackground', options, async (err: BusinessError) => {
+        if (err) {
+          hilog.error(DOMAIN_NUMBER, TAG, 'PublishCallBack err = ' + JSON.stringify(err));
+        } else {
+          hilog.info(DOMAIN_NUMBER, TAG, 'this push data success moveAbilityToBackground');
+        }
+      });
     });
     setTimeout(() => {
       this.context.terminateSelf(()=>{

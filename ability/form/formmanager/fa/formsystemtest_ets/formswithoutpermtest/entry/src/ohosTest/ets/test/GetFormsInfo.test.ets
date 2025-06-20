@@ -14,7 +14,7 @@
  */
 
 import formHost from '@ohos.application.formHost';
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 
 export const getFormsInfoTest = (describeName:string, filterParameter:number) => {
   const ERR_PERMISSION_DENY_CODE = 2;
@@ -34,7 +34,7 @@ export const getFormsInfoTest = (describeName:string, filterParameter:number) =>
      * @tc.number: FMS_getFormsInfo_0800
      * @tc.desc: Query specific form configuration information by bundle name without permission (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done:Function) => {
+    it(`${callbackName}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.log(`==========${callbackName} ${describeName} start==========`);
 
       try {
@@ -57,7 +57,7 @@ export const getFormsInfoTest = (describeName:string, filterParameter:number) =>
      * @tc.number FMS_getFormsInfo_0800
      * @tc.desc: Query specific form configuration information by bundle name without permission (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done:Function) => {
+    it(`${promiseName}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.log(`==========${promiseName} ${describeName} start==========`);
 
       try {
@@ -79,7 +79,7 @@ export const getFormsInfoTest = (describeName:string, filterParameter:number) =>
      * @tc.number: FMS_getFormsInfo_1300
      * @tc.desc: Query specific form configuration information by bundle name and module name without permission (by AsyncCallback)
      */
-    it(`${callbackName1}`, filterParameter, async (done:Function) => {
+    it(`${callbackName1}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.log(`==========${callbackName1} ${describeName} start==========`);
 
       try {
@@ -102,7 +102,7 @@ export const getFormsInfoTest = (describeName:string, filterParameter:number) =>
      * @tc.number FMS_getFormsInfo_1300
      * @tc.desc: Query specific form configuration information by bundle name and module name without permission (by Promise)
      */
-    it(`${promiseName1}`, filterParameter, async (done:Function) => {
+    it(`${promiseName1}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.log(`==========${promiseName1} ${describeName} start==========`);
 
       try {

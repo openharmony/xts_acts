@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import formProvider from '@ohos.app.form.formProvider';
 import formInfo from '@ohos.app.form.formInfo';
 import formError from '@ohos.application.formError';
@@ -109,7 +109,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0100', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0100';
             console.info(`${name} start`);
             formProvider.getFormsInfo(async (err, value) => {
@@ -132,7 +132,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0200', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0200';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -156,7 +156,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0300', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0300';
             console.info(`${name} start`);
             formProvider.getFormsInfo().then( async (value) => {
@@ -181,7 +181,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0500', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0500';
             console.info(`${name} start`);;
             const filter : formInfo.FormInfoFilter = {};
@@ -205,7 +205,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0600', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0600';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -231,7 +231,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0700', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0700';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -257,7 +257,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0800', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0800';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -281,7 +281,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0900', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0900';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -305,7 +305,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1000', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1000';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -332,7 +332,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1200', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1200';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {};
@@ -362,7 +362,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1300', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1300';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -397,7 +397,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1400', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1400';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -425,7 +425,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1500', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1500';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -455,7 +455,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1600', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1600';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -484,7 +484,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1700', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1700';
             console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
@@ -512,7 +512,7 @@ export default function abilityTest() {
          * @tc.size      : MediumTest
          * @tc.type      : Function
          */
-        it('SUB_AA_OpenHarmony_FormStateInfo_0100', 0, async (done: () => void) => {
+        it('SUB_AA_OpenHarmony_FormStateInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_FormStateInfo_0100';
             console.info(`${name} start`);
             let stateInfo: formInfo.FormStateInfo = module1FormStateInfo;

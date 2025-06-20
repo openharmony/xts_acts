@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import image from '@ohos.multimedia.image';
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { photoKeys, fetchOption, getFileAsset, getPermission, driveFn, sleep, pushCreateAsset } from '../common'
 import common from '@ohos.app.ability.common';
 
@@ -201,7 +201,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getThumbnail_callback_000', 0, async (done: Function) => {
+    it('getThumbnail_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getThumbnail_callback_000';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       await getThumbnailCallback1(done, testNum, fetchOps);
@@ -215,7 +215,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getThumbnail_callback_001', 0, async (done: Function) => {
+    it('getThumbnail_callback_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getThumbnail_callback_001';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -235,7 +235,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_002', 2, async (done: Function) => {
+    it('getThumbnail_callback_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_002';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -255,7 +255,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_003', 2, async (done: Function) => {
+    it('getThumbnail_callback_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_003';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -275,7 +275,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_004', 2, async (done: Function) => {
+    it('getThumbnail_callback_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_004';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -295,7 +295,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_005', 2, async (done: Function) => {
+    it('getThumbnail_callback_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_005';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -315,7 +315,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_006', 2, async (done: Function) => {
+    it('getThumbnail_callback_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_006';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -335,7 +335,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_007', 2, async (done: Function) => {
+    it('getThumbnail_callback_007', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_007';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -355,7 +355,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_008', 2, async (done: Function) => {
+    it('getThumbnail_callback_008', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_008';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = undefined;
@@ -370,7 +370,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_009', 2, async (done: Function) => {
+    it('getThumbnail_callback_009', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_009';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -387,7 +387,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_010', 2, async (done: Function) => {
+    it('getThumbnail_callback_010', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_010';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -404,7 +404,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_011', 2, async (done: Function) => {
+    it('getThumbnail_callback_011', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_011';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -422,7 +422,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getThumbnail_callback_012', 0, async (done: Function) => {
+    it('getThumbnail_callback_012', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getThumbnail_callback_012';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       await getThumbnailCallback1(done, testNum, fetchOps);
@@ -436,7 +436,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getThumbnail_callback_013', 0, async (done: Function) => {
+    it('getThumbnail_callback_013', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getThumbnail_callback_013';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -456,7 +456,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_014', 2, async (done: Function) => {
+    it('getThumbnail_callback_014', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_014';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -476,7 +476,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_015', 2, async (done: Function) => {
+    it('getThumbnail_callback_015', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_015';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -496,7 +496,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_016', 2, async (done: Function) => {
+    it('getThumbnail_callback_016', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_016';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -516,7 +516,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_017', 2, async (done: Function) => {
+    it('getThumbnail_callback_017', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_017';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -536,7 +536,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_018', 2, async (done: Function) => {
+    it('getThumbnail_callback_018', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_018';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -556,7 +556,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_019', 2, async (done: Function) => {
+    it('getThumbnail_callback_019', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_019';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -576,7 +576,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_020', 2, async (done: Function) => {
+    it('getThumbnail_callback_020', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_020';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = undefined;
@@ -591,7 +591,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_021', 2, async (done: Function) => {
+    it('getThumbnail_callback_021', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_021';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -608,7 +608,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_022', 2, async (done: Function) => {
+    it('getThumbnail_callback_022', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_022';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -625,7 +625,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_023', 2, async (done: Function) => {
+    it('getThumbnail_callback_023', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_callback_023';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -644,7 +644,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getThumbnail_promise_000', 0, async (done: Function) => {
+    it('getThumbnail_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getThumbnail_promise_000';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       await getThumbnailPromise1(done, testNum, fetchOps);
@@ -658,7 +658,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getThumbnail_promise_001', 0, async (done: Function) => {
+    it('getThumbnail_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getThumbnail_promise_001';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -678,7 +678,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_002', 2, async (done: Function) => {
+    it('getThumbnail_promise_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_002';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -698,7 +698,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_003', 2, async (done: Function) => {
+    it('getThumbnail_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_003';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -718,7 +718,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_004', 2, async (done: Function) => {
+    it('getThumbnail_promise_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_004';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -738,7 +738,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_005', 2, async (done: Function) => {
+    it('getThumbnail_promise_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_005';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -758,7 +758,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_006', 2, async (done: Function) => {
+    it('getThumbnail_promise_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_006';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -778,7 +778,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_007', 2, async (done: Function) => {
+    it('getThumbnail_promise_007', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_007';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -798,7 +798,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_008', 2, async (done: Function) => {
+    it('getThumbnail_promise_008', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_008';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = undefined;
@@ -816,7 +816,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_009', 2, async (done: Function) => {
+    it('getThumbnail_promise_009', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_009';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -833,7 +833,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_010', 2, async (done: Function) => {
+    it('getThumbnail_promise_010', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_010';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -850,7 +850,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_011', 2, async (done: Function) => {
+    it('getThumbnail_promise_011', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_011';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.jpg');
       const size: ESObject = {
@@ -868,7 +868,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getThumbnail_promise_012', 0, async (done: Function) => {
+    it('getThumbnail_promise_012', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getThumbnail_promise_012';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       await getThumbnailPromise1(done, testNum, fetchOps);
@@ -882,7 +882,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getThumbnail_promise_013', 0, async (done: Function) => {
+    it('getThumbnail_promise_013', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getThumbnail_promise_013';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -902,7 +902,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_014', 2, async (done: Function) => {
+    it('getThumbnail_promise_014', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_014';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -922,7 +922,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_015', 2, async (done: Function) => {
+    it('getThumbnail_promise_015', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_015';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -942,7 +942,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_016', 2, async (done: Function) => {
+    it('getThumbnail_promise_016', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_016';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -962,7 +962,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_017', 2, async (done: Function) => {
+    it('getThumbnail_promise_017', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_017';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -982,7 +982,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_018', 2, async (done: Function) => {
+    it('getThumbnail_promise_018', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_018';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -1002,7 +1002,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_019', 2, async (done: Function) => {
+    it('getThumbnail_promise_019', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_019';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -1022,7 +1022,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_020', 2, async (done: Function) => {
+    it('getThumbnail_promise_020', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_020';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = undefined;
@@ -1040,7 +1040,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_021', 2, async (done: Function) => {
+    it('getThumbnail_promise_021', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_021';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -1057,7 +1057,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_022', 2, async (done: Function) => {
+    it('getThumbnail_promise_022', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_022';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {
@@ -1074,7 +1074,7 @@ export default function getThumbnailTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_023', 2, async (done: Function) => {
+    it('getThumbnail_promise_023', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getThumbnail_promise_023';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getThumb.mp4');
       const size: ESObject = {

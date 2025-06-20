@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 import lazyForEachTest from './FrameNodeTest/lazyForEachTest.test';
+import ApplyNormalAttributeTest from './AttributeUpdaterTest/ApplyNormalAttribute.test';
+import UIObserverDensityUpdateTest from './ObserverTest/UIObserverDensityUpdate.test';
+import UIObserverWillDrawTest from './ObserverTest/UIObserverWillDraw.test';
+import UIObserverDidLayoutTest from './ObserverTest/UIObserverDidLayout.test';
 
 export default function testsuite() {
   lazyForEachTest();
+  ApplyNormalAttributeTest();
+  UIObserverDensityUpdateTest();
+  UIObserverWillDrawTest();
+  UIObserverDidLayoutTest();
 }

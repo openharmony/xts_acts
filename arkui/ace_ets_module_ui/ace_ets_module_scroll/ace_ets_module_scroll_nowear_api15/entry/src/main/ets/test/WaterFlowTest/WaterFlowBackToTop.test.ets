@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
 import { Component, Driver, On, ON, MouseButton } from '@kit.TestKit';
 
@@ -41,7 +41,7 @@ export default function WaterFlowBackToTopTest() {
      * @tc.name   :test waterFlow back to top
      * @tc.desc   :test whether backToTop events are effective
      */
-    it('WaterFlowScrollTest1_0100', 0, async () => {
+    it('WaterFlowScrollTest1_0100', Level.LEVEL1, async () => {
       console.info('WaterFlowScrollTest_0100 START');
       await sleep(1000)
       let driverWaterFlow: Driver = Driver.create();
@@ -69,15 +69,34 @@ export default function WaterFlowBackToTopTest() {
       );
       await sleep(2000);  // wait for the scroll to complete
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+      let stopJson = getInspectorByKey('waterFlowBackToTop');
+      expect(JSON.parse(stopJson).$attrs.content !== 'onDidWaterFlowBackToTop').assertTrue();
+      
       await switchButton.click();
       await sleep(500)
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+
+      await driverWaterFlow.swipe(
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 4),
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 2)
+      );
+      await sleep(2000);
       await switchButton.click();
       await sleep(500)
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+      
+      await driverWaterFlow.swipe(
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 4),
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 2)
+      );
+      await sleep(2000);
       await switchButton.click();
       await sleep(500)
       await topButton.click();

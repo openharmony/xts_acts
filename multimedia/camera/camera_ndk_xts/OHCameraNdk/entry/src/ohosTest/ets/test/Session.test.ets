@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameras from 'libentry.so'
 import image from '@ohos.multimedia.image';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -202,7 +202,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionBeginConfig0100', 0, () => {
+    it('testOHCaptureSessionBeginConfig0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionBeginConfig(0);
       console.log(TAG+"testOHCaptureSessionBeginConfig0100:"+ret);
@@ -216,7 +216,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionBeginConfig0200', 0, () => {
+    it('testOHCaptureSessionBeginConfig0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionBeginConfig(1);
       console.log(TAG+"testOHCaptureSessionBeginConfig0200:"+ret);
@@ -230,7 +230,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddInput0100', 0, () => {
+    it('testOHCaptureSessionAddInput0100', Level.LEVEL0, () => {
 
       sessionBeginConfig();
       let ret = cameras.oHCaptureSessionAddInput(0);
@@ -245,7 +245,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddInput0200', 0, () => {
+    it('testOHCaptureSessionAddInput0200', Level.LEVEL0, () => {
 
       sessionBeginConfig();
       let ret = cameras.oHCaptureSessionAddInput(1);
@@ -260,7 +260,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemoveInput0100', 0, () => {
+    it('testOHCaptureSessionRemoveInput0100', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       let ret = cameras.oHCaptureSessionRemoveInput(0);
@@ -275,7 +275,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemoveInput0200', 0, () => {
+    it('testOHCaptureSessionRemoveInput0200', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       let ret = cameras.oHCaptureSessionRemoveInput(1);
@@ -290,7 +290,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemoveInput0300', 0, () => {
+    it('testOHCaptureSessionRemoveInput0300', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       let ret = cameras.oHCaptureSessionRemoveInput(2);
@@ -305,7 +305,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddPreviewOutput0100', 0, () => {
+    it('testOHCaptureSessionAddPreviewOutput0100', Level.LEVEL0, () => {
 
       sessionBeginConfig();
       sessionAddInput();
@@ -322,7 +322,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddPreviewOutput0200', 0, () => {
+    it('testOHCaptureSessionAddPreviewOutput0200', Level.LEVEL0, () => {
 
       sessionBeginConfig();
       sessionAddInput();
@@ -339,7 +339,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddPreviewOutput0300', 0, () => {
+    it('testOHCaptureSessionAddPreviewOutput0300', Level.LEVEL0, () => {
 
       sessionBeginConfig();
       sessionAddInput();
@@ -356,7 +356,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCommitConfig0100', 0, () => {
+    it('testOHCaptureSessionCommitConfig0100', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()
@@ -373,7 +373,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCommitConfig0200', 0, () => {
+    it('testOHCaptureSessionCommitConfig0200', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()
@@ -390,7 +390,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddPhotoOutput0100', 0, () => {
+    it('testOHCaptureSessionAddPhotoOutput0100', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()
@@ -408,7 +408,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddPhotoOutput0200', 0, () => {
+    it('testOHCaptureSessionAddPhotoOutput0200', Level.LEVEL0, () => {
 
       sessionBeginConfig();
       sessionAddInput();
@@ -426,7 +426,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddPhotoOutput0300', 0, () => {
+    it('testOHCaptureSessionAddPhotoOutput0300', Level.LEVEL0, () => {
 
       sessionBeginConfig();
       sessionAddInput();
@@ -444,7 +444,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemovePhotoOutput0100', 0, () => {
+    it('testOHCaptureSessionRemovePhotoOutput0100', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()
@@ -462,7 +462,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemovePhotoOutput0200', 0, () => {
+    it('testOHCaptureSessionRemovePhotoOutput0200', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()
@@ -481,7 +481,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemovePhotoOutput0300', 0, () => {
+    it('testOHCaptureSessionRemovePhotoOutput0300', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()
@@ -499,7 +499,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemovePreviewOutput0100', 0, () => {
+    it('testOHCaptureSessionRemovePreviewOutput0100', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()
@@ -516,7 +516,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemovePreviewOutput0200', 0, () => {
+    it('testOHCaptureSessionRemovePreviewOutput0200', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()
@@ -533,7 +533,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemovePreviewOutput0300', 0, () => {
+    it('testOHCaptureSessionRemovePreviewOutput0300', Level.LEVEL0, () => {
       sessionBeginConfig();
       sessionAddInput();
       createPreviewOutput()

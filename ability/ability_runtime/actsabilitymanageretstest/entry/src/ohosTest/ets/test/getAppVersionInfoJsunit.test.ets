@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
@@ -67,7 +67,7 @@ export default function getHapModuleInfoJsunit() {
      * @tc.desc: Check the return type of the interface (by Promise)
      * @tc.level 0
      */
-    it('context_getAppVersionInfo_test_0100', 0, async (done: Function) => {
+    it('context_getAppVersionInfo_test_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[context_getAppVersionInfo_test_0100] START');
       await Utils.sleep(1000);
       let timeOldStamp = Utils.getNowTime();
@@ -94,7 +94,7 @@ export default function getHapModuleInfoJsunit() {
      * @tc.desc: Check the return type of the interface (by Callback)
      * @tc.level 0
      */
-    it('context_getAppVersionInfo_test_0200', 0, async (done: Function) => {
+    it('context_getAppVersionInfo_test_0200', Level.LEVEL0, async (done: Function) => {
       try {
         console.info('[context_getAppVersionInfo_test_0200] START');
         await Utils.sleep(1000);

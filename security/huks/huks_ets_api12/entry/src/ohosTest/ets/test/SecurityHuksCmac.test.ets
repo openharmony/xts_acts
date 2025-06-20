@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import huks from '@ohos.security.huks';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { StringToUint8Array } from './utils/CommonUtil';
-import { CheckSoftware, CheckWearable, GenParam, SetParam } from './utils/HuksOptionUtil';
+import { huks } from '@kit.UniversalKeystoreKit';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import { GetDataBySize, StringToUint8Array } from './utils/CommonUtils';
+import { CheckSoftware, CheckWearable, GenParam, SetParam } from './utils/huks/HuksOptionsUtils';
 
 export default function SecurityHuksCmacTest() {
   let useSoftware: boolean = true;
@@ -72,7 +72,7 @@ export default function SecurityHuksCmacTest() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it('SUB_Security_HUKS_CMAC_API12_Func_0010', 0, async () => {
+    it('SUB_Security_HUKS_CMAC_API12_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = 'SUB_Security_HUKS_CMAC_API12_Func_0010';
       SetParam(genKeyOption, huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_CMAC)
       try {
@@ -93,18 +93,20 @@ export default function SecurityHuksCmacTest() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it('SUB_Security_HUKS_CMAC_API12_Func_0020', 0, async () => {
+    it('SUB_Security_HUKS_CMAC_API12_Func_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = 'SUB_Security_HUKS_CMAC_API12_Func_0020';
-      if (!isWearable) {
-        try {
-          await huks.generateKeyItem(testNumber, genKeyOption);
-          await huks.initSession(testNumber, macOption);
-          expect(null).assertFail();
-        } catch (err) {
-          console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
-          let expectErrCode = useSoftware ? 12000003 : 12000012;
-          expect(err.code).assertEqual(expectErrCode);
-        }
+      await huks.generateKeyItem(testNumber, genKeyOption);
+      try {
+        let handle = (await huks.initSession(testNumber, macOption)).handle;
+        macOption.inData = StringToUint8Array(GetDataBySize(8))
+        await huks.updateSession(handle, macOption);
+        let res = (await huks.finishSession(handle, macOption)).outData as Uint8Array;
+        expect(isWearable).assertEqual(true);
+        expect(res.length).assertEqual(8);
+      } catch (err) {
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
+        let expectErrCode = useSoftware ? 12000003 : 12000012;
+        expect(err.code).assertEqual(expectErrCode);
       }
     })
   }

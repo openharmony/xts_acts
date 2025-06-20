@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeEach, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeEach, beforeAll, Level } from '@ohos/hypium';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -56,7 +56,7 @@ export default function startAbilityByCallTest(){
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_5500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_5500', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_5500';
       await sleep(1000);
 
@@ -111,7 +111,7 @@ export default function startAbilityByCallTest(){
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_0200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_0200';
       await sleep(1000);
 
@@ -228,7 +228,7 @@ export default function startAbilityByCallTest(){
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4700';
       await sleep(1000);
 
@@ -284,7 +284,7 @@ export default function startAbilityByCallTest(){
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1900', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_1900';
       await sleep(1000);
 
@@ -397,7 +397,7 @@ export default function startAbilityByCallTest(){
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4900', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_4900';
       await sleep(1000);
 

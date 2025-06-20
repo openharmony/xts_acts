@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsMarkAnchorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMarkAnchorTest001', 0, async (done: Function) => {
+    it('testCommonAttrsMarkAnchorTest001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMarkAnchorTest001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsMarkAnchorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMarkAnchorTest002', 0, async (done: Function) => {
+    it('testCommonAttrsMarkAnchorTest002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMarkAnchorTest002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsMarkAnchorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMarkAnchorTest003', 0, async (done: Function) => {
+    it('testCommonAttrsMarkAnchorTest003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMarkAnchorTest003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsMarkAnchorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMarkAnchorTest004', 0, async (done: Function) => {
+    it('testCommonAttrsMarkAnchorTest004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMarkAnchorTest004()).assertEqual(0)
       done()
     })

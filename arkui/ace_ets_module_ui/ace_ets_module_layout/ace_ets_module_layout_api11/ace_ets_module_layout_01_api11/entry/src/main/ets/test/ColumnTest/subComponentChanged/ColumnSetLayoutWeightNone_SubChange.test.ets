@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -49,7 +49,7 @@ export default function ColumnSetLayoutWeightNone_SubChange() {
      * @tc.name      testColumnSetLayoutWeightWithRateThreeTwoZero
      * @tc.desc      Subcomponents set layout weight(3-2-0) attribute.
      */
-    it('testColumnSetLayoutWeightWithRateThreeTwoZero', 0, async () => {
+    it('testColumnSetLayoutWeightWithRateThreeTwoZero',  Level.LEVEL0, async () => {
       console.info('new testColumnSetLayoutWeightWithRateThreeTwoZero START');
       await CommonFunc.sleep(1000);
       let layoutExpectHeight1 = (190/5)*3;

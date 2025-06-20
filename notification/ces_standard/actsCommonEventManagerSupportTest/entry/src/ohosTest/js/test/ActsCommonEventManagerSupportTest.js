@@ -494,6 +494,18 @@ export default function ActsCommonEventManagerSupportTest() {
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700 END`)
     })
 
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2800
+     * @tc.name      : commonEventManager.Support
+     * @tc.desc      : default application changed common event
+     */
+    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2800', Level.LEVEL2, async  function () {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2800 START`)
+      expect(commonEventManager.Support.COMMON_EVENT_DEFAULT_APPLICATION_CHANGED)
+        .assertEqual('usual.event.DEFAULT_APPLICATION_CHANGED')
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2800 END`)
+    })
+
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST END`)
   })
 

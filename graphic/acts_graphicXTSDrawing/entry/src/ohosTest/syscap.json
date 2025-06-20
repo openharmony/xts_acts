@@ -10,7 +10,8 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Startup.SystemInfo",
+                    "SystemCapability.Graphics.Drawing"
                 ]
             }
         ]

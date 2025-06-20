@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import { Component, Driver, ON } from '@ohos.UiTest';
 import fs, { ReadOptions } from '@ohos.file.fs';
@@ -143,7 +143,7 @@ export default function showAssetsCreationDialogTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("show_asset_create_dialog_001", 0, async (done: Function) => {
+    it("show_asset_create_dialog_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "show_asset_create_dialog_001";
       let fileUriList: Array<string> = [
         "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/test_mov_1.jpg"
@@ -167,7 +167,7 @@ export default function showAssetsCreationDialogTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("show_asset_create_dialog_002", 0, async (done: Function) => {
+    it("show_asset_create_dialog_002", Level.LEVEL0, async (done: Function) => {
       const testNum = "show_asset_create_dialog_002";
       let fileUriList: Array<string> = [
         "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/test_mov_1.jpg"
@@ -191,7 +191,7 @@ export default function showAssetsCreationDialogTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("show_asset_create_dialog_003", 2, async (done: Function) => {
+    it("show_asset_create_dialog_003", Level.LEVEL2, async (done: Function) => {
       const testNum = "show_asset_create_dialog_003";
       let fileUriList: ESObject = undefined;
       let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [

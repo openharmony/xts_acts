@@ -13,7 +13,7 @@
   * limitations under the License.
 */
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import { ChildProcessArgs, ChildProcessOptions, childProcessManager, common } from '@kit.AbilityKit';
 import fs from '@ohos.file.fs';
 import hilog from '@ohos.hilog';
@@ -43,7 +43,7 @@ export default function startArkChildProcess() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0600', Level.LEVEL0, async (done: Function) => {
       let args: ChildProcessArgs | null = null;
       let options: ChildProcessOptions = {
         isolationMode: false
@@ -71,7 +71,7 @@ export default function startArkChildProcess() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0700', Level.LEVEL0, async (done: Function) => {
       let args: ChildProcessArgs | undefined = undefined;
       let options: ChildProcessOptions = {
         isolationMode: false
@@ -100,7 +100,7 @@ export default function startArkChildProcess() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0900', Level.LEVEL0, async (done: Function) => {
       let path = context.filesDir + '/test.txt';
       let file = fs.openSync(path, fs.OpenMode.READ_ONLY | fs.OpenMode.CREATE);
       let args: ChildProcessArgs = {
@@ -133,7 +133,7 @@ export default function startArkChildProcess() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_1000', Level.LEVEL0, async (done: Function) => {
       let path = context.filesDir + '/test.txt';
       let file = fs.openSync(path, fs.OpenMode.READ_ONLY | fs.OpenMode.CREATE);
       let args: ChildProcessArgs = {
@@ -165,7 +165,7 @@ export default function startArkChildProcess() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0100', Level.LEVEL0, async (done: Function) => {
       let path = context.filesDir + '/test.txt';
       let file = fs.openSync(path, fs.OpenMode.READ_ONLY | fs.OpenMode.CREATE);
       let args: ChildProcessArgs = {
@@ -199,7 +199,7 @@ export default function startArkChildProcess() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0200', Level.LEVEL0, async (done: Function) => {
       let path = context.filesDir + '/test.txt';
       let file = fs.openSync(path, fs.OpenMode.READ_ONLY | fs.OpenMode.CREATE);
       let args: ChildProcessArgs = {
@@ -233,7 +233,7 @@ export default function startArkChildProcess() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_JSChildProcess_0300', Level.LEVEL0, async (done: Function) => {
       let path = context.filesDir + '/test.txt';
       let file = fs.openSync(path, fs.OpenMode.READ_ONLY | fs.OpenMode.CREATE);
       let args: ChildProcessArgs = {

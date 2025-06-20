@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import router from '@system.router';
 import { Driver } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -63,7 +63,7 @@ export default function ChipOnClick() {
          * @tc.type  : Function
          * @tc.level : Level 0
          */
-        it('ChipOnClick_001', 0, async (done: Function) => {
+        it('ChipOnClick_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             console.info('ChipOnClick_001 START');
             let ChipActionCol = CommonFunc.getComponentRect('ChipOnClick');
             await CommonFunc.sleep(200);

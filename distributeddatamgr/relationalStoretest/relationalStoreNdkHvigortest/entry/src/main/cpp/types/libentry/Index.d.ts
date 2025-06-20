@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -93,3 +93,30 @@ export const OH_Rdb_CommitByTrxId_Param_0200: () => number;
 export const OH_Rdb_RollBackByTrxId_Param_0100: () => number;
 export const OH_Rdb_RollBackByTrxId_Param_0200: () => number;
 export const OH_Rdb_DBType_Enum_0100: () => number;
+
+export const RdbstoreSetUpTestCase: () => number;
+export const RdbstoreTearDownTestCase: () => number;
+export const OH_Rdb_BatchInsert_0100: () => number;
+export const OH_Value_PutNull_0100: () => number;
+export const OH_Value_Put_0100: () => number;
+export const OH_Values_Put_0100: () => number;
+export const OH_Value_PutFloatVector_0100: () => number;
+export const OH_Values_PutFloatVector_0100: () => number;
+
+export const OH_Rdb_SetTokenizer0100: () => number;
+export const OH_Rdb_IsTokenizerSupported0100: () => number;
+export const OH_Cursor_GetFloatVectorCount0100: () => number;
+export const OH_RdbTrans_Commit0100: () => number;
+export const OH_RdbTrans_InsertWithConflictResolution0100: () => number;
+export const OH_Rdb_SetCustomDir0100: () => number;
+export const OH_Rdb_SetReadOnly0100: () => number;
+export const OH_Rdb_SetPlugins0100: () => number;
+
+export const OH_Rdb_DestroyCryptoParam0100: () => number;
+export const OH_Rdb_CreateCryptoParam0100: () => number;
+export const OH_Rdb_CreateCryptoParam0200: () => number;
+export const OH_Rdb_CreateCryptoParam0300: () => number;
+export const OH_Rdb_CreateCryptoParam0400: () => number;
+export const OH_Rdb_CreateCryptoParam0500: () => number;
+export const OH_Rdb_CreateCryptoParam0600: () => number;
+export const OH_Rdb_CreateCryptoParam0700: () => number;

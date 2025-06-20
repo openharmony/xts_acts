@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 import AudioHapticTest from './AudioHaptic.test'
+import AudioHapticEnhance from './AudioHapticEnhance.test'
+import AudioHapticPermission from './AudioHapticPermission.test'
 
 export default function testsuite() {
   AudioHapticTest();
+  AudioHapticEnhance();
+  AudioHapticPermission();
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 
@@ -23,7 +23,7 @@ export default function resourceNapiValueTest() {
 
     let PAGE_TAG = 'ResourceNapiValueTest';
 
-    it('testRequirementRouterPageState001', 0, async (done: Function) => {
+    it('testRequirementRouterPageState001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`resourcenapivalue/${PAGE_TAG}`, done);
       expect(Utils.getComponentInfoByKey('Column').$attrs.backgroundColor).assertEqual('#FF00FF00')
     })

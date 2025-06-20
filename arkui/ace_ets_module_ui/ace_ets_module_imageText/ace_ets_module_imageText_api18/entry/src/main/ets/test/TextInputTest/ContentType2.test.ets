@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function ContentTypeTest2() {
      * @tc.type : 
      * @tc.size :
      */
-    it('ContentTypeTest2_0010', 0, async (done: Function) => {
+    it('ContentTypeTest2_0010',  Level.LEVEL0, async (done: Function) => {
       console.info('ContentTypeTest2_0010 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ContentType_FLIGHT_NUMBER');
@@ -68,7 +68,7 @@ export default function ContentTypeTest2() {
      * @tc.type :
      * @tc.size :
      */
-    it('ContentTypeTest2_0020', 0, async (done: Function) => {
+    it('ContentTypeTest2_0020',  Level.LEVEL0, async (done: Function) => {
       console.info('ContentTypeTest2_0020 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ContentType_LICENSE_NUMBER');
@@ -87,7 +87,7 @@ export default function ContentTypeTest2() {
      * @tc.type :
      * @tc.size :
      */
-    it('ContentTypeTest2_0030', 0, async (done: Function) => {
+    it('ContentTypeTest2_0030',  Level.LEVEL0, async (done: Function) => {
       console.info('ContentTypeTest2_0030 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ContentType_LICENSE_FILE_NUMBER');
@@ -106,7 +106,7 @@ export default function ContentTypeTest2() {
      * @tc.type :
      * @tc.size :
      */
-    it('ContentTypeTest2_0040', 0, async (done: Function) => {
+    it('ContentTypeTest2_0040',  Level.LEVEL0, async (done: Function) => {
       console.info('ContentTypeTest2_0040 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ContentType_LICENSE_PLATE');
@@ -125,7 +125,7 @@ export default function ContentTypeTest2() {
      * @tc.type :
      * @tc.size :
      */
-    it('ContentTypeTest2_0050', 0, async (done: Function) => {
+    it('ContentTypeTest2_0050',  Level.LEVEL0, async (done: Function) => {
       console.info('ContentTypeTest2_0050 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ContentType_ENGINE_NUMBER');
@@ -144,7 +144,7 @@ export default function ContentTypeTest2() {
      * @tc.type :
      * @tc.size :
      */
-    it('ContentTypeTest2_0060', 0, async (done: Function) => {
+    it('ContentTypeTest2_0060',  Level.LEVEL0, async (done: Function) => {
       console.info('ContentTypeTest2_0060 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ContentType_LICENSE_CHASSIS_NUMBER');
@@ -163,7 +163,7 @@ export default function ContentTypeTest2() {
      * @tc.type :
      * @tc.size :
      */
-    it('ContentTypeTest2_0070', 0, async (done: Function) => {
+    it('ContentTypeTest2_0070',  Level.LEVEL0, async (done: Function) => {
       console.info('ContentTypeTest2_0070 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ContentType_UNDEFINED');

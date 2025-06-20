@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 
@@ -47,7 +47,7 @@ export default function datePickerDialogModeTest() {
      * @tc.type :
      * @tc.size :
      */
-     it('DatePickerDialog_0010', 0, async (done: Function) => {
+     it('DatePickerDialog_0010', Level.LEVEL1, async (done: Function) => {
         let tagName = 'DatePickerDialog_0010';
         console.info('[' + tagName + '] START============================');
         await Utils.sleep(1000);
@@ -73,7 +73,7 @@ export default function datePickerDialogModeTest() {
      * @tc.type :
      * @tc.size :
      */
-      it('DatePickerDialog_0020', 0, async (done: Function) => {
+      it('DatePickerDialog_0020', Level.LEVEL1, async (done: Function) => {
         let tagName = 'DatePickerDialog_0020';
         console.info('[' + tagName + '] START============================');
         await Utils.sleep(1000);
@@ -99,7 +99,7 @@ export default function datePickerDialogModeTest() {
      * @tc.type :
      * @tc.size :
      */
-      it('DatePickerDialog_0030', 0, async (done: Function) => {
+      it('DatePickerDialog_0030', Level.LEVEL1, async (done: Function) => {
         let tagName = 'DatePickerDialog_0030';
         console.info('[' + tagName + '] START============================');
         await Utils.sleep(1000);
@@ -126,7 +126,7 @@ export default function datePickerDialogModeTest() {
      * @tc.type :
      * @tc.size :
      */
-      it('DatePickerDialog_0040', 0, async (done: Function) => {
+      it('DatePickerDialog_0040', Level.LEVEL1, async (done: Function) => {
         let tagName = 'DatePickerDialog_0040';
         console.info('[' + tagName + '] START============================');
         await Utils.sleep(1000);
@@ -152,7 +152,7 @@ export default function datePickerDialogModeTest() {
      * @tc.type :
      * @tc.size :
      */
-      it('DatePickerDialog_0050', 0, async (done: Function) => {
+      it('DatePickerDialog_0050', Level.LEVEL1, async (done: Function) => {
         let tagName = 'DatePickerDialog_0050';
         console.info('[' + tagName + '] START============================');
         await Utils.sleep(1000);
@@ -178,7 +178,7 @@ export default function datePickerDialogModeTest() {
      * @tc.type :
      * @tc.size :
      */
-      it('DatePickerDialog_0060', 0, async (done: Function) => {
+      it('DatePickerDialog_0060', Level.LEVEL1, async (done: Function) => {
         let tagName = 'DatePickerDialog_0060';
         console.info('[' + tagName + '] START============================');
         await Utils.sleep(1000);
@@ -205,7 +205,7 @@ export default function datePickerDialogModeTest() {
      * @tc.type :
      * @tc.size :
      */
-      it('DatePickerDialog_0070', 0, async (done: Function) => {
+      it('DatePickerDialog_0070', Level.LEVEL1, async (done: Function) => {
         let tagName = 'DatePickerDialog_0070';
         console.info('[' + tagName + '] START============================');
         await Utils.sleep(1000);

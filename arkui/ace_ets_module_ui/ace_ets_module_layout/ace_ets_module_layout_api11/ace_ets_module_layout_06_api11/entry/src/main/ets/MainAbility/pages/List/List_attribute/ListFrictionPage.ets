@@ -38,6 +38,21 @@ struct ListFrictionPage {
 
   build() {
     Column() {
+      List({ initialIndex: 0 }) {
+        ForEach(this.arr, (item: number, index?: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height('30%')
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+          }
+        })
+      }
+      .width('90%')
+      .height('10%')
+      .key('list_friction_default')
+
       List({ space: 20, initialIndex: 0 }) {
         ForEach(this.arr, (item: number, index?: number) => {
           ListItem() {
@@ -59,6 +74,7 @@ struct ListFrictionPage {
         console.info('last' + lastIndex)
       })
       .width('90%')
+      .height('60%')
       .friction(this.friction)
       .key('List_ListFriction')
     }

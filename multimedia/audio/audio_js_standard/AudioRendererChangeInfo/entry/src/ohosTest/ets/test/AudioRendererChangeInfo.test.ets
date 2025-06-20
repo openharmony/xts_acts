@@ -14,7 +14,7 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import { Permissions } from '@ohos.abilityAccessCtrl';
@@ -100,7 +100,6 @@ export default function audioRendererChange() {
     afterAll(() => {
       console.info(`${Tag} : afterAll: Test suite-level cleanup condition`);
     })
-
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0100
      * @tc.name      : AudioRendererChange - ON_STATE_PREPARED
@@ -2915,9 +2914,9 @@ export default function audioRendererChange() {
      * @tc.desc      : AudioRendererChange - ON_AUDIORENDERCHANGE 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100------begin`)
       let flag: boolean = false;
       try {
@@ -2967,9 +2966,9 @@ export default function audioRendererChange() {
      * @tc.desc      : OFF_AUDIORENDERCHANGE 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100------begin`)
       let flag = false;
       let off_para: ESObject = 1;
@@ -3022,9 +3021,9 @@ export default function audioRendererChange() {
      * @tc.desc      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100------begin`)
       let flag: boolean = false;
       try {
@@ -3074,9 +3073,9 @@ export default function audioRendererChange() {
      * @tc.desc      : OFF_AUDIOCAPTURERCHANGE 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0100------begin`)
       let flag = false;
       let off_para: ESObject = 1;
@@ -3122,5 +3121,433 @@ export default function audioRendererChange() {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0200------end`)
       done();
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIORENDERECHANGE_AUDIODEVICEDESCRIPTOR_0100
+     * @tc.name      : AUDIODEVICEDESCRIPTOR
+     * @tc.desc      : AUDIODEVICEDESCRIPTOR
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_AUDIORENDERECHANGE_AUDIODEVICEDESCRIPTOR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+      audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.AudioDeviceDescriptors) => {
+        if (err) {
+          console.error(`getCurrentOutputDevices Fail: ${err}`);
+          expect().assertFail();
+        } else {
+          for (let i = 0; i < deviceInfo.length; i++) {
+            console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
+            expect(deviceInfo[i].id).assertLargerOrEqual(0);
+            console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
+            expect(deviceInfo[i].deviceType).assertLargerOrEqual(0);
+            console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
+            expect(deviceInfo[i].deviceRole).assertLargerOrEqual(0);
+            console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
+            expect(deviceInfo[i].name).assertInstanceOf('String');
+            console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
+            expect(deviceInfo[i].address).assertInstanceOf('String');
+            console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
+            expect(deviceInfo[i].sampleRates[0]).assertLargerOrEqual(0);
+            console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
+            expect(deviceInfo[i].channelCounts[0]).assertLargerOrEqual(0);
+            console.info(`DeviceInfo channelMasks: ${deviceInfo[i].channelMasks[0]}`);
+            expect(deviceInfo[i].channelMasks[0]).assertLargerOrEqual(0);
+            console.info(`DeviceInfo displayName: ${deviceInfo[i].displayName}`);
+            expect(deviceInfo[i].displayName).assertInstanceOf('String');
+            // console.info(`DeviceInfo channelmask: ${deviceInfo[i].encodingTypes[0]}`);
+            console.info(`DeviceInfo spatializationSupported: ${deviceInfo[i].spatializationSupported}`);
+            expect(deviceInfo[i].spatializationSupported).assertInstanceOf('Boolean');
+          }
+        }
+      });
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0100
+     * @tc.name      : on_audioInterrupt 401
+     * @tc.desc      : on_audioInterrupt 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.on('audioInterrupt', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0200
+     * @tc.name      : off_audioInterrupt 401
+     * @tc.desc      : off_audioInterrupt 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+      audioRenderer.on('audioInterrupt', (eventAction: audio.InterruptEvent) => {
+        console.log("eventAction:" + JSON.stringify(eventAction))
+      })
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.off('audioInterrupt', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0300
+     * @tc.name      : off_audioInterrupt 401
+     * @tc.desc      : off_audioInterrupt 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+      audioRenderer.on('stateChange', (eventState: audio.AudioState) => {
+        console.log("eventState:" + JSON.stringify(eventState))
+      })
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.off('stateChange', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0400
+     * @tc.name      : on_outputDeviceChange 401
+     * @tc.desc      : on_outputDeviceChange 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.on('outputDeviceChange', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0500
+     * @tc.name      : off_outputDeviceChange 401
+     * @tc.desc      : off_outputDeviceChange 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+      audioRenderer.on('outputDeviceChange', (eventAudioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+        console.log("eventAudioDeviceDescriptors:" + JSON.stringify(eventAudioDeviceDescriptors))
+      })
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.off('outputDeviceChange', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0600
+     * @tc.name      : on_outputDeviceChange 401
+     * @tc.desc      : on_outputDeviceChange 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.on('outputDeviceChangeWithInfo', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0700
+     * @tc.name      : off_outputDeviceChangeWithInfo 401
+     * @tc.desc      : off_outputDeviceChangeWithInfo 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+      audioRenderer.on('outputDeviceChangeWithInfo', (eventAudioStreamDeviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
+        console.log("eventAudioStreamDeviceChangeInfo:" + JSON.stringify(eventAudioStreamDeviceChangeInfo))
+      })
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.off('outputDeviceChangeWithInfo', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0800
+     * @tc.name      : on_writeData 401
+     * @tc.desc      : on_writeData 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.on('writeData', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0900
+     * @tc.name      : off_outputDeviceChangeWithInfo 401
+     * @tc.desc      : off_outputDeviceChangeWithInfo 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_AUDIO_AUDIORENDERE_ON_OFF_EVENT_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+      audioRenderer.on('writeData', (eventAudioDataCallbackResult: ArrayBuffer) => {
+        console.log("eventAudioDataCallbackResult:" + 'SUCCESS')
+      })
+
+      try {
+        let para: ESObject = '1';
+        audioRenderer.off('writeData', para);
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    })
+
   })
 }

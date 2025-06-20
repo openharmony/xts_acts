@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function TextInputKeyboardAppearanceTest() {
      * @tc.type : 
      * @tc.size :
      */
-    it('TextInputKeyboardAppearanceTest_0010', 0, async (done: Function) => {
+    it('TextInputKeyboardAppearanceTest_0010', Level.LEVEL2, async (done: Function) => {
       console.info('[TextInputKeyboardAppearanceTest_0010] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputKeyboardAppearance_NONE_IMMERSIVE');
@@ -68,7 +68,7 @@ export default function TextInputKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextInputKeyboardAppearanceTest_0020', 0, async (done: Function) => {
+    it('TextInputKeyboardAppearanceTest_0020', Level.LEVEL2, async (done: Function) => {
       console.info('[TextInputKeyboardAppearanceTest_0020] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputKeyboardAppearance_IMMERSIVE');
@@ -87,7 +87,7 @@ export default function TextInputKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextInputKeyboardAppearanceTest_0030', 0, async (done: Function) => {
+    it('TextInputKeyboardAppearanceTest_0030', Level.LEVEL2, async (done: Function) => {
       console.info('[TextInputKeyboardAppearanceTest_0030] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputKeyboardAppearance_LIGHT_IMMERSIVE');
@@ -106,7 +106,7 @@ export default function TextInputKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextInputKeyboardAppearanceTest_0040', 0, async (done: Function) => {
+    it('TextInputKeyboardAppearanceTest_0040', Level.LEVEL2, async (done: Function) => {
       console.info('[TextInputKeyboardAppearanceTest_0040] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputKeyboardAppearance_DARK_IMMERSIVE');
@@ -125,7 +125,7 @@ export default function TextInputKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextInputKeyboardAppearanceTest_0050', 0, async (done: Function) => {
+    it('TextInputKeyboardAppearanceTest_0050', Level.LEVEL2, async (done: Function) => {
       console.info('[TextInputKeyboardAppearanceTest_0050] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputKeyboardAppearance_DEFAULT');
@@ -144,7 +144,7 @@ export default function TextInputKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextInputKeyboardAppearanceTest_0060', 0, async (done: Function) => {
+    it('TextInputKeyboardAppearanceTest_0060', Level.LEVEL2, async (done: Function) => {
       console.info('[TextInputKeyboardAppearanceTest_0060] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextInputKeyboardAppearance_UNDEFINED');

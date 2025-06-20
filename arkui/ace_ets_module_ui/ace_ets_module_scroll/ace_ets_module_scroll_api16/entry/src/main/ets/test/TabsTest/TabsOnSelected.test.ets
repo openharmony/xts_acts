@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterEach, beforeEach, it, expect } from '@ohos/hypium'
+import { describe, afterEach, beforeEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function TabsOnSelectedTest() {
      * @tc.desc      onSelected
      * @tc.level     Level 2
      */
-    it('TabsOnSelectedTest0010', 0, async (done: Function) => {
+    it('TabsOnSelectedTest0010', Level.LEVEL1, async (done: Function) => {
         let tagName = 'TabsOnSelectedTest0010';
         console.info('[' + tagName + '] START============================');
         let driver = Driver.create();
@@ -74,7 +74,7 @@ export default function TabsOnSelectedTest() {
      * @tc.desc      onSelected
      * @tc.level     Level 2
      */
-    it('TabsOnSelectedTest0020', 0, async (done: Function) => {
+    it('TabsOnSelectedTest0020', Level.LEVEL1, async (done: Function) => {
         let tagName = 'TabsOnSelectedTest0020';
         console.info('[' + tagName + '] START============================');
         let driver = Driver.create();

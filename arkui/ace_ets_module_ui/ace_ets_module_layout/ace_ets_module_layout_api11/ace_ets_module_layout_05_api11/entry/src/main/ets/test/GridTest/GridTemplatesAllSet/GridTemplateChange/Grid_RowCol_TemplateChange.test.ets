@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -50,7 +50,7 @@ export default function Grid_RowCol_TemplateChange() {
      * @tc.name testGridRowColTemplateChange01
      * @tc.desc Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColTemplateChange01', 0, async (done: Function) => {
+    it('testGridRowColTemplateChange01',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColTemplateChange01] START');
       await CommonFunc.sleep(1000);
       let gridContainerStrJson = getInspectorByKey('GridTemplateChange_Grid_01');
@@ -104,7 +104,7 @@ export default function Grid_RowCol_TemplateChange() {
      * @tc.name testGridRowColTemplateChange02
      * @tc.desc Grid is divided into 9 equal parts, 4 components
      */
-    it('testGridRowColTemplateChange02', 0, async (done: Function) => {
+    it('testGridRowColTemplateChange02',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColTemplateChange02] START');
       globalThis.value.message.notify({
         name: 'testColumnsTemplate', value: "1fr 1fr 1fr"

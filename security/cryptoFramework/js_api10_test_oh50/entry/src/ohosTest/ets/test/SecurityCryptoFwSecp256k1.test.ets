@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import * as secp256k1 from './/utils/secp256k1/secp256k1Utils'
@@ -464,7 +464,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let keyPair: cryptoFramework.KeyPair = await secp256k1.createAsyKeyPromise(algName);
@@ -504,7 +504,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let algAgreeName: string = "ECC";
@@ -542,7 +542,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -582,7 +582,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -615,7 +615,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -640,7 +640,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -665,7 +665,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -690,7 +690,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let pubKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pub_number)};
@@ -716,7 +716,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let pubKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pub_number)};
@@ -739,7 +739,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let priKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pri_number)};
@@ -762,7 +762,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -789,7 +789,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -814,7 +814,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -841,7 +841,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -870,7 +870,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -892,7 +892,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 60;
@@ -915,7 +915,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 60;
@@ -938,7 +938,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 60;
@@ -960,7 +960,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let keyPair: cryptoFramework.KeyPair = secp256k1.createAsyKeySync(algName);
@@ -1000,7 +1000,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let pubKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pub_number)};
@@ -1035,7 +1035,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let priKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pri_number)};
@@ -1062,7 +1062,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let pubKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pub_number)};
@@ -1089,7 +1089,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let algAgreeName: string = "ECC";
@@ -1127,7 +1127,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1152,7 +1152,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1177,7 +1177,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1202,7 +1202,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let pubKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pub_number_r)};
@@ -1228,7 +1228,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -1255,7 +1255,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -1284,7 +1284,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let keyPair: cryptoFramework.KeyPair = await secp256k1.createAsyKeyCallback(algName);
@@ -1324,7 +1324,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let pubKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pub_number)};
@@ -1357,7 +1357,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let priKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pri_number)};
@@ -1391,7 +1391,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let pubKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pub_number)};
@@ -1425,7 +1425,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -1447,7 +1447,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 60;
@@ -1470,7 +1470,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let dataLen: number = 64;
@@ -1499,7 +1499,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let pubKeyBlob: cryptoFramework.DataBlob = {data:new Uint8Array(secp256k1.secp256k1_pub_number_r)};
@@ -1525,7 +1525,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_3900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_3900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let ret: boolean = await vectorTest(algName);
@@ -1546,7 +1546,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SECP256K1_Func_4000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SECP256K1_Func_4000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "ECC_Secp256k1";
         let verifyAlgName: string = "ECC_Secp256k1|SHA256";

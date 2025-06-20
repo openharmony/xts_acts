@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function EnableModeChangeAnimation() {
      * @tc.desc      Test EnableModeChangeAnimation true
      * @tc.level     Level 2
      */
-    it('EnableModeChangeAnimation_0100', 0, async (done: Function) => {
+    it('EnableModeChangeAnimation_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('EnableModeChangeAnimation_0100 START');
       await CommonFunc.sleep(200);
 
@@ -93,7 +93,7 @@ export default function EnableModeChangeAnimation() {
      * @tc.desc      Test EnableModeChangeAnimation false
      * @tc.level     Level 2
      */
-    it('EnableModeChangeAnimation_0200', 0, async (done: Function) => {
+    it('EnableModeChangeAnimation_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('EnableModeChangeAnimation_0200 START');
       await CommonFunc.sleep(200);
 

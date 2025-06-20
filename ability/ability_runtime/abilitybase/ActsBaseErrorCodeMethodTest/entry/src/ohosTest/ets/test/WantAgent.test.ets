@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 // 加载js测试框架
 import { common, sendableContextManager, WantAgent, wantAgent } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -88,7 +88,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0100 start');
       try {
         wantAgent.getBundleName(undefined,(err, data)=>{
@@ -110,7 +110,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0200 start');
       try {
         wantAgent.getBundleName(undefined).then((data)=>{
@@ -135,7 +135,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0300 start');
       try {
         wantAgent.getUid(undefined,(err, data)=>{
@@ -157,7 +157,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0400 start');
       try {
         wantAgent.getUid(undefined).then((data)=>{
@@ -182,7 +182,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0500 start');
       try {
         wantAgent.cancel(undefined,(err, data)=>{
@@ -204,7 +204,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0600 start');
       try {
         wantAgent.cancel(undefined).then((data)=>{
@@ -229,7 +229,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0700 start');
       let triggerInfo:wantAgent.TriggerInfo = {
         code: 0,
@@ -268,7 +268,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0800 start');
       try {
         wantAgent.trigger(WantAgentInfo, undefined, (err, data)=>{
@@ -290,7 +290,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_0900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_0900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0900 start');
       try {
         wantAgent.equal(undefined, WantAgentInfoSame, (err, data)=>{
@@ -312,7 +312,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1000 start');
       try {
         wantAgent.equal(undefined, WantAgentInfoSame).then((data)=>{
@@ -337,7 +337,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1100 start');
       try {
         wantAgent.equal(WantAgentInfo, undefined, (err, data)=>{
@@ -359,7 +359,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1200 start');
       try {
         wantAgent.equal(WantAgentInfo, undefined).then((data)=>{
@@ -384,7 +384,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1300 start');
       try {
         wantAgent.getWantAgent(undefined, (err, data)=>{
@@ -407,7 +407,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1400 start');
       try {
         wantAgent.getWantAgent(undefined).then((data)=>{
@@ -432,7 +432,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1500 start');
       try {
         wantAgent.getOperationType(undefined, (err, data)=>{
@@ -455,7 +455,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1600 start');
       try {
         wantAgent.getOperationType(null).then((data)=>{
@@ -480,7 +480,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_0100 start');
       try {
         wantAgent.getBundleName(null,(err, data)=>{
@@ -502,7 +502,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1800 start');
       try {
         wantAgent.getBundleName(null).then((data)=>{
@@ -527,7 +527,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_1900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_1900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_1900 start');
       try {
         wantAgent.getUid(null,(err, data)=>{
@@ -550,7 +550,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2000 start');
       try {
         wantAgent.getUid(null).then((data)=>{
@@ -575,7 +575,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2100 start');
       try {
         wantAgent.cancel(null,(err, data)=>{
@@ -598,7 +598,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2200 start');
       try {
         wantAgent.cancel(null).then((data)=>{
@@ -623,7 +623,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2300 start');
       let triggerInfo:wantAgent.TriggerInfo = {
         code: 0,
@@ -661,7 +661,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2400 start');
       try {
         wantAgent.trigger(WantAgentInfo, null, (err, data)=>{
@@ -683,7 +683,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2500 start');
       try {
         wantAgent.equal(null, WantAgentInfoSame, (err, data)=>{
@@ -706,7 +706,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2600 start');
       try {
         wantAgent.equal(null, WantAgentInfoSame).then((data)=>{
@@ -731,7 +731,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2700 start');
       try {
         wantAgent.equal(WantAgentInfo, null, (err, data)=>{
@@ -753,7 +753,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2800 start');
       try {
         wantAgent.equal(WantAgentInfo, null).then((data)=>{
@@ -778,7 +778,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_2900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_2900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_2900 start');
       try {
         wantAgent.getWantAgent(null, (err, data)=>{
@@ -800,7 +800,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_3000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_3000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_3000 start');
       try {
         wantAgent.getWantAgent(null).then((data)=>{
@@ -825,7 +825,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_3100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_3100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_3100 start');
       try {
         wantAgent.getOperationType(null, (err, data)=>{
@@ -848,7 +848,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_WantAgentError_3200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_WantAgentError_3200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_3200 start');
       try {
         wantAgent.getOperationType(null).then((data)=>{
@@ -873,7 +873,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-   it('SUB_Ability_AbilityBase_WantAgentError_3300', 0, async (done: Function) => {
+   it('SUB_Ability_AbilityBase_WantAgentError_3300', Level.LEVEL0, async (done: Function) => {
     hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_3300 start');
     let triggerInfo: wantAgent.TriggerInfo = {
       code: 0,
@@ -908,7 +908,7 @@ export default function openLinkTest() {
   * @tc.size   : MediumTest
   * @tc.level  : 3
   */
-  it('SUB_Ability_AbilityBase_WantAgentError_3400', 0, async (done: Function) => {
+  it('SUB_Ability_AbilityBase_WantAgentError_3400', Level.LEVEL0, async (done: Function) => {
     hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_3400 start');
     let triggerInfo: wantAgent.TriggerInfo = {
       code: 0,

@@ -49,9 +49,9 @@ export default function exportBigIntTest() {
      * @tc.desc test default type export
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('exportBigIntTest_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+    it('exportBigIntTest_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
       const bigNumber1 = 1234567890123456789012345678901234567890n;
       const result = bigIntTypeDefault(bigNumber1);
       expect(result).assertEqual(1234567890123456789012345678901234567890n)
@@ -63,7 +63,7 @@ export default function exportBigIntTest() {
      * @tc.desc test the default export is defined and exported in a single statement
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportBigIntTest_0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const bigInt1 = 1234567890123456789012345678901234567890n;
@@ -78,7 +78,7 @@ export default function exportBigIntTest() {
      * @tc.desc test define, then export the object
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportBigIntTest_0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       expect(toResult).assertEqual(1234567890123456789012345678901234567890n);
@@ -91,7 +91,7 @@ export default function exportBigIntTest() {
      * @tc.desc test type derive
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportBigIntTest_0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const obj1: BigIntType = {
@@ -106,7 +106,7 @@ export default function exportBigIntTest() {
      * @tc.desc test the default export is defined and exported in a single statement
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportBigIntTest_0500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const bigInt1 = 1234567890123456789012345678901234567890n;
@@ -120,7 +120,7 @@ export default function exportBigIntTest() {
      * @tc.desc test define, then export the object
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportBigIntTest_0600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       expect(resultAddBigIntUll).assertEqual(1234567890123456789012345678901234567890n);
@@ -132,7 +132,7 @@ export default function exportBigIntTest() {
      * @tc.desc test define, export, and alias the object
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportBigIntTest_0700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       expect(sad).assertEqual(1234567890123456789012345678901234567890n);
@@ -144,7 +144,7 @@ export default function exportBigIntTest() {
      * @tc.desc test export all files, equivalent to transfer export
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportBigIntTest_0800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const bigInt1 = 1234567890123456789012345678901234567890n;
@@ -158,7 +158,7 @@ export default function exportBigIntTest() {
      * @tc.desc test export file alias
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportBigIntTest_0900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       const bigInt1 = 1234567890123456789012345678901234567890n;

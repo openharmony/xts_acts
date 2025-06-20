@@ -12,8 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import {
   UiComponent,
   UiDriver,
@@ -30,9 +29,7 @@ import {
 } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../MainAbility/utils/Common';
-
 export default function APIParticleEmitter() {
-
   describe('APIParticleEmitter', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
@@ -54,12 +51,10 @@ export default function APIParticleEmitter() {
       }
       done();
     });
-
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("APIParticleEmitter after each called");
     });
-
     /**
      * @tc.number api
      * @tc.name APIParticleEmitter_0100
@@ -68,9 +63,8 @@ export default function APIParticleEmitter() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIParticleEmitter_0100', 0, async (done: Function) => {
+    it('APIParticleEmitter_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIParticleEmitter_0100 START');
-
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
       await CommonFunc.sleep(1000);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON, On } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
@@ -50,7 +50,7 @@ export default function listSwipeActionApi12Test() {
      * @tc.type :
      * @tc.size :
     */
-    it('listSwipeActionApi12Test_001', 0, async (done: Function) => {
+    it('listSwipeActionApi12Test_001', Level.LEVEL1, async (done: Function) => {
       console.info('listSwipeActionApi12Test_001 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

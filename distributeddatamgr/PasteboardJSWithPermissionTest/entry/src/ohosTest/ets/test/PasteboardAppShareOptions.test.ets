@@ -38,9 +38,9 @@ export default function PasteboardAppShareOptions() {
      * @tc.desc PasteData setAppShareOptions inapp removeAppShareOption.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_Pasteboard_Local_SDK_PasteDataSetAppShareOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteDataSetAppShareOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteDataSetAppShareOptions_0100 start ************')
       try {
         systemPasteboard.setAppShareOptions(pasteboard.ShareOption.INAPP);

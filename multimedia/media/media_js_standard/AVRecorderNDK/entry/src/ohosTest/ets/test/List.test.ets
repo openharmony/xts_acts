@@ -16,9 +16,11 @@
 import OhAVRecorderNDKM4aErrTest from './OhAVRecorderNDKM4aErrTest.test'
 import OhAVRecorderNDKM4aTest from './OhAVRecorderNDKM4aTest.test'
 import OhAVRecorderNDKMp3Test from './OhAVRecorderNDKMp3Test.test'
+import OhAVRecorderNDKAacTest from './OhAVRecorderNDKAacTest.test'
 
 export default function testsuite() {
   OhAVRecorderNDKM4aTest();
   OhAVRecorderNDKMp3Test();
   OhAVRecorderNDKM4aErrTest();
+  OhAVRecorderNDKAacTest();
 }

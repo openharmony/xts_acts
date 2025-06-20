@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import certManager from '@ohos.security.certManager';
 
 export default function userCertJsAPIFunctionTestUnit() {
@@ -35,7 +35,7 @@ export default function userCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_UserCertJsApi_getAllUserTrustedCertificates_Func_0300', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_UserCertJsApi_getAllUserTrustedCertificates_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let result: certManager.CMResult = await certManager.getAllUserTrustedCertificates();
         console.log(`SUB_Security_CertManager_UserCertJsApi_getAllUserTrustedCertificates_Func_0300 result is: ${result}`)
@@ -55,7 +55,7 @@ export default function userCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_UserCertJsApi_getUserTrustedCertificate_Func_0401', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_UserCertJsApi_getUserTrustedCertificate_Func_0401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certManager.getUserTrustedCertificate("");
         expect(null).assertFail();
@@ -74,7 +74,7 @@ export default function userCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_SysCertJsApi_Func_0900', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_SysCertJsApi_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let result: certManager.CMResult = await certManager.getAllSystemAppCertificates();
         console.log(`SUB_Security_CertManager_SysCertJsApi_Func_0900 result is: ${result}`)

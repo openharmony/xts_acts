@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -57,7 +57,7 @@ export default function AlignContent_Start_FlexP_fixed() {
      *               the flex component.
      */
 
-    it('testAlignContentStartFlexFixedSatisfy', 0, async () => {
+    it('testAlignContentStartFlexFixedSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentStartFlexFixedSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
@@ -111,7 +111,7 @@ export default function AlignContent_Start_FlexP_fixed() {
      * @tc.desc Change the height of the child component of the flex component to overflow the flex component.
      */
 
-    it('testAlignContentStartFlexFixedNoSatisfy', 0, async () => {
+    it('testAlignContentStartFlexFixedNoSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentStartFlexFixedNoSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300

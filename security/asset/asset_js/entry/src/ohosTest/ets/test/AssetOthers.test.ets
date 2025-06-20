@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
 import * as awUserid from './aw/AssetAwUserid';
 import asset from '@ohos.security.asset';
@@ -48,7 +48,7 @@ export default function AssetOthers() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_AsUserId_Func_0800', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_AsUserId_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]);
       expect(await awUserid.assetAddEasy(aw.aliasNameList[1], aw.secretList[0]))
         .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
@@ -74,7 +74,7 @@ export default function AssetOthers() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_Database_Func_0500', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_Database_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
@@ -123,7 +123,7 @@ export default function AssetOthers() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_Database_Func_0400', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_Database_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]);
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
@@ -149,7 +149,7 @@ export default function AssetOthers() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_Database_Func_0200', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_Database_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
@@ -188,7 +188,7 @@ export default function AssetOthers() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_JS_Func_0100', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_JS_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       let valueType: asset.Value = asset.SyncType.NEVER;
       expect(valueType).assertEqual(0);

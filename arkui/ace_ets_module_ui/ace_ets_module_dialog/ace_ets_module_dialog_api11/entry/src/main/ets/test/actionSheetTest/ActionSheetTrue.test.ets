@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function ActionSheetTrue() {
      * @tc.type :
      * @tc.size :
      */
-    it('ActionSheetTrue_0100', 0, async (done: Function) => {
+    it('ActionSheetTrue_0100', Level.LEVEL2, async (done: Function) => {
       console.info('ActionSheetTrue_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -70,7 +70,7 @@ export default function ActionSheetTrue() {
       expect(properties.type).assertEqual(0)//0表示应用子窗口TYPE_APP
 
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       console.info('[ActionSheetTrue_0100] END');
       done();

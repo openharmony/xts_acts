@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium";
 import router from "@ohos.router";
 import CommonFunc from "../../../MainAbility/utils/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
-
 export default function PercentReferenceTest() {
   describe("PercentReferenceTest", () => {
     beforeEach(async (done: Function) => {
@@ -44,7 +43,6 @@ export default function PercentReferenceTest() {
       await CommonFunc.sleep(1000);
       console.info("PercentReferenceTest after each called");
     });
-
     /**
      * @tc.number    PercentReferenceTest
      * @tc.name      testBack
@@ -53,7 +51,7 @@ export default function PercentReferenceTest() {
      * @tc.type
     * @tc.size
      */
-    it("PercentReferenceTest_001", 0, async (done: Function) => {
+    it("PercentReferenceTest_001", Level.LEVEL0, async (done: Function) => {
       console.info("[PercentReferenceTest_001] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function abilityTest() {
@@ -26,7 +26,7 @@ export default function abilityTest() {
      *           valid ( -s class specifies only test suites).
      * @tc.desc: Verify that the test framework can start normally through the test command.
      */
-    it('ACTS_AACommand_test_0300_9', 0, async (done: Function) => {
+    it('ACTS_AACommand_test_0300_9', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_test_0300_9 ---------3-------- start");
       let msg = 'ACTS_AACommand_0200/0300/0400/0500/0600';
       abilityDelegator?.print(msg, () => {

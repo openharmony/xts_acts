@@ -28,7 +28,7 @@ import {
 } from './common'
 import { BusinessError } from '@ohos.base';
 import { driveFn, getPermission, photoKeys, sleep } from '../common'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import common from '@ohos.app.ability.common';
 
@@ -984,7 +984,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level1
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0100', Level.LEVEL1, async (done: Function) => {
       try {
         let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
         let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
@@ -1005,7 +1005,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level1
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0200', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0200', Level.LEVEL1, async (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       try {
@@ -1026,7 +1026,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0210', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0210', Level.LEVEL2, async (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       try {
@@ -1047,7 +1047,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300', Level.LEVEL3, async (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getAssetsForKeysCallback(photoHelper, fetchOptions, 'SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300', done)
@@ -1061,7 +1061,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0400', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0400', Level.LEVEL3, async (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getAssetsForKeysPromise(photoHelper, fetchOptions, done)
@@ -1075,7 +1075,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0500', Level.LEVEL2, async (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       setArgGetAssetsCallback(photoHelper, [photoKeys.URI, photoKeys.DISPLAY_NAME, photoKeys.PHOTO_TYPE],
@@ -1090,7 +1090,7 @@ export default function PhotoAccessHelperTest() {
    * @tc.type      : Function test
    * @tc.level     : Level4
    */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0510', 4, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0510', Level.LEVEL4, async (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       setArgGetAssetsPromise(photoHelper, [photoKeys.URI, photoKeys.DISPLAY_NAME, photoKeys.PHOTO_TYPE],
@@ -1104,7 +1104,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       createAssetWithSuffixesCallback1(photoHelper, imageType, 'jpg', options, photoExtensions, done)
@@ -1118,7 +1118,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0700', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0700', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       createAssetWithSuffixesCallback1(photoHelper, videoType, 'mp4', options, videoExtensions, done)
@@ -1132,7 +1132,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0800', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0800', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       createAssetWithSuffixesCallback2(photoHelper, imageType, 'jpg', photoExtensions, done)
@@ -1146,7 +1146,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0900', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0900', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       createAssetWithSuffixesCallback2(photoHelper, videoType, 'mp4', videoExtensions, done)
@@ -1160,7 +1160,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1000', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1000', Level.LEVEL2, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       createAssetWithSuffixesPromise(photoHelper, imageType, 'jpg', options, photoExtensions, done)
@@ -1174,7 +1174,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1100', Level.LEVEL2, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       createAssetWithSuffixesPromise(photoHelper, videoType, 'mp4', options, videoExtensions, done)
@@ -1188,7 +1188,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1200', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1200', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       let withoutOptions: ESObject = {
@@ -1205,7 +1205,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1300', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1300', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       let withoutOptions: ESObject = {
@@ -1222,7 +1222,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level4
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1400', 4, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1400', Level.LEVEL4, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       let optionsErr: ESObject = {
@@ -1239,7 +1239,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1500', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1500', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       let optionsErr: ESObject = {
@@ -1257,7 +1257,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1600', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1600', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangePromise(true, true, photoHelper, true, done)
@@ -1272,7 +1272,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1700', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1700', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangePromise(true, true, photoHelper, false, done)
@@ -1287,7 +1287,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1800', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1800', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangePromise(true, false, photoHelper, true, done)
@@ -1302,7 +1302,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1900', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1900', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangePromise(true, false, photoHelper, false, done)
@@ -1317,7 +1317,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2000', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2000', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangePromise(false, true, photoHelper, true, done)
@@ -1332,7 +1332,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2100', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2100', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangePromise(false, true, photoHelper, false, done)
@@ -1347,7 +1347,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2200', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2200', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangePromise(false, false, photoHelper, true, done)
@@ -1362,7 +1362,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2300', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2300', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangePromise(false, false, photoHelper, false, done)
@@ -1377,7 +1377,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2400', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2400', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangeCallback(true, true, photoHelper, true, done)
@@ -1392,7 +1392,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2500', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2500', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangeCallback(true, true, photoHelper, false, done)
@@ -1407,7 +1407,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2600', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2600', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangeCallback(true, false, photoHelper, true, done)
@@ -1422,7 +1422,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2700', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2700', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangeCallback(true, false, photoHelper, false, done)
@@ -1437,7 +1437,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2800', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2800', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangeCallback(false, true, photoHelper, true, done)
@@ -1452,7 +1452,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2900', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2900', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangeCallback(false, true, photoHelper, false, done)
@@ -1467,7 +1467,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3000', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3000', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangeCallback(false, false, photoHelper, true, done)
@@ -1482,7 +1482,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       registerChangeCallback(false, false, photoHelper, false, done)
@@ -1496,7 +1496,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3400', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3400', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getPhotoAssetAttrsCallback(photoHelper, fetchOptions, done)
@@ -1510,7 +1510,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3500', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3500', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getPhotoAssetAttrsPromise(photoHelper, fetchOptions, done)
@@ -1524,7 +1524,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3600', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3600', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getPhotoAssetForKeysCallback(photoHelper, fetchOptions, done)
@@ -1538,7 +1538,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3700', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3700', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getPhotoAssetForKeysPromise(photoHelper, fetchOptions, done)
@@ -1552,7 +1552,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3800', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3800', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       setPhotoAssetTitleCallback(photoHelper, fetchOptions, done)
@@ -1566,7 +1566,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3900', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3900', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       setPhotoAssetTitlePromise(photoHelper, fetchOptions, done)
@@ -1580,7 +1580,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level1
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4000', 1, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4000', Level.LEVEL1, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       commitModifyCallback(photoHelper, fetchOptions, done)
@@ -1594,7 +1594,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level1
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4100', 1, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4100', Level.LEVEL1, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       commitModifyPromise(photoHelper, fetchOptions, done)
@@ -1608,7 +1608,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4200', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4200', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getReadOnlyFdCallback(photoHelper, fetchOptions, done)
@@ -1622,7 +1622,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4300', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4300', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getReadOnlyFdPromise(photoHelper, fetchOptions, done)
@@ -1636,7 +1636,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level1
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400', 1, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400', Level.LEVEL1, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getThumbnailCallback(photoHelper, fetchOptions_allocate_file, done)
@@ -1650,7 +1650,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4500', 4, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4500', Level.LEVEL4, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getThumbnailCallbackWithSize(photoHelper, fetchOptions_allocate_file, done)
@@ -1664,7 +1664,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4600', 4, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4600', Level.LEVEL4, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       fetchOptions.fetchColumns = columns
@@ -1679,7 +1679,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4700', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4700', Level.LEVEL2, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getCount(photoHelper, fetchOptions, done)
@@ -1693,7 +1693,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4800', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4800', Level.LEVEL2, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       checkIsAfterLast(photoHelper, fetchOptions, done)
@@ -1707,7 +1707,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4900', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4900', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       closeFetchResult(photoHelper, fetchOptions, done)
@@ -1721,7 +1721,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5000', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5000', Level.LEVEL2, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getFirstObjectCallback(photoHelper, fetchOptions, done)
@@ -1735,7 +1735,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5010', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5010', Level.LEVEL2, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getFirstObjectPromise(photoHelper, fetchOptions, done)
@@ -1749,7 +1749,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5100', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5100', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getNextObjectCallback(photoHelper, fetchOptions, done)
@@ -1763,7 +1763,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5200', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5200', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getNextObjectPromise(photoHelper, fetchOptions, done)
@@ -1777,7 +1777,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5300', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5300', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getLastObjectCallback(photoHelper, fetchOptions, done)
@@ -1791,7 +1791,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5400', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5400', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getLastObjectPromise(photoHelper, fetchOptions, done)
@@ -1805,7 +1805,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5500', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5500', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getObjectByPositionCallback(photoHelper, fetchOptions, done)
@@ -1819,7 +1819,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5600', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5600', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getObjectByPositionPromise(photoHelper, fetchOptions, done)
@@ -1833,7 +1833,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5700', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5700', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getAllObjectsCallback(photoHelper, fetchOptions, done)
@@ -1847,7 +1847,7 @@ export default function PhotoAccessHelperTest() {
        * @tc.type      : Function test
        * @tc.level     : Level3
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5800', 3, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5800', Level.LEVEL3, (done: Function) => {
       let getPhotoHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
       let photoHelper: photoAccessHelper.PhotoAccessHelper = getPhotoHelper
       getAllObjectsPromise(photoHelper, fetchOptions, done)

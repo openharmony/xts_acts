@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function nativeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('nativeTest001', 0, async (done: Function) => {
+    it('nativeTest001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function nativeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('nativeTest002', 0, async (done: Function) => {
+    it('nativeTest002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest003', 0, async (done: Function) => {
+    it('nativeTest003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_003()).assertEqual(0)
       done()
     })
@@ -72,7 +72,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest005', 0, async (done: Function) => {
+    it('nativeTest005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_005()).assertEqual(0)
       done()
     })
@@ -84,7 +84,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest006', 0, async (done: Function) => {
+    it('nativeTest006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_006()).assertEqual(0)
       done()
     })
@@ -96,7 +96,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest007', 0, async (done: Function) => {
+    it('nativeTest007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_007()).assertEqual(0)
       done()
     })
@@ -108,7 +108,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest008', 0, async (done: Function) => {
+    it('nativeTest008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_008()).assertEqual(0)
       done()
     })
@@ -120,7 +120,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest009', 0, async (done: Function) => {
+    it('nativeTest009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_009()).assertEqual(0)
       done()
     })
@@ -132,7 +132,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest010', 0, async (done: Function) => {
+    it('nativeTest010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_010()).assertEqual(0)
       done()
     })
@@ -144,7 +144,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest011', 0, async (done: Function) => {
+    it('nativeTest011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_011()).assertEqual(0)
       done()
     })
@@ -156,7 +156,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest012', 0, async (done: Function) => {
+    it('nativeTest012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_012()).assertEqual(0)
       done()
     })
@@ -168,7 +168,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest013', 0, async (done: Function) => {
+    it('nativeTest013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_013()).assertEqual(0)
       done()
     })
@@ -180,7 +180,7 @@ export default function nativeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('nativeTest014', 0, async (done: Function) => {
+    it('nativeTest014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.native_014()).assertEqual(0)
       done()
     })

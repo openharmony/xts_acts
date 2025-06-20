@@ -60,4 +60,4 @@ include_directories(${NATIVERENDER_ROOT_PATH}
 
 add_compile_options(-shared-libsan -fsanitize=undefined)
 add_library(entry SHARED napi_init.cpp ${src_sec})
-target_link_libraries(entry PUBLIC libace_napi.z.so libclang_rt.ubsan_standalone.so)
+target_link_libraries(entry PUBLIC libbundle.z.so libace_napi.z.so libclang_rt.ubsan_standalone.so)

@@ -17,8 +17,13 @@ group("uiabilitycontext") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actspluginabilitytest:ActsPluginAbilityTest",
       "actssetabilityinstanceinforely:ActsSetAbilityInstanceInfoRely",
       "actssetabilityinstanceinfotest:ActsSetAbilityInstanceInfoTest",
+      "actsspecifiedabilityrely1:ActsSpecifiedAbilityRely1",
+      "actsspecifiedabilityrely2:ActsSpecifiedAbilityRely2",
+      "actsspecifiedabilityrely3:ActsSpecifiedAbilityRely3",
+      "actsspecifiedabilitytest:ActsSpecifiedAbilityTest",
     ]
   }
 }

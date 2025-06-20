@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import utils from '@arkts.utils';
 import worker, { ThreadWorkerGlobalScope, MessageEvents } from '@ohos.worker';
 import napitest from 'libnapitest.so'
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
@@ -36,5 +37,12 @@ workerPort.onmessage = (e: MessageEvents) => {
     } else {
       workerPort.postMessage('failure');
     }
+  }
+  if (e.data == 'callLockAsyncAfterRunCleanupTest') {
+    napitest.callLockAsyncAfterRunCleanupTest(() => {
+      let lock = utils.locks.AsyncLock.request('lock');
+      lock.lockAsync(() => {});
+    })
+    workerPort.close();
   }
 }

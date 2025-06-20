@@ -16,17 +16,19 @@ import { describe, beforeAll, it, expect, TestType, Size, Level } from "@ohos/hy
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
+import settings from '@ohos.settings';
 
 export default function windowRichSceneTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
   describe('window_richScene_test', () => {
     console.log('describe window_richScene_test start!!!')
-    let currentDeviceIsPC = false;
+    let isPCStatus: string = '';
     beforeAll(() => {
       console.info('window_richScene_test beforeAll begin');
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
       console.info('window_richScene_test beforeAll end');
     })
     /**
@@ -489,7 +491,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
       let caseName: string = 'testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      if(currentDeviceIsPC){
+      if(isPCStatus != ''){
         console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
         done();
       } else {
@@ -556,7 +558,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
       let caseName: string = 'testSetWindowLayoutFullScreen_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      if(currentDeviceIsPC){
+      if(isPCStatus != ''){
         console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
         done();
       } else {

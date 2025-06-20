@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 import commonEvent from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -47,7 +47,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0100', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s1SUB_Ability_AbilityRuntime_UIEXTensionExitReason_share_0100——0001
@@ -97,7 +97,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0200', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s2SUB_Ability_AbilityRuntime_UIEXTensionExitReason_action_0100——0001
@@ -149,7 +149,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0300', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s3SUB_Ability_AbilityRuntime_UIEXTensionExitReason_common_0100——0001
@@ -201,7 +201,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level1
     */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0400', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s4SUB_Ability_AbilityRuntime_UIEXTensionExitReason_atomicServicePanel_0100——0001
@@ -253,7 +253,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level1
     */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0500', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s5SUB_Ability_AbilityRuntime_UIEXTensionExitReason_power_0100——0001
@@ -305,7 +305,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level1
     */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0600', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s6SUB_Ability_AbilityRuntime_UIEXTensionExitReason_Share_0100——0001
@@ -357,7 +357,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0700', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0700', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s7SUB_Ability_AbilityRuntime_UIEXTensionExitReason_account_0100——0001
@@ -409,7 +409,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0800', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0800', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s8SUB_Ability_AbilityRuntime_UIEXTensionExitReason_ads_0100——0001 createSubscriber  ${data}`)
@@ -462,7 +462,7 @@ export default function abilityTest() {
      * @tc.level: Level1
      */
 
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_0900', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s9SUB_Ability_AbilityRuntime_UIEXTensionExitReason_voip_0100——0001
@@ -513,7 +513,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01000', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s10SUB_Ability_AbilityRuntime_UIEXTensionExitReason_meetimeCall_0100——0001
@@ -566,7 +566,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01100', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s11SUB_Ability_AbilityRuntime_UIEXTensionExitReason_meetimeContact_0100——0001
@@ -619,7 +619,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01200', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s12SUB_Ability_AbilityRuntime_UIEXTensionExitReason_meetimeMessage_0100——0001
@@ -672,7 +672,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01300', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s13SUB_Ability_AbilityRuntime_UIEXTensionExitReason_print_0100——0001
@@ -725,7 +725,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01400', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s14SUB_Ability_AbilityRuntime_UIEXTensionExitReason_meetimeContact_0100——0001
@@ -778,7 +778,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01500', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s15SUB_Ability_AbilityRuntime_UIEXTensionExitReason_meetimeCallLog_0100——0001
@@ -831,7 +831,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01600', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s16SUB_Ability_AbilityRuntime_UIEXTensionExitReason_photoPicker_0100——0001
@@ -884,7 +884,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01700', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01700', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s17SUB_Ability_AbilityRuntime_UIEXTensionExitReason_commonUI_0100——0001
@@ -937,7 +937,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01800', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01800', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s18SUB_Ability_AbilityRuntime_UIEXTensionExitReason_navigation_0100——0001
@@ -990,7 +990,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_01900', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s19SUB_Ability_AbilityRuntime_UIEXTensionExitReason_appSelector_0100——0001
@@ -1043,7 +1043,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_02000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_02000', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s20SUB_Ability_AbilityRuntime_UIEXTensionExitReason_camera_0100——0001
@@ -1096,7 +1096,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_02100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXTensionExitReason_02100', Level.LEVEL0, (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>s21SUB_Ability_AbilityRuntime_UIEXTensionExitReason_userAuth_0100——0001

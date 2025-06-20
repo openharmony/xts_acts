@@ -24,11 +24,11 @@ export default function ActsAANoPermissionTest() {
          * @tc.number  : SUB_Account_AppAccount_NoPermission_0100
          * @tc.name    : test checkDataSyncEnabled errcode 201 callback
          * @tc.desc    : no ohos.permission.DISTRIBUTED_DATASYNC.
-         * @tc.level   : Level3
+         * @tc.level   : Level0
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_AppAccount_NoPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('SUB_Account_AppAccount_NoPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done) => {
             console.info("====>SUB_Account_AppAccount_NoPermission_0100 start====");
             let appAccountManager = account.createAppAccountManager();
             try {
@@ -52,11 +52,11 @@ export default function ActsAANoPermissionTest() {
          * @tc.number  : SUB_Account_AppAccount_NoPermission_0200
          * @tc.name    : test checkDataSyncEnabled errcode 201 promise
          * @tc.desc    : no ohos.permission.DISTRIBUTED_DATASYNC.
-         * @tc.level   : Level3
+         * @tc.level   : Level0
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_AppAccount_NoPermission_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('SUB_Account_AppAccount_NoPermission_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done) => {
             console.info("====>SUB_Account_AppAccount_NoPermission_0200 start====");
             let appAccountManager = account.createAppAccountManager();
             try {
@@ -74,11 +74,11 @@ export default function ActsAANoPermissionTest() {
          * @tc.number  : SUB_Account_AppAccount_NoPermission_0300
          * @tc.name    : test setDataSyncEnabled errcode 201 callabck
          * @tc.desc    : no ohos.permission.DISTRIBUTED_DATASYNC.
-         * @tc.level   : Level3
+         * @tc.level   : Level0
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_AppAccount_NoPermission_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('SUB_Account_AppAccount_NoPermission_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done) => {
             console.info("====>SUB_Account_AppAccount_NoPermission_0300 start====");
             let appAccountManager = account.createAppAccountManager();
             try {
@@ -102,11 +102,11 @@ export default function ActsAANoPermissionTest() {
          * @tc.number  : SUB_Account_AppAccount_NoPermission_0400
          * @tc.name    : test setDataSyncEnabled errcode 201 promise
          * @tc.desc    : no ohos.permission.DISTRIBUTED_DATASYNC.
-         * @tc.level   : Level3
+         * @tc.level   : Level0
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_AppAccount_NoPermission_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        it('SUB_Account_AppAccount_NoPermission_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done) => {
             console.info("====>SUB_Account_AppAccount_NoPermission_0400 start====");
             let appAccountManager = account.createAppAccountManager();
             try {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium'
+import { afterAll, beforeAll, beforeEach, describe, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import { colorValuesKey } from '../../MainAbility/pages/index/index'
 import { frameTime, sleep } from '../Utils'
@@ -87,7 +87,7 @@ export default function lazyForEachTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it(`ActsLazyForEachThemeColors_0100`, 0, async () => {
+    it(`ActsLazyForEachThemeColors_0100`, Level.LEVEL0, async () => {
       await sleep(frameTime);
       const CASE: string = `ActsLazyForEachThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
@@ -109,7 +109,7 @@ export default function lazyForEachTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsLazyForEachThemeColors_0200`, 0, () => {
+    it(`ActsLazyForEachThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsLazyForEachThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       const buttonJSON = getInspectorByKey(dataWithTheme?.getData(0));
@@ -132,7 +132,7 @@ export default function lazyForEachTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsLazyForEachThemeColors_0300`, 0, async () => {
+    it(`ActsLazyForEachThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsLazyForEachThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);  // update item
@@ -156,7 +156,7 @@ export default function lazyForEachTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsLazyForEachThemeColors_0400`, 0, async () => {
+    it(`ActsLazyForEachThemeColors_0400`, Level.LEVEL0, async () => {
       await sleep(frameTime);
       const CASE: string = `ActsLazyForEachThemeColors_0400`;
       console.info(`${SUITE} ${CASE} START`);
@@ -180,7 +180,7 @@ export default function lazyForEachTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsLazyForEachThemeColors_0500`, 0, () => {
+    it(`ActsLazyForEachThemeColors_0500`, Level.LEVEL2, () => {
       const CASE: string = `ActsLazyForEachThemeColors_0500`;
       console.info(`${SUITE} ${CASE} START`);
       const buttonJSON = getInspectorByKey(dataWithThemeGroup?.getData(0));
@@ -203,7 +203,7 @@ export default function lazyForEachTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsLazyForEachThemeColors_0600`, 0, async () => {
+    it(`ActsLazyForEachThemeColors_0600`, Level.LEVEL0, async () => {
       const CASE: string = `ActsLazyForEachThemeColors_0600`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);  // update item

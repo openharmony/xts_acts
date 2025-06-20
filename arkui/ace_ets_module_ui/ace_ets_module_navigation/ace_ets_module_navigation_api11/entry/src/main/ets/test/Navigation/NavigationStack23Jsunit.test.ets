@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -45,7 +45,7 @@ export default function NavigationStack23Jsunit() {
     * @tc.desc  : In stack mode, the value of hideNavBar is changed from false to true.
     * @tc.level : Level 3
     */
-    it('NavigationStack23Jsunit_0100', 0, async  (done:Function) =>{
+    it('NavigationStack23Jsunit_0100',  Level.LEVEL0, async  (done:Function) =>{
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await CommonFunc.sleep(500);

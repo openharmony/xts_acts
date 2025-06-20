@@ -21,7 +21,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an TreeSet instance. For example: let treeSet = new TreeSet().
    */   
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let treeSet = new TreeSet();
       expect(treeSet != undefined).assertEqual(true);
@@ -40,7 +40,7 @@ describe("TreeSetTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testConstructor002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let treeSet = new TreeSet((a, b) => {return a > b});
       expect(treeSet != undefined).assertEqual(true);
@@ -65,7 +65,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("四").
    */   
-  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add("四");
     let res = treeSet.has("四");
@@ -76,7 +76,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("四").
    */   
-  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add(8);
     let res = treeSet.has(8);
@@ -87,7 +87,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd004
    * @tc.desc: Add element to TreeSet instance. For example: let a = [1, 2, 3, 4]; treeSet.add(a).
    */   
-  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     let a = [1, 2, 3, 4];
     treeSet.add(a);
@@ -99,7 +99,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd005
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("*").
    */   
-  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add("*");
     let res = treeSet.has("*");
@@ -110,7 +110,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd006
    * @tc.desc: Add element to TreeSet instance.
    */   
-  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     let a = {name: "lala", age: "13岁"};
     treeSet.add(a);
@@ -122,7 +122,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd007
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add(1.234).
    */   
-  it("testAdd007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add(1.234);
     let res = treeSet.has(1.234);
@@ -133,7 +133,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd008
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add(true).
    */   
-  it("testAdd008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add(true);
     let res = treeSet.has(true);
@@ -144,7 +144,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd009
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("").
    */   
-  it("testAdd009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add("");
     let res = treeSet.has("");
@@ -155,7 +155,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd010
    * @tc.desc: Add element to TreeSet instance.
    */   
-  it("testAdd010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     for (let i = 0; i < 10000; i++) {
       treeSet.add(i);
@@ -169,7 +169,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testLength011
    * @tc.desc: Get the number of element in the TreeSet instance. For example: treeSet.length.
    */   
-  it("testLength011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -182,7 +182,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testLength012
    * @tc.desc: Get the number of element in the TreeSet instance. For example: treeSet.length.
    */   
-  it("testLength012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.length;
     expect(res).assertEqual(0);
@@ -192,7 +192,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testHas013
    * @tc.desc: Determine whether the TreeSet instance contains the specified element. For example: treeSet.has(2).
    */   
-  it("testHas013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -205,7 +205,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testHas014
    * @tc.desc: Determine whether the TreeSet instance contains the specified element. For example: treeSet.has(2).
    */   
-  it("testHas014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -218,7 +218,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testGetFirstValue015
    * @tc.desc: Get the value that ranks first in the TreeSet instance. For example: treeSet.getFirstValue().
    */   
-  it("testGetFirstValue015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetFirstValue015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -234,7 +234,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get the value that ranks first in the TreeSet instance. 
    * For example: treeSet.getFirstValue().
    */   
-  it("testGetFirstValue016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetFirstValue016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getFirstValue();
     expect(res).assertEqual(undefined);

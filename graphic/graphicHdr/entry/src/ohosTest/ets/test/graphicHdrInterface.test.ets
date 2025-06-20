@@ -28,9 +28,9 @@ export default function graphicHdrInterfaceTest() {
      * @tc.desc      : HDR format enum
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testHDRFormat', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function)=> {
+    it('testHDRFormat', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done:Function)=> {
       let msg = "====testHDRFormat===="
       console.info(msg + ' begin ');
       try {

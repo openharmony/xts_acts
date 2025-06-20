@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -50,7 +50,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_010', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_010', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_010 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -68,7 +68,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_011', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_011', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_011 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -86,7 +86,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_012', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_012', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_012 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -104,7 +104,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_013', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_013', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_013 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -122,7 +122,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_014', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_014', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_014 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -140,7 +140,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_015', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_015', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_015 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -158,7 +158,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_017', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_017', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_017 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -177,7 +177,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_018', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_018', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_018 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -195,7 +195,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_019', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_019', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_019 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -213,7 +213,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_020', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_020', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_020 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -231,7 +231,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_021', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_021', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_021 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -249,7 +249,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_022', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_022', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_022 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -267,7 +267,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_023', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_023', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_023 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -285,7 +285,7 @@ export default function sliderTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_0110', 0, async (done: Function) => {
+    it('ArkUX_Stage_Slider_0110', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_0110 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

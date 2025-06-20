@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 let TAG: string;
@@ -26,7 +26,7 @@ export default function shellCommandControlTest() {
      * @tc.desc: Error code 0 is returned
      * @tc.level 0
      */
-    it('Acts_Ability_ShellCommandControl__0100', 0, async (done: Function) => {
+    it('Acts_Ability_ShellCommandControl__0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'Acts_Ability_ShellCommandControl__0100';
       console.log(`${TAG} --- start`);
       let cmd = 'aa help';
@@ -45,7 +45,7 @@ export default function shellCommandControlTest() {
      * @tc.desc: Error code -1 is returned
      * @tc.level 3
      */
-    it('Acts_Ability_ShellCommandControl__0200', 0, async (done: Function) => {
+    it('Acts_Ability_ShellCommandControl__0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'Acts_Ability_ShellCommandControl__0200';
       console.log(`${TAG} --- start`);
       let cmd = 'ls -l';

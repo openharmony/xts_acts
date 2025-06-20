@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import cipher from '@system.cipher';
 export default function cipher2_test() {
 describe('cipher2_test', function () {
@@ -60,7 +60,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA algorithm encryption succeeded
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0100', 0, function () {
+   it('SUB_Security_DataPro_cipher_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
 	  cipher.rsa({
 		action: 'encrypt',
 		text: plainTextRsa,
@@ -86,7 +86,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA algorithm decryption succeeded
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0200', 1, function () {
+   it('SUB_Security_DataPro_cipher_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: plainTextRsa,
@@ -112,7 +112,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0300', 2, function () {
+   it('SUB_Security_DataPro_cipher_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.rsa({
 		action: 'encrypt123',
 		text: plainTextRsa,
@@ -138,7 +138,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0400', 2, function () {
+   it('SUB_Security_DataPro_cipher_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.rsa({
 		action: 'encrypt',
 		text: plainTextRsa,
@@ -167,7 +167,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0500', 2, function () {
+   it('SUB_Security_DataPro_cipher_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.rsa({
 		action: 'encrypt',
 		text: '~!@#$%^&*()_+<>?:"~,./183456789012345678901234567890123456789',
@@ -193,7 +193,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0600', 2, function () {
+   it('SUB_Security_DataPro_cipher_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: plainTextRsa,
@@ -219,7 +219,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0700', 2, function () {
+   it('SUB_Security_DataPro_cipher_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.rsa({
 		action: 'decrypt123',
 		text: cipherTextRsa,
@@ -245,7 +245,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0800', 3, function () {
+   it('SUB_Security_DataPro_cipher_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: cipherTextRsa,
@@ -283,7 +283,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_0900', 3, function () {
+   it('SUB_Security_DataPro_cipher_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: '~!@#$%^&*()_+<>?:"~,./183456789012345678901234567890123456789',
@@ -309,7 +309,7 @@ describe('cipher2_test', function () {
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1000', 3, function () {
+   it('SUB_Security_DataPro_cipher_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: cipherTextRsa,
@@ -335,7 +335,7 @@ describe('cipher2_test', function () {
    * @tc.name       The AES algorithm is successfully encrypted
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1100', 3, function () {
+   it('SUB_Security_DataPro_cipher_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,
@@ -364,7 +364,7 @@ describe('cipher2_test', function () {
    * @tc.name       The AES algorithm is successfully encrypted
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1200', 3, function () {
+   it('SUB_Security_DataPro_cipher_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,
@@ -393,7 +393,7 @@ describe('cipher2_test', function () {
    * @tc.name       The AES algorithm is successfully encrypted
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_2300', 3, function () {
+   it('SUB_Security_DataPro_cipher_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,

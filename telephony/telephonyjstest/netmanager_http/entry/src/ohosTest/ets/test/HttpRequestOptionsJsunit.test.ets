@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base'
 
@@ -37,7 +37,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequestOptions_method_0100", 0, async (done:Function) => {
+    it("Telephony_http_HttpRequestOptions_method_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_0100';
       console.log("-----------------------HttpRequestOptions_method Test is starting-----------------------");
       try {
@@ -69,7 +69,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequestOptions_method_0200", 0, async (done:Function) => {
+    it("Telephony_http_HttpRequestOptions_method_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_http_HttpRequestOptions_method_0200';
       console.log("-----------------------HttpRequestOptions_method_01 Test is starting-----------------------");
       try {
@@ -105,7 +105,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_extraData_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_extraData_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_extraData_0100';
       console.log("-----------------------HttpRequestOptions_extraData Test is starting-----------------------");
       try {
@@ -146,7 +146,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_extraData_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_extraData_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_0200';
       console.log("-----------------------HttpRequestOptions_extraData_01 Test is starting-----------------------");
       try {
@@ -191,7 +191,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_header_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_header_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_header_0100';
       console.log("-----------------------HttpRequestOptions_header Test is starting-----------------------");
       try {
@@ -229,7 +229,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_header_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_header_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_header_0200';
       console.log("-----------------------HttpRequestOptions_header_01 Test is starting-----------------------");
       try {
@@ -271,7 +271,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_header_0300", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_header_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_header_0300';
       console.log("-----------------------HttpRequestOptions_header_02 Test is starting-----------------------");
       try {
@@ -309,7 +309,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_header_0400", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_header_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_header_0400';
       console.log("-----------------------HttpRequestOptions_header_03 Test is starting-----------------------");
       try {
@@ -351,7 +351,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_readTimeout_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_readTimeout_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_readTimeout_0100';
       console.log("-----------------------HttpRequestOptions_readTimeout Test is starting-----------------------");
       try {
@@ -388,7 +388,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_readTimeout_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_readTimeout_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_readTimeout_0200';
       console.log("-----------------------HttpRequestOptions_readTimeout_01 Test is starting-----------------------");
       try {
@@ -429,7 +429,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_connectTimeout_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_connectTimeout_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_connectTimeout_0100';
       console.log("-----------------------HttpRequestOptions_connectTimeout Test is starting-----------------------");
       try {
@@ -466,7 +466,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_connectTimeout_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_connectTimeout_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpRequestOptions_connectTimeout_0200';
       console.log("-----------------------HttpRequestOptions_connectTimeout_01 Test is starting-----------------------");
       try {
@@ -507,7 +507,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_UsingProxy_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_UsingProxy_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let httpRequest = http.createHttp();
       httpRequest.request("https://www.baidu.com/", {
         connectTimeout: 60000,
@@ -534,7 +534,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpRequestOptions_UsingProxy_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpRequestOptions_UsingProxy_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let httpRequest = http.createHttp();
       let ExclusionList = "";
       let array = ExclusionList.split(',');

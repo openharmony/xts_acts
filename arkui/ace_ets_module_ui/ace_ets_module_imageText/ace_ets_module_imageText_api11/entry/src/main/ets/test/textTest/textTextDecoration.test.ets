@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -60,7 +60,7 @@ export default function textTextDecorationTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTextDecoration0100', 0, async (done: Function) => {
+    it('textTextDecoration0100', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textTextDecoration0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -90,8 +90,6 @@ export default function textTextDecorationTest() {
 
       expect(obj.$attrs.decoration)
       .assertEqual('{"type":"TextDecorationType.None","color":"#FF000000","style":"TextDecorationStyle.SOLID"}'); 
- 
-       
       console.info('[' + tagName + '] END ===========================');
       done();
     });
@@ -104,7 +102,7 @@ export default function textTextDecorationTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTextDecoration0200', 0, async (done: Function) => {
+    it('textTextDecoration0200', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textTextDecoration0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -134,8 +132,6 @@ export default function textTextDecorationTest() {
 
       expect(obj.$attrs.decoration)
       .assertEqual('{"type":"TextDecorationType.Underline","color":"#FF000000","style":"TextDecorationStyle.SOLID"}'); 
- 
-       
       console.info('[' + tagName + '] END ===========================');
       done();
     }); 
@@ -148,7 +144,7 @@ export default function textTextDecorationTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTextDecoration0300', 0, async (done: Function) => {
+    it('textTextDecoration0300', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textTextDecoration0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -192,7 +188,7 @@ export default function textTextDecorationTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTextDecoration0400', 0, async (done: Function) => {
+    it('textTextDecoration0400', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textTextDecoration0400';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -237,7 +233,7 @@ export default function textTextDecorationTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-     it('textTextDecoration0500', 0, async (done: Function) => {
+     it('textTextDecoration0500', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textTextDecoration0500';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)

@@ -892,7 +892,7 @@ export default function requestUploadJSUnit() {
       let pathDir = (baseContext !== undefined) ? baseContext.cacheDir : '';
       let filePath = pathDir + '/test9.txt';
       let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let test = ''.padEnd(1 * 1024, '666');
+      let test = ''.padEnd(1 * 1024, 'SUB_REQUEST_FileUpload_ResponseBody_0100');
       fs.writeSync(file.fd, test);
       fs.closeSync(file);
       console.info('====>beforeAll: file generate test9.txt');
@@ -950,7 +950,7 @@ export default function requestUploadJSUnit() {
         let pathDir = (baseContext !== undefined) ? baseContext.cacheDir : '';
         let filePath = pathDir + '/test10.txt';
         let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        let test = ''.padEnd(1 * 1024, '888');
+        let test = ''.padEnd(1 * 1024, 'SUB_REQUEST_FileUpload_ResponseBody_0200');
         fs.writeSync(file.fd, test);
         fs.closeSync(file);
         console.info('====>beforeAll: file generate test10.txt');
@@ -990,6 +990,62 @@ export default function requestUploadJSUnit() {
           }
         });
       }
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_FileUpload_ResponseBody_0400
+     * @tc.name      SUB_REQUEST_FileUpload_ResponseBody_0400
+     * @tc.desc      the onHeaderReceive interfaces.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_REQUEST_FileUpload_ResponseBody_0400', Level.LEVEL2, async (done: Function) => {
+      let config_multi: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
+      config_multi.files = File5;
+      request.uploadFile(baseContext, config_multi, async (err, uploadTask)=>{
+        console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 uploadFile: ' + uploadTask);
+        console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 uploadConfig: ' + JSON.stringify(uploadConfig));
+        let count: number = 0;
+        try{
+          let headerCallback = async (header: ESObject) => {
+            try {
+              count += 1;
+              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 headerCallback count: ' + count);
+            } catch (err) {
+              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 catch err: ' + JSON.stringify(err));
+              await deleteTask(uploadTask);
+              done();
+            }
+          }
+          let completeCallback = async (taskState: Array<request.TaskState>) => {
+            try {
+              uploadTask.off('complete', completeCallback);
+              uploadTask.off('headerReceive', headerCallback);
+              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 off count is: ' + count);
+              expect(count).assertEqual(5)
+              done();
+            } catch (err) {
+              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 catch err: ' + JSON.stringify(err));
+              await deleteTask(uploadTask);
+              done();
+            }
+          }
+
+          if (err) {
+            console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+          uploadTask.on('complete', completeCallback);
+          uploadTask.on('headerReceive', headerCallback);
+          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 on headerReceive success');
+        }catch(err){
+          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0400 except err: ' + err);
+          await deleteTask(uploadTask);
+          done();
+        }
+      });
     });
 
     /**
@@ -1870,6 +1926,53 @@ export default function requestUploadJSUnit() {
         console.info('====>SUB_Request_Agent_MultipleFiles_0300 task start');
       }catch (err) {
         console.info('====>SUB_Request_Agent_MultipleFiles_0300 creat err: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Request_Agent_MultipleFiles_0400
+     * @tc.name      SUB_Request_Agent_MultipleFiles_0400
+     * @tc.desc      multipart is true and can pause resume.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_Agent_MultipleFiles_0400', Level.LEVEL2, async (done: Function) => {
+      console.info('-----------------------SUB_Request_Agent_MultipleFiles_0400 is starting-----------------------');
+      let config: request.agent.Config = {
+        action:request.agent.Action.UPLOAD,
+        url: 'http://127.0.0.1:8080',
+        method: "POST",
+        mode: request.agent.Mode.FOREGROUND,
+        network: request.agent.Network.ANY,
+        overwrite: true,
+        multipart: true,
+        data: attachments,
+      }
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info('====>SUB_Request_Agent_MultipleFiles_0400 create success');
+        let completeCallback = async (pro: request.agent.Progress) => {
+          try {
+            task.off('completed', completeCallback);
+            console.info('====>SUB_Request_Agent_MultipleFiles_0400 completeCallback pro: ' + JSON.stringify(pro));
+            expect(pro.state).assertEqual(64);
+            done();
+          }catch (err) {
+            console.info('====>SUB_Request_Agent_MultipleFiles_0400 err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+        task.on('completed', completeCallback);
+        await task.start();
+        console.info('====>SUB_Request_Agent_MultipleFiles_0400 task start');
+        await task.pause();
+        console.info('====>SUB_Request_Agent_MultipleFiles_0400 task pause');
+        await task.resume();
+        console.info('====>SUB_Request_Agent_MultipleFiles_0400 task resume');
+      }catch (err) {
+        console.info('====>SUB_Request_Agent_MultipleFiles_0400 creat err: ' + JSON.stringify(err));
         expect().assertFail();
       }
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll, TestType, Size, Level  } from '@ohos/hypium';
 import WebSocket from '@ohos.net.webSocket';
 import { BusinessError } from '@ohos.base';
 
@@ -70,14 +70,14 @@ export default function NetworkManagerWebsocketTest() {
   
     /**
      * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0100
-     * @tc.name: websocket::connect
+     * @tc.name: testTelephonyNetstackWebSocketCertVerifyXts0100
      * @tc.desc: Test connect property
-     * @tc.level 3
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0100", 0, async (done:Function) =>  {
-      let caseName = "SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0100";
+    it("testTelephonyNetstackWebSocketCertVerifyXts0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) =>  {
+      let caseName = "testTelephonyNetstackWebSocketCertVerifyXts0100";
       webSocket.connect(url1, webSocketRequestOptions_caPath1, (err: BusinessError, data: boolean) => {
         if (err) {
           console.log(`${caseName} connect failed, err: ${JSON.stringify(err)}`);
@@ -99,7 +99,7 @@ export default function NetworkManagerWebsocketTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0200";
       webSocket.connect(url1, WebSocketRequestOptions_clientCert1, (err: BusinessError, data: boolean) => {
         if (err) {
@@ -122,7 +122,7 @@ export default function NetworkManagerWebsocketTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0300";
       webSocket.connect(url_ERROR, webSocketRequestOptions_caPath2, (err: BusinessError, data: boolean) => {
         if (err) {
@@ -145,7 +145,7 @@ export default function NetworkManagerWebsocketTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0400", 0, async (done:Function) => {
+    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0400";
       webSocket.connect(url_ERROR, WebSocketRequestOptions_clientCert2, (err: BusinessError, data: boolean) => {
         if (err) {
@@ -168,7 +168,7 @@ export default function NetworkManagerWebsocketTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0500", 0, async (done:Function) => {
+    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0500";
       webSocket.connect(url1, webSocketRequestOptions_caPath2, (err: BusinessError, data: boolean) => {
         if (err) {
@@ -191,7 +191,7 @@ export default function NetworkManagerWebsocketTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600", 0, async (done:Function) => {
+    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600";
       webSocket.connect(url1, WebSocketRequestOptions_clientCert2, (err: BusinessError, data: boolean) => {
         if (err) {

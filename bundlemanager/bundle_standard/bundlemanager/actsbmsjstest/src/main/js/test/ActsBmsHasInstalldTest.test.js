@@ -28,7 +28,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalled
      * @tc.desc Test hasInstalled interface.
      */
-    it('testHasInstalled', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testHasInstalled', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let flag = 0;
         pkg.hasInstalled({
             bundleName: 'com.example.third2',
@@ -89,7 +89,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name hasInstalledHapNotExist
      * @tc.desc Test hasInstalled when hap not exist.
      */
-    it('hasInstalledHapNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('hasInstalledHapNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let flag = 0;
         pkg.hasInstalled({
             bundleName: 'wrongName',
@@ -115,7 +115,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledNumberParam
      * @tc.desc Test hasInstalled when bundleName is number.
      */
-    it('testHasInstalledNumberParam', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testHasInstalledNumberParam', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let flag = 0;
         pkg.hasInstalled({
             bundleName: NUM_TWO,
@@ -161,7 +161,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledCompleteNotExit
      * @tc.desc Test hasInstalled without function complete.
      */
-    it('testHasInstalledCompleteNotExit', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
+    it('testHasInstalledCompleteNotExit', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         pkg.hasInstalled({
             bundleName: undefined,
             success: function success(data) {
@@ -183,7 +183,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledReturnNotExist
      * @tc.desc Test hasInstalled without function fail and function complete.
      */
-    it('testHasInstalledReturnNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
+    it('testHasInstalledReturnNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         let status = "normal";
         pkg.hasInstalled({
             bundleName: NUM_TWO,

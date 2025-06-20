@@ -14,7 +14,7 @@
  */
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   albumType,
   albumSubtype,
@@ -86,7 +86,7 @@ export default function checkAlbumAttrTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('album_000', 0, async (done: Function) => {
+    it('album_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_000';
       await checkAssetAttr(done, testNum);
     });
@@ -99,7 +99,7 @@ export default function checkAlbumAttrTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('album_001', 0, async (done: Function) => {
+    it('album_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_001';
       try {
         let album:ESObject = await helper.createAlbum(testNum);
@@ -143,7 +143,7 @@ export default function checkAlbumAttrTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('album_002', 0, async (done: Function) => {
+    it('album_002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_002';
       try {
         let fetchResult:ESObject = await helper.getAlbums(albumType.SYSTEM, albumSubtype.FAVORITE);

@@ -45,7 +45,7 @@ export default function effectKitBTest() {
       image.createPixelMap(color, opts).then((pixelMap) => {
         console.info(msgStr + ' Succeed in createPixelMap. ');
         try{
-          effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+          effectKit.createColorPicker(pixelMap, (error, colorPicker: effectKit.ColorPicker) => {
             if (error) {
               console.error(msgStr + ' Failed to create color picker. ' + JSON.stringify(error));
             } else {

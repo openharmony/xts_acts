@@ -1605,7 +1605,7 @@ export default function saveComponentTest() {
     /**
      * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_1600
      * @tc.name Test_Security_Button_Save_1600
-     * @tc.desc Test SecurityComponent iconSize attribute is 160.00vp result in Authorization is failed
+     * @tc.desc Test SecurityComponent Size excood displaysSize 10% result in Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -1620,7 +1620,7 @@ export default function saveComponentTest() {
             "icon": 0,
             "textType": 0,
             "bgType": ButtonType.Normal,
-            "iconSize": 160,
+            "iconSize": 16,
             "direct": 0,
             "positionX": 0,
             "positionY": 0,
@@ -1643,19 +1643,26 @@ export default function saveComponentTest() {
             "right": 12,
             "top": 4,
             "bottom": 4,
-            "middle": 4
+            "middle": 4,
+            "buWidth": undefined,
+            "buHeight": undefined,
+            "rowWidth": undefined,
+            "rowHeight": undefined
           }
         }
         let displayClass = [];
         display.getAllDisplays((err, data) => {
           console.info('====>[Test_Security_Button_Save_1600] the window data[0].width: ' + data[0].width);
           console.info('====>[Test_Security_Button_Save_1600] the window data[0].height: ' + data[0].height);
-          let window_width = data[0].width;
-          let window_height = data[0].height;
-          let button_iconSize = Math.ceil(Math.sqrt(window_width * window_height * 0.1));
-          console.info('====>[Test_Security_Button_Save_1600] button_iconSize is: ' + button_iconSize);
+          let button_width = data[0].width * (1/3);
+          let button_height = data[0].height * (1/3);
+          console.info('====>[Test_Security_Button_Save_1600] button_width is: ' + button_width);
+          console.info('====>[Test_Security_Button_Save_1600] button_height is: ' + button_height);
           let offsetObj:ESObject = {
-            "iconSize": `${button_iconSize}px`
+            "buWidth": `${button_width}px`,
+            "buHeight": `${button_height}px`,
+            "rowWidth": `${button_width}px`,
+            "rowHeight": `${button_height}px`
           };
           ObjectUtils.assign(eventData.data,offsetObj);
         });

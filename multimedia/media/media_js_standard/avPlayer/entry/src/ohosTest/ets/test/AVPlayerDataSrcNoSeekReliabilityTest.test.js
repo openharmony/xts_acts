@@ -16,7 +16,7 @@ import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import { testAVPlayerDataSrcNoSeek, testAVPlayerFun, AV_PLAYER_STATE } from '../../../../../../AVPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../../MediaTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function AVPlayerDataSrcNoSeekReliabilityTest() {
     describe('AVPlayerDataSrcNoSeekReliabilityTest', function () {
@@ -145,7 +145,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.type      : compatibility test
             * @tc.level     : Level3
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0100', Level.LEVEL0,async function (done) {
             filePath = pathDir + "/01_15s.mp3";
             console.info('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0100 filePath is ' + JSON.stringify(filePath));
             let size = fileio.statSync(filePath).size;
@@ -174,7 +174,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.type      : compatibility test
             * @tc.level     : Level3
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0200', Level.LEVEL0,async function (done) {
             filePath = pathDir + "/01_15s.mp3";
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {
@@ -201,7 +201,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.type      : compatibility test
             * @tc.level     : Level3
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0300', Level.LEVEL0,async function (done) {
             filePath = pathDir + "/01_15s.mp3";
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {
@@ -227,7 +227,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.type      : compatibility test
             * @tc.level     : Level3
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0400', Level.LEVEL0,async function (done) {
             filePath = pathDir + "/01_15s.mp3";
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {
@@ -253,7 +253,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.type      : compatibility test
             * @tc.level     : Level3
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0500', Level.LEVEL0,async function (done) {
             filePath = pathDir + "/01_15s.mp3";
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {

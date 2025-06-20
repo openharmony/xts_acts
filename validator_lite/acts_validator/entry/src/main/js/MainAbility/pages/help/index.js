@@ -17,6 +17,7 @@ import router from '@system.router';
 
 export default {
   data: {
+    itemIndex: -1,
     step: '',
     result: '',
     url: ''
@@ -24,6 +25,11 @@ export default {
 
   back() {
     console.info('onclick back url : ' + this.url);
-    router.replace({ uri: this.url });
+    router.replace({
+      uri: this.url,
+      params: {
+        itemIndex: this.itemIndex
+      }
+    });
   },
 };

@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from "@ohos/hypium"
 import CommonFunc from "../../MainAbility/common/Common";
 
 
@@ -52,7 +52,7 @@ export default function waterFlowDemoJsunit() {
      * @tc.name         waterflowTest0001
      * @tc.desic        'waterflowTest0001
      */
-    it('waterflowTest0001', 0, async (done: Function) => {
+    it('waterflowTest0001',  Level.LEVEL0, async (done: Function) => {
       console.info('waterflowDemo testalphabetIndexerWidth0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('waterFlow');

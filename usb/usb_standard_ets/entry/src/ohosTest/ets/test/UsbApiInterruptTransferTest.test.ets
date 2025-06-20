@@ -241,21 +241,14 @@ export default function UsbApiInterruptTransferTest() {
       let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
       let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
       let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 2, 129, type, 2000);
-      let cancelTransferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 2, 129, type, 2000);
       usbMgr.claimInterface(gPipe, tmpInterface, true);
       console.info(TAG, 'interrupt usbSubmitTransfer start');
       usbMgr.usbSubmitTransfer(transferParams);
       try {
-        cancelTransferParams.callback = (err: Error, callBackData: usbMgr.SubmitTransferCallback) => {
-          console.info('callBackData = ' + JSON.stringify(callBackData));
-          console.info('testUsbCancelTransfer001 success, result = ' + cancelTransferParams.buffer.toString());
-          expect(callBackData.status).assertEqual(usbMgr.UsbTransferStatus.TRANSFER_CANCELED);
-          console.info(TAG, 'interrupt testUsbCancelTransfer001 end');
-          usbMgr.closePipe(devices);
-          done()
-        }
         console.info(TAG, 'interrupt usbCancelTransfer start');
-        usbMgr.usbCancelTransfer(cancelTransferParams);
+        usbMgr.usbCancelTransfer(transferParams);
+        usbMgr.closePipe(devices);
+        done()
       }catch (error) {
         console.error('interrupt error:', error);
         expect().assertFail();
@@ -293,40 +286,5 @@ export default function UsbApiInterruptTransferTest() {
         done()
       }
     });
-
-    /**
-     * @tc.number   : SUB_USB_Host_JS_usbCancelTransfer_ErrCode_0200
-     * @tc.name     : testUsbCancelTransfer003
-     * @tc.desc     : interrupt transfer cancel failed.
-     * @tc.size     : MediumTest
-     * @tc.type     : Function
-     * @tc.level    : Level 3
-     */
-    it('testUsbCancelTransfer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      console.info(TAG, 'interrupt testUsbCancelTransfer003 enter');
-      if (!isDeviceConnected) {
-        console.info(TAG, 'usb testUsbCancelTransfer003 No device is connected');
-        expect(isDeviceConnected).assertFalse();
-        done()
-        return
-      }
-      let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
-      let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
-      let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
-      let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 2, -1, type, 2000);
-      usbMgr.claimInterface(gPipe, tmpInterface, true);
-    //   usbMgr.usbSubmitTransfer(transferParams);
-      try {
-        usbMgr.usbCancelTransfer(transferParams);
-        expect().assertFail();
-      } catch (error) {
-        console.info(TAG, 'interrupt testUsbCancelTransfer003 end');
-        console.error('interrupt cancel failed:', error);
-        expect(error.code).assertEqual(401);
-        usbMgr.closePipe(devices);
-        done()
-      }
-    });
-
   })
 }

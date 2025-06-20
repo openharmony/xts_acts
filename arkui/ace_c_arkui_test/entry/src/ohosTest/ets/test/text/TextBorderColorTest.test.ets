@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textBorderColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBorderColor001', 0, async (done: Function) => {
+    it('testTextBorderColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textBorderColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBorderColor002', 0, async (done: Function) => {
+    it('testTextBorderColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderColor002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textBorderColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBorderColor003', 0, async (done: Function) => {
+    it('testTextBorderColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderColor003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textBorderColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBorderColor004', 0, async (done: Function) => {
+    it('testTextBorderColor004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderColor004()).assertEqual(0)
       done()
     })

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import connection from "@ohos.net.connection";
 import socket from '@ohos.net.socket';
@@ -59,7 +59,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_SUB_Telephony_Http_Http_createHttp_0100", 0, async (done:Function) => {
+    it("SUB_SUB_Telephony_Http_Http_createHttp_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.log("-----------------------http createHttp Test is starting-----------------------");
       let httpRequest = http.createHttp();
       expect(httpRequest != null).assertTrue();
@@ -75,7 +75,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getDefaultNetSync', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getDefaultNetSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getDefaultNetSync';
       // let handleInstance = undefined;
       let handleInstance = connection.getDefaultNetSync();
@@ -97,7 +97,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_isDefaultNetMetered_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_isDefaultNetMetered_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_isDefaultNetMetered_Async_0100';
       connection.isDefaultNetMetered((error, data) => {
         if (error) {
@@ -120,7 +120,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_isDefaultNetMetered_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_isDefaultNetMetered_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_isDefaultNetMetered_Promise_0100';
       connection.isDefaultNetMetered().then((data) => {
         console.log(`${caseName} isDefaultNetMetered success`);
@@ -140,7 +140,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0100';
       connection.getDefaultHttpProxy((error, data) => {
         if (error) {
@@ -162,7 +162,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100';
       connection.getDefaultHttpProxy().then((data) => {
         console.log(`${caseName} getDefaultHttpProxy success`);
@@ -184,7 +184,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0200';
       connection.getDefaultNet().then((netHandle) => {
         console.log("netHandle is " + JSON.stringify(netHandle));
@@ -221,7 +221,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200';
       connection.getDefaultNet().then((netHandle) => {
         console.log("netHandle is " + JSON.stringify(netHandle));
@@ -256,7 +256,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_Connection_Request_Socket_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_Connection_Request_Socket_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       try {
         let tcpSocket:socket.TCPSocket = socket.constructTCPSocketInstance();
         let udpSocket:socket.UDPSocket = socket.constructUDPSocketInstance();
@@ -283,7 +283,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_addMembership_Promise_0100", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_addMembership_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_addMembership_Promise_0100";
       multicastSocket.addMembership(multicastAddress).then((data) => {
         console.log(`${caseName} addMembership success, data: ${JSON.stringify(data)}`);
@@ -303,7 +303,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_addMembership_Promise_0200", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_addMembership_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_addMembership_Promise_0200";
       multicastSocket.addMembership(multicastAddress_invalid).then((data) => {
         console.log(`${caseName} addMembership success, data: ${JSON.stringify(data)}`);
@@ -323,7 +323,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_addMembership_Promise_0300", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_addMembership_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_addMembership_Promise_0300";
       multicastSocket.addMembership(multicastAddress_null).then((data) => {
         console.log(`${caseName} addMembership success, data: ${JSON.stringify(data)}`);
@@ -343,7 +343,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_addMembership_Promise_0400", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_addMembership_Promise_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_addMembership_Promise_0400";
       try {
         multicastSocket.addMembership(undefined).then((data) => {
@@ -370,7 +370,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0100", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Promise_0100";
       multicastSocket.setMulticastTTL(ttl).then((data) => {
         console.log(`${caseName} setMulticastTTL success, data: ${JSON.stringify(data)}`);
@@ -390,7 +390,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0200", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Promise_0200";
       multicastSocket.setMulticastTTL(ttl_invalid).then((data) => {
         console.log(`${caseName} setMulticastTTL success, data: ${JSON.stringify(data)}`);
@@ -410,7 +410,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0300", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Promise_0300";
       try {
         multicastSocket.setMulticastTTL(ttl_undefined).then((data) => {
@@ -437,7 +437,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_getMulticastTTL_Promise_0100", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_getMulticastTTL_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_getMulticastTTL_Promise_0100";
       multicastSocket.getMulticastTTL().then((data) => {
         console.log(`${caseName} getMulticastTTL success, data: ${JSON.stringify(data)}`);
@@ -458,7 +458,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0100", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Promise_0100";
       multicastSocket.setLoopbackMode(true).then((data) => {
         console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
@@ -478,7 +478,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0200", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Promise_0200";
       multicastSocket.setLoopbackMode(false).then((data) => {
         console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
@@ -498,7 +498,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0300", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Promise_0300";
       try {
         multicastSocket.setLoopbackMode(undefined).then((data) => {
@@ -525,7 +525,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_getLoopbackMode_Promise_0100", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_getLoopbackMode_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_getLoopbackMode_Promise_0100";
       multicastSocket.setLoopbackMode(true).then((data) => {
         console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
@@ -553,7 +553,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_getLoopbackMode_Promise_0200", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_getLoopbackMode_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_getLoopbackMode_Promise_0200";
       multicastSocket.setLoopbackMode(false).then((data) => {
         console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
@@ -582,7 +582,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_dropMembership_Promise_0100", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_dropMembership_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Promise_0100";
       multicastSocket.dropMembership(multicastAddress).then((data) => {
         console.log(`${caseName} dropMembership success, data: ${JSON.stringify(data)}`);
@@ -603,7 +603,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_dropMembership_Promise_0200", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_dropMembership_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Promise_0200";
       multicastSocket.dropMembership(multicastAddress_invalid).then((data) => {
         console.log(`${caseName} dropMembership success, data: ${JSON.stringify(data)}`);
@@ -623,7 +623,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_dropMembership_Promise_0300", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_dropMembership_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Promise_0300";
       multicastSocket.dropMembership(multicastAddress_null).then((data) => {
         console.log(`${caseName} dropMembership success, data: ${JSON.stringify(data)}`);
@@ -643,7 +643,7 @@ export default function httpJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_UDPSocket_dropMembership_Promise_0400", 0, async (done:Function) => {
+    it("NetworkManager_UDPSocket_dropMembership_Promise_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Promise_0400";
       try {
         multicastSocket.dropMembership(undefined).then((data) => {

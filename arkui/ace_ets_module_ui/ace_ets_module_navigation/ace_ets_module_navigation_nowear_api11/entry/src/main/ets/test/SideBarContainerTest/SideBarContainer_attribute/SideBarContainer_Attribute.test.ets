@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import RectValue  from '../../../MainAbility/common/Rect';
@@ -56,7 +56,7 @@ export default function SideBarContainer_AttributeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc sideBarWidth < minSideBarWidth
      */
-    it('SUB_ACE_SideBarContainer_Attribute_0100', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainer_Attribute_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainer_Attribute_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -81,7 +81,7 @@ export default function SideBarContainer_AttributeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc sideBarWidth > maxSideBarWidth
      */
-    it('SUB_ACE_SideBarContainer_Attribute_0200', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainer_Attribute_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainer_Attribute_0200] START');
       globalThis.value.message.notify({
         name: 'sideBarWidth', value: 320
@@ -109,7 +109,7 @@ export default function SideBarContainer_AttributeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc minSideBarWidth < sideBarWidth < maxSideBarWidth
      */
-    it('SUB_ACE_SideBarContainer_Attribute_0300', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainer_Attribute_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainer_Attribute_0300] START');
       globalThis.value.message.notify({
         name: 'sideBarWidth', value: 250
@@ -136,7 +136,7 @@ export default function SideBarContainer_AttributeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc maxSideBarWidth < minSideBarWidth
      */
-    it('SUB_ACE_SideBarContainer_Attribute_0400', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainer_Attribute_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainer_Attribute_0400] START');
       globalThis.value.message.notify({
         name: 'maxSideBarWidth', value: 150

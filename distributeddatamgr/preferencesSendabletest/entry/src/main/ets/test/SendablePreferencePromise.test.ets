@@ -66,9 +66,9 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.desc put PutNumber promise interface test
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testSendablePreferencesPutNumber0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testSendablePreferencesPutNumber0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await mPreferences.put(KEY_NUMBER, 333);
         let data = await mPreferences.get(KEY_NUMBER, 'default');
@@ -87,9 +87,9 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.desc put PutNumber promise interface test
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testSendablePreferencesPutString0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testSendablePreferencesPutString0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await mPreferences.put(KEY_STRING, value_string);
       await mPreferences.get(KEY_STRING, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_STRING. Data: ${data}`);

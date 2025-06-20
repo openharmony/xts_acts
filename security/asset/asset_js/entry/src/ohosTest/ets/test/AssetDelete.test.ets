@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
 import asset from '@ohos.security.asset';
 
@@ -48,7 +48,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('Security_DataSecurity_Asset_Remove_Func_1000', 0, async () => {
+    it('Security_DataSecurity_Asset_Remove_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       let attr2: asset.AssetMap = new Map();
@@ -78,7 +78,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_Remove_Func_1300', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_Remove_Func_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.IS_PERSISTENT, true);
       attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
@@ -94,7 +94,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_Remove_Func_1400', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_Remove_Func_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.IS_PERSISTENT, true);
       attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
@@ -119,7 +119,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_Remove_Func_1500', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_Remove_Func_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.IS_PERSISTENT, true);
       await aw.assetAddAll(attr);

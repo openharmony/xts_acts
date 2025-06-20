@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function refreshAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshAccessibilityGroup001', 0, async (done: Function) => {
+    it('testRefreshAccessibilityGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshAccessibilityGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function refreshAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshAccessibilityGroup002', 0, async (done: Function) => {
+    it('testRefreshAccessibilityGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshAccessibilityGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function refreshAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testRefreshAccessibilityGroup003', 0, async (done: Function) => {
+    it('testRefreshAccessibilityGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshAccessibilityGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function refreshAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testRefreshAccessibilityGroup004', 0, async (done: Function) => {
+    it('testRefreshAccessibilityGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshAccessibilityGroup004()).assertEqual(0)
       done()
     })

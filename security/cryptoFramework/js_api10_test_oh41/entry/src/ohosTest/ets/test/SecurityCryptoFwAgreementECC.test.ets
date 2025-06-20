@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as agreementAsyCallbackFunc from './utils/agreement/agreementAsyCallbackFunc';
@@ -52,7 +52,7 @@ export default function SecurityCryptoFwAgreementECCTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_ECC_Func_0100";
       console.log(testNumber + ": started.");
       let param: string = "X25519";
@@ -76,7 +76,7 @@ export default function SecurityCryptoFwAgreementECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_ECC_Func_0200";
       console.log(testNumber + ": started.");
       let param: string = "X25519";
@@ -101,7 +101,7 @@ export default function SecurityCryptoFwAgreementECCTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_ECC_Func_0100";
       console.log(testNumber + ": started.");
       let param: string = "X25519";
@@ -125,7 +125,7 @@ export default function SecurityCryptoFwAgreementECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_ECC_Func_0400";
       console.log(testNumber + ": started");
       let agreementAlg: string = "X25519";
@@ -148,7 +148,7 @@ export default function SecurityCryptoFwAgreementECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_ECC_Func_0500";
       console.log(testNumber + ": started");
       let agreementAlg: string = "Ed25519";
@@ -171,7 +171,7 @@ export default function SecurityCryptoFwAgreementECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_ECC_Func_0600";
       console.log(testNumber + ": started");
       let agreementAlg: string = "x25519";
@@ -194,7 +194,7 @@ export default function SecurityCryptoFwAgreementECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_ECC_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_ECC_Func_0700";
       console.log(testNumber + ": started");
       let agreementAlg: string = "X25519";

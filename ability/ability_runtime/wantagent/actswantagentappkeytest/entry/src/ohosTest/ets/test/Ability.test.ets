@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import { Want, WantAgent, wantAgent, wantConstant } from '@kit.AbilityKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
@@ -44,7 +44,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0100', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_AbilityRuntime_wantAgent_Multiton_0100';
       console.info(`${caseName} Begin`);
       let wantAgentData: WantAgent;
@@ -97,7 +97,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0200', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_AbilityRuntime_wantAgent_Multiton_0200';
       console.info(`${caseName} Begin`);
       let wantAgentData: WantAgent;
@@ -153,7 +153,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0300', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_AbilityRuntime_wantAgent_Multiton_0300';
       console.info(`${caseName} Begin`);
       let wantAgentData: WantAgent;
@@ -210,7 +210,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0400', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_AbilityRuntime_wantAgent_Multiton_0400';
       console.info(`${caseName} Begin`);
       let wantAgentData: WantAgent;
@@ -267,7 +267,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0500', Level.LEVEL0, async (done: Function) => {
       let mpEnable: string = '';
       mpEnable = systemParameterEnhance.getSync('const.abilityms.support_multi_instance', 'false');
       console.log(`support_multi_instance get system parameter mpEnable is ${mpEnable}`);
@@ -335,7 +335,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0600', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_AbilityRuntime_wantAgent_Multiton_0600';
       console.info(`${caseName} Begin`);
       let wantAgentData: WantAgent;
@@ -449,7 +449,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_wantAgent_Multiton_0700', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_AbilityRuntime_wantAgent_Multiton_0700';
       console.info(`${caseName} Begin`);
       let wantAgentData: WantAgent;

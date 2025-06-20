@@ -59,7 +59,7 @@ export default function setOverlayEnabled() {
      * @tc.name: SetOverlayEnabledModuleNameNotInstall
      * @tc.desc: Failed to set when the incoming moduleName is not installed
      */
-    it('SetOverlayEnabledModuleNameNotInstall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
+    it('SetOverlayEnabledModuleNameNotInstall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async () => {
       try {
         await overlay.setOverlayEnabled(MODULE_NAME1, true).then(data => {
           console.info("SetOverlayEnabledModuleNameNotInstall result" + JSON.stringify(data));

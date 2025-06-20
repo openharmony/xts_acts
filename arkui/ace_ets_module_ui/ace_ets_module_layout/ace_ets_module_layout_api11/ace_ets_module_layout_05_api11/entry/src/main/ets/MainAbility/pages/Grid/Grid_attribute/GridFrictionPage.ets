@@ -47,6 +47,25 @@ struct GridFrictionPage {
                 .fontSize(16)
                 .backgroundColor(0xF9CF93)
                 .width('100%')
+                .height('30%')
+                .textAlign(TextAlign.Center)
+            }
+          }, (day: string) => day)
+        }, (day: string) => day)
+      }
+      .width('90%')
+      .height('10%')
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .key('grid_friction_default')
+
+      Grid(this.scroller) {
+        ForEach(this.Number, (day: string) => {
+          ForEach(this.Number, (day: string) => {
+            GridItem() {
+              Text(day)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width('100%')
                 .height(80)
                 .textAlign(TextAlign.Center)
             }

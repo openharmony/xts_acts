@@ -12,11 +12,11 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function abilityTest() {
     describe('ActsAbilityTest', () => {
-        it('assertContain',0, () => {
+        it('assertContain', Level.LEVEL0, () => {
             console.info("it begin")
             let a = 'abc'
             let b = 'b'

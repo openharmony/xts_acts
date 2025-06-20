@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import missionManager from "@ohos.app.ability.missionManager"
 import { BusinessError } from '@ohos.base';
 
@@ -28,7 +28,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call missionManager.on will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0100', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0100', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0100';
       let listener: missionManager.MissionListener = {
         onMissionCreated: (mission) => {
@@ -69,7 +69,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call getMissionInfo will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0200', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0200', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0200';
       let deviceId: string = "deviceId";
       let missionId = 0;
@@ -86,7 +86,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call getMissionInfo will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0300', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0300', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0300';
       let deviceId: string = "deviceId";
       let missionId: number = 0;
@@ -109,7 +109,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call getMissionInfos will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0400', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0400', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0400';
       let deviceId: string = "deviceId";
       let numMax: number = 10;
@@ -126,7 +126,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call getMissionInfos will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0500', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0500', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0500';
       let deviceId: string = "deviceId";
       let numMax: number = 10;
@@ -149,7 +149,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call getMissionSnapShot will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0600', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0600', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0600';
       let deviceId: string = "deviceId";
       let missionId: number = 0;
@@ -166,7 +166,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call isRequestPublishFormSupported will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0700', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0700', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0700';
       let deviceId: string = "deviceId";
       let missionId: number = 0;
@@ -189,7 +189,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call getLowResolutionMissionSnapShot will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0800', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0800', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0800';
       let deviceId: string = "deviceId";
       let missionId = 0;
@@ -206,7 +206,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call getLowResolutionMissionSnapShot will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_0900', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_0900', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_0900';
       let deviceId: string = "deviceId";
       let missionId = 0;
@@ -229,7 +229,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call lockMission will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1000', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1000', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1000';
       let missionId: number = 0;
       missionManager.lockMission(missionId, (err) => {
@@ -245,7 +245,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call lockMission will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1100', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1100', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1100';
       let missionId: number = 0;
       missionManager.lockMission(missionId)
@@ -267,7 +267,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call unlockMission will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1200', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1200', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1200';
       let missionId: number = 0;
       missionManager.unlockMission(missionId, (err) => {
@@ -283,7 +283,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call unlockMission will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1300', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1300', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1300';
       let missionId: number = 0;
       missionManager.unlockMission(missionId)
@@ -305,7 +305,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call clearMission will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1400', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1400', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1400';
       let missionId: number = 0;
       missionManager.clearMission(missionId, (err) => {
@@ -321,7 +321,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call clearMission will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1500', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1500', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1500';
       let missionId = 0;
       missionManager.clearMission(missionId)
@@ -343,7 +343,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call clearAllMissions will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1600', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1600', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1600';
       missionManager.clearAllMissions((err) => {
         console.log(TAG + "  err.code: " + err.code);
@@ -358,7 +358,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call clearAllMissions will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1700', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1700', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1700';
       missionManager.clearAllMissions()
         .then(err => {
@@ -379,7 +379,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionToFront will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1800', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1800', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1800';
       let missionId: number = 0;
       missionManager.moveMissionToFront(missionId, (err) => {
@@ -395,7 +395,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionToFront will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_1900', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_1900', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_1900';
       let missionId: number = 0;
       missionManager.moveMissionToFront(missionId)
@@ -417,7 +417,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionToFront will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_2000', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_2000', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_2000';
       let missionId: number = 0;
       missionManager.moveMissionToFront(missionId, {
@@ -435,7 +435,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionToFront will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_2100', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_2100', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_2100';
       let missionId: number = 0;
       missionManager.moveMissionToFront(missionId, {
@@ -459,7 +459,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionsToForeground will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_2200', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_2200', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_2200';
       let missionIds: number[] = [1, 2, 3];
       missionManager.moveMissionsToForeground(missionIds, (err) => {
@@ -475,7 +475,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionsToForeground will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_2300', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_2300', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_2300';
       let missionIds: number[] = [1, 2, 3];
       missionManager.moveMissionsToForeground(missionIds)
@@ -497,7 +497,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionsToForeground will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_2400', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_2400', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_2400';
       let missionIds: number[] = [1, 2, 3];
       let topMission: number = 2;
@@ -514,7 +514,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionsToForeground will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_2500', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_2500', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_2500';
       let missionIds: number[] = [1, 2, 3];
       let topMission: number = 2;
@@ -537,7 +537,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionsToBackground will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_2600', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_2600', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_2600';
       let missionIds: number[] = [1, 2, 3];
       missionManager.moveMissionsToBackground(missionIds, (err) => {
@@ -553,7 +553,7 @@ export default function missionManagerTest() {
      * @tc.desc: Test the third-party application call moveMissionsToBackground will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Mission_Manager_2700', 0, (done: Function) => {
+    it('System_API_Test_Mission_Manager_2700', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Mission_Manager_2700';
       let missionIds: number[] = [1, 2, 3];
       missionManager.moveMissionsToBackground(missionIds)

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import commonEventManager from '@ohos.commonEventManager';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -42,7 +42,7 @@ export default function OnWindowStageWillDestroyTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0100", 0, async function (done) {
+    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0100", Level.LEVEL0, async function (done) {
       TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0100'
       console.info(TAG + ' start.');
       commonEventManager.createSubscriber({
@@ -83,7 +83,7 @@ export default function OnWindowStageWillDestroyTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0200", 0, async function (done) {
+    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0200", Level.LEVEL0, async function (done) {
       TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0200'
       console.info(TAG + ' start.');
       let ability13:UIAbility
@@ -146,7 +146,7 @@ export default function OnWindowStageWillDestroyTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0300", 0, async function (done) {
+    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0300", Level.LEVEL0, async function (done) {
       TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0300'
       console.info(TAG + ' start.');
       let destoryCount = 0;
@@ -194,7 +194,7 @@ export default function OnWindowStageWillDestroyTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0400", 0, async function (done) {
+    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0400", Level.LEVEL0, async function (done) {
       TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0400'
       console.info(TAG + ' start.');
       commonEventManager.createSubscriber({

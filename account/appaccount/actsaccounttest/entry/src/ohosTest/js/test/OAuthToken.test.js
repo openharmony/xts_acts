@@ -677,7 +677,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountOAuthToken_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountOAuthToken_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0100 addAccount start====");
@@ -714,7 +714,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountOAuthToken_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountOAuthToken_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0200 addAccount start====");

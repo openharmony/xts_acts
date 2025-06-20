@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import { ComponentInfo } from '../common/Interfaces';
 import Utils from '../common/Utils';
 
@@ -31,7 +31,7 @@ export default function imageOnDownloadProgressTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageOnDownloadProgress001', 0, async (done: Function) => {
+    it('testImageOnDownloadProgress001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`image/${PAGE_TAG}`);
       await Utils.sleep(5000);
       expect(Utils.getComponentInfoByKey('downprogress').$attrs.backgroundColor).assertEqual('#FFFF0000')

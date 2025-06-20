@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -59,7 +59,7 @@ export default function NavigationStack01Jsunit() {
     * @tc.desc  : The NavPathStack is set. The content is not empty and the content in the content area can be focused.
     * @tc.level : Level 3
     */
-    it('NavigationStack01Jsunit_0100', 0, async (done: Function) => {
+    it('NavigationStack01Jsunit_0100',  Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await CommonFunc.sleep(500);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flex_NoWrap_PositionTest() {
      * @tc.desc The size of the parent component in the main axis direction meets the layout
      *               of the child components when the first child components change position
      */
-    it('testWrapNoWrapTextPosition', 0, async () => {
+    it('testWrapNoWrapTextPosition',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapTextPosition] START');
       GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'position', value: {

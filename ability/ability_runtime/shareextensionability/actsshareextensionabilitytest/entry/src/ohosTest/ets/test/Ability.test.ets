@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEventManager';
 import base from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -57,7 +57,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: With the same application with the same module, test ShareExtensionAbility lifecycle.
      */
-    it('Acts_ShareExtensionAbility_0100', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0100', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_EVENT).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_0100 createSubscriber  ${data}`);
 
@@ -129,7 +129,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: With the same application with the different module, test ShareExtensionAbility lifecycle.
      */
-    it('Acts_ShareExtensionAbility_0200', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0200', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_EVENT).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_0200 createSubscriber  ${data}`);
         subscriber = data;
@@ -198,7 +198,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: With the different application, test ShareExtensionAbility lifecycle.
      */
-    it('Acts_ShareExtensionAbility_0300', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0300', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_EVENT).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_0300 createSubscriber  ${data}`);
         subscriber = data;
@@ -272,7 +272,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Start the same ShareExtensionAbility with different UI components, and the test is successful.
      */
-    it('Acts_ShareExtensionAbility_0400', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0400', Level.LEVEL0, async (done: Function) => {
       let count = 0;
       let subscribeCallBack = (err:base.BusinessError, data:commonEvent.CommonEventData) => {
         console.info(`====>Acts_ShareExtensionAbility_0400 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
@@ -316,7 +316,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Start ShareExtensionAbility with invalid bundleName, start failed.
      */
-    it('Acts_ShareExtensionAbility_0500', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0500', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_EVENT).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_0500 createSubscriber  ${data}`);
         subscriber = data;
@@ -355,7 +355,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Start ShareExtensionAbility with invalid abilityName, start failed.
      */
-    it('Acts_ShareExtensionAbility_0600', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0600', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_EVENT).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_0600 createSubscriber  ${data}`);
         subscriber = data;
@@ -396,7 +396,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Start ShareExtensionAbility with invalid parameters, start failed.
      */
-    it('Acts_ShareExtensionAbility_0700', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0700', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_EVENT).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_0700 createSubscriber  ${data}`);
         subscriber = data;
@@ -437,7 +437,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test terminateSelfWithResultEvent successful.
      */
-    it('Acts_ShareExtensionAbility_0800', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0800', Level.LEVEL0, async (done: Function) => {
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let onResultEvent = 'ACTS_UIExtension_OnResult';
       let terminateSelfWithResultEvent = 'ACTS_UIExtension_TerminateSelfWithResult';
@@ -495,7 +495,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test sendData successful.
      */
-    it('Acts_ShareExtensionAbility_0900', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_0900', Level.LEVEL0, async (done: Function) => {
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let onReceiveEvent = 'ACTS_UIExtension_OnReceive';
       let sendDataEvent = 'ACTS_UIExtension_SendData';
@@ -558,7 +558,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test the startAbility interface in callback form.
      */
-    it('Acts_ShareExtensionAbility_1000', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1000', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_1000 createSubscriber  ${data}`);
         subscriber = data;
@@ -594,7 +594,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test the startAbility interface in promiss form.
      */
-    it('Acts_ShareExtensionAbility_1100', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1100', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_1100 createSubscriber  ${data}`);
         subscriber = data;
@@ -630,7 +630,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test the startAbility interface with invalid want.
      */
-    it('Acts_ShareExtensionAbility_1200', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1200', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_1200 createSubscriber  ${data}`);
         subscriber = data;
@@ -666,7 +666,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test the startAbilityForResult interface in callback form.
      */
-    it('Acts_ShareExtensionAbility_1300', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1300', Level.LEVEL0, async (done: Function) => {
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_1300 createSubscriber  ${data}`);
         subscriber = data;
@@ -705,7 +705,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test the startAbilityForResult interface in promiss form.
      */
-    it('Acts_ShareExtensionAbility_1400', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1400', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_1400 createSubscriber  ${data}`);
@@ -743,7 +743,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test the startAbilityForResult interface with invalid want.
      */
-    it('Acts_ShareExtensionAbility_1500', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1500', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ShareExtensionAbility_1500 createSubscriber  ${data}`);
@@ -781,7 +781,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test setReceiveDataCallback successful.
      */
-    it('Acts_ShareExtensionAbility_1600', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1600', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['setReceiveDataCallback']
@@ -822,7 +822,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Use ui components continuously to start two ShareExtensionAbility.
      */
-    it('Acts_ShareExtensionAbility_1700', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1700', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       globalThis.context.startAbility({
         bundleName: 'com.example.actsshareextensionabilitytest',
@@ -853,7 +853,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test starts ShareExtensionAbility using startAbility interface.
      */
-    it('Acts_ShareExtensionAbility_1800', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1800', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -897,7 +897,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test hapModuleInfo in context
      */
-    it('Acts_ShareExtensionAbility_1900', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_1900', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -965,7 +965,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test extensionAbilityInfo in context
      */
-    it('Acts_ShareExtensionAbility_2100', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2100', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1034,7 +1034,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test config in context
      */
-    it('Acts_ShareExtensionAbility_2000', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2000', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1085,7 +1085,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test resourceManager in context
      */
-    it('Acts_ShareExtensionAbility_2200', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2200', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1124,7 +1124,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test applicationInfo in context
      */
-    it('Acts_ShareExtensionAbility_2300', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2300', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1177,7 +1177,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test cacheDir in context
      */
-    it('Acts_ShareExtensionAbility_2400', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2400', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1218,7 +1218,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test tempDir in context
      */
-    it('Acts_ShareExtensionAbility_2500', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2500', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1259,7 +1259,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test filesDir in context
      */
-    it('Acts_ShareExtensionAbility_2600', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2600', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1300,7 +1300,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test databaseDir in context
      */
-    it('Acts_ShareExtensionAbility_2700', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2700', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1341,7 +1341,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test preferencesDir in context
      */
-    it('Acts_ShareExtensionAbility_2800', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2800', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1382,7 +1382,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Test bundleCodeDir in context
      */
-    it('Acts_ShareExtensionAbility_2900', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_2900', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1423,7 +1423,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the current application hap1
      */
-    it('Acts_ShareExtensionAbility_3000', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_3000', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1470,7 +1470,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the current application hap2
      */
-    it('Acts_ShareExtensionAbility_3100', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_3100', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1517,7 +1517,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the cross-application hap1
      */
-    it('Acts_ShareExtensionAbility_3200', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_3200', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1563,7 +1563,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, passing in a non-existing moduleName
      */
-    it('Acts_ShareExtensionAbility_3300', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_3300', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1609,7 +1609,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, and the incoming moduleName is undefined
      */
-    it('Acts_ShareExtensionAbility_3400', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_3400', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1655,7 +1655,7 @@ export default function abilityTest() {
      * @tc.name: Test ShareExtensionAbility basic function.
      * @tc.desc: test getApplicationContext return not empty
      */
-    it('Acts_ShareExtensionAbility_3500', 0, async (done: Function) => {
+    it('Acts_ShareExtensionAbility_3500', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
 
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {

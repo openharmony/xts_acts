@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect , Level, Size, TestType} from '@ohos/hypium'
 import network, { NetworkResponse } from '@system.network';
 
 const ExpectTrue: (n: boolean, caseName?: string) => void = (n: boolean, caseName?: string) => {
@@ -33,9 +33,9 @@ export default function networkManagerWithoutPermissionsTest() {
      * @tc.desc  : Unsubscribe to the network connection status of the device;no permissions.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrNetworkUnsubscribe0500', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkUnsubscribe0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkUnsubscribe0500';
       console.info(`${caseName} test start`);
       try {
@@ -70,7 +70,7 @@ export default function networkManagerWithoutPermissionsTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrNetworkSubscribe0500', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSubscribe0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSubscribe0500';
       console.info(`${caseName} test start`);
       try {
@@ -104,7 +104,7 @@ export default function networkManagerWithoutPermissionsTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrNetworkGetType0500', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkGetType0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkGetType0500';
       console.info(`${caseName} test start`);
       try {

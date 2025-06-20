@@ -16,7 +16,7 @@
 import cameraObj from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Camera_QualityPrioritization, GlobalThis } from './Constants';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
@@ -263,7 +263,7 @@ export default function CameraSessionQualityPrioritizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_001', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_001', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_001--------------");
       let ret = cameraObj.sessionSetQualityPrioritization(Camera_QualityPrioritization.HIGH_QUALITY);
       if (ret != 0) {
@@ -284,7 +284,7 @@ export default function CameraSessionQualityPrioritizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_002', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_002', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_002--------------");
       let ret = cameraObj.sessionSetQualityPrioritization(Camera_QualityPrioritization.POWER_BALANCE);
       if (ret != 0) {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityManager from '@ohos.app.ability.abilityManager';
 import errorManager from '@ohos.app.ability.errorManager';
 import { BusinessError } from '@ohos.base';
@@ -56,7 +56,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_ReisterLoopObserver_0100', 0, async (done: Function) => {
+    it('SUB_AA_ReisterLoopObserver_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_ReisterLoopObserver_0100 start");
       try {
         let observer: errorManager.LoopObserver = {
@@ -83,7 +83,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_ReisterErrorObserver_New_0100', 0, async (done: Function) => {
+    it('SUB_AA_ReisterErrorObserver_New_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_ReisterErrorObserver_New_0100 start");
       let errorObserver: errorManager.ErrorObserver;
       errorObserver = {
@@ -119,7 +119,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_ReisterErrorObserver_New_0200', 0, async (done: Function) => {
+    it('SUB_AA_ReisterErrorObserver_New_0200', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_ReisterErrorObserver_New_0200 start");
       try {
         errorManager.off("error", -1)
@@ -146,7 +146,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_GetExtensionRunningInfos_0100', 0, async (done: Function) => {
+    it('SUB_AA_GetExtensionRunningInfos_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_GetExtensionRunningInfos_0100 start");
       try {
         let upperLimit = 1;
@@ -168,96 +168,26 @@ export default function NewApiCoverTest() {
       }
     });
 
-    /*
-     * @tc.number  SUB_AA_UpdateConfiguration_0100
-     * @tc.name    Test updateConfiguration.
-     * @tc.desc    Function test
-     * @tc.level   3
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_restartSelfAtomicService_0200
+     * @tc.name: SUB_Ability_AbilityRuntime_restartSelfAtomicService_0200
+     * @tc.desc: Bundle Type cannot use restartSelfAtomicService.
+     * @tc.level 3
      */
-    it('SUB_AA_UpdateConfiguration_0100', 0, async (done: Function) => {
-      console.info("SUB_AA_UpdateConfiguration_0100 start");
+    it('SUB_Ability_AbilityRuntime_restartSelfAtomicService_0200', Level.LEVEL3, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_restartSelfAtomicService_0200`;
+      let UIAbilityContexts:common.UIAbilityContext;
+      UIAbilityContexts = await AppStorage.get<common.UIAbilityContext>("abilityContext") as common.UIAbilityContext;
+      console.log(`${tag}, test begin`);
       try {
-        // init for repeat test
-        let configInit: Configuration = {
-          language: 'english'
-        }
-        abilityManager.updateConfiguration(configInit, (err, data) => {
-          console.info("SUB_AA_UpdateConfiguration_0100 updateConfiguration en success " + JSON.stringify(data));
-        });
-
-        let config: Configuration = {
-          language: 'chinese'
-        }
-        await abilityManager.updateConfiguration(config)
-          .then((data) => {
-            console.info("SUB_AA_UpdateConfiguration_0100 updateConfiguration ch success " + JSON.stringify(data));
-            expect(true).assertTrue();
-            done();
-          })
-          .catch((err: BusinessError) => {
-            console.info("SUB_AA_UpdateConfiguration_0100 updateConfiguration ch fail " + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          })
-      } catch (error) {
-        console.info("SUB_AA_UpdateConfiguration_0100 updateConfiguration fail " + JSON.stringify(error));
+        await abilityManager.restartSelfAtomicService(UIAbilityContexts);
         expect().assertFail();
         done();
-      }
-    });
-
-    /*
-     * @tc.number  SUB_AA_UpdateConfiguration_0200
-     * @tc.name    Test updateConfiguration.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_UpdateConfiguration_0200', 0, async (done: Function) => {
-      console.info("SUB_AA_UpdateConfiguration_0200 start");
-      let want: Want = {
-        bundleName: "com.example.apicoverhaptest",
-        abilityName: "TestAbility"
-      };
-      await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(want)
-        .then((data) => {
-          console.log('Ability: startServiceExtensionAbility success:' + JSON.stringify(data));
-        })
-        .catch((error: BusinessError) => {
-          console.error(`Ability: startServiceExtensionAbility failed: ${JSON.stringify(error)}`);
-        })
-      await sleep(1000)
-      await abilityManager.updateConfiguration({language: 'English'})
-      .then(() => {
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> set language to english succeed.");
-      })
-      .catch((err: BusinessError) => {
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language to english: " + err);
-      });
-      setTimeout(async ()=>{
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> start assert." + AppStorage.get<string>("UpdateConfigurationTest_0200"));
-        try{
-          expect(AppStorage.get<string>("UpdateConfigurationTest_Ability_0200")).assertEqual('English');
-          expect(AppStorage.get<string>("UpdateConfigurationTest_AbilityStage_0200")).assertEqual('English');
-        }catch{}
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> end assert.");
-        await abilityManager.updateConfiguration({language: 'chinese'})
-          .then(() => {
-            console.info("SUB_AA_UpdateConfiguration_0200 ----> set language to chinese succeed.");
-          })
-          .catch((err: BusinessError) => {
-            console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language to chinese: " + err);
-          });
-      },5000)
-      setTimeout(()=>{
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> start assert." + AppStorage.get<string>("UpdateConfigurationTest_0200"));
-        try{
-          expect(AppStorage.get<string>("UpdateConfigurationTest_Ability_0200")).assertEqual('chinese');
-          expect(AppStorage.get<string>("UpdateConfigurationTest_AbilityStage_0200")).assertEqual('chinese');
-        }catch{}
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> end assert.");
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> set promise to null after all");
+      } catch (error) {
+        console.log(`${tag}, catch failed: ${JSON.stringify(error)}`);
+        expect(error?.code).assertEqual(16000090);
         done();
-      },10000)
+      }
     })
   })
 }

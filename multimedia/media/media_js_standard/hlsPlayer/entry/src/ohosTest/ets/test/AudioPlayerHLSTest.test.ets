@@ -15,7 +15,7 @@
 
 
 import { playAudioSource } from './AudioPlayerTestBase';
-import { describe, it } from '@ohos/hypium';
+import { describe, it, Level } from '@ohos/hypium';
 
 export default function audioPlayerHLSTest() {
   describe('AudioPlayerHLSTest', () => {
@@ -30,7 +30,7 @@ export default function audioPlayerHLSTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HLS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HLS_0100', Level.LEVEL0,async (done: Function) => {
       playAudioSource(HTTP_PATH + 'audioOnly/output.m3u8', 40030, PLAY_TIME, false, done);
       done();
     })
@@ -43,7 +43,7 @@ export default function audioPlayerHLSTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HLS_VARIANT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HLS_VARIANT_0100', Level.LEVEL0,async (done: Function) => {
       playAudioSource(HTTP_PATH + 'a-variant/output.m3u8', 40030, PLAY_TIME, false, done);
       done();
     })

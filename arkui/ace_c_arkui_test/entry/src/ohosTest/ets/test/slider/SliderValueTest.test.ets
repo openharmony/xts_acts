@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderValueTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderValue001', 0, async (done: Function) => {
+    it('testSliderValue001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderValue001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderValueTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderValue002', 0, async (done: Function) => {
+    it('testSliderValue002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderValue002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function sliderValueTest() {
     * @tc.type: Function
     * @tc.level: Level 2
     */
-    it('testSliderValue003', 0, async (done: Function) => {
+    it('testSliderValue003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderValue003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function sliderValueTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderValue004', 0, async (done: Function) => {
+    it('testSliderValue004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderValue004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function sliderValueTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderValue005', 0, async (done: Function) => {
+    it('testSliderValue005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderValue005()).assertEqual(0)
       done()
     })

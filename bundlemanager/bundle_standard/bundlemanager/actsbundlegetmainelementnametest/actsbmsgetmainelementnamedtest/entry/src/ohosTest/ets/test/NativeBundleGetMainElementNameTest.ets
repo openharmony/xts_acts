@@ -32,7 +32,7 @@ export default function bundlenativegetmainelementnameTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_BMS_OH_NativeBundle_GetMainElementName_0400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('SUB_BMS_OH_NativeBundle_GetMainElementName_0400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       expect(bundlendk.getMainElementName().bundleName).assertEqual(BUNDLE_NAME);
       expect(bundlendk.getMainElementName().moduleName).assertEqual(MODULE_NAME);
       expect(bundlendk.getMainElementName().abilityName).assertEqual(ABILITY_NAME);

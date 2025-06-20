@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -70,7 +70,7 @@ export default function scrollByJsunit() {
       * @tc.level : Level 2
       */
 
-    it('scrollEgeJsunit_0001', 0, async (done: Function) => {
+    it('scrollEgeJsunit_0001',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollEgeJsunit_0001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -102,7 +102,7 @@ export default function scrollByJsunit() {
      */
 
 
-    it('scrollEgeJsunit_0002', 0, async (done: Function) => {
+    it('scrollEgeJsunit_0002',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollEgeJsunit_0002] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -135,7 +135,7 @@ export default function scrollByJsunit() {
       */
 
 
-    it('scrollEgeJsunit_0003', 0, async (done: Function) => {
+    it('scrollEgeJsunit_0003',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollEgeJsunit_0003] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -165,7 +165,7 @@ export default function scrollByJsunit() {
       * @tc.level : Level 2
       */
 
-    it('scrollEgeJsunit_0004', 0, async (done: Function) => {
+    it('scrollEgeJsunit_0004',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollEgeJsunit_0004] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -194,7 +194,7 @@ export default function scrollByJsunit() {
         * @tc.level : Level 2
         */
 
-    it('scrollEgeJsunit_0005', 0, async (done: Function) => {
+    it('scrollEgeJsunit_0005',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollEgeJsunit_0005] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -223,7 +223,7 @@ export default function scrollByJsunit() {
          * @tc.level : Level 2
          */
 
-    it('scrollEgeJsunit_0006', 0, async (done: Function) => {
+    it('scrollEgeJsunit_0006',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollEgeJsunit_0006] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -254,7 +254,7 @@ export default function scrollByJsunit() {
       */
 
 
-    it('scrollEgeJsunit_0007', 0, async (done: Function) => {
+    it('scrollEgeJsunit_0007',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollEgeJsunit_0007] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -281,7 +281,7 @@ export default function scrollByJsunit() {
    */
 
 
-    it('scrollEgeJsunit_0008', 0, async (done: Function) => {
+    it('scrollEgeJsunit_0008',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollEgeJsunit_0008] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

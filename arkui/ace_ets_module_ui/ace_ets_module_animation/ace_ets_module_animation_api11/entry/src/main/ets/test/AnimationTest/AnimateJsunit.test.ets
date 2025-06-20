@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 import CommonFunc from '../../MainAbility/utils/Common';
-
 export default function animateJsunit() {
   describe('animateTest', () => {
     beforeEach(async (done: Function) => {
@@ -40,13 +39,11 @@ export default function animateJsunit() {
       }
       done()
     });
-
     afterEach(async () => {
       await Utils.sleep(1000);
       console.info("animate after each called");
     });
-
-    it('animateTest_0100', 0, async (done: Function) => {
+    it('animateTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0100 START');
       await Utils.sleep(1500);
       let indexEvent: events_emitter.InnerEvent = {
@@ -71,8 +68,7 @@ export default function animateJsunit() {
       console.info('animateTest_0100 END');
       done();
     });
-
-    it('animateTest_0200', 0, async (done: Function) => {
+    it('animateTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0200 START');
       await Utils.sleep(1500);
       let indexEvent: events_emitter.InnerEvent = {
@@ -93,8 +89,7 @@ export default function animateJsunit() {
       console.info('animateTest_0200 END');
       done();
     });
-
-    it('animateTest_0300', 0, async (done: Function) => {
+    it('animateTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0300 START');
       await Utils.sleep(1500);
       let indexEvent: events_emitter.InnerEvent = {
@@ -108,7 +103,6 @@ export default function animateJsunit() {
         } catch (err) {
           console.info("animateTest_0300 get state result err is: " + JSON.stringify(err))
         }
-
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -120,8 +114,7 @@ export default function animateJsunit() {
       console.info('animateTest_0300 END');
       done();
     });
-
-    it('animateTest_0400', 0, async (done: Function) => {
+    it('animateTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0400 START');
       await Utils.sleep(1500);
       let indexEvent: events_emitter.InnerEvent = {
@@ -142,8 +135,7 @@ export default function animateJsunit() {
       console.info('animateTest_0400 END');
       done();
     });
-
-    it('animateTest_0500', 0, async (done: Function) => {
+    it('animateTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0500 START');
       await Utils.sleep(1500);
       let indexEvent: events_emitter.InnerEvent = {
@@ -164,8 +156,7 @@ export default function animateJsunit() {
       console.info('animateTest_0500 END');
       done();
     });
-
-    it('animateTest_0600', 0, async (done: Function) => {
+    it('animateTest_0600', Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({
         name: 'duration', value: 2000
@@ -193,8 +184,7 @@ export default function animateJsunit() {
       console.info('animateTest_0600 END');
       done();
     });
-
-    it('animateTest_0700', 0, async (done: Function) => {
+    it('animateTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0700 START');
       globalThis.value.message.notify({
         name: 'curve', value: 'Linear'
@@ -222,8 +212,7 @@ export default function animateJsunit() {
       console.info('animateTest_0700 END');
       done();
     });
-
-    it('animateTest_0800', 0, async (done: Function) => {
+    it('animateTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0800 START');
       globalThis.value.message.notify({
         name: 'iteration', value: 2
@@ -240,7 +229,6 @@ export default function animateJsunit() {
         } catch (err) {
           console.info("animateTest_0800 get state result err is: " + JSON.stringify(err))
         }
-
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -252,8 +240,7 @@ export default function animateJsunit() {
       console.info('animateTest_0800 END');
       done();
     });
-
-    it('animateTest_0900', 0, async (done: Function) => {
+    it('animateTest_0900', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0900 START');
       globalThis.value.message.notify({
         name: 'tempo', value: "20000"
@@ -270,7 +257,6 @@ export default function animateJsunit() {
         } catch (err) {
           console.info("animateTest_0900 get state result err is: " + JSON.stringify(err))
         }
-
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -282,8 +268,7 @@ export default function animateJsunit() {
       console.info('animateTest_0900 END');
       done();
     });
-
-    it('animateTest_1000', 0, async (done: Function) => {
+    it('animateTest_1000', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1000 START');
       globalThis.value.message.notify({
         name: 'playmode', value: PlayMode.Alternate
@@ -311,8 +296,7 @@ export default function animateJsunit() {
       console.info('animateTest_1000 END');
       done();
     });
-
-    it('animateTest_1100', 0, async (done: Function) => {
+    it('animateTest_1100', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1100 START');
       globalThis.value.message.notify({
         name: 'duration', value: -1000
@@ -329,7 +313,6 @@ export default function animateJsunit() {
         } catch (err) {
           console.info("animateTest_1100 get state result err is: " + JSON.stringify(err))
         }
-
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -341,8 +324,7 @@ export default function animateJsunit() {
       console.info('animateTest_1100 END');
       done();
     });
-
-    it('animateTest_1200', 0, async (done: Function) => {
+    it('animateTest_1200', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1200 START');
       globalThis.value.message.notify({
         name: 'duration', value: 100000000
@@ -370,8 +352,7 @@ export default function animateJsunit() {
       console.info('animateTest_1200 END');
       done();
     });
-
-    it('animateTest_1300', 0, async (done: Function) => {
+    it('animateTest_1300', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1300 START');
       globalThis.value.message.notify({
         name: 'curve', value: '123'
@@ -388,7 +369,6 @@ export default function animateJsunit() {
         } catch (err) {
           console.info("animateTest_1300 get state result err is: " + JSON.stringify(err))
         }
-
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -400,8 +380,7 @@ export default function animateJsunit() {
       console.info('animateTest_1300 END');
       done();
     });
-
-    it('animateTest_1400', 0, async (done: Function) => {
+    it('animateTest_1400', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1400 START');
       globalThis.value.message.notify({
         name: 'curve', value: 'abc'
@@ -429,8 +408,7 @@ export default function animateJsunit() {
       console.info('animateTest_1400 END');
       done();
     });
-
-    it('animateTest_1500', 0, async (done: Function) => {
+    it('animateTest_1500', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1500 START');
       globalThis.value.message.notify({
         name: 'iteration', value: 121
@@ -458,8 +436,7 @@ export default function animateJsunit() {
       console.info('animateTest_1500 END');
       done();
     });
-
-    it('animateTest_1600', 0, async (done: Function) => {
+    it('animateTest_1600', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1600 START');
       globalThis.value.message.notify({
         name: 'iteration', value: -5
@@ -487,8 +464,7 @@ export default function animateJsunit() {
       console.info('animateTest_1600 END');
       done();
     });
-
-    it('animateTest_1700', 0, async (done: Function) => {
+    it('animateTest_1700', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1700 START');
       globalThis.value.message.notify({
         name: 'tempo', value: "12121212121212"
@@ -505,7 +481,6 @@ export default function animateJsunit() {
         } catch (err) {
           console.info("animateTest_1700 get state result err is: " + JSON.stringify(err))
         }
-
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -517,8 +492,7 @@ export default function animateJsunit() {
       console.info('animateTest_1700 END');
       done();
     });
-
-    it('animateTest_1800', 0, async (done: Function) => {
+    it('animateTest_1800', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1800 START');
       globalThis.value.message.notify({
         name: 'tempo', value: "-5"
@@ -546,8 +520,7 @@ export default function animateJsunit() {
       console.info('animateTest_1800 END');
       done();
     });
-
-    it('animateTest_1900', 0, async (done: Function) => {
+    it('animateTest_1900', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1900 START');
       globalThis.value.message.notify({
         name: 'playmode', value: -6
@@ -575,14 +548,12 @@ export default function animateJsunit() {
       console.info('animateTest_1900 END');
       done();
     });
-
-    it('animateTest_2000', 0, async (done: Function) => {
+    it('animateTest_2000', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_2000 START');
       globalThis.value.message.notify({
         name: 'playmode', value: 123456
       });
       await CommonFunc.sleep(200);
-
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 1010,
         priority: events_emitter.EventPriority.LOW
@@ -594,7 +565,6 @@ export default function animateJsunit() {
         } catch (err) {
           console.info("animateTest_2000 get state result err is: " + JSON.stringify(err));
         }
-
       }
       try {
         events_emitter.on(indexEvent, callback);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentOpacity001', 0, async (done: Function) => {
+    it('testCustomComponentOpacity001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentOpacity001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentOpacity002', 0, async (done: Function) => {
+    it('testCustomComponentOpacity002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentOpacity002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentOpacity003', 0, async (done: Function) => {
+    it('testCustomComponentOpacity003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentOpacity003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentOpacity004', 0, async (done: Function) => {
+    it('testCustomComponentOpacity004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentOpacity004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentOpacity005', 0, async (done: Function) => {
+    it('testCustomComponentOpacity005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentOpacity005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customComponentOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentOpacity006', 0, async (done: Function) => {
+    it('testCustomComponentOpacity006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentOpacity006()).assertEqual(0)
       done()
     })

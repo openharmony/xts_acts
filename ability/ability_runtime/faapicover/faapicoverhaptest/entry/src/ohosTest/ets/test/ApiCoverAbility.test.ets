@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 import FormInfo from '@ohos.application.formInfo';
 import formError from '@ohos.application.formError';
@@ -27,7 +27,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_Form_Provider_Test_FormErr_0100', 0, async (done: Function) => {
+    it('SUB_AA_Form_Provider_Test_FormErr_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_Form_Provider_Test_FormErr_0100");
       expect(7).assertEqual(formError.FormError.ERR_ADD_INVALID_PARAM)
       expect(10).assertEqual(formError.FormError.ERR_BIND_PROVIDER_FAILED)
@@ -60,7 +60,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_Form_Provider_Test_FormInfo_0100', 0, async (done: Function) => {
+    it('SUB_AA_Form_Provider_Test_FormInfo_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_Form_Provider_Test_FormInfo_0100");
       expect("ohos.extra.param.key.form_dimension").assertEqual(FormInfo.FormParam.DIMENSION_KEY)
       expect("ohos.extra.param.key.form_name").assertEqual(FormInfo.FormParam.NAME_KEY)
@@ -83,7 +83,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_CoverApiContext_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_CoverApiContext_0100', Level.LEVEL0, async (done: Function) => {
         console.log("------------start SUB_AA_OpenHarmony_CoverApi_0500-------------");
         let appContext = featureAbility.getContext()
         appContext.getExternalCacheDir((err, data) => {
@@ -99,7 +99,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_CoverApiContext_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_CoverApiContext_0200', Level.LEVEL0, async (done: Function) => {
         console.log("------------start SUB_AA_OpenHarmony_CoverApi_0500-------------");
         let appContext = featureAbility.getContext()
         appContext.getExternalCacheDir().then((data)=>{

@@ -85,7 +85,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_0200', 0, async function (done) {
+    it('DFX_DFR_Faultlogger_Interface_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0200----------------------------------");
         try {
             let ret1 = faultlogger.querySelfFaultLog("faultloggertestsummary01");
@@ -116,7 +116,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_0400', 0, async function (done) {
+    it('DFX_DFR_Faultlogger_Interface_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0400----------------------------------");
         try {
             let now = Date.now();
@@ -168,7 +168,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-     it('DFX_DFR_Faultlogger_Interface_0500', 0, async function (done) {
+     it('DFX_DFR_Faultlogger_Interface_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0500----------------------------------");
         try {
             const loopTimes = 10;
@@ -227,7 +227,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-     it('DFX_DFR_Faultlogger_Interface_0300', 0, async function (done) {
+     it('DFX_DFR_Faultlogger_Interface_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0300----------------------------------");
         try {
             let now = Date.now();
@@ -280,7 +280,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_0100', 0, async function (done) {
+    it('DFX_DFR_Faultlogger_Interface_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0100----------------------------------");
         try {
             let now = Date.now();
@@ -328,7 +328,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_0600', 0, function () {
+    it('DFX_DFR_Faultlogger_Interface_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0600----------------------------------");
         try {
             let ret = faultlogger.query("faultloggertestsummary06");
@@ -350,7 +350,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_0700', 0, function () {
+    it('DFX_DFR_Faultlogger_Interface_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0700----------------------------------");
         try {
             let ret = faultlogger.query(faultlogger.FaultType.JS_CRASH, "faultloggertestsummary07");
@@ -371,7 +371,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_0800', 0, function () {
+    it('DFX_DFR_Faultlogger_Interface_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0800----------------------------------");
         try {
             let ret = faultlogger.query();
@@ -392,7 +392,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-     it('DFX_DFR_Faultlogger_Interface_0900', 0, async function (done) {
+     it('DFX_DFR_Faultlogger_Interface_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0900----------------------------------");
         try {
             let subscribedEventCnt = 0;
@@ -450,7 +450,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-     it('DFX_DFR_Faultlogger_Interface_1000', 0, async function (done) {
+     it('DFX_DFR_Faultlogger_Interface_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_1000----------------------------------");
         try {
             let now = Date.now();
@@ -506,7 +506,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_1100', 0, async function (done) {
+    it('DFX_DFR_Faultlogger_Interface_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_1100----------------------------------");
         try {
             let now = Date.now();

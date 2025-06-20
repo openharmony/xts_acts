@@ -14,7 +14,7 @@
  */
 
 import image from '@ohos.multimedia.image'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { base64Image, scale2x1, translate3x1, rotate90, flipH, testBmp, testGif, crop3x3, scale1x4, setAlpha8, translate1x3 } from './testImg2'
 import { testPng, testJpg } from './testImg'
 import fs from "@ohos.file.fs";
@@ -692,7 +692,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100')
             try {
                 const imageSource = image.createImageSource(base64Image)
@@ -727,7 +728,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.width * 2) {
                     logger.log(`org width ${orgInfo.size.width}, new width ${newInfo.size.width} `);
@@ -749,7 +751,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.height != orgInfo.size.height * 4) {
                     logger.log(`org height ${orgInfo.size.height}, new height ${newInfo.size.height} `);
@@ -771,7 +774,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.height != orgInfo.size.height * 4) {
                     logger.log(`org height ${orgInfo.size.height}, new height ${newInfo.size.height} `);
@@ -793,7 +797,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.width + 3) {
                     logger.log(`org width ${orgInfo.size.width}, new width ${newInfo.size.width} `);
@@ -815,7 +820,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.height != orgInfo.size.height + 3) {
                     logger.log(`org height ${orgInfo.size.height}, new height ${newInfo.size.height} `);
@@ -837,7 +843,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.height != orgInfo.size.height + 3) {
                     logger.log(`org height ${orgInfo.size.height}, new height ${newInfo.size.height} `);
@@ -859,7 +866,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.height) {
                     logger.log(`org height ${orgInfo.size.height}, new width ${newInfo.size.width} `);
@@ -881,7 +889,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.height) {
                     logger.log(`org height ${orgInfo.size.height}, new width ${newInfo.size.width} `);
@@ -903,7 +912,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.width) {
                     logger.log(`org width ${orgInfo.size.width}, new width ${newInfo.size.width} `);
@@ -925,7 +935,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.width) {
                     logger.log(`org width ${orgInfo.size.width}, new width ${newInfo.size.width} `);
@@ -947,7 +958,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100')
             try {
                 let imageSource = genPicSource();
@@ -992,7 +1004,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testPng.buffer;
             await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100', 'promise', imageData);
         })
@@ -1008,7 +1021,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testPng.buffer;
             await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100', 'callback', imageData);
         })
@@ -1024,7 +1038,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testJpg.buffer;
             await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100', 'promise', imageData);
         })
@@ -1040,7 +1055,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testBmp.buffer;
             await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200', 'promise', imageData);
         })
@@ -1056,7 +1072,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testGif.buffer;
             await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300', 'promise', imageData);
         })
@@ -1072,7 +1089,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100')
             try {
                 var pixelMap = await genPixelMap()
@@ -1117,7 +1135,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100')
             try {
                 var pixelMap = await genPixelMap()
@@ -1162,7 +1181,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testPng.buffer;
             await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100', imageData)
         })
@@ -1177,7 +1197,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testPng.buffer;
             let decodingOptions = { fitDensity: 240 };
             await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100', imageData, decodingOptions)
@@ -1194,7 +1215,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testPng.buffer;
             await setDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200', imageData)
         })
@@ -1209,7 +1231,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testJpg.buffer;
             await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200', imageData)
         })
@@ -1224,7 +1247,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testBmp.buffer;
             await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300', imageData)
         })
@@ -1239,7 +1263,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testGif.buffer;
             await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400', imageData)
         })
@@ -1254,7 +1279,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testJpg.buffer;
             let decodingOptions = { fitDensity: 240 };
             await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300', imageData, decodingOptions)
@@ -1270,7 +1296,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testBmp.buffer;
             let decodingOptions = { fitDensity: 240 };
             await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400', imageData, decodingOptions)
@@ -1286,7 +1313,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testGif.buffer;
             let decodingOptions = { fitDensity: 240 };
             await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500', imageData, decodingOptions)
@@ -1303,7 +1331,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testJpg.buffer;
             await setDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100', imageData)
         })
@@ -1319,7 +1348,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testBmp.buffer;
             await setDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200', imageData)
         })
@@ -1335,7 +1365,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testGif.buffer;
             await setDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300', imageData)
         })
@@ -1352,7 +1383,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: 1, y: 1 };
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 orgInfo = region;
@@ -1377,7 +1409,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: 1, y: 1 };
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 orgInfo = region;
@@ -1399,7 +1432,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100', 'promise', 'scale', { a: 10 }, 1.0)
         })
 
@@ -1412,7 +1446,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200', 'promise', 'scale', 'a', 1.0)
         })
 
@@ -1425,7 +1460,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300', 'promise', 'scale', 1.0, null)
 
         })
@@ -1439,7 +1475,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400', 'promise', 'scale', 1.0, true)
 
         })
@@ -1453,7 +1490,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100', 'callback', 'scale', { a: 10 }, 1.0)
         })
 
@@ -1466,7 +1504,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200', 'callback', 'scale', 'a', 1.0)
         })
 
@@ -1479,7 +1518,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300', 'callback', 'scale', 1.0, null)
         })
 
@@ -1492,7 +1532,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400', 'callback', 'scale', 1.0, true)
         })
 
@@ -1505,7 +1546,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100', 'promise', 'translate', { a: 10 }, 1.0)
         })
 
@@ -1518,7 +1560,8 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200', 'promise', 'translate', 'a', 1.0)
         })
 
@@ -1531,7 +1574,8 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300', 'promise', 'translate', 1.0, null)
         })
 
@@ -1544,7 +1588,8 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400', 'promise', 'translate', 1.0, false)
         })
 
@@ -1557,7 +1602,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100', 'callback', 'translate', { a: 10 }, 1.0)
         })
 
@@ -1570,7 +1616,8 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200', 'callback', 'translate', 'a', 1.0)
         })
 
@@ -1583,7 +1630,8 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300', 'callback', 'translate', 1.0, null)
         })
 
@@ -1596,7 +1644,8 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400', 'callback', 'translate', 1.0, false)
         })
 
@@ -1609,7 +1658,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100', 'promise', 'rotate', 'a')
         })
 
@@ -1622,7 +1672,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200', 'promise', 'rotate', { a: 10 })
         })
 
@@ -1635,7 +1686,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300', 'promise', 'rotate', null)
         })
 
@@ -1648,7 +1700,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400', 'promise', 'rotate', false)
         })
 
@@ -1661,7 +1714,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100', 'callback', 'rotate', 'a')
         })
 
@@ -1674,7 +1728,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200', 'callback', 'rotate', { a: 10 })
         })
 
@@ -1687,7 +1742,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300', 'callback', 'rotate', null)
         })
 
@@ -1700,7 +1756,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400', 'callback', 'rotate', false)
         })
 
@@ -1713,7 +1770,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100', 'promise', 'flip', 'false', true)
         })
 
@@ -1726,7 +1784,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200', 'promise', 'flip', 1, true)
         })
 
@@ -1739,7 +1798,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300', 'promise', 'flip', true, { a: 10 })
         })
 
@@ -1752,7 +1812,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400', 'promise', 'flip', true, null)
         })
 
@@ -1765,7 +1826,8 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100', 'callback', 'flip', 'false', true)
         })
 
@@ -1778,7 +1840,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200', 'callback', 'flip', 1, true)
         })
 
@@ -1791,7 +1854,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300', 'callback', 'flip', true, { a: 10 })
         })
 
@@ -1804,7 +1868,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400', 'callback', 'flip', true, null)
         })
 
@@ -1818,7 +1883,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             setAlphaAbleErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100', 'a')
         })
 
@@ -1832,7 +1898,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             setAlphaAbleErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200', { a: 1 })
         })
 
@@ -1846,7 +1913,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             setAlphaAbleErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300', null)
         })
 
@@ -1860,7 +1928,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             setAlphaAbleErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400', 1)
         })
 
@@ -1876,7 +1945,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: -1, y: 1 };
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100', 'promise', 'crop', region)
         })
@@ -1893,7 +1963,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: 1, y: -1 };
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200', 'promise', 'crop', region)
         })
@@ -1910,7 +1981,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: 3, width: -3 }, x: 1, y: 1 };
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300', 'promise', 'crop', region)
         })
@@ -1927,7 +1999,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: -3, width: 3 }, x: 1, y: 1 };
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400', 'promise', 'crop', region)
         })
@@ -1944,7 +2017,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: -1, y: 1 };
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100', 'callback', 'crop', region)
         })
@@ -1961,7 +2035,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: 1, y: -1 };
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200', 'callback', 'crop', region)
         })
@@ -1978,7 +2053,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: 3, width: -3 }, x: 1, y: 1 };
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300', 'callback', 'crop', region)
         })
@@ -1995,7 +2071,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var region = { size: { height: -3, width: 3 }, x: 1, y: 1 };
             await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400', 'callback', 'crop', region)
         })
@@ -2010,7 +2087,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testGif.buffer;
             setDensityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100', imageData, null)
         })
@@ -2025,7 +2103,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testGif.buffer;
             setDensityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200', imageData, 'a')
         })
@@ -2040,7 +2119,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testGif.buffer;
             setDensityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300', imageData, true)
         })
@@ -2055,7 +2135,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testGif.buffer;
             setDensityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400', imageData, { a: 1 })
         })
@@ -2069,7 +2150,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100', { a: 1 }, 'Promise')
         })
 
@@ -2082,7 +2164,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200', 'a', 'Promise')
         })
 
@@ -2095,7 +2178,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300', null, 'Promise')
         })
 
@@ -2108,7 +2192,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400', 2, 'Promise')
         })
 
@@ -2121,7 +2206,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100', { a: 1 }, 'callback')
         })
 
@@ -2134,7 +2220,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200', 'a', 'callback')
         })
 
@@ -2147,7 +2234,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300', null, 'callback')
         })
 
@@ -2160,7 +2248,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400', 2, 'callback')
         })
 
@@ -2174,7 +2263,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSTRIDEALIGNMENT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSTRIDEALIGNMENT_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var imageData = testPng.buffer;
             await isStrideAlignmentTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSTRIDEALIGNMENT_0100', imageData)
         })
@@ -2188,7 +2278,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEPIXELMAPFROMSURFACE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEPIXELMAPFROMSURFACE_0100",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver == undefined) {
                 expect(false).assertTrue();
@@ -2262,7 +2353,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2288,7 +2380,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2314,7 +2407,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2340,7 +2434,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2366,7 +2461,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2392,7 +2488,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2418,7 +2515,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2444,7 +2542,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2470,7 +2569,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2496,7 +2596,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2522,7 +2623,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2548,7 +2650,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2574,7 +2677,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2600,7 +2704,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2626,7 +2731,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2652,7 +2758,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2678,7 +2785,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2704,7 +2812,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2730,7 +2839,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2756,7 +2866,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2782,7 +2893,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2808,7 +2920,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2834,7 +2947,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2860,7 +2974,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2886,7 +3001,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2912,7 +3028,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2938,7 +3055,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2964,7 +3082,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -2990,7 +3109,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3015,7 +3135,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3040,7 +3161,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3065,7 +3187,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3090,7 +3213,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3115,7 +3239,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3140,7 +3265,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3165,7 +3291,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800', 0, async function (done) {
+         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3190,7 +3317,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');
@@ -3215,7 +3343,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000')
             if (!isSupportHdr) {
                 logger.log('device is not support hdr');

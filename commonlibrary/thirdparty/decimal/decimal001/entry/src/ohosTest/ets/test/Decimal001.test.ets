@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType} from "@ohos/hypium";
 import { Decimal } from '@kit.ArkTS';
 type Rounding = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 type Value = string | number | Decimal;
@@ -89,7 +89,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toBinary_Func_001", 0, () => {
+    it("Decimal_toBinary_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             toExpNeg: -9e15,
             toExpPos: 9e15,
@@ -433,7 +433,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toDecimalPlaces_Func_002", 0, () => {
+    it("Decimal_toDecimalPlaces_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set({
             precision: 20,
             rounding: 7,
@@ -905,7 +905,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toDecimalPlaces_Func_003", 0, () => {
+    it("Decimal_toDecimalPlaces_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set({
             precision: 20,
             rounding: 7,
@@ -931,7 +931,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toExponential_Func_004", 0, () => {
+    it("Decimal_toExponential_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1378,7 +1378,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toExponential_Func_005", 0, () => {
+    it("Decimal_toExponential_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1404,7 +1404,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_exp_Func_006", 0, () => {
+    it("Decimal_exp_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -1470,7 +1470,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_exp_Func_007", 0, () => {
+    it("Decimal_exp_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -1543,7 +1543,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_exp_Func_008", 0, () => {
+    it("Decimal_exp_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -1569,7 +1569,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_minAndMax_Func_009", 0, () => {
+    it("Decimal_minAndMax_Func_009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1689,7 +1689,7 @@ export default function DecimalTest001() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_minAndMax_Func_010", 0, () => {
+    it("Decimal_minAndMax_Func_010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,

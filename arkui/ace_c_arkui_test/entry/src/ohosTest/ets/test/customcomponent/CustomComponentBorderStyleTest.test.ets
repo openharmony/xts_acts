@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderStyle001', 0, async (done: Function) => {
+    it('testCustomComponentBorderStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderStyle002', 0, async (done: Function) => {
+    it('testCustomComponentBorderStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderStyle003', 0, async (done: Function) => {
+    it('testCustomComponentBorderStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderStyle004', 0, async (done: Function) => {
+    it('testCustomComponentBorderStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderStyle005', 0, async (done: Function) => {
+    it('testCustomComponentBorderStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customComponentBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderStyle006', 0, async (done: Function) => {
+    it('testCustomComponentBorderStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderStyle006()).assertEqual(0)
       done()
     })

@@ -195,6 +195,13 @@ import NavigationLevelTest21 from './Navigation/NavigationLevel/NavigationLevelT
 import NavigationLevelTest22 from './Navigation/NavigationLevel/NavigationLevelTest22.test'
 import NavigationLevelTest23 from './Navigation/NavigationLevel/NavigationLevelTest23.test'
 import NavPathInfoIsEntry from './Navigation/NavPathInfoIsEntry.test'
+import GetStateByIndexTest from './UIObserver/GetStateByIndexTest.test'
+import UIObserverObserver4Test from './UIObserver/UIObserverObserver4Test.test'
+import UIObserverContext2Test from './UIObserver/UIObserverContext2Test.test'
+import UIObserverContext3Test from './UIObserver/UIObserverContext3Test.test'
+import UIObserverUpdateContextTest from './UIObserver/UIObserverUpdateContextTest.test'
+import PushNameRouterTest from './UIObserver/PushNameRouterTest.test'
+import RouterPageUpdateTest from './UIObserver/RouterPageUpdateTest.test'
 
 export default function testsuite() {
   NavigationApi1();
@@ -379,4 +386,12 @@ export default function testsuite() {
   NavPathStack21()
   NavPathStack22()
   Navigation_L0_11()
+
+  GetStateByIndexTest()
+  UIObserverObserver4Test()
+  UIObserverContext2Test()
+  UIObserverContext3Test()
+  UIObserverUpdateContextTest()
+  PushNameRouterTest()
+  RouterPageUpdateTest()
 }

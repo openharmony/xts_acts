@@ -4,19 +4,14 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Multimedia.Media.AVTranscoder",
-                    "SystemCapability.Multimedia.Media.AVMetadataExtractor",
-                    "SystemCapability.Multimedia.Media.AVImageGenerator",
-                    "SystemCapability.Multimedia.SystemSound.Core",
-                    "SystemCapability.Multimedia.AudioHaptic.Core",
-                    "SystemCapability.Multimedia.Media.SoundPool",
-                    "SystemCapability.Multimedia.Media.AVScreenCapture",
-                    "SystemCapability.Multimedia.Media.AudioPlayer",
-                    "SystemCapability.Multimedia.Media.VideoPlayer",
-                    "SystemCapability.Multimedia.Media.AudioRecorder",
-                    "SystemCapability.Multimedia.Media.VideoRecorder",
-                    "SystemCapability.Multimedia.Media.AVPlayer",
-                    "SystemCapability.Multimedia.Media.AVRecorder"
+                    "SystemCapability.Multimedia.Media.Muxer",
+                    "SystemCapability.Multimedia.Media.Spliter",
+                    "SystemCapability.Multimedia.Media.AudioCodec",
+                    "SystemCapability.Multimedia.Media.AudioDecoder",
+                    "SystemCapability.Multimedia.Media.AudioEncoder",
+                    "SystemCapability.Multimedia.Media.VideoDecoder",
+                    "SystemCapability.Multimedia.Media.VideoEncoder",
+                    "SystemCapability.Multimedia.Media.CodecBase"
                 ]
             }
         ]

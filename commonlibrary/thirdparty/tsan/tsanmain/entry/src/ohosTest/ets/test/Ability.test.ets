@@ -38,9 +38,9 @@ export default function abilityTest() {
      * @tc.desc       : test dataRace
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTsanDataRace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTsanDataRace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result: number = tsan.dataRace();
       expect(result).assertEqual(1);
     });
@@ -51,9 +51,9 @@ export default function abilityTest() {
      * @tc.desc       : test dataRace on vptr
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTsanDataRaceOnVptr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTsanDataRaceOnVptr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result: number = tsan.dataRaceOnVptr();
       expect(result).assertEqual(1);
     });
@@ -64,9 +64,9 @@ export default function abilityTest() {
      * @tc.desc       : test useAfterFree
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTsanUseAfterFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTsanUseAfterFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result: number = tsan.heapUseAfterFree();
       expect(result).assertEqual(1);
     });
@@ -77,9 +77,9 @@ export default function abilityTest() {
      * @tc.desc       : test useAfterFree virtual call
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTsanUseAfterFree002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTsanUseAfterFree002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result: number = tsan.virtualCallVSFree();
       expect(result).assertEqual(1);
     });
@@ -90,9 +90,9 @@ export default function abilityTest() {
      * @tc.desc       : test signalCheck unsafe call inside of asignal
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTsanSignalCheck001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTsanSignalCheck001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result: number = tsan.signalHandlerUnsafe();
       expect(result).assertEqual(1);
     });
@@ -103,9 +103,9 @@ export default function abilityTest() {
      * @tc.desc       : test signalCheck handler spoils errno
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTsanSignalCheck002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTsanSignalCheck002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result: number = tsan.signalHandlerError();
       expect(result).assertEqual(1);
     });

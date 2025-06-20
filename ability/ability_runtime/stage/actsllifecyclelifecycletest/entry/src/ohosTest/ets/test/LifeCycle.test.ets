@@ -15,7 +15,7 @@
 
 import hilog from '@ohos.hilog';
 import base from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import common from '@ohos.app.ability.common';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -23,7 +23,7 @@ import AbilityLifecycleCallback from '@ohos.app.ability.AbilityLifecycleCallback
 import { BusinessError } from '@ohos.base';
 
 const TAG: string = 'ActsAbilityRunTimeLifeCycleTest';
-let deviceType = '';
+let deviceSupport = '';
 const TEST_SUITE_NAME: string = 'ActsLifeCycleTest'
 function sleep(time:number):Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, time))
@@ -105,8 +105,8 @@ export default function abilityTest() {
 
     beforeEach(async (done:Function) => {
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} beforeEach...`);
-      deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} devicetype...${deviceType}`);
+      deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} deviceSupport...${deviceSupport}`);
       await sleep(1000);
       done()
     })
@@ -166,7 +166,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0100', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0100', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0100';
 
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -197,7 +197,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0500', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0500', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0500';
 
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -236,7 +236,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0600', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0600', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0600';
       let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -288,7 +288,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0700', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0700', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0700';
       let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -305,7 +305,7 @@ export default function abilityTest() {
       expect(listKeyTemp[1]).assertEqual("MainAbilityB onWindowStageCreate");
       expect(listKeyTemp[2]).assertEqual("MainAbilityB onAbilityForeground");
 
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME);
         listKeyTemp1 = JSON.stringify(listKeyTemp);
         expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
@@ -319,7 +319,7 @@ export default function abilityTest() {
       expect(transferStr0.indexOf("MainAbilityB onWindowStageDestroy") != -1).assertTrue();
       expect(transferStr0.indexOf("MainAbilityB onAbilityDestroy") != -1).assertTrue();
 
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         let last = getAbilityLastLifeCycle("MainAbilityA")
         expect(last).assertEqual("MainAbilityA onAbilityForeground");
       }
@@ -348,7 +348,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0800', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0800', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0800';
       let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -365,7 +365,7 @@ export default function abilityTest() {
       expect(listKeyTemp[1]).assertEqual("MainAbilityB onWindowStageCreate");
       expect(listKeyTemp[2]).assertEqual("MainAbilityB onAbilityForeground");
 
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
         listKeyTemp1 = JSON.stringify(listKeyTemp);
         expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
@@ -379,7 +379,7 @@ export default function abilityTest() {
       expect(transferStr0.indexOf("MainAbilityB onWindowStageDestroy") != -1).assertTrue();
       expect(transferStr0.indexOf("MainAbilityB onAbilityDestroy") != -1).assertTrue();
 
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         let last = getAbilityLastLifeCycle("MainAbilityA")
         expect(last).assertEqual("MainAbilityA onAbilityForeground");
       }
@@ -403,7 +403,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0900', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0900', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0900';
       let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -420,7 +420,7 @@ export default function abilityTest() {
       expect(listKeyTemp[1]).assertEqual("MainAbilityB onWindowStageCreate");
       expect(listKeyTemp[2]).assertEqual("MainAbilityB onAbilityForeground");
 
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
         listKeyTemp1 = JSON.stringify(listKeyTemp);
         expect(listKeyTemp1.indexOf("MainAbilityA onAbilityBackground") !== -1).assertTrue();
@@ -434,7 +434,7 @@ export default function abilityTest() {
       expect(transferStr0.indexOf("MainAbilityB onWindowStageDestroy") != -1).assertTrue();
       expect(transferStr0.indexOf("MainAbilityB onAbilityDestroy") != -1).assertTrue();
 
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         let last = getAbilityLastLifeCycle("MainAbilityA")
         expect(last).assertEqual("MainAbilityA onAbilityForeground");
       }
@@ -462,7 +462,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1000', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1000', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1000';
       let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
@@ -498,9 +498,9 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1100', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1100', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1100';
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         startAbilityTest("MainAbilityA", TEST_CASE_NAME)
         await sleep(1000);
         startAbilityTest("MainAbilityB", TEST_CASE_NAME)
@@ -535,7 +535,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1200', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1200', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1200';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
@@ -582,7 +582,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1300', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1300', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1300';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
@@ -612,7 +612,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1400', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1400', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1400';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
@@ -645,7 +645,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1500', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1500', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1500';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
@@ -692,7 +692,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1600', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1600', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1600';
       startAbilityTest("MainAbilityMultitonA", TEST_CASE_NAME)
       await sleep(1000);
@@ -749,7 +749,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1700', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1700', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1700';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
@@ -793,7 +793,7 @@ export default function abilityTest() {
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
       await sleep(1000);
       let last = getAbilityLastLifeCycle("MainAbilityB")
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         expect(last).assertEqual("MainAbilityB onAbilityBackground");
       }
 
@@ -809,7 +809,7 @@ export default function abilityTest() {
 
       await globalThis.abilityCContext.terminateSelf()
       await sleep(1000);
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         last = getAbilityLastLifeCycle("MainAbilityB")
         expect(last).assertEqual("MainAbilityB onAbilityForeground");
       }
@@ -835,7 +835,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1800', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1800', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1800';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
@@ -905,7 +905,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1900', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1900', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1900';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
@@ -928,7 +928,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2000', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2000', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2000';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
@@ -951,7 +951,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2100', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2100', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2100';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
@@ -974,7 +974,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2200', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2200', Level.LEVEL3, async (done: Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2200';
 
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
@@ -997,7 +997,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2300', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2300', Level.LEVEL3, async (done: Function) => {
       let templeStr:string[] = globalThis.willAbilityStageListKey.join(',');
 
       expect(templeStr.indexOf("MainAbilityA onAbilityWillCreate") != -1).assertTrue();

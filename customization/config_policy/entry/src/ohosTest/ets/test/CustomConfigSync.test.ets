@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import customConfig from '@ohos.customization.customConfig';
 
 export default function customConfigTest() {
@@ -28,7 +28,7 @@ export default function customConfigTest() {
        * @tc.type      : Function
        * @tc.level     : Level 0
        */
-      it('testGetChannelID_0010', 0, () => {
+      it('testGetChannelID_0010', Level.LEVEL0, () => {
           let paramValue: string = "Test-Hw";
           let channelId: string = customConfig.getChannelId();
           expect(paramValue).assertEqual(channelId);

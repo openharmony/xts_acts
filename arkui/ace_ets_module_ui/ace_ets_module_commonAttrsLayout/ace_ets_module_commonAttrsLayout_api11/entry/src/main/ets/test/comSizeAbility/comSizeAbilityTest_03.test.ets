@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
+import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -60,7 +60,7 @@ export default function comSizeAbilityTest_03() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_07', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_07', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_07 START')
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -107,7 +107,7 @@ export default function comSizeAbilityTest_03() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_08', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_08', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_08 START')
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -154,7 +154,7 @@ export default function comSizeAbilityTest_03() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_09', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_09', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_09 START')
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -201,7 +201,7 @@ export default function comSizeAbilityTest_03() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_10', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_10', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_10 START')
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

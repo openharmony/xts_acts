@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium";
 import router from "@ohos.router";
 import CommonFunc from '../../MainAbility/utils/Common';
 import {
@@ -29,7 +29,6 @@ import {
   WindowMode,
   PointerMatrix
 } from "@ohos.UiTest";
-
 export default function ParticleTest() {
   describe("ParticleTest", () => {
     beforeEach(async (done: Function) => {
@@ -57,7 +56,6 @@ export default function ParticleTest() {
       await CommonFunc.sleep(1000);
       console.info("ParticleTest after each called");
     });
-
     /**
      * @tc.number ParticleTest
      * @tc.name testBack
@@ -66,7 +64,7 @@ export default function ParticleTest() {
      * @tc.type
      * @tc.size
      */
-    it("ParticleTest_001", 0, async (done: Function) => {
+    it("ParticleTest_001", Level.LEVEL0, async (done: Function) => {
       console.info("[ParticleTest_001] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -79,8 +77,7 @@ export default function ParticleTest() {
       console.info("[ParticleTest_001] END");
       done();
     });
-
-    it("ParticleTest_002", 0, async (done: Function) => {
+    it("ParticleTest_002", Level.LEVEL0, async (done: Function) => {
       console.info("[ParticleTest_002] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -93,8 +90,7 @@ export default function ParticleTest() {
       console.info("[ParticleTest_002] END");
       done();
     });
-
-    it("ParticleTest_003", 0, async (done: Function) => {
+    it("ParticleTest_003", Level.LEVEL0, async (done: Function) => {
       console.info("[ParticleTest_003] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -107,8 +103,7 @@ export default function ParticleTest() {
       console.info("[ParticleTest_003] END");
       done();
     });
-
-    it("ParticleTest_004", 0, async (done: Function) => {
+    it("ParticleTest_004", Level.LEVEL0, async (done: Function) => {
       console.info("[ParticleTest_004] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

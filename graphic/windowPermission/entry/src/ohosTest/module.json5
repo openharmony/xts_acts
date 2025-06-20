@@ -44,6 +44,18 @@
             ]
           }
         ]
+      },
+      {
+        "name": "StartTestAbility",
+        "srcEntry": "./ets/testability/StartTestAbility.ets",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "launchType": "multiton",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "orientation": "portrait",
       }
     ]
   }

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium'
 import continuationManager from '@ohos.continuation.continuationManager';
 
 const TEST_DEVICE_ID = "test_deviceId";
@@ -111,7 +111,7 @@ export default function continuationManagerTest() {
         * @tc.type:   Function
         * @tc.level   Level3
         */
-        it('SUB_DMS_AbilityConstant_0100', 0, async (done) => {
+        it('SUB_DMS_AbilityConstant_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
             console.log("----------------------SUB_DMS_AbilityConstant_0100 start----------------------");
             try {
                 console.log("--------------------PREPARE_CONTINUATION--------------------" + abilityConstant.LaunchReason.PREPARE_CONTINUATION);
@@ -131,7 +131,7 @@ export default function continuationManagerTest() {
         * @tc.type:  Function
         * @tc.level  Level0
         */
-        it('testRegister001', 0, async function (done) {
+        it('testRegister001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister001 start----------------------");
             try {
                 continuationManager.register(function (err, data) {
@@ -156,7 +156,7 @@ export default function continuationManagerTest() {
         * @tc.type:  Function
         * @tc.level  Level0
         */
-        it('testRegister002', 0, async function (done) {
+        it('testRegister002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister002 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -188,7 +188,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister003', 0, async function (done) {
+        it('testRegister003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister003 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -220,7 +220,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister004', 0, async function (done) {
+        it('testRegister004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister004 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -252,7 +252,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister005', 0, async function (done) {
+        it('testRegister005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister005 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -285,7 +285,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister006', 0, async function (done) {
+        it('testRegister006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister006 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -322,7 +322,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister007', 0, async function (done) {
+        it('testRegister007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister007 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -357,7 +357,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister008', 0, async function (done) {
+        it('testRegister008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister008 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -392,7 +392,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister009', 0, async function (done) {
+        it('testRegister009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister009 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -427,7 +427,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister010', 0, async function (done) {
+        it('testRegister010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister010 start----------------------");
             try {
                 continuationManager.register({
@@ -461,7 +461,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegister011', 0, async function (done) {
+        it('testRegister011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegister011 start----------------------");
             try {
                 continuationManager.register().then((data) => {
@@ -489,7 +489,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation001', 0, async function (done) {
+        it('testRegisterContinuation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation001 start----------------------");
             try {
                 continuationManager.registerContinuation(function (err, data) {
@@ -514,7 +514,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation002', 0, async function (done) {
+        it('testRegisterContinuation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation002 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -546,7 +546,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation003', 0, async function (done) {
+        it('testRegisterContinuation003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation003 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -578,7 +578,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation004', 0, async function (done) {
+        it('testRegisterContinuation004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation004 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -611,7 +611,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation005', 0, async function (done) {
+        it('testRegisterContinuation005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation005 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -644,7 +644,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation006', 0, async function (done) {
+        it('testRegisterContinuation006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation006 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -680,7 +680,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation007', 0, async function (done) {
+        it('testRegisterContinuation007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation007 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -715,7 +715,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation008', 0, async function (done) {
+        it('testRegisterContinuation008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation008 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -750,7 +750,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation009', 0, async function (done) {
+        it('testRegisterContinuation009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation009 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -785,7 +785,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testRegisterContinuation010', 0, async function (done) {
+        it('testRegisterContinuation010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testRegisterContinuation010 start----------------------");
             try {
                 continuationManager.registerContinuation().then((data) => {
@@ -813,7 +813,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregister001', 0, async function (done) {
+        it('testUnregister001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregister001 start----------------------");
             try {
                 continuationManager.unregister(token, function (err, data) {
@@ -844,7 +844,7 @@ export default function continuationManagerTest() {
         * @tc.type:  Function
         * @tc.level  Level0
         */
-        it('testUnregister002', 0, async function (done) {
+        it('testUnregister002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregister002 start----------------------");
             try {
                 continuationManager.unregister(null, function (err, data) {
@@ -871,7 +871,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregister003', 0, async function (done) {
+        it('testUnregister003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregister003 start----------------------");
             try {
                 continuationManager.unregister(300, function (err, data) {
@@ -897,7 +897,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregister004', 0, async function (done) {
+        it('testUnregister004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregister004 start----------------------");
             try {
                 continuationManager.unregister(300, function (err) {
@@ -921,7 +921,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregister005', 0, async function (done) {
+        it('testUnregister005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregister005 start----------------------");
             try {
                 continuationManager.unregister(token, function (err) {
@@ -945,7 +945,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregister006', 0, async function (done) {
+        it('testUnregister006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregister006 start----------------------");
             try {
                 continuationManager.unregister(token).then((data) => {
@@ -973,7 +973,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregisterContinuation001', 0, async function (done) {
+        it('testUnregisterContinuation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregisterContinuation001 start----------------------");
             try {
                 continuationManager.unregisterContinuation(token, function (err, data) {
@@ -999,7 +999,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregisterContinuation002', 0, async function (done) {
+        it('testUnregisterContinuation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregisterContinuation002 start----------------------");
             try {
                 continuationManager.unregisterContinuation("invalid token", function (err, data) {
@@ -1025,7 +1025,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregisterContinuation003', 0, async function (done) {
+        it('testUnregisterContinuation003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregisterContinuation003 start----------------------");
             try {
                 continuationManager.unregisterContinuation(300, function (err, data) {
@@ -1051,7 +1051,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregisterContinuation004', 0, async function (done) {
+        it('testUnregisterContinuation004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregisterContinuation004 start----------------------");
             try {
                 continuationManager.unregisterContinuation(300, function (err) {
@@ -1075,7 +1075,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregisterContinuation005', 0, async function (done) {
+        it('testUnregisterContinuation005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregisterContinuation005 start----------------------");
             try {
                 continuationManager.unregisterContinuation(token, function (err) {
@@ -1099,7 +1099,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUnregisterContinuation006', 0, async function (done) {
+        it('testUnregisterContinuation006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUnregisterContinuation006 start----------------------");
             try {
                 continuationManager.unregisterContinuation(token).then((data) => {
@@ -1127,7 +1127,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn001', 0, async function (done) {
+        it('testOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn001 start----------------------");
             try {
                 continuationManager.on("deviceConnect", function (data) {
@@ -1151,7 +1151,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn002', 0, async function (done) {
+        it('testOn002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn002 start----------------------");
             try {
                 continuationManager.on("deviceDisconnect", function (data) {
@@ -1175,7 +1175,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn003', 0, async function (done) {
+        it('testOn003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn003 start----------------------");
             try {
                 continuationManager.on("deviceSelected", "invalid token", function (data) {
@@ -1199,7 +1199,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn004', 0, async function (done) {
+        it('testOn004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn004 start----------------------");
             try {
                 continuationManager.on("deviceUnselected", "invalid token", function (data) {
@@ -1223,7 +1223,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn005', 0, async function (done) {
+        it('testOn005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn005 start----------------------");
             try {
                 continuationManager.on("deviceConnect", continuationManager.ContinuationResult, function (data) {
@@ -1247,7 +1247,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn006', 0, async function (done) {
+        it('testOn006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn006 start----------------------");
             try {
                 continuationManager.on("deviceSelected", token, (data) => {
@@ -1272,7 +1272,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn007', 0, async function (done) {
+        it('testOn007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn007 start----------------------");
             try {
                 continuationManager.on("deviceUnselected", token, (data) => {
@@ -1297,7 +1297,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn008', 0, async function (done) {
+        it('testOn008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn008 start----------------------");
             try {
                 continuationManager.on("deviceUnselected", (err) => {
@@ -1322,7 +1322,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOn009', 0, async function (done) {
+        it('testOn009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn009 start----------------------");
             try {
                 continuationManager.on("deviceSelected", token, (data) => {
@@ -1350,7 +1350,7 @@ export default function continuationManagerTest() {
         * @tc.type:  Function
         * @tc.level  Level0
         */
-        it('testOn010', 0, async function (done) {
+        it('testOn010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOn010 start----------------------");
             try {
                 continuationManager.on("deviceUnselected", token, (data) => {
@@ -1377,7 +1377,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOff001', 0, async function (done) {
+        it('testOff001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOff001 start----------------------");
             try {
                 continuationManager.off("deviceConnect", function (data) {
@@ -1401,7 +1401,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOff002', 0, async function (done) {
+        it('testOff002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOff002 start----------------------");
             try {
                 continuationManager.off("deviceDisconnect", function (data) {
@@ -1425,7 +1425,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOff003', 0, async function (done) {
+        it('testOff003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOff003 start----------------------");
             try {
                 continuationManager.off("deviceSelected", "invalid token");
@@ -1446,7 +1446,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOff004', 0, async function (done) {
+        it('testOff004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOff004 start----------------------");
             try {
                 continuationManager.off("deviceUnselected", "invalid token");
@@ -1467,7 +1467,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOff005', 0, async function (done) {
+        it('testOff005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOff005 start----------------------");
             try {
                 continuationManager.off("deviceSelected", token);
@@ -1491,7 +1491,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testOff006', 0, async function (done) {
+        it('testOff006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testOff006 start----------------------");
             try {
                 continuationManager.off("deviceUnselected", token);
@@ -1515,7 +1515,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager001', 0, async function (done) {
+        it('testStartDeviceManager001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager001 start----------------------");
             try {
                 continuationManager.startDeviceManager(token, function (err, data) {
@@ -1541,7 +1541,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager002', 0, async function (done) {
+        it('testStartDeviceManager002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager002 start----------------------");
             try {
                 continuationManager.startDeviceManager(null, function (err, data) {
@@ -1567,7 +1567,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager003', 0, async function (done) {
+        it('testStartDeviceManager003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager003 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1605,7 +1605,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager004', 0, async function (done) {
+        it('testStartDeviceManager004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager004 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1638,7 +1638,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager005', 0, async function (done) {
+        it('testStartDeviceManager005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager005 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1671,7 +1671,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager006', 0, async function (done) {
+        it('testStartDeviceManager006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager006 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1699,7 +1699,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager007', 0, async function (done) {
+        it('testStartDeviceManager007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager007 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1732,7 +1732,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager008', 0, async function (done) {
+        it('testStartDeviceManager008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager008 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1767,7 +1767,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartDeviceManager009', 0, async function (done) {
+        it('testStartDeviceManager009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartDeviceManager009 start----------------------");
             try {
                 continuationManager.startDeviceManager(token).then((data) => {
@@ -1795,7 +1795,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager001', 0, async function (done) {
+        it('testStartContinuationDeviceManager001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager001 start----------------------");
             try {
                 continuationManager.startContinuationDeviceManager(token, function (err, data) {
@@ -1821,7 +1821,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager002', 0, async function (done) {
+        it('testStartContinuationDeviceManager002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager002 start----------------------");
             try {
                 continuationManager.startContinuationDeviceManager("invalid token", function (err, data) {
@@ -1847,7 +1847,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager003', 0, async function (done) {
+        it('testStartContinuationDeviceManager003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager003 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1880,7 +1880,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager004', 0, async function (done) {
+        it('testStartContinuationDeviceManager004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager004 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1913,7 +1913,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager005', 0, async function (done) {
+        it('testStartContinuationDeviceManager005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager005 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1946,7 +1946,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager006', 0, async function (done) {
+        it('testStartContinuationDeviceManager006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager006 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -1974,7 +1974,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager007', 0, async function (done) {
+        it('testStartContinuationDeviceManager007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager007 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -2007,7 +2007,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager008', 0, async function (done) {
+        it('testStartContinuationDeviceManager008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager008 start----------------------");
             try {
                 let continuationExtraParams = {
@@ -2042,7 +2042,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testStartContinuationDeviceManager009', 0, async function (done) {
+        it('testStartContinuationDeviceManager009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testStartContinuationDeviceManager009 start----------------------");
             try {
                 continuationManager.startContinuationDeviceManager(token).then((data) => {
@@ -2070,7 +2070,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus001', 0, async function (done) {
+        it('testUpdateConnectStatus001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus001 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, TEST_DEVICE_ID, TEST_CONNECT_STATUS, function (err, data) {
@@ -2096,7 +2096,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus002', 0, async function (done) {
+        it('testUpdateConnectStatus002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus002 start----------------------");
             try {
                 continuationManager.updateConnectStatus(null, TEST_DEVICE_ID, TEST_CONNECT_STATUS, function (err, data) {
@@ -2122,7 +2122,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus003', 0, async function (done) {
+        it('testUpdateConnectStatus003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus003 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, TEST_DEVICE_ID, -2, function (err, data) {
@@ -2148,7 +2148,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus004', 0, async function (done) {
+        it('testUpdateConnectStatus004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus004 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, TEST_DEVICE_ID,
@@ -2177,7 +2177,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus005', 0, async function (done) {
+        it('testUpdateConnectStatus005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus005 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, TEST_DEVICE_ID,
@@ -2206,7 +2206,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus006', 0, async function (done) {
+        it('testUpdateConnectStatus006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus006 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, TEST_DEVICE_ID,
@@ -2235,7 +2235,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus007', 0, async function (done) {
+        it('testUpdateConnectStatus007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus007 start----------------------");
             let token = -1;
             try {
@@ -2265,7 +2265,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus008', 0, async function (done) {
+        it('testUpdateConnectStatus008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus008 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, TEST_DEVICE_ID,
@@ -2294,7 +2294,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus009', 0, async function (done) {
+        it('testUpdateConnectStatus009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus009 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, continuationManager.DeviceConnectState.CONNECTED)
@@ -2323,7 +2323,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus010', 0, async function (done) {
+        it('testUpdateConnectStatus010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus010 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, TEST_DEVICE_ID)
@@ -2352,7 +2352,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus011', 0, async function (done) {
+        it('testUpdateConnectStatus011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus011 start----------------------");
             try {
                 continuationManager.updateConnectStatus(token, TEST_DEVICE_ID, continuationManager.DeviceConnectState.aaaa)
@@ -2381,7 +2381,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus012', 0, async function (done) {
+        it('testUpdateConnectStatus012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus012 start----------------------");
             let token = -1;
             try {
@@ -2411,7 +2411,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateConnectStatus013', 0, async function (done) {
+        it('testUpdateConnectStatus013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateConnectStatus013 start----------------------");
             try {
                 continuationManager.updateConnectStatus(TEST_DEVICE_ID, continuationManager.DeviceConnectState.CONNECTED)
@@ -2440,7 +2440,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateContinuationState001', 0, async function (done) {
+        it('testUpdateContinuationState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateContinuationState001 start----------------------");
             try {
                 continuationManager.updateContinuationState(token, TEST_DEVICE_ID, TEST_CONNECT_STATUS, function (err, data) {
@@ -2466,7 +2466,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateContinuationState002', 0, async function (done) {
+        it('testUpdateContinuationState002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateContinuationState002 start----------------------");
             try {
                 continuationManager.updateContinuationState("invalid token", TEST_DEVICE_ID, TEST_CONNECT_STATUS, function (err, data) {
@@ -2492,7 +2492,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateContinuationState003', 0, async function (done) {
+        it('testUpdateContinuationState003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateContinuationState003 start----------------------");
             try {
                 continuationManager.updateContinuationState(token, TEST_DEVICE_ID, -2, function (err, data) {
@@ -2518,7 +2518,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateContinuationState004', 0, async function (done) {
+        it('testUpdateContinuationState004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateContinuationState004 start----------------------");
             try {
                 continuationManager.updateContinuationState(token, TEST_DEVICE_ID,
@@ -2547,7 +2547,7 @@ export default function continuationManagerTest() {
          * @tc.type:  Function
          * @tc.level  Level0
          */
-        it('testUpdateContinuationState005', 0, async function (done) {
+        it('testUpdateContinuationState005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateContinuationState005 start----------------------");
             try {
                 continuationManager.updateContinuationState(token, TEST_DEVICE_ID,
@@ -2576,7 +2576,7 @@ export default function continuationManagerTest() {
         * @tc.type:  Function
         * @tc.level  Level0
         */
-        it('testUpdateContinuationState006', 0, async function (done) {
+        it('testUpdateContinuationState006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("----------------------testUpdateContinuationState006 start----------------------");
             try {
                 continuationManager.updateContinuationState(token, TEST_DEVICE_ID,

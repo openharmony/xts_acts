@@ -32,6 +32,7 @@ struct RenderFit1 {
       Text("RESIZE_COVER").id("RESIZE_COVER").renderFit(RenderFit.RESIZE_COVER).margin(5)
       Text("RESIZE_COVER_TOP_LEFT").id("RESIZE_COVER_TOP_LEFT").renderFit(RenderFit.RESIZE_COVER_TOP_LEFT).margin(5)
       Text("RESIZE_COVER_BOTTOM_RIGHT").id("RESIZE_COVER_BOTTOM_RIGHT").renderFit(RenderFit.RESIZE_COVER_BOTTOM_RIGHT).margin(5)
+      Text("TOP").id("RenderFit_TOP").renderFit(RenderFit.TOP).margin(5)
     }.width('90%').height("90%")
   }
 }

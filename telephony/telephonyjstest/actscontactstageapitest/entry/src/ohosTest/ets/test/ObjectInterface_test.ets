@@ -16,7 +16,7 @@
 import contact from '@ohos.contact';
 import sms from '@ohos.telephony.sms';
 import featureAbility from '@ohos.ability.featureAbility';
-import { afterAll, afterEach, beforeAll, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import uitest from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -192,7 +192,98 @@ export default function ObjectInterfaceTest() {
         contact.Attribute.ATTR_SIP_ADDRESS, contact.Attribute.ATTR_WEBSITE]
     };
     let cdata:contact.Contact = contactData;
-    it("contactsApi_contactdata_test_100", 0, async (done:Function) => {
+    it("contactsApi_queryMyCard_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.queryMyCard(context,(err, data) => {
+        if (err) {
+          console.info("contactsApi_queryMyCard_test_100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("contactsApi_queryMyCard_test_100  data = " + JSON.stringify(data));
+        done();
+      });
+      sleep(500);
+    });
+    it("contactsApi_queryMyCard_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.queryMyCard(context,attr, (err, data) => {
+        if (err) {
+          console.info("contactsApi_queryMyCard_test_200  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("contactsApi_queryMyCard_test_200  data = " + JSON.stringify(data));
+        done();
+      });
+      sleep(500);
+    });
+    it("contactsApi_queryMyCard_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      let promise = contact.queryMyCard(context,attr);
+      promise.then((data) => {
+        console.info("contactsApi_queryMyCard_test_200  data = " + JSON.stringify(data));
+        done();
+      }).catch((err:BusinessError) => {
+        console.info("contactsApi_queryMyCard_test_200  err = " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+        return;
+      });
+      sleep(500);
+    });
+    it("contactsApi_isMyCard_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.addContact(context,contactData, (err, data) => {
+        if (err) {
+          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
+        expect(data > 0).assertTrue();
+        contact.isMyCard(context,data, (err, data) => {
+          if (err) {
+            console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
+            expect(false).assertTrue();
+            done();
+            return;
+          }
+          console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
+          done();
+        });
+      });
+      sleep(500);
+    });
+    it("contactsApi_isMyCard_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      sleep(1000);
+      contact.addContact(context,contactData, (err, data) => {
+        if (err) {
+          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
+        expect(data > 0).assertTrue();
+        let promise = contact.isMyCard(context,data);
+        promise.then((data) => {
+          console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
+          done();
+        }).catch((err:BusinessError) => {
+          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        });
+      });
+      sleep(500);
+    });
+    it("contactsApi_contactdata_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info("contactData.id" + contactData.id);
       console.info("contactData.id" + (contactData.id == 0));
       expect(contactData.id == 0).assertTrue();
@@ -209,7 +300,7 @@ export default function ObjectInterfaceTest() {
       expect(contactData.imAddresses != null).assertTrue();
       done();
     });
-    it("contactsApi_contactdata_test_200", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       expect(contactData.phoneNumbers != null).assertTrue();
       expect(contactData.portrait != null).assertTrue();
       expect(contactData.postalAddresses != null).assertTrue();
@@ -223,7 +314,7 @@ export default function ObjectInterfaceTest() {
       expect(attr.attributes != null).assertTrue();
       done();
     });
-    it("contactsApi_contactdata_test_300", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       if (contactData.emails!=undefined){
         expect(contactData.emails[0].email != null).assertTrue();
         expect(contactData.emails[0].labelName != null).assertTrue();
@@ -241,7 +332,7 @@ export default function ObjectInterfaceTest() {
       }
       done();
     });
-    it("contactsApi_contactdata_test_400", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       if (cdata.imAddresses!=undefined){
         let imAddresses:contact.ImAddress[]=cdata.imAddresses;
         expect(imAddresses[0].imAddress === null).assertFalse();
@@ -262,7 +353,7 @@ export default function ObjectInterfaceTest() {
       }
       done();
     });
-    it("contactsApi_contactdata_test_500", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       if (cdata.nickName!=undefined){
         let nickName:contact.NickName=cdata.nickName;
         expect(nickName === null).assertFalse();
@@ -288,7 +379,7 @@ export default function ObjectInterfaceTest() {
       }
       done();
     });
-    it("contactsApi_contactdata_test_600", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       if (cdata.postalAddresses!=undefined){
         let postalAddresses:contact.PostalAddress[]=cdata.postalAddresses;
         console.info("contactData.postalAddresses.city != null"
@@ -307,7 +398,7 @@ export default function ObjectInterfaceTest() {
       }
       done();
     });
-    it("contactsApi_contactdata_test_700", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       if (cdata.relations!=undefined){
         let relations:contact.Relation[]=cdata.relations;
         console.info("contactData.relations.labelName != null"
@@ -328,7 +419,7 @@ export default function ObjectInterfaceTest() {
       }
       done();
     });
-    it("contactsApi_contactdata_test_800", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       if (cdata.contactAttributes!=undefined){
         let contactAttributes:contact.ContactAttributes=cdata.contactAttributes;
         expect(contact.Contact.INVALID_CONTACT_ID == -1).assertTrue();
@@ -353,7 +444,7 @@ export default function ObjectInterfaceTest() {
 
       done();
     });
-    it("contactsApi_contactdata_test_900", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       expect(contact.Email.CUSTOM_LABEL == 0).assertTrue();
       expect(contact.Email.EMAIL_HOME == 1).assertTrue();
       expect(contact.Email.EMAIL_WORK == 2).assertTrue();
@@ -375,7 +466,7 @@ export default function ObjectInterfaceTest() {
       expect(contact.ImAddress.INVALID_LABEL_ID == -2).assertTrue();
       done();
     });
-    it("contactsApi_contactdata_test_1000", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       expect(contact.PhoneNumber.CUSTOM_LABEL == 0).assertTrue();
       expect(contact.PhoneNumber.NUM_HOME == 1).assertTrue();
       expect(contact.PhoneNumber.NUM_MOBILE == 2).assertTrue();
@@ -405,7 +496,7 @@ export default function ObjectInterfaceTest() {
       expect(contact.PostalAddress.INVALID_LABEL_ID == -1).assertTrue();
       done();
     });
-    it("contactsApi_contactdata_test_1100", 0, async (done:Function) => {
+    it("contactsApi_contactdata_test_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       expect(contact.Relation.CUSTOM_LABEL == 0).assertTrue();
       expect(contact.Relation.RELATION_ASSISTANT == 1).assertTrue();
       expect(contact.Relation.RELATION_BROTHER == 2).assertTrue();
@@ -434,7 +525,7 @@ export default function ObjectInterfaceTest() {
      * @tc.name Query key information
      * @tc.desc Function test
      */
-    it("contactsApi_query_key_test_2300", 0, async (done:Function) => {
+    it("contactsApi_query_key_test_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       let rawContactId = await contact.addContact(context,contactData);
@@ -456,7 +547,7 @@ export default function ObjectInterfaceTest() {
      * @tc.name Query key information
      * @tc.desc Function test
      */
-    it("contactsApi_query_key_test_2400", 0, async (done:Function) => {
+    it("contactsApi_query_key_test_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       let rawContactId = await contact.addContact(context,contactData);
@@ -479,7 +570,7 @@ export default function ObjectInterfaceTest() {
      * @tc.name contactsApi_insert error
      * @tc.desc Function test
      */
-    it("abnormal_contactsApi_insert_test_2800", 0, async (done:Function) => {
+    it("abnormal_contactsApi_insert_test_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let contactDataError:contact.Contact = {};
       try {
@@ -499,7 +590,7 @@ export default function ObjectInterfaceTest() {
      * @tc.name contactsApi_query_contact error
      * @tc.desc Function test
      */
-    it("abnormal_contactsApi_query_contact_test_3100", 0, async (done:Function) => {
+    it("abnormal_contactsApi_query_contact_test_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let queryId = "-1";
       try {
@@ -524,7 +615,7 @@ export default function ObjectInterfaceTest() {
      * @tc.name contactsApi_query_email error
      * @tc.desc Function test
      */
-    it("abnormal_contactsApi_query_email_test_3300", 0, async (done:Function) => {
+    it("abnormal_contactsApi_query_email_test_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let email = "email2222";
       try {
@@ -543,7 +634,7 @@ export default function ObjectInterfaceTest() {
      * @tc.name contactsApi_query_phoneNumber error
      * @tc.desc Function test
      */
-    it("abnormal_contactsApi_query_phoneNumber_test_3400", 0, async (done:Function) => {
+    it("abnormal_contactsApi_query_phoneNumber_test_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let phoneNumber = "19999999";
       try {
@@ -563,7 +654,7 @@ export default function ObjectInterfaceTest() {
      * @tc.name contactsApi_query_key error
      * @tc.desc Function test
      */
-    it("abnormal_contactsApi_query_key_test_3600", 0, async (done:Function) => {
+    it("abnormal_contactsApi_query_key_test_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let idtest = -1;
       try {
@@ -577,7 +668,7 @@ export default function ObjectInterfaceTest() {
       }
       sleep(500);
     });
-    it("contactsApi_addContact_test_100", 0, async (done:Function) => {
+    it("contactsApi_addContact_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -615,7 +706,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_addContact_test_200", 0, async (done:Function) => {
+    it("contactsApi_addContact_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       let promise = contact.addContact(context,contactData);
@@ -653,7 +744,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContact_test_100", 0, async (done:Function) => {
+    it("contactsApi_queryContact_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let holder:contact.Holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
@@ -704,7 +795,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContact_test_200", 0, async (done:Function) => {
+    it("contactsApi_queryContact_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -741,7 +832,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContact_test_300", 0, async (done:Function) => {
+    it("contactsApi_queryContact_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -786,7 +877,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContact_test_400", 0, async (done:Function) => {
+    it("contactsApi_queryContact_test_400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -823,7 +914,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContact_test_500", 0, async (done:Function) => {
+    it("contactsApi_queryContact_test_500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -860,7 +951,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContacts_test_100", 0, async (done:Function) => {
+    it("contactsApi_queryContacts_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -887,7 +978,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContacts_test_200", 0, async (done:Function) => {
+    it("contactsApi_queryContacts_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -914,7 +1005,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContacts_test_300", 0, async (done:Function) => {
+    it("contactsApi_queryContacts_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -941,7 +1032,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContacts_test_400", 0, async (done:Function) => {
+    it("contactsApi_queryContacts_test_400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -968,7 +1059,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContacts_test_500", 0, async (done:Function) => {
+    it("contactsApi_queryContacts_test_500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -995,7 +1086,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByPhoneNumber_test_000", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByPhoneNumber_test_000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1022,7 +1113,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByPhoneNumber_test_100", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByPhoneNumber_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1049,7 +1140,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByPhoneNumber_test_200", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByPhoneNumber_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1076,7 +1167,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByPhoneNumber_test_300", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByPhoneNumber_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1103,7 +1194,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByPhoneNumber_test_400", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByPhoneNumber_test_400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1130,7 +1221,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByEmail_test_100", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByEmail_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1157,7 +1248,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByEmail_test_200", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByEmail_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1184,7 +1275,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByEmail_test_300", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByEmail_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1211,7 +1302,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByEmail_test_400", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByEmail_test_400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1238,7 +1329,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryContactsByEmail_test_500", 0, async (done:Function) => {
+    it("contactsApi_queryContactsByEmail_test_500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1265,7 +1356,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryGroups_test_100", 0, async (done:Function) => {
+    it("contactsApi_queryGroups_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1292,7 +1383,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryGroups_test_200", 0, async (done:Function) => {
+    it("contactsApi_queryGroups_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1319,7 +1410,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryGroups_test_300", 0, async (done:Function) => {
+    it("contactsApi_queryGroups_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1346,7 +1437,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryHolders_test_100", 0, async (done:Function) => {
+    it("contactsApi_queryHolders_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       contact.queryHolders(context,(err, data) => {
         if (err) {
@@ -1361,7 +1452,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryHolders_test_200", 0, async (done:Function) => {
+    it("contactsApi_queryHolders_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let promise = contact.queryHolders(context);
       promise.then((data) => {
@@ -1376,7 +1467,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryKey_test_100", 0, async (done:Function) => {
+    it("contactsApi_queryKey_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1403,7 +1494,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryKey_test_200", 0, async (done:Function) => {
+    it("contactsApi_queryKey_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1430,7 +1521,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryKey_test_300", 0, async (done:Function) => {
+    it("contactsApi_queryKey_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       sleep(500);
       let context: Context = AppStorage.get('context') as Context;
       contact.addContact(context,contactData, (err, data) => {
@@ -1457,49 +1548,8 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryMyCard_test_100", 0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      contact.queryMyCard(context,(err, data) => {
-        if (err) {
-          console.info("contactsApi_queryMyCard_test_100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("contactsApi_queryMyCard_test_100  data = " + JSON.stringify(data));
-        done();
-      });
-      sleep(500);
-    });
-    it("contactsApi_queryMyCard_test_200", 0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      contact.queryMyCard(context,attr, (err, data) => {
-        if (err) {
-          console.info("contactsApi_queryMyCard_test_200  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("contactsApi_queryMyCard_test_200  data = " + JSON.stringify(data));
-        done();
-      });
-      sleep(500);
-    });
-    it("contactsApi_queryMyCard_test_300", 0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      let promise = contact.queryMyCard(context,attr);
-      promise.then((data) => {
-        console.info("contactsApi_queryMyCard_test_200  data = " + JSON.stringify(data));
-        done();
-      }).catch((err:BusinessError) => {
-        console.info("contactsApi_queryMyCard_test_200  err = " + JSON.stringify(err));
-        expect(false).assertTrue();
-        done();
-        return;
-      });
-      sleep(500);
-    });
-    it("contactsApi_updateContact_test_100", 0, async (done:Function) => {
+
+    it("contactsApi_updateContact_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1571,7 +1621,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_updateContact_test_200", 0, async (done:Function) => {
+    it("contactsApi_updateContact_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1643,7 +1693,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_updateContact_test_300", 0, async (done:Function) => {
+    it("contactsApi_updateContact_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1715,7 +1765,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_isLocalContact_test_100", 0, async (done:Function) => {
+    it("contactsApi_isLocalContact_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1741,7 +1791,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_isLocalContact_test_200", 0, async (done:Function) => {
+    it("contactsApi_isLocalContact_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1767,59 +1817,8 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_isMyCard_test_100", 0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      sleep(500);
-      contact.addContact(context,contactData, (err, data) => {
-        sleep(500);
-        if (err) {
-          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
-        expect(data > 0).assertTrue();
-        contact.isMyCard(context,data, (err, data) => {
-          if (err) {
-            console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
-            expect(false).assertTrue();
-            done();
-            return;
-          }
-          console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
-          done();
-        });
-      });
-      sleep(500);
-    });
-    it("contactsApi_isMyCard_test_200", 0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      sleep(500);
-      contact.addContact(context,contactData, (err, data) => {
-        sleep(500);
-        if (err) {
-          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
-        expect(data > 0).assertTrue();
-        let promise = contact.isMyCard(context,data);
-        promise.then((data) => {
-          console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
-          done();
-        }).catch((err:BusinessError) => {
-          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        });
-      });
-      sleep(500);
-    });
-    it("contactsApi_sendMessage_test_100", 0, async (done:Function) => {
+
+    it("contactsApi_sendMessage_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let sendCallback = (err:BusinessError, data:sms.ISendShortMessageCallback) => {
         console.info("contactsApi_sendMessage_test_100  err = " + JSON.stringify(err));
@@ -1849,7 +1848,7 @@ export default function ObjectInterfaceTest() {
       done();
       sleep(500);
     });
-    it("contactsApi_selectContact_test_100", 0, async (done:Function) => {
+    it("contactsApi_selectContact_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {
@@ -1872,7 +1871,7 @@ export default function ObjectInterfaceTest() {
         });
       });
     });
-    it("contactsApi_selectContact_test_200", 0, async (done:Function) => {
+    it("contactsApi_selectContact_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context,contactData, (err, data) => {

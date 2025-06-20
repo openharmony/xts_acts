@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEventManager'
 import {BusinessError} from "@ohos.base";
 import Want from '@ohos.app.ability.Want';
@@ -37,7 +37,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: Under the same account, UIAbility can call the current account Ability application with Call.
      */
-    it('Acts_CrossUserCall_0100',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0100', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_CrossUserCall_0100 start');
@@ -84,7 +84,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: Under the same account, ServiceExtension can call the current account Ability application with Call.
      */
-    it('Acts_CrossUserCall_0200',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0200', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_CrossUserCall_0200 start');
@@ -131,7 +131,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: System applications UIAbility can Call call other account Ability applications under cross-account.
      */
-    it('Acts_CrossUserCall_0300',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0300', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_CrossUserCall_0300 start');
@@ -179,7 +179,7 @@ export default function abilityTest() {
      * @tc.desc: System applications ServiceExtension can Call call other account Ability applications under
      *           cross-account.
      */
-    it('Acts_CrossUserCall_0400',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0400', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_CrossUserCall_0400 start');
@@ -226,7 +226,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: Normal applications UIAbility cannot Call call other account Ability applications under cross-account.
      */
-    it('Acts_CrossUserCall_0500',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0500', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_CrossUserCall_0500 start');
@@ -274,7 +274,7 @@ export default function abilityTest() {
      * @tc.desc: Normal applications ServiceExtension cannot Call call other account Ability applications
      *           under cross-account.
      */
-    it('Acts_CrossUserCall_0600',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0600', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_CrossUserCall_0600 start');
@@ -322,7 +322,7 @@ export default function abilityTest() {
      * @tc.desc: System applications without permission under cross-account UIAbility cannot Call to call
      *           other account Ability applications.
      */
-    it('Acts_CrossUserCall_0700',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0700', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_CrossUserCall_0700 start');
@@ -370,7 +370,7 @@ export default function abilityTest() {
      * @tc.desc: System applications without permission under cross-account ServiceExtension cannot Call
      *           to call other account Ability applications
      */
-    it('Acts_CrossUserCall_0800',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0800', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_CrossUserCall_0800 start');
@@ -417,7 +417,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: UIAbility uses a Call call with the want parameter null.
      */
-    it('Acts_CrossUserCall_0900',0, async (done:Function) => {
+    it('Acts_CrossUserCall_0900', Level.LEVEL0, async (done: Function) => {
       globalThis.abilityContext.startAbilityByCallWithAccount(null, -1).then((caller:Caller) => {
         console.info("====>Acts_CrossUserCall_0900 caller: " + caller);
         done();
@@ -433,7 +433,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: ServiceExtension uses a Call call with the want parameter null.
      */
-    it('Acts_CrossUserCall_1000',0, async (done:Function) => {
+    it('Acts_CrossUserCall_1000', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info("====>Acts_CrossUserCall_1000");
@@ -480,7 +480,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: UIAbility uses a Call call with the want parameter undefined.
      */
-    it('Acts_CrossUserCall_1100',0, (done:Function) => {
+    it('Acts_CrossUserCall_1100', Level.LEVEL0, (done:Function) => {
       globalThis.abilityContext.startAbilityByCallWithAccount(undefined, -1).then((caller:Caller) => {
         console.info("====>Acts_CrossUserCall_1100 caller:  " + caller);
         done();
@@ -496,7 +496,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: ServiceExtension uses a Call call with the want parameter undefined.
      */
-    it('Acts_CrossUserCall_1200',0, async (done:Function) => {
+    it('Acts_CrossUserCall_1200', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       commonEvent.createSubscriber(ACTS_CrossCallFunction).then((data) => {
@@ -543,7 +543,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: UIAbility uses the want parameter to start a Call call with error information.
      */
-    it('Acts_CrossUserCall_1300',0, () => {
+    it('Acts_CrossUserCall_1300', Level.LEVEL0, () => {
       let want:Want = {
         bundleName: "com.xxxx.xxxx",
         abilityName: "xxxx",
@@ -562,7 +562,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: ServiceExtension uses the want parameter to start a Call call with error information.
      */
-    it('Acts_CrossUserCall_1400',0, async (done:Function) => {
+    it('Acts_CrossUserCall_1400', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       commonEvent.createSubscriber(ACTS_CrossCallFunction).then((data) => {
@@ -608,7 +608,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: UIAbility uses a Call call with the accountId parameter null.
      */
-    it('Acts_CrossUserCall_1500',0, async (done:Function) => {
+    it('Acts_CrossUserCall_1500', Level.LEVEL0, async (done: Function) => {
       let want:Want = {
         bundleName: 'com.acts.calleeabilityrely',
         abilityName: 'EntryAbility',
@@ -631,7 +631,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: ServiceExtension uses a Call call with the accountId parameter null.
      */
-    it('Acts_CrossUserCall_1600',0, async (done:Function) => {
+    it('Acts_CrossUserCall_1600', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       commonEvent.createSubscriber(ACTS_CrossCallFunction).then((data) => {
@@ -678,7 +678,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: UIAbility uses a Call call with the accountId parameter undefined.
      */
-    it('Acts_CrossUserCall_1700',0, async (done:Function) => {
+    it('Acts_CrossUserCall_1700', Level.LEVEL0, async (done: Function) => {
       let want:Want = {
         bundleName: "com.acts.actscallability",
         abilityName: "ServiceAbility",
@@ -701,7 +701,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: ServiceExtension uses a Call call with the accountId parameter undefined.
      */
-    it('Acts_CrossUserCall_1800',0, async (done:Function) => {
+    it('Acts_CrossUserCall_1800', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false;
       commonEvent.createSubscriber(ACTS_CrossCallFunction).then((data) => {
@@ -748,7 +748,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: UIAbility uses the accountId parameter to call Call for which an ID value does not exist.
      */
-    it('Acts_CrossUserCall_1900',0, async (done:Function) => {
+    it('Acts_CrossUserCall_1900', Level.LEVEL0, async (done: Function) => {
       let want:Want = {
         bundleName: "com.acts.actscallability",
         abilityName: "ServiceAbility",
@@ -771,7 +771,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: ServiceExtension uses the accountId parameter to call Call for which an ID value does not exist.
      */
-    it('Acts_CrossUserCall_2000',0, async (done:Function) => {
+    it('Acts_CrossUserCall_2000', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let flag = false
       commonEvent.createSubscriber(ACTS_CrossCallFunction).then((data) => {
@@ -817,7 +817,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: The Caller.release interface of UIAbility under the same account executes normally.
      */
-    it('Acts_CrossUserCall_2900',0, async (done:Function) => {
+    it('Acts_CrossUserCall_2900', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.info('====>Acts_CrossUserCall_2900 start');
@@ -872,7 +872,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: The Caller.release interface of ServiceExtension under the same account executes normally.
      */
-    it('Acts_CrossUserCall_3000',0, async (done:Function) => {
+    it('Acts_CrossUserCall_3000', Level.LEVEL0, async (done: Function) => {
       let subscriber:commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.info('====>Acts_CrossUserCall_3000 start');

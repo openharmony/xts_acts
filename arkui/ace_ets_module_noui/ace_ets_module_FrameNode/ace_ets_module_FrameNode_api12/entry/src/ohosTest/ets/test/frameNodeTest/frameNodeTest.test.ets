@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -29,7 +29,6 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function frameNodeTest() {
   describe('frameNodeTest', () => {
     beforeEach(async (done: Function) => {
@@ -61,7 +60,9 @@ export default function frameNodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeTest_0100', 0, async (done: Function) => {
+
+
+    it('frameNodeTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -83,7 +84,9 @@ export default function frameNodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeTest_0200', 0, async (done: Function) => {
+
+
+    it('frameNodeTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -105,7 +108,9 @@ export default function frameNodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeTest_0300', 0, async (done: Function) => {
+
+
+    it('frameNodeTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -127,7 +132,9 @@ export default function frameNodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeTest_0400', 0, async (done: Function) => {
+
+
+    it('frameNodeTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeTest_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -149,7 +156,9 @@ export default function frameNodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeTest_0500', 0, async (done: Function) => {
+
+
+    it('frameNodeTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeTest_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -177,7 +186,9 @@ export default function frameNodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeTest_0600', 0, async (done: Function) => {
+
+
+    it('frameNodeTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeTest_0600 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -193,4 +204,3 @@ export default function frameNodeTest() {
     });
   })
 }
-

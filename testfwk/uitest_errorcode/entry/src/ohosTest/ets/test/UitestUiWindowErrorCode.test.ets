@@ -963,5 +963,50 @@ export default function uitestUiWindowErrorTest() {
       console.log(`${TestTag}, test_UiWindow_close_17000005 end`);
     })
 
+    /*
+    * @tc.number: uitestUiWindowErrorTest_038
+    * @tc.name: test_UiWindow_getDisplayId_17000002
+    * @tc.desc: getDisplayId 17000002 test.
+    */
+    it('test_UiWindow_getDisplayId_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_UiWindow_getDisplayId_17000002 start`);
+      try {
+        let driver:Driver = Driver.create();
+        let window = await driver.findWindow({actived: true});
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await window.getDisplayId();
+      }catch (e) {
+        console.log(`${TestTag}, test_UiWindow_getDisplayId_17000002 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_UiWindow_getDisplayId_17000002 end`);
+    })
+
+    /*
+   * @tc.number: uitestUiWindowErrorTest_039
+   * @tc.name: test_UiWindow_getDisplayId_17000004
+   * @tc.desc: getDisplayId 17000004 test.
+   */
+    it('test_UiWindow_getDisplayId_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_UiWindow_getDisplayId_17000004 start`);
+      try {
+        let driver: Driver = Driver.create();
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let window = await driver.findWindow({bundleName: 'com.uitestScene.acts'});
+        await driver.delayMs(waitUiReadyMs);
+        await stopApplication('com.uitestScene.acts');
+        await driver.delayMs(waitUiReadyMs);
+        await window.getDisplayId();
+        await driver.delayMs(waitUiReadyMs);
+      }catch (e) {
+        console.log(`${TestTag}, test_UiWindow_getDisplayId_17000004 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(InvisibleErrorCode);
+      }
+      await sleep(waitUiReadyMs);
+      console.log(`${TestTag}, test_UiWindow_getDisplayId_17000004 end`);
+    })
   })
 }

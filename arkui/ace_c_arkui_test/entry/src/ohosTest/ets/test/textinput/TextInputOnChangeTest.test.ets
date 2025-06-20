@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function textInputOnChangeTest() {
@@ -34,7 +34,7 @@ export default function textInputOnChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputOnChange001', 0, async (done: Function) => {
+    it('testTextInputOnChange001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnChangeTextInput')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnChangeTextInput').$attrs.backgroundColor).assertEqual('#FF0000FF')
@@ -49,7 +49,7 @@ export default function textInputOnChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputOnChange002', 0, async (done: Function) => {
+    it('testTextInputOnChange002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnChangeTextInputDisabled');
       await Utils.sleep(1000);
       expect(Utils.getComponentInfoByKey('OnChangeTextInputDisabled').$attrs.backgroundColor).assertEqual('#FFFF0000')

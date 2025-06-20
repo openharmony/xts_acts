@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 
@@ -80,7 +80,7 @@ export default function test() {
          * @tc.name: Failed to add form when parameter ability is wrong.
          * @tc.desc: Failed to create form when verifying that the parameter (formId) of creating form is wrong.
          */
-        it(`FMS_acquireForm_3800`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_3800`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_3800 start`);
 
             let onErrorCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -94,31 +94,33 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_3800 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhost",
-                    abilityName: "com.ohos.st.formsystemhost.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "Form_Js001",
-                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
-                        "ability": "",
-                        "moduleName": "entry",
-                        "temporary": false,
-                        "isCreate": true
+            setTimeout(async () => {
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhost",
+                        abilityName: "com.ohos.st.formsystemhost.MainAbility",
+                        parameters: {
+                            "formId": "0",
+                            "name": "Form_Js001",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "",
+                            "moduleName": "entry",
+                            "temporary": false,
+                            "isCreate": true
+                        }
                     }
-                }
-            }).then((res) => {
-                console.info(`FMS_acquireForm_3800 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect(res).assertEqual(0);
-                done()
-            }).catch((err: BusinessError) => {
-                console.info(`FMS_acquireForm_3800 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                options.code = err.code;
-                options.data = 'FMS_FormOnError_commonEvent';
-                commonEvent.publish("FMS_FormOnError_commonEvent", options, () => {
-                    console.info(`FMS_acquireForm_3800 onErrorCallBack publish start`)})
-            });
+                }).then((res) => {
+                    console.info(`FMS_acquireForm_3800 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    expect(res).assertEqual(0);
+                    done()
+                }).catch((err: BusinessError) => {
+                    console.info(`FMS_acquireForm_3800 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    options.code = err.code;
+                    options.data = 'FMS_FormOnError_commonEvent';
+                    commonEvent.publish("FMS_FormOnError_commonEvent", options, () => {
+                        console.info(`FMS_acquireForm_3800 onErrorCallBack publish start`)})
+                });
+            }, 500);
             console.info(`FMS_acquireForm_3800 featureAbility.startAbility end`);
         });
 
@@ -127,7 +129,7 @@ export default function test() {
          * @tc.name: Failed to add form when parameter bundleName is wrong.
          * @tc.desc: Failed to create form when verifying that the parameter (bundleName) of creating form is wrong.
          */
-        it(`FMS_acquireForm_3900`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_3900`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_3900 start`);
 
             let onErrorCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -141,31 +143,33 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_3900 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhost",
-                    abilityName: "com.ohos.st.formsystemhost.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "Form_Js001",
-                        "bundle": "",
-                        "ability": "FormAbility",
-                        "moduleName": "entry",
-                        "temporary": false,
-                        "isCreate": true
+            setTimeout(async () => {
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhost",
+                        abilityName: "com.ohos.st.formsystemhost.MainAbility",
+                        parameters: {
+                            "formId": "0",
+                            "name": "Form_Js001",
+                            "bundle": "",
+                            "ability": "FormAbility",
+                            "moduleName": "entry",
+                            "temporary": false,
+                            "isCreate": true
+                        }
                     }
-                }
-            }).then((res) => {
-                console.info(`FMS_acquireForm_3900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect(res).assertEqual(0);
-                done();
-            }).catch((err: BusinessError) => {
-                console.info(`FMS_acquireForm_3900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                options.code = err.code;
-                options.data = 'FMS_FormOnError_commonEvent';
-                commonEvent.publish("FMS_FormOnError_commonEvent", options, () => {
-                    console.info(`FMS_acquireForm_3800 onErrorCallBack publish start`)})
-            });
+                }).then((res) => {
+                    console.info(`FMS_acquireForm_3900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    expect(res).assertEqual(0);
+                    done();
+                }).catch((err: BusinessError) => {
+                    console.info(`FMS_acquireForm_3900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    options.code = err.code;
+                    options.data = 'FMS_FormOnError_commonEvent';
+                    commonEvent.publish("FMS_FormOnError_commonEvent", options, () => {
+                        console.info(`FMS_acquireForm_3800 onErrorCallBack publish start`)})
+                });
+            }, 500);
             console.info(`FMS_acquireForm_3900 featureAbility.startAbility end`);
         });
 
@@ -174,7 +178,7 @@ export default function test() {
          * @tc.name: When the form specifications are inconsistent, creating the cached form fails.
          * @tc.desc: Return failed.
          */
-        it(`FMS_acquireForm_4000`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4000`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4000 start`);
 
             let onErrorCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -227,31 +231,32 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.info(`FMS_acquireForm_4000 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhost",
-                    abilityName: "com.ohos.st.formsystemhost.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "Form_Js001",
-                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
-                        "ability": "FormAbility",
-                        "moduleName": "entry",
-                        "dimension": "1",
-                        "temporary": false,
-                        "isCreate": true
+            setTimeout(async () => {
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhost",
+                        abilityName: "com.ohos.st.formsystemhost.MainAbility",
+                        parameters: {
+                            "formId": "0",
+                            "name": "Form_Js001",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
+                            "moduleName": "entry",
+                            "dimension": "1",
+                            "temporary": false,
+                            "isCreate": true
+                        }
                     }
-                }
-            }).then((res) => {
-                console.info(`FMS_acquireForm_4000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                options.code = res;
-                options.data = 'FMS_FormOnAcquired_commonEvent';
-                commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
-                    console.info(`FMS_acquireForm_4000 onAcquiredCallBack publish start`)})
-            }).catch((err: BusinessError) => {
-                console.info(`FMS_acquireForm_4000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-
-            });
+                }).then((res) => {
+                    console.info(`FMS_acquireForm_4000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    options.code = res;
+                    options.data = 'FMS_FormOnAcquired_commonEvent';
+                    commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
+                        console.info(`FMS_acquireForm_4000 onAcquiredCallBack publish start`)})
+                }).catch((err: BusinessError) => {
+                    console.info(`FMS_acquireForm_4000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                });
+            }, 500);
             console.info(`FMS_acquireForm_4000 featureAbility.startAbility end`);
         });
 
@@ -260,7 +265,7 @@ export default function test() {
          * @tc.name: Success to add form when parameter formName is blank.
          * @tc.desc: Success to create form when verifying that the parameter (formName) of creating form is success.
          */
-        it(`FMS_acquireForm_4200`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4200 start`);
 
             let onAcquiredCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -290,30 +295,31 @@ export default function test() {
 
             commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhost",
-                    abilityName: "com.ohos.st.formsystemhost.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "",
-                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
-                        "ability": "FormAbility",
-                        "moduleName": "entry",
-                        "temporary": false,
-                        "isCreate": true
+            setTimeout(async () => {
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhost",
+                        abilityName: "com.ohos.st.formsystemhost.MainAbility",
+                        parameters: {
+                            "formId": "0",
+                            "name": "",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
+                            "moduleName": "entry",
+                            "temporary": false,
+                            "isCreate": true
+                        }
                     }
-                }
-            }).then((res) => {
-                console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                options.code = res;
-                options.data = 'FMS_FormSupply_commonEvent';
-                commonEvent.publish("FMS_FormSupply_commonEvent", options, () => {
-                    console.info(`FMS_acquireForm_4200 onSupplyCallBack publish start`)})
-            }).catch((err: BusinessError) => {
-                console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-            });
-
+                }).then((res) => {
+                    console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    options.code = res;
+                    options.data = 'FMS_FormSupply_commonEvent';
+                    commonEvent.publish("FMS_FormSupply_commonEvent", options, () => {
+                        console.info(`FMS_acquireForm_4200 onSupplyCallBack publish start`)})
+                }).catch((err: BusinessError) => {
+                    console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                });
+            }, 500); 
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility end`);
         });
 
@@ -322,7 +328,7 @@ export default function test() {
          * @tc.name: Success to add form when parameter dimension is passed.
          * @tc.desc: Success to create form when verifying that the parameter (dimension) of creating form.
          */
-        it(`FMS_acquireForm_4300`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4300 start`);
             let onAcquiredCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) =>{
                 console.info("!!!====>FMS_acquireForm_4300 onAcquiredCallBack data:====>" + JSON.stringify(data));
@@ -335,30 +341,31 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.info(`FMS_acquireForm_4300 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhosti",
-                    abilityName: "com.ohos.st.formsystemhosti.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "Form_Js001",
-                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
-                        "ability": "FormAbility",
-                        "moduleName": "entry",
-                        "temporary": false,
-                        "isCreate": true
+            setTimeout(async () => {
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhosti",
+                        abilityName: "com.ohos.st.formsystemhosti.MainAbility",
+                        parameters: {
+                            "formId": "0",
+                            "name": "Form_Js001",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
+                            "moduleName": "entry",
+                            "temporary": false,
+                            "isCreate": true
+                        }
                     }
-                }
-            }).then((res) => {
-                console.info(`FMS_acquireForm_4300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                options.code = res;
-                options.data = 'FMS_FormOnAcquired_commonEvent';
-                commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
-                    console.info(`FMS_acquireForm_4300 onAcquiredCallBack publish start`)})
-            }).catch((err: BusinessError) => {
-                console.info(`FMS_acquireForm_4300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-
-            });
+                }).then((res) => {
+                    console.info(`FMS_acquireForm_4300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    options.code = res;
+                    options.data = 'FMS_FormOnAcquired_commonEvent';
+                    commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
+                        console.info(`FMS_acquireForm_4300 onAcquiredCallBack publish start`)})
+                }).catch((err: BusinessError) => {
+                    console.info(`FMS_acquireForm_4300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                });
+            }, 500);
             console.info(`FMS_acquireForm_4300 featureAbility.startAbility end`);
         });
 
@@ -367,7 +374,7 @@ export default function test() {
          * @tc.name: Failed to add form when parameter dimension is not exist.
          * @tc.desc: Failed to create form when verifying that the parameter (dimension) of creating form is wrong.
          */
-        it(`FMS_acquireForm_4400`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4400 start`);
 
             let onErrorCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -381,32 +388,34 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_4400 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhosti",
-                    abilityName: "com.ohos.st.formsystemhosti.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "Form_Js001",
-                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
-                        "ability": "FormAbility",
-                        "moduleName": "entry",
-                        "dimension": "6",
-                        "temporary": false,
-                        "isCreate": true
+            setTimeout(async () => {
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhosti",
+                        abilityName: "com.ohos.st.formsystemhosti.MainAbility",
+                        parameters: {
+                            "formId": "0",
+                            "name": "Form_Js001",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
+                            "moduleName": "entry",
+                            "dimension": "6",
+                            "temporary": false,
+                            "isCreate": true
+                        }
                     }
-                }
-            }).then((res) => {
-                console.info(`FMS_acquireForm_4400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect(res).assertEqual(0);
-                done();
-            }).catch((err: BusinessError) => {
-                console.info(`FMS_acquireForm_4400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                options.code = err.code;
-                options.data = 'FMS_FormOnError_commonEvent';
-                commonEvent.publish("FMS_FormOnError_commonEvent", options, () => {
-                    console.info(`FMS_acquireForm_4300 onErrorCallBack publish start`)})
-            });
+                }).then((res) => {
+                    console.info(`FMS_acquireForm_4400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    expect(res).assertEqual(0);
+                    done();
+                }).catch((err: BusinessError) => {
+                    console.info(`FMS_acquireForm_4400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    options.code = err.code;
+                    options.data = 'FMS_FormOnError_commonEvent';
+                    commonEvent.publish("FMS_FormOnError_commonEvent", options, () => {
+                        console.info(`FMS_acquireForm_4300 onErrorCallBack publish start`)})
+                });
+            }, 500);
             console.info(`FMS_acquireForm_4400 featureAbility.startAbility end`);
         });
 
@@ -415,7 +424,7 @@ export default function test() {
          * @tc.name: Cast temp form when the formId is created formId.
          * @tc.desc: When the verification formId is set to 0, the form is created failed.
          */
-        it(`FMS_acquireForm_4900`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4900`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4900 start`);
 
             let onCastCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -471,29 +480,31 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.info(`FMS_acquireForm_4900 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhost",
-                    abilityName: "com.ohos.st.formsystemhost.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "Form_Js001",
-                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
-                        "ability": "FormAbility",
-                        "moduleName": "entry",
-                        "temporary": false,
-                        "isCreate": true
+            setTimeout(async () => {
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhost",
+                        abilityName: "com.ohos.st.formsystemhost.MainAbility",
+                        parameters: {
+                            "formId": "0",
+                            "name": "Form_Js001",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
+                            "moduleName": "entry",
+                            "temporary": false,
+                            "isCreate": true
+                        }
                     }
-                }
-            }).then((res) => {
-                console.info(`FMS_acquireForm_4900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                options.code = res;
-                options.data = 'FMS_FormOnAcquired_commonEvent';
-                commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
-                    console.info(`FMS_acquireForm_4900 onAcquiredCallBack publish start`)})
-            }).catch((err: BusinessError) => {
-                console.info(`FMS_acquireForm_4900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-            });
+                }).then((res) => {
+                    console.info(`FMS_acquireForm_4900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    options.code = res;
+                    options.data = 'FMS_FormOnAcquired_commonEvent';
+                    commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
+                        console.info(`FMS_acquireForm_4900 onAcquiredCallBack publish start`)})
+                }).catch((err: BusinessError) => {
+                    console.info(`FMS_acquireForm_4900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                });
+            }, 500);
             console.info(`FMS_acquireForm_4900 featureAbility.startAbility end`);
         });
     });

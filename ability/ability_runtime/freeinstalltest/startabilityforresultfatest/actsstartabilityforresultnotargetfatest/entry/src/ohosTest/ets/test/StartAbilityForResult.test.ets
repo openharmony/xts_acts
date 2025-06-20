@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import featureAbility from "@ohos.ability.featureAbility";
 import wantConstant from '@ohos.ability.wantConstant';
@@ -78,7 +78,7 @@ export default function StartAbilityForResult() {
          * @tc.desc: Function test
          * @tc.level   0
          */
-        it("FreeInstall_FA_StartAbilityForResult_2700", 0, async (done:Function) => {
+        it("FreeInstall_FA_StartAbilityForResult_2700", Level.LEVEL0, async (done:Function) => {
             console.log("------------start FreeInstall_FA_StartAbilityForResult_2700-------------");
             let TAG = "FreeInstall_FA_StartAbilityForResult_2700";
             let details :ability.AbilityResult = {} as ability.AbilityResult;
@@ -111,7 +111,7 @@ export default function StartAbilityForResult() {
          * @tc.desc: Function test
          * @tc.level   0
          */
-        it("FreeInstall_FA_StartAbilityForResult_2800", 0, async (done:Function) => {
+        it("FreeInstall_FA_StartAbilityForResult_2800", Level.LEVEL0, async (done:Function) => {
             console.log("------------start FreeInstall_FA_StartAbilityForResult_2800-------------");
             let TAG = "FreeInstall_FA_StartAbilityForResult_2800";
             let cmd6 = "bm install -p data/test/AtomizationResultFaEntry.hap";
@@ -149,7 +149,7 @@ export default function StartAbilityForResult() {
          * @tc.desc: Function test
          * @tc.level   0
          */
-        it("FreeInstall_FA_StartAbilityForResult_2900", 0, async (done:Function) => {
+        it("FreeInstall_FA_StartAbilityForResult_2900", Level.LEVEL0, async (done:Function) => {
             console.log("------------start FreeInstall_FA_StartAbilityForResult_2900-------------");
             let TAG = "FreeInstall_FA_StartAbilityForResult_2900";
             let cmd7 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationResultFaEntry.hap";

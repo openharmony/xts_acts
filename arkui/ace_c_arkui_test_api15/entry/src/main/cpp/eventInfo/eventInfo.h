@@ -28,8 +28,10 @@ public:
     static napi_value TestEventInfoGetRawDelta002(napi_env env, napi_callback_info info);
     static napi_value TestEventInfoGetPressedButtons003(napi_env env, napi_callback_info info);
     static napi_value TestEventInfoGetTargetDisplayId004(napi_env env, napi_callback_info info);
-    static napi_value GetResult(napi_env env, napi_callback_info info);
-    static std::vector<int32_t> result;
+    static napi_value GetResultTouch(napi_env env, napi_callback_info info);
+    static napi_value GetResultMove(napi_env env, napi_callback_info info);
+    static std::vector<int32_t> resultTouch;
+    static std::vector<int32_t> resultMove;
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_XTS_DRAG_TEST_H

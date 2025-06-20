@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { afterEach, beforeAll, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -70,7 +70,7 @@ export default function abilityDelegatorStage() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_12700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_12700', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12700 begin');
       try {
@@ -107,7 +107,7 @@ export default function abilityDelegatorStage() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_12800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_12800', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12800 begin');
       try {
@@ -145,7 +145,7 @@ export default function abilityDelegatorStage() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_12900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_12900', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12900 begin');
 
@@ -201,7 +201,7 @@ export default function abilityDelegatorStage() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_13000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_13000', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityTools_AbilityDelegator_Stage_13000 begin');
       await sleep(1000);
@@ -258,7 +258,7 @@ export default function abilityDelegatorStage() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21900', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21900 begin');
       await sleep(1000);
@@ -295,7 +295,7 @@ export default function abilityDelegatorStage() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_22000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_22000', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityTools_AbilityDelegator_Stage_22000 begin');
 

@@ -32,7 +32,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_subscribeManagedEventSync_001", 0, async (done: Function) => {
+    it("test_subscribeManagedEventSync_001", Level.LEVEL0, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         adminManager.subscribeManagedEventSync(SELFWANT, SUBSCRIBE_EVENTS);
@@ -53,7 +53,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_unsubscribeManagedEventSync_001", 0, async (done: Function) => {
+    it("test_unsubscribeManagedEventSync_001", Level.LEVEL0, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         adminManager.unsubscribeManagedEventSync(SELFWANT, SUBSCRIBE_EVENTS);
@@ -74,7 +74,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_setDelegatedPolicies_001", 0, async (done: Function) => {
+    it("test_setDelegatedPolicies_001", Level.LEVEL0, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         adminManager.setDelegatedPolicies(SELFWANT, BUNDLENAME1, DELEGATED_POLICIES);
@@ -95,7 +95,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDelegatedPolicies_001", 0, async (done: Function) => {
+    it("test_getDelegatedPolicies_001", Level.LEVEL0, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         adminManager.getDelegatedPolicies(SELFWANT, BUNDLENAME1);
@@ -116,7 +116,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDelegatedBundleNames_001", 0, async (done: Function) => {
+    it("test_getDelegatedBundleNames_001", Level.LEVEL0, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         adminManager.getDelegatedBundleNames(SELFWANT, DELEGATED_POLICIES[0]);
@@ -137,7 +137,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startadminprovision_001", Level.LEVEL2, async (done: Function) => {
+    it("test_startadminprovision_001", Level.LEVEL0, async (done: Function) => {
       try {
         adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
           AppStorage.get("context"), PARAMETERS_LOWER_BOUND);

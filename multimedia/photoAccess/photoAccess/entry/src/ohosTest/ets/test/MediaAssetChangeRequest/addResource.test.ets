@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { driveFn, fetchOption, getPermission, photoKeys, sleep } from '../common'
 import common from '@ohos.app.ability.common'
 
@@ -38,7 +38,7 @@ export default function addResourceChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('add_resource_change_request_000', 0, async (done: Function) => {
+    it('add_resource_change_request_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'add_resource_change_request_000';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.IMAGE);
@@ -70,7 +70,7 @@ export default function addResourceChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('add_resource_change_request_001', 2, async (done: Function) => {
+    it('add_resource_change_request_001', Level.LEVEL2, async (done: Function) => {
       let testNum = 'add_resource_change_request_001';
       try {
         let photoType = photoAccessHelper.PhotoType.VIDEO;
@@ -98,7 +98,7 @@ export default function addResourceChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('add_resource_change_request_002', 0, async (done: Function) => {
+    it('add_resource_change_request_002', Level.LEVEL0, async (done: Function) => {
       let testNum = 'add_resource_change_request_002';
       try {
         let photoType = photoAccessHelper.PhotoType.VIDEO;

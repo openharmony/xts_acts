@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function placementJsunit(){
       console.info("placement after each called");
     });
 
-    it('placementTest_0100', 0, async (done: Function) => {
+    it('placementTest_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('placementTest_0100 START');
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
@@ -67,7 +67,7 @@ export default function placementJsunit(){
       console.info('placementTest_0100 END');
     });
 
-    it('placementTest_0200', 0, async (done: Function) => {
+    it('placementTest_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('placementTest_0200 START');
       await Utils.sleep(1500);
       let callbackOne = (indexEventOne: events_emitter.EventData) => {
@@ -90,7 +90,7 @@ export default function placementJsunit(){
       done();
     });
 
-    it('placementTest_0300', 0, async (done: Function) => {
+    it('placementTest_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('placementTest_0300 START');
       await Utils.sleep(1500);
       let callbackTwo = (indexEventTwo: events_emitter.EventData) => {
@@ -113,7 +113,7 @@ export default function placementJsunit(){
       done();
     });
 
-    it('placementTest_0400', 0, async (done: Function) => {
+    it('placementTest_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('placementTest_0400 START');
       await Utils.sleep(1500);
       let callbackThree = (indexEventThree: events_emitter.EventData) => {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -44,7 +44,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0100', 0, async (done: Function) => {
+    it('ListJsunit_0100',  Level.LEVEL0, async (done: Function) => {
       // Get the information of the List component
       console.info('[ListJsunit_0100] START');
       await CommonFunc.sleep(5000);
@@ -87,7 +87,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0200', 0, async (done: Function) => {
+    it('ListJsunit_0200',  Level.LEVEL0, async (done: Function) => {
       // Verify the functions of the List component
       console.info('[ListJsunit_0200] START');
       
@@ -153,7 +153,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0300', 0, async (done: Function) => {
+    it('ListJsunit_0300',  Level.LEVEL0, async (done: Function) => {
       // Modify the properties of component List
       console.info('[ListJsunit_0300] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({name:'space',value:25})
@@ -226,7 +226,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0400', 0, async (done: Function) => {
+    it('ListJsunit_0400',  Level.LEVEL0, async (done: Function) => {
       // Illegal modification of properties of component List
       console.info('[ListJsunit_0400] START');
       await CommonFunc.sleep(1000);
@@ -276,7 +276,7 @@ export default function ListJsunit() {
       console.info("[ListJsunit_0400] sticky: " + JSON.stringify(obj.$attrs.sticky));
       expect(obj.$attrs.space).assertEqual('-10.00vp');
       expect(obj.$attrs.initialIndex).assertEqual('30');
-      expect(obj.$attrs.listDirection).assertEqual('Axis.Horizontal');
+      expect(obj.$attrs.listDirection).assertEqual('Axis.Vertical');
       expect(obj.$attrs.divider.strokeWidth).assertEqual('0.00vp');
       expect(obj.$attrs.divider.color).assertEqual('#FF00000A');
       expect(obj.$attrs.divider.startMargin).assertEqual('0.00vp');
@@ -294,7 +294,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0500', 0, async (done: Function) => {
+    it('ListJsunit_0500',  Level.LEVEL0, async (done: Function) => {
       // Verify default value of the List component
       console.info('[ListJsunit_0500] START');
       await CommonFunc.sleep(1000);
@@ -313,7 +313,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0600', 0, async (done: Function) => {
+    it('ListJsunit_0600',  Level.LEVEL0, async (done: Function) => {
       // Verify the Vertical layout of List components
       console.info('[ListJsunit_0600] START');
       let listItem1 = CommonFunc.getComponentRect('0');
@@ -326,7 +326,7 @@ export default function ListJsunit() {
       done();
     });
 
-    it('ListJsunit_0700', 0, async (done: Function) => {
+    it('ListJsunit_0700',  Level.LEVEL0, async (done: Function) => {
       // Verify the Vertical layout of List components
       console.info('[ListJsunit_0700] START');
       GlobalContext.getContext().getObject<Axis>('value').message.notify({name:'listDirection',value:Axis.Vertical})

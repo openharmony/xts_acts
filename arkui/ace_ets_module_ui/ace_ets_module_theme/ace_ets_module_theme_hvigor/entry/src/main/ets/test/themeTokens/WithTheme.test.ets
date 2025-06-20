@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { ThemeControl } from '@ohos.arkui.theme';
 import { Theme } from '@ohos.arkui.theme';
@@ -90,7 +90,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_0100', 0, () => {
+    it('ActsWithThemeColors_0100', Level.LEVEL2, () => {
       const CASE: string = 'ActsWithThemeColors_0100';
       console.info(`${SUITE} ${CASE} START`);
       const checkKeys: string[] = Object.keys(greenThemeColors);
@@ -120,7 +120,7 @@ export default function withThemeTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsWithThemeColors_0200', 0, () => {
+    it('ActsWithThemeColors_0200', Level.LEVEL2, () => {
       const CASE: string = 'ActsWithThemeColors_0200';
       console.info(`${SUITE} ${CASE} START`);
       const checkKeys: string[] = Object.keys(brownThemeColors);
@@ -151,7 +151,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_0300', 0, async () => {
+    it('ActsWithThemeColors_0300', Level.LEVEL2, async () => {
       const CASE: string = 'ActsWithThemeColors_0300';
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -183,7 +183,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_0400', 0, () => {
+    it('ActsWithThemeColors_0400', Level.LEVEL2, () => {
       const CASE: string = 'ActsWithThemeColors_0400';
       console.info(`${SUITE} ${CASE} START`);
       const checkKeys: string[] = Object.keys(brownThemeColors);
@@ -214,7 +214,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_0500', 0, () => {
+    it('ActsWithThemeColors_0500', Level.LEVEL2, () => {
       let CASE: string = 'ActsWithThemeColors_0500';
       console.info(`${SUITE} ${CASE} START`);
       let checkKeys: string[] = Object.keys(checkColorTokens);
@@ -244,7 +244,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_0600', 0, () => {
+    it('ActsWithThemeColors_0600', Level.LEVEL2, () => {
       let CASE: string = 'ActsWithThemeColors_0600';
       console.info(`${SUITE} ${CASE} START`);
       let checkKeys: string[] = Object.keys(checkColorTokens);
@@ -274,7 +274,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_0700', 0, () => {
+    it('ActsWithThemeColors_0700', Level.LEVEL2, () => {
       let CASE: string = 'ActsWithThemeColors_0700';
       console.info(`${SUITE} ${CASE} START`);
       let checkKeys: string[] = Object.keys(checkColorTokens);
@@ -305,7 +305,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_0800', 0, () => {
+    it('ActsWithThemeColors_0800', Level.LEVEL2, () => {
       let CASE: string = 'ActsWithThemeColors_0800'
       console.info(`${SUITE} ${CASE} START`);
       ThemeControl.setDefaultTheme(undefined);
@@ -338,7 +338,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_0900', 0, () => {
+    it('ActsWithThemeColors_0900', Level.LEVEL2, () => {
       let CASE: string = 'ActsWithThemeColors_0900';
       console.info(`${SUITE} ${CASE} START`);
       ThemeControl.setDefaultTheme(undefined);
@@ -371,7 +371,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_1000', 0, () => {
+    it('ActsWithThemeColors_1000', Level.LEVEL2, () => {
       let CASE: string = 'ActsWithThemeColors_1000';
       console.info(`${SUITE} ${CASE} START`);
       ThemeControl.setDefaultTheme(undefined);
@@ -403,7 +403,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_1100', 0, () => {
+    it('ActsWithThemeColors_1100', Level.LEVEL2, () => {
       const CASE: string = 'ActsWithThemeColors_1100';
       console.info(`${SUITE} ${CASE} START`);
       Colors.colors.forEach((item, key): void => {
@@ -425,7 +425,7 @@ export default function withThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsWithThemeColors_1200', 0, async () => {
+    it('ActsWithThemeColors_1200', Level.LEVEL0, async () => {
       const CASE: string = 'ActsWithThemeColors_1200';
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

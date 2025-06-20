@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, Level, TestType, Size } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 // import screen from '@ohos.screen';
 import display from '@ohos.display';
@@ -69,7 +69,7 @@ export default function windowInterfaceOptionalParameterTest() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testDisplay_off_change_Deregister_All_Listeners', 0, async (done: Function) => {
+    it('testDisplay_off_change_Deregister_All_Listeners', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testDisplay_off_change_Deregister_All_Listeners';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -155,7 +155,7 @@ export default function windowInterfaceOptionalParameterTest() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testDisplay_off_change_Deregister_FirstCall_Listeners', 0, async (done: Function) => {
+    it('testDisplay_off_change_Deregister_FirstCall_Listeners', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testDisplay_off_change_Deregister_FirstCall_Listeners';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

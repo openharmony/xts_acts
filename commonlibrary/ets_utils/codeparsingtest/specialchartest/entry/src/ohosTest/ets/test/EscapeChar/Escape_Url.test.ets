@@ -24,9 +24,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Urlr interface Append9 with input escape \b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -45,9 +45,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \f
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -66,9 +66,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \n
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -87,9 +87,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \r
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0004";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -108,9 +108,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \t
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0005";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -129,9 +129,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \v
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0006";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -150,9 +150,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \x24
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0007";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -171,9 +171,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \开
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0008";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -192,9 +192,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \😊
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0009";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -213,9 +213,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \0
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0010";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -234,9 +234,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Append9 with input escape \\b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlAppend9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlAppend9Escape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlAppend9Escape0011";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -255,9 +255,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Urlr interface Delete with input escape \b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlDelete9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlDelete9Escape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlDelete9Escape0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\b=1&bar=2');
@@ -276,9 +276,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Delete with input escape \f (Form Feed)
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlDeleteEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlDeleteEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlDeleteEscape0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\f=1&bar=2');
@@ -297,9 +297,9 @@ export default function Escape_Url() {
      * @tc.desc       : Testing the Url interface Delete with input escape \n (Newline)
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrlDeleteEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrlDeleteEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrlDeleteEscape0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\n=1&bar=2');

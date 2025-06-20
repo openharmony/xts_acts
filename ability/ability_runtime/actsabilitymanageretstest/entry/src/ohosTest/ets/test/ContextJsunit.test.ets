@@ -14,7 +14,7 @@
  */
 
 import featureAbility from '@ohos.ability.featureAbility';
-import { describe, beforeEach, afterEach, beforeAll, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, beforeAll, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
@@ -61,7 +61,7 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
-    it("context_getCacheDir_test_0100", 0, async (done: Function) => {
+    it("context_getCacheDir_test_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------------start context_getCacheDir_test_0100-------------------");
       try {
         let timeOldStamp = Utils.getNowTime();
@@ -89,7 +89,7 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      * @tc.level   0
      */
-    it("context_getCacheDir_test_0200", 0, async (done: Function) => {
+    it("context_getCacheDir_test_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------------start context_getCacheDir_test_0200-------------------");
       try {
         let timeOldStamp = Utils.getNowTime();
@@ -116,7 +116,7 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
-    it("context_getFilesDir_test_0100", 0, async (done: Function) => {
+    it("context_getFilesDir_test_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------------start context_getFilesDir_test_0100-------------------");
       try {
         let timeOldStamp = await Utils.getNowTime();
@@ -144,7 +144,7 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      * @tc.level   0
      */
-    it("context_getFilesDir_test_0200", 0, async (done: Function) => {
+    it("context_getFilesDir_test_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------------start context_getFilesDir_test_0200-------------------");
       try {
         let timeOldStamp = await Utils.getNowTime();
@@ -172,7 +172,7 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
-    it("context_getOrCreateDistributedDir_0100", 0, async (done: Function) => {
+    it("context_getOrCreateDistributedDir_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------------start context_getOrCreateDistributedDir_0100-------------------");
       try {
         let timeOldStamp = Utils.getNowTime();
@@ -199,7 +199,7 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      * @tc.level   0
      */
-    it("context_getOrCreateDistributedDir_0200", 0, async (done: Function) => {
+    it("context_getOrCreateDistributedDir_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------------start context_getOrCreateDistributedDir_0200-------------------");
       try {
         let timeOldStamp = await Utils.getNowTime();
@@ -226,7 +226,7 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by promise)
      * @tc.level   0
      */
-    it("context_getAppType_0100", 0, async (done: Function) => {
+    it("context_getAppType_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------------start context_getAppType_0100-------------------");
       try {
         let timeOldStamp = Utils.getNowTime();
@@ -254,7 +254,7 @@ export default function ContextJsunit() {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      * @tc.level   0
      */
-    it("context_getAppType_0200", 0, async (done: Function) => {
+    it("context_getAppType_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------------start context_getAppType_0200-------------------");
       try {
         let timeOldStamp = await Utils.getNowTime();

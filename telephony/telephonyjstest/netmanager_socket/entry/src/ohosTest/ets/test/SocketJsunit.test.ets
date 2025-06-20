@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import socket from '@ohos.net.socket'
 import { BusinessError } from '@ohos.base';
 
@@ -68,7 +68,7 @@ export default function socketJsunit() {
      * @tc.name      : constructUDPSocketInstance
      * @tc.desc      : Creates a UDPSocket object.
      */
-    it('Telephony_Socket_Socket_constructUDPSocketInstance_0100', 0, (done: Function) => {
+    it('Telephony_Socket_Socket_constructUDPSocketInstance_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -85,7 +85,7 @@ export default function socketJsunit() {
      * @tc.name      : constructTCPSocketInstance
      * @tc.desc      : Creates a TCPSocket object.
      */
-    it('Telephony_Socket_Socket_constructTCPSocketInstance_0100', 0, (done: Function) => {
+    it('Telephony_Socket_Socket_constructTCPSocketInstance_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -102,7 +102,7 @@ export default function socketJsunit() {
      * @tc.name      : NetAddress
      * @tc.desc      : interface NetAddress
      */
-    it('Telephony_Socket_Socket_NetAddress_0100', 0, (done: Function) => {
+    it('Telephony_Socket_Socket_NetAddress_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -125,7 +125,7 @@ export default function socketJsunit() {
      * @tc.name      : UDPSendOptions.data
      * @tc.desc      : UDPSendOptions.data
      */
-    it('Telephony_Socket_UDPSendOptions_data_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSendOptions_data_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -149,7 +149,7 @@ export default function socketJsunit() {
      * @tc.name      : ExtraOptionsBase.receiveBufferSize
      * @tc.desc      : ExtraOptionsBase.receiveBufferSize
      */
-    it('Telephony_Socket_ExtraOptionsBase_receiveBufferSize_0100', 0, (done: Function) => {
+    it('Telephony_Socket_ExtraOptionsBase_receiveBufferSize_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -171,7 +171,7 @@ export default function socketJsunit() {
      * @tc.name      : ExtraOptionsBase.sendBufferSize
      * @tc.desc      : ExtraOptionsBase.sendBufferSize
      */
-    it('Telephony_Socket_ExtraOptionsBase_sendBufferSize_0100', 0, (done: Function) => {
+    it('Telephony_Socket_ExtraOptionsBase_sendBufferSize_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -193,7 +193,7 @@ export default function socketJsunit() {
      * @tc.name      : ExtraOptionsBase.reuseAddress
      * @tc.desc      : ExtraOptionsBase.reuseAddress
      */
-    it('Telephony_Socket_ExtraOptionsBase_reuseAddress_0100', 0, (done: Function) => {
+    it('Telephony_Socket_ExtraOptionsBase_reuseAddress_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -215,7 +215,7 @@ export default function socketJsunit() {
      * @tc.name      : ExtraOptionsBase.socketTimeout
      * @tc.desc      : ExtraOptionsBase.socketTimeout
      */
-    it('Telephony_Socket_ExtraOptionsBase_socketTimeout_0100', 0, (done: Function) => {
+    it('Telephony_Socket_ExtraOptionsBase_socketTimeout_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -237,7 +237,7 @@ export default function socketJsunit() {
      * @tc.name      : SocketStateBase.isClose
      * @tc.desc      : SocketStateBase.isClose
      */
-    it('Telephony_Socket_SocketStateBase_isClose_0100', 0, (done: Function) => {
+    it('Telephony_Socket_SocketStateBase_isClose_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -258,7 +258,7 @@ export default function socketJsunit() {
      * @tc.name      : SocketRemoteInfo.port
      * @tc.desc      : SocketRemoteInfo.port
      */
-    it('Telephony_Socket_SocketRemoteInfo_port_0100', 0, (done: Function) => {
+    it('Telephony_Socket_SocketRemoteInfo_port_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -280,7 +280,7 @@ export default function socketJsunit() {
      * @tc.name      : SocketRemoteInfo.size
      * @tc.desc      : SocketRemoteInfo.size
      */
-    it('Telephony_Socket_SocketRemoteInfo_size_0100', 0, (done: Function) => {
+    it('Telephony_Socket_SocketRemoteInfo_size_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -302,7 +302,7 @@ export default function socketJsunit() {
      * @tc.name      : TCPConnectOptions.timeout
      * @tc.desc      : TCPConnectOptions.timeout
      */
-    it('Telephony_Socket_TCPConnectOptions_timeout_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPConnectOptions_timeout_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -326,7 +326,7 @@ export default function socketJsunit() {
      * @tc.name      : TCPSendOptions.data
      * @tc.desc      : TCPSendOptions.data
      */
-    it('Telephony_Socket_TCPSendOptions_data_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSendOptions_data_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -346,7 +346,7 @@ export default function socketJsunit() {
      * @tc.name      : TCPSendOptions.encoding
      * @tc.desc      : TCPSendOptions.encoding
      */
-    it('Telephony_Socket_TCPSendOptions_encoding_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSendOptions_encoding_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -366,7 +366,7 @@ export default function socketJsunit() {
      * @tc.name      : TCPExtraOptions.keepAlive
      * @tc.desc      : TCPExtraOptions.keepAlive
      */
-    it('Telephony_Socket_TCPExtraOptions_keepAlive_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPExtraOptions_keepAlive_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -391,7 +391,7 @@ export default function socketJsunit() {
      * @tc.name      : TCPExtraOptions.OOBInline
      * @tc.desc      : TCPExtraOptions.OOBInline
      */
-    it('Telephony_Socket_TCPExtraOptions_OOBInline_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPExtraOptions_OOBInline_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -416,7 +416,7 @@ export default function socketJsunit() {
      * @tc.name      : TCPExtraOptions.TCPNoDelay
      * @tc.desc      : TCPExtraOptions.TCPNoDelay
      */
-    it('Telephony_Socket_TCPExtraOptions_TCPNoDelay_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPExtraOptions_TCPNoDelay_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -441,7 +441,7 @@ export default function socketJsunit() {
      * @tc.name      : TCPExtraOptions.socketLinger
      * @tc.desc      : TCPExtraOptions.socketLinger
      */
-    it('Telephony_Socket_TCPExtraOptions_socketLinger_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPExtraOptions_socketLinger_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -467,7 +467,7 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number.
      */
-    it('Telephony_Socket_UDPSocket_bind_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_bind_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -498,7 +498,7 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number.
      */
-    it('Telephony_Socket_UDPSocket_bind_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_bind_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -532,7 +532,7 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number.
      */
-    it('Telephony_Socket_UDPSocket_bind_0300', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_bind_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -561,7 +561,7 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number.
      */
-    it('Telephony_Socket_UDPSocket_bind_0400', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_bind_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -589,7 +589,7 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_send_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_send_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -623,7 +623,7 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_send_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_send_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -652,7 +652,7 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_send_0300', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_send_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -684,7 +684,7 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_send_0400', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_send_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -711,7 +711,7 @@ export default function socketJsunit() {
      * @tc.name      : close
      * @tc.desc      : Closes a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_close_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -736,7 +736,7 @@ export default function socketJsunit() {
      * @tc.name      : close
      * @tc.desc      : Closes a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_close_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_close_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -757,7 +757,7 @@ export default function socketJsunit() {
      * @tc.name      : getState
      * @tc.desc      : Obtains the status of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_getState_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_getState_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -783,7 +783,7 @@ export default function socketJsunit() {
      * @tc.name      : getState
      * @tc.desc      : Obtains the status of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_getState_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_getState_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -804,7 +804,7 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_setExtraOptions_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_setExtraOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -842,7 +842,7 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_setExtraOptions_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_setExtraOptions_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -869,7 +869,7 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_setExtraOptions_0300', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_setExtraOptions_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -896,7 +896,7 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_setExtraOptions_0400', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_setExtraOptions_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -924,7 +924,7 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for message receiving events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_on_message_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_on_message_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -945,7 +945,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for message receiving events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_message_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_off_message_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -966,7 +966,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for message receiving events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_message_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_off_message_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -983,7 +983,7 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_on_listening_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_on_listening_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1001,7 +1001,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_listening_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_off_listening_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1019,7 +1019,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_listening_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_off_listening_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1036,7 +1036,7 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_on_close_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_on_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1054,7 +1054,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_close_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_off_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1072,7 +1072,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_close_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_off_close_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1089,7 +1089,7 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for error events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_on_error_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_on_error_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1110,7 +1110,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for error events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_error_0100', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_off_error_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1131,7 +1131,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for error events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_error_0200', 0, (done: Function) => {
+    it('Telephony_Socket_UDPSocket_off_error_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1148,7 +1148,7 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number
      */
-    it('Telephony_Socket_TCPSocket_bind_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_bind_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1179,7 +1179,7 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number
      */
-    it('Telephony_Socket_TCPSocket_bind_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_bind_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1207,7 +1207,7 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number
      */
-    it('Telephony_Socket_TCPSocket_bind_0300', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_bind_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1236,7 +1236,7 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number
      */
-    it('Telephony_Socket_TCPSocket_bind_0400', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_bind_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1262,7 +1262,7 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_send_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_send_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1292,7 +1292,7 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_send_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_send_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1317,7 +1317,7 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_send_0300', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_send_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1346,7 +1346,7 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_send_0400', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_send_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1370,7 +1370,7 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_connect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1404,7 +1404,7 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_connect_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1433,7 +1433,7 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0300', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_connect_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1466,7 +1466,7 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0400', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_connect_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1494,7 +1494,7 @@ export default function socketJsunit() {
      * @tc.name      : close
      * @tc.desc      : Closes a UDPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_close_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1519,7 +1519,7 @@ export default function socketJsunit() {
      * @tc.name      : close
      * @tc.desc      : Closes a UDPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_close_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_close_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1540,7 +1540,7 @@ export default function socketJsunit() {
      * @tc.name      : getState
      * @tc.desc      : Obtains the status of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_getState_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_getState_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1566,7 +1566,7 @@ export default function socketJsunit() {
      * @tc.name      : getState
      * @tc.desc      : Obtains the status of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_getState_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_getState_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1587,7 +1587,7 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_setExtraOptions_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_setExtraOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1622,7 +1622,7 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_setExtraOptions_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_setExtraOptions_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1658,7 +1658,7 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_setExtraOptions_0300', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_setExtraOptions_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1690,7 +1690,7 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_setExtraOptions_0400', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_setExtraOptions_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1723,7 +1723,7 @@ export default function socketJsunit() {
      * @tc.name      : getRemoteAddress
      * @tc.desc      : Obtains the peer address of a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_getRemoteAddress_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_getRemoteAddress_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1748,7 +1748,7 @@ export default function socketJsunit() {
      * @tc.name      : getRemoteAddress
      * @tc.desc      : Obtains the peer address of a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_getRemoteAddress_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_getRemoteAddress_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1769,7 +1769,7 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for message receiving events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_on_message_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_on_message_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1790,7 +1790,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for message receiving events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_message_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_off_message_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1811,7 +1811,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for message receiving events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_message_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_off_message_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1828,7 +1828,7 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_on_connect_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_on_connect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1846,7 +1846,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_connect_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_off_connect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1864,7 +1864,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_connect_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_off_connect_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1881,7 +1881,7 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_on_close_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_on_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1899,7 +1899,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_close_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_off_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1917,7 +1917,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_close_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_off_close_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1934,7 +1934,7 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for error events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_on_error_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_on_error_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1955,7 +1955,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for error events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_error_0100', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_off_error_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1976,7 +1976,7 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for error events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_error_0200', 0, (done: Function) => {
+    it('Telephony_Socket_TCPSocket_off_error_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1994,7 +1994,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::addMembership
      * @tc.desc Test addMembership property.
      */
-    it("NetworkManager_UDPSocket_addMembership_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_addMembership_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_addMembership_Async_0100";
       multicastSocket.addMembership(multicastAddress, (err, data) => {
         if (err) {
@@ -2013,7 +2013,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::addMembership
      * @tc.desc Test addMembership property.
      */
-    it("NetworkManager_UDPSocket_addMembership_Async_0200", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_addMembership_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_addMembership_Async_0200";
       multicastSocket.addMembership(multicastAddress_invalid, (err, data) => {
         if (err) {
@@ -2032,7 +2032,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::addMembership
      * @tc.desc Test addMembership property.
      */
-    it("NetworkManager_UDPSocket_addMembership_Async_0300", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_addMembership_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_addMembership_Async_0300";
       multicastSocket.addMembership(multicastAddress_null, (err, data) => {
         if (err) {
@@ -2051,7 +2051,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::addMembership
      * @tc.desc Test addMembership property.
      */
-    it("NetworkManager_UDPSocket_addMembership_Async_0400", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_addMembership_Async_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_addMembership_Async_0400";
       try {
         multicastSocket.addMembership(undefined, (err, data) => {
@@ -2077,7 +2077,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::send
      * @tc.desc Test send property.
      */
-    it("NetworkManager_UDPSocket_send_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_send_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_send_Async_0100";
       multicastSocket.on('message', (data) => {
         console.info(caseName + ' on message,data.remoteInfo.size: ' + JSON.stringify(data.remoteInfo.size));
@@ -2105,7 +2105,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::setMulticastTTL
      * @tc.desc Test setMulticastTTL property.
      */
-    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Async_0100";
       multicastSocket.setMulticastTTL(ttl, (err, data) => {
         if (err) {
@@ -2124,7 +2124,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::setMulticastTTL
      * @tc.desc Test setMulticastTTL property.
      */
-    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0200", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Async_0200";
       multicastSocket.setMulticastTTL(ttl_invalid, (err, data) => {
         if (err) {
@@ -2143,7 +2143,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::setMulticastTTL
      * @tc.desc Test setMulticastTTL property.
      */
-    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0300", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Async_0300";
       try {
         multicastSocket.setMulticastTTL(ttl_undefined, (err, data) => {
@@ -2169,7 +2169,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::getMulticastTTL
      * @tc.desc Test getMulticastTTL property.
      */
-    it("NetworkManager_UDPSocket_getMulticastTTL_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_getMulticastTTL_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_getMulticastTTL_Async_0100";
       multicastSocket.getMulticastTTL((err, data) => {
         if (err) {
@@ -2189,7 +2189,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::setLoopbackMode
      * @tc.desc Test setLoopbackMode property.
      */
-    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Async_0100";
       multicastSocket.setLoopbackMode(true, (err, data) => {
         if (err) {
@@ -2208,7 +2208,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::setLoopbackMode
      * @tc.desc Test setLoopbackMode property.
      */
-    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0200", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Async_0200";
       multicastSocket.setLoopbackMode(false, (err, data) => {
         if (err) {
@@ -2227,7 +2227,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::setLoopbackMode
      * @tc.desc Test setLoopbackMode property.
      */
-    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0300", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Async_0300";
       try {
         multicastSocket.setLoopbackMode(undefined, (err, data) => {
@@ -2253,7 +2253,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::getLoopbackMode
      * @tc.desc Test getLoopbackMode property.
      */
-    it("NetworkManager_UDPSocket_getLoopbackMode_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_getLoopbackMode_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_getLoopbackMode_Async_0100";
       multicastSocket.setLoopbackMode(true, (err, data) => {
         if (err) {
@@ -2282,7 +2282,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::getLoopbackMode
      * @tc.desc Test getLoopbackMode property.
      */
-    it("NetworkManager_UDPSocket_getLoopbackMode_Async_0200", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_getLoopbackMode_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_getLoopbackMode_Async_0200";
       multicastSocket.setLoopbackMode(false, (err, data) => {
         if (err) {
@@ -2312,7 +2312,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::dropMembership
      * @tc.desc Test dropMembership property.
      */
-    it("NetworkManager_UDPSocket_dropMembership_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_dropMembership_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Async_0100";
       multicastSocket.dropMembership(multicastAddress, (err, data) => {
         if (err) {
@@ -2331,7 +2331,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::dropMembership
      * @tc.desc Test dropMembership property.
      */
-    it("NetworkManager_UDPSocket_dropMembership_Async_0200", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_dropMembership_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Async_0200";
       multicastSocket.dropMembership(multicastAddress_invalid, (err, data) => {
         if (err) {
@@ -2350,7 +2350,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::dropMembership
      * @tc.desc Test dropMembership property.
      */
-    it("NetworkManager_UDPSocket_dropMembership_Async_0300", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_dropMembership_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Async_0300";
       multicastSocket.dropMembership(multicastAddress_null, (err, data) => {
         if (err) {
@@ -2369,7 +2369,7 @@ export default function socketJsunit() {
      * @tc.name UDPSocket::dropMembership
      * @tc.desc Test dropMembership property.
      */
-    it("NetworkManager_UDPSocket_dropMembership_Async_0400", 0, async (done: Function) => {
+    it("NetworkManager_UDPSocket_dropMembership_Async_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Async_0400";
       try {
         multicastSocket.dropMembership(undefined, (err, data) => {

@@ -50,9 +50,9 @@ export default function PlainArrayTest() {
      * @tc.desc      : Testing PlainArray constructor.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testPlainArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testPlainArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testPlainArrayConstructor0001';
       try {
         let plainArray: PlainArray<string> = new PlainArray();
@@ -69,9 +69,9 @@ export default function PlainArrayTest() {
      * @tc.desc      : Testing PlainArray isEmpty.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testPlainArrayIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testPlainArrayIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testPlainArrayIsEmpty0001';
       try {
         let plainArray: PlainArray<string> = new PlainArray();
@@ -88,9 +88,9 @@ export default function PlainArrayTest() {
      * @tc.desc      : Testing PlainArray isEmpty add->isEmpty->remove->isEmpty.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testPlainArrayIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testPlainArrayIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testPlainArrayIsEmpty0002';
       try {
         let plainArray: PlainArray<string> = new PlainArray();
@@ -110,9 +110,9 @@ export default function PlainArrayTest() {
      * @tc.desc      : Testing PlainArray isEmpty add->clear->isEmpty.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testPlainArrayIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testPlainArrayIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testPlainArrayIsEmpty0003';
       try {
         let plainArray: PlainArray<string> = new PlainArray();
@@ -131,9 +131,9 @@ export default function PlainArrayTest() {
      * @tc.desc      : Testing PlainArray has.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testPlainArrayHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testPlainArrayHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testPlainArrayHas0001';
       try {
         let plainArray: PlainArray<string> = new PlainArray();

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -47,7 +47,7 @@ export default function blankUIJsunit() {
      * @tc.name       Test blankJsunit_0100
      * @tc.desc       Test blank attribute
     */
-    it('blankJsunit_0100', 0, async (done: Function) => {
+    it('blankJsunit_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('blankJsunitUITest_0100 START');
       await CommonFunc.sleep(1000);
       GlobalContext.getContext().getObject<string>('value').message.notify({name:'blankColor',value:'#FCAE5394'})
@@ -64,7 +64,7 @@ export default function blankUIJsunit() {
      * @tc.name       Test blankJsunit_0100
      * @tc.desc       Test blank attribute
      */
-   it('blankJsunit_0200', 0, async (done: Function) => {
+   it('blankJsunit_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('blankJsunitUITest_0200 START');
       await CommonFunc.sleep(1000);
        // 动态修改Blank组件的minwidth
@@ -78,7 +78,7 @@ export default function blankUIJsunit() {
       done();
     });
 
-    it('blankJsunit_0300', 0, async (done: Function) => {
+    it('blankJsunit_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('blankJsunitUITest_0300 START');
       await CommonFunc.sleep(1000);
        // 动态非法修改Blank组件的minwidth
@@ -93,7 +93,7 @@ export default function blankUIJsunit() {
       done();
     });
 
-    it('blankJsunit_0400', 0, async (done: Function) => {
+    it('blankJsunit_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('blankJsunitUITest_0400 START');
       await CommonFunc.sleep(1000);
        // 动态非法修改Blank组件的颜色
@@ -108,7 +108,7 @@ export default function blankUIJsunit() {
       done();
     });
 
-    it('blankJsunit_0500', 0, async (done: Function) => {
+    it('blankJsunit_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('blankJsunitUITest_0500 START');
       await CommonFunc.sleep(1000);
        // 验证父组件不设置宽度，blank失效
@@ -125,7 +125,7 @@ export default function blankUIJsunit() {
       done();
     });
 
-    it('blankJsunit_0600', 0, async (done: Function) => {
+    it('blankJsunit_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('blankJsunitUITest_0600 START');
       await CommonFunc.sleep(1000);
        // 验证父组件为row/coloumn 且宽度有，blank平分
@@ -142,7 +142,7 @@ export default function blankUIJsunit() {
       done();
     });
 
-   it('blankJsunit_0700', 0, async (done: Function) => {
+   it('blankJsunit_0700',  Level.LEVEL0, async (done: Function) => {
       console.info('blankJsunitUITest_0700 START');
       await CommonFunc.sleep(1000);
        // 直接判断组件的属性
@@ -155,7 +155,7 @@ export default function blankUIJsunit() {
       done();
     });
 
-    it('blankJsunit_0800', 0, async (done: Function) => {
+    it('blankJsunit_0800',  Level.LEVEL0, async (done: Function) => {
       console.info('blankJsunitUITest_0700 START');
       await CommonFunc.sleep(1000);
       GlobalContext.getContext().getObject<string>('value').message.notify({name:'minWith',value:'rr'})

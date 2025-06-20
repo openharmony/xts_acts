@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function spanFontSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontSize001', 0, async (done: Function) => {
+    it('testSpanFontSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontSize001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function spanFontSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testSpanFontSize002', 0, async (done: Function) => {
+    it('testSpanFontSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontSize002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function spanFontSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontSize003', 0, async (done: Function) => {
+    it('testSpanFontSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontSize003()).assertEqual(0)
       done()
     })

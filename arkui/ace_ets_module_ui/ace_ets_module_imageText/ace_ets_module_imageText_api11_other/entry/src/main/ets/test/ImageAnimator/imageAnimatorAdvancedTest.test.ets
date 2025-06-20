@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -64,7 +64,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0120', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0120', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0120] START');
       await routerPush('imageAnimator01')
       let driver = Driver.create();
@@ -84,7 +84,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0130', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0130', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0130] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -103,7 +103,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0140', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0140', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0140] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -122,7 +122,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0150', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0150', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0150] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -141,7 +141,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0160', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0160', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0160] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -160,7 +160,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0170', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0170', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0170] START');
       await routerPush('imageAnimator02')
       let driver = Driver.create();
@@ -180,7 +180,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0180', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0180', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0180] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -199,7 +199,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0190', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0190', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0190] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -218,7 +218,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0200', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0200', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0200] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -237,7 +237,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0210', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0210', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0210] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -256,7 +256,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0220', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0220', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0220] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -275,7 +275,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0230', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0230', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0230] START');
       await routerPush('imageAnimator03')
       let driver = Driver.create();
@@ -295,7 +295,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0240', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0240', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0240] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -314,7 +314,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0250', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0250', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0250] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -333,7 +333,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0260', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0260', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0260] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -352,7 +352,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0270', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0270', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0270] START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -371,7 +371,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0280', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0280', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0280] START');
       await routerPush('imageAnimator04')
       let driver = Driver.create();
@@ -392,7 +392,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0290', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0290', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0290] START');
       await routerPush('imageAnimator05')
       let driver = Driver.create();
@@ -414,7 +414,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0300', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0300', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0300] START');
       await routerPush('imageAnimator06')
       let driver = Driver.create();
@@ -435,7 +435,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0310', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0310', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0310] START');
       await routerPush('imageAnimator07')
       let driver = Driver.create();
@@ -460,7 +460,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0330', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0330', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0330] START');
       await routerPush('imageAnimator09')
       let driver = Driver.create();
@@ -509,7 +509,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0380', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0380', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0380] START');
       await routerPush('imageAnimator14')
       let driver = Driver.create();
@@ -531,7 +531,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0390', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0390', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_INTERFACE_0390] START');
       await routerPush('imageAnimator15')
       let driver = Driver.create();
@@ -552,7 +552,7 @@ export default function ImageAnimatorAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_LAYOUT_0010', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_LAYOUT_0010', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGEANIMATOR_LAYOUT_0010] START');
       await routerPush('imageAnimator16')
       let driver = Driver.create();

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common'
 
 export default function textInputOnEditChangeJsunit() {
@@ -49,7 +49,7 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0001
      * @tc.desic         acetextInputOnEditChangeEtsTest0001
      */
-    it('testtextInputOnEditChange0001', 0, async () => {
+    it('testtextInputOnEditChange0001', Level.LEVEL1, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
@@ -66,7 +66,7 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0002
      * @tc.desic         acetextInputOnEditChangeEtsTest0002
      */
-    it('testtextInputOnEditChange0002', 0, async () => {
+    it('testtextInputOnEditChange0002', Level.LEVEL1, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0002 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
@@ -83,7 +83,7 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0003
      * @tc.desic         acetextInputOnEditChangeEtsTest0003
      */
-    it('testtextInputOnEditChange0003', 0, async () => {
+    it('testtextInputOnEditChange0003', Level.LEVEL1, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0003 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
@@ -100,7 +100,7 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0004
      * @tc.desic         acetextInputOnEditChangeEtsTest0004
      */
-    it('testtextInputOnEditChange0004', 0, async () => {
+    it('testtextInputOnEditChange0004', Level.LEVEL1, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0004 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
@@ -117,7 +117,7 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0005
      * @tc.desic         acetextInputOnEditChangeEtsTest0005
      */
-    it('testtextInputOnEditChange0005', 0, async () => {
+    it('testtextInputOnEditChange0005', Level.LEVEL1, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0005 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
@@ -134,7 +134,7 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0006
      * @tc.desic         acetextInputOnEditChangeEtsTest0006
      */
-    it('testtextInputOnEditChange0006', 0, async () => {
+    it('testtextInputOnEditChange0006', Level.LEVEL1, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0006 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
@@ -151,7 +151,7 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0009
      * @tc.desic         acetextInputOnEditChangeEtsTest0009
      */
-    it('testtextInputOnEditChange0009', 0, async () => {
+    it('testtextInputOnEditChange0009', Level.LEVEL1, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange009 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
@@ -168,7 +168,7 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0010
      * @tc.desic         acetextInputOnEditChangeEtsTest0010
      */
-    it('testtextInputOnEditChange0010', 0, async () => {
+    it('testtextInputOnEditChange0010', Level.LEVEL1, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0010 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
@@ -180,7 +180,7 @@ export default function textInputOnEditChangeJsunit() {
 
     });
 
-    it('testtextInputCopyOption0001', 0, async () => {
+    it('testtextInputCopyOption0001', Level.LEVEL1, async () => {
       console.info('textInputCopyOption testtextInputCopyOption0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('textInputCopyOptionText');
@@ -192,7 +192,7 @@ export default function textInputOnEditChangeJsunit() {
 
     });
 
-    it('testtextInputShowPasswordIcon0001', 0, async () => {
+    it('testtextInputShowPasswordIcon0001', Level.LEVEL1, async () => {
       console.info('textInputShowPasswordIcon testtextInputShowPasswordIcon0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('showPasswordIconText');

@@ -32,7 +32,7 @@ export default function InputDevice_test() {
     }
 
     // 参数正确,返回一个数组
-    it("InputDevice_getDeviceIds_test_01", 0, async function (done) {
+    it("InputDevice_getDeviceIds_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceIds_test_01 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
@@ -52,7 +52,7 @@ export default function InputDevice_test() {
     })
 
     // 参数正确,判断一种或多种设备
-    it("InputDevice_getDeviceIds_test_02", 0, async function (done) {
+    it("InputDevice_getDeviceIds_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceIds_test_02 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
@@ -74,7 +74,7 @@ export default function InputDevice_test() {
     })
 
     // 参数类型错误
-    it("InputDevice_getDeviceIds_test_03", 0, async function (done) {
+    it("InputDevice_getDeviceIds_test_03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceIds_test_03 enter`);
       try {
         inputDevice.getDeviceIds(-1);
@@ -86,7 +86,7 @@ export default function InputDevice_test() {
     })
 
     // 参数数量错误
-    it("InputDevice_getDeviceIds_test_04", 0, async function (done) {
+    it("InputDevice_getDeviceIds_test_04", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceIds_test_04 enter`);
       try {
         inputDevice.getDeviceIds(-1, (err, data) => {
@@ -100,7 +100,7 @@ export default function InputDevice_test() {
     })
 
     // 无效的设备id
-    it("InputDevice_getDevice_test_01", 0, async function (done) {
+    it("InputDevice_getDevice_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDevice_test_01 enter`);
       try {
         inputDevice.getDevice(-1, (err, data) => {
@@ -121,7 +121,7 @@ export default function InputDevice_test() {
     })
 
 // 参数正常,返回值正常
-it("InputDevice_getDevice_test_02", 0, async function (done) {
+it("InputDevice_getDevice_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
   console.info(`InputDevice_getDevice_test_02 enter`);
 
     inputDevice.getDeviceIds(async (err, data) => {
@@ -189,7 +189,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
 })
 
     // 参数正常,返回值正常
-    it("InputDevice_supportKeys_test_01", 0, async function (done) {
+    it("InputDevice_supportKeys_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_supportKeys_test_01 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
@@ -213,7 +213,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
     })
 
     // 第二个参数异常
-    it("InputDevice_supportKeys_test_02", 0, async function (done) {
+    it("InputDevice_supportKeys_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_supportKeys_test_02 enter`);
       try {
         inputDevice.supportKeys(0, 2022, (err, res) => {
@@ -227,7 +227,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
     })
 
     // 参数正常
-    it("InputDevice_getKeyboardType_test_01", 0, async function (done) {
+    it("InputDevice_getKeyboardType_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getKeyboardType_test_01 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
@@ -251,7 +251,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
     })
 
     //参数异常
-    it("InputDevice_getKeyboardType_test_02", 0, async function (done) {
+    it("InputDevice_getKeyboardType_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getKeyboardType_test_02 enter`);
       try {
         inputDevice.getKeyboardType(-1);
@@ -263,7 +263,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
     });
 
     // 参数正常
-    it("InputDevice_getKeyboardType_test_03", 0, async function (done) {
+    it("InputDevice_getKeyboardType_test_03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getKeyboardType_test_03 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
@@ -290,7 +290,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
     })
 
     //参数异常
-    it("InputDevice_getKeyboardTypeSync_test_04", 0, async function (done) {
+    it("InputDevice_getKeyboardTypeSync_test_04", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getKeyboardTypeSync_test_04 enter`);
       try {
         inputDevice.getKeyboardTypeSync(-1);
@@ -302,7 +302,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
     });
 
     // 参数正常
-    it("InputDevice_getKeyboardTypeSync_test_05", 0, async function (done) {
+    it("InputDevice_getKeyboardTypeSync_test_05", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getKeyboardTypeSync_test_05 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
@@ -324,7 +324,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
       }
     })
 
-    it('InputDevice_setKeyboardRepeatDelay_test_01', 0, async function (done) {
+    it('InputDevice_setKeyboardRepeatDelay_test_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_setKeyboardRepeatDelay_test_01 enter`);
       try {
         inputDevice.setKeyboardRepeatDelay(500, (error) => {
@@ -344,7 +344,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
       done();
     })
 
-    it('InputDevice_setKeyboardRepeatDelay_test_02', 0, async function (done) {
+    it('InputDevice_setKeyboardRepeatDelay_test_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_setKeyboardRepeatDelay_test_02 enter`);
       try {
         inputDevice.setKeyboardRepeatDelay(500).then(() => {
@@ -362,7 +362,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
       done();
     })
 
-    it('InputDevice_setKeyboardRepeatRate_test_01', 0, async function (done) {
+    it('InputDevice_setKeyboardRepeatRate_test_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_setKeyboardRepeatRate_test_01 enter`);
       try {
         inputDevice.setKeyboardRepeatRate(60, (error) => {
@@ -382,7 +382,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
       done();
     })
 
-    it('InputDevice_setKeyboardRepeatRate_test_02', 0, async function (done) {
+    it('InputDevice_setKeyboardRepeatRate_test_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_setKeyboardRepeatRate_test_02 enter`);
       try {
         inputDevice.setKeyboardRepeatRate(60).then(() => {
@@ -405,7 +405,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_KeyboardType_NONE_test
      * @tc.desc inputDevice.KeyboardType.NONE test
      */
-    it("InputDevice_KeyboardType_NONE_test", 0, function () {
+    it("InputDevice_KeyboardType_NONE_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('InputDevice_KeyboardType_NONE_test = ' + inputDevice.KeyboardType.NONE);
       expect(inputDevice.KeyboardType.NONE == 0).assertTrue();
     })
@@ -415,7 +415,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_KeyboardType_UNKNOWN_test
      * @tc.desc inputDevice.KeyboardType.UNKNOWN test
      */
-    it("InputDevice_KeyboardType_UNKNOWN_test", 0, function () {
+    it("InputDevice_KeyboardType_UNKNOWN_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('InputDevice_KeyboardType_UNKNOWN_test = ' + inputDevice.KeyboardType.UNKNOWN);
       expect(inputDevice.KeyboardType.UNKNOWN == 1).assertTrue();
     })
@@ -425,7 +425,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_KeyboardType_ALPHABETIC_KEYBOARD_test
      * @tc.desc inputDevice.KeyboardType.ALPHABETIC_KEYBOARD test
      */
-    it("InputDevice_KeyboardType_ALPHABETIC_KEYBOARD_test", 0, function () {
+    it("InputDevice_KeyboardType_ALPHABETIC_KEYBOARD_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('InputDevice_KeyboardType_ALPHABETIC_KEYBOARD_test = '
         + inputDevice.KeyboardType.ALPHABETIC_KEYBOARD);
       expect(inputDevice.KeyboardType.ALPHABETIC_KEYBOARD == 2).assertTrue();
@@ -436,7 +436,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_KeyboardType_ALPHABETIC_DIGITAL_KEYBOARD_test
      * @tc.desc inputDevice.KeyboardType.DIGITAL_KEYBOARD test
      */
-    it("InputDevice_KeyboardType_ALPHABETIC_DIGITAL_KEYBOARD_test", 0, function () {
+    it("InputDevice_KeyboardType_ALPHABETIC_DIGITAL_KEYBOARD_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('InputDevice_KeyboardType_ALPHABETIC_DIGITAL_KEYBOARD_test = '
         + inputDevice.KeyboardType.DIGITAL_KEYBOARD);
       expect(inputDevice.KeyboardType.DIGITAL_KEYBOARD == 3).assertTrue();
@@ -447,7 +447,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_KeyboardType_ALPHABETIC_HANDWRITING_PEN_test
      * @tc.desc inputDevice.KeyboardType.HANDWRITING_PEN test
      */
-    it("InputDevice_KeyboardType_ALPHABETIC_HANDWRITING_PEN_test", 0, function () {
+    it("InputDevice_KeyboardType_ALPHABETIC_HANDWRITING_PEN_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('InputDevice_KeyboardType_ALPHABETIC_HANDWRITING_PEN_test = '
         + inputDevice.KeyboardType.HANDWRITING_PEN);
       expect(inputDevice.KeyboardType.HANDWRITING_PEN == 4).assertTrue();
@@ -458,7 +458,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_KeyboardType_ALPHABETIC_REMOTE_CONTROL_test
      * @tc.desc inputDevice.KeyboardType.REMOTE_CONTROL test
      */
-    it("InputDevice_KeyboardType_ALPHABETIC_REMOTE_CONTROL_test", 0, function () {
+    it("InputDevice_KeyboardType_ALPHABETIC_REMOTE_CONTROL_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info('InputDevice_KeyboardType_ALPHABETIC_REMOTE_CONTROL_test = '
         + inputDevice.KeyboardType.REMOTE_CONTROL);
       expect(inputDevice.KeyboardType.REMOTE_CONTROL == 5).assertTrue();
@@ -469,7 +469,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_getDeviceIds_Promise_test
      * @tc.desc inputdevice interface getDeviceIds & supportKeys test
      */
-    it("InputDevice_getDeviceIds_Promise_test", 0, async function (done) {
+    it("InputDevice_getDeviceIds_Promise_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceIds_Promise_test enter`);
       try {
         inputDevice.getDeviceIds().then(data => {
@@ -502,7 +502,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_getDevice_Promise_test
      * @tc.desc inputdevice interface getDevice test
      */
-    it("InputDevice_getDevice_Promise_test", 0, async function (done) {
+    it("InputDevice_getDevice_Promise_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDevice_Promise_test enter`);
       try {
         inputDevice.getDevice(-1).then(data => {
@@ -525,7 +525,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_on_test
      * @tc.desc inputdevice interface getDevice test
      */
-    it("InputDevice_on_test", 0, async function (done) {
+    it("InputDevice_on_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_on_test enter`);
       try {
         let isPhysicalKeyboardExist = true;
@@ -555,7 +555,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_off_test
      * @tc.desc inputdevice interface getDevice test
      */
-    it("InputDevice_off_test", 0, async function (done) {
+    it("InputDevice_off_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_off_test enter`);
       function listener(data) {
         console.info("type: " + data.type + ", deviceId: " + data.deviceId);
@@ -578,7 +578,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetDeviceList_test
      * @tc.desc inputdevice interface getDeviceList test
      */
-    it("InputDevice_getDeviceList_test_01", 0, async function (done) {
+    it("InputDevice_getDeviceList_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceList_async_test enter`);
       try {
         inputDevice.getDeviceList((err, data) => {
@@ -602,7 +602,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetDeviceList_test
      * @tc.desc inputdevice interface getDeviceList test
      */
-    it("InputDevice_getDeviceList_test_02", 0, async function (done) {
+    it("InputDevice_getDeviceList_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceList_promise_test enter`);
       try {
         inputDevice.getDeviceList().then(data => {
@@ -622,7 +622,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetDeviceInfo_test
      * @tc.desc inputdevice interface getDeviceInfo test
      */
-    it("InputDevice_getDeviceInfo_test_01", 0, async function (done) {
+    it("InputDevice_getDeviceInfo_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceInfo_async_test enter`);
       try {
         await inputDevice.getDeviceList().then((data) => {
@@ -688,7 +688,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetDeviceInfoSync_test
      * @tc.desc inputdevice interface getDeviceInfoSync test
      */
-    it("InputDevice_getDeviceInfoSync_test_01", 0, async function (done) {
+    it("InputDevice_getDeviceInfoSync_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceInfoSync_test enter`);
       try {
         await inputDevice.getDeviceList().then((data) => {
@@ -747,7 +747,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetDeviceInfo_test
      * @tc.desc inputdevice interface getDeviceInfo test
      */
-    it("InputDevice_getDeviceInfo_test_02", 0, async function (done) {
+    it("InputDevice_getDeviceInfo_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_getDeviceInfo_promise_test enter`);
       try {
         await inputDevice.getDeviceList().then((data) => {
@@ -803,7 +803,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetkeyboardType_Exception_test_01
      * @tc.desc inputdevice interface getKeyboardType exception test
      */
-    it("InputDevice_GetkeyboardType_Exception_test_01", 0, async function (done) {
+    it("InputDevice_GetkeyboardType_Exception_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_GetkeyboardType_Exception_test_01 enter`);
       try {
         inputDevice.getKeyboardType();
@@ -821,7 +821,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetkeyboardType_Exception_test_02
      * @tc.desc inputdevice interface getKeyboardType exception test
      */
-    it("InputDevice_GetkeyboardType_Exception_test_02", 0, async function (done) {
+    it("InputDevice_GetkeyboardType_Exception_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("InputDevice_GetkeyboardType_Exception_test_02 enter");
       try {
         inputDevice.getKeyboardType(`id`).then((data) => {
@@ -845,7 +845,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_SupportKeys_Exception_test_01
      * @tc.desc inputdevice interface supportKeys exception test
      */
-    it("InputDevice_SupportKeys_Exception_test_01", 0, async function (done) {
+    it("InputDevice_SupportKeys_Exception_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("InputDevice_SupportKeys_Exception_test_01 enter");
       try {
         inputDevice.supportKeys((error, data) => {
@@ -871,7 +871,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_SupportKeys_Exception_test_02
      * @tc.desc inputdevice interface supportKeys exception test
      */
-    it("InputDevice_SupportKeys_Exception_test_02", 0, async function (done) {
+    it("InputDevice_SupportKeys_Exception_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("InputDevice_SupportKeys_Exception_test_02 enter");
       try {
         inputDevice.supportKeys(`id`, [17, 22, 2055], (error, data) => {
@@ -897,7 +897,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_SupportKeysSync_Exception_test
      * @tc.desc inputdevice interface supportKeysSync exception test
      */
-    it("InputDevice_SupportKeysSync_Exception_test", 0, async function (done) {
+    it("InputDevice_SupportKeysSync_Exception_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("InputDevice_SupportKeysSync_Exception_test enter");
       try {
         let result = inputDevice.supportKeysSync(`id`, [17, 22, 2055]);
@@ -915,7 +915,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetDeviceInfo_Exception_test_01
      * @tc.desc inputdevice interface getDeviceInfo exception test
      */
-    it("InputDevice_GetDeviceInfo_Exception_test_01", 0, async function (done) {
+    it("InputDevice_GetDeviceInfo_Exception_test_01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("InputDevice_GetDeviceInfo_Exception_test_01 enter");
       try {
         inputDevice.getDeviceInfo();
@@ -933,7 +933,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetDeviceInfo_Exception_test_02
      * @tc.desc inputdevice interface getDeviceInfo exception test
      */
-    it("InputDevice_GetDeviceInfo_Exception_test_02", 0, async function (done) {
+    it("InputDevice_GetDeviceInfo_Exception_test_02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("InputDevice_GetDeviceInfo_Exception_test_02 enter");
       try {
         inputDevice.getDeviceList().then((data) => {
@@ -967,7 +967,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_GetDeviceList_Exception_test
      * @tc.desc inputdevice interface getDeviceList exception test
      */
-    it("InputDevice_GetDeviceList_Exception_test", 0, async function (done) {
+    it("InputDevice_GetDeviceList_Exception_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("InputDevice_GetDeviceList_Exception_test enter");
       try {
         inputDevice.getDeviceList(null);
@@ -985,7 +985,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_On_Exception_test
      * @tc.desc inputdevice interface on test
      */
-    it("InputDevice_On_Exception_test", 0, async function (done) {
+    it("InputDevice_On_Exception_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_On_Exception_test enter`);
       try {
         inputDevice.on();
@@ -1019,7 +1019,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_Off_Exception_test
      * @tc.desc inputdevice interface off test
      */
-    it("InputDevice_Off_Exception_test", 0, async function (done) {
+    it("InputDevice_Off_Exception_test", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_Off_Exception_test enter`);
       try {
         inputDevice.off();
@@ -1045,7 +1045,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_SetKeyboardRepeatDelay_Exception_test_01
      * @tc.desc inputdevice interface setKeyboardRepeatDelay exception test
      */
-    it('InputDevice_SetKeyboardRepeatDelay_Exception_test_01', 0, async function (done) {
+    it('InputDevice_SetKeyboardRepeatDelay_Exception_test_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_SetKeyboardRepeatDelay_Exception_test_01 enter`);
       try {
         inputDevice.setKeyboardRepeatDelay();
@@ -1063,7 +1063,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_SetKeyboardRepeatDelay_Exception_test_02
      * @tc.desc inputdevice interface setKeyboardRepeatDelay exception test
      */
-    it('InputDevice_SetKeyboardRepeatDelay_Exception_test_02', 0, async function (done) {
+    it('InputDevice_SetKeyboardRepeatDelay_Exception_test_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_SetKeyboardRepeatDelay_Exception_test_02 enter`);
       try {
         inputDevice.setKeyboardRepeatDelay(`delay`, (error) => {
@@ -1089,7 +1089,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_SetKeyboardRepeatRate_Exception_test_01
      * @tc.desc inputdevice interface setKeyboardRepeatRate exception test
      */
-    it('InputDevice_SetKeyboardRepeatRate_Exception_test_01', 0, async function (done) {
+    it('InputDevice_SetKeyboardRepeatRate_Exception_test_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_SetKeyboardRepeatRate_Exception_test_01 enter`);
       try {
         inputDevice.setKeyboardRepeatRate();
@@ -1107,7 +1107,7 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
      * @tc.name MultimodalInputDevice_SetKeyboardRepeatRate_Exception_test_02
      * @tc.desc inputdevice interface setKeyboardRepeatRate exception test
      */
-    it('InputDevice_SetKeyboardRepeatRate_Exception_test_02', 0, async function (done) {
+    it('InputDevice_SetKeyboardRepeatRate_Exception_test_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`InputDevice_SetKeyboardRepeatRate_Exception_test_02 enter`);
       try {
         inputDevice.setKeyboardRepeatRate(`rate`, (error) => {

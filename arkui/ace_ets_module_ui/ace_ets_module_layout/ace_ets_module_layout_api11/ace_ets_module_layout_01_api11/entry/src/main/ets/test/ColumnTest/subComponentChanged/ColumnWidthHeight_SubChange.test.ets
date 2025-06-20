@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -57,7 +57,7 @@ export default function ColumnWidthHeight_SubChange() {
      * @tc.name testColumnSubcomponentModifyHeight
      * @tc.desc Modify the first subcomponent's height.
      */
-    it('testColumnSubcomponentModifyHeight', 0, async () => {
+    it('testColumnSubcomponentModifyHeight',  Level.LEVEL0, async () => {
       console.info('new testColumnSubcomponentModifyHeight START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
@@ -82,7 +82,7 @@ export default function ColumnWidthHeight_SubChange() {
      * @tc.name testColumnSubcomponentModifyWidth
      * @tc.desc Modify the first subcomponent's width.
      */
-    it('testColumnSubcomponentModifyWidth', 0, async () => {
+    it('testColumnSubcomponentModifyWidth',  Level.LEVEL0, async () => {
       console.info('new testColumnSubcomponentModifyWidth START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 50

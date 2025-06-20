@@ -31,6 +31,7 @@
 #define ARR_NUM_1 1
 #define ARR_NUM_2 2
 #define ARR_NUM_3 3
+#define UNAUTHORIZED 401
 
 namespace {
     constexpr int8_t ARGB_8888_BYTES = 4;
@@ -508,6 +509,118 @@ static napi_value OHPixelmapNativeUnaccessPixels001(napi_env env, napi_callback_
     return result;
 }
 
+static napi_value OHPixelmapInitializationOptionsEditable001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+
+    OH_Pixelmap_InitializationOptions *ops = nullptr;
+    OH_PixelmapInitializationOptions_Create(&ops);
+    bool editable = false;
+    OH_PixelmapInitializationOptions_GetEditable(ops, &editable);
+    if (editable == true) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    OH_PixelmapInitializationOptions_SetEditable(ops, false);
+    OH_PixelmapInitializationOptions_GetEditable(ops, &editable);
+    if ((editable == false) && (OH_PixelmapInitializationOptions_SetEditable(nullptr, true) == UNAUTHORIZED) &&
+        (OH_PixelmapInitializationOptions_SetEditable(nullptr, false) == UNAUTHORIZED) &&
+        (OH_PixelmapInitializationOptions_GetEditable(nullptr, &editable) == UNAUTHORIZED)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_PixelmapInitializationOptions_Release(ops);
+    return result;
+}
+
+static napi_value OHPixelmapNativeDestroy001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+
+    size_t dataSize = ARGB_8888_BYTES;
+    uint8_t data[] = {0x01, 0x02, 0x03, 0xFF};
+    OH_Pixelmap_InitializationOptions *createOpts;
+    OH_PixelmapInitializationOptions_Create(&createOpts);
+    OH_PixelmapInitializationOptions_SetWidth(createOpts, 1);
+    OH_PixelmapInitializationOptions_SetHeight(createOpts, 1);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_BGRA_8888);
+    OH_PixelmapNative *pixelMap = nullptr;
+    Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelMap);
+    if (errCode == IMAGE_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    OH_PixelmapNative_Destroy(&pixelMap);
+    if ((pixelMap == nullptr) && (OH_PixelmapNative_Destroy(nullptr) == UNAUTHORIZED)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_PixelmapInitializationOptions_Release(createOpts);
+    return result;
+}
+
+static napi_value OHPixelmapImageInfoGetAlphaMode001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Pixelmap_ImageInfo *imageInfo = nullptr;
+    int32_t alphaMode = 0;
+    Image_ErrorCode ret = OH_PixelmapImageInfo_GetAlphaMode(imageInfo, &alphaMode);
+    if (ret == IMAGE_BAD_PARAMETER) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHPixelmapNativeCreatePixelmapUsingAllocator001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    uint8_t *data = nullptr;
+    size_t dataLength = 0;
+    OH_Pixelmap_InitializationOptions *ops = nullptr;
+    OH_PixelmapNative *pixelMap = nullptr;
+    Image_ErrorCode ret = OH_PixelmapNative_CreatePixelmapUsingAllocator(data, dataLength, ops,
+        IMAGE_ALLOCATOR_MODE_AUTO, &pixelMap);
+    if (ret == IMAGE_BAD_PARAMETER) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHPixelmapNativeCreateEmptyPixelmapUsingAllocator001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Pixelmap_InitializationOptions *ops = nullptr;
+    OH_PixelmapNative *pixelMap = nullptr;
+    Image_ErrorCode ret = OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(ops,
+        IMAGE_ALLOCATOR_MODE_AUTO, &pixelMap);
+    if (ret == IMAGE_BAD_PARAMETER) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -554,6 +667,17 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHPixelmapNativeAccessPixels001", nullptr, OHPixelmapNativeAccessPixels001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHPixelmapNativeUnaccessPixels001", nullptr, OHPixelmapNativeUnaccessPixels001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapInitializationOptionsEditable001", nullptr, OHPixelmapInitializationOptionsEditable001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeDestroy001", nullptr, OHPixelmapNativeDestroy001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapImageInfoGetAlphaMode001", nullptr, OHPixelmapImageInfoGetAlphaMode001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeCreatePixelmapUsingAllocator001", nullptr, OHPixelmapNativeCreatePixelmapUsingAllocator001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeCreateEmptyPixelmapUsingAllocator001", nullptr,
+         OHPixelmapNativeCreateEmptyPixelmapUsingAllocator001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

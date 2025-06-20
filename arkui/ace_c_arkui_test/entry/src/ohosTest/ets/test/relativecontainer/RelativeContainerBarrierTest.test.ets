@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionCreate001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionCreate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionCreate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionDispose001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionDispose001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionDispose001()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetId001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetId001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetId001()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetId002', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetId002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetId002()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetId003', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetId003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetId003()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetId004', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetId004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetId004()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetId001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetId001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetId001()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetId002', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetId002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetId002()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetDirection001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetDirection001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetDirection001()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetDirection002', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetDirection002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetDirection002()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetDirection003', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetDirection003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetDirection003()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetDirection004', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetDirection004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetDirection004()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetDirection005', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetDirection005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetDirection005()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetDirection006', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetDirection006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetDirection006()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetDirection001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetDirection001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetDirection001()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetDirection002', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetDirection002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetDirection002()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetReferencedId001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetReferencedId001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetReferencedId001()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetReferencedId002', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetReferencedId002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetReferencedId002()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionSetReferencedId003', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionSetReferencedId003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionSetReferencedId003()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetReferencedId001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetReferencedId001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetReferencedId001()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetReferencedId002', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetReferencedId002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetReferencedId002()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetReferencedId003', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetReferencedId003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetReferencedId003()).assertEqual(0)
       done()
     })
@@ -320,7 +320,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetReferencedSize001', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetReferencedSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetReferencedSize001()).assertEqual(0)
       done()
     })
@@ -333,7 +333,7 @@ export default function relativeContainerBarrierTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerBarrierOptionGetReferencedSize002', 0, async (done: Function) => {
+    it('testRelativeContainerBarrierOptionGetReferencedSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerBarrierOptionGetReferencedSize002()).assertEqual(0)
       done()
     })

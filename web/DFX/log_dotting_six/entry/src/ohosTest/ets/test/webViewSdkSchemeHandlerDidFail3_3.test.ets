@@ -17,6 +17,9 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ""
 
@@ -46,8 +49,13 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
     });
     
     beforeEach(async (done: Function) => {
-        await Utils.sleep(2000);
-        done();
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
+      await Utils.sleep(2000);
+      done();
     })
 
       afterEach(async (done: Function) => {
@@ -75,9 +83,9 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
     *@tc.desc test SdkSchemeHandler didFail code -341
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level Level 1
+    *@tc.level Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative341', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative341', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative341"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative341", 'success', 11341, done);

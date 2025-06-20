@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -52,7 +52,7 @@ export default function flex_AlignContent_SpaceAround_FlexMarPadTest() {
      *               of the child components when the padding of parent component set to 50 and the margin
      *               of parent component set to 20
      */
-    it('testFlexAlignContentSpaceAroundFlexMarPadOverflow', 0, async () => {
+    it('testFlexAlignContentSpaceAroundFlexMarPadOverflow',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
@@ -98,7 +98,7 @@ export default function flex_AlignContent_SpaceAround_FlexMarPadTest() {
      *               of the child components when the padding of parent component set to 10 and the margin
      *               of parent component set to 30
      */
-    it('testFlexAlignContentSpaceAroundFlexMarPadMeet', 0, async () => {
+    it('testFlexAlignContentSpaceAroundFlexMarPadMeet',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30

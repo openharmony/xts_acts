@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeAll, afterAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeAll, afterAll, beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
@@ -123,7 +123,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0200`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0200 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -156,13 +156,13 @@ export default function test() {
                     }
                 }
             }).then((res) => {
-                console.log(`FMS_enableFormsUpdate_0200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                console.log(`FMS_enableFormsUpdate_0200 featureAbility.startAbilityhost again res: ${JSON.stringify(res)}`);
                 options.code = res;
                 commonEvent.publish("FMS_FormOnState_commonEvent", options, () => {
                     console.log(`onStateCallBack publish start`)
                 });
             }).catch((err: BusinessError) => {
-                console.log(`FMS_enableFormsUpdate_0200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                console.log(`FMS_enableFormsUpdate_0200 featureAbility.startAbilityhost again error: ${JSON.stringify(err)}`);
             });
             console.log(`FMS_enableFormsUpdate_0200 featureAbility.startAbility again end`);
         });
@@ -173,7 +173,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0300`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0300 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -221,7 +221,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0400`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0400 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -269,7 +269,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0500`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0500`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0500 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -317,7 +317,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0600`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0600`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.info(`FMS_enableFormsUpdate_0600 start`);
 
             let hostFormId: string | number = '';
@@ -359,9 +359,9 @@ export default function test() {
                         }
                     }
                 }).then((res) => {
-                    console.info(`FMS_enableFormsUpdate_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    console.info(`FMS_enableFormsUpdate_0600 onAcquiredCallBack featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                     commonEvent.publish("FMS_FormOnState_commonEvent", options, () => {
-                        console.log(`FMS_enableFormsUpdate_0600 onStateCallBack publish start`)
+                        console.log(`FMS_enableFormsUpdate_0600 onAcquiredCallBack onStateCallBack publish start`)
                     });
                 }).catch((err: BusinessError) => {
                     console.error(`FMS_enableFormsUpdate_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
@@ -403,7 +403,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0700`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0700`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.info(`FMS_enableFormsUpdate_0700 start`);
 
             let hostFormId: string | undefined;
@@ -487,7 +487,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the visible notification interface.
          *           2.Verify the result of the visible notification interface.
          */
-        it(`FMS_enableFormsUpdate_0900`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0900`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0900 start`);
 
             let formIds: string[] = [];
@@ -550,13 +550,13 @@ export default function test() {
                             }
                         }
                     }).then((res) => {
-                        console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                        console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost notifyVisible res: ${JSON.stringify(res)}`);
                         data.code = res;
                         data.data = 'FMS_FormOnDeleted_commonEvent';
                         commonEvent.publish("FMS_FormOnDeleted_commonEvent", data, () => {
                             console.info(`FMS_enableFormsUpdate_0900 onFormDisableCallBack publish start`)})
                     }).catch((err: BusinessError) => {
-                        console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                        console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost notifyVisible error: ${JSON.stringify(err)}`);
                     });
                     console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbility notifyVisible end`);
                 }, 1000);
@@ -587,12 +587,12 @@ export default function test() {
                         }
                     }
                 }).then((res) => {
-                    console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost disable res: ${JSON.stringify(res)}`);
                     data.code = res;
                     commonEvent.publish("FMS_FormOnState_commonEvent", data, () => {
                         console.info(`FMS_enableFormsUpdate_0900 onFormOnStateCallBack publish start`)})
                 }).catch((err: BusinessError) => {
-                    console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost disable error: ${JSON.stringify(err)}`);
                 });
                 console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbility notify disable end`);
             }
@@ -614,12 +614,12 @@ export default function test() {
                     }
                 }
             }).then((res) => {
-                console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost servicea res: ${JSON.stringify(res)}`);
                 options.code = res;
                 commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
                     console.info(`FMS_enableFormsUpdate_0900 onAcquiredCallBack publish start`)})
             }).catch((err: BusinessError) => {
-                console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbilityhost servicea error: ${JSON.stringify(err)}`);
             });
             console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbility servicea end`);
             await sleep(1000);
@@ -631,7 +631,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the visible notification interface.
          *           2.Verify the result of the visible notification interface.
          */
-        it(`FMS_enableFormsUpdate_1000`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_1000`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_1000 start`);
 
             let formIds: string[] = [];
@@ -679,37 +679,35 @@ export default function test() {
                 commonEvent.subscribe(subscriberOnState, onStateCallBack);
                 commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
 
-                setTimeout(async () => {
-                    console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbility notifyVisible start`);
-                    formIds.push("0");
-                    await featureAbility.startAbility({
-                        want: {
-                            bundleName: "com.ohos.st.formsystemhostg",
-                            abilityName: "com.ohos.st.formsystemhostg.MainAbility",
-                            parameters: {
-                                "formId" : "0",
-                                "name" : "name",
-                                "bundle" : "bundle",
-                                "ability" : "ability",
-                                "moduleName" : "entry",
-                                "temporary" : false,
-                                "stateForm" : "enable",
-                                "stateIds" : formIds,
-                                "isCreate" : false
-                            }
+                console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbility notifyVisible start`);
+                formIds.push("0");
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhostg",
+                        abilityName: "com.ohos.st.formsystemhostg.MainAbility",
+                        parameters: {
+                            "formId" : "0",
+                            "name" : "name",
+                            "bundle" : "bundle",
+                            "ability" : "ability",
+                            "moduleName" : "entry",
+                            "temporary" : false,
+                            "stateForm" : "enable",
+                            "stateIds" : formIds,
+                            "isCreate" : false
                         }
-                    }).then((res) => {
-                        console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                        data.code = res;
-                        data.data = 'FMS_FormOnState_commonEvent';
-                        commonEvent.publish("FMS_FormOnState_commonEvent", data, () => {
-                            console.info(`FMS_enableFormsUpdate_1000 onStateCallBack publish start`)})
-                    }).catch((err: BusinessError) => {
-                        console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    }
+                }).then((res) => {
+                    console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost visible res: ${JSON.stringify(res)}`);
+                    data.code = res;
+                    data.data = 'FMS_FormOnState_commonEvent';
+                    commonEvent.publish("FMS_FormOnState_commonEvent", data, () => {
+                        console.info(`FMS_enableFormsUpdate_1000 onStateCallBack publish start`)})
+                }).catch((err: BusinessError) => {
+                    console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost visible error: ${JSON.stringify(err)}`);
 
-                    });
-                    console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbility notifyVisible end`);
-                }, 1000);
+                });
+                console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbility notifyVisible end`);
             }
 
             let onAcquiredCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -735,13 +733,13 @@ export default function test() {
                         }
                     }
                 }).then((res) => {
-                    console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost disable res: ${JSON.stringify(res)}`);
                     data.code = res;
                     data.data = 'FMS_FormOnDeleted_commonEvent';
                     commonEvent.publish("FMS_FormOnDeleted_commonEvent", data, () => {
                         console.info(`FMS_enableFormsUpdate_1000 onFormDisableCallBack publish start`)})
                 }).catch((err: BusinessError) => {
-                    console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost disable error: ${JSON.stringify(err)}`);
                 });
                 console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbility notify disable end`);
             }
@@ -763,13 +761,13 @@ export default function test() {
                     }
                 }
             }).then((res) => {
-                console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost servicea res: ${JSON.stringify(res)}`);
                 options.code = res;
                 options.data = 'FMS_FormOnAcquired_commonEvent';
                 commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
                     console.info(`FMS_enableFormsUpdate_1000 onAcquiredCallBack publish start`)})
             }).catch((err: BusinessError) => {
-                console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbilityhost servicea error: ${JSON.stringify(err)}`);
             });
             console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbility servicea end`);
             await sleep(1000);
@@ -781,7 +779,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the visible notification interface.
          *           2.Verify the result of the visible notification interface.
          */
-        it(`FMS_enableFormsUpdate_1200`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_1200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_1200 start`);
 
             let formIds: string[] = new Array();
@@ -860,13 +858,13 @@ export default function test() {
                             }
                         }
                     }).then((res) => {
-                        console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                        console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost notifyVisible res: ${JSON.stringify(res)}`);
                         data.code = res;
                         data.data = 'FMS_FormSupply_commonEvent';
                         commonEvent.publish("FMS_FormSupply_commonEvent", data, () => {
                             console.info(`FMS_enableFormsUpdate_1200 onSupplyCallBack publish start`)})
                     }).catch((err: BusinessError) => {
-                        console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                        console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost notifyVisible error: ${JSON.stringify(err)}`);
                     });
                     console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbility notifyVisible end`);
                 }, 1000);
@@ -897,13 +895,13 @@ export default function test() {
                         }
                     }
                 }).then((res) => {
-                    console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost disable res: ${JSON.stringify(res)}`);
                     data.code = res;
                     data.data = 'FMS_FormOnDeleted_commonEvent';
                     commonEvent.publish("FMS_FormOnDeleted_commonEvent", data, () => {
                         console.info(`FMS_enableFormsUpdate_1200 onFormDisableCallBack publish start`)})
                 }).catch((err: BusinessError) => {
-                    console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost disable error: ${JSON.stringify(err)}`);
                 });
                 console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbility notify disable end`);
             }
@@ -934,13 +932,13 @@ export default function test() {
                         }
                     }
                 }).then((res) => {
-                    console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost serviceb res: ${JSON.stringify(res)}`);
                     data.code = res;
                     data.data = 'Second_FMS_FormOnAcquired_commonEvent';
                     commonEvent.publish("FMS_FormOnAcquired_commonEvent", data, () => {
                         console.info(`FMS_enableFormsUpdate_1200 onSecondAcquiredCallBack publish start`)})
                 }).catch((err: BusinessError) => {
-                    console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost serviceb error: ${JSON.stringify(err)}`);
                 });
                 console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbility serviceb end`);
             }
@@ -962,13 +960,13 @@ export default function test() {
                     }
                 }
             }).then((res) => {
-                console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost servicea res: ${JSON.stringify(res)}`);
                 options.code = res;
                 options.data = 'FMS_FormOnAcquired_commonEvent';
                 commonEvent.publish("FMS_FormOnAcquired_commonEvent", options, () => {
                     console.info(`FMS_enableFormsUpdate_1200 onFirstAcquiredCallBack publish start`)})
             }).catch((err: BusinessError) => {
-                console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbilityhost servicea error: ${JSON.stringify(err)}`);
             });
             console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbility servicea end`);
             await sleep(1000);

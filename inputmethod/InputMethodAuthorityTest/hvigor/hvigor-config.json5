@@ -14,8 +14,10 @@
  */
 
 {
-  "hvigorVersion": "4.0.5",
+  "modelVersion": "5.0.0",
   "dependencies": {
-    "@ohos/hvigor-ohos-plugin": "4.0.5"
+  },
+  "debugging": {
+     "stacktrace": true
   }
 }

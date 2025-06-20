@@ -47,9 +47,9 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayUnshiftTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
+    it('builtinsArrayUnshiftTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0100';
       console.info(`${caseName} test start`);
       try {
@@ -78,7 +78,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0200';
@@ -110,7 +110,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0300';
@@ -138,7 +138,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0400';
@@ -171,7 +171,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0500';
@@ -201,7 +201,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0600';
@@ -233,7 +233,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0700';
@@ -262,7 +262,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0800';
@@ -287,7 +287,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest0900';
@@ -312,7 +312,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest1000';
@@ -339,7 +339,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest1100';
@@ -364,7 +364,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest1200';
@@ -391,7 +391,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest1300';
@@ -418,7 +418,7 @@ export default function builtinsArrayUnshiftTest() {
      * @tc.desc Testing unshift
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayUnshiftTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayUnshiftTest1400';

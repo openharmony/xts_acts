@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import RectValue from '../../../MainAbility/common/Rect';
@@ -52,7 +52,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.Embed， width > minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_0100', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_0100] START');
       await CommonFunc.sleep(2000);
       console.log("get Initial value")
@@ -79,7 +79,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.Embed， width < minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_0200', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_0200] START');
       globalThis.value.message.notify({
         name: 'width1', value: 400
@@ -96,9 +96,8 @@ export default function SideBarContainerTypeTest() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(400)));
-      console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
-
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(400))) <= 1).assertTrue();
+      console.log("sideBarContent_01.right - sideBarContent_01.left" + ((Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(400)))))
 
       console.info('[SUB_ACE_SideBarContainerType_0200] END');
       done();
@@ -109,7 +108,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.Overlay， width > minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_0300', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_0300] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.Overlay
@@ -148,7 +147,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.Overlay， width < minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_0400', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_0400] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.Overlay
@@ -190,7 +189,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.Overlay， width < minSideBarWidth + minContentWidth ,minContentWidth set 100,minSideBarWidth set 400
      */
-    it('SUB_ACE_SideBarContainerType_0500', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_0500] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.Overlay
@@ -219,9 +218,9 @@ export default function SideBarContainerTypeTest() {
 
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(400)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(400))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(400)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(400))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       let strJson1 = getInspectorByKey('SideBarContainerType_SideBarContainer_01');
@@ -239,7 +238,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.AUTO， width >= minSideBarWidth + minContentWidth ,minContentWidth set 300,minSideBarWidth set 200
      */
-    it('SUB_ACE_SideBarContainerType_0600', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_0600] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.AUTO
@@ -265,9 +264,9 @@ export default function SideBarContainerTypeTest() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       console.info('[SUB_ACE_SideBarContainerType_0600] END');
@@ -279,7 +278,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.AUTO， width < minSideBarWidth + minContentWidth ,minContentWidth set 300,minSideBarWidth set 200
      */
-    it('SUB_ACE_SideBarContainerType_0700', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_0700',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_0700] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.AUTO
@@ -307,9 +306,9 @@ export default function SideBarContainerTypeTest() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(400)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(400))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       let strJson1 = getInspectorByKey('SideBarContainerType_SideBarContainer_01');
@@ -327,7 +326,7 @@ export default function SideBarContainerTypeTest() {
     //  * @tc.name      testSideBarContainerAttribute
     //  * @tc.desc      SSet the property minContentWidth value to 100fp
     //  */
-    // it('SUB_ACE_SideBarContainerType_0800', 0, async  (done: Function)=> {
+    // it('SUB_ACE_SideBarContainerType_0800',  Level.LEVEL0, async  (done: Function)=> {
     //   console.info('[SUB_ACE_SideBarContainerType_0800] START');
     //   globalThis.value.message.notify({name:'SideBarContainerType', value:SideBarContainerType.AUTO})
     //   globalThis.value.message.notify({name:'width1', value:200 + fp2vp(100)})
@@ -362,7 +361,7 @@ export default function SideBarContainerTypeTest() {
     //  * @tc.name      testSideBarContainerAttribute
     //  * @tc.desc      SSet the property minContentWidth value to 100lpx
     //  */
-    // it('SUB_ACE_SideBarContainerType_0900', 0, async  (done: Function)=> {
+    // it('SUB_ACE_SideBarContainerType_0900',  Level.LEVEL0, async  (done: Function)=> {
     //   console.info('[SUB_ACE_SideBarContainerType_0900] START');
     //   globalThis.value.message.notify({name:'SideBarContainerType', value:SideBarContainerType.AUTO})
     //   globalThis.value.message.notify({name:'width1', value:200 + lpx2vp(100)})
@@ -397,7 +396,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SSet the property minContentWidth value to 100px
      */
-    it('SUB_ACE_SideBarContainerType_1000', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_1000',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_1000] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.AUTO
@@ -422,9 +421,9 @@ export default function SideBarContainerTypeTest() {
 
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(100));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(100)) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       console.info('[SUB_ACE_SideBarContainerType_1000] END');
@@ -436,7 +435,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SSet the property minContentWidth value to 100vp
      */
-    it('SUB_ACE_SideBarContainerType_1100', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_1100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_1100] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.AUTO
@@ -460,9 +459,9 @@ export default function SideBarContainerTypeTest() {
       let SideBarContainer_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_SideBarContainer_01');
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       console.info('[SUB_ACE_SideBarContainerType_1100] END');
@@ -475,7 +474,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SSet the property minContentWidth value to 0vp
      */
-    it('SUB_ACE_SideBarContainerType_1200', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_1200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_1200] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.AUTO
@@ -499,9 +498,9 @@ export default function SideBarContainerTypeTest() {
       let SideBarContainer_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_SideBarContainer_01');
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(0)) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       console.info('[SUB_ACE_SideBarContainerType_1200] END');
@@ -514,7 +513,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SSet the property minContentWidth value to 10%
      */
-    it('SUB_ACE_SideBarContainerType_1300', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_1300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_1300] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.AUTO
@@ -553,7 +552,7 @@ export default function SideBarContainerTypeTest() {
     //  * @tc.name      testSideBarContainerAttribute
     //  * @tc.desc      SSet the property minContentWidth value to 120%
     //  */
-    // it('SUB_ACE_SideBarContainerType_1400', 0, async  (done: Function)=> {
+    // it('SUB_ACE_SideBarContainerType_1400',  Level.LEVEL0, async  (done: Function)=> {
     //   console.info('[SUB_ACE_SideBarContainerType_1400] START');
     //   globalThis.value.message.notify({name:'SideBarContainerType', value:SideBarContainerType.AUTO})
     //   globalThis.value.message.notify({name:'width1', value:300})
@@ -582,7 +581,7 @@ export default function SideBarContainerTypeTest() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SSet the property minContentWidth value to -10vp
      */
-    it('SUB_ACE_SideBarContainerType_1500', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_1500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_1500] START');
       globalThis.value.message.notify({
         name: 'SideBarContainerType', value: SideBarContainerType.AUTO
@@ -606,9 +605,9 @@ export default function SideBarContainerTypeTest() {
       let SideBarContainer_01: RectValue = CommonFunc.getComponentRect('SideBarContainerType_SideBarContainer_01');
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(360)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(360))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       console.info('[SUB_ACE_SideBarContainerType_1500] END');

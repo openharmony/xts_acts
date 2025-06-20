@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import commonEvent from '@ohos.commonEvent';
 import common from '@ohos.app.ability.common';
@@ -35,7 +35,7 @@ export default function abilityTest() {
    * @tc.name      : start new ability
    * @tc.desc      : Starting mainability2 with startability succeeded.(callback)
    */
-    it('ACTS_StartAbility_Callback_Successfully_0100', 0, async (done: Function) => {
+    it('ACTS_StartAbility_Callback_Successfully_0100', Level.LEVEL0, async (done: Function) => {
       let Subscriber: commonEventManager.CommonEventSubscriber;
       let flag = true;
       let startresult = false;
@@ -90,7 +90,7 @@ export default function abilityTest() {
    * @tc.name      : start new ability
    * @tc.desc      : Starting mainability2 with startability failed.(callback)
    */
-    it('ACTS_StartAbility_Callback_Error_0200', 0, async (done: Function) => {
+    it('ACTS_StartAbility_Callback_Error_0200', Level.LEVEL0, async (done: Function) => {
       let AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments();
       console.log("====>getArguments is====>" + JSON.stringify(AbilityDelegatorArgs));
       let Subscriber: commonEventManager.CommonEventSubscriber;
@@ -135,7 +135,7 @@ export default function abilityTest() {
    * @tc.name      : start new ability
    * @tc.desc      : Starting mainability2 with startability succeeded.(callback)
    */
-    it('ACTS_StartAbility_Promise_Successfully_0100', 0, async (done: Function) => {
+    it('ACTS_StartAbility_Promise_Successfully_0100', Level.LEVEL0, async (done: Function) => {
       let Subscriber: commonEventManager.CommonEventSubscriber;
       let flag = true;
       let startresult = false;
@@ -190,7 +190,7 @@ export default function abilityTest() {
    * @tc.name      : start new ability
    * @tc.desc      : Starting mainability2 with startability failed.(callback)
    */
-    it('ACTS_StartAbility_Promise_Error_0200', 0, async (done: Function) => {
+    it('ACTS_StartAbility_Promise_Error_0200', Level.LEVEL0, async (done: Function) => {
       let AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments();
       console.log("====>getArguments is====>" + JSON.stringify(AbilityDelegatorArgs));
       let Subscriber: commonEventManager.CommonEventSubscriber;

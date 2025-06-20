@@ -41,7 +41,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0100";
       let ifTransmitInfraredSuccess = 0;
       try {
@@ -67,7 +67,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0200";
       let ifTransmitInfraredSuccess = 0;
       try {
@@ -96,7 +96,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0300", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0300";
       try {
         let infraredFrequency: number = 38000;
@@ -123,7 +123,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0400", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0400";
       try {
         let infraredFrequency: number = 38000;
@@ -147,7 +147,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0500", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0500";
       try {
         let infraredFrequency: number = -38000;
@@ -171,7 +171,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0600", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0600";
       let ifTransmitInfraredSuccess = 0;
       try {
@@ -197,7 +197,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0700", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0700";
       let ifTransmitInfraredSuccess = 0;
       try {

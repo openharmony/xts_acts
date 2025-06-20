@@ -52,9 +52,9 @@ export default function LightWeightSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLightWeightSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLightWeightSet0001";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -72,9 +72,9 @@ export default function LightWeightSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLightWeightSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLightWeightSet0002";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -95,9 +95,9 @@ export default function LightWeightSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLightWeightSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLightWeightSet0003";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -117,9 +117,9 @@ export default function LightWeightSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLightWeightSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLightWeightSet0004";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -141,9 +141,9 @@ export default function LightWeightSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLightWeightSet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightSet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLightWeightSet0005";
       try {
         let lightWeightSet: LightWeightSet<number | string> = new LightWeightSet();
@@ -162,9 +162,9 @@ export default function LightWeightSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLightWeightSet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightSet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLightWeightSet0006";
       try {
         let lightWeightSet: LightWeightSet<string> = new LightWeightSet();
@@ -182,9 +182,9 @@ export default function LightWeightSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLightWeightSet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightSet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLightWeightSet0007";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
@@ -616,8 +616,8 @@ export default function LightWeightSetTest() {
         lightWeightSet.add("sparrow33");
         let result1 = lightWeightSet.getIndexOf("squirrel2222222222222");
         let result = lightWeightSet.getIndexOf("sparrow33");
-        expect(result).assertEqual(0);
-        expect(result1).assertEqual(1);
+        expect(result).assertEqual(1);
+        expect(result1).assertEqual(0);
 
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);

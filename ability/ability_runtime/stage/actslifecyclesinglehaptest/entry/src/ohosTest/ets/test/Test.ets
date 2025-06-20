@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function lifecycleTest(abilityContext) {
   describe('LifeCycleOneTest', function () {
@@ -74,7 +74,7 @@ export default function lifecycleTest(abilityContext) {
    * @tc.desc    Function test
    * @tc.level   0
    */
-    it("Singlehap_LifeCycleTest_0700", 0, async function (done) {
+    it("Singlehap_LifeCycleTest_0700", Level.LEVEL0, async function (done) {
       console.log("------------Singlehap_LifeCycleTest_0700 START-------------");
       TAG = "Singlehap_LifeCycleTest_0700";
       var code1;

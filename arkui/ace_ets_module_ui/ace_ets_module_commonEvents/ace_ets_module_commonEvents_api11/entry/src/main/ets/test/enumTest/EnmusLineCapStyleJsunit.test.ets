@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import config from '@ohos.accessibility.config';
@@ -56,7 +56,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       console.info('[ afterEach ] ===================enumsImageTest test after each called===================');
     });
 
-    it('enumsLineCapStyleTest_0100', 0, async (done: Function) => {
+    it('enumsLineCapStyleTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('enumsLineCapStyleTest_0100 START');
       let strJson: string = getInspectorByKey('Butt');
       console.info("enumsLineCapStyleTest_0100 component strJson:" + strJson);

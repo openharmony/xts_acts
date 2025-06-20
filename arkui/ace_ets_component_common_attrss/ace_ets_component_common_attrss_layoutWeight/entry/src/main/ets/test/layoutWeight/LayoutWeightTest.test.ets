@@ -146,8 +146,9 @@ export default function layoutWeightTest() {
       console.info('[' + data.caseTag + ']' + 'rect.top is:' + JSON.stringify(rect.top));
       console.info('[' + data.caseTag + ']' + 'getComponentRect is height:' + JSON.stringify(height));
       console.info('[' + data.caseTag + ']' + 'layoutWeight is:' + data.viewObj.$attrs.layoutWeight);
+      console.info('[' + data.caseTag + ']' + 'expectHeight is:' + data.testValue.expectValue.height);
       expect(data.viewObj.$attrs.layoutWeight).assertEqual(data.testValue.expectValue.layoutWeight);
-      expect(Math.abs(height - data.testValue.expectValue.height) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(height - data.testValue.expectValue.height)) <= 1).assertTrue();
     });
   })
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function LazyForEachVisibleAreaChange() {
      * @tc.name LazyForEachVisibleAreaChange
      * @tc.desc Test LazyForEachVisibleAreaChange
      */
-    it('LazyForEachVisibleAreaChange_001', 0, async (done: Function) => {
+    it('LazyForEachVisibleAreaChange_001', Level.LEVEL0, async (done: Function) => {
       console.info('[LazyForEachVisibleAreaChange_001] START');      
       await CommonFunc.sleep(500);
       let driver: Driver = Driver.create();

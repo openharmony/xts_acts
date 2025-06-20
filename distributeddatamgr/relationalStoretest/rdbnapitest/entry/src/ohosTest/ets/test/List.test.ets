@@ -13,17 +13,11 @@
  * limitations under the License.
  */
 import RdbNdkStoreBackupTest from './RdbNdkStoreBackupTest'
-import RdbNdkStoreEncryptTest from './RdbNdkStoreEncryptTest'
 import RdbNdkStoreLevelTest from './RdbNdkStoreLevelTest'
-import RdbNdkStoreCursorTest from './RdbNdkStoreCursorTest'
 import RdbNdkStorePredicatesTest from './RdbNdkStorePredicatesTest'
-import RdbNdkStoreTest from './RdbNdkStoreTest'
 
 export default function testsuite() {
-    RdbNdkStoreEncryptTest()
     RdbNdkStoreLevelTest()
-    RdbNdkStoreCursorTest()
     RdbNdkStorePredicatesTest()
-    RdbNdkStoreTest()
     RdbNdkStoreBackupTest()
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import ability from '@ohos.app.ability.UIAbility'
 import wantConstant from '@ohos.ability.wantConstant'
 import base from '@ohos.base';
@@ -88,7 +88,7 @@ export default function startAbilityTest() {
          * @tc.desc    Function test
          * @tc.level   0
          */
-        it("FreeInstall_Stage_Local_StartAbility_2600", 0, async (done:Function) => {
+        it("FreeInstall_Stage_Local_StartAbility_2600", Level.LEVEL0, async (done:Function) => {
             console.info("------------start FreeInstall_Stage_Local_StartAbility_2600-------------");
             TAG = "FreeInstall_Stage_Local_StartAbility_2600";
             let flag = 0;
@@ -117,7 +117,7 @@ export default function startAbilityTest() {
          * @tc.desc    Function test
          * @tc.level   0
          */
-        it("FreeInstall_Stage_Local_StartAbility_2700", 0, async (done:Function) => {
+        it("FreeInstall_Stage_Local_StartAbility_2700", Level.LEVEL0, async (done:Function) => {
             console.info("------------start FreeInstall_Stage_Local_StartAbility_2700-------------");
             TAG = "FreeInstall_Stage_Local_StartAbility_2700";
             let flag = 0;
@@ -153,7 +153,7 @@ export default function startAbilityTest() {
         * @tc.desc    Function test
         * @tc.level   0
         */
-        it("FreeInstall_Stage_Local_StartAbility_2800", 0, async (done:Function) => {
+        it("FreeInstall_Stage_Local_StartAbility_2800", Level.LEVEL0, async (done:Function) => {
             console.info("------------start FreeInstall_Stage_Local_StartAbility_2800-------------");
             TAG = "FreeInstall_Stage_Local_StartAbility_2800";
             let flag = 0;

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it,expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -54,7 +54,7 @@ export default function richEditorTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testRichEditorCopyOptions01', 0, async (done: Function) => {
+    it('testRichEditorCopyOptions01', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testRichEditorCopyOptions01';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -96,7 +96,7 @@ export default function richEditorTest() {
      * @tc.type   Function
      * @tc.level  0
      */     
-    it('testRichEditorCopyOptions02', 0, async (done: Function) => {
+    it('testRichEditorCopyOptions02', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testRichEditorCopyOptions02';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -134,7 +134,7 @@ export default function richEditorTest() {
      * @tc.type   Function
      * @tc.level  0
      */       
-    it('testRichEditorCopyOptions03', 0, async (done: Function) => {
+    it('testRichEditorCopyOptions03', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testRichEditorCopyOptions03';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -173,7 +173,7 @@ export default function richEditorTest() {
      * @tc.type   Function
      * @tc.level  0
      */      
-    it('testRichEditorCopyOptions04', 0, async (done: Function) => {
+    it('testRichEditorCopyOptions04', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testRichEditorCopyOptions04';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)

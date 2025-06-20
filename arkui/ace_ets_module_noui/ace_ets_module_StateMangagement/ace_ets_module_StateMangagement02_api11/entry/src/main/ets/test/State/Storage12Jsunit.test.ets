@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -56,7 +56,7 @@ export default function Storage12Jsunit() {
     });
 
     //Size获取AppStorage中存在键值对的个数
-    it('Storage12Jsunit_0100', 0, async (done: Function) => {
+    it('Storage12Jsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage12Jsunit_0100] START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('Storage12Button111'));
@@ -70,7 +70,7 @@ export default function Storage12Jsunit() {
       done();
     });
 
-    it('Storage12Jsunit_0200', 0, async (done: Function) => {
+    it('Storage12Jsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage12Jsunit_0200] START');
       let driver = await UiDriver.create()
       let Storage12Button2 = await driver.findComponent(BY.key('Storage12Button2'));
@@ -84,7 +84,7 @@ export default function Storage12Jsunit() {
       done();
     });
 
-    it('Storage12Jsunit_0300', 0, async (done: Function) => {
+    it('Storage12Jsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage12Jsunit_0300] START');
       let Storage12ContentJson = getInspectorByKey('Storage12Text1');
       let text: ESObject = JSON.parse(Storage12ContentJson);

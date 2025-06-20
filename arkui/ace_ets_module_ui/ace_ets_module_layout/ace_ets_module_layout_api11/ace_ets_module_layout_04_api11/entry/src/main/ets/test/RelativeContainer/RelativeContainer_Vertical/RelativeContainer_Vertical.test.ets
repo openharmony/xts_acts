@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import GlobalContext from '../../../MainAbility/common/GlobalContext'
@@ -51,7 +51,7 @@ export default function RelativeContainer_Vertical() {
      * @tc.name testRelativeContainer
      * @tc.desc text set align:VerticalAlign.Top
      */
-    it('SUB_ACE_RelativeContainer_Vertical_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_RelativeContainer_Vertical_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0100] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addalign', value: VerticalAlign.Top
@@ -76,7 +76,7 @@ export default function RelativeContainer_Vertical() {
      * @tc.name testRelativeContainer
      * @tc.desc text set align:VerticalAlign.Center
      */
-    it('SUB_ACE_RelativeContainer_Vertical_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_RelativeContainer_Vertical_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0200] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addalign', value: VerticalAlign.Center
@@ -104,7 +104,7 @@ export default function RelativeContainer_Vertical() {
      * @tc.name testRelativeContainer
      * @tc.desc text set align:VerticalAlign.Bottom
      */
-    it('SUB_ACE_RelativeContainer_Vertical_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_RelativeContainer_Vertical_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0300] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addalign', value: VerticalAlign.Bottom

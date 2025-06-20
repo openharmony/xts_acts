@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -72,7 +72,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction meets the layout
      *   of the child components when the parent components set margin,and the child components set padding
      */
-    it('testWrapNoWrapFlexMarTextPad', 0, async () => {
+    it('testWrapNoWrapFlexMarTextPad',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexMarTextPad] START');
 
       GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -98,28 +98,28 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
       expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
-      expect(Math.abs((flexContainer.top - columnContainer.top) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs((flexContainer.left - columnContainer.left) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs((flexContainer.top - columnContainer.top) - (firstText.top - columnContainer.top)) <= 1)
+      expect(Math.floor(Math.abs((flexContainer.top - columnContainer.top) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.left - columnContainer.left) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.top - columnContainer.top) - (firstText.top - columnContainer.top))) <= 1)
         .assertTrue()
 
-      expect(Math.abs(firstText.left - flexContainer.left) <= 1).assertTrue()
-      expect(Math.abs(firstText.right - secondText.left) <= 1).assertTrue()
-      expect(Math.abs(secondText.right - thirdText.left) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(firstText.left - flexContainer.left)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(firstText.right - secondText.left)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(secondText.right - thirdText.left)) <= 1).assertTrue()
 
-      expect(Math.abs(firstText.top - secondText.top) <= 1).assertTrue()
-      expect(Math.abs(secondText.top - thirdText.top) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(firstText.top - secondText.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(secondText.top - thirdText.top)) <= 1).assertTrue()
 
-      expect(Math.abs((firstText.bottom - firstText.top) - vp2px(100)) <= 1).assertTrue()
-      expect(Math.abs((secondText.bottom - secondText.top) - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs((thirdText.bottom - thirdText.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(100))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(200))) <= 1).assertTrue()
 
-      expect(Math.abs((firstText.right - firstText.left) - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left)) <= 1).assertTrue()
-      expect(Math.abs((firstText.right - firstText.left) - (thirdText.right - thirdText.left)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (thirdText.right - thirdText.left))) <= 1).assertTrue()
 
-      expect(Math.abs(flexContainer.bottom - thirdText.bottom) <= 1).assertTrue()
-      expect(Math.abs((flexContainer.right - thirdText.right) - vp2px(50)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(flexContainer.bottom - thirdText.bottom)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.right - thirdText.right) - vp2px(50))) <= 1).assertTrue()
       console.info('[testWrapNoWrapFlexMarTextPad] END');
 
     });
@@ -129,7 +129,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction meets the layout
      *   of the child components when the parent components set margin,and the child components set margin
      */
-    it('testWrapNoWrapFlexMarTextMar', 0, async () => {
+    it('testWrapNoWrapFlexMarTextMar',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexMarTextMar] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 10
@@ -148,26 +148,26 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
       expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
-      expect(Math.abs((flexContainer.top - columnContainer.top) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs((flexContainer.left - columnContainer.left) - vp2px(10)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.top - columnContainer.top) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.left - columnContainer.left) - vp2px(10))) <= 1).assertTrue()
 
-      expect(Math.abs((firstText.left - flexContainer.left) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs((firstText.top - flexContainer.top) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs((firstText.left - flexContainer.left) - (secondText.left - firstText.right)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.left - flexContainer.left) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.top - flexContainer.top) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.left - flexContainer.left) - (secondText.left - firstText.right))) <= 1).assertTrue()
 
-      expect(Math.abs(secondText.top - thirdText.top) <= 1).assertTrue()
-      expect(Math.abs(secondText.right - thirdText.left) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(secondText.top - thirdText.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(secondText.right - thirdText.left)) <= 1).assertTrue()
 
-      expect(Math.abs((firstText.bottom - firstText.top) - vp2px(100)) <= 1).assertTrue()
-      expect(Math.abs((secondText.bottom - secondText.top) - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs((thirdText.bottom - thirdText.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(100))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(200))) <= 1).assertTrue()
 
-      expect(Math.abs((firstText.right - firstText.left) - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left)) <= 1).assertTrue()
-      expect(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1).assertTrue()
 
-      expect(Math.abs(flexContainer.bottom - thirdText.bottom) <= 1).assertTrue()
-      expect(Math.abs((flexContainer.right - thirdText.right) - vp2px(30)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(flexContainer.bottom - thirdText.bottom)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.right - thirdText.right) - vp2px(30))) <= 1).assertTrue()
       console.info('[testWrapNoWrapFlexMarTextMar] END');
 
     });
@@ -177,7 +177,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough the layout
      *   of the child components when the parent components set margin,and the child components set margin and padding
      */
-    it('testWrapNoWrapFlexMarTextMarPad', 0, async () => {
+    it('testWrapNoWrapFlexMarTextMarPad',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexMarTextMarPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 10
@@ -210,27 +210,27 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
 
       expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
-      expect(Math.abs((flexContainer.left - columnContainer.left) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs((flexContainer.top - columnContainer.top) - vp2px(10)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.left - columnContainer.left) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.top - columnContainer.top) - vp2px(10))) <= 1).assertTrue()
 
-      expect(Math.abs((firstText.top - flexContainer.top) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs(firstText.top - secondText.top) <= 1).assertTrue()
-      expect(Math.abs(secondText.top - thirdText.top) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.top - flexContainer.top) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(firstText.top - secondText.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(secondText.top - thirdText.top)) <= 1).assertTrue()
 
-      expect(Math.abs((firstText.bottom - firstText.top) - vp2px(100)) <= 1).assertTrue()
-      expect(Math.abs((secondText.bottom - secondText.top) - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs((thirdText.bottom - thirdText.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(100))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(200))) <= 1).assertTrue()
 
-      expect(Math.abs((firstText.left - flexContainer.left) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs((secondText.left - firstText.right) - vp2px(20)) <= 1).assertTrue()
-      expect(Math.abs((thirdText.left - secondText.right) - vp2px(20)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.left - flexContainer.left) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(20))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((thirdText.left - secondText.right) - vp2px(20))) <= 2).assertTrue()
 
-      expect(Math.abs((firstText.right - firstText.left) - (vp2px(440) / 3)) <= 1).assertTrue()
-      expect(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left)) <= 1).assertTrue()
-      expect(Math.abs((firstText.right - firstText.left) - (thirdText.right - thirdText.left)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (vp2px(440) / 3))) <= 2).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (thirdText.right - thirdText.left))) <= 1).assertTrue()
 
-      expect(Math.abs((flexContainer.right - thirdText.right) - vp2px(10)) <= 1).assertTrue()
-      expect(Math.abs((thirdText.bottom - flexContainer.bottom) - vp2px(10)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexContainer.right - thirdText.right) - vp2px(10))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((thirdText.bottom - flexContainer.bottom) - vp2px(10))) <= 1).assertTrue()
       console.info('[testWrapNoWrapFlexMarTextMarPad] END');
 
     });

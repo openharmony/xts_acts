@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -51,7 +51,7 @@ export default function minMaxFontSize() {
      * @tc.desic        Set the minFontSize and maxFontSize properties of 
                           the property string and text subcomponent
      */
-    it('minMaxFontSize0001', 0, async () => {
+    it('minMaxFontSize0001', Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('minMaxFontSize minMaxFontSize0001 START');
         await CommonFunc.sleep(500);
@@ -85,9 +85,6 @@ export default function minMaxFontSize() {
         expect('' + obj3.$attrs.maxFontSize).assertContain("0.00");
         //0.00fp    0.00fp
         console.info("[minMaxFontSize0001] end");
-
     });
-
-
   })
 }

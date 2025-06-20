@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hiSysEvent from '@ohos.hiSysEvent'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 
 export default function hiSysEventSerTest() {
 describe('hiSysEventSerTest', function () {
@@ -38,7 +38,7 @@ describe('hiSysEventSerTest', function () {
 	 * @tc.name testHiSysEventApi33
 	 * @tc.desc 验证调用write接口系统事件打点，hiview服务未成功启动，忽略事件打点，错误码11200003
 	 */
-	it('testHiSysEventApi33', 1, async function (done) {
+	it('testHiSysEventApi33', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi33 start')
 		try {
 			hiSysEvent.write({
@@ -70,7 +70,7 @@ describe('hiSysEventSerTest', function () {
 	 * @tc.name testHiSysEventApi67
 	 * @tc.desc 验证调用addwatcher，hiview服务未成功启动，调用失败，返回错误码11200003
 	 */
-	it('testHiSysEventApi67', 1, async function (done) {
+	it('testHiSysEventApi67', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi67 start')
 		let watcher = {
 			rules: [{
@@ -99,7 +99,7 @@ describe('hiSysEventSerTest', function () {
 	 * @tc.name testHiSysEventApi68
 	 * @tc.desc 验证调用query，hiview服务未成功启动，调用失败，返回错误码11200003
 	 */
-	it('testHiSysEventApi68', 1, async function (done) {
+	it('testHiSysEventApi68', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi68 start')
 		try {
 			hiSysEvent.query({
@@ -128,7 +128,7 @@ describe('hiSysEventSerTest', function () {
 	 * @tc.name testHiSysEventBox09
 	 * @tc.desc 验证调用exportSysEvents接口，关闭hiview进程，抛出错误码11200003
 	 */
-	it('testHiSysEventBox09', 1, async function (done) {
+	it('testHiSysEventBox09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventBox09 start')
 		try {
 			let time = hiSysEvent.exportSysEvents({
@@ -154,7 +154,7 @@ describe('hiSysEventSerTest', function () {
 	 * @tc.name testHiSysEventBox23
 	 * @tc.desc 验证调用subscribe接口，关闭hiview进程，抛出错误码11200003
 	 */
-	it('testHiSysEventBox23', 1, async function (done) {
+	it('testHiSysEventBox23', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventBox23 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -176,7 +176,7 @@ describe('hiSysEventSerTest', function () {
 	 * @tc.name testHiSysEventBox24
 	 * @tc.desc 验证调用unsubscribe接口，关闭hiview进程，抛出错误码11200003
 	 */
-	it('testHiSysEventBox24', 1, async function (done) {
+	it('testHiSysEventBox24', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventBox24 start')
 		try {
 			hiSysEvent.unsubscribe();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -62,7 +62,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0050', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0050', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0050] START');
       await routerPush("imageAltBase64")
       let driver = Driver.create();
@@ -84,7 +84,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] START'); 
       await routerPush("image01")
       let driver = Driver.create();
@@ -117,7 +117,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0290', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0290', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0290] START'); 
       await routerPush("image02")
       let driver = Driver.create();
@@ -138,7 +138,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] START'); 
       await routerPush("image03")
       let driver = Driver.create();
@@ -153,7 +153,11 @@ export default function ImageAdvancedTest() {
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] obj2.$attrs.content is: " + obj2.$attrs.content);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] vp2px(10): " + vp2px(10));
-      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(80)) <= 1).assertTrue();
+      let round = Math.round(vp2px(10))
+      let vp2px10 = Math.abs(vp2px(10) - round) < 0.001 ? round : Math.floor(vp2px(10))
+      let contentHeigt = Number(obj1.$attrs.content)
+      let imageContentHeight = vp2px(100) - vp2px10 * 2
+      expect(Math.abs(contentHeigt - imageContentHeight) <= 1).assertTrue();
       expect(Math.abs(Number(obj2.$attrs.content) - vp2px(10)) <= 1).assertTrue();
       done();
     });
@@ -166,7 +170,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310] START'); 
       await routerPush("image04")
       let driver = Driver.create();
@@ -194,7 +198,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] START'); 
       await routerPush("image05")
       let driver = Driver.create();
@@ -209,7 +213,11 @@ export default function ImageAdvancedTest() {
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] obj2.$attrs.content is: " + obj2.$attrs.content);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] vp2px(10): " + vp2px(10));
-      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(80)) <= 1).assertTrue();
+      let round = Math.round(vp2px(10))
+      let vp2px10 = Math.abs(vp2px(10) - round) < 0.001 ? round : Math.floor(vp2px(10))
+      let contentHeigt = Number(obj1.$attrs.content)
+      let imageContentHeight = vp2px(100) - vp2px10 * 2
+      expect(Math.abs(contentHeigt - imageContentHeight) <= 1).assertTrue();
       expect(Math.abs(Number(obj2.$attrs.content) - vp2px(10)) <= 1).assertTrue();
       done();
     });
@@ -222,7 +230,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330] START'); 
       await routerPush("image06")
       let driver = Driver.create();
@@ -250,7 +258,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0340', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0340', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0340] START'); 
       await routerPush("image07")
       let driver = Driver.create();
@@ -277,7 +285,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0350', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0350', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0350] START'); 
       await routerPush("image08")
       let driver = Driver.create();
@@ -303,7 +311,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0360', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0360', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0360] START'); 
       await routerPush("image09")
       let driver = Driver.create();
@@ -324,7 +332,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0370', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0370', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0370] START'); 
       await routerPush("image10")
       let driver = Driver.create();
@@ -345,7 +353,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0380', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0380', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0380] START'); 
       await routerPush("imageBase64")
       let driver = Driver.create();
@@ -366,7 +374,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0420', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0420', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0420] START'); 
       await routerPush("image14")
       let driver = Driver.create();
@@ -407,7 +415,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0430', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0430', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0430] START'); 
       await routerPush("image15")
       let driver = Driver.create();
@@ -428,7 +436,7 @@ export default function ImageAdvancedTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0440', 3, async (done: Function) =>  {
+    it('SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0440', Level.LEVEL3, async (done: Function) =>  {
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0440] START'); 
       await routerPush("image16")
       let driver = Driver.create();

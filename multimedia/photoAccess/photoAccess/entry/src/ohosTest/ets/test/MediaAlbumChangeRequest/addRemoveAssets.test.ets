@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { photoKeys, fetchOption, getFileAsset, sleep, getPermission, driveFn } from '../common'
 import common from '@ohos.app.ability.common'
 
@@ -38,7 +38,7 @@ export default function addRemoveAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('add_remove_assets_change_request_000', 0, async (done: Function) => {
+    it('add_remove_assets_change_request_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'add_remove_assets_change_request_000';
       try {
         let album:ESObject = await helper.createAlbum(testNum);
@@ -67,7 +67,7 @@ export default function addRemoveAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('add_remove_assets_change_request_001', 1, async (done: Function) => {
+    it('add_remove_assets_change_request_001', Level.LEVEL1, async (done: Function) => {
       let testNum:ESObject = 'add_remove_assets_change_request_001';
       try {
         let album:ESObject = await helper.createAlbum(testNum);
@@ -103,7 +103,7 @@ export default function addRemoveAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('add_remove_assets_change_request_002', 2, async (done: Function) => {
+    it('add_remove_assets_change_request_002', Level.LEVEL2, async (done: Function) => {
       let testNum:string = 'add_remove_assets_change_request_002';
       try {
         let album:ESObject = await helper.createAlbum(testNum);
@@ -132,7 +132,7 @@ export default function addRemoveAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('apply_Changes_001', 2, async (done: Function) => {
+    it('apply_Changes_001', Level.LEVEL2, async (done: Function) => {
       let testNum:string = 'apply_Changes_001';
       try {
         let albumChangeRequest: ESObject = undefined;
@@ -154,7 +154,7 @@ export default function addRemoveAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('apply_Changes_002', 2, async (done: Function) => {
+    it('apply_Changes_002', Level.LEVEL2, async (done: Function) => {
       let testNum:string = 'apply_Changes_002';
       try {
         let albumChangeRequest: ESObject = ['123123'];

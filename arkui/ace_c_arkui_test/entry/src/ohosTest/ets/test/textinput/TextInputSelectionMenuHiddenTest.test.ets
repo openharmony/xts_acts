@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 import { Driver, ON } from '@ohos.UiTest';
@@ -30,7 +30,7 @@ export default function textInputSelectionMenuHiddenTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputSelectionMenuHidden001', 0, async (done: Function) => {
+    it('testTextInputSelectionMenuHidden001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`textinput/${PAGE_TAG}`);
       focusControl.requestFocus('textInput1')
       await Utils.sleep(1000)

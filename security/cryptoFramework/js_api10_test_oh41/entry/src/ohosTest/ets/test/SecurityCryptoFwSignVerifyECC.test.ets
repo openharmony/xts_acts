@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as specUtil from './utils/common/keyGenSpecUtil';
@@ -53,7 +53,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0100";
       console.log(testNumber + ": started.");
       let param: string = "Ed25519";
@@ -78,7 +78,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0200";
       console.log(testNumber + ": started.");
       let param: string = "Ed25519";
@@ -104,7 +104,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0300";
       console.log(testNumber + ": started.");
       let param: string = "Ed25519";
@@ -129,7 +129,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0400";
       console.log(testNumber + ": started.");
       let param: string = "Ed25519";
@@ -154,7 +154,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0500";
       console.log(testNumber + ": started.");
       let param: string = "Ed25519";
@@ -179,7 +179,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0600";
       console.log(testNumber + ": started.");
       let signVerifyAlg: string = "Ed25519";
@@ -204,7 +204,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0700";
       console.log(testNumber + ": started.");
       let signVerifyAlg: string = "ED25519";
@@ -234,7 +234,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0800";
       console.log(testNumber + ": started.");
       let signVerifyAlg: string = "X25519";
@@ -265,7 +265,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0900";
       console.log(testNumber + ": started");
       let signVerifyAlg: string = "Ed25519";

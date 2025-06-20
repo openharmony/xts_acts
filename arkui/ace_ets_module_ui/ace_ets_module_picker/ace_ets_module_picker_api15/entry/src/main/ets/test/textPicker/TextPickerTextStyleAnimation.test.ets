@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -60,7 +60,7 @@ export default function TextPickerTextStyleAnimationTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextStyleAnimationTest_0100', 0, async (done: Function) => {
+    it('TextStyleAnimationTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('TextStyleAnimationTest_0100 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -88,7 +88,7 @@ export default function TextPickerTextStyleAnimationTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextStyleAnimationTest_0200', 0, async (done: Function) => {
+    it('TextStyleAnimationTest_0200', Level.LEVEL1, async (done: Function) => {
       console.info('TextStyleAnimationTest_0200 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -116,7 +116,7 @@ export default function TextPickerTextStyleAnimationTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextStyleAnimationTest_0300', 0, async (done: Function) => {
+    it('TextStyleAnimationTest_0300', Level.LEVEL1, async (done: Function) => {
       console.info('TextStyleAnimationTest_0300 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -144,7 +144,7 @@ export default function TextPickerTextStyleAnimationTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextStyleAnimationTest_0400', 0, async (done: Function) => {
+    it('TextStyleAnimationTest_0400', Level.LEVEL1, async (done: Function) => {
       console.info('TextStyleAnimationTest_0400 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

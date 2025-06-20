@@ -16,7 +16,7 @@
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 
 let finishmsg: string;
@@ -62,7 +62,7 @@ export default function abilityTest() {
      *           valid ( -s class specifies only test suites).
      * @tc.desc: Verify that the test framework can start normally through the test command.
      */
-    it('ACTS_AACommand_0100', 0, async (done: Function) => {
+    it('ACTS_AACommand_0100', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_0100 --- start");
       let cmd = 'aa test -b com.example.actsaacommandtesta' +
         'test -m entry_test ' +
@@ -88,7 +88,7 @@ export default function abilityTest() {
      * @tc.name: The -b parameter of the test command is invalid, and the other parameters such as -s and -w are valid.
      * @tc.desc: Verify that the test framework cannot be started normally by passing the test command.
      */
-    it('ACTS_AACommand_0200', 0, async (done: Function) => {
+    it('ACTS_AACommand_0200', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_0200 --- start");
       let cmd = 'aa test -b invalid -m entry_test -s unittest OpenHarmonyTestRunner';
       abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -110,7 +110,7 @@ export default function abilityTest() {
      * @tc.name: The -s parameter of the test command is invalid, and the other parameters such as -b and -w are valid.
      * @tc.desc:Verify that the test framework cannot be started normally by passing the test command.
      */
-    it('ACTS_AACommand_0300', 0, async (done: Function) => {
+    it('ACTS_AACommand_0300', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_0300 --- start");
       let cmd = 'aa test -b com.example.actsaacommandtestatest -m entry_test -s invalid';
       abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -132,7 +132,7 @@ export default function abilityTest() {
      * @tc.name: The -w parameter of the test command is invalid, and the other parameters such as -b and -s are valid.
      * @tc.desc: Verify that the test framework cannot be started normally by passing the test command.
      */
-    it('ACTS_AACommand_0400', 0, async (done: Function) => {
+    it('ACTS_AACommand_0400', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_0400 --- start");
       let cmd = 'aa test -b com.example.actsaacommandtestatest -m entry_test ' +
         '-s unittest OpenHarmonyTestRunner ' +
@@ -157,7 +157,7 @@ export default function abilityTest() {
      *           invalid -z parameter is added.
      * @tc.desc: Verify that the test framework cannot be started normally by passing the test command.
      */
-    it('ACTS_AACommand_0500', 0, async (done: Function) => {
+    it('ACTS_AACommand_0500', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_0500 --- start");
       let cmd = 'aa test -b aa test -b com.example.actsaacommandtestatest -m entry_test' +
         '-s unittest OpenHarmonyTestRunner -z invalid';
@@ -180,7 +180,7 @@ export default function abilityTest() {
      * @tc.name: The -p parameter of the test command is invalid, and the -b, -s, -w and other parameters are valid.
      * @tc.desc: Verify that the test framework cannot be started normally by passing the test command.
      */
-    it('ACTS_AACommand_0600', 0, async (done: Function) => {
+    it('ACTS_AACommand_0600', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_0600 --- start");
       let cmd = 'aa test -b com.example.actsaacommandtestatest -m aatest -s unittest OpenHarmonyTestRunner -w 20';
       abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -205,7 +205,7 @@ export default function abilityTest() {
      * is valid (Number.MIN_VALUE-1)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_0700', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_0700', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_0700 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       finishmsg1 = 'TestFinished-ResultCode: -1';
@@ -221,7 +221,7 @@ export default function abilityTest() {
      *          parameter setting.
      * @tc.desc: Verify that the test framework cannot be started in Debug mode through the test command.
      */
-    it('ACTS_AACommand_0800', 0, async (done: Function) => {
+    it('ACTS_AACommand_0800', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_0800 --- start");
       let cmd = 'aa test -b com.example.aacommand08 -m entry_test -s unittest OpenHarmonyTestRunner -w 3';
       abilityDelegator!.executeShellCommand(cmd, (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -244,7 +244,7 @@ export default function abilityTest() {
      *           is valid (Number.MAX_VALUE)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_0400', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_0400', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_0400 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       expect(AppStorage.get<string>("stdResult11")).assertContain(finishmsg);
@@ -260,7 +260,7 @@ export default function abilityTest() {
      *           is valid (1).
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_0100', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_0100', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_0100 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       finishmsg1 = 'TestFinished-ResultCode: 1';
@@ -279,7 +279,7 @@ export default function abilityTest() {
      *           is valid (Number.MIN_VALUE)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_0500', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_0500', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_0500 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       finishmsg1 = 'TestFinished-ResultCode: 0';
@@ -298,7 +298,7 @@ export default function abilityTest() {
      *           is valid (Number.MAX_VALUE+1)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_0600', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_0600', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_0600 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       finishmsg1 = 'TestFinished-ResultCode: 1';
@@ -315,7 +315,7 @@ export default function abilityTest() {
      *           is valid (1)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_0900', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_0900', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_0900 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       finishmsg1 = 'TestFinished-ResultCode: 1';
@@ -332,7 +332,7 @@ export default function abilityTest() {
      *           is valid (Number.MIN_VALUE)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_1300', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_1300', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_1300 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       finishmsg1 = 'TestFinished-ResultCode: 0';
@@ -349,7 +349,7 @@ export default function abilityTest() {
      *           is valid (Number.MAX_VALUE+1)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_1400', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_1400', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_1400 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       finishmsg1 = 'TestFinished-ResultCode: 1';
@@ -366,7 +366,7 @@ export default function abilityTest() {
      *           is valid (Number.MIN_VALUE-1)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_1500', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_1500', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_1500 --- start");
       finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
       finishmsg1 = 'TestFinished-ResultCode: -1';
@@ -382,7 +382,7 @@ export default function abilityTest() {
      *           AsyncCallback mode. The msg parameter is invalid (Undefined) and the code parameter is valid (1)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_0300', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_0300', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_0300 --- start");
       expect(AppStorage.get<string>("stdResult30")!.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue();
       done();
@@ -396,7 +396,7 @@ export default function abilityTest() {
      *           is valid (ABCD)
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
-    it('ACTS_AACommand_finishTest_1600', 0, async (done: Function) => {
+    it('ACTS_AACommand_finishTest_1600', Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_AACommand_finishTest_1600 --- start");
       expect(AppStorage.get<string>("stdResult34")!.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue();
       done();
@@ -407,7 +407,7 @@ export default function abilityTest() {
      * @tc.name: Test command which is invalid
      * @tc.desc: Verify 'aa attach'
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0700', Level.LEVEL0, async (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0700 start!');
       let cmd1 = 'aa attach';
       let cmd2 = 'aa detach';
@@ -436,7 +436,7 @@ export default function abilityTest() {
      * @tc.name: Test command which is invalid
      * @tc.desc: Verify 'aa detach -b'
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0800', Level.LEVEL0, async (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0800 start!');
       let cmd1 = 'aa attach -b';
       let cmd2 = 'aa detach -b';
@@ -465,7 +465,7 @@ export default function abilityTest() {
      * @tc.name: Test command which is invalid
      * @tc.desc: Verify 'aa attach -c'
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0900', Level.LEVEL0, (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_0900 start!');
       let cmd = 'aa attach -c';
       abilityDelegator!.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -485,7 +485,7 @@ export default function abilityTest() {
      * @tc.name: Test command which is invalid
      * @tc.desc: Verify 'aa detach -c'
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1000', Level.LEVEL0, (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1000 start!');
       let cmd = 'aa detach -c';
       abilityDelegator!.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -505,7 +505,7 @@ export default function abilityTest() {
      * @tc.name: Test command which is valid
      * @tc.desc: Verify 'aa attach -b com.example.attachdebugtest'
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100', Level.LEVEL0, (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1100 start!');
       let cmd = 'aa attach -b com.example.attachdebugtest';
       abilityDelegator!.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -525,7 +525,7 @@ export default function abilityTest() {
      * @tc.name: Test command which is valid
      * @tc.desc: Verify 'aa detach -b com.example.attachdebugtest'
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200', Level.LEVEL0, (done: Function) => {
       console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1200 start!');
       let cmd = 'aa detach -b com.example.attachdebugtest';
       abilityDelegator!.executeShellCommand(cmd, (error: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {

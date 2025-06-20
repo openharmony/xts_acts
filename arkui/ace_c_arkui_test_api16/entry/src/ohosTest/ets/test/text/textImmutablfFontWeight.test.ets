@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -36,7 +36,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_001', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_001()).assertEqual(0)
       done()
     })
@@ -52,7 +52,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_002', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_002()).assertEqual(0)
       done()
     })
@@ -68,7 +68,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_003', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_003()).assertEqual(0)
       done()
     })
@@ -84,7 +84,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_004', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_004()).assertEqual(0)
       done()
     })
@@ -100,7 +100,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_005', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_005()).assertEqual(0)
       done()
     })
@@ -116,7 +116,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_006', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_006()).assertEqual(0)
       done()
     })
@@ -132,7 +132,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_007', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_007()).assertEqual(0)
       done()
     })
@@ -148,7 +148,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_008', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_008()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_009', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_009()).assertEqual(0)
       done()
     })
@@ -180,7 +180,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_010', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_010()).assertEqual(0)
       done()
     })
@@ -196,7 +196,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_011', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_011()).assertEqual(0)
       done()
     })
@@ -212,7 +212,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_012', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_012()).assertEqual(0)
       done()
     })
@@ -228,7 +228,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_013', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_013()).assertEqual(0)
       done()
     })
@@ -244,7 +244,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_014', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_014()).assertEqual(0)
       done()
     })
@@ -260,7 +260,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_015', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_015()).assertEqual(0)
       done()
     })
@@ -276,7 +276,7 @@ export default function textImmutablfFontWeight(){
      * @tc.level      : Level 1
      */
 
-    it('textImmutablfFontWeight_016', 0, async (done: Function) => {
+    it('textImmutablfFontWeight_016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textImmutablfFontWeight_016()).assertEqual(0)
       done()
     })

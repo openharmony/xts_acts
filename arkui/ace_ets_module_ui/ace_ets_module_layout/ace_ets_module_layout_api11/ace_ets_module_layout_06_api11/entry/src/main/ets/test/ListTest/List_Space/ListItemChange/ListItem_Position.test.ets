@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -69,7 +69,7 @@ export default function listItem_Position() {
      * @tc.name testListItemPosition
      * @tc.desc ListItem subcomponent binding position property
      */
-    it('testListItemPosition', 0, async (done: Function) => {
+    it('testListItemPosition',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemPosition START');
       globalThis.value.message.notify({
         name: 'x', value: 10

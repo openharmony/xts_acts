@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils.ets'
 
 export default function list_item_groupJsunit() {
@@ -51,7 +51,7 @@ export default function list_item_groupJsunit() {
      * @tc.name         testlist_itemOnSelect0001
      * @tc.desic         acelist_itemOnSelectEtsTest0001
      */
-    it('testlist_item_group0001', 0, async (done: Function) => {
+    it('testlist_item_group0001', Level.LEVEL1, async (done: Function) => {
       console.info('testcase testlist_item_group0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Mon');
@@ -66,7 +66,7 @@ export default function list_item_groupJsunit() {
      * @tc.name         testlist_itemOnSelect0002
      * @tc.desic         acelist_itemOnSelectEtsTest0002
      */
-    it('testlist_item_group0002', 0, async (done: Function) => {
+    it('testlist_item_group0002', Level.LEVEL1, async (done: Function) => {
       console.info('testcase testlist_item_group0002 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Tues');
@@ -81,7 +81,7 @@ export default function list_item_groupJsunit() {
      * @tc.name         testlist_itemOnSelect0003
      * @tc.desic         acelist_itemOnSelectEtsTest0002
      */
-    it('testlist_item_group0003', 0, async (done: Function) => {
+    it('testlist_item_group0003', Level.LEVEL1, async (done: Function) => {
       console.info('testcase testlist_item_group0003 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Wens');
@@ -97,7 +97,7 @@ export default function list_item_groupJsunit() {
      * @tc.name         testlist_itemSwipeAction0004
      * @tc.desic         acelist_itemSwipeActionEtsTest0004
      */
-    it('testlist_item_group0004', 0, async (done: Function) => {
+    it('testlist_item_group0004', Level.LEVEL1, async (done: Function) => {
       console.info('testcase testlist_item_group0004 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Thurs');

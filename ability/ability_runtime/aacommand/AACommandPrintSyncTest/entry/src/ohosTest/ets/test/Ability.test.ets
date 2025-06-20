@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Want from '@ohos.app.ability.Want';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -47,7 +47,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
      *           the test command.
      */
-    it('ACTS_AACommand_printSync_0100', 0, async (done: Function) => {
+    it('ACTS_AACommand_printSync_0100', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AACommand_printSync_0100 --- start');
       msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       expect(AppStorage.get("stdResult1")).assertContain(msg);
@@ -61,7 +61,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
      *           the test command.
      */
-    it('ACTS_AACommand_printSync_0200', 0, async (done: Function) => {
+    it('ACTS_AACommand_printSync_0200', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AACommand_printSync_0200 --- start');
       msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         'aaaaaaaaaa' +
@@ -85,7 +85,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
      *           the test command.
      */
-    it('ACTS_AACommand_printSync_0300', 0, async (done: Function) => {
+    it('ACTS_AACommand_printSync_0300', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AACommand_printSync_0300 --- start');
       msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         'aaaaaaaaaa' +
@@ -109,7 +109,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
      *           the test command.
      */
-    it('ACTS_AACommand_printSync_0400', 0, async (done: Function) => {
+    it('ACTS_AACommand_printSync_0400', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AACommand_printSync_0400 --- start');
       msg = 'start ability successfully';
       expect(AppStorage.get<string>("stdResult4")).assertContain(msg);

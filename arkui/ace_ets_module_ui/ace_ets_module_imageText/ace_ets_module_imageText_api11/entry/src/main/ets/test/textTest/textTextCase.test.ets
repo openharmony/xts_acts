@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -56,7 +56,7 @@ export default function textTextCaseTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTextCase0100', 0,async (done: Function) => {
+    it('textTextCase0100', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textTextCase0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
@@ -96,7 +96,7 @@ export default function textTextCaseTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTextCase0200', 0,async (done: Function) => {
+    it('textTextCase0200', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textTextCase0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000) 
@@ -136,7 +136,7 @@ export default function textTextCaseTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTextCase0300', 0,async (done: Function) => {
+    it('textTextCase0300', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textTextCase0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)  

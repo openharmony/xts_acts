@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -33,7 +33,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest001', 0, async (done: Function) => {
+    it('textCustomSpanTest001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest001()).assertEqual(0)
       done()
     })
@@ -46,7 +46,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest002', 0, async (done: Function) => {
+    it('textCustomSpanTest002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest002()).assertEqual(0)
       done()
     })
@@ -59,7 +59,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest003', 0, async (done: Function) => {
+    it('textCustomSpanTest003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest003()).assertEqual(0)
       done()
     })
@@ -72,7 +72,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest004', 0, async (done: Function) => {
+    it('textCustomSpanTest004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest004()).assertEqual(0)
       done()
     })
@@ -85,7 +85,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest005', 0, async (done: Function) => {
+    it('textCustomSpanTest005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest005()).assertEqual(0)
       done()
     })
@@ -98,7 +98,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest006', 0, async (done: Function) => {
+    it('textCustomSpanTest006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest006()).assertEqual(0)
       done()
     })
@@ -111,7 +111,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest007', 0, async (done: Function) => {
+    it('textCustomSpanTest007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest007()).assertEqual(0)
       done()
     })
@@ -124,7 +124,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest008', 0, async (done: Function) => {
+    it('textCustomSpanTest008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest008()).assertEqual(0)
       done()
     })
@@ -137,7 +137,7 @@ export default function textCustomSpanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textCustomSpanTest009', 0, async (done: Function) => {
+    it('textCustomSpanTest009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.textCustomSpanTest009()).assertEqual(0)
       done()
     })

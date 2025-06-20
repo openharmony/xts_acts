@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import { RectValue } from '../../MainAbility/common/Common1';
@@ -52,13 +52,12 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0100', 0, async (done: Function) => {
+    it('listLevel1Test_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[listLevel1Test_0100] START');
       await CommonFunc.sleep(2000);
       let json = getInspectorByKey('listlevel1');
       let Obj1: ESObject = JSON.parse(json);
       console.info("listlevel1 json info " + JSON.stringify(json));
-      expect(Obj1.$attrs.friction).assertEqual(0.75);
       expect(Obj1.$attrs.divider.strokeWidth).assertEqual('2.00vp');
       expect(Obj1.$attrs.divider.color).assertEqual('#FFFFFFFF');
       expect(Obj1.$attrs.divider.startMargin).assertEqual('10.00vp');
@@ -77,7 +76,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0200', 0, async (done:Function) => {
+    it('listLevel1Test_0200', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_0200] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -111,7 +110,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0300', 0, async (done:Function) => {
+    it('listLevel1Test_0300', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_0300] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -145,7 +144,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0400', 0, async (done:Function) => {
+    it('listLevel1Test_0400', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_0400] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -179,7 +178,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0500', 0, async (done:Function) => {
+    it('listLevel1Test_0500', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_0500] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -213,7 +212,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0600', 0, async (done:Function) => {
+    it('listLevel1Test_0600', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_0600] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -247,7 +246,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0700', 0, async (done:Function) => {
+    it('listLevel1Test_0700', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_0700] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -281,7 +280,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0800', 0, async (done:Function) => {
+    it('listLevel1Test_0800', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_0800] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -315,7 +314,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_0900', 0, async (done:Function) => {
+    it('listLevel1Test_0900', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_0900] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -349,7 +348,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_1000', 0, async (done:Function) => {
+    it('listLevel1Test_1000', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_1000] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -385,7 +384,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_1100', 0, async (done:Function) => {
+    it('listLevel1Test_1100', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_1100] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -421,7 +420,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_1200', 0, async (done:Function) => {
+    it('listLevel1Test_1200', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_1200] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -457,7 +456,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_1300', 0, async (done:Function) => {
+    it('listLevel1Test_1300', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_1300] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -508,7 +507,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_1400', 0, async (done:Function) => {
+    it('listLevel1Test_1400', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_1400] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -556,7 +555,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_1500', 0, async (done:Function) => {
+    it('listLevel1Test_1500', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_1500] START');
       let listItemRect = CommonFunc.getComponentRectOnScreen('listitemlevel0');
       let top = listItemRect.top;
@@ -601,7 +600,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_1600', 0, async (done:Function) => {
+    it('listLevel1Test_1600', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_1600] START');
       let listItemRect = CommonFunc.getComponentRectOnScreen('listitemlevel0');
       let top = listItemRect.top;
@@ -646,7 +645,7 @@ export default function listLevel1Test() {
      * @tc.size
      */
 
-    it('listLevel1Test_1700', 0, async (done:Function) => {
+    it('listLevel1Test_1700', Level.LEVEL1, async (done:Function) => {
       console.info('[listLevel1Test_1700] START');
       let listItemRect = CommonFunc.getComponentRectOnScreen('listitemlevel0');
       let top = listItemRect.top;

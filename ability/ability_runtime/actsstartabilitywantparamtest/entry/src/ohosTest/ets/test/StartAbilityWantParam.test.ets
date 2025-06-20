@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import fs from '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
 import rpc from '@ohos.rpc';
@@ -96,7 +96,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0800", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0800", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0800';
       try {
         await startAbilityTest('WantAbility', getParameterFd(-1)).then(() => {
@@ -128,7 +128,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0700", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0700", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0700';
       try {
         await startAbilityTest('WantAbility', getParameterFd(0)).then(() => {
@@ -152,7 +152,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0100", 1, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0100", Level.LEVEL1, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0100';
       try {
         let remoteObj = new CurrentRemoteObject('WantParam_WantParametersJs_0100')
@@ -199,7 +199,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_1000", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_1000", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_1000';
       try {
         let remoteObj: CurrentRemoteObject | undefined = undefined;
@@ -227,7 +227,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0500", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0500", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0500';
       try {
         let parameter:ESObject = {
@@ -268,7 +268,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0300", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0300", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0300';
       try {
         let parameter:ESObject = {
@@ -309,7 +309,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0400", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0400", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0400';
       try {
         let parameter:ESObject = {
@@ -358,7 +358,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_1600", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_1600", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_1600';
       try {
         let remoteObject = new CurrentRemoteObject('WantParam_WantParametersJs_1600')
@@ -429,7 +429,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0600", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0600", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0600';
       try {
         let parameter:ESObject = {
@@ -476,7 +476,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0200", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0200", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0200';
       let fd : number = -1;
       try {
@@ -525,7 +525,7 @@ export default function startAbilityWantParamTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0900", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0900", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0900';
       try {
         await abilityDelegator.startAbility({

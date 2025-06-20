@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -69,7 +69,7 @@ export default function listItem_Visibility() {
      * @tc.name testListItemVisibilityFirstNone
      * @tc.desc ListItem subcomponent binding Visibility property,first None
      */
-    it('testListItemVisibilityFirstNone', 0, async (done: Function) => {
+    it('testListItemVisibilityFirstNone',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemVisibilityFirstNone START');
       globalThis.value.message.notify({
         name: 'testVisibilityFirst', value: Visibility.None
@@ -130,7 +130,7 @@ export default function listItem_Visibility() {
      * @tc.name testListItemVisibilitySecondNone
      * @tc.desc ListItem subcomponent binding Visibility property,second None
      */
-    it('testListItemVisibilitySecondNone', 0, async (done: Function) => {
+    it('testListItemVisibilitySecondNone',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemVisibilitySecondNone START');
       globalThis.value.message.notify({
         name: 'testVisibilityFirst', value: Visibility.Visible
@@ -191,7 +191,7 @@ export default function listItem_Visibility() {
      * @tc.name testListItemVisibilityFirstHidden
      * @tc.desc ListItem subcomponent binding Visibility property,first Hidden
      */
-    it('testListItemVisibilityFirstHidden', 0, async (done: Function) => {
+    it('testListItemVisibilityFirstHidden',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemVisibilityFirstHidden START');
       globalThis.value.message.notify({
         name: 'testVisibilityFirst', value: Visibility.Hidden
@@ -254,7 +254,7 @@ export default function listItem_Visibility() {
      * @tc.name testListItemVisibilityFirstVisibile
      * @tc.desc ListItem subcomponent binding Visibility property,first Visible
      */
-    it('testListItemVisibilityFirstVisibile', 0, async (done: Function) => {
+    it('testListItemVisibilityFirstVisibile',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemVisibilityFirstVisibile START');
       globalThis.value.message.notify({
         name: 'testVisibilityFirst', value: Visibility.Visible

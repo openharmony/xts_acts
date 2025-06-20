@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll}from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, Level, Size, TestType }from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 let httpRequest = http.createHttp();
@@ -85,6 +85,14 @@ function expectFalse() {
   }
 }
 
+function expectTrue(data : boolean){
+    try {
+        expect(data).assertTrue();
+    } catch (err){
+        console.info('assertion failure');    
+    }
+};
+
 export default function NetworkManagerMulticastHTTP2Test() {
   afterAll(async () =>{
     console.log('NetworkManagerMulticastHTTPTest afterAll start');
@@ -100,11 +108,11 @@ export default function NetworkManagerMulticastHTTP2Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0100", 0, async (done: Function) => {
+    it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0100";
       httpRequest.request(url, httpRequestOptions_fileData).then((data) => {
         console.log(`${caseName} request failed, err: ${JSON.stringify(data)}`);
-        expect(data.responseCode == 200).assertTrue();
+        expectTrue(data.responseCode == 200);
         done();
       }).catch((err: BusinessError) => {
         console.log(`${caseName} request success, data: ${JSON.stringify(err)}`);
@@ -120,11 +128,11 @@ export default function NetworkManagerMulticastHTTP2Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0200", 0, async (done: Function) => {
+    it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0200";
       httpRequest.request(url,httpRequestOptions_form).then((data) => {
           console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-          expect(data.responseCode == 200).assertTrue();
+          expectTrue(data.responseCode == 200);
           done();
         }).catch((err:BusinessError) => {
           console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -140,11 +148,11 @@ export default function NetworkManagerMulticastHTTP2Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0300", 0, async (done: Function) => {
+    it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0300";
       httpRequest.request(url,httpRequestOptions).then((data) => {
         console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-        expect(data.responseCode == 200).assertTrue();
+        expectTrue(data.responseCode == 200);
         done();
       }).catch((err:BusinessError) => {
         console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 
@@ -34,7 +34,7 @@ export default function waterFlowScrollOffsetTest() {
     * @tc.type       : Render
     * @tc.level      : Level 1
     */
-    it('testScrollOffset020', 0, async (done: Function) => {
+    it('testScrollOffset020', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowScrollOffsetTest`, () => setTimeout(() => {
       }, 1000));
       await Utils.sleep(5000)

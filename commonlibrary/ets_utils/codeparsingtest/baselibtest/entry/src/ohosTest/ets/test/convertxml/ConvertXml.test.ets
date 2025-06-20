@@ -55,9 +55,9 @@ export default function ConvertXmlTest() {
      * @tc.desc       : Testing the convertxml convertToJSObject with trim is true.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConvertXmlConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConvertXmlConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testConvertXmlConstructor0001';
       try {
         let xml =
@@ -96,9 +96,9 @@ export default function ConvertXmlTest() {
      * @tc.desc       : Testing the convertxml convertToJSObject with trim is false.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConvertXmlConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConvertXmlConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testConvertXmlConstructor0002';
       try {
         let xml =
@@ -137,9 +137,9 @@ export default function ConvertXmlTest() {
      * @tc.desc       : Testing the convertxml convertToJSObject with ignoreDeclaration is true.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConvertXmlConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConvertXmlConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testConvertXmlConstructor0003';
       try {
         let xml =
@@ -184,7 +184,7 @@ export default function ConvertXmlTest() {
      * @tc.desc       : Testing the convertxml convertToJSObject with ignoreDeclaration is false.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testConvertXmlConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0004';
@@ -753,6 +753,48 @@ export default function ConvertXmlTest() {
           ":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}")
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TREEMAP_0100
+     * @tc.name       : testFastConvertToJSObject0001
+     * @tc.desc       : Test the function of the interface fastConvertToJSObject.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFastConvertToJSObject0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastConvertToJSObject0001';
+      try {
+        const xml = `<?xml version="1.0" encoding="utf-8"?>
+                      <note importance="high" logged="true">
+                          <title>Hello\r\nWorld</title>
+                          <todo><![CDATA[Work\r\n]]></todo>
+                      </note>`;
+        const conv = new convertxml.ConvertXML();
+        const options: convertxml.ConvertOptions = {
+          trim: false,
+          declarationKey: "_declaration",
+          instructionKey: "_instruction",
+          attributesKey: "_attributes",
+          textKey: "_text",
+          cdataKey: "_cdata",
+          doctypeKey: "_doctype",
+          commentKey: "_comment",
+          parentKey: "_parent",
+          typeKey: "_type",
+          nameKey: "_name",
+          elementsKey: "_elements"
+        };
+        const result = JSON.stringify(conv.fastConvertToJSObject(xml, options));
+        console.log(`${TAG}+${result}`);
+        const equal =
+          '{"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"element","_name":"note","_attributes":{"importance":"high","logged":"true"},"_elements":[{"_type":"element","_name":"title","_parent":"note","_elements":[{"_type":"text","_text":"Hello\\nWorld"}]},{"_type":"element","_name":"todo","_parent":"note","_elements":[{"_type":"cdata","_cdata":"Work\\n"}]}]}]}';
+        expect(result.toString()).assertEqual(equal);
+      } catch (e) {
+        console.log((e as Error).toString());
+        console.error(`${TAG} failed: ${e.message}`);
         expect().assertFail();
       }
     });

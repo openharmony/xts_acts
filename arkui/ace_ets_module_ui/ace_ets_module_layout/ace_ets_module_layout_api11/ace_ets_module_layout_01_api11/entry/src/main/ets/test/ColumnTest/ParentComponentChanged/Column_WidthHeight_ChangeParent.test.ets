@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function column_WidthHeight_ChangeParent() {
      * @tc.name      testColumnWidthHeightChangeParentHeightInRange
      * @tc.desc      The parent component changes the width 350 and height 400 attributes, Other parameters default
      */
-    it('testColumnWidthHeightChangeParentHeightInRange', 0, async () => {
+    it('testColumnWidthHeightChangeParentHeightInRange',  Level.LEVEL0, async () => {
       console.info('new testColumnWidthHeightChangeParentHeightInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'height', value: 400 })
       GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'width', value: 350 })
@@ -89,7 +89,7 @@ export default function column_WidthHeight_ChangeParent() {
      * @tc.name      testColumnWidthHeightChangeParentHeightOutRange
      * @tc.desc      The parent component changes the width 350 and height 300 attributes,Other parameters default
      */
-    it('testColumnWidthHeightChangeParentHeightOutRange', 0, async () => {
+    it('testColumnWidthHeightChangeParentHeightOutRange',  Level.LEVEL0, async () => {
       console.info('new testColumnWidthHeightChangeParentHeightOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'height', value: 300 })
       GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'width', value: 350 })
@@ -124,7 +124,7 @@ export default function column_WidthHeight_ChangeParent() {
      * @tc.name      testColumnWidthHeightChangeParentWidthOutRange
      * @tc.desc      The parent component changes the width 200 and height 400 attributes,Other parameters default
      */
-    it('testColumnWidthHeightChangeParentWidthOutRange', 0, async () => {
+    it('testColumnWidthHeightChangeParentWidthOutRange',  Level.LEVEL0, async () => {
       console.info('new testColumnWidthHeightChangeParentWidthOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'height', value: 400 })
       GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'width', value: 200 })

@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { photoKeys, fetchOption, getPermission, driveFn, sleep, pushCreateAsset} from '../common'
 import common from '@ohos.app.ability.common'
 import { BusinessError } from '@ohos.base';
@@ -43,7 +43,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('create_image_asset_request_error_000', 0, async (done: Function) => {
+    it('create_image_asset_request_error_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'create_image_asset_request_error_000';
       try {
         let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
@@ -65,7 +65,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('create_image_asset_request_error_001', 0, async (done: Function) => {
+    it('create_image_asset_request_error_001', Level.LEVEL0, async (done: Function) => {
         let testNum = 'create_image_asset_request_error_001';
         try {
           let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
@@ -87,7 +87,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('create_image_asset_request_error_002', 0, async (done: Function) => {
+    it('create_image_asset_request_error_002', Level.LEVEL0, async (done: Function) => {
         let testNum = 'create_image_asset_request_error_002';
         try {
           let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
@@ -110,7 +110,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('create_video_asset_request_error_000', 0, async (done: Function) => {
+    it('create_video_asset_request_error_000', Level.LEVEL0, async (done: Function) => {
         let testNum = 'create_video_asset_request_error_000';
         try {
           let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.mp4';
@@ -133,7 +133,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('create_video_asset_request_error_001', 0, async (done: Function) => {
+    it('create_video_asset_request_error_001', Level.LEVEL0, async (done: Function) => {
         let testNum = 'create_video_asset_request_error_001';
         try {
           let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createVideoAssetRequest(null, null);
@@ -156,7 +156,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_orientation_error_000', 0, async (done: Function) => {
+    it('set_orientation_error_000', Level.LEVEL0, async (done: Function) => {
         let testNum = 'set_orientation_error_000';
         try {
           let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -186,7 +186,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_album_name_error_000', 0, async (done: Function) => {
+    it('set_album_name_error_000', Level.LEVEL0, async (done: Function) => {
         let testNum = 'set_album_name_error_000';
         try {
           let album:ESObject = await helper.createAlbum(testNum);
@@ -210,7 +210,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_album_name_error_001', 0, async (done: Function) => {
+    it('set_album_name_error_001', Level.LEVEL0, async (done: Function) => {
         let testNum = 'set_album_name_error_001';
         try {
           let album:ESObject = await helper.createAlbum(testNum);
@@ -233,7 +233,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('add_asserts_error_000', 0, async (done: Function) => {
+    it('add_asserts_error_000', Level.LEVEL0, async (done: Function) => {
         let testNum = 'add_asserts_error_000';
         try {
           //查询相片
@@ -266,7 +266,7 @@ export default function mediaAssetChangeRequestErrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('remove_assets_error_000', 0, async (done: Function) => {
+    it('remove_assets_error_000', Level.LEVEL0, async (done: Function) => {
         let testNum = 'remove_assets_error_000';
         try {
           //查询相片

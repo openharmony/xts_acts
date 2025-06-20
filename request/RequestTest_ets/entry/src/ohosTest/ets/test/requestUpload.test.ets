@@ -378,9 +378,9 @@ export default function requestUploadJSUnit() {
      * @tc.desc      : Mixed strings value can be obtained correctly
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_UPLOAD_API_0008', Level.LEVEL2, async (done: Function) => {
+    it('SUB_REQUEST_UPLOAD_API_0008', Level.LEVEL0, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0008 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_0008 UploadConfig = " + JSON.stringify(uploadConfig));

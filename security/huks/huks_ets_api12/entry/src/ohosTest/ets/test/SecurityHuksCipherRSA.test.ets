@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
-import { SetParam, GenParam, GetDataBySize } from './utils/HuksOptionUtil';
-import { StringToUint8Array } from './utils/CommonUtil';
-import { SignVerify, SignVerifyData } from './utils/SignVerifyUtil';
-import { Cipher, CipherData } from './utils/CipherUtil';
+import { GenParam, SetParam } from './utils/huks/HuksOptionsUtils';
+import { GetDataBySize, StringToUint8Array } from './utils/CommonUtils';
+import { Cipher, CipherData } from './utils/huks/CipherUtils';
 
 
 export default function SecurityHuksCipherRSATest() {
@@ -67,7 +66,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0100', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0100";
       let keySize = 1032;
       let cipherData: CipherData = {
@@ -94,7 +93,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0200', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0200";
       let keySize = 1032;
       let cipherData: CipherData = {
@@ -122,7 +121,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0300', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0300";
       let keySize = 1032;
       let cipherData: CipherData = {
@@ -151,7 +150,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0400', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0400";
       let keySize = 1032;
       let cipherData: CipherData = {
@@ -180,7 +179,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0500', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0500";
       let keySize = 1032;
       let cipherData: CipherData = {
@@ -209,7 +208,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0600', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0600";
       let keySize = 2040;
       let cipherData: CipherData = {
@@ -236,7 +235,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0700', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0700";
       let keySize = 2040;
       let cipherData: CipherData = {
@@ -264,7 +263,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0800', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0800";
       let keySize = 2040;
       let cipherData: CipherData = {
@@ -292,7 +291,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0900', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_0900";
       let keySize = 2040;
       let cipherData: CipherData = {
@@ -321,7 +320,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_1000', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_1000";
       let keySize = 2040;
       let cipherData: CipherData = {
@@ -350,7 +349,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_1100', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_1100";
       let keySize = 1016;
       SetParam(genKeyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);
@@ -371,7 +370,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_1200', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_1200";
       let keySize = 2056;
       SetParam(genKeyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);
@@ -392,7 +391,7 @@ export default function SecurityHuksCipherRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_1300', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_RSA_API16_Func_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_RSA_API16_Func_1300";
       let keySize = 1025;
       SetParam(genKeyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);

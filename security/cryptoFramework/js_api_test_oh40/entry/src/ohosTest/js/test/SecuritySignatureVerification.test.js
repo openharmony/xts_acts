@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCommon from "./utils/common/publicDoSpec";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
@@ -38,7 +38,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyBySpecProcess(
@@ -69,7 +69,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifySetAndGetSpecProcess(
@@ -102,7 +102,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifySetAndGetSpecProcess(
@@ -136,7 +136,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifySetAndGetSpecProcess(
@@ -169,7 +169,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifySetAndGetSpecProcess(
@@ -203,7 +203,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifySetAndGetSpecProcess(
@@ -236,7 +236,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifySetAndGetSpecProcess(
@@ -268,7 +268,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyBySpecProcess(
@@ -299,7 +299,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_0900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifySetAndGetSpecProcess(
@@ -333,7 +333,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifySetAndGetSpecProcess(
@@ -366,7 +366,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifySetAndGetSpecProcess(
@@ -400,7 +400,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifySetAndGetSpecProcess(
@@ -431,7 +431,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyBySpecProcess(
@@ -460,7 +460,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyBySpecProcess(
@@ -489,7 +489,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyBySpecProcess(
@@ -518,7 +518,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyBySpecProcess(
@@ -547,7 +547,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyBySpecProcess(
@@ -576,7 +576,7 @@ export default function SecuritySignatureVerificationJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyBySpecProcess(

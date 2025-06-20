@@ -26,9 +26,9 @@ export default function abilityTest() {
      * @tc.desc       : test mutexCheck double lock of a mutex
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTsanMutexCheck001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTsanMutexCheck001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result: number = tsan.doubleLockedMutex();
       expect(result).assertEqual(1);
     });

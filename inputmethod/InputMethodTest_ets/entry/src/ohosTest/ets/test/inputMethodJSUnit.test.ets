@@ -15,7 +15,6 @@
 import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import inputMethod from '@ohos.inputMethod';
 import { BusinessError } from '@ohos.base';
-import deviceinfo from '@ohos.deviceInfo';
 
 export default function inputMethodJSUnit() {
   describe('appInfoTest_input_2', () => {

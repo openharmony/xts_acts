@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import commonEvent from "@ohos.commonEvent"
 import CommonEventManager from '@ohos.commonEventManager';
@@ -44,7 +44,7 @@ export default function abilityTest() {
          *@tc.name: Verify the interface for obtaining the Ability of the foreground
          *@tc.desc:Start PageAbility2,Ability1 to be tested in turn, and get the current foreground Ability (AsyncCallback)
          */
-        it('ACTS_GetCurrentTopAbility_0200', 0, async (done:Function) => {
+        it('ACTS_GetCurrentTopAbility_0200', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_GetCurrentTopAbility_0200 --- start")
             abilityDelegatorRegistry.getAbilityDelegator()
             let flag=true;
@@ -85,7 +85,7 @@ export default function abilityTest() {
          *@tc.name: Verify the interface for obtaining the Ability of the foreground
          *@tc.desc:Start PageAbility1,Ability2 to be tested in turn, and get the current foreground Ability (Promise)
          */
-        it('ACTS_GetCurrentTopAbility_0500', 0, async (done:Function) => {
+        it('ACTS_GetCurrentTopAbility_0500', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_GetCurrentTopAbility_0500 --- start")
             abilityDelegatorRegistry.getAbilityDelegator()
             let flag=true;

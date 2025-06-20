@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium'
 import display from '@ohos.display';
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
@@ -72,7 +72,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testFoldAngleChange_On_Off', 0, async (done: Function) => {
+    it('testFoldAngleChange_On_Off', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testFoldAngleChange_On_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -109,7 +109,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testFoldAngleChange_ON_Off_Off', 0, async (done: Function) => {
+    it('testFoldAngleChange_ON_Off_Off', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testFoldAngleChange_ON_Off_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -152,9 +152,9 @@ export default function displayTest() {
      * @tc.desc   : unregister of the fold angle changes without register
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
-    it('testFoldAngleChange_Off', 0, async (done: Function) => {
+    it('testFoldAngleChange_Off', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'testFoldAngleChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -176,7 +176,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testCaptureStatusChange_On_Off', 0, async (done: Function) => {
+    it('testCaptureStatusChange_On_Off', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCaptureStatusChange_On_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -210,7 +210,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testCaptureStatusChange_On_Off_Off', 0, async (done: Function) => {
+    it('testCaptureStatusChange_On_Off_Off', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCaptureStatusChange_On_Off_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -251,7 +251,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testCaptureStatusChange_Off', 0, async (done: Function) => {
+    it('testCaptureStatusChange_Off', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCaptureStatusChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -271,9 +271,9 @@ export default function displayTest() {
      * @tc.desc   : check current device capture status
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 3
+     * @tc.level  : Level 2
      */
-    it('testIsCaptured', 0, async (done: Function) => {
+    it('testIsCaptured', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'testIsCaptured';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -295,9 +295,9 @@ export default function displayTest() {
      * @tc.desc   : test_getAvailableArea_default
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 0
+     * @tc.level  : Level 3
      */
-    it('test_getAvailableArea_default', 0, async (done: Function) => {
+    it('test_getAvailableArea_default', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'test_getAvailableArea_default';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -341,7 +341,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('test_getAvailableArea_subWindow', 2, async (done: Function) => {
+    it('test_getAvailableArea_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'test_getAvailableArea_subWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -424,7 +424,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('test_getAvailableArea_setWindowSystemBarEnable', 2, async (done: Function) => {
+    it('test_getAvailableArea_setWindowSystemBarEnable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'test_getAvailableArea_setWindowSystemBarEnable';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -485,7 +485,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('test_getAvailableArea_ststus_bar_hide', 3, async (done: Function) => {
+    it('test_getAvailableArea_ststus_bar_hide', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'test_getAvailableArea_ststus_bar_hide';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -560,7 +560,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('test_on_availableAreaChange', 3, async (done: Function) => {
+    it('test_on_availableAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'test_on_availableAreaChange';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -595,7 +595,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('test_on_availableAreaChange_triggers', 2, async (done: Function) => {
+    it('test_on_availableAreaChange_triggers', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'test_on_availableAreaChange_triggers';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -653,7 +653,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('test_on_availableAreaChange_Two_callback', 2, async (done: Function) => {
+    it('test_on_availableAreaChange_Two_callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'test_on_availableAreaChange_Two_callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -718,7 +718,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('test_on_availableAreaChange_off_callback1', 2, async (done: Function) => {
+    it('test_on_availableAreaChange_off_callback1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'test_on_availableAreaChange_off_callback1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -784,7 +784,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('test_on_availableAreaChange_off_callback_all', 2, async (done: Function) => {
+    it('test_on_availableAreaChange_off_callback_all', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'test_on_availableAreaChange_off_callback_all';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -849,7 +849,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('test_off_availableAreaChange', 2, async (done: Function) => {
+    it('test_off_availableAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'test_off_availableAreaChange';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -880,7 +880,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testGetAllDisplayPhysicalResolution', 0, (done: Function) => {
+    it('testGetAllDisplayPhysicalResolution', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetAllDisplayPhysicalResolution';
       display.getAllDisplayPhysicalResolution().then((resolutionObjects) => {
         console.info(`${caseName} Obtaining physical resolution length: ${resolutionObjects.length}`);
@@ -911,9 +911,9 @@ export default function displayTest() {
          * @tc.desc   : get display available width and height
          * @tc.size   : MediumTest
          * @tc.type   : Function
-         * @tc.level  : Level 3
+         * @tc.level  : Level 0
          */
-    it('testGetAvailableWidthAndHeight', 0, (done: Function) => {
+    it('testGetAvailableWidthAndHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'testGetAvailableWidthAndHeight';
       console.info(`jsunittets ${caseName} begin`);
       try {
@@ -937,7 +937,7 @@ export default function displayTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_FoldStatus_enum', 0, async (done: Function) => {
+    it('test_FoldStatus_enum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'test_FoldStatus_enum';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -956,9 +956,9 @@ export default function displayTest() {
      * @tc.desc      : test_CreateVirtualScreen_ErrorCode1400001 when got invalid size
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_CreateVirtualScreen_ErrorCode1400001', 0, async (done: Function) => {
+    it('test_CreateVirtualScreen_ErrorCode1400001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_CreateVirtualScreen_ErrorCode1400001 ';
       class VirtualScreenOptions {
         name: string = '';
@@ -998,9 +998,9 @@ export default function displayTest() {
      * @tc.desc      : test_CreateVirtualScreen_ErrorCode_401 when got arguments with null
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_CreateVirtualScreen_ErrorCode401', 0, async (done: Function) => {
+    it('test_CreateVirtualScreen_ErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_CreateVirtualScreen_ErrorCode401 ';
       try {
         display.createVirtualScreen(null).then((screenId: number) => {
@@ -1026,9 +1026,9 @@ export default function displayTest() {
      * @tc.desc      : test_CreateVirtualScreen01 
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_CreateVirtualScreen01', 0, async (done: Function) => {
+    it('test_CreateVirtualScreen01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_CreateVirtualScreen01 ';
       class VirtualScreenOptions {
         name: string = '';
@@ -1068,9 +1068,9 @@ export default function displayTest() {
      * @tc.desc      : test_DestroyVirtualScreenErrorcode_401 when got invalid screendId like -1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_DestroyVirtualScreenErrorcode401', 0, async (done: Function) => {
+    it('test_DestroyVirtualScreenErrorcode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_DestroyVirtualScreenErrorcode401 ';
       try {
         await display.destroyVirtualScreen(-1).then(() => {
@@ -1090,9 +1090,9 @@ export default function displayTest() {
      * @tc.desc      : test_DestroyVirtualScreenErrorcode_401 when destroy a screen that has already been destroyed
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_DestroyVirtualScreenErrorcode401_02', 0, async (done: Function) => {
+    it('test_DestroyVirtualScreenErrorcode401_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_DestroyVirtualScreenErrorcode401_02 ';
       class VirtualScreenOptions {
         name: string = '';
@@ -1140,9 +1140,9 @@ export default function displayTest() {
      * @tc.desc      : test_MakeUniqueErrorcode_401 when got invalid screenId like -1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_MakeUniqueErrorcode_401', 0, async (done: Function) => {
+    it('test_MakeUniqueErrorcode_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_MakeUniqueErrorcode_401 ';
       try {
         await display.makeUnique(-1).then(()=>{
@@ -1166,9 +1166,9 @@ export default function displayTest() {
      * @tc.desc      : test_MakeUniqueErrorcode_1400001 when makeUnique a virtual screen that has already been destroyed
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_MakeUniqueErrorcode_1400001', 0, async (done: Function) => {
+    it('test_MakeUniqueErrorcode_1400001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_MakeUniqueErrorcode_1400001 ';
       class VirtualScreenOptions {
         name: string = '';
@@ -1211,9 +1211,9 @@ export default function displayTest() {
      * @tc.desc      : test_MakeUnique_01
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_MakeUnique_01', 0, async (done: Function) => {
+    it('test_MakeUnique_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_MakeUnique_01 ';
       let options: window.SubWindowOptions = {
         title: 'test_MakeUnique_01',
@@ -1259,9 +1259,9 @@ export default function displayTest() {
      * @tc.desc      : test_setVirtualScreenSurface_ErrorCode401 when got a invalid screenId like -1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setVirtualScreenSurface_ErrorCode401', 0, async (done: Function) => {
+    it('test_setVirtualScreenSurface_ErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setVirtualScreenSurface_ErrorCode401 ';
       try {
         await display.setVirtualScreenSurface(-1, '').then(() => {
@@ -1281,9 +1281,9 @@ export default function displayTest() {
      * @tc.desc      : test_setVirtualScreenSurface_ErrorCode401 when got non existent surfaceId like ''
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('test_setVirtualScreenSurface_ErrorCode401_02', 0, async (done: Function) => {
+    it('test_setVirtualScreenSurface_ErrorCode401_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'test_setVirtualScreenSurface_ErrorCode401_02 ';
       class VirtualScreenOptions {
         name: string = '';
@@ -1322,9 +1322,9 @@ export default function displayTest() {
      * @tc.desc      : getDisplayByIdSync
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level1
      */
-    it('getDisplayByIdSync', 0, async (done:Function) => {
+    it('getDisplayByIdSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = "getDisplayByIdSync";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1346,9 +1346,9 @@ export default function displayTest() {
      * @tc.desc      : on_foldAngleChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('on_foldAngleChange', 0, async (done:Function) => {
+    it('on_foldAngleChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "on_foldAngleChange";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1371,9 +1371,9 @@ export default function displayTest() {
      * @tc.desc      : off_foldAngleChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('off_foldAngleChange', 0, async (done:Function) => {
+    it('off_foldAngleChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "off_foldAngleChange";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1396,9 +1396,9 @@ export default function displayTest() {
      * @tc.desc      : on_captureStatusChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('on_captureStatusChange', 0, async (done:Function) => {
+    it('on_captureStatusChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "on_captureStatusChange";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1421,9 +1421,9 @@ export default function displayTest() {
      * @tc.desc      : off_captureStatusChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('off_captureStatusChange', 0, async (done:Function) => {
+    it('off_captureStatusChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "off_captureStatusChange";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1446,9 +1446,9 @@ export default function displayTest() {
      * @tc.desc      : on_availableAreaChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('on_availableAreaChange', 0, async (done:Function) => {
+    it('on_availableAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "on_availableAreaChange";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1473,9 +1473,9 @@ export default function displayTest() {
      * @tc.desc      : off_availableAreaChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('off_availableAreaChange', 0, async (done:Function) => {
+    it('off_availableAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "off_availableAreaChange";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1503,7 +1503,7 @@ export default function displayTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('test_GetCutoutInfo', 0, async (done: Function) => {
+    it('test_GetCutoutInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'test_GetCutoutInfo';
       console.info(`jsunittets ${caseName} begin`);
       try {
@@ -1532,7 +1532,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('test_ScreenShape_0100', 0, async (done: Function) => {
+    it('test_ScreenShape_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "test_ScreenShape_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1555,7 +1555,7 @@ export default function displayTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_DisplaySourceMode_enum', 0, async (done: Function) => {
+    it('test_DisplaySourceMode_enum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'test_DisplaySourceMode_enum';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1575,7 +1575,7 @@ export default function displayTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_display_DisplaySourceMode', 0, async (done: Function) => {
+    it('test_display_DisplaySourceMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'test_display_DisplaySourceMode';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1594,7 +1594,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnaddErrCode401_0100', Level.LEVEL3, async (done: Function) => {
+    it('testOnaddErrCode401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnaddErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1621,7 +1621,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testoffaddErrCode401_0100', Level.LEVEL3, async (done: Function) => {
+    it('testoffaddErrCode401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "testoffaddErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1648,7 +1648,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testonfoldStatusChange401_0100', Level.LEVEL3, async (done: Function) => {
+    it('testonfoldStatusChange401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "testonfoldStatusChange401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1674,7 +1674,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testofffoldStatusChange401_0100', Level.LEVEL3, async (done: Function) => {
+    it('testofffoldStatusChange401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "testofffoldStatusChange401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1700,7 +1700,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testondisplayModeChange401', Level.LEVEL3, async (done: Function) => {
+    it('testondisplayModeChange401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "testondisplayModeChange401";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1725,7 +1725,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testoffdisplayModeChange401', Level.LEVEL3, async (done: Function) => {
+    it('testoffdisplayModeChange401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "testoffdisplayModeChange401";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');

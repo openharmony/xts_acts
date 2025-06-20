@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -46,11 +46,11 @@ export default function editMenuIdAIWriterTest() {
      * @tc.number    editMenuIdAIWriterTest_0100
      * @tc.name      editMenuIdAIWriterTest_0100
      * @tc.desc      Text: editMenuIdAIWriter
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('editMenuIdAIWriterTest_0100', 0, async (done: Function) => {
+    it('editMenuIdAIWriterTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('editMenuIdAIWriterTest_0100 START');
       let driver: Driver = await Driver.create();
       await CommonFunc.sleep(500);
@@ -76,11 +76,11 @@ export default function editMenuIdAIWriterTest() {
      * @tc.number    editMenuIdAIWriterTest_0200
      * @tc.name      editMenuIdAIWriterTest_0200
      * @tc.desc      Text: editMenuIdAIWriter
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('editMenuIdAIWriterTest_0200', 0, async (done: Function) => {
+    it('editMenuIdAIWriterTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('editMenuIdAIWriterTest_0200 START');
       let driver: Driver = await Driver.create();
       await CommonFunc.sleep(500);

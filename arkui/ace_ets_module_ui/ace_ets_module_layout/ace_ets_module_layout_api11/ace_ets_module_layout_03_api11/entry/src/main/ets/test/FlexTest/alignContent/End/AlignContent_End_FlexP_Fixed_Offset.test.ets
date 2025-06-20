@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -56,7 +56,7 @@ export default function AlignContent_End_FlexP_Fixed_Offset() {
      *               property of the sub component.
      */
 
-    it('testAlignContentEndFlexPfixedOffset', 0, async () => {
+    it('testAlignContentEndFlexPfixedOffset',  Level.LEVEL0, async () => {
       console.info('testAlignContentEndFlexPfixedOffset START');
       let strJson = getInspectorByKey('AlignContent_End_FlexP_Fixed_Offset_flex001');
 

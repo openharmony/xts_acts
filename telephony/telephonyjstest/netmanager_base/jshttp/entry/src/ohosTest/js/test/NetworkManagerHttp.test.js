@@ -14,7 +14,7 @@
  */
 
 import netHttp from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Size, Level  } from '@ohos/hypium'
 
 export default function Telephony_NETSTACK_HTTPTest() {
 
@@ -26,7 +26,7 @@ export default function Telephony_NETSTACK_HTTPTest() {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NETSTACK_HttpTestBasicGet_0100', 0, function (done) {
+        it('Telephony_NETSTACK_HttpTestBasicGet_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let http = netHttp.createHttp();
             http.request("https://httpbin.org/anything").then(function (data) {
                 http.destroy();
@@ -41,7 +41,7 @@ export default function Telephony_NETSTACK_HTTPTest() {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NETSTACK_HttpTestUserAgent_0100', 0, function (done) {
+        it('Telephony_NETSTACK_HttpTestUserAgent_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let http = netHttp.createHttp();
             http.request("https://httpbin.org/user-agent").then(function (data) {
                 http.destroy();
@@ -61,7 +61,7 @@ export default function Telephony_NETSTACK_HTTPTest() {
          * @tc.desc Function test`
          */
 
-		 it('Telephony_NETSTACK_HttpTestHeader_0100', 0, function (done) {
+		 it('Telephony_NETSTACK_HttpTestHeader_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
 		  let http = netHttp.createHttp();
 		  http.request("https://httpbin.org/get" ,{
 			method: netHttp.RequestMethod.GET,
@@ -85,7 +85,7 @@ export default function Telephony_NETSTACK_HTTPTest() {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NETSTACK_HttpTestPost_0100', 0, function (done) {
+        it('Telephony_NETSTACK_HttpTestPost_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let http = netHttp.createHttp();
             http.request("https://httpbin.org/post", {
                 method: netHttp.RequestMethod.POST,
@@ -106,7 +106,7 @@ export default function Telephony_NETSTACK_HTTPTest() {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NETSTACK_HttpTestPut_0100', 0, function (done) {
+        it('Telephony_NETSTACK_HttpTestPut_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let http = netHttp.createHttp();
             http.request("https://httpbin.org/put", {
                 method: netHttp.RequestMethod.PUT,
@@ -127,7 +127,7 @@ export default function Telephony_NETSTACK_HTTPTest() {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NETSTACK_HttpTestCookies_0100', 0, function (done) {
+        it('Telephony_NETSTACK_HttpTestCookies_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let http = netHttp.createHttp();
             http.request("https://httpbin.org/cookies/set/name/value").then(function (data) {
                 http.destroy();
@@ -145,7 +145,7 @@ export default function Telephony_NETSTACK_HTTPTest() {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NETSTACK_HttpTestEncode_0100', 0, function (done) {
+        it('Telephony_NETSTACK_HttpTestEncode_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let http = netHttp.createHttp();
             http.request("https://httpbin.org/response-headers?key1=val1&key2=val2", {
                 extraData: {

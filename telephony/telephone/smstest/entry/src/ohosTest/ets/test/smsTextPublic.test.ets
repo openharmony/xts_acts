@@ -78,9 +78,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Create a SMS instance based on the Protocol Data Unit (PDU) and the specified SMS protocol. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsCreateMessage1000', 0, async (done: Function) => {
+    it('testTelephonySmsMmsCreateMessage1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsCreateMessage1000';
       console.info(`${caseName} test start`);
       try {
@@ -107,9 +107,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Create a SMS instance based on the Protocol Data Unit (PDU) and the specified SMS protocol. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsCreateMessage1100', 0, async (done: Function) => {
+    it('testTelephonySmsMmsCreateMessage1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsCreateMessage1100';
       console.info(`${caseName} test start`);
       try {
@@ -138,9 +138,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Create a SMS instance based on the Protocol Data Unit (PDU) and the specified SMS protocol. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsCreateMessage1200', 0, async (done: Function) => {
+    it('testTelephonySmsMmsCreateMessage1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsCreateMessage1200'
       console.info(`${caseName} test start`);
       try {
@@ -167,9 +167,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. version 6
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendMessage0100', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendMessage0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendMessage0100';
       console.info(`${caseName} test start`);
       try {
@@ -218,9 +218,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. version 6
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendMessage0500', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendMessage0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendMessage0500';
       console.info(`${caseName} test start`);
       try {
@@ -270,9 +270,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage0300', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage0300';
       console.info(`${caseName} test start`);
       try {
@@ -314,9 +314,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage0400', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage0400';
       console.info(`${caseName} test start`);
       try {
@@ -356,9 +356,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage0500', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage0500';
       console.info(`${caseName} test start`);
       try {
@@ -400,9 +400,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage0600', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage0600';
       console.info(`${caseName} test start`);
       try {
@@ -442,9 +442,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1100', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1100';
       console.info(`${caseName} test start`);
       try {
@@ -487,9 +487,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1200', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1200';
       console.info(`${caseName} test start`);
       try {
@@ -530,9 +530,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1300', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1300';
       console.info(`${caseName} test start`);
       try {
@@ -574,9 +574,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1400', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1400';
       console.info(`${caseName} test start`);
       try {
@@ -616,9 +616,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1500', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1500';
       console.info(`${caseName} test start`);
       try {
@@ -660,9 +660,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1600', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1600';
       console.info(`${caseName} test start`);
       try {
@@ -702,9 +702,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1700', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1700';
       console.info(`${caseName} test start`);
       try {
@@ -758,9 +758,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1800', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1800';
       console.info(`${caseName} test start`);
       try {
@@ -812,9 +812,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage1900', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage1900';
       console.info(`${caseName} test start`);
       try {
@@ -867,9 +867,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage2000', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage2000';
       console.info(`${caseName} test start`);
       try {
@@ -920,9 +920,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage2300', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage2300';
       console.info(`${caseName} test start`);
       try {
@@ -964,9 +964,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage2400', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage2400';
       console.info(`${caseName} test start`);
       try {
@@ -1008,7 +1008,7 @@ export default function smsTextPublic() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTelephonySmsMmsSendShortMessage2700', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage2700';
       console.info(`${caseName} test start`);
       try {
@@ -1053,7 +1053,7 @@ export default function smsTextPublic() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTelephonySmsMmsSendShortMessage2800', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage2800';
       console.info(`${caseName} test start`);
       try {
@@ -1096,7 +1096,7 @@ export default function smsTextPublic() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTelephonySmsMmsSendShortMessage2900', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage2900';
       console.info(`${caseName} test start`);
       try {
@@ -1141,7 +1141,7 @@ export default function smsTextPublic() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTelephonySmsMmsSendShortMessage3000', 0, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage3000';
       console.info(`${caseName} test start`);
       try {
@@ -1182,9 +1182,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Get the default SIM card slot ID for sending text messages. Use callback for asynchronous callback. version 7
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsGetDefaultSmsSlotId0100', 0, async (done: Function) => {
+    it('testTelephonySmsMmsGetDefaultSmsSlotId0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsGetDefaultSmsSlotId0100';
       console.info(`${caseName} test start`);
       try {
@@ -1212,9 +1212,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Get the default SIM card slot ID for sending text messages. Use Promise asynchronous callback. version 7
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsGetDefaultSmsSlotId0200', 0, async (done: Function) => {
+    it('testTelephonySmsMmsGetDefaultSmsSlotId0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsGetDefaultSmsSlotId0200';
       console.info(`${caseName} test start`);
       try {
@@ -1242,7 +1242,7 @@ export default function smsTextPublic() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTelephonySmsMmsHasSmsCapability0100', 0, async (done: Function) => {
+    it('testTelephonySmsMmsHasSmsCapability0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsHasSmsCapability0100'
       console.info(`${caseName} test start`);
       let result = sms.hasSmsCapability();
@@ -1258,9 +1258,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Obtain SMS formats supported on IMS. Use callback for asynchronous callback. version 8
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsGetDefaultSmsSimId0100', 0, async (done: Function) => {
+    it('testTelephonySmsMmsGetDefaultSmsSimId0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsGetDefaultSmsSimId0100';
       console.info(`${caseName} test start`);
       try {
@@ -1297,9 +1297,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Obtain SMS formats supported on IMS. Use Promise asynchronous callback. version 8
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsGetDefaultSmsSimId0200', 0, async (done: Function) => {
+    it('testTelephonySmsMmsGetDefaultSmsSimId0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsGetDefaultSmsSimId0200';
       console.info(`${caseName} test start`);
       try {
@@ -1334,9 +1334,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Get the default SIM card slot ID for sending text messages. Use Promise asynchronous callback. version 7
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsGetDefaultSmsSlotId0800', 0, async (done: Function) => {
+    it('testTelephonySmsMmsGetDefaultSmsSlotId0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsGetDefaultSmsSlotId0800';
       console.info(`${caseName} test start`);
       try {
@@ -1377,9 +1377,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. 8300003
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsCreateMessage1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonySmsMmsCreateMessage1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsCreateMessage1300'
       console.info(`${caseName} test start`);
       try {
@@ -1408,9 +1408,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. 401
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsCreateMessage1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonySmsMmsCreateMessage1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsCreateMessage1400'
       console.info(`${caseName} test start`);
       try {
@@ -1439,9 +1439,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Create a SMS instance based on the Protocol Data Unit (PDU) and the specified SMS protocol. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsCreateMessage1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonySmsMmsCreateMessage1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsCreateMessage1500'
       console.info(`${caseName} test start`);
       try {
@@ -1468,9 +1468,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Create a SMS instance based on the Protocol Data Unit (PDU) and the specified SMS protocol. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsCreateMessage1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonySmsMmsCreateMessage1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsCreateMessage1600'
       console.info(`${caseName} test start`);
       try {
@@ -1497,9 +1497,9 @@ export default function smsTextPublic() {
      * @tc.desc      : Send a text message. 401
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendMessage0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonySmsMmsSendMessage0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendMessage0600';
       console.info(`${caseName} test start`);
       try {
@@ -1526,9 +1526,9 @@ export default function smsTextPublic() {
      * @tc.desc      : 401 Send a text message. Use callback for asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage3100';
       console.info(`${caseName} test start`);
       try {
@@ -1565,9 +1565,9 @@ export default function smsTextPublic() {
      * @tc.desc      : 401 Send a text message. Use Promise asynchronous callback. version 10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it('testTelephonySmsMmsSendShortMessage3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonySmsMmsSendShortMessage3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySmsMmsSendShortMessage3200';
       console.info(`${caseName} test start`);
       try {

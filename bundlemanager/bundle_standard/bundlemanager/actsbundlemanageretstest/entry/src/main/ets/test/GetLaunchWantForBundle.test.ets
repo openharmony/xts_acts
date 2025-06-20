@@ -32,7 +32,7 @@ export default function getLaunchWantForBundle() {
         * @tc.type Function
         * @tc.level Level 1
         */
-        it('testGetLaunchWantForBundle', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('testGetLaunchWantForBundle', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await bundleMgr.getLaunchWantForBundle(NAME1).then(res => {
                 expect(res.bundleName).assertEqual(NAME1);
                 expect(res.abilityName).assertEqual(ABILITYNAME1);
@@ -61,7 +61,7 @@ export default function getLaunchWantForBundle() {
         * @tc.type Function
         * @tc.level Level 1
         */
-        it('testGetLaunchWantForBundleWithManyHaps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('testGetLaunchWantForBundleWithManyHaps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             await bundleMgr.getLaunchWantForBundle(NAME2).then(res => {
                 expect(res.bundleName).assertEqual(NAME2);
                 expect(res.abilityName).assertEqual(ABILITYNAME2);

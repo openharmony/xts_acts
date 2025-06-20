@@ -14,12 +14,12 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import{ appManager, common, Want } from '@kit.AbilityKit';
 import{ BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import{ data } from '@kit.TelephonyKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
-import { Driver, ON ,Component } from '@kit.TestKit';
+import { Driver, ON, Component, MatchPattern } from '@kit.TestKit';
 
 const TAG: string = 'ProcessModel';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -57,22 +57,25 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_deeplink_1100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_deeplink_1100', Level.LEVEL0, async (done:Function) => {
       const  TAG = 'SUB_Ability_AbilityRuntime_deeplink_1100';
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_deeplink_1100';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  =========`);
       let subscriber: commonEventManager.CommonEventSubscriber | null = null;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['action1'],
+        events: ['action1', 'EventAppSelectNotExist'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+      let UnSubscribeInfoCallback = (err: BusinessError) => {
+        console.info(TAG + " UnSubscribeInfoCallback called");
+      }
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscribedata: commonEventManager.CommonEventSubscriber) => {
         if (err) {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-        subscriber = data;
+        subscriber = subscribedata;
         console .log('-+-+-+-',`${JSON.stringify(subscriber)}`);
 
           commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
@@ -81,11 +84,15 @@ export default function abilityTest() {
             if (err) {
               hilog.error(DOMAIN_NUMBER, TAG, `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               return;
-            }else {
-              hilog.info(0x0000, 'this +++++++803', '%{public}s', data.data);
-              expect(JSON.stringify('-~!@#$ %^&*')).message('action is not equal depplinkdemo.action!').assertEqual(JSON.stringify(data.data));
-              done();
             }
+            if (data.event == 'EventAppSelectNotExist') {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeInfoCallback);
+              done();
+              return;
+            }
+            hilog.info(0x0000, 'this +++++++803', '%{public}s', data.data);
+            expect(JSON.stringify('-~!@#$ %^&*')).assertEqual(JSON.stringify(data.data));
+            done();
           })
         let want: Want = {
           deviceId: '',
@@ -102,6 +109,13 @@ export default function abilityTest() {
         await driver.delayMs(1000);
         let Button: Component = await driver.findComponent(ON.id('TestCase4'));
         await Button.click();
+        await driver.delayMs(1000);
+        let Button2: Component = await driver.findComponent(ON.text('amsdialog', MatchPattern.CONTAINS));
+        if(Button2){
+          let Button3: Component = await driver.findComponent(ON.text('允许'));
+          await Button3.click();
+          await driver.delayMs(1000);
+        }
         const  driver1 =Driver.create();
         await driver1.delayMs(1000);
         let Button1: Component = await driver1.findComponent(ON.text('label'));

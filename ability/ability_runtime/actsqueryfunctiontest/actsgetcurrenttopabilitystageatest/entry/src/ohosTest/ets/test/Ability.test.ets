@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import commonEvent from "@ohos.commonEvent"
 import CommonEventManager from '@ohos.commonEventManager';
@@ -32,7 +32,7 @@ export default function abilityTest() {
          * @tc.name: Verify the interface for obtaining the Ability of the foreground
          * @tc.desc:Start PageAbility1,Ability2 to be tested in turn, and get the current foreground Ability (AsyncCallback)
          */
-        it('ACTS_GetCurrentTopAbility_0100', 0, async (done:Function) => {
+        it('ACTS_GetCurrentTopAbility_0100', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_GetCurrentTopAbility_0100 --- start");
             let flag = true;
             let Subscriber:CommonEventManager.CommonEventSubscriber;

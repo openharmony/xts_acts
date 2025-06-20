@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -55,7 +55,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0100', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0100', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0100'
       console.info(`${SUITE} ${CASE} START`);
       let driver: Driver = Driver.create()
@@ -74,7 +74,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0200', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0200', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0200'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -107,7 +107,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0300', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0300', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0300'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -131,7 +131,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0400', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0400', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0400'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -156,7 +156,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0500', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0500', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0500'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -180,7 +180,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0600', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0600', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0600'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -206,7 +206,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0700', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0700', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0700'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -231,7 +231,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0800', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0800', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0800'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -257,7 +257,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0900', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_0900', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_0900'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -282,7 +282,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1000', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_1000', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_1000'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -307,7 +307,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1100', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_1100', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_1100'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -333,7 +333,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1200', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_1200', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_1200'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -359,7 +359,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1300', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_1300', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_1300'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -381,7 +381,7 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1400', 0, async (done: Function) => {
+    it('ArkUI_TextArea_Select_1400', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_TextArea_Select_1400'
       console.info(`${SUITE} ${CASE} START`);
 

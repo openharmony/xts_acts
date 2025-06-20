@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -50,7 +50,7 @@ export default function Row_flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis(100) , the width of row1 is 100vp
      */
-    it('SUB_ACE_Row_flexBasis_Type_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexBasis_Type_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexBasis_Type_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addflexBasis1', value: 100
@@ -104,7 +104,7 @@ export default function Row_flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis(0) , the width of row1 is the original width
      */
-    it('SUB_ACE_Row_flexBasis_Type_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexBasis_Type_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexBasis_Type_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addflexBasis1', value: 0
@@ -159,7 +159,7 @@ export default function Row_flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis('auto') , the width of row1 is the original width
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_flexBasis_Type_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0300] START');
       globalThis.value.message.notify({
         name: 'addflexBasis2', value: 'auto'
@@ -212,7 +212,7 @@ export default function Row_flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis('200vp') , the width of row1 is 200vp
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0400', 0, async (done: Function) => {
+    it('SUB_ACE_flexBasis_Type_TEST_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0400] START');
       globalThis.value.message.notify({
         name: 'addflexBasis2', value: '200vp'
@@ -265,7 +265,7 @@ export default function Row_flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis('200px') , the width of row1 is 200px
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0500', 0, async (done: Function) => {
+    it('SUB_ACE_flexBasis_Type_TEST_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0500] START');
       globalThis.value.message.notify({
         name: 'addflexBasis2', value: '200px'
@@ -318,7 +318,7 @@ export default function Row_flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis('200fp') , the width of row1 is 200fp
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0600', 0, async (done: Function) => {
+    it('SUB_ACE_flexBasis_Type_TEST_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0600] START');
       globalThis.value.message.notify({
         name: 'addflexBasis2', value: '200fp'
@@ -371,7 +371,7 @@ export default function Row_flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis('200lpx') , the width of row1 is 200lpx
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0700', 0, async (done: Function) => {
+    it('SUB_ACE_flexBasis_Type_TEST_0700',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0700] START');
       globalThis.value.message.notify({
         name: 'addflexBasis2', value: '200lpx'

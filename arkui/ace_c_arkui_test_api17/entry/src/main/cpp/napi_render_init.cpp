@@ -17,6 +17,7 @@
 #include "manager/plugin_manager.h"
 #include "button/button_onhoverevent_test.h"
 #include "button/button_axisevent_test.h"
+#include "button/button_rollangle_test.h"
 
 namespace ArkUICapiTest
 {
@@ -35,6 +36,8 @@ namespace ArkUICapiTest
             {"buttonOnHoverEventTest", nullptr, ButtonOnHoverEventTest::CreateNativeNode, nullptr, nullptr,
              nullptr, napi_default, nullptr},
             {"buttonAxisEventTest", nullptr, ButtonAxisEventTest::CreateNativeNode, nullptr, nullptr, nullptr,
+                napi_default, nullptr},
+            {"buttonRollAngleTest", nullptr, ButtonRollAngleTest::CreateNativeNode, nullptr, nullptr, nullptr,
                 napi_default, nullptr},
         };
         if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok)

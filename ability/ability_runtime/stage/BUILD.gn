@@ -29,6 +29,7 @@ group("stage") {
       "actsuripermission:ActsUriPermission",
       "actswindowstagelifecyclemultihaptest:ActsWindowStageLifecycleMultiHapTest",
       "actswindowstagelifecyclesinglehaptest:ActsWindowStageLifecycleSingleHapTest",
+      "hook:actshookabilitytest",
     ]
   }
 }

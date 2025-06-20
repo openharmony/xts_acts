@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import { ComponentInfo } from '../common/Interfaces';
 import Utils from '../common/Utils';
 
@@ -35,7 +35,7 @@ export default function radioOnChangeCheckedTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRadioChecked008', 0, async (done: Function) => {
+    it('testRadioChecked008', Level.LEVEL1, async (done: Function) => {
       let r1 = Utils.getComponentInfoByKey('OnChangeRadio').$attrs.checked;
       let r2 = Utils.getComponentInfoByKey('OnChangeRadio2').$attrs.checked;
 

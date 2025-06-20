@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 import cryptoFramework from "@ohos.security.cryptoFramework";
@@ -33,7 +33,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .encryptAndDecryptNormalProcess(
@@ -61,7 +61,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .encryptAndDecryptNormalProcess(
@@ -89,7 +89,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .encryptAndDecryptNormalProcess(
@@ -117,7 +117,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .encryptAndDecryptNormalProcess(
@@ -145,7 +145,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .encryptAndDecryptNormalProcess(
@@ -173,7 +173,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .encryptAndDecryptNormalProcess(
@@ -201,7 +201,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .encryptAndDecryptNormalProcess(
@@ -229,7 +229,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .encryptAndDecryptNormalProcess(
@@ -257,7 +257,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_0900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .encryptAndDecryptNormalProcess(
@@ -285,7 +285,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_1000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .encryptAndDecryptNormalProcess(
@@ -313,7 +313,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_1100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .encryptAndDecryptNormalProcess(
@@ -341,7 +341,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_1200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .encryptAndDecryptNormalProcess(
@@ -369,7 +369,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_1300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .encryptAndDecryptNormalProcess(
@@ -397,7 +397,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_Encryption_RSA_1400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let rsaGenerator = cryptoFramework.createAsyKeyGenerator("RSA4096");
                 let cipherGeneratorEncrypt = cryptoFramework.createCipher("RSA4096|PKCS1");
@@ -420,7 +420,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("RSA1024|PRIMES_2", "RSA1024|PKCS1|MD5")
@@ -445,7 +445,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("RSA2048|PRIMES_2", "RSA2048|PKCS1|SHA1")
@@ -470,7 +470,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("RSA3072|PRIMES_2", "RSA3072|PKCS1|SHA224")
@@ -495,7 +495,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("RSA4096|PRIMES_2", "RSA4096|PKCS1|SHA256")
@@ -520,7 +520,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("RSA8192|PRIMES_3", "RSA8192|PKCS1|SHA384")
@@ -545,7 +545,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("RSA512|PRIMES_2", "RSA512|PKCS1|SHA256")
@@ -570,7 +570,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("RSA1024", "RSA1024|PKCS1|MD5|MGF1_MD5")
@@ -595,7 +595,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("RSA2048", "RSA2048|PSS|SHA1|MGF1_SHA1")
@@ -620,7 +620,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_0900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("RSA3072", "RSA3072|PSS|SHA224|MGF1_SHA224")
@@ -645,7 +645,7 @@ export default function AsymmetricCryptographyJsunit() {
          */
         it(
             "Security_crypto_framework_ASymmetric_SignVerify_RSA_1000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("RSA4096", "RSA4096|PSS|SHA256|MGF1_SHA256")

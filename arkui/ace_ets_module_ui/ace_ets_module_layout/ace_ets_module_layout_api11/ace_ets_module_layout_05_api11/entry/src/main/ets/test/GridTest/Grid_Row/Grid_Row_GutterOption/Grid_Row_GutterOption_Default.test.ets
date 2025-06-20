@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -51,7 +51,7 @@ export default function Grid_Row_GutterOption_Default() {
      * @tc.name testGutterOption
      * @tc.desc Set the GridRowSizeOption of GridRow to {x: 0 ,y: 0}
      */
-    it('SUB_ACE_GridRowGutterOption_Default_0100', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowGutterOption_Default_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_Default_0100 START');
       await CommonFunc.sleep(2000)
 
@@ -78,7 +78,7 @@ export default function Grid_Row_GutterOption_Default() {
      * @tc.name testGutterOptionNoSetXY
      * @tc.desc Set the GridRowSizeOption of GridRow to {x: 10 ,y: 0}
      */
-    it('SUB_ACE_GridRowGutterOption_Default_0200', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowGutterOption_Default_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_Default_0200 START');
       globalThis.value.message.notify({
         name: 'optionX', value: 10
@@ -108,7 +108,7 @@ export default function Grid_Row_GutterOption_Default() {
      * @tc.name testGutterOptionNoSetXY
      * @tc.desc Set the GridRowSizeOption of GridRow to {x: 0 ,y: 10}
      */
-    it('SUB_ACE_GridRowGutterOption_Default_0300', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowGutterOption_Default_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_Default_0300 START');
       globalThis.value.message.notify({
         name: 'optionX', value: 0

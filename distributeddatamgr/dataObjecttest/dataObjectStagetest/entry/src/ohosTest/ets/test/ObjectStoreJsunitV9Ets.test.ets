@@ -50,9 +50,9 @@ describe('ObjectStoreJsunitV9Ets', function () {
      * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetCommunType_0100
      * @tc.size: MediumTest
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('V9testbindAssetCommunType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('V9testbindAssetCommunType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.log(TAG + "************* V9testbindAssetCommunType0100 start *************");
         expect(commonType.AssetStatus.ASSET_NORMAL == 1).assertTrue();
         expect(commonType.AssetStatus.ASSET_INSERT == 2).assertTrue();

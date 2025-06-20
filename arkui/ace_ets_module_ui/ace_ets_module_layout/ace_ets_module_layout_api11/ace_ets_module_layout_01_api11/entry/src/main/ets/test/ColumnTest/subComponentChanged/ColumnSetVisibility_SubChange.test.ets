@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -51,7 +51,7 @@ export default function ColumnSetVisibility_SubChange() {
      * @tc.name testColumnSetVisibilityNoneVisible
      * @tc.desc The subcomponents set visibility.none and visibility.visible.
      */
-    it('testColumnSetVisibilityNoneVisible', 0, async () => {
+    it('testColumnSetVisibilityNoneVisible',  Level.LEVEL0, async () => {
       console.info('new testColumnSetVisibilityNoneVisible START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -88,7 +88,7 @@ export default function ColumnSetVisibility_SubChange() {
      * @tc.name testColumnSetVisibilityHiddenVisible
      * @tc.desc The subcomponents set visibility.hidden and visibility.visible.
      */
-    it('testColumnSetVisibilityHiddenVisible', 0, async () => {
+    it('testColumnSetVisibilityHiddenVisible',  Level.LEVEL0, async () => {
       console.info('new testColumnSetVisibilityHiddenVisible START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -121,7 +121,7 @@ export default function ColumnSetVisibility_SubChange() {
      * @tc.name testColumnSetVisibilityVisible
      * @tc.desc The subcomponents both set visibility.visible.
      */
-    it('testColumnSetVisibilityVisible', 0, async () => {
+    it('testColumnSetVisibilityVisible',  Level.LEVEL0, async () => {
       console.info('new testColumnSetVisibilityVisible START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -154,7 +154,7 @@ export default function ColumnSetVisibility_SubChange() {
      * @tc.name testColumnSetVisibilityVisibleNone
      * @tc.desc The subcomponents set visibility.visible and visibility.none.
      */
-    it('testColumnSetVisibilityVisibleNone', 0, async () => {
+    it('testColumnSetVisibilityVisibleNone',  Level.LEVEL0, async () => {
       console.info('new testColumnSetVisibilityVisibleNone START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({

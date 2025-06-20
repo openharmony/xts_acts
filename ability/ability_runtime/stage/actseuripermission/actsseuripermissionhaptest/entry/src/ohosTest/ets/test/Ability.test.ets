@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Want from '@ohos.app.ability.Want';
 import wantConstant from '@ohos.app.ability.wantConstant';
 import fs from '@ohos.file.fs';
@@ -71,7 +71,7 @@ export default function abilityTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('UriPermissionTest_0100', 0, async (done: Function) => {
+    it('UriPermissionTest_0100', Level.LEVEL0, async (done: Function) => {
       log("========================= UriPermissionTest_0100 Begin ===================");
       log("step1. createBundleNameFile...");
       abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext")!;
@@ -160,7 +160,7 @@ export default function abilityTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('UriPermissionTest_0200', 0, async (done: Function) => {
+    it('UriPermissionTest_0200', Level.LEVEL0, async (done: Function) => {
       log("========================= UriPermissionTest_0200 Begin ===================");
       log("step1. createBundleNameFile...");
       abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext")!;
@@ -267,7 +267,7 @@ export default function abilityTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('UriPermissionTest_0300', 0, async (done: Function) => {
+    it('UriPermissionTest_0300', Level.LEVEL0, async (done: Function) => {
       log("========================= UriPermissionTest_0300 Begin ===================");
       log("step1. Create bundleName file.");
       abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext")!;

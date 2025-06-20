@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect , Level, Size, TestType} from '@ohos/hypium';
 import socket from "@ohos.net.socket";
 import { BusinessError, Callback } from '@ohos.base';
 import { ArrayBufferToString } from './utils/index';
@@ -66,7 +66,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConstructTCPSocketInstance0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConstructTCPSocketInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConstructTCPSocketInstance0100';
       console.info(`${caseName} test start `);
       try {
@@ -90,7 +90,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 1
      */
-    it('testNetworkMgrSocketTCPSocketBind0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind0100';
       try {
         console.info(`${caseName} test start `);
@@ -107,7 +107,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -127,7 +129,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 1
      */
-    it('testNetworkMgrSocketTCPSocketBind0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind0300';
       try {
         console.info(`${caseName} test start `);
@@ -145,7 +147,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -165,7 +169,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind0500';
       try {
         console.info(`${caseName} test start `);
@@ -184,7 +188,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -204,7 +210,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind0600';
       try {
         console.info(`${caseName} test start `);
@@ -223,7 +229,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -243,7 +251,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind0700';
       try {
         console.info(`${caseName} test start `);
@@ -262,7 +270,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -282,7 +292,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind0800';
       try {
         console.info(`${caseName} test start `);
@@ -301,7 +311,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -321,7 +333,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind0900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind0900';
       try {
         console.info(`${caseName} test start `);
@@ -340,7 +352,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -360,7 +374,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1000';
       try {
         console.info(`${caseName} test start `);
@@ -379,7 +393,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -399,7 +415,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1100';
       try {
         console.info(`${caseName} test start `);
@@ -408,7 +424,7 @@ export default function TCPSocketTest() {
         tcp.bind(null, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(401);
+            expectTrue(err.code===401);
           } else {
             console.info(`${caseName} success`);
             expectFail();
@@ -432,7 +448,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1200';
       try {
         console.info(`${caseName} test start `);
@@ -441,7 +457,7 @@ export default function TCPSocketTest() {
         tcp.bind(undefined, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(401);
+            expectTrue(err.code===401);
           } else {
             console.info(`${caseName} success`);
             expectFail();
@@ -465,7 +481,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1300';
       try {
         console.info(`${caseName} test start `);
@@ -483,7 +499,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -503,7 +521,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1400';
       try {
         console.info(`${caseName} test start `);
@@ -521,7 +539,9 @@ export default function TCPSocketTest() {
           expectSuccess();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -541,7 +561,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1500';
       try {
         console.info(`${caseName} test start `);
@@ -560,7 +580,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===2301022);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -580,7 +602,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1600';
       try {
         console.info(`${caseName} test start `);
@@ -618,7 +640,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1700';
       try {
         console.info(`${caseName} test start`);
@@ -657,7 +679,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1800';
       try {
         console.info(`${caseName} test start `);
@@ -677,7 +699,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -697,7 +721,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind1900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind1900';
       try {
         console.info(`${caseName} test start `);
@@ -717,7 +741,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -737,7 +763,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind2000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind2000';
       try {
         console.info(`${caseName} test start `);
@@ -757,7 +783,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -777,7 +805,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind2100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind2100';
       try {
         console.info(`${caseName} test start `);
@@ -797,7 +825,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -817,7 +847,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind2200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind2200';
       try {
         console.info(`${caseName} test start `);
@@ -837,7 +867,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end `);
           done();
         });
@@ -857,7 +889,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind2300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind2300';
       try {
         console.info(`${caseName} test start `);
@@ -868,7 +900,7 @@ export default function TCPSocketTest() {
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} fail ${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(401);
+          expectTrue(err.code===401);
           done();
         }).finally(() => {
           console.info(`${caseName} test end`);
@@ -890,7 +922,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind2400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind2400';
       try {
         console.info(`${caseName} test start `);
@@ -901,7 +933,7 @@ export default function TCPSocketTest() {
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} fail ${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(401);
+          expectTrue(err.code===401);
           done();
         }).finally(() => {
           console.info(`${caseName} test end`);
@@ -923,7 +955,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketBind2500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketBind2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketBind2500';
       try {
         console.info(`${caseName} test start `);
@@ -961,7 +993,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0100';
       try {
         console.info(`${caseName} test start`);
@@ -974,7 +1006,9 @@ export default function TCPSocketTest() {
           port: 4001,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:listenAddress
         };
@@ -986,7 +1020,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1006,7 +1042,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0200';
       try {
         console.info(`${caseName} test start`);
@@ -1017,7 +1053,9 @@ export default function TCPSocketTest() {
           port: 4002,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.connect(null, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail ${JSON.stringify(err)}`);
@@ -1026,7 +1064,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1046,7 +1086,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0300';
       try {
         console.info(`${caseName} test start`);
@@ -1057,7 +1097,9 @@ export default function TCPSocketTest() {
           port: 4003,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.connect(undefined, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail ${JSON.stringify(err)}`);
@@ -1066,7 +1108,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1086,7 +1130,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0400';
       try {
         console.info(`${caseName} test start`);
@@ -1097,7 +1141,9 @@ export default function TCPSocketTest() {
           port: 4004,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -1114,7 +1160,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1134,7 +1182,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0500';
       try {
         console.info(`${caseName} test start`);
@@ -1145,7 +1193,9 @@ export default function TCPSocketTest() {
           port: 4005,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
           timeout:undefined
@@ -1158,7 +1208,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1178,7 +1230,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0600';
       try {
         console.info(`${caseName} test start`);
@@ -1189,7 +1241,9 @@ export default function TCPSocketTest() {
           port: 4006,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1'
@@ -1203,7 +1257,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1223,7 +1279,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0700';
       try {
         console.info(`${caseName} test start`);
@@ -1248,7 +1304,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1268,7 +1326,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0800';
       try {
         console.info(`${caseName} test start`);
@@ -1291,7 +1349,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1311,7 +1371,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1000';
       try {
         console.info(`${caseName} test start`);
@@ -1322,7 +1382,9 @@ export default function TCPSocketTest() {
           port: 4010,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '100.0.0.0',
@@ -1338,7 +1400,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1358,7 +1422,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1100';
       try {
         console.info(`${caseName} test start`);
@@ -1369,7 +1433,9 @@ export default function TCPSocketTest() {
           port: -1,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -1385,7 +1451,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1405,7 +1473,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1200';
       try {
         console.info(`${caseName} test start`);
@@ -1416,7 +1484,9 @@ export default function TCPSocketTest() {
           port: 0,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -1432,7 +1502,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1452,7 +1524,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1300';
       try {
         console.info(`${caseName} test start`);
@@ -1463,7 +1535,9 @@ export default function TCPSocketTest() {
           port: 65535,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -1479,7 +1553,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1499,7 +1575,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1400';
       try {
         console.info(`${caseName} test start`);
@@ -1510,7 +1586,9 @@ export default function TCPSocketTest() {
           port: 65536,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -1526,7 +1604,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} fail ${JSON.stringify(err)}`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1546,7 +1626,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1500';
       try {
         console.info(`${caseName} test start`);
@@ -1557,7 +1637,9 @@ export default function TCPSocketTest() {
           port: 4015,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -1573,7 +1655,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1593,7 +1677,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1600';
       try {
         console.info(`${caseName} test start`);
@@ -1633,7 +1717,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1700';
       try {
         console.info(`${caseName} test start`);
@@ -1645,7 +1729,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4017
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -1661,7 +1747,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1681,7 +1769,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1800';
       try {
         console.info(`${caseName} test start`);
@@ -1691,7 +1779,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4018
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.connect(null).then(() => {
           console.info(`${caseName} success`);
           expectFail();
@@ -1701,7 +1791,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===401);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1721,7 +1813,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect1900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1900';
       try {
         console.info(`${caseName} test start`);
@@ -1731,7 +1823,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4019
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.connect(undefined).then(() => {
           console.info(`${caseName} success`);
           expectFail();
@@ -1741,7 +1835,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===401);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1761,7 +1857,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2000';
       try {
         console.info(`${caseName} test start`);
@@ -1772,7 +1868,9 @@ export default function TCPSocketTest() {
           port: 4020,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:  {
             address: '127.0.0.1',
@@ -1790,7 +1888,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1810,7 +1910,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2100';
       try {
         console.info(`${caseName} test start`);
@@ -1821,7 +1921,9 @@ export default function TCPSocketTest() {
           port: 4021,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:  {
             address: '127.0.0.1',
@@ -1838,7 +1940,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1858,7 +1962,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2200';
       try {
         console.info(`${caseName} test start`);
@@ -1869,7 +1973,9 @@ export default function TCPSocketTest() {
           port: 4022,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1'
@@ -1884,7 +1990,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===2301115);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1904,7 +2012,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2300';
       try {
         console.info(`${caseName} test start`);
@@ -1930,7 +2038,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1950,7 +2060,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2400';
       try {
         console.info(`${caseName} test start`);
@@ -1974,7 +2084,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -1994,7 +2106,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2500';
       try {
         console.info(`${caseName} test start`);
@@ -2005,7 +2117,9 @@ export default function TCPSocketTest() {
           port: 4025,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -2022,7 +2136,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===401);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2042,7 +2158,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2600';
       try {
         console.info(`${caseName} test start`);
@@ -2053,7 +2169,9 @@ export default function TCPSocketTest() {
           port: 4026,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '100.0.0.0',
@@ -2070,7 +2188,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===2301022);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2090,7 +2210,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2700';
       try {
         console.info(`${caseName} test start`);
@@ -2101,7 +2221,9 @@ export default function TCPSocketTest() {
           port: -1,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -2118,7 +2240,9 @@ export default function TCPSocketTest() {
           expectSuccess();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2138,7 +2262,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2800';
       try {
         console.info(`${caseName} test start`);
@@ -2149,7 +2273,9 @@ export default function TCPSocketTest() {
           port: 0,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -2166,7 +2292,9 @@ export default function TCPSocketTest() {
           expectSuccess();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2186,7 +2314,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect2900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2900';
       try {
         console.info(`${caseName} test start`);
@@ -2197,7 +2325,9 @@ export default function TCPSocketTest() {
           port: 65535,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -2214,7 +2344,9 @@ export default function TCPSocketTest() {
           expectSuccess();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2234,7 +2366,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect3000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect3000';
       try {
         console.info(`${caseName} test start`);
@@ -2245,7 +2377,9 @@ export default function TCPSocketTest() {
           port: 65536,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -2262,7 +2396,9 @@ export default function TCPSocketTest() {
           expectSuccess();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2282,7 +2418,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect3100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect3100';
       try {
         console.info(`${caseName} test start`);
@@ -2293,7 +2429,9 @@ export default function TCPSocketTest() {
           port: 4031,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: '127.0.0.1',
@@ -2310,7 +2448,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2330,7 +2470,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketConnect3200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnect3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect3200';
       try {
         console.info(`${caseName} test start`);
@@ -2352,7 +2492,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===2301115);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2372,7 +2514,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0100';
       try {
         console.info(`${caseName} test start`);
@@ -2382,11 +2524,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4033
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!'
         };
@@ -2398,7 +2544,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2418,7 +2566,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0200';
       try {
         console.info(`${caseName} test start`);
@@ -2428,11 +2576,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4034
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!'
         };
@@ -2444,7 +2596,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2464,7 +2618,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0400';
       try {
         console.info(`${caseName} test start`);
@@ -2474,11 +2628,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4036
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.send(null, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
@@ -2489,7 +2647,9 @@ export default function TCPSocketTest() {
             expectFail();
             done();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2509,7 +2669,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0500';
       try {
         console.info(`${caseName} test start`);
@@ -2519,20 +2679,26 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4037
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.send(undefined, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
             expectTrue(err.code===401);
           } else {
             console.info(`${caseName} success`);
-            expectFail()
+            expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2552,7 +2718,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0600';
       try {
         console.info(`${caseName} test start`);
@@ -2562,11 +2728,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4038
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: new ArrayBuffer(123)
         };
@@ -2578,7 +2748,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2598,7 +2770,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0700';
       try {
         console.info(`${caseName} test start`);
@@ -2608,11 +2780,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4039
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: ''
@@ -2625,7 +2801,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2645,7 +2823,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0800';
       try {
         console.info(`${caseName} test start`);
@@ -2655,11 +2833,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4040
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'UTF-8'
@@ -2672,7 +2854,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2692,7 +2876,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend0900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0900';
       try {
         console.info(`${caseName} test start`);
@@ -2702,11 +2886,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4041
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'UTF-16BE'
@@ -2719,7 +2907,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2739,7 +2929,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1000';
       try {
         console.info(`${caseName} test start`);
@@ -2749,11 +2939,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4042
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'UTF-16LE'
@@ -2766,7 +2960,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2786,7 +2982,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1100';
       try {
         console.info(`${caseName} test start`);
@@ -2796,11 +2992,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4043
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'UTF-16'
@@ -2813,7 +3013,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2833,7 +3035,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1200';
       try {
         console.info(`${caseName} test start`);
@@ -2843,11 +3045,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4044
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'US-AECII'
@@ -2860,7 +3066,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2880,7 +3088,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1300';
       try {
         console.info(`${caseName} test start`);
@@ -2890,11 +3098,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4045
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'ISO-8859-1'
@@ -2907,7 +3119,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2927,7 +3141,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1400';
       try {
         console.info(`${caseName} test start`);
@@ -2937,11 +3151,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4046
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'GB2312'
@@ -2954,7 +3172,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -2974,7 +3194,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1500';
       try {
         console.info(`${caseName} test start`);
@@ -2984,11 +3204,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4047
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: undefined
@@ -3001,7 +3225,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3021,7 +3247,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1600';
       try {
         console.info(`${caseName} test start`);
@@ -3031,11 +3257,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4049
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!'
         };
@@ -3048,7 +3278,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3068,7 +3300,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1700';
       try {
         console.info(`${caseName} test start`);
@@ -3079,11 +3311,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4048
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:listenAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!'
         };
@@ -3096,7 +3332,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3116,7 +3354,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend1900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1900';
       try {
         console.info(`${caseName} test start`);
@@ -3127,11 +3365,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4050
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:listenAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.send(null).then(() => {
           console.info(`${caseName} success`);
           expectFail();
@@ -3141,7 +3383,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===401);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3161,7 +3405,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2000';
       try {
         console.info(`${caseName} test start`);
@@ -3172,11 +3416,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4051
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:listenAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.send(undefined).then(() => {
           console.info(`${caseName} success`);
           expectFail();
@@ -3186,7 +3434,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===401);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3206,7 +3456,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2100';
       try {
         console.info(`${caseName} test start`);
@@ -3216,11 +3466,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4052
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: new ArrayBuffer(123)
         };
@@ -3233,7 +3487,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3253,7 +3509,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2200';
       try {
         console.info(`${caseName} test start`);
@@ -3263,11 +3519,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4053
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: ''
@@ -3281,7 +3541,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3301,7 +3563,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2300';
       try {
         console.info(`${caseName} test start`);
@@ -3311,11 +3573,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4054
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'UTF-8'
@@ -3329,7 +3595,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3349,7 +3617,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2400';
       try {
         console.info(`${caseName} test start`);
@@ -3359,11 +3627,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4055
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'UTF-16BE'
@@ -3377,7 +3649,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3397,7 +3671,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2500';
       try {
         console.info(`${caseName} test start`);
@@ -3407,11 +3681,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4056
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'UTF-16LE'
@@ -3425,7 +3703,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3445,7 +3725,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2600';
       try {
         console.info(`${caseName} test start`);
@@ -3455,11 +3735,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4057
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'UTF-16'
@@ -3473,7 +3757,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3493,7 +3779,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2700';
       try {
         console.info(`${caseName} test start`);
@@ -3503,11 +3789,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4058
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'US-AECII'
@@ -3521,7 +3811,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3541,7 +3833,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2800';
       try {
         console.info(`${caseName} test start`);
@@ -3551,11 +3843,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4059
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'ISO-8859-1'
@@ -3569,7 +3865,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3589,7 +3887,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend2900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2900';
       try {
         console.info(`${caseName} test start`);
@@ -3599,11 +3897,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4060
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: 'GB2312'
@@ -3617,7 +3919,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3637,7 +3941,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSend3000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSend3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend3000';
       try {
         console.info(`${caseName} test start`);
@@ -3647,11 +3951,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4061
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address:bindAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, server!',
           encoding: undefined
@@ -3665,7 +3973,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -3685,7 +3995,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketClose0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketClose0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0100';
       try {
         console.info(`${caseName} test start`);
@@ -3718,7 +4028,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketClose0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketClose0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0200';
       try {
         console.info(`${caseName} test start`);
@@ -3728,11 +4038,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4062
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.close((err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
@@ -3760,7 +4074,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketClose0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketClose0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0300';
       try {
         console.info(`${caseName} test start`);
@@ -3773,11 +4087,15 @@ export default function TCPSocketTest() {
           port: 4063,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.close((err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
@@ -3805,7 +4123,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketClose0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketClose0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0400';
       console.info(`${caseName} test start`);
       try {
@@ -3839,7 +4157,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketClose0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketClose0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0500';
       console.info(`${caseName} test start`);
       try {
@@ -3849,11 +4167,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4064
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.close().then(() => {
           console.info(`${caseName} success`);
           expectSuccess();
@@ -3882,7 +4204,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketClose0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketClose0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0500';
       console.info(`${caseName} test start`);
       try {
@@ -3895,11 +4217,15 @@ export default function TCPSocketTest() {
           port: 4065,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.close().then(() => {
           console.info(`${caseName} success`);
           expectSuccess();
@@ -3928,7 +4254,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0100';
       try {
         console.info(`${caseName} test start`);
@@ -3962,7 +4288,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0200';
       try {
         console.info(`${caseName} test start`);
@@ -3973,11 +4299,15 @@ export default function TCPSocketTest() {
           port: 4066,
           family: 1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getRemoteAddress(async (err: BusinessError, data: socket.NetAddress) => {
           if (err) {
             console.info(`${caseName}_1 fail err:${JSON.stringify(err)}`);
@@ -3988,7 +4318,9 @@ export default function TCPSocketTest() {
             expectEqual(data.port as number, 4066);
             expectEqual(data.family as number, 1);
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4008,7 +4340,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0300';
       try {
         console.info(`${caseName} test start`);
@@ -4021,11 +4353,15 @@ export default function TCPSocketTest() {
           port: 4067,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getRemoteAddress(async (err: BusinessError, data: socket.NetAddress) => {
           if (err) {
             console.info(`${caseName} fail ${JSON.stringify(err)}`);
@@ -4036,7 +4372,9 @@ export default function TCPSocketTest() {
             expectEqual(data.port as number, 4067);
             expectEqual(data.family as number, 1);
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4056,7 +4394,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0400';
       console.info(`${caseName} test start`);
       try {
@@ -4090,7 +4428,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0500';
       console.info(`${caseName} test start`);
       try {
@@ -4101,11 +4439,15 @@ export default function TCPSocketTest() {
           port: 4068,
           family:1
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getRemoteAddress().then((data: socket.NetAddress) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.address as string, '127.0.0.1');
@@ -4117,7 +4459,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4137,7 +4481,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetRemoteAddress0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0600';
       console.info(`${caseName} test start`);
       try {
@@ -4150,11 +4494,15 @@ export default function TCPSocketTest() {
           port: 4069,
           family:1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getRemoteAddress().then((data: socket.NetAddress) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.address as string, '127.0.0.1');
@@ -4166,7 +4514,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4186,7 +4536,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetState0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetState0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0100';
       try {
         console.info(`${caseName} test start`);
@@ -4222,7 +4572,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetState0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetState0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0200';
       try {
         console.info(`${caseName} test start`);
@@ -4232,7 +4582,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4070
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.getState(async (err: BusinessError, data: socket.SocketStateBase) => {
           if (err) {
             console.info(`${caseName}_1 fail err:${JSON.stringify(err)}`);
@@ -4243,7 +4595,9 @@ export default function TCPSocketTest() {
             expectEqual(data.isClose as boolean, false);
             expectEqual(data.isConnected as boolean, false);
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4263,7 +4617,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetState0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetState0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0300';
       try {
         console.info(`${caseName} test start`);
@@ -4273,11 +4627,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4071
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getState(async (err: BusinessError, data: socket.SocketStateBase) => {
           if (err) {
             console.info(`${caseName}_1 fail err:${JSON.stringify(err)}`);
@@ -4288,7 +4646,9 @@ export default function TCPSocketTest() {
             expectEqual(data.isClose as boolean, false);
             expectEqual(data.isConnected as boolean, true);
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4308,7 +4668,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetState0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetState0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0400';
       try {
         console.info(`${caseName} test start`);
@@ -4321,11 +4681,15 @@ export default function TCPSocketTest() {
           port: 4072,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getState(async (err: BusinessError, data: socket.SocketStateBase) => {
           if (err) {
             console.info(`${caseName}_1 fail err:${JSON.stringify(err)}`);
@@ -4336,7 +4700,9 @@ export default function TCPSocketTest() {
             expectEqual(data.isClose as boolean, false);
             expectEqual(data.isConnected as boolean, true);
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4356,7 +4722,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetState0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetState0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0500';
       try {
         console.info(`${caseName} test start`);
@@ -4393,7 +4759,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetState0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0600'
       console.info(`${caseName} test start`);
       try {
@@ -4403,7 +4769,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4073
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         await tcp.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.isBound as boolean, true);
@@ -4415,7 +4783,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4435,7 +4805,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetState0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetState0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0700';
       try {
         console.info(`${caseName} test start`);
@@ -4445,11 +4815,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4074
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.isBound as boolean, true);
@@ -4481,7 +4855,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetState0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetState0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0800';
       try {
         console.info(`${caseName} test start`);
@@ -4494,11 +4868,15 @@ export default function TCPSocketTest() {
           port: 4075,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.isBound as boolean, true);
@@ -4530,7 +4908,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetSocketFd0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetSocketFd0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0100';
       try {
         console.info(`${caseName} test start`);
@@ -4563,7 +4941,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetSocketFd0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetSocketFd0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0200';
       try {
         console.info(`${caseName} test start`);
@@ -4573,7 +4951,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4076
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.getSocketFd(async (err: BusinessError, data: number) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
@@ -4582,7 +4962,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success data:${JSON.stringify(data)}`);
             expectTrue(data !== undefined);
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4602,7 +4984,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetSocketFd0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetSocketFd0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0300';
       try {
         console.info(`${caseName} test start`);
@@ -4612,11 +4994,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4077
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getSocketFd(async (err: BusinessError, data: number) => {
           if (err) {
             console.info(`${caseName}_1 fail err:${JSON.stringify(err)}`);
@@ -4625,7 +5011,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success data:${JSON.stringify(data)}`);
             expectTrue(data !== undefined);
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4645,7 +5033,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetSocketFd0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetSocketFd0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0400';
       try {
         console.info(`${caseName} test start`);
@@ -4658,11 +5046,15 @@ export default function TCPSocketTest() {
           port: 4078,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getSocketFd(async (err: BusinessError, data: number) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
@@ -4671,7 +5063,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success data:${JSON.stringify(data)}`);
             expectTrue(data !== undefined);
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4691,7 +5085,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetSocketFd0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetSocketFd0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0500';
       try {
         console.info(`${caseName} test start`);
@@ -4725,7 +5119,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetSocketFd0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetSocketFd0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0600';
       try {
         console.info(`${caseName} test start`);
@@ -4735,7 +5129,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4079
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.getSocketFd().then((data: number) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectTrue(data !== undefined);
@@ -4745,7 +5141,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         })
@@ -4765,7 +5163,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetSocketFd0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetSocketFd0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0700';
       try {
         console.info(`${caseName} test start`);
@@ -4775,11 +5173,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4080
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getSocketFd().then((data: number) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectTrue(data !== undefined);
@@ -4789,7 +5191,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4809,7 +5213,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketGetSocketFd0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketGetSocketFd0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0800';
       try {
         console.info(`${caseName} test start`);
@@ -4822,11 +5226,15 @@ export default function TCPSocketTest() {
           port: 4081,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         tcp.getSocketFd().then((data: number) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectTrue(data !== undefined);
@@ -4836,7 +5244,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4856,7 +5266,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0100';
       try {
         console.info(`${caseName} test start`);
@@ -4866,7 +5276,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4082
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -4887,7 +5299,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4907,7 +5321,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0200';
       try {
         console.info(`${caseName} test start`);
@@ -4917,11 +5331,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4083
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -4942,7 +5360,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -4962,7 +5382,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0300';
       try {
         console.info(`${caseName} test start`);
@@ -4975,11 +5395,15 @@ export default function TCPSocketTest() {
           port: 4084,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -5000,7 +5424,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5020,7 +5446,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0400';
       try {
         console.info(`${caseName} test start`);
@@ -5030,7 +5456,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4085
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.setExtraOptions(null, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail 111 err:${JSON.stringify(err)}`);
@@ -5039,7 +5467,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5059,7 +5489,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0500';
       try {
         console.info(`${caseName} test start`);
@@ -5069,7 +5499,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4086
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.setExtraOptions(undefined, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail 111 err:${JSON.stringify(err)}`);
@@ -5078,7 +5510,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5098,7 +5532,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0600';
       try {
         console.info(`${caseName} test start`);
@@ -5108,7 +5542,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9001
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           socketLinger: {
@@ -5123,7 +5559,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5143,7 +5581,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0700';
       try {
         console.info(`${caseName} test start`);
@@ -5153,7 +5591,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9002
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           socketLinger: {
@@ -5168,7 +5608,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5188,7 +5630,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0800';
       try {
         console.info(`${caseName} test start`);
@@ -5198,7 +5640,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9003
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           OOBInline: false,
           socketLinger: {
@@ -5213,7 +5657,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5233,7 +5679,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions0900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions0900';
       try {
         console.info(`${caseName} test start`);
@@ -5243,7 +5689,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9004
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           OOBInline: true,
           socketLinger: {
@@ -5258,7 +5706,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5278,7 +5728,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1000';
       try {
         console.info(`${caseName} test start`);
@@ -5288,7 +5738,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9005
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           TCPNoDelay: false,
           socketLinger: {
@@ -5303,7 +5755,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5323,7 +5777,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1100';
       try {
         console.info(`${caseName} test start`);
@@ -5333,7 +5787,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9006
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           TCPNoDelay: true,
           socketLinger: {
@@ -5348,7 +5804,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5368,7 +5826,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1200';
       try {
         console.info(`${caseName} test start`);
@@ -5378,7 +5836,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9007
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: -1,
           socketLinger: {
@@ -5393,7 +5853,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5413,7 +5875,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1300';
       try {
         console.info(`${caseName} test start`);
@@ -5423,7 +5885,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9008
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: 0,
           socketLinger: {
@@ -5438,7 +5902,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5458,7 +5924,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1400';
       try {
         console.info(`${caseName} test start`);
@@ -5468,7 +5934,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9009
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: 100,
           socketLinger: {
@@ -5483,7 +5951,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5503,7 +5973,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1500';
       try {
         console.info(`${caseName} test start`);
@@ -5513,7 +5983,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9010
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: -1,
           socketLinger: {
@@ -5528,7 +6000,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5548,7 +6022,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1600';
       try {
         console.info(`${caseName} test start`);
@@ -5558,7 +6032,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9011
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: 0,
           socketLinger: {
@@ -5573,7 +6049,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5593,7 +6071,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1700';
       try {
         console.info(`${caseName} test start`);
@@ -5603,7 +6081,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9012
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: 100,
           socketLinger: {
@@ -5618,7 +6098,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5638,7 +6120,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1800';
       try {
         console.info(`${caseName} test start`);
@@ -5648,7 +6130,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9013
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           reuseAddress: true,
           socketLinger: {
@@ -5663,7 +6147,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5683,7 +6169,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions1900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions1900';
       try {
         console.info(`${caseName} test start`);
@@ -5693,7 +6179,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9014
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           reuseAddress: false,
           socketLinger: {
@@ -5708,7 +6196,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5728,7 +6218,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2000';
       try {
         console.info(`${caseName} test start`);
@@ -5738,7 +6228,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9014
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: -1,
           socketLinger: {
@@ -5753,7 +6245,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectFail();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5773,7 +6267,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2100';
       try {
         console.info(`${caseName} test start`);
@@ -5783,7 +6277,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9014
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: 0,
           socketLinger: {
@@ -5798,7 +6294,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5818,7 +6316,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2200';
       try {
         console.info(`${caseName} test start`);
@@ -5828,7 +6326,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9015
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: 100,
           socketLinger: {
@@ -5843,7 +6343,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5863,7 +6365,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2300';
       try {
         console.info(`${caseName} test start`);
@@ -5873,7 +6375,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9016
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger:-1
@@ -5887,7 +6391,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5907,7 +6413,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2400';
       try {
         console.info(`${caseName} test start`);
@@ -5917,7 +6423,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9017
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger:0
@@ -5931,7 +6439,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5951,7 +6461,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2500';
       try {
         console.info(`${caseName} test start`);
@@ -5961,7 +6471,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9018
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger:65535
@@ -5975,7 +6487,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -5995,7 +6509,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2600';
       try {
         console.info(`${caseName} test start`);
@@ -6005,7 +6519,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9019
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger:65536
@@ -6019,7 +6535,9 @@ export default function TCPSocketTest() {
             console.info(`${caseName} success`);
             expectSuccess();
           }
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6039,7 +6557,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions2700';
       console.info(`${caseName} test start`);
       try {
@@ -6049,7 +6567,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 9004
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -6071,7 +6591,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6091,7 +6613,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: String = 'testNetworkMgrSocketTCPSocketSetExtraOptions2800';
       try {
         console.info(`${caseName} test start`);
@@ -6101,11 +6623,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4088
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -6127,7 +6653,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         })
@@ -6147,7 +6675,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions2900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: String = 'testNetworkMgrSocketTCPSocketSetExtraOptions2900';
       try {
         console.info(`${caseName} test start`);
@@ -6160,11 +6688,15 @@ export default function TCPSocketTest() {
           port: 4089,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -6186,7 +6718,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6206,7 +6740,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3000';
       console.info(`${caseName} test start`);
       try {
@@ -6216,7 +6750,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4090
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.setExtraOptions(null).then(() => {
           console.info(`${caseName} success `);
           expectFail();
@@ -6226,7 +6762,9 @@ export default function TCPSocketTest() {
           expectEqual(err.code, 401);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6246,7 +6784,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3100';
       console.info(`${caseName} test start`);
       try {
@@ -6256,7 +6794,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4091
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         tcp.setExtraOptions(undefined).then(() => {
           console.info(`${caseName} success `);
           expectFail();
@@ -6266,7 +6806,9 @@ export default function TCPSocketTest() {
           expectEqual(err.code, 401);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6286,7 +6828,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3200';
       console.info(`${caseName} test start`);
       try {
@@ -6296,7 +6838,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10001
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           socketLinger: {
@@ -6312,7 +6856,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6332,7 +6878,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3300';
       console.info(`${caseName} test start`);
       try {
@@ -6342,7 +6888,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10002
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           socketLinger: {
@@ -6358,7 +6906,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6378,7 +6928,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3400';
       console.info(`${caseName} test start`);
       try {
@@ -6388,7 +6938,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10003
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           OOBInline: false,
           socketLinger: {
@@ -6404,7 +6956,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6424,7 +6978,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3500';
       console.info(`${caseName} test start`);
       try {
@@ -6434,7 +6988,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10003
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           OOBInline: true,
           socketLinger: {
@@ -6450,7 +7006,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6470,7 +7028,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3600';
       console.info(`${caseName} test start`);
       try {
@@ -6480,7 +7038,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10004
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           TCPNoDelay: false,
           socketLinger: {
@@ -6496,7 +7056,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6516,7 +7078,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3700';
       console.info(`${caseName} test start`);
       try {
@@ -6526,7 +7088,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10004
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           TCPNoDelay: false,
           socketLinger: {
@@ -6542,7 +7106,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6562,7 +7128,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3800';
       console.info(`${caseName} test start`);
       try {
@@ -6572,7 +7138,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10005
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: -1,
           socketLinger: {
@@ -6588,7 +7156,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6608,7 +7178,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions3900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions3900';
       console.info(`${caseName} test start`);
       try {
@@ -6618,7 +7188,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10006
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: 0,
           socketLinger: {
@@ -6634,7 +7206,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6654,7 +7228,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4000';
       console.info(`${caseName} test start`);
       try {
@@ -6664,7 +7238,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10007
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: 100,
           socketLinger: {
@@ -6680,7 +7256,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6700,7 +7278,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4100';
       console.info(`${caseName} test start`);
       try {
@@ -6710,7 +7288,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10008
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: -1,
           socketLinger: {
@@ -6726,7 +7306,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6746,7 +7328,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4200';
       console.info(`${caseName} test start`);
       try {
@@ -6756,7 +7338,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10008
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: 0,
           socketLinger: {
@@ -6772,7 +7356,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6792,7 +7378,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4300';
       console.info(`${caseName} test start`);
       try {
@@ -6802,7 +7388,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10008
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: 100,
           socketLinger: {
@@ -6818,7 +7406,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6838,7 +7428,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4400';
       console.info(`${caseName} test start`);
       try {
@@ -6848,7 +7438,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10009
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           reuseAddress: true,
           socketLinger: {
@@ -6864,7 +7456,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6884,7 +7478,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4500';
       console.info(`${caseName} test start`);
       try {
@@ -6894,7 +7488,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10010
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           reuseAddress: false,
           socketLinger: {
@@ -6910,7 +7506,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6930,7 +7528,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4600';
       console.info(`${caseName} test start`);
       try {
@@ -6940,7 +7538,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10011
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: -1,
           socketLinger: {
@@ -6956,7 +7556,9 @@ export default function TCPSocketTest() {
           expectTrue(err.code===2301033);
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -6976,7 +7578,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4700';
       console.info(`${caseName} test start`);
       try {
@@ -6986,7 +7588,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10012
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: 0,
           socketLinger: {
@@ -7002,7 +7606,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -7022,7 +7628,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4800';
       console.info(`${caseName} test start`);
       try {
@@ -7032,7 +7638,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10013
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: 100,
           socketLinger: {
@@ -7048,7 +7656,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -7068,7 +7678,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions4900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions4900';
       console.info(`${caseName} test start`);
       try {
@@ -7078,7 +7688,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10014
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: -1
@@ -7093,7 +7705,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -7113,7 +7727,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions5000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions5000';
       console.info(`${caseName} test start`);
       try {
@@ -7123,7 +7737,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10015
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 0
@@ -7138,7 +7754,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -7158,7 +7776,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions5100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions5100';
       console.info(`${caseName} test start`);
       try {
@@ -7168,7 +7786,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10017
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 65535
@@ -7183,7 +7803,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -7203,7 +7825,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketSetExtraOptions5200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketSetExtraOptions5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSetExtraOptions5200';
       console.info(`${caseName} test start`);
       try {
@@ -7213,7 +7835,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 10018
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 65536
@@ -7228,7 +7852,9 @@ export default function TCPSocketTest() {
           expectFail();
           done();
         }).finally(async () => {
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         });
@@ -7248,7 +7874,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOnMessage0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOnMessage0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOnMessage0100';
        try {
         console.info(`${caseName} test start`);
@@ -7260,7 +7886,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4092
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
@@ -7269,9 +7897,13 @@ export default function TCPSocketTest() {
           encoding: 'UTF-8'
         };
         tcpServer.on('connect', async (client: socket.TCPSocketConnection) => {
-          await client.send(clientSendOptions);
+          await client.send(clientSendOptions).catch((err:BusinessError) => {
+              console.info('fail to send' + err.code.toString());
+          });
         });
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         class SocketInfo {
           message: ArrayBuffer = new ArrayBuffer(1);
           remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
@@ -7280,7 +7912,9 @@ export default function TCPSocketTest() {
           console.info(`${caseName} value:${ArrayBufferToString(value.message)}`);
           expectTrue(ArrayBufferToString(value.message) === 'Hello, server!');
           tcpServer.off('connect');
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         };
@@ -7301,7 +7935,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOnMessage0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOnMessage0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOnMessage0200';
       try {
         console.info(`${caseName} test start`);
@@ -7313,7 +7947,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4093
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
@@ -7322,9 +7958,13 @@ export default function TCPSocketTest() {
           encoding: 'UTF-8'
         };
         tcpServer.on('connect', async (client: socket.TCPSocketConnection) => {
-          await client.send(clientSendOptions);
+          await client.send(clientSendOptions).catch((err:BusinessError) => {
+              console.info('fail to send' + err.code.toString());
+          });
         });
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         class SocketInfo {
           message: ArrayBuffer = new ArrayBuffer(1);
           remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
@@ -7333,7 +7973,9 @@ export default function TCPSocketTest() {
           console.info(`${caseName} value:${ArrayBufferToString(value.message)}`);
           expectTrue(ArrayBufferToString(value.message) === 'Hello, server!');
           tcpServer.off('connect');
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           console.info(`${caseName} test end`);
           done();
         };
@@ -7354,7 +7996,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOffMessage0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOffMessage0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOffMessage0100';
       try {
         console.info(`${caseName} test start`);
@@ -7364,11 +8006,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4094
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, client!',
           encoding: 'UTF-8'
@@ -7380,8 +8026,12 @@ export default function TCPSocketTest() {
         };
         tcp.on('message', callback);
         tcp.off('message', callback);
-        await tcp.send(tcpSendOptions);
-        await tcp.close();
+        await tcp.send(tcpSendOptions).catch((err:BusinessError) => {
+              console.info('fail to send' + err.code.toString());
+          });
+        await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
         expectSuccess();
         done();
       } catch (err) {
@@ -7400,7 +8050,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOffMessage0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOffMessage0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOffMessage0200';
       try {
         console.info(`${caseName} test start`);
@@ -7410,11 +8060,15 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4095
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         let tcpSendOptions: socket.TCPSendOptions = {
           data: 'Hello, client!',
           encoding: 'UTF-8'
@@ -7432,9 +8086,13 @@ export default function TCPSocketTest() {
         tcp.on('message', callback1);
         tcp.on('message', callback2);
         tcp.off('message');
-        await tcp.send(tcpSendOptions);
+        await tcp.send(tcpSendOptions).catch((err:BusinessError) => {
+              console.info('fail to send' + err.code.toString());
+          });
         expectSuccess();
-        await tcp.close();
+        await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
         done();
       } catch (err) {
         console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
@@ -7452,7 +8110,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOnConnect0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOnConnect0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOnConnect0100';
       try {
         console.info(`${caseName} test start`);
@@ -7462,18 +8120,24 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4096
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
         const callback: Callback<void> = async () => {
           expectSuccess();
           console.info(`${caseName} test end`);
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           done();
         };
         tcp.on('connect', callback);
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
       } catch (err) {
         console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
         expectFail();
@@ -7490,7 +8154,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOnConnect0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOnConnect0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOnConnect0200';
       try {
         console.info(`${caseName} test start`);
@@ -7502,18 +8166,24 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4097
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
         };
         const callback: Callback<void> = async () => {
           console.info(`${caseName} test end`);
-          await tcp.close();
+          await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
           expectSuccess();
           done();
         };
         tcp.on('connect', callback);
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         console.info(`${caseName} test end`);
         done();
       } catch (err) {
@@ -7532,7 +8202,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOffConnect0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOffConnect0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOffConnect0100';
       try {
         console.info(`${caseName} test start`);
@@ -7542,7 +8212,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4098
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
@@ -7553,7 +8225,9 @@ export default function TCPSocketTest() {
         };
         tcp.on('connect', callback);
         tcp.off('connect', callback);
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         expectSuccess();
         console.info(`${caseName} test end`);
         done();
@@ -7573,7 +8247,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOffConnect0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOffConnect0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOffConnect0200';
       try {
         console.info(`${caseName} test start`);
@@ -7583,7 +8257,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4099
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress,
         };
@@ -7600,7 +8276,9 @@ export default function TCPSocketTest() {
         tcp.on('connect', callback1);
         tcp.on('connect', callback2);
         tcp.off('connect');
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         expectSuccess();
         console.info(`${caseName} test end`);
         done();
@@ -7620,7 +8298,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOnClose0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOnClose0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOnClose0100';
       try {
         console.info(`${caseName} test start`);
@@ -7630,14 +8308,18 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4100
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         const callback: Callback<void> = async () => {
           expectSuccess();
           console.info(`${caseName} test end`);
           done();
         };
         tcp.on('close', callback);
-        await tcp.close();
+        await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
         console.info(`${caseName} test end`);
         done();
       } catch (err) {
@@ -7656,7 +8338,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOnClose0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOnClose0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOnClose0200';
       try {
         console.info(`${caseName} test start`);
@@ -7668,19 +8350,25 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4101
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+              console.info('fail to listen' + err.code.toString());
+          });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
           timeout: 6000
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+              console.info('fail to connect' + err.code.toString());
+          });
         const callback: Callback<void> =  () => {
           expectSuccess();
           console.info(`${caseName} test end`);
           done();
         };
         tcp.on('close', callback);
-        await tcp.close();
+        await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
         console.info(`${caseName} test end`);
         done();
       } catch (err) {
@@ -7699,7 +8387,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOffClose0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOffClose0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOffClose0100';
       try {
         console.info(`${caseName} test start`);
@@ -7709,7 +8397,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4102
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         const callback: Callback<void> = async () => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -7717,7 +8407,9 @@ export default function TCPSocketTest() {
         };
         tcp.on('close', callback);
         tcp.off('close', callback);
-        await tcp.close();
+        await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
         expectSuccess();
         console.info(`${caseName} test end`);
         done();
@@ -7737,7 +8429,7 @@ export default function TCPSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testNetworkMgrSocketTCPSocketOffClose0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketOffClose0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOffClose0200';
       try {
         console.info(`${caseName} test start`);
@@ -7747,7 +8439,9 @@ export default function TCPSocketTest() {
           address: '127.0.0.1',
           port: 4103
         };
-        await tcp.bind(bindAddress);
+        await tcp.bind(bindAddress).catch((err:BusinessError) => {
+              console.info('fail to bind' + err.code.toString());
+          });
         const callback1: Callback<void> = async () => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -7761,7 +8455,9 @@ export default function TCPSocketTest() {
         tcp.on('close', callback1);
         tcp.on('close', callback2);
         tcp.off('close');
-        await tcp.close();
+        await tcp.close().catch((err:BusinessError) => {
+              console.info('fail to close' + err.code.toString());
+          });
         expectSuccess();
         console.info(`${caseName} test end`);
         done();

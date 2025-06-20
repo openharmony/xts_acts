@@ -22,6 +22,7 @@ ohos_copy("PyTestCase") {
   subsystem_name = "xts"
   part_name = "acts"
   sources = [
+    "../../../../../base/global/system_resources/systemres/main/module.json",
     "./ActsPCSPyTest.json",
     "./ActsPCSPyTest.py",
     "./PermissionUtils.py",

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -53,7 +53,7 @@ export default function textInputHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputHalfLeadingTest0001', 0, async () => {
+    it('textInputHalfLeadingTest0001',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputHalfLeadingTest textInputHalfLeadingTest0001 START');
         await CommonFunc.sleep(1000);
@@ -72,7 +72,7 @@ export default function textInputHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputHalfLeadingTest0002', 0, async () => {
+    it('textInputHalfLeadingTest0002',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputHalfLeadingTest textInputHalfLeadingTest0002 START');
         await CommonFunc.sleep(1000);
@@ -91,7 +91,7 @@ export default function textInputHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputHalfLeadingTest0003', 0, async () => {
+    it('textInputHalfLeadingTest0003',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputHalfLeadingTest textInputHalfLeadingTest0003 START');
         await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function textInputHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputHalfLeadingTest0004', 0, async () => {
+    it('textInputHalfLeadingTest0004',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputHalfLeadingTest textInputHalfLeadingTest0004 START');
         await CommonFunc.sleep(1000);

@@ -20,7 +20,7 @@ import CommonEventManager from '@ohos.commonEventManager';
 import emitter from '@ohos.events.emitter';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 let subscriberInfo_startdebugapp: CommonEventManager.CommonEventSubscribeInfo = {
   events: ["AACommand_Debugapp"],
@@ -54,7 +54,7 @@ function UnSubscribeCallback() {
 
 export default function abilityTest() {
   describe('ACTS_AACommand_01_3', () => {
-    it('ACTS_AACommand_package_0700', 0, async (done: Function) => {
+    it('ACTS_AACommand_package_0700', Level.LEVEL0, async (done: Function) => {
       emitter.on({
         eventId: 1
       }, () => {

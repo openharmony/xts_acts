@@ -16,7 +16,7 @@
 import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media'
 import { setSource } from './AVPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 const VIDEO_SOURCE = 'H264_AAC_AAC_multiAudio.mp4';
 const PLAY_TIME = 3000;
@@ -124,6 +124,8 @@ async function handleState(state: string, preparedOp: Function, playedOp: Functi
       console.info(`case avPlayer.surfaceId is ${avPlayer.surfaceId}`);
       await avPlayer.prepare().then(() => {
         console.info('case prepare called');
+        let playbackPosition: number = avPlayer.getPlaybackPosition()
+        console.info(`AVPlayer getPlaybackPosition== ${playbackPosition}`)
       }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
       break;
     case PREPARED:
@@ -286,7 +288,7 @@ export default function AVPlayerSelectTrackTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_0100', Level.LEVEL0,async (done: Function) => {
 
       let preparedOperation = async () => {
         await getAudioTracks();
@@ -323,7 +325,7 @@ export default function AVPlayerSelectTrackTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_0200', Level.LEVEL0,async (done: Function) => {
 
       let preparedOperation = async () => {
         await getAudioTracks();
@@ -358,7 +360,7 @@ export default function AVPlayerSelectTrackTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_ON_0000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_ON_0000', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_ON_0000 called');
       let preparedOperation = async () => {
         await getAudioTracks();
@@ -386,6 +388,39 @@ export default function AVPlayerSelectTrackTest() {
       }
 
       await testChangeTrackListening(avFd, preparedOperation, playedOperation, stoppedOperation, undefined,changeTrackOn, done);
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_0300
+        * @tc.name      : 006.test change default audio track
+        * @tc.desc      : test change default audio track
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_0300', Level.LEVEL0, async (done: Function) => {
+      await media.createAVPlayer().then((video) => {
+        if (typeof (video) != 'undefined') {
+          console.info('case createAVPlayer success');
+          avPlayer = video;
+        } else {
+          console.error('case createAVPlayer failed');
+          expect().assertFail();
+          done();
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+      try {
+        avPlayer.on('error', async (err) => {
+          console.error(`case avPlayer.deselectTrack error called, errMessage is ${err.message}`);
+          console.info('avPlayer.deselectTrack 5400102 error code is' + err.code)
+          expect(err.code).assertEqual(5400102)
+          avPlayer.off('error')
+        });
+        avPlayer.deselectTrack(currentTrack);
+      } catch (err) {
+        console.error(`case SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_0300 errMessage is ${err.message}`);
+        console.info('case SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_0300 error code is' + err.code)
+      }
+      done();
     });
   })
 }

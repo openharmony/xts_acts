@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontColor001', 0, async (done: Function) => {
+    it('testTextInputFontColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputFontColor002', 0, async (done: Function) => {
+    it('testTextInputFontColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputFontColor002()).assertEqual(0)
       done()
     })

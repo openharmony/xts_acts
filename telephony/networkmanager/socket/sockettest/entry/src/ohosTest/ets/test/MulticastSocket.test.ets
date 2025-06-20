@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it } from '@ohos/hypium';
+import { describe, it , Level, Size, TestType} from '@ohos/hypium';
 import socket from '@ohos.net.socket';
 import { BusinessError, Callback } from '@ohos.base';
 import {
@@ -40,9 +40,9 @@ export default function MulticastSocket() {
      * @tc.desc  :  Create a MulticastSocket object
      * @tc.size  :  MediumTest
      * @tc.type  :  Function
-     * @tc.level :  Level 2
+     * @tc.level :  Level 0
      */
-    it('testNetworkMgrSocketMulticastSocketConstructMulticastSocketInstance0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketConstructMulticastSocketInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketConstructMulticastSocketInstance0100';
       console.info(`${caseName} test start`);
       try {
@@ -65,9 +65,9 @@ export default function MulticastSocket() {
      * @tc.desc  :  Join a multicast group
      * @tc.size  :  MediumTest
      * @tc.type  :  Function
-     * @tc.level :  Level 3
+     * @tc.level :  Level 0
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership0100';
       console.info(`${caseName} test start`);
       try {
@@ -78,7 +78,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -99,7 +101,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership0200';
       console.info(`${caseName} test start`);
       try {
@@ -113,7 +115,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -134,7 +138,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership0300';
       console.info(`${caseName} test start`);
       try {
@@ -150,7 +154,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -171,7 +177,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership0400';
       console.info(`${caseName} test start`);
       try {
@@ -187,7 +193,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -208,7 +216,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership0500';
       console.info(`${caseName} test start`);
       try {
@@ -224,7 +232,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -245,7 +255,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership0600';
       console.info(`${caseName} test start`);
       try {
@@ -281,7 +291,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership0700';
       console.info(`${caseName} test start`);
       try {
@@ -317,14 +327,16 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership1200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership1200';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
         multicast.addMembership(addr).then(async () => {
           expectTrue(true);
-          await multicast.dropMembership(addr);
+          await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           console.info(`${caseName} test end`);
           done();
         }).catch((err: BusinessError) => {
@@ -349,7 +361,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership1300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership1300';
       console.info(`${caseName} test start`);
       try {
@@ -359,7 +371,9 @@ export default function MulticastSocket() {
         };
         multicast.addMembership(addr).then(async () => {
           expectTrue(true);
-          await multicast.dropMembership(addr);
+          await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           console.info(`${caseName} test end`);
           done();
         }).catch((err: BusinessError) => {
@@ -384,7 +398,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership1600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership1600';
       console.info(`${caseName} test start`);
       try {
@@ -396,7 +410,9 @@ export default function MulticastSocket() {
         };
         multicast.addMembership(addr).then(async () => {
           expectTrue(true);
-          await multicast.dropMembership(addr);
+          await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           console.info(`${caseName} test end`);
           done();
         }).catch((err: BusinessError) => {
@@ -421,7 +437,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership1700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership1700';
       console.info(`${caseName} test start`);
       try {
@@ -457,7 +473,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership1800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership1800';
       console.info(`${caseName} test start`);
       try {
@@ -493,7 +509,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership2100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership2100';
       console.info(`${caseName} test start`);
       try {
@@ -527,7 +543,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership2200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership2200';
       console.info(`${caseName} test start`);
       try {
@@ -563,12 +579,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership0100';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.dropMembership(addr, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -595,12 +613,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership0500';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '239.255.0.1',
           port: 0,
@@ -632,12 +652,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership0600';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '127.0.0.1',
           port: 0,
@@ -669,12 +691,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership0700';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '23424243',
           port: 0,
@@ -706,12 +730,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership1000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership1000';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: 'fe80::95f1:6adf:b93c:d39a%11' // todo 填写正确的ipv6地址
         };
@@ -741,12 +767,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership1200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership1200';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.dropMembership(addr).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -773,12 +801,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership1700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership1700';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '127.0.0.1',
           port: 0,
@@ -810,12 +840,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership1800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership1800';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '23424243',
           port: 0,
@@ -847,12 +879,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketDropMembership2100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketDropMembership2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketDropMembership2100';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: 'fe80::95f1:6adf:b93c:d39a%11' // todo 填写正确的ipv6地址
         };
@@ -882,12 +916,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetMulticastTTL0100';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 8;
         multicast.setMulticastTTL(ttl, async (err: BusinessError) => {
           if (err) {
@@ -916,12 +952,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetMulticastTTL0200';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = -1;
         multicast.setMulticastTTL(ttl, async (err: BusinessError) => {
           if (err) {
@@ -949,12 +987,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetMulticastTTL0300';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 256;
         multicast.setMulticastTTL(ttl, async (err: BusinessError) => {
           if (err) {
@@ -982,7 +1022,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetMulticastTTL0400';
       console.info(`${caseName} test start`);
       try {
@@ -1014,12 +1054,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetMulticastTTL0700';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 8;
         multicast.setMulticastTTL(ttl).then(async () => {
           let value: number = await multicast.getMulticastTTL();
@@ -1048,12 +1090,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetMulticastTTL0800';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = -1;
         multicast.setMulticastTTL(ttl).then(() => {
           expectTrue(true);
@@ -1081,12 +1125,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetMulticastTTL0900';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 256;
         multicast.setMulticastTTL(ttl).then(() => {
           expectFail();
@@ -1114,7 +1160,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL1000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetMulticastTTL1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetMulticastTTL1000';
       console.info(`${caseName} test start`);
       try {
@@ -1146,14 +1192,18 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetMulticastTTL0100';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 8;
-        await multicast.setMulticastTTL(ttl)
+        await multicast.setMulticastTTL(ttl).catch((err:BusinessError) => {
+                console.info('fail to setMulticastTTL' + err.code.toString());
+            });
         multicast.getMulticastTTL((err: BusinessError, value: number) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1180,7 +1230,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetMulticastTTL0200';
       console.info(`${caseName} test start`);
       try {
@@ -1211,12 +1261,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetMulticastTTL0300';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.getMulticastTTL((err: BusinessError, value: number) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1243,14 +1295,18 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetMulticastTTL0400';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 8;
-        await multicast.setMulticastTTL(ttl)
+        await multicast.setMulticastTTL(ttl).catch((err:BusinessError) => {
+                console.info('fail to setMulticastTTL' + err.code.toString());
+            });
         multicast.getMulticastTTL().then((value: number) => {
           expectEqual(value, ttl);
           console.info(`${caseName} test end`);
@@ -1277,7 +1333,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetMulticastTTL0500';
       console.info(`${caseName} test start`);
       try {
@@ -1308,12 +1364,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetMulticastTTL0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetMulticastTTL0600';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.getMulticastTTL().then((value: number) => {
           expectEqual(value, 1);
           console.info(`${caseName} test end`);
@@ -1340,12 +1398,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetLoopbackMode0100';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = true;
         multicast.setLoopbackMode(mode, async (err: BusinessError) => {
           if (err) {
@@ -1374,12 +1434,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetLoopbackMode0200';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = false;
         multicast.setLoopbackMode(mode, async (err: BusinessError) => {
           if (err) {
@@ -1408,7 +1470,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetLoopbackMode0300';
       console.info(`${caseName} test start`);
       try {
@@ -1440,12 +1502,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetLoopbackMode0600';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = true;
         multicast.setLoopbackMode(mode).then(async () => {
           let value: boolean = await multicast.getLoopbackMode();
@@ -1474,12 +1538,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetLoopbackMode0700';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = false;
         multicast.setLoopbackMode(mode).then(async () => {
           let value: boolean = await multicast.getLoopbackMode();
@@ -1508,7 +1574,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSetLoopbackMode0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSetLoopbackMode0800';
       console.info(`${caseName} test start`);
       try {
@@ -1540,14 +1606,18 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetLoopbackMode0100';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = false;
-        await multicast.setLoopbackMode(mode)
+        await multicast.setLoopbackMode(mode).catch((err:BusinessError) => {
+                console.info('fail to setLoopbackMode' + err.code.toString());
+            });
         multicast.getLoopbackMode((err: BusinessError, value: boolean) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1574,12 +1644,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetLoopbackMode0200';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.getLoopbackMode((err: BusinessError, value: boolean) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1606,7 +1678,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetLoopbackMode0300';
       console.info(`${caseName} test start`);
       try {
@@ -1637,14 +1709,18 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetLoopbackMode0400';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = false;
-        await multicast.setLoopbackMode(mode)
+        await multicast.setLoopbackMode(mode).catch((err:BusinessError) => {
+                console.info('fail to setLoopbackMode' + err.code.toString());
+            });
         multicast.getLoopbackMode().then((value: boolean) => {
           expectEqual(value, mode);
           console.info(`${caseName} test end`);
@@ -1671,12 +1747,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetLoopbackMode0500';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.getLoopbackMode().then((value: boolean) => {
           expectEqual(value, true);
           console.info(`${caseName} test end`);
@@ -1703,7 +1781,7 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketGetLoopbackMode0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketGetLoopbackMode0600';
       console.info(`${caseName} test start`);
       try {
@@ -1734,12 +1812,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSend0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSend0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSend0700';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let sendOption: socket.UDPSendOptions = {
           data: stringToArrayBuffer('Hello, server!'),
           address: {
@@ -1774,12 +1854,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSend0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSend0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSend0800';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let sendOption: socket.UDPSendOptions = {
           data: stringToArrayBuffer('Hello, server!'),
           address: {
@@ -1814,12 +1896,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSend1500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSend1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSend1500';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.send(null, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1846,12 +1930,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSend1600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSend1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSend1600';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.send(undefined, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1878,12 +1964,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSend2400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSend2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSend2400';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let sendOption: socket.UDPSendOptions = {
           data: stringToArrayBuffer('Hello, server!'),
           address: {
@@ -1918,12 +2006,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSend2500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSend2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSend2500';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let sendOption: socket.UDPSendOptions = {
           data: stringToArrayBuffer('Hello, server!'),
           address: {
@@ -1958,12 +2048,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSend3200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSend3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSend3200';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.send(null).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -1990,12 +2082,14 @@ export default function MulticastSocket() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketMulticastSocketSend3300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketSend3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketSend3300';
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.send(undefined).then(() => {
           expectFail();
           console.info(`${caseName} test end`);

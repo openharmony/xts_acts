@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import childProcessManager from '@ohos.app.ability.childProcessManager';
 import { ChildProcessArgs } from '@ohos.app.ability.ChildProcessArgs';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -59,7 +59,7 @@ export default function nativeProcessTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `StartNativeChildProcess_0100`;
       console.log(`${tag} it begin`);
       let path = abilityDelegator.getAppContext().filesDir + "/test.txt";
@@ -109,7 +109,7 @@ export default function nativeProcessTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0200', Level.LEVEL0, async (done: Function) => {
       let tag = `StartNativeChildProcess_0200`;
       console.log(`${tag} it begin`);
       let path = abilityDelegator.getAppContext().filesDir + "/test.txt";
@@ -158,7 +158,7 @@ export default function nativeProcessTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0300', Level.LEVEL0, async (done: Function) => {
       let tag = `StartNativeChildProcess_0300`;
       console.log(`${tag} it begin`);
       try {
@@ -194,7 +194,7 @@ export default function nativeProcessTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0400', Level.LEVEL0, async (done: Function) => {
       let tag = `StartNativeChildProcess_0400`;
       try {
         console.log(`${tag} startNativeChildProcess before`);
@@ -228,7 +228,7 @@ export default function nativeProcessTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0500', Level.LEVEL0, async (done: Function) => {
       let tag = `StartNativeChildProcess_0500`;
       try {
         console.log(`${tag} startNativeChildProcess before`);
@@ -262,7 +262,7 @@ export default function nativeProcessTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0600', Level.LEVEL0, async (done: Function) => {
       let tag = `StartNativeChildProcess_0600`;
       try {
         console.log(`${tag} startNativeChildProcess before`);
@@ -293,7 +293,7 @@ export default function nativeProcessTest() {
     * @tc.size   : MediumTest
     * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartNativeChildProcess_0700`;
       console.log(`${tag} it begin`);
       try {

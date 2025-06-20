@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -53,7 +53,7 @@ export default function flexAlign_SpaceAround_fixedParentChangeFirstWidth() {
      * @tc.name testAlignSpaceAroundRowNoWrapChangeFirst
      * @tc.desc Parent component fixed, child component binding width properties
      */
-    it('testAlignSpaceAroundRowNoWrapChangeFirst', 0, async () => {
+    it('testAlignSpaceAroundRowNoWrapChangeFirst',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapChangeFirst START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 175

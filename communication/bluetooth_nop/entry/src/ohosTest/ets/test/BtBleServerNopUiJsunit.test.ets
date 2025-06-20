@@ -22,6 +22,7 @@ const PARAM_ERROR_CODE = 401
 const OPERATION_FAILED_CODE = 2900099
 const TAG: string = 'BtBleServerTestTag';
 const Domain: number = 0x0000;
+const CONNECTION_NOT_ESTABLISHED = 2901003;
 
 export default function btBleServerNopUiJsunit() {
   describe('btBleServerNopUiJsunit', () => {
@@ -498,7 +499,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattClient getRssiValue callback error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(CONNECTION_NOT_ESTABLISHED);
       }
       done();
     })
@@ -518,7 +519,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattClient getRssiValue promise error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(CONNECTION_NOT_ESTABLISHED);
       }
       done();
     })

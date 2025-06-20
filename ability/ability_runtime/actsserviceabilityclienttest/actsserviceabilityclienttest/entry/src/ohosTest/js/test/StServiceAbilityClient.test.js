@@ -16,7 +16,7 @@ import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
 import rpc from "@ohos.rpc";
 
-import { describe, afterEach, it, expect } from '@ohos/hypium'
+import { describe, afterEach, it, expect, Level } from '@ohos/hypium'
 export default function ActsStServiceAbilityTest() {
     describe('ActsStServiceAbilityTest', function () {
         let bundleName = "com.amsst.stserviceabilityclient";
@@ -108,7 +108,7 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by Promise)
         */
-        it('ACTS_JsServiceAbility_0100', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0100', Level.LEVEL0, async function (done) {
             console.info('ACTS_JsServiceAbility_0100====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0100).then((data) => {
@@ -158,7 +158,7 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_0200', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0200', Level.LEVEL0, async function (done) {
             console.info('ACTS_JsServiceAbility_0200====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0200).then((data) => {
@@ -205,7 +205,7 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by Promise)
         */
-        it('ACTS_JsServiceAbility_0300', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0300', Level.LEVEL0, async function (done) {
             console.info('ACTS_JsServiceAbility_0300====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0300).then((data) => {
@@ -278,7 +278,7 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_0400', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0400', Level.LEVEL0, async function (done) {
             console.info('ACTS_JsServiceAbility_0400====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0400).then((data) => {
@@ -345,7 +345,7 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.ConnectAbility : Connects an ability to a Service ability.
         * @tc.desc: Check the return value of the interface (by Promise)
         */
-        it('ACTS_JsServiceAbility_0500', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0500', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_0500====<begin');
             try {
                 let mConnIdJsPromise;
@@ -424,7 +424,7 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.ConnectAbility : Connects an ability to a Service ability.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_0600', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0600', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_0600====<begin');
             try {
                 let mConnIdJsAsyncCallback;
@@ -502,7 +502,7 @@ export default function ActsStServiceAbilityTest() {
          * @tc.name: particleability.startAbility : Use page to test startAbiltiy service.
          * @tc.desc: Check the return value of the interface (by Promise)
          */
-        it('ACTS_JsServiceAbility_0900', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0900', Level.LEVEL0, async function (done) {
             console.info('ACTS_JsServiceAbility_0900====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0900).then((data) => {
@@ -553,7 +553,7 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: particleability.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_1000', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1000', Level.LEVEL0, async function (done) {
             console.info('ACTS_JsServiceAbility_1000====<begin');
             await sleep(2000)
             try {
@@ -602,7 +602,7 @@ export default function ActsStServiceAbilityTest() {
          * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
          * @tc.desc: Check the return value of the interface (by Promise)
          */
-        it('ACTS_JsServiceAbility_1300', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1300', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_1300====<begin');
             try {
                 let mConnIdJsPromise;
@@ -679,7 +679,7 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_1400', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1400', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_1400====<begin');
             try {
                 let mConnIdJsAsyncCallback;
@@ -752,7 +752,7 @@ export default function ActsStServiceAbilityTest() {
          * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
          * @tc.desc: Check the return value of the interface (by Promise)
          */
-        it('ACTS_JsServiceAbility_1500', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1500', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_1500====<begin');
             try {
                 let mConnIdJsPromise;
@@ -830,7 +830,7 @@ export default function ActsStServiceAbilityTest() {
          * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
          * @tc.desc: Check the return value of the interface (by Promise)
          */
-        it('ACTS_JsServiceAbility_1600', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1600', Level.LEVEL0, async function (done) {
           console.log('ACTS_JsServiceAbility_1600====<begin');
           try {
               await commonEvent.createSubscriber({ events:["ACTS_SerivceAbilityServer_FunctionCallback"] }).then((data) => {
@@ -870,7 +870,7 @@ export default function ActsStServiceAbilityTest() {
          * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
          * @tc.desc: Check the return value of the interface (by Promise)
          */
-        it('ACTS_JsServiceAbility_1700', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1700', Level.LEVEL0, async function (done) {
           console.log('ACTS_JsServiceAbility_1700====<begin');
           try {
               await commonEvent.createSubscriber({ events:["ACTS_SerivceAbilityServer_FunctionCallback"] }).then((data) => {

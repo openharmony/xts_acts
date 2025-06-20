@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import commonEvent from '@ohos.commonEventManager';
@@ -55,7 +55,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0200", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0200", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0200';
       try {
         let commonEventSubscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -99,7 +99,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0400", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0400", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0400';
       try {
         let commonEventSubscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -143,7 +143,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0500", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0500", Level.LEVEL3, async (done: Function) => {
       await sleep(1000);
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0500';
       try {
@@ -187,7 +187,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0100", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0100", Level.LEVEL3, async (done: Function) => {
       await sleep(1000);
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0100';
       try {
@@ -232,7 +232,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0300", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0300", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0300';
       try {
         await sleep(1000);
@@ -277,7 +277,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0600", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0600", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0600';
       try {
         await sleep(1000);
@@ -320,7 +320,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0700", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0700", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0700';
       try {
         await sleep(1000);
@@ -363,7 +363,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0800", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0800", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0700';
       try {
         await sleep(1000);
@@ -406,7 +406,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0900", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0900", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0900';
       try {
         await sleep(1000);
@@ -449,7 +449,7 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_1000", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_1000", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_1000';
       try {
         await sleep(1000);

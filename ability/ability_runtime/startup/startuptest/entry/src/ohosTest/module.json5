@@ -43,6 +43,13 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.START_ABILIIES_FROM_BACKGROUND"
+      },{
+        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+      }
     ]
   }
 }

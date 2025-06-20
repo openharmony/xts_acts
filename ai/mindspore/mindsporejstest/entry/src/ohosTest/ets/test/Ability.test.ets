@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import mindSporeLite from '@ohos.ai.mindSporeLite';
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
@@ -180,7 +180,7 @@ export default function abilityTest() {
     })
 
 
-    it('Test_fun',0, async (done: Function) => {
+    it('Test_fun',Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_is_None_001");
 
       let x =[0.55,0.55,0.55,0.55,0.55]
@@ -194,9 +194,735 @@ export default function abilityTest() {
       done();
     })
 
+    // loadTrainModelFromFile参数3个
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_parameter_0001', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
+      console.log("==========MSLITE loadModel===========");
+      let cfg: mindSporeLite.TrainCfg = {};
+      let context:mindSporeLite.Context={};
+      context.target = ["cpu"];
+      context.cpu = {};
+      context.cpu.threadNum = 1;
+      context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
+      let msliteModel = await mindSporeLite.loadTrainModelFromFile(model_file, cfg, context);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT, true);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE loadModelFromFile===========");
+      let predictModel = await mindSporeLite.loadModelFromFile(path +"/lenet_train_infer.ms");
+      expect(predictModel !== null).assertTrue();
+      predictModel.trainMode = false;
+      console.log("==========MSLITE getInputs===========");
+      const predictInputs = predictModel.getInputs();
+      for (let i = 0; i < predictInputs.length; i++) {
+        let printStr = predictInputs[i].name + ", ";
+        printStr += predictInputs[i].shape + ", ";
+        printStr += predictInputs[i].dtype + ", ";
+        printStr += predictInputs[i].dataSize + ", ";
+        printStr += predictInputs[i].getData();
+        console.log("==========MSLITE predictInputs===========",printStr);
+      }
+      predictInputs[0].setData(inputBuffer0.buffer);
+      console.log("==========MSLITE predict===========");
+      let modelOutputs = await predictModel.predict(predictInputs);
+      expect(modelOutputs !== null).assertTrue();
+      for (let i = 0; i < modelOutputs.length; i++) {
+        let printStr = modelOutputs[i].name + ", ";
+        printStr += modelOutputs[i].shape + ", ";
+        printStr += modelOutputs[i].dtype + ", ";
+        printStr += modelOutputs[i].dataSize + ", ";
+        printStr += modelOutputs[i].getData();
+        console.log("==========MSLITE modelOutputs===========",printStr);
+      }
+      let output0 = new Float32Array(modelOutputs[0].getData());
+      for (let i = 0; i < 20; i++) {
+        console.log('output:', output0[i]);
+      }
+      console.log("==========MSLITE end===========");
+    })
+
+    // loadTrainModelFromFile参数2个
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_parameter_0002', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
+      console.log("==========MSLITE loadModel===========");
+      let cfg: mindSporeLite.TrainCfg = {};
+      let msliteModel = await mindSporeLite.loadTrainModelFromFile(model_file, cfg);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT, true);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE loadModelFromFile===========");
+      let predictModel = await mindSporeLite.loadModelFromFile(path +"/lenet_train_infer.ms");
+      expect(predictModel !== null).assertTrue();
+      predictModel.trainMode = false;
+      console.log("==========MSLITE getInputs===========");
+      const predictInputs = predictModel.getInputs();
+      for (let i = 0; i < predictInputs.length; i++) {
+        let printStr = predictInputs[i].name + ", ";
+        printStr += predictInputs[i].shape + ", ";
+        printStr += predictInputs[i].dtype + ", ";
+        printStr += predictInputs[i].dataSize + ", ";
+        printStr += predictInputs[i].getData();
+        console.log("==========MSLITE predictInputs===========",printStr);
+      }
+      predictInputs[0].setData(inputBuffer0.buffer);
+      console.log("==========MSLITE predict===========");
+      let modelOutputs = await predictModel.predict(predictInputs);
+      expect(modelOutputs !== null).assertTrue();
+      for (let i = 0; i < modelOutputs.length; i++) {
+        let printStr = modelOutputs[i].name + ", ";
+        printStr += modelOutputs[i].shape + ", ";
+        printStr += modelOutputs[i].dtype + ", ";
+        printStr += modelOutputs[i].dataSize + ", ";
+        printStr += modelOutputs[i].getData();
+        console.log("==========MSLITE modelOutputs===========",printStr);
+      }
+      let output0 = new Float32Array(modelOutputs[0].getData());
+      for (let i = 0; i < 20; i++) {
+        console.log('output:', output0[i]);
+      }
+      console.log("==========MSLITE end===========");
+    })
+
+    // loadTrainModelFromBuffer参数3个
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromBuffer_parameter_0001', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let modelBuffer: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train.ms");
+      console.log("==========MSLITE loadModel===========");
+      let cfg: mindSporeLite.TrainCfg = {};
+      let context:mindSporeLite.Context={};
+      context.target = ["cpu"];
+      context.cpu = {};
+      context.cpu.threadNum = 1;
+      context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
+      let msliteModel = await mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer, cfg, context);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT, true);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE loadModelFromFile===========");
+      let predictModel = await mindSporeLite.loadModelFromFile(path +"/lenet_train_infer.ms");
+      expect(predictModel !== null).assertTrue();
+      predictModel.trainMode = false;
+      console.log("==========MSLITE getInputs===========");
+      const predictInputs = predictModel.getInputs();
+      for (let i = 0; i < predictInputs.length; i++) {
+        let printStr = predictInputs[i].name + ", ";
+        printStr += predictInputs[i].shape + ", ";
+        printStr += predictInputs[i].dtype + ", ";
+        printStr += predictInputs[i].dataSize + ", ";
+        printStr += predictInputs[i].getData();
+        console.log("==========MSLITE predictInputs===========",printStr);
+      }
+      predictInputs[0].setData(inputBuffer0.buffer);
+      console.log("==========MSLITE predict===========");
+      let modelOutputs = await predictModel.predict(predictInputs);
+      expect(modelOutputs !== null).assertTrue();
+      for (let i = 0; i < modelOutputs.length; i++) {
+        let printStr = modelOutputs[i].name + ", ";
+        printStr += modelOutputs[i].shape + ", ";
+        printStr += modelOutputs[i].dtype + ", ";
+        printStr += modelOutputs[i].dataSize + ", ";
+        printStr += modelOutputs[i].getData();
+        console.log("==========MSLITE modelOutputs===========",printStr);
+      }
+      let output0 = new Float32Array(modelOutputs[0].getData());
+      for (let i = 0; i < 20; i++) {
+        console.log('output:', output0[i]);
+      }
+      console.log("==========MSLITE end===========");
+    })
+
+    // loadTrainModelFromBuffer参数2个
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromBuffer_parameter_0002', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let modelBuffer: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train.ms");
+      console.log("==========MSLITE loadModel===========");
+      let cfg: mindSporeLite.TrainCfg = {};
+      let context:mindSporeLite.Context={};
+      context.target = ["cpu"];
+      let msliteModel = await mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer, cfg);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT, true);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE loadModelFromFile===========");
+      let predictModel = await mindSporeLite.loadModelFromFile(path +"/lenet_train_infer.ms");
+      expect(predictModel !== null).assertTrue();
+      predictModel.trainMode = false;
+      console.log("==========MSLITE getInputs===========");
+      const predictInputs = predictModel.getInputs();
+      for (let i = 0; i < predictInputs.length; i++) {
+        let printStr = predictInputs[i].name + ", ";
+        printStr += predictInputs[i].shape + ", ";
+        printStr += predictInputs[i].dtype + ", ";
+        printStr += predictInputs[i].dataSize + ", ";
+        printStr += predictInputs[i].getData();
+        console.log("==========MSLITE predictInputs===========",printStr);
+      }
+      predictInputs[0].setData(inputBuffer0.buffer);
+      console.log("==========MSLITE predict===========");
+      let modelOutputs = await predictModel.predict(predictInputs);
+      expect(modelOutputs !== null).assertTrue();
+      for (let i = 0; i < modelOutputs.length; i++) {
+        let printStr = modelOutputs[i].name + ", ";
+        printStr += modelOutputs[i].shape + ", ";
+        printStr += modelOutputs[i].dtype + ", ";
+        printStr += modelOutputs[i].dataSize + ", ";
+        printStr += modelOutputs[i].getData();
+        console.log("==========MSLITE modelOutputs===========",printStr);
+      }
+      let output0 = new Float32Array(modelOutputs[0].getData());
+      for (let i = 0; i < 20; i++) {
+        console.log('output:', output0[i]);
+      }
+      console.log("==========MSLITE end===========");
+    })
+    
+    // loadTrainModelFromFd参数3个
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFd_parameter_0001', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
+      let file = fs.openSync(model_file, fs.OpenMode.READ_ONLY);
+      console.log("==========MSLITE loadModel===========");
+      let cfg: mindSporeLite.TrainCfg = {};
+      let context:mindSporeLite.Context={};
+      context.target = ["cpu"];
+      context.cpu = {};
+      context.cpu.threadNum = 1;
+      context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
+      let msliteModel = await mindSporeLite.loadTrainModelFromFd(file.fd, cfg, context);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT, true);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE loadModelFromFile===========");
+      let predictModel = await mindSporeLite.loadModelFromFile(path +"/lenet_train_infer.ms");
+      expect(predictModel !== null).assertTrue();
+      predictModel.trainMode = false;
+      console.log("==========MSLITE getInputs===========");
+      const predictInputs = predictModel.getInputs();
+      for (let i = 0; i < predictInputs.length; i++) {
+        let printStr = predictInputs[i].name + ", ";
+        printStr += predictInputs[i].shape + ", ";
+        printStr += predictInputs[i].dtype + ", ";
+        printStr += predictInputs[i].dataSize + ", ";
+        printStr += predictInputs[i].getData();
+        console.log("==========MSLITE predictInputs===========",printStr);
+      }
+      predictInputs[0].setData(inputBuffer0.buffer);
+      console.log("==========MSLITE predict===========");
+      let modelOutputs = await predictModel.predict(predictInputs);
+      expect(modelOutputs !== null).assertTrue();
+      for (let i = 0; i < modelOutputs.length; i++) {
+        let printStr = modelOutputs[i].name + ", ";
+        printStr += modelOutputs[i].shape + ", ";
+        printStr += modelOutputs[i].dtype + ", ";
+        printStr += modelOutputs[i].dataSize + ", ";
+        printStr += modelOutputs[i].getData();
+        console.log("==========MSLITE modelOutputs===========",printStr);
+      }
+      let output0 = new Float32Array(modelOutputs[0].getData());
+      for (let i = 0; i < 20; i++) {
+        console.log('output:', output0[i]);
+      }
+      console.log("==========MSLITE end===========");
+    })
+
+    // loadTrainModelFromFd参数2个
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFd_parameter_0002', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
+      let file = fs.openSync(model_file, fs.OpenMode.READ_ONLY);
+      console.log("==========MSLITE loadModel===========");
+      let cfg: mindSporeLite.TrainCfg = {};
+      let context:mindSporeLite.Context={};
+      context.target = ["cpu"];
+      let msliteModel = await mindSporeLite.loadTrainModelFromFd(file.fd, cfg);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT, true);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE loadModelFromFile===========");
+      let predictModel = await mindSporeLite.loadModelFromFile(path +"/lenet_train_infer.ms");
+      expect(predictModel !== null).assertTrue();
+      predictModel.trainMode = false;
+      console.log("==========MSLITE getInputs===========");
+      const predictInputs = predictModel.getInputs();
+      for (let i = 0; i < predictInputs.length; i++) {
+        let printStr = predictInputs[i].name + ", ";
+        printStr += predictInputs[i].shape + ", ";
+        printStr += predictInputs[i].dtype + ", ";
+        printStr += predictInputs[i].dataSize + ", ";
+        printStr += predictInputs[i].getData();
+        console.log("==========MSLITE predictInputs===========",printStr);
+      }
+      predictInputs[0].setData(inputBuffer0.buffer);
+      console.log("==========MSLITE predict===========");
+      let modelOutputs = await predictModel.predict(predictInputs);
+      expect(modelOutputs !== null).assertTrue();
+      for (let i = 0; i < modelOutputs.length; i++) {
+        let printStr = modelOutputs[i].name + ", ";
+        printStr += modelOutputs[i].shape + ", ";
+        printStr += modelOutputs[i].dtype + ", ";
+        printStr += modelOutputs[i].dataSize + ", ";
+        printStr += modelOutputs[i].getData();
+        console.log("==========MSLITE modelOutputs===========",printStr);
+      }
+      let output0 = new Float32Array(modelOutputs[0].getData());
+      for (let i = 0; i < 20; i++) {
+        console.log('output:', output0[i]);
+      }
+      console.log("==========MSLITE end===========");
+    })
+
+    // exportModel参数4个
+    it('SUB_AI_MindSpore_ArkTS_exportModel_parameter_0001', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let modelBuffer: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train.ms");
+      console.log("==========MSLITE loadModel===========");
+      let msliteModel = await mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      let outputTensorName = ["aaa"]
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT, true, outputTensorName);
+      expect(ret).assertFalse();
+      console.log("==========MSLITE end===========");
+    })
+
+    // exportModel参数2个
+    it('SUB_AI_MindSpore_ArkTS_exportModel_parameter_0002', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let modelBuffer: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train.ms");
+      console.log("==========MSLITE loadModel===========");
+      let msliteModel = await mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE loadModelFromFile===========");
+      let predictModel = await mindSporeLite.loadModelFromFile(path +"/lenet_train_infer.ms");
+      expect(predictModel !== null).assertTrue();
+      predictModel.trainMode = false;
+      console.log("==========MSLITE getInputs===========");
+      const predictInputs = predictModel.getInputs();
+      for (let i = 0; i < predictInputs.length; i++) {
+        let printStr = predictInputs[i].name + ", ";
+        printStr += predictInputs[i].shape + ", ";
+        printStr += predictInputs[i].dtype + ", ";
+        printStr += predictInputs[i].dataSize + ", ";
+        printStr += predictInputs[i].getData();
+        console.log("==========MSLITE predictInputs===========",printStr);
+      }
+      predictInputs[0].setData(inputBuffer0.buffer);
+      console.log("==========MSLITE predict===========");
+      let modelOutputs = await predictModel.predict(predictInputs);
+      expect(modelOutputs !== null).assertTrue();
+      for (let i = 0; i < modelOutputs.length; i++) {
+        let printStr = modelOutputs[i].name + ", ";
+        printStr += modelOutputs[i].shape + ", ";
+        printStr += modelOutputs[i].dtype + ", ";
+        printStr += modelOutputs[i].dataSize + ", ";
+        printStr += modelOutputs[i].getData();
+        console.log("==========MSLITE modelOutputs===========",printStr);
+      }
+      let output0 = new Float32Array(modelOutputs[0].getData());
+      for (let i = 0; i < 20; i++) {
+        console.log('output:', output0[i]);
+      }
+      console.log("==========MSLITE end===========");
+    })
+
+    // exportModel参数3个
+    it('SUB_AI_MindSpore_ArkTS_exportModel_parameter_0003', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let modelBuffer: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train.ms");
+      console.log("==========MSLITE loadModel===========");
+      let msliteModel = await mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportModel(path +"/lenet_train_infer.ms", mindSporeLite.QuantizationType.NO_QUANT, true);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE loadModelFromFile===========");
+      let predictModel = await mindSporeLite.loadModelFromFile(path +"/lenet_train_infer.ms");
+      expect(predictModel !== null).assertTrue();
+      predictModel.trainMode = false;
+      console.log("==========MSLITE getInputs===========");
+      const predictInputs = predictModel.getInputs();
+      for (let i = 0; i < predictInputs.length; i++) {
+        let printStr = predictInputs[i].name + ", ";
+        printStr += predictInputs[i].shape + ", ";
+        printStr += predictInputs[i].dtype + ", ";
+        printStr += predictInputs[i].dataSize + ", ";
+        printStr += predictInputs[i].getData();
+        console.log("==========MSLITE predictInputs===========",printStr);
+      }
+      predictInputs[0].setData(inputBuffer0.buffer);
+      console.log("==========MSLITE predict===========");
+      let modelOutputs = await predictModel.predict(predictInputs);
+      expect(modelOutputs !== null).assertTrue();
+      for (let i = 0; i < modelOutputs.length; i++) {
+        let printStr = modelOutputs[i].name + ", ";
+        printStr += modelOutputs[i].shape + ", ";
+        printStr += modelOutputs[i].dtype + ", ";
+        printStr += modelOutputs[i].dataSize + ", ";
+        printStr += modelOutputs[i].getData();
+        console.log("==========MSLITE modelOutputs===========",printStr);
+      }
+      let output0 = new Float32Array(modelOutputs[0].getData());
+      for (let i = 0; i < 20; i++) {
+        console.log('output:', output0[i]);
+      }
+      console.log("==========MSLITE end===========");
+    })
+
+    // exportWeightsCollaborateWithMicro参数4个
+    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_parameter_0001', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
+      console.log("==========MSLITE Context===========");
+      let context:mindSporeLite.Context={};
+      context.target = ["cpu"];
+      context.cpu = {};
+      context.cpu.threadNum = 1;
+      context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
+      console.log("==========MSLITE TrainCfg===========");
+      let cfg:mindSporeLite.TrainCfg={};
+      cfg.lossName = ["loss_fct", "_loss_fn", "SigmoidCrossEntropy"];
+      console.log("==========MSLITE loadModel===========");
+      let msliteModel = await mindSporeLite.loadTrainModelFromFile(model_file, cfg, context);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportWeightsCollaborateWithMicro(path +"/micro_weight.bin", true, false, [""]);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE end===========");
+    })
+
+    // exportWeightsCollaborateWithMicro参数2个
+    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_parameter_0002', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
+      console.log("==========MSLITE Context===========");
+      let context:mindSporeLite.Context={};
+      context.target = ["cpu"];
+      context.cpu = {};
+      context.cpu.threadNum = 1;
+      context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
+      console.log("==========MSLITE TrainCfg===========");
+      let cfg:mindSporeLite.TrainCfg={};
+      cfg.lossName = ["loss_fct", "_loss_fn", "SigmoidCrossEntropy"];
+      console.log("==========MSLITE loadModel===========");
+      let msliteModel = await mindSporeLite.loadTrainModelFromFile(model_file, cfg, context);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportWeightsCollaborateWithMicro(path +"/micro_weight.bin", true);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE end===========");
+    })
+
+    // exportWeightsCollaborateWithMicro参数3个
+    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_parameter_0003', Level.LEVEL0, async () => {
+      console.log("==========MSLITE start===========");
+      let syscontext: common.Context = globalThis.context
+      let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
+      let inputBuffer1: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_1.input");
+      let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
+      console.log("==========MSLITE Context===========");
+      let context:mindSporeLite.Context={};
+      context.target = ["cpu"];
+      context.cpu = {};
+      context.cpu.threadNum = 1;
+      context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
+      console.log("==========MSLITE TrainCfg===========");
+      let cfg:mindSporeLite.TrainCfg={};
+      cfg.lossName = ["loss_fct", "_loss_fn", "SigmoidCrossEntropy"];
+      console.log("==========MSLITE loadModel===========");
+      let msliteModel = await mindSporeLite.loadTrainModelFromFile(model_file, cfg, context);
+      expect(msliteModel !== null).assertTrue();
+      console.log("==========MSLITE trainMode===========", msliteModel.trainMode);
+      msliteModel.trainMode = true;
+      console.log("==========MSLITE set trainMode===========", msliteModel.trainMode);
+      console.log("==========MSLITE getInputs===========");
+      const modelInputs = msliteModel.getInputs();
+      for (let i = 0; i < modelInputs.length; i++) {
+        let printStr = modelInputs[i].name + ", ";
+        printStr += modelInputs[i].shape + ", ";
+        printStr += modelInputs[i].dtype + ", ";
+        printStr += modelInputs[i].dataSize + ", ";
+        printStr += modelInputs[i].getData();
+        console.log("==========MSLITE modelInputs===========",printStr);
+      }
+      modelInputs[0].setData(inputBuffer0.buffer);
+      modelInputs[1].setData(inputBuffer1.buffer);
+      console.log("==========MSLITE runStep===========");
+      let ret = msliteModel.runStep(modelInputs);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE exportModel===========");
+      let path : String = globalThis.abilityContext.filesDir;
+      console.log("==========MSLITE path===========",path);
+      ret = msliteModel.exportWeightsCollaborateWithMicro(path +"/micro_weight.bin", true, false);
+      expect(ret).assertTrue();
+      console.log("==========MSLITE end===========");
+    })
 
     // 正常场景：通过path加载模型，执行1轮训练并对比精度
-    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -262,7 +988,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：加载模型文件路径不存在
-    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_0002', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let model_file = globalThis.abilityContext.filesDir + '/not_exist/' + 'ml_face_isface_0.input';
       console.log("==========MSLITE loadModel===========");
@@ -274,7 +1000,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：加载模型文件路径为空
-    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_0003', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_0003', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       console.log("==========MSLITE loadModel===========");
       let msliteModel = await mindSporeLite.loadTrainModelFromFile("");
@@ -283,7 +1009,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：加载模型文件路径为错误文件
-    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_0004', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFile_0004', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let model_file = globalThis.abilityContext.filesDir + '/' + 'ml_face_isface_0.input';
       console.log("==========MSLITE loadModel===========");
@@ -295,7 +1021,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：通过path加载模型，执行1轮训练并对比精度
-    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromBuffer_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromBuffer_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -361,7 +1087,7 @@ export default function abilityTest() {
     })
 
     //异常场景：加载模型buffer为空
-    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromBuffer_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromBuffer_0002', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       console.log("==========MSLITE loadModel===========");
       let msliteModel = await mindSporeLite.loadTrainModelFromBuffer(null);
@@ -370,7 +1096,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：通过path加载模型，执行1轮训练并对比精度
-    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFd_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_loadTrainModelFromFd_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array = await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -437,7 +1163,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置学习率为0.01
-    it('SUB_AI_MindSpore_ArkTS_learningRate_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_learningRate_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -504,7 +1230,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置学习率为1000.0
-    it('SUB_AI_MindSpore_ArkTS_learningRate_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_learningRate_0002', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -571,7 +1297,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置虚拟batch_size为2
-    it('SUB_AI_MindSpore_ArkTS_setupVirtualBatch_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_setupVirtualBatch_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -639,7 +1365,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置优化等级O0
-    it('SUB_AI_MindSpore_ArkTS_optimizationLevel_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_optimizationLevel_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -716,7 +1442,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置优化等级O2
-    it('SUB_AI_MindSpore_ArkTS_optimizationLevel_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_optimizationLevel_0002', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -793,7 +1519,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置优化等级O3
-    it('SUB_AI_MindSpore_ArkTS_optimizationLevel_0003', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_optimizationLevel_0003', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -870,7 +1596,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置优化等级AUTO
-    it('SUB_AI_MindSpore_ArkTS_optimizationLevel_0004', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_optimizationLevel_0004', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -947,7 +1673,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置存在的损失函数名
-    it('SUB_AI_MindSpore_ArkTS_lossName_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_lossName_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1023,7 +1749,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：设置不存在的损失函数名
-    it('SUB_AI_MindSpore_ArkTS_lossName_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_lossName_0002', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1099,7 +1825,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：更新权重
-    it('SUB_AI_MindSpore_ArkTS_updateWeights_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_updateWeights_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1151,7 +1877,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：更新权重后导出训练图，再获取权重
-    it('SUB_AI_MindSpore_ArkTS_updateWeights_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_updateWeights_0002', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1221,7 +1947,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：训练model导出推理图后对比精度
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1287,7 +2013,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：quantization_type为OH_AI_NO_QUANT
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0002', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1353,7 +2079,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：quantization_type为OH_AI_WEIGHT_QUANT
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0003', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0003', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1419,7 +2145,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：quantization_type为OH_AI_FULL_QUANT
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0004', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0004', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1485,7 +2211,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：export_inference_only为false
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0005', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0005', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1573,7 +2299,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：export_inference_only为false，再指定output_tensor_name
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0006', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0006', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1662,7 +2388,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：指定导出不存在的output_tensor_name
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0007', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0007', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1699,7 +2425,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：model_file文件路径不存在
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0008', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0008', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1733,7 +2459,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：model_file路径为空
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0009', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0009', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1767,7 +2493,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：model_file路径为文件夹
-    it('SUB_AI_MindSpore_ArkTS_exportModel_0010', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportModel_0010', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1801,7 +2527,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：训练model更新并导出micro权重
-    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0001', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let syscontext: common.Context = globalThis.context
       let inputBuffer0: Uint8Array= await syscontext.resourceManager.getRawFileContent("lenet_train_0.input");
@@ -1846,7 +2572,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：weight_file文件路径不存在
-    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0002', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
       console.log("==========MSLITE Context===========");
@@ -1870,7 +2596,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：weight_file路径为空
-    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0003', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0003', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
       console.log("==========MSLITE Context===========");
@@ -1892,7 +2618,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：weight_file路径为文件夹
-    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0004', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0004', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
       console.log("==========MSLITE Context===========");
@@ -1914,7 +2640,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：is_inference为false
-    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0005', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_exportWeightsCollaborateWithMicro_0005', Level.LEVEL0, async () => {
       console.log("==========MSLITE start===========");
       let model_file = globalThis.abilityContext.filesDir + '/' + 'lenet_train.ms';
       console.log("==========MSLITE Context===========");
@@ -1939,7 +2665,7 @@ export default function abilityTest() {
 
 
     // 正常场景：ModelBuild，调用buffer方法，正常推理
-    it('Test_load_model_param_model_buffer', 0, async () => {
+    it('Test_load_model_param_model_buffer', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_buffer");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -1994,7 +2720,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：ModelBuild，调用fd方法，正常推理
-    it('Test_load_model_param_model_fd', 0, async () => {
+    it('Test_load_model_param_model_fd', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_fd");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2042,7 +2768,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：ModelBuild，调用loadModelFromFile方法，正常推理
-    it('Test_load_model_param_model_path', 0, async () => {
+    it('Test_load_model_param_model_path', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2098,7 +2824,7 @@ export default function abilityTest() {
     })
 
     //正常场景：Context设置CPU，4线程
-    it('Test_load_model_param_model_path_settings_threads_001', 0, async () => {
+    it('Test_load_model_param_model_path_settings_threads_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_threads_001");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2150,7 +2876,7 @@ export default function abilityTest() {
     })
 
     //正常场景：Context设置CPU，2线程
-    it('Test_load_model_param_model_path_settings_threads_002', 0, async () => {
+    it('Test_load_model_param_model_path_settings_threads_002', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_threads_002");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2202,7 +2928,7 @@ export default function abilityTest() {
     })
 
     //正常场景：Context设置CPU，1线程
-    it('Test_load_model_param_model_path_settings_threads_003', 0, async () => {
+    it('Test_load_model_param_model_path_settings_threads_003', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_threads_003");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2254,7 +2980,7 @@ export default function abilityTest() {
     })
 
     //正常场景：Context设置CPU，0线程
-    it('Test_load_model_param_model_path_settings_threads_004', 0, async () => {
+    it('Test_load_model_param_model_path_settings_threads_004', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_threads_004");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2306,7 +3032,7 @@ export default function abilityTest() {
     })
 
     //异常场景：Context设置CPU，绑核设置为3，绑核失败
-    it('Test_load_model_param_model_path_settings_affinity_001', 0, async () => {
+    it('Test_load_model_param_model_path_settings_affinity_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_affinity_001");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2323,7 +3049,7 @@ export default function abilityTest() {
     })
 
     ///异常场景：Context设置CPU，绑核设置为2，绑小核
-    it('Test_load_model_param_model_path_settings_affinity_002', 0, async () => {
+    it('Test_load_model_param_model_path_settings_affinity_002', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_affinity_002");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2375,7 +3101,7 @@ export default function abilityTest() {
     })
 
     //异常场景：Context设置CPU，绑核设置为1，绑大核
-    it('Test_load_model_param_model_path_settings_affinity_003', 0, async () => {
+    it('Test_load_model_param_model_path_settings_affinity_003', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_affinity_003");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2427,7 +3153,7 @@ export default function abilityTest() {
     })
 
     //正常场景：Context设置CPU，绑核设置为0，不绑核
-    it('Test_load_model_param_model_path_settings_affinity_004', 0, async () => {
+    it('Test_load_model_param_model_path_settings_affinity_004', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_affinity_004");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2479,7 +3205,7 @@ export default function abilityTest() {
     })
 
     //正常场景：Context设置CPU，绑核列表[0,1,2,3]
-    it('Test_load_model_param_model_path_settings_affinity_list_001', 0, async () => {
+    it('Test_load_model_param_model_path_settings_affinity_list_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_affinity_list_001");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2531,7 +3257,7 @@ export default function abilityTest() {
     })
 
     //异常场景：ModelBuild，调用model path方法，path为空
-    it('Test_load_model_param_model_path_is_None_001',0, async (done: Function) => {
+    it('Test_load_model_param_model_path_is_None_001',Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_is_None_001");
       let model_file = "";
       let context:mindSporeLite.Context={};
@@ -2543,7 +3269,7 @@ export default function abilityTest() {
     })
 
     //异常场景：ModelBuild，调用buffer方法，modelBuffer为None
-    it('Test_load_model_param_model_buffer_is_None_001',0, async (done: Function) => {
+    it('Test_load_model_param_model_buffer_is_None_001',Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_buffer_is_None_001");
       let context:mindSporeLite.Context={};
       context.target = ["cpu"];
@@ -2554,7 +3280,7 @@ export default function abilityTest() {
     })
 
     //异常场景：ModelBuild，context为null
-    it('Test_load_model_param_model_path_context_is_None_001',0, async (done: Function) => {
+    it('Test_load_model_param_model_path_context_is_None_001',Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_context_is_None_001");
       let model_file = globalThis.abilityContext.filesDir + '/' + 'ml_face_isface.ms';
       let msliteModel = await mindSporeLite.loadModelFromFile(model_file, null);
@@ -2564,7 +3290,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：ModelResize，shape与之前一致
-    it('Test_load_model_param_model_path_resize_001', 0, async () => {
+    it('Test_load_model_param_model_path_resize_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_001");
       let inputName = 'ml_ocr_cn_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2635,7 +3361,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：ModelResize，shape与之前不一致
-    it('Test_load_model_param_model_path_resize_002', 0, async () => {
+    it('Test_load_model_param_model_path_resize_002', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_002");
       let inputName = 'ml_ocr_cn_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2706,7 +3432,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：ModelResize，shape为三维
-    it('Test_load_model_param_model_path_resize_003', 0, async () => {
+    it('Test_load_model_param_model_path_resize_003', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_003");
       let inputName = 'ml_ocr_cn_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2743,7 +3469,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：ModelResize，不支持resize的模型
-    it('Test_load_model_param_model_path_resize_004', 0, async () => {
+    it('Test_load_model_param_model_path_resize_004', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_004");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2778,7 +3504,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：ModelResize，shape值有负数
-    it('Test_load_model_param_model_path_resize_005', 0, async () => {
+    it('Test_load_model_param_model_path_resize_005', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_005");
       let inputName = 'ml_ocr_cn_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2815,7 +3541,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：Build一次，Predict多次
-    it('Test_load_model_param_model_path_much_predict_001',0, async () => {
+    it('Test_load_model_param_model_path_much_predict_001',Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_much_predict_001");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2870,7 +3596,7 @@ export default function abilityTest() {
     })
 
     // 异常场景：Build多次
-    it('Test_load_model_param_model_path_much_build_001', 0, async () => {
+    it('Test_load_model_param_model_path_much_build_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_much_build_001");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -2920,7 +3646,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：单输入模型
-    it('Test_load_model_param_model_path_model_001', 0, async () => {
+    it('Test_load_model_param_model_path_model_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_model_001");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -2970,7 +3696,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：多输入模型
-    it('Test_load_model_param_model_path_model_002', 0, async () => {
+    it('Test_load_model_param_model_path_model_002', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_model_002");
       let modelName = 'ml_video_edit_face_cutout_portraitSeg_deconv.ms';
       let inputName01 = 'ml_video_edit_face_cutout_portraitSeg_deconv_0.input';
@@ -3035,7 +3761,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：输入为uint8模型
-    it('Test_load_model_param_model_path_model_003', 0, async () => {
+    it('Test_load_model_param_model_path_model_003', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_model_003");
       let modelName = 'aiy_vision_classifier_plants_V1_3.ms';
       let inputName = 'aiy_vision_classifier_plants_V1_3_0.input';
@@ -3080,7 +3806,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：多输入单输出
-    it('Test_load_model_param_model_path_model_004', 0, async () => {
+    it('Test_load_model_param_model_path_model_004', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_model_004");
       let modelName = 'ml_headpose_pb2tflite.ms';
       let inputName01 = 'ml_headpose_pb2tflite_0.input';
@@ -3162,7 +3888,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：调用loadModelFromFile callback接口设置context
-    it('Test_load_model_param_model_path_callback', 0, async (done: Function) => {
+    it('Test_load_model_param_model_path_callback', Level.LEVEL0, async (done: Function) => {
       console.log("++++++MSLITE api test: loadModel param model file.Test_load_model_param_model_path_callback");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -3208,7 +3934,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：调用loadModelFromBuffer callback接口设置context
-    it('Test_load_model_param_model_buffer_callback', 0, async (done: Function) => {
+    it('Test_load_model_param_model_buffer_callback', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_buffer_callback");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -3268,7 +3994,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：调用loadModelFromFd callback接口设置context
-    it('Test_load_model_param_model_fd_callback', 0, async (done: Function) => {
+    it('Test_load_model_param_model_fd_callback', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_fd_callback");
       
       let inputName = 'ml_face_isface_0.input';
@@ -3328,7 +4054,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：调用loadModelFromFile callback接口未设置context
-    it('Test_load_model_param_model_path_callback_no_context', 0, async (done: Function) => {
+    it('Test_load_model_param_model_path_callback_no_context', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_callback_no_context");
       
       let inputName = 'ml_face_isface_0.input';
@@ -3378,7 +4104,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：调用loadModelFromBuffer callback接口未设置context
-    it('Test_load_model_param_model_buffer_callback_no_context', 0, async (done: Function) => {
+    it('Test_load_model_param_model_buffer_callback_no_context', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_buffer_callback_no_context");
       
       let inputName = 'ml_face_isface_0.input';
@@ -3429,7 +4155,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：调用loadModelFromFd callback接口未设置context
-    it('Test_load_model_param_model_fd_callback_no_context', 0, async (done: Function) => {
+    it('Test_load_model_param_model_fd_callback_no_context', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_fd_callback_no_context");
       
       let inputName = 'ml_face_isface_0.input';
@@ -3480,7 +4206,7 @@ export default function abilityTest() {
     })
 
     // 正常场景：头文件枚举值测试
-    it('Test_enumerated_value', 0, async (done: Function) => {
+    it('Test_enumerated_value', Level.LEVEL0, async (done: Function) => {
       try{
         expect(mindSporeLite.Format.NCHW).assertEqual(0);
         expect(mindSporeLite.Format.NHWC).assertEqual(1);
@@ -3515,7 +4241,7 @@ export default function abilityTest() {
     })
 
 
-    it('SUB_AI_MindSpore_ArkTS_NNRT_0001', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_NNRT_0001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.SUB_AI_MindSpore_ArkTS_NNRT_0001");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -3586,7 +4312,7 @@ export default function abilityTest() {
       console.log('=========MSLITE new Float32Array end=====');
     })
 
-    it('SUB_AI_MindSpore_ArkTS_NNRT_0002', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_NNRT_0002', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.SUB_AI_MindSpore_ArkTS_NNRT_0002");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -3657,7 +4383,7 @@ export default function abilityTest() {
       console.log('=========MSLITE new Float32Array end=====');
     })
 
-    it('SUB_AI_MindSpore_ArkTS_NNRT_0003', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_NNRT_0003', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.SUB_AI_MindSpore_ArkTS_NNRT_0003");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -3728,7 +4454,7 @@ export default function abilityTest() {
       console.log('=========MSLITE new Float32Array end=====');
     })
 
-    it('SUB_AI_MindSpore_ArkTS_NNRT_0004', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_NNRT_0004', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.SUB_AI_MindSpore_ArkTS_NNRT_0004");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -3799,7 +4525,7 @@ export default function abilityTest() {
       console.log('=========MSLITE new Float32Array end=====');
     })
 
-    it('SUB_AI_MindSpore_ArkTS_NNRT_0005', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_NNRT_0005', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.SUB_AI_MindSpore_ArkTS_NNRT_0005");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -3870,7 +4596,7 @@ export default function abilityTest() {
       console.log('=========MSLITE new Float32Array end=====');
     })
 
-    it('SUB_AI_MindSpore_ArkTS_NNRT_0006', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_NNRT_0006', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.SUB_AI_MindSpore_ArkTS_NNRT_0006");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -3949,7 +4675,7 @@ export default function abilityTest() {
     })
 
 
-    it('SUB_AI_MindSpore_ArkTS_NNRT_0008', 0, async () => {
+    it('SUB_AI_MindSpore_ArkTS_NNRT_0008', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.SUB_AI_MindSpore_ArkTS_NNRT_0008");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -3988,7 +4714,7 @@ export default function abilityTest() {
 
 
     // 正常场景：模拟器，ModelBuild，调用buffer方法，正常推理
-    it('Test_load_model_param_model_buffer_emulator', 0, async () => {
+    it('Test_load_model_param_model_buffer_emulator', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_buffer");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -4023,7 +4749,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，ModelBuild，调用fd方法，正常推理
-    it('Test_load_model_param_model_fd_emulator', 0, async () => {
+    it('Test_load_model_param_model_fd_emulator', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_fd");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4051,7 +4777,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，ModelBuild，调用loadModelFromFile方法，正常推理
-    it('Test_load_model_param_model_path_emulator', 0, async () => {
+    it('Test_load_model_param_model_path_emulator', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4083,7 +4809,7 @@ export default function abilityTest() {
     });
 
     //正常场景：模拟器，Context设置CPU，4线程
-    it('Test_load_model_param_model_path_settings_threads_emulator_001', 0, async () => {
+    it('Test_load_model_param_model_path_settings_threads_emulator_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_threads_001");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4115,7 +4841,7 @@ export default function abilityTest() {
     });
 
     //正常场景：模拟器，Context设置CPU，2线程
-    it('Test_load_model_param_model_path_settings_threads_emulator_002', 0, async () => {
+    it('Test_load_model_param_model_path_settings_threads_emulator_002', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_threads_002");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4147,7 +4873,7 @@ export default function abilityTest() {
     });
 
     //正常场景：模拟器，Context设置CPU，1线程
-    it('Test_load_model_param_model_path_settings_threads_emulator_003', 0, async () => {
+    it('Test_load_model_param_model_path_settings_threads_emulator_003', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_threads_003");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4179,7 +4905,7 @@ export default function abilityTest() {
     });
 
     //正常场景：模拟器，Context设置CPU，0线程
-    it('Test_load_model_param_model_path_settings_threads_emulator_004', 0, async () => {
+    it('Test_load_model_param_model_path_settings_threads_emulator_004', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_threads_004");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4211,7 +4937,7 @@ export default function abilityTest() {
     });
 
     //异常场景：模拟器，ModelBuild，调用model path方法，path为空
-    it('Test_load_model_param_model_path_is_None_emulator_001', 0, async (done: Function) => {
+    it('Test_load_model_param_model_path_is_None_emulator_001', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_is_None_001");
       let model_file = "";
       let context: mindSporeLite.Context = {};
@@ -4223,7 +4949,7 @@ export default function abilityTest() {
     });
 
     //异常场景：模拟器，ModelBuild，调用buffer方法，modelBuffer为None
-    it('Test_load_model_param_model_buffer_is_None_emulator_001', 0, async (done: Function) => {
+    it('Test_load_model_param_model_buffer_is_None_emulator_001', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_buffer_is_None_001");
       let context: mindSporeLite.Context = {};
       context.target = ["cpu"];
@@ -4234,7 +4960,7 @@ export default function abilityTest() {
     });
 
     //异常场景：模拟器，ModelBuild，context为null
-    it('Test_load_model_param_model_path_context_is_None_emulator_001', 0, async (done: Function) => {
+    it('Test_load_model_param_model_path_context_is_None_emulator_001', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_context_is_None_001");      
       let model_file = globalThis.abilityContext.filesDir + '/' + 'ml_face_isface.ms';
       let msliteModel = await mindSporeLite.loadModelFromFile(model_file, null);
@@ -4244,7 +4970,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，ModelResize，shape与之前一致
-    it('Test_load_model_param_model_path_resize_emulator_001', 0, async () => {
+    it('Test_load_model_param_model_path_resize_emulator_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_001");
       let inputName = 'ml_ocr_cn_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4277,7 +5003,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，ModelResize，shape与之前不一致
-    it('Test_load_model_param_model_path_resize_emulator_002', 0, async () => {
+    it('Test_load_model_param_model_path_resize_emulator_002', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_002");
       let inputName = 'ml_ocr_cn_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4340,7 +5066,7 @@ export default function abilityTest() {
     });
 
     // 异常场景：模拟器，ModelResize，shape为三维
-    it('Test_load_model_param_model_path_resize_emulator_003', 0, async () => {
+    it('Test_load_model_param_model_path_resize_emulator_003', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_003");
       let inputName = 'ml_ocr_cn_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4359,7 +5085,7 @@ export default function abilityTest() {
     });
 
     // 异常场景：模拟器，ModelResize，不支持resize的模型
-    it('Test_load_model_param_model_path_resize_emulator_004', 0, async () => {
+    it('Test_load_model_param_model_path_resize_emulator_004', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_004");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4378,7 +5104,7 @@ export default function abilityTest() {
     });
 
     // 异常场景：模拟器，ModelResize，shape值有负数
-    it('Test_load_model_param_model_path_resize_emulator_005', 0, async () => {
+    it('Test_load_model_param_model_path_resize_emulator_005', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_resize_005");
       let inputName = 'ml_ocr_cn_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4397,7 +5123,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，Build一次，Predict多次
-    it('Test_load_model_param_model_path_much_predict_emulator_001', 0, async () => {
+    it('Test_load_model_param_model_path_much_predict_emulator_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_much_predict_001");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4432,7 +5158,7 @@ export default function abilityTest() {
     });
 
     // 异常场景：模拟器，Build多次
-    it('Test_load_model_param_model_path_much_build_emulator_001', 0, async () => {
+    it('Test_load_model_param_model_path_much_build_emulator_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_much_build_001");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4462,7 +5188,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，单输入模型
-    it('Test_load_model_param_model_path_model_emulator_001', 0, async () => {
+    it('Test_load_model_param_model_path_model_emulator_001', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_model_001");
       let modelName = 'ml_face_isface.ms';
       let inputName = 'ml_face_isface_0.input';
@@ -4493,7 +5219,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，多输入模型
-    it('Test_load_model_param_model_path_model_emulator_002', 0, async () => {
+    it('Test_load_model_param_model_path_model_emulator_002', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_model_002");
       let modelName = 'ml_video_edit_face_cutout_portraitSeg_deconv.ms';
       let inputName01 = 'ml_video_edit_face_cutout_portraitSeg_deconv_0.input';
@@ -4551,7 +5277,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，输入为uint8模型
-    it('Test_load_model_param_model_path_model_emulator_003', 0, async () => {
+    it('Test_load_model_param_model_path_model_emulator_003', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_model_003");
       let modelName = 'aiy_vision_classifier_plants_V1_3.ms';
       let inputName = 'aiy_vision_classifier_plants_V1_3_0.input';
@@ -4594,7 +5320,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，多输入单输出
-    it('Test_load_model_param_model_path_model_emulator_004', 0, async () => {
+    it('Test_load_model_param_model_path_model_emulator_004', Level.LEVEL0, async () => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_model_004");
       let modelName = 'ml_headpose_pb2tflite.ms';
       let inputName01 = 'ml_headpose_pb2tflite_0.input';
@@ -4668,7 +5394,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，调用loadModelFromFile callback接口设置context
-    it('Test_load_model_param_model_path_callback_emulator', 0, async (done: Function) => {
+    it('Test_load_model_param_model_path_callback_emulator', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_callback_emulator");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4711,7 +5437,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，调用loadModelFromBuffer callback接口设置context
-    it('Test_load_model_param_model_buffer_callback_emulator', 0, async (done: Function) => {
+    it('Test_load_model_param_model_buffer_callback_emulator', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_buffer_callback_emulator");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4766,7 +5492,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，调用loadModelFromFd callback接口设置context
-    it('Test_load_model_param_model_fd_callback_emulator', 0, async (done: Function) => {
+    it('Test_load_model_param_model_fd_callback_emulator', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_fd_callback_emulator");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4821,7 +5547,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，调用loadModelFromFile callback接口未设置context
-    it('Test_load_model_param_model_path_callback_no_context_emulator', 0, async (done: Function) => {
+    it('Test_load_model_param_model_path_callback_no_context_emulator', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_callback_no_context_emulator");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4870,7 +5596,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，调用loadModelFromBuffer callback接口未设置context
-    it('Test_load_model_param_model_buffer_callback_no_context_emulator', 0, async (done: Function) => {
+    it('Test_load_model_param_model_buffer_callback_no_context_emulator', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_buffer_callback_no_context_emulator");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;
@@ -4920,7 +5646,7 @@ export default function abilityTest() {
     });
 
     // 正常场景：模拟器，调用loadModelFromFd callback接口未设置context
-    it('Test_load_model_param_model_fd_callback_no_context_emulator', 0, async (done: Function) => {
+    it('Test_load_model_param_model_fd_callback_no_context_emulator', Level.LEVEL0, async (done: Function) => {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_fd_callback_no_context_emulator");
       let inputName = 'ml_face_isface_0.input';
       let syscontext: common.Context = globalThis.context;

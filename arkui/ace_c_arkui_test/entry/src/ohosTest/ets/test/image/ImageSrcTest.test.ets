@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSrc001', 0, async (done: Function) => {
+    it('testImageSrc001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSrc001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSrc002', 0, async (done: Function) => {
+    it('testImageSrc002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSrc002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSrc003', 0, async (done: Function) => {
+    it('testImageSrc003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSrc003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSrc004', 0, async (done: Function) => {
+    it('testImageSrc004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSrc004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSrc005', 0, async (done: Function) => {
+    it('testImageSrc005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSrc005()).assertEqual(0)
       done()
     })

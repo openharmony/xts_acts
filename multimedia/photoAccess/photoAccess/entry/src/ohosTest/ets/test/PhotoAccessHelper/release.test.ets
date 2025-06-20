@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import { getPermission,driveFn,sleep } from '../common';
 
@@ -35,7 +35,7 @@ export default function releaseTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('release_callback_000', 0, async (done: Function) => {
+    it('release_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'release_callback_000'
       try {
         let helper = photoAccessHelper.getPhotoAccessHelper(testContext)
@@ -61,7 +61,7 @@ export default function releaseTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('release_promise_000', 0, async (done: Function) => {
+    it('release_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'release_promise_000'
       try {
         let helper = photoAccessHelper.getPhotoAccessHelper(testContext)

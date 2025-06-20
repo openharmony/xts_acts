@@ -22,16 +22,40 @@
 #include <string>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <dirent.h>
+#include <bundle/native_interface_bundle.h>
 #include "napi/native_api.h"
 
 constexpr int MAX_BUFFER_SIZE = 128;
-constexpr const char *UBSAN_LOG_FILE_PATH = "/data/storage/el2/log/ubsanXtsLog.com.thirdparty.ubsan.napitest";
+
+static int FindDirAndCheck(DIR *dir, char *fileresult, int pid)
+{
+    struct dirent *ptr;
+    char file[MAX_BUFFER_SIZE];
+    OH_NativeBundle_ApplicationInfo nativeApplicationInfo = OH_NativeBundle_GetCurrentApplicationInfo();
+    char * bundleName = nativeApplicationInfo.bundleName;
+    int filenameres = snprintf_s(file, sizeof(file), sizeof(file) - 1, "%s.%s.%d", "ubsanXtsLog", bundleName, pid);
+    int (filenameres < 0) {
+        return -1;
+    }
+    while((ptr = readdir(dir)) != NULL) {
+        if (strstr(ptr->d_name, file) != NULL) {
+            int findres = snprintf_s(fileresult, MAX_BUFFER_SIZE, MAX_BUFFER_SIZE - 1, "%s/%s", "/data/storage/el2/log/", ptr->d_name);
+            if (findres < 0) {
+                return -1;
+            }
+            return 1;
+        }
+    }
+    return -1;
+}
 
 static std::string GetBuffer(int pid)
 {
     std::string buffer;
     char file[MAX_BUFFER_SIZE];
-    int filePathRes = snprintf_s(file, sizeof(file), sizeof(file) - 1, "%s.%d", UBSAN_LOG_FILE_PATH, pid);
+    DIR *logdir = opendir("/data/storage/el2/log/");
+    int filePathRes = FindDirAndCheck(logdir, file, pid);
     if (filePathRes < 0) {
         return buffer;
     }
@@ -93,7 +117,7 @@ __attribute__((optnone)) static napi_value MisAlign(napi_env env, napi_callback_
     signed long int *pointer = reinterpret_cast<signed long int *>(buffer + 1);
     *pointer = 42; // 42 is an arbitrary number to deliberately trigger UBSan check
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:94:5", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:118:5", bufferLog) &&
         CheckUBSanLog("runtime error: store to misaligned address", bufferLog) &&
         CheckUBSanLog("for type 'long', which requires 8 byte alignment", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
@@ -113,7 +137,7 @@ __attribute__((optnone)) static napi_value Bounds(napi_env env, napi_callback_in
     int array[5] = {0};
     int res = array[param];
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:114:15", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:138:15", bufferLog) &&
         CheckUBSanLog("runtime error: index 5 out of bounds for type 'int[5]'", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -131,7 +155,7 @@ __attribute__((optnone)) static napi_value IntegerDivBy0(napi_env env, napi_call
     napi_get_value_int32(env, args[0], &param);
     int res = 2 / param; // deliberately assign divisor to 0 to trigger UBSan check
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:132:17", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:156:17", bufferLog) &&
         CheckUBSanLog("runtime error: division by zero", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -161,7 +185,7 @@ __attribute__((optnone)) static napi_value EnumSan(napi_env env, napi_callback_i
         int res = 1;
     }
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:160:9", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:184:9", bufferLog) &&
         CheckUBSanLog("runtime error: load of value 42, which is not a valid value for type 'enum E'", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -177,7 +201,7 @@ __attribute__((optnone)) static napi_value FloatCastOverflow(napi_env env, napi_
     double n = 10e50;
     int res = static_cast<int>(n);
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:178:32", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:202:32", bufferLog) &&
         CheckUBSanLog("runtime error: 1e+51 is outside the range of representable values of type 'int'", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -195,7 +219,7 @@ __attribute__((optnone)) static napi_value SignedIntegerOverflow(napi_env env, n
     napi_get_value_int32(env, args[0], &param);
     int res = param * 42; // 42 is an arbitrary number to deliberately trigger UBSan check
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:196:21", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:220:21", bufferLog) &&
     CheckUBSanLog("runtime error: signed integer overflow: 1073741824 * 42 cannot be represented in type 'int'",
     bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
@@ -233,7 +257,7 @@ __attribute__((optnone)) static napi_value VptrCheck(napi_env env, napi_callback
 {
     Vptr(new Cat);
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:228:17", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:252:17", bufferLog) &&
         CheckUBSanLog("runtime error: member call on address", bufferLog) &&
         CheckUBSanLog("which does not point to an object of type 'Dog'", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
@@ -258,10 +282,10 @@ __attribute__((optnone)) static napi_value NonnullAttribute(napi_env env, napi_c
     napi_get_value_int32(env, args[0], &param);
     int res = Foo0(arr[param]);
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:259:20", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:283:20", bufferLog) &&
                         CheckUBSanLog("runtime error: null pointer passed as argument 1, " \
                                       "which is declared to never be null", bufferLog) &&
-                        CheckUBSanLog("napi_init.cpp:246:50", bufferLog) &&
+                        CheckUBSanLog("napi_init.cpp:270:50", bufferLog) &&
                         CheckUBSanLog("note: nonnull attribute specified here", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -299,7 +323,7 @@ __attribute__((optnone)) static napi_value NullSanitize(napi_env env, napi_callb
         wait(&status);
     }
     std::string bufferLog = GetBuffer(pid);
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:277:12", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:301:12", bufferLog) &&
         CheckUBSanLog("runtime error: reference binding to null pointer of type 'int'", bufferLog);
     checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -345,7 +369,7 @@ __attribute__((optnone)) static napi_value PointerOverflow(napi_env env, napi_ca
         wait(&status);
     }
     std::string bufferLog = GetBuffer(pid);
-        bool findUBSanLog = CheckUBSanLog("napi_init.cpp:325:14", bufferLog) &&
+        bool findUBSanLog = CheckUBSanLog("napi_init.cpp:349:14", bufferLog) &&
         CheckUBSanLog("runtime error: pointer index expression with base 0xffffffffffffffff " \
                       "overflowed to 0x00000000000f", bufferLog);
     checkRes = findUBSanLog ? 1 : 0;
@@ -371,10 +395,10 @@ __attribute__((optnone)) static napi_value ReturnNonnullAttribute(napi_env env, 
     napi_get_value_int32(env, args[0], &param);
     Foo3(arr[param]);
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:372:10", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:396:10", bufferLog) &&
                         CheckUBSanLog("runtime error: null pointer passed as argument 1, " \
                                       "which is declared to never be null", bufferLog) &&
-                        CheckUBSanLog("napi_init.cpp:358:16", bufferLog) &&
+                        CheckUBSanLog("napi_init.cpp:382:16", bufferLog) &&
                         CheckUBSanLog("note: nonnull attribute specified here", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -394,7 +418,7 @@ __attribute__((optnone)) static napi_value ShiftBase(napi_env env, napi_callback
     int x = 1;
     int res = x << param;
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:395:17", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:419:17", bufferLog) &&
         CheckUBSanLog("runtime error: shift exponent 32 is too large for 32-bit type 'int'", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -414,7 +438,7 @@ __attribute__((optnone)) static napi_value ShiftBaseNegative(napi_env env, napi_
     int x = 1;
     int res = x << param;
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:415:17", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:439:17", bufferLog) &&
         CheckUBSanLog("runtime error: shift exponent -2 is negative", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -433,7 +457,7 @@ __attribute__((optnone)) static napi_value ShiftExponent(napi_env env, napi_call
     int x = -1;
     int res = x >> param;
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:434:17", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:458:17", bufferLog) &&
         CheckUBSanLog("runtime error: shift exponent 32 is too large for 32-bit type 'int'", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -452,7 +476,7 @@ __attribute__((optnone)) static napi_value ShiftExponentNegative(napi_env env, n
     int x = 1;
     int res = x >> param;
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:453:17", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:477:17", bufferLog) &&
         CheckUBSanLog("runtime error: shift exponent -2 is negative", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -471,7 +495,7 @@ __attribute__((optnone)) static napi_value ShiftExponentBound(napi_env env, napi
     int x = 1;
     int res = x >> param;
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:472:17", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:496:17", bufferLog) &&
         CheckUBSanLog("runtime error: shift exponent 32 is too large for 32-bit type 'int'", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -494,7 +518,7 @@ __attribute__((optnone)) static napi_value UndefinedBool(napi_env env, napi_call
         res = 0;
     }
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:491:9", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:515:9", bufferLog) &&
         CheckUBSanLog("runtime error: load of value 42, which is not a valid value for type 'bool'", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -523,7 +547,7 @@ __attribute__((optnone)) static napi_value VlaBound(napi_env env, napi_callback_
         wait(&status);
     }
     std::string bufferLog = GetBuffer(pid);
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:520:17", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:544:17", bufferLog) &&
         CheckUBSanLog("runtime error: variable length array bound evaluates to non-positive value -1", bufferLog);
     checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -546,7 +570,7 @@ __attribute__((optnone)) static napi_value Unreachable(napi_env env, napi_callba
         wait(&status);
     }
     std::string bufferLog = GetBuffer(pid);
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:544:9", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:568:9", bufferLog) &&
         CheckUBSanLog("runtime error: execution reached an unreachable program point", bufferLog);
     checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -575,7 +599,7 @@ __attribute__((optnone)) static napi_value NoReturn(napi_env env, napi_callback_
         wait(&status);
     }
     std::string bufferLog = GetBuffer(pid);
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:557:30", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:581:30", bufferLog) &&
     CheckUBSanLog("runtime error: execution reached the end of a value-returning function without returning a value",
         bufferLog);
     checkRes = findUBSanLog ? 1 : 0;
@@ -594,7 +618,7 @@ __attribute__((optnone)) static napi_value ShiftBaseIntMax(napi_env env, napi_ca
     int x = -1;
     int res = param << x;
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:595:21", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:619:21", bufferLog) &&
         CheckUBSanLog("runtime error: shift exponent -1 is negative", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -612,7 +636,7 @@ __attribute__((optnone)) static napi_value ShiftBaseIntMin(napi_env env, napi_ca
     int x = 1;
     int res = param << x;
     std::string bufferLog = GetBuffer(getpid());
-    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:613:21", bufferLog) &&
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:637:21", bufferLog) &&
         CheckUBSanLog("runtime error: left shift of negative value -2147483648", bufferLog);
     int checkRes = findUBSanLog ? 1 : 0;
     napi_value result = nullptr;

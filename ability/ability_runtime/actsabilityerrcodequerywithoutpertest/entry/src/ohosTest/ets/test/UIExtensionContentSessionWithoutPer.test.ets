@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level } from '@ohos/hypium';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import base, { BusinessError } from '@ohos.base';
 import { abilityAccessCtrl, common } from '@kit.AbilityKit';
@@ -57,7 +57,7 @@ export default function UIExtensionContentSessionWithoutPerTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0900', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0900', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0900`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -100,7 +100,7 @@ export default function UIExtensionContentSessionWithoutPerTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_1000', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_1000', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_1000`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {

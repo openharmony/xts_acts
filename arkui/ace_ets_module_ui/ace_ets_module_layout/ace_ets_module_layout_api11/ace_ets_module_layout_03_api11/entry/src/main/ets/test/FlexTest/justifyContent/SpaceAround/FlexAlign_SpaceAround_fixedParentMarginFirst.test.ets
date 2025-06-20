@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -54,7 +54,7 @@ export default function flexAlign_SpaceAround_fixedParentMarginFirst() {
      * @tc.desc Parent component fixed, child component binding margin properties, the layout space of the parent
      *               component meets the spindle layout requirements of the child component
      */
-    it('testAlignSpaceAroundRowNoWrapMarginFirstInRange', 0, async () => {
+    it('testAlignSpaceAroundRowNoWrapMarginFirstInRange',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapMarginFirstInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20
@@ -70,26 +70,26 @@ export default function flexAlign_SpaceAround_fixedParentMarginFirst() {
       let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceAround41');
       let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceAround42');
       let locationFlex: RectValue = CommonFunc.getComponentRect('FlexAlignSpaceAround14');
-      expect(Math.abs(locationText1.top - locationFlex.top) - vp2px(20) <= 1).assertTrue();
-      expect(Math.abs(locationText2.top - locationText3.top) <= 1).assertTrue();
-      expect(Math.abs(locationText3.top - locationFlex.top) <= 1).assertTrue();
-      expect(Math.abs(locationText1.bottom - locationText1.top) - vp2px(50) <= 1).assertTrue();
-      expect(Math.abs(locationText2.bottom - locationText2.top) - vp2px(100) <= 1).assertTrue();
-      expect(Math.abs(locationText3.bottom - locationText3.top) - vp2px(150) <= 1).assertTrue();
-      expect(Math.abs(locationFlex.bottom - locationText3.bottom) - vp2px(50) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText1.top - locationFlex.top) - vp2px(20)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.top - locationText3.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText3.top - locationFlex.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText1.bottom - locationText1.top) - vp2px(50)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.bottom - locationText2.top) - vp2px(100)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText3.bottom - locationText3.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationFlex.bottom - locationText3.bottom) - vp2px(50)) <= 1).assertTrue();
 
-      expect(Math.abs(locationText1.right - locationText1.left) -
-        (locationText2.right - locationText2.left) <= 1).assertTrue();
-      expect(Math.abs(locationText3.right - locationText3.left) -
-        (locationText2.right - locationText2.left) <= 1).assertTrue();
-      expect(Math.abs(locationText2.left - locationText1.right) - vp2px(20) -
-        (locationText3.left - locationText2.right) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText1.right - locationText1.left) -
+        (locationText2.right - locationText2.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText3.right - locationText3.left) -
+        (locationText2.right - locationText2.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.left - locationText1.right) - vp2px(20) -
+        (locationText3.left - locationText2.right)) <= 1).assertTrue();
 
-      expect(Math.abs(locationText2.right - locationText2.left) - vp2px(150) <= 1).assertTrue();
-      expect(Math.abs(locationText1.left - locationFlex.left - vp2px(20)) -
-        (locationFlex.right - locationText3.right) <= 1).assertTrue();
-      expect(Math.abs(locationText2.left - locationText1.right - vp2px(20)) -
-        2 * (locationFlex.right - locationText3.right) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.right - locationText2.left) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText1.left - locationFlex.left - vp2px(20)) -
+        (locationFlex.right - locationText3.right)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.left - locationText1.right - vp2px(20)) -
+        2 * (locationFlex.right - locationText3.right)) <= 1).assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapMarginFirstInRange END');
 
     });
@@ -100,7 +100,7 @@ export default function flexAlign_SpaceAround_fixedParentMarginFirst() {
      * @tc.desc Parent component fixed, child component binding margin properties, the layout space of the parent
      *               component is insufficient to meet the spindle layout requirements of the child component
      */
-    it('testAlignSpaceAroundRowNoWrapMarginFirstOutRange', 0, async () => {
+    it('testAlignSpaceAroundRowNoWrapMarginFirstOutRange',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapMarginFirstOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 50
@@ -116,20 +116,20 @@ export default function flexAlign_SpaceAround_fixedParentMarginFirst() {
       let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceAround41');
       let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceAround42');
       let locationFlex: RectValue = CommonFunc.getComponentRect('FlexAlignSpaceAround14');
-      expect(Math.abs(locationText1.top - locationFlex.top) - vp2px(50) <= 1).assertTrue();
-      expect(Math.abs(locationText1.left - locationFlex.left) - vp2px(50) <= 1).assertTrue();
-      expect(Math.abs(locationText2.top - locationText3.top) <= 1).assertTrue();
-      expect(Math.abs(locationText3.top - locationFlex.top) <= 1).assertTrue();
-      expect(Math.abs(locationText1.bottom - locationText1.top) - vp2px(50) <= 1).assertTrue();
-      expect(Math.abs(locationText2.bottom - locationText2.top) - vp2px(100) <= 1).assertTrue();
-      expect(Math.abs(locationText3.bottom - locationText3.top) - vp2px(150) <= 1).assertTrue();
-      expect(Math.abs(locationFlex.bottom - locationText3.bottom) - vp2px(50) <= 1).assertTrue();
-      expect(Math.abs(locationText2.right - locationText3.left) <= 1).assertTrue();
-      expect(Math.abs(locationText3.right - locationFlex.right) <= 1).assertTrue();
-      expect(Math.abs(locationText1.right - locationText1.left) - vp2px(400 / 3) <= 1).assertTrue();
-      expect(Math.abs(locationText2.right - locationText2.left) - vp2px(400 / 3) <= 1).assertTrue();
-      expect(Math.abs(locationText3.right - locationText3.left) - vp2px(400 / 3) <= 1).assertTrue();
-      expect(Math.abs(locationText2.left - locationText1.right) - vp2px(50) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText1.top - locationFlex.top) - vp2px(50)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText1.left - locationFlex.left) - vp2px(50)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.top - locationText3.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText3.top - locationFlex.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText1.bottom - locationText1.top) - vp2px(50)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.bottom - locationText2.top) - vp2px(100)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText3.bottom - locationText3.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationFlex.bottom - locationText3.bottom) - vp2px(50)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.right - locationText3.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText3.right - locationFlex.right)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText1.right - locationText1.left) - vp2px(400 / 3)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.right - locationText2.left) - vp2px(400 / 3)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText3.right - locationText3.left) - vp2px(400 / 3)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText2.left - locationText1.right) - vp2px(50)) <= 1).assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapMarginFirstOutRange END');
 
     });

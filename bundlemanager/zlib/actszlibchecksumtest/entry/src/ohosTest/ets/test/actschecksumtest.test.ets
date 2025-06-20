@@ -27,7 +27,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
+    it('actsChecksumTest01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_01 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -60,7 +60,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest02', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
+    it('actsChecksumTest02', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_02 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -253,7 +253,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('actsChecksumTest08', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done : Function) =>{
+    it('actsChecksumTest08', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done : Function) =>{
         console.info("==================actsChecksumTest08 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -283,7 +283,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('actsChecksumTest09', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done : Function) =>{
+    it('actsChecksumTest09', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done : Function) =>{
         console.info("==================actsChecksumTest09 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);

@@ -76,9 +76,9 @@ export default function webViewNativeMediaPlayerEnableFalse() {
      *@tc.desc test NativeMediaPlayerEnableFalse
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 1
+     *@tc.level Level 0
      */
-    it('testWebViewNativeMediaPlayerEnableFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerEnableFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebViewNativeMediaPlayerEnableFalse"
         Utils.emitEvent(emitKey, 10);
         Utils.registerBaseEvent("testWebViewNativeMediaPlayerEnableFalse", true, 1539,

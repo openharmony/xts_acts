@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -62,7 +62,7 @@ export default function ObjectLinkNusJsunit() {
       });
     });
 
-    it('ObjectLinkNusJsunit_0100', 0, async (done: Function) => {
+    it('ObjectLinkNusJsunit_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0100 START');
       let strJson = getInspectorByKey('str_obl');
@@ -74,7 +74,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0200', 0, async (done: Function) => {
+    it('ObjectLinkNusJsunit_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -90,7 +90,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0300', 0, async (done: Function) => {
+    it('ObjectLinkNusJsunit_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0300 START');
       let strJson = getInspectorByKey('num_obl');
@@ -102,7 +102,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0400', 0, async (done: Function) => {
+    it('ObjectLinkNusJsunit_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -118,7 +118,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0500', 0, async (done: Function) => {
+    it('ObjectLinkNusJsunit_0500', Level.LEVEL0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0500 START');
       let strJson = getInspectorByKey('bon_obl');
@@ -130,7 +130,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0600', 0, async (done: Function) => {
+    it('ObjectLinkNusJsunit_0600', Level.LEVEL0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -146,7 +146,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0700', 0, async (done: Function) => {
+    it('ObjectLinkNusJsunit_0700', Level.LEVEL0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0700 START');
       let strJson = getInspectorByKey('cor_obl');
@@ -158,7 +158,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0800', 0, async (done: Function) => {
+    it('ObjectLinkNusJsunit_0800', Level.LEVEL0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0800 START');
       let driver = await UiDriver.create()

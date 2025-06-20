@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -56,7 +56,7 @@ export default function AlignContentFlexP_Fixed_Margin() {
      * @tc.desc Set the margin for the flex subcomponents to meet the size of flex.
      */
 
-    it('testAlignContentSpaceEvenlyFlexFixedMarginSatisfy', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexFixedMarginSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexFixedMarginSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
@@ -124,7 +124,7 @@ export default function AlignContentFlexP_Fixed_Margin() {
      * @tc.desc Set a margin for a flex subcomponent that does not fit the flex size.
      */
 
-    it('testAlignContentSpaceEvenlyFlexfixedMarginNOSatisfy', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexfixedMarginNOSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexfixedMarginNOSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 100

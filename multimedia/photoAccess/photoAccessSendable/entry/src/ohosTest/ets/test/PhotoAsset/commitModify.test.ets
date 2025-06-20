@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import {
   sleep,
@@ -87,7 +87,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_000', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_000', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_000';
       let fileNameList: Array<string> = ['modifyPro01.jpg'];
       await createResource(globalContext, fileNameList);
@@ -104,7 +104,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_001', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_001';
       let fileNameList: Array<string> = ['modifyPro02.jpg'];
       await createResource(globalContext, fileNameList);
@@ -121,7 +121,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_002', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_002';
       let fileNameList: Array<string> = ['modifyPro03.jpg'];
       await createResource(globalContext, fileNameList);
@@ -138,7 +138,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_003', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_003';
       let fileNameList: Array<string> = ['modifyPro04.jpg'];
       await createResource(globalContext, fileNameList);
@@ -156,7 +156,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_005', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_005';
       let fileNameList: Array<string> = ['modifyPro06.jpg'];
       await createResource(globalContext, fileNameList);
@@ -174,7 +174,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_006', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_006';
       let fileNameList: Array<string> = ['modifyPro07.jpg'];
       await createResource(globalContext, fileNameList);
@@ -192,7 +192,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_007', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_007', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_007';
       let fileNameList: Array<string> = ['modifyPro01.mp4'];
       await createResource(globalContext, fileNameList);
@@ -209,7 +209,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_008', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_008', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_008';
       let fileNameList: Array<string> = ['modifyPro02.mp4'];
       await createResource(globalContext, fileNameList);
@@ -226,7 +226,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_009', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_009', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_009';
       let fileNameList: Array<string> = ['modifyPro03.mp4'];
       await createResource(globalContext, fileNameList);
@@ -243,7 +243,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_010', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_010', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_010';
       let fileNameList: Array<string> = ['modifyPro04.mp4'];
       await createResource(globalContext, fileNameList);
@@ -261,7 +261,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_012', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_012', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_012';
       let fileNameList: Array<string> = ['modifyPro06.mp4'];
       await createResource(globalContext, fileNameList);
@@ -279,7 +279,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_013', 2, async (done: Function) => {
+    it('photoAsset_commitModify_promise_013', Level.LEVEL2, async (done: Function) => {
       const testNum = 'photoAsset_commitModify_promise_013';
       let fileNameList: Array<string> = ['modifyPro07.mp4'];
       await createResource(globalContext, fileNameList);

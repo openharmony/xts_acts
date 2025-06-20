@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageAnimatorImagesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorImages001', 0, async (done: Function) => {
+    it('testImageAnimatorImages001', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAnimatorImages001()).assertEqual(0)
         done()
     })
@@ -47,7 +47,7 @@ export default function imageAnimatorImagesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorImages002', 0, async (done: Function) => {
+    it('testImageAnimatorImages002', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAnimatorImages002()).assertEqual(0)
         done()
     })
@@ -60,7 +60,7 @@ export default function imageAnimatorImagesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorImages003', 0, async (done: Function) => {
+    it('testImageAnimatorImages003', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAnimatorImages003()).assertEqual(0)
         done()
     })
@@ -73,7 +73,7 @@ export default function imageAnimatorImagesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorImages004', 0, async (done: Function) => {
+    it('testImageAnimatorImages004', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAnimatorImages004()).assertEqual(0)
         done()
     })
@@ -86,7 +86,7 @@ export default function imageAnimatorImagesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorImages005', 0, async (done: Function) => {
+    it('testImageAnimatorImages005', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAnimatorImages005()).assertEqual(0)
         done()
     })
@@ -99,7 +99,7 @@ export default function imageAnimatorImagesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorImages006', 0, async (done: Function) => {
+    it('testImageAnimatorImages006', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAnimatorImages006()).assertEqual(0)
         done()
     })

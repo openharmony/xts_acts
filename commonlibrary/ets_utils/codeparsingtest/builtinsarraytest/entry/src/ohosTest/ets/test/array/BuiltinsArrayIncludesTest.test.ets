@@ -45,9 +45,9 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify basic element existence
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayIncludesTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('builtinsArrayIncludesTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect([1, 2, 3].includes(2)).assertTrue();
     });
 
@@ -57,9 +57,9 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify non-existence case
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayIncludesTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('builtinsArrayIncludesTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect([1, 2, 3].includes(4)).assertFalse();
     });
 
@@ -69,7 +69,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify start index parameter
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, 2, 3, 2, 4].includes(2, 2)).assertTrue(); // 从索引2开始查找
@@ -81,7 +81,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify index out of bounds
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, 2, 3, 2, 4].includes(2, 3)).assertTrue();
@@ -93,7 +93,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify index out of bounds
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, 2, 3, 2, 4].includes(2, 4)).assertFalse();
@@ -105,7 +105,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify element empty handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, , 3].includes(undefined)).assertTrue(); // 空位视为undefined
@@ -117,7 +117,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify element empty handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, , 3].includes(2)).assertFalse();
@@ -129,7 +129,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify NaN comparison
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([NaN].includes(NaN)).assertTrue();
@@ -141,7 +141,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify +0/-0 equality
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([0, -0].includes(0)).assertTrue();
@@ -153,7 +153,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify undefined equality
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([undefined].includes(undefined)).assertTrue();
@@ -165,7 +165,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify negative start index
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, 2, 3].includes(2, -1)).assertFalse();
@@ -177,7 +177,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify negative start index
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, 2, 3].includes(3, -1)).assertTrue(); // 等效于从索引2开始
@@ -189,7 +189,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify negative start index
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, 2, 3].includes(2, 5)).assertFalse();
@@ -201,7 +201,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify negative start index
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, 2, 3].includes(2, -5)).assertTrue();
@@ -213,7 +213,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify empty array handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(([] as undefined[]).includes(undefined)).assertFalse();
@@ -225,7 +225,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify array elements comparison
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [[], [1], [2]];
@@ -239,7 +239,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify null handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, null, 3, 4].includes(null)).assertTrue();
@@ -251,7 +251,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify object reference comparison
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const obj: TestA = {
@@ -266,7 +266,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify string elements handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(['apple', 'banana', 'cherry'].includes('banana')).assertTrue();
@@ -278,7 +278,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify string elements handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(['apple', '', 'cherry'].includes('')).assertTrue();
@@ -290,7 +290,7 @@ export default function builtinsArrayIncludesTest() {
      * @tc.desc Verify special number handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayIncludesTest1021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const testArray: number[] = [

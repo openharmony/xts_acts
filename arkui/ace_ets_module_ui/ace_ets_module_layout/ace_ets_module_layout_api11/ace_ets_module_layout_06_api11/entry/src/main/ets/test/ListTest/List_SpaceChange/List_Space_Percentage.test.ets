@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -70,7 +70,7 @@ export default function List_Space_Percentage() {
      * @tc.name testListSpacePercentage
      * @tc.desc set the space of list to '10%'
      */
-    it('SUB_ACE_List_Space_Percentage_0100', 0, async (done: Function) => {
+    it('SUB_ACE_List_Space_Percentage_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_Space_Percentage_0100] START');
       globalThis.value.message.notify({
         name: 'space', value: '10%'
@@ -107,7 +107,7 @@ export default function List_Space_Percentage() {
      * @tc.name testListSpacePercentage
      * @tc.desc set the space of list to '100%'
      */
-    it('SUB_ACE_List_Space_Percentage_0200', 0, async (done: Function) => {
+    it('SUB_ACE_List_Space_Percentage_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_Space_Percentage_0200] START');
       globalThis.value.message.notify({
         name: 'space', value: '50%'
@@ -135,7 +135,7 @@ export default function List_Space_Percentage() {
      * @tc.name testListSpacePercentage
      * @tc.desc set the space of list to '150%'
      */
-    it('SUB_ACE_List_Space_Percentage_0300', 0, async (done: Function) => {
+    it('SUB_ACE_List_Space_Percentage_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_Space_Percentage_0300] START');
       globalThis.value.message.notify({
         name: 'space', value: '100%'

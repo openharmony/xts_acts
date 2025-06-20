@@ -188,7 +188,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -212,7 +212,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -308,7 +308,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -520,7 +520,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -768,7 +768,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -900,7 +900,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");

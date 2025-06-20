@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -46,7 +46,7 @@ export default function marqueeJsunit() {
     });
 
 
-    it('testMarquee_0100', 0, async (done: Function) => {
+    it('testMarquee_0100', Level.LEVEL1, async (done: Function) => {
       console.info('testMarquee_0100 START');
       await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
@@ -83,7 +83,7 @@ export default function marqueeJsunit() {
 
     });
 
-    it('testMarquee_0200', 0, async (done: Function) => {
+    it('testMarquee_0200', Level.LEVEL1, async (done: Function) => {
       console.info('testMarquee_0200 START');
       await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
@@ -119,7 +119,7 @@ export default function marqueeJsunit() {
       console.info('testMarquee_0200 END');
     });
 
-    it('testMarquee_0300', 0, async (done: Function) => {
+    it('testMarquee_0300', Level.LEVEL1, async (done: Function) => {
       console.info('testMarquee_0300 START');
       await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {

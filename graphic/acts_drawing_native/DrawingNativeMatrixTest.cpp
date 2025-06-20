@@ -17,7 +17,6 @@
 #include "drawing_error_code.h"
 #include "drawing_matrix.h"
 #include "drawing_rect.h"
-#include "utils/scalar.h"
 #include "gtest/gtest.h"
 #include <iostream>
 #include <random>

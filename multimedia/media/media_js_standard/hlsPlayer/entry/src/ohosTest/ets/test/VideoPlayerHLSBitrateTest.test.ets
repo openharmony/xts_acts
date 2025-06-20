@@ -14,7 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import MediaTestBase from './MediaTestBase';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -160,7 +160,7 @@ export default function videoPlayerHLSBitrateTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SelectBitrate_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SelectBitrate_0100', Level.LEVEL0,async (done: Function) => {
       await initAvPlayer(done);
       await setVideoUrl('http://192.168.8.161/videotest/mix-index.m3u8');
       await playAndSetLoop(PLAY_TIME * 2);
@@ -179,7 +179,7 @@ export default function videoPlayerHLSBitrateTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SelectBitrate_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SelectBitrate_0200', Level.LEVEL0,async (done: Function) => {
       await initAvPlayer(done);
       await setVideoUrl('http://192.168.8.161/videotest/mix-index.m3u8');
       await playAndSetLoop(PLAY_TIME);

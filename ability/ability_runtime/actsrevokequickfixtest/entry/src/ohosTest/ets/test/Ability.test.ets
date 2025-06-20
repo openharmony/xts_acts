@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import quickFixManager from '@ohos.app.ability.quickFixManager';
 import { BusinessError } from '@ohos.base';
 
@@ -35,7 +35,7 @@ export default function abilityTest() {
      * @tc.desc: The passed-in exception parameter undefined calls revokeQuickFix, 
      *           and there is an exception return value.
      */
-    it('Acts_applyQuickFixRevoke_1300', 0, (done: Function) => {
+    it('Acts_applyQuickFixRevoke_1300', Level.LEVEL0, (done: Function) => {
       hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       try {
@@ -59,7 +59,7 @@ export default function abilityTest() {
      * @tc.desc: An exception parameter null is passed in to call revokeQuickFix, 
      *           and there is an exception return value.
      */
-    it('Acts_applyQuickFixRevoke_1400', 0, (done: Function) => {
+    it('Acts_applyQuickFixRevoke_1400', Level.LEVEL0, (done: Function) => {
       hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       try {
@@ -82,7 +82,7 @@ export default function abilityTest() {
      * @tc.name: Apply quick fix to support undo.
      * @tc.desc: Non-system application calls revokeQuickFix, with abnormal return value.
      */
-    it('Acts_applyQuickFixRevoke_1500', 0, (done: Function) => {
+    it('Acts_applyQuickFixRevoke_1500', Level.LEVEL0, (done: Function) => {
       hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       try {
@@ -106,7 +106,7 @@ export default function abilityTest() {
      * @tc.desc: The passed-in exception parameter undefined calls revokeQuickFix, 
      * and there is an exception return value.
      */
-    it('Acts_applyQuickFixRevoke_1600', 0, (done: Function) => {
+    it('Acts_applyQuickFixRevoke_1600', Level.LEVEL0, (done: Function) => {
       hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       try {
@@ -126,7 +126,7 @@ export default function abilityTest() {
      * @tc.desc: An exception parameter null is passed in to call revokeQuickFix, 
      * and there is an exception return value.
      */
-    it('Acts_applyQuickFixRevoke_1700', 0, (done: Function) => {
+    it('Acts_applyQuickFixRevoke_1700', Level.LEVEL0, (done: Function) => {
       hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       try {
@@ -145,7 +145,7 @@ export default function abilityTest() {
      * @tc.name: Apply quick fix to support undo.
      * @tc.desc: Non-system application calls revokeQuickFix, with abnormal return value.
      */
-    it('Acts_applyQuickFixRevoke_1800', 0, (done: Function) => {
+    it('Acts_applyQuickFixRevoke_1800', Level.LEVEL0, (done: Function) => {
       hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       try {

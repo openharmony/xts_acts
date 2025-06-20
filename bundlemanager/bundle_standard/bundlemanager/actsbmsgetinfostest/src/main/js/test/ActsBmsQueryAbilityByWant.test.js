@@ -111,7 +111,7 @@ export default function ActsBmsQueryAbilityByWant() {
         * @tc.name: queryAbilityByWantImplicitByEntities
         * @tc.desc: The entities in the parameter want pass in the new field, and use the implicit query to get abilitInfos
         */
-        it('queryAbilityByWantImplicitByEntities', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('queryAbilityByWantImplicitByEntities', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: ACTION_NAME,
                 entities: ["entity.app.music",

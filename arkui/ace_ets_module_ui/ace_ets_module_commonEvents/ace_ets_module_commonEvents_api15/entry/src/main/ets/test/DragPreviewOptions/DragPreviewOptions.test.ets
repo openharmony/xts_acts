@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function DragPreviewOptions() {
      * @tc.type :
      * @tc.size :
      */
-    it('DDragPreviewOptions_0010', 0, async (done: Function) => {
+    it('DDragPreviewOptions_0010', Level.LEVEL0, async (done: Function) => {
       console.info('DragPreviewOptions_0010 START');
       let driver = await Driver.create()
       let text = await driver.findComponent(ON.id('Text2'));

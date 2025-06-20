@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function openCustomDialogFalse() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogFalse_0100', 0, async (done: Function) => {
+    it('openCustomDialogFalse_0100', Level.LEVEL2, async (done: Function) => {
       console.info('openCustomDialogFalse_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -70,7 +70,7 @@ export default function openCustomDialogFalse() {
       expect(properties.type).assertEqual(1)//1表示系统告警窗口TYPE_SYSTEM_ALERT
 
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(100)),Math.round(globalThis.winTop + vp2px(100)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       console.info('[openCustomDialogFalse_0100] END');
       done();

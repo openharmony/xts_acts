@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
@@ -43,7 +43,7 @@ export default function checkboxJsunit() {
       console.info("checkbox after each called");
     });
 
-    it('testCheckbox_100', 0, async (done: Function) => {
+    it('testCheckbox_100', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckbox_100] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('Checkbox1');
@@ -53,7 +53,7 @@ export default function checkboxJsunit() {
       done();
     });
 
-    it('testCheckbox_200', 0, async (done: Function) => {
+    it('testCheckbox_200', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckbox_200] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('Checkbox1');
@@ -63,7 +63,7 @@ export default function checkboxJsunit() {
       done();
     });
 
-    it('testCheckbox_300', 0, async (done: Function) => {
+    it('testCheckbox_300', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckbox_300] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('Checkbox1');
@@ -75,7 +75,7 @@ export default function checkboxJsunit() {
       done();
     });
 
-    it('testCheckbox_400', 0, async (done: Function) => {
+    it('testCheckbox_400', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckbox_400] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('Checkbox1');

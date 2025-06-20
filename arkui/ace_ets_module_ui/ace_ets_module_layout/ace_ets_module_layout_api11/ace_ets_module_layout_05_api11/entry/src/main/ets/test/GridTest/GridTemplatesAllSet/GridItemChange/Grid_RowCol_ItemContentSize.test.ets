@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function grid_RowCol_ItemContentSizeTest() {
      * @tc.name testGridRowColItemContentSize
      * @tc.desc The second griditem set width to '50%',height to '50%'
      */
-    it('testGridRowColItemContentSize', 0, async (done: Function) => {
+    it('testGridRowColItemContentSize',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColItemContentSize] START');
       globalThis.value.message.notify({
         name: 'secondGridItemContentHeight', value: '50%'

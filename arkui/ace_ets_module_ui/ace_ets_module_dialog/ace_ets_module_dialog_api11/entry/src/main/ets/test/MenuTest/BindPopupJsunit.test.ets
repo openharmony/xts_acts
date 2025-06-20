@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
@@ -45,7 +45,7 @@ export default function bindPopupTest(){
       console.info("bindPopup after each called");
     });
 
-    it('bindPopupTest_0100', 0, async (done: Function) => {
+    it('bindPopupTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1500);
@@ -68,12 +68,12 @@ export default function bindPopupTest(){
       await CommonFunc.sleep(1000);
       console.info("bindPopupTest_0100 click Two result is: " + JSON.stringify(sendEventByKey('image',10,"")));
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       console.info('bindPopupTest_0100 END');
     });
 
-    it('bindPopupTest_0200', 0, async (done: Function) => {
+    it('bindPopupTest_0200', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupTest_0200 START');
       let driver = await Driver.create()
       try {
@@ -109,13 +109,13 @@ export default function bindPopupTest(){
       }
       console.info("bindPopupTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       console.info('bindPopupTest_0200 END');
       done();
     });
 
-    it('bindPopupTest_0300', 0, async (done: Function) => {
+    it('bindPopupTest_0300', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1500);
@@ -134,7 +134,7 @@ export default function bindPopupTest(){
       }
       console.info("bindPopupTest_0300 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       console.info('bindPopupTest_0300 END');
       done();

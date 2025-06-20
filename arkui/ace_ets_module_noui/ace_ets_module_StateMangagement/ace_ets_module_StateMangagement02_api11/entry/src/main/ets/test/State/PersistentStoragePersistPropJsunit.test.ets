@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -57,7 +57,7 @@ export default function PersistentStoragePersistPropJsunit() {
     });
 
 
-    it('PersistentStoragePersistPropJsunit_0100', 0, async (done: Function) => {
+    it('PersistentStoragePersistPropJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[PersistentStoragePersistPropJsunit_0100] START');
       let driver = await UiDriver.create()
       let button_PersistProp = await driver.findComponent(BY.key('button_PersistProp'));
@@ -91,7 +91,7 @@ export default function PersistentStoragePersistPropJsunit() {
       done();
     });
 
-    it('PersistentStoragePersistPropJsunit_0200', 0, async (done: Function) => {
+    it('PersistentStoragePersistPropJsunit_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[PersistentStoragePersistPropJsunit_0200] START');
       let driver = await UiDriver.create()
@@ -112,7 +112,7 @@ export default function PersistentStoragePersistPropJsunit() {
       done();
     });
 
-    it('PersistentStoragePersistPropJsunit_0300', 0, async (done: Function) => {
+    it('PersistentStoragePersistPropJsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[PersistentStoragePersistPropJsunit_0300] START');
       let driver = await UiDriver.create()
       let button_PersistProp_default = await driver.findComponent(BY.key('button_PersistProp_default'));

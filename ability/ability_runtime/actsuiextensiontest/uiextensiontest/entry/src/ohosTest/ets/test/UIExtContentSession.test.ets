@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import router from '@ohos.router';
 
@@ -58,7 +58,7 @@ export default function uiExtContentSessionTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'LoadContentByName_0100';
       hilog.info(0x0000, TAG, '%{public}s', 'it begin');
       let UI_EXTENSION_PAGE5_ON_READY: string = 'UIExtension_Page5_OnReady';
@@ -128,7 +128,7 @@ export default function uiExtContentSessionTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'LoadContentByName_0200';
       hilog.info(0x0000, TAG, '%{public}s', 'it begin');
       let UI_EXTENSION_PAGE5_ON_READY: string = 'UIExtension_Page5_OnReady';
@@ -198,7 +198,7 @@ export default function uiExtContentSessionTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'LoadContentByName_0300';
       hilog.info(0x0000, TAG, '%{public}s', 'it begin');
       let UI_EXTENSION_PAGE5_ON_READY: string = 'UIExtension_Page5_OnReady';
@@ -268,7 +268,7 @@ export default function uiExtContentSessionTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0400', Level.LEVEL0, async (done: Function) => {
       TAG = 'LoadContentByName_0400';
       hilog.info(0x0000, TAG, '%{public}s', 'it begin');
       let UI_EXTENSION_PAGE5_ON_READY: string = 'UIExtension_Page5_OnReady';
@@ -338,7 +338,7 @@ export default function uiExtContentSessionTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'LoadContentByName_0500';
       hilog.info(0x0000, TAG, '%{public}s', 'it begin');
       let UI_EXTENSION_PAGE5_ON_READY: string = 'UIExtension_Page5_OnReady';
@@ -407,7 +407,7 @@ export default function uiExtContentSessionTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0600', Level.LEVEL0, async (done: Function) => {
       TAG = 'LoadContentByName_0600';
       hilog.info(0x0000, TAG, '%{public}s', 'it begin');
       let UI_EXTENSION_PAGE5_ON_READY: string = 'UIExtension_Page5_OnReady';
@@ -476,7 +476,7 @@ export default function uiExtContentSessionTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0700', Level.LEVEL0, async (done: Function) => {
       TAG = 'LoadContentByName_0700';
       hilog.info(0x0000, TAG, '%{public}s', 'it begin');
       let UI_EXTENSION_PAGE5_ON_READY: string = 'UIExtension_Page5_OnReady';
@@ -545,7 +545,7 @@ export default function uiExtContentSessionTest() {
      * @tc.type: Function
      * @tc.level: 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtension_LoadContentByName_0800', Level.LEVEL0, async (done: Function) => {
       TAG = 'LoadContentByName_0800';
       hilog.info(0x0000, TAG, '%{public}s', 'it begin');
       let UI_EXTENSION_PAGE5_ON_READY: string = 'UIExtension_Page5_OnReady';

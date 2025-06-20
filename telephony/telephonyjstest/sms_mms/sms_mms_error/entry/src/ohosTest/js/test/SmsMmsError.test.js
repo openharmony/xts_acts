@@ -14,7 +14,7 @@
  */
 
 import sms from '@ohos.telephony.sms';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium'
 export default function SmsMmsErrorTest() {
 
 describe('SmsMmsErrorTest', function () {
@@ -28,7 +28,7 @@ describe('SmsMmsErrorTest', function () {
    *             shortMessage isn't empty
    * @tc.desc    Function test
    */
-  it('Telephony_SmsMms_createMessage_Async_0200', 0, async function (done) {
+  it('Telephony_SmsMms_createMessage_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
     sms.createMessage(rawArrayNull, '3gpp', (err, shortMessage) => {
       if (err) {
         console.log('Telephony_SmsMms_createMessage_Async_0200 finish');
@@ -59,7 +59,7 @@ describe('SmsMmsErrorTest', function () {
    *             promise returns the result Don't empty
    * @tc.desc    Function test
    */
-  it('Telephony_SmsMms_createMessage_Promise_0200', 0, async function (done) {
+  it('Telephony_SmsMms_createMessage_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
     try {
       await sms.createMessage(rawArrayNull, '3gpp');
       expect().assertFail();
@@ -78,7 +78,7 @@ describe('SmsMmsErrorTest', function () {
    * @tc.name    Check whether the Ims SMS function is supported
    * @tc.desc    Function test
    */
-  it('Telephony_SmsMms_hasSmsCapability_0100', 0, async function (done) {
+  it('Telephony_SmsMms_hasSmsCapability_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
     let result = sms.hasSmsCapability();
     console.log('Telephony_SmsMms_hasSmsCapability_0100 result : ' + result);
     expect(result === false || result === true).assertTrue();
@@ -91,7 +91,7 @@ describe('SmsMmsErrorTest', function () {
    * @tc.name     Set the default card slot ID for sending SMS
    * @tc.desc     Function test
    */
-  it('Telephony_SmsMms_getDefaultSmsSlotId_Async_0100', 0, async function (done) {
+  it('Telephony_SmsMms_getDefaultSmsSlotId_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
     sms.getDefaultSmsSlotId((getErr, getResult) => {
       if (getErr) {
         console.log('Telephony_SmsMms_getDefaultSmsSlotId_Async_0100 finish');
@@ -108,7 +108,7 @@ describe('SmsMmsErrorTest', function () {
    * @tc.name     Set the default card slot ID for sending SMS
    * @tc.desc     Function test
    */
-  it('Telephony_SmsMms_getDefaultSmsSlotId_Promise_0100', 0, async function (done) {
+  it('Telephony_SmsMms_getDefaultSmsSlotId_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
     try {
       let getResult = await sms.getDefaultSmsSlotId();
       console.log('Telephony_SmsMms_getDefaultSmsSlotId_Promise_0100 fail');
@@ -124,7 +124,7 @@ describe('SmsMmsErrorTest', function () {
    * @tc.name Telephony_SmsMms_sendMessage_Promise_0100
    * @tc.desc Function test
    */
-  it('Telephony_SmsMms_sendMessage_Promise_0100', 0, async function (done) {
+  it('Telephony_SmsMms_sendMessage_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
     try {
       let sendCallback = function (err, data) {
         expect(data.isLastPart !== '').assertTrue();
@@ -160,7 +160,7 @@ describe('SmsMmsErrorTest', function () {
    * @tc.name Telephony_SmsMms_sendShortMessage_Promise_0100
    * @tc.desc Function test
    */
-   it('Telephony_SmsMms_sendShortMessage_Promise_0100', 0, async function (done) {
+   it('Telephony_SmsMms_sendShortMessage_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
     try {
       let sendCallback = function (err, data) {
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
@@ -201,7 +201,7 @@ describe('SmsMmsErrorTest', function () {
    * @tc.name Telephony_SmsMms_sendShortMessage_Async_0100
    * @tc.desc Function test
    */
-   it('Telephony_SmsMms_sendShortMessage_Async_0100', 0, async function (done) {
+   it('Telephony_SmsMms_sendShortMessage_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
     try {
       let sendCallback = function (err, data) {
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);

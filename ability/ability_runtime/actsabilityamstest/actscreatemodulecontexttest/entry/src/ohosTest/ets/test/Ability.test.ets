@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import commonEvent from '@ohos.commonEvent';
 import common from '@ohos.app.ability.common';
@@ -36,7 +36,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1300', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'CreateModuleContext_1300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let context = null;
@@ -65,7 +65,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1400', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'CreateModuleContext_1400';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let context = undefined;
@@ -94,7 +94,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1500', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'CreateModuleContext_1500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let context = AppStorage.get<Context>("abilityContext");
@@ -123,7 +123,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'CreateModuleContext_1600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let context = AppStorage.get<Context>("abilityContext");
@@ -152,7 +152,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'CreateModuleContext_1700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let context = AppStorage.get<Context>("abilityContext");
@@ -181,7 +181,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_1800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'CreateModuleContext_1800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let context = AppStorage.get<Context>("abilityContext");

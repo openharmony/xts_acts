@@ -16,6 +16,6 @@ ohos_js_app_suite("DlpTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsDlpTest"
-  part_name = "access_token"
+  part_name = "dlp_permission_service"
   subsystem_name = "security"
 }

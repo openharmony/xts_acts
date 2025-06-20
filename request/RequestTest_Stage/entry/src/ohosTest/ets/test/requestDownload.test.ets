@@ -479,9 +479,9 @@ export default function requestDownloadJSUnit() {
      * @tc.desc Get the download task info
      * @tc.size      MEDIUMTEST
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001', Level.LEVEL2, async (done: Function) => {
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001', Level.LEVEL0, async (done: Function) => {
       console.info("====>---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`)

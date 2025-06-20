@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/utils/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -51,7 +51,7 @@ export default function NavigationApi2() {
      * @tc.desc        Navigation replacePath test
      * @tc.level       Level 2
      */
-    it('NavigationApi2_001', 0, async (done: Function) => {
+    it('NavigationApi2_001',  Level.LEVEL0, async (done: Function) => {
       console.info('[NavigationApi2_001] START');
       await Utils.sleep(1000);
 

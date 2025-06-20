@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
@@ -53,7 +53,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0100
      * @tc.desc The value of scrollToIndex is greater than the number of items
      */
-    it('List_scrollToIndex2_0100', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0100] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_to20'));
@@ -72,7 +72,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0200
      * @tc.desc The value of scrollToIndex is smaller than the number of items, the value value is set to -3
      */
-    it('List_scrollToIndex2_0200', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0200] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_to-3'));
@@ -91,7 +91,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0300
      * @tc.desc The value of scrollToIndex is smaller than the number of items, the value value is set to 0
      */
-    it('List_scrollToIndex2_0300', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0300] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_to0'));
@@ -110,7 +110,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0400
      * @tc.desc The value of scrollToIndex is smaller than the number of items, the value value is set to 9
      */
-    it('List_scrollToIndex2_0400', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0400] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_to9'));
@@ -130,7 +130,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0500
      * @tc.desc scrollToIndex sets ScrollAlign.AUTO
      */
-    it('List_scrollToIndex2_0500', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0500] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_AUTO5'));
@@ -150,7 +150,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0600
      * @tc.desc scrollToIndex is set to ScrollAlign.AUTO, and the list item is not completely in the display area
      */
-    it('List_scrollToIndex2_0600', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0600] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_AUTO4'));
@@ -170,7 +170,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0700
      * @tc.desc scrollToIndex sets ScrollAlign.AUTO, and the list item is completely in the display area
      */
-    it('List_scrollToIndex2_0700', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0700',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0700] START');
       let ListItem1: RectValue = CommonFunc.getComponentRect('List_scrollToIndex2_ListItem1');
       let driver = Driver.create();
@@ -189,7 +189,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0800
      * @tc.desc scrollToIndex sets ScrollAlign.CENTER
      */
-    it('List_scrollToIndex2_0800', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0800',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0800] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_CENTER5'));
@@ -209,7 +209,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_0900
      * @tc.desc scrollToIndex sets ScrollAlign.END
      */
-    it('List_scrollToIndex2_0900', 0, async (done: Function) => {
+    it('List_scrollToIndex2_0900',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_0900] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_END5'));
@@ -229,7 +229,7 @@ export default function List_scrollToIndex2() {
      * @tc.name List_scrollToIndex2_1000
      * @tc.desc scrollToIndex sets ScrollAlign.START
      */
-    it('List_scrollToIndex2_1000', 0, async (done: Function) => {
+    it('List_scrollToIndex2_1000',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex2_1000] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex2_START5'));

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textFontFeatureTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontFeature001', 0, async (done: Function) => {
+    it('testTextFontFeature001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontFeature001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textFontFeatureTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontFeature002', 0, async (done: Function) => {
+    it('testTextFontFeature002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontFeature002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textFontFeatureTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontFeature003', 0, async (done: Function) => {
+    it('testTextFontFeature003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontFeature003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textFontFeatureTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontFeature004', 0, async (done: Function) => {
+    it('testTextFontFeature004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontFeature004()).assertEqual(0)
       done()
     })

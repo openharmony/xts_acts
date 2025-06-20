@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import cert from '@ohos.security.cert';
 import * as certChainFunc from "./utils/certchain/certChainFunc";
 import { CERT_CHAIN_DATA_PEM_PARAMETERS, CERT_CHAIN_PEM_DATA0 } from './utils/common/commonParam';
@@ -75,7 +75,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.EncodingBlob = {} as cert.EncodingBlob;
 
       try {
@@ -95,7 +95,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.EncodingBlob = {
         data: new Uint8Array(),
         encodingFormat: cert.EncodingFormat.FORMAT_PEM
@@ -118,7 +118,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.EncodingBlob = {
         data: stringTouInt8Array(CERT_CHAIN_PEM_DATA0),
         encodingFormat: 3
@@ -141,7 +141,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const createdRes = await certChainFunc.createX509CertChainPromise("der", 0);
         expect(createdRes != null).assertTrue();
@@ -160,7 +160,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certChainFunc.createX509CertChainPromise("der", 1);
         expect(null).assertFail();
@@ -178,7 +178,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const createdRes = await certChainFunc.createX509CertChainCallback("pem", 0);
         expect(createdRes != null).assertTrue();
@@ -197,7 +197,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certChainFunc.createX509CertChainCallback("pem", 5);
         expect(null).assertFail();
@@ -215,7 +215,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const createdRes = await certChainFunc.createX509CertChainCallback("pkcs7", 0);
         expect(createdRes != null).assertTrue();
@@ -234,7 +234,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certChainFunc.createX509CertChainCallback("pkcs7", 1);
         expect(null).assertFail();
@@ -252,7 +252,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         cert.createX509CertChain([]);
         expect(null).assertFail();
@@ -270,7 +270,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const cert1 = await certChainFunc.createCustomizedX509CertPromise('PEM', 0);
       try {
         const createdRes = cert.createX509CertChain([cert1]);
@@ -290,7 +290,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const cert1 = await certChainFunc.createCustomizedX509CertPromise('PEM', 0);
       try {
         const createdRes = cert.createX509CertChain([cert1, cert1]);
@@ -310,7 +310,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const cert1 = await certChainFunc.createCustomizedX509CertPromise('PEM', 0);
       const cert3 = await certChainFunc.createCustomizedX509CertPromise('PEM', 5);
       try {
@@ -331,7 +331,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const cert1 = await certChainFunc.createCustomizedX509CertPromise('PEM', 0);
       let certs: cert.X509Cert[] = [];
       for (let i = 0; i < 257; i++) {
@@ -354,7 +354,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const cert1 = await certChainFunc.createCustomizedX509CertPromise('PEM', 0);
       const cert2 = await certChainFunc.createCustomizedX509CertPromise('PEM', 1);
       const cert3 = await certChainFunc.createCustomizedX509CertPromise('PEM', 2);
@@ -376,7 +376,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const cert1 = await certChainFunc.createCustomizedX509CertPromise('PEM', 0);
       const cert2 = await certChainFunc.createCustomizedX509CertPromise('PEM', 1);
       const cert3 = await certChainFunc.createCustomizedX509CertPromise('PEM', 2);
@@ -402,7 +402,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const cert1 = await certChainFunc.createCustomizedX509CertPromise('PEM', 0);
       const createdRes = cert.createX509CertChain([cert1, cert1]);
       expect(createdRes != null).assertTrue();
@@ -426,7 +426,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certChain0.validate(null);
         expect(null).assertFail();
@@ -444,7 +444,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certChain0.validate(undefined);
         expect(null).assertFail();
@@ -462,7 +462,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         date: "abc",
         trustAnchors: [{
@@ -487,7 +487,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         date: "20230101000000Z",
         trustAnchors: [{
@@ -512,7 +512,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         date: "20231223235959Z",
         trustAnchors: [{
@@ -537,7 +537,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         date: "20231224000000Z",
         trustAnchors: [{
@@ -564,7 +564,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         date: "20231224000001Z",
         trustAnchors: [{
@@ -607,7 +607,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         date: "20241223235959Z",
         trustAnchors: [{
@@ -634,7 +634,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         date: "20241224000000Z",
         trustAnchors: [{
@@ -659,7 +659,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         date: "20300101000000Z",
         trustAnchors: [{
@@ -684,7 +684,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{}]
       };
@@ -706,7 +706,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CASubject: CERT_CHAIN_DATA_PEM_PARAMETERS[2].subject
@@ -730,7 +730,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CACert: rootCaCert0
@@ -757,7 +757,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CACert: parentCert0
@@ -783,7 +783,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let certChain2: cert.X509CertChain = {} as cert.X509CertChain;
       try {
         certChain2 = await certChainFunc.createX509CertChainPromise("pem", 3);
@@ -827,7 +827,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let grandparentCert: cert.X509Cert = {} as cert.X509Cert;
       try {
         grandparentCert = await certChainFunc.createCustomizedX509CertPromise('pem', 4);
@@ -859,7 +859,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CACert: leafCert
@@ -882,7 +882,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CACert: otherCert
@@ -905,7 +905,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let certChain3: cert.X509CertChain = {} as cert.X509CertChain;
       try {
         certChain3 = await certChainFunc.createX509CertChainPromise("pem", 4);
@@ -949,7 +949,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let certChain3: cert.X509CertChain = {} as cert.X509CertChain;
       try {
         certChain3 = await certChainFunc.createX509CertChainPromise("pem", 4);
@@ -981,7 +981,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let oneCert: cert.X509Cert = {} as cert.X509Cert;
       let certChainOne: cert.X509CertChain = {} as cert.X509CertChain;
       try {
@@ -1024,7 +1024,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_3900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_3900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1056,7 +1056,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CAPubKey: CERT_CHAIN_DATA_PEM_PARAMETERS[2].publicKey
@@ -1086,7 +1086,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CAPubKey: CERT_CHAIN_DATA_PEM_PARAMETERS[1].publicKey
@@ -1116,7 +1116,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CAPubKey: CERT_CHAIN_DATA_PEM_PARAMETERS[0].publicKey
@@ -1139,7 +1139,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CAPubKey: CERT_CHAIN_DATA_PEM_PARAMETERS[3].publicKey
@@ -1162,7 +1162,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CAPubKey: CERT_CHAIN_DATA_PEM_PARAMETERS[4].publicKey
@@ -1185,7 +1185,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CAPubKey: new Uint8Array()
@@ -1208,7 +1208,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [{
           CASubject: CERT_CHAIN_DATA_PEM_PARAMETERS[2].subject
@@ -1231,7 +1231,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1267,7 +1267,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1293,7 +1293,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_4900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_4900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1329,7 +1329,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1355,7 +1355,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1381,7 +1381,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1407,7 +1407,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1440,7 +1440,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         trustAnchors: [
           {
@@ -1473,7 +1473,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const crl = await certChainFunc.createX509CrlPromise(0);
       let certCrl = cert.createCertCRLCollection([], [crl]);
       let param: cert.CertChainValidationParameters = {
@@ -1499,7 +1499,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const crl = await certChainFunc.createX509CrlPromise(1);
       let certCrl = cert.createCertCRLCollection([], [crl]);
       let param: cert.CertChainValidationParameters = {
@@ -1525,7 +1525,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const crl = await certChainFunc.createX509CrlPromise(2);
       let certCrl = cert.createCertCRLCollection([], [crl]);
       let param: cert.CertChainValidationParameters = {
@@ -1554,7 +1554,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const crl1 = await certChainFunc.createX509CrlPromise(1);
       const crl2 = await certChainFunc.createX509CrlPromise(2);
       let certCrl = cert.createCertCRLCollection([], [crl1, crl2]);
@@ -1581,7 +1581,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_5900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_5900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let param: cert.CertChainValidationParameters = {
         certCRLs: [],
         trustAnchors: [{
@@ -1605,7 +1605,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_6000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_6000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let certCrl = cert.createCertCRLCollection([rootCaCert0]);
       let param: cert.CertChainValidationParameters = {
         certCRLs: [certCrl],
@@ -1633,7 +1633,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_6100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_6100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let certCrl = cert.createCertCRLCollection([rootCaCert0], []);
       let param: cert.CertChainValidationParameters = {
         certCRLs: [certCrl],
@@ -1661,7 +1661,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_6200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_6200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let certCrl = cert.createCertCRLCollection([rootCaCert0], []);
       let param: cert.CertChainValidationParameters = {
         certCRLs: [certCrl],
@@ -1703,7 +1703,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_6300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_6300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let certCrl = cert.createCertCRLCollection([rootCaCert0], []);
       let param: cert.CertChainValidationParameters = {
         certCRLs: [certCrl],
@@ -1733,7 +1733,7 @@ export default function certFrameworkCertChainJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChain_Func_6400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChain_Func_6400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let certChainInvalid: cert.X509CertChain = {} as cert.X509CertChain;
       try {
         certChainInvalid = await certChainFunc.createX509CertChainPromise("pem", 2);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
 
 export default function AccessibleCheckAbility() {
@@ -41,8 +41,9 @@ describe('AccessibleCheckAbility', function () {
     *             The result of isOpenAccessibility() should be boolean type.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0100', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0100');
         accessibility.isOpenAccessibility((err, data) => {
             if (err && err.code != 0) {
@@ -62,8 +63,9 @@ describe('AccessibleCheckAbility', function () {
       *             The result of isOpenAccessibility() should be boolean type.
       * @tc.size    SmallTest
       * @tc.type    User
+      * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0200', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0200');
         accessibility.isOpenAccessibility().then((result) => {
             console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0200 result: ${result}`);
@@ -87,8 +89,9 @@ describe('AccessibleCheckAbility', function () {
       *             The result of isOpenTouchGuide() should be boolean type.
       * @tc.size    SmallTest
       * @tc.type    User
+      * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0300', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0300');
         accessibility.isOpenTouchGuide((err, data) => {
             if (err && err.code != 0) {
@@ -108,8 +111,9 @@ describe('AccessibleCheckAbility', function () {
       *             The result of isOpenTouchGuide() should be boolean type.
       * @tc.size    SmallTest
       * @tc.type    User
+      * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0400', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0400');
         accessibility.isOpenTouchGuide().then((result) => {
             console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0400 result: ${result}`);
@@ -129,8 +133,9 @@ describe('AccessibleCheckAbility', function () {
     * @tc.desc    The result of isOpenAccessibilitySync() should be boolean type.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0500', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0500');
         try {
             let status = accessibility.isOpenAccessibilitySync();
@@ -150,8 +155,9 @@ describe('AccessibleCheckAbility', function () {
       * @tc.desc    The result of isOpenTouchGuideSync() should be boolean type.
       * @tc.size    SmallTest
       * @tc.type    User
+      * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0600', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0600');
         try {
             let status = accessibility.isOpenTouchGuideSync();

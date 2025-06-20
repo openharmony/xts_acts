@@ -76,9 +76,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.desc preferences getPreferences dataGroupId undefined promise test
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
         dataGroupId: undefined

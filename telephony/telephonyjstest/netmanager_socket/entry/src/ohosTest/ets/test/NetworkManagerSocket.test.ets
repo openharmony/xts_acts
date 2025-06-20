@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, afterAll, Level, Size, TestType } from '@ohos/hypium';
 import socket from '@ohos.net.socket';
 import { BusinessError } from '@ohos.base';
 
@@ -56,7 +56,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test create TLSSocket object
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_constructTLSSocketInstance_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_constructTLSSocketInstance_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       if (instance != null) {
         expect(instance).assertInstanceOf('Object');
@@ -71,7 +71,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test connect() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_connect_Async_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_connect_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.connect(options, (err) => {
         expect(options.ALPNProtocols != undefined).assertEqual(true);
@@ -101,7 +101,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test connect() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_connect_Promise_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_connect_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.connect(options).then(() => {
         expect().assertFail();
@@ -116,7 +116,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test close() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_close_Async_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_close_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.close((err) => {
         if (err == undefined) {
@@ -133,7 +133,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test close() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_close_Promise_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_close_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.close().then(() => {
         expect().assertFail();
@@ -148,7 +148,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getCertificate() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getCertificate_Async_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getCertificate_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getCertificate((err, X509CertRawData) => {
         if (err == undefined) {
@@ -166,7 +166,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getCertificate() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getCertificate_Promise_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getCertificate_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getCertificate().then((data) => {
         expect(data).assertEqual(undefined);
@@ -182,7 +182,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getRemoteCertificate() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getRemoteCertificate_Async_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getRemoteCertificate_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getRemoteCertificate((err, data) => {
         if (err == undefined) {
@@ -200,7 +200,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getRemoteCertificate() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getRemoteCertificate_Promise_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getRemoteCertificate_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getRemoteCertificate().then((data) => {
         expect(data).assertEqual(undefined);
@@ -216,7 +216,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getProtocol() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getProtocol_Async_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getProtocol_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getProtocol((err, data) => {
         if (err == undefined) {
@@ -234,7 +234,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getProtocol() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getProtocol_Promise_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getProtocol_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getProtocol().then((data) => {
         expect(data).assertEqual(undefined);
@@ -250,7 +250,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getCipherSuite() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getCipherSuites_Async_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getCipherSuites_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getCipherSuite((err, data) => {
         if (err == undefined) {
@@ -268,7 +268,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getCipherSuite() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getCipherSuites_Promise_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getCipherSuites_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getCipherSuite().then((data) => {
         expect(data).assertEqual(undefined);
@@ -284,7 +284,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getSignatureAlgorithms() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getSignatureAlgorithms_Async_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getSignatureAlgorithms_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getSignatureAlgorithms((err, data) => {
         if (err == undefined) {
@@ -302,7 +302,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test getSignatureAlgorithms() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_getSignatureAlgorithms_Promise_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_getSignatureAlgorithms_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.getSignatureAlgorithms().then((data) => {
         expect(data).assertEqual(undefined);
@@ -318,7 +318,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test send() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_send_Async_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_send_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.send(sendData, (err) => {
         if (err == undefined) {
@@ -335,7 +335,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test send() interface
      * @tc.desc Function test
      */
-    it('Telephony_NetworkManager_send_Promise_0100', 0, async (done: Function) => {
+    it('Telephony_NetworkManager_send_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let instance = socket.constructTLSSocketInstance();
       instance.send(sendData).then(() => {
         expect().assertFail();
@@ -350,7 +350,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test on_message interface
      * @tc.desc Function test
      */
-    it('Telephony_TLSSocket_on_message_0100', 0, async (done: Function) => {
+    it('Telephony_TLSSocket_on_message_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let tls = socket.constructTLSSocketInstance();
         tls.on('message', value => {
@@ -368,7 +368,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test off_message interface
      * @tc.desc Function test
      */
-    it('Telephony_TLSSocket_off_message_0100', 0, async (done: Function) => {
+    it('Telephony_TLSSocket_off_message_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let tls = socket.constructTLSSocketInstance();
         tls.on('message',value => {
@@ -390,7 +390,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test on_connect on_close interface
      * @tc.desc Function test
      */
-    it('Telephony_TLSSocket_on_connect_on_close_0100', 0, async (done: Function) => {
+    it('Telephony_TLSSocket_on_connect_on_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let tls = socket.constructTLSSocketInstance();
         tls.on('connect', () => {
@@ -410,7 +410,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test off_connect off_close interface
      * @tc.desc Function test
      */
-    it('Telephony_TLSSocket_off_connect_off_close_0100', 0, async (done: Function) => {
+    it('Telephony_TLSSocket_off_connect_off_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let tls = socket.constructTLSSocketInstance();
         let callback1 = () => {
@@ -435,7 +435,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test on_error interface
      * @tc.desc Function test
      */
-    it('Telephony_TLSSocket_on_error_0100', 0, async (done: Function) => {
+    it('Telephony_TLSSocket_on_error_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let tls = socket.constructTLSSocketInstance();
         tls.on('error', err => {
@@ -452,7 +452,7 @@ export default function networkManagerSocketTest() {
      * @tc.name Test off_error interface
      * @tc.desc Function test
      */
-    it('Telephony_TLSSocket_off_error_0100', 0, async (done: Function) => {
+    it('Telephony_TLSSocket_off_error_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let tls = socket.constructTLSSocketInstance();
         let callback = (err:BusinessError) => {

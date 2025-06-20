@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -50,20 +50,20 @@ export default function ColumnSetPaddingMargin_SubChange() {
      * @tc.name testColumnParentMarPadSubMarPad
      * @tc.desc Parent component and subcomponent both set paddding and margin.
      */
-    it('testColumnParentMarPadSubMarPad', 0, async () => {
+    it('testColumnParentMarPadSubMarPad',  Level.LEVEL0, async () => {
       console.info('new testColumnParentMarPadSubMarPad START');
       await CommonFunc.sleep(2000);
       let setPaddingMargin01: RectValue = CommonFunc.getComponentRect('setPaddingMargin01');
       let setPaddingMargin02: RectValue = CommonFunc.getComponentRect('setPaddingMargin02');
       let setPaddingMargin03: RectValue = CommonFunc.getComponentRect('setPaddingMargin03');
       let setPaddingMargin: RectValue = CommonFunc.getComponentRect('setPaddingMargin');
-      expect(Math.abs(Math.round(setPaddingMargin01.top - setPaddingMargin.top) - Math.round(vp2px(40))) <= 1).assertTrue()
-      expect(Math.abs(Math.round(setPaddingMargin02.top - setPaddingMargin01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue()
-      expect(Math.abs(Math.round(setPaddingMargin03.top - setPaddingMargin02.bottom) - Math.round(vp2px(30))) <= 1).assertTrue()
-      expect(Math.abs(Math.round(setPaddingMargin03.bottom - setPaddingMargin.bottom) - Math.round(vp2px(20))) <= 1).assertTrue()
-      expect(Math.abs(Math.round(setPaddingMargin01.right - setPaddingMargin01.left) - Math.round(vp2px(300))) <= 1).assertTrue()
-      expect(Math.abs(Math.round(setPaddingMargin02.right - setPaddingMargin02.left) - Math.round(vp2px(300))) <= 1).assertTrue()
-      expect(Math.abs(Math.round(setPaddingMargin03.right - setPaddingMargin03.left) - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((setPaddingMargin01.top - setPaddingMargin.top) - vp2px(40))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((setPaddingMargin02.top - setPaddingMargin01.bottom) - vp2px(50))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((setPaddingMargin03.top - setPaddingMargin02.bottom) - vp2px(30))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((setPaddingMargin03.bottom - setPaddingMargin.bottom) - vp2px(20))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((setPaddingMargin01.right - setPaddingMargin01.left) - vp2px(300))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((setPaddingMargin02.right - setPaddingMargin02.left) - vp2px(300))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((setPaddingMargin03.right - setPaddingMargin03.left) - vp2px(300))) <= 1).assertTrue()
       console.info('new testColumnParentMarPadSubMarPad END');
     });
   })

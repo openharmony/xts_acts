@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function flexShrink_Part() {
      * @tc.name      testflexShrink
      * @tc.desc      colum2、colum3 set flexShrink(1)
      */
-    it('SUB_ACE_flexShrink_Part_TEST_0100', 0, async () => {
+    it('SUB_ACE_flexShrink_Part_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexShrink_Part_TEST_0100] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({name:'addflexShrink', value:1});
       await CommonFunc.sleep(3000);
@@ -89,7 +89,7 @@ export default function flexShrink_Part() {
      * @tc.name      testflexShrink
      * @tc.desc     colum2、colum3 set flexShrink(2)
      */
-    it('SUB_ACE_flexShrink_Part_TEST_0200', 0, async () => {
+    it('SUB_ACE_flexShrink_Part_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexShrink_Part_TEST_0200] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({name:'addflexShrink', value:2});
       await CommonFunc.sleep(3000);

@@ -38,9 +38,9 @@ export default function DeviceStatusUnitTest() {
          * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 2
+         * @tc.level     : Level 0
          */
-        it('SUB_MSDP_DeviceStatus_API_Stationary_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 on start");
             console.log(JSON.stringify(stationary));
             try {
@@ -80,9 +80,9 @@ export default function DeviceStatusUnitTest() {
          * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 2
+         * @tc.level     : Level 0
          */
-        it('SUB_MSDP_DeviceStatus_API_Stationary_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 on start");
             console.log(JSON.stringify(stationary));
             try {
@@ -122,9 +122,9 @@ export default function DeviceStatusUnitTest() {
          * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 2
+         * @tc.level     : Level 0
          */
-        it('SUB_MSDP_DeviceStatus_API_Stationary_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0300 on start");
             console.log(JSON.stringify(stationary));
             try {
@@ -167,9 +167,9 @@ export default function DeviceStatusUnitTest() {
          * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 2
+         * @tc.level     : Level 0
          */
-        it('SUB_MSDP_DeviceStatus_API_Stationary_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 on start");
             console.log(JSON.stringify(stationary));
             try {
@@ -209,9 +209,9 @@ export default function DeviceStatusUnitTest() {
          * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 2
+         * @tc.level     : Level 0
          */
-        it('SUB_MSDP_DeviceStatus_API_Stationary_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0500 on start");
             console.log(JSON.stringify(stationary));
             try {

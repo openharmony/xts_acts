@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { rpc } from '@kit.IPCKit';
 import TestService from "./testService";
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -166,9 +166,9 @@ export default function ActsRpcClientEtsTest() {
      * @tc.desc       : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
      * @tc.size       : MediumTest
      * @tc.type       : Compatibility
-     * @tc.level      : Level 0
+     * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0010", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0010---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -194,7 +194,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0020", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0020---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -222,7 +222,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0030", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0030---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -249,7 +249,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0040", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0040---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -276,9 +276,9 @@ export default function ActsRpcClientEtsTest() {
      * @tc.desc       : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
      * @tc.size       : MediumTest
      * @tc.type       : Compatibility
-     * @tc.level      : Level 0
+     * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0050", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0050---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -306,7 +306,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0060", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0060---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -338,7 +338,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0070", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0070---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -374,7 +374,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0080", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0080", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0080---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -405,7 +405,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0090", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0090---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -432,7 +432,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0100", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0100---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -459,7 +459,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0110", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0110---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -487,7 +487,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0120", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0120", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0120---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -522,7 +522,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0130", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0130", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0130---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -557,7 +557,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0140", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0140", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0140---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -590,7 +590,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0150", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0150", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0150---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -628,7 +628,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0160", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0160", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0160---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -656,7 +656,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0170", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0170", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0170---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -686,7 +686,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0180", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0180", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0180---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -722,7 +722,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0190", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0190", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0190---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -757,7 +757,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0200", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0200---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -789,7 +789,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0210", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0210", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0210---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -827,7 +827,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0220", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0220", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0220---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -857,7 +857,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0230", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0230", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0230---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -890,7 +890,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0240", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0240", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0240---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -921,7 +921,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0250", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0250", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0250---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -951,7 +951,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0260", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0260", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0260---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -981,7 +981,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0270", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0270", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0270---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1008,7 +1008,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0280", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0280", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0280---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1039,7 +1039,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0290", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0290", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0290---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1073,7 +1073,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0300", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0300---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1110,7 +1110,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0310", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0310", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0310---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1147,7 +1147,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0320", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0320", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0320---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1182,7 +1182,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0330", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0330", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0330---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1221,7 +1221,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0340", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0340", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0340---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1258,7 +1258,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0350", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0350", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0350---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1289,7 +1289,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0360", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0360", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0360---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1320,9 +1320,9 @@ export default function ActsRpcClientEtsTest() {
      * @tc.desc       : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
      * @tc.size       : MediumTest
      * @tc.type       : Compatibility
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0370", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0370", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0370---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1383,7 +1383,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0380", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0380", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0380---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1407,7 +1407,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0390", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0390", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0390---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1440,7 +1440,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0400", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0400---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1473,7 +1473,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0410", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0410", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0410---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1500,7 +1500,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0420", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0420", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0420---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1535,7 +1535,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0430", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0430", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0430---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1569,7 +1569,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0440", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0440", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0440---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1606,7 +1606,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0450", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0450", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0450---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1641,7 +1641,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0460", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0460", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0460---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1673,7 +1673,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0470", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0470", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0470---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1706,7 +1706,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0480", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0480", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0480---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1733,7 +1733,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0490", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0490", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0490---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1765,7 +1765,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0500", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0500---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1804,7 +1804,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0510", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0510", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0510---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1835,7 +1835,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0520", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0520", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0520---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1866,7 +1866,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0530", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0530", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0530---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1893,7 +1893,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0540", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0540", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0540---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -1921,7 +1921,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0550", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0550", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0550---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1953,7 +1953,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0560", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0560", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0560---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -1992,7 +1992,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0570", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0570", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0570---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2023,7 +2023,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0580", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0580", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0580---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2054,7 +2054,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0590", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0590", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0590---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2081,7 +2081,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0600", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0600---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2110,7 +2110,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0610", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0610", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0610---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2142,7 +2142,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0620", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0620", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0620---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2181,7 +2181,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0630", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0630", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0630---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2212,7 +2212,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0640", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0640", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0640---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2243,7 +2243,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0650", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0650", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0650---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2270,7 +2270,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0660", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0660", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0660---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2298,7 +2298,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0670", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0670", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0670---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2330,7 +2330,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0680", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0680", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0680---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2362,7 +2362,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0690", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0690", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0690---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2394,7 +2394,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0700", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0700---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2427,7 +2427,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0710", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0710", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0710---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2454,7 +2454,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0720", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0720", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0720---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2482,7 +2482,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0730", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0730", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0730---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2514,7 +2514,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0740", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0740", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0740---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2546,7 +2546,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0750", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0750", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0750---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2578,7 +2578,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0760", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0760", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0760---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2610,7 +2610,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0770", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0770", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0770---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2642,7 +2642,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0780", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0780", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0780---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2669,7 +2669,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0790", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0790", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0790---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2697,7 +2697,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0800", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0800---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2729,7 +2729,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0810", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0810", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0810---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2761,7 +2761,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0820", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0820", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0820---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2793,7 +2793,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0830", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0830", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0830---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2820,7 +2820,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0840", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0840", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0840---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2849,7 +2849,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0850", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0850", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0850---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2882,7 +2882,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0860", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0860", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0860---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -2914,7 +2914,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0870", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0870", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0870---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2941,7 +2941,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0880", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0880", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0880---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -2970,7 +2970,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0890", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0890", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0890---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3003,7 +3003,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0900", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0900---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3036,7 +3036,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0910", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0910", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0910---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3069,7 +3069,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0920", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0920", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0920---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3101,7 +3101,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0930", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0930", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0930---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3128,7 +3128,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0940", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0940", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0940---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3157,7 +3157,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0950", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0950", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0950---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3192,7 +3192,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0960", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0960", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0960---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3222,7 +3222,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0970", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0970", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0970---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3249,7 +3249,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0980", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0980", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0980---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3278,7 +3278,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0990", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0990", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0990---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3307,7 +3307,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1000", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1000---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3335,7 +3335,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1010", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1010---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3371,7 +3371,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1020", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1020---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3406,7 +3406,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1030", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1030---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3434,7 +3434,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1040", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1040---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3464,7 +3464,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1050", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1050---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3499,7 +3499,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1060", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1060---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3532,7 +3532,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1070", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1070---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3566,7 +3566,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1080", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1080", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1080---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3604,7 +3604,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1090", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1090---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3641,7 +3641,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1100", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1100---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3673,7 +3673,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1110", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1110---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3701,7 +3701,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1120", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1120", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1120---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3731,7 +3731,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1130", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1130", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1130---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3764,7 +3764,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1140", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1140", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1140---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3802,7 +3802,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1150", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1150", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1150---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3834,7 +3834,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1160", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1160", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1160---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3867,7 +3867,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1170", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1170", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1170---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3899,7 +3899,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1180", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1180", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1180---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3927,7 +3927,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1190", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1190", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1190---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -3957,7 +3957,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1200", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1200---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -3990,7 +3990,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1210", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1210", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1210---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4028,7 +4028,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1220", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1220", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1220---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4060,7 +4060,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1230", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1230", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1230---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4097,7 +4097,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1240", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1240", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1240---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4128,7 +4128,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1250", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1250", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1250---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4156,7 +4156,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1260", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1260", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1260---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4185,7 +4185,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1270", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1270", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1270---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4220,7 +4220,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1280", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1280", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1280---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4258,7 +4258,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1290", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1290", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1290---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4293,7 +4293,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1300", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1300---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4324,7 +4324,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1310", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1310", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1310---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4352,7 +4352,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1320", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1320", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1320---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4382,7 +4382,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1330", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1330", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1330---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4416,7 +4416,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1340", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1340", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1340---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4451,7 +4451,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1350", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1350", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1350---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4489,7 +4489,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1360", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1360", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1300---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4520,7 +4520,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1370", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1370", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1370---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4548,7 +4548,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1380", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1380", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1380---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4577,7 +4577,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1390", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1390", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1390---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4610,7 +4610,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1400", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1400---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4648,7 +4648,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1410", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1410", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1410---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4682,7 +4682,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1420", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1420", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1420---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4713,7 +4713,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1430", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1430", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1430---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4741,7 +4741,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1440", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1440", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1440---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4771,7 +4771,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1450", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1450", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1450---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4804,7 +4804,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1460", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1460", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1460---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4847,7 +4847,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1470", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1470", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1470---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4882,7 +4882,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1480", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1480", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1480---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4910,7 +4910,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1490", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1490", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1490---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -4940,7 +4940,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1500", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1500---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -4973,7 +4973,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1510", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1510", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1510---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5011,7 +5011,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1520", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1520", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1520---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5042,7 +5042,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1530", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1530", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1530---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5070,7 +5070,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1540", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1540", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1540---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5100,7 +5100,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1550", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1550", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1550---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5133,7 +5133,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1560", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1560", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1560---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5172,7 +5172,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1570", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1570", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1570---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5203,7 +5203,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1580", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1580", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1580---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5231,7 +5231,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1590", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1590", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1590---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5261,7 +5261,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1600", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1600---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5295,7 +5295,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1610", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1610", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1610---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5328,7 +5328,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1620", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1620", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1620---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5355,7 +5355,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1630", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1630", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1630---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5383,7 +5383,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1640", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1640", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1640---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5423,7 +5423,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1650", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1650", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1650---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5462,7 +5462,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1660", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1660", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1660---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5491,7 +5491,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1670", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1670", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1670---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5520,9 +5520,9 @@ export default function ActsRpcClientEtsTest() {
      * @tc.desc       : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
      * @tc.size       : MediumTest
      * @tc.type       : Compatibility
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1680", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1680", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1680---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5574,7 +5574,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1700", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1700---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5632,7 +5632,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1710", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1710", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1710---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5707,7 +5707,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1720", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1720", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1720---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5745,7 +5745,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1730", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1730", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1730---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5783,7 +5783,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1740", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1740", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1740---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5818,7 +5818,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1750", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1750", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1750---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5846,7 +5846,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1760", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1760", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1760---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -5875,7 +5875,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1770", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1770", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1770---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -5904,7 +5904,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1780", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1780", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1780---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -5935,7 +5935,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1790", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1790", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1790---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -5964,7 +5964,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1800", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1800---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -5995,7 +5995,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1810", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1810", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1810---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -6026,7 +6026,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1820", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1820", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1820---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -6059,7 +6059,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1830", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1830", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1830---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try {
@@ -6086,7 +6086,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1840", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1840", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1840---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -6123,7 +6123,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1850", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1850", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1850---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -6153,7 +6153,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1860", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1860", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1860---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
@@ -6186,7 +6186,7 @@ export default function ActsRpcClientEtsTest() {
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1870", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1870", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1870---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -6218,11 +6218,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1880
     * @tc.name    : test Writes the specified anonymous shared object to this MessageSequence
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1880", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1880", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1880--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6244,11 +6244,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1890
     * @tc.name    : test Test the function of serializing the readAshmem interface in MessageSequence mode
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1890", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1890", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1890--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6272,11 +6272,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1900
     * @tc.name    : test To test the function of handling the exception of the writeAshmem interface in MessageSequence mode
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1900", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1900--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6299,11 +6299,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1910
     * @tc.name    : test WriteAshmem is write data to message sequence failed Error verification
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1910", 0,async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1910", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1910---------------------------");
       let data = rpc.MessageSequence.create();
       try{
@@ -6327,11 +6327,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1920
     * @tc.name    : test readAshmem is read data from message sequence failed Error verification
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1920", 0,async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1920", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1920---------------------------");
       let data = rpc.MessageSequence.create();
       try{
@@ -6357,11 +6357,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.name    : test Call the getRawDataCapacity interface to get the maximum amount of raw data that a MessageSequence
     *               can hold
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1930", 0, async ()=> {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1930", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1930---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -6392,11 +6392,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1940
     * @tc.name    : test writeRawDataBuffer input parameter is a normal data less than 32KB
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1940", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1940", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1940--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6420,11 +6420,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1950
     * @tc.name    : test writeRawDataBuffer input parameter is a normal data greater than 32KB and less than 128MB
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1950", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1950", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1950--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6448,11 +6448,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1960
     * @tc.name    : test writeRawDataBuffer input parameter is a normal size = 0
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1960", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1960", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1960--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6479,11 +6479,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1970
     * @tc.name    : test writeRawDataBuffer input parameter is a normal size less than 0
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1970", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1970", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1970--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6510,11 +6510,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1980
     * @tc.name    : test writeRawDataBuffer input parameter is a normal data greater than 128MB
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1980", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1980", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1980--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6541,11 +6541,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_1990
     * @tc.name    : test readRawDataBuffer input parameter is a normal data less than 32KB
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1990", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1990", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1990--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6575,11 +6575,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2000
     * @tc.name    : test readRawDataBuffer input parameter is a normal data less than 128MB
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2000", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2000--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6608,11 +6608,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2010
     * @tc.name    : test readRawDataBuffer input parameter is a normal data greater than 128MB
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2010", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2010--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6640,11 +6640,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2020
     * @tc.name    : test readRawDataBuffer input parameter is a normal size = 0
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2020", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2020--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6671,11 +6671,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2030
     * @tc.name    : test readRawDataBuffer input parameter is a normal size less than 0
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2030", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2030--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6702,11 +6702,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2040
     * @tc.name    : test readRawDataBuffer input parameter is a normal size not match write
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2040", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2040--------------------");
       let data: rpc.MessageSequence = new rpc.MessageSequence();
       try{
@@ -6736,11 +6736,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2050
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer int8array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2050", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2050--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6769,11 +6769,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2060
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer uint8array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2060", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2060--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6801,11 +6801,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2070
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer uint8array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2070", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2070--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6833,11 +6833,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2080
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer uint16array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2080", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2080", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2080--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6865,11 +6865,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2090
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer int32array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2090", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2090--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6897,11 +6897,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2100
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer uint32array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2100", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2100--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6929,11 +6929,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2110
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer float32array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2110", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2110--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6961,11 +6961,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2120
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer float64array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2120", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2120", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2120--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -6993,11 +6993,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2130
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer bigint64array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2130", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2130", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2130--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -7026,11 +7026,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2140
     * @tc.name    : test Test MessageSequence write and read ArrayBuffer bigUint64array
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2140", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2140", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2140--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -7059,11 +7059,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2150
     * @tc.name    : test Test MessageSequence writeArrayBuffer Beyond the maximum
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2150", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2150", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2150--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -7090,11 +7090,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2160
     * @tc.name    : test Test MessageSequence writeArrayBuffer Beyond the maximum
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2160", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2160", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2160--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -7121,11 +7121,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2170
     * @tc.name    : test Test MessageSequence readArrayBuffer Beyond the maximum
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2170", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2170", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2170--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -7153,11 +7153,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2180
     * @tc.name    : test Test MessageSequence readArrayBuffer Less than the minimum
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2180", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2180", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2180--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -7185,11 +7185,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2190
     * @tc.name    : test Test MessageSequence writeArrayBuffer after reclaim
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2190", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2190", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2190--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -7216,11 +7216,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2200
     * @tc.name    : test Test MessageSequence readArrayBuffer after reclaim
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2200", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2200--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       try{
@@ -7253,11 +7253,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2210
     * @tc.name    : test Test MessageSequence readArrayBuffer after reclaim
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2210", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2210", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2210--------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -7301,11 +7301,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2220
     * @tc.name    : test Test MessageSequence delivery file descriptor object
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2220", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2220", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2220--------------------");
       try{
         let testab = new TestProxy(gIRemoteObject).asObject();
@@ -7321,11 +7321,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageSequence_2230
     * @tc.name    : test Test that the asObject interface is called by a RemoteObject and returns itself
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 0
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2230", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_2230", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("--------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_2230--------------------");
       try{
         let testAbilityStub = new TestRemoteObject("testObject");
@@ -7341,11 +7341,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010
     * @tc.name    : test getLocalInterface searches for objects based on descriptors
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010---------------------------");
       try {
         let res = gIRemoteObject.getLocalInterface("rpcTestAbility");
@@ -7364,11 +7364,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0020
     * @tc.name    : test getLocalInterface 1900005 searches for objects based on descriptors
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0020", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0020---------------------------");
       try {
         gIRemoteObject.getLocalInterface(null);
@@ -7385,11 +7385,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0030
     * @tc.name    : test Call isobjectdead to check whether the object is dead
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0030", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0030---------------------------");
       try {
         let recipient = new MyregisterDeathRecipient();
@@ -7415,11 +7415,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040
     * @tc.name    : test Call registerDeathRecipient to register the death notification
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040---------------------------");
       try {
         let recipient = new MyregisterDeathRecipient();
@@ -7441,11 +7441,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050
     * @tc.name    : test registerDeathRecipient Validates the interface flags input parameter boundary value
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050---------------------------");
       try {
         let recipient = new MyregisterDeathRecipient();
@@ -7464,11 +7464,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060
     * @tc.name    : test registerDeathRecipient Validates the interface flags input parameter boundary value
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060---------------------------");
       try {
         let recipient = new MyregisterDeathRecipient();
@@ -7487,11 +7487,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070
     * @tc.name    : test registerDeathRecipient Validates the interface flags input parameter boundary value
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070---------------------------");
       try {
         let recipient = new MyregisterDeathRecipient();
@@ -7510,11 +7510,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080
     * @tc.name    : test registerDeathRecipient Validates the interface flags input parameter boundary value
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080---------------------------");
       try {
         let recipient = new MyregisterDeathRecipient();
@@ -7533,11 +7533,11 @@ export default function ActsRpcClientEtsTest() {
     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090
     * @tc.name    : test getDescriptor to get the object interface description
     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
-    * @tc.level   : 3
+    * @tc.level   : Level 3
     * @tc.type    : Compatibility
     * @tc.size    : MediumTest
     */
-    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090", 0, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090---------------------------");
       try {
         let result = gIRemoteObject.getDescriptor();
@@ -7548,7 +7548,1556 @@ export default function ActsRpcClientEtsTest() {
       }
       console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090---------------------------");
     });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0010
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 1
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0010---------------------------");
+      let option : rpc.MessageOption = new rpc.MessageOption();
+      let tftime : number = rpc.MessageOption.TF_WAIT_TIME;
+      try {
+        let time = option.getWaitTime();
+        expect(time).assertEqual(tftime);
+        option.setWaitTime(16);
+        let time2 = option.getWaitTime();
+        expect(time2).assertEqual(16);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0010---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0020
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0020---------------------------");
+      let option : rpc.MessageOption = new rpc.MessageOption();
+      let tftime : number = rpc.MessageOption.TF_WAIT_TIME;
+      try {
+        let time = option.getWaitTime();
+        expect(time).assertEqual(tftime);
+        option.setWaitTime(0);
+        let time2 = option.getWaitTime();
+        expect(time2).assertEqual(tftime);
+        option.setWaitTime(60);
+        let time3 = option.getWaitTime();
+        expect(time3).assertEqual(60);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0020---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0030
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0030---------------------------");
+      let option : rpc.MessageOption = new rpc.MessageOption();
+      let tftime : number = rpc.MessageOption.TF_WAIT_TIME;
+      try {
+        let option = new rpc.MessageOption();
+        let time = option.getWaitTime();
+        expect(time).assertEqual(tftime);
+        option.setWaitTime(-1);
+        let time2 = option.getWaitTime();
+        expect(time2).assertEqual(tftime);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0030---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0040
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0040---------------------------");
+      let option : rpc.MessageOption = new rpc.MessageOption();
+      let tftime : number = rpc.MessageOption.TF_WAIT_TIME;
+      try {
+        let time = option.getWaitTime();
+        expect(time).assertEqual(tftime);
+        option.setWaitTime(61);
+        let time2 = option.getWaitTime();
+        expect(time2).assertEqual(61);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0040---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0050
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0050---------------------------");
+      let option : rpc.MessageOption = new rpc.MessageOption();
+      let tfsync : number = rpc.MessageOption.TF_SYNC;
+      let tfasync : number = rpc.MessageOption.TF_ASYNC;
+      try {
+        let flog = option.getFlags();
+        expect(flog).assertEqual(tfsync);
+        option.setFlags(1);
+        let flog2 = option.getFlags();
+        expect(flog2).assertEqual(tfasync);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0050---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0060
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 1
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0060---------------------------");
+      let option : rpc.MessageOption = new rpc.MessageOption();
+      let tfsync : number = rpc.MessageOption.TF_SYNC;
+      let tfasync : number = rpc.MessageOption.TF_ASYNC;
+      try {
+        let flog = option.getFlags();
+        expect(flog).assertEqual(tfsync);
+        option.setFlags(1);
+        let flog2 = option.getFlags();
+        expect(flog2).assertEqual(tfasync);
+        option.setFlags(0);
+        let flog3 = option.getFlags();
+        expect(flog3).assertEqual(tfasync);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0060---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0070
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0070---------------------------");
+      let option : rpc.MessageOption = new rpc.MessageOption();
+      let tfsync : number = rpc.MessageOption.TF_SYNC;
+      try {
+        let flog = option.getFlags();
+        expect(flog).assertEqual(tfsync);
+        option.setFlags(-1);
+        let flog2 = option.getFlags();
+        expect(flog2).assertEqual(-1);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0070---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0080
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0080", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0080---------------------------");
+      let option : rpc.MessageOption = new rpc.MessageOption();
+      let tfsync : number = rpc.MessageOption.TF_SYNC;
+      try {
+        let flog = option.getFlags();
+        expect(flog).assertEqual(tfsync);
+        option.setFlags(3);
+        let flog2 = option.getFlags();
+        expect(flog2).assertEqual(3);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0080---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0090
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0090---------------------------");
+      try {
+        expect(rpc.MessageOption.TF_SYNC).assertEqual(0);
+        expect(rpc.MessageOption.TF_ASYNC).assertEqual(1);
+        expect(rpc.MessageOption.TF_WAIT_TIME).assertEqual(8);
+        expect(rpc.MessageOption.TF_ACCEPT_FDS).assertEqual(0x10);
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0090---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0100
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 1
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0100---------------------------");
+      let data: rpc.MessageSequence = rpc.MessageSequence.create();
+      let reply: rpc.MessageSequence = rpc.MessageSequence.create();
+      let option: rpc.MessageOption = new rpc.MessageOption();
+      try {
+        option.setWaitTime(20);
+        option.setFlags(0);
+        let token = "option";
+        data.writeString(token);
+        expect(option.getFlags()).assertEqual(0);
+        expect(option.getWaitTime()).assertEqual(20);
+        expect(gIRemoteObject != undefined).assertTrue();
+        await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
+          let replyReadResult = result.reply.readString();
+          expect(replyReadResult).assertEqual(token);
+          expect(option.getFlags()).assertEqual(0);
+          expect(option.getWaitTime()).assertEqual(20);
+        });
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      } finally {
+        data.reclaim();
+        reply.reclaim();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0100---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0110
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0110---------------------------");
+      let data: rpc.MessageSequence = rpc.MessageSequence.create();
+      let reply: rpc.MessageSequence = rpc.MessageSequence.create();
+      let option: rpc.MessageOption = new rpc.MessageOption();
+      try {
+        option.setFlags(1);
+        let token = "option";
+        data.writeString(token);
+        expect(option.getFlags()).assertEqual(1);
+        expect(gIRemoteObject != undefined).assertTrue();
+        await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
+          let replyReadResult = result.reply.readString();
+          expect(replyReadResult).assertEqual("");
+          expect(option.getFlags()).assertEqual(1);
+        });
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      } finally {
+        data.reclaim();
+        reply.reclaim();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0110---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0120
+    * @tc.name    : test Basic method of testing messageoption
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0120", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0120---------------------------");
+      let data: rpc.MessageSequence = rpc.MessageSequence.create();
+      let reply: rpc.MessageSequence = rpc.MessageSequence.create();
+      let option: rpc.MessageOption = new rpc.MessageOption();
+      try {
+        option.setFlags(3);
+        let token = "option";
+        data.writeString(token);
+        expect(option.getFlags()).assertEqual(3);
+        expect(gIRemoteObject != undefined).assertTrue();
+        await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
+          let replyReadResult = result.reply.readString();
+          expect(replyReadResult).assertEqual("");
+          expect(option.getFlags()).assertEqual(3);
+        });
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      } finally {
+        data.reclaim();
+        reply.reclaim();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0120---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0130
+    * @tc.name    : test MessageOption sendMessageRequest test
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0130", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0130---------------------------");
+      let data: rpc.MessageSequence = rpc.MessageSequence.create();
+      let reply: rpc.MessageSequence = rpc.MessageSequence.create();
+      let option: rpc.MessageOption = new rpc.MessageOption();
+      try {
+        option.setFlags(1);
+        let token = "option";
+        data.writeString(token);
+        expect(option.getFlags()).assertEqual(1);
+        expect(gIRemoteObject != undefined).assertTrue();
+        await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
+          let replyReadResult = result.reply.readString();
+          expect(replyReadResult).assertEqual("");
+          expect(option.getFlags()).assertEqual(1);
+        });
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      } finally {
+        data.reclaim();
+        reply.reclaim();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0130---------------------------");
+    })
+
+    /*
+     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0140
+     * @tc.name    : test MessageOption sendMessageRequest test
+     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+     * @tc.level   : Level 1
+     * @tc.type    : Compatibility
+     * @tc.size    : MediumTest
+     */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0140", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0140---------------------------");
+      let data: rpc.MessageSequence = rpc.MessageSequence.create();
+      let reply: rpc.MessageSequence = rpc.MessageSequence.create();
+      let option: rpc.MessageOption = new rpc.MessageOption();
+      try {
+        let token = "option";
+        data.writeString(token);
+        let isAsyncData0 = option.isAsync();
+        expect(isAsyncData0).assertEqual(false);
+        expect(gIRemoteObject != undefined).assertTrue();
+        await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
+          expect(result.errCode).assertEqual(0);
+          let isAsyncData = option.isAsync();
+          expect(isAsyncData).assertEqual(false);
+          let replyReadResult = result.reply.readString();
+          expect(replyReadResult).assertEqual(token);
+        });
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      } finally {
+        data.reclaim();
+        reply.reclaim();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0140---------------------------");
+    })
+
+    /*
+     * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0150
+     * @tc.name    : test MessageOption setAsync is true test
+     * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+     * @tc.level   : Level 1
+     * @tc.type    : Compatibility
+     * @tc.size    : MediumTest
+     */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0150", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0150---------------------------");
+      let data: rpc.MessageSequence = rpc.MessageSequence.create();
+      let reply: rpc.MessageSequence = rpc.MessageSequence.create();
+      let option: rpc.MessageOption = new rpc.MessageOption();
+      try {
+        option.setAsync(true);
+        let token = "option";
+        data.writeString(token);
+        expect(gIRemoteObject != undefined).assertTrue();
+        await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
+          expect(result.errCode).assertEqual(0);
+          let isAsyncData = option.isAsync();
+          expect(isAsyncData).assertTrue();
+          let replyReadResult = result.reply.readString();
+          expect(replyReadResult).assertEqual("");
+        });
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      } finally {
+        data.reclaim();
+        reply.reclaim();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0150---------------------------");
+    })
+
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_MessageOption_0160
+    * @tc.name    : test setAsync is false sendMessageRequest test
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_MessageOption_0160", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageOption_0160---------------------------");
+      let data: rpc.MessageSequence = rpc.MessageSequence.create();
+      let reply: rpc.MessageSequence = rpc.MessageSequence.create();
+      let option: rpc.MessageOption = new rpc.MessageOption();
+      try {
+        option.setAsync(false);
+        let token = "option";
+        data.writeString(token);
+        expect(gIRemoteObject != undefined).assertTrue();
+        await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
+          expect(result.errCode).assertEqual(0);
+          let isAsyncData = option.isAsync();
+          expect(isAsyncData).assertEqual(false);
+          let replyReadResult = result.reply.readString();
+          expect(replyReadResult).assertEqual(token);
+        });
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_MessageOption error is:" + error);
+        expect(error == null).assertTrue();
+      } finally {
+        data.reclaim();
+        reply.reclaim();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_MessageOption_0160---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0010
+    * @tc.name    : test Call the getashmemsize interface to get the size of the shared memory object
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0010---------------------------");
+      try {
+        let mapSize = 2 * G - 1;
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", mapSize);
+        let size = ashmem.getAshmemSize();
+        expect(size).assertEqual(mapSize);
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0010---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0020
+    * @tc.name    : test Call the getashmemsize interface to get the size of the shared memory object
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0020---------------------------");
+      try {
+        let mapSize = 2 * G;
+        let ashmem = rpc.Ashmem.create("JsAshmemTest ", mapSize);
+        ashmem.getAshmemSize();
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0020---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0030
+    * @tc.name    : test Exception parameter validation of the created anonymous shared memory object
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0030---------------------------");
+        try {
+            let mapSize = K;
+            let ashmem = rpc.Ashmem.create("JsAshmemTest", mapSize);
+            let ashmem2 = rpc.Ashmem.create(ashmem);
+            let size = ashmem2.getAshmemSize();
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0030: size " + size);
+            expect(size).assertEqual(mapSize);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Ashmem error is:" + error);
+            expect(error == null).assertTrue();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0030---------------------------");
+    })    
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0040
+    * @tc.name    : test mapTypedAshmem interface creates shared file mappings
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0040---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", 4 * K);
+        let result = ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0040: run mapTypedAshmem is success" + result);
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0040---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0050
+    * @tc.name    : test mapTypedAshmem exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0050---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", (2 * G - 1))
+        ashmem.mapTypedAshmem(999);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0050: run mapTypedAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error.code == 401).assertTrue();
+        expect(error.message != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0050---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0060
+    * @tc.name    : test mapTypedAshmem exception errorcode validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0060---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", (2 * G))
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0060: ashmem " + ashmem);
+        let result = ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0060: run mapTypedAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error.message != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0060---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0070
+    * @tc.name    : test mapReadWriteAshmem interface creates a shared file map with the protection level of read-write
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0070---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", K);
+        ashmem.mapReadWriteAshmem();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0070: run mapReadWriteAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0070---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0080
+    * @tc.name    : test mapReadWriteAshmem exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0080", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0080---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", 4096);
+        ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0080: run mapTypedAshmem is success");
+        ashmem.unmapAshmem();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0080: run unmapAshmem success");
+        ashmem.mapReadWriteAshmem();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0080: run mapReadWriteAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0080---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0090
+    * @tc.name    : test Mapreadonlyashmem interface creates a shared file map with the protection level of read-write
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0090---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", 4096);
+        ashmem.mapReadonlyAshmem();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0090: run mapReadonlyAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0090---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0100
+    * @tc.name    : test mapReadWriteAshmem exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0100---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", K);
+        ashmem.setProtectionType(rpc.Ashmem.PROT_WRITE);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0100: run setProtectionType is success");
+        ashmem.setProtectionType(rpc.Ashmem.PROT_READ);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0100: run setProtectionType is success");
+        ashmem.mapReadWriteAshmem();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0100: run mapReadWriteAshmem success");
+        ashmem.setProtectionType(rpc.Ashmem.PROT_NONE);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0100: run setProtectionType is success");
+        ashmem.setProtectionType(rpc.Ashmem.PROT_READ);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0100: run setProtectionType is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0100---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0110
+    * @tc.name    : test setProtectionType exception input parameter verification
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0110---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", K);
+        ashmem.setProtectionType(3);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0110: run setProtectionType is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0110---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0120
+    * @tc.name    : test Create a non shared memory object and call setProtectionType to write the messageparcel object
+    *               object into the messageparcel object
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0120", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0120---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", K);
+        ashmem.setProtectionType(rpc.Ashmem.PROT_EXEC);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0120: run setProtectioniswrite is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0120---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0130
+    * @tc.name    : test Mapreadonlyashmem exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0130", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0130---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", K);
+        ashmem.mapTypedAshmem(rpc.Ashmem.PROT_WRITE);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0130: run mapTypedAshmem is success");
+        ashmem.unmapAshmem();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0130: run unmapAshmem success");
+        ashmem.closeAshmem();
+        ashmem.mapReadonlyAshmem();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0130: run mapReadonlyAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0130---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0140
+    * @tc.name    : test create is errorcode 401 exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0140", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0140---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("ashmem", (2 * G + 1));
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0140: ashmem " + ashmem);
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
+        expect(error.code == errCode).assertTrue();
+        expect(error.message != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0140---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0150
+    * @tc.name    : test mapReadWriteAshmem exception validation 1900001
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0150", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0150---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("ashmem", (4 * G - 1));
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0150: ashmem " + ashmem);
+        ashmem.mapReadWriteAshmem();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0150: run mapReadWriteAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        let errCode = `${rpc.ErrorCode.OS_MMAP_ERROR}`;
+        expect(error.code != errCode).assertTrue();
+        expect(error.message != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0150---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0160
+    * @tc.name    : test create 401  exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0160", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0160---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("ashmem", 0);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0160: ashmem " + ashmem);
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
+        expect(error.code == errCode).assertTrue();
+        expect(error.message != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0160---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0170
+    * @tc.name    : test setProtectionType exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0170", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0170---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("ashmem", 1024 * 1024);
+        ashmem.setProtectionType(0);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0170: run setProtectionType is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        expect(error == null).assertTrue();
+        expect(error).assertEqual(null);
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0170---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0180
+    * @tc.name    : test setProtectionType is 1900002 exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0180", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0180---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("ashmem", 1024 * 1024);
+        ashmem.setProtectionType(null);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0180: run setProtectionType is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        let errCode = `${rpc.ErrorCode.OS_IOCTL_ERROR}`;
+        expect(error.code != errCode).assertTrue();
+        expect(error.message != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0180---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0190
+    * @tc.name    : test Call the getashmemsize interface to get the size of the shared memory object
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3 
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0190", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0190---------------------------");
+      try {
+        let mapSize = 2 * G;
+        let ashmem = rpc.Ashmem.create("JsAshmemTest ", mapSize);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0190: run  create success " + ashmem);
+        let size = ashmem.getAshmemSize();
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0190: run getAshmemSize success, size is " + size);
+        expect(size).assertEqual(mapSize);
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
+        expect(error.code == errCode).assertTrue();
+        expect(error != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0190---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0200
+    * @tc.name    : test mapTypedAshmem errorcode 401 exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0200---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", (2 * G - 1));
+        let result = ashmem.mapTypedAshmem(999);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0200: run mapAshmemis is " + result);
+        expect(result).assertEqual(false);
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
+        expect(error.code == errCode).assertTrue();
+        expect(error != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0200---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0210
+    * @tc.name    : test mapTypedAshmem exception validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3 
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0210", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0210---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", (2 * G - 1));
+        let result = ashmem.mapTypedAshmem(999);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0210: run mapTypedAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        let errCode = `${rpc.ErrorCode.OS_MMAP_ERROR}`;
+        expect(error.code != errCode).assertTrue();
+        expect(error != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0210---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0220
+    * @tc.name    : test mapTypedAshmem exception errorcode validation
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0220", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0220---------------------------");
+      try {
+        let ashmem = rpc.Ashmem.create("JsAshmemTest", (2 * G - 1));
+        let result = ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0220: run mapTypedAshmem is success");
+        ashmem.unmapAshmem();
+        ashmem.closeAshmem();
+      } catch (error) {
+        console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem error is:" + error);
+        let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
+        expect(error.code != errCode).assertTrue();
+        expect(error != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0220---------------------------");
+    })
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0230
+    * @tc.name    : test writeDataToAshmem input parameter is a normal data less than 32KB 
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0230", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0230---------------------------");
+        let TEST_LEN_32 = 32;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_32);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0230 error is:" + error);
+            expect(error == null).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0230---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0240
+    * @tc.name    : test writeDataToAshmem input parameter is a normal data greater than 32KB 
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0240", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0240---------------------------");
+        let TEST_LEN_M = 1024 * 1024;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_M);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_M);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0240 error is:" + error);
+            expect(error == null).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0240---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0250
+    * @tc.name    : test writeDataToAshmem input parameter is a normal data size = 0
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0250", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0250---------------------------");
+        let TEST_LEN_128M = 128 * 1024 * 1024;
+        let TEST_LEN_M = 1024 * 1024;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_M);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashmem.writeDataToAshmem(buffer, 0, 0);
+            data.writeAshmem(ashmem);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0250 error is:" + error);
+            expect(error.code == 1900003).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0250---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0260
+    * @tc.name    : test writeDataToAshmem input parameter is a normal  size less than 0
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0260", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0260---------------------------");
+        let TEST_LEN_128M = 128 * 1024 * 1024;
+        let TEST_LEN_M = 1024 * 1024;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_M);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashmem.writeDataToAshmem(buffer, -1, 0);
+            data.writeAshmem(ashmem);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0260 error is:" + error);
+            expect(error.code == 1900003).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0260---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0270
+    * @tc.name    : test writeDataToAshmem input parameter is a normal  offset less than 0
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0270", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0270---------------------------");
+        let TEST_LEN_128M = 128 * 1024 * 1024;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_128M);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashmem.writeDataToAshmem(buffer, size, -1);
+            data.writeAshmem(ashmem);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0270 error is:" + error);
+            expect(error.code == 1900003).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0270---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0280
+    * @tc.name    : test writeDataToAshmem input parameter is a normal  lenth and offset greater than create
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0280", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0280---------------------------");
+        let TEST_LEN_32 = 32;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_32);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashmem.writeDataToAshmem(buffer, TEST_LEN_32, 1);
+            data.writeAshmem(ashmem);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0280 error is:" + error);
+            expect(error.code == 1900003).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0280---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0290
+    * @tc.name    : test writeDataToAshmem input parameter is a normal lenth is normal offset greater than create
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0290", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0290---------------------------");
+        let TEST_LEN_32 = 32;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_32);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashmem.writeDataToAshmem(buffer, TEST_LEN_32 + 1, 0);
+            data.writeAshmem(ashmem);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0290 error is:" + error);
+            expect(error.code == 1900003).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0290---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0300
+    * @tc.name    : test writeDataToAshmem input parameter is a normal lenth greater than create offset is normal
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0300---------------------------");
+        let TEST_LEN_32 = 32;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_32);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashmem.writeDataToAshmem(buffer, size, TEST_LEN_32 + 1);
+            data.writeAshmem(ashmem);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0300 error is:" + error);
+            expect(error.code == 1900003).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0300---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0310
+    * @tc.name    : test readDataFromAshmem input parameter is a normal lenth greater than create offset is normal
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0310", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0310---------------------------");
+        let TEST_LEN_32 = 32;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', 1024 * 1024);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_32);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+            let readBuffuer = ashmem.readDataFromAshmem(size, 0);
+            let readInt32Arr = new Int32Array(readBuffuer);
+            expect(readInt32Arr.length == ashnenInt32Arr.length).assertTrue();
+            for (let i = 0; i < readInt32Arr.length; i++) {
+                expect(readInt32Arr[i]).assertEqual(ashnenInt32Arr[i]);
+            }
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0310 error is:" + error);
+            expect(error== null).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0310---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0320
+    * @tc.name    : test readDataFromAshmem input parameter is a normal lenth is normal create offset is normal
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0320", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0320---------------------------");
+        let TEST_LEN_64K = 64 * 1024;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_64K);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+            let readBuffuer = ashmem.readDataFromAshmem(size, 0);
+            let readInt32Arr = new Int32Array(readBuffuer);
+            expect(readInt32Arr.length == ashnenInt32Arr.length).assertTrue();
+            for (let i = 0; i < readInt32Arr.length; i++) {
+                expect(readInt32Arr[i]).assertEqual(ashnenInt32Arr[i]);
+            }
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0320 error is:" + error);
+            expect(error== null).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0320---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0330
+    * @tc.name    : test readDataFromAshmem input parameter is a normal lenth is 0 create offset is normal
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0330", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0330---------------------------");
+        let TEST_LEN_64K = 64 * 1024;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_64K);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+            let readBuffuer = ashmem.readDataFromAshmem(0, 0);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0330 error is:" + error);
+            expect(error.code == 1900004).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0330---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0340
+    * @tc.name    : test readDataFromAshmem input parameter is a normal lenth less than 0 create offset is normal
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0340", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0340---------------------------");
+        let TEST_LEN_64K = 64 * 1024;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_64K);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+            let readBuffuer = ashmem.readDataFromAshmem(-1, 0);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0340 error is:" + error);
+            expect(error.code == 1900004).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0340---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0350
+    * @tc.name    : test readDataFromAshmem input parameter is a normal lenth is normal offset less than 0
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0350", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0350---------------------------");
+        let TEST_LEN_64K = 64 * 1024;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_64K);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+            let readBuffuer = ashmem.readDataFromAshmem(size, -1);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0350 error is:" + error);
+            expect(error.code == 1900004).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0350---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0360
+    * @tc.name    : test readDataFromAshmem input parameter is a normal lenth is normal offset greater than create
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0360", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0360---------------------------");
+        let TEST_LEN_32 = 32;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_32);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+            let readBuffuer = ashmem.readDataFromAshmem(size, TEST_LEN_32 + 1);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0360 error is:" + error);
+            expect(error.code == 1900004).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0360---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0370
+    * @tc.name    : test readDataFromAshmem input parameter is a normal lenth greater than create offset is normal
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0370", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0370---------------------------");
+        let TEST_LEN_32 = 32;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_32);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+            let readBuffuer = ashmem.readDataFromAshmem(TEST_LEN_32 + 1, 0)
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0370 error is:" + error);
+            expect(error.code == 1900004).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0370---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_Ashmem_0380
+    * @tc.name    : test readDataFromAshmem input parameter is a normal lenth and offset greater than create
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : Level 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_Ashmem_0380", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+        console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_Ashmem_0380---------------------------");
+        let TEST_LEN_32 = 32;
+        let data = new rpc.MessageSequence();
+        let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
+        try {
+            ashmem.mapReadWriteAshmem();
+            let buffer = new ArrayBuffer(TEST_LEN_32);
+            let size = buffer.byteLength;
+            let ashnenInt32Arr = new Int32Array(buffer);
+            ashnenInt32Arr.fill(1);
+            ashmem.writeDataToAshmem(buffer, size, 0);
+            data.writeAshmem(ashmem);
+            let readBuffuer = ashmem.readDataFromAshmem(TEST_LEN_32 + 1, 1);
+        } catch (error) {
+            console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0380 error is:" + error);
+            expect(error.code == 1900004).assertTrue();
+        } finally {
+            ashmem.unmapAshmem();
+            ashmem.closeAshmem();
+            data.reclaim();
+        }
+        console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_Ashmem_0380---------------------------");
+    });
     console.info("-----------------------SUB_DSoftbus_IPC_API_Stage_MessageSequence_Test is end-----------------------");
   })
 }
-

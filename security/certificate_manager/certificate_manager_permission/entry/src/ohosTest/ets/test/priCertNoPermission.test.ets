@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import certManager from '@ohos.security.certManager';
 import * as commonParameter from './utils/common/common_parameter';
 
@@ -47,7 +47,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0100', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keystore: Uint8Array = commonParameter.priRsaCredData;
       let keystorePwd: string = '123456';
       let certAlias: string = 'appCertAliasDemoRsa';
@@ -68,7 +68,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0200', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keystore: Uint8Array = commonParameter.priEccCredData;
       let keystorePwd: string = '123456';
       let certAlias: string = 'appCertAliasDemoEcc';
@@ -97,7 +97,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0300', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         await certManager.getPrivateCertificate("11111");
         expect(null).assertFail();
@@ -115,7 +115,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0400', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         await new Promise<certManager.CMResult>((resolve, reject) => {
           certManager.getPrivateCertificate("11111", (err, CMResult) => {
@@ -141,7 +141,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0500', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN
       };
@@ -170,7 +170,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0600', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN
       };
@@ -191,7 +191,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0700', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
@@ -219,7 +219,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0800', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
@@ -239,7 +239,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0900', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
@@ -281,7 +281,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1000', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
@@ -301,7 +301,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1100', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
         await new Promise<void>((resolve, reject) => {
@@ -328,7 +328,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1200', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let handle: Uint8Array = new Uint8Array([0X00]);
       try {
         await certManager.abort(handle);
@@ -347,7 +347,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1300', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         await certManager.uninstallPrivateCertificate("111111");
         expect(null).assertFail();
@@ -365,7 +365,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1400', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         await new Promise<void>((resolve, reject) => {
           certManager.uninstallPrivateCertificate("1111111", (err, status) => {
@@ -392,7 +392,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1500', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         await certManager.getAllAppPrivateCertificates();
         expect(null).assertFail();
@@ -411,7 +411,7 @@ export default function priCertJsAPINoPermissionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1600', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_NoPermission_Func_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         await new Promise<certManager.CMResult>((resolve, reject) => {
           certManager.getAllAppPrivateCertificates((err, status) => {

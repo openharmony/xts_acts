@@ -17,7 +17,7 @@ import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import * as mediaTestBase from '../../../../../../MediaTestBase';
 import * as AVPlayerTestBase from '../../../../../../AVPlayerTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function AVPlayerStabilityTest() {
     describe('AVPlayerStabilityTest', function () {
@@ -137,7 +137,7 @@ export default function AVPlayerStabilityTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_0100 start')
             AVPlayerTestBase.avPlayerWithCallBack(videos[0], avPlayer, PLAY_TIME, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_0100 end')
@@ -151,7 +151,7 @@ export default function AVPlayerStabilityTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_0200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_0200 start')
             AVPlayerTestBase.avPlayerWithoutCallBack(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_0200 end')
@@ -165,7 +165,7 @@ export default function AVPlayerStabilityTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0100 end')
@@ -179,7 +179,7 @@ export default function AVPlayerStabilityTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0200 start')
             AVPlayerTestBase.avPlayerPlay(videos[1], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0200 end')
@@ -193,7 +193,7 @@ export default function AVPlayerStabilityTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0300', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0300 start')
             AVPlayerTestBase.avPlayerPlay(videos[2], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0300 end')
@@ -207,7 +207,7 @@ export default function AVPlayerStabilityTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0400', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0400 start')
             AVPlayerTestBase.avPlayerPlay(videos[3], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0400 end')
@@ -221,7 +221,7 @@ export default function AVPlayerStabilityTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0500', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0500 start')
             AVPlayerTestBase.avPlayerPlay(videos[4], avPlayer,done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0500 end')
@@ -235,7 +235,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0600', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0600 start')
             AVPlayerTestBase.avPlayerPlay(videos[5], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0600 end')
@@ -249,7 +249,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0700', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0700 start')
             AVPlayerTestBase.avPlayerPlay(videos[6], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0700 end')
@@ -263,7 +263,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0800', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0800 start')
             AVPlayerTestBase.avPlayerPlay(videos[7], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0800 end')
@@ -277,7 +277,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0900', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0900 start')
             AVPlayerTestBase.avPlayerPlay(videos[8], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0900 end')
@@ -291,7 +291,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[9], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0100 end')
@@ -305,7 +305,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0200 start')
             AVPlayerTestBase.avPlayerPlay(videos[10], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0200 end')
@@ -319,7 +319,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0300', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0300 start')
             AVPlayerTestBase.avPlayerPlay(videos[11], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0300 end')
@@ -333,7 +333,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0400', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0400 start')
             AVPlayerTestBase.avPlayerPlay(videos[12], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0400 end')
@@ -348,7 +348,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0500', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0500 start')
             AVPlayerTestBase.avPlayerPlay(videos[13], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0500 end')
@@ -362,7 +362,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0600', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0600 start')
             AVPlayerTestBase.avPlayerPlay(videos[14], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0600 end')
@@ -376,7 +376,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0700', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0700 start')
             AVPlayerTestBase.avPlayerPlay(videos[15], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0700 end')
@@ -390,7 +390,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0800', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0800 start')
             AVPlayerTestBase.avPlayerPlay(videos[16], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0800 end')
@@ -404,7 +404,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0900', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0900 start')
             AVPlayerTestBase.avPlayerPlay(videos[17], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_0900 end')
@@ -418,7 +418,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1000', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1000 start')
             AVPlayerTestBase.avPlayerPlay(videos[18], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1000 end')
@@ -432,7 +432,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1100 start')
             AVPlayerTestBase.avPlayerPlay(videos[19], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1100 end')
@@ -446,7 +446,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1200 start')
             AVPlayerTestBase.avPlayerPlay(videos[20], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_TS_1200 end')
@@ -460,7 +460,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WEBM_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WEBM_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WEBM_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[21], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WEBM_0100 end')
@@ -474,7 +474,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WEBM_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WEBM_0200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WEBM_0200 start')
             AVPlayerTestBase.avPlayerPlay(videos[22], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WEBM_0200 end')
@@ -488,7 +488,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[23], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0100 end')
@@ -502,7 +502,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0200 start')
             AVPlayerTestBase.avPlayerPlay(videos[24], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0200 end')
@@ -516,7 +516,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0300', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0300 start')
             AVPlayerTestBase.avPlayerPlay(videos[25], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0300 end')
@@ -530,7 +530,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0400', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0400 start')
             AVPlayerTestBase.avPlayerPlay(videos[26], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0400 end')
@@ -544,7 +544,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0500', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0500 start')
             AVPlayerTestBase.avPlayerPlay(videos[27], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0500 end')
@@ -558,7 +558,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0600', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0600 start')
             AVPlayerTestBase.avPlayerPlay(videos[28], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0600 end')
@@ -572,7 +572,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0700', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0700 start')
             AVPlayerTestBase.avPlayerPlay(videos[29], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0700 end')
@@ -586,7 +586,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0800', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0800 start')
             AVPlayerTestBase.avPlayerPlay(videos[30], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0800 end')
@@ -600,7 +600,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0900', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0900 start')
             AVPlayerTestBase.avPlayerPlay(videos[31], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_0900 end')
@@ -614,7 +614,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1000', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1000 start')
             AVPlayerTestBase.avPlayerPlay(videos[32], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1000 end')
@@ -628,7 +628,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1100 start')
             AVPlayerTestBase.avPlayerPlay(videos[33], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1100 end')
@@ -642,7 +642,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1200 start')
             AVPlayerTestBase.avPlayerPlay(videos[34], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MKV_1200 end')
@@ -656,7 +656,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_AAC_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_AAC_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_AAC_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[35], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_AAC_0100 end')
@@ -670,7 +670,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP3_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP3_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP3_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[36], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP3_0100 end')
@@ -684,7 +684,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_M4A_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_M4A_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_M4A_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[37], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_M4A_0100 end')
@@ -698,7 +698,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_OGG_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_OGG_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_OGG_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[38], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_OGG_0100 end')
@@ -712,7 +712,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WAV_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WAV_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WAV_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[39], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_WAV_0100 end')
@@ -726,7 +726,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_FLAC_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_FLAC_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_FLAC_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[40], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_FLAC_0100 end')
@@ -740,7 +740,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0100 start')
             AVPlayerTestBase.avPlayerPlay(videos[41], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0100 end')
@@ -754,7 +754,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
        */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0200 start')
             AVPlayerTestBase.avPlayerPlay(videos[42], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0200 end')
@@ -769,7 +769,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300 start')
             AVPlayerTestBase.avPlayerPlay(videos[43], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300 end')
@@ -783,7 +783,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0100 start')
             AVPlayerTestBase.createToRelease(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0100 end')
@@ -797,7 +797,7 @@ export default function AVPlayerStabilityTest() {
             * @tc.type      : Function test
             * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0200 start')
             AVPlayerTestBase.avPlayerWithCallBack(videos[0], avPlayer, PLAY_TIME, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0200 end')
@@ -811,7 +811,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0400', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0400 start')
             AVPlayerTestBase.seekLoop(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0400 end')
@@ -825,7 +825,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0500', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0500 start')
             AVPlayerTestBase.seekLoopWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0500 end')
@@ -839,7 +839,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0600', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0600 start')
             AVPlayerTestBase.prepareToStop(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0600 end')
@@ -853,7 +853,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700 start')
             AVPlayerTestBase.prepareToReset(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700 end')
@@ -867,7 +867,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800 start')
             AVPlayerTestBase.createToRelease2(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800 end')
@@ -881,7 +881,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0110', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0110', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0110 start')
             AVPlayerTestBase.createTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0110 end')
@@ -895,7 +895,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0200 start')
             AVPlayerTestBase.prepareTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0200 end')
@@ -909,7 +909,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0210', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0210', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0210 start')
             AVPlayerTestBase.prepareTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0210 end')
@@ -923,7 +923,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0300', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0300 start')
             AVPlayerTestBase.playTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0300 end')
@@ -937,7 +937,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0310', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0310', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0310 start')
             AVPlayerTestBase.playTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0310 end')
@@ -952,7 +952,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0400', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0400 start')
             AVPlayerTestBase.pauseTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0400 end')
@@ -966,7 +966,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0410', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0410', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0410 start')
             AVPlayerTestBase.pauseTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0410 end')
@@ -980,7 +980,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0500', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0500 start')
             AVPlayerTestBase.stopTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0500 end')
@@ -994,7 +994,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0510', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0510', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0510 start')
             AVPlayerTestBase.stopTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0510 end')
@@ -1008,7 +1008,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0600', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0600 start')
             AVPlayerTestBase.resetTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0600 end')
@@ -1022,7 +1022,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0610', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0610', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0610 start')
             AVPlayerTestBase.resetTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0610 end')
@@ -1036,7 +1036,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0700', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0700 start')
             AVPlayerTestBase.releaseTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0700 end')
@@ -1050,7 +1050,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0710', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0710', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0710 start')
             AVPlayerTestBase.releaseTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0710 end')
@@ -1064,7 +1064,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0800', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0800 start')
             AVPlayerTestBase.seekTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0800 end')
@@ -1078,7 +1078,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0810', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0810', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0810 start')
             AVPlayerTestBase.seekTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0810 end')
@@ -1092,7 +1092,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0900', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0900 start')
             AVPlayerTestBase.getTrackDescriptionTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0900 end')
@@ -1106,7 +1106,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0910', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0910', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0910 start')
             AVPlayerTestBase.getTrackDescriptionTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0910 end')
@@ -1120,7 +1120,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1000', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1000 start')
             AVPlayerTestBase.setSpeedTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1000 end')
@@ -1134,7 +1134,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1010', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1010', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1010 start')
             AVPlayerTestBase.setSpeedTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1010 end')
@@ -1148,7 +1148,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1110', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1110', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1110 start')
             AVPlayerTestBase.setBitrateTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1110 end')
@@ -1162,7 +1162,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1200', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1200 start')
             AVPlayerTestBase.setVolumeTimeWithCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1200 end')
@@ -1176,7 +1176,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1210', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1210', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1210 start')
             AVPlayerTestBase.setVolumeTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1210 end')
@@ -1190,7 +1190,7 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_02_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_02_0100', Level.LEVEL0,async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_02_0100 start')
             AVPlayerTestBase.firstFrameTime(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_02_0100 end')

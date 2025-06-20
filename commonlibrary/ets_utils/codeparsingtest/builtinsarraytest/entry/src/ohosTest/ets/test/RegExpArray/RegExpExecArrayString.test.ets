@@ -45,9 +45,9 @@ export default function builtinsRegExpExecArrayStringTest() {
      * @tc.desc Testing RegExpExecArray string
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsRegExpExecArrayStringTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, (done: Function) => {
+    it('builtinsRegExpExecArrayStringTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const caseName = 'builtinsRegExpExecArrayStringTest0100';
       console.info(`${caseName} test start`);

@@ -14,7 +14,7 @@
  */
 import netConnection from '@ohos.net.connection';
 import call from '@ohos.telephony.call';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium';
 export default function ActsBaseCallManagerTest() {
 
 
@@ -43,7 +43,7 @@ export default function ActsBaseCallManagerTest() {
          *             call.CallState.CALL_STATE_IDLE is returned
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_getCallState_Async_0100', 0, async function (done) {
+        it('Telephony_CallManager_getCallState_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.getCallState((err, data) => {
                 if (err) {
                     console.log(`Telephony_CallManager_getCallState_Async_0100 : err = ${err.message}`);
@@ -63,7 +63,7 @@ export default function ActsBaseCallManagerTest() {
          *             call.CallState.CALL_STATE_IDLE is returned
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_getCallState_Promise_0100', 0, async function (done) {
+        it('Telephony_CallManager_getCallState_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.getCallState();
                 expect(data === call.CallState.CALL_STATE_IDLE).assertTrue();
@@ -83,7 +83,7 @@ export default function ActsBaseCallManagerTest() {
          * @tc.name    When idle, hasCall() is called to confirm that there is no current call,returning false
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_hasCall_Async_0400', 0, async function (done) {
+        it('Telephony_CallManager_hasCall_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.hasCall((err, data) => {
                 if (err) {
                     console.log('Telephony_CallManager_hasCall_Async_0400 fail');
@@ -103,7 +103,7 @@ export default function ActsBaseCallManagerTest() {
          * @tc.name    When idle, hasCall() is called to confirm that there is no current call, returning false
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_hasCall_Promise_0400', 0, async function (done) {
+        it('Telephony_CallManager_hasCall_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.hasCall();
                 expect(data === false).assertTrue();
@@ -123,7 +123,7 @@ export default function ActsBaseCallManagerTest() {
          *             The return value is 10 000 000 0000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0100', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumber('100000000000', (err, data) => {
                 if (err) {
                     console.log(`Telephony_CallManager_formatPhoneNumber_Async_0100 err = ${err.message}`);
@@ -144,7 +144,7 @@ export default function ActsBaseCallManagerTest() {
          *             and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0200', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumber('10 000 000 0000', {
                 countryCode: 'CN'
             }, (err, data) => {
@@ -166,7 +166,7 @@ export default function ActsBaseCallManagerTest() {
          *             return the value 010 0000 0000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0300', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumber('(010)00000000', {
                 countryCode: 'CN'
             }, (err, data) => {
@@ -188,7 +188,7 @@ export default function ActsBaseCallManagerTest() {
          *             return 010 0000 0000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0400', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumber('010-0000-0000', {
                 countryCode: 'CN'
             }, (err, data) => {
@@ -210,7 +210,7 @@ export default function ActsBaseCallManagerTest() {
          *             formatPhoneNumber() to format the number and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0500', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumber('666666999999', {
                 countryCode: 'CN'
             }, (err, data) => {
@@ -232,7 +232,7 @@ export default function ActsBaseCallManagerTest() {
          *             formatPhoneNumber() to format the number and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0600', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumber('2000000000', {
                 countryCode: 'abcdefg'
             }, (err,data) => {
@@ -254,7 +254,7 @@ export default function ActsBaseCallManagerTest() {
          *             format the number and catch err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0700', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumber('2000000000', {
                 countryCode: ''
             }, (err,data) => {
@@ -275,7 +275,7 @@ export default function ActsBaseCallManagerTest() {
          *             The return value is 200 0000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0100', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.formatPhoneNumber('2000000');
                 expect(data === '200 0000').assertTrue();
@@ -294,7 +294,7 @@ export default function ActsBaseCallManagerTest() {
          * @tc.name    PhoneNumber is 010-100-0000, options: CN, call formatPhoneNumber() to format the number, err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0200', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await call.formatPhoneNumber('010-100-0000', {
                     countryCode: 'CN'
@@ -314,7 +314,7 @@ export default function ActsBaseCallManagerTest() {
          *             return the value 010 0000 0000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0300', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.formatPhoneNumber('(010)00000000', {
                     countryCode: 'CN'
@@ -336,7 +336,7 @@ export default function ActsBaseCallManagerTest() {
          *             number and return 200 0000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0400', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.formatPhoneNumber('200-0000', {
                     countryCode: 'CN'
@@ -358,7 +358,7 @@ export default function ActsBaseCallManagerTest() {
          *             formatPhoneNumber() to format the number and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0500', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await call.formatPhoneNumber('666666999999', {
                     countryCode: 'CN'
@@ -378,7 +378,7 @@ export default function ActsBaseCallManagerTest() {
          *             formatPhoneNumber() to format the number and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0600', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 let data = await call.formatPhoneNumber('20000000', {
                     countryCode: 'abcdefg'
@@ -399,7 +399,7 @@ export default function ActsBaseCallManagerTest() {
          * @tc.name    If phoneNumber is 20000000, options: , call formatPhoneNumber() to format the number and catch err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0700', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.formatPhoneNumber('20000000', {
                     countryCode: ''
@@ -420,7 +420,7 @@ export default function ActsBaseCallManagerTest() {
          *             and return +861000000000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0100', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumberToE164('010-0000-0000', 'CN', (err, data) => {
                 if (err) {
                     console.log('Telephony_CallManager_formatPhoneNumberToE164_Async_0100 fail');
@@ -440,7 +440,7 @@ export default function ActsBaseCallManagerTest() {
          *             return +861000000000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0200', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumberToE164('(010)00000000', 'CN', (err, data) => {
                 if (err) {
                     console.log('Telephony_CallManager_formatPhoneNumberToE164_Async_0200 fail');
@@ -460,7 +460,7 @@ export default function ActsBaseCallManagerTest() {
          *             and return +861000000000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0300', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumberToE164('01000000000', 'CN', (err, data) => {
                 if (err) {
                     console.log('Telephony_CallManager_formatPhoneNumberToE164_Async_0300 fail');
@@ -480,7 +480,7 @@ export default function ActsBaseCallManagerTest() {
          *             formatPhoneNumberToE164() to format the number and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0400', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumberToE164('666666999999', 'CN', (err,data) => {
                 if (err) {
                     console.log(`Telephony_CallManager_formatPhoneNumberToE164_Async_0400 finish err = ${err.message}`);
@@ -500,7 +500,7 @@ export default function ActsBaseCallManagerTest() {
          *             to format the number and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0500', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumberToE164('01000000000', 'abcdfg', (err,data) => {
                 if (err) {
                     console.log(`Telephony_CallManager_formatPhoneNumberToE164_Async_0500 finish err = ${err.message}`);
@@ -520,7 +520,7 @@ export default function ActsBaseCallManagerTest() {
          *             format the number and catch err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0600', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumberToE164('01000000000', '', (err) => {
                 if (err) {
                     console.log(`Telephony_CallManager_formatPhoneNumberToE164_Async_0600 finish err = ${err.message}`);
@@ -539,7 +539,7 @@ export default function ActsBaseCallManagerTest() {
          *             return +8652300000000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0100', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.formatPhoneNumberToE164('52300000000', 'CN');
                 expect(data === '+8652300000000').assertTrue();
@@ -559,7 +559,7 @@ export default function ActsBaseCallManagerTest() {
          *             return +8652300000000
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0200', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0200 running');
             try {
                 var data = await call.formatPhoneNumberToE164('(523)00000000', 'CN');
@@ -580,7 +580,7 @@ export default function ActsBaseCallManagerTest() {
          *             +8652300000000 is returned
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0300', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.formatPhoneNumberToE164('523-0000-0000', 'CN');
                 expect(data === '+8652300000000').assertTrue();
@@ -600,7 +600,7 @@ export default function ActsBaseCallManagerTest() {
          *             format the number and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0400', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 let data = await call.formatPhoneNumberToE164('999999', 'CN');
                 console.log(`Telephony_CallManager_formatPhoneNumberToE164_Promise_0400 data= ${data}`);
@@ -619,7 +619,7 @@ export default function ActsBaseCallManagerTest() {
          *             format the number and capture err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0500', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 let data = await call.formatPhoneNumberToE164('52300000000', 'abcdefg');
                 console.log(`Telephony_CallManager_formatPhoneNumberToE164_Promise_0500 data= ${data}`);
@@ -638,7 +638,7 @@ export default function ActsBaseCallManagerTest() {
          *             to format the number and catch err
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0600', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await call.formatPhoneNumberToE164('52300000000', '');
                 expect().assertFail();
@@ -658,7 +658,7 @@ export default function ActsBaseCallManagerTest() {
          *             emergency number. The return value is false
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0100', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('0+0+0', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -680,7 +680,7 @@ export default function ActsBaseCallManagerTest() {
          *             emergency number. The return value is false
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0200', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let CASE_NAME = 'Telephony_CallManager_isEmergencyPhoneNumber_Async_0200';
             call.isEmergencyPhoneNumber(INVALID_NUMBER, {
                 slotId: SLOT_0
@@ -702,7 +702,7 @@ export default function ActsBaseCallManagerTest() {
          *             The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0300', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('000', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -724,7 +724,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0400', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('112', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -746,7 +746,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0500', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('911', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -768,7 +768,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0600', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('08', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -790,7 +790,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0700', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('118', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -812,7 +812,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0800', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('999', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -834,7 +834,7 @@ export default function ActsBaseCallManagerTest() {
          *             The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0900', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('119', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -856,7 +856,7 @@ export default function ActsBaseCallManagerTest() {
          *             number, returning true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1000', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('110', {
                 slotId: SLOT_0
             }, (err, data) => {
@@ -878,7 +878,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is false
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1300', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('110', {
                 slotId: ERR_SLOT_ID
             }, (err) => {
@@ -899,7 +899,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is false
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0100', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('0+0+0', {
                     slotId: SLOT_0
@@ -921,7 +921,7 @@ export default function ActsBaseCallManagerTest() {
          *             emergency number. The return value is false
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0200', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('INVALID_NUMBER', {
                     slotId: SLOT_0
@@ -943,7 +943,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0300', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('000', {
                     slotId: SLOT_0
@@ -965,7 +965,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0400', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('112', {
                     slotId: SLOT_0
@@ -987,7 +987,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0500', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('911', {
                     slotId: SLOT_0
@@ -1009,7 +1009,7 @@ export default function ActsBaseCallManagerTest() {
          *             emergency number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0600', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('08', {
                     slotId: SLOT_0
@@ -1031,7 +1031,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0700', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('118', {
                     slotId: SLOT_0
@@ -1053,7 +1053,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0800', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('999', {
                     slotId: SLOT_0
@@ -1075,7 +1075,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1100', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('119');
                 expect(data).assertTrue();
@@ -1095,7 +1095,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is true
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1200', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('110');
                 expect(data).assertTrue();
@@ -1115,7 +1115,7 @@ export default function ActsBaseCallManagerTest() {
          *             number. The return value is false
          * @tc.desc    Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.isEmergencyPhoneNumber('120', {
                     slotId: ERR_SLOT_ID

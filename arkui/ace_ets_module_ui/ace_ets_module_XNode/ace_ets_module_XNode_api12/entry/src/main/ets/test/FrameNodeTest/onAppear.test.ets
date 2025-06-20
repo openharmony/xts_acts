@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function onAppear() {
   describe('onAppear', () => {
     beforeEach(async (done: Function) => {
@@ -40,7 +39,6 @@ export default function onAppear() {
       }
       done();
     });
-
     /**
      * @tc.number    onAppear_0100
      * @tc.name      onAppear_0100
@@ -49,7 +47,7 @@ export default function onAppear() {
      * @tc.type :
      * @tc.size :
      */
-    it('onAppear_0100', 0, async (done: Function) => {
+    it('onAppear_0100', Level.LEVEL0, async (done: Function) => {
       console.info('onAppear_0100 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('setOnAppear');
@@ -60,7 +58,6 @@ export default function onAppear() {
       console.info('[onAppear_0100] END');
       done();
     });
-
     /**
      * @tc.number    onAppear_0200
      * @tc.name      onAppear_0200
@@ -69,7 +66,7 @@ export default function onAppear() {
      * @tc.type :
      * @tc.size :
      */
-    it('onAppear_0200', 0, async (done: Function) => {
+    it('onAppear_0200', Level.LEVEL0, async (done: Function) => {
       console.info('onAppear_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -84,8 +81,5 @@ export default function onAppear() {
       console.info('[onAppear_0200] END');
       done();
     });
-
-
   })
 }
-

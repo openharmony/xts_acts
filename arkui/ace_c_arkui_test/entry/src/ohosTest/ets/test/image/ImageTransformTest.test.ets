@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageTransformTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTransform001', 0, async (done: Function) => {
+    it('testImageTransform001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTransform001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageTransformTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTransform002', 0, async (done: Function) => {
+    it('testImageTransform002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTransform002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageTransformTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTransform003', 0, async (done: Function) => {
+    it('testImageTransform003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTransform003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageTransformTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTransform004', 0, async (done: Function) => {
+    it('testImageTransform004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTransform004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageTransformTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageTransform005', 0, async (done: Function) => {
+    it('testImageTransform005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageTransform005()).assertEqual(0)
       done()
     })

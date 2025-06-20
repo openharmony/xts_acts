@@ -51,7 +51,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to change
         *                 the additional information
         */
-        it('ActsAccountChangeOnOff_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountChangeOnOff_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await testInit(); 
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0100 start====");
@@ -128,7 +128,7 @@ export default function ActsAccountChangeOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to change
         *                 the associatal data
         */
-        it('ActsAccountChangeOnOff_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
+        it('ActsAccountChangeOnOff_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountChangeOnOff_0200 start====");

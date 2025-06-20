@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level  } from '@ohos/hypium';
 import http from '@ohos.net.http';
 
 
@@ -46,7 +46,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::requestInStream
          * @tc.desc Test requestInStream(url: string, callback: AsyncCallback<void>): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_Async_0100", 0, async function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_Async_0100";
             let Address_Img = "https://img1.baidu.com/it/u=3010094603,1247181326&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500";
             let httpRequest = http.createHttp();
@@ -80,7 +80,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::requestInStream
          * @tc.desc Test requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback<void>): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_Async_0200", 0, async function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_Async_0200"
             var httpRequest = http.createHttp();
             httpRequest.requestInStream(Address_Baidu, (err, data) => {
@@ -100,7 +100,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::requestInStream
          * @tc.desc Test requestInStream(url: string, options: HttpRequestOptions): Promise<void>.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_Promise_0100", 0, async function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_Promise_0100";
             var httpRequest = http.createHttp();
             httpRequest.requestInStream(Address_Baidu, httpRequestOptions).then(function (data) {
@@ -119,7 +119,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::requestInStream
          * @tc.desc Test requestInStream(url: string): Promise<void>.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_Promise_0200", 0, async function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_Promise_0200";
             var httpRequest = http.createHttp();
             httpRequest.requestInStream(Address_Baidu).then(function (data) {
@@ -139,7 +139,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::on_dataReceive
          * @tc.desc Test on(type: "dataReceive", callback: Callback<ArrayBuffer>): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_on_dataReceive_0100", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_on_dataReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_on_dataReceive_0100";
             try {
                 var httpRequest = http.createHttp();
@@ -167,7 +167,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::off_dataReceive
          * @tc.desc Test off(type: "dataReceive", callback: Callback<ArrayBuffer>): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataReceive_0100", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_off_dataReceive_0100";
             try {
                 var httpRequest = http.createHttp();
@@ -196,7 +196,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::off_dataReceive
          * @tc.desc Test off(type: "dataReceive"): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataReceive_0200", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataReceive_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_off_dataReceive_0200";
             try {
                 var httpRequest = http.createHttp();
@@ -224,7 +224,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::on_dataReceiveProgress
          * @tc.desc Test on(type: "dataReceiveProgress", callback: Callback<{ receiveSize: number, totalSize: number }>): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_on_dataReceiveProgress_0100", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_on_dataReceiveProgress_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_on_dataReceiveProgress_0100";
             try {
                 var httpRequest = http.createHttp();
@@ -251,7 +251,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::off_dataReceiveProgress
          * @tc.desc Test off(type: "dataReceiveProgress", callback: Callback<{ receiveSize: number, totalSize: number }>): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataReceiveProgress_0100", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataReceiveProgress_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_off_dataReceiveProgress_0100";
             try {
                 var httpRequest = http.createHttp();
@@ -280,7 +280,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::off_dataReceiveProgress
          * @tc.desc Test off(type: "dataReceiveProgress"): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataReceiveProgress_0200", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataReceiveProgress_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_off_dataReceiveProgress_0200";
             try {
                 var httpRequest = http.createHttp();
@@ -309,7 +309,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::on_dataEnd
          * @tc.desc Test on(type: "dataEnd", callback: Callback<void>): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_on_dataEnd_0100", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_on_dataEnd_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_on_dataEnd_0100";
             try {
                 var httpRequest = http.createHttp();
@@ -337,7 +337,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::off_dataEnd
          * @tc.desc Test off(type: "dataEnd", callback?: Callback<void>): void.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataEnd_0100", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataEnd_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_off_dataEnd_0100";
             try {
                 var httpRequest = http.createHttp();
@@ -366,7 +366,7 @@ export default function HttprequestInStreamJsunitTest() {
          * @tc.name httprequestInStream::off_dataEnd
          * @tc.desc Test off(type: "dataEnd"): void;.
          */
-        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataEnd_0200", 0, function (done) {
+        it("SUB_Telephony_NetStack_HttprequestInStream_off_dataEnd_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttprequestInStream_off_dataEnd_0200";
             try {
                 var httpRequest = http.createHttp();

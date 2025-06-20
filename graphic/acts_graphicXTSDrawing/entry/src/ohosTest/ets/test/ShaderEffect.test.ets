@@ -1252,5 +1252,383 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADEREFFECT_0700
+     * @tc.name      : testShaderEffectCreateComposeShaderNormal
+     * @tc.desc      : Test for testShaderEffectCreateComposeShaderNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testShaderEffectCreateComposeShaderNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testShaderEffectCreateComposeShaderNormal';
+      try {
+        let dstShader = drawing.ShaderEffect.createColorShader(0xFF0000FF);
+        let srcShader = drawing.ShaderEffect.createColorShader(0xFFFF0000);
+        let shader1 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.CLEAR);
+        expect(shader1 != null || shader1 != undefined).assertTrue();
+        let shader2 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC);
+        expect(shader2 != null || shader2 != undefined).assertTrue();
+        let shader3 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.DST);
+        expect(shader3 != null || shader3 != undefined).assertTrue();
+        let shader4 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC_OVER);
+        expect(shader4 != null || shader4 != undefined).assertTrue();
+        let shader5 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.DST_OVER);
+        expect(shader5 != null || shader5 != undefined).assertTrue();
+        let shader6 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC_IN);
+        expect(shader6 != null || shader6 != undefined).assertTrue();
+        let shader7 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.DST_IN);
+        expect(shader7 != null || shader7 != undefined).assertTrue();
+        let shader8 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC_OUT);
+        expect(shader8 != null || shader8 != undefined).assertTrue();
+        let shader9 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.DST_OUT);
+        expect(shader9 != null || shader9 != undefined).assertTrue();
+        let shader10 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC_ATOP);
+        expect(shader10 != null || shader10 != undefined).assertTrue();
+        let shader11 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.DST_ATOP);
+        expect(shader11 != null || shader11 != undefined).assertTrue();
+        let shader12 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.XOR);
+        expect(shader12 != null || shader12 != undefined).assertTrue();
+        let shader13 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.PLUS);
+        expect(shader13 != null || shader13 != undefined).assertTrue();
+        let shader14 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.MODULATE);
+        expect(shader14 != null || shader14 != undefined).assertTrue();
+        let shader15 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SCREEN);
+        expect(shader15 != null || shader15 != undefined).assertTrue();
+        let shader16 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.OVERLAY);
+        expect(shader16 != null || shader16 != undefined).assertTrue();
+        let shader17 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.DARKEN);
+        expect(shader17 != null || shader17 != undefined).assertTrue();
+        let shader18 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.LIGHTEN);
+        expect(shader18 != null || shader18 != undefined).assertTrue();
+        let shader19 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.COLOR_DODGE);
+        expect(shader19 != null || shader19 != undefined).assertTrue();
+        let shader20 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.COLOR_BURN);
+        expect(shader20 != null || shader20 != undefined).assertTrue();
+        let shader21 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.HARD_LIGHT);
+        expect(shader21 != null || shader21 != undefined).assertTrue();
+        let shader22 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SOFT_LIGHT);
+        expect(shader22 != null || shader22 != undefined).assertTrue();
+        let shader23 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.DIFFERENCE);
+        expect(shader23 != null || shader23 != undefined).assertTrue();
+        let shader24 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.EXCLUSION);
+        expect(shader24 != null || shader24 != undefined).assertTrue();
+        let shader25 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.MULTIPLY);
+        expect(shader25 != null || shader25 != undefined).assertTrue();
+        let shader26 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.HUE);
+        expect(shader26 != null || shader26 != undefined).assertTrue();
+        let shader27 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SATURATION);
+        expect(shader27 != null || shader27 != undefined).assertTrue();
+        let shader28 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.COLOR);
+        expect(shader28 != null || shader28 != undefined).assertTrue();
+        let shader29 = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.LUMINOSITY);
+        expect(shader29 != null || shader29 != undefined).assertTrue();
+      } catch( e ) {
+        console.info(msg + ` create errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADEREFFECT_0701
+     * @tc.name      : testShaderEffectCreateComposeShaderMultipleCalls
+     * @tc.desc      : Test for testShaderEffectCreateComposeShaderMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testShaderEffectCreateComposeShaderMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
+      const msg = 'testShaderEffectCreateComposeShaderMultipleCalls';
+      for (let i = 0; i < 20; i++) {
+        let dstShader = drawing.ShaderEffect.createColorShader(0xFFFF0000);
+        let centerPt: common2D.Point = { x: 100, y: 100 };
+        let srcShader = drawing.ShaderEffect.createSweepGradient(centerPt, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT, 100, 200);
+        try {
+          let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC);
+          expect(shader != null || shader != undefined).assertTrue();
+        } catch( e ) {
+          console.info(msg + ` create errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+          expect().assertFail();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADEREFFECT_0702
+     * @tc.name      : testShaderEffectCreateComposeShaderToNull
+     * @tc.desc      : Test for testShaderEffectCreateComposeShaderToNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testShaderEffectCreateComposeShaderToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testShaderEffectCreateComposeShaderToNull';
+      let dstShader = drawing.ShaderEffect.createColorShader(0xFF0000FF);
+      let srcShader = drawing.ShaderEffect.createColorShader(0xFFFF0000);
+      try {
+        let shader = drawing.ShaderEffect.createComposeShader(null, srcShader, drawing.BlendMode.SRC);
+        console.info(msg + ' createLightingColorFilter shader successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createLightingColorFilter shader errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let shader2 = drawing.ShaderEffect.createComposeShader(undefined, srcShader, drawing.BlendMode.SRC);
+        console.info(msg + ' createLightingColorFilter shader2 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createLightingColorFilter shader2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let shader3 = drawing.ShaderEffect.createComposeShader(dstShader, null, drawing.BlendMode.SRC);
+        console.info(msg + ' createLightingColorFilter shader3 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createLightingColorFilter shader3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let shader4 = drawing.ShaderEffect.createComposeShader(dstShader, null, drawing.BlendMode.SRC);
+        console.info(msg + ' createLightingColorFilter shader4 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createLightingColorFilter shader4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADEREFFECT_0703
+     * @tc.name      : testShaderEffectCreateComposeShaderAbnormal
+     * @tc.desc      : Test for testShaderEffectCreateComposeShaderAbnormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testShaderEffectCreateComposeShaderAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testShaderEffectCreateComposeShaderAbnormal';
+      try {
+        let dstShader = drawing.ShaderEffect.createColorShader(0xFFFF0000);
+        let centerPt: common2D.Point = { x: 100, y: 100 };
+        let srcShader = drawing.ShaderEffect.createSweepGradient(centerPt, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT, 100, 200);
+        let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader,35);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createLightingColorFilter shader errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(25900001);
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADEREFFECT_0800
+     * @tc.name      : testShaderEffectCreateImageShaderNormal
+     * @tc.desc      : Test for testShaderEffectCreateImageShaderNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testShaderEffectCreateImageShaderNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testShaderEffectCreateImageShaderNormal';
+      let matrix = new drawing.Matrix();
+      let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+      try {
+        let imageShader = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.CLAMP, drawing.TileMode.CLAMP, options, matrix);
+        console.info(msg + ' createImageShader imageShader successed');
+        expect(imageShader != null || imageShader != undefined).assertTrue();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      try {
+        let imageShader2 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.REPEAT, options, matrix);
+        console.info(msg + ' createImageShader imageShader2 successed');
+        expect(imageShader2 != null || imageShader2 != undefined).assertTrue();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      try {
+        let imageShader3 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.MIRROR, drawing.TileMode.MIRROR, options, matrix);
+        console.info(msg + ' createImageShader imageShader3 successed');
+        expect(imageShader3 != null || imageShader3 != undefined).assertTrue();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      try {
+        let imageShader4 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.DECAL, drawing.TileMode.DECAL, options, matrix);
+        console.info(msg + ' createImageShader imageShader4 successed');
+        expect(imageShader4 != null || imageShader4 != undefined).assertTrue();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      matrix.setTranslation(100, 100);
+      let sx: number = 2;
+      let sy: number = 0.5;
+      let px: number = 1;
+      let py: number = 1;
+      matrix.postScale(sx, sy, px, py);
+      options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR);
+      try {
+        let imageShader5 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
+        console.info(msg + ' createImageShader imageShader5 successed');
+        expect(imageShader5 != null || imageShader5 != undefined).assertTrue();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader5 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      try {
+        let imageShader6 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options);
+        console.info(msg + ' createImageShader imageShader6 successed');
+        expect(imageShader6 != null || imageShader6 != undefined).assertTrue();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      try {
+        let imageShader7 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, null);
+        console.info(msg + ' createImageShader imageShader7 successed');
+        expect(imageShader7 != null || imageShader7 != undefined).assertTrue();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader7 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADEREFFECT_0801
+     * @tc.name      : testShaderEffectCreateImageShaderMultipleCalls
+     * @tc.desc      : Test for testShaderEffectCreateImageShaderMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testShaderEffectCreateImageShaderMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
+      const msg = 'testShaderEffectCreateImageShaderMultipleCalls';
+      for (let i = 0; i < 20; i++) {
+        let matrix = new drawing.Matrix();
+        let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+        try {
+          let imageShader = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
+          console.info(msg + ' createImageShader imageShader successed' + i);
+          expect(imageShader != null || imageShader != undefined).assertTrue()
+        } catch( e ) {
+          console.info(msg + ` createImageShader imageShader errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+          expect().assertFail();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADEREFFECT_0802
+     * @tc.name      : testShaderEffectCreateImageShaderToNull
+     * @tc.desc      : Test for testShaderEffectCreateImageShaderToNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testShaderEffectCreateImageShaderToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testShaderEffectCreateImageShaderToNull';
+      let matrix = new drawing.Matrix();
+      let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+      try {
+        let imageShader = drawing.ShaderEffect.createImageShader(null, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
+        console.info(msg + ' createImageShader imageShader successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let imageShader2 = drawing.ShaderEffect.createImageShader(undefined, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
+        console.info(msg + ' createImageShader imageShader2 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let imageShader3 = drawing.ShaderEffect.createImageShader(pixel, null, drawing.TileMode.MIRROR, options, matrix);
+        console.info(msg + ' createImageShader imageShader3 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let imageShader4 = drawing.ShaderEffect.createImageShader(pixel, undefined, drawing.TileMode.MIRROR, options, matrix);
+        console.info(msg + ' createImageShader imageShader4 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let imageShader5 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, null, options, matrix);
+        console.info(msg + ' createImageShader imageShader5 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader5 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let imageShader6 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, undefined, options, matrix);
+        console.info(msg + ' createImageShader imageShader6 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let imageShader7 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, null, matrix);
+        console.info(msg + ' createImageShader imageShader7 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader7 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let imageShader8 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, undefined, matrix);
+        console.info(msg + ' createImageShader imageShader8 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader8 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let imageShader9 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, undefined);
+        console.info(msg + ' createImageShader imageShader9 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader9 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADEREFFECT_0803
+     * @tc.name      : testShaderEffectCreateImageShaderAbnormal
+     * @tc.desc      : Test for testShaderEffectCreateImageShaderAbnormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testShaderEffectCreateImageShaderAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testShaderEffectCreateImageShaderAbnormal';
+      let matrix = new drawing.Matrix();
+      let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+      try {
+        let imageShader = drawing.ShaderEffect.createImageShader(pixel, 10, drawing.TileMode.MIRROR, options, matrix);
+        console.info(msg + ' createImageShader imageShader successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(25900001);
+      }
+      try {
+        let imageShader2 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, 10, options, matrix);
+        console.info(msg + ' createImageShader imageShader2 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createImageShader imageShader2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(25900001);
+      }
+    });
   })
 }

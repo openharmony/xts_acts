@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import eSIM from '@ohos.telephony.esim';
 
@@ -75,9 +75,9 @@ export default function EsimNoPermissionPublic() {
      * @tc.desc      : Starts a page through an ability, on which users can touch the button to download a profile.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 1
      */
-    it("testTelephonyEsimAddProfile1700", 0, async (done: Function) => {
+    it("testTelephonyEsimAddProfile1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyEsimAddProfile1700';
       console.info(`${caseName} test start`);
       try {

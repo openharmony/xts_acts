@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textEnableDataDetectortest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEnableDataDetector001', 0, async (done: Function) => {
+    it('testTextEnableDataDetector001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEnableDataDetector001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textEnableDataDetectortest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEnableDataDetector002', 0, async (done: Function) => {
+    it('testTextEnableDataDetector002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEnableDataDetector002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textEnableDataDetectortest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEnableDataDetector003', 0, async (done: Function) => {
+    it('testTextEnableDataDetector003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEnableDataDetector003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textEnableDataDetectortest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEnableDataDetector004', 0, async (done: Function) => {
+    it('testTextEnableDataDetector004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEnableDataDetector004()).assertEqual(0)
       done()
     })

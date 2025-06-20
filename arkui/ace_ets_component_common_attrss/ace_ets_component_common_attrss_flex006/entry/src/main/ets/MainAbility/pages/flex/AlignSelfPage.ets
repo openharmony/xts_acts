@@ -98,7 +98,7 @@ struct AlignSelfPage {
         MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu' })
       }.commonStyle()
     } else if (this.targetView == 'Navigation') {
-      Navigation().commonStyle()
+      Navigation().expandSafeArea([], []).commonStyle()
     } else if (this.targetView == 'NavRouter') {
       NavRouter() {
         Row() {

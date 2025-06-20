@@ -23,6 +23,7 @@ group("ets_utils") {
       "buffer_lib_standard:buffer_js_test",
       "codeparsingtest:codeparsingtest",
       "concurrency_base:concurrency_base_js_hap",
+      "concurrent_sendable:concurrent_sendable",
       "concurrent_test:concurrent_test",
       "conditionvariable_test:ActsConditionVariableTest",
       "containerLine_lib_standard:containerLine_js_test",

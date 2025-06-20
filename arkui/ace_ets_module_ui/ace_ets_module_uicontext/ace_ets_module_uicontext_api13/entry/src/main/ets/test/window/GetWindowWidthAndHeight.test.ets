@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function GetWindowWidthAndHeightTest() {
   describe('GetWindowWidthAndHeightTest', () => {
     beforeEach(async (done: Function) => {
@@ -40,7 +39,6 @@ export default function GetWindowWidthAndHeightTest() {
       }
       done();
     });
-
     /**
      * @tc.number
      * @tc.name      GetWindowWidthBreakpoint_0100
@@ -49,7 +47,7 @@ export default function GetWindowWidthAndHeightTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('GetWindowWidthBreakpoint_0100', 0, async (done: Function) => {
+    it('GetWindowWidthBreakpoint_0100', Level.LEVEL0, async (done: Function) => {
       console.info('GetWindowWidthBreakpoint_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -59,7 +57,6 @@ export default function GetWindowWidthAndHeightTest() {
       let button2 = await driver.findComponent(ON.id('getWindowWidth'));
       await button2.click();
       await CommonFunc.sleep(2000);
-
       let strJson = getInspectorByKey('widthBpValue');
       let obj: ESObject = JSON.parse(strJson);
       let strJson1 = getInspectorByKey('windowWidthBreakpoint');
@@ -78,7 +75,7 @@ export default function GetWindowWidthAndHeightTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('GetWindowHeightBreakpoint_0200', 0, async (done: Function) => {
+    it('GetWindowHeightBreakpoint_0200', Level.LEVEL0, async (done: Function) => {
       console.info('GetWindowHeightBreakpoint_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -88,7 +85,6 @@ export default function GetWindowWidthAndHeightTest() {
       let button2 = await driver.findComponent(ON.id('getWindowWidth'));
       await button2.click();
       await CommonFunc.sleep(2000);
-
       let strJson = getInspectorByKey('heightBpValue');
       let obj: ESObject = JSON.parse(strJson);
       let strJson1 = getInspectorByKey('windowHeightBreakpoint');

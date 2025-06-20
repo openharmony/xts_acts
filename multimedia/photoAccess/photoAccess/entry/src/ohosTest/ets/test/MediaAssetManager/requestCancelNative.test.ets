@@ -14,9 +14,10 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterAll, Level } from '@ohos/hypium'
 import mediaNative from "libentry.so";
 import { BusinessError } from '@ohos.base';
+import fs from '@ohos.file.fs';
 
 import {
   photoKeys,
@@ -34,6 +35,21 @@ export default function requestCancelNativeTest() {
       await getPermission();
       await driveFn();
       await sleep(1000);
+    });
+
+    afterAll(async () => {
+      console.info('afterAll case');
+      try {
+        let files: string[] = fs.listFileSync(testContext.filesDir);
+        for (let i = 0; i < files.length; i++) {
+          if (files[i].includes('test')) {
+            console.info(`requestCancelNativeTest listFiles need to delete:${JSON.stringify(files[i])}}`)
+            fs.unlinkSync(`${testContext.filesDir}/${files[i]}`);
+          }
+        }
+      } catch (error) {
+        console.error(`requestCancelNativeTest listFiles failed; error: ${error.code}  ${error.message}`)
+      }
     });
 
     const REQUEST_ID_LENGTH = 37
@@ -73,7 +89,7 @@ export default function requestCancelNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_cancel_native_request_option_fast_mode', 0, async (done: Function) => {
+    it('request_cancel_native_request_option_fast_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_cancel_native_request_option_fast_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -89,7 +105,7 @@ export default function requestCancelNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_cancel_native_request_option_high_quality_mode', 0, async (done: Function) => {
+    it('request_cancel_native_request_option_high_quality_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_cancel_native_request_option_high_quality_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -105,7 +121,7 @@ export default function requestCancelNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_cancel_native_request_option_balance_mode', 0, async (done: Function) => {
+    it('request_cancel_native_request_option_balance_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_cancel_native_request_option_balance_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,

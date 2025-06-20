@@ -47,9 +47,9 @@ export default function ArkListTest() {
      * @tc.desc      : Testing List constructor support dataType
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testListConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testListConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testListConstructor0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | bigint |
@@ -67,9 +67,9 @@ export default function ArkListTest() {
      * @tc.desc      : Testing List Add different dataType data
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testListAdd0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -101,9 +101,9 @@ export default function ArkListTest() {
      * @tc.desc      : Testing List add special string
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testListAdd0002';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -125,9 +125,9 @@ export default function ArkListTest() {
      * @tc.desc      : Testing List insert insert->getIndexOf->removeByIndex->has
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testListInsert0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -153,9 +153,9 @@ export default function ArkListTest() {
      * @tc.desc      : Testing List insert insert->add->getLastIndexOf->removeByIndex->has
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testListInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testListInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testListInsert0002';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -181,9 +181,9 @@ export default function ArkListTest() {
      * @tc.desc      : Testing List has different dataType data check has result
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testListHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testListHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testListHas0001';
       try {
 

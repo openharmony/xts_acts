@@ -82,9 +82,9 @@ export default function ActsWebViewTest1() {
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_existCookie0001', false, 5003, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

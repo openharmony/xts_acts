@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function listItemJsunit() {
      * @tc.name listItemTest001
      * @tc.desc aceEtsTest
      */
-    it('listItemTest001', 0, async () => {
+    it('listItemTest001', Level.LEVEL1, async () => {
       console.info('++++++++++++++++ ListItem TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('listitem');
@@ -79,7 +79,7 @@ export default function listItemJsunit() {
      * @tc.name listItemTest002
      * @tc.desc aceEtsTest
      */
-    it('listItemTest002', 0, async () => {
+    it('listItemTest002', Level.LEVEL1, async () => {
       console.info('++++++++++++++++ ListItem TestCase 2 START ++++++++++++++++');
       let strJson = getInspectorByKey('listitem2');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -99,7 +99,7 @@ export default function listItemJsunit() {
      * @tc.name listItemTest003
      * @tc.desc aceEtsTest
      */
-    it('listItemTest003', 0, async () => {
+    it('listItemTest003', Level.LEVEL1, async () => {
       console.info('++++++++++++++++ ListItem TestCase 3 START ++++++++++++++++');
       let strJson = getInspectorByKey('listitem3');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -119,7 +119,7 @@ export default function listItemJsunit() {
      * @tc.name listItemTest004
      * @tc.desc aceEtsTest
      */
-    it('listItemTest004', 0, async () => {
+    it('listItemTest004', Level.LEVEL1, async () => {
       console.info('++++++++++++++++ ListItem TestCase 4 START ++++++++++++++++');
       let strJson = getInspectorByKey('listitem4');
       let obj: Record<string, Object> = JSON.parse(strJson);

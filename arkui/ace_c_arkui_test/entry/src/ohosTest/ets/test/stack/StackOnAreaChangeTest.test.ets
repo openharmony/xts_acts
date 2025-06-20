@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function stackOnAreaChangeTest() {
@@ -34,7 +34,7 @@ export default function stackOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackOnAreaChange001', 0, async (done: Function) => {
+    it('testStackOnAreaChange001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestStackSize');
       await Utils.sleep(1000);
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestStackSize').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -49,7 +49,7 @@ export default function stackOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackOnAreaChange002', 0, async (done: Function) => {
+    it('testStackOnAreaChange002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestStackMoveCompare');
       await Utils.sleep(1000);
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestStackMove').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -64,7 +64,7 @@ export default function stackOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackOnAreaChange003', 0, async (done: Function) => {
+    it('testStackOnAreaChange003', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestStackOffset');
       await Utils.sleep(1000);
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestStackOffset').$attrs.backgroundColor).assertEqual('#FFFF0000')

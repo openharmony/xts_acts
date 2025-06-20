@@ -91,14 +91,14 @@ export default function httpFetchTest() {
 
     /* *
      * @tc.number: SUB_NetworkMgr_Http_FetchRequestURL_0100
-     * @tc.name  : testHttpFetchRequestURL0100
+     * @tc.name  : testNetworkMgrHttpFetchRequestURL0100
      * @tc.desc  : Test fetch api with useful url.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testHttpFetchRequestURL0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
-      let caseName: string = 'testHttpFetchRequestURL0100';
+    it('testNetworkMgrHttpFetchRequestURL0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrHttpFetchRequestURL0100';
       runFetchTestCase(caseName, {
         url: TEST_URL
       }, done, () => {
@@ -301,14 +301,14 @@ export default function httpFetchTest() {
 
     /* *
      * @tc.number: SUB_NetworkMgr_Http_FetchRequestMethod_01200
-     * @tc.name  : testHttpFetchRequestMethod01200
+     * @tc.name  : testNetworkMgrHttpFetchRequestMethod01200
      * @tc.desc  : Test fetch api with param that method is POST.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testHttpFetchRequestMethod01200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let caseName: string = 'testHttpFetchRequestMethod01200';
+    it('testNetworkMgrHttpFetchRequestMethod01200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrHttpFetchRequestMethod01200';
       runFetchTestCase(caseName, {
         url: TEST_URL, method: 'POST', responseType: 'json'
       }, done, (data: FetchResponse) => {

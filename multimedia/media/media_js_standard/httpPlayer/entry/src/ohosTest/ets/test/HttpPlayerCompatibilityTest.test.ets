@@ -16,7 +16,7 @@
 import MediaTestBase from './MediaTestBase';
 import { playAudioSource } from './AudioPlayerTestBase';
 import { playVideoSource } from './VideoPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -47,7 +47,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'h264-aac.mp4';
       await playVideoSource(path, 1920, 1080, 247300, PLAY_TIME, done);
       done();
@@ -60,7 +60,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0200', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'h264-mp3.mp4';
       await playVideoSource(path, 1920, 1080, 247300, PLAY_TIME, done);
       done();
@@ -73,7 +73,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'h264-aac.ts';
       await playVideoSource(path, 1920, 1080, 247300, PLAY_TIME, done);
       done();
@@ -86,7 +86,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0200', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'h264-mp3.ts';
       await playVideoSource(path, 1920, 1080, 247300, PLAY_TIME, done);
       done();
@@ -99,7 +99,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'h264-aac.mkv';
       await playVideoSource(path, 1920, 1080, 247300, PLAY_TIME, done);
       done();
@@ -112,7 +112,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0200', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'h264-mp3.mkv';
       await playVideoSource(path, 1920, 1080, 247300, PLAY_TIME, done);
       done();
@@ -125,7 +125,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_WEBM_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_WEBM_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'vp8-vorbis.webm';
       await playVideoSource(path, 1920, 1080, 30000, PLAY_TIME, done);
       done();
@@ -138,7 +138,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_MP3_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_MP3_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'audio1.mp3';
       await playAudioSource(path, 10100, PLAY_TIME, true, done);
     });
@@ -150,7 +150,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_AAC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_AAC_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'audio3.aac';
       await playAudioSource(path, 11220, PLAY_TIME, true, done);
     });
@@ -162,7 +162,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_WAV_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_WAV_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'audio2.wav';
       await playAudioSource(path, 30000, PLAY_TIME, true, done);
     });
@@ -174,7 +174,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_FLAC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_FLAC_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'audio5.flac';
       await playAudioSource(path, 10000, PLAY_TIME, true, done);
     });
@@ -186,7 +186,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_M4A_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_M4A_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'audio4.m4a';
       await playAudioSource(path, 10030, PLAY_TIME, true, done);
     });
@@ -198,7 +198,7 @@ export default function hy_HttpPlayerCompatibilityTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_OGG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_OGG_0100', Level.LEVEL0,async (done: Function) => {
       let path = HTTP_PATH + 'audio6.ogg';
       await playAudioSource(path, 10000, PLAY_TIME, true, done);
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBrightness001', 0, async (done: Function) => {
+    it('testImageBrightness001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBrightness001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBrightness002', 0, async (done: Function) => {
+    it('testImageBrightness002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBrightness002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBrightness003', 0, async (done: Function) => {
+    it('testImageBrightness003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBrightness003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBrightness004', 0, async (done: Function) => {
+    it('testImageBrightness004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBrightness004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBrightness005', 0, async (done: Function) => {
+    it('testImageBrightness005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBrightness005()).assertEqual(0)
       done()
     })

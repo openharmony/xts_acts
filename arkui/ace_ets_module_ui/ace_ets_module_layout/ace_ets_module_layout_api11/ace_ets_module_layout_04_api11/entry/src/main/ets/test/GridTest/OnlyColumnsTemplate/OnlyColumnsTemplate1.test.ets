@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -52,7 +52,7 @@ export default function OnlyColumnsTemplate1() {
      * @tc.name testGrid
      * @tc.desc GridItem1 and GridItem2 have the same columnStart and columnEnd settings
      */
-    it('SUB_ACE_GRID_OnlyColumnsTemplate1_0100', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_OnlyColumnsTemplate1_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate1_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -84,7 +84,7 @@ export default function OnlyColumnsTemplate1() {
      * @tc.name testGrid
      * @tc.desc GridItem set columnStart to 0
      */
-    it('SUB_ACE_GRID_OnlyColumnsTemplate1_0200', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_OnlyColumnsTemplate1_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate1_0200] START');
       globalThis.value.message.notify({
         name: 'columnStart1', value: 0

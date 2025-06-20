@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import { PatternLockKeys, patternLockThemeProperty } from '../../MainAbility/pages/components/PatternLockPage';
@@ -77,7 +77,7 @@ export default function patternLockThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsPatternLockThemeColors_0100`, 0, () => {
+    it(`ActsPatternLockThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsPatternLockThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       const patternLockJSON = getInspectorByKey(PatternLockKeys.patternLockSystem);
@@ -107,7 +107,7 @@ export default function patternLockThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsPatternLockThemeColors_0200`, 0, async () => {
+    it(`ActsPatternLockThemeColors_0200`, Level.LEVEL0, async () => {
       const CASE: string = `ActsPatternLockThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -141,7 +141,7 @@ export default function patternLockThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsPatternLockThemeColors_0300`, 0, async () => {
+    it(`ActsPatternLockThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsPatternLockThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

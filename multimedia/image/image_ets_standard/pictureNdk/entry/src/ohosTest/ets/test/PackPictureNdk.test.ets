@@ -38,8 +38,6 @@ const testFileLinearmapHeic = 'HeicLinearMap.heic';
 const testFileLinearmapJpg = 'JpegLinearMap.jpg';
 const testFileFragmentHeic = 'HeicFragmentMap.heic';
 const testFileFragmentJpg = 'JpegFragmentMap.jpg';
-const testFileJpegARGB = "testExif.jpg";
-const testFileHeicARGB = "0801_sdr2.heic";
 const testAllAuxiliaryPicturesExcludeFragmentJpg = "AllAuxiliaryPictures_exclude_fragment.jpg";
 const fragmentPropertyKeys = ['XInOriginal', 'YInOriginal', 'FragmentImageWidth', 'FragmentImageHeight'];
 
@@ -62,8 +60,6 @@ const imageLengthKey = 'ImageLength';
 const imageWidthKey = 'ImageWidth';
 const imageLengthValue = '15';
 const imageWidthValue = '20';
-const packARGBFile = 'pack_argb_picture.jpg';
-const ARGB_8888 = image.PixelMapFormat.ARGB_8888;
 
 const imageFragmentHeightKey = 'FragmentImageHeight';
 const imageFragmentWidthKey = 'FragmentImageWidth';
@@ -227,90 +223,6 @@ export default function packPictureNdkTest() {
       let result: number = ndkTest.CreatePictureByPixelmap();
       logger.log(`create picture by pixelmap: ${result == 0 ? "success" : "failed"}`);
       expect(result).assertEqual(0);
-    }
-
-    const testCreatePictureByPixelMapWithFormat = (logger: Logger, fileName: string,
-      pixelFormat: image.PixelMapFormat = image.PixelMapFormat.RGBA_8888) => {
-      let filePath = getFilePath(fileName);
-      logger.log(`create image source from file: ${filePath}`);
-      ndkTest.createTestImageSource(filePath);
-      ndkTest.createTestPixelmapByImageSource(pixelFormat);
-      expect(ndkTest.GetPixelmapPixelFormat()).assertEqual(pixelFormat);
-      let result: number = ndkTest.CreatePictureByPixelmap();
-      logger.log(`create picture by pixelmap: ${result == 0 ? "success" : "failed"}`);
-      expect(result).assertEqual(0);
-    }
-
-    const testCreateARGBAuxiliaryPictureByPixelMap = (logger: Logger, fileName: string,
-      type: image.AuxiliaryPictureType, format: image.PixelMapFormat) => {
-      let filePath = getFilePath(fileName);
-      logger.log(`create image source from file: ${filePath}`);
-      ndkTest.createTestImageSource(filePath);
-      ndkTest.createTestPixelmapByImageSource(format);
-      let auxSize: image.Size = ndkTest.GetPixelmapImageSize();
-      let auxBuffer = new ArrayBuffer(auxSize.width * auxSize.height * 4);
-      let result = ndkTest.PixelMapReadPixels(auxBuffer);
-      expect(result).assertEqual(0);
-      let auxPicture: image.AuxiliaryPicture = 
-        ndkTest.CreateAuxiliaryPicture(auxBuffer, auxSize, type);
-      expect(auxPicture != undefined).assertTrue();
-      logger.log(`create ARGB auxiliary picture by pixelMap success`);
-      return auxPicture;
-    }
-    interface AuxGenerateInfo {
-      auxType: image.AuxiliaryPictureType,
-      pixelFormat: image.PixelMapFormat,
-    }
-
-    const testGenerateAuxPicForPicture = (auxList: Array<AuxGenerateInfo>) => {
-      let logger = new Logger("testGenerateAuxPicForPicture");
-      let fileName: string = testFileJpg;
-      for (let aux of auxList) {
-        let auxPicture: image.AuxiliaryPicture = testCreateARGBAuxiliaryPictureByPixelMap(logger, fileName,
-          aux.auxType, aux.pixelFormat);
-        ndkTest.SetAuxiliaryPicture(aux.auxType, auxPicture);
-        expect(ndkTest.GetAuxiliaryPicture(aux.auxType) != undefined).assertTrue();
-      }
-      logger.log(`Set ARGB auxiliary pictures for picture success`);
-    }
-
-    const testPackARGBPictureAndCheck = async (packOpt: image.PackingOption, interfaceName: string) => {
-      let outputPath = getCachePath(packARGBFile);
-      let logger = new Logger("testPackARGBPictureAndCheck");
-      logger.log(`pack ARGB picture start : ${interfaceName}`);
-      ndkTest.createTestImagePacker();
-      ndkTest.createTestPackingOptions();
-      ndkTest.setMimeTypeToTestPackingOptions(packOpt.format);
-      ndkTest.setQualityToTestPackingOptions(packOpt.quality);
-      ndkTest.setDynamicRangeToTestPackingOptions(packOpt.desiredDynamicRange);
-      ndkTest.setNeedsPackPropertiesToTestPackingOptions(packOpt.needsPackProperties);
-      if (interfaceName == "PackToDataFromPicture") {
-        logger.log(`pack ARGB PackTodata`);
-        let buffer = new ArrayBuffer(10000 * 10000);
-        expect(ndkTest.PackToDataFromPictureErrorCode(buffer)).assertEqual(0);
-        logger.log("PackToDataFromPicture success");
-        ndkTest.CreateImageSourceFromData(buffer);
-      } else {
-        logger.log(`pack ARGB PackTofile`);
-        let file = fs.openSync(outputPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        expect(ndkTest.PackToFileFromPicture(file.fd)).assertEqual(0);
-        fs.closeSync(file.fd);
-        logger.log("PackToFileFromPicture success");
-        ndkTest.createTestImageSource(outputPath);
-      }
-      if (isSupportHdr) {
-        logger.log(`Start check pack ARGB picture`);
-        ndkTest.CreatePictureDecodingOptions();
-        let result: number = ndkTest.CreatePictureByImageSource();
-        expect(result).assertEqual(0);
-        let mainPixelMapInfo: ndkTest.IAuxInfo = ndkTest.GetMainPixelmapInfo();
-        logger.log("mainPixelMapInfo is: " + JSON.stringify(mainPixelMapInfo));
-        expect(mainPixelMapInfo.pixelFormat).assertEqual(image.PixelMapFormat.RGBA_8888);
-        logger.log("Check pack ARGB result is: " + (mainPixelMapInfo.pixelFormat == image.PixelMapFormat.RGBA_8888));
-      } else {
-        logger.log("devic is not support Hdr");
-        expect(true).assertTrue();
-      }
     }
 
     const testCreatePictureByImageSource = (logger: Logger, fileName: string,
@@ -514,28 +426,6 @@ export default function packPictureNdkTest() {
       }
     }
 
-    const testCaseForPackARGBPicture = async (logger: Logger, done: Function, interfaceName: string, packType: string,
-      fileName: string, mainPixelFormat: image.PixelMapFormat) => {
-      await sleep(1000);
-      logger.log('begin');
-      try {
-        testCreatePictureByPixelMapWithFormat(logger, fileName, mainPixelFormat);
-
-        let packOpt: image.PackingOption = {
-          format: (fileName == testFileJpegARGB)? imageFormatJpeg: imageFormatHeif,
-          quality: (packType == "AUTO")? 98: 100,
-          desiredDynamicRange: (packType == "AUTO")? image.PackingDynamicRange.AUTO: image.PackingDynamicRange.SDR,
-          needsPackProperties: (packType == "AUTO")? true: false
-        };
-        testPackARGBPictureAndCheck(packOpt, interfaceName);
-        done();
-      } catch (err) {
-        logger.log(`Test exception: ${JSON.stringify(err)}`);
-        expect().assertFalse();
-        done();
-      }
-    }
-
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NDK_CONVERT_PNG_TO_DATA_0100
      * @tc.name      : PackToFileFromPicture
@@ -544,7 +434,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_CONVERT_PNG_TO_DATA_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_CONVERT_PNG_TO_DATA_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -586,7 +476,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PACK_PNG_PICTURE_TO_DATA_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PACK_PNG_PICTURE_TO_DATA_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -626,7 +516,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTOFILE_JPEG_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTOFILE_JPEG_ERROR_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -665,7 +555,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -690,7 +580,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -715,7 +605,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -740,7 +630,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -765,7 +655,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -790,7 +680,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -815,7 +705,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -840,7 +730,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -865,7 +755,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -888,7 +778,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -911,7 +801,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -934,7 +824,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_JPEG_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -957,7 +847,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -983,7 +873,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1009,7 +899,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1035,7 +925,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1061,7 +951,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1087,7 +977,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1113,7 +1003,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1139,7 +1029,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1165,7 +1055,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1189,7 +1079,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1213,7 +1103,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1237,7 +1127,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_JPEG_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1261,7 +1151,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1287,7 +1177,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1313,7 +1203,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1339,7 +1229,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1365,7 +1255,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1391,7 +1281,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1417,7 +1307,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1443,7 +1333,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1469,7 +1359,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1493,7 +1383,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1517,7 +1407,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1541,7 +1431,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_JPEG_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1565,7 +1455,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1591,7 +1481,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1617,7 +1507,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1643,7 +1533,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1669,7 +1559,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1695,7 +1585,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1721,7 +1611,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1747,7 +1637,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1773,7 +1663,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1797,7 +1687,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1821,7 +1711,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1845,7 +1735,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_JPEG_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1869,7 +1759,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1895,7 +1785,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1921,7 +1811,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1947,7 +1837,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1973,7 +1863,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -1999,7 +1889,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2025,7 +1915,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2051,7 +1941,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2077,7 +1967,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2101,7 +1991,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2125,7 +2015,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2149,7 +2039,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2173,7 +2063,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2199,7 +2089,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2225,7 +2115,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2251,7 +2141,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2277,7 +2167,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2303,7 +2193,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2329,7 +2219,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2355,7 +2245,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2381,7 +2271,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2405,7 +2295,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2429,7 +2319,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2453,7 +2343,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_JPEG_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
@@ -2477,7 +2367,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2507,7 +2397,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2537,7 +2427,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2567,7 +2457,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0400', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2597,7 +2487,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2627,7 +2517,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0600', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0600', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2657,7 +2547,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0700', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2687,7 +2577,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0800', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0800', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2717,7 +2607,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0900', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0900', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2745,7 +2635,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1000', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1000', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2773,7 +2663,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1100', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2801,7 +2691,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2829,7 +2719,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2859,7 +2749,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2889,7 +2779,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2919,7 +2809,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0400', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2949,7 +2839,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -2979,7 +2869,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0600', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0600', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3009,7 +2899,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0700', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3039,7 +2929,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0800', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0800', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3069,7 +2959,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0900', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0900', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3097,7 +2987,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1000', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1000', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3125,7 +3015,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1100', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3153,7 +3043,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3181,7 +3071,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3211,7 +3101,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3241,7 +3131,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3271,7 +3161,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0400', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3301,7 +3191,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3331,7 +3221,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0600', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0600', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3361,7 +3251,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0700', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3391,7 +3281,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0800', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0800', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3421,7 +3311,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0900', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0900', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3449,7 +3339,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1000', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1000', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3477,7 +3367,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1100', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3505,7 +3395,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3533,7 +3423,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3563,7 +3453,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3593,7 +3483,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3623,7 +3513,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0400', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3653,7 +3543,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3683,7 +3573,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0600', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0600', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3713,7 +3603,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0700', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3743,7 +3633,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0800', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0800', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3773,7 +3663,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0900', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0900', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3801,7 +3691,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1000', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1000', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3829,7 +3719,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1100', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3857,7 +3747,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3885,7 +3775,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3915,7 +3805,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3945,7 +3835,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -3975,7 +3865,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0400', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4005,7 +3895,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0500', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4035,7 +3925,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0600', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0600', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4065,7 +3955,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0700', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4095,7 +3985,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0800', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0800', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4125,7 +4015,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0900', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0900', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4153,7 +4043,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1000', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1000', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4181,7 +4071,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1100', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4209,7 +4099,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4237,7 +4127,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4267,7 +4157,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4297,7 +4187,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4327,7 +4217,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0400', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4357,7 +4247,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4387,7 +4277,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0600', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0600', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4417,7 +4307,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0700', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4447,7 +4337,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0800', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0800', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4477,7 +4367,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0900', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0900', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4505,7 +4395,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1000', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1000', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4533,7 +4423,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1100', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1100', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4561,7 +4451,7 @@ export default function packPictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1200', 0, async (done: Function) => {
+     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1200', Level.LEVEL0, async (done: Function) => {
       if (!(isSupportHdr && isSupportHeicEncode)) {
         if (!isSupportHdr) {
           hilog.info(domain, testTag, 'device is not support hdr');
@@ -4578,72 +4468,6 @@ export default function packPictureNdkTest() {
         }
         await testNativePackPictureFunc(mlg, done, testFileWithFiveAuxiliaryPictureHeic, "PictureFromImageSource",
           packOpt, "PackToFileFromPicture", [FRAGMENT_MAP]);
-      }
-    })
-
-    /*
-     * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTODATA_ARGB_PICTURE_JPEG_0100
-     * @tc.name      : PackToDataFromPicture
-     * @tc.desc      : Test packing picture to data when the format is ARGB_8888.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTODATA_ARGB_PICTURE_JPEG_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      await sleep(1000);
-      let logger = new Logger("SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTODATA_ARGB_PICTURE_JPEG_0100");
-      testCaseForPackARGBPicture(logger, done, "PackToDataFromPicture", "AUTO", testFileJpegARGB, ARGB_8888);
-    })
-
-    /*
-     * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTODATA_ARGB_PICTURE_HEIF_0100
-     * @tc.name      : PackToDataFromPicture
-     * @tc.desc      : Test packing picture to data when the format is ARGB_8888.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTODATA_ARGB_PICTURE_HEIF_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      if (isSupportHdr) {
-        await sleep(1000);
-        let logger = new Logger("SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTODATA_ARGB_PICTURE_HEIF_0100");
-        testCaseForPackARGBPicture(logger, done, "PackToDataFromPicture", "AUTO", testFileHeicARGB, ARGB_8888);
-      } else {
-        expect(true).assertTrue();
-        done();
-      }
-    })
-
-    /*
-     * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTOFILE_ARGB_PICTURE_JPEG_0100
-     * @tc.name      : PackToFileFromPicture
-     * @tc.desc      : Test packing picture to file when the format is ARGB_8888.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTOFILE_ARGB_PICTURE_JPEG_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      await sleep(1000);
-      let logger = new Logger("SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTOFILE_ARGB_PICTURE_JPEG_0100");
-      testCaseForPackARGBPicture(logger, done, "PackToFileFromPicture", "AUTO", testFileJpegARGB, ARGB_8888);
-    })
-
-    /*
-     * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTOFILE_ARGB_PICTURE_HEIF_0100
-     * @tc.name      : PackToFileFromPicture
-     * @tc.desc      : Test packing picture to file when the format is ARGB_8888.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTOFILE_ARGB_PICTURE_HEIF_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      if (isSupportHdr) {
-        await sleep(1000);
-        let logger = new Logger("SUB_MULTIMEDIA_PICTURE_NATIVE_PACKTOFILE_ARGB_PICTURE_HEIF_0100");
-        testCaseForPackARGBPicture(logger, done, "PackToFileFromPicture", "AUTO", testFileHeicARGB, ARGB_8888);
-      } else {
-        expect(true).assertTrue();
-        done();
       }
     })
   })

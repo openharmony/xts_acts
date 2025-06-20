@@ -14,7 +14,7 @@
  */
 
 import avSession from '@ohos.multimedia.avsession';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import WantAgent from '@ohos.wantAgent';
 import featureAbility from '@ohos.ability.featureAbility';
 
@@ -202,7 +202,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.setAVMetadata({
                     assetId: '121278'
@@ -225,7 +225,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setAVMetadata().then(() => {
                 console.info('TestLog: Set AVMetadata successfully');
                 expect().assertFail();
@@ -244,7 +244,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     session.setAVMetadata({ assetId: '121278' }, (err) => {
@@ -273,7 +273,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.setAVMetadata(err => {
                     if (err) {
@@ -300,7 +300,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.setAVPlaybackState({}).then(() => {
                     console.info('TestLog: Set playbackState successfully');
@@ -321,7 +321,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setAVPlaybackState().then(() => {
                 console.info('TestLog: Set playbackState successfully');
                 expect().assertFail();
@@ -340,7 +340,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_ERRORCODE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_ERRORCODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
                 speed: 1.0,
@@ -377,7 +377,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_ERRORCODE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_ERRORCODE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
                 speed: -2,
@@ -413,7 +413,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let wantAgentInfo = {
                 wants: [
                     {
@@ -449,7 +449,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setLaunchAbility().then(() => {
                 console.info('TestLog: AVSessionTest : Set LaunchAbility');
                 expect().assertFail();
@@ -468,7 +468,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_ERRORCODE_0300', 0, async function(done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_ERRORCODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function(done) {
             let wantAgentInfo = {
                 wants : [
                     {
@@ -512,7 +512,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_ERRORCODE_0400', 0, async function(done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_ERRORCODE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function(done) {
             try {
                 session.setLaunchAbility(null, err => {
                     if (err) {
@@ -539,7 +539,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     session.destroy(err => {
@@ -568,7 +568,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.destroy().then(() => {
                     console.info('TestLog: Session destroy success.');
@@ -589,7 +589,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.activate().then(() => {
                     console.info('TestLog: Set session active successfully');
@@ -610,7 +610,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     session.activate((err) => {
@@ -639,7 +639,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.deactivate().then(() => {
                     console.info('TestLog: Deactivate session success.');
@@ -660,7 +660,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     session.deactivate((err) => {
@@ -689,8 +689,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('play');
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await onCallbackInvalidSession('play');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -702,8 +708,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('play');
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                onCallbackInvalidParam('play');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -715,8 +727,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSTOP_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('stop');
+        it('SUB_MULTIMEDIA_AVSESSION_ONSTOP_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await onCallbackInvalidSession('stop');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -728,8 +746,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSTOP_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('stop');
+        it('SUB_MULTIMEDIA_AVSESSION_ONSTOP_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                onCallbackInvalidParam('stop');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -741,8 +765,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPAUSE_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('pause');
+        it('SUB_MULTIMEDIA_AVSESSION_ONPAUSE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await onCallbackInvalidSession('pause');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -754,8 +784,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPAUSE_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('pause');
+        it('SUB_MULTIMEDIA_AVSESSION_ONPAUSE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                onCallbackInvalidParam('pause');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -767,8 +803,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('playNext');
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('playNext');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -780,8 +822,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('playNext');
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('playNext');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -793,8 +841,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('playPrevious');
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('playPrevious');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -806,8 +860,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('playPrevious');
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('playPrevious');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -819,8 +879,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('fastForward');
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('fastForward');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -832,8 +898,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('fastForward');
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('fastForward');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -845,8 +917,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('rewind');
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('rewind');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -858,8 +936,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('rewind');
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('rewind');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -871,8 +955,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSEEK_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('seek');
+        it('SUB_MULTIMEDIA_AVSESSION_ONSEEK_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('seek');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -884,8 +974,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSEEK_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('seek');
+        it('SUB_MULTIMEDIA_AVSESSION_ONSEEK_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('seek');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -897,8 +993,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('setSpeed');
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('setSpeed');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -910,8 +1012,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('setSpeed');
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('setSpeed');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -923,8 +1031,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('setLoopMode');
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('setLoopMode');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -936,8 +1050,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('setLoopMode');
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('setLoopMode');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -949,8 +1069,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('toggleFavorite');
+        it('SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('toggleFavorite');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -962,8 +1088,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('toggleFavorite');
+        it('SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('toggleFavorite');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -975,8 +1107,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('handleKeyEvent');
+        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await onCallbackInvalidSession('handleKeyEvent');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -988,8 +1126,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('handleKeyEvent');
+        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               onCallbackInvalidParam('handleKeyEvent');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1001,8 +1145,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('play');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await offCallbackInvalidSession('play');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1014,8 +1164,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('play');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               offCallbackInvalidParam('play');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1027,8 +1183,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('pause');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await offCallbackInvalidSession('pause');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1040,8 +1202,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('pause')
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               offCallbackInvalidParam('pause')
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1053,8 +1221,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('stop');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await offCallbackInvalidSession('stop');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1066,8 +1240,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('stop');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               offCallbackInvalidParam('stop');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1079,8 +1259,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('playNext');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await offCallbackInvalidSession('playNext');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1092,8 +1278,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('playNext');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               offCallbackInvalidParam('playNext');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1105,8 +1297,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('playPrevious');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               await offCallbackInvalidSession('playPrevious');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1118,8 +1316,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('playPrevious');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+               offCallbackInvalidParam('playPrevious');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1131,8 +1335,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('fastForward');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await offCallbackInvalidSession('fastForward');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1144,8 +1354,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('fastForward');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                offCallbackInvalidParam('fastForward');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1157,8 +1373,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('rewind');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await offCallbackInvalidSession('rewind');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1170,8 +1392,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('rewind');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                offCallbackInvalidParam('rewind');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1183,8 +1411,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('seek');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await offCallbackInvalidSession('seek');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1196,8 +1430,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('seek');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                offCallbackInvalidParam('seek');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1209,8 +1449,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('setSpeed');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await offCallbackInvalidSession('setSpeed');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1222,8 +1468,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('setSpeed');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                offCallbackInvalidParam('setSpeed');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1235,8 +1487,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('setLoopMode');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await offCallbackInvalidSession('setLoopMode');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1248,8 +1506,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('setLoopMode');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                offCallbackInvalidParam('setLoopMode');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1261,8 +1525,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('toggleFavorite');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await offCallbackInvalidSession('toggleFavorite');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1274,8 +1544,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('toggleFavorite');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                offCallbackInvalidParam('toggleFavorite');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1287,8 +1563,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_ERRORCODE_0100', 0, async function (done) {
-            await offCallbackInvalidSession('handleKeyEvent');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await offCallbackInvalidSession('handleKeyEvent');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1300,8 +1582,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_ERRORCODE_0200', 0, async function (done) {
-            offCallbackInvalidParam('handleKeyEvent');
+        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                offCallbackInvalidParam('handleKeyEvent');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -1313,7 +1601,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 session.getOutputDevice(err => {
                     if (err) {
@@ -1336,7 +1624,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.getOutputDevice().then(() => {
                     console.info(`Get device success.`);
@@ -1357,7 +1645,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.getController().then(() => {
                     console.info('Get controller successfully');
@@ -1378,7 +1666,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 session.getController(async err => {
                     if (err) {
@@ -1401,7 +1689,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT).then(() => {
                 console.info(`TestLog: dispatchSessionEvent success.`);
 				expect().assertFail();
@@ -1420,7 +1708,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.dispatchSessionEvent(UPDATE_LYRICS_WANT_PARAMS, UPDATE_LYRICS_WANT_PARAMS).then(() => {
                 console.info(`TestLog: dispatchSessionEvent success.`);
 				expect().assertFail();
@@ -1439,7 +1727,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidSession(async () => {
                 await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS).then(() => {
                     console.info(`TestLog: dispatchSessionEvent success.`);
@@ -1460,7 +1748,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, null, err => {
                     if (err) {
@@ -1487,7 +1775,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0500", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.dispatchSessionEvent(UPDATE_LYRICS_WANT_PARAMS, UPDATE_LYRICS_WANT_PARAMS, err => {
                     if (err) {
@@ -1514,7 +1802,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0600", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_ERRORCODE_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidSession(() => {
                 try {
                     session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS, err => {
@@ -1543,7 +1831,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setExtras().then(() => {
                 console.info(`TestLog: setExtras success.`);
 				expect().assertFail();
@@ -1562,7 +1850,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setExtras(INVALID_STRING).then(() => {
                 console.info(`TestLog: setExtras success.`);
                 expect().assertFail();
@@ -1581,7 +1869,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidSession(async () => {
                 await session.setExtras(CUSTOM_EXTRAS).then(() => {
                     console.info(`TestLog: setExtras success.`);
@@ -1602,7 +1890,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.setExtras(null, err => {
                     if (err) {
@@ -1629,7 +1917,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0500", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.setExtras(INVALID_STRING, err => {
                     if (err) {
@@ -1656,7 +1944,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0600", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_ERRORCODE_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 try {
                     session.setExtras(CUSTOM_EXTRAS, err => {
@@ -1685,8 +1973,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_ERRORCODE_0100", 0, async function (done) {
-			onCallbackInvalidParam('commonCommand');
+		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                onCallbackInvalidParam('commonCommand');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -1698,7 +1992,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			try {
 				session.on('commonCommand', callback1, callback2);
                 expect().assertFail();
@@ -1716,7 +2010,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			try {
 				session.on('commonCommand', INVALID_STRING);
                 expect().assertFail();
@@ -1734,8 +2028,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_ERRORCODE_0400", 0, async function (done) {
-            await onCallbackInvalidSession('commonCommand');
+		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await onCallbackInvalidSession('commonCommand');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -1747,8 +2047,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_ERRORCODE_0100", 0, async function (done) {
-			offCallbackInvalidParam('commonCommand');
+		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                offCallbackInvalidParam('commonCommand');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -1760,8 +2066,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_ERRORCODE_0200", 0, async function (done) {
-			await offCallbackInvalidSession('commonCommand');
+		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await offCallbackInvalidSession('commonCommand');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -1773,7 +2085,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setAVQueueItems(ITEMS_ARRAY_ERROR).then(() => {
                 console.info('setAVQueueItems Successfully');
                 expect().assertFail();
@@ -1792,7 +2104,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.setAVQueueItems(ITEMS_ARRAY).then(() => {
                     console.info('setAVQueueItems Successfully');
@@ -1813,7 +2125,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.setAVQueueItems(ITEMS_ARRAY_ERROR, err => {
                     if (err) {
@@ -1840,7 +2152,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     session.setAVQueueItems(ITEMS_ARRAY, err => {
@@ -1869,7 +2181,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setAVQueueTitle({}).then(() => {
                 console.info('setAVQueueTitle Successfully');
                 expect().assertFail();
@@ -1888,7 +2200,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await session.setAVQueueTitle(QUEUE_TITLE).then(() => {
                     console.info('setAVQueueTitle Successfully');
@@ -1909,7 +2221,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.setAVQueueTitle({}, err => {
                     if (err) {
@@ -1936,7 +2248,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidSession(() => {
                 try {
                     session.setAVQueueTitle(QUEUE_TITLE, err => {
@@ -1965,8 +2277,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_ERRORCODE_0100", 0, async function (done) {
-			onCallbackInvalidParam('skipToQueueItem');
+		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                onCallbackInvalidParam('skipToQueueItem');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
 		})
 
@@ -1978,7 +2296,7 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.on('skipToQueueItem', callback1, callback2);
                 expect().assertFail();
@@ -1996,8 +2314,14 @@ export default function AVSessionErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_ERRORCODE_0300", 0, async function (done) {
-			await onCallbackInvalidSession('skipToQueueItem');
+		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            try{
+                await onCallbackInvalidSession('skipToQueueItem');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
     })

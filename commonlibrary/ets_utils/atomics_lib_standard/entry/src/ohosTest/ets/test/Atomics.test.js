@@ -126,7 +126,7 @@ export default function WaitTest() {
          * @tc.desc: returns a string which is either "ok", "not-equal", or "timed-out".
          * @tc.author: jiangkai
          */
-        it('testWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it('testWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             var sab = new SharedArrayBuffer(20);
             var flag = false;
             var int32 = new Int32Array(sab);

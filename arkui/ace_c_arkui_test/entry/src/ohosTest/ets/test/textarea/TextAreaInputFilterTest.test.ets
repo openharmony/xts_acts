@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll,expect, describe, it, afterEach } from '@ohos/hypium';
+import { beforeAll,expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import { Component,Driver, ON} from '@ohos.UiTest';
@@ -35,7 +35,7 @@ export default function textAreaInputFilterTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaInputFilter001', 0, async (done: Function) => {
+    it('testTextAreaInputFilter001', Level.LEVEL1, async (done: Function) => {
       let driver:Driver = Driver.create();
       let textArea:Component = await driver.findComponent(ON.type('TextArea'));
       let content  = await textArea.getText();

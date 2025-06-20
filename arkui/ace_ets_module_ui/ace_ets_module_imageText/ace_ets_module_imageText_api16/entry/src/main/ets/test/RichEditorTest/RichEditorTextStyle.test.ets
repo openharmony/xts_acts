@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -55,7 +55,7 @@ export default function RichEditorTextStyle() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('RichEditorTextStyle0001', 0, async (done: Function) => {
+    it('RichEditorTextStyle0001', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('RichEditorTextStyle RichEditorTextStyle0001 START');
         await CommonFunc.sleep(1000);
@@ -85,7 +85,7 @@ export default function RichEditorTextStyle() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('RichEditorTextStyle0002', 0, async (done: Function) => {
+    it('RichEditorTextStyle0002', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('RichEditorTextStyle RichEditorTextStyle0002 START');
         await CommonFunc.sleep(1000);
@@ -115,7 +115,7 @@ export default function RichEditorTextStyle() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('RichEditorTextStyle0003', 0, async (done: Function) => {
+    it('RichEditorTextStyle0003', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('RichEditorTextStyle RichEditorTextStyle0003 START');
         await CommonFunc.sleep(1000);
@@ -146,7 +146,7 @@ export default function RichEditorTextStyle() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('RichEditorTextStyle0004', 0, async (done: Function) => {
+    it('RichEditorTextStyle0004', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('RichEditorTextStyle RichEditorTextStyle0004 START');
         await CommonFunc.sleep(1000);
@@ -176,7 +176,7 @@ export default function RichEditorTextStyle() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('RichEditorTextStyle0005', 0, async (done: Function) => {
+    it('RichEditorTextStyle0005', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('RichEditorTextStyle RichEditorTextStyle0005 START');
         await CommonFunc.sleep(1000);
@@ -206,7 +206,7 @@ export default function RichEditorTextStyle() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('RichEditorTextStyle0006', 0, async (done: Function) => {
+    it('RichEditorTextStyle0006', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('RichEditorTextStyle RichEditorTextStyle0006 START');
         await CommonFunc.sleep(1000);
@@ -226,6 +226,5 @@ export default function RichEditorTextStyle() {
         console.info("[RichEditorTextStyle0006] end");
         done();
     });
-
   })
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach } from '@ohos/hypium';
+import { describe, it, expect, afterEach, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEvent';
 import { Constant } from '../Common';
 import display from '@ohos.display';
@@ -81,7 +81,7 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0500", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0500", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0500';
       try {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -122,7 +122,7 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0600', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0600', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0600';
       try {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -161,7 +161,7 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0700', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0700', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0700';
       try {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -202,7 +202,7 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0300', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0300', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0300';
       try {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -242,7 +242,7 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0200", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0200", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0200'
       try {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -281,7 +281,7 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0100", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0100", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0100';
       try {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -322,7 +322,7 @@ export default function StartAbilityGetDisplayIdTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0400", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0400", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_ABILITY_StartAbility_getDisplayIdTest_0400';
       try {
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {

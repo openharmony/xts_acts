@@ -22,8 +22,10 @@ import textAreaOnPasteTest from './textarea/TextAreaOnPasteTest.test'
 import textInputOnCutTest from './textinput/TextInputOnCutTest.test'
 import textInputOnPasteTest from './textinput/TextInputOnPasteTest.test'
 import calendarPickerSelectedDateTest from './calendarpicker/CalendarPickerSelectedDateTest.test'
+import textInputMethodTest from './textinput/TextInputMethodTest.test'
 
 export default function testsuite() {
+  textInputMethodTest()
    calendarPickerOnChangeTest()
    calendarPickerEdgeAlignTest()
    calendarPickerTextStyleTest()

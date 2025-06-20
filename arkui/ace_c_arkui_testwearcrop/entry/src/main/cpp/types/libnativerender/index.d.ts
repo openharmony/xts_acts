@@ -25,3 +25,5 @@ export const textAreaOnPasteTest: (a: string) => void;
 export const textInputOnCutTest: (a: string) => void;
 
 export const textInputOnPasteTest: (a: string) => void;
+
+export const InputMethodTest001: (a: string) => void;

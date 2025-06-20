@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, beforeEach, beforeAll, describe, it } from '@ohos/hypium';
+import { expect, beforeEach, beforeAll, describe, it, Level} from '@ohos/hypium';
 import Utils from '../common/Utils';
 import router from '@ohos.router';
 
@@ -51,7 +51,7 @@ export default function checkboxGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('checkboxGroupTest001', 0, async (done: Function) => {
+    it('checkboxGroupTest001', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('checkbox1');
       await Utils.sleep(1000);
       console.info('checkboxGroupTest001 strJson ' + strJson);

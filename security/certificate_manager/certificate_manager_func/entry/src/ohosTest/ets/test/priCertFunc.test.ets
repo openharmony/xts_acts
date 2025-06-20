@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import certManager from '@ohos.security.certManager';
 import crypt from '@ohos.security.cryptoFramework';
 import * as commonParameter from './utils/common/common_parameter';
@@ -105,7 +105,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level0
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0100', 0, (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       expect(certManager.CMErrorCode.CM_ERROR_NO_PERMISSION).assertEqual(201);
       expect(certManager.CMErrorCode.CM_ERROR_NOT_SYSTEM_APP).assertEqual(202);
       expect(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS).assertEqual(401);
@@ -141,7 +141,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0200', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let keystore: Uint8Array = commonParameter.priRsaCredData;
       let keystorePwd: string = '123456';
       let certAlias: string = 'appCertAliasDemoRsa';
@@ -177,7 +177,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0300', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let keystore: Uint8Array = commonParameter.priEccCredData;
       let keystorePwd: string = '123456';
       let certAlias: string = 'appCertAliasDemoEcc';
@@ -226,7 +226,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0400', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await certManager.getPrivateCertificate(gAppKeyUri1).then((CMResult: certManager.CMResult) => {
         expect(CMResult.credential != null && CMResult.credential != undefined).assertTrue();
         if (CMResult != undefined && CMResult.credential != undefined) {
@@ -252,7 +252,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0500', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let cmResult2: certManager.CMResult;
       console.error(`gAppKeyUri2 is: ${gAppKeyUri2}`);
       try {
@@ -289,7 +289,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0600', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN
@@ -314,7 +314,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0700', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN
@@ -339,7 +339,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0800', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       try {
         await signVerifyPromise.signAbortProcess(gAppKeyUri2, keyStore, "after_init");
@@ -360,7 +360,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_0900', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
       try {
         await signVerifyCallback.signAbortProcess(gAppKeyUri1, keyStore, "after_init");
@@ -381,7 +381,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1000', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       try {
         await signVerifyPromise.verifyAbortProcess(gAppKeyUri2, keyStore, "after_verify_init");
@@ -402,7 +402,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1100', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
       try {
         await signVerifyCallback.verifyAbortProcess(gAppKeyUri1, keyStore, "after_verify_init");
@@ -423,7 +423,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level4
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1200', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       try {
         for (let i = 2; i < 257; i++) {
           let alias_temp: string = "privateCredential" + i.toString();
@@ -444,7 +444,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1300', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let cmResult: certManager.CMResult = await certManager.getAllAppPrivateCertificates();
         if (cmResult.credentialList != undefined) {
@@ -473,7 +473,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1400', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let cmResult: certManager.CMResult = await new Promise<certManager.CMResult>((resolve, reject) => {
           certManager.getAllAppPrivateCertificates((err: BusinessError, cmResult: certManager.CMResult) => {
@@ -512,7 +512,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1500', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
@@ -547,7 +547,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1600', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
@@ -580,7 +580,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1700', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
@@ -615,7 +615,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1800', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
@@ -649,7 +649,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_1900', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
@@ -684,7 +684,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_2000', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
@@ -713,7 +713,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('Security_CertManager_PriCertJsApi_Func_2100', 0, async (done: Function) => {
+    it('Security_CertManager_PriCertJsApi_Func_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let keyStore: crypt.DataBlob;
       let srckeyStore: Uint8Array = commonParameter.priEccCredData;
       let signSpec: certManager.CMSignatureSpec = {

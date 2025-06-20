@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { KeyCode } from '@kit.InputKit';
 
 export default function MultimodalInputKeyCodeTest() {
@@ -41,7 +41,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_SWITCHVIDEOMODE_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_SWITCHVIDEOMODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_SWITCHVIDEOMODE_0100";
       try {
         let KEYCODE_SWITCHVIDEOMODE = KeyCode.KEYCODE_SWITCHVIDEOMODE;
@@ -63,7 +63,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_SEARCH_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_SEARCH_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_SEARCH_0100";
       try {
         let KEYCODE_SEARCH = KeyCode.KEYCODE_SEARCH;
@@ -85,7 +85,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_MEDIA_RECORD_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_MEDIA_RECORD_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_MEDIA_RECORD_0100";
       try {
         let KEYCODE_MEDIA_RECORD = KeyCode.KEYCODE_MEDIA_RECORD;
@@ -107,7 +107,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_ASSISTANT_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_ASSISTANT_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_ASSISTANT_0100";
       try {
         let KEYCODE_ASSISTANT = KeyCode.KEYCODE_ASSISTANT;
@@ -129,7 +129,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_CLICK_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_CLICK_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_DAGGER_CLICK_0100";
       try {
         let KEYCODE_DAGGER_CLICK = KeyCode.KEYCODE_DAGGER_CLICK;
@@ -151,7 +151,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_DOUBLE_CLICK_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_DOUBLE_CLICK_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_DAGGER_DOUBLE_CLICK_0100";
       try {
         let KEYCODE_DAGGER_DOUBLE_CLICK = KeyCode.KEYCODE_DAGGER_DOUBLE_CLICK;
@@ -173,7 +173,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100";
       try {
         let KEYCODE_DAGGER_LONG_PRESS = KeyCode.KEYCODE_DAGGER_LONG_PRESS;
@@ -195,7 +195,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_A_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_A_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_A_0100";
       try {
         let KEYCODE_BUTTON_A = KeyCode.KEYCODE_BUTTON_A;
@@ -217,7 +217,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_B_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_B_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_B_0100";
       try {
         let KEYCODE_BUTTON_B = KeyCode.KEYCODE_BUTTON_B;
@@ -239,7 +239,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_X_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_X_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_X_0100";
       try {
         let KEYCODE_BUTTON_X = KeyCode.KEYCODE_BUTTON_X;
@@ -261,7 +261,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_Y_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_Y_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_Y_0100";
       try {
         let KEYCODE_BUTTON_Y = KeyCode.KEYCODE_BUTTON_Y;
@@ -283,7 +283,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_L1_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_L1_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_L1_0100";
       try {
         let KEYCODE_BUTTON_L1 = KeyCode.KEYCODE_BUTTON_L1;
@@ -305,7 +305,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_R1_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_R1_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_R1_0100";
       try {
         let KEYCODE_BUTTON_R1 = KeyCode.KEYCODE_BUTTON_R1;
@@ -327,7 +327,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_L2_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_L2_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_L2_0100";
       try {
         let KEYCODE_BUTTON_L2 = KeyCode.KEYCODE_BUTTON_L2;
@@ -349,7 +349,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_R2_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_R2_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_R2_0100";
       try {
         let KEYCODE_BUTTON_R2 = KeyCode.KEYCODE_BUTTON_R2;
@@ -371,7 +371,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_SELECT_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_SELECT_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_SELECT_0100";
       try {
         let KEYCODE_BUTTON_SELECT = KeyCode.KEYCODE_BUTTON_SELECT;
@@ -393,7 +393,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_START_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_START_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_START_0100";
       try {
         let KEYCODE_BUTTON_START = KeyCode.KEYCODE_BUTTON_START;
@@ -415,7 +415,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_MODE_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_MODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_MODE_0100";
       try {
         let KEYCODE_BUTTON_MODE = KeyCode.KEYCODE_BUTTON_MODE;
@@ -437,7 +437,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_THUMBL_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_THUMBL_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_THUMBL_0100";
       try {
         let KEYCODE_BUTTON_THUMBL = KeyCode.KEYCODE_BUTTON_THUMBL;
@@ -459,7 +459,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_THUMBR_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_KEYCODE_BUTTON_THUMBR_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_BUTTON_THUMBR_0100";
       try {
         let KEYCODE_BUTTON_THUMBR = KeyCode.KEYCODE_BUTTON_THUMBR;

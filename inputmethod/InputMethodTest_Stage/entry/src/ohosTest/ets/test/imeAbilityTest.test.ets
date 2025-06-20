@@ -15,7 +15,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import inputMethod from '@ohos.inputMethod'
 import { BusinessError } from '@ohos.base'
-import deviceinfo from '@ohos.deviceInfo';
 
 export default function imeAbilityTest() {
   describe('imeAbilityTest', () => {
@@ -67,9 +66,9 @@ export default function imeAbilityTest() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level0
     */
-    it('SUB_InputMethod_IMEAbility_0001', Level.LEVEL2, async (done: Function) => {
+    it('SUB_InputMethod_IMEAbility_0001', Level.LEVEL0, async (done: Function) => {
       console.info('====>----------SUB_InputMethod_IMEAbility_0001 start-------------');
       let imExtAbilityProperty: inputMethod.InputMethodProperty = {
         packageName: "com.acts.imeability.test",

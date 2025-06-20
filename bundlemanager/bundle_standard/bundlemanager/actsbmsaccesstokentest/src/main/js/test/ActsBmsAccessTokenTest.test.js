@@ -41,7 +41,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name: getAccessTokenIdOfEntry
          * @tc.desc: get the accessTokenId
          */
-        it('getAccessTokenIdOfEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getAccessTokenIdOfEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId)
                 .then(applicationInfo => {
                     console.info('accessTokenId: ' + applicationInfo.accessTokenId);
@@ -59,7 +59,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name: getReqPermissionOfEntry
          * @tc.desc: get the reqPermissions and reqPermissionStates
          */
-        it('getReqPermissionOfEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getReqPermissionOfEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
                 .then(bundleInfo => {
                     expect(bundleInfo.name).assertEqual(BUNDLE_NAME3);
@@ -81,7 +81,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name: getReqPermissionUpdateEntry
          * @tc.desc: get the reqPermissions and reqPermissionStates
          */
-        it('getReqPermissionUpdateEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getReqPermissionUpdateEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
                 .then(bundleInfo => {
                     expect(bundleInfo.name).assertEqual(BUNDLE_NAME2);
@@ -107,7 +107,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name: getReqPermissionUpdateEntryAndFeature
          * @tc.desc: get the reqPermissions and reqPermissionStates
          */
-        it('getReqPermissionUpdateEntryAndFeature', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getReqPermissionUpdateEntryAndFeature', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
                 .then(bundleInfo => {
                     expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);

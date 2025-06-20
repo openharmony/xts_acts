@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import {
   testHMACDigestPromise,
   testMDDigestPromise,
@@ -38,7 +38,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test MD5 for MD digest algotithm
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_MD_0100", 0, async function (done) {
+    it("Security_crypto_framework_MD_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testMDDigestPromise("MD5")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -54,7 +54,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA1 for MD digest algotithm
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_MD_0200", 0, async function (done) {
+    it("Security_crypto_framework_MD_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testMDDigestPromise("SHA1")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -70,7 +70,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA224 for MD digest algotithm
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_MD_0300", 0, async function (done) {
+    it("Security_crypto_framework_MD_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testMDDigestPromise("SHA224")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -86,7 +86,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA256 for MD digest algotithm
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_MD_0400", 0, async function (done) {
+    it("Security_crypto_framework_MD_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testMDDigestCallback("SHA256")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -103,7 +103,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA384 for MD digest algotithm
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_MD_0500", 0, async function (done) {
+    it("Security_crypto_framework_MD_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testMDDigestCallback("SHA384")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -119,7 +119,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA512 for MD digest algotithm
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_MD_0600", 0, async function (done) {
+    it("Security_crypto_framework_MD_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testMDDigestCallback("SHA512")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -135,7 +135,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name The encryption and decryption framework supports MD calculation, and the algorithm parameters are abnormal
      * @tc.desc Input SHA5
      */
-    it("Security_crypto_framework_MD_0700", 0, async function (done) {
+    it("Security_crypto_framework_MD_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       try {
         cryptoFramework.createMd("SHA5");
         expect(null).assertFail();
@@ -150,7 +150,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name The encryption and decryption framework supports MD calculation, and the algorithm parameter is NULL
      * @tc.desc Input null
      */
-    it("Security_crypto_framework_MD_0800", 0, async function (done) {
+    it("Security_crypto_framework_MD_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       try {
         cryptoFramework.createMd(null);
         expect(null).assertFail();
@@ -165,7 +165,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name The encryption and decryption framework supports MD calculation, and the Datablob value to be calculated is a super large value
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_MD_0900", 0, async function (done) {
+    it("Security_crypto_framework_MD_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testMDDigestCallbackLen("SHA224", 10000)
         .then((data) => {
           expect(data == null).assertTrue();
@@ -181,7 +181,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name The encryption and decryption framework supports MD calculation, and the Datablob value to be calculated is abnormal
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_MD_1000", 0, async function (done) {
+    it("Security_crypto_framework_MD_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let mdGenerator = cryptoFramework.createMd("SHA224");
       try {
         await new Promise((resolve, reject) => {
@@ -217,7 +217,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA1 for HMAC digest algorithm
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0100", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testHMACDigestCallback("SHA1", "AES128")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -233,7 +233,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA224 for HMAC digest algorithm
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0200", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testHMACDigestPromise("SHA224", "AES192")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -249,7 +249,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA256 for HMAC digest algorithm
      * @tc.desc Use the Callback Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0300", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testHMACDigestCallback("SHA256", "AES256")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -265,7 +265,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA384 for HMAC digest algorithm
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0400", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testHMACDigestPromise("SHA384", "3DES192")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -281,7 +281,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name Test SHA512 for HMAC digest algorithm
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0500", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await testHMACDigestPromise("SHA512", "3DES192")
         .then((data) => {
           expect(data == null).assertTrue();
@@ -297,7 +297,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name The encryption and decryption framework supports HMAC calculation, and HMAC algorithm parameters are abnormal
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0600", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       try {
         cryptoFramework.createMac("SHA5");
         expect(null).assertFail();
@@ -324,7 +324,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name The encryption and decryption framework supports HMAC calculation, and the key algorithm parameters are abnormal
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0700", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let globalHMAC = cryptoFramework.createMac("SHA512");
       let globalsymKeyGenerator =
         cryptoFramework.createAsyKeyGenerator("RSA1024|PRIMES_2");
@@ -361,7 +361,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name The encryption and decryption framework supports HMAC calculation, and the Datablob of HMAC to be calculated is abnormal
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0800", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let globalHMAC = cryptoFramework.createMac("SHA512");
       let globalsymKeyGenerator =
         cryptoFramework.createSymKeyGenerator("3DES192");
@@ -387,7 +387,7 @@ export default function DigestAlgorithmJsunit() {
      * @tc.name The encryption and decryption framework supports HMAC calculation, and the Datablob of HMAC to be calculated is very large
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_HMAC_0900", 0, async function (done) {
+    it("Security_crypto_framework_HMAC_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let globalText = "";
       let t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz0123456789";
       for (let i = 0; i < 10000; i++) {

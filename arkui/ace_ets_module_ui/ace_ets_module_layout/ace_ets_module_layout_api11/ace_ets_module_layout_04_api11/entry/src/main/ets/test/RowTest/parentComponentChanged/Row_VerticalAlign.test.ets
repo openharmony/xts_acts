@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -55,7 +55,7 @@ export default function Row_VerticalAlign() {
      * @tc.desc Set the AlignItems property of the Row component to VerticalAlign.Top
      */
 
-    it('testRowAlignItemsVerticalAlignTop', 0, async (done: Function) => {
+    it('testRowAlignItemsVerticalAlignTop',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowAlignItemsVerticalAlignTop START');
       globalThis.value.message.notify({
         name: 'alignItems', value: VerticalAlign.Top
@@ -101,7 +101,7 @@ export default function Row_VerticalAlign() {
      * @tc.desc Set the AlignItems property of the Row component to VerticalAlign.Bottom
      */
 
-    it('testRowAlignItemsVerticalAlignBottom', 0, async (done: Function) => {
+    it('testRowAlignItemsVerticalAlignBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowAlignItemsVerticalAlignBottom START');
       globalThis.value.message.notify({
         name: 'alignItems', value: VerticalAlign.Bottom

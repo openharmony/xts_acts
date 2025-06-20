@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll, Level, Size, TestType } from '@ohos/hypium';
 import networkSecurity from '@ohos.net.networkSecurity';
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
@@ -159,14 +159,14 @@ export default function NetworkManagerMulticastSSLTest() {
 
     /**
      * @tc.number: SUB_Telephony_Netstack_SSL_CertVerify_Xts_0100
-     * @tc.name: websocket::connect
+     * @tc.name: testTelephonyNetstackSSLCertVerifyXts0100
      * @tc.desc: Test connect property
      * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0100", 0, async (done:Function)=>{
-      let caseName = "SUB_Telephony_Netstack_SSL_CertVerify_Xts_0100";
+    it("testTelephonyNetstackSSLCertVerifyXts0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=>{
+      let caseName = "testTelephonyNetstackSSLCertVerifyXts0100";
       console.info('certpem', JSON.stringify(cert), JSON.stringify(caCert));
       try {
         networkSecurity.certVerification(cert).then((result: number) => {
@@ -191,7 +191,7 @@ export default function NetworkManagerMulticastSSLTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0200", 0, async (done:Function)=>{
+    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=>{
       let caseName = "SUB_Telephony_Netstack_SSL_CertVerify_Xts_0200";
       networkSecurity.certVerification(null).then((result: number) => {
         console.info(`${caseName} certVerification success, data: ${JSON.stringify(result)}`);
@@ -212,7 +212,7 @@ export default function NetworkManagerMulticastSSLTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0300", 0, async (done:Function)=>{
+    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=>{
       let caseName = "SUB_Telephony_Netstack_SSL_CertVerify_Xts_0300";
       networkSecurity.certVerification(undefined).then((result: number) => {
         console.info(`${caseName} certVerification success, data: ${JSON.stringify(result)}`);
@@ -233,7 +233,7 @@ export default function NetworkManagerMulticastSSLTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0400", 0, async (done:Function)=>{
+    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=>{
       let caseName = "SUB_Telephony_Netstack_SSL_CertVerify_Xts_0400";
 
       networkSecurity.certVerification(certError).then((result: number) => {
@@ -251,14 +251,14 @@ export default function NetworkManagerMulticastSSLTest() {
 
     /**
      * @tc.number: SUB_Telephony_Netstack_SSL_CertVerify_Xts_0500
-     * @tc.name: websocket::connect
+     * @tc.name: testTelephonyNetstackSSLCertVerifyXts0500
      * @tc.desc: Test connect property
-     * @tc.level 3
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0500", 0, async (done:Function)=>{
-      let caseName = "SUB_Telephony_Netstack_SSL_CertVerify_Xts_0500";
+    it("testTelephonyNetstackSSLCertVerifyXts0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=>{
+      let caseName = "testTelephonyNetstackSSLCertVerifyXts0500";
       console.info('xxxxxxx', `${JSON.stringify(networkSecurity.CertType.CERT_TYPE_DER)}`);
       try {
         let result = networkSecurity.certVerificationSync(certError , null);

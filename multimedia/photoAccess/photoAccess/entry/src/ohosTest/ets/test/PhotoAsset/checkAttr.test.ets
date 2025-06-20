@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import { photoKeys, fetchOption, getFileAsset, getAssetId, photoType, getPermission, driveFn, sleep } from '../common'
 import common from '@ohos.app.ability.common';
@@ -57,7 +57,7 @@ export default function checkAttrTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('photoAsset_000', 0, async (done: Function) => {
+    it('photoAsset_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'photoAsset_000';
       const displayName = '01.jpg';
       const mediaType: ESObject = photoType.IMAGE;
@@ -72,7 +72,7 @@ export default function checkAttrTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('photoAsset_001', 0, async (done: Function) => {
+    it('photoAsset_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'photoAsset_001';
       const displayName = '01.mp4';
       const mediaType: ESObject = photoType.VIDEO;

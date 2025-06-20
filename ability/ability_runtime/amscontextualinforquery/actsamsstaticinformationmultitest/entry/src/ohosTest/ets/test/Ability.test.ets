@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent';
 import {Driver, ON} from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
@@ -37,7 +37,7 @@ export default function abilityTest() {
          * @tc.name: Starting singleton ability the second time does triggers onNewWant.
          * @tc.desc: Starting singleton ability the second time does triggers onNewWant.
          */
-        it('ACTS_getAbilityInfo_0400', 0, async (done:Function) => {
+        it('ACTS_getAbilityInfo_0400', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_getAbilityInfo_0400 --- start")
             let Subscriber:commonEventManager.CommonEventSubscriber;
             let EntryHap = false;

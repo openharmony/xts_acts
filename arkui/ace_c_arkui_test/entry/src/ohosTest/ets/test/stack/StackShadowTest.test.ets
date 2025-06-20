@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackShadow001', 0, async (done: Function) => {
+    it('testStackShadow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackShadow001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackShadow002', 0, async (done: Function) => {
+    it('testStackShadow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackShadow002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackShadow003', 0, async (done: Function) => {
+    it('testStackShadow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackShadow003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackShadow004', 0, async (done: Function) => {
+    it('testStackShadow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackShadow004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackShadow005', 0, async (done: Function) => {
+    it('testStackShadow005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackShadow005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackShadow006', 0, async (done: Function) => {
+    it('testStackShadow006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackShadow006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function stackShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackShadow007', 0, async (done: Function) => {
+    it('testStackShadow007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackShadow007()).assertEqual(0)
       done()
     })

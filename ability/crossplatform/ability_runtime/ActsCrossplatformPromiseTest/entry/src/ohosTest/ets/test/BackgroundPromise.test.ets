@@ -19,20 +19,24 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 
 export default function BackgroundPromise() {
   describe("BackgroundPromise", () => {
-    beforeEach(() => {
+    beforeEach((done: Function) => {
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator.startAbility({
         abilityName: "MainAbility",
         bundleName: "com.example.crossplatformpromise",
         moduleName: "entry_test",
       });
+      setTimeout(() => {
+        done();
+      }, START_ABILITY_TIMEOUT_TWO_THOUSAND);
     });
+
 
     /**
      * @tc.number ACTS_DO_ABILITY_BACKGROUND_PROMISE_0001
@@ -46,7 +50,7 @@ export default function BackgroundPromise() {
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_PROMISE_0001 start"
       );
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -129,7 +133,7 @@ export default function BackgroundPromise() {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_BACKGROUND_PROMISE_ERROR_0002 start"
         );
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           done();
           return;
         }
@@ -152,7 +156,7 @@ export default function BackgroundPromise() {
                   (err: BusinessError, ability2: UIAbility) => {
                     try {
                       abilityDelegator
-                        .doAbilityBackground(ability2)
+                        .doAbilityBackground(undefined)
                         .then(() => {
                           abilityDelegator.printSync(
                             "ACTS_DO_ABILITY_BACKGROUND_PROMISE_ERROR_0002 fail"
@@ -217,7 +221,7 @@ export default function BackgroundPromise() {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_BACKGROUND_PROMISE_ERROR_0003 start"
         );
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           done();
           return;
         }
@@ -296,7 +300,7 @@ export default function BackgroundPromise() {
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_PROMISE_0004 start"
       );
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -387,7 +391,7 @@ export default function BackgroundPromise() {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_BACKGROUND_PROMISE_ERROR_0005 start"
         );
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           done();
           return;
         }

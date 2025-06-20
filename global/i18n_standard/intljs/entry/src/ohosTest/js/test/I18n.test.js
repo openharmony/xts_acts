@@ -183,7 +183,7 @@ describe('I18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and true param
     * @tc.desc    check the language
     */
-    it('i18n_test_4400', Level.LEVEL0, function () {
+    it('i18n_test_4400', Level.LEVEL2, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
         console.log('i18n_test_4400 ' + value);
         expect(value).assertEqual('Simplified Chinese');

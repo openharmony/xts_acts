@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function TextInputTextAreaSearch() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TextInputTextAreaSearch_0100', 0, async (done: Function) => {
+    it('TextInputTextAreaSearch_0100',  Level.LEVEL0, async (done: Function) => {
       // Test stop
       console.info('[TextInputTextAreaSearch_0100] START');
       let driver = Driver.create();
@@ -80,7 +80,7 @@ export default function TextInputTextAreaSearch() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TextInputTextAreaSearch_0200', 0, async (done: Function) => {
+    it('TextInputTextAreaSearch_0200',  Level.LEVEL0, async (done: Function) => {
       // Test stop
       console.info('[TextInputTextAreaSearch_0200] START');
       let driver = Driver.create();
@@ -105,7 +105,7 @@ export default function TextInputTextAreaSearch() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TextInputTextAreaSearch_0300', 0, async (done: Function) => {
+    it('TextInputTextAreaSearch_0300',  Level.LEVEL0, async (done: Function) => {
       // Test stop
       console.info('[TextInputTextAreaSearch_0300] START');
       let driver = Driver.create();

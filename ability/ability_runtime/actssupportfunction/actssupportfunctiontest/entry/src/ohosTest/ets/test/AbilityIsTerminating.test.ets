@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEvent';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import commonEventManager from '@ohos.commonEventManager';
@@ -36,7 +36,7 @@ export default function AbilityIsTerminatingTest() {
      * @tc.name    : Verify the isTerminating interface
      * @tc.desc    : Terminate ability through terminateSelf.
      */
-    it('SUB_AA_OpenHarmony_IsTerminating_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_IsTerminating_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_IsTerminating_0100 == ';
       console.log(TAG + "begin");
       let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
@@ -100,7 +100,7 @@ export default function AbilityIsTerminatingTest() {
      * @tc.name    : Verify the isTerminating interface
      * @tc.desc    : Terminate ability through terminateSelfWithResult.
      */
-    it('SUB_AA_OpenHarmony_IsTerminating_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_IsTerminating_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_IsTerminating_0200 == ';
       console.log(TAG + "begin");
 
@@ -166,7 +166,7 @@ export default function AbilityIsTerminatingTest() {
      * @tc.name    : Verify the isTerminating interface
      * @tc.desc    : Terminate ability with the back key.
      */
-    it('SUB_AA_OpenHarmony_IsTerminating_0500', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_IsTerminating_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_IsTerminating_0500 == ';
       console.log(TAG + "begin");
 

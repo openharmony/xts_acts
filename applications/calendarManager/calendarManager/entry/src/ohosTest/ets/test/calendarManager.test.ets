@@ -160,7 +160,7 @@ export default function CalendarManagerTest() {
    * @tc.type    User
    * @tc.level   Level 2
    */
-    it("SUB_Application_CalendarManagerApi_test_0500", 0, () => {
+    it("SUB_Application_CalendarManagerApi_test_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(calendarManager.AttendeeType.REQUIRED  == 1).assertTrue();
       expect(calendarManager.AttendeeType.OPTIONAL  == 2).assertTrue();
       expect(calendarManager.AttendeeType.RESOURCE  == 3).assertTrue();
@@ -174,7 +174,7 @@ export default function CalendarManagerTest() {
    * @tc.type    User
    * @tc.level   Level 2
    */
-    it("SUB_Application_CalendarManagerApi_test_0600", 0, () => {
+    it("SUB_Application_CalendarManagerApi_test_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(calendarManager.AttendeeStatus.UNKNOWN == 0).assertTrue();
       expect(calendarManager.AttendeeStatus.TENTATIVE == 1).assertTrue();
       expect(calendarManager.AttendeeStatus.ACCEPTED == 2).assertTrue();

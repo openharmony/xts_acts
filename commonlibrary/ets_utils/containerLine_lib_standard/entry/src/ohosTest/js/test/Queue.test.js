@@ -21,7 +21,7 @@ describe("QueueTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an Queue instance. For example: let queue = new Queue().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let queue = new Queue();
     } catch (err) {
@@ -35,7 +35,7 @@ describe("QueueTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add element to Queue instance end. For example: queue.add("四").
    */
-  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let queue = new Queue();
     queue.add("四");
     let res = queue.getFirst();
@@ -46,7 +46,7 @@ describe("QueueTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add element to Queue instance end. For example: queue.add(8).
    */
-  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let queue = new Queue();
     queue.add(8);
     let res = queue.getFirst();
@@ -57,7 +57,7 @@ describe("QueueTest", function () {
    * @tc.name: testAdd004
    * @tc.desc: Add element to Queue instance end. For example: queue.add(8).
    */
-  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let queue = new Queue();
     let a = ["a", "b", "c"];
     queue.add(a);
@@ -69,7 +69,7 @@ describe("QueueTest", function () {
    * @tc.name: testGetFirst005
    * @tc.desc: Get the header element of the queue instance. For example: queue.getFirst().
    */
-  it("testGetFirst005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetFirst005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let queue = new Queue();
     queue.add(6);
     queue.add("四");
@@ -81,7 +81,7 @@ describe("QueueTest", function () {
    * @tc.name: testPop006
    * @tc.desc: Delete the header element of a queue instance. For example: queue.pop().
    */
-  it("testPop006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPop006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let queue = new Queue();
     queue.add(6);
     queue.add("四");
@@ -95,7 +95,7 @@ describe("QueueTest", function () {
    * @tc.name: testForEach007
    * @tc.desc: Traversing elements in queue instances. For example: queue.forEach((item, index) => {arr.push(item);}).
    */
-  it("testForEach007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testForEach007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let queue = new Queue();
     queue.add(8);
     queue.add("一");
@@ -122,7 +122,7 @@ describe("QueueTest", function () {
    * @tc.name: testIterator008
    * @tc.desc: Iterate over all elements in the queue instance. For example: for (let item of queue) { arr.push(item);}.
    */
-  it("testIterator008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testIterator008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let queue = new Queue();
     queue.add(8);
     queue.add("一");

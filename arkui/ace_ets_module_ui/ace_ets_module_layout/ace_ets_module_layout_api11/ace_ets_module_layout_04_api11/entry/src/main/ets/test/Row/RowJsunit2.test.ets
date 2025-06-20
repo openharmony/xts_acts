@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
@@ -44,7 +44,7 @@ export default function rowJsunit2() {
       console.info("row after each called");
     });
 
-    it('testRow_100', 0, async (done: Function) => {
+    it('testRow_100',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRow_100] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
@@ -55,7 +55,7 @@ export default function rowJsunit2() {
       done();
     });
 
-    it('testRow_200', 0, async (done: Function) => {
+    it('testRow_200',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRow_200] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
@@ -66,7 +66,7 @@ export default function rowJsunit2() {
       done();
     });
 
-    it('testRow_300', 0, async (done: Function) => {
+    it('testRow_300',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRow_300] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
@@ -77,7 +77,7 @@ export default function rowJsunit2() {
       done();
     });
 
-    it('testRow_400', 0, async (done: Function) => {
+    it('testRow_400',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRow_400] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
@@ -88,7 +88,7 @@ export default function rowJsunit2() {
       done();
     });
 
-    it('testRow_500', 0, async (done: Function) => {
+    it('testRow_500',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRow_500] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');
@@ -99,7 +99,7 @@ export default function rowJsunit2() {
       done();
     });
 
-    it('testRow_600', 0, async (done: Function) => {
+    it('testRow_600',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRow_600] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Row');

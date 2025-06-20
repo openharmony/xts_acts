@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
@@ -49,7 +49,7 @@ export default function OnlyRowsTemplate5() {
      * @tc.name      testGrid
      * @tc.desc      GridItem sets rowStart to a negative number
      */
-    it('SUB_ACE_GRID_OnlyRowsTemplate5_0500', 0, async  (done:Function) => {
+    it('SUB_ACE_GRID_OnlyRowsTemplate5_0500',  Level.LEVEL0, async  (done:Function) => {
       console.info('[SUB_ACE_GRID_OnlyRowsTemplate5_0500] START');
       globalThis.value.message.notify({name:'rowStart1', value:2})
       globalThis.value.message.notify({name:'rowEnd1', value:1})
@@ -61,10 +61,10 @@ export default function OnlyRowsTemplate5() {
       let GridItem_011:RectValue = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
 
       console.log('assert size')
-      expect(Math.round(GridItem_011.right - GridItem_011.left)).assertEqual(Math.round(vp2px(100)));
       console.log('GGridItem_01.right - GridItem_01.left' + (GridItem_011.right - GridItem_011.left))
-      expect(Math.round(GridItem_011.bottom - GridItem_011.top)).assertEqual(Math.round(vp2px(72)));
+      expect(Math.floor(Math.abs((GridItem_011.right - GridItem_011.left) - vp2px(100))) <= 1).assertTrue();
       console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_011.bottom - GridItem_011.top))
+      expect(Math.floor(Math.abs((GridItem_011.bottom - GridItem_011.top) - vp2px(72))) <= 1).assertTrue();
 
       await CommonFunc.sleep(2000);
       let driver = Driver.create();

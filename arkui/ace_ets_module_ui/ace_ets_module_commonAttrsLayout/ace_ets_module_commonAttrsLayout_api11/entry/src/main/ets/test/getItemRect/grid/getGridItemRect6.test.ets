@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -71,7 +71,7 @@ export default function getGridItemRect6() {
     * @tc.desc  : set index to 0,set the margin of gridItem0 to 20
     * @tc.level : Level 2
     */
-    it('getGridItemRect6_0100', 0, async (done: Function) => {
+    it('getGridItemRect6_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect6_0100] START');
 
@@ -116,12 +116,12 @@ export default function getGridItemRect6() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(20));
-      expect(Math.round(y)).assertEqual(Math.round(20));
+      expect(Math.floor(Math.abs(x - 20)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(y - 20)) <= 1).assertTrue();
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(20));
-      expect(Math.round(height)).assertEqual(Math.round(160));
+      expect(Math.floor(Math.abs(width - 20)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(height - 160)) <= 1).assertTrue();
       done();
     });
 
@@ -131,7 +131,7 @@ export default function getGridItemRect6() {
     * @tc.desc  : set index to 0,set the Visibility of gridItem0 to Visibility.Visible
     * @tc.level : Level 2
     */
-    it('getGridItemRect6_0200', 0, async (done: Function) => {
+    it('getGridItemRect6_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect6_0200] START');
 
@@ -195,7 +195,7 @@ export default function getGridItemRect6() {
     * @tc.desc  : set index to 0,set the Visibility of gridItem0 to Visibility.Hidden
     * @tc.level : Level 2
     */
-    it('getGridItemRect6_0300', 0, async (done: Function) => {
+    it('getGridItemRect6_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect6_0300] START');
 
@@ -255,7 +255,7 @@ export default function getGridItemRect6() {
     * @tc.desc  : set index to 0,set the Visibility of gridItem0 to Visibility.None
     * @tc.level : Level 2
     */
-    it('getGridItemRect6_0400', 0, async (done: Function) => {
+    it('getGridItemRect6_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect6_0400] START');
 

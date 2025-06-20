@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -51,7 +51,7 @@ export default function swipeGestureTest() {
     * @tc.desc  : To test whether isFingerCountLimited is effective.
     * @tc.level : Level 2
     */
-    it('SwipeGesture1_0100', 0, async (done: Function) => {
+    it('SwipeGesture1_0100', Level.LEVEL0, async (done: Function) => {
       console.info('SwipeGesture1_0100 START');
       await CommonFunc.sleep(1000);
       let windowOffsetX:number = globalThis.winLeft
@@ -61,12 +61,12 @@ export default function swipeGestureTest() {
       let areaHeight1 = areaObj1.bottom - areaObj1.top
       let areaWidth1 = areaObj1.right - areaObj1.left
       console.log('SwipeGesture1_0100 areaObj1',areaObj1.left,areaObj1.top,areaObj1.right,areaObj1.bottom)
-      console.log('SwipeGesture1_0100 areaObj1 clicked start',Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2))
-      console.log('SwipeGesture1_0100 areaObj1 clicked end',Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2))
+      console.log('SwipeGesture1_0100 areaObj1 clicked start',Math.round(areaObj1.left + areaWidth1/4),Math.round(areaObj1.top + areaHeight1/4))
+      console.log('SwipeGesture1_0100 areaObj1 clicked end',Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.top + areaHeight1/2))
       let driver = Driver.create();
       let speed = Math.floor(areaWidth1 * 0.6 / 0.016 / 1000) * 1000
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2),Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2),speed)
+      await driver.swipe(Math.round(areaObj1.left + areaWidth1/4),Math.round(areaObj1.top + areaHeight1/4),Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.top + areaHeight1/2),800)
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SwipeGesture');
       let obj: ESObject = JSON.parse(strJson);
@@ -83,7 +83,7 @@ export default function swipeGestureTest() {
     * @tc.desc  : To test whether isFingerCountLimited is effective.
     * @tc.level : Level 1
     */
-    it('SwipeGesture1_0200', 0, async (done: Function) => {
+    it('SwipeGesture1_0200', Level.LEVEL0, async (done: Function) => {
       console.info('SwipeGesture1_0200 START');
       await CommonFunc.sleep(1000);
       let windowOffsetX:number = globalThis.winLeft

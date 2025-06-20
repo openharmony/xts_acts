@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function progressColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressColor001', 0, async (done: Function) => {
+    it('testProgressColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressColor001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function progressColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressColor002', 0, async (done: Function) => {
+    it('testProgressColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressColor002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function progressColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressColor003', 0, async (done: Function) => {
+    it('testProgressColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressColor003()).assertEqual(0)
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsChainModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsChainMode001', 0, async (done: Function) => {
+    it('testCommonAttrsChainMode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsChainMode001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsChainModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsChainMode002', 0, async (done: Function) => {
+    it('testCommonAttrsChainMode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsChainMode002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsChainModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsChainMode003', 0, async (done: Function) => {
+    it('testCommonAttrsChainMode003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsChainMode003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsChainModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsChainMode004', 0, async (done: Function) => {
+    it('testCommonAttrsChainMode004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsChainMode004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsChainModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsChainMode005', 0, async (done: Function) => {
+    it('testCommonAttrsChainMode005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsChainMode005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsChainModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsChainMode006', 0, async (done: Function) => {
+    it('testCommonAttrsChainMode006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsChainMode006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsChainModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsChainMode007', 0, async (done: Function) => {
+    it('testCommonAttrsChainMode007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsChainMode007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsChainModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsChainMode008', 0, async (done: Function) => {
+    it('testCommonAttrsChainMode008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsChainMode008()).assertEqual(0)
       done()
     })

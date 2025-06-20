@@ -169,7 +169,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetCallbackSystem101', Level.LEVEL2, async (done: Function) => {
+        it('testResetCallbackSystem101', Level.LEVEL0, async (done: Function) => {
             console.info('--------------testResetCallbackSystem101 start-----------------');
             wallpaper.reset(WALLPAPER_SYSTEM, (err, data) => {
                 try {
@@ -270,7 +270,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLPromiseLock104', Level.LEVEL2, async (done: Function) => {
+        it('testSetWallpaperURLPromiseLock104', Level.LEVEL0, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLPromiseLock104 start------------------' );
             await wallpaper.setWallpaper(imageSourceLockscreen, WALLPAPER_LOCKSCREEN).then((data) => {
                 console.info('====>testSetWallpaperURLPromiseLock104 successful data : ' + data);

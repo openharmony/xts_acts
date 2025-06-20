@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
@@ -42,7 +42,7 @@ export default function abilityTest(abilityContext:common.UIAbilityContext) {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('SUB_Ability_AbilityRuntime_LaunchRule_StartUpRuleOptimizeTest_0700', 1, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchRule_StartUpRuleOptimizeTest_0700', Level.LEVEL1, async (done: Function) => {
       try {
         TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchRule_StartUpRuleOptimizeTest_0700';
         let isStartAbility = false

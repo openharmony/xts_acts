@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 export default function gridScrollbarUpdateTest() {
@@ -52,7 +52,7 @@ export default function gridScrollbarUpdateTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('Grid_scrollbarUpdate_0801', 0, async (done: Function) => {
+    it('Grid_scrollbarUpdate_0801', Level.LEVEL1, async (done: Function) => {
       console.info('Grid_scrollbarUpdate_0801 START');
       setTimeout(() => {
         try {
@@ -74,7 +74,7 @@ export default function gridScrollbarUpdateTest() {
       }, 500)
     })
 
-    it('Grid_scrollbarUpdate_0802', 0, async (done: Function) => {
+    it('Grid_scrollbarUpdate_0802', Level.LEVEL1, async (done: Function) => {
       console.info('Grid_scrollbarUpdate_0802 START');
       setTimeout(() => {
         try {

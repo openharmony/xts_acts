@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 import CustomLayoutUniqueidTest from './CustomLayout/CustomLayoutUniqueidTest.test'
+import ColumnSpaceResourceTest from './Column/ColumnSpaceResourceTest.test.ets'
+import RowSpaceResourceTest from './Row/RowSpaceResourceTest.test.ets'
+import FlexSpaceResourceTest from './Flex/FlexSpaceResourceTest.test.ets'
 
 export default function testsuite() {
   CustomLayoutUniqueidTest();
+  ColumnSpaceResourceTest();
+  RowSpaceResourceTest();
+  FlexSpaceResourceTest();
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 
 let emitKey = "emitUserAgent";
@@ -48,7 +48,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0100', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0100 start");
       setTimeout(() => {
         try {
@@ -75,7 +75,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0200', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0200', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0200 start");
       setTimeout(() => {
         try {
@@ -102,7 +102,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0300', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0300', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0300 start");
       setTimeout(() => {
         try {
@@ -129,7 +129,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0400', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0400', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0400 start");
       setTimeout(() => {
         try {
@@ -166,7 +166,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0500', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0500', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0500 start");
       setTimeout(() => {
         try {
@@ -203,7 +203,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0600', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0600', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0600 start");
       setTimeout(() => {
         try {
@@ -240,7 +240,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0700', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0700', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0700 start");
       setTimeout(() => {
         try {
@@ -277,7 +277,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0800', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0800', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0800 start");
       setTimeout(() => {
         try {
@@ -314,7 +314,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_0900', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_0900', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_0900 start");
       setTimeout(() => {
         try {
@@ -351,7 +351,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_1000', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_1000', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_1000 start");
       setTimeout(() => {
         try {
@@ -388,7 +388,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_1100', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_1100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_1100 start");
       setTimeout(() => {
         try {
@@ -426,7 +426,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_1200', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_1200', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_1200 start");
       setTimeout(() => {
         try {
@@ -464,7 +464,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_1300', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_1300', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_1300 start");
       setTimeout(() => {
         try {
@@ -502,7 +502,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_1400', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_1400', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_1400 start");
       setTimeout(() => {
         try {
@@ -539,7 +539,7 @@ export default function selectmenuTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUXII_Stage_Select_Menu_MenuAlign_1500', 0, async (done: Function) => {
+    it('ArkUXII_Stage_Select_Menu_MenuAlign_1500', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUXII_Stage_Select_Menu_MenuAlign_1500 start");
       setTimeout(() => {
         try {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaFontSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAreaFontSize001', 0, async (done: Function) => {
+    it('testTextAreaFontSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontSize001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textAreaFontSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAreaFontSize002', 0, async (done: Function) => {
+    it('testTextAreaFontSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontSize002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textAreaFontSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAreaFontSize003', 0, async (done: Function) => {
+    it('testTextAreaFontSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontSize003()).assertEqual(0)
       done();
     });

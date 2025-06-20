@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import appManager from "@ohos.application.appManager"
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 
 export default function ActsAmsTestFifthScene() {
     describe('ActsAmsTestFifthScene', function () {
@@ -24,7 +24,7 @@ export default function ActsAmsTestFifthScene() {
         * @tc.name      : getProcessRunningInfos : Get All Running Processes Info
         * @tc.desc      : Get All Running Processes Info(by Promise)
         */
-        it('Acts_Ams_test_0100', 0, async function (done) {
+        it('Acts_Ams_test_0100', Level.LEVEL0, async function (done) {
             let info = await appManager.getProcessRunningInfos();
             expect(Array.isArray(info)).assertEqual(true);
             expect(info.length).assertLarger(0);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function commonAttrsEnabledTest() {
@@ -34,7 +34,7 @@ export default function commonAttrsEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonAttrsEnabled001', 0, async (done: Function) => {
+    it('testCommonAttrsEnabled001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('EnabledTestButton')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('EnabledTestButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -61,7 +61,7 @@ export default function commonAttrsEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonAttrsEnabled002', 0, async (done: Function) => {
+    it('testCommonAttrsEnabled002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('EnabledTestButtonDisable')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('EnabledTestButtonDisable').$attrs.backgroundColor).assertEqual('#FFFF0000')

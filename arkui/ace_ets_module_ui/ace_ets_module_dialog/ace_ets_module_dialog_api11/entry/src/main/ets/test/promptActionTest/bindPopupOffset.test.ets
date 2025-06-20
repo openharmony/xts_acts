@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 
@@ -54,7 +54,7 @@ export default function bindPopupOffsetTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('bindPopupOffsetTest_0100', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0100 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -83,7 +83,7 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0200', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_0200', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0200 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -112,7 +112,7 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0300', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_0300', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0300 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -141,7 +141,7 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0400', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_0400', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0400 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -170,7 +170,7 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0500', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_0500', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0500 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -196,7 +196,7 @@ export default function bindPopupOffsetTest() {
       }
       done();
     });
-    it('bindPopupOffsetTest_0600', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_0600', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0600 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -225,7 +225,7 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0700', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_0700', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0700 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -254,7 +254,7 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0800', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_0800', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0800 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -283,7 +283,7 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bbindPopupOffsetTest_0900', 0, async (done: Function) => {
+    it('bbindPopupOffsetTest_0900', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_0900 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {
@@ -312,7 +312,7 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_1000', 0, async (done: Function) => {
+    it('bindPopupOffsetTest_1000', Level.LEVEL2, async (done: Function) => {
       console.info('bindPopupOffsetTest_1000 START');
       try {
         let indexEvent: events_emitter.InnerEvent = {

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver,ON } from '@ohos.UiTest';
 import inputEventClient from '@ohos.multimodalInput.inputEventClient';
@@ -54,7 +54,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        initial value 10
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_021', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_021', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider01")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -73,7 +73,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        initial value 20
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_022', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_022', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider02")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -92,7 +92,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        initial value 100
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_023', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_023', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider03")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -111,7 +111,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        initial value 0
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_024', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_024', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider04")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -130,7 +130,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        initial value 1000
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_025', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_025', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider05")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -149,7 +149,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        initial value 90.5
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_026', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_026', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider06")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -168,7 +168,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        initial value 90.2
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_027', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_027', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider07")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -187,7 +187,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        step 0.01
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_033', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_033', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider08")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -206,7 +206,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        Test slider
      * @tc.level       step 2
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_034', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_034', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider09")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -225,7 +225,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        step 50
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_035', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_035', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider10")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -244,7 +244,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        step 10
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_036', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_036', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider11")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -263,7 +263,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        direction = Axis.Vertical
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_037', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_037', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider12")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -282,7 +282,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        direction = Axis.Horizontal
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_038', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_038', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider13")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -301,7 +301,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        reverse = false
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_039', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_039', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider14")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -320,7 +320,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        reverse = true
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_040', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_040', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider15")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -339,7 +339,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        style:SliderStyle.OutSet
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_041', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_041', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider16")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -384,7 +384,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        style:SliderStyle.InSet
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_042', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CAPI_042', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider17")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -425,7 +425,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        sliderBuilder {value：-1,min:-1,max:-1,step:-1}
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0010', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0010', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider18")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -447,7 +447,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        sliderBuilder {value：0,min:0,max:5,step:0}
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0020', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0020', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider19")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -469,7 +469,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        sliderBuilder {value：10,min:10,max:50,step:0.5}
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0030', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0030', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider20")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -491,7 +491,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        sliderBuilder {value：10,min:10,max:50,step:100}
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0040', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0040', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider21")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -513,7 +513,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        sliderBuilder {value：10,min:100,max:200,step:10}
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0050', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0050', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider22")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -535,7 +535,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        sliderBuilder {value：10,min:90,max:50,step:10}
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0060', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0060', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider23")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -557,7 +557,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        sliderBuilder {value：10,min:50,max:50,step:50}
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0070', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0070', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider24")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -579,7 +579,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        triggerChange = null
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0090', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0090', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider25")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -603,7 +603,7 @@ export default function XComponentSliderTest() {
      * @tc.desc        triggerChange = undefined
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0100', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_CUSTOMIZING_0100', Level.LEVEL3, async (done: Function) => {
       await routerPush("XcomponentSlider26")
       await Utils.sleep(2000);
       let driver = Driver.create();

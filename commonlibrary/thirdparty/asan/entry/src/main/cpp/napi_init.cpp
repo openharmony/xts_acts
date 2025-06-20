@@ -15,21 +15,44 @@
 
 #include <securec.h>
 #include <string>
+#include <stdio.h>
 #include <unistd.h>
+#include <dirent.h>
 #include "napi/native_api.h"
 
 constexpr int MAX_BUFFER_SIZE = 128;
-constexpr const char *ASAN_LOG_FILE_PATH = "/data/storage/el2/log/asanXtsLog.appspawn";
 const int NUMFIVE = 5;
 const int NUMTEN = 10;
 const int NUMELEVEN = 11;
 const int NUMTWELVE = 12;
 const int NUMNEGATIVEONE = -1;
+
+static int FindDirAndCheck(DIR *dir,char *fileresult, int pid)
+{
+    struct dirent *ptr;
+    char file[MAX_BUFFER_SIZE];
+    int filenameres = snprintf_s(file, sizeof(file), sizeof(file) - 1, "%s.%d", "asanXtsLog", pid);
+    int (filenameres < 0) {
+        return -1;
+    }
+    while((ptr = readdir(dir)) != NULL) {
+        if (strstr(ptr->d_name, file) != NULL) {
+            int findres = snprintf_s(fileresult, MAX_BUFFER_SIZE, MAX_BUFFER_SIZE - 1, "%s/%s", "/data/storage/el2/log/", ptr->d_name);
+            if (findres < 0) {
+                return -1;
+            }
+            return 1;
+        }
+    }
+    return -1;
+}
+
 static std::string GetBuffer(int pid)
 {
     std::string buffer;
     char file[MAX_BUFFER_SIZE];
-    int filePathRes = snprintf_s(file, sizeof(file), sizeof(file) - 1, "%s.%d", ASAN_LOG_FILE_PATH, pid);
+    DIR *logdir = opendir("/data/storage/el2/log/");
+    int filePathRes = FindDirAndCheck(logdir, file, pid);
     if (filePathRes < 0) {
         return buffer;
     }
@@ -64,6 +87,7 @@ static std::string GetBuffer(int pid)
     ftruncate(fileno(fp), 0);
     rewind(fp);
     fclose(fp);
+    remove(file);
     return buffer;
 }
 
@@ -87,7 +111,7 @@ __attribute__((optnone)) static napi_value StackBufferOverflow(napi_env env, nap
     bool findAsanLog = CheckAsanLog("AddressSanitizer: stack-buffer-overflow", bufferLog) &&
         CheckAsanLog("WRITE of size 4", bufferLog) &&
         CheckAsanLog("thread T0", bufferLog) &&
-        CheckAsanLog("'a' (line 84)", bufferLog) &&
+        CheckAsanLog("'a' (line 108)", bufferLog) &&
         CheckAsanLog("[f2]", bufferLog);
     int checkRes = findAsanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -103,7 +127,7 @@ __attribute__((optnone)) static napi_value StackBufferUnderflow(napi_env env, na
     bool findAsanLog = CheckAsanLog("AddressSanitizer: stack-buffer-underflow", bufferLog) &&
         CheckAsanLog("WRITE of size 4", bufferLog) &&
         CheckAsanLog("thread T0", bufferLog) &&
-        CheckAsanLog("'a' (line 100)", bufferLog) &&
+        CheckAsanLog("'a' (line 124)", bufferLog) &&
         CheckAsanLog("[f1]", bufferLog);
     int checkRes = findAsanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -174,7 +198,7 @@ __attribute__((optnone)) static napi_value StackUseAfterScope(napi_env env, napi
     bool findAsanLog = CheckAsanLog("AddressSanitizer: stack-use-after-scope", bufferLog) &&
         CheckAsanLog("WRITE of size 4", bufferLog) &&
         CheckAsanLog("thread T0", bufferLog) &&
-        CheckAsanLog("'x' (line 169)", bufferLog) &&
+        CheckAsanLog("'x' (line 193)", bufferLog) &&
         CheckAsanLog("[f8]", bufferLog);
     int checkRes = findAsanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -196,7 +220,7 @@ __attribute__((optnone)) static napi_value StackUseAfterReturn(napi_env env, nap
     bool findAsanLog = CheckAsanLog("AddressSanitizer: stack-use-after-return", bufferLog) &&
         CheckAsanLog("READ of size 4", bufferLog) &&
         CheckAsanLog("thread T0", bufferLog) &&
-        CheckAsanLog("'a' (line 187)", bufferLog) &&
+        CheckAsanLog("'a' (line 211)", bufferLog) &&
         CheckAsanLog("[f5]", bufferLog);
     int checkRes = findAsanLog ? 1 : 0;
     napi_value result = nullptr;

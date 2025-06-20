@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function getGridItemRect4() {
     * @tc.desc  : set index to 0,set the position of GridItem0 to {x:20,y:0}
     * @tc.level : Level 2
     */
-    it('getGridItemRect4_0100', 0, async (done: Function) => {
+    it('getGridItemRect4_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect4_0100] START');
       globalThis.value.message.notify({name:'index', value:0});
@@ -114,7 +114,7 @@ export default function getGridItemRect4() {
     * @tc.desc  : set index to 0,set the position of GridItem0 to {x:0,y:20}
     * @tc.level : Level 2
     */
-    it('getGridItemRect4_0200', 0, async (done: Function) => {
+    it('getGridItemRect4_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect4_0200] START');
       globalThis.value.message.notify({name:'index', value:0});

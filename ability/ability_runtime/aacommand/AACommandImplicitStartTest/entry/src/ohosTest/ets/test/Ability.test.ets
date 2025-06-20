@@ -15,7 +15,7 @@
 
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
 import Want from '@ohos.app.ability.Want';
@@ -64,7 +64,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0100', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0100', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility').then(data => {
         res = data.stdResult;
@@ -84,7 +84,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0200', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0200', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -U "https://uri.aacommandimplicitstarttest.com" -t uri-type').then(data => {
         res = data.stdResult;
@@ -104,7 +104,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0300', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0300', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -A "action.aacommandimplicitstarttest.home"').then(data => {
         res = data.stdResult;
@@ -124,7 +124,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0400', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0400', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -e "entity.aacommandimplicitstarttest.home"').then(data => {
         res = data.stdResult;
@@ -144,7 +144,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0500',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0500', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -h').then(data => {
         res = data.stdResult;
@@ -172,7 +172,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0600',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0600', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -U')
         .then(data => {
@@ -196,7 +196,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0700', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0700', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -A')
         .then(data => {
@@ -221,7 +221,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0800', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0800', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -e')
         .then(data => {
@@ -246,7 +246,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0900', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0900', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -t')
         .then(data => {
@@ -271,7 +271,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1000', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1000', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger 13 --pb kbool1 true --pb kbool2 f --ps kstring1 value1 --ps string2 value2 --psn knullstring1 --psn knullstring2').then(data => {
         res = data.stdResult;
@@ -291,7 +291,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1100',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1100', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi')
         .then(data => {
@@ -315,7 +315,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1200', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1200', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger')
         .then(data => {
@@ -340,7 +340,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1300', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1300', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger invalidnum')
         .then(data => {
@@ -364,7 +364,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1400', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1400', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb')
         .then(data => {
@@ -388,7 +388,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1500', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1500', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbbol')
         .then(data => {
@@ -413,7 +413,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1600', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1600', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kbool invalidbool')
         .then(data => {
@@ -438,7 +438,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1700', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1700', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps')
         .then(data => {
@@ -463,7 +463,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1800', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1800', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps kstring')
         .then(data => {
@@ -488,7 +488,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1900', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_1900', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps kstring value1 value2')
         .then(data => {
@@ -513,7 +513,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2000', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2000', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --psn knullstring value')
         .then(data => {
@@ -538,7 +538,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2100', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2100', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger 100 200')
         .then(data => {
@@ -562,7 +562,7 @@ export default function aaImplicitStartTest() {
      * @tc.type    Function
      * @tc.level   Level 1
      */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2200', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2200', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool true false')
         .then(data => {
@@ -586,7 +586,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2300',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2300', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool TRUE')
         .then(data => {
@@ -609,7 +609,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2400',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2400', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool T')
         .then(data => {
@@ -631,7 +631,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2500',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2500', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool True')
         .then(data => {
@@ -653,7 +653,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2600',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2600', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool FALSE')
         .then(data => {
@@ -675,7 +675,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2700',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2700', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool False')
         .then(data => {
@@ -697,7 +697,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2800',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2800', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool false')
         .then(data => {
@@ -719,7 +719,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2900',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2900', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool F')
         .then(data => {
@@ -741,7 +741,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3000',1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3000', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool f')
         .then(data => {
@@ -763,7 +763,7 @@ export default function aaImplicitStartTest() {
     * @tc.type    Function
     * @tc.level   3
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3100', 1, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3100', Level.LEVEL1, async (done: Function) => {
       let res:string = "";
       await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a UnexportedAbility')
         .then(data => {

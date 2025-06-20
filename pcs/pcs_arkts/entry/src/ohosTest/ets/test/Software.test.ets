@@ -21,7 +21,58 @@ import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 import installer from '@ohos.bundle.installer';
+import fs from '@ohos.file.fs';
+
 import AbilityUtils from './AbilityUtils'
+import { Options } from '@kit.CoreFileKit';
+
+
+async function getSystemSupportEvent() {
+  let hapFilePath = '/data/storage/el2/base/haps/entry/files/'
+  let options: Options = {
+    encoding: 'utf-8'
+  };
+  let eventList: string[] = [];
+  try {
+    let readerIterator: fs.ReaderIterator = await fs.readLines(hapFilePath + 'common_event.txt', options);
+    for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
+      let lineList: string[] = it.value.trim().split('=');
+      if (lineList.length == 1) {
+        let item = lineList[0];
+        if (item) {
+          item = item.trim();
+          let index = item.indexOf('\"');
+          let lastIndex = item.lastIndexOf('\"');
+          let result = item.substring(index + 1, lastIndex);
+          if (result) {
+            if(result.startsWith("usual.event") || result.startsWith('common.event.')) {
+              console.log(`testCommonEventNotChanged0100 item 000000 , ${ result } `);
+              eventList.push(result);
+            }
+          }
+        }
+      }
+      if (lineList.length == 2) {
+        let item = lineList[1];
+        if (item) {
+          item = item.trim();
+          let index = item.indexOf('\"');
+          let lastIndex = item.lastIndexOf('\"');
+          let result = item.substring(index + 1, lastIndex);
+          if (result) {
+            if(result.startsWith('usual.event.') || result.startsWith('common.event.')) {
+              console.log(`testCommonEventNotChanged0100 item 000000 , ${ result } `);
+              eventList.push(result);
+            }
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.log(`ljl testCommonEventNotChanged0100 getSystemSupportEvent error, ${JSON.stringify(err)}`)
+  }
+  return eventList;
+}
 
 export default function softwareTest() {
   describe('SoftwareTest', () => {
@@ -171,14 +222,23 @@ export default function softwareTest() {
      * @tc.level: Level 0
      */
     it('testCommonEventNotChanged0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let currentCommonEventCounts = 214
+      console.log(`testCommonEventNotChanged0100 start`)
+      let eventList = await getSystemSupportEvent();
+      console.log(`testCommonEventNotChanged0100 eventList, ${JSON.stringify(eventList)}`)
       let commonEventValues: Array<CommonEventManager.Support> = Object.values(CommonEventManager.Support)
-      expect(commonEventValues.length).assertLessOrEqual(currentCommonEventCounts)
+      console.log(`testCommonEventNotChanged0100 commonEventValues, ${JSON.stringify(commonEventValues)}`);
+      let errorEventList: Array<CommonEventManager.Support> = [];
       for(let commonEventValue of commonEventValues) {
-        if(!commonEventValue.startsWith('usual.event.') && !commonEventValue.startsWith('common.event.')) {
-          expect(false).assertTrue()
+        let index = eventList.indexOf(commonEventValue);
+        if (index < 0) {
+          errorEventList.push(commonEventValue);
         }
       }
+      if (errorEventList.length > 0) {
+        console.log(`testCommonEventNotChanged0100 errorEventList, ${JSON.stringify(errorEventList)}`);
+        expect(false).assertTrue()
+      }
+      console.log(`testCommonEventNotChanged0100 end`)
       done()
     })
   })

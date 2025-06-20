@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import { router } from '@kit.ArkUI';
@@ -48,7 +48,7 @@ export default function menuFontsizeModifierTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Modifier_Menu_FontSize_1001', 0, async (done: Function) => {
+    it('ArkUX_Modifier_Menu_FontSize_1001', Level.LEVEL2, async (done: Function) => {
         console.info('ArkUX_Modifier_Menu_FontSize_1001 START');
         let driver = Driver.create();
         let buttonOnchange = await driver.findComponent(ON.id('MenuFontSizeButtonID'));
@@ -73,7 +73,7 @@ export default function menuFontsizeModifierTest() {
        * @tc.type Function
        * @tc.level 0
        */
-      it('ArkUX_Modifier_Menu_FontSize_1002', 0, async (done: Function) => {
+      it('ArkUX_Modifier_Menu_FontSize_1002', Level.LEVEL2, async (done: Function) => {
         console.info('ArkUX_Modifier_Menu_FontSize_1002 START');
         let driver = Driver.create();
         let button = await driver.findComponent(ON.id('MenuFontSizeChangeButtonID'));
@@ -101,7 +101,7 @@ export default function menuFontsizeModifierTest() {
        * @tc.type Function
        * @tc.level 0
        */
-      it('ArkUX_Modifier_Menu_FontSize_1003', 0, async (done: Function) => {
+      it('ArkUX_Modifier_Menu_FontSize_1003', Level.LEVEL2, async (done: Function) => {
         console.info('ArkUX_Modifier_Menu_FontSize_1003 START');
         let driver = Driver.create();
         let buttonTwo = await driver.findComponent(ON.id('MenuFontSizeChangeButtonID'));

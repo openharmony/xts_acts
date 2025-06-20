@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function MultiNavigationTest() {
      * @tc.desc      Test MultiNavigation
      * @tc.level     Level 2
      */
-    it('MultiNavigation_0100', 0, async (done: Function) => {
+    it('MultiNavigation_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('MultiNavigation_0100 START');
       await CommonFunc.sleep(500);
 
@@ -83,7 +83,7 @@ export default function MultiNavigationTest() {
      * @tc.desc      Test MultiNavigation
      * @tc.level     Level 2
      */
-    it('MultiNavigation_0200', 0, async (done: Function) => {
+    it('MultiNavigation_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('MultiNavigation_0200 START');
       await CommonFunc.sleep(500);
 
@@ -113,7 +113,7 @@ export default function MultiNavigationTest() {
      * @tc.desc      Test MultiNavigation
      * @tc.level     Level 2
      */
-    it('MultiNavigation_0300', 0, async (done: Function) => {
+    it('MultiNavigation_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('MultiNavigation_0300 START');
       await CommonFunc.sleep(500);
 

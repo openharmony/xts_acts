@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   albumType,
   albumSubtype,
@@ -48,7 +48,7 @@ export default function albumGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_getAllObjects_callback_000', 0, async (done: Function) => {
+    it('album_getAllObjects_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAllObjects_callback_000';
       try {
         const subTypes : Array<photoAccessHelper.AlbumSubtype> = [
@@ -95,7 +95,7 @@ export default function albumGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_getAllObjects_callback_001', 0, async (done: Function) => {
+    it('album_getAllObjects_callback_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAllObjects_callback_001';
       try {
         const albumName = genRadomStr(10);
@@ -132,7 +132,7 @@ export default function albumGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_getAllObjects_callback_002', 0, async (done: Function) => {
+    it('album_getAllObjects_callback_002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAllObjects_callback_002';
       try {
         const albumName = genRadomStr(10);
@@ -169,7 +169,7 @@ export default function albumGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_getAllObjects_callback_003', 0, async (done: Function) => {
+    it('album_getAllObjects_callback_003', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAllObjects_callback_003';
       try {
         const subTypes : Array<photoAccessHelper.AlbumSubtype> = [
@@ -211,7 +211,7 @@ export default function albumGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_getAllObjects_promise_000', 0, async (done: Function) => {
+    it('album_getAllObjects_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAllObjects_promise_000';
       try {
         const subTypes : Array<photoAccessHelper.AlbumSubtype> = [
@@ -247,7 +247,7 @@ export default function albumGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_getAllObjects_promise_001', 0, async (done: Function) => {
+    it('album_getAllObjects_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAllObjects_promise_001';
       try {
         const albumName = genRadomStr(10);
@@ -275,7 +275,7 @@ export default function albumGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_getAllObjects_promise_002', 0, async (done: Function) => {
+    it('album_getAllObjects_promise_002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_getAllObjects_promise_002';
       try {
         const albumName = genRadomStr(10);

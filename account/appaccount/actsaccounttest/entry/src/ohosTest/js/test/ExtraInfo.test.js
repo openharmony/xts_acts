@@ -25,7 +25,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo callback form
         * @tc.desc      : Get additional information about an existing account
         */
-        it('ActsAccountSetGetExtraInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var extraInfoStr = "account_extrainfo_callback_first";
@@ -53,7 +53,7 @@ export default function ActsAccountSetGetExtraInfo() {
         * @tc.name      : getAccountExtraInfo promise form
         * @tc.desc      : Get additional information about an existing account
         */
-        it('ActsAccountSetGetExtraInfo_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountSetGetExtraInfo_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountSetGetExtraInfo_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var extraInfoStr = "account_extrainfo_promise_first";

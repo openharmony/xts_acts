@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import commonEvent from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
@@ -139,7 +139,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_0100', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0100', Level.LEVEL0, async (done:Function) => {
       let want:Want = {
         action: 'ohos.nfc.tag.test.action',
         type: '',
@@ -174,7 +174,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_0200', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0200', Level.LEVEL0, async (done:Function) => {
       let want:Want = {
         action: 'ohos.nfc.tag.test.action',
         type: 'tag-tech/NFcA',
@@ -208,7 +208,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_0300', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0300', Level.LEVEL0, async (done:Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0300 begin');
       let want:Want = {
         action: 'ohos.nfc.tag.test.action',
@@ -242,7 +242,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_0400', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0400', Level.LEVEL0, async (done:Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0400 begin');
       let want:Want = {
         action: 'ohos.nfc.tag.test.action',
@@ -276,7 +276,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_0500', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0500', Level.LEVEL0, async (done:Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0500 begin');
       let want:Want = {
         action: 'ohos.nfc.tag.action.TAG',
@@ -312,7 +312,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_0600', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0600', Level.LEVEL0, async (done:Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600 begin');
       let want:Want = {
         action: 'ohos.nfc.tag.action.TAG',
@@ -347,7 +347,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:3
      */
-    it('ACTS_NFC_SelectTypes_0700', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0700', Level.LEVEL0, async (done:Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 begin');
       let want:Want = {
         action: 'ohos.nfc.tag.test.action',
@@ -383,7 +383,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:3
      */
-    it('ACTS_NFC_SelectTypes_0800' ,0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0800' , Level.LEVEL0, async (done: Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 begin');
       let want:Want = {
         action: 'ohos.nfc.tag.test.action',
@@ -419,7 +419,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_0900', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_0900', Level.LEVEL0, async (done:Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0900 begin');
       let want:Want = {
         action: 'ohos.want.action.select',
@@ -463,7 +463,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_1000', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_1000', Level.LEVEL0, async (done:Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1000 begin');
       let want:Want = {
         action: 'ohos.nfc.tag.test.action',
@@ -513,7 +513,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:1
      */
-    it('ACTS_NFC_SelectTypes_1100', 0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_1100', Level.LEVEL0, async (done:Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1100 begin');
       let want:Want = {
         action: 'ohos.nfc.tag.test.action',
@@ -561,7 +561,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:3
      */
-    it('ACTS_NFC_SelectTypes_1200',0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_1200', Level.LEVEL0, async (done: Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1200 begin');
       let want:Want = {
         action: "ohos.nfc.tag.test.action",
@@ -597,7 +597,7 @@ export default function abilityTest() {
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
      * @tc.level:3
      */
-    it('ACTS_NFC_SelectTypes_1300',0, async (done:Function) => {
+    it('ACTS_NFC_SelectTypes_1300', Level.LEVEL0, async (done: Function) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1300 begin');
       let wantSingle:Want = {
         action: "ohos.nfc.tag.test.action",

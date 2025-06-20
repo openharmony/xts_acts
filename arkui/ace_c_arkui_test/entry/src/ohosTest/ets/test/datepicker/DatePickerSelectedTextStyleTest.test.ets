@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle001', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDatePickerSelectedTextStyle002', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle003', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle004', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle005', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle006', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle007', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle008', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle009', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle010', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle011', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle012', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function datePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelectedTextStyle013', 0, async (done: Function) => {
+    it('testDatePickerSelectedTextStyle013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelectedTextStyle013()).assertEqual(0)
       done()
     })

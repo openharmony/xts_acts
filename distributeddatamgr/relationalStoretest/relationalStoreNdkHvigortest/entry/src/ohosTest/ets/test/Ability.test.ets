@@ -24,11 +24,11 @@ export default function rdbConfigV2NdkTest() {
      * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0100
      * @tc.name OH_Rdb_CreateConfig_0100
      * @tc.desc OH_Rdb_CreateConfig_0100
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_CreateConfig_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Rdb_CreateConfig_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let res = testndk.OH_Rdb_CreateConfig_0100();
       console.info(TAG + "OH_Rdb_CreateConfig_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -39,11 +39,11 @@ export default function rdbConfigV2NdkTest() {
      * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0200
      * @tc.name OH_Rdb_CreateConfig_0200
      * @tc.desc OH_Rdb_CreateConfig_0200
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_CreateConfig_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Rdb_CreateConfig_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let res = testndk.OH_Rdb_CreateConfig_0200();
       console.info(TAG + "OH_Rdb_CreateConfig_0200 res=" + res );
       expect(res).assertEqual(0);
@@ -54,11 +54,11 @@ export default function rdbConfigV2NdkTest() {
      * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0300
      * @tc.name OH_Rdb_SetDbType_0100
      * @tc.desc OH_Rdb_SetDbType_0100
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Rdb_SetDbType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_0100();
       console.info(TAG + "OH_Rdb_SetDbType_0100 res=" + res );
       expect(res).assertEqual(0);
@@ -84,11 +84,11 @@ export default function rdbConfigV2NdkTest() {
      * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0500
      * @tc.name OH_Rdb_GetSupportedDbType_0100
      * @tc.desc OH_Rdb_GetSupportedDbType_0100
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_GetSupportedDbType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Rdb_GetSupportedDbType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let res = testndk.OH_Rdb_GetSupportedDbType_0100();
       console.info(TAG + "OH_Rdb_GetSupportedDbType_0100 res=" + res );
       expect(res).assertEqual(0);

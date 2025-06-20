@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import nativeRender from 'libnativerender.so'
@@ -30,7 +30,7 @@ export default function listScrollByTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollBy001', 0, async (done: Function) => {
+    it('testListScrollBy001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollBy001Test`);
       await Utils.clickComponent('btn1')
       await Utils.sleep(1500)
@@ -54,7 +54,7 @@ export default function listScrollByTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollBy002', 0, async (done: Function) => {
+    it('testListScrollBy002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollBy002Test`);
       await Utils.clickComponent('btn2')
       await Utils.sleep(1500)
@@ -78,7 +78,7 @@ export default function listScrollByTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollBy003', 0, async (done: Function) => {
+    it('testListScrollBy003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollBy003Test`);
       await Utils.clickComponent('btn3')
       await Utils.sleep(1500)
@@ -102,7 +102,7 @@ export default function listScrollByTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollBy004', 0, async (done: Function) => {
+    it('testListScrollBy004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollBy004Test`);
       await Utils.clickComponent('btn2')
       await Utils.clickComponent('btn2')

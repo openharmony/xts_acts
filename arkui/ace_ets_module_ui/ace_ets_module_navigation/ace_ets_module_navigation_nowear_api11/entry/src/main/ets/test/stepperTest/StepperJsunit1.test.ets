@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -48,7 +48,7 @@ export default function stepperJsunit1() {
      * @tc.name testStepper010
      * @tc.desc aceEtsTest
      */
-    it('testStepper010', 0, async (done: Function) => {
+    it('testStepper010',  Level.LEVEL0, async (done: Function) => {
       console.info('testStepper010 START');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/stepper/Stepper1',

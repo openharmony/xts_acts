@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -55,7 +55,7 @@ export default function searchTest() {
      * @tc.level  0
      */
     /** .key()取不到属性值 */ 
-    // it('testSelectionMenuHidden01', 0, async (done: Function) => {
+    // it('testSelectionMenuHidden01', Level.LEVEL0, async (done: Function) => {
     //   let tagName = 'testSearchSelectionMenuHidden01';
     //   console.info('[' + tagName + '] START============================');
     //   await Utils.sleep(1000)
@@ -99,7 +99,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchCaretStyle02', 0, async (done: Function) => {
+    it('testSearchCaretStyle02', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchCaretStyle02';
       console.info('[' + tagName + '] START============================');
       try {
@@ -136,7 +136,7 @@ export default function searchTest() {
      * @tc.level  0
      */
     /** .key()取不到属性值 */ 
-    // it('testSearchEnableKeyboardOnFocus03', 0, async (done: Function) => {
+    // it('testSearchEnableKeyboardOnFocus03', Level.LEVEL0, async (done: Function) => {
     //   let tagName = 'testSearchEnableKeyboardOnFocus03';
     //   console.info('[' + tagName + '] START============================');
     //   await Utils.sleep(1000)
@@ -180,7 +180,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchPlaceholderFont04', 0, async (done: Function) => {
+    it('testSearchPlaceholderFont04', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchPlaceholderFont04';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -223,7 +223,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchSearchIcon05', 0, async (done: Function) => {
+    it('testSearchSearchIcon05', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchSearchIcon05';
       console.info('[' + tagName + '] START============================');
       try {
@@ -259,7 +259,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchSearchButton06', 0, async (done: Function) => {
+    it('testSearchSearchButton06', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchSearchButton06';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -302,7 +302,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchFontColor07', 0, async (done: Function) => {
+    it('testSearchFontColor07', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchFontColor07';
       console.info('[' + tagName + '] START============================');
       try {
@@ -338,7 +338,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchCopyOption08', 0, async (done: Function) => {
+    it('testSearchCopyOption08', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchCopyOption08';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -381,7 +381,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchTextFont09', 0, async (done: Function) => {
+    it('testSearchTextFont09', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchTextFont09';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -425,7 +425,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchPlaceholderColor10', 0, async (done: Function) => {
+    it('testSearchPlaceholderColor10', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchPlaceholderColor10';
       console.info('[' + tagName + '] START============================');
       try {
@@ -461,7 +461,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchCancelButton11', 0, async (done: Function) => {
+    it('testSearchCancelButton11', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchCancelButton11';
       console.info('[' + tagName + '] START============================');
       try {
@@ -497,7 +497,7 @@ export default function searchTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSearchTextAlign12', 0, async (done: Function) => {
+    it('testSearchTextAlign12', Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSearchTextAlign12';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)

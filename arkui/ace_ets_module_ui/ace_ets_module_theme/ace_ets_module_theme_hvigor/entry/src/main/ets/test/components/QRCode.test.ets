@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { QRCodeKeys, qrCodeThemeProperty } from '../../MainAbility/pages/components/QRCodePage';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
@@ -72,7 +72,7 @@ export default function qrCodeThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsQRCodeThemeColors_0100`, 0, () => {
+    it(`ActsQRCodeThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsQRCodeThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       const qrCodeJSON = getInspectorByKey(QRCodeKeys.qrCodeSystem);
@@ -91,7 +91,7 @@ export default function qrCodeThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsQRCodeThemeColors_0200`, 0, () => {
+    it(`ActsQRCodeThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsQRCodeThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       const qrCodeJSON = getInspectorByKey(QRCodeKeys.qrCodeWithTheme);
@@ -113,7 +113,7 @@ export default function qrCodeThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsQRCodeThemeColors_0300`, 0, async () => {
+    it(`ActsQRCodeThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsQRCodeThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

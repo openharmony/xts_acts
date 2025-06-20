@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, beforeAll } from '@ohos/hypium';
+import { describe, it, beforeAll, TestType, Size, Level } from '@ohos/hypium';
 import Data from './utils/data.json';
 import { HuksSignVerifyDSA } from './utils/param/signverify/publicSignverifyParam';
 import { stringToUint8Array, checkSoftware } from './utils/param/publicFunc';
@@ -31,7 +31,7 @@ export default function SecurityHuksSignVerifyDSAPromiseJsunit() {
             useSoftware = await checkSoftware();
             done();
         })
-        it('Security_HUKS_SignVerify_API9_DSA_101', 0, async function (done) {
+        it('Security_HUKS_SignVerify_API9_DSA_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias101';
             let HuksOptions = {
                 properties: new Array(
@@ -56,7 +56,7 @@ export default function SecurityHuksSignVerifyDSAPromiseJsunit() {
             }
             done();
         });
-        it('Security_HUKS_SignVerify_API9_DSA_102', 0, async function (done) {
+        it('Security_HUKS_SignVerify_API9_DSA_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias102';
             let HuksOptions = {
                 properties: new Array(
@@ -71,7 +71,7 @@ export default function SecurityHuksSignVerifyDSAPromiseJsunit() {
             }
             done();
         });
-        it('Security_HUKS_SignVerify_API9_DSA_103', 0, async function (done) {
+        it('Security_HUKS_SignVerify_API9_DSA_103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias103';
             let HuksOptions = {
                 properties: new Array(
@@ -96,7 +96,7 @@ export default function SecurityHuksSignVerifyDSAPromiseJsunit() {
             }
             done();
         });
-        it('Security_HUKS_SignVerify_API9_DSA_104', 0, async function (done) {
+        it('Security_HUKS_SignVerify_API9_DSA_104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias104';
             let HuksOptions = {
                 properties: new Array(

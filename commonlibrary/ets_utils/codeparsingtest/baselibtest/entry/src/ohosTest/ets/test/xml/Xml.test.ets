@@ -65,9 +65,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML constructor with a invalid ArrayBuffer.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0001';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -94,9 +94,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML constructor with a zero ArrayBuffer.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0002';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -123,9 +123,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML constructor with ArrayBuffer < 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0003';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -144,9 +144,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML constructor with a valid ArrayBuffer.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0004';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -169,9 +169,9 @@ export default function XmlTest() {
      *                  that is exactly the same length as the expected Result.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0005';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -193,9 +193,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML constructor with a valid DataView.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0006';
       try {
         const expectedResult = '<?xml version="1.0" encoding="utf-8"?>';
@@ -218,9 +218,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML constructor with a valid DataView and without encoding.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0007';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -242,9 +242,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML constructor with a valid DataView and encoding "utf-8".
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0008';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -266,9 +266,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML constructor with a valid DataView and encoding 'gbk'.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlConstructor0009';
       try {
         let arrayBuffer = new ArrayBuffer(2048);
@@ -288,9 +288,9 @@ export default function XmlTest() {
      *                  expecting a BusinessError to be thrown.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributes0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetAttributes0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlSetAttributes0001';
       try {
         const MY_MAX = 2048;
@@ -311,9 +311,9 @@ export default function XmlTest() {
      *                  expecting a BusinessError to be thrown.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributes0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetAttributes0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlSetAttributes0002';
       try {
         const MY_MAX = 2048;
@@ -334,9 +334,9 @@ export default function XmlTest() {
      *                  expecting a BusinessError to be thrown.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributes0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetAttributes0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlSetAttributes0003';
       try {
         const MY_MAX = 2048;
@@ -357,9 +357,9 @@ export default function XmlTest() {
      *                  expecting a BusinessError to be thrown.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributes0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetAttributes0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlSetAttributes0004';
       try {
         const MY_MAX = 2048;
@@ -388,9 +388,9 @@ export default function XmlTest() {
      *                  expecting a correct result.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributes0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetAttributes0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlSetAttributes0005';
       try {
         const MY_MAX = 10240;
@@ -420,9 +420,9 @@ export default function XmlTest() {
      * @tc.desc       : Testing the XML serializer's setAttributes method expecting a correct result.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributes0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlSetAttributes0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testXmlSetAttributes0006';
       try {
         const MY_MAX = 2048;

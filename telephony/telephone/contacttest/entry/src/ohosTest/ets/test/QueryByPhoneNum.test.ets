@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, beforeEach } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -200,7 +200,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0100', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -241,7 +241,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -273,7 +273,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0300', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -325,7 +325,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -366,7 +366,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0600', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -414,7 +414,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0700', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -462,7 +462,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0800', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -510,7 +510,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0900', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -559,7 +559,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1000', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber1000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -610,7 +610,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1100', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber1100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -651,7 +651,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber1200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -697,7 +697,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1300', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber1300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -743,7 +743,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1400', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber1400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -789,7 +789,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber1500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -835,7 +835,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1600', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber1600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -882,7 +882,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1800', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber1800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -924,7 +924,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber2200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber2200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -972,7 +972,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryContactByPhoneNumber2300', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber2300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1014,7 +1014,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber2500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber2500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1045,7 +1045,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber2600', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber2600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1094,7 +1094,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber2700', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber2700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1141,7 +1141,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber2800', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber2800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1192,7 +1192,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber2900', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber2900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1249,7 +1249,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber3000', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1304,7 +1304,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryContactByPhoneNumber3100', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1345,7 +1345,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber3400', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1391,7 +1391,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber3500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1432,7 +1432,7 @@ export default function QueryByEmailPhoneNumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber3600', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;

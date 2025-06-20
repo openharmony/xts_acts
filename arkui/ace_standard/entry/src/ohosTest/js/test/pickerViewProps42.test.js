@@ -13,91 +13,92 @@
  * limitations under the License.
  */
 
- import router from '@system.router';
- import {describe, beforeAll,afterAll, it, expect} from '@ohos/hypium';
- 
- 
- export default function pickerViewPropsJsTest42() {  describe('pickerViewPropsJsTest42', function () {
- 
-     async function sleep(time) {
-         return new Promise((resolve, reject) => {
-             setTimeout(() => {
-                 resolve()
-             }, time)
-         }).then(() => {
-             console.info(`sleep ${time} over...`)
-         })
-     }
- 
-     async function backToIndex() {
-         let backToIndexPromise = new Promise((resolve, reject) => {
-             setTimeout(() => {
-                 router.back({
-                     uri: 'pages/index/index'
-                 });
-                 resolve();
-             }, 500);
-         })
-         let clearPromise = new Promise((resolve, reject) => {
-             setTimeout(() => {
-                 router.clear();
-                 resolve();
-             }, 500);
-         })
-         await backToIndexPromise.then(() => {
-             return clearPromise;
-         })
-     }
- 
-     /**
-     * run before testcase
-     */
-     beforeAll(async function (done) {
-         console.info('[pickerViewPropsJsTest] before each called')
- 
-         let result;
-         let options = {
-             uri: 'pages/pickerView/prop42/index'
-         }
-         try {
-             result = router.push(options)
-             console.info("push pickerViewProps page success " + JSON.stringify(result));
-         } catch (err) {
-             console.error("push pickerViewProps page error " + JSON.stringify(result));
-         }
-         await sleep(10000)
-         done()
-     })
- 
-     /**
-     * run after testcase
-     */
-     afterAll(async function () {
-         console.info('[pickerViewPropsJsTest] after each called')
-         await backToIndex()
-         await sleep(1000)
-     })
- 
-     /**
-      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-      * @tc.name      testPickerViewForPropNull
-      * @tc.desc      ACE
-      */
-     it('testPickerViewForPropNull', 0, async function (done) {
-         console.info('testPickerViewForPropNull START');
-         console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
- 
-         let obj = JSON.parse(globalThis.value.forPropNull);
-         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
- 
-         expect(obj.$type).assertEqual('picker-view')
-         expect(obj.$attrs.id).assertEqual('forPropNull')
-         expect(obj.$attrs.for).assertEqual(undefined)
-         console.info("[pickerViewProps] get for value is: " + JSON.stringify(obj.$attrs.for));
-         done();
-     });
- 
+import router from '@system.router';
+import { describe, beforeAll, afterAll, it, expect, Level } from '@ohos/hypium';
 
- });
+
+export default function pickerViewPropsJsTest42() {
+    describe('pickerViewPropsJsTest42', function() {
+
+        async function sleep(time) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve()
+                }, time)
+            }).then(() => {
+                console.info(`sleep ${time} over...`)
+            })
+        }
+
+        async function backToIndex() {
+            let backToIndexPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    router.back({
+                        uri: 'pages/index/index'
+                    });
+                    resolve();
+                }, 500);
+            })
+            let clearPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    router.clear();
+                    resolve();
+                }, 500);
+            })
+            await backToIndexPromise.then(() => {
+                return clearPromise;
+            })
+        }
+
+        /**
+         * run before testcase
+         */
+        beforeAll(async function(done) {
+            console.info('[pickerViewPropsJsTest] before each called')
+
+            let result;
+            let options = {
+                uri: 'pages/pickerView/prop42/index'
+            }
+            try {
+                result = router.push(options)
+                console.info("push pickerViewProps page success " + JSON.stringify(result));
+            } catch (err) {
+                console.error("push pickerViewProps page error " + JSON.stringify(result));
+            }
+            await sleep(10000)
+            done()
+        })
+
+        /**
+         * run after testcase
+         */
+        afterAll(async function() {
+            console.info('[pickerViewPropsJsTest] after each called')
+            await backToIndex()
+            await sleep(1000)
+        })
+
+        /**
+         * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+         * @tc.name      testPickerViewForPropNull
+         * @tc.desc      ACE
+         */
+        it('testPickerViewForPropNull', Level.LEVEL0, async function(done) {
+            console.info('testPickerViewForPropNull START');
+            console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+
+            let obj = JSON.parse(globalThis.value.forPropNull);
+            console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
+            console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+
+            expect(obj.$type).assertEqual('picker-view')
+            expect(obj.$attrs.id).assertEqual('forPropNull')
+            expect(obj.$attrs.for).assertEqual(undefined)
+            console.info("[pickerViewProps] get for value is: " + JSON.stringify(obj.$attrs.for));
+            done();
+        });
+
+
+    });
 }

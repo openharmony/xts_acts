@@ -18,6 +18,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Test
 import { webview } from '@kit.ArkWeb';
 import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let driver = Driver.create();
 
@@ -36,6 +39,11 @@ export default function AceWeb() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.

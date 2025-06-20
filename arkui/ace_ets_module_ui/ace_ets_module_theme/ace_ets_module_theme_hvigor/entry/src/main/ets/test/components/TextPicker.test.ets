@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import { TextPickerKeys, textPickerThemeProperty, textPickerThemeSetProperty } from '../../MainAbility/pages/components/TextPickerPage';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import { brownCustomTheme, greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
@@ -97,7 +97,7 @@ export default function textPickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTextPickerThemeColors_0100`, 0, async () => {
+    it(`ActsTextPickerThemeColors_0100`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -116,7 +116,7 @@ export default function textPickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTextPickerThemeColors_0200`, 0, async () => {
+    it(`ActsTextPickerThemeColors_0200`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0200`
       console.info(`${SUITE} ${CASE} START`)
       await sleep(frameTime);
@@ -136,7 +136,7 @@ export default function textPickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTextPickerThemeColors_0300`, 0, async () => {
+    it(`ActsTextPickerThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -156,7 +156,7 @@ export default function textPickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTextPickerThemeColors_0400`, 0, async () => {
+    it(`ActsTextPickerThemeColors_0400`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0400`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

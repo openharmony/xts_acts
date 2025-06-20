@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentLayoutconstraintDisposeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentLayoutconstraintDispose001', 0, async (done: Function) => {
+    it('testCustomComponentLayoutconstraintDispose001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentLayoutConstraintDispose001()).assertEqual(0)
       done()
     })               

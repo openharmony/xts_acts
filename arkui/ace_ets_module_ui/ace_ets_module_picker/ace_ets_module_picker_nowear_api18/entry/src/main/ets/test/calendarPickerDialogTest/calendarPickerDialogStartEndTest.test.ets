@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
 import { Driver, ON, Component } from '@kit.TestKit';
 import Utils from '../../MainAbility/common/Utils';
@@ -51,7 +51,7 @@ export default function calendarPickerDialogStartEndTest() {
      * @tc.size
     */
 
-    it('CalendarPickerDialog_StartEnd_001', 0, async (done: Function) => {
+    it('CalendarPickerDialog_StartEnd_001', Level.LEVEL1, async (done: Function) => {
       let tagName = 'CalendarPickerDialog_StartEnd_001';
       console.info('[' + tagName + '] START============================');
       let driver: Driver = Driver.create();
@@ -81,7 +81,7 @@ export default function calendarPickerDialogStartEndTest() {
      * @tc.type
      * @tc.size
     */
-    it('CalendarPickerDialog_StartEnd_002', 0, async (done: Function) => {
+    it('CalendarPickerDialog_StartEnd_002', Level.LEVEL1, async (done: Function) => {
       let tagName = 'CalendarPickerDialog_StartEnd_002';
       console.info('[' + tagName + '] START============================');
       let driver: Driver = Driver.create();
@@ -110,7 +110,7 @@ export default function calendarPickerDialogStartEndTest() {
      * @tc.type
      * @tc.size
     */
-    it('CalendarPickerDialog_StartEnd_003', 0, async (done: Function) => {
+    it('CalendarPickerDialog_StartEnd_003', Level.LEVEL1, async (done: Function) => {
       let tagName = 'CalendarPickerDialog_StartEnd_003';
       console.info('[' + tagName + '] START============================');
       let driver: Driver = Driver.create();
@@ -140,7 +140,7 @@ export default function calendarPickerDialogStartEndTest() {
      * @tc.type
      * @tc.size
     */
-    it('CalendarPickerDialog_StartEnd_004', 0, async (done: Function) => {
+    it('CalendarPickerDialog_StartEnd_004', Level.LEVEL1, async (done: Function) => {
       let tagName = 'CalendarPickerDialog_StartEnd_004';
       console.info('[' + tagName + '] START============================');
       let driver: Driver = Driver.create();
@@ -170,7 +170,7 @@ export default function calendarPickerDialogStartEndTest() {
      * @tc.type
      * @tc.size
     */
-    it('CalendarPickerDialog_StartEnd_005', 0, async (done: Function) => {
+    it('CalendarPickerDialog_StartEnd_005', Level.LEVEL1, async (done: Function) => {
       let tagName = 'CalendarPickerDialog_StartEnd_005';
       console.info('[' + tagName + '] START============================');
       let driver: Driver = Driver.create();

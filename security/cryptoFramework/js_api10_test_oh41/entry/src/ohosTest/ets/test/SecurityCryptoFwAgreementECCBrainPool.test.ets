@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as agreementAsyCallbackFunc from './utils/agreement/agreementAsyCallbackFunc';
@@ -51,7 +51,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0100: started.");
       let param: string = "ECC_BrainPoolP160r1";
       try {
@@ -74,7 +74,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0200: started.");
       let param: string = "ECC_BrainPoolP192t1";
       try {
@@ -97,7 +97,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0300: started.");
       let param: string = "ECC_BrainPoolP224r1";
       try {
@@ -120,7 +120,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0400: started.");
       let param: string = "ECC_BrainPoolP256t1";
       try {
@@ -143,7 +143,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0500: started.");
       let param: string = "ECC_BrainPoolP320r1";
       try {
@@ -166,7 +166,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0600: started.");
       let param: string = "ECC_BrainPoolP384t1";
       try {
@@ -189,7 +189,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0700: started.");
       let param: string = "ECC_BrainPoolP512r1";
       try {
@@ -212,7 +212,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0800: started.");
       let param: string = "ECC_BrainPoolP160t1";
       try {
@@ -235,7 +235,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_0900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_0900: started.");
       let param: string = "ECC_BrainPoolP192r1";
       try {
@@ -258,7 +258,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_1000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_1000: started.");
       let param: string = "ECC_BrainPoolP224t1";
       try {
@@ -281,7 +281,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_1100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_1100: started.");
       let param: string = "ECC_BrainPoolP256r1";
       try {
@@ -304,7 +304,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_1200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_1200: started.");
       let param: string = "ECC_BrainPoolP320t1";
       try {
@@ -327,7 +327,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_1300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_1300: started.");
       let param: string = "ECC_BrainPoolP384r1";
       try {
@@ -350,7 +350,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_1400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_1400: started.");
       let param: string = "ECC_BrainPoolP512t1";
       try {
@@ -373,7 +373,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_1500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_1500: started.");
       let param: string = "ECC_BrainPoolP512t1";
       let spec: cryptoFramework.AsyKeySpec = specUtil.genP512t1KeySpec(cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC);
@@ -397,7 +397,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("Security_CryptoFramework_Agreement_BrainPool_Func_1600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Agreement_BrainPool_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("Security_CryptoFramework_Agreement_BrainPool_Func_1600: started.");
       let param: string = "ECC_BrainPoolP512t1";
       let curveName: string = "NID_brainpoolP512t1";
@@ -427,7 +427,7 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Agreement_BrainPool_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_BrainPool_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_BrainPool_Func_1900";
       console.log(testNumber + ": started");
       let agreementAlg: string = "ECC_BrainPoolP512t1";

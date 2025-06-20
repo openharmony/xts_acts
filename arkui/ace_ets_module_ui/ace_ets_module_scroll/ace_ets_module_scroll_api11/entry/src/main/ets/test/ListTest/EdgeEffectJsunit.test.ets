@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function edgeEffectJsunit() {
       console.info("edgeEffect after each called");
     });
 
-    it('edgeEffectTest_0100', 0, async (done: Function) => {
+    it('edgeEffectTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('edgeEffectTest_0100 START');
       let strJson: string = getInspectorByKey('list');
       console.info("edgeEffectTest_0100 component strJson:" + strJson);
@@ -53,7 +53,7 @@ export default function edgeEffectJsunit() {
       done();
     });
 
-    it('edgeEffectTest_0200', 0, async (done: Function) => {
+    it('edgeEffectTest_0200', Level.LEVEL1, async (done: Function) => {
       console.info('edgeEffectTest_0200 START');
       try {
         let eventData: events_emitter.EventData = {

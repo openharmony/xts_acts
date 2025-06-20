@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -47,7 +47,7 @@ export default function gridRowJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('gridRowTest_0001', 0, async (done: Function) => {
+    it('gridRowTest_0001', Level.LEVEL0, async (done: Function) => {
       console.info('gridRowTest_0001 START');
       let strJsonNew = getInspectorByKey('gridRow');
       console.info("gridRowTest_0001 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
@@ -65,7 +65,7 @@ export default function gridRowJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('gridRowTest_0002', 0, async (done: Function) => {
+    it('gridRowTest_0002', Level.LEVEL0, async (done: Function) => {
 
       console.info('gridRowTest_0002 START');
       let driver = Driver.create();

@@ -16,13 +16,14 @@
 import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media';
 import resourceManager from '@ohos.resourceManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import image from "@ohos.multimedia.image";
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const AUDIO_SOURCE = 'mjpeg_mp3.mp3';
 const VIDEO_SOURCE = 'H264_AAC_Matedata.mp4';
 const VIDEO_NOSUPPORT = 'No_Support_Format.mov'
+const HTTP_SOURCE = 'http://XXX';
 const TAG = "MetadataDemo"
 const SLEEP_TIME = 200
 let AVFileDescriptor: media.AVFileDescriptor;
@@ -68,7 +69,7 @@ export default function AVMetadata() {
        * @tc.type      : Function Test
        * @tc.level     : Level0
            */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ALBUM_PROMISE_FUNCTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ALBUM_PROMISE_FUNCTION_0100', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -92,7 +93,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ALBUMARTIST_PROMISE_FUNCTION_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ALBUMARTIST_PROMISE_FUNCTION_0200', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -116,7 +117,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ARTIST_PROMISE_FUNCTION_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ARTIST_PROMISE_FUNCTION_0300', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -139,7 +140,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_AUTHOR_PROMISE_FUNCTION_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_AUTHOR_PROMISE_FUNCTION_0400', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -163,7 +164,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DATETIME_PROMISE_FUNCTION_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DATETIME_PROMISE_FUNCTION_0500', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -189,7 +190,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DATETIMEFORMAT_PROMISE_FUNCTION_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DATETIMEFORMAT_PROMISE_FUNCTION_0600', Level.LEVEL0,async (done: Function) => {
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       console.info('AVMetadataExtractor success   22222222222');
       // 获取元数据
@@ -212,7 +213,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_COMPOSER_PROMISE_FUNCTION_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_COMPOSER_PROMISE_FUNCTION_0700', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -236,7 +237,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DURATION_PROMISE_FUNCTION_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DURATION_PROMISE_FUNCTION_0800', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -260,7 +261,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_GENRE_PROMISE_FUNCTION_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_GENRE_PROMISE_FUNCTION_0900', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -284,7 +285,7 @@ export default function AVMetadata() {
         * @tc.type      : Function Test
         * @tc.level     : Level0
            */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HASAUDIO_PROMISE_FUNCTION_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HASAUDIO_PROMISE_FUNCTION_1000', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -308,7 +309,7 @@ export default function AVMetadata() {
         * @tc.type      : Function Test
         * @tc.level     : Level0
            */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HASVIDEO_PROMISE_FUNCTION_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HASVIDEO_PROMISE_FUNCTION_1100', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -332,7 +333,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_MIMETYPE_PROMISE_FUNCTION_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_MIMETYPE_PROMISE_FUNCTION_1200', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -356,7 +357,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_TRACKCOUNT_PROMISE_FUNCTION_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_TRACKCOUNT_PROMISE_FUNCTION_1300', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -380,7 +381,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_SAMPLERATE_PROMISE_FUNCTION_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_SAMPLERATE_PROMISE_FUNCTION_1400', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -404,7 +405,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_TITLE_PROMISE_FUNCTION_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_TITLE_PROMISE_FUNCTION_1500', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -428,7 +429,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOHEIGHT_PROMISE_FUNCTION_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOHEIGHT_PROMISE_FUNCTION_1600', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -452,7 +453,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOWIDTH_PROMISE_FUNCTION_1700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOWIDTH_PROMISE_FUNCTION_1700', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -476,7 +477,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOORIENTATION_PROMISE_FUNCTION_1800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOORIENTATION_PROMISE_FUNCTION_1800', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -500,7 +501,7 @@ export default function AVMetadata() {
     * @tc.type      : Function Test
     * @tc.level     : Level0
         */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ALBUM_PROMISE_FUNCTION_1900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ALBUM_PROMISE_FUNCTION_1900', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -524,7 +525,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ALBUMARTIST_PROMISE_FUNCTION_2000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ALBUMARTIST_PROMISE_FUNCTION_2000', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -548,7 +549,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ARTIST_PROMISE_FUNCTION_2100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_ARTIST_PROMISE_FUNCTION_2100', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -572,7 +573,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_AUTHOR_PROMISE_FUNCTION_2200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_AUTHOR_PROMISE_FUNCTION_2200', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -596,7 +597,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DATETIME_PROMISE_FUNCTION_2300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DATETIME_PROMISE_FUNCTION_2300', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -620,7 +621,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_COMPOSER_PROMISE_FUNCTION_2400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_COMPOSER_PROMISE_FUNCTION_2400', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -644,7 +645,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DURATION_PROMISE_FUNCTION_02500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_DURATION_PROMISE_FUNCTION_02500', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -668,7 +669,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_GENRE_PROMISE_FUNCTION_02600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_GENRE_PROMISE_FUNCTION_02600', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -692,7 +693,7 @@ export default function AVMetadata() {
         * @tc.type      : Function Test
         * @tc.level     : Level0
            */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HASAUDIO_PROMISE_FUNCTION_02700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HASAUDIO_PROMISE_FUNCTION_02700', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -716,7 +717,7 @@ export default function AVMetadata() {
         * @tc.type      : Function Test
         * @tc.level     : Level0
            */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HASVIDEO_PROMISE_FUNCTION_02800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HASVIDEO_PROMISE_FUNCTION_02800', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -740,7 +741,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_MIMETYPE_PROMISE_FUNCTION_02900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_MIMETYPE_PROMISE_FUNCTION_02900', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -764,7 +765,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_TRACKCOUNT_PROMISE_FUNCTION_3000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_TRACKCOUNT_PROMISE_FUNCTION_3000', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -788,7 +789,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA__SAMPLERATE_PROMISE_FUNCTION_3100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA__SAMPLERATE_PROMISE_FUNCTION_3100', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -812,7 +813,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA__PLAYER_AVMETADATA_VIDEOHEIGHT_PROMISE_FUNCTION_03200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA__PLAYER_AVMETADATA_VIDEOHEIGHT_PROMISE_FUNCTION_03200', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -836,7 +837,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOWIDTH_PROMISE_FUNCTION_03300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOWIDTH_PROMISE_FUNCTION_03300', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -860,7 +861,7 @@ export default function AVMetadata() {
       * @tc.type      : Function Test
       * @tc.level     : Level0
          */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOORIENTATION_PROMISE_FUNCTION_3400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_VIDEOORIENTATION_PROMISE_FUNCTION_3400', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -884,7 +885,7 @@ export default function AVMetadata() {
     * @tc.type      : Function Test
     * @tc.level     : Level0
       */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_AUDIOPIXELMAP_PROMISE_FUNCTION_3500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_AUDIOPIXELMAP_PROMISE_FUNCTION_3500', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success   11111111111');
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -920,7 +921,7 @@ export default function AVMetadata() {
     * @tc.type      : Function Test
     * @tc.level     : Level0
         */
-    it('SUB_MULTIMEDIA_AUDIO_PLAYER_AVMETADATA_ALBUM_CB_FUNCTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_PLAYER_AVMETADATA_ALBUM_CB_FUNCTION_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + "0100 is success");
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       avMetadataExtractor.fdSrc = AVFileDescriptor;
@@ -943,7 +944,7 @@ export default function AVMetadata() {
     * @tc.type      : Function Test
     * @tc.level     : Level0
        */
-    it('SUB_MULTIMEDIA_AUDIO_PLAYER_VIDEOHEIGHT_PIXELMAP_CB_FUNCTION_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_PLAYER_VIDEOHEIGHT_PIXELMAP_CB_FUNCTION_0200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + "SUB_MULTIMEDIA_AUDIO_PLAYER_VIDEOHEIGHT_PIXELMAP_CB_FUNCTION_0200  is success");
       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
       avMetadataExtractor.fdSrc = AVFileDescriptor;
@@ -965,7 +966,7 @@ export default function AVMetadata() {
      * @tc.type      : Function Test
      * @tc.level     : Level0
         */
-    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HDRTYPE_PROMISE_FUNCTION_1800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_HDRTYPE_PROMISE_FUNCTION_1800', Level.LEVEL0,async (done: Function) => {
       console.info('AVMetadataExtractor success');
       let avMetadataExtractor = await media.createAVMetadataExtractor();
       // 获取元数据
@@ -978,6 +979,142 @@ export default function AVMetadata() {
       }).catch((error: BusinessError) => {
         console.error(`fetchMetadata catchCallback, error message:${error.message}`);
       });
+      done();
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_HDRTYPE_CALLBACK_FUNCTION_0100
+     * @tc.name      : 001.testAVMeta hdrType
+     * @tc.desc      : Local Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+        */
+    it('SUB_MULTIMEDIA_AUDIO_PLAYER_AVMETADATA_ALBUM_CB_FUNCTION_0100', Level.LEVEL0, (done: Function) => {
+      console.info(TAG + "0100 is success");
+      let avMetadataExtractor: media.AVMetadataExtractor;
+    
+      media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+        if (error) {
+          console.error(TAG, `Failed to create AVMetadataExtractor, error message: ${JSON.stringify(error)}`);
+          done();
+          return;
+        }
+        avMetadataExtractor = extractor;
+        console.info(TAG, 'Succeeded in creating AVMetadataExtractor');
+        avMetadataExtractor.fdSrc = AVFileDescriptor;
+        avMetadataExtractor.fetchMetadata((err, metadata) => {
+          if (err) {
+            console.error(TAG, `fetchMetadata callback failed, err = ${JSON.stringify(err)}`);
+            done();
+            return;
+          }
+          console.info(TAG, `fetchMetadata callback success video album :${metadata.album}`);
+          expect(metadata.album).assertEqual("media");
+          avMetadataExtractor.release();
+          done();
+        });
+      });
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100
+     * @tc.desc      : Online http Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      let pixelMapLoc: image.PixelMap | undefined = undefined;
+      avMetadataExtractor.setUrlSource(HTTP_SOURCE);
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        pixelMapLoc = pixelMap;
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      expect(pixelMapLoc).assertUndefined();
+      avMetadataExtractor.release();
+      done();
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200
+     * @tc.desc      : Online http Video with httpheader playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      let pixelMapLoc: image.PixelMap | undefined = undefined;
+      let headers: Record<string, string> = {
+        "User-Agent" : "User-Agent-Value"
+      };
+      avMetadataExtractor.setUrlSource(HTTP_SOURCE, headers);
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        pixelMapLoc = pixelMap;
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      expect(pixelMapLoc).assertUndefined();
+      avMetadataExtractor.release();
+      done();
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100
+     * @tc.desc      : Online http Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      avMetadataExtractor.fdSrc = AVFileDescriptor2;
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        expect(pixelMap).not().assertUndefined();
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+        expect().assertFail();
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      avMetadataExtractor.release();
       done();
     });
   })

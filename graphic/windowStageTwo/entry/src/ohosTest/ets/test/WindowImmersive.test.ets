@@ -12,23 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level} from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import settings from '@ohos.settings';
-import deviceInfo from '@ohos.deviceInfo';
+import { display } from '@kit.ArkUI';
 export default function windowImmersiveTest() {
   describe('windowImmersive_test', () => {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context : common.UIAbilityContext;
     let windowStage:ohosWindow.WindowStage;
     let isPCStatus:string = '';
-    let deviceType: string = '';
     let isAutoWindow:string = '';
     let avoidArea1: window.AvoidArea;
-    
+    let isSupportRotate = false;
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -42,31 +41,282 @@ export default function windowImmersiveTest() {
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
-
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
-
       let windowClass = windowStage.getMainWindowSync();
         await windowClass.setWindowLayoutFullScreen(false);
         await windowClass.setWindowSystemBarEnable(['status']);
         let type = window.AvoidAreaType.TYPE_SYSTEM;
         avoidArea1 = windowClass.getWindowAvoidArea(type);
         console.info(` Succeeded in getWindowAvoidArea1. Data: ${JSON.stringify(avoidArea1)}`);
+        //查看设备是否支持旋转：isSupportRotate == true,支持；isSupportRotate == false,不支持
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+        await sleep(300);
+        let Orientation1 = display.getDefaultDisplaySync().orientation;
+        await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+        await sleep(300);
+        let Orientation2 = display.getDefaultDisplaySync().orientation;
+        if(Orientation1 != Orientation2){
+          isSupportRotate = true;
+        }else{
+          isSupportRotate = false;
+        }
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+        await sleep(300);
+        console.log(`beforeAll isSupportRotate: ${JSON.stringify(isSupportRotate)},Orientation1: ${JSON.stringify(Orientation1)},Orientation2: ${JSON.stringify(Orientation2)}`)
+    
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
-      // Presets a clear action, which is performed after each unit test case ends.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: clear action function.
+    afterEach(async ()=>{
+      try {
+        await sleep(1000)
+        let mainWindowClass = windowStage.getMainWindowSync()
+        let mainID = mainWindowClass.getWindowProperties().id
+        let lastWindow = await window.getLastWindow(context)
+        let lastID = lastWindow.getWindowProperties().id
+        while (mainID != lastID) {
+          await lastWindow.destroyWindow()
+          await sleep(1000)
+          lastWindow = await window.getLastWindow(context)
+          lastID = lastWindow.getWindowProperties().id
+      }
+      } catch (error) {
+        console.log('afterEach fail cause'+error)
+      }
     })
-    afterAll(() => {
-      // Presets a clear action, which is performed after all test cases of the test suite end.
-      // This API supports only one parameter: clear action function.
+    afterAll(async () => {
+      // await windowClass.setWindowLayoutFullScreen(false);
+      // await windowClass.setWindowSystemBarEnable(['status']);
+      // await windowClass.setFullScreen(false);
+      let windowClass = windowStage.getMainWindowSync();
+      await windowClass.recover();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_OnavoidAreaChange_0100
+     * @tc.name      : testOnavoidAreaChangeInLandScape
+     * @tc.desc      : Obtain the area that the window content avoids
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testOnavoidAreaChangeInLandScape', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = 'testOnavoidAreaChangeInLandScape';
+      if(isSupportRotate){
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let displayWidth = display.getDefaultDisplaySync().width;
+          console.info(caseName+ 'displayWidth: ' + JSON.stringify(displayWidth));
+          let displayHeight = display.getDefaultDisplaySync().height;
+          console.info(caseName+ 'displayHeight: ' + JSON.stringify(displayHeight));
+          windowClass.on('avoidAreaChange', async (data) => {
+            console.info(caseName+ ':Succeeded in enabling the listener for system avoid area changes. type:' +
+            JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
+            if(data.type == 0){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect !== null).assertTrue();
+              expect(data.area.leftRect !== null).assertTrue();
+            }else if(data.type == 4){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect.top+data.area.bottomRect.height).assertEqual(displayWidth);
+              expect(data.area.leftRect !== null).assertTrue();
+            }else{
+              await sleep(500);
+            }
+
+            windowClass.off('avoidAreaChange');
+            await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+            await sleep(300);
+            done();
+
+          });
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+          await sleep(500);
+        } catch (exception) {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }else{
+        done();
+      }
+
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_OnavoidAreaChange_0200
+     * @tc.name      : testOnavoidAreaChangeInPORTRAIT
+     * @tc.desc      : Obtain the area that the window content avoids
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testOnavoidAreaChangeInPORTRAIT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = 'testOnavoidAreaChangeInPORTRAIT';
+      if(isSupportRotate){
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let displayWidth = display.getDefaultDisplaySync().width;
+          console.info(caseName+ 'displayWidth: ' + JSON.stringify(displayWidth));
+          let displayHeight = display.getDefaultDisplaySync().height;
+          console.info(caseName+ 'displayHeight: ' + JSON.stringify(displayHeight));
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+          await sleep(300);
+          windowClass.on('avoidAreaChange', async (data) => {
+            console.info(caseName+ ':Succeeded in enabling the listener for system avoid area changes. type:' +
+            JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
+            if(data.type == 0){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect !== null).assertTrue();
+              expect(data.area.leftRect !== null).assertTrue();
+            }else if(data.type == 4){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect!== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect.top+data.area.bottomRect.height).assertEqual(displayHeight);
+              expect(data.area.leftRect !== null).assertTrue();
+            }else{
+              await sleep(500);
+            }
+
+            windowClass.off('avoidAreaChange');
+            await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+            await sleep(300);
+            done();
+
+          });
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+          await sleep(2000);
+        } catch (exception) {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }else{
+        done();
+      }
+
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_OnavoidAreaChange_0300
+     * @tc.name      : testOnavoidAreaChangeInLANDSCAPE_INVERTED
+     * @tc.desc      : Obtain the area that the window content avoids
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testOnavoidAreaChangeInLANDSCAPE_INVERTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = 'testOnavoidAreaChangeInLANDSCAPE_INVERTED';
+      if(isSupportRotate){
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let displayWidth = display.getDefaultDisplaySync().width;
+          console.info(caseName+ 'displayWidth: ' + JSON.stringify(displayWidth));
+          let displayHeight = display.getDefaultDisplaySync().height;
+          console.info(caseName+ 'displayHeight: ' + JSON.stringify(displayHeight));
+          await sleep(300);
+          windowClass.on('avoidAreaChange', async (data) => {
+            console.info(caseName+ ':Succeeded in enabling the listener for system avoid area changes. type:' +
+            JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
+            if(data.type == 0){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect !== null).assertTrue();
+              expect(data.area.leftRect !== null).assertTrue();
+            }else if(data.type == 4){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect.top+data.area.bottomRect.height).assertEqual(displayWidth);
+              expect(data.area.leftRect !== null).assertTrue();
+            }else{
+              await sleep(500);
+            }
+            windowClass.off('avoidAreaChange');
+            await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+            await sleep(300);
+            done();
+
+          });
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE_INVERTED);
+          await sleep(2000);
+        } catch (exception) {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }else{
+        done();
+      }
+
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100
+     * @tc.name      : test_setImmersiveModeEnabledState_true
+     * @tc.desc      : test_setImmersiveModeEnabledState_true
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let enabled = true;
+        windowClass.setImmersiveModeEnabledState(enabled);
+        let isEnabled = windowClass.getImmersiveModeEnabledState();
+        console.log(msgStr + 'success to setImmersiveModeEnabledState enabled:' + isEnabled);
+        if(isPCStatus == '' || isAutoWindow =='false'){
+          expect(isEnabled).assertEqual(true);
+          done();
+        }else{
+          expect(isEnabled).assertEqual(false);
+          done();
+        }
+        
+      } catch (error) {
+        console.log(msgStr + 'Failed to setImmersiveModeEnabledState enable' + JSON.stringify(error.code) +
+          error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200
+     * @tc.name      : test_setImmersiveModeEnabledState_false
+     * @tc.desc      : test_setImmersiveModeEnabledState_false
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let enabled = false;
+        windowClass.setImmersiveModeEnabledState(enabled);
+        let isEnabled = windowClass.getImmersiveModeEnabledState();
+        console.log(msgStr + 'success to setImmersiveModeEnabledState disenabled:' + isEnabled);
+        expect(isEnabled).assertEqual(false);
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to setImmersiveModeEnabledState disEnable' + JSON.stringify(error.code) +
+          error.message);
+        expect(false).assertTrue();
+        done();
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
@@ -74,9 +324,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testGetWindowAvoidAreaTypeSystem', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeSystem', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeSystem';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -100,9 +350,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level1
      */
-    it('testGetWindowAvoidAreaTypeCutOut', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeCutOut', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeCutOut';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -126,9 +376,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level1
      */
-    it('testGetWindowAvoidAreaTypeSystemGesture', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeSystemGesture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeSystemGesture';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -152,9 +402,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testGetWindowAvoidAreaTypeKeyBoard', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeKeyBoard', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeKeyBoard';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -178,9 +428,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testGetWindowAvoidAreaTypeNavigationIndicator', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeNavigationIndicator', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeNavigationIndicator';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -204,9 +454,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testGetWindowAvoidAreaTypeSystemInLandScape', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeSystemInLandScape', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeSystemInLandScape';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -233,9 +483,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testGetWindowAvoidAreaTypeSystemInPortraitInverted', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeSystemInPortraitInverted', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeSystemInPortraitInverted';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -262,9 +512,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testGetWindowAvoidAreaTypeCutOutInPortraitInverted', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeCutOutInPortraitInverted', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeCutOutInPortraitInverted';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -291,9 +541,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testGetWindowAvoidAreaTypeSystemInLandScapeInverted', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeSystemInLandScapeInverted', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeSystemInLandScapeInverted';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -320,9 +570,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : Obtain the area that the window content avoids
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testGetWindowAvoidAreaTypeCutOutInLandScapeInverted', 0, (done: Function) => {
+    it('testGetWindowAvoidAreaTypeCutOutInLandScapeInverted', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName = 'TestGetWindowAvoidAreaTypeCutOutInLandScapeInverted';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -352,7 +602,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetAvoidAreaTypeSystem', 0, (done: Function) => {
+    it('testGetAvoidAreaTypeSystem', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetAvoidAreaTypeSystem';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -384,7 +634,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetAvoidAreaTypeCutOut', 0, (done: Function) => {
+    it('testGetAvoidAreaTypeCutOut', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetAvoidAreaTypeCutOut';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -416,7 +666,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetAvoidAreaTypeSystemGesture', 0, (done: Function) => {
+    it('testGetAvoidAreaTypeSystemGesture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetAvoidAreaTypeSystemGesture';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -448,7 +698,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetAvoidAreaTypeKeyBoard', 0, (done: Function) => {
+    it('testGetAvoidAreaTypeKeyBoard', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetAvoidAreaTypeKeyBoard';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -480,7 +730,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetAvoidAreaTypeNavigationIndicator', 0, (done: Function) => {
+    it('testGetAvoidAreaTypeNavigationIndicator', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetAvoidAreaTypeNavigationIndicator';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -507,7 +757,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnSystemAvoidAreaChange', 0, async (done: Function) => {
+    it('testOnSystemAvoidAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestOnSystemAvoidAreaChange';
       try {
         if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
@@ -544,7 +794,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnRepeatSystemAvoidAreaChange', 0, async (done: Function) => {
+    it('testOnRepeatSystemAvoidAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestOnRepeatSystemAvoidAreaChange';
       try {
         if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
@@ -590,7 +840,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOffRepeatSystemAvoidAreaChange', 0, async (done: Function) => {
+    it('testOffRepeatSystemAvoidAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestOffRepeatSystemAvoidAreaChange';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -631,7 +881,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnAvoidAreaChange', 0, async (done: Function) => {
+    it('testOnAvoidAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestOnAvoidAreaChange';
       try {
         if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
@@ -670,7 +920,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOffRepeatAvoidAreaChange', 0, async (done: Function) => {
+    it('testOffRepeatAvoidAreaChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestOffRepeatAvoidAreaChange';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -706,7 +956,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnableStatusInvisiblePromise', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnableStatusInvisiblePromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowSystemBarEnableStatusInvisiblePromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -738,7 +988,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnableStatusVisiblePromise', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnableStatusVisiblePromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowSystemBarEnableStatusVisiblePromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -770,7 +1020,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnableInVisiblePromise', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnableInVisiblePromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowSystemBarEnableInVisiblePromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -802,7 +1052,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnableStatusVisibleCallback', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnableStatusVisibleCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowSystemBarEnableStatusVisibleCallback';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -836,7 +1086,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnableStatusInVisibleCallback', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnableStatusInVisibleCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowSystemBarEnableStatusInVisibleCallback';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -870,7 +1120,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnableStatusPromise', 0, async (done: Function) => {
+    it('testSetSystemBarEnableStatusPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetSystemBarEnableStatusPromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -904,7 +1154,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarEnablePromise', 0, async (done: Function) => {
+    it('testSetSystemBarEnablePromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetSystemBarEnablePromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -936,9 +1186,9 @@ export default function windowImmersiveTest() {
      * @tc.desc      : get window system bar properties
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testGetWindowSystemBarProperties', 0, (done: Function) => {
+    it('testGetWindowSystemBarProperties', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let caseName = 'TestGetWindowSystemBarProperties';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -960,7 +1210,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSystemBarPropertiesPromise', 0, (done: Function) => {
+    it('testSetSystemBarPropertiesPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestSetSystemBarPropertiesPromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -997,7 +1247,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarPropertiesCallback', 0, (done: Function) => {
+    it('testSetWindowSystemBarPropertiesCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestSetWindowSystemBarPropertiesCallback';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1037,7 +1287,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarPropertiesPromise', 0, (done: Function) => {
+    it('testSetWindowSystemBarPropertiesPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestSetWindowSystemBarPropertiesPromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1074,11 +1324,11 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetImmersive', 0, async (done: Function) => {
+    it('testSetImmersive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetImmersive';
       let windowClass = windowStage.getMainWindowSync();
       try {
-        if(deviceType != '2in1'|| isAutoWindow =='false'){
+        if(isPCStatus == ''|| isAutoWindow =='false'){
         windowClass.setImmersiveModeEnabledState(false);
         let immersiveModeStateTrue: boolean = windowClass.getImmersiveModeEnabledState();
         console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${immersiveModeStateTrue}`);
@@ -1117,7 +1367,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetFullScreenInImmersiveMode', 0, async (done: Function) => {
+    it('testSetFullScreenInImmersiveMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetFullScreenInImmersiveMode';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1125,7 +1375,7 @@ export default function windowImmersiveTest() {
           windowClass.setImmersiveModeEnabledState(true);
           let beforeImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
           console.info(`${caseName} Succeeded in setting the immersiveMode enabled true. Data: ${beforeImmersiveModeState}`);
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(isPCStatus == ''|| isAutoWindow =='false'){
             expect(beforeImmersiveModeState).assertTrue();
             await sleep(1000);
             windowClass.setImmersiveModeEnabledState(false);
@@ -1156,7 +1406,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetMaximizeInImmersiveMode', 0, async (done: Function) => {
+    it('testSetMaximizeInImmersiveMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetMaximizeInImmersiveMode';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1169,7 +1419,7 @@ export default function windowImmersiveTest() {
             windowClass.setImmersiveModeEnabledState(false);
             let afterImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
             console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${afterImmersiveModeState}`);
-            if(deviceType != '2in1'|| isAutoWindow =='false'){
+            if(isPCStatus == ''|| isAutoWindow =='false'){
             expect(afterImmersiveModeState).assertFalse();
             done();
           }else{
@@ -1203,7 +1453,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetLayoutFullScreenFalseCallback', 0, async (done: Function) => {
+    it('testSetLayoutFullScreenFalseCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetLayoutFullScreenFalseCallback';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1235,7 +1485,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetLayoutFullScreenTrueCallback', 0, async (done: Function) => {
+    it('testSetLayoutFullScreenTrueCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetLayoutFullScreenTrueCallback';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1267,7 +1517,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetLayoutFullScreenFalsePromise', 0, async (done: Function) => {
+    it('testSetLayoutFullScreenFalsePromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetLayoutFullScreenFalsePromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1296,7 +1546,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetLayoutFullScreenTruePromise', 0, async (done: Function) => {
+    it('testSetLayoutFullScreenTruePromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetLayoutFullScreenTruePromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1325,7 +1575,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetFullScreenFalseCallback', 0, async (done: Function) => {
+    it('testSetFullScreenFalseCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetFullScreenFalseCallback';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1357,7 +1607,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetFullScreenTrueCallback', 0, async (done: Function) => {
+    it('testSetFullScreenTrueCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetFullScreenTrueCallback';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1389,7 +1639,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetFullScreenFalsePromise', 0, async (done: Function) => {
+    it('testSetFullScreenFalsePromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetFullScreenFalseCallback';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1418,7 +1668,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetFullScreenTruePromise', 0, async (done: Function) => {
+    it('testSetFullScreenTruePromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetFullScreenTruePromise';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1447,7 +1697,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSpecificSystemBarStatus', 0, async (done: Function) => {
+    it('testSetSpecificSystemBarStatus',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetSpecificSystemBarStatus';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1461,7 +1711,7 @@ export default function windowImmersiveTest() {
           expect(avoidArea.bottomRect.height).assertEqual(0);
           done();
         }).catch((error: BusinessError) => {
-          console.log(`${caseName} Failed to set the status bar to be invisible. Cause: ${JSON.stringify(error)}`);
+          console.error(`${caseName} Failed to set the status bar to be invisible. Cause: ${JSON.stringify(error)}`);
           expect().assertFail();
           done();
         });
@@ -1479,7 +1729,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_set_WindowSystemBarProperties_statusBar', 0, async (done: Function) => {
+    it('test_set_WindowSystemBarProperties_statusBar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'test_set_WindowSystemBarProperties_statusBar';
       console.log(`${caseName} begin .`);
       try {
@@ -1529,7 +1779,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_set_WindowSystemBarProperties_isStatusBarLightIcon', 0, async (done: Function) => {
+    it('test_set_WindowSystemBarProperties_isStatusBarLightIcon', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'test_set_WindowSystemBarProperties_isStatusBarLightIcon';
       console.log(`${caseName} begin .`);
       try {
@@ -1574,7 +1824,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_set_WindowSystemBarProperties_NavigationBar', 0, async (done: Function) => {
+    it('test_set_WindowSystemBarProperties_NavigationBar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'test_set_WindowSystemBarProperties_NavigationBar';
       console.log(`${caseName} begin .`);
       try {
@@ -1624,7 +1874,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_set_WindowSystemBarProperties_isNavigationBarLightIcon', 0, async (done: Function) => {
+    it('test_set_WindowSystemBarProperties_isNavigationBarLightIcon', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'test_set_WindowSystemBarProperties_isNavigationBarLightIcon';
       console.log(`${caseName} begin .`);
       try {
@@ -1667,7 +1917,7 @@ export default function windowImmersiveTest() {
      * @tc.name      testOnOff_WindowSizeChange_Callback
      * @tc.desc      To verify the function of enabling and disabling lawful interception in the system and window
      */
-     it('testOnOff_WindowSizeChange_Callback', 0, async (done: Function) => {
+     it('testOnOff_WindowSizeChange_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = 'testOnOff_WindowSizeChange_Callback';
       console.log(msgStr + ' begin');
       let height:Number;
@@ -1740,7 +1990,7 @@ export default function windowImmersiveTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSpecificSystemBarEnabled_enableAnimation', 0, async (done: Function) => {
+    it('test_setSpecificSystemBarEnabled_enableAnimation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'test_setSpecificSystemBarEnabled_enableAnimation';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -1768,6 +2018,509 @@ export default function windowImmersiveTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0100
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_401
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_401!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await data.setUIContent("testability/pages/First/index2");
+          await sleep(1000)
+          await data.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(null);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0200
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_801
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_801!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await data.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await data.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0300
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_1300002
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证1300002
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_1300002!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          await dialogWindowClass?.destroyWindow();
+          await sleep(1000);
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801 || err.code ==1300002).assertTrue();
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0400
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_1300004
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证1300004
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_1300004!'
+      try {
+        let promise = windowStage.createSubWindow(message)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await subWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = subWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await subWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await subWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code == 801 || err.code ==1300004).assertTrue();
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await subWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_0100
+     * @tc.name       : test_setSystemAvoidAreaEnabled_dialog
+     * @tc.desc       : dialog调用setSystemAvoidAreaEnabled接口
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_dialog', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_dialog!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(false)
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(true);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0100
+     * @tc.name       : test_isSystemAvoidAreaEnabled_801
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_801!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(false)
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0200
+     * @tc.name       : test_isSystemAvoidAreaEnabled_1300004
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证1300004
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_1300004!'
+      try {
+        let promise = windowStage.createSubWindow(message)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            dialogWindowClass.isSystemAvoidAreaEnabled()
+            console.info(`${message} succeed assert isSystemAvoidAreaEnabled`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            console.info(`${message} after destroyWindow`);
+            await sleep(1000);
+            expect(err.code == 801 || err.code ==1300004).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0300
+     * @tc.name       : test_isSystemAvoidAreaEnabled_1300002
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证1300002
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_1300002!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent("testability/pages/First/index2")
+          await dialogWindowClass.showWindow();
+          await sleep(1000);
+          await dialogWindowClass?.destroyWindow();
+          await sleep(1000);
+          try {
+            dialogWindowClass.isSystemAvoidAreaEnabled();
+            console.info(`${message} succeed assert isSystemAvoidAreaEnabled`);
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code == 801 || err.code ==1300002).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    
+     /**
+     * @tc.number    : SUB_BASIC_WMS_LANSCAPE_SHOW_STATUS_BAR_0100
+     * @tc.name      : test_LANSCAPE_SHOW_STATUS_BAR_0100
+     * @tc.desc      : test_LANSCAPE_SHOW_STATUS_BAR_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('test_LANSCAPE_SHOW_STATUS_BAR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName = 'test_LANSCAPE_SHOW_STATUS_BAR_0100';
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+        await sleep(1000);
+        console.info(`${caseName} Succeeded in setPreferredOrientation LANDSCAPE.`);
+        windowClass.on('avoidAreaChange', async (data) => {
+          console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. type:
+           ${JSON.stringify(data.type)} area: ${JSON.stringify(data.area)}`);
+          expect(data.type).assertEqual(0);
+          windowClass.off('avoidAreaChange');
+        });
+        windowClass.setSpecificSystemBarEnabled('status', true).then(async () => {
+          console.log(`${caseName} Succeeded in setting the status bar to be visible.`);
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+          done();
+        }).catch(async (error: BusinessError) => {
+          console.log(`${caseName} Failed to set the status bar to be visible. Cause: ${JSON.stringify(error)}`);
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(`${caseName} Failed to set setSpecificSystemBarEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_LANSCAPE_HIDE_STATUS_BAR_0100
+     * @tc.name      : test_LANSCAPE_HIDE_STATUS_BAR_0100
+     * @tc.desc      : test_LANSCAPE_HIDE_STATUS_BAR_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('test_LANSCAPE_HIDE_STATUS_BAR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName = 'test_LANSCAPE_HIDE_STATUS_BAR_0100';
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+        await sleep(1000);
+        console.info(`${caseName} Succeeded in setPreferredOrientation LANDSCAPE.`);
+        await windowClass.setSpecificSystemBarEnabled('status', true);
+        windowClass.on('avoidAreaChange', async (data) => {
+          console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. type: ${JSON.stringify(data.type)} area: ${JSON.stringify(data.area)}`);
+          expect(data.type).assertEqual(0);
+          windowClass.off('avoidAreaChange');
+        });
+        windowClass.setSpecificSystemBarEnabled('status', false).then(async () => {
+          console.log(`${caseName} Succeeded in setting the status bar to be invisible.`);
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+          done();
+        }).catch(async (error: BusinessError) => {
+          console.log(`${caseName} Failed to set the status bar to be invisible. Cause: ${JSON.stringify(error)}`);
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(`${caseName} Failed to set setSpecificSystemBarEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+        expect().assertFail();
+        done();
+      }
+    });
+
   })
 }
 

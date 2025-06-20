@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function onSubmitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onSubmitTest_0010', 0, async (done: Function) => {
+    it('onSubmitTest_0010', Level.LEVEL2, async (done: Function) => {
       console.info('onSubmitTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -82,7 +82,7 @@ export default function onSubmitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onSubmitTest_0020', 0, async (done: Function) => {
+    it('onSubmitTest_0020', Level.LEVEL2, async (done: Function) => {
       console.info('onSubmitTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -119,7 +119,7 @@ export default function onSubmitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onSubmitTest_0030', 0, async (done: Function) => {
+    it('onSubmitTest_0030', Level.LEVEL2, async (done: Function) => {
       console.info('onSubmitTest_0030 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -151,7 +151,7 @@ export default function onSubmitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onSubmitTest_0040', 0, async (done: Function) => {
+    it('onSubmitTest_0040', Level.LEVEL2, async (done: Function) => {
       console.info('onSubmitTest_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

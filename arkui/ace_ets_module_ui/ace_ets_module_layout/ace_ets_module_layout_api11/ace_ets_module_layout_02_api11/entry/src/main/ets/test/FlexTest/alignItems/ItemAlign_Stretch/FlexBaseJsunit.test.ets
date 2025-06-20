@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -23,27 +23,27 @@ export default function flexBase_StretchJsunit() {
   describe('flexBase_StretchJsunit', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexBase',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/ItemAlign_Stretch_FlexBase',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexBase state success " + JSON.stringify(pages));
-        if (!("FlexBase" == pages.name)) {
-          console.info("get FlexBase state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Stretch_FlexBase state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Stretch_FlexBase" == pages.name)) {
+          console.info("get ItemAlign_Stretch_FlexBase state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexBase page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Stretch_FlexBase page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexBase page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Stretch_FlexBase page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexBase after each called");
+      console.info("ItemAlign_Stretch_FlexBase after each called");
     });
 
     /**
@@ -51,7 +51,7 @@ export default function flexBase_StretchJsunit() {
      * @tc.name testFlexItemAlignStretch
      * @tc.desc The subcomponent is inside the parent component.
      */
-    it('testFlexItemAlignStretch', 0, async () => {
+    it('testFlexItemAlignStretch',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStretch START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
@@ -60,12 +60,12 @@ export default function flexBase_StretchJsunit() {
         name: 'width', value: 500
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flex01');
+      let strJson1 = getInspectorByKey('ItemAlign_Stretch_flex01');
 
-      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
-      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
+      let textFlex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_flex01');
 
       expect(Math.abs(flex01.top - textFlex01.top) <= 1).assertTrue()
       expect(Math.abs(textFlex01.top - textFlex02.top) <= 1).assertTrue()
@@ -94,7 +94,7 @@ export default function flexBase_StretchJsunit() {
      * @tc.name testFlexItemAlignStretchExceed
      * @tc.desc The subcomponent exceeds the parent component.
      */
-    it('testFlexItemAlignStretchExceed', 0, async () => {
+    it('testFlexItemAlignStretchExceed',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStretchExceed START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 140
@@ -103,12 +103,12 @@ export default function flexBase_StretchJsunit() {
         name: 'width', value: 420
       });
       await CommonFunc.sleep(3000);
-      let strJson1 = getInspectorByKey('flex01');
+      let strJson1 = getInspectorByKey('ItemAlign_Stretch_flex01');
 
-      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
-      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
+      let textFlex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_flex01');
 
       expect(Math.abs(textFlex01.left - flex01.left) <= 1).assertTrue()
       expect(Math.abs(textFlex01.right - textFlex02.left) <= 1).assertTrue()

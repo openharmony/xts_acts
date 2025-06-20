@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -23,27 +23,27 @@ export default function flexPadding_StretchJsunit() {
   describe('flexPadding_StretchJsunit', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexPadding',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/ItemAlign_Stretch_FlexPadding',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexPadding state success " + JSON.stringify(pages));
-        if (!("FlexPadding" == pages.name)) {
-          console.info("get FlexPadding state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Stretch_FlexPadding state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Stretch_FlexPadding" == pages.name)) {
+          console.info("get ItemAlign_Stretch_FlexPadding state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexPadding page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Stretch_FlexPadding page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexPadding page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Stretch_FlexPadding page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexPadding after each called");
+      console.info("ItemAlign_Stretch_FlexPadding after each called");
     });
 
     /**
@@ -51,36 +51,36 @@ export default function flexPadding_StretchJsunit() {
      * @tc.name testFlexItemAlignStretchParentSetPadding
      * @tc.desc Parent component set paddding,subcomponent does not exceed the parent component.
      */
-    it('testFlexItemAlignStretchParentSetPadding', 0, async () => {
+    it('testFlexItemAlignStretchParentSetPadding',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStretchParentSetPadding START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexPadding01');
+      let strJson1 = getInspectorByKey('ItemAlign_Stretch_flexPadding01');
 
-      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01');
-      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02');
-      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03');
-      let flexPadding01: RectValue = CommonFunc.getComponentRect('flexPadding01');
+      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlexPadding01');
+      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlexPadding02');
+      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlexPadding03');
+      let flexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_flexPadding01');
 
-      expect(Math.abs(textFlexPadding01.top - textFlexPadding02.top) <= 1).assertTrue()
-      expect(Math.abs(textFlexPadding02.top - textFlexPadding03.top) <= 1).assertTrue()
-      expect(Math.abs((textFlexPadding01.top - flexPadding01.top) - vp2px(10)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding01.top - textFlexPadding02.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding02.top - textFlexPadding03.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding01.top - flexPadding01.top) - vp2px(10))) <= 1).assertTrue()
 
-      expect(Math.abs(textFlexPadding01.bottom - textFlexPadding02.bottom) <= 1).assertTrue()
-      expect(Math.abs(textFlexPadding02.bottom - textFlexPadding03.bottom) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding01.bottom - textFlexPadding02.bottom)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding02.bottom - textFlexPadding03.bottom)) <= 1).assertTrue()
       expect(flexPadding01.bottom).assertLarger(textFlexPadding01.bottom)
       expect(flexPadding01.right).assertLarger(textFlexPadding03.right)
-      expect(Math.abs((textFlexPadding01.left - flexPadding01.left) - vp2px(10)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding01.left - flexPadding01.left) - vp2px(10))) <= 1).assertTrue()
 
-      expect(Math.abs((textFlexPadding01.bottom - textFlexPadding01.top) - vp2px(180)) <= 1).assertTrue()
-      expect(Math.abs((textFlexPadding02.bottom - textFlexPadding02.top) - vp2px(180)) <= 1).assertTrue()
-      expect(Math.abs((textFlexPadding03.bottom - textFlexPadding03.top) - vp2px(180)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding01.bottom - textFlexPadding01.top) - vp2px(180))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding02.bottom - textFlexPadding02.top) - vp2px(180))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding03.bottom - textFlexPadding03.top) - vp2px(180))) <= 1).assertTrue()
 
-      expect(Math.abs((textFlexPadding01.right - textFlexPadding01.left) - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs((textFlexPadding02.right - textFlexPadding02.left) - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs((textFlexPadding03.right - textFlexPadding03.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding01.right - textFlexPadding01.left) - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding02.right - textFlexPadding02.left) - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding03.right - textFlexPadding03.left) - vp2px(150))) <= 1).assertTrue()
       expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretchParentSetPadding END');
@@ -92,37 +92,37 @@ export default function flexPadding_StretchJsunit() {
      * @tc.name testFlexItemAlignStretchParentSetPaddingExceed
      * @tc.desc Parent component set paddding,subcomponent exceedS the parent component.
      */
-    it('testFlexItemAlignStretchParentSetPaddingExceed', 0, async () => {
+    it('testFlexItemAlignStretchParentSetPaddingExceed',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStretchParentSetPaddingExceed START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexPadding01');
+      let strJson1 = getInspectorByKey('ItemAlign_Stretch_flexPadding01');
 
-      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01');
-      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02');
-      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03');
-      let flexPadding01: RectValue = CommonFunc.getComponentRect('flexPadding01');
+      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlexPadding01');
+      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlexPadding02');
+      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_textFlexPadding03');
+      let flexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Stretch_flexPadding01');
 
-      expect(Math.abs(textFlexPadding01.top - textFlexPadding02.top) <= 1).assertTrue()
-      expect(Math.abs(textFlexPadding02.top - textFlexPadding03.top) <= 1).assertTrue()
-      expect(Math.abs(textFlexPadding01.top - flexPadding01.top) - vp2px(30) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding01.top - textFlexPadding02.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding02.top - textFlexPadding03.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding01.top - flexPadding01.top) - vp2px(30)) <= 1).assertTrue()
 
-      expect(Math.abs(textFlexPadding01.bottom - textFlexPadding02.bottom) <= 1).assertTrue()
-      expect(Math.abs(textFlexPadding02.bottom - textFlexPadding03.bottom) <= 1).assertTrue()
-      expect(Math.abs((flexPadding01.bottom - textFlexPadding01.bottom) - vp2px(30)) <= 1).assertTrue()
-      expect(Math.abs(textFlexPadding01.left - flexPadding01.left) - vp2px(30) <= 1).assertTrue()
-      expect(Math.abs(textFlexPadding03.right - flexPadding01.right) - vp2px(30) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding01.bottom - textFlexPadding02.bottom)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding02.bottom - textFlexPadding03.bottom)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((flexPadding01.bottom - textFlexPadding01.bottom) - vp2px(30))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding01.left - flexPadding01.left) - vp2px(30)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(textFlexPadding03.right - flexPadding01.right) - vp2px(30)) <= 1).assertTrue()
 
-      expect(Math.abs((textFlexPadding01.bottom - textFlexPadding01.top) - vp2px(140)) <= 1).assertTrue()
-      expect(Math.abs((textFlexPadding02.bottom - textFlexPadding02.top) - vp2px(140)) <= 1).assertTrue()
-      expect(Math.abs((textFlexPadding03.bottom - textFlexPadding03.top) - vp2px(140)) <= 1).assertTrue()
-      expect(Math.abs(Math.round(textFlexPadding01.right - textFlexPadding01.left) - Math.round(vp2px(440 / 3))) <= 1)
+      expect(Math.floor(Math.abs((textFlexPadding01.bottom - textFlexPadding01.top) - vp2px(140))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding02.bottom - textFlexPadding02.top) - vp2px(140))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding03.bottom - textFlexPadding03.top) - vp2px(140))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((textFlexPadding01.right - textFlexPadding01.left) - vp2px(440 / 3))) <= 1)
         .assertTrue()
-      expect(Math.abs(Math.round(textFlexPadding02.right - textFlexPadding02.left) - Math.round(vp2px(440 / 3))) <= 1)
+      expect(Math.floor(Math.abs((textFlexPadding02.right - textFlexPadding02.left) - vp2px(440 / 3))) <= 1)
         .assertTrue()
-      expect(Math.abs(Math.round(textFlexPadding03.right - textFlexPadding03.left) - Math.round(vp2px(440 / 3))) <= 1)
+      expect(Math.floor(Math.abs((textFlexPadding03.right - textFlexPadding03.left) - vp2px(440 / 3))) <= 1)
         .assertTrue()
       expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')

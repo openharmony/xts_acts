@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BY, Driver, UiDriver } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
@@ -49,7 +49,7 @@ export default function calendarPickerStartEndTest() {
     * @tc.type
     * @tc.size
     */
-    it('CalendarPickerStartEndTest_001', 0, async (done: Function) => {
+    it('CalendarPickerStartEndTest_001', Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerStartEndTest_001 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('CalendarPicker01');
@@ -70,7 +70,7 @@ export default function calendarPickerStartEndTest() {
     * @tc.type
     * @tc.size
     */
-    it('CalendarPickerStartEndTest_002', 0, async (done: Function) => {
+    it('CalendarPickerStartEndTest_002', Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerStartEndTest_002 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('CalendarPicker02');
@@ -91,7 +91,7 @@ export default function calendarPickerStartEndTest() {
     * @tc.type
     * @tc.size
     */
-    it('CalendarPickerStartEndTest_003', 0, async (done: Function) => {
+    it('CalendarPickerStartEndTest_003', Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerStartEndTest_002 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('CalendarPicker03');
@@ -112,7 +112,7 @@ export default function calendarPickerStartEndTest() {
     * @tc.type
     * @tc.size
     */
-    it('CalendarPickerStartEndTest_004', 0, async (done: Function) => {
+    it('CalendarPickerStartEndTest_004', Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerStartEndTest_004 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('CalendarPicker04');
@@ -133,7 +133,7 @@ export default function calendarPickerStartEndTest() {
     * @tc.type
     * @tc.size
     */
-    it('CalendarPickerStartEndTest_005', 0, async (done: Function) => {
+    it('CalendarPickerStartEndTest_005', Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerStartEndTest_005 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('CalendarPicker05');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,11 +34,11 @@ export default function customDialogSetAutoCancelTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetAutoCancel001', 0, async (done: Function) => {
+    it('testCustomDialogSetAutoCancel001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`customdialog/CustomDialogSetAutoCancelTest`)
-      await Utils.clickComponent("buttonSetAutoCancel")
+      await Utils.clickComponent('buttonSetAutoCancel')
       await Utils.sleep(2000)
-      await Utils.clickComponent("buttonSetAutoCancel")
+      await Utils.clickComponent('buttonSetAutoCancel')
       await Utils.sleep(2000)
       expect(getInspectorByKey('columnSetAutoCancel')).assertEqual("")
       done()
@@ -52,7 +52,7 @@ export default function customDialogSetAutoCancelTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetAutoCancel002', 0, async (done: Function) => {
+    it('testCustomDialogSetAutoCancel002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetAutoCancel002()).assertEqual(0)
       done()
     })
@@ -65,7 +65,7 @@ export default function customDialogSetAutoCancelTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetAutoCancel003', 0, async (done: Function) => {
+    it('testCustomDialogSetAutoCancel003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetAutoCancel003()).assertEqual(0)
       done()
     })
@@ -78,7 +78,7 @@ export default function customDialogSetAutoCancelTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetAutoCancel004', 0, async (done: Function) => {
+    it('testCustomDialogSetAutoCancel004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetAutoCancel004()).assertEqual(0)
       done()
     })

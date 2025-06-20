@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect} from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter';
-
 export default function  animationStatusJsunit() {
   describe('animationStatusJsunit', async () => {
     beforeEach(async (done: Function) => {
@@ -38,16 +37,13 @@ export default function  animationStatusJsunit() {
       }
       done()
     });
-
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("animationStatus after each called");
     });
-
-    it('animationStatus01', 0, async (done: Function) => {
+    it('animationStatus01', Level.LEVEL0, async (done: Function) => {
       console.info('[animationStatus01] START');
       await CommonFunc.sleep(1000);
-
       let strJson = getInspectorByKey('ImageAnimator');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[animationStatus01] obj is: " + JSON.stringify(obj));
@@ -55,8 +51,7 @@ export default function  animationStatusJsunit() {
       console.info('[animationStatus01] END');
       done();
     });
-
-    it('animationStatus02', 0, async (done: Function) => {
+    it('animationStatus02', Level.LEVEL0, async (done: Function) => {
       console.info('[animationStatus02] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ImageAnimator');
@@ -66,8 +61,7 @@ export default function  animationStatusJsunit() {
       console.info('[animationStatus02] END');
       done();
     });
-
-    it('animationStatus03', 0, async (done: Function) => {
+    it('animationStatus03', Level.LEVEL0, async (done: Function) => {
       console.info('animationStatus03 START');
       await CommonFunc.sleep(1500);
       let callback = (indexEvent: ESObject) => {
@@ -88,8 +82,7 @@ export default function  animationStatusJsunit() {
       await CommonFunc.sleep(1000);
       console.info('animationStatus03 END');
     });
-
-    it('animationStatus04', 0, async (done: Function) => {
+    it('animationStatus04', Level.LEVEL0, async (done: Function) => {
       console.info('animationStatus04 START');
       await CommonFunc.sleep(1500);
       let callback = (indexEvent: ESObject) => {

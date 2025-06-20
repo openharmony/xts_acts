@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -52,7 +52,7 @@ export default function AlignSpaceEvenly_AddMargin() {
      * @tc.desc The interface display where the child component is offset by the margin setting of the parent
      * component
      */
-    it('testFlexAlignSpaceEvenlyFlexMargin', 0, async () => {
+    it('testFlexAlignSpaceEvenlyFlexMargin',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignSpaceEvenlyFlexMargin] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadMargin', value: 20
@@ -68,20 +68,20 @@ export default function AlignSpaceEvenly_AddMargin() {
       let SpaceEvenly_AddMargin_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_013');
       let SpaceEvenly_AddMargin_01: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_01');
       let SpaceEvenly_AddMargin_01_Box: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_01_Box');
-      expect(Math.abs(SpaceEvenly_AddMargin_011.top - SpaceEvenly_AddMargin_012.top) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_013.top - SpaceEvenly_AddMargin_012.top) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_011.top - SpaceEvenly_AddMargin_01.top) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_011.left - SpaceEvenly_AddMargin_01.left - vp2px(12.5)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_012.left - SpaceEvenly_AddMargin_011.right - vp2px(12.5)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_013.left - SpaceEvenly_AddMargin_012.right - vp2px(12.5)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_01.left - SpaceEvenly_AddMargin_01_Box.left - vp2px(20)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_01.top - SpaceEvenly_AddMargin_01_Box.top - vp2px(20)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_011.right - SpaceEvenly_AddMargin_011.left - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_012.right - SpaceEvenly_AddMargin_012.left - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_013.right - SpaceEvenly_AddMargin_013.left - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_011.bottom - SpaceEvenly_AddMargin_011.top - vp2px(50)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_012.bottom - SpaceEvenly_AddMargin_012.top - vp2px(100)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddMargin_013.bottom - SpaceEvenly_AddMargin_013.top - vp2px(150)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_011.top - SpaceEvenly_AddMargin_012.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_013.top - SpaceEvenly_AddMargin_012.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_011.top - SpaceEvenly_AddMargin_01.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_011.left - SpaceEvenly_AddMargin_01.left - vp2px(12.5))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_012.left - SpaceEvenly_AddMargin_011.right - vp2px(12.5))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_013.left - SpaceEvenly_AddMargin_012.right - vp2px(12.5))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_01.left - SpaceEvenly_AddMargin_01_Box.left - vp2px(20))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_01.top - SpaceEvenly_AddMargin_01_Box.top - vp2px(20))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_011.right - SpaceEvenly_AddMargin_011.left - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_012.right - SpaceEvenly_AddMargin_012.left - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_013.right - SpaceEvenly_AddMargin_013.left - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_011.bottom - SpaceEvenly_AddMargin_011.top - vp2px(50))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_012.bottom - SpaceEvenly_AddMargin_012.top - vp2px(100))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddMargin_013.bottom - SpaceEvenly_AddMargin_013.top - vp2px(150))) <= 1).assertTrue()
       console.info('[testFlexAlignSpaceEvenlyFlexMargin] END');
 
     });

@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data:{
+        itemIndex: -1,
         value:'show',
         timeoutId: -1,
         str: '',
@@ -27,10 +27,20 @@ export default {
     },
     startTimer() {
         this.value = 'show';
-        this.timeoutId = setTimeout(()=> {this.value = 'once_timer success'}, 3000);
+        if (this.timeoutId !== -1) {
+            clearTimeout(this.timeoutId);
+        }
+        this.timeoutId = setTimeout(()=> {
+            console.info('start setTimeout');
+            this.value = 'once_timer success';
+        }, 3000);
     },
 
     clearTimer() {
+        clearTimeout(this.timeoutId);
+    },
+
+    onDestroy() {
         clearTimeout(this.timeoutId);
     },
 
@@ -40,17 +50,24 @@ export default {
             params: {
                 step: '操作步骤：startTimer、clearTimer',
                 result: '预期结果：点击startTimer过3s后show变成once_timer success，在点startTimer时文字显示show时点clearTimer，show不会再变化',
-                url: 'pages/timer/setTimeout01/index'
+                url: 'pages/timer/setTimeout01/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

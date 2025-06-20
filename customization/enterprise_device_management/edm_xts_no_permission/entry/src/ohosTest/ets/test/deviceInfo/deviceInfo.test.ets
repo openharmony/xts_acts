@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import { ENTINFO1, SELFWANT, SELFHAPNAME } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
@@ -34,7 +34,7 @@ export default function deviceInfoTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_get_device_info_0100", 0, async (done: Function) => {
+    it("test_get_device_info_0100", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         deviceInfo.getDeviceInfo(SELFWANT, LABEL_DEVICE_NAME);

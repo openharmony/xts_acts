@@ -129,6 +129,7 @@ struct webViewObjectEmbed {
   @State eventType: string = ''
   @State number: number = 0
   @State isEmbed: boolean = false;
+  @State edges: Edges = {};
 
 
   onPageShow() {
@@ -157,15 +158,6 @@ struct webViewObjectEmbed {
             console.info('key==>' + this.emitKey)
             this.controller.refresh();
             await Utils.sleep(2000);
-            if (Utils.isPC (this.controller) ) {
-              Utils.emitEvent('success', 8000);
-              await Utils.sleep(1000);
-              Utils.emitEvent('success', 8001);
-              Utils.emitEvent('success', 8002);
-              Utils.emitEvent('success', 8014);
-              Utils.emitEvent('success', 8017);
-              return
-            }
             switch (this.emitKey) {
               case 'emitWebViewObjectEmbed01': {
                 try {
@@ -275,6 +267,7 @@ struct webViewObjectEmbed {
           .width(this.nodeContainerWidth)
           .height(this.nodeContainerHeight)
           .backgroundColor(Color.Yellow)
+          .position(this.edges)
         Web({ src: '', controller: this.controller })
           .javaScriptAccess(this.javaScriptAccess)
           .fileAccess(this.fileAccess)
@@ -313,18 +306,32 @@ struct webViewObjectEmbed {
                   this.embedMap?.get('cameraTest')?.embedId as string,
                   px2vp(this.embedMap?.get('cameraTest')?.width),
                   px2vp(this.embedMap?.get('cameraTest')?.height))
+                this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
                 this.nodeController.rebuild()
                 console.log('surfaceId = ' + this.embedMap?.get('cameraTest')?.surfaceId);
                 this.nodeContainerWidth = px2vp(this.embedMap?.get('cameraTest')?.width);
                 this.nodeContainerHeight = px2vp(this.embedMap?.get('cameraTest')?.height);
               }
             }else if (embed.status == NativeEmbedStatus.UPDATE) {
+              this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
               console.log('NativeEmbed update' + JSON.stringify(embed.info));
             } else {
               console.log('NativeEmbed destroy' + JSON.stringify(embed.info));
             }
           })
           .onNativeEmbedGestureEvent((event) => {
+            if(this.nodeController?.getEmbedId() == event.embedId) {
+              let ret = this.nodeController?.postEvent(event.touchEvent)
+              if(ret) {
+                console.log("onNativeEmbedGestureEvent success ");
+              } else {
+                console.log("onNativeEmbedGestureEvent fail ");
+              }
+              if(event.result) {
+                // 通知Web组件手势事件消费结果
+                event.result.setGestureEventResult(ret);
+              }
+            }
             this.number += 1
             if (event && event.touchEvent) {
               if (event.touchEvent.type == TouchType.Down) {

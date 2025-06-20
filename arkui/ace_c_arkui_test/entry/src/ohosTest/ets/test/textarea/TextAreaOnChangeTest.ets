@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach } from '@ohos/hypium';
+import { describe, it, expect, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function textAreaOnChangeTest() {
@@ -33,7 +33,7 @@ export default function textAreaOnChangeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaOnChange001', 0, async (done: Function) => {
+    it('testTextAreaOnChange001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TextAreaOnChangeTest';
       await Utils.pushPage(`textarea/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('TextAreaOnChange').$attrs.backgroundColor).assertEqual('#FFFF0000');
