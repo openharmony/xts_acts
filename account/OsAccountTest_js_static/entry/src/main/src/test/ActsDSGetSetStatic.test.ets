@@ -97,11 +97,11 @@ export default function ActsDAGetSetTestStatic() {
             hilog.info(domain, tag, '====>getOsAccountDistributedInfoStatic_test0200 data:' + JSON.stringify(data));
             try {
               if (err && data) {
-                expect(err.code + '' == '0').assertTrue();
-                expect(data.name == 'ohosAnonymousName').assertTrue();
-                expect(data.id == 'ohosAnonymousUid').assertTrue();
-                expect(data.event == '').assertTrue();
-                expect(data.status == account.DistributedAccountStatus.NOT_LOGGED_IN).assertTrue();
+                expect(err?.code + '' == '0').assertTrue();
+                expect(data?.name == 'ohosAnonymousName').assertTrue();
+                expect(data?.id == 'ohosAnonymousUid').assertTrue();
+                expect(data?.event == '').assertTrue();
+                expect(data?.status == account.DistributedAccountStatus.NOT_LOGGED_IN).assertTrue();
                 hilog.info(domain, tag, "====>getOsAccountDistributedInfoStatic_test0200 success");
               } else {
                 hilog.info(domain, tag, '====>getOsAccountDistributedInfo fail');

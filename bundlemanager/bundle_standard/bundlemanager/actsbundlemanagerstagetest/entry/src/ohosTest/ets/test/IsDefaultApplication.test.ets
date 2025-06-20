@@ -39,9 +39,9 @@ export default function isDefaultApplicationTest() {
         expect(err.code).assertEqual(801);
       }
       try {
-        defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE, (err, data) => {
-          console.info("Sub_Bms_Framework_Status_DefaultApp_0900 data--- " + data)
-          console.info("Sub_Bms_Framework_Status_DefaultApp_0900 err--- " + err)
+        defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE, (err | null, data | undefined) => {
+          console.info("Sub_Bms_Framework_Status_DefaultApp_0900 data--- " + data?)
+          console.info("Sub_Bms_Framework_Status_DefaultApp_0900 err--- " + err?)
           expect(data).assertFalse()
           expect(err).assertEqual(null)
           done()
