@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flexTextMargin_AutoJsunit() {
      * @tc.name testFlexItemAlignAutoTextMarginMeet
      * @tc.desc Subcomponents set margin within the scope of the parent component.
      */
-    it('testFlexItemAlignAutoTextMarginMeet', 0, async () => {
+    it('testFlexItemAlignAutoTextMarginMeet',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoTextMarginMeet START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
@@ -88,7 +88,7 @@ export default function flexTextMargin_AutoJsunit() {
      * @tc.name testFlexItemAlignAutoTextMarginOverflow
      * @tc.desc Subcomponents set margin outside the scope of the parent component
      */
-    it('testFlexItemAlignAutoTextMarginOverflow', 0, async () => {
+    it('testFlexItemAlignAutoTextMarginOverflow',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoTextMarginOverflow START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -57,7 +57,7 @@ export default function AlignContent_FlexAlign_End_padding() {
      *               for the Flex component does not meet the height requirements of the subcomponent.
      */
 
-    it('testAlignContentEndFlexPaddingNoSatisfy', 0, async () => {
+    it('testAlignContentEndFlexPaddingNoSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentEndFlexPaddingNoSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 40
@@ -110,7 +110,7 @@ export default function AlignContent_FlexAlign_End_padding() {
      *               Flex component to meet the height requirements of the subcomponen.
      */
 
-    it('testAlignContentEndFlexPaddingSatisfy', 0, async () => {
+    it('testAlignContentEndFlexPaddingSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentEndFlexPaddingSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 15

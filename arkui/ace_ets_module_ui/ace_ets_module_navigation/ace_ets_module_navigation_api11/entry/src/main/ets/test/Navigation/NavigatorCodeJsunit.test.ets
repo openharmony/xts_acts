@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -47,7 +47,7 @@ export default function navigatorCodeJsunit() {
       console.info("NavigatorClick after each called");
     });
 
-    it('test_NavigatorClick_001', 0, async (done: Function) => {
+    it('test_NavigatorClick_001',  Level.LEVEL0, async (done: Function) => {
       console.info('[test_NavigatorClick_001] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('NavigatorType');
@@ -57,7 +57,7 @@ export default function navigatorCodeJsunit() {
       done();
     });
 
-    it('test_NavigatorClick_002', 0, async (done: Function) => {
+    it('test_NavigatorClick_002',  Level.LEVEL0, async (done: Function) => {
       console.info('[test_NavigatorClick_002] START');
       await Utils.sleep(1000);
       try {
@@ -82,7 +82,7 @@ export default function navigatorCodeJsunit() {
       done();
     });
 
-    it('test_NavigatorClick_003', 0, async (done: Function) => {
+    it('test_NavigatorClick_003',  Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_NavigatorClick_003] get event state result is: " + JSON.stringify(eventData));

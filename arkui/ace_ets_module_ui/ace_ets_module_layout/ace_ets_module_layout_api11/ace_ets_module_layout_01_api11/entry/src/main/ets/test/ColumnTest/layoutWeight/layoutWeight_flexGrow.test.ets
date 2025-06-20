@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function layoutWeight_flexGrow() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1, column2 and column3 set  layoutWeight(1),the layoutWeight property takes precedence over flexGrow
      */
-    it('SUB_ACE_layoutWeight_flexGrow_TEST_0100', 0, async () => {
+    it('SUB_ACE_layoutWeight_flexGrow_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0100] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addLayoutWeight', value: 1
@@ -102,7 +102,7 @@ export default function layoutWeight_flexGrow() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1, column2 and column3 set  layoutWeight(2), the layoutWeight property takes precedence over flexGrow
      */
-    it('SUB_ACE_layoutWeight_flexGrow_TEST_0200', 0, async () => {
+    it('SUB_ACE_layoutWeight_flexGrow_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0200] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addLayoutWeight', value: 2
@@ -154,7 +154,7 @@ export default function layoutWeight_flexGrow() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1, column2 and column3 set  layoutWeight(3), the layoutWeight property takes precedence over flexGrow
      */
-    it('SUB_ACE_layoutWeight_flexGrow_TEST_0300', 0, async () => {
+    it('SUB_ACE_layoutWeight_flexGrow_TEST_0300',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0300] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addLayoutWeight', value: 3

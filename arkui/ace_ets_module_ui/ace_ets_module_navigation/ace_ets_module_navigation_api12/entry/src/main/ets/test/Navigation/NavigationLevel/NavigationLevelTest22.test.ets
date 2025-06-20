@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -52,7 +52,7 @@ export default function NavigationLevelTest22() {
      * @tc.desc      Test Navigation
      * @tc.level     Level 0
      */
-    it('NavigationLevelTest22_0100', 0, async (done: Function) => {
+    it('NavigationLevelTest22_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[NavigationLevelTest22_0100] START');
       await CommonFunc.sleep(1000);
 

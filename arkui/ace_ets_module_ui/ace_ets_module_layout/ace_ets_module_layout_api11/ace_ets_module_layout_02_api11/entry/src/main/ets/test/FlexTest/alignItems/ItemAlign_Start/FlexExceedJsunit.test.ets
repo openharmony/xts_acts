@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function flexExceed_StartJsunit() {
      * @tc.name testFlexItemAlignStartSetMarPad
      * @tc.desc Subcomponent inside when parent component set margin and padding.
      */
-    it('testFlexItemAlignStartSetMarPad', 0, async () => {
+    it('testFlexItemAlignStartSetMarPad',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStartSetMarPad START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
@@ -93,7 +93,7 @@ export default function flexExceed_StartJsunit() {
      * @tc.name testFlexItemAlignStartSetMarPadExceed
      * @tc.desc Subcomponent outside when parent component set margin and padding.
      */
-    it('testFlexItemAlignStartSetMarPadExceed', 0, async () => {
+    it('testFlexItemAlignStartSetMarPadExceed',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStartSetMarPadExceed START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30

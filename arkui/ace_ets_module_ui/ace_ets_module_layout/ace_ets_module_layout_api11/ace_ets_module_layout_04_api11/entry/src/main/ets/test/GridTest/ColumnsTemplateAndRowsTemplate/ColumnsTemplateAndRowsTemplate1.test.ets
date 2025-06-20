@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -52,7 +52,7 @@ export default function ColumnsTemplateAndRowsTemplate1() {
      * @tc.name testGrid
      * @tc.desc GridItem set columnStart to 0
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0100', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_001] START');
       globalThis.value.message.notify({
         name: 'columnEnd1', value: 2
@@ -90,7 +90,7 @@ export default function ColumnsTemplateAndRowsTemplate1() {
      * @tc.name testGrid
      * @tc.desc GridItem sets columnStart to be greater than the total number of columns
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0200', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0200] START');
       globalThis.value.message.notify({
         name: 'columnStart1', value: 2
@@ -118,7 +118,7 @@ export default function ColumnsTemplateAndRowsTemplate1() {
     //  * @tc.name      testGrid
     //  * @tc.desc      GridItem set columnStart to -2
     //  */
-    // it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0300', 0, async  (done:Function) => {
+    // it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0300',  Level.LEVEL0, async  (done:Function) => {
     //   console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0300] START');
     //   globalThis.value.message.notify({name:'columnStart1', value:-1})
     //   await CommonFunc.sleep(2000);
@@ -142,7 +142,7 @@ export default function ColumnsTemplateAndRowsTemplate1() {
      * @tc.name testGrid
      * @tc.desc GridItem set columnStart to 5
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0400', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0400] START');
       globalThis.value.message.notify({
         name: 'columnStart1', value: 5
@@ -178,7 +178,7 @@ export default function ColumnsTemplateAndRowsTemplate1() {
      * @tc.name testGrid
      * @tc.desc GridItem set rowStart to 0
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0500', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0500] START');
       globalThis.value.message.notify({
         name: 'rowStart1', value: 0
@@ -214,7 +214,7 @@ export default function ColumnsTemplateAndRowsTemplate1() {
      * @tc.name testGrid
      * @tc.desc GridItem sets rowStart to be greater than the total number of columns
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0600', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0600] START');
       globalThis.value.message.notify({
         name: 'rowStart1', value: 2
@@ -248,7 +248,7 @@ export default function ColumnsTemplateAndRowsTemplate1() {
      * @tc.name testGrid
      * @tc.desc GridItem set rowStart to 5
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0700', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0700',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate1_0700] START');
       globalThis.value.message.notify({
         name: 'rowStart1', value: 5

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to '30'
      */
-    it('SUB_ACE_Column_Space_String_TEST_0100', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0100] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '30'
@@ -94,7 +94,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to '50px'
      */
-    it('SUB_ACE_Column_Space_String_TEST_0200', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0200] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '50px'
@@ -135,7 +135,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to '50fp'
      */
-    it('SUB_ACE_Column_Space_String_TEST_0300', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0300',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0300] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '50fp'
@@ -177,7 +177,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to '50lpx'
      */
-    it('SUB_ACE_Column_Space_String_TEST_0400', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0400',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0400] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '50lpx'
@@ -221,7 +221,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to vp2px(10)
      */
-    it('SUB_ACE_Column_Space_String_TEST_0500', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0500',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0500] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: vp2px(10) + 'px'
@@ -262,7 +262,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to px2vp(10)
      */
-    it('SUB_ACE_Column_Space_String_TEST_0600', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0600',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0600] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: px2vp(10) + 'vp'
@@ -303,7 +303,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to fp2px(10)
      */
-    it('SUB_ACE_Column_Space_String_TEST_0700', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0700',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0700] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: fp2px(10) + 'px'
@@ -344,7 +344,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to px2fp(10)
      */
-    it('SUB_ACE_Column_Space_String_TEST_0800', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0800',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0800] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: px2fp(10) + 'fp'
@@ -385,7 +385,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to lpx2px(10)
      */
-    it('SUB_ACE_Column_Space_String_TEST_0900', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_0900',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_0900] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: lpx2px(10) + 'px'
@@ -426,7 +426,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to px2lpx(10)
      */
-    it('SUB_ACE_Column_Space_String_TEST_1000', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_1000',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_1000] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: px2lpx(10) + 'lpx'
@@ -469,7 +469,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to '3'+'0'
      */
-    it('SUB_ACE_Column_Space_String_TEST_1100', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_1100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_01100] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '3' + '0'
@@ -510,7 +510,7 @@ export default function Column_Space_String() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to '50'
      */
-    it('SUB_ACE_Column_Space_String_TEST_1200', 0, async () => {
+    it('SUB_ACE_Column_Space_String_TEST_1200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_Column_Space_String_TEST_1200] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addSpace', value: '50'

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -68,7 +68,7 @@ export default function List_divider_resource() {
      * @tc.name testListItem
      * @tc.desc StrokeWidth is set through digital resources
      */
-    it('SUB_ACE_List_divider_resource_0100', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_resource_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_resource_0100] START');
       await CommonFunc.sleep(1000);
       console.log('get Initial value')
@@ -88,7 +88,7 @@ export default function List_divider_resource() {
      * @tc.name testListItem
      * @tc.desc StrokeWidth is set through floating-point type resources
      */
-    it('SUB_ACE_List_divider_resource_0200', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_resource_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_resource_0200] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: $r('app.float.strokeWidth')

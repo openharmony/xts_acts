@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -58,7 +58,7 @@ export default function flexJsunit() {
      * @tc.name testFlex010
      * @tc.desc aceEtsTest
      */
-    it('testFlex010', 0, async (done: Function) => {
+    it('testFlex010',  Level.LEVEL0, async (done: Function) => {
       console.info('new Flex0 START');
       let strJson = getInspectorByKey('flex');
       let obj: ESObject = JSON.parse(strJson);
@@ -83,7 +83,7 @@ export default function flexJsunit() {
      * @tc.name testFlex020
      * @tc.desc aceEtsTest
      */
-    it('testFlex020', 0, async (done: Function) => {
+    it('testFlex020',  Level.LEVEL0, async (done: Function) => {
       console.info('new Flex1 START');
       let strJson = getInspectorByKey('flex1');
       let obj: ESObject = JSON.parse(strJson);
@@ -106,7 +106,7 @@ export default function flexJsunit() {
      * @tc.name testFlex030
      * @tc.desc aceEtsTest
      */
-    it('testFlex030', 0, async (done: Function) => {
+    it('testFlex030',  Level.LEVEL0, async (done: Function) => {
       console.info('new Flex2 START');
       let strJson = getInspectorByKey('flex2');
       let obj: ESObject = JSON.parse(strJson);
@@ -127,7 +127,7 @@ export default function flexJsunit() {
      * @tc.name testFlex040
      * @tc.desc aceEtsTest
      */
-    it('testFlex040', 0, async (done: Function) => {
+    it('testFlex040',  Level.LEVEL0, async (done: Function) => {
       console.info('new Flex3 START');
       let strJson = getInspectorByKey('flex3');
       let obj: ESObject = JSON.parse(strJson);
@@ -144,7 +144,7 @@ export default function flexJsunit() {
      * @tc.name testFlex050
      * @tc.desc aceEtsTest
      */
-    it('testFlex050', 0, async (done: Function) => {
+    it('testFlex050',  Level.LEVEL0, async (done: Function) => {
       console.info('new Flex4 START');
       let strJson = getInspectorByKey('flex4');
       let obj: ESObject = JSON.parse(strJson);
@@ -162,7 +162,7 @@ export default function flexJsunit() {
      * @tc.name testFlex060
      * @tc.desc aceEtsTest
      */
-    it('testFlex060', 0, async (done: Function) => {
+    it('testFlex060',  Level.LEVEL0, async (done: Function) => {
       console.info('new Flex5 START');
       let strJson = getInspectorByKey('flex5');
       let obj: ESObject = JSON.parse(strJson);

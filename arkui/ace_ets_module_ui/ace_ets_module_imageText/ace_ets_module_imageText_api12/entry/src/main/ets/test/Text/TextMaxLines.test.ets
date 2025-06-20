@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -50,7 +50,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextMaxLines_0010', 0, async (done: Function) => {
+    it('TextMaxLines_0010',  Level.LEVEL0, async (done: Function) => {
       console.info('TextMaxLines_0010 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(TextMaxLines_1).$attrs.maxLines).assertEqual('4');
@@ -66,7 +66,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextLineHeight_0020', 0, async (done: Function) => {
+    it('TextLineHeight_0020',  Level.LEVEL0, async (done: Function) => {
       console.info('TextLineHeight_0020 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(TextMaxLines_1).$attrs.lineHeight).assertEqual('10.00fp');
@@ -82,7 +82,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextBaselineOffset_0030', 0, async (done: Function) => {
+    it('TextBaselineOffset_0030',  Level.LEVEL0, async (done: Function) => {
       console.info('TextBaselineOffset_0030 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(TextMaxLines_1).$attrs.baselineOffset).assertEqual('10');
@@ -98,7 +98,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextFontStyle_0040', 0, async (done: Function) => {
+    it('TextFontStyle_0040',  Level.LEVEL0, async (done: Function) => {
       console.info('TextFontStyle_0040 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(TextMaxLines_1).$attrs.fontStyle).assertEqual('FontStyle.Italic');
@@ -114,7 +114,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextLetterSpacing_0050', 0, async (done: Function) => {
+    it('TextLetterSpacing_0050',  Level.LEVEL0, async (done: Function) => {
       console.info('TextLetterSpacing_0050 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(TextMaxLines_1).$attrs.letterSpacing).assertEqual('5.00fp');
@@ -130,7 +130,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextTextAlign_0060', 0, async (done: Function) => {
+    it('TextTextAlign_0060',  Level.LEVEL0, async (done: Function) => {
       console.info('TextTextAlign_0060 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(TextMaxLines_1).$attrs.textAlign).assertEqual('TextAlign.Center');
@@ -146,7 +146,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextConstraintSize_0070', 0, async (done: Function) => {
+    it('TextConstraintSize_0070',  Level.LEVEL0, async (done: Function) => {
       console.info('TextConstraintSize_0070 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(JSON.parse(TextMaxLines_1).$attrs.constraintSize).minWidth).assertEqual('100.00vp');
@@ -162,7 +162,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextConstraintSize_0080', 0, async (done: Function) => {
+    it('TextConstraintSize_0080',  Level.LEVEL0, async (done: Function) => {
       console.info('TextConstraintSize_0080 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(JSON.parse(TextMaxLines_1).$attrs.constraintSize).maxWidth).assertEqual('200.00vp');
@@ -178,7 +178,7 @@ export default function TextMaxLines() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextConstraintSize_0090', 0, async (done: Function) => {
+    it('TextConstraintSize_0090',  Level.LEVEL0, async (done: Function) => {
       console.info('TextConstraintSize_0090 START');
       let TextMaxLines_1 = getInspectorByKey('textMaxLines1');
       expect(''+JSON.parse(JSON.parse(TextMaxLines_1).$attrs.constraintSize).minHeight).assertEqual('100.00vp');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/utils/Common';
 import screenshot from '@ohos.screenshot';
@@ -127,7 +127,7 @@ export default function Stack_ZIndex() {
      * @tc.desc The stack component sets alignContent to Alignment.Start and sets the zIndex of
      *               the first subcomponent
      */
-    it('testStackZIndexWithAlignmentStart', 0, async (done: Function) => {
+    it('testStackZIndexWithAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackZIndexWithAlignmentStart] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Start
@@ -179,7 +179,7 @@ export default function Stack_ZIndex() {
      * @tc.desc The stack component sets alignContent to Alignment.Center and sets the zIndex of
      *               the first subcomponent
      */
-    it('testStackZIndexWithAlignmentCenter', 0, async (done: Function) => {
+    it('testStackZIndexWithAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackZIndexWithAlignmentCenter] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Center
@@ -235,7 +235,7 @@ export default function Stack_ZIndex() {
      * @tc.desc The stack component sets alignContent to Alignment.End and sets the zIndex of
      *               the first subcomponent
      */
-    it('testStackZIndexWithAlignmentEnd', 0, async (done: Function) => {
+    it('testStackZIndexWithAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackZIndexWithAlignmentEnd] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.End
@@ -288,7 +288,7 @@ export default function Stack_ZIndex() {
      * @tc.desc The stack component sets alignContent to Alignment.BottomStart and sets the zIndex of
      *               the first subcomponent
      */
-    it('testStackZIndexWithAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackZIndexWithAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackZIndexWithAlignmentBottomStart] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.BottomStart
@@ -337,7 +337,7 @@ export default function Stack_ZIndex() {
      * @tc.desc The stack component sets alignContent to Alignment.Bottom and sets the zIndex of
      *               the first subcomponent
      */
-    it('testStackZIndexWithAlignmentBottom', 0, async (done: Function) => {
+    it('testStackZIndexWithAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackZIndexWithAlignmentBottom] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Bottom
@@ -390,7 +390,7 @@ export default function Stack_ZIndex() {
      * @tc.desc The stack component sets alignContent to Alignment.BottomEnd and sets the zIndex of
      *               the first subcomponent
      */
-    it('testStackZIndexWithAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackZIndexWithAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackZIndexWithAlignmentBottomEnd] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.BottomEnd

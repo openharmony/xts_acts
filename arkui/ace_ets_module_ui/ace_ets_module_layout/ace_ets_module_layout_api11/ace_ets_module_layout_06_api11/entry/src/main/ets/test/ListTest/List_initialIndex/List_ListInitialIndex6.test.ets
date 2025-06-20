@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -65,7 +65,7 @@ export default function list_ListInitialIndex6Test() {
      * @tc.name testListInitialIndexToThreeWithTwoLane
      * @tc.desc set the InitialIndex of list to 3,the lanes of list to 2
      */
-    it('testListInitialIndexToThreeWithTwoLane', 0, async (done: Function) => {
+    it('testListInitialIndexToThreeWithTwoLane',  Level.LEVEL0, async (done: Function) => {
       console.info('[testListInitialIndexToThreeWithTwoLane] START');
       let firstListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex6_1');
       let secondListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex6_2');

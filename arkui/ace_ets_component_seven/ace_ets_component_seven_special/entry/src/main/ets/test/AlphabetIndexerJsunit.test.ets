@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -49,7 +49,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0101', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0101', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0101 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -65,7 +65,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0102', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0102', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0102 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -81,7 +81,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0103', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0103', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0103 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -97,7 +97,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0104', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0104', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0104 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -113,7 +113,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0105', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0105', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0105 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -129,7 +129,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0106', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0106', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0106 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -145,7 +145,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0107', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0107', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0107 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -159,7 +159,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0108', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0108', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0108 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -175,7 +175,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0109', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0109', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0109 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -191,7 +191,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0110', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0110', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0110 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -207,7 +207,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0111', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0111', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0111 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -223,7 +223,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0112', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0112', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0112 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -239,7 +239,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0113', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0113', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0113 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -255,7 +255,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0114', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0114', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0114 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -271,7 +271,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0115', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0115', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0115 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -287,7 +287,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0116', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0116', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0116 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -303,7 +303,7 @@ export default function alphabetIndexerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_AlphabetIndexer_0117', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0117', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0117 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       let obj: ESObject = JSON.parse(strJson);

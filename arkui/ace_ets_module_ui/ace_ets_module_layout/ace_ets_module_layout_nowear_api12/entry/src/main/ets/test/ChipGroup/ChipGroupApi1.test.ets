@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,  Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -48,7 +48,7 @@ export default function ChipGroupApi1() {
      * @tc.name   testFocus
      * @tc.desc
      */
-    it('ChipGroupApi1_0100', 0, async (done: Function) => {
+    it('ChipGroupApi1_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('ChipGroupApi1_0100 START');
       await CommonFunc.sleep(1000);
 

@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function OnResultPage() {
      * @tc.desc      Test OnResult pop
      * @tc.level     Level 2
      */
-    it('OnResultPage_0100', 0, async (done: Function) => {
+    it('OnResultPage_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('OnResultPage_0100 START');
       await CommonFunc.sleep(1000);
 
@@ -92,7 +92,7 @@ export default function OnResultPage() {
      * @tc.desc      Test OnResult popToIndex
      * @tc.level     Level 2
      */
-    it('OnResultPage_0200', 0, async (done: Function) => {
+    it('OnResultPage_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('OnResultPage_0200 START');
       await CommonFunc.sleep(1000);
 
@@ -125,7 +125,7 @@ export default function OnResultPage() {
      * @tc.desc      Test OnResult popToName
      * @tc.level     Level 2
      */
-    it('OnResultPage_0300', 0, async (done: Function) => {
+    it('OnResultPage_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('OnResultPage_0300 START');
       await CommonFunc.sleep(1000);
 
@@ -158,7 +158,7 @@ export default function OnResultPage() {
      * @tc.desc      Test OnResult undefined
      * @tc.level     Level 2
      */
-    it('OnResultPage_0400', 0, async (done: Function) => {
+    it('OnResultPage_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('OnResultPage_0400 START');
       await CommonFunc.sleep(1000);
 
@@ -191,7 +191,7 @@ export default function OnResultPage() {
      * @tc.desc      Test OnResult popToName
      * @tc.level     Level 2
      */
-    it('OnResultPage_0500', 0, async (done: Function) => {
+    it('OnResultPage_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('OnResultPage_0500 START');
       await CommonFunc.sleep(1000);
 
@@ -225,7 +225,7 @@ export default function OnResultPage() {
      * @tc.desc      Test push dialog page pop
      * @tc.level     Level 2
      */
-    it('OnResultPage_0600', 0, async (done: Function) => {
+    it('OnResultPage_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('OnResultPage_0600 START');
       await CommonFunc.sleep(1000);
 
@@ -258,7 +258,7 @@ export default function OnResultPage() {
      * @tc.desc      Test push dialog page popToIndex
      * @tc.level     Level 2
      */
-    it('OnResultPage_0700', 0, async (done: Function) => {
+    it('OnResultPage_0700',  Level.LEVEL0, async (done: Function) => {
       console.info('OnResultPage_0700 START');
       await CommonFunc.sleep(1000);
 
@@ -291,7 +291,7 @@ export default function OnResultPage() {
      * @tc.desc      Test push dialog page popToName
      * @tc.level     Level 2
      */
-    it('OnResultPage_0800', 0, async (done: Function) => {
+    it('OnResultPage_0800',  Level.LEVEL0, async (done: Function) => {
       console.info('OnResultPage_0800 START');
       await CommonFunc.sleep(1000);
 

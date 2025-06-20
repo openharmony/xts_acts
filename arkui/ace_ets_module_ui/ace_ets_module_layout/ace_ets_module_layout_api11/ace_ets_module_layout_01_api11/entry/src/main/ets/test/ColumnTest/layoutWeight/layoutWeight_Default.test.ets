@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function layoutWeight_Default() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1 set layoutWeight(undefined),column1, column2, and column3 are displayed according to their own height
      */
-    it('SUB_ACE_layoutWeight_Default_TEST_0100', 0, async () => {
+    it('SUB_ACE_layoutWeight_Default_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_Default_TEST_0100] START');
       GlobalContext.getContext().getObject<undefined>('value').message.notify({
         name: 'layoutWeight1', value: undefined
@@ -102,7 +102,7 @@ export default function layoutWeight_Default() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1 set layoutWeight(null),column1, column2, and column3 are displayed according to their own height
      */
-    it('SUB_ACE_layoutWeight_Default_TEST_0200', 0, async () => {
+    it('SUB_ACE_layoutWeight_Default_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_Default_TEST_0200] START');
       GlobalContext.getContext().getObject<null>('value').message.notify({
         name: 'layoutWeight1', value: null
@@ -155,7 +155,7 @@ export default function layoutWeight_Default() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1 set layoutWeight(-10),column1, column2, and column3 are displayed according to their own height
      */
-    it('SUB_ACE_layoutWeight_Default_TEST_0300', 0, async () => {
+    it('SUB_ACE_layoutWeight_Default_TEST_0300',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_Default_TEST_0300] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'layoutWeight1', value: -10
@@ -207,7 +207,7 @@ export default function layoutWeight_Default() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1 set layoutWeight('aaa'),column1, column2, and column3 are displayed according to their own height
      */
-    it('SUB_ACE_layoutWeight_Default_TEST_0400', 0, async () => {
+    it('SUB_ACE_layoutWeight_Default_TEST_0400',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_Default_TEST_0400] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight2', value: 'aaa'

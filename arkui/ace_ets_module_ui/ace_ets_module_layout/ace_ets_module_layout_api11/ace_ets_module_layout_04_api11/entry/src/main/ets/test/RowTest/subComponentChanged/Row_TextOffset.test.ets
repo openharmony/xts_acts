@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function row_TextOffsetTest() {
      * @tc.name testRowTextOffset
      * @tc.desc The offset of first subcomponent changed
      */
-    it('testRowTextOffset', 0, async (done: Function) => {
+    it('testRowTextOffset',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextOffset] START');
       let firstText: RectValue = CommonFunc.getComponentRect('Row_TextOffset1');
       let secondText: RectValue = CommonFunc.getComponentRect('Row_TextOffset2');

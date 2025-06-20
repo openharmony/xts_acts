@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -54,7 +54,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanFontSize01', 0, async (done: Function) => {
+    it('testSpanFontSize01',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpanFontSize01';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -120,7 +120,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanfontFamily02', 0, async (done: Function) => {
+    it('testSpanfontFamily02',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpanfontFamily02';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -165,7 +165,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanlineHeight03', 0, async (done: Function) => {
+    it('testSpanlineHeight03',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpanlineHeight03';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -231,7 +231,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanfontStyle04', 0, async (done: Function) => {
+    it('testSpanfontStyle04',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpanfontStyle04';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -276,7 +276,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanfontWeight05', 0, async (done: Function) => {
+    it('testSpanfontWeight05',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpanfontWeight05';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -321,7 +321,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpantextCase06', 0, async (done: Function) => {
+    it('testSpantextCase06',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpantextCase06';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -366,7 +366,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpandecoration07', 0, async (done: Function) => {
+    it('testSpandecoration07',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpandecoration07';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -412,7 +412,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanfontColor08', 0, async (done: Function) => {
+    it('testSpanfontColor08',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpanfontColor08';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -457,7 +457,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanletterSpacing09', 0, async (done: Function) => {
+    it('testSpanletterSpacing09',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpanletterSpacing09';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)
@@ -502,7 +502,7 @@ export default function spanTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testSpanFont10', 0, async (done: Function) => {
+    it('testSpanFont10',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testSpanFont10';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)

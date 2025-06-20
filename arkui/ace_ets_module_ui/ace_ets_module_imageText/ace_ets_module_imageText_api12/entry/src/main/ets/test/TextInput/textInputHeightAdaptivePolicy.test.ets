@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../TextInput/Utils';
@@ -55,7 +55,7 @@ export default function textInputHeightAdaptivePolicy() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textInputHeightAdaptivePolicy0100', 0, async (done: Function) => {
+    it('textInputHeightAdaptivePolicy0100',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'textInputHeightAdaptivePolicy0100';
       console.info('[' + tagName + '] START============================');
 
@@ -78,7 +78,7 @@ export default function textInputHeightAdaptivePolicy() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textInputHeightAdaptivePolicy0200', 0, async (done: Function) => {
+    it('textInputHeightAdaptivePolicy0200',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'textInputHeightAdaptivePolicy0200';
       console.info('[' + tagName + '] START============================');
 
@@ -99,7 +99,7 @@ export default function textInputHeightAdaptivePolicy() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textInputHeightAdaptivePolicy0300', 0, async (done: Function) => {
+    it('textInputHeightAdaptivePolicy0300',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'textInputHeightAdaptivePolicy0300';
       console.info('[' + tagName + '] START============================');
 

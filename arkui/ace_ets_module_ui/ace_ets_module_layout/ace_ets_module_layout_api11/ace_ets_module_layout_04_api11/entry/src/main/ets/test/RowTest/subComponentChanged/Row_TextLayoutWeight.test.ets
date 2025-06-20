@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function row_TextLayoutWeightTest() {
      * @tc.name testRowTextLayoutWeight
      * @tc.desc The layoutweight of the child components set to 1
      */
-    it('testRowTextLayoutWeight', 0, async (done: Function) => {
+    it('testRowTextLayoutWeight',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextLayoutWeight] START');
       globalThis.value.message.notify({
         name: 'firstTextLayoutWeight', value: 1

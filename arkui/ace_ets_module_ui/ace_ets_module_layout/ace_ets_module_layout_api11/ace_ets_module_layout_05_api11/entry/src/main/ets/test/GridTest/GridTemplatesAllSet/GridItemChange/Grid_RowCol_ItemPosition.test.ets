@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function grid_RowCol_ItemPositionTest() {
      * @tc.name testGridRowColItemPosition
      * @tc.desc The second griditem set position to {x:20,y:20}
      */
-    it('testGridRowColItemPosition', 0, async (done: Function) => {
+    it('testGridRowColItemPosition',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColItemPosition] START');
       globalThis.value.message.notify({
         name: 'secondGridItemPosition', value: {

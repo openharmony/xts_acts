@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
@@ -73,7 +73,7 @@ export default function flex_NoWrap_FlexPad_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for
      *               the layout of the child components when all of the components set padding
      */
-    it('testWrapNoWrapFlexPadTextPad', 0, async () => {
+    it('testWrapNoWrapFlexPadTextPad',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexPadTextPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextPadding', value: 10
@@ -119,7 +119,7 @@ export default function flex_NoWrap_FlexPad_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for the layout
      *               of the child components when the parent component set padding and the child components set margin
      */
-    it('testWrapNoWrapFlexPadTextMargin', 0, async () => {
+    it('testWrapNoWrapFlexPadTextMargin',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexPadTextMargin] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 20
@@ -165,7 +165,7 @@ export default function flex_NoWrap_FlexPad_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for the layout
      *               of the child components when all of components set padding and margin
      */
-    it('testWrapNoWrapFlexPadTextMarPad', 0, async () => {
+    it('testWrapNoWrapFlexPadTextMarPad',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexPadTextMarPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 10

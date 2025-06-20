@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function OnlyColumnsTemplate5() {
      * @tc.name testGrid
      * @tc.desc GridItem sets columnStart to a negative number
      */
-    it('SUB_ACE_GRID_OnlyColumnsTemplate5_0400', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_OnlyColumnsTemplate5_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate5_0400] START');
       globalThis.value.message.notify({
         name: 'columnStart1', value: -1

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -51,7 +51,7 @@ export default function Grid_Row_SizeOption() {
      * @tc.name testGridRowSizeOption
      * @tc.desc Set the GridRowSizeOption of GridRow to '30vp'
      */
-    it('SUB_ACE_GridRowSizeOption_0100', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowSizeOption_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_0100 START');
       globalThis.value.message.notify({
         name: 'size', value: '30vp'
@@ -79,7 +79,7 @@ export default function Grid_Row_SizeOption() {
      * @tc.name testGridRowSizeOption
      * @tc.desc Set the GridRowSizeOption of GridRow to '50vp'
      */
-    it('SUB_ACE_GridRowSizeOption_0200', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowSizeOption_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowSizeOption_0200 START');
       globalThis.value.message.notify({
         name: 'size', value: '70vp'
@@ -108,7 +108,7 @@ export default function Grid_Row_SizeOption() {
      * @tc.name testGridRowSizeOption
      * @tc.desc Set the GridRowSizeOption of GridRow to '100vp'
      */
-    it('SUB_ACE_GridRowSizeOption_0300', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowSizeOption_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowSizeOption_0300 START');
       globalThis.value.message.notify({
         name: 'size', value: '120vp'
@@ -137,7 +137,7 @@ export default function Grid_Row_SizeOption() {
      * @tc.name testGridRowSizeOption
      * @tc.desc Set the GridRowSizeOption of GridRow to '150vp'
      */
-    it('SUB_ACE_GridRowSizeOption_0400', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowSizeOption_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowSizeOption_0400 START');
       globalThis.value.message.notify({
         name: 'size', value: '170vp'
@@ -166,7 +166,7 @@ export default function Grid_Row_SizeOption() {
      * @tc.name testGridRowSizeOption
      * @tc.desc Set the GridRowSizeOption of GridRow to '200vp'
      */
-    it('SUB_ACE_GridRowSizeOption_0500', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowSizeOption_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowSizeOption_0500 START');
       globalThis.value.message.notify({
         name: 'size', value: '220vp'
@@ -194,7 +194,7 @@ export default function Grid_Row_SizeOption() {
      * @tc.name testGridRowSizeOption
      * @tc.desc Set the GridRowSizeOption of GridRow to '300vp'
      */
-    it('SUB_ACE_GridRowSizeOption_0600', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowSizeOption_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowSizeOption_0600 START');
       globalThis.value.message.notify({
         name: 'size', value: '320vp'

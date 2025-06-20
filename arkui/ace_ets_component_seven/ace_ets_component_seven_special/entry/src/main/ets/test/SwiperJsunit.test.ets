@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -47,7 +47,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0001', 0, async (done: Function) => {
+    it('swiperTest_0001', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0001 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -66,7 +66,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0002', 0, async (done: Function) => {
+    it('swiperTest_0002', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0002 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -86,7 +86,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0003', 0, async (done: Function) => {
+    it('swiperTest_0003', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0003 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -106,7 +106,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0004', 0, async (done: Function) => {
+    it('swiperTest_0004', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0004 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -126,7 +126,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0005', 0, async (done: Function) => {
+    it('swiperTest_0005', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0005 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -146,7 +146,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0006', 0, async (done: Function) => {
+    it('swiperTest_0006', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0006 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -166,7 +166,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0007', 0, async (done: Function) => {
+    it('swiperTest_0007', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0007 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -186,7 +186,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0008', 0, async (done: Function) => {
+    it('swiperTest_0008', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0008 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -205,7 +205,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0009', 0, async (done: Function) => {
+    it('swiperTest_0009', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0009 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -225,7 +225,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0010', 0, async (done: Function) => {
+    it('swiperTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0010 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -245,7 +245,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0011', 0, async (done: Function) => {
+    it('swiperTest_0011', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0011 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -265,7 +265,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0012', 0, async (done: Function) => {
+    it('swiperTest_0012', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0012 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -285,7 +285,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0013', 0, async (done: Function) => {
+    it('swiperTest_0013', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0013 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -304,7 +304,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_0014', 0, async (done: Function) => {
+    it('swiperTest_0014', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_0014 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -324,7 +324,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_015', 0, async (done: Function) => {
+    it('swiperTest_015', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_015 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -344,7 +344,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_016', 0, async (done: Function) => {
+    it('swiperTest_016', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_016 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -364,7 +364,7 @@ export default function swiperJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('swiperTest_017', 0, async (done: Function) => {
+    it('swiperTest_017', Level.LEVEL0, async (done: Function) => {
       console.info('swiperTest_017 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew: ESObject = JSON.parse(strJsonNew);

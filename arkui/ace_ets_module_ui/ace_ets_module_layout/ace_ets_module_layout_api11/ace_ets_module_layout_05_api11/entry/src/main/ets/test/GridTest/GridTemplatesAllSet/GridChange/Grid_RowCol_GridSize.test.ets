@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -50,7 +50,7 @@ export default function Grid_RowCol_GridSize() {
      * @tc.name testGridRowColGridSize01
      * @tc.desc The Width 200 height 200,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridSize01', 0, async (done: Function) => {
+    it('testGridRowColGridSize01',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridSize01] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_GridSize_01');
@@ -97,7 +97,7 @@ export default function Grid_RowCol_GridSize() {
      * @tc.name testGridRowColGridSize02
      * @tc.desc The Width 200 height 300,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridSize02', 0, async (done: Function) => {
+    it('testGridRowColGridSize02',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridSize02] START');
       globalThis.value.message.notify({
         name: 'changeHeight', value: 300

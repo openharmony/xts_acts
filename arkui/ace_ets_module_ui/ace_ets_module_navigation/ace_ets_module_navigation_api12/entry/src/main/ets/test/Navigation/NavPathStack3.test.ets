@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -49,7 +49,7 @@ export default function NavPathStack3() {
      * @tc.name testNavigation
      * @tc.desc
      */
-    it('NavPathStack3_0100', 0, async (done: Function) => {
+    it('NavPathStack3_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('NavPathStack3_0100 START');
       await CommonFunc.sleep(1000);
 
@@ -72,7 +72,7 @@ export default function NavPathStack3() {
      * @tc.name testNavigation
      * @tc.desc
      */
-    it('NavPathStack3_0200', 0, async (done: Function) => {
+    it('NavPathStack3_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('NavPathStack3_0200 START');
       await CommonFunc.sleep(1000);
 

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -50,7 +50,7 @@ export default function AlignStart_AddAllSpace() {
      * @tc.name testFlexAlignStartFlexSpaceOverflow
      * @tc.desc the space of the parent component set to 20
      */
-    it('testFlexAlignStartFlexSpaceOverflow', 0, async () => {
+    it('testFlexAlignStartFlexSpaceOverflow',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignStartFlexSpaceOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAllSpace', value: 30
@@ -100,7 +100,7 @@ export default function AlignStart_AddAllSpace() {
      * @tc.name testFlexAlignStartFlexSpaceMeet
      * @tc.desc the space of the parent component set to 20
      */
-    it('testFlexAlignStartFlexSpaceMeet', 0, async () => {
+    it('testFlexAlignStartFlexSpaceMeet',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignStartFlexSpaceMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAllSpace', value: 20

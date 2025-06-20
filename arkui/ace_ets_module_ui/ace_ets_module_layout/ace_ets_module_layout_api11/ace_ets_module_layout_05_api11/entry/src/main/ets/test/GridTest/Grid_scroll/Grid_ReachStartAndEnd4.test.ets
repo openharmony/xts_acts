@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -60,7 +60,7 @@ export default function Grid_ReachStartAndEnd4() {
      * @tc.name testGrid
      * @tc.desc Dynamically changing the padding attribute value of the grid and sliding it to the starting position triggers the onReachStart event
      */
-    it('Grid_ReachStartAndEnd4_0500', 0, async (done: Function) => {
+    it('Grid_ReachStartAndEnd4_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd4_0500] START');
 
       let driver = Driver.create()

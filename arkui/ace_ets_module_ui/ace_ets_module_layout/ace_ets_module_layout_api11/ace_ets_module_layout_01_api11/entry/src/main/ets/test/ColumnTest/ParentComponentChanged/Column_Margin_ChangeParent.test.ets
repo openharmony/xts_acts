@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function column_Margin_ChangeParent() {
      * @tc.name testColumnMarginChangeParent
      * @tc.desc The parent component is bound with the margin attributes. Other parameters are default
      */
-    it('testColumnMarginChangeParent', 0, async () => {
+    it('testColumnMarginChangeParent',  Level.LEVEL0, async () => {
       console.info('new testColumnMarginChangeParent START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10

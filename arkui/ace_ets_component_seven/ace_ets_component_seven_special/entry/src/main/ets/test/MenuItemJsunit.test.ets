@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import Utils from './Utils';
 
@@ -49,7 +49,7 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit01', 0, async (done: Function) => {
+    it('menuItemJsunit01', Level.LEVEL0, async (done: Function) => {
       console.info('[menuItemJsunit01] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj: ESObject = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit02', 0, async (done: Function) => {
+    it('menuItemJsunit02', Level.LEVEL0, async (done: Function) => {
       console.info('[menuItemJsunit02] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj: ESObject = JSON.parse(strJson);
@@ -87,7 +87,7 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit03', 0, async (done: Function) => {
+    it('menuItemJsunit03', Level.LEVEL0, async (done: Function) => {
       console.info('[menuItemJsunit03] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj: ESObject = JSON.parse(strJson);
@@ -106,7 +106,7 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit04', 0, async (done: Function) => {
+    it('menuItemJsunit04', Level.LEVEL0, async (done: Function) => {
       console.info('[menuItemJsunit04] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj: ESObject = JSON.parse(strJson);
@@ -125,7 +125,7 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit05', 0, async (done: Function) => {
+    it('menuItemJsunit05', Level.LEVEL0, async (done: Function) => {
       console.info('[menuItemJsunit05] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj: ESObject = JSON.parse(strJson);

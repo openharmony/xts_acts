@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -53,7 +53,7 @@ export default function flexWrapReverse_fixedParentChildDisplayPriority() {
      * @tc.name testWrapReverseParentfixedDisplayPriority
      * @tc.desc The layout space of the parent component is fixed, and displayPriority is set for child component
      */
-    it('testWrapReverseParentfixedDisplayPriority', 0, async () => {
+    it('testWrapReverseParentfixedDisplayPriority',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedDisplayPriority START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300

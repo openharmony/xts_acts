@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -58,7 +58,7 @@ export default function rowMar_TextMarPadTest() {
      * @tc.name testRowMarTextPad
      * @tc.desc The parent component set margin to 5,and the first subcomponent set padding to 10
      */
-    it('testRowMarTextPad', 0, async (done: Function) => {
+    it('testRowMarTextPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarTextPad] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMar_TextMarPad1');
       let firstTextTop: number = firstText.top;
@@ -114,7 +114,7 @@ export default function rowMar_TextMarPadTest() {
      * @tc.name testRowMarTextMar
      * @tc.desc The parent component set margin to 5,and the first subcomponent set margin to 10
      */
-    it('testRowMarTextMar', 0, async (done: Function) => {
+    it('testRowMarTextMar',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarTextMar] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMar_TextMarPad1');
       let firstTextTop: number = firstText.top;
@@ -169,7 +169,7 @@ export default function rowMar_TextMarPadTest() {
      * @tc.name testRowMarTextMarPad
      * @tc.desc The parent component set margin to 5,and the first subcomponent set margin to 10,set padding to 10
      */
-    it('testRowMarTextMarPad', 0, async (done: Function) => {
+    it('testRowMarTextMarPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarTextMarPad] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMar_TextMarPad1');
       let firstTextTop: number = firstText.top;

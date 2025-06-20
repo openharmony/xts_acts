@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -48,7 +48,7 @@ export default function TextInputXtsJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('TextInputXtsJsunit_0101', 0, async (done: Function) => {
+    it('TextInputXtsJsunit_0101',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextInputXtsJsunit_0103] START');
       let strJson = getInspectorByKey('key_textinput_textIndent');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -66,7 +66,7 @@ export default function TextInputXtsJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('TextInputXtsJsunit_0102', 0, async (done: Function) => {
+    it('TextInputXtsJsunit_0102',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextInputXtsJsunit_0102] START');
       let strJson = getInspectorByKey('key_textinput_textOverflow');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -83,7 +83,7 @@ export default function TextInputXtsJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('TextInputXtsJsunit_0103', 0, async (done: Function) => {
+    it('TextInputXtsJsunit_0103',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextInputXtsJsunit_0103] START');
       let strJson = getInspectorByKey('key_textinput_caretStyle');
       let obj: Record<string, ESObject> = JSON.parse(strJson);

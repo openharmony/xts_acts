@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -51,7 +51,7 @@ export default function Grid_Row_Columns_Option() {
      * @tc.name testGutterColumns
      * @tc.desc Set the Columns of GridRow to '30px'
      */
-    it('SUB_ACE_GridRowColumns_Option_0100', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowColumns_Option_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowColumns_Option_0100 START');
       globalThis.value.message.notify({
         name: 'option', value: '30'
@@ -74,7 +74,7 @@ export default function Grid_Row_Columns_Option() {
      * @tc.name testGutterColumns
      * @tc.desc Set the Columns of GridRow to '70px'
      */
-    it('SUB_ACE_GridRowColumns_Option_0200', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowColumns_Option_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowColumns_Option_0200 START');
       globalThis.value.message.notify({
         name: 'option', value: '70'
@@ -102,7 +102,7 @@ export default function Grid_Row_Columns_Option() {
      * @tc.name testGutterColumns
      * @tc.desc Set the Columns of GridRow to '120px'
      */
-    it('SUB_ACE_GridRowColumns_Option_0300', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowColumns_Option_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowColumns_Option_0300 START');
       globalThis.value.message.notify({
         name: 'option', value: '120'
@@ -131,7 +131,7 @@ export default function Grid_Row_Columns_Option() {
      * @tc.name testGutterColumns
      * @tc.desc Set the Columns of GridRow to '170px'
      */
-    it('SUB_ACE_GridRowColumns_Option_0400', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowColumns_Option_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowColumns_Option_0400 START');
       globalThis.value.message.notify({
         name: 'option', value: '170'
@@ -163,7 +163,7 @@ export default function Grid_Row_Columns_Option() {
      * @tc.name testGutterColumns
      * @tc.desc Set the Columns of GridRow to '220px'
      */
-    it('SUB_ACE_GridRowColumns_Option_0500', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowColumns_Option_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowColumns_Option_0500 START');
       globalThis.value.message.notify({
         name: 'option', value: '220'
@@ -196,7 +196,7 @@ export default function Grid_Row_Columns_Option() {
      * @tc.name testGutterColumns
      * @tc.desc Set the Columns of GridRow to '320px'
      */
-    it('SUB_ACE_GridRowColumns_Option_0600', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowColumns_Option_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowColumns_Option_0600 START');
       globalThis.value.message.notify({
         name: 'option', value: '320'

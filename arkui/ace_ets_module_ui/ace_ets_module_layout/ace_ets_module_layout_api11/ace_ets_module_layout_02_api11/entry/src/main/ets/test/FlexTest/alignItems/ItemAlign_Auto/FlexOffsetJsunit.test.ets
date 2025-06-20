@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 
@@ -49,7 +49,7 @@ export default function flexOffset_AutoJsunit() {
      * @tc.name testFlexItemAlignAutoFlexOffset
      * @tc.desc First subcomponent set offset attribute.
      */
-    it('testFlexItemAlignAutoFlexOffset', 0, async () => {
+    it('testFlexItemAlignAutoFlexOffset',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoFlexOffset START');
       let strJson1 = getInspectorByKey('ItemAlign_Auto_flexOffset');
 

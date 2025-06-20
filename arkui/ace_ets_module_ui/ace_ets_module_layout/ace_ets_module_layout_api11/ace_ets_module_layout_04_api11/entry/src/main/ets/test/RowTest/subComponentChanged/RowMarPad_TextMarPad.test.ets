@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -61,7 +61,7 @@ export default function rowMarPad_TextMarPadTest() {
      * @tc.name testRowMarPadTextPad
      * @tc.desc The parent component set margin to 5,padding to 10,and the first subcomponent set padding to 10
      */
-    it('testRowMarPadTextPad', 0, async (done: Function) => {
+    it('testRowMarPadTextPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarPadTextPad] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMarPad_TextMarPad1');
       let firstTextTop: number = firstText.top;
@@ -120,7 +120,7 @@ export default function rowMarPad_TextMarPadTest() {
      * @tc.name testRowMarPadTextMar
      * @tc.desc The parent component set margin to 5,padding to 10,and the first subcomponent set margin to 10
      */
-    it('testRowMarPadTextMar', 0, async (done: Function) => {
+    it('testRowMarPadTextMar',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarPadTextMar] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMarPad_TextMarPad1');
       let firstTextTop: number = firstText.top;
@@ -179,7 +179,7 @@ export default function rowMarPad_TextMarPadTest() {
      * @tc.desc The parent component set margin to 5，padding to 10,
      *              and the first subcomponent set margin to 10,padding to 10
      */
-    it('testRowMarPadTextMarPad', 0, async (done: Function) => {
+    it('testRowMarPadTextMarPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowMarPadTextMarPad] START');
       let firstText: RectValue = CommonFunc.getComponentRect('RowMarPad_TextMarPad1');
       let firstTextTop: number = firstText.top;

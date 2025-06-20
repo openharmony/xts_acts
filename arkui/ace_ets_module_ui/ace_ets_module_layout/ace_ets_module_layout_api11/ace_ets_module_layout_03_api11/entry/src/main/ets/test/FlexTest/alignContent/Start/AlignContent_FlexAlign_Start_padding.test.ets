@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -56,7 +56,7 @@ export default function AlignContent_FlexAlign_Start_padding() {
      * @tc.desc padding is set for the flex component so that it does not meet the child component size requirements.
      */
 
-    it('testAlignContentStartFlexPaddingNoSatisfy', 0, async () => {
+    it('testAlignContentStartFlexPaddingNoSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentStartFlexPaddingNoSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 40
@@ -109,7 +109,7 @@ export default function AlignContent_FlexAlign_Start_padding() {
      * @tc.desc padding is set up for the flex component to meet the child component size requirements.
      */
 
-    it('testAlignContentStartFlexPaddingSatisfy', 0, async () => {
+    it('testAlignContentStartFlexPaddingSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentStartFlexPaddingSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 15

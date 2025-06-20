@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils2';
@@ -67,7 +67,7 @@ export default function StackAlignContentTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testStackAlignContent', 0, async (done: Function) => {
+    it('testStackAlignContent',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'testStackAlignContent';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000)

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import RectValue from '../../../MainAbility/common/Rect';
@@ -52,7 +52,7 @@ export default function SideBarContainerType_DefaultValue2() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.AUTO， width > minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_DefaultValue2_0100', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_DefaultValue2_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue2_0100] START');
       globalThis.value.message.notify({
         name: 'width1', value: 640
@@ -86,7 +86,7 @@ export default function SideBarContainerType_DefaultValue2() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.AUTO， width > minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_DefaultValue2_0200', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_DefaultValue2_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue2_0200] START');
       globalThis.value.message.notify({
         name: 'width1', value: 600

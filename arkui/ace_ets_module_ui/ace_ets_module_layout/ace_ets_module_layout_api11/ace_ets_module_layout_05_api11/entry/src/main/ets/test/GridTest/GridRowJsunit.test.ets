@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level  } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -44,7 +44,7 @@ export default function GridRowJsunit() {
       done();
     });
 
-    it('GridRowJsunit_0100', 0, async (done: Function) => {
+    it('GridRowJsunit_0100',  Level.LEVEL0, async (done: Function) => {
       // Get the information of the GridRow component
       console.info('[GridRowJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -67,7 +67,7 @@ export default function GridRowJsunit() {
       done();
     });
 
-    it('GridRowJsunit_0200', 0, async (done: Function) => {
+    it('GridRowJsunit_0200',  Level.LEVEL0, async (done: Function) => {
       // Modify the properties of component GridRow
       console.info('[GridRowJsunit_0200] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({name:'columns',value:'12'})
@@ -108,7 +108,7 @@ export default function GridRowJsunit() {
       done();
     });
 
-    it('GridRowJsunit_0300', 0, async (done: Function) => {
+    it('GridRowJsunit_0300',  Level.LEVEL0, async (done: Function) => {
       // Illegal modification of properties of component GridRow
       console.info('[GridRowJsunit_0300] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({name:'gutter',value:'-10'})
@@ -149,7 +149,7 @@ export default function GridRowJsunit() {
       done();
     });
 
-    it('GridRowJsunit_0400', 0, async (done: Function) => {
+    it('GridRowJsunit_0400',  Level.LEVEL0, async (done: Function) => {
       // Verify default value of the GridRow component
       console.info('[GridRowJsunit_0400] START');
       let strJson = getInspectorByKey('gridRow_default');

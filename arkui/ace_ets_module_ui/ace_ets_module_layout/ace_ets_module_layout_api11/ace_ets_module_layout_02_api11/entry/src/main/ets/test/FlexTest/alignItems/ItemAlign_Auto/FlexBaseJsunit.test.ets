@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flexBase_AutoJsunit() {
      * @tc.desc The subcomponent is inside the parent component when the width of parent component set to 500,
      *               the height of parent component set to 200.
      */
-    it('testFlexItemAlignAutoFlexWidHeiMeet', 0, async () => {
+    it('testFlexItemAlignAutoFlexWidHeiMeet',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoFlexWidHeiMeet START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
@@ -91,7 +91,7 @@ export default function flexBase_AutoJsunit() {
      * @tc.desc The subcomponent exceeds the parent component when the width of parent component set to 420,
      *               the height of parent component set to 140.
      */
-    it('testFlexItemAlignAutoFlexWidHeiOverflow', 0, async () => {
+    it('testFlexItemAlignAutoFlexWidHeiOverflow',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoFlexWidHeiOverflow START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 140

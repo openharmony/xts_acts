@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -69,7 +69,7 @@ export default function listItem_InSertChange() {
      * @tc.name testListItemInSertChangeFiftyPercent
      * @tc.desc The size of the text component in the ListItem subcomponent changes 50%
      */
-    it('testListItemInSertChangeFiftyPercent', 0, async (done: Function) => {
+    it('testListItemInSertChangeFiftyPercent',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemInSertChangeFiftyPercent START');
       globalThis.value.message.notify({
         name: 'width', value: '50%'
@@ -132,7 +132,7 @@ export default function listItem_InSertChange() {
      * @tc.name testListItemInSertChangeOneHundredAndTenPercent
      * @tc.desc The size of the text component in the ListItem subcomponent changes 110%
      */
-    it('testListItemInSertChangeOneHundredAndTenPercent', 0, async (done: Function) => {
+    it('testListItemInSertChangeOneHundredAndTenPercent',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemInSertChangeOneHundredAndTenPercent START');
       globalThis.value.message.notify({
         name: 'width', value: '110%'

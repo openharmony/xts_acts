@@ -52,7 +52,7 @@ export default function textInputEllipsisModeTest() {
 	 * @tc.size         MediumTest
 	 * @tc.type         Function
      */
-    it('textInputEllipsisModeTest0001', 0, async () => {
+    it('textInputEllipsisModeTest0001',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputEllipsisModeTest textInputEllipsisModeTest0001 START');
         await CommonFunc.sleep(1000);
@@ -71,7 +71,7 @@ export default function textInputEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputEllipsisModeTest0002', 0, async () => {
+    it('textInputEllipsisModeTest0002',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputEllipsisModeTest textInputEllipsisModeTest0002 START');
         await CommonFunc.sleep(1000);
@@ -90,7 +90,7 @@ export default function textInputEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputEllipsisModeTest0003', 0, async () => {
+    it('textInputEllipsisModeTest0003',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputEllipsisModeTest textInputEllipsisModeTest0003 START');
         await CommonFunc.sleep(1000);
@@ -109,7 +109,7 @@ export default function textInputEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputEllipsisModeTest0004', 0, async () => {
+    it('textInputEllipsisModeTest0004',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputEllipsisModeTest textInputEllipsisModeTest0004 START');
         await CommonFunc.sleep(1000);
@@ -128,7 +128,7 @@ export default function textInputEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputEllipsisModeTest0005', 0, async () => {
+    it('textInputEllipsisModeTest0005',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('textInputEllipsisModeTest textInputEllipsisModeTest0005 START');
         await CommonFunc.sleep(1000);

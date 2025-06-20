@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -57,7 +57,7 @@ export default function Row_Size() {
      * @tc.desc The height and width of the row component meet the requirements of the subcomponent
      */
 
-    it('testRowSizeBothSatisfy', 0, async (done: Function) => {
+    it('testRowSizeBothSatisfy',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowSizeBothSatisfy START');
       globalThis.value.message.notify({
         name: 'width', value: 350
@@ -105,7 +105,7 @@ export default function Row_Size() {
      *               requirements of the subcomponent
      */
 
-    it('testRowSizeWidthNOSatisfy', 0, async (done: Function) => {
+    it('testRowSizeWidthNOSatisfy',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowSizeWidthNOSatisfy START');
       globalThis.value.message.notify({
         name: 'width', value: 200
@@ -150,7 +150,7 @@ export default function Row_Size() {
      *               requirements of the subcomponent
      */
 
-    it('testRowSizeHeightNOSatisfy', 0, async (done: Function) => {
+    it('testRowSizeHeightNOSatisfy',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowSizeHeightNOSatisfy START');
       globalThis.value.message.notify({
         name: 'width', value: 350

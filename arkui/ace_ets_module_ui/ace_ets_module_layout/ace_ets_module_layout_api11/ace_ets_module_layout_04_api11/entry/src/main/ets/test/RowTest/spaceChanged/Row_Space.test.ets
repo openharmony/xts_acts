@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -51,7 +51,7 @@ export default function Row_Space() {
      * @tc.desc The space of parent component set to 10,The child component is not fully filled with
      *               the parent component
      */
-    it('testRowSpaceUnfill', 0, async (done: Function) => {
+    it('testRowSpaceUnfill',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowSpaceUnfill] START');
       globalThis.value.message.notify({
         name: 'addSpace', value: 10
@@ -93,7 +93,7 @@ export default function Row_Space() {
      * @tc.desc The space of parent component set to 25,The child component is filled with
      *               the parent component
      */
-    it('testRowSpaceFill', 0, async (done: Function) => {
+    it('testRowSpaceFill',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowSpaceFill] START');
       globalThis.value.message.notify({
         name: 'addSpace', value: 25
@@ -136,7 +136,7 @@ export default function Row_Space() {
      * @tc.desc The space of parent component set to 30,The child component is overflow with
      *               the parent component
      */
-    it('testRowSpaceOverflow', 0, async (done: Function) => {
+    it('testRowSpaceOverflow',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowSpaceOverflow] START');
       globalThis.value.message.notify({
         name: 'addSpace', value: 30

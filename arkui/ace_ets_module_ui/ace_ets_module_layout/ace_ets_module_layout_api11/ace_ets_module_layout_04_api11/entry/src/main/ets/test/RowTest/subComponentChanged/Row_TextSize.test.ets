@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -55,7 +55,7 @@ export default function row_TextSizeTest() {
      * @tc.name testRowTextSizeHeight
      * @tc.desc The height of the first subcomponent changed
      */
-    it('testRowTextSizeHeight', 0, async (done: Function) => {
+    it('testRowTextSizeHeight',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextSizeHeight] START');
       let secondText: RectValue = CommonFunc.getComponentRect('Row_TextSize2');
       let secondTextTop: number = secondText.top;
@@ -102,7 +102,7 @@ export default function row_TextSizeTest() {
      * @tc.name testRowTextSizeWidth
      * @tc.desc The width of the first subcomponent changed
      */
-    it('testRowTextSizeWidth', 0, async (done: Function) => {
+    it('testRowTextSizeWidth',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextSizeWidth] START');
       let secondText: RectValue = CommonFunc.getComponentRect('Row_TextSize2');
       let secondTextTop: number = secondText.top;

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import Utils from './Utils';
 
@@ -46,7 +46,7 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextStyle001', 0, async (done: Function) => {
+    it('testTextStyle001', Level.LEVEL0, async (done: Function) => {
       console.info('[testTextStyle001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
@@ -65,7 +65,7 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextStyle002', 0, async (done: Function) => {
+    it('testTextStyle002', Level.LEVEL0, async (done: Function) => {
       console.info('[testTextStyle002] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
@@ -84,7 +84,7 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextStyle003', 0, async (done: Function) => {
+    it('testTextStyle003', Level.LEVEL0, async (done: Function) => {
       console.info('[testTextStyle003] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
@@ -103,7 +103,7 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testTextStyle004', 0, async (done: Function) => {
+    it('testTextStyle004', Level.LEVEL0, async (done: Function) => {
       console.info('[testTextStyle001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');
@@ -122,7 +122,7 @@ export default function textStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-     it('testTextStyle005', 0, async (done: Function) => {
+     it('testTextStyle005', Level.LEVEL0, async (done: Function) => {
       console.info('[testTextStyle005] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('text1');

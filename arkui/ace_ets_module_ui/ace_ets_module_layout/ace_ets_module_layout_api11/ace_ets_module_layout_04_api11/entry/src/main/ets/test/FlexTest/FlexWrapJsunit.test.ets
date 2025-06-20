@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -44,7 +44,7 @@ export default function flexWrapJsunit() {
       console.info("flexWrap after each called");
     });
 
-    it('flexWrap_0100', 0, async (done: Function) => {
+    it('flexWrap_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('flexWrap_0100 START');
       let strJson = getInspectorByKey('WrapReverse');
       console.info("flexWrap_0100 component strJson:" + strJson);
@@ -56,7 +56,7 @@ export default function flexWrapJsunit() {
       done();
     });
 
-    it('flexWrap_0200', 0, async (done: Function) => {
+    it('flexWrap_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('flexWrap_0200 START');
       let strJson = getInspectorByKey('WrapReverse');
       console.info("flexWrap_0200 component strJson:" + strJson);
@@ -68,7 +68,7 @@ export default function flexWrapJsunit() {
       done();
     });
 
-    it('flexWrap_0300', 0, async (done: Function) => {
+    it('flexWrap_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('flexWrap_0300 START');
       try {
         let eventData: events_emitter.EventData = {

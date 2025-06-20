@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
@@ -48,7 +48,7 @@ export default function TextCommonTextComputing6() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0290', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0290',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0290 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -81,7 +81,7 @@ export default function TextCommonTextComputing6() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0310', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0310',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0310 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -114,7 +114,7 @@ export default function TextCommonTextComputing6() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0320', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0320',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0320 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -147,7 +147,7 @@ export default function TextCommonTextComputing6() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0330', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0330',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0330 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -180,7 +180,7 @@ export default function TextCommonTextComputing6() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0340', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0340',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0340 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -213,7 +213,7 @@ export default function TextCommonTextComputing6() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0360', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0360',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_COMMON_TEXT_COMPUTING_0360 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();

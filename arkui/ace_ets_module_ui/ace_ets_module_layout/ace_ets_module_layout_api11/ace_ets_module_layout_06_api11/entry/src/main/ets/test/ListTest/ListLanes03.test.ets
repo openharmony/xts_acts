@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -49,7 +49,7 @@ export default function ListLanes03() {
        * @tc.desc  : set gutter to 10vp and listDirection to Axis.Vertical
        * @tc.level : Level 3
        */
-    it('ListLanes03_001', 0, async (done: Function) => {
+    it('ListLanes03_001',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[ListLanes03_001] START');
       await CommonFunc.sleep(200);
@@ -69,7 +69,7 @@ export default function ListLanes03() {
        * @tc.desc  : set gutter to 10fp and listDirection to Axis.Vertical
        * @tc.level : Level 3
        */
-    it('ListLanes03_002', 0, async (done: Function) => {
+    it('ListLanes03_002',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[ListLanes03_002] START');
       await CommonFunc.sleep(200);
@@ -89,7 +89,7 @@ export default function ListLanes03() {
        * @tc.desc  : set gutter to 10lpx and listDirection to Axis.Vertical
        * @tc.level : Level 3
        */
-    it('ListLanes03_003', 0, async (done: Function) => {
+    it('ListLanes03_003',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[ListLanes03_003] START');
       await CommonFunc.sleep(200);
@@ -109,7 +109,7 @@ export default function ListLanes03() {
        * @tc.desc  : set gutter to 10px and listDirection to Axis.Vertical
        * @tc.level : Level 3
        */
-    it('ListLanes03_004', 0, async (done: Function) => {
+    it('ListLanes03_004',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[ListLanes03_004] START');
       await CommonFunc.sleep(200);

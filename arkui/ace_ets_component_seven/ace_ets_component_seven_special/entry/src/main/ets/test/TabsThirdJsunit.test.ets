@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -49,7 +49,7 @@ export default function tabsThirdJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_BarGridAlign_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarGridAlign_0200', Level.LEVEL0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BarGridAlign_0200] start");
       let strJson = getInspectorByKey('tabsNumberTest');
       let obj: ESObject = JSON.parse(strJson);
@@ -72,7 +72,7 @@ export default function tabsThirdJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_BarMode_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarMode_0200', Level.LEVEL0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BarMode_0200] start");
       let strJson = getInspectorByKey('tabsBarModeTest');
       console.info("[ArkUI_Tabs_BarMode_0200]: " + JSON.stringify(strJson));

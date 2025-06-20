@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function column_MarPad_ChangeParent() {
      * @tc.desc The parent component is bound with the margin and padding attributes. Other parameters are default,
      *               the remaining space of the parent component meets the layout of the child components
      */
-    it('testColumnMarPadChangeParentInRange', 0, async () => {
+    it('testColumnMarPadChangeParentInRange',  Level.LEVEL0, async () => {
       console.info('new testColumnMarPadChangeParentInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 5
@@ -110,7 +110,7 @@ export default function column_MarPad_ChangeParent() {
      * @tc.desc The parent component is bound with the margin and padding attributes. Other parameters are default,
      *               the remaining space of the parent component does not meet the layout of the child components
      */
-    it('testColumnMarPadChangeParentOutRange', 0, async () => {
+    it('testColumnMarPadChangeParentOutRange',  Level.LEVEL0, async () => {
       console.info('new testColumnMarPadChangeParentOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 5

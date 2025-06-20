@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -59,7 +59,7 @@ export default function NavigationStack15Jsunit() {
     * @tc.desc  : NavigationMode is set to stack mode, and NavigationMode is dynamically changed to auto mode.
     * @tc.level : Level 3
     */
-    it('NavigationStack15Jsunit_0100', 0, async (done: Function) => {
+    it('NavigationStack15Jsunit_0100',  Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

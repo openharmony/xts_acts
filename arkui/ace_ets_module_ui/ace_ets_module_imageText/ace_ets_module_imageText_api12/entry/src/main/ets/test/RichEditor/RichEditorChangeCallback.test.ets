@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function RichEditorChangeCallback() {
     * @tc.desc        Test RichEditor, trigger onWillChange before text changes, and trigger onDidChange after text changes
     * @tc.level       Level 2
     */
-    it('RichEditorChangeCallback_001', 0, async (done: Function) => {
+    it('RichEditorChangeCallback_001',  Level.LEVEL0, async (done: Function) => {
       console.info('[RichEditorChangeCallback_001] START');
       await CommonFunc.sleep(1000);
 

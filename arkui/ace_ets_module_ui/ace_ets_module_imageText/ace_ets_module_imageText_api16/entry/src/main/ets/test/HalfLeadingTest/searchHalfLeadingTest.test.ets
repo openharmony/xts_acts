@@ -53,7 +53,7 @@ export default function searchHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchHalfLeadingTest0001', 0, async () => {
+    it('searchHalfLeadingTest0001',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchHalfLeadingTest searchHalfLeadingTest0001 START');
         await CommonFunc.sleep(1000);
@@ -72,7 +72,7 @@ export default function searchHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchHalfLeadingTest0002', 0, async () => {
+    it('searchHalfLeadingTest0002',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchHalfLeadingTest searchHalfLeadingTest0002 START');
         await CommonFunc.sleep(1000);
@@ -91,7 +91,7 @@ export default function searchHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchHalfLeadingTest0003', 0, async () => {
+    it('searchHalfLeadingTest0003',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchHalfLeadingTest searchHalfLeadingTest0003 START');
         await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function searchHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchHalfLeadingTest0004', 0, async () => {
+    it('searchHalfLeadingTest0004',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchHalfLeadingTest searchHalfLeadingTest0004 START');
         await CommonFunc.sleep(1000);

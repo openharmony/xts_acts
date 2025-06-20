@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/utils/Common";
 import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
@@ -50,7 +50,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignTopStart
      * @tc.desc Set stack's  padding 10  and alignContent mode 'TopStart'.
      */
-    it('testStackAlignPaddingAlignTopStart', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignTopStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopStart
@@ -86,7 +86,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignTop
      * @tc.desc Set stack's  padding 10  and alignContent mode 'Top'.
      */
-    it('testStackAlignPaddingAlignTop', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignTop START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Top
@@ -119,7 +119,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignTopEnd
      * @tc.desc Set stack's  padding 10  and alignContent mode 'TopEnd'.
      */
-    it('testStackAlignPaddingAlignTopEnd', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignTopEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopEnd
@@ -155,7 +155,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignStart
      * @tc.desc Set stack's  padding 10  and alignContent mode 'START'.
      */
-    it('testStackAlignPaddingAlignStart', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Start
@@ -189,7 +189,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignCenter
      * @tc.desc Set stack's  padding 10  and alignContent mode 'Center'.
      */
-    it('testStackAlignPaddingAlignCenter', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignCenter START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Center
@@ -219,7 +219,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignEnd
      * @tc.desc Set stack's  padding 10  and alignContent mode 'End'.
      */
-    it('testStackAlignPaddingAlignEnd', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.End
@@ -249,7 +249,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignBottomStart
      * @tc.desc Set stack's  padding 10  and alignContent mode 'BottomStart'.
      */
-    it('testStackAlignPaddingAlignBottomStart', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignBottomStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomStart
@@ -285,7 +285,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignBottom
      * @tc.desc Set stack's  padding 10  and alignContent mode 'Bottom'.
      */
-    it('testStackAlignPaddingAlignBottom', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignBottom START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Bottom
@@ -319,7 +319,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingAlignBottomEnd
      * @tc.desc Set stack's  padding 10  and alignContent mode 'BottomEnd'.
      */
-    it('testStackAlignPaddingAlignBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignPaddingAlignBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingAlignBottomEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomEnd
@@ -355,7 +355,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignTopStart
      * @tc.desc Set stack's  padding 30  and alignContent mode 'TopStart'.
      */
-    it('testStackAlignPaddingExceedAlignTopStart', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignTopStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopStart
@@ -391,7 +391,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignTop
      * @tc.desc Set stack's  padding 30  and alignContent mode 'Top'.
      */
-    it('testStackAlignPaddingExceedAlignTop', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignTop START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Top
@@ -425,7 +425,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignTopEnd
      * @tc.desc Set stack's  padding 30  and alignContent mode 'TopEnd'.
      */
-    it('testStackAlignPaddingExceedAlignTopEnd', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignTopEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopEnd
@@ -461,7 +461,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignStart
      * @tc.desc Set stack's  padding 30  and alignContent mode 'START'.
      */
-    it('testStackAlignPaddingExceedAlignStart', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Start
@@ -495,7 +495,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignCenter
      * @tc.desc Set stack's  padding 30  and alignContent mode 'Center'.
      */
-    it('testStackAlignPaddingExceedAlignCenter', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignCenter START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Center
@@ -527,7 +527,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignEnd
      * @tc.desc Set stack's  padding 30  and alignContent mode 'End'.
      */
-    it('testStackAlignPaddingExceedAlignEnd', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.End
@@ -561,7 +561,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignBottomStart
      * @tc.desc Set stack's  padding 30  and alignContent mode 'BottomStart'.
      */
-    it('testStackAlignPaddingExceedAlignBottomStart', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignBottomStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomStart
@@ -597,7 +597,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignBottom
      * @tc.desc Set stack's  padding 30  and alignContent mode 'Bottom'.
      */
-    it('testStackAlignPaddingExceedAlignBottom', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignBottom START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Bottom
@@ -632,7 +632,7 @@ export default function stackPaddingChange() {
      * @tc.name testStackAlignPaddingExceedAlignBottomEnd
      * @tc.desc Set stack's  padding 30  and alignContent mode 'BottomEnd'.
      */
-    it('testStackAlignPaddingExceedAlignBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignPaddingExceedAlignBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignPaddingExceedAlignBottomEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomEnd

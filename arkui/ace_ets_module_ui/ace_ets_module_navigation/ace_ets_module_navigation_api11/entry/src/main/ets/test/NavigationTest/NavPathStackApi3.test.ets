@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/utils/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -51,7 +51,7 @@ export default function NavPathStackApi3() {
      * @tc.desc        Navigation pushDestinationByName test
      * @tc.level       Level 2
      */
-    it('NavPathStackApi3_001', 0, async  (done:Function) =>{
+    it('NavPathStackApi3_001',  Level.LEVEL0, async  (done:Function) =>{
       console.info('[NavPathStackApi3_001] START');
       await Utils.sleep(1000);
 

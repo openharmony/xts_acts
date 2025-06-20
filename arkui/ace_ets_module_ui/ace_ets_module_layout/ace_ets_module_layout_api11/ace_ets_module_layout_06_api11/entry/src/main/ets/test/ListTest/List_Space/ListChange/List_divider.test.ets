@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -70,7 +70,7 @@ export default function List_divider() {
      * @tc.name testListDividerStrokeWidthToTen
      * @tc.desc List parent component binding divider property and strokeWidth set to 10
      */
-    it('testListDividerStrokeWidthToTen', 0, async (done: Function) => {
+    it('testListDividerStrokeWidthToTen',  Level.LEVEL0, async (done: Function) => {
       console.info('testListDividerStrokeWidthToTen START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: 10
@@ -123,7 +123,7 @@ export default function List_divider() {
      * @tc.name testListDividerStrokeWidthToForty
      * @tc.desc List parent component binding divider property and strokeWidth set to 40
      */
-    it('testListDividerStrokeWidthToForty', 0, async (done: Function) => {
+    it('testListDividerStrokeWidthToForty',  Level.LEVEL0, async (done: Function) => {
       console.info('testListDividerStrokeWidthToForty START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: 40

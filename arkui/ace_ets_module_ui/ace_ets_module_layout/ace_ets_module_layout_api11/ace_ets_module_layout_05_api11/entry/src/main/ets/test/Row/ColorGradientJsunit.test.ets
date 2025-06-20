@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level  } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -67,7 +67,7 @@ export default function colorGradientJsunit() {
       console.info("colorGradient after each called");
     });
 
-    it('testColorGradient001', 0, async (done: Function) => {
+    it('testColorGradient001',  Level.LEVEL0, async (done: Function) => {
       console.info('[testColorGradient001] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('linearGradient');
@@ -81,7 +81,7 @@ export default function colorGradientJsunit() {
       done();
     });
 
-    it('testColorGradient002', 0, async (done: Function) => {
+    it('testColorGradient002',  Level.LEVEL0, async (done: Function) => {
       console.info('[testColorGradient002] START');
       await Utils.sleep(1000);
       let linearGradientValue: LinearGradientValue = {
@@ -116,7 +116,7 @@ export default function colorGradientJsunit() {
       done();
     });
 
-    it('testColorGradient003', 0, async (done: Function) => {
+    it('testColorGradient003',  Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000)
       console.info('[testColorGradient003] START');
       await Utils.sleep(1000);
@@ -129,7 +129,7 @@ export default function colorGradientJsunit() {
       done();
     });
 
-    it('testColorGradient004', 0, async (done: Function) => {
+    it('testColorGradient004',  Level.LEVEL0, async (done: Function) => {
       console.info('[testColorGradient004] START');
       await Utils.sleep(1000);
       let sweepGradientValue: SweepGradientValue = {
@@ -164,7 +164,7 @@ export default function colorGradientJsunit() {
       done();
     });
 
-    it('testColorGradient005', 0, async (done: Function) => {
+    it('testColorGradient005',  Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000)
       console.info('[testColorGradient005] START');
       await Utils.sleep(1000);
@@ -179,7 +179,7 @@ export default function colorGradientJsunit() {
       done();
     });
 
-    it('testColorGradient006', 0, async (done: Function) => {
+    it('testColorGradient006',  Level.LEVEL0, async (done: Function) => {
       console.info('[testColorGradient006] START');
       await Utils.sleep(1000);
       let radialGradientValue: RadialGradientValue = {

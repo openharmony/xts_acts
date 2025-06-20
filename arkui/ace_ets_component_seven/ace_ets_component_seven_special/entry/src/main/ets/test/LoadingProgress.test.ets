@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import Utils from './Utils';
 
@@ -49,7 +49,7 @@ export default function loadingProgressJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_loadingProgress_attrs_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_loadingProgress_attrs_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_loadingProgress_attrs_0100 START');
       setTimeout(() => {
         try {
@@ -73,7 +73,7 @@ export default function loadingProgressJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_loadingProgress_attrs_0101', 0, async (done: Function) => {
+    it('ArkUX_Stage_loadingProgress_attrs_0101', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_loadingProgress_attrs_0101 START');
       setTimeout(() => {
         try {

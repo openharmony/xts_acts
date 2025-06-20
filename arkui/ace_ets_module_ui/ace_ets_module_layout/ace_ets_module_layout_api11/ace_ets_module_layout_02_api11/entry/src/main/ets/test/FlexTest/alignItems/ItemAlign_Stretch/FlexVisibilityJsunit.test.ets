@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -52,7 +52,7 @@ export default function flexVisibility_StretchJsunit() {
      * @tc.name testFlexItemAlignStretchSubSetVisibilityNone
      * @tc.desc The first subcomponent set Visibility.None attribute.
      */
-    it('testFlexItemAlignStretchSubSetVisibilityNone', 0, async () => {
+    it('testFlexItemAlignStretchSubSetVisibilityNone',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStretchSubSetVisibilityNone START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -95,7 +95,7 @@ export default function flexVisibility_StretchJsunit() {
      * @tc.name testFlexItemAlignStretchSubSetVisibilityHidden
      * @tc.desc The first subcomponent set Visibility.Hidden attribute.
      */
-    it('testFlexItemAlignStretchSubSetVisibilityHidden', 0, async () => {
+    it('testFlexItemAlignStretchSubSetVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStretchSubSetVisibilityHidden START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({

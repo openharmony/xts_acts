@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -60,7 +60,7 @@ export default function Grid_ScrollStartandStop3() {
      * @tc.name testGrid
      * @tc.desc When scrollBar starts sliding, onScrollStart is triggered, and when sliding stops, onScrollStop is triggered
      */
-    it('Grid_ScrollStartandStop3_0400', 0, async (done: Function) => {
+    it('Grid_ScrollStartandStop3_0400',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[Grid_ScrollStartandStop3_0400] START');
       let scrollBarRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollStartandStop_scrollBar')

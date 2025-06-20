@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function column_AlignItems_ChangeParent() {
      * @tc.name testColumnAlignItemsChangeParentHorizontalAlignStart
      * @tc.desc The parent component is bound to alignItems property HorizontalAlign.Start. Other parameters are default
      */
-    it('testColumnAlignItemsChangeParentHorizontalAlignStart', 0, async () => {
+    it('testColumnAlignItemsChangeParentHorizontalAlignStart',  Level.LEVEL0, async () => {
       console.info('new testColumnAlignItemsChangeParentHorizontalAlignStart START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'alignItems', value: HorizontalAlign.Start
@@ -99,7 +99,7 @@ export default function column_AlignItems_ChangeParent() {
      * @tc.name testColumnAlignItemsChangeParentHorizontalAlignEnd
      * @tc.desc The parent component is bound to alignItems property HorizontalAlign.End. Other parameters are default
      */
-    it('testColumnAlignItemsChangeParentHorizontalAlignEnd', 0, async () => {
+    it('testColumnAlignItemsChangeParentHorizontalAlignEnd',  Level.LEVEL0, async () => {
       console.info('new testColumnAlignItemsChangeParentHorizontalAlignEnd START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'alignItems', value: HorizontalAlign.End

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flex_AlignContent_SpaceAround_FlexMarTest() {
      * @tc.desc The size of the parent component in the cross direction meets the layout
      *               of the child components when the margin of parent component set to 10
      */
-    it('testFlexAlignContentSpaceAroundFlexMargin', 0, async () => {
+    it('testFlexAlignContentSpaceAroundFlexMargin',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMargin] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10

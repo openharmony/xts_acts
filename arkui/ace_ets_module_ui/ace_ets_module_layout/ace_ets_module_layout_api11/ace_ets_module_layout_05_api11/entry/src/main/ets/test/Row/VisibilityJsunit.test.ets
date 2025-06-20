@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -45,7 +45,7 @@ export default function visibilityJsunit() {
       console.info("visibility after each called");
     });
 
-    it('testVisibility01', 0, async (done: Function) => {
+    it('testVisibility01',  Level.LEVEL0, async (done: Function) => {
       console.info('[testVisibility01] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('box');
@@ -55,7 +55,7 @@ export default function visibilityJsunit() {
       done();
     });
 
-    it('testVisibility02', 0, async (done: Function) => {
+    it('testVisibility02',  Level.LEVEL0, async (done: Function) => {
       console.info('[testVisibility02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -80,7 +80,7 @@ export default function visibilityJsunit() {
       done();
     });
 
-    it('testVisibility03', 0, async (done: Function) => {
+    it('testVisibility03',  Level.LEVEL0, async (done: Function) => {
       console.info('[testVisibility03] START');
       try {
         let eventData: events_emitter.EventData = {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -59,7 +59,7 @@ export default function NavigationStack18Jsunit() {
     * @tc.desc  : When NavigationMode is set to stack, hideNavBar is dynamically changed to false, the content area is empty, and the navigation page is displayed.
     * @tc.level : Level 3
     */
-    it('NavigationStack18Jsunit_0100', 0, async (done: Function) => {
+    it('NavigationStack18Jsunit_0100',  Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { Driver, Component, UiWindow, ON } from '@ohos.UiTest';
@@ -49,7 +49,7 @@ export default function List_lanes_1() {
      * @tc.name testListLanesToOne
      * @tc.desc List parent component binds the lanes property lanes(1)
      */
-    it('testListLanesToOne', 0, async (done: Function) => {
+    it('testListLanesToOne',  Level.LEVEL0, async (done: Function) => {
       console.info('testListLanesToOne START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('List_lanes_1_01');

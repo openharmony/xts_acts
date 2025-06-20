@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -50,7 +50,7 @@ export default function Row_flexShrink_Part() {
      * @tc.name testflexShrink
      * @tc.desc row2、row3 set flexShrink(1)
      */
-    it('SUB_ACE_Row_flexShrink_Part_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexShrink_Part_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexShrink_Part_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addflexShrink', value: 1
@@ -105,7 +105,7 @@ export default function Row_flexShrink_Part() {
      * @tc.name testflexShrink
      * @tc.desc row2、row3 set flexShrink(2)
      */
-    it('SUB_ACE_Row_flexShrink_Part_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexShrink_Part_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexShrink_Part_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addflexShrink', value: 2

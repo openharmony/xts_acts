@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -52,7 +52,7 @@ export default function flexVisibility_StartJsunit() {
      * @tc.name testFlexItemAlignStartSubSetVisibilityNone
      * @tc.desc aceFlexAlignItemTest
      */
-    it('testFlexItemAlignStartSubSetVisibilityNone', 0, async () => {
+    it('testFlexItemAlignStartSubSetVisibilityNone',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStartSubSetVisibilityNone START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -97,7 +97,7 @@ export default function flexVisibility_StartJsunit() {
      * @tc.name testFlexItemAlignStartSubSetVisibilityHidden
      * @tc.desc aceFlexAlignItemTest
      */
-    it('testFlexItemAlignStartSubSetVisibilityHidden', 0, async () => {
+    it('testFlexItemAlignStartSubSetVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStartSubSetVisibilityHidden START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({

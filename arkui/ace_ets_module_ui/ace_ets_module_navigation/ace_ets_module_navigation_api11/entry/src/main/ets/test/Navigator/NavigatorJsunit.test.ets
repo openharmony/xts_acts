@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function navigatorJsunit() {
      * @tc.name navigatorTest001
      * @tc.desc aceEtsTest
      */
-    it('navigatorTest001', 0, async () => {
+    it('navigatorTest001',  Level.LEVEL0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson: string = getInspectorByKey('navigator');
@@ -86,7 +86,7 @@ export default function navigatorJsunit() {
      * @tc.name navigatorTest002
      * @tc.desc aceEtsTest
      */
-    it('navigatorTest002', 0, async () => {
+    it('navigatorTest002',  Level.LEVEL0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 2 START ++++++++++++++++');
       await sleep(1)
       let strJson: string = getInspectorByKey('navigator2');
@@ -104,7 +104,7 @@ export default function navigatorJsunit() {
      * @tc.name navigatorTest003
      * @tc.desc aceEtsTest
      */
-    it('navigatorTest003', 0, async () => {
+    it('navigatorTest003',  Level.LEVEL0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 3 START ++++++++++++++++');
       await sleep(1)
       let strJson: string = getInspectorByKey('navigator3');

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function sidebarIconsJsunit() {
@@ -50,7 +50,7 @@ export default function sidebarIconsJsunit() {
      * @tc.name         testsidebarIcons0011
      * @tc.desic         acesidebarIconsEtsTest0011
      */
-    it('testsidebarIcons0011', 0, async (done: Function) => {
+    it('testsidebarIcons0011',  Level.LEVEL0, async (done: Function) => {
       console.info('sidebarIcons testsidebarIcons0011 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('SideBarContainer');

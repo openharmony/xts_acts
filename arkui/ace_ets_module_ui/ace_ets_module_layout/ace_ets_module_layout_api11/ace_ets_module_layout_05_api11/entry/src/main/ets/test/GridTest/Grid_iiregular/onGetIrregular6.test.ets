@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 
 import {
@@ -66,7 +66,7 @@ export default function onGetIrregular6Jsunit() {
     * @tc.desc  : SonGetIrregular[0,1], the custom size of the obtained index setting is laid out in 1 row and 1 column
     * @tc.level : Level 2
     */
-    it('onGetIrregular6Jsunit_0001', 0, async (done: Function) => {
+    it('onGetIrregular6Jsunit_0001',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[onGetIrregular6Jsunit_0001] START');
 

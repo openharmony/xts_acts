@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -59,7 +59,7 @@ export default function AlignContent_FlexAlign_Center_Margin_padding() {
      *               padding settings of the flex component do not meet the size requirements of the subcomponent.
      */
 
-    it('testAlignContentCenterFlexMargin&PaddingNOSatisfy', 0, async () => {
+    it('testAlignContentCenterFlexMargin&PaddingNOSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentCenterFlexMargin&PaddingNOSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 40
@@ -113,7 +113,7 @@ export default function AlignContent_FlexAlign_Center_Margin_padding() {
      *               padding for the flex component to meet the size requirements of the subcomponent.
      */
 
-    it('testAlignContentCenterFlexMargin&PaddingSatisfy', 0, async () => {
+    it('testAlignContentCenterFlexMargin&PaddingSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentCenterFlexMargin&PaddingSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 15

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import GlobalContext from '../../../MainAbility/common/GlobalContext'
@@ -51,7 +51,7 @@ export default function Column_Space() {
      * @tc.name testColumnSpaceToThirty
      * @tc.desc The value of space set to 30, and the layout size of the parent and child components is fixed
      */
-    it('testColumnSpaceToThirty', 0, async () => {
+    it('testColumnSpaceToThirty',  Level.LEVEL0, async () => {
       console.info('[testColumnSpaceToThirty] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addSpace', value: 30
@@ -82,7 +82,7 @@ export default function Column_Space() {
      * @tc.name testColumnSpaceToFifty
      * @tc.desc The value of space set to 50, and the layout size of the parent and child components is fixed
      */
-    it('testColumnSpaceToFifty', 0, async () => {
+    it('testColumnSpaceToFifty',  Level.LEVEL0, async () => {
       console.info('[testColumnSpaceToFifty] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addSpace', value: 50
@@ -116,7 +116,7 @@ export default function Column_Space() {
      * @tc.name testColumnSpaceToSeventy
      * @tc.desc The value of space set to 70, and the layout size of the parent and child components is fixed
      */
-    it('testColumnSpaceToSeventy', 0, async () => {
+    it('testColumnSpaceToSeventy',  Level.LEVEL0, async () => {
       console.info('[testColumnSpaceToSeventy] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addSpace', value: 70
