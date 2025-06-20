@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import webView from '@ohos.web.webview';
-import Utils from '../../test/Utils.test';
+import Utils from '../../test/Utils';
 
 @Entry
 @Component
