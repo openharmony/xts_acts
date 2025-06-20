@@ -36,7 +36,14 @@ export default function abilityTest() {
       await Utils.msSleep(2000)
       hilog.info(domain, tag, '%{public}s', 'beforeAll end');
     })
-
+    /*
+     * @tc.number: SUB_Ability_Ability_Static_0100
+     * @tc.name:  After adding the moduleName field
+     * @tc.desc:  Check start ability by bundl
+     * @tc.level: LEVEL1
+     * @tc.size: MEDIUMTEST
+     * @tc.type: FUNCTION
+    */ 
     it("abilityTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       await Utils.msSleep(1000)
       hilog.info(domain, tag, '%{public}s', 'abilityTest001 start');
