@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import formInfo  from '@ohos.application.formInfo';
 import formError from '@ohos.application.formError';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
@@ -103,7 +103,7 @@ export default function FormApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it(`StartSecondPage_Cover_0100`, 0, async (done:Function) => {
+    it(`StartSecondPage_Cover_0100`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let name: string = 'StartSecondPage_Cover_0100';
       console.info(`${name} start`);
       try {
@@ -125,7 +125,7 @@ export default function FormApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it(`SetFormNextRefreshTime_Cover_0100`, 0, async (done:Function) => {
+    it(`SetFormNextRefreshTime_Cover_0100`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let name: string = 'SetFormNextRefreshTime_Cover_0100';
       console.info(`${name} start`);
       try {
@@ -149,7 +149,7 @@ export default function FormApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it(`SetFormNextRefreshTime_Cover_0200`, 0, async (done:Function) => {
+    it(`SetFormNextRefreshTime_Cover_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let name: string = 'SetFormNextRefreshTime_Cover_0100';
       console.info(`${name} start`);
       try {
@@ -173,7 +173,7 @@ export default function FormApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_Form_provider_TestFormErr_0100', 0, async (done: Function) => {
+    it('SUB_AA_Form_provider_TestFormErr_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_Form_provider_TestFormErr_0100");
       expect(7).assertEqual(formError.FormError.ERR_ADD_INVALID_PARAM);
       expect(10).assertEqual(formError.FormError.ERR_BIND_PROVIDER_FAILED);
@@ -208,7 +208,7 @@ export default function FormApiCoverTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_AA_Form_Cover_FormInfo_0100', 0, async (done: () => void) => {
+    it('SUB_AA_Form_Cover_FormInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       let name: string = 'SUB_AA_Form_Cover_FormInfo_0100';
       console.info(`${name} start`);
       let stateInfo: formInfo.FormStateInfo = module2FormStateInfo;
@@ -228,7 +228,7 @@ export default function FormApiCoverTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_AA_Form_Cover_FormInfo_0200', 0, async (done: () => void) => {
+    it('SUB_AA_Form_Cover_FormInfo_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       let name: string = 'SUB_AA_Form_Cover_FormInfo_0200';
       console.info(`${name} start`);
       let info: formInfo.FormInfo = module1FormInfo;
@@ -246,7 +246,7 @@ export default function FormApiCoverTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_AA_Form_Cover_FormInfo_0300', 0, async (done: () => void) => {
+    it('SUB_AA_Form_Cover_FormInfo_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       console.info("SUB_AA_Form_Cover_FormInfo_0300 start");
       expect("ohos.extra.param.key.form_identity").assertEqual(formInfo.FormParam.IDENTITY_KEY);
       done();
@@ -261,7 +261,7 @@ export default function FormApiCoverTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_AA_Form_Cover_FormBindingData_0100', 0, async (done: () => void) => {
+    it('SUB_AA_Form_Cover_FormBindingData_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       console.info("SUB_AA_Form_Cover_FormBindingData_0100 start");
       let bindingData: formBindingData.FormBindingData = module1Data;
       expect("com.example.getformsinfotest").assertEqual(bindingData.data);

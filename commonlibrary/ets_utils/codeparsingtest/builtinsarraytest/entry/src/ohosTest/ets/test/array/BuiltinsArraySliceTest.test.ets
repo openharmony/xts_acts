@@ -33,9 +33,9 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('BuiltinsArraySliceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('BuiltinsArraySliceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
       const res: Array<number> = inputArray.slice(1, 3)
       console.log("res:" + JSON.stringify(res))
@@ -50,9 +50,9 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('BuiltinsArraySliceTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('BuiltinsArraySliceTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
       const res = inputArray.slice(2)
       console.log("res: " + res)
@@ -67,7 +67,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -84,7 +84,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number | undefined> = [1, , 3]
@@ -101,7 +101,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3]
@@ -118,7 +118,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3]
@@ -135,7 +135,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -152,7 +152,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -169,7 +169,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -186,7 +186,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -203,7 +203,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<string> = ['a', 'b', 'c', 'd']
@@ -220,7 +220,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       interface obj {
@@ -259,7 +259,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number[]> = [[1, 2], [3, 4], [5, 6]]
@@ -276,7 +276,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -293,7 +293,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -310,7 +310,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -327,7 +327,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -344,7 +344,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -361,7 +361,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -378,7 +378,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -395,7 +395,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -412,7 +412,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -429,7 +429,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -446,7 +446,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -463,7 +463,7 @@ export default function BuiltinsArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('BuiltinsArraySliceTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let inputArray: Array<number> = [1, 2, 3, 4, 5, 6]

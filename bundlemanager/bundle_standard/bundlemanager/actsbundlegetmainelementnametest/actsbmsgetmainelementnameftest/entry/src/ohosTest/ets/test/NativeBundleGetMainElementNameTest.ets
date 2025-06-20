@@ -32,7 +32,7 @@ export default function bundlenativegetmainelementnameTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_BMS_OH_NativeBundle_GetMainElementName_0600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('SUB_BMS_OH_NativeBundle_GetMainElementName_0600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'zzz getMainElementName param:' + JSON.stringify(bundlendk.getMainElementName()) ?? '');
       expect(bundlendk.getMainElementName().bundleName).assertEqual(BUNDLE_NAME);
       expect(bundlendk.getMainElementName().moduleName).assertEqual(MODULE_NAME);

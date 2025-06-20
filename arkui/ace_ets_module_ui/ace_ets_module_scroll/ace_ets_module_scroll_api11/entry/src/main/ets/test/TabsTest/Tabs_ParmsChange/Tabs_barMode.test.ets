@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -69,7 +69,7 @@ export default function Tabs_barMode() {
      * @tc.name testTabsBarModeFixed
      * @tc.desc The parent component sets barMode to BarMode.Fixed
      */
-    it('testTabsBarModeFixed', 0, async (done: Function) => {
+    it('testTabsBarModeFixed', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsBarModeFixed] START');
       let strJson = getInspectorByKey('Tabs_barMode_01');
 
@@ -159,7 +159,7 @@ export default function Tabs_barMode() {
     //     * @tc.name      testTabsBarModeScrollable
     //     * @tc.desc      The parent component sets barMode to BarMode.Scrollable
     //     */
-    //    it('testTabsBarModeScrollable', 0, async  (done:Function)=> {
+    //    it('testTabsBarModeScrollable', Level.LEVEL1, async  (done:Function)=> {
     //      console.info('[testTabsBarModeScrollable] START');
     //      globalThis.value.message.notify({name:'changeBarMode', value:BarMode.Scrollable});
     //      await CommonFunc.sleep(3000);

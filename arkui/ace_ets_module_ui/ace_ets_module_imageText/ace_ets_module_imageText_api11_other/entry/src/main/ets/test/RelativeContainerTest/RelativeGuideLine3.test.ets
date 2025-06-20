@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -50,7 +50,7 @@ export default function RelativeGuideLine3() {
      * @tc.size
      */
 
-    it('RelativeGuideLine3_001', 0, async (done: Function) => {
+    it('RelativeGuideLine3_001', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine3_001] START');
 
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function RelativeGuideLine3() {
      * @tc.size
      */
 
-    it('RelativeGuideLine3_002', 0, async (done: Function) => {
+    it('RelativeGuideLine3_002', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine3_002] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -102,7 +102,7 @@ export default function RelativeGuideLine3() {
      * @tc.size
      */
 
-    it('RelativeGuideLine3_003', 0, async (done: Function) => {
+    it('RelativeGuideLine3_003', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine3_003] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -129,7 +129,7 @@ export default function RelativeGuideLine3() {
     * @tc.size
      */
 
-    it('RelativeGuideLine3_004', 0, async (done: Function) => {
+    it('RelativeGuideLine3_004', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine3_004] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();

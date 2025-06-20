@@ -17,9 +17,10 @@ import smsTextPublic from './smsTextPublic.test';
 import smsTextNoCardPublic from './smsTextPublic1.test';
 import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
+let simState: sim.SimState = sim.getSimStateSync(0);
 
 export default function testsuite() {
-  if (sim.getMaxSimCount()!=0){
+  if (sim.getMaxSimCount() != 0 && simState != sim.SimState.SIM_STATE_UNKNOWN) {
     if(sim.hasSimCardSync(0)){
       smsTextPublic();
       smsTextNoCardPublic();

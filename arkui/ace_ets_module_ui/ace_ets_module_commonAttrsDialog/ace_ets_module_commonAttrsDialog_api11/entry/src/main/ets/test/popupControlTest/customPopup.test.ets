@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from "../../MainAbility/common/Common";
 import events_emitter from '@ohos.events.emitter';
@@ -50,7 +50,7 @@ export default function customPopup() {
      * @tc.type :
      * @tc.size :
      */
-    it('customPopup_0100', 0, async (done: Function) => {
+    it('customPopup_0100', Level.LEVEL0, async (done: Function) => {
       console.info('customPopup_0100 START');
       await Utils.sleep(1500);
       let callback = (indexEvent:events_emitter.EventData) => {

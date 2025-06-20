@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function datePickerSelectedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerSelected001', 0, async (done: Function) => {
+    it('testDatePickerSelected001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelected001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function datePickerSelectedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDatePickerSelected002', 0, async (done: Function) => {
+    it('testDatePickerSelected002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelected002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function datePickerSelectedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDatePickerSelected003', 0, async (done: Function) => {
+    it('testDatePickerSelected003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelected003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function datePickerSelectedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDatePickerSelected004', 0, async (done: Function) => {
+    it('testDatePickerSelected004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerSelected004()).assertEqual(0)
       done()
     })

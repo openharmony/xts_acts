@@ -34,7 +34,7 @@ export default function getAbilityLabel() {
          * @tc.name: Test getAbilityLabel : Gets the specified ability label
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Query_Label_4000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('Sub_Bms_Framework_Query_Label_4000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await Bundle.getAbilityLabel(BUNDLE_NAME, ABILITY_NAME).then((data) => {
                 expect(data).assertEqual("entry_MainAbility");
             }).catch((error) => {
@@ -52,7 +52,7 @@ export default function getAbilityLabel() {
          * @tc.name: getAbilityLabel : Gets the specified ability label
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Query_Label_4100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('Sub_Bms_Framework_Query_Label_4100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, OTHER_ABILITY_NAME).then((data) => {
                 let timeNewStamp = Utils.getNowTime();

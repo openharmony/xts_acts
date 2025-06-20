@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
@@ -49,7 +49,7 @@ export default function navDestinationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testNavDestination', 0, async (done: Function) => {
+    it('testNavDestination', Level.LEVEL0, async (done: Function) => {
       console.info('[testNavDestination] START');
       let strJson = getInspectorByKey('NavDestination1');
       console.info("[testNavDestination] strJson is : " + strJson);
@@ -68,7 +68,7 @@ export default function navDestinationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testNavDestination_01', 0, async (done: Function) => {
+    it('testNavDestination_01', Level.LEVEL0, async (done: Function) => {
       console.info('testNavDestination_01 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

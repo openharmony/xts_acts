@@ -33,6 +33,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"TestDragCancelDataLoading003", nullptr, DragTest::TestDragCancelDataLoading003, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"TestDragDisableDropDataDelay004", nullptr, DragTest::TestDragDisableDropDataDelay004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"GetResult", nullptr, DragTest::GetResult, nullptr, nullptr,
          nullptr, napi_default, nullptr},
     };

@@ -48,7 +48,7 @@ export default function GetAccountsByOwner() {
         * @tc.name      : getAccountsByOwner callback
         * @tc.desc      : This application gets its own application information after adding an account
         */
-        it('GetAccountsByOwner_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it('GetAccountsByOwner_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>GetAccountsByOwner_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -83,7 +83,7 @@ export default function GetAccountsByOwner() {
         * @tc.name      : getAccountsByOwner promise
         * @tc.desc      : This application gets its own application information after adding an account
         */
-        it('GetAccountsByOwner_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it('GetAccountsByOwner_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>GetAccountsByOwner_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -32,13 +32,13 @@ struct IndexA {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Button('Terminate AAA')
+          .width('1%')
+          .height('1%')
         .type(ButtonType.Capsule)
         .margin({
           top: 20
         })
         .backgroundColor('#0D9FFB')
-        .width('35%')
-        .height('5%')
         .onClick(() => {
           try {
             let context = getContext(this) as common.UIAbilityContext;

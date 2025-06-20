@@ -36,7 +36,6 @@
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
 #include "drawing_record_cmd.h"
-#include "utils/scalar.h"
 #include <random>
 
 using namespace testing;

@@ -12,11 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
-
 export default function remoteWindowJsunit() {
   describe('remoteWindowTest', () => {
     beforeEach(async (done: Function) => {
@@ -39,18 +37,16 @@ export default function remoteWindowJsunit() {
       }
       done()
     });
-
     afterEach(async () => {
       await Utils.sleep(1000);
       console.info("remoteWindow after each called");
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0001
      * @tc.name         testremoteWindow0001
      * @tc.desic        acesremoteWindowEtsTest0001
      */
-    it('testRemoteWindow0001', 0, async (done: Function) => {
+    it('testRemoteWindow0001', Level.LEVEL0, async (done: Function) => {
       console.info('remoteWindow testRemoteWindow0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
@@ -60,13 +56,12 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0001] width value :" + JSON.parse(strJson).$attrs.width);
       done();
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0002
      * @tc.name         testRemoteWindow0002
      * @tc.desic         aceRemoteWindowEtsTest0002
      */
-    it('testRemoteWindow0002', 0, async (done: Function) => {
+    it('testRemoteWindow0002', Level.LEVEL0, async (done: Function) => {
       console.info('RemoteWindow testRemoteWindow0002 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
@@ -76,13 +71,12 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0002] height value :" + JSON.parse(strJson).$attrs.height);
       done();
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0003
      * @tc.name         testRemoteWindow0003
      * @tc.desic         aceRemoteWindowEtsTest0003
      */
-    it('testRemoteWindow0003', 0, async (done: Function) => {
+    it('testRemoteWindow0003', Level.LEVEL0, async (done: Function) => {
       console.info('RemoteWindow testRemoteWindow0003 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
@@ -92,13 +86,12 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0003] fontSize value :" + JSON.parse(strJson).$attrs.fontSize);
       done();
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0004
      * @tc.name         testRemoteWindow0004
      * @tc.desic         aceRemoteWindowEtsTest0004
      */
-    it('testRemoteWindow0004', 0, async (done: Function) => {
+    it('testRemoteWindow0004', Level.LEVEL0, async (done: Function) => {
       console.info('RemoteWindow testRemoteWindow0004 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
@@ -108,13 +101,12 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0004] opacity value :" + JSON.parse(strJson).$attrs.opacity);
       done();
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0005
      * @tc.name         testRemoteWindow0005
      * @tc.desic         aceRemoteWindowEtsTest0005
      */
-    it('testRemoteWindow0005', 0, async (done: Function) => {
+    it('testRemoteWindow0005', Level.LEVEL0, async (done: Function) => {
       console.info('RemoteWindow testRemoteWindow0005 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
@@ -124,13 +116,12 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0005] align value :" + JSON.parse(strJson).$attrs.align);
       done();
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0006
      * @tc.name         testRemoteWindow0006
      * @tc.desic         aceRemoteWindowEtsTest0006
      */
-    it('testRemoteWindow0006', 0, async (done: Function) => {
+    it('testRemoteWindow0006', Level.LEVEL0, async (done: Function) => {
       console.info('RemoteWindow testRemoteWindow0006 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
@@ -140,13 +131,12 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0006] fontColor value :" + JSON.parse(strJson).$attrs.fontColor);
       done();
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0007
      * @tc.name         testRemoteWindow0007
      * @tc.desic         aceRemoteWindowEtsTest0007
      */
-    it('testRemoteWindow0007', 0, async (done: Function) => {
+    it('testRemoteWindow0007', Level.LEVEL0, async (done: Function) => {
       console.info('RemoteWindow testRemoteWindow0007 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
@@ -156,13 +146,12 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0007] lineHeight value :" + JSON.parse(strJson).$attrs.lineHeight);
       done();
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0009
      * @tc.name         testRemoteWindow0009
      * @tc.desic         aceRemoteWindowEtsTest0009
      */
-    it('testRemoteWindow0009', 0, async (done: Function) => {
+    it('testRemoteWindow0009', Level.LEVEL0, async (done: Function) => {
       console.info('RemoteWindow testRemoteWindow009 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
@@ -172,13 +161,12 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0009] padding value :" + JSON.parse(strJson).$attrs.padding);
       done();
     });
-
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0010
      * @tc.name         testRemoteWindow0010
      * @tc.desic         aceRemoteWindowEtsTest0010
      */
-    it('testRemoteWindow0010', 0, async (done: Function) => {
+    it('testRemoteWindow0010', Level.LEVEL0, async (done: Function) => {
       console.info('RemoteWindow testRemoteWindow0010 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('formComponentFormDimensionWindowBoundsText');

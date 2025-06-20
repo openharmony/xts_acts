@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Utils from './Utils';
 
 export default function polyLineJsunit() {
@@ -49,7 +49,7 @@ export default function polyLineJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testpolyLine', 0, async (done: Function) => {
+    it('testpolyLine', Level.LEVEL0, async (done: Function) => {
       console.info('[testpolyLine] START');
       let strJson = getInspectorByKey('polyLine');
       let obj: ESObject = JSON.parse(strJson);

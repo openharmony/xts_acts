@@ -45,9 +45,9 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.desc      : setData Verify the properties of the MIMETYPE_TEXT_PLAIN type
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0100 start-----")
       let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
       await systemPasteboard.setData(pasteData).then(() => {
@@ -73,9 +73,9 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.desc      : setData Verify the properties of the MIMETYPE_TEXT_HTML type
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0200 start-----")
       let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_HTML, 'hello');
       await systemPasteboard.setData(pasteData).then(() => {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -43,7 +43,7 @@ export default function textTimerJsunit() {
       console.info("textPickerDialog after each called");
     })
 
-    it('textTimer0100', 0, async (done: Function) => {
+    it('textTimer0100', Level.LEVEL1, async (done: Function) => {
       console.info('[textTimer0100] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textTimer');
@@ -58,7 +58,7 @@ export default function textTimerJsunit() {
       done();
     });
 
-    it('textTimer0200', 0, async (done: Function) => {
+    it('textTimer0200', Level.LEVEL1, async (done: Function) => {
       console.info('[textTimer0100] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textTimer');
@@ -70,7 +70,7 @@ export default function textTimerJsunit() {
       done();
     });
 
-    it('textTimer0300', 0, async (done: Function) => {
+    it('textTimer0300', Level.LEVEL1, async (done: Function) => {
       console.info('[textTimer0300] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textTimer');

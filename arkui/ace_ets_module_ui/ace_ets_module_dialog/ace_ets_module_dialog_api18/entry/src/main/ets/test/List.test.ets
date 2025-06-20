@@ -15,19 +15,39 @@
 import buttonType from './buttonType/buttonTypeApi.test';
 import overlayManagerTest from './overlayManager/overlayManagerTest.test'
 import customDialogLevelOrder from './dialog/customDialogLevelOrder.test'
+import closeToastTest from './promptActionTest/closeToastTest.test'
+import closeDialogTest from './dialog/closeDialogTest.test'
 import showDialogLevelOrder from './dialog/showDialogLevelOrder.test'
 import openCustomDialogLevelOrder from './dialog/openCustomDialogLevelOrder.test'
 import openCustomDialogWithConOrder from './dialog/openCustomDialogWithConOrder.test'
 import presentCustomDialogOrder from './dialog/presentCustomDialogOrder.test'
 import alertDialogLevelOrder from './dialog/alertDialogLevelOrder.test'
+import bindMenuHapticFeedbackMode from './bindMenuTest/bindMenuHapticFeedbackMode.test';
+import bindTips1Test from './bindTipsTest/bindTipsTest1.test';
+import bindTips2Test from './bindTipsTest/bindTipsTest2.test';
+import bindContextMenuHapticFeedbackMode from './bindContextMenuTest/bindContextMenuHapticFeedback.test'
+import previewBorderRadius from './bindContextMenuTest/previewBorderRadius.test'
+import isVisible from './popup/isVisible.test';
+import getDialogControllerTest from './dialog/getDialogControllerTest.test';
+import DialogOptions from './promptActionTest/DialogOptions.test';
 
 export default function testsuite() {
+    isVisible()
+    getDialogControllerTest()
+    DialogOptions()
     buttonType()
     overlayManagerTest()
     customDialogLevelOrder()
+    closeToastTest()
+    closeDialogTest()
     showDialogLevelOrder()
     openCustomDialogLevelOrder()
     openCustomDialogWithConOrder()
     presentCustomDialogOrder()
     alertDialogLevelOrder()
+    bindMenuHapticFeedbackMode()
+    bindTips1Test()
+    bindTips2Test()
+    bindContextMenuHapticFeedbackMode()
+    previewBorderRadius()
 }

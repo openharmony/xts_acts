@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -48,7 +48,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_001', 0, async (done: Function) => {
+    it('test_panel_001', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_001] START');
       let strJson = getInspectorByKey('PanelKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_002', 0, async (done: Function) => {
+    it('test_panel_002', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_002] START');
       let strJson = getInspectorByKey('PanelKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -88,7 +88,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_003', 0, async (done: Function) => {
+    it('test_panel_003', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_003] START');
       let strJson = getInspectorByKey('PanelKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -108,7 +108,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_004', 0, async (done: Function) => {
+    it('test_panel_004', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_004] START');
       let strJson = getInspectorByKey('PanelKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -128,7 +128,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_005', 0, async (done: Function) => {
+    it('test_panel_005', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_005] START');
       let strJson = getInspectorByKey('PanelKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -148,7 +148,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_006', 0, async (done: Function) => {
+    it('test_panel_006', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_006] START');
       let strJson = getInspectorByKey('PanelKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -168,7 +168,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_007', 0, async (done: Function) => {
+    it('test_panel_007', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_007] START');
       let strJson = getInspectorByKey('PanelKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -188,7 +188,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_008', 0, async (done: Function) => {
+    it('test_panel_008', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_008] START');
       let strJson = getInspectorByKey('PanelKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -208,7 +208,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_009', 0, async (done: Function) => {
+    it('test_panel_009', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_009] START');
       let strJson = getInspectorByKey('PanelKey2');
       let obj: ESObject = JSON.parse(strJson);
@@ -226,7 +226,7 @@ export default function panelJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_panel_0010', 0, async (done: Function) => {
+    it('test_panel_0010', Level.LEVEL0, async (done: Function) => {
       console.info('[test_panel_0010] START');
       let strJson = getInspectorByKey('PanelKey2');
       let obj: ESObject = JSON.parse(strJson);

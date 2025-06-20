@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function unitPaddingPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitPaddingPercent001', 0, async (done: Function) => {
+    it('testUnitPaddingPercent001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitPaddingPercent001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function unitPaddingPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitPaddingPercent002', 0, async (done: Function) => {
+    it('testUnitPaddingPercent002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitPaddingPercent002()).assertEqual(0)
       done();
     }); 
@@ -58,7 +58,7 @@ export default function unitPaddingPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitPaddingPercent003', 0, async (done: Function) => {
+    it('testUnitPaddingPercent003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitPaddingPercent003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function unitPaddingPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitPaddingPercent004', 0, async (done: Function) => {
+    it('testUnitPaddingPercent004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitPaddingPercent004()).assertEqual(0)
       done();
     });
@@ -82,7 +82,7 @@ export default function unitPaddingPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitPaddingPercent005', 0, async (done: Function) => {
+    it('testUnitPaddingPercent005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitPaddingPercent005()).assertEqual(0)
       done();
     });

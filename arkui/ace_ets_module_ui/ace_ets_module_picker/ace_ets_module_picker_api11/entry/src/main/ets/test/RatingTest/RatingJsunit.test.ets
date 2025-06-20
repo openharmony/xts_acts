@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -63,7 +63,7 @@ export default function ratingJsunit() {
      * @tc.name testGetRatingAttr010
      * @tc.desc aceEtsTest
      */
-    it('testGetRatingAttr010', 0, async (done: Function) => {
+    it('testGetRatingAttr010', Level.LEVEL1, async (done: Function) => {
       console.info('testGetRatingAttr1 START');
       let strJson = getInspectorByKey('rating1');
       let obj: ESObject = JSON.parse(strJson);
@@ -88,7 +88,7 @@ export default function ratingJsunit() {
      * @tc.name testGetRatingAttr020
      * @tc.desc aceEtsTest
      */
-    it('testGetRatingAttr020', 0, async (done: Function) => {
+    it('testGetRatingAttr020', Level.LEVEL1, async (done: Function) => {
       console.info('testGetRatingAttr2 START');
       let strJson = getInspectorByKey('rating2');
       let obj: ESObject = JSON.parse(strJson);

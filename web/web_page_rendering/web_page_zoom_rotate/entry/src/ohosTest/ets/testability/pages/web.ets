@@ -89,6 +89,7 @@ struct Index {
           console.info("key==>" + this.str);
           switch (this.str) {
             case "emitInitialScale": {
+              await Utils.sleep(5000);
               this.initialScale = 120;
               await Utils.sleep(1000);
               this.controller.loadUrl({ url: "resource://rawfile/second.html" });

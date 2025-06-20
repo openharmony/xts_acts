@@ -46,9 +46,9 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayOfTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
+    it('builtinsArrayOfTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0100';
       console.info(`${caseName} test start`);
       try {
@@ -69,9 +69,9 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayOfTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
+    it('builtinsArrayOfTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0200';
       console.info(`${caseName} test start`);
       try {
@@ -92,7 +92,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0300';
@@ -115,7 +115,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0400';
@@ -142,7 +142,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0500';
@@ -165,7 +165,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0600';
@@ -192,7 +192,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0700';
@@ -215,7 +215,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0800';
@@ -238,7 +238,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest0900';
@@ -261,7 +261,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1000';
@@ -283,7 +283,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1100';
@@ -306,7 +306,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1200';
@@ -329,7 +329,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1300';
@@ -352,7 +352,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1400';
@@ -375,7 +375,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1500';
@@ -398,7 +398,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1600';
@@ -421,7 +421,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1700';
@@ -444,7 +444,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1800';
@@ -467,7 +467,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest1900';
@@ -490,7 +490,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2000';
@@ -513,7 +513,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2100';
@@ -536,7 +536,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2200';
@@ -559,7 +559,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2300';
@@ -594,7 +594,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2400';
@@ -617,7 +617,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2500';
@@ -640,7 +640,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2600';
@@ -663,7 +663,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2700';
@@ -686,7 +686,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2800';
@@ -709,7 +709,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest2900';
@@ -732,7 +732,7 @@ export default function builtinsArrayOfTest() {
      * @tc.desc Testing isArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayOfTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayOfTest3000';

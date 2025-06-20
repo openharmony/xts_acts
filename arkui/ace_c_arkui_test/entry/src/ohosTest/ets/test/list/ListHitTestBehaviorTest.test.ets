@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function listHitTestBehaviorTest() {
@@ -27,7 +27,7 @@ export default function listHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListHitTestBehavior001', 0, async (done: Function) => {
+    it('testListHitTestBehavior001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ListHitTestBehaviorDefaultTest';
       await Utils.pushPage(`list/${PAGE_TAG}`);
       await Utils.clickComponent('Default')
@@ -48,7 +48,7 @@ export default function listHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListHitTestBehavior002', 0, async (done: Function) => {
+    it('testListHitTestBehavior002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ListHitTestBehaviorBlockTest';
       await Utils.pushPage(`list/${PAGE_TAG}`);
       await Utils.clickComponent('Block')
@@ -69,7 +69,7 @@ export default function listHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListHitTestBehavior003', 0, async (done: Function) => {
+    it('testListHitTestBehavior003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ListHitTestBehaviorTransparentTest';
       await Utils.pushPage(`list/${PAGE_TAG}`);
       await Utils.clickComponent('Transparent')
@@ -90,7 +90,7 @@ export default function listHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListHitTestBehavior004', 0, async (done: Function) => {
+    it('testListHitTestBehavior004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ListHitTestBehaviorNoneTest';
       await Utils.pushPage(`list/${PAGE_TAG}`);
       await Utils.clickComponent('None')

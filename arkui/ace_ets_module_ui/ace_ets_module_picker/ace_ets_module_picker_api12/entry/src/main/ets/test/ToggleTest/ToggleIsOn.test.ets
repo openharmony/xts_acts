@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function ToggleContentIsOn() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Toggle_Content_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Toggle_Content_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_Stage_Toggle_Content_0100] START');
       await Utils.sleep(1000);
 

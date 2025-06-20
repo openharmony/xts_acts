@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules001', 0, async (done: Function) => {
+    it('testTextAlignRules001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules002', 0, async (done: Function) => {
+    it('testTextAlignRules002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules003', 0, async (done: Function) => {
+    it('testTextAlignRules003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules004', 0, async (done: Function) => {
+    it('testTextAlignRules004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules005', 0, async (done: Function) => {
+    it('testTextAlignRules005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules006', 0, async (done: Function) => {
+    it('testTextAlignRules006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules007', 0, async (done: Function) => {
+    it('testTextAlignRules007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules008', 0, async (done: Function) => {
+    it('testTextAlignRules008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textAlignRulesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlignRules009', 0, async (done: Function) => {
+    it('testTextAlignRules009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlignRules009()).assertEqual(0)
       done()
     })

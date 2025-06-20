@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis(100) , the height of column1 is 100vp
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0100', 0, async () => {
+    it('SUB_ACE_flexBasis_Type_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0100] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexBasis1', value: 100
@@ -93,7 +93,7 @@ export default function flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis(0) , the height of column1 is  the original height
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0200', 0, async () => {
+    it('SUB_ACE_flexBasis_Type_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0200] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexBasis1', value: 0
@@ -137,7 +137,7 @@ export default function flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis('auto') , the height of column1 is  the original height
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0300', 0, async () => {
+    it('SUB_ACE_flexBasis_Type_TEST_0300',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0300] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: 'auto'
@@ -178,7 +178,7 @@ export default function flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis('200vp') , the height of column1 is 200vp
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0400', 0, async () => {
+    it('SUB_ACE_flexBasis_Type_TEST_0400',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0400] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: '200vp'
@@ -220,7 +220,7 @@ export default function flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis('200px') , the height of column1 is 200px
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0500', 0, async () => {
+    it('SUB_ACE_flexBasis_Type_TEST_0500',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0500] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: '200px'
@@ -262,7 +262,7 @@ export default function flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis('200fp') , the height of column1 is 200fp
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0600', 0, async () => {
+    it('SUB_ACE_flexBasis_Type_TEST_0600',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0600] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: '200fp'
@@ -304,7 +304,7 @@ export default function flexBasis_Type() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis('200lpx') , the height of column1 is 200lpx
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0700', 0, async () => {
+    it('SUB_ACE_flexBasis_Type_TEST_0700',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0700] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: '200lpx'

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderShowStepsTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderShowSteps001', 0, async (done: Function) => {
+    it('testSliderShowSteps001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderShowSteps001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderShowStepsTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderShowSteps002', 0, async (done: Function) => {
+    it('testSliderShowSteps002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderShowSteps002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function sliderShowStepsTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderShowSteps003', 0, async (done: Function) => {
+    it('testSliderShowSteps003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderShowSteps003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function sliderShowStepsTest() {
     * @tc.type: Function
     * @tc.level: Level 2
     */
-    it('testSliderShowSteps004', 0, async (done: Function) => {
+    it('testSliderShowSteps004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderShowSteps004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function sliderShowStepsTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderShowSteps005', 0, async (done: Function) => {
+    it('testSliderShowSteps005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderShowSteps005()).assertEqual(0)
       done()
     })

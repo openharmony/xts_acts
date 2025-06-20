@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -53,7 +53,7 @@ export default function repeatWaterFlow() {
      * @tc.type
      * @tc.size
      */
-    it('repeatWaterFlow_0100', 0, async (done: Function) => {
+    it('repeatWaterFlow_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[repeatWaterFlow_0100] START');
       let strJson = getInspectorByKey('flowRepeat_event');
       let obj: ESObject = JSON.parse(strJson);
@@ -86,7 +86,7 @@ export default function repeatWaterFlow() {
      * @tc.type
      * @tc.size
      */
-    it('repeatWaterFlow_0200', 0, async (done: Function) => {
+    it('repeatWaterFlow_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[repeatWaterFlow_0200] START');
       let waterFlowRect = CommonFunc.getComponentRectOnScreen('flowRepeat_event')
       let driver = Driver.create()

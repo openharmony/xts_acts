@@ -26,11 +26,11 @@ export default function datatestNoPTest() {
      * @tc.number : SUB_Telephony_Data_IsCellularDataRoamingEnabledSync_NoP_0100
      * @tc.name   : testTelephonyDataIsCellularDataRoamingEnabledSyncNoP_0100
      * @tc.desc   : isCellularDataRoamingEnabledSync No permission
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testTelephonyDataIsCellularDataRoamingEnabledSyncNoP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabledSyncNoP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabledSyncNoP_0100';
       console.info(`${caseName} test start `);
       try {
@@ -75,11 +75,11 @@ export default function datatestNoPTest() {
      * @tc.number : SUB_Telephony_Data_QueryAllApns_NoP_0300
      * @tc.name   : testTelephonyDataQueryAllApnsNoP_0300
      * @tc.desc   : QueryAllApns No permission
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testTelephonyDataQueryAllApnsNoP_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+    it('testTelephonyDataQueryAllApnsNoP_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       let caseName: string = 'testTelephonyDataQueryAllApnsNoP_0300';
       console.info(`${caseName} test start `);
       try {

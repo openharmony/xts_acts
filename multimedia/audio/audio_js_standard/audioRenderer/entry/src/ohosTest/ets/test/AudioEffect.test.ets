@@ -16,7 +16,7 @@ import audio from '@ohos.multimedia.audio';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function AudioEffectTest() {
   describe('AudioEffectTest', function () {
@@ -402,9 +402,9 @@ export default function AudioEffectTest() {
      * @tc.desc      : GET_AUDIOEFFECTINFOARRYSYNC - MEDIA - Sync
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRYSYNC_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRYSYNC_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       try {
         let audioEffectInfoArray = audioStreamManager.getAudioEffectInfoArraySync(audio.StreamUsage.STREAM_USAGE_MEDIA)
         expect(audioEffectInfoArray[0]).assertEqual(0);
@@ -427,7 +427,7 @@ export default function AudioEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRYSYNC_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRYSYNC_0200', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       try {
         // @ts-ignore
         let audioEffectInfoArray = audioStreamManager.getAudioEffectInfoArraySync()
@@ -493,9 +493,9 @@ export default function AudioEffectTest() {
      * @tc.desc      : GET_AUDIOEFFECTINFOARRY - UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       try {
         audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_UNKNOWN).then((audioEffectInfoArray) => {
           expect(audioEffectInfoArray[0]).assertEqual(0);
@@ -519,9 +519,9 @@ export default function AudioEffectTest() {
      * @tc.desc      : GET_AUDIOEFFECTINFOARRY - MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0200', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       try {
         audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MEDIA).then((audioEffectInfoArray) => {
           expect(audioEffectInfoArray[0]).assertEqual(0);
@@ -1107,9 +1107,9 @@ export default function AudioEffectTest() {
          * @tc.desc      : setAudioEffectMode - Null_Parameter - 401 - Promise
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 2
+         * @tc.level     : Level 0
          */
-    it('SUB_MULTIMEDIA_AUDIO_SET_AUDIOEFFECTIMODE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_SET_AUDIOEFFECTIMODE_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -1403,9 +1403,9 @@ export default function AudioEffectTest() {
      * @tc.desc      : GET_SET_AudioEffectMode-UNKNOWN & UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_SET_AUDIOEFFECTMODE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_SET_AUDIOEFFECTMODE_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(TAG + 'SUB_MULTIMEDIA_AUDIO_GET_SET_AUDIOEFFECTMODE_0100 come in')
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -4398,9 +4398,9 @@ export default function AudioEffectTest() {
      * @tc.name      : AudioEffect_Play_MUSIC_UNKNOWN
      * @tc.desc      : AudioEffect_Play_MUSIC
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIOEFFECT_PLAY_0100', 1, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIOEFFECT_PLAY_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       testCaseName = '[SUB_MULTIMEDIA_AUDIO_AUDIOEFFECT_PLAY_0100]'
       console.info(TAG + testCaseName + 'start')
       streamNum = 1
@@ -4446,7 +4446,7 @@ export default function AudioEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIOEFFECT_PLAY_0200', 1, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIOEFFECT_PLAY_0200', 2, async function (done) {
       testCaseName = '[SUB_MULTIMEDIA_AUDIO_AUDIOEFFECT_PLAY_0200]'
       console.info(TAG + testCaseName + 'start')
       streamNum = 1

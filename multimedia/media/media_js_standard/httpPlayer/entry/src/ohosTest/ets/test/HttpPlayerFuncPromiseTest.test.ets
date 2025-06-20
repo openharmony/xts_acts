@@ -15,7 +15,7 @@
 
 import media from '@ohos.multimedia.media'
 import router, { RouterOptions } from '@system.router'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function sleep(time: number) {
@@ -128,7 +128,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0100', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -175,7 +175,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0200', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -224,7 +224,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0300', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -281,7 +281,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0400', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -330,7 +330,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0500', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -379,7 +379,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0600', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -430,7 +430,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0700', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -508,7 +508,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0800', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -557,7 +557,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0900', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -611,7 +611,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1000', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {
@@ -654,7 +654,7 @@ export default function hy_HttpPlayerFuncPromiseTesttest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1100', Level.LEVEL0,async (done: Function) => {
       surfaceID = globalThis.value;
       console.info('case new surfaceID is ' + surfaceID);
       await media.createVideoPlayer().then((video) => {

@@ -14,11 +14,11 @@
  */
 
 import {showPage} from '../../../common/js/swiper';
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
+        itemIndex: -1,
         index: 0,
         str: '',
         title: 'swiper',
@@ -32,17 +32,24 @@ export default {
             params: {
                 step: '操作步骤：在方框内上下滑动',
                 result: '预期结果：方框中的页面随滑动切换',
-                url: 'pages/swiper/SwiperA10/index'
+                url: 'pages/swiper/SwiperA10/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-compent/index' });
+        router.replace({
+            uri: 'pages/second-compent/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

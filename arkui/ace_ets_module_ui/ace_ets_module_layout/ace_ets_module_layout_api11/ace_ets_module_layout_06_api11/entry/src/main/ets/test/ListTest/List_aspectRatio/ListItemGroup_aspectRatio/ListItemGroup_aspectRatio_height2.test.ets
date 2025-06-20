@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -69,7 +69,7 @@ export default function ListItemGroup_aspectRatio_height2() {
      * @tc.name testListAspectRatio
      * @tc.desc set the aspectRatio of ListItem to '0'
      */
-    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0100', 0, async (done: Function) => {
+    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0100] START');
       globalThis.value.message.notify({
         name: 'aspectRatio1', value: '0'
@@ -81,7 +81,7 @@ export default function ListItemGroup_aspectRatio_height2() {
       let itemheight: number = item01.bottom - item01.top;
 
       expect(Math.abs(Math.round(ListItemGroup01.right - ListItemGroup01.left) - Math.round(itemwidth)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(ListItemGroup01.bottom - ListItemGroup01.top) - Math.round(itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(ListItemGroup01.bottom - ListItemGroup01.top) - (itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0100] END');
       done();
@@ -92,7 +92,7 @@ export default function ListItemGroup_aspectRatio_height2() {
      * @tc.name testListAspectRatio
      * @tc.desc set the aspectRatio of ListItem to '0.5'
      */
-    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0200', 0, async (done: Function) => {
+    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0200] START');
       globalThis.value.message.notify({
         name: 'aspectRatio1', value: '0.5'
@@ -104,7 +104,7 @@ export default function ListItemGroup_aspectRatio_height2() {
       let itemheight: number = item01.bottom - item01.top;
 
       expect(Math.abs(Math.round(ListItemGroup01.right - ListItemGroup01.left) - Math.round(itemwidth)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(ListItemGroup01.bottom - ListItemGroup01.top) - Math.round(itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(ListItemGroup01.bottom - ListItemGroup01.top) - (itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0200] END');
       done();
@@ -115,7 +115,7 @@ export default function ListItemGroup_aspectRatio_height2() {
      * @tc.name testListAspectRatio
      * @tc.desc set the aspectRatio of ListItem to '2'
      */
-    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0300', 0, async (done: Function) => {
+    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0300] START');
       globalThis.value.message.notify({
         name: 'aspectRatio1', value: '2'
@@ -127,7 +127,7 @@ export default function ListItemGroup_aspectRatio_height2() {
       let itemheight: number = item01.bottom - item01.top;
 
       expect(Math.abs(Math.round(ListItemGroup01.right - ListItemGroup01.left) - Math.round(itemwidth)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(ListItemGroup01.bottom - ListItemGroup01.top) - Math.round(itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(ListItemGroup01.bottom - ListItemGroup01.top) - (itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0300] END');
       done();
@@ -138,7 +138,7 @@ export default function ListItemGroup_aspectRatio_height2() {
      * @tc.name testListAspectRatio
      * @tc.desc set the aspectRatio of ListItem to '-1'
      */
-    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0400', 0, async (done: Function) => {
+    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0400] START');
       globalThis.value.message.notify({
         name: 'aspectRatio1', value: '-1'
@@ -150,7 +150,7 @@ export default function ListItemGroup_aspectRatio_height2() {
       let itemheight: number = item01.bottom - item01.top;
 
       expect(Math.abs(Math.round(ListItemGroup01.right - ListItemGroup01.left) - Math.round(itemwidth)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(ListItemGroup01.bottom - ListItemGroup01.top) - Math.round(itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(ListItemGroup01.bottom - ListItemGroup01.top) - (itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0400] END');
       done();

@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 import bytrace from "@ohos.bytrace"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 export default function BytraceTest() {
 describe("BytraceTest", function () {
 
-    it("DFX_DFR_Bytrace_0100", 0, async function (done) {
+    it("DFX_DFR_Bytrace_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("-------DFX_DFR_Bytrace_0100 start--------");
         for (var i = 0; i < 3; i++) {
             console.info("DFX_DFR_Bytrace_0100 i = " + i)
@@ -33,7 +33,7 @@ describe("BytraceTest", function () {
         done();
     })
 
-    it("DFX_DFR_Bytrace_0200", 0, async function (done) {
+    it("DFX_DFR_Bytrace_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("------DFX_DFR_Bytrace_0200 start------");
         // Normal condition
         let flag = false;
@@ -86,7 +86,7 @@ describe("BytraceTest", function () {
         done();
     })
 
-    it("DFX_DFR_Bytrace_0300", 0, async function (done) {
+    it("DFX_DFR_Bytrace_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("------DFX_DFR_Bytrace_0300 start------");
         // Normal condition
         let flag = false;
@@ -139,7 +139,7 @@ describe("BytraceTest", function () {
         done();
     })
 
-    it("DFX_DFR_Bytrace_0400", 0, async function (done) {
+    it("DFX_DFR_Bytrace_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("-------DFX_DFR_Bytrace_0400 start--------");
         for (var i = 0; i < 3; i++) {
             console.info("DFX_DFR_Bytrace_0400 :" + i);
@@ -149,7 +149,7 @@ describe("BytraceTest", function () {
         done();
     })
 
-    it("DFX_DFR_Bytrace_0500", 0, async function (done) {
+    it("DFX_DFR_Bytrace_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("-------DFX_DFR_Bytrace_0500 start--------");
         // Normal condition
         let flag = false;
@@ -202,7 +202,7 @@ describe("BytraceTest", function () {
         done();
     })
     
-    it("DFX_DFR_Bytrace_0600", 0, async function (done) {
+    it("DFX_DFR_Bytrace_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("-------DFX_DFR_Bytrace_0600 start--------");
         let flag = true;
         try {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -71,7 +71,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to 0
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0100', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0100] START');
       globalThis.value.message.notify({
@@ -135,7 +135,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to 1
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0200', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0200] START');
       globalThis.value.message.notify({
@@ -199,7 +199,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to -1
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0300', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0300] START');
       globalThis.value.message.notify({
@@ -257,7 +257,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to 0,The first sub component slides out of the screen
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0400', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0300] START');
       globalThis.value.message.notify({
@@ -321,7 +321,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to 100
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0500', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0500', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0500] START');
       globalThis.value.message.notify({
@@ -380,7 +380,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 1,set indexInGroup to 0
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0600', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0600', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0600] START');
       globalThis.value.message.notify({
@@ -440,7 +440,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 1,set indexInGroup to 0,the space of lisItemGroup set to 20
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0700', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0700', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0700] START');
       globalThis.value.message.notify({
@@ -508,7 +508,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 1,set indexInGroup to 0,the padding of lisItemGroup set to 20
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0800', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0800', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0800] START');
       globalThis.value.message.notify({
@@ -562,9 +562,9 @@ export default function getListItemGroupRect1() {
 
       console.log('assert size')
       console.log('listItemGroup_0.right - listItemGroup_0.left' + (listItemGroup_0.right - listItemGroup_0.left))
-      expect(Math.abs(vp2px(Math.round(width)) - Math.round(listItemGroup_0.right - listItemGroup_0.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(vp2px(width) - (listItemGroup_0.right - listItemGroup_0.left))) <= 1).assertTrue();
       console.log('listItemGroup_0.bottom - listItemGroup_0.top' + (listItemGroup_0.bottom - listItemGroup_0.top))
-      expect(Math.abs(vp2px(Math.round(height)) - Math.round(listItemGroup_0.bottom - listItemGroup_0.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(vp2px(height) - (listItemGroup_0.bottom - listItemGroup_0.top))) <= 1).assertTrue();
 
 
       done();
@@ -577,7 +577,7 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 1,set indexInGroup to 0,the margin of lisItem set to 20
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0900', 0, async (done: Function) => {
+    it('getListItemGroupRect1_0900', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0900] START');
       globalThis.value.message.notify({

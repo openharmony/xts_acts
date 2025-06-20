@@ -112,11 +112,11 @@ export default function FileShareJsTest() {
          * @tc.number:SUB_Security_FileShare_CheckPath_Const_0200
          * @tc.name: Test fileShare checkPath PERSISTENT_TYPE Const Attribute
          * @tc.desc: Test fileShare PolicyType const PERSISTENT_TYPE
-         * @tc.level: Level1
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_FileShare_CheckPath_Const_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
+        it("SUB_Security_FileShare_CheckPath_Const_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.info('----------------------SUB_Security_FileShare_CheckPath_Const_0200---------------------------');
             let value = fileShare.PolicyType.PERSISTENT_TYPE;
             console.info('SUB_Security_FileShare_CheckPath_Const_0200 value is: ' + value);

@@ -23,7 +23,7 @@ struct AccessibilityThirdFramework {
     '\n' +
     '预期结果：\n' +
     '若支持屏幕朗读，则下滑期间绿框会在两个灰色区域中绘制。若不支持屏幕朗读，直接按照失败处理走豁免。';
-  @State Vue: boolean = false;
+  @State Vue: boolean = true;
   @State active: boolean = false;
   @State intervalNum: number = 0;
   @State yesEnable: boolean = false

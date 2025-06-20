@@ -21,6 +21,10 @@ struct SubHeaderExample {
   build() {
     Column() {
       SubHeader({
+        secondaryTitle: '二级标题',
+        operationType: OperationType.LOADING,
+      })
+      SubHeader({
         // 设置左侧select
         select: {
           options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],

@@ -23,7 +23,8 @@ import {
   INVALID_USER_ID,
   AUTOSTARTAPP1,
   AUTOSTARTAPP2,
-  TEST_BUNDLENAME
+  TEST_BUNDLENAME,
+  DEFAULT_APP_INDEX
 } from '../commom.ets';
 
 import adminManager from '@ohos.enterprise.adminManager';
@@ -286,6 +287,70 @@ export default function applicationManagerTest() {
         expect(error.code == 201).assertTrue();
       } finally {
         await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_CLEARUPAPPLICATIONDATA
+     * @tc.name      : test_clearUpApplicationData
+     * @tc.desc      : test clearUpApplicationData method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_clearUpApplicationData", Level.LEVEL2, async (done: Function) => {
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+        applicationManager.clearUpApplicationData(SELFWANT, SELFHAPNAME, DEFAULT_APP_INDEX, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_SETALLOWEDKIOSKAPPS_001
+     * @tc.name      : test_setAllowedKioskApps_001
+     * @tc.desc      : test setAllowedKioskApps method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_setAllowedKioskApps_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        let bundleNames: Array<string> = [];
+        applicationManager.setAllowedKioskApps(SELFWANT, bundleNames);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETALLOWEDKIOSKAPPS_001
+     * @tc.name      : test_getAllowedKioskApps_001
+     * @tc.desc      : test getAllowedKioskApps method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAllowedKioskApps_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        let bundleNames: Array<string> = applicationManager.getAllowedKioskApps(SELFWANT);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
       done();
     })

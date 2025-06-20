@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, beforeEach, Level } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -196,7 +196,7 @@ export default function AddContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContactViaUI0100', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactAddContactViaUI0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactAddContactViaUI0100";
       console.info(`${caseName} test start `);
@@ -241,7 +241,7 @@ export default function AddContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContactViaUI0200', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactAddContactViaUI0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactAddContactViaUI0200";
       console.info(`${caseName} test start `);
@@ -288,7 +288,7 @@ export default function AddContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContactViaUI0300', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactAddContactViaUI0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactAddContactViaUI0300";
       console.info(`${caseName} test start `);

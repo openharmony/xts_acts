@@ -70,8 +70,12 @@ export const TestGestureRecognizerGetResult: () => string[];
 
 export const TestEventInfoGetPressedTime001: (a: string) => void;
 
-export const TestEventInfoGetResult: () => string[];
+export const TestEventInfoGetResultTouch: () => string[];
+
+export const TestEventInfoGetResultMove: () => string[];
 
 export const snapShotTest001: (a: string) => void;
 
 export const TestsnapShotetResult: () => string[];
+
+export const testSwiperChangeIndex: (a: string) => void;

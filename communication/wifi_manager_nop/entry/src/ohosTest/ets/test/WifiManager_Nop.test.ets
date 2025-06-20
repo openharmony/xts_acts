@@ -1109,6 +1109,58 @@ export default function wifiManagerTest() {
       done();
     });
 
+    /*
+     * @tc.number:SUB_Communication_WiFi_ConnectToCandidateConfigWithUserAction_Nop
+     * @tc.name: SUB_Communication_WiFi_ConnectToCandidateConfigWithUserAction_Nop
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_ConnectToCandidateConfigWithUserAction_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_ConnectToCandidateConfigWithUserAction_Nop begin');
+      try {
+        await wifiManager.connectToCandidateConfigWithUserAction(-1).then(() => {
+            console.info("[wifi_test]connectToCandidateConfigWithUserAction success");
+        });
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_ConnectToCandidateConfigWithUserAction_Nop failed ' + JSON.stringify(error));
+        if (Number(error.code) == 801) {
+            console.info('[wifi_js]api is not support');
+            expect(true).assertTrue();
+        } else {
+            expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        }
+      }
+      done();
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_DisableWifi_Nop
+     * @tc.name: SUB_Communication_WiFi_DisableWifi_Nop
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_DisableWifi_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_DisableWifi_Nop begin');
+      try {
+        wifiManager.disableWifi();
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_DisableWifi_Nop failed ' + JSON.stringify(error));
+        if (Number(error.code) == 801) {
+            console.info('[wifi_js]api is not support');
+            expect(true).assertTrue();
+        } else {
+            expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        }
+      }
+      done();
+    });
+
   });
 }
 

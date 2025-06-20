@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -69,7 +69,7 @@ export default function Tabs_barWidHei() {
      * @tc.name testTabsBarWidToNegative
      * @tc.desc The parent component sets the value of barWidth to a negative number .barwidth(-10)
      */
-    it('testTabsBarWidToNegative', 0, async (done: Function) => {
+    it('testTabsBarWidToNegative', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsBarWidToNegative] START');
       let strJson = getInspectorByKey('Tabs_barWidHei_01');
 
@@ -166,7 +166,7 @@ export default function Tabs_barWidHei() {
      * @tc.desc The parent component sets the value of barWidth to a positive number (exceeding the width of Tabs)
      * .barwidth(400)
      */
-    it('testTabsBarWidExceedTabsWid', 0, async (done: Function) => {
+    it('testTabsBarWidExceedTabsWid', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsBarWidExceedTabsWid] START');
       globalThis.value.message.notify({
         name: 'setBarWidth', value: 400
@@ -272,7 +272,7 @@ export default function Tabs_barWidHei() {
      * @tc.desc The parent component sets the value of barWidth to a positive number
      * (a value within the Tabs width).barwidth(300)
      */
-    it('testTabsBarWidWithinTabsWid', 0, async (done: Function) => {
+    it('testTabsBarWidWithinTabsWid', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsBarWidWithinTabsWid] START');
       globalThis.value.message.notify({
         name: 'setBarWidth', value: 300
@@ -375,7 +375,7 @@ export default function Tabs_barWidHei() {
      * @tc.name testTabsBarHeiExceedTabsHei
      * @tc.desc The parent component sets the value of barHeigh to a positive number (exceeding the height of Tabs)
      */
-    it('testTabsBarHeiExceedTabsHei', 0, async (done: Function) => {
+    it('testTabsBarHeiExceedTabsHei', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsBarHeiExceedTabsHei] START');
       globalThis.value.message.notify({
         name: 'setBarWidth', value: 330
@@ -483,7 +483,7 @@ export default function Tabs_barWidHei() {
      * @tc.desc The parent component sets the value of barHeigh to a positive number
      * (a value within the height range of Tabs).barHeight(100)
      */
-    it('testTabsBarHeiWithinTabsHei', 0, async (done: Function) => {
+    it('testTabsBarHeiWithinTabsHei', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsBarHeiWithinTabsHei] START');
       globalThis.value.message.notify({
         name: 'setBarHeight', value: 100
@@ -585,7 +585,7 @@ export default function Tabs_barWidHei() {
      * @tc.name testTabsBarHeiToNegative
      * @tc.desc The parent component sets the value of barHeight to a negative number
      */
-    it('testTabsBarHeiToNegative', 0, async (done: Function) => {
+    it('testTabsBarHeiToNegative', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsBarHeiToNegative] START');
       globalThis.value.message.notify({
         name: 'setBarHeight', value: -10

@@ -15,7 +15,7 @@
 
 import {testAVPlayerSeek} from '../../../../../../AVPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../../MediaTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function AVPlayerHttpSeekTest() {
     describe('AVPlayerHttpSeekTest', function () {
@@ -59,7 +59,7 @@ export default function AVPlayerHttpSeekTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_MP4_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_MP4_0100', Level.LEVEL0,async function (done) {
             let path = VIDEOPLAYER_PATH + 'mp4/h264_aac_640x320_30r.mp4';
             avPlayTest = { width: 640, height: 320, duration: 10100 };
             testAVPlayerSeek(path, avPlayer, avPlayTest, PLAY_TIME, done);
@@ -73,7 +73,7 @@ export default function AVPlayerHttpSeekTest() {
             * @tc.type      : Function test
             * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_MP4_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_MP4_0200', Level.LEVEL0,async function (done) {
             let path = VIDEOPLAYER_PATH + 'mp4/h264_mp3_640x480_25r.mp4';
             avPlayTest = { width: 640, height: 480, duration: 10080 };
             testAVPlayerSeek(path, avPlayer, avPlayTest, PLAY_TIME, done);
@@ -87,7 +87,7 @@ export default function AVPlayerHttpSeekTest() {
             * @tc.type      : Function test
             * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_TS_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_TS_0100', Level.LEVEL0,async function (done) {
             let path = VIDEOPLAYER_PATH + 'mpeg_ts/h264_aac_640x480_30r.ts';
             avPlayTest = { width: 640, height: 480, duration: 10161 };
             testAVPlayerSeek(path, avPlayer, avPlayTest, PLAY_TIME, done);
@@ -101,7 +101,7 @@ export default function AVPlayerHttpSeekTest() {
             * @tc.type      : Function test
             * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_TS_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_TS_0200', Level.LEVEL0,async function (done) {
             let path = VIDEOPLAYER_PATH + 'mpeg_ts/h264_mp3_640x480_25r.ts';
             avPlayTest = { width: 640, height: 480, duration: 10169 };
             testAVPlayerSeek(path, avPlayer, avPlayTest, PLAY_TIME, done);
@@ -115,7 +115,7 @@ export default function AVPlayerHttpSeekTest() {
             * @tc.type      : Function test
             * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_MKV_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HTTP_SEEK_FORMAT_MKV_0100', Level.LEVEL0,async function (done) {
             let path = VIDEO_PATH + 'H264_AAC.mkv';
             avPlayTest = { width: 720, height: 480, duration: 10057 };
             testAVPlayerSeek(path, avPlayer, avPlayTest, PLAY_TIME, done);

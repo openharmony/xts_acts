@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -23,27 +23,27 @@ export default function flexBase_BaselineJsunit() {
   describe('flexItemAlignBaselineTest3', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexBase',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/ItemAlign_Baseline_FlexBase',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexBase state success " + JSON.stringify(pages));
-        if (!("FlexBase" == pages.name)) {
-          console.info("get FlexBase state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Baseline_FlexBase state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Baseline_FlexBase" == pages.name)) {
+          console.info("get ItemAlign_Baseline_FlexBase state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexBase page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Baseline_FlexBase page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexBase page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Baseline_FlexBase page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexBase after each called");
+      console.info("ItemAlign_Baseline_FlexBase after each called");
     });
 
     /**
@@ -51,7 +51,7 @@ export default function flexBase_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaseline
      * @tc.desc The subcomponent is inside the parent component.
      */
-    it('testFlexItemAlignBaseline', 0, async () => {
+    it('testFlexItemAlignBaseline',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaseline START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
@@ -60,12 +60,12 @@ export default function flexBase_BaselineJsunit() {
         name: 'width', value: 500
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flex01');
+      let strJson1 = getInspectorByKey('ItemAlign_Baseline_flex01');
 
-      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
-      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
+      let textFlex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_flex01');
       expect(Math.abs(textFlex01.left - flex01.left) <= 1).assertTrue()
       expect(Math.abs(textFlex01.right - textFlex02.left) <= 1).assertTrue()
       expect(Math.abs(textFlex02.right - textFlex03.left) <= 1).assertTrue()
@@ -91,7 +91,7 @@ export default function flexBase_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineExceed
      * @tc.desc The subcomponent exceeds the parent component.
      */
-    it('testFlexItemAlignBaselineExceed', 0, async () => {
+    it('testFlexItemAlignBaselineExceed',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineExceed START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 140
@@ -100,12 +100,12 @@ export default function flexBase_BaselineJsunit() {
         name: 'width', value: 420
       })
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flex01');
+      let strJson1 = getInspectorByKey('ItemAlign_Baseline_flex01');
 
-      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
-      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
+      let textFlex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_flex01');
       expect(Math.abs(textFlex01.left - flex01.left) <= 1).assertTrue()
       expect(Math.abs(textFlex01.right - textFlex02.left) <= 1).assertTrue()
       expect(Math.abs(textFlex02.right - textFlex03.left) <= 1).assertTrue()

@@ -14,7 +14,7 @@
  */
 
 import image from '@ohos.multimedia.image';
-import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium';
 import colorSpaceManager from "@ohos.graphics.colorSpaceManager";
 import rpc from '@ohos.rpc';
 import hilog from '@ohos.hilog';
@@ -1004,7 +1004,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0100');
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1026,7 +1026,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0200');
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1048,7 +1048,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0300');
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1070,7 +1070,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0400');
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1092,7 +1092,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0500');
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1114,7 +1114,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0600', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0600');
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1134,7 +1134,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0700', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1153,7 +1153,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0800', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1172,7 +1172,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_0900', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1191,7 +1191,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1000', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1210,7 +1210,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1100', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1229,7 +1229,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1200', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1248,7 +1248,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1300', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1267,7 +1267,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1400', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1288,7 +1288,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_8800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_8800', Level.LEVEL0, async (done: Function) => {
       const surfaceId = null; 
       const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
       try {
@@ -1312,7 +1312,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000', Level.LEVEL0, async (done: Function) => {
       const surfaceId = null; 
       try {
         let pixelMap: image.PixelMap = await image.createPixelMapFromSurface(surfaceId);
@@ -1333,7 +1333,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200"
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
@@ -1416,7 +1416,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_8800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_8800', Level.LEVEL0, async (done: Function) => {
       const surfaceId = null; 
       const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
       try {
@@ -1440,7 +1440,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000', Level.LEVEL0, async (done: Function) => {
       const surfaceId = null; 
       try {
         let pixelMap: image.PixelMap = await image.createPixelMapFromSurface(surfaceId);
@@ -1461,7 +1461,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200"
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
@@ -1541,7 +1541,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5800", Level.LEVEL0, async (done: Function) => {
       let num =  image.AlphaType.UNPREMUL
       console.info(`AlphaType.UNPREMUL ${num}`)
       expect(num == 3).assertTrue()
@@ -1556,7 +1556,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5900", Level.LEVEL0, async (done: Function) => {
       console.info(`----------------SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5900--------------`)
       let num =  image.AlphaType.PREMUL
       console.info(`AlphaType.PREMUL ${num}`)
@@ -1572,7 +1572,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6000", Level.LEVEL0, async (done: Function) => {
       console.info(`----------------SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6000--------------`)
       let num =  image.AlphaType.UNKNOWN
       console.info(`AlphaType.UNKNOWN ${num}`)
@@ -1588,7 +1588,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6100", Level.LEVEL0, async (done: Function) => {
       console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6100  -------------`)
       let num =  image.ScaleMode.FIT_TARGET_SIZE
       console.info(`ScaleMode.FIT_TARGET_SIZE ${num}`)
@@ -1604,7 +1604,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6200", Level.LEVEL0, async (done: Function) => {
       console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6200  -------------`)
       let num =  image.ScaleMode.CENTER_CROP
       console.info(`ScaleMode.CENTER_CROP ${num}`)
@@ -1620,7 +1620,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6300", Level.LEVEL0, async (done: Function) => {
       console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6300  -------------`)
       let num =  image.ComponentType.YUV_Y
       console.info(`ComponentType.YUV_Y ${num}`)
@@ -1636,7 +1636,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6400", Level.LEVEL0, async (done: Function) => {
       console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6400  -------------`)
       let num =  image.ComponentType.YUV_U
       console.info(`ComponentType.YUV_U ${num}`)
@@ -1652,7 +1652,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6500", Level.LEVEL0, async (done: Function) => {
       console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6500  -------------`)
       let num =  image.ComponentType.YUV_V
       console.info(`ComponentType.YUV_V ${num}`)
@@ -1668,7 +1668,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6600", Level.LEVEL0, async (done: Function) => {
       let low_quality = image.ResolutionQuality.LOW
       expect(low_quality).assertEqual(1);
       console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_xxxxx' + ' The quality of the picture is low quality.')
@@ -1689,7 +1689,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6900", Level.LEVEL0, async (done: Function) => {
       console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6900  -------------`)
       try {
         image.createPremultipliedPixelMap(null, null)
@@ -1708,7 +1708,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1500', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1727,7 +1727,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1600', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1746,7 +1746,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1700', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1765,7 +1765,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1800', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1784,7 +1784,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1900', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1803,7 +1803,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2000', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1822,7 +1822,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2100', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1843,7 +1843,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2200', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1864,7 +1864,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2300', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1885,7 +1885,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2400', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1905,7 +1905,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2500', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1925,7 +1925,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2600', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1945,7 +1945,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2700', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1965,7 +1965,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2800', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2800', Level.LEVEL1, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2800', 'device is not support hdr');
         expect(true).assertTrue();
@@ -1985,7 +1985,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2900', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2900', Level.LEVEL1, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_2900', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2008,7 +2008,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3000', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2032,7 +2032,7 @@ export default function image10bitPixelMap() {
      * @tc.level     : Level 0
      */
 
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3100', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2055,7 +2055,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3200', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2076,7 +2076,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3300', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2105,7 +2105,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3400', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2134,7 +2134,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3500', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2163,7 +2163,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3600', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2192,7 +2192,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3700', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2221,7 +2221,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3800', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2250,7 +2250,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_3900', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2279,7 +2279,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4000', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2308,7 +2308,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4100', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2337,7 +2337,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4200', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2366,7 +2366,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4300', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2395,7 +2395,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4400', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2425,7 +2425,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4500', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2456,7 +2456,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4600', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2487,7 +2487,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4700', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2515,7 +2515,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4800', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2534,7 +2534,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_4900', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2554,7 +2554,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5000', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2573,7 +2573,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2595,7 +2595,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5200");
       if (!isSupportHdr || !isSupportHEICEncode) {
         if (!isSupportHdr) {
@@ -2621,7 +2621,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2642,7 +2642,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5400");
       if (!isSupportHdr || !isSupportHEICEncode) {
         if (!isSupportHdr) {
@@ -2667,7 +2667,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5500', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2686,7 +2686,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5600', 'device is not support hdr');
         expect(true).assertTrue();
@@ -2705,7 +2705,7 @@ export default function image10bitPixelMap() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportHdr) {
         hilog.info(0x0000, "image10bitPixelMap", 'case: %{public}s msg:%{public}s', 'SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5700', 'device is not support hdr');
         expect(true).assertTrue();

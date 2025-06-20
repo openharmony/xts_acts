@@ -44,7 +44,7 @@ describe('AccessibleCaptionConfiguration', function () {
    * @tc.type    User
    * @tc.level   Level 1
    */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
     console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'enableChange';
@@ -64,7 +64,7 @@ describe('AccessibleCaptionConfiguration', function () {
    * @tc.type    User
    * @tc.level   Level 1
    */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
     console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'styleChange';

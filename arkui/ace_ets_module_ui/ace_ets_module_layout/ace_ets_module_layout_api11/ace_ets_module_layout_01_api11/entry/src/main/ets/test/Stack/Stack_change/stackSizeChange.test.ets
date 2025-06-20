@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/utils/Common";
 import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
@@ -50,7 +50,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentTopStart
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'TopStart'.
      */
-    it('testStackLargerAlignContentTopStart', 0, async (done: Function) => {
+    it('testStackLargerAlignContentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentTopStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopStart
@@ -85,7 +85,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentTop
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'Top'.
      */
-    it('testStackLargerAlignContentTop', 0, async (done: Function) => {
+    it('testStackLargerAlignContentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentTop START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Top
@@ -121,7 +121,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentTopEnd
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'TopEnd'.
      */
-    it('testStackLargerAlignContentTopEnd', 0, async (done: Function) => {
+    it('testStackLargerAlignContentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentTopEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopEnd
@@ -156,7 +156,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentStart
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'START'.
      */
-    it('testStackLargerAlignContentStart', 0, async (done: Function) => {
+    it('testStackLargerAlignContentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Start
@@ -191,7 +191,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentCenter
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'Center'.
      */
-    it('testStackLargerAlignContentCenter', 0, async (done: Function) => {
+    it('testStackLargerAlignContentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentCenter START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Center
@@ -227,7 +227,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentEnd
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'End'.
      */
-    it('testStackLargerAlignContentEnd', 0, async (done: Function) => {
+    it('testStackLargerAlignContentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.End
@@ -262,7 +262,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentBottomStart
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'BottomStart'.
      */
-    it('testStackLargerAlignContentBottomStart', 0, async (done: Function) => {
+    it('testStackLargerAlignContentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentBottomStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomStart
@@ -297,7 +297,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentBottom
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'Bottom'.
      */
-    it('testStackLargerAlignContentBottom', 0, async (done: Function) => {
+    it('testStackLargerAlignContentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentBottom START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Bottom
@@ -333,7 +333,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLargerAlignContentBottomEnd
      * @tc.desc Set stack's  height and width 300*300 and alignContent mode 'BottomEnd'.
      */
-    it('testStackLargerAlignContentBottomEnd', 0, async (done: Function) => {
+    it('testStackLargerAlignContentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLargerAlignContentBottomEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomEnd
@@ -368,7 +368,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentBottomTopStart
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'TopStart'.
      */
-    it('testStackEqualAlignContentBottomTopStart', 0, async (done: Function) => {
+    it('testStackEqualAlignContentBottomTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentBottomTopStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopStart
@@ -401,7 +401,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentBottomTop
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'Top'.
      */
-    it('testStackEqualAlignContentBottomTop', 0, async (done: Function) => {
+    it('testStackEqualAlignContentBottomTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentBottomTop START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Top
@@ -434,7 +434,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentBottomTopEnd
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'TopEnd'.
      */
-    it('testStackEqualAlignContentBottomTopEnd', 0, async (done: Function) => {
+    it('testStackEqualAlignContentBottomTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentBottomTopEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopEnd
@@ -467,7 +467,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentBottomStart
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'START'.
      */
-    it('testStackEqualAlignContentBottomStart', 0, async (done: Function) => {
+    it('testStackEqualAlignContentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentBottomStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Start
@@ -500,7 +500,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentCenter
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'Center'.
      */
-    it('testStackEqualAlignContentCenter', 0, async (done: Function) => {
+    it('testStackEqualAlignContentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentCenter START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Center
@@ -533,7 +533,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentEnd
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'End'.
      */
-    it('testStackEqualAlignContentEnd', 0, async (done: Function) => {
+    it('testStackEqualAlignContentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.End
@@ -566,7 +566,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentBottomStart
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'BottomStart'.
      */
-    it('testStackEqualAlignContentBottomStart', 0, async (done: Function) => {
+    it('testStackEqualAlignContentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentBottomStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomStart
@@ -599,7 +599,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentBottom
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'Bottom'.
      */
-    it('testStackEqualAlignContentBottom', 0, async (done: Function) => {
+    it('testStackEqualAlignContentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentBottom START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Bottom
@@ -632,7 +632,7 @@ export default function stackSizeChange() {
      * @tc.name testStackEqualAlignContentBottomEnd
      * @tc.desc Set stack's  height and width 200*200 and alignContent mode 'BottomEnd'.
      */
-    it('testStackEqualAlignContentBottomEnd', 0, async (done: Function) => {
+    it('testStackEqualAlignContentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackEqualAlignContentBottomEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomEnd
@@ -665,7 +665,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentTopStart
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'TopStart'.
      */
-    it('testStackLessAlignContentTopStart', 0, async (done: Function) => {
+    it('testStackLessAlignContentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentTopStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopStart
@@ -700,7 +700,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentTop
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'Top'.
      */
-    it('testStackLessAlignContentTop', 0, async (done: Function) => {
+    it('testStackLessAlignContentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentTop START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Top
@@ -736,7 +736,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentTopEnd
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'TopEnd'.
      */
-    it('testStackLessAlignContentTopEnd', 0, async (done: Function) => {
+    it('testStackLessAlignContentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentTopEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopEnd
@@ -771,7 +771,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentStart
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'START'.
      */
-    it('testStackLessAlignContentStart', 0, async (done: Function) => {
+    it('testStackLessAlignContentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Start
@@ -806,7 +806,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentCenter
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'Center'.
      */
-    it('testStackLessAlignContentCenter', 0, async (done: Function) => {
+    it('testStackLessAlignContentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentCenter START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Center
@@ -842,7 +842,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentEnd
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'End'.
      */
-    it('testStackLessAlignContentEnd', 0, async (done: Function) => {
+    it('testStackLessAlignContentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.End
@@ -877,7 +877,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentBottomStart
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'BottomStart'.
      */
-    it('testStackLessAlignContentBottomStart', 0, async (done: Function) => {
+    it('testStackLessAlignContentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentBottomStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomStart
@@ -912,7 +912,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentBottom
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'Bottom'.
      */
-    it('testStackLessAlignContentBottom', 0, async (done: Function) => {
+    it('testStackLessAlignContentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentBottom START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Bottom
@@ -948,7 +948,7 @@ export default function stackSizeChange() {
      * @tc.name testStackLessAlignContentBottomEnd
      * @tc.desc Set stack's  height and width 100*100 and alignContent mode 'BottomEnd'.
      */
-    it('testStackLessAlignContentBottomEnd', 0, async (done: Function) => {
+    it('testStackLessAlignContentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackLessAlignContentBottomEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomEnd

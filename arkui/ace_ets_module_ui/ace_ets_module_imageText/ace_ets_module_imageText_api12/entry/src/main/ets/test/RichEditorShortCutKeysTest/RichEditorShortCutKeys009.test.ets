@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function RichEditorShortCutKeys009() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015 START');
       let driver = Driver.create();
       let get_content = await driver.findComponent(ON.id('get_content'));
@@ -91,7 +91,11 @@ export default function RichEditorShortCutKeys009() {
       expect(styleText).assertContain('"fontStyle":0');
       expect(styleText).assertContain('"fontWeight":9');
       expect(styleText).assertContain('"fontFamily":"' + Utils.FONT_FAMILY + '"');
-      expect(styleText).assertContain('"decoration":{"type":0,"color":"#FF000000","style":0}');
+      expect(styleText).assertContain('"decoration"');
+      expect(styleText).assertContain('"type":0');
+      expect(styleText).assertContain('"color":"#FF000000"');
+      expect(styleText).assertContain('"style":0');
+      expect(styleText).assertContain('"thicknessScale":1');
       expect(styleText).assertContain('"lineHeight":30');
       expect(styleText).assertContain('"letterSpacing":30');
       expect(styleText).assertContain('"fontFeature":"\'ss01\' 1"');

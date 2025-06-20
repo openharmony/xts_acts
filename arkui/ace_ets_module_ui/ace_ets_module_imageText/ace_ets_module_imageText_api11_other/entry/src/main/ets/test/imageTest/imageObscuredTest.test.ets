@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 
 export default function imageObscuredTest() {
@@ -52,7 +52,7 @@ export default function imageObscuredTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('ArkUX_Redacted_Image_0150', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Image_0150', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Image_0150 START');
       setTimeout(() => {
         try {
@@ -74,8 +74,7 @@ export default function imageObscuredTest() {
       }, 500)
     });
 
-
-    it('ArkUX_Redacted_Image_0160', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Image_0160', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Image_0160 START');
       setTimeout(() => {
         try {
@@ -94,8 +93,7 @@ export default function imageObscuredTest() {
       }, 500)
     });
 
-
-    it('ArkUX_Redacted_Image_0170', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Image_0170', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Image_0170 START');
       setTimeout(() => {
         try {
@@ -116,7 +114,7 @@ export default function imageObscuredTest() {
       }, 500)
     });
 
-    it('ArkUX_Redacted_Image_0180', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Image_0180', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Image_0180 START');
       setTimeout(() => {
         try {
@@ -135,7 +133,7 @@ export default function imageObscuredTest() {
       }, 500)
     });
 
-    it('ArkUX_Redacted_Image_0190', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Image_0190', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Image_0190 START');
       setTimeout(() => {
         try {

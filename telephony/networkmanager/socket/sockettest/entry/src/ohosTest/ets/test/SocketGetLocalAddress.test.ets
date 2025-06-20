@@ -517,7 +517,7 @@ export default function SocketGetLocalSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let client: socket.LocalSocket = socket.constructLocalSocketInstance()
-        let sandboxPath: string = getContext().filesDir + '/testSocket'
+        let sandboxPath: string = getContext().filesDir + '/testSocket1'
         let address: socket.LocalAddress = {
           address: sandboxPath
         }
@@ -553,7 +553,7 @@ export default function SocketGetLocalSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
-        let sandboxPath: string = getContext().filesDir + '/testSocket'
+        let sandboxPath: string = getContext().filesDir + '/testSocket2'
         let listenAddr: socket.LocalAddress = {
           address: sandboxPath
         }
@@ -589,7 +589,7 @@ export default function SocketGetLocalSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
-        let sandboxPath: string = getContext().filesDir + '/testSocket'
+        let sandboxPath: string = getContext().filesDir + '/testSocket3'
         let localAddr: socket.LocalAddress = {
           address: sandboxPath
         }

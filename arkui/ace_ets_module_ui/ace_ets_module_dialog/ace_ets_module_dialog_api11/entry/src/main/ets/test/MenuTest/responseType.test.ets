@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils.ets'
 
 export default function responseTypeJsunit() {
@@ -50,7 +50,7 @@ export default function responseTypeJsunit() {
      * @tc.name         testresponseType0002
      * @tc.desic        acehoverEffectEtsTest0002
      */
-    it('testresponseType0002', 0, async (done: Function) => {
+    it('testresponseType0002', Level.LEVEL2, async (done: Function) => {
       console.info('responseType testresponseType0002 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('RightClickText');
@@ -66,7 +66,7 @@ export default function responseTypeJsunit() {
      * @tc.name         testhoverEffect0003
      * @tc.desic        acehoverEffectEtsTest0003
      */
-    it('testresponseType0003', 0, async (done: Function) => {
+    it('testresponseType0003', Level.LEVEL2, async (done: Function) => {
       console.info('responseType testresponseType0003 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('LongPressText');

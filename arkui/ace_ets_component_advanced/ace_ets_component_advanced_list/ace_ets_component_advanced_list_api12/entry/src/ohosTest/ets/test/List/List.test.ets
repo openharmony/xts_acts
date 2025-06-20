@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,  Level } from '@ohos/hypium';
 import router from '@system.router';
 import { BY, UiDriver } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -62,7 +62,7 @@ export default function ListTest() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUI_Stage_List_OnDigitalCrown_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_List_OnDigitalCrown_0100',  Level.LEVEL1, async (done: Function) => {
       // Verify the functions of the ListItem component
       console.info('[ArkUI_Stage_List_OnDigitalCrown_0100] START');
       // Verify the functions of onDigitalCrown
@@ -84,7 +84,7 @@ export default function ListTest() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUI_Stage_List_OnDigitalCrown_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_List_OnDigitalCrown_0200',  Level.LEVEL1, async (done: Function) => {
       // Verify the functions of the ListItem component
       console.info('[ArkUI_Stage_List_OnDigitalCrown_0200] START');
       // Verify the functions of onDigitalCrown
@@ -106,7 +106,7 @@ export default function ListTest() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUI_Stage_List_OnDigitalCrown_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_List_OnDigitalCrown_0300',  Level.LEVEL1, async (done: Function) => {
       // Verify the functions of the button component
       console.info('[ArkUI_Stage_List_OnDigitalCrown_0300] START');
       // Verify the functions of onDigitalCrown
@@ -128,7 +128,7 @@ export default function ListTest() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUI_Stage_List_OnDigitalCrown_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_List_OnDigitalCrown_0400',  Level.LEVEL1, async (done: Function) => {
       // Verify the functions of the button component
       console.info('[ArkUI_Stage_List_OnDigitalCrown_0400] START');
       // Verify the functions of onDigitalCrown
@@ -150,7 +150,7 @@ export default function ListTest() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUI_Stage_List_OnDigitalCrown_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_List_OnDigitalCrown_0500',  Level.LEVEL1, async (done: Function) => {
       // Verify the functions of the text component
       console.info('[ArkUI_Stage_List_OnDigitalCrown_0500] START');
       // Verify the functions of onDigitalCrown
@@ -172,7 +172,7 @@ export default function ListTest() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUI_Stage_List_OnDigitalCrown_0600', 0, async (done: Function) => {
+    it('ArkUI_Stage_List_OnDigitalCrown_0600',  Level.LEVEL1, async (done: Function) => {
       // Verify the functions of the text component
       console.info('[ArkUI_Stage_List_OnDigitalCrown_0600] START');
 

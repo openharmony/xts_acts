@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listItemBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemBorderWidth001', 0, async (done: Function) => {
+    it('testListItemBorderWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderWidth001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listItemBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemBorderWidth002', 0, async (done: Function) => {
+    it('testListItemBorderWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderWidth002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listItemBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemBorderWidth003', 0, async (done: Function) => {
+    it('testListItemBorderWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderWidth003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listItemBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListItemBorderWidth004', 0, async (done: Function) => {
+    it('testListItemBorderWidth004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderWidth004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listItemBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListItemBorderWidth005', 0, async (done: Function) => {
+    it('testListItemBorderWidth005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderWidth005()).assertEqual(0)
       done()
     })

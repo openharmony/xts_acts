@@ -39,9 +39,9 @@ export default function dragWithOutPPermissionTest() {
      * @tc.desc      : setAppShareOptions
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_DragWithOutPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('SUB_DistributedData_UDMF_SDK_DragWithOutPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       try {
         unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
         console.info(TAG, `removeAppShareOptions is successed`);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -69,7 +69,7 @@ export default function getListItemGroupRect4() {
     * @tc.desc  : set index to 0,set visibility of listItemGroup0 to Visibility.Visible
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect4_0100', 0, async (done: Function) => {
+    it('getListItemGroupRect4_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect4_0100] START');
       globalThis.value.message.notify({
@@ -137,7 +137,7 @@ export default function getListItemGroupRect4() {
     * @tc.desc  : set index to 0,set visibility of listItemGroup0 to Visibility.Hidden
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect4_0200', 0, async (done: Function) => {
+    it('getListItemGroupRect4_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect4_0200] START');
 
@@ -200,7 +200,7 @@ export default function getListItemGroupRect4() {
     * @tc.desc  : set index to 0,set visibility of listItemGroup0 to Visibility.None
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect4_0300', 0, async (done: Function) => {
+    it('getListItemGroupRect4_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect4_0300] START');
 

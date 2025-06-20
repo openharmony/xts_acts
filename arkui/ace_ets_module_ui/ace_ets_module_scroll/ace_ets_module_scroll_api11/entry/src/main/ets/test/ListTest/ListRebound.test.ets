@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { Driver, Component, ON } from '@ohos.UiTest'
 
@@ -45,7 +45,7 @@ export default function ListReboundTest() {
      *tc.name   Grid with EdgeEffect.Spring
      *tc.desc   Grid with EdgeEffect.Spring
      */
-    it('ArkUI_Rebound_0100', 0, async (done: Function) => {
+    it('ArkUI_Rebound_0100', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Rebound_0100'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -68,7 +68,7 @@ export default function ListReboundTest() {
      *tc.name   Grid with EdgeEffect.Fade
      *tc.desc   Grid with EdgeEffect.Fade
      */
-    it('ArkUI_Rebound_0200', 0, async (done: Function) => {
+    it('ArkUI_Rebound_0200', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Rebound_0200'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -92,7 +92,7 @@ export default function ListReboundTest() {
      *tc.name   Grid with EdgeEffect.None
      *tc.desc   Grid with EdgeEffect.None
      */
-    it('ArkUI_Rebound_0300', 0, async (done: Function) => {
+    it('ArkUI_Rebound_0300', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Rebound_0300'
       console.info(`${SUITE} ${CASE} START`);
       let baseKey: string = 'MyGrid3'

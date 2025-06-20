@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -49,7 +49,7 @@ export default function StartAndEnd() {
     * @tc.desc  : Component sliding triggers onReachEnd and onReachStart
     * @tc.level : Level 2
     */
-    it('StartAndEnd_0001', 0, async (done: Function) => {
+    it('StartAndEnd_0001',  Level.LEVEL0, async (done: Function) => {
       console.info('[StartAndEnd_0001] START');
       let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('StartAndEnd')
       let driver = Driver.create()

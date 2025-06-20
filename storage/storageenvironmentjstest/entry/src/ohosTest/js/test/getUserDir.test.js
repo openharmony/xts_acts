@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,122 +12,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  describe,
-  it,
-  expect,
-  environment,
-  isSting,
-  isIntNum
-} from './Common';
+import { describe, it, expect, environment, isString, isIntNum } from './Common';
 import { Level } from '@ohos/hypium';
 
 export default function getUserDir() {
   describe('environment_getUserDir_test', function () {
 
     /**
-     * @tc.number SUB_BASIC_FM_FileAPI_Environment_getDesktopDir_0100
-     * @tc.name environment_test_getDesktopDir_001
-     * @tc.desc Test getDesktopDir() interfaces.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 0
-     * @tc.require
-    */
-    it('environment_test_getDesktopDir_001', Level.LEVEL0, async function () {
-      try {
-        let path = environment.getDesktopDir();
-        expect(isSting(path)).assertTrue();
-      } catch (e) {
-        console.info('environment_test_getDesktopDir_001 has failed for ' + e.message + ',code:' + e.code);
-        if (e.message == 'is not callable') {
-          expect(true).assertTrue();
-        }
-      }
-    });
-
-    /**
-     * @tc.number SUB_BASIC_FM_FileAPI_Environment_getDesktopDir_0200
-     * @tc.name environment_test_getDesktopDir_002
-     * @tc.desc Test getDesktopDir() interfaces.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 0
-     * @tc.require
-    */
-    it('environment_test_getDesktopDir_002', Level.LEVEL0, async function () {
-      try {
-        let path = environment.getDesktopDir("123%$&^");
-        expect(false).assertTrue();
-      } catch (e) {
-        console.info('environment_test_getDesktopDir_002 has failed for ' + e.message + ',code:' + e.code);
-        if (isIntNum(e.code)) {
-          expect(e.code == 13900020 && e.message == "Invalid argunment").assertTrue();
-        } else {
-          expect(e.message == 'is not callable').assertTrue();
-        }
-      }
-    });
-
-    /**
-     * @tc.number SUB_BASIC_FM_FileAPI_Environment_getDesktopDir_0300
-     * @tc.name environment_test_getDesktopDir_003
-     * @tc.desc Test getDesktopDir() interfaces.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 0
-     * @tc.require
-    */
-    it('environment_test_getDesktopDir_003', Level.LEVEL0, async function () {
-      try {
-        let path = environment.getDesktopDir(true);
-        expect(false).assertTrue();
-      } catch (e) {
-        console.info('environment_test_getDesktopDir_003 has failed for ' + e.message + ',code:' + e.code);
-        if (isIntNum(e.code)) {
-          expect(e.code == 13900020 && e.message == "Invalid argunment").assertTrue();
-        } else {
-          expect(e.message == 'is not callable').assertTrue();
-        }
-      }
-    });
-
-    /**
-    * @tc.number SUB_BASIC_FM_FileAPI_Environment_getDesktopDir_0400
-    * @tc.name environment_test_getDesktopDir_004
+    * @tc.number SUB_BASIC_FM_FileAPI_Environment_getUserDesktopDir_0100
+    * @tc.name environment_test_getUserDesktopDir_001
     * @tc.desc Test getDesktopDir() interfaces.
     * @tc.size MEDIUM
     * @tc.type Function
     * @tc.level Level 0
     * @tc.require
    */
-    it('environment_test_getDesktopDir_004', Level.LEVEL0, async function () {
+    it('environment_test_getUserDesktopDir_001', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDesktopDir();
-        expect(isSting(path)).assertTrue();
+        expect(isString(path)).assertTrue();
       } catch (e) {
-        console.info('environment_test_getDesktopDir_004 has failed for ' + e.message + ',code:' + e.code);
+        console.info('environment_test_getUserDesktopDir_001 has failed for ' + e.message + ',code:' + e.code);
         if (e.code == 801) {
           expect(e.code == 801 && e.message == "The device doesn't support this api").assertTrue();
+        }else{
+          expect(false).assertTrue();
         }
       }
     });
 
     /**
-     * @tc.number SUB_BASIC_FM_FileAPI_Environment_getDesktopDir_0500
-     * @tc.name environment_test_getDesktopDir_005
+     * @tc.number SUB_BASIC_FM_FileAPI_Environment_getUserDesktopDir_0200
+     * @tc.name environment_test_getUserDesktopDir_002
      * @tc.desc Test getDesktopDir() interfaces.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getDesktopDir_005', Level.LEVEL0, async function () {
+    it('environment_test_getUserDesktopDir_002', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDesktopDir("123%$&^");
-        expect(isSting(path)).assertTrue();
+        expect(false).assertTrue();
       } catch (e) {
-        console.info('environment_test_getDesktopDir_005 has failed for ' + e.message + ',code:' + e.code);
+        console.info('environment_test_getUserDesktopDir_002 has failed for ' + e.message + ',code:' + e.code);
         if (e.code == 801) {
           expect(e.code == 801 && e.message == "The device doesn't support this api").assertTrue();
         } else {
@@ -137,20 +65,20 @@ export default function getUserDir() {
     });
 
     /**
-     * @tc.number SUB_BASIC_FM_FileAPI_Environment_getDesktopDir_0600
-     * @tc.name environment_test_getDesktopDir_006
-     * @tc.desc Test getDesktopDir() interfaces.
+     * @tc.number SUB_BASIC_FM_FileAPI_Environment_getUserDesktopDir_0300
+     * @tc.name environment_test_getUserDesktopDir_003
+     * @tc.desc Test getUserDesktopDir() interfaces.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getDesktopDir_006', Level.LEVEL0, async function () {
+    it('environment_test_getUserDesktopDir_003', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDesktopDir(true);
-        expect(isSting(path)).assertTrue();
+        expect(false).assertTrue();
       } catch (e) {
-        console.info('environment_test_getDesktopDir_006 has failed for ' + e.message + ',code:' + e.code);
+        console.info('environment_test_getUserDesktopDir_003 has failed for ' + e.message + ',code:' + e.code);
         if (e.code == 801) {
           expect(e.code == 801 && e.message == "The device doesn't support this api").assertTrue();
         } else {
@@ -171,11 +99,13 @@ export default function getUserDir() {
     it('environment_test_getUserDocumentDir_001', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDocumentDir();
-        expect(isSting(path)).assertTrue();
+        expect(isString(path)).assertTrue();
       } catch (e) {
         console.info('environment_test_getUserDocumentDir_001 has failed for ' + e.message + ',code:' + e.code);
-        if (e.message == 'is not callable') {
-          expect(true).assertTrue();
+        if (e.code == 801) {
+          expect(e.message == "The device doesn't support this api").assertTrue();
+        }else{
+          expect(false).assertTrue();
         }
       }
     });
@@ -237,12 +167,14 @@ export default function getUserDir() {
     */
     it('environment_test_getUserDownloadDir_001', Level.LEVEL0, async function () {
       try {
-        let path = environment.getUserDownloadtDir();
-        expect(isSting(path)).assertTrue();
+        let path = environment.getUserDownloadDir();
+        expect(isString(path)).assertTrue();
       } catch (e) {
         console.info('environment_test_getUserDownloadDir_001 has failed for ' + e.message + ',code:' + e.code);
         if (e.code == 801) {
           expect(e.message == "The device doesn't support this api").assertTrue();
+        }else{
+          expect(false).assertTrue();
         }
       }
     });

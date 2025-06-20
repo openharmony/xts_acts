@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -69,7 +69,7 @@ export default function ListItem_aspectRatio_width2() {
      * @tc.name testListAspectRatio
      * @tc.desc set the aspectRatio of ListItem to '0'
      */
-    it('SUB_ACE_ListItem_aspectRatio_width2_0100', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_aspectRatio_width2_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_aspectRatio_width2_0100] START');
       globalThis.value.message.notify({
         name: 'aspectRatio1', value: '0'
@@ -92,7 +92,7 @@ export default function ListItem_aspectRatio_width2() {
      * @tc.name testListAspectRatio
      * @tc.desc set the aspectRatio of ListItem to '0.5'
      */
-    it('SUB_ACE_ListItem_aspectRatio_width2_0200', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_aspectRatio_width2_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_aspectRatio_width2_0200] START');
       globalThis.value.message.notify({
         name: 'aspectRatio1', value: '0.5'
@@ -102,9 +102,10 @@ export default function ListItem_aspectRatio_width2() {
       let list01: RectValue = CommonFunc.getComponentRect('ListItem_aspectRatio_width2_list');
       let width: number = list01.right - list01.left;
       let height: number = list01.bottom - list01.top;
+      let itemWidth: number = ListItem01.right - ListItem01.left;
 
       expect(Math.abs(Math.round(ListItem01.right - ListItem01.left) - Math.round(width * 0.6)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(ListItem01.bottom - ListItem01.top) - Math.round(width * 0.6 * 2)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((ListItem01.bottom - ListItem01.top) - (itemWidth * 2))) <= 1).assertTrue();
 
 
       console.info('[SUB_ACE_ListItem_aspectRatio_width2_0200] END');
@@ -116,7 +117,7 @@ export default function ListItem_aspectRatio_width2() {
      * @tc.name testListAspectRatio
      * @tc.desc set the aspectRatio of ListItem to '2'
      */
-    it('SUB_ACE_ListItem_aspectRatio_width2_0300', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_aspectRatio_width2_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_aspectRatio_width2_0300] START');
       globalThis.value.message.notify({
         name: 'aspectRatio1', value: '2'
@@ -139,7 +140,7 @@ export default function ListItem_aspectRatio_width2() {
      * @tc.name testListAspectRatio
      * @tc.desc set the aspectRatio of ListItem to '-1'
      */
-    it('SUB_ACE_ListItem_aspectRatio_width2_0400', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_aspectRatio_width2_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_aspectRatio_width2_0400] START');
       globalThis.value.message.notify({
         name: 'aspectRatio1', value: '-1'

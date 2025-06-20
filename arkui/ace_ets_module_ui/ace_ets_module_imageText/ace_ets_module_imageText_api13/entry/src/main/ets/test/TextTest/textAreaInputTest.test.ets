@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -50,7 +50,7 @@ export default function textAreaInputTest() {
      * @tc.name         textAreaInputTest0001
      * @tc.desic        textAreaInputTest0001
      */
-    it('textAreaInputTest0001', 0, async () => {
+    it('textAreaInputTest0001', Level.LEVEL0, async () => {
       if (globalThis.winLeft == 0) {
         let driver = Driver.create();
         console.info('textAreaInputTest textAreaInputTest0001 START');
@@ -99,18 +99,18 @@ export default function textAreaInputTest() {
         console.info('textAreaInputTest0001 2 复制 success');
         await textArea1.dragTo(textArea2);
         await CommonFunc.sleep(500);
-        let button7 = await driver.findComponent(ON.type('Button'));
-        await CommonFunc.sleep(500);
-        await button7?.click();
+        let Text7 = await driver.findComponent(ON.text('长按内容至浮起，可拖拽到底部小艺'));
+        if(Text7){
+          let button7 = await driver.findComponent(ON.type('Button'));
+          await CommonFunc.sleep(500);
+          await button7?.click();
+        }
         await CommonFunc.sleep(500);
         console.info('textAreaInputTest0001 2 Button success');
       }
       
       expect("").assertEqual("");
       console.info("[textAreaInputTest0001] end");
-
     });
-
-
   })
 }

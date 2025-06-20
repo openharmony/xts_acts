@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function RichEditorSetStyledString017() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('RichEditorSetStyledString017'));
@@ -89,7 +89,7 @@ export default function RichEditorSetStyledString017() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053 START');
       let driver = Driver.create();
       let sizeStr = await driver.findComponent(ON.id('sizeStr'));
@@ -107,7 +107,7 @@ export default function RichEditorSetStyledString017() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054 START');
       let driver = Driver.create();
       let styleStr = await driver.findComponent(ON.id('styleStr'));
@@ -125,7 +125,7 @@ export default function RichEditorSetStyledString017() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055 START');
       let driver = Driver.create();
       let weightStr = await driver.findComponent(ON.id('weightStr'));
@@ -143,7 +143,7 @@ export default function RichEditorSetStyledString017() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056 START');
       let driver = Driver.create();
       let familyStr = await driver.findComponent(ON.id('familyStr'));

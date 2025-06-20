@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
@@ -52,7 +52,7 @@ export default function SwiperInterface03() {
      * @tc.type
      * @tc.size
      */
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0190', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0190', Level.LEVEL1, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0190 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_0190');
@@ -74,7 +74,7 @@ export default function SwiperInterface03() {
      * @tc.type
      * @tc.size
      */
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0200', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0200', Level.LEVEL1, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0200 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_0200');
@@ -95,7 +95,7 @@ export default function SwiperInterface03() {
      * @tc.type
      * @tc.size
      */
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0210', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0210', Level.LEVEL1, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0210 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_0210');
@@ -116,7 +116,7 @@ export default function SwiperInterface03() {
      * @tc.type
      * @tc.size
      */
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0220', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0220', Level.LEVEL1, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DRAG_0220 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_0220');

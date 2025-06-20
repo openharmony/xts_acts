@@ -16,7 +16,7 @@
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
-import { describe, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, it, expect, beforeAll, Level } from "@ohos/hypium";
 import { common } from '@kit.AbilityKit';
 import {
   photoKeys,
@@ -96,7 +96,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_uri_001', 2, async (done: Function) => {
+    it('get_image_uri_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_uri_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -114,7 +114,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_photo_type_001', 2, async (done: Function) => {
+    it('get_image_photo_type_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_photo_type_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -132,7 +132,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_title_001', 2, async (done: Function) => {
+    it('get_image_title_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_title_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -150,7 +150,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_title_001', 2, async (done: Function) => {
+    it('get_video_title_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_title_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -167,7 +167,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_get_assets_error_000', 0, async (done: Function) => {
+    it('sendable_get_assets_error_000', Level.LEVEL0, async (done: Function) => {
       try {
         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
         let fetchOption: photoAccessHelper.FetchOptions = {
@@ -196,7 +196,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_set_assets_000', 0, async (done: Function) => {
+    it('sendable_set_assets_000', Level.LEVEL0, async (done: Function) => {
       try {
         // Set new title
         let predicatesSet: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -226,7 +226,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_error_set_assets_title_undefined_000', 0, async (done: Function) => {
+    it('sendable_error_set_assets_title_undefined_000', Level.LEVEL0, async (done: Function) => {
       try {
         // Set new title
         let predicatesSet: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -255,7 +255,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_error_set_assets_key_invalid_001', 0, async (done: Function) => {
+    it('sendable_error_set_assets_key_invalid_001', Level.LEVEL0, async (done: Function) => {
       try {
         // Set new title
         let predicatesSet: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -285,7 +285,7 @@ export default function getTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_error_set_assets_key_undefined_002', 0, async (done: Function) => {
+    it('sendable_error_set_assets_key_undefined_002', Level.LEVEL0, async (done: Function) => {
       try {
         // Set new title
         let predicatesSet: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();

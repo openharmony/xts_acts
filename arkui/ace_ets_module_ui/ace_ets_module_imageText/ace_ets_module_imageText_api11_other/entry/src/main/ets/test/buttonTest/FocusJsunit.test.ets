@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';;
@@ -45,7 +45,7 @@ export default function focusJsunit() {
       console.info("focus after each called");
     });
 
-    it('focusTest_0100', 0, async (done: Function) => {
+    it('focusTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('focusTest_0100 START');
       try {
         let eventData: events_emitter.EventData = {

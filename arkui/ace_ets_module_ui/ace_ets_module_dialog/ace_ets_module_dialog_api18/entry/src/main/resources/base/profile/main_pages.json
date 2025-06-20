@@ -8,6 +8,16 @@
     "MainAbility/pages/dialog/openCustomDialogLevelOrder",
     "MainAbility/pages/dialog/openCustomDialogWithConOrder",
     "MainAbility/pages/dialog/presentCustomDialogOrder",
-    "MainAbility/pages/dialog/alertDialogLevelOrder"
+    "MainAbility/pages/dialog/alertDialogLevelOrder",
+    "MainAbility/pages/bindTips/bindTips1",
+    "MainAbility/pages/bindTips/bindTips2",
+    "MainAbility/pages/bindMenu/bindMenuHapticFeedbackMode",
+    "MainAbility/pages/bindContextMenu/bindContextMenuHapticFeedback",
+    "MainAbility/pages/dialog/closeDialogTest",
+    "MainAbility/pages/promptAction/closeToastTest",
+    "MainAbility/pages/bindContextMenu/previewBorderRadius",
+    "MainAbility/pages/popup/isVisible",
+    "MainAbility/pages/dialog/getDialogControllerTest",
+    "MainAbility/pages/promptAction/DialogOptions"
   ]
 }

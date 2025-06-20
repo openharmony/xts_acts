@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -52,7 +52,7 @@ export default function tapGestureTest() {
     * @tc.desc  : To test whether isFingerCountLimited is effective.
     * @tc.level : Level 2
     */
-    it('TapGesture1_0200', 0, async (done: Function) => {
+    it('TapGesture1_0200', Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('TapGesture1_0200 START');
       let driver = await Driver.create()
@@ -75,7 +75,7 @@ export default function tapGestureTest() {
     * @tc.desc  : To test whether isFingerCountLimited is effective.
     * @tc.level : Level 1
     */
-    it('TapGesture1_0200', 0, async (done: Function) => {
+    it('TapGesture1_0200', Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('TapGesture1_0200 START');
       let driver = await Driver.create()

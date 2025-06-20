@@ -77,7 +77,7 @@ export default function ActsDAGetSetTest() {
         * @tc.number   : getDistributedAccountAbility_test
         * @tc.name     : testDistributedFunction
         * @tc.desc     : Test distributedAccount.getDistributedAccountAbility API functionality.
-        * @tc.level    : Level3
+        * @tc.level    : Level0
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
@@ -96,11 +96,11 @@ export default function ActsDAGetSetTest() {
         * @tc.number   : getOsAccountDistributedInfo_test001
         * @tc.name     : testDistributedFunction
         * @tc.desc     : Test distributedAccount.getOsAccountDistributedInfo API functionality.
-        * @tc.level    : Level3
+        * @tc.level    : Level0
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getOsAccountDistributedInfo_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('getOsAccountDistributedInfo_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfo().then( (data) => {
                 console.info('====>getOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
@@ -115,7 +115,7 @@ export default function ActsDAGetSetTest() {
         * @tc.number   : getOsAccountDistributedInfo_test002
         * @tc.name     : testDistributedFunction
         * @tc.desc     : Test distributedAccount.getOsAccountDistributedInfo API functionality by callback.
-               * @tc.level    : Level3
+        * @tc.level    : Level0
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
@@ -155,11 +155,11 @@ export default function ActsDAGetSetTest() {
         * @tc.number   : getOsAccountDistributedInfoByLocalId_test002
         * @tc.name     : testDistributedFunction
         * @tc.desc     : Test distributedAccount.getOsAccountDistributedInfo API functionality by callback.
-        * @tc.level    : Level3
+        * @tc.level    : Level0
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getOsAccountDistributedInfoByLocalId_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('getOsAccountDistributedInfoByLocalId_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfoByLocalId(100, function (err, data) {
                 console.info('====>getOsAccountDistributedInfoByLocalId_test002 err:' + JSON.stringify(err))

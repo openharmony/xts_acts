@@ -16,7 +16,7 @@
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import {
   sleep,
@@ -58,7 +58,7 @@ export default function getSendableAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getSendableAlbums_promise_000', 0, async (done: Function) => {
+    it('getSendableAlbums_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getSendableAlbums_promise_000';
       try {
         let albumNames = [
@@ -102,7 +102,7 @@ export default function getSendableAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getSendableAlbums_promise_001', 0, async (done: Function) => {
+    it('getSendableAlbums_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getSendableAlbums_promise_001';
       try {
         let albumNames = [

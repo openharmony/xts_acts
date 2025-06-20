@@ -25,7 +25,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : The setAssociatedData setting valueis called when the forwarding parameters
         *                 are correct, and then getAssociatedData is called for the value(callback)
         */
-        it('ActsAccountAssociatedData_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountAssociatedData_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountAssociatedData_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -57,7 +57,7 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : The setAssociatedData setting value is called when the forwarding parameters
         *                 are correct, and then getAssociatedData is called for the value(promise)
         */
-        it('ActsAccountAssociatedData_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('ActsAccountAssociatedData_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountAssociatedData_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

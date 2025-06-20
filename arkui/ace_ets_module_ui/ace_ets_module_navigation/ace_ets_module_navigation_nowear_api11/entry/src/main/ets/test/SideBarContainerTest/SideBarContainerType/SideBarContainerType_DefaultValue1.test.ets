@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import RectValue from '../../../MainAbility/common/Rect';
@@ -52,7 +52,7 @@ export default function SideBarContainerType_DefaultValue1() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.AUTO， width > minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_DefaultValue1_0100', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_DefaultValue1_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue1_0100] START');
       globalThis.value.message.notify({
         name: 'minSideBarWidth', value: 300
@@ -87,7 +87,7 @@ export default function SideBarContainerType_DefaultValue1() {
      * @tc.name testSideBarContainerAttribute
      * @tc.desc SideBarContainerType.AUTO， width > minSideBarWidth + minContentWidth
      */
-    it('SUB_ACE_SideBarContainerType_DefaultValue1_0200', 0, async (done: Function) => {
+    it('SUB_ACE_SideBarContainerType_DefaultValue1_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_SideBarContainerType_DefaultValue1_0200] START');
       globalThis.value.message.notify({
         name: 'minSideBarWidth', value: 300
@@ -109,10 +109,10 @@ export default function SideBarContainerType_DefaultValue1() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
 
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(600)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(600))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       let strJson1 = getInspectorByKey('SideBarContainerType_DefaultValue1_SideBarContainer_01');

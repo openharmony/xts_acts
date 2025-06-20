@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import huks from "@ohos.security.huks";
-import { describe, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import { checkSoftware } from "./utils/param/publicFunc.js";
 
 let securityLevel = stringToUint8Array("sec_level");
@@ -192,7 +192,7 @@ export default function SecurityHuksFaceFingerJsunit() {
          * @tc.name HUKS_Cipher_AuthToken_2900.
          * @tc.desc HUKS_TAG_USER_AUTH_TYPE invalid and generate.
          */
-        it("HUKS_Cipher_AuthToken_2900", 0, async function (done) {
+        it("HUKS_Cipher_AuthToken_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let alias = "HUKS_Cipher_AuthToken_2900";
             let inData = new Uint8Array(new Array());
             let option = usePinNormal(inData);
@@ -225,7 +225,7 @@ export default function SecurityHuksFaceFingerJsunit() {
          * @tc.name HUKS_Cipher_AuthToken_3000.
          * @tc.desc HUKS_TAG_KEY_AUTH_ACCESS_TYPE invalid and generate.
          */
-        it("HUKS_Cipher_AuthToken_3000", 0, async function (done) {
+        it("HUKS_Cipher_AuthToken_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let alias = "HUKS_Cipher_AuthToken_3000";
             let inData = new Uint8Array(new Array());
             let option = usePinNormal(inData);
@@ -258,7 +258,7 @@ export default function SecurityHuksFaceFingerJsunit() {
          * @tc.name HUKS_Cipher_AuthToken_3100.
          * @tc.desc HUKS_TAG_CHALLENGE_TYPE invalid and generate.
          */
-        it("HUKS_Cipher_AuthToken_3100", 0, async function (done) {
+        it("HUKS_Cipher_AuthToken_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let alias = "HUKS_Cipher_AuthToken_3100";
             let inData = new Uint8Array(new Array());
             let option = usePinNormal(inData);
@@ -291,7 +291,7 @@ export default function SecurityHuksFaceFingerJsunit() {
          * @tc.name HUKS_Cipher_AuthToken_3200.
          * @tc.desc HUKS_TAG_CHALLENGE_POS invalid and generate.
          */
-        it("HUKS_Cipher_AuthToken_3200", 0, async function (done) {
+        it("HUKS_Cipher_AuthToken_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let alias = "HUKS_Cipher_AuthToken_3200";
             let inData = new Uint8Array(new Array());
             let option = usePinNormal(inData);
@@ -323,7 +323,7 @@ export default function SecurityHuksFaceFingerJsunit() {
          * @tc.name HUKS_Cipher_AuthToken_3300.
          * @tc.desc HUKS_TAG_AUTH_TIMEOUT invalid and generate.
          */
-        it("HUKS_Cipher_AuthToken_3300", 0, async function (done) {
+        it("HUKS_Cipher_AuthToken_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let alias = "HUKS_Cipher_AuthToken_3300";
             let inData = new Uint8Array(new Array());
             let option = usePinTime(inData);
@@ -355,7 +355,7 @@ export default function SecurityHuksFaceFingerJsunit() {
          * @tc.name HUKS_Cipher_AuthToken_5500.
          * @tc.desc use pin access type is HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL.
          */
-        it("HUKS_Cipher_AuthToken_5500", 0, async function (done) {
+        it("HUKS_Cipher_AuthToken_5500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let alias = "HUKS_Cipher_AuthToken_5500";
             let inData = new Uint8Array(new Array());
             let option = usePinNormal(inData);
@@ -387,7 +387,7 @@ export default function SecurityHuksFaceFingerJsunit() {
          * @tc.name HUKS_Cipher_Attestation_0300.
          * @tc.desc attest key support.
          */
-        it("HUKS_Cipher_Attestation_0300", 0, async function (done) {
+        it("HUKS_Cipher_Attestation_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let aliasString = keyAliasString;
             let aliasUint8 = stringToUint8Array(aliasString);
             let properties = new Array();

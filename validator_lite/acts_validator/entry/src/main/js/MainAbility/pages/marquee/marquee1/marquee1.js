@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
+    itemIndex: -1,
     text: 'Hello JS, we are friends.',
     speed: 1,
     flag: true,
@@ -42,17 +42,24 @@ export default {
       params: {
         step: '操作步骤：点击红色的跑马灯',
         result: '预期结果：红色跑马灯速度发生变化',
-        url: 'pages/marquee/marquee1/marquee1'
+        url: 'pages/marquee/marquee1/marquee1',
+        itemIndex: this.itemIndex
       }
     });
   },
 
   back() {
     console.info('onclick back ');
-    router.replace({ uri: 'pages/second-compent/index' });
+    router.replace({
+      uri: 'pages/second-compent/index',
+      params: {
+        itemIndex: this.itemIndex
+      }
+    });
   },
 
   changeResult(result) {
-    saveTxtData(this, result);
+    getApp().data.keyList[this.title] = result;
+    this.back();
   },
 };

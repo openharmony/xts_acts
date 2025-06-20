@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function CheckboxTest() {
   describe('CheckboxTest', () => {
@@ -42,8 +42,12 @@ export default function CheckboxTest() {
      *@tc.number ArkUX_CheckBox_Visual_0110
      *@tc.name   Support modifying the checkBox style change of Checkbox component
      *@tc.desc   Sets the shape property parameter to 0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
      */
-    it('ArkUX_CheckBox_Visual_0110', 0, async (done: Function) => {
+
+    it('ArkUX_CheckBox_Visual_0110', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_CheckBox_Visual_0110 START');
       setTimeout(() => {
         try {
@@ -66,8 +70,12 @@ export default function CheckboxTest() {
      *@tc.number ArkUX_CheckBox_Visual_0120
      *@tc.name   Support modifying the checkBox style change of Checkbox component
      *@tc.desc   Sets the shape property parameter to 1
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
      */
-    it('ArkUX_CheckBox_Visual_0120', 0, async (done: Function) => {
+
+    it('ArkUX_CheckBox_Visual_0120', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_CheckBox_Visual_0120 START');
       setTimeout(() => {
         try {
@@ -90,8 +98,12 @@ export default function CheckboxTest() {
      *@tc.number ArkUX_CheckBox_Visual_0130
      *@tc.name   Support modifying the checkBox style change of Checkbox component
      *@tc.desc   Sets the shape property parameter to default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
      */
-    it('ArkUX_CheckBox_Visual_0130', 0, async (done: Function) => {
+
+    it('ArkUX_CheckBox_Visual_0130', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_CheckBox_Visual_0130 START');
       setTimeout(() => {
         try {

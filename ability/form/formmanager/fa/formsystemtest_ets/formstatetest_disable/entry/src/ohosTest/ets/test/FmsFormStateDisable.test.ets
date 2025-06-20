@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeAll, afterAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeAll, afterAll, beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
@@ -104,7 +104,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the disable update interface.
          *           2.Verify the result of the disable update interface.
          */
-        it(`FMS_disableFormsUpdate_0200`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_disableFormsUpdate_0200 start`);
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
                 console.info("!!!====>FMS_disableFormsUpdate_0200 onStateCallBack data:====>" + JSON.stringify(data));
@@ -152,7 +152,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the disable update interface.
          *           2.Verify the result of the disable update interface.
          */
-        it(`FMS_disableFormsUpdate_0300`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_0300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_disableFormsUpdate_0300 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -204,7 +204,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the disable update interface.
          *           2.Verify the result of the disable update interface.
          */
-        it(`FMS_disableFormsUpdate_0400`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_0400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_disableFormsUpdate_0400 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -251,7 +251,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the disable update interface.
          *           2.Verify the result of the disable update interface.
          */
-        it(`FMS_disableFormsUpdate_0500`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_0500`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_disableFormsUpdate_0500 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -298,7 +298,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the disable update interface.
          *           2.Verify the result of the disable update interface.
          */
-        it(`FMS_disableFormsUpdate_0600`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_0600`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.info(`FMS_disableFormsUpdate_0600 start`);
 
             let hostFormId: string | undefined;
@@ -380,7 +380,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the disable update interface.
          *           2.Verify the result of the disable update interface.
          */
-        it(`FMS_disableFormsUpdate_0700`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_0700`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.info(`FMS_disableFormsUpdate_0700 start`);
             let hostFormId: string;
 
@@ -465,7 +465,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the disable update interface.
          *           2.Verify the result of the disable update interface.
          */
-        it(`FMS_disableFormsUpdate_0800`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_0800`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_disableFormsUpdate_0800 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -515,7 +515,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the disable update interface.
          *           2.Verify the result of the disable update interface.
          */
-        it(`FMS_disableFormsUpdate_0900`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_0900`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_disableFormsUpdate_0900 start`);
             let formId: string = '';
             let OnDisableCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -604,7 +604,7 @@ export default function test() {
          *           2.Call the disableFormsUpdate interface.
          *           3.Call the setFormNextRefreshTime interface and verify the form can not refresh.
          */
-        it(`FMS_disableFormsUpdate_1000`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_1000`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_disableFormsUpdate_1000 start`);
 
             let formId: string = '';
@@ -721,7 +721,7 @@ export default function test() {
          *           2.Call the disableFormsUpdate interface.
          *           3.Call the setFormNextRefreshTime interface and verify the form can not refresh.
          */
-        it(`FMS_disableFormsUpdate_1100`, 0, async (done: () => void) => {
+        it(`FMS_disableFormsUpdate_1100`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_disableFormsUpdate_1100 start`);
 
             let formId: string = '';

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect, TestType, Size, Level } from "@ohos/hypium";
 import huks from "@ohos.security.huks";
 import Data from "./utils/data.json";
 import { HuksHmac } from "./utils/param/hmac/publicHmacParam.js";
@@ -222,7 +222,7 @@ async function update(handle, HuksOptions) {
 
 export default function SecurityHuksHmacPromiseJsunit() {
   describe("SecurityHuksHmacPromiseJsunit", function () {
-    it("Security_HUKS_Hmac_API8_101", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA256KeyAlias101";
       let HuksOptions = {
         properties: new Array(
@@ -236,7 +236,7 @@ export default function SecurityHuksHmacPromiseJsunit() {
       done();
     });
 
-    it("Security_HUKS_Hmac_API8_102", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_102", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA256KeyAlias102";
       let HuksOptions = {
         properties: new Array(
@@ -250,7 +250,7 @@ export default function SecurityHuksHmacPromiseJsunit() {
       done();
     });
 
-    it("Security_HUKS_Hmac_API8_103", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA256KeyAlias103";
       let HuksOptions = {
         properties: new Array(
@@ -264,7 +264,7 @@ export default function SecurityHuksHmacPromiseJsunit() {
       done();
     });
 
-    it("Security_HUKS_Hmac_API8_104", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_104", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA256KeyAlias104";
       let HuksOptions = {
         properties: new Array(
@@ -278,7 +278,7 @@ export default function SecurityHuksHmacPromiseJsunit() {
       done();
     });
 
-    it("Security_HUKS_Hmac_API8_SM3_101", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SM3_101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias001";
       let HuksOptions = {
         properties: new Array(
@@ -293,7 +293,7 @@ export default function SecurityHuksHmacPromiseJsunit() {
       done();
     });
 
-    it("Security_HUKS_Hmac_API8_SM3_102", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SM3_102", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias002";
       let HuksOptions = {
         properties: new Array(
@@ -307,7 +307,7 @@ export default function SecurityHuksHmacPromiseJsunit() {
       done();
     });
 
-    it("Security_HUKS_Hmac_API8_SM3_103", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SM3_103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias003";
       let HuksOptions = {
         properties: new Array(
@@ -321,7 +321,7 @@ export default function SecurityHuksHmacPromiseJsunit() {
       done();
     });
 
-    it("Security_HUKS_Hmac_API8_SM3_104", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SM3_104", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias004";
       let HuksOptions = {
         properties: new Array(
@@ -343,7 +343,7 @@ export default function SecurityHuksHmacPromiseJsunit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it('SUB_Security_HUKS_HMAC_API8_SM3_0100', 0, async function (done) {
+    it('SUB_Security_HUKS_HMAC_API8_SM3_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlias = 'SUB_Security_HUKS_HMAC_API8_SM3_0100';
 
       let HuksOptions = {

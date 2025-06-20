@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -61,7 +61,7 @@ export default function Grid_ReachStartAndEnd() {
      * @tc.name testGrid
      * @tc.desc Sliding the grid to the end position triggers the onReachEnd event, and sliding to the start position triggers the onReachStart event
      */
-    it('Grid_ReachStartAndEnd_0100', 0, async (done: Function) => {
+    it('Grid_ReachStartAndEnd_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd_0100] START');
       let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ReachStartAndEnd_grid')
       let driver = Driver.create()
@@ -100,7 +100,7 @@ export default function Grid_ReachStartAndEnd() {
      * @tc.name testGrid
      * @tc.desc Quickly sliding the grid to the end position triggers the onReachEnd event
      */
-    it('Grid_ReachStartAndEnd_0600', 0, async (done: Function) => {
+    it('Grid_ReachStartAndEnd_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd_0600] START');
       let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ReachStartAndEnd_grid')
       let driver = Driver.create()

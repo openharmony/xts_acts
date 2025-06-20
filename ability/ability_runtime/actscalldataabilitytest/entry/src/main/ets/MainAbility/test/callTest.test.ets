@@ -56,14 +56,14 @@ export default function callTest() {
     }
   }
 
-  describe('callTest',  () => {
+  describe('callTest', Level.LEVEL0, () => {
     /*
      * @tc.number  CallTest_0100
      * @tc.name    The deviceid passed in is null, so the installation free process is implemented
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("CallTest_0100", 0, async  (done: Function) => {
+    it("CallTest_0100", Level.LEVEL0, async  (done: Function) => {
       console.info("------------start CallTest_0100-------------");
       console.info("CallTest_0100 commonEvent.createSubscriber start!!!");
       commonEvent.createSubscriber(subscribeInfo, CreateSubscriberCallBack);

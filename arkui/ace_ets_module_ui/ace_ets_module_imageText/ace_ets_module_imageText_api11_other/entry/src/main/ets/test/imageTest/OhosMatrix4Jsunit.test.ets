@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function ohosMatrix4Jsunit() {
       console.info("OhosMatrix4 each called");
     });
 
-    it('test_OhosMatrix4_001', 0, async (done: Function) => {
+    it('test_OhosMatrix4_001', Level.LEVEL1, async (done: Function) => {
       console.info('[test_OhosMatrix4_001] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('rotate7');
@@ -67,7 +67,7 @@ export default function ohosMatrix4Jsunit() {
       done();
     });
 
-    it('test_OhosMatrix4_002', 0, async (done: Function) => {
+    it('test_OhosMatrix4_002', Level.LEVEL1, async (done: Function) => {
       console.info('[test_OhosMatrix4_002] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('rotate8');
@@ -80,7 +80,7 @@ export default function ohosMatrix4Jsunit() {
       done();
     });
 
-    it('test_OhosMatrix4_003', 0, async (done: Function) => {
+    it('test_OhosMatrix4_003', Level.LEVEL1, async (done: Function) => {
       console.info('[test_OhosMatrix4_003] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('rotate9');
@@ -93,7 +93,7 @@ export default function ohosMatrix4Jsunit() {
       done();
     });
 
-    it('test_OhosMatrix4_004', 0, async (done: Function) => {
+    it('test_OhosMatrix4_004', Level.LEVEL1, async (done: Function) => {
       console.info('[test_OhosMatrix4_004] START');
       await CommonFunc.sleep(1000);
       let scaleValue: ScaleValue = {
@@ -122,7 +122,7 @@ export default function ohosMatrix4Jsunit() {
       done();
     });
 
-    it('test_OhosMatrix4_005', 0, async (done: Function) => {
+    it('test_OhosMatrix4_005', Level.LEVEL1, async (done: Function) => {
       await CommonFunc.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_OhosMatrix4_005] get event state result is: " + JSON.stringify(eventData));
@@ -143,7 +143,7 @@ export default function ohosMatrix4Jsunit() {
       done();
     });
 
-    it('test_OhosMatrix4_006', 0, async (done: Function) => {
+    it('test_OhosMatrix4_006', Level.LEVEL1, async (done: Function) => {
       console.info('[test_OhosMatrix4_006] START');
       await CommonFunc.sleep(1000);
       let matrix2: Matrix = {

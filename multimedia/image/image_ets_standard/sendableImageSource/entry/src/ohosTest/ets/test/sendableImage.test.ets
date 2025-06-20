@@ -14,7 +14,7 @@
 */
 
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
@@ -295,11 +295,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0100"
       let fileName = 'test.jpg'
@@ -324,11 +325,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0200', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0200"
       let fileName = 'test.png'
@@ -354,11 +356,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0300', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0300"
       let fileName = ''
@@ -382,11 +385,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0100"
       let fileName = 'test.gif'
@@ -410,11 +414,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0200', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "testCreateImageSourceFd0200"
       let fileName = 'test.jpg'
@@ -438,11 +443,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0300', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0300"
       let fileName = ''
@@ -468,11 +474,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0400', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0400"
       try {
@@ -496,11 +503,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0100"
       let fileName = 'test.bmp'
@@ -524,11 +532,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0200', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0200"
       let fileName = 'test.jpg'
@@ -554,11 +563,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0300', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0300"
       try {
@@ -584,11 +594,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0100"
       let fileName = 'test.webp'
@@ -596,6 +607,9 @@ export default function sendableImageSource() {
       imageSourceApi.createPixelMap().then((pixelMap: sendableImage.PixelMap) => {
         console.info(`0x0000 ${tag} success pixelMap`);
         expect(pixelMap.isEditable).assertInstanceOf('Boolean')
+        if (pixelMap != undefined) {
+          pixelMap.release();
+        }
         done()
       }).catch((error: BusinessError) => {
         console.error(`0x0000 ${tag} failed ${error}`);
@@ -615,11 +629,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0200', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0200"
       let fileName = 'test.dng'
@@ -645,6 +660,9 @@ export default function sendableImageSource() {
         console.info(`0x0000 ${tag} pixelMap size is ${info.size.height} ${info.size.width}`);
         expect(opt.desiredSize?.height).assertEqual(info.size.height)
         expect(opt.desiredSize?.width).assertEqual(info.size.width)
+        if (pixelMap != undefined) {
+          pixelMap.release();
+        }
         done()
       }).catch((error: BusinessError) => {
         console.error(`0x0000 ${tag} failed ${error}`);
@@ -665,11 +683,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0300', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0300"
       let fileName = 'SVG.svg'
@@ -698,11 +717,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0400', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0400"
       let fileName = 'test.ico'
@@ -724,6 +744,9 @@ export default function sendableImageSource() {
       imageSourceApi.createPixelMap(opt).then((pixelMap: sendableImage.PixelMap) => {
         console.info(`0x0000 ${tag} success pixelMap`);
         expect(pixelMap.isEditable).assertInstanceOf('Boolean')
+        if (pixelMap != undefined) {
+          pixelMap.release();
+        }
         done()
       }).catch((error: BusinessError) => {
         console.error(`0x0000 ${tag} failed ${error}`);
@@ -742,11 +765,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0100"
       let fileName = 'test.jpg'
@@ -773,11 +797,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0200', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0200"
       let fileName = 'test.jpg'
@@ -805,11 +830,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0100"
       let receiver = await getImageReceiver(1)
@@ -827,11 +853,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0200', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0200"
       try {
@@ -857,11 +884,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0300', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0300"
       try {
@@ -886,11 +914,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0400', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0400"
       try {
@@ -915,11 +944,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_ON_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_ON_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_ON_0100"
       let receiver = await getImageReceiver(1)
@@ -943,11 +973,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_GET_RECEIVING_SURFACES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_GET_RECEIVING_SURFACES_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_GET_RECEIVING_SURFACES_0100"
       let receiver = await getImageReceiver(1)
@@ -974,11 +1005,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_RECEIVER_READ_NEXT_IMAGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_RECEIVER_READ_NEXT_IMAGE_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_RECEIVER_READ_NEXT_IMAGE_0100"
       let receiver = await getImageReceiver(1)
@@ -1013,11 +1045,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMG_GET_COMPONENT_0100"
       let receiver = await getImageReceiver(1)
@@ -1065,11 +1098,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0200', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMG_GET_COMPONENT_0200"
       let receiver = await getImageReceiver(1)
@@ -1104,11 +1138,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0300', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMG_GET_COMPONENT_0300"
       let receiver = await getImageReceiver(1)
@@ -1149,11 +1184,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0400', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMG_GET_COMPONENT_0400"
       let receiver = await getImageReceiver(1)
@@ -1190,11 +1226,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMG_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMG_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMG_RELEASE_0100"
       let receiver = await getImageReceiver(1)
@@ -1228,11 +1265,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMG_RELEASE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMG_RELEASE_0200', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMG_RELEASE_0200"
       let receiver = await getImageReceiver(1)
@@ -1280,11 +1318,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMG_RELEASE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMG_RELEASE_0300', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_IMG_RELEASE_0300"
       let receiver = await getImageReceiver(1)
@@ -1333,11 +1372,12 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_RECEIVER_READ_LATEST_IMAGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_RECEIVER_READ_LATEST_IMAGE_0100', Level.LEVEL0, async (done: Function) => {
       if(!isSupportedCameras()){
         console.info('Failed to obtain the default camera object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return
       }
       const tag: string = "SUB_MULTIMEDIA_RECEIVER_READ_LATEST_IMAGE_0100"
       let receiver = await getImageReceiver(1)
@@ -1367,7 +1407,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0100';
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
@@ -1379,6 +1419,8 @@ export default function sendableImageSource() {
         let pixelMap = sendableImage.createPixelMapSync(color, opts);
         console.info(tag + " Succeeded in creating pixel map");
         expect(pixelMap != undefined).assertTrue();
+        await pixelMap.release();
+        done();
       } catch (error) {
         console.error(tag + ' Failed to create the pixel map.' + error);
         expect().assertFail();
@@ -1396,7 +1438,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0200';
       try {
         let pixelMap = sendableImage.createPixelMapSync(undefined!, undefined!);
@@ -1420,7 +1462,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0100';
       const color: ArrayBuffer = new ArrayBuffer(96);
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -1446,7 +1488,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0200';
       const color: ArrayBuffer = new ArrayBuffer(96);
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -1461,6 +1503,10 @@ export default function sendableImageSource() {
         expect(true).assertTrue();
         done();
       }
+      if (pixelMap != undefined) {
+        await pixelMap.release()
+      }
+      done();
     })
 
     /**
@@ -1471,7 +1517,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0100"
       const readBuffer: ArrayBuffer = new ArrayBuffer(3301488);
       let fileName = 'test.webp'
@@ -1482,11 +1528,11 @@ export default function sendableImageSource() {
         pixelMap.readPixelsToBuffer(readBuffer).then(() => {
           console.info(tag + ' Succeeded in reading image pixel data.');
           expect(true).assertTrue();
+          pixelMap.release();
           done();
         })
       })
     })
-
     /**
      * @tc.number    : testImageSourceReadPixelsToBuffer0200
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200
@@ -1495,7 +1541,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200"
       const readBuffer: ArrayBuffer = new ArrayBuffer(96);
       let fileName = 'test.webp'
@@ -1509,6 +1555,7 @@ export default function sendableImageSource() {
           }).catch((error: BusinessError) => {
             console.error(tag + ` Failed to read image pixel data. errer is ${error}`);
             expect(error).assertEqual(62980115);
+            pixelMap.release();
             done();
           })
         }
@@ -1527,7 +1574,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_0100"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -1544,6 +1591,7 @@ export default function sendableImageSource() {
         expect(pixelMap.isEditable).assertInstanceOf('Boolean');
         pixelMap.readPixels(area).then(() => {
           console.info(tag + ' Succeeded in reading the image data in the area.');
+          pixelMap.release();
           expect(true).assertTrue();
           done();
         }).catch((error: BusinessError) => {
@@ -1562,7 +1610,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_SYNC_0100"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -1580,6 +1628,7 @@ export default function sendableImageSource() {
         try {
           pixelMap.readPixelsSync(area);
           console.info(tag + ' Succeeded in reading the image data in the area.');
+          pixelMap.release();
           expect(true).assertTrue();
           done();
         } catch (error) {
@@ -1598,7 +1647,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_0100"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -1622,6 +1671,7 @@ export default function sendableImageSource() {
       try {
         pixelMap.writePixels(area);
         console.info(tag + ' Succeeded to write pixelmap into the specified area.');
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       } catch (error) {
@@ -1639,7 +1689,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_SYNC_0100"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -1663,6 +1713,7 @@ export default function sendableImageSource() {
       try {
         pixelMap.writePixelsSync(area);
         console.info(tag + ' Succeeded to write pixelmap into the specified area.');
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       } catch (error) {
@@ -1680,7 +1731,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_BUFFER_TO_PIXELS_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_BUFFER_TO_PIXELS_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_BUFFER_TO_PIXELS_SYNC_0100"
       const color: ArrayBuffer = new ArrayBuffer(96);
       let bufferArr: Uint8Array = new Uint8Array(color);
@@ -1696,6 +1747,7 @@ export default function sendableImageSource() {
       try {
         pixelMap.writeBufferToPixelsSync(color);
         console.info(tag + ' Succeeded in writing data from a buffer to a PixelMap.');
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       } catch (error) {
@@ -1714,7 +1766,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0100';
       const color: ArrayBuffer = new ArrayBuffer(96);
       let bufferArr: Uint8Array = new Uint8Array(color);
@@ -1740,6 +1792,7 @@ export default function sendableImageSource() {
           let unmarshPixelmap = ret.pixel_map;
           expect(unmarshPixelmap != undefined).assertTrue();
           console.info(tag + " Successed in creating PixelMap from parcel. " + pixelMap);
+          pixelMap.release();
           done();
         } catch (error) {
           console.info(tag + " Failed to create PixelMap from parcel. " + pixelMap);
@@ -1759,7 +1812,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0200';
       try {
         sendableImage.createPixelMapFromParcel(undefined!)
@@ -1780,7 +1833,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_IMAGE_INFO_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_IMAGE_INFO_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_IMAGE_INFO_SYNC_0100"
       const color: ArrayBuffer = new ArrayBuffer(96);
       let bufferArr: Uint8Array = new Uint8Array(color);
@@ -1794,6 +1847,7 @@ export default function sendableImageSource() {
         try {
           let imageInfo = pixelMap.getImageInfoSync();
           console.info(tag + ' Succeeded in getting image info. imageInfo is ' + imageInfo);
+          await pixelMap.release();
           expect(true).assertTrue();
           done();
         } catch (error) {
@@ -1812,7 +1866,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_BYTES_NUMBER_PER_ROW_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_BYTES_NUMBER_PER_ROW_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_BYTES_NUMBER_PER_ROW_0100"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -1830,6 +1884,7 @@ export default function sendableImageSource() {
         try {
           pixelMap.getBytesNumberPerRow();
           console.info(tag + ' Succeeded in obtaining the number of bytes in the row of the image pixel.');
+          pixelMap.release();
           expect(true).assertTrue();
           done();
         } catch (error) {
@@ -1848,7 +1903,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_PIXEL_BYTES_NUMBER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_PIXEL_BYTES_NUMBER_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_PIXEL_BYTES_NUMBER_0100"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -1866,6 +1921,7 @@ export default function sendableImageSource() {
         try {
           pixelMap.getPixelBytesNumber();
           console.info(tag + ' Succeeded in obtaining the total bytes of image pixels.');
+          pixelMap.release();
           expect(true).assertTrue();
           done();
         } catch (error) {
@@ -1884,7 +1940,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_DENSITY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_DENSITY_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_DENSITY_0100"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -1902,6 +1958,7 @@ export default function sendableImageSource() {
         try {
           let density = pixelMap.getDensity();
           console.info(tag + ' Obtaining the pixel density of the current image succeeded.');
+          pixelMap.release();
           expect(true).assertTrue();
           done();
         } catch (error) {
@@ -1920,7 +1977,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0100"
       let rate: number = 0.5;
       const color = new ArrayBuffer(96);
@@ -1932,6 +1989,7 @@ export default function sendableImageSource() {
       let pixelMap = await sendableImage.createPixelMap(color, opts);
       await pixelMap.opacity(rate).then(() => {
         console.info(tag + ' Succeeded in setting the transparent ratio.');
+        pixelMap.release();
         expect(true).assertTrue();
         done();
       }).catch((e: BusinessError) => {
@@ -1950,7 +2008,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0200"
       let rate: number = 1.1;
       const color = new ArrayBuffer(96);
@@ -1962,6 +2020,7 @@ export default function sendableImageSource() {
       let pixelMap = await sendableImage.createPixelMap(color, opts);
       pixelMap.opacity(rate).then(() => {
         console.info(tag + ' Succeeded in setting the transparent ratio.')
+        pixelMap.release();
         expect(true).assertTrue();
         done();
       }).catch((e: BusinessError) => {
@@ -1980,7 +2039,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0300"
       let rate: number = -0.1;
       const color = new ArrayBuffer(96);
@@ -1992,6 +2051,7 @@ export default function sendableImageSource() {
       let pixelMap = await sendableImage.createPixelMap(color, opts);
       pixelMap.opacity(rate).then(() => {
         console.info(tag + ' Succeeded in setting the transparent ratio.')
+        pixelMap.release();
         expect(true).assertTrue();
         done();
       }).catch((e: BusinessError) => {
@@ -2010,7 +2070,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_ALPHA_PIXEL_MAP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_ALPHA_PIXEL_MAP_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_ALPHA_PIXEL_MAP_0100"
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
@@ -2023,6 +2083,7 @@ export default function sendableImageSource() {
       let pixelMap = await sendableImage.createPixelMap(color, opts);
       let alphaPixelmap = pixelMap.createAlphaPixelmap().then((alphaPixelMap: sendableImage.PixelMap) => {
         console.info(tag + ' Succeeded in creating alpha pixelmap. AlphaPixelmap is ' + alphaPixelmap);
+        pixelMap.release();
         expect(true).assertTrue();
         done();
       }).catch((error: BusinessError) => {
@@ -2041,7 +2102,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0100"
       const color = new ArrayBuffer(96);
       let scaleX: number = 2.0;
@@ -2056,6 +2117,7 @@ export default function sendableImageSource() {
       try {
         pixelMap.scaleSync(scaleX, scaleY);
         console.info(tag + ' The image is zoomed in or out.');
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       } catch (error) {
@@ -2074,7 +2136,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0200"
       const color = new ArrayBuffer(96);
       let scaleX: number = 99.9;
@@ -2089,6 +2151,7 @@ export default function sendableImageSource() {
       try {
         pixelMap.scaleSync(scaleX, scaleY);
         console.info(tag + ' The image is zoomed in or out.');
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       } catch (error) {
@@ -2107,7 +2170,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_0100"
       let region: image.Region = { x: 0, y: 0, size: { height: 1, width: 1 } };
       const color = new ArrayBuffer(96);
@@ -2119,6 +2182,7 @@ export default function sendableImageSource() {
       let pixelMap = await sendableImage.createPixelMap(color, opts);
       pixelMap.crop(region).then(() => {
         console.info(tag + ' Succeeded in cropping pixelmap.');
+        pixelMap.release();
         expect(true).assertTrue();
         done();
       }).catch((error: BusinessError) => {
@@ -2137,7 +2201,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_SYNC_0100"
       let region: image.Region = { x: 0, y: 0, size: { height: 1, width: 1 } };
       const color = new ArrayBuffer(96);
@@ -2150,6 +2214,7 @@ export default function sendableImageSource() {
       try {
         pixelMap.cropSync(region);
         console.info(tag + ' Succeeded in cropping pixelmap.');
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       } catch (error) {
@@ -2168,7 +2233,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0100"
       const readBuffer: ArrayBuffer = new ArrayBuffer(96);
       let fileName = 'test.webp'
@@ -2177,6 +2242,7 @@ export default function sendableImageSource() {
       try {
         let csm = await pixelMap.getColorSpace();
         console.info(tag + ' Succeeded in getting ColorSpace. csm is ' + csm);
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       } catch (error) {
@@ -2195,7 +2261,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200"
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
@@ -2212,6 +2278,7 @@ export default function sendableImageSource() {
       } catch (error) {
         console.error(tag + ` Failed to get ColorSpace. error is ` + error + 'error code is ' + error.code);
         expect(error.code == 62980103).assertTrue();
+        await pixelMap.release();
         done();
       }
       done();
@@ -2225,7 +2292,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0100"
       let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
       let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
@@ -2236,6 +2303,7 @@ export default function sendableImageSource() {
       try {
         await pixelMap.setColorSpace(csm); 
         console.info(tag + ' Succeeded in Setting ColorSpace.');
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       } catch (error) {
@@ -2254,7 +2322,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0200"
       let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
       let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
@@ -2269,6 +2337,7 @@ export default function sendableImageSource() {
         done();
       } catch (error) {
         console.error(tag + ` Failed to set ColorSpace. error is ` + error);
+        await pixelMap.release();
         expect(true).assertTrue();
         done();
       }
@@ -2283,7 +2352,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0300"
       let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
       let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
@@ -2299,6 +2368,7 @@ export default function sendableImageSource() {
       } catch (error) {
         console.error(tag + ` Failed to set ColorSpace. error is ` + error + 'error code is ' + error.code);
         expect(error.code == 62980115).assertTrue();
+        await pixelMap.release();
         done();
       }
       done();
@@ -2312,7 +2382,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0100"
       let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
       let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
@@ -2321,6 +2391,7 @@ export default function sendableImageSource() {
       let pixelMap = await imageSourceApi.createPixelMap();
       pixelMap.applyColorSpace(targetColorSpace).then(() => {
         console.info(tag + ' Succeeded in applying color space for pixelmap object.');
+        pixelMap.release();
         expect(true).assertTrue();
         done();
       }).catch((error: BusinessError) => {
@@ -2339,7 +2410,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0200"
       let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
       let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
@@ -2353,6 +2424,7 @@ export default function sendableImageSource() {
       }).catch((error: BusinessError) => {
         console.error(tag + ` Failed to apply color space for pixelmap object. error is ${error}`); 
         expect(error).assertEqual(62980115);
+        pixelMap.release();
         done();
         })
       done();
@@ -2366,7 +2438,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_HEIGHT_AND_WIDTH_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_HEIGHT_AND_WIDTH_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_HEIGHT_0100"
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
@@ -2395,7 +2467,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_WIDTH_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_WIDTH_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_WIDTH_0100"
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
@@ -2424,7 +2496,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_REGION_SIZE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_REGION_SIZE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_REGION_SIZE_0100"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -2441,6 +2513,7 @@ export default function sendableImageSource() {
         expect(pixelMap.isEditable).assertInstanceOf('Boolean');
         pixelMap.readPixels(area).then(() => {
           console.info(tag + ' Succeeded in reading the image data in the area.');
+          pixelMap.release();
           expect(true).assertTrue();
           done();
         }).catch((error: BusinessError) => {
@@ -2460,7 +2533,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_REGION_SIZE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_REGION_SIZE_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_REGION_SIZE_0200"
       const area: image.PositionArea = {
         pixels: new ArrayBuffer(8),
@@ -2477,6 +2550,7 @@ export default function sendableImageSource() {
         expect(pixelMap.isEditable).assertInstanceOf('Boolean');
         pixelMap.readPixels(area).then(() => {
           console.info(tag + ' Succeeded in reading the image data in the area.');
+          pixelMap.release();
           expect(true).assertTrue();
           done();
         }).catch((error: BusinessError) => {
@@ -2496,7 +2570,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_IS_STRIDE_ALIGNMENT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_IS_STRIDE_ALIGNMENT_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_IS_STRIDE_ALIGNMENT_0100"
       let fileName = 'test.webp'
       let imageSourceApi = await getImageSource(fileName);
@@ -2513,6 +2587,7 @@ export default function sendableImageSource() {
             console.info("pixelMap.isStrideAlignment is true");
           }
         }
+        pixelMap.release();
         done();
       }).catch((error: BusinessError) => {
         console.error(tag + ` create imageSource failed. error is ${error}`);
@@ -2530,7 +2605,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PIXELMAP_RELEASE_0100"
       const color: ArrayBuffer = new ArrayBuffer(96);
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -2555,7 +2630,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_SIZE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_SIZE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_RECEIVER_SIZE_0100"
       let size: image.Size = { height: undefined!, width: undefined! } 
       try {
@@ -2578,7 +2653,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_FORMAT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_FORMAT_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_RECEIVER_FORMAT_0100"
       let size: image.Size = { height: 8192, width: 8 } 
       try {
@@ -2601,7 +2676,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_CAPACITY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_CAPACITY_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_RECEIVER_CAPACITY_0100"
       let size: image.Size = { height: 8192, width: 8 } 
       try {
@@ -2624,7 +2699,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_LATEST_IMAGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_LATEST_IMAGE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_LATEST_IMAGE_0100"
       let size: image.Size = {
         height: 8192,
@@ -2651,7 +2726,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_NEXT_IMAGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_NEXT_IMAGE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_NEXT_IMAGE_0100"
       let size: image.Size = {
         height: 8192,
@@ -2678,7 +2753,7 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0300"
       let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
       let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
@@ -2693,6 +2768,7 @@ export default function sendableImageSource() {
         console.error(tag + ` Failed to apply color space for pixelmap object. error is ${error}`); 
         if (Number(error) == 62980108) {
           expect(Number(error) == 62980108).assertTrue();
+          pixelMap.release();
           console.info('Failed to apply color space. Error is 62980108. Check your device.')
           done();
         } else {

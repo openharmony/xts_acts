@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Utils from './Utils'
 
 export default function listItemJsunit() {
@@ -49,7 +49,7 @@ export default function listItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testList_itemOnSelect00051', 0, async (done: Function) => {
+    it('testList_itemOnSelect00051', Level.LEVEL0, async (done: Function) => {
       console.info('selectOnSelect testList_itemOnSelect00051 START');
       let strJson = getInspectorByKey('ListItemKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -69,7 +69,7 @@ export default function listItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testList_itemOnSelect00052', 0, async (done: Function) => {
+    it('testList_itemOnSelect00052', Level.LEVEL0, async (done: Function) => {
       console.info('selectOnSelect testList_itemOnSelect00052 START');
       let strJson = getInspectorByKey('ListItemKey1');
       let obj: ESObject = JSON.parse(strJson);

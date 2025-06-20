@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextShadow001', 0, async (done: Function) => {
+    it('testTextShadow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextShadow001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextShadow002', 0, async (done: Function) => {
+    it('testTextShadow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextShadow002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextShadow003', 0, async (done: Function) => {
+    it('testTextShadow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextShadow003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextShadow004', 0, async (done: Function) => {
+    it('testTextShadow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextShadow004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextShadow005', 0, async (done: Function) => {
+    it('testTextShadow005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextShadow005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextShadow006', 0, async (done: Function) => {
+    it('testTextShadow006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextShadow006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextShadow007', 0, async (done: Function) => {
+    it('testTextShadow007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextShadow007()).assertEqual(0)
       done()
     })

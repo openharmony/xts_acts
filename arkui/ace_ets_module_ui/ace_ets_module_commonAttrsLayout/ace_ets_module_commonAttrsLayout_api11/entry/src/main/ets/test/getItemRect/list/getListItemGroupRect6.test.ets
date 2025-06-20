@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -69,7 +69,7 @@ export default function getListItemGroupRect6() {
     * @tc.desc  : set index to 0,set index to 3,Delete listItem3
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect6_0100', 0, async (done: Function) => {
+    it('getListItemGroupRect6_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getListItemGroupRect6_0100] START');
       globalThis.value.message.notify({

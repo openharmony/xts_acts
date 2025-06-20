@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function positionSettingJsunit() {
       console.info("positionSetting after each called");
     });
 
-    it('testPositionSetting001', 0, async (done: Function) => {
+    it('testPositionSetting001', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting001] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textAlign');
@@ -63,7 +63,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting002', 0, async (done: Function) => {
+    it('testPositionSetting002', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting002] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('rowDirection');
@@ -74,7 +74,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting003', 0, async (done: Function) => {
+    it('testPositionSetting003', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting003] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -100,7 +100,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting004', 0, async (done: Function) => {
+    it('testPositionSetting004', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting004] START');
       await CommonFunc.sleep(1000);
       try {
@@ -127,7 +127,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting005', 0, async (done: Function) => {
+    it('testPositionSetting005', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting005] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('position1');
@@ -144,7 +144,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting006', 0, async (done: Function) => {
+    it('testPositionSetting006', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting006] START');
       await CommonFunc.sleep(1000);
       try {
@@ -183,7 +183,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting007', 0, async (done: Function) => {
+    it('testPositionSetting007', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting007] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('markAnchor');
@@ -195,7 +195,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting008', 0, async (done: Function) => {
+    it('testPositionSetting008', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting008] START');
       await CommonFunc.sleep(1000);
       try {
@@ -226,7 +226,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting009', 0, async (done: Function) => {
+    it('testPositionSetting009', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting009] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('offset');
@@ -238,7 +238,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting010', 0, async (done: Function) => {
+    it('testPositionSetting010', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting010] START');
       await CommonFunc.sleep(1000);
       try {
@@ -269,7 +269,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting011', 0, async (done: Function) => {
+    it('testPositionSetting011', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting011] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('opacity');
@@ -279,7 +279,7 @@ export default function positionSettingJsunit() {
       done();
     });
 
-    it('testPositionSetting012', 0, async (done: Function) => {
+    it('testPositionSetting012', Level.LEVEL1, async (done: Function) => {
       console.info('[testPositionSetting012] START');
       try {
         let eventData: events_emitter.EventData = {

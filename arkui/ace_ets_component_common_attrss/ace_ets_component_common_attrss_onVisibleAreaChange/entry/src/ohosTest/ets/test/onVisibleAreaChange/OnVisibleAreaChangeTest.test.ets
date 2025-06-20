@@ -152,6 +152,13 @@ export default function onVisibleAreaChangeTest() {
 
   describe('OnVisibleAreaChangeTest', () => {
     CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
+      if (
+        data.pageConfig.targetView == "RichText"
+        ) {
+        await Utils.sleep(4000)
+        } else {
+        await Utils.sleep(1000)
+        }
       //Get Information about the location of the target component before the change
       let targetRectBefore: ESObject = Utils.getComponentRect(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + '] targetRectBefore: ' + targetRectBefore);

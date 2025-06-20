@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -50,7 +50,7 @@ export default function Grid_Col_Order_Number() {
      * @tc.name testGridColOrder
      * @tc.desc GridCol sets order to -1
      */
-    it('SUB_ACE_Grid_Col_Order_Number_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_Number_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_Number_TEST_0100] START');
 
       GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -81,7 +81,7 @@ export default function Grid_Col_Order_Number() {
      * @tc.name testGridColOrder
      * @tc.desc GridCol sets order to 0
      */
-    it('SUB_ACE_Grid_Col_Order_Number_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_Number_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_Number_TEST_0200] START');
       
        GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -115,7 +115,7 @@ export default function Grid_Col_Order_Number() {
      * @tc.name testGridColOrder
      * @tc.desc GridCol sets order to 2
      */
-    it('SUB_ACE_Grid_Col_Order_Number_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_Number_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_Number_TEST_0300] START');
 
        GlobalContext.getContext().getObject<number>('value').message.notify({

@@ -81,7 +81,7 @@ export default function UsbCoreEtsTest() {
 
     beforeAll(async () => {
       console.log(TAG, '*************Usb Unit UsbCoreEtsTest Begin*************');
-      
+
       // version > 17  host currentMode = 2 device currentMode = 1
       gDeviceList = usbMgr.getDevices();
       console.info(TAG, 'beforeAll: usb case gDeviceList.length return: ' + JSON.stringify(gDeviceList));
@@ -367,20 +367,20 @@ export default function UsbCoreEtsTest() {
      */
     it('testGetRawDescriptor801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       try{
-      console.info(TAG, 'usb testGetRawDescriptor801Err001 begin');
-      if (!isDeviceConnected) {
-        expect(isDeviceConnected).assertFalse();
-        return
-      }
+        console.info(TAG, 'usb testGetRawDescriptor801Err001 begin');
+        if (!isDeviceConnected) {
+          expect(isDeviceConnected).assertFalse();
+          return
+        }
 
-      getPipe('testGetRawDescriptor801Err001');
-      let descriptor = usbMgr.getRawDescriptor(gPipe);
-      console.info(TAG, 'usb case testGetRawDescriptor801Err001 ret: ' + JSON.stringify(descriptor));
-      expect(descriptor.length).assertLarger(0);
-      toClosePipe('testGetRawDescriptor801Err001');
+        getPipe('testGetRawDescriptor801Err001');
+        let descriptor = usbMgr.getRawDescriptor(gPipe);
+        console.info(TAG, 'usb case testGetRawDescriptor801Err001 ret: ' + JSON.stringify(descriptor));
+        expect(descriptor.length).assertLarger(0);
+        toClosePipe('testGetRawDescriptor801Err001');
       }catch(err){
-        console.error(TAG, 'testGetRawDescriptor801Err001 error:', error);
-        expect(error.code).assertEqual(801);
+        console.error(TAG, 'testGetRawDescriptor801Err001 error:', err);
+        expect(err.code).assertEqual(801);
       }
     })
 
@@ -416,20 +416,20 @@ export default function UsbCoreEtsTest() {
      */
     it('testGetFileDescriptor801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       try{
-      console.info(TAG, 'usb testGetFileDescriptor801Err001 begin');
-      if (!isDeviceConnected) {
-        expect(isDeviceConnected).assertFalse();
-        return
-      }
+        console.info(TAG, 'usb testGetFileDescriptor801Err001 begin');
+        if (!isDeviceConnected) {
+          expect(isDeviceConnected).assertFalse();
+          return
+        }
 
-      getPipe('testGetFileDescriptor801Err001');
-      let fileDescriptor = usbMgr.getFileDescriptor(gPipe);
-      console.info(TAG, 'usb case testGetFileDescriptor801Err001 ret: ' + fileDescriptor);
-      expect(fileDescriptor >= 0).assertTrue();
-      toClosePipe('testGetFileDescriptor801Err001');
+        getPipe('testGetFileDescriptor801Err001');
+        let fileDescriptor = usbMgr.getFileDescriptor(gPipe);
+        console.info(TAG, 'usb case testGetFileDescriptor801Err001 ret: ' + fileDescriptor);
+        expect(fileDescriptor >= 0).assertTrue();
+        toClosePipe('testGetFileDescriptor801Err001');
       }catch(err){
-        console.error(TAG, 'testGetRawDescriptor801Err001 error:', error);
-        expect(error.code).assertEqual(801);
+        console.error(TAG, 'testGetRawDescriptor801Err001 error:', err);
+        expect(err.code).assertEqual(801);
       }
     })
 
@@ -449,7 +449,7 @@ export default function UsbCoreEtsTest() {
       }
 
       getPipe('testGetFileDescriptor002');
-      let tempPipe:ESObject = {busNum : 255, devAddress : 255};
+      let tempPipe: usbMgr.USBDevicePipe = {busNum : 255, devAddress : 255};
       console.info(TAG, 'usb case testGetFileDescriptor002 param: ' + JSON.stringify(tempPipe));
       let fileDescriptor = usbMgr.getFileDescriptor(tempPipe);
       console.info(TAG, 'usb case testGetFileDescriptor002 ret: ' + fileDescriptor);
@@ -554,6 +554,5 @@ export default function UsbCoreEtsTest() {
         expect(err.code).assertEqual(401);
       }
     })
-
   })
 }

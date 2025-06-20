@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function columnSplitJsunit() {
      * @tc.name testColumnSplit010
      * @tc.desc aceEtsTest
      */
-    it('testColumnSplit010', 0, async (done: Function) => {
+    it('testColumnSplit010',  Level.LEVEL0, async (done: Function) => {
       console.info('new columnSplit0 START');
       let strJson = getInspectorByKey('columnSplit');
       let obj: ESObject = JSON.parse(strJson);
@@ -78,7 +78,7 @@ export default function columnSplitJsunit() {
      * @tc.name testColumnSplit020
      * @tc.desc aceEtsTest
      */
-    it('testColumnSplit020', 0, async (done: Function) => {
+    it('testColumnSplit020',  Level.LEVEL0, async (done: Function) => {
       console.info('new columnSplit1 START');
       let strJson = getInspectorByKey('columnSplit1');
       let obj: ESObject = JSON.parse(strJson);

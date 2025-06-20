@@ -56,9 +56,9 @@ export default function preferencesPromiseTest(){
          * @tc.desc put StringArray promise interface test
          * @tc.size MediumTest
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('testPreferencesPutStringArray0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('testPreferencesPutStringArray0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await mPreferences.clear();
             var stringArr = ['1', '2', '3'];
             await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -79,9 +79,9 @@ export default function preferencesPromiseTest(){
          * @tc.desc put NumberArray promise interface test
          * @tc.size MediumTest
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('testPreferencesPutNumberArray0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('testPreferencesPutNumberArray0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await mPreferences.clear();
             var numberArr = [11, 22, 33, 44, 55];
             await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
@@ -102,9 +102,9 @@ export default function preferencesPromiseTest(){
          * @tc.desc put BoolArray promise interface test
          * @tc.size MediumTest
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('testPreferencesPutBoolArray0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('testPreferencesPutBoolArray0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await mPreferences.clear();
             var boolArr = [true, true, false];
             await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);

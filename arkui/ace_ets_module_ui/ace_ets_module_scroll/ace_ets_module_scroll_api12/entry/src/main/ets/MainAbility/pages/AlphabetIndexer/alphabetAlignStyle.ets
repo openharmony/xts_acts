@@ -123,7 +123,7 @@ struct AlphabetAlignStyle {
             .selectedFont({ size: 16, weight: FontWeight.Bolder })
             .popupFont({ size: 30, weight: FontWeight.Bolder })
             .itemSize(28)
-            .alignStyle(this.indexerAlign)
+            .alignStyle(this.indexerAlign, 0)
             .popupItemBorderRadius(24)
             .itemBorderRadius(14)
             .popupPosition({ x: '30%', y: '10%' })

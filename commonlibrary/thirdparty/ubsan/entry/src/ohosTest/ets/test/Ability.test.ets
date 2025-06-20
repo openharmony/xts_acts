@@ -38,9 +38,9 @@ export default function abilityTest() {
      * @tc.desc       : test alignment
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testAlignment', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testAlignment', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result: number = ubsan.misAlign();
       expect(result).assertEqual(1);
     });
@@ -51,9 +51,9 @@ export default function abilityTest() {
      * @tc.desc       : test bool
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBool', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testBool', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.undefinedBool();
       expect(result).assertEqual(1);
     });
@@ -64,9 +64,9 @@ export default function abilityTest() {
      * @tc.desc       : test null
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.nullSanitize(0);
       expect(result).assertEqual(1);
     });
@@ -77,9 +77,9 @@ export default function abilityTest() {
      * @tc.desc       : test bounds
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBounds', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testBounds', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.bounds(5);
       expect(result).assertEqual(1);
     });
@@ -90,9 +90,9 @@ export default function abilityTest() {
      * @tc.desc       : test integerDivBy0
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUBSanDiv0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testUBSanDiv0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.integerDivBy0(0);
       expect(result).assertEqual(1);
     });
@@ -103,9 +103,9 @@ export default function abilityTest() {
      * @tc.desc       : test PointerOverflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testPointerOverflow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testPointerOverflow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.pointerOverflow(4);
       expect(result).assertEqual(1);
     });
@@ -116,9 +116,9 @@ export default function abilityTest() {
      * @tc.desc       : test enum
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testEnum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testEnum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.enumSan(42);
       expect(result).assertEqual(1);
     });
@@ -129,9 +129,9 @@ export default function abilityTest() {
      * @tc.desc       : test floatCastOverflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testFloatCastOverflow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testFloatCastOverflow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.floatCastOverflow();
       expect(result).assertEqual(1);
     });
@@ -142,9 +142,9 @@ export default function abilityTest() {
      * @tc.desc       : test VlaBound
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testVlaBound', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testVlaBound', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.vlaBound(-1);
       expect(result).assertEqual(1);
     });
@@ -155,9 +155,9 @@ export default function abilityTest() {
      * @tc.desc       : test SignedIntegerOverflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testSignedIntegerOverflow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testSignedIntegerOverflow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.signedIntegerOverflow(1073741824);
       expect(result).assertEqual(1);
     });
@@ -168,9 +168,9 @@ export default function abilityTest() {
      * @tc.desc       : test Vptr
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testVptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testVptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.vptrCheck();
       expect(result).assertEqual(1);
     });
@@ -181,9 +181,9 @@ export default function abilityTest() {
      * @tc.desc       : test nonnullAttribute
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testNonnullAttribute', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testNonnullAttribute', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.nonnullAttribute(0);
       expect(result).assertEqual(1);
     });
@@ -194,9 +194,9 @@ export default function abilityTest() {
      * @tc.desc       : test returnNonnullAttribute
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testReturnNonnullAttribute', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testReturnNonnullAttribute', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.returnNonnullAttribute(0);
       expect(result).assertEqual(1);
     });
@@ -207,9 +207,9 @@ export default function abilityTest() {
      * @tc.desc       : test ShiftBase
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testShiftBase', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testShiftBase', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.shiftBase(32);
       expect(result).assertEqual(1);
     });
@@ -220,9 +220,9 @@ export default function abilityTest() {
      * @tc.desc       : test ShiftBaseIntMax
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testShiftBaseIntMax', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testShiftBaseIntMax', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.shiftBaseIntMax(2147483647);
       expect(result).assertEqual(1);
     });
@@ -233,9 +233,9 @@ export default function abilityTest() {
      * @tc.desc       : test ShiftBaseIntMin
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testShiftBaseIntMin', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testShiftBaseIntMin', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.shiftBaseIntMin(-2147483648);
       expect(result).assertEqual(1);
     });
@@ -246,9 +246,9 @@ export default function abilityTest() {
      * @tc.desc       : test ShiftBaseNegative
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testShiftBaseNegative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testShiftBaseNegative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.shiftBaseNegative(-2);
       expect(result).assertEqual(1);
     });
@@ -259,9 +259,9 @@ export default function abilityTest() {
      * @tc.desc       : test ShiftExponent
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testShiftExponent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testShiftExponent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.shiftExponent(32);
       expect(result).assertEqual(1);
     });
@@ -272,9 +272,9 @@ export default function abilityTest() {
      * @tc.desc       : test Unreachable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUnreachable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testUnreachable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.unreachable(1);
       expect(result).assertEqual(1);
     });
@@ -285,9 +285,9 @@ export default function abilityTest() {
      * @tc.desc       : test ShiftExponentNegative
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testShiftExponentNegative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testShiftExponentNegative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.shiftExponentNegative(-2);
       expect(result).assertEqual(1);
     });
@@ -298,9 +298,9 @@ export default function abilityTest() {
      * @tc.desc       : test ShiftExponentBound
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testShiftExponentBound', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testShiftExponentBound', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.shiftExponentBound(32);
       expect(result).assertEqual(1);
     });
@@ -311,9 +311,9 @@ export default function abilityTest() {
      * @tc.desc       : test NoReturn
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testNoReturn', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testNoReturn', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let result: number = ubsan.noReturn(1);
       expect(result).assertEqual(1);
     });

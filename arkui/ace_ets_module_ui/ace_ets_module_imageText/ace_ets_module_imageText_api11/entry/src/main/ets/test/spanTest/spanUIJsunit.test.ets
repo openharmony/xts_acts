@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -42,7 +42,7 @@ export default function spanUIJsunit() {
       done();
     });
 
-    it('spanUIJsunit_0100', 0, async (done: Function) => {
+    it('spanUIJsunit_0100', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0100 START');
       await CommonFunc.sleep(1000);
       // get the sapn component and test attribute
@@ -59,7 +59,7 @@ export default function spanUIJsunit() {
       done();
     });
 
-    it('spanUIJsunit_0200', 0, async (done: Function) => {
+    it('spanUIJsunit_0200', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // modify the content and textCase attribute normal value  dynamically
@@ -76,7 +76,7 @@ export default function spanUIJsunit() {
       done();
     });
 
-    it('spanUIJsunit_0300', 0, async (done: Function) => {
+    it('spanUIJsunit_0300', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // modify the values attribute enum textCase value of span dynamically
@@ -89,7 +89,7 @@ export default function spanUIJsunit() {
       done();
     });
     
-    it('spanUIJsunit_0400', 0, async (done: Function) => {
+    it('spanUIJsunit_0400', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0400 START');
       await CommonFunc.sleep(1000);
       // modify the values illegal attribute enum textCase value of span dynamically
@@ -102,7 +102,7 @@ export default function spanUIJsunit() {
       done();
     }); 
 
-    it('spanUIJsunit_0500', 0, async (done: Function) => {
+    it('spanUIJsunit_0500', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // modify the normal values letter space and fontSize of span dynamically
@@ -118,7 +118,7 @@ export default function spanUIJsunit() {
       done();
     }); 
 
-    it('spanUIJsunit_0600', 0, async (done: Function) => {
+    it('spanUIJsunit_0600', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0600 START');
       await CommonFunc.sleep(1000);
       // modify the values decoration attribute  of span dynamically
@@ -134,7 +134,7 @@ export default function spanUIJsunit() {
       done();
     }); 
 
-    it('spanUIJsunit_0700', 0, async (done: Function) => {
+    it('spanUIJsunit_0700', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0700 START');
       await CommonFunc.sleep(1000);
       // modify the values decoration attribute  of span dynamically
@@ -155,7 +155,7 @@ export default function spanUIJsunit() {
       done();
     }); 
     
-    it('spanUIJsunit_0800', 0, async (done: Function) => {
+    it('spanUIJsunit_0800', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0800 START');
       await CommonFunc.sleep(1000);
       // modify the values decoration attribute  of span dynamically
@@ -176,7 +176,7 @@ export default function spanUIJsunit() {
       done();
     }); 
      
-    it('spanUIJsunit_0900', 0, async (done: Function) => {
+    it('spanUIJsunit_0900', Level.LEVEL1, async (done: Function) => {
       console.info('spanUIJsunit_0900 START');
       await CommonFunc.sleep(1000);
       // modify the values decoration attribute  of span illegal dynamically

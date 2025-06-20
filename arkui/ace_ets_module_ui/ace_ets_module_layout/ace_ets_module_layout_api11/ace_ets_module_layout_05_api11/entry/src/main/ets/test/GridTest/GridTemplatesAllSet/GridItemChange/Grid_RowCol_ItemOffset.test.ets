@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function grid_RowCol_ItemOffsetTest() {
      * @tc.name testGridRowColItemOffset
      * @tc.desc The second griditem set offset to {x:20,y:20}
      */
-    it('testGridRowColItemOffset', 0, async (done: Function) => {
+    it('testGridRowColItemOffset',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColItemOffset] START');
       let secondGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset02');
       let secondGridItemTop: number = secondGridItem.top;

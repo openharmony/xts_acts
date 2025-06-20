@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsAccessibilityActionsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityActions001', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityActions001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityActions001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsAccessibilityActionsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityActions002', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityActions002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityActions002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsAccessibilityActionsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityActions003', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityActions003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityActions003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsAccessibilityActionsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityActions004', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityActions004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityActions004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsAccessibilityActionsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityActions005', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityActions005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityActions005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsAccessibilityActionsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityActions006', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityActions006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityActions006()).assertEqual(0)
       done()
     })

@@ -15,8 +15,14 @@
 
 import NdkWantTest from './NdkWantTest.test';
 import NdkStartSelfTest from './NdkStartSelfTest.test';
+import NdkStartSelfOptionsTest from './NdkStartSelfOptionsTest.test';
+import NdkWantParamTest from './NdkWantParamTest.test';
+import NdkGetChildArgsTest from './NdkGetChildArgsTest.test';
 
 export default function testsuite() {
   NdkWantTest();
   NdkStartSelfTest();
+  NdkStartSelfOptionsTest();
+  NdkWantParamTest();
+  NdkGetChildArgsTest();
 }

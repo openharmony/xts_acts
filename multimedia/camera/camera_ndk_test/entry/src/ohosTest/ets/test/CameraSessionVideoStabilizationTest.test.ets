@@ -16,7 +16,7 @@
 import cameraObj from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Camera_VideoStabilizationMode, GlobalThis } from './Constants';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
@@ -264,7 +264,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_001', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_001', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_001--------------");
       let sessionIsVideoStabilizationModeSupported = cameraObj.sessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_001 finish");
@@ -285,7 +285,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_002', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_002', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_002--------------");
       cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF); //STABILIZATION_MODE_OFF
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_002 finish");
@@ -309,7 +309,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_003', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_003', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_003--------------");
       let sessionIsVideoStabilizationModeSupported = cameraObj.sessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW); //STABILIZATION_MODE_LOW
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_003 finish");
@@ -330,7 +330,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004--------------");
       if (mIsVideoStabilizationModeSupportedArray[0] == true) {
         cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW);
@@ -358,7 +358,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_005', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_005', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_005--------------");
       let sessionIsVideoStabilizationModeSupported = cameraObj.sessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_MIDDLE);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_005 finish");
@@ -379,7 +379,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_006', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_006', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_006--------------");
       if (mIsVideoStabilizationModeSupportedArray[0] == true) {
         cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_MIDDLE);
@@ -408,7 +408,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_007', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_007', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_007--------------");
       let sessionIsVideoStabilizationModeSupported = cameraObj.sessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_HIGH);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_007 finish");
@@ -429,7 +429,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_008', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_008', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_008--------------");
       if (mIsVideoStabilizationModeSupportedArray[0] == true) {
         cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_HIGH);
@@ -458,7 +458,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_009', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_009', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_009--------------");
       let sessionIsVideoStabilizationModeSupported = cameraObj.sessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_AUTO);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_009 finish");
@@ -479,7 +479,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_010', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_010', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_010--------------");
       if (mIsVideoStabilizationModeSupportedArray[0] == true) {
         cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_AUTO);

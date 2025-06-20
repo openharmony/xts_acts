@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function textAreaHeightAdaptivePolicyTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaHeightAdaptivePolicy0100', 0, async (done: Function) => {
+    it('textAreaHeightAdaptivePolicy0100',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'textAreaHeightAdaptivePolicy0100';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_textArea_heightAdaptivePolicy_001');
@@ -76,7 +76,7 @@ export default function textAreaHeightAdaptivePolicyTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaHeightAdaptivePolicy0200', 0, async (done: Function) => {
+    it('textAreaHeightAdaptivePolicy0200',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'textAreaHeightAdaptivePolicy0200';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_textArea_heightAdaptivePolicy_002');
@@ -96,7 +96,7 @@ export default function textAreaHeightAdaptivePolicyTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaHeightAdaptivePolicy0300', 0, async (done: Function) => {
+    it('textAreaHeightAdaptivePolicy0300',  Level.LEVEL0, async (done: Function) => {
       let tagName = 'textAreaHeightAdaptivePolicy0300';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_textArea_heightAdaptivePolicy_003');

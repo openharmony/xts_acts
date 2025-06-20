@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -23,27 +23,27 @@ export default function flexPadding_BaselineJsunit() {
   describe('flexItemAlignBaselineTest', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexPadding',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/ItemAlign_Baseline_FlexPadding',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexPadding state success " + JSON.stringify(pages));
-        if (!("FlexPadding" == pages.name)) {
-          console.info("get FlexPadding state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Baseline_FlexPadding state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Baseline_FlexPadding" == pages.name)) {
+          console.info("get ItemAlign_Baseline_FlexPadding state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexPadding page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Baseline_FlexPadding page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexPadding page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Baseline_FlexPadding page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexPadding after each called");
+      console.info("ItemAlign_Baseline_FlexPadding after each called");
     });
 
     /**
@@ -51,19 +51,19 @@ export default function flexPadding_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineParentSetPadding
      * @tc.desc Parent component set paddding,subcomponent does not exceed the parent component.
      */
-    it('testFlexItemAlignBaselineParentSetPadding', 0, async () => {
+    it('testFlexItemAlignBaselineParentSetPadding',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineParentSetPadding START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       });
       await CommonFunc.sleep(2000);
       let padddingValue = 10;
-      let strJson1 = getInspectorByKey('flexPadding01');
+      let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexPadding01');
 
-      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01');
-      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02');
-      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03');
-      let flexPadding01: RectValue = CommonFunc.getComponentRect('flexPadding01');
+      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexPadding01');
+      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexPadding02');
+      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexPadding03');
+      let flexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_flexPadding01');
       expect(Math.abs(textFlexPadding01.left - flexPadding01.left - vp2px(10)) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding01.right - textFlexPadding02.left) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding02.right - textFlexPadding03.left) <= 1).assertTrue()
@@ -92,19 +92,19 @@ export default function flexPadding_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineParentSetPaddingExceed
      * @tc.desc Parent component set paddding,subcomponent exceedS the parent component.
      */
-    it('testFlexItemAlignBaselineParentSetPaddingExceed', 0, async () => {
+    it('testFlexItemAlignBaselineParentSetPaddingExceed',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineParentSetPaddingExceed START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30
       });
       await CommonFunc.sleep(2000);
       let padddingValue = 30;
-      let strJson1 = getInspectorByKey('flexPadding01');
+      let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexPadding01');
 
-      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01');
-      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02');
-      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03');
-      let flexPadding01: RectValue = CommonFunc.getComponentRect('flexPadding01');
+      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexPadding01');
+      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexPadding02');
+      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexPadding03');
+      let flexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_flexPadding01');
       expect(Math.abs(textFlexPadding01.left - flexPadding01.left - vp2px(30)) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding01.right - textFlexPadding02.left) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding02.right - textFlexPadding03.left) <= 1).assertTrue()

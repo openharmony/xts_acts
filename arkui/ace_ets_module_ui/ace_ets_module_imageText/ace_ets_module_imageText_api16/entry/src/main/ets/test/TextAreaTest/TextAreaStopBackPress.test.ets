@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function TextAreaStopBackPressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextAreaStopBackPressTest_0010', 0, async (done: Function) => {
+    it('TextAreaStopBackPressTest_0010', Level.LEVEL2, async (done: Function) => {
       console.info('[TextAreaStopBackPressTest_0010] START');
       let strJson = getInspectorByKey('TextArea_stopBackPress_true');
       let obj: ESObject = JSON.parse(strJson);
@@ -67,7 +67,7 @@ export default function TextAreaStopBackPressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextAreaStopBackPressTest_0020', 0, async (done: Function) => {
+    it('TextAreaStopBackPressTest_0020', Level.LEVEL2, async (done: Function) => {
       console.info('[TextAreaStopBackPressTest_0020] START');
       let strJson = getInspectorByKey('TextArea_stopBackPress_false');
       let obj: ESObject = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function TextAreaStopBackPressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextAreaStopBackPressTest_0030', 0, async (done: Function) => {
+    it('TextAreaStopBackPressTest_0030', Level.LEVEL2, async (done: Function) => {
       console.info('[TextAreaStopBackPressTest_0030] START');
       let strJson = getInspectorByKey('TextArea_stopBackPress_default');
       let obj: ESObject = JSON.parse(strJson);
@@ -103,7 +103,7 @@ export default function TextAreaStopBackPressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextAreaStopBackPressTest_0040', 0, async (done: Function) => {
+    it('TextAreaStopBackPressTest_0040', Level.LEVEL2, async (done: Function) => {
       console.info('[TextAreaStopBackPressTest_0040] START');
       let strJson = getInspectorByKey('TextArea_stopBackPress_undefined');
       let obj: ESObject = JSON.parse(strJson);

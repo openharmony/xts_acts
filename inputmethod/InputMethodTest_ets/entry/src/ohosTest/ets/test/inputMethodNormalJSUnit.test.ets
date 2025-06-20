@@ -16,7 +16,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level
 import inputMethod from '@ohos.inputMethod';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import display from '@ohos.display';
-import deviceinfo from '@ohos.deviceInfo';
 import { BusinessError } from '@ohos.base';
 
 export default function inputMethodNormalJSUnit() {
@@ -129,9 +128,9 @@ export default function inputMethodNormalJSUnit() {
      * @tc.desc    Function test
      * @tc.size    MediumTest
      * @tc.type    Function
-     * @tc.level   Level2
+     * @tc.level   Level0
      */
-    it('inputmethodNomal_test_showSoftKeyboard_001', Level.LEVEL2, async (done: Function) => {
+    it('inputmethodNomal_test_showSoftKeyboard_001', Level.LEVEL0, async (done: Function) => {
       console.info("====>*************inputmethodNomal_test_showSoftKeyboard_001 start******************");
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard((err, data) => {

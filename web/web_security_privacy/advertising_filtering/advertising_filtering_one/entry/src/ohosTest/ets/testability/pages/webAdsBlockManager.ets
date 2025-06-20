@@ -29,6 +29,7 @@ struct webAdsBlockManager {
   @State testIsOnAdsBlocked: boolean = false;
   @State testOnAdsBlockedDetails: boolean = false;
   @State emitKey: string = '';
+  @State errorCode: number = 0
 
   onPageShow() {
       let valueChangeEvent: events_emitter.InnerEvent = {
@@ -69,7 +70,14 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1001)
+                        if(e.code == 801) {
+                          console.log(`emitEnableAdsBlock The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1001)
+                        } else {
+                          Utils.emitEvent(false, 1001)
+                        }
+
                       }
                       break;
                     }
@@ -85,7 +93,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1002)
+                        if(e.code == 801) {
+                          console.log(`emitIsAdsBlockEnabled The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1002)
+                        } else {
+                          Utils.emitEvent(false, 1002)
+                        }
                       }
                       break;
                     }
@@ -101,7 +115,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1003)
+                        if(e.code == 801) {
+                          console.log(`emitIsAdsBlockEnabledForCurPage The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1003)
+                        } else {
+                          Utils.emitEvent(false, 1003)
+                        }
                       }
                       break;
                     }
@@ -129,7 +149,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1004)
+                        if(e.code == 801) {
+                          console.log(`emitSetAdsBlockRules The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1004)
+                        } else {
+                          Utils.emitEvent(false, 1004)
+                        }
                       }
                       break;
                     }
@@ -157,7 +183,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1005)
+                        if(e.code == 801) {
+                          console.log(`emitSetAdsBlockRulesFalse The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1005)
+                        } else {
+                          Utils.emitEvent(false, 1005)
+                        }
                       }
                       break;
                     }
@@ -185,7 +217,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1006)
+                        if(e.code == 801) {
+                          console.log(`emitAddAdsBlockDisallowedList The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1006)
+                        } else {
+                          Utils.emitEvent(false, 1006)
+                        }
                       }
                       break;
                     }
@@ -213,7 +251,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1007)
+                        if(e.code == 801) {
+                          console.log(`emitRemoveAdsBlockDisallowedList The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1007)
+                        } else {
+                          Utils.emitEvent(false, 1007)
+                        }
                       }
                       break;
                     }
@@ -237,7 +281,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1008)
+                        if(e.code == 801) {
+                          console.log(`emitClearAdsBlockDisallowedList The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1008)
+                        } else {
+                          Utils.emitEvent(false, 1008)
+                        }
                       }
                       break;
                     }
@@ -265,7 +315,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1009)
+                        if(e.code == 801) {
+                          console.log(`emitAddAdsBlockAllowedList The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1009)
+                        } else {
+                          Utils.emitEvent(false, 1009)
+                        }
                       }
                       break;
                     }
@@ -293,7 +349,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1010)
+                        if(e.code == 801) {
+                          console.log(`emitRemoveAdsBlockAllowedList The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1010)
+                        } else {
+                          Utils.emitEvent(false, 1010)
+                        }
                       }
                       break;
                     }
@@ -321,7 +383,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1011)
+                        if(e.code == 801) {
+                          console.log(`emitRemoveAdsBlockAllowedList The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1011)
+                        } else {
+                          Utils.emitEvent(false, 1011)
+                        }
                       }
                       break;
                     }
@@ -340,7 +408,7 @@ struct webAdsBlockManager {
                       this.controller.refresh();
                       Utils.sleep(2000);
 
-                      if (this.testIsOnAdsBlocked) {
+                      if (this.testIsOnAdsBlocked || this.errorCode == 801) {
                         Utils.emitEvent(true, 1012)
                       } else {
                         Utils.emitEvent(false, 1012)
@@ -362,7 +430,13 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1013)
+                        if(e.code == 801) {
+                          console.log(`emitEnableAdsBlockFalse The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1013)
+                        } else {
+                          Utils.emitEvent(false, 1013)
+                        }
                       }
                       break;
                     }
@@ -378,13 +452,19 @@ struct webAdsBlockManager {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                         await Utils.sleep(1000)
-                        Utils.emitEvent(false, 1014)
+                        if(e.code == 801) {
+                          console.log(`emitIsAdsBlockEnabledCheck The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                          this.errorCode = 801
+                          Utils.emitEvent(true, 1014)
+                        } else {
+                          Utils.emitEvent(false, 1014)
+                        }
                       }
                       break;
                     }
 
                     case 'emitOnAdsBlockedTest': {
-                      if (this.testOnAdsBlockedDetails) {
+                      if (this.testOnAdsBlockedDetails || this.errorCode == 801) {
                         Utils.emitEvent(true, 1015)
                       } else {
                         Utils.emitEvent(false, 1015)

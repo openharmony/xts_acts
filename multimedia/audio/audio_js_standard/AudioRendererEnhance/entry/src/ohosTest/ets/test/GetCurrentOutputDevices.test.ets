@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility';
@@ -188,9 +188,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - getCurrentOutputDevices "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.getCurrentOutputDevices().then((data: ESObject) => {
           console.info(`${TagFrmwkRender}: deviceRole:${data[0].deviceRole}, deviceType:${data[0].deviceType}, id:${data[0].id}, name:${data[0].name},
@@ -267,9 +267,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - getCurrentOutputDevices "struct" - callback
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       audioRen.getCurrentOutputDevices((err: BusinessError, data: ESObject) => {
         if (err) {
           console.info(`${TagFrmwkRender}: getCurrentOutputDevices ERROR ! code: ${err.code}, mesage: ${err.message}`);
@@ -328,9 +328,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - getCurrentOutputDevicesSync
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICESSYNC_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICESSYNC_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let data: ESObject = audioRen.getCurrentOutputDevicesSync();
         console.info(`${TagFrmwkRender}: deviceRole:${data[0].deviceRole}, deviceType:${data[0].deviceType}, id:${data[0].id}, name:${data[0].name},

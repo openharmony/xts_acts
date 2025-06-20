@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -54,7 +54,7 @@ export default function TextContentGetSelectionTest() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('TextContentGetSelectionTest0001', 0, async (done: Function) => {
+    it('TextContentGetSelectionTest0001', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       console.info('TextContentGetSelectionTest0001 START');
       await CommonFunc.sleep(1000);
@@ -88,7 +88,7 @@ export default function TextContentGetSelectionTest() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('TextContentGetSelectionTest0002', 0, async (done: Function) => {
+    it('TextContentGetSelectionTest0002', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       console.info('TextContentGetSelectionTest0002 START');
       await CommonFunc.sleep(1000);
@@ -122,7 +122,7 @@ export default function TextContentGetSelectionTest() {
     * @tc.type         Function
     * @tc.level        1
      */
-    it('TextContentGetSelectionTest0003', 0, async (done: Function) => {
+    it('TextContentGetSelectionTest0003', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       console.info('TextContentGetSelectionTest0003 START');
       await CommonFunc.sleep(1000);

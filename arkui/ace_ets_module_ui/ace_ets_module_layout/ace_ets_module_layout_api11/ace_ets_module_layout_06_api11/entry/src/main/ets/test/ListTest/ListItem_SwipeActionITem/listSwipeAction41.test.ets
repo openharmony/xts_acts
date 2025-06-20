@@ -16,7 +16,7 @@
 
 import router from '@ohos.router';
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import { Driver, ON, On } from '@ohos.UiTest';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -59,7 +59,7 @@ export default function listSwipeAction41Jsunit() {
     * @tc.name   : when swipe,then return the init position
     * @tc.desc   : test the onStateChange function parameter state
     */
-    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

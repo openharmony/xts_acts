@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -49,7 +49,7 @@ export default function marqueeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testMarquee_04001', 0, async (done: Function) => {
+    it('testMarquee_04001', Level.LEVEL0, async (done: Function) => {
       console.info('testMarquee_04001 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
       let obj: ESObject = JSON.parse(strJsonNew);
@@ -66,7 +66,7 @@ export default function marqueeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testMarquee_04002', 0, async (done: Function) => {
+    it('testMarquee_04002', Level.LEVEL0, async (done: Function) => {
       console.info('testMarquee_04002 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
       let obj: ESObject = JSON.parse(strJsonNew);
@@ -83,7 +83,7 @@ export default function marqueeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testMarquee_04003', 0, async (done: Function) => {
+    it('testMarquee_04003', Level.LEVEL0, async (done: Function) => {
       console.info('testMarquee_04003 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
       let obj: ESObject = JSON.parse(strJsonNew);
@@ -100,7 +100,7 @@ export default function marqueeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testMarquee_04004', 0, async (done: Function) => {
+    it('testMarquee_04004', Level.LEVEL0, async (done: Function) => {
       console.info('testMarquee_04004 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
       let obj: ESObject = JSON.parse(strJsonNew);
@@ -117,7 +117,7 @@ export default function marqueeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testMarquee_04005', 0, async (done: Function) => {
+    it('testMarquee_04005', Level.LEVEL0, async (done: Function) => {
       console.info('testMarquee_04005 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
       let obj: ESObject = JSON.parse(strJsonNew);
@@ -133,7 +133,7 @@ export default function marqueeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testMarquee_04006', 0, async (done: Function) => {
+    it('testMarquee_04006', Level.LEVEL0, async (done: Function) => {
       console.info('testMarquee_04006 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

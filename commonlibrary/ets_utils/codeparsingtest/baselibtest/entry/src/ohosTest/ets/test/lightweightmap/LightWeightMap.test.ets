@@ -43,9 +43,9 @@ export default function LightWeightMapTest() {
      * @tc.desc      : Testing LightWeightMap constructor
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLightWeightMapConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightMapConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLightWeightMapConstructor0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -62,9 +62,9 @@ export default function LightWeightMapTest() {
      * @tc.desc      : Testing LightWeightMap is empty
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLightWeightMapIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightMapIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLightWeightMapIsEmpty0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -81,9 +81,9 @@ export default function LightWeightMapTest() {
      * @tc.desc      : Testing LightWeightMap has data
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLightWeightMapIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightMapIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLightWeightMapIsEmpty0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -101,9 +101,9 @@ export default function LightWeightMapTest() {
      * @tc.desc      : Testing LightWeightMap has data and remove
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLightWeightMapIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightMapIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLightWeightMapIsEmpty0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -122,9 +122,9 @@ export default function LightWeightMapTest() {
      * @tc.desc      : Testing LightWeightMap has large data and remove
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLightWeightMapIsEmpty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightMapIsEmpty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLightWeightMapIsEmpty0004';
       let data: Array<number> = Array(10000).map((_: undefined, index) => index);
       try {
@@ -144,9 +144,9 @@ export default function LightWeightMapTest() {
      * @tc.desc      : Testing LightWeightMap has large data and clear
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLightWeightMapIsEmpty0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightMapIsEmpty0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLightWeightMapIsEmpty0005';
       let data: Array<number> = Array(10000).map((_: undefined, index) => index);
       try {
@@ -166,9 +166,9 @@ export default function LightWeightMapTest() {
      * @tc.desc      : Testing LightWeightMap contain other LightWeightMap data
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testLightWeightMapHasAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLightWeightMapHasAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testLightWeightMapHasAll0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();

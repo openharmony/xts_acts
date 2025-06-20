@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function commonAttrsFocusableTest() {
@@ -34,7 +34,7 @@ export default function commonAttrsFocusableTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonAttrsFocusable001', 0, async (done: Function) => {
+    it('testCommonAttrsFocusable001', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('FocusableTestButtonCompare')
       await Utils.sleep(2000)
       focusControl.requestFocus('FocusableTestButton')
@@ -53,7 +53,7 @@ export default function commonAttrsFocusableTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonAttrsFocusable002', 0, async (done: Function) => {
+    it('testCommonAttrsFocusable002', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('FocusableTestButton')
       await Utils.sleep(2000)
       focusControl.requestFocus('FocusableTestButtonDisable')

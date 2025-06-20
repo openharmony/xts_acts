@@ -23,6 +23,9 @@ export default function DeviceInfoTest() {
         const MAX_CHARACTERS_NUM_TWO = 65;
         const MAX_CHARACTERS_NUM = 0;
         const CHARACTERS_NUM_ODID = 36;
+        const CLASS_LEVEL_HIGH = 0;
+        const CLASS_LEVEL_MEDIUM = 1;
+        const CLASS_LEVEL_LOW = 2;
 
         beforeAll(function () {
             console.info('beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.');
@@ -1930,6 +1933,175 @@ export default function DeviceInfoTest() {
                 }
             }
             console.info('device_info_test_074 : end');
+        })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_075
+         * @tc.name      testGetPerformanceClassLevel
+         * @tc.desc      Get PerformanceClassLevel.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            console.info('device_info_test_075 start');
+            let performanceClass = deviceinfo.performanceClass;
+            console.info('the value of the deviceinfo performanceClass is :' + performanceClass);
+            expect(performanceClass).assertLargerOrEqual(deviceinfo.PerformanceClassLevel.CLASS_LEVEL_HIGH);
+            expect(performanceClass).assertLessOrEqual(deviceinfo.PerformanceClassLevel.CLASS_LEVEL_LOW);
+            console.info('device_info_test_075 : end');
+        })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_076
+         * @tc.name      testGetPerformanceClassLevel
+         * @tc.desc      Get PerformanceClassLevel.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            console.info('device_info_test_076 start');
+            let performanceClass = deviceinfo.PerformanceClassLevel.CLASS_LEVEL_HIGH;
+            console.info('the value of the deviceinfo performanceClass is :' + performanceClass);
+            expect(performanceClass).assertEqual(CLASS_LEVEL_HIGH);
+            console.info('device_info_test_076 : end');
+        })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_077
+         * @tc.name      testGetPerformanceClassLevel
+         * @tc.desc      Get PerformanceClassLevel.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            console.info('device_info_test_077 start');
+            let performanceClass = deviceinfo.PerformanceClassLevel.CLASS_LEVEL_MEDIUM;
+            console.info('the value of the deviceinfo performanceClass is :' + performanceClass);
+            expect(performanceClass).assertEqual(CLASS_LEVEL_MEDIUM);
+            console.info('device_info_test_077 : end');
+        })
+
+                /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_078
+         * @tc.name      testGetPerformanceClassLevel
+         * @tc.desc      Get PerformanceClassLevel.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            console.info('device_info_test_078 start');
+            let performanceClass = deviceinfo.PerformanceClassLevel.CLASS_LEVEL_LOW;
+            console.info('the value of the deviceinfo performanceClass is :' + performanceClass);
+            expect(performanceClass).assertEqual(CLASS_LEVEL_LOW);
+            console.info('device_info_test_078 : end');
+        })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_079
+         * @tc.name      testGetDeviceTypes
+         * @tc.desc      Get DeviceTypes.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('testGetDeviceTypes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            console.info('testGetDeviceTypes start');
+            let deviceTypes = deviceinfo.DeviceTypes.TYPE_DEFAULT;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_DEFAULT is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('default');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_PHONE;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_PHONE is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('phone');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_TABLET;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_TABLET is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('tablet');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_2IN1;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_2IN1 is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('2in1');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_TV;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_TV is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('tv');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_WEARABLE;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_WEARABLE is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('wearable');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_CAR;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_CAR is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('car');
+            console.info('testGetDeviceTypes : end');
+        })
+        
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_080
+         * @tc.name      testGetSdkMinorApiVersion01
+         * @tc.desc      Get the Minor API version number, which return value type is number and return value is greater than or equal to 0.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            console.info('testGetSdkMinorApiVersion01 start');
+            let ret = false;
+            let sdkMinorApiVersionInfo = deviceinfo.sdkMinorApiVersion;
+            console.info('the value of the deviceinfo sdkMinorApiVersion is :' + sdkMinorApiVersionInfo);
+
+            expect(sdkMinorApiVersionInfo).assertInstanceOf('Number');
+            if (sdkMinorApiVersionInfo >= 0) {
+                ret = true;
+                expect(ret).assertTrue();
+                done();
+            } else {
+                console.info('the return value sdkMinorApiVersion is not greater than 0.');
+                expect(false).assertTrue();
+                done();
+            }
+
+            let str = /[\w-\.\(\)]/g;
+            let arr = sdkMinorApiVersionInfo.toString().match(str);
+            let substr = arr.join('');
+            let numstr = parseInt(substr);
+            console.info('the value of the bufferstr is :' + numstr);
+            expect(sdkMinorApiVersionInfo).assertEqual(numstr);
+
+            console.info('testGetSdkMinorApiVersion01 ：end');
+        })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_081
+         * @tc.name      testGetSdkPatchApiVersion01
+         * @tc.desc      Get the Patch API version number, which return value type is number and return value is greater than or equal to 0.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            console.info('testGetSdkPatchApiVersion01 start');
+            let ret = false;
+            let sdkPatchApiVersionInfo = deviceinfo.sdkPatchApiVersion;
+            console.info('the value of the deviceinfo sdkPatchApiVersion is :' + sdkPatchApiVersionInfo);
+
+            expect(sdkPatchApiVersionInfo).assertInstanceOf('Number');
+            if (sdkPatchApiVersionInfo >= 0) {
+                ret = true;
+                expect(ret).assertTrue();
+                done();
+            } else {
+                console.info('the return value sdkPatchApiVersion is not greater than 0.');
+                expect(false).assertTrue();
+                done();
+            }
+
+            let str = /[\w-\.\(\)]/g;
+            let arr = sdkPatchApiVersionInfo.toString().match(str);
+            let substr = arr.join('');
+            let numstr = parseInt(substr);
+            console.info('the value of the bufferstr is :' + numstr);
+            expect(sdkPatchApiVersionInfo).assertEqual(numstr);
+
+            console.info('testGetSdkPatchApiVersion01 ：end');
         })
     })
 }

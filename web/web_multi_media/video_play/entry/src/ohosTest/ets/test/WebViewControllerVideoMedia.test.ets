@@ -17,7 +17,9 @@ import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import webView from '@ohos.web.webview';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webViewControllerVideoMedia() {
 
   describe('webViewControllerVideoMedia', () => {
@@ -41,6 +43,11 @@ export default function webViewControllerVideoMedia() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -52,9 +59,9 @@ export default function webViewControllerVideoMedia() {
     * @tc.desc       : test WebViewControllerVideoMedia
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 2
+    * @tc.level      : Level 0
     */
-    it('StopAllMedia0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('StopAllMedia0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0100", 3, 77011, done);

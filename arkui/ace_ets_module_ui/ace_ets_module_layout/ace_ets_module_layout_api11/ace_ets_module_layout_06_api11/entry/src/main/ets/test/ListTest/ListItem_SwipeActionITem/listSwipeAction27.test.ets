@@ -16,7 +16,7 @@
 
 import router from '@ohos.router';
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import { Driver, ON, On } from '@ohos.UiTest';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -57,7 +57,7 @@ export default function listSwipeAction27Jsunit() {
      * @tc.name   : when swipe,then return the init position
      * @tc.desc   : test the onStateChange function parameter state
      */
-    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0260', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0260',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0260 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -67,8 +67,16 @@ export default function listSwipeAction27Jsunit() {
 
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0260] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipe27Action0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0260 value is" + left + " --" + right + "--" + top + "--" + bottom);
       await driver.swipe(
-        Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(10))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + bottom - vp2px(20)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(10))
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState

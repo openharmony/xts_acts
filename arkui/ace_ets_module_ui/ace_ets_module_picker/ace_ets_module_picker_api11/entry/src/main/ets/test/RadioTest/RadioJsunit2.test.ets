@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
@@ -44,7 +44,7 @@ export default function radioJsunit2() {
       console.info("radio after each called");
     });
 
-    it('testRadio_100', 0, async (done: Function) => {
+    it('testRadio_100', Level.LEVEL1, async (done: Function) => {
       console.info('[testRadio_100] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('radio1');
@@ -57,7 +57,7 @@ export default function radioJsunit2() {
       done();
     });
 
-    it('testRadio_200', 0, async (done: Function) => {
+    it('testRadio_200', Level.LEVEL1, async (done: Function) => {
       console.info('[testRadio_200] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('radio2');
@@ -69,7 +69,7 @@ export default function radioJsunit2() {
       done();
     });
 
-    it('testRadio_300', 0, async (done: Function) => {
+    it('testRadio_300', Level.LEVEL1, async (done: Function) => {
       console.info('[testRadio_300] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('radio3');

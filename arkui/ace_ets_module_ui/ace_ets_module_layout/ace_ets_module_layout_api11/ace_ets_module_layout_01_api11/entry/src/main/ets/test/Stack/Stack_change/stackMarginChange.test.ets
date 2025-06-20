@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/utils/Common";
 import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
@@ -50,7 +50,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentTopStart
      * @tc.desc Set stack's  margin 20  and alignContent mode 'TopStart'.
      */
-    it('testStackMarginAlignContentTopStart', 0, async (done: Function) => {
+    it('testStackMarginAlignContentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentTopStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopStart
@@ -82,7 +82,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentTop
      * @tc.desc Set stack's  margin 20  and alignContent mode 'Top'.
      */
-    it('testStackMarginAlignContentTop', 0, async (done: Function) => {
+    it('testStackMarginAlignContentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentTop START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Top
@@ -115,7 +115,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentTopEnd
      * @tc.desc Set stack's  margin 20  and alignContent mode 'TopEnd'.
      */
-    it('testStackMarginAlignContentTopEnd', 0, async (done: Function) => {
+    it('testStackMarginAlignContentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentTopEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopEnd
@@ -147,7 +147,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentStart
      * @tc.desc Set stack's  margin 20  and alignContent mode 'START'.
      */
-    it('testStackMarginAlignContentStart', 0, async (done: Function) => {
+    it('testStackMarginAlignContentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Start
@@ -180,7 +180,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentCenter
      * @tc.desc Set stack's  margin 20  and alignContent mode 'Center'.
      */
-    it('testStackMarginAlignContentCenter', 0, async (done: Function) => {
+    it('testStackMarginAlignContentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentCenter START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Center
@@ -214,7 +214,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentEnd
      * @tc.desc Set stack's  margin 20  and alignContent mode 'End'.
      */
-    it('testStackMarginAlignContentEnd', 0, async (done: Function) => {
+    it('testStackMarginAlignContentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.End
@@ -247,7 +247,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentBottomStart
      * @tc.desc Set stack's  margin 20  and alignContent mode 'BottomStart'.
      */
-    it('testStackMarginAlignContentBottomStart', 0, async (done: Function) => {
+    it('testStackMarginAlignContentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentBottomStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomStart
@@ -279,7 +279,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentBottom
      * @tc.desc Set stack's  margin 20  and alignContent mode 'Bottom'.
      */
-    it('testStackMarginAlignContentBottom', 0, async (done: Function) => {
+    it('testStackMarginAlignContentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentBottom START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Bottom
@@ -312,7 +312,7 @@ export default function stackMarginChange() {
      * @tc.name testStackMarginAlignContentBottomEnd
      * @tc.desc Set stack's  margin 20  and alignContent mode 'BottomEnd'.
      */
-    it('testStackMarginAlignContentBottomEnd', 0, async (done: Function) => {
+    it('testStackMarginAlignContentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackMarginAlignContentBottomEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomEnd

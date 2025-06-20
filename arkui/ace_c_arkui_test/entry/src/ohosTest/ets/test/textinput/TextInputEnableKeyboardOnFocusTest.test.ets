@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputEnableKeyboardOnFocusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnableKeyboardOnFocus001', 0, async (done: Function) => {
+    it('testTextInputEnableKeyboardOnFocus001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnableKeyboardOnFocus001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textInputEnableKeyboardOnFocusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnableKeyboardOnFocus002', 0, async (done: Function) => {
+    it('testTextInputEnableKeyboardOnFocus002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnableKeyboardOnFocus002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textInputEnableKeyboardOnFocusTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testTextInputEnableKeyboardOnFocus003', 0, async (done: Function) => {
+    it('testTextInputEnableKeyboardOnFocus003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnableKeyboardOnFocus003()).assertEqual(0)
       done()
     })

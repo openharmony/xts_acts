@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputTextSelectionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputTextSelection001', 0, async (done: Function) => {
+    it('testTextInputTextSelection001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputSelection001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textInputTextSelectionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputTextSelection002', 0, async (done: Function) => {
+    it('testTextInputTextSelection002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputSelection002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textInputTextSelectionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputTextSelection003', 0, async (done: Function) => {
+    it('testTextInputTextSelection003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputSelection003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function textInputTextSelectionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputTextSelection004', 0, async (done: Function) => {
+    it('testTextInputTextSelection004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputSelection004()).assertEqual(0)
       done();
     });

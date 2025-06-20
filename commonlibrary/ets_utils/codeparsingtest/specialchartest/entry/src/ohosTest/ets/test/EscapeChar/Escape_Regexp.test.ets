@@ -42,9 +42,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \b.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0001";
       try {
         const regex1 = /\abc\b/;
@@ -65,9 +65,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \f.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0002";
       try {
         const regex1 = /\abc\f/;
@@ -88,9 +88,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \n.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0003";
       try {
         const regex1 = /\abc\n/;
@@ -111,9 +111,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \r.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0004";
       try {
         const regex1 = /\abc\r/;
@@ -134,9 +134,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \t.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0005";
       try {
         const regex1 = /\abc\t/;
@@ -157,9 +157,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \v.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0006";
       try {
         const regex1 = /\abc\v/;
@@ -180,9 +180,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \x24.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0007";
       try {
         const regex1 = /\abc\x24/;
@@ -203,9 +203,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \开.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0008";
       try {
         const regex1 = /\abc\开/;
@@ -226,9 +226,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \😊.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0009";
       try {
         const regex1 = /\abc\😊/;
@@ -249,9 +249,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0010";
       try {
         const regex1 = /\abc\0/;
@@ -271,9 +271,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the BUILINTS interface construct with input escape \\b.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testConstructEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testConstructEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructEscape0011";
       try {
         const regex1 = /\abc\\b/;

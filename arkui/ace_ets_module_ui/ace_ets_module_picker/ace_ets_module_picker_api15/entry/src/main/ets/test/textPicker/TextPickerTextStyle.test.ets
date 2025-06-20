@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -47,7 +47,7 @@ export default function TextPickerTextStyleTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextPickerTextStyleTest_0100', 0, async (done: Function) => {
+    it('TextPickerTextStyleTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('TextPickerTextStyleTest_0100 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function TextPickerTextStyleTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextPickerTextStyleTest_0200', 0, async (done: Function) => {
+    it('TextPickerTextStyleTest_0200', Level.LEVEL1, async (done: Function) => {
       console.info('TextPickerTextStyleTest_0200 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -107,7 +107,7 @@ export default function TextPickerTextStyleTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextPickerTextStyleTest_0300', 0, async (done: Function) => {
+    it('TextPickerTextStyleTest_0300', Level.LEVEL1, async (done: Function) => {
       console.info('TextPickerTextStyleTest_0300 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function TextPickerTextStyleTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextPickerTextStyleTest_0400', 0, async (done: Function) => {
+    it('TextPickerTextStyleTest_0400', Level.LEVEL1, async (done: Function) => {
       console.info('TextPickerTextStyleTest_0400 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -167,7 +167,7 @@ export default function TextPickerTextStyleTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextPickerTextStyleTest_0500', 0, async (done: Function) => {
+    it('TextPickerTextStyleTest_0500', Level.LEVEL1, async (done: Function) => {
       console.info('TextPickerTextStyleTest_0500 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -197,7 +197,7 @@ export default function TextPickerTextStyleTest() {
     * @tc.type
     * @tc.size
     */
-    it('TextPickerTextStyleTest_0600', 0, async (done: Function) => {
+    it('TextPickerTextStyleTest_0600', Level.LEVEL1, async (done: Function) => {
       console.info('TextPickerTextStyleTest_0600 start');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

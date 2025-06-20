@@ -16,6 +16,9 @@ import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level 
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ""
 
@@ -43,6 +46,11 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -73,9 +81,9 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.desc        : test webviewGetAndSetHttpAuthUsernamePassword
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testWebviewGetAndSetHttpAuthUsernamePassword', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebviewGetAndSetHttpAuthUsernamePassword', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebviewGetAndSetHttpAuthUsernamePassword";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewGetAndSetHttpAuthUsernamePassword", "success", 25001, done);

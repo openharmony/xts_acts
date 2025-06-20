@@ -1,7 +1,6 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import testNapi from 'libentry.so';
-import deviceinfo from '@ohos.deviceInfo';
 import { BusinessError } from '@ohos.base';
 import inputMethod from '@ohos.inputMethod';
 
@@ -46,7 +45,7 @@ export default function abilityTest() {
     })
 
     let expResult = "OK"
-    it('SUB_IMF_NDK_AttachOptions_Create_0100', Level.LEVEL2, (done: Function) => {
+    it('SUB_IMF_NDK_AttachOptions_Create_0100', Level.LEVEL0, (done: Function) => {
       let result = testNapi.SUB_IMF_NDK_AttachOptions_Create_0100();
       console.info(`====>SUB_IMF_NDK_AttachOptions_Create_0100 result: ${result}`)
       expect(expResult).assertEqual(result)
@@ -116,7 +115,7 @@ export default function abilityTest() {
       done();
     })
 
-    it('SUB_IMF_NDK_TextAvoidInfo_Create_0100', Level.LEVEL2, (done: Function) => {
+    it('SUB_IMF_NDK_TextAvoidInfo_Create_0100', Level.LEVEL0, (done: Function) => {
       let result = testNapi.SUB_IMF_NDK_TextAvoidInfo_Create_0100();
       console.info(`====>SUB_IMF_NDK_TextAvoidInfo_Create_0100 result: ${result}`)
       expect(expResult).assertEqual(result)

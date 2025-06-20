@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function rowJustifyContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowJustifyContent001', 0, async (done: Function) => {
+    it('testRowJustifyContent001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowJustifyContent001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function rowJustifyContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowJustifyContent002', 0, async (done: Function) => {
+    it('testRowJustifyContent002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowJustifyContent002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function rowJustifyContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowJustifyContent003', 0, async (done: Function) => {
+    it('testRowJustifyContent003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowJustifyContent003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function rowJustifyContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowJustifyContent004', 0, async (done: Function) => {
+    it('testRowJustifyContent004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowJustifyContent004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function rowJustifyContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowJustifyContent005', 0, async (done: Function) => {
+    it('testRowJustifyContent005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowJustifyContent005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function rowJustifyContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowJustifyContent006', 0, async (done: Function) => {
+    it('testRowJustifyContent006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowJustifyContent006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function rowJustifyContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowJustifyContent007', 0, async (done: Function) => {
+    it('testRowJustifyContent007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowJustifyContent007()).assertEqual(0)
       done()
     })

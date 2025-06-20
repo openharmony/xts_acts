@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function panelJsunit2() {
       console.info("panel after each called");
     });
 
-    it('testPanel_100', 0, async (done: Function) => {
+    it('testPanel_100', Level.LEVEL2, async (done: Function) => {
       console.info('testPanel_100 START');
       await Utils.sleep(1000);
       try {
@@ -71,7 +71,7 @@ export default function panelJsunit2() {
       done();
     });
 
-    it('testPanel_200', 0, async (done: Function) => {
+    it('testPanel_200', Level.LEVEL2, async (done: Function) => {
       console.info('testPanel_200 START');
       await Utils.sleep(1000);
       try {
@@ -98,7 +98,7 @@ export default function panelJsunit2() {
       done();
     });
 
-    it('testPanel_300', 0, async (done: Function) => {
+    it('testPanel_300', Level.LEVEL2, async (done: Function) => {
       console.info('testPanel_300 START');
       await Utils.sleep(1000);
       try {
@@ -124,7 +124,7 @@ export default function panelJsunit2() {
       done();
     });
 
-    it('testPanel_400', 0, async (done: Function) => {
+    it('testPanel_400', Level.LEVEL2, async (done: Function) => {
       console.info('testPanel_400 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Panel');
@@ -134,7 +134,7 @@ export default function panelJsunit2() {
       done();
     });
 
-    it('testPanel_500', 0, async (done: Function) => {
+    it('testPanel_500', Level.LEVEL2, async (done: Function) => {
       console.info('testPanel_500 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Panel');
@@ -144,7 +144,7 @@ export default function panelJsunit2() {
       done();
     });
 
-    it('testPanel_600', 0, async (done: Function) => {
+    it('testPanel_600', Level.LEVEL2, async (done: Function) => {
       console.info('testPanel_600 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Panel');
@@ -154,7 +154,7 @@ export default function panelJsunit2() {
       done();
     });
 
-    it('testPanel_700', 0, async (done: Function) => {
+    it('testPanel_700', Level.LEVEL2, async (done: Function) => {
       console.info('testPanel_700 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Panel');

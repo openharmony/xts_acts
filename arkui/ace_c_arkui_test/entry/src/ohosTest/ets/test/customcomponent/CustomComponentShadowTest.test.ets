@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentShadow001', 0, async (done: Function) => {
+    it('testCustomComponentShadow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentShadow001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentShadow002', 0, async (done: Function) => {
+    it('testCustomComponentShadow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentShadow002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentShadow003', 0, async (done: Function) => {
+    it('testCustomComponentShadow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentShadow003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentShadow004', 0, async (done: Function) => {
+    it('testCustomComponentShadow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentShadow004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentShadow005', 0, async (done: Function) => {
+    it('testCustomComponentShadow005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentShadow005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customComponentShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentShadow006', 0, async (done: Function) => {
+    it('testCustomComponentShadow006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentShadow006()).assertEqual(0)
       done()
     })

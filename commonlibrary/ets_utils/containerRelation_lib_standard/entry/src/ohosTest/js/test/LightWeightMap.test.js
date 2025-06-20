@@ -21,7 +21,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an LightWeightMap instance. For example: let lightWeightMap = new LightWeightMap().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let lightWeightMap = new LightWeightMap();
       expect(lightWeightMap != undefined).assertEqual(true);
@@ -36,7 +36,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testSet002
    * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set(1, "A").
    */
-  it("testSet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     let res = lightWeightMap.hasValue("A");
@@ -49,7 +49,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testSet003
    * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set("a", "A").
    */
-  it("testSet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     let res = lightWeightMap.hasValue("A");
@@ -62,7 +62,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testSet004
    * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set("a", "A").
    */
-  it("testSet004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     let a = [1, 2, 3, 4];
     lightWeightMap.set(1, a);
@@ -76,7 +76,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testSet005
    * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
    */
-  it("testSet005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     let c = {name: "lili", age: "13"};
     lightWeightMap.set(1, c);
@@ -90,7 +90,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testGet006
    * @tc.desc: Get the corresponding value through the key. For example: lightWeightMap.get(4).
    */
-  it("testGet006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGet006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -105,7 +105,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testLength007
    * @tc.desc: Get the number of key value pairs in the lightWeightMap instance. For example: lightWeightMap.length.
    */
-  it("testLength007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -120,7 +120,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testHasAll008
    * @tc.desc: Judge whether a lightweightmap contains all key value pairs in another lightweightmap.
    */
-  it("testHasAll008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHasAll008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -138,7 +138,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Determine whether the LightWeightMap contains the specified key. For example: lightWeightMap.hasKey("a").
    */
-  it("testHasKey009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHasKey009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -156,7 +156,7 @@ describe("LightWeightMapTest", function () {
    * @tc.desc: Determine whether the LightWeightMap contains the specified value. 
    * For example: lightWeightMap.hasValue("A").
    */
-  it("testHasValue010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHasValue010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -174,7 +174,7 @@ describe("LightWeightMapTest", function () {
    * @tc.desc: Expand the LightWeightMap instance capacity to the specified value. 
    * For example: lightWeightMap.increaseCapacityTo(3).
    */
-  it("testIncreaseCapacityTo011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testIncreaseCapacityTo011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -190,7 +190,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testEntries012
    * @tc.desc: Get all key value pairs collection in lightWeightMap.
    */
-  it("testEntries012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testEntries012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -213,7 +213,7 @@ describe("LightWeightMapTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testEntries013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testEntries013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     let res = lightWeightMap.entries();
     expect(undefined).assertEqual(res.next().value);
@@ -224,7 +224,7 @@ describe("LightWeightMapTest", function () {
    * @tc.desc: Find the index of the key value pair according to the corresponding key. 
    * If no key is specified, return -1.
    */
-  it("testGetIndexOfKey013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetIndexOfKey013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -244,7 +244,7 @@ describe("LightWeightMapTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testGetIndexOfKey014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetIndexOfKey014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -260,7 +260,7 @@ describe("LightWeightMapTest", function () {
    * @tc.desc: Find the index of the key value pair according to the corresponding value. 
    * If no key is specified, return -1.
    */
-  it("testGetIndexOfValue014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetIndexOfValue014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -281,7 +281,7 @@ describe("LightWeightMapTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-    it("testGetIndexOfValue015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it("testGetIndexOfValue015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       let lightWeightMap = new LightWeightMap();
       lightWeightMap.set(1, "A");
       lightWeightMap.set(2, "B");
@@ -296,7 +296,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testIsEmpty015
    * @tc.desc: Determine whether the LightWeightMap instance is empty. For example: lightWeightMap.isEmpty().
    */
-  it("testIsEmpty015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testIsEmpty015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     let res1 = lightWeightMap.isEmpty();
     expect(res1).assertEqual(true);
@@ -314,7 +314,7 @@ describe("LightWeightMapTest", function () {
    * @tc.desc: Find the key of the key value pair according to the corresponding index. 
    * For example: lightWeightMap.getKeyAt(1).
    */
-  it("testGetKeyAt016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetKeyAt016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -329,7 +329,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testKeys017
    * @tc.desc: Get a collection of all the keys in the LightWeightMap. For example: lightWeightMap.keys().
    */
-  it("testKeys017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testKeys017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -348,7 +348,7 @@ describe("LightWeightMapTest", function () {
    * @tc.name: testSetAll018
    * @tc.desc: Copy key value pairs from one LightWeightMap to another.
    */
-  it("testSetAll018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSetAll018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");

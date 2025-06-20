@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentAccessibilityTextTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAccessibilityText001', 0, async (done: Function) => {
+    it('testCustomComponentAccessibilityText001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAccessibilityText001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentAccessibilityTextTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentAccessibilityText002', 0, async (done: Function) => {
+    it('testCustomComponentAccessibilityText002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentAccessibilityText002()).assertEqual(0)
       done()
     })

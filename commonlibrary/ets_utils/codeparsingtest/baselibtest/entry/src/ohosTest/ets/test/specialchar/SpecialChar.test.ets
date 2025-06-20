@@ -53,9 +53,9 @@ export default function SpecialCharTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with Special
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocSpecial0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocSpecial0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocSpecial0001";
       try {
         let buf1 = buffer.alloc(97, specChars, 'utf8');
@@ -73,9 +73,9 @@ export default function SpecialCharTest() {
      * @tc.desc       : Testing the Buffer interface ByteLength with Special
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLengthSpecial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLengthSpecial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferByteLengthSpecial0002";
       try {
         let str = specChars;
@@ -93,9 +93,9 @@ export default function SpecialCharTest() {
      * @tc.desc       : Testing the Buffer interface IsBuffer with Special
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferIsBufferSpecial0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferIsBufferSpecial0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferIsBufferSpecial0003";
       try {
         let result = buffer.isBuffer(specChars);
@@ -113,9 +113,9 @@ export default function SpecialCharTest() {
      * @tc.desc       : Testing the Buffer interface IsEncoding with Special
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferIsEncodingSpecial0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferIsEncodingSpecial0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferIsEncodingSpecial0004";
       try {
         let result = buffer.isEncoding(specChars).toString();
@@ -133,9 +133,9 @@ export default function SpecialCharTest() {
      * @tc.desc       : Testing the Buffer interface Fill with Special
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferFillSpecial0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferFillSpecial0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferFillSpecial0005";
       try {
         let b = buffer.allocUninitializedFromPool(2).fill(specChars);

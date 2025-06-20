@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 
 export default function textpickermultiTest() {
@@ -42,7 +42,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the range parameter to multiple columns
      */
-    it('ArkUXII_Stage_TextPicker_Options_0100', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0100 start");
       setTimeout(() => {
         try {
@@ -65,7 +65,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the range parameter to multiple columns linkage
      */
-    it('ArkUXII_Stage_TextPicker_Options_0200', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0200 start");
       setTimeout(() => {
         try {
@@ -93,7 +93,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the selected parameter to [1, 1, 2]
      */
-    it('ArkUXII_Stage_TextPicker_Options_0300', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0300 start");
       setTimeout(() => {
         try {
@@ -117,7 +117,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the value parameter to  ["辽宁省", "大连市","中山区"]
      */
-    it('ArkUXII_Stage_TextPicker_Options_0400', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0400 start");
       setTimeout(() => {
         try {
@@ -141,7 +141,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the selectedIndex parameter to  [2, 1, 2]
      */
-    it('ArkUXII_Stage_TextPicker_Options_0500', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0500 start");
       setTimeout(() => {
         try {
@@ -165,7 +165,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Simultaneously setting the selectedIndex selected value parameter
      */
-    it('ArkUXII_Stage_TextPicker_Options_0600', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0600 start");
       setTimeout(() => {
         try {
@@ -189,7 +189,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the selectedIndex parameter to  [null, 1, 1]
      */
-    it('ArkUXII_Stage_TextPicker_Options_0700', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0700 start");
       setTimeout(() => {
         try {
@@ -213,7 +213,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the selectedIndex parameter to  [1, undefined, 1]
      */
-    it('ArkUXII_Stage_TextPicker_Options_0800', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0800', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0800 start");
       setTimeout(() => {
         try {
@@ -237,7 +237,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the selectedIndex parameter to  [1, 1, '']
      */
-    it('ArkUXII_Stage_TextPicker_Options_0900', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_0900', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_0900 start");
       setTimeout(() => {
         try {
@@ -261,7 +261,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the selected parameter to  [1, 0, ]
      */
-    it('ArkUXII_Stage_TextPicker_Options_1000', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_1000', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_1000 start");
       setTimeout(() => {
         try {
@@ -285,7 +285,7 @@ export default function textpickermultiTest() {
      * @tc.name Test the multi column properties of the textpick component
      * @tc.desc Set the value parameter to  ['辽宁省', '大连市', '']
      */
-    it('ArkUXII_Stage_TextPicker_Options_1100', 0, async (done: Function) => {
+    it('ArkUXII_Stage_TextPicker_Options_1100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUXII_Stage_TextPicker_Options_1100 start");
       setTimeout(() => {
         try {

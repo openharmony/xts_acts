@@ -24,7 +24,9 @@ import socketNopTest from './socketNop.test';
 export default function testsuite() {
   networkManagerWithoutPermissionsTest();
   networkSecurityNoPTest();
-  ethernetNoPTest();
+  if (canIUse("SystemCapability.Communication.NetManager.Ethernet")) {
+       ethernetNoPTest();
+    }
   dataNoPTest();
   socketNopTest();
   if (canIUse('SystemCapability.Communication.NetManager.NetFirewall')){

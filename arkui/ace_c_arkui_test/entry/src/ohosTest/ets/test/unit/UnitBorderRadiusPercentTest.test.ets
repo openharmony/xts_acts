@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function unitBorderRadiusPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitBorderRadiusPercent001', 0, async (done: Function) => {
+    it('testUnitBorderRadiusPercent001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitBorderRadiusPercent001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function unitBorderRadiusPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitBorderRadiusPercent002', 0, async (done: Function) => {
+    it('testUnitBorderRadiusPercent002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitBorderRadiusPercent002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function unitBorderRadiusPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitBorderRadiusPercent003', 0, async (done: Function) => {
+    it('testUnitBorderRadiusPercent003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitBorderRadiusPercent003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function unitBorderRadiusPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitBorderRadiusPercent004', 0, async (done: Function) => {
+    it('testUnitBorderRadiusPercent004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitBorderRadiusPercent004()).assertEqual(0)
       done();
     });
@@ -82,7 +82,7 @@ export default function unitBorderRadiusPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitBorderRadiusPercent005', 0, async (done: Function) => {
+    it('testUnitBorderRadiusPercent005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitBorderRadiusPercent005()).assertEqual(0)
       done();
     });    

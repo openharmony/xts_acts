@@ -14,7 +14,7 @@
  */
 
 import network from '@system.network';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it , TestType, Size, Level } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 
 export default function Telephony_NetManager_NetWorkTest() {
@@ -26,7 +26,7 @@ export default function Telephony_NetManager_NetWorkTest() {
          * @tc.name Whether the GetType method is called successfully without WiFi
          * @tc.desc Function test
          */
-        it("Telephony_NetManager_NetWorkTest_GetType_None_0100", 0, function (done) {
+        it("Telephony_NetManager_NetWorkTest_GetType_None_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             connection.getDefaultNet(function (error, netHandle) {
                 if (error || netHandle.netId >= 100) {
                     console.info("Network available or Network error:" + error);
@@ -56,7 +56,7 @@ export default function Telephony_NetManager_NetWorkTest() {
          * @tc.name Whether to call GetType method again without WiFi
          * @tc.desc Function test
          */
-        it("Telephony_NetManager_NetWorkTest_GetType_None_0200", 0, function (done) {
+        it("Telephony_NetManager_NetWorkTest_GetType_None_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             connection.getDefaultNet(function (error, netHandle) {
                 if (error || netHandle.netId >= 100) {
                     console.info("Network available or Network error:" + error);
@@ -87,7 +87,7 @@ export default function Telephony_NetManager_NetWorkTest() {
          * @tc.name Whether the subscribe method is called successfully without WiFi
          * @tc.desc Function test
          */
-        it("Telephony_NetManager_NetWorkTest_Subscribe_None_0100", 0, function (done) {
+        it("Telephony_NetManager_NetWorkTest_Subscribe_None_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             connection.getDefaultNet(function (error, netHandle) {
                 if (error || netHandle.netId >= 100) {
                     console.info("Network available or Network error:" + error);
@@ -119,7 +119,7 @@ export default function Telephony_NetManager_NetWorkTest() {
          * @tc.name Whether to call the subscribe method again without WiFi
          * @tc.desc Function test
          */
-        it("Telephony_NetManager_NetWorkTest_Subscribe_None_0200", 0, function (done) {
+        it("Telephony_NetManager_NetWorkTest_Subscribe_None_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             connection.getDefaultNet(function (error, netHandle) {
                 if (error || netHandle.netId >= 100) {
                     console.info("Network available or Network error:" + error);

@@ -86,7 +86,14 @@
         "description": "ActsShareExtensionAbility",
         "type": "share",
         "visible": true,
-        "srcEntrance": "./ets/shareextensionability/ActsShareExtensionAbility.ts"
+        "srcEntrance": "./ets/shareextensionability/ActsShareExtensionAbility.ts",
+        "skills": [
+          {
+            "permissions": [
+              "ohos.permission.GET_BUNDLE_INFO"
+            ]
+          }
+        ]
       }
     ],
     "requestPermissions": [

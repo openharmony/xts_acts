@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
@@ -61,7 +61,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
      * @tc.name         testgestureParallel0001
      * @tc.desic         acegestureParallelEtsTest0001
      */
-    it('testgestureParallel0001', 0, async (done: Function) => {
+    it('testgestureParallel0001', Level.LEVEL0, async (done: Function) => {
       console.info('gestureParallel testgestureParallel0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('ParallelText');

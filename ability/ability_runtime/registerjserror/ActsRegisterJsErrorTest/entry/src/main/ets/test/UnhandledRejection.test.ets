@@ -469,7 +469,7 @@ export default function unhandledRejectionTest() {
      * @tc.name: JsError unhandled rejection callback enhancement
      * @tc.desc: Trying to unregister UnhandledRejectionObserver in worker.
      */
-    it('ACTS_Unregister_JsErrorCallback_UnhandledRejection_0500', 0, async (done) => {
+    it('ACTS_Unregister_JsErrorCallback_UnhandledRejection_0500', Level.LEVEL0, async (done) => {
       let flag = false;
       console.log("=====>ACTS_Unregister_JsErrorCallback_UnhandledRejection_0500<=====");
 

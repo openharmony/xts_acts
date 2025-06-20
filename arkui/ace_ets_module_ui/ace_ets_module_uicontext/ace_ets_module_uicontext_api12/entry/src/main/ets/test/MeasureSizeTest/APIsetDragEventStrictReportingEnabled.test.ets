@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from '@ohos/hypium'
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -33,7 +33,6 @@ import { MessageManager, Callback } from '../../MainAbility/common/MessageManage
 import UIAbility from '@ohos.app.ability.UIAbility';
 import window from '@ohos.window';
 import { UIContext } from '@ohos.arkui.UIContext';
-
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -54,7 +53,6 @@ class EntryAbility extends UIAbility {
     });
   }
 }
-
 export default function APIsetDragEventStrictReportingEnabled() {
   describe('APIsetDragEventStrictReportingEnabled', () => {
     beforeEach(async (done: Function) => {
@@ -82,7 +80,6 @@ export default function APIsetDragEventStrictReportingEnabled() {
       await CommonFunc.sleep(1000);
       console.info("APIsetDragEventStrictReportingEnabled after each called");
     })
-
     /**
      * @tc.number api
      * @tc.name APIsetDragEventStrictReportingEnabled_0100
@@ -91,7 +88,7 @@ export default function APIsetDragEventStrictReportingEnabled() {
      * @tc.type UIContext
      * @tc.level 2
      */
-    it('APIsetDragEventStrictReportingEnabled_0100', 0, async (done: Function) => {
+    it('APIsetDragEventStrictReportingEnabled_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetDragEventStrictReportingEnabled_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { albumType, albumSubtype, genRadomStr, fetchOption, albumKeys, getPermission, driveFn, sleep } from '../common'
 import common from '@ohos.app.ability.common'
 
@@ -37,7 +37,7 @@ export default function setAlbumNameChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_name_change_request_000', 0, async (done: Function) => {
+    it('album_name_change_request_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'album_name_change_request_000';
       try {
         let album:ESObject = await helper.createAlbum(testNum);
@@ -75,7 +75,7 @@ export default function setAlbumNameChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('album_name_change_request_001', 2, async (done: Function) => {
+    it('album_name_change_request_001', Level.LEVEL2, async (done: Function) => {
       let testNum = 'album_name_change_request_001';
       try {
         let album:ESObject = await helper.createAlbum(testNum);
@@ -100,7 +100,7 @@ export default function setAlbumNameChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('album_name_change_request_002', 2, async (done: Function) => {
+    it('album_name_change_request_002', Level.LEVEL2, async (done: Function) => {
       let testNum = 'album_name_change_request_002';
       try {
         let album:ESObject = await helper.createAlbum(testNum);

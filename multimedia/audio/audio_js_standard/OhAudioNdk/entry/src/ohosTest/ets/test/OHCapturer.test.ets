@@ -86,6 +86,7 @@ let AUDIOSTREAM_SOURCE_TYPE_MIC: number = 0;
 let AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION: number = 1;
 let AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE: number = 2;
 let AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION: number = 7;
+let AUDIOSTREAM_SOURCE_TYPE_UNPROCESSED: number = 14;
 function getContext(): Context {
   let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
   let context = abilityDelegator.getAppContext();

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -30,7 +30,6 @@ import {
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
-
 export default function geometryTransition() {
   describe('geometryTransition', () => {
     beforeEach(async (done:Function) =>{
@@ -62,7 +61,7 @@ export default function geometryTransition() {
     * @tc.type :
     * @tc.size :
     */
-    it('geometryTransition_0100', 0, async (done:Function) =>{
+    it('geometryTransition_0100', Level.LEVEL0, async (done:Function) => {
       console.info('geometryTransition_0100 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -78,6 +77,5 @@ export default function geometryTransition() {
       console.info('[geometryTransition_0100] END');
       done();
     })
-
   })
 }

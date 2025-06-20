@@ -105,7 +105,7 @@ static OH_Huks_Result HksHmacTestCase(const struct OH_Huks_Blob *keyAlias, struc
  * @tc.desc: alg-HMAC pur-MAC dig-SHA384.
  * @tc.type: FUNC
  */
-HWTEST_F(HksHmacTest, Security_HUKS_NAPI_HMAC_hmac_0100, TestSize.Level0)
+HWTEST_F(HksHmacTest, Security_HUKS_NAPI_HMAC_hmac_0100, TestSize.Level1)
 {
     char tmpKeyAlias[] = "HksHMACKeyAliasTest001";
     struct OH_Huks_Blob keyAlias = {strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
@@ -128,7 +128,7 @@ HWTEST_F(HksHmacTest, Security_HUKS_NAPI_HMAC_hmac_0100, TestSize.Level0)
  * @tc.desc: alg-HMAC pur-MAC dig-sm3.
  * @tc.type: FUNC
  */
-HWTEST_F(HksHmacTest, Security_HUKS_NAPI_HMAC_SM3_0100, TestSize.Level0)
+HWTEST_F(HksHmacTest, Security_HUKS_NAPI_HMAC_SM3_0100, TestSize.Level1)
 {
     char tmpKeyAlias[] = "HksHMACKeyAliasTest008";
     struct OH_Huks_Blob keyAlias = {strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};

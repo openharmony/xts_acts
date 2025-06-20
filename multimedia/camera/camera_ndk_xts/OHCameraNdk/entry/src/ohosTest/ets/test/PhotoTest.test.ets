@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameras from 'libentry.so'
 import image from '@ohos.multimedia.image';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -211,7 +211,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputStart0100', 0, () => {
+    it('testOHPreviewOutputStart0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHPreviewOutputStart(0);
       console.log(TAG+"testOHPreviewOutputStart0100:"+ret);
@@ -225,7 +225,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputStart0200', 0, () => {
+    it('testOHPreviewOutputStart0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHPreviewOutputStart(1);
       console.log(TAG+"testOHPreviewOutputStart0200:"+ret);
@@ -239,7 +239,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputStop0100', 0, () => {
+    it('testOHPreviewOutputStop0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHPreviewOutputStop(0);
       console.log(TAG+"testOHPreviewOutputStop0100:"+ret);
@@ -253,7 +253,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputStop0200', 0, () => {
+    it('testOHPreviewOutputStop0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHPreviewOutputStop(1);
       console.log(TAG+"testOHPreviewOutputStop0200:"+ret);
@@ -267,7 +267,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCallback0100', 0, () => {
+    it('testOHPhotoOutputRegisterCallback0100', Level.LEVEL0, () => {
       let ret = cameras.oHPhotoOutputRegisterCallback(0);
       console.log(TAG+"testOHPhotoOutputRegisterCallback0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -280,7 +280,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCallback0200', 0, () => {
+    it('testOHPhotoOutputRegisterCallback0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputRegisterCallback(1);
       console.log(TAG+"testOHPhotoOutputRegisterCallback0200:"+ret);
@@ -294,7 +294,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCallback0300', 0, () => {
+    it('testOHPhotoOutputRegisterCallback0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputRegisterCallback(2);
       console.log(TAG+"testOHPhotoOutputRegisterCallback0300:"+ret);
@@ -308,7 +308,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCallback0100', 0, () => {
+    it('testOHPhotoOutputUnregisterCallback0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputUnregisterCallback(0);
       console.log(TAG+"testOHPhotoOutputUnregisterCallback0100:"+ret);
@@ -322,7 +322,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCallback0200', 0, () => {
+    it('testOHPhotoOutputUnregisterCallback0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputUnregisterCallback(1);
       console.log(TAG+"testOHPhotoOutputUnregisterCallback0200:"+ret);
@@ -336,7 +336,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCallback0300', 0, () => {
+    it('testOHPhotoOutputUnregisterCallback0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputUnregisterCallback(2);
       console.log(TAG+"testOHPhotoOutputUnregisterCallback0300:"+ret);
@@ -350,7 +350,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputIsMirrorSupported0100', 0, () => {
+    it('testOHPhotoOutputIsMirrorSupported0100', Level.LEVEL0, () => {
       let ret = cameras.oHPhotoOutputIsMirrorSupported(0);
       console.log(TAG+"testOHPhotoOutputIsMirrorSupported0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -363,7 +363,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputIsMirrorSupported0200', 0, () => {
+    it('testOHPhotoOutputIsMirrorSupported0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputIsMirrorSupported(1);
       console.log(TAG+"testOHPhotoOutputIsMirrorSupported0200:"+ret);
@@ -377,7 +377,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputIsMirrorSupported0300', 0, () => {
+    it('testOHPhotoOutputIsMirrorSupported0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputIsMirrorSupported(2);
       console.log(TAG+"testOHPhotoOutputIsMirrorSupported0300:"+ret);
@@ -391,7 +391,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputEnableMirror0100', 0, () => {
+    it('testOHPhotoOutputEnableMirror0100', Level.LEVEL0, () => {
       let ret = cameras.oHPhotoOutputEnableMirror(0);
       console.log(TAG+"testOHPhotoOutputEnableMirror0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -404,7 +404,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputEnableMirror0200', 0, () => {
+    it('testOHPhotoOutputEnableMirror0200', Level.LEVEL0, () => {
       
       let ret = cameras.oHPhotoOutputEnableMirror(1);
       console.log(TAG+"testOHPhotoOutputEnableMirror0200:"+ret);
@@ -418,7 +418,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputCapture0100', 0, () => {
+    it('testOHPhotoOutputCapture0100', Level.LEVEL0, () => {
       cameras.oHPhotoOutputRegisterCaptureReadyCallback();
       let ret = cameras.oHPhotoOutputCapture(0);
       console.log(TAG+"testOHPhotoOutputCapture0100:"+ret);
@@ -432,7 +432,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputCapture0200', 0, () => {
+    it('testOHPhotoOutputCapture0200', Level.LEVEL0, () => {
       let ret = cameras.oHPhotoOutputCapture(1);
       console.log(TAG+"testOHPhotoOutputCapture0200:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -445,7 +445,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputCapture0300', 0, () => {
+    it('testOHPhotoOutputCapture0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputCapture(2);
       console.log(TAG+"testOHPhotoOutputCapture0300:"+ret);
@@ -459,7 +459,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputCaptureWithCaptureSetting0100', 0, () => {
+    it('testOHPhotoOutputCaptureWithCaptureSetting0100', Level.LEVEL0, () => {
       let photoSettings: PhotoSettings = {
         quality: 0,
         rotation: 0,
@@ -480,7 +480,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-   /* it('testOHPhotoOutputCaptureWithCaptureSetting0200', 0, () => {
+   /* it('testOHPhotoOutputCaptureWithCaptureSetting0200', Level.LEVEL0, () => {
       let photoSettings: PhotoSettings = {
         quality: 0,
         rotation: 0,
@@ -501,7 +501,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-   /* it('testOHPhotoOutputCaptureWithCaptureSetting0300', 0, () => {
+   /* it('testOHPhotoOutputCaptureWithCaptureSetting0300', Level.LEVEL0, () => {
       let photoSettings: PhotoSettings = {
         quality: 0,
         rotation: 0,
@@ -523,7 +523,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    /*it('testOHPhotoOutputRelease0100', 0, () => {
+    /*it('testOHPhotoOutputRelease0100', Level.LEVEL0, () => {
       let ret = cameras.oHPhotoOutputRelease(0);
       console.log(TAG+"testOHPhotoOutputRelease0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -536,7 +536,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    /*it('testOHPhotoOutputRelease0200', 0, () => {
+    /*it('testOHPhotoOutputRelease0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHPhotoOutputRelease(1);
       console.log(TAG+"testOHPhotoOutputRelease0200:"+ret);
@@ -550,7 +550,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputRelease0100', 0, () => {
+    it('testOHPreviewOutputRelease0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHPreviewOutputRelease(0);
       console.log(TAG+"testOHPreviewOutputRelease0100:"+ret);
@@ -564,7 +564,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputRelease0200', 0, () => {
+    it('testOHPreviewOutputRelease0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHPreviewOutputRelease(1);
       console.log(TAG+"testOHPreviewOutputRelease0200:"+ret);

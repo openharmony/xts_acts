@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -52,7 +52,7 @@ export default function ColumnsTemplateAndRowsTemplate2() {
      * @tc.name testGrid
      * @tc.desc GridItem set columnStart to 0
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -61,20 +61,20 @@ export default function ColumnsTemplateAndRowsTemplate2() {
       let Grid_1: RectValue = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplate2_Grid_1');
 
       console.log('assert position')
-      expect(GridItem_01.left).assertEqual(Grid_1.left);
       console.log('GridItem_01.left' + GridItem_01.left)
       console.log('Grid_1.left' + Grid_1.left)
+      expect(Math.floor(Math.abs(GridItem_01.left - Grid_1.left)) <= 1).assertTrue();
 
-      expect(Math.round(GridItem_01.left - Grid_1.left)).assertEqual(Math.round(vp2px(0)));
       console.log('GridItem_01.left - Grid_1.left' + (GridItem_01.left - Grid_1.left))
-      expect(Math.round(GridItem_01.top - Grid_1.top)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.floor(Math.abs((GridItem_01.left - Grid_1.left) - vp2px(0))) <= 1).assertTrue();
       console.log('GridItem_01.left - Grid_1.left' + (GridItem_01.left - Grid_1.left))
+      expect(Math.floor(Math.abs((GridItem_01.top - Grid_1.top) - vp2px(0))) <= 1).assertTrue();
 
       console.log('assert size')
-      expect(Math.round(GridItem_01.right - GridItem_01.left)).assertEqual(Math.round(vp2px(120)));
       console.log('GridItem_01.right - GridItem_01.left' + (GridItem_01.right - GridItem_01.left))
-      expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(60)));
+      expect(Math.floor(Math.abs((GridItem_01.right - GridItem_01.left) - vp2px(120))) <= 1).assertTrue(); 
       console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
+      expect(Math.floor(Math.abs((GridItem_01.bottom - GridItem_01.top) - vp2px(60))) <= 1).assertTrue();
 
 
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100] END');

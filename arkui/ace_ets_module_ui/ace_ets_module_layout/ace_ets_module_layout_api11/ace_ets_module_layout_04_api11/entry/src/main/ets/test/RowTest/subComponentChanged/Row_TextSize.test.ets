@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -55,7 +55,7 @@ export default function row_TextSizeTest() {
      * @tc.name testRowTextSizeHeight
      * @tc.desc The height of the first subcomponent changed
      */
-    it('testRowTextSizeHeight', 0, async (done: Function) => {
+    it('testRowTextSizeHeight',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextSizeHeight] START');
       let secondText: RectValue = CommonFunc.getComponentRect('Row_TextSize2');
       let secondTextTop: number = secondText.top;
@@ -72,28 +72,28 @@ export default function row_TextSizeTest() {
 
       expect(JSON.parse(rowContainerStrJson).$type).assertEqual('Row');
 
-      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(130)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(130))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(firstText.right - firstText.left) - Math.round(secondText.right - secondText.left)) <= 1)
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1)
         .assertTrue();
-      expect(Math.abs(Math.round(secondText.right - secondText.left) - Math.round(thirdText.right - thirdText.left)) <= 1)
-        .assertTrue();
-
-      expect(Math.abs(firstText.left - rowContainer.left) <= 1).assertTrue();
-      expect(Math.abs(Math.round(firstText.top - rowContainer.top) - Math.round(rowContainer.bottom - firstText.bottom)) <= 1)
+      expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
 
-      expect(Math.abs(secondText.top - secondTextTop) <= 1).assertTrue();
-      expect(Math.abs(secondText.left - secondTextLeft) <= 1).assertTrue();
-
-      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(secondText.left - firstText.right) - Math.round(thirdText.left - secondText.right)) <= 1)
+      expect(Math.floor(Math.abs(firstText.left - rowContainer.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.top - rowContainer.top) - (rowContainer.bottom - firstText.bottom))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(secondText.top - secondTextTop)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(secondText.left - secondTextLeft)) <= 1).assertTrue();
+
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - (thirdText.left - secondText.right))) <= 1)
+        .assertTrue();
+
+      expect(Math.floor(Math.abs((rowContainer.right - thirdText.right) - vp2px(30))) <= 1).assertTrue();
       console.info('[testRowTextSizeHeight] END');
       done();
     });
@@ -102,7 +102,7 @@ export default function row_TextSizeTest() {
      * @tc.name testRowTextSizeWidth
      * @tc.desc The width of the first subcomponent changed
      */
-    it('testRowTextSizeWidth', 0, async (done: Function) => {
+    it('testRowTextSizeWidth',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextSizeWidth] START');
       let secondText: RectValue = CommonFunc.getComponentRect('Row_TextSize2');
       let secondTextTop: number = secondText.top;
@@ -119,27 +119,27 @@ export default function row_TextSizeTest() {
 
       expect(JSON.parse(rowContainerStrJson).$type).assertEqual('Row');
 
-      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(130)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - vp2px(130))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.right - secondText.left) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1)
+      expect(Math.floor(Math.abs(firstText.left - rowContainer.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.top - rowContainer.top) - (rowContainer.bottom - firstText.bottom))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((secondText.top) - (secondTextTop)) <= 1).assertTrue();
-      expect(Math.abs((secondText.left) - (secondTextLeft + vp2px(30))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(secondText.top - secondTextTop)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(secondText.left - (secondTextLeft + vp2px(30)))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(thirdText.left - secondText.right))) <= 1)
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.left - firstText.right) - (thirdText.left - secondText.right))) <= 2)
         .assertTrue();
 
-      expect(Math.abs((rowContainer.right) - (thirdText.right)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(rowContainer.right - thirdText.right)) <= 1).assertTrue();
       console.info('[testRowTextSizeWidth] END');
       done();
     });

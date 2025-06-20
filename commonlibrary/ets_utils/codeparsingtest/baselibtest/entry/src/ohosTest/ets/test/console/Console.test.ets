@@ -32,9 +32,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule("a");
       } catch (e) {
@@ -51,9 +51,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule(undefined);
       } catch (e) {
@@ -70,9 +70,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule(null);
       } catch (e) {
@@ -88,10 +88,10 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
 
-    it('testLoadNativeModule004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule("");
       } catch (e) {
@@ -106,9 +106,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule("!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
       } catch (e) {
@@ -123,9 +123,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag =
           loadNativeModule("!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
@@ -141,9 +141,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule("  !!\"\"##$$%%&&''(())**++,,--..//::;;<<==>>??@@[[\\\\]]^^__``{{||}}~~");
       } catch (e) {
@@ -158,9 +158,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule with bell character.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule("\a 响铃");
       } catch (e) {
@@ -176,9 +176,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule with backspace.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule('\b 退格');
       } catch (e) {
@@ -194,9 +194,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule with form feed.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule('\f 换页');
       } catch (e) {
@@ -212,9 +212,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule with newline.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule('\n 换行');
       } catch (e) {
@@ -230,9 +230,9 @@ export default function ConsoleTest() {
      * @tc.desc       : Test LoadNativeModule with carriage return.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLoadNativeModule012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadNativeModule012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let flag = loadNativeModule('\r 回车');
       } catch (e) {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
@@ -52,7 +52,7 @@ export default function List_scrollToIndex1() {
      * @tc.name List_scrollToIndex1_0100
      * @tc.desc scrollToIndex align is not set
      */
-    it('List_scrollToIndex1_0100', 0, async (done: Function) => {
+    it('List_scrollToIndex1_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex1_0100] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex1_to5'));

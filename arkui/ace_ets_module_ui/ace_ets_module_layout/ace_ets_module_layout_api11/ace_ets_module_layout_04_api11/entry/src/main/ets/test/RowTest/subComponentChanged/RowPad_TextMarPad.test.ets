@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -58,7 +58,7 @@ export default function rowPad_TextMarPadTest() {
      * @tc.name testRowPadTextPad
      * @tc.desc The parent component set padding to 10,and the first subcomponent set padding to 20
      */
-    it('testRowPadTextPad', 0, async (done: Function) => {
+    it('testRowPadTextPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowPadTextPad] START');
       globalThis.value.message.notify({
         name: 'rowPadding', value: 10
@@ -107,7 +107,7 @@ export default function rowPad_TextMarPadTest() {
      * @tc.name testRowPadTextMar
      * @tc.desc The parent component set padding to 10,and the first subcomponent set margin to 10
      */
-    it('testRowPadTextMar', 0, async (done: Function) => {
+    it('testRowPadTextMar',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowPadTextMar] START');
       globalThis.value.message.notify({
         name: 'rowPadding', value: 10
@@ -156,7 +156,7 @@ export default function rowPad_TextMarPadTest() {
      * @tc.desc The parent component set padding to 10,and the first subcomponent set margin to 10
      *              ,set padding to 20
      */
-    it('testRowPadTextMarPad', 0, async (done: Function) => {
+    it('testRowPadTextMarPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowPadTextMarPad] START');
       globalThis.value.message.notify({
         name: 'rowPadding', value: 10

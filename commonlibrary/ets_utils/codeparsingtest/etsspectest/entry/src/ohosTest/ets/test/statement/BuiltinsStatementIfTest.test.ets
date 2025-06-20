@@ -52,9 +52,9 @@ export default function builtinsStatementIfTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementIfTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('builtinsStatementIfTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let a: number = 0;
       try {
         if (0) {
@@ -74,9 +74,9 @@ export default function builtinsStatementIfTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementIfTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('builtinsStatementIfTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let a: number = 0;
       try {
         if (NaN) {
@@ -96,9 +96,9 @@ export default function builtinsStatementIfTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementIfTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('builtinsStatementIfTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let a: number = 0;
       try {
         if ('') {
@@ -118,9 +118,9 @@ export default function builtinsStatementIfTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementIfTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('builtinsStatementIfTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let a: number = 0;
       try {
         if (null) {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';
@@ -56,7 +56,7 @@ done();
       console.info("dragEvent after each called");
     });
 
-    it('dragEventTest_0100', 0, async (done: Function) => {
+    it('dragEventTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('dragEventTest_0100 START');
       let rect: RectValue = Utils.getComponentRect('apple')
       console.info("dragEventTest_0100 rectInfo is " + JSON.stringify(rect));
@@ -84,7 +84,7 @@ done();
       done();
     });
 
-    it('dragEventTest_0200', 0, async (done: Function) => {
+    it('dragEventTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('dragEventTest_0200 START');
       let rect = Utils.getComponentRect('orange')
       console.info("dragEventTest_0200 rectInfo is " + JSON.stringify(rect));
@@ -113,7 +113,7 @@ done();
       done();
     });
 
-    it('dragEventTest_0300', 0, async (done: Function) => {
+    it('dragEventTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('dragEventTest_0300 START');
       let rect = Utils.getComponentRect('banana')
       console.info("dragEventTest_0300 rectInfo is " + JSON.stringify(rect));
@@ -141,7 +141,7 @@ done();
       done();
     });
 
-    it('dragEventTest_0400', 0, async (done: Function) => {
+    it('dragEventTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('dragEventTest_0400 START');
       let rect = Utils.getComponentRect('mango')
       console.info("dragEventTest_0400 rectInfo is " + JSON.stringify(rect));
@@ -169,7 +169,7 @@ done();
       done();
     });
 
-    it('dragEventTest_0500', 0, async (done: Function) => {
+    it('dragEventTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('dragEventTest_0500 START');
       let rect = Utils.getComponentRect('strawberry')
       console.info("dragEventTest_0500 rectInfo is " + JSON.stringify(rect));

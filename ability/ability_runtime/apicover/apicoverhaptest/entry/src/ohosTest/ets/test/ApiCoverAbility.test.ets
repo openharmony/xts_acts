@@ -34,7 +34,6 @@ import { AbilityLifecycleCallback } from '@kit.AbilityKit';
 import { Driver } from '@ohos.UiTest';
 import DemoProcess from '../process/AProcess';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
 let PARAM_ERROR = 401;
@@ -483,9 +482,14 @@ export default function ApiCoverTest() {
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.area = 0;
       let mccvalue = AppStorage.get<common.UIAbilityContext>("abilityContext")!.config?.mcc;
       let mncValue = AppStorage.get<common.UIAbilityContext>("abilityContext")!.config?.mnc;
+      let locale = AppStorage.get<common.UIAbilityContext>("abilityContext")!.config?.locale;
       console.log(`Ability: getConfiguration config.mnc: ${mccvalue}`);
       console.log(`Ability: getConfiguration config.mnc: ${mncValue}`);
+      console.log(`Ability: getConfiguration config.locale: ${locale}`);
       expect(0).assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.area);
+      let AbilityContext: common.UIAbilityContext;
+      AbilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext") as common.UIAbilityContext;
+      let currentDeviceOrientation = AbilityContext?.config?.direction;
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.resourceManager.getConfiguration((err, data) => {
         if (err == undefined) {
           console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
@@ -494,11 +498,7 @@ export default function ApiCoverTest() {
           console.log(`Ability: getConfiguration success1: ${JSON.stringify(data.mnc)}`);
           expect(0).assertEqual(data.mcc)
           expect(0).assertEqual(data.mnc)
-          if (deviceType === '2in1') {
-            expect(1).assertEqual(data.direction);
-          } else {
-            expect(0).assertEqual(data.direction);
-          }
+          expect(currentDeviceOrientation).assertEqual(data.direction);
           done();
         } else {
           expect().assertFail();

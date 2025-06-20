@@ -922,6 +922,53 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsBoundary, Function | Small
     // step 5
     OH_Drawing_BitmapDestroy(bitmap);
 }
+ 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0600
+ * @tc.name: testBitmapBuildMaximum
+ * @tc.desc: test for testBitmapBuildMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMaximum, Function | SmallTest | Level0) {
+    // Build a very large bitmap
+    const unsigned int width = 20000;
+    const unsigned int height = 20000;
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(bitmap, nullptr);
+    OH_Drawing_BitmapFormat bitmapFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_PREMUL};
+    OH_Drawing_BitmapBuild(bitmap, width, height, &bitmapFormat);
+    
+    // Create a new canvas and draw the contents of the image
+    OH_Drawing_Canvas *imageCanvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(imageCanvas, nullptr);
+    OH_Drawing_CanvasBind(imageCanvas, bitmap);
+    OH_Drawing_Rect *imageRect = OH_Drawing_RectCreate(0, 0, 5, 5);
+    OH_Drawing_CanvasDrawRect(imageCanvas, imageRect);
+
+    // Create a picture object
+    OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    EXPECT_NE(image, nullptr);
+    OH_Drawing_ImageBuildFromBitmap(image, bitmap);
+
+    // Draws the image onto the specified area of the canvas.
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+    OH_Drawing_Rect *dstRect = OH_Drawing_RectCreate(100, 100, 500, 500);
+    OH_Drawing_SamplingOptions *samplingOptions = OH_Drawing_SamplingOptionsCreate(
+        OH_Drawing_FilterMode::FILTER_MODE_NEAREST, OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
+    EXPECT_NE(samplingOptions, nullptr);
+    OH_Drawing_CanvasDrawImageRect(canvas, image, dstRect, samplingOptions);
+
+    // Destroy all objects
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_CanvasDestroy(imageCanvas);
+    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_ImageDestroy(image);
+    OH_Drawing_RectDestroy(imageRect);
+    OH_Drawing_RectDestroy(dstRect);
+}
 
 } // namespace Drawing
 } // namespace Rosen

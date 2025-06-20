@@ -532,5 +532,25 @@ describe('btSocketTest', () =>  {
         }
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_1300
+     * @tc.name testGetDeviceId
+     * @tc.desc Test getDeviceId api17
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHSOCKET_SPP_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+        try {
+            let deviceId = bluetooth.getDeviceId(0);
+            console.info('[bluetooth_js]:getDeviceId success, result:' + JSON.stringify(deviceId));
+            expect().assertFail();
+        } catch (err) {
+            console.error("getDeviceId: errCode:" + err.code + ",errMessage:" + err.message);
+            expect(Number(err.code)).assertEqual(401);
+        }
+        done();
+    })
 })
 }

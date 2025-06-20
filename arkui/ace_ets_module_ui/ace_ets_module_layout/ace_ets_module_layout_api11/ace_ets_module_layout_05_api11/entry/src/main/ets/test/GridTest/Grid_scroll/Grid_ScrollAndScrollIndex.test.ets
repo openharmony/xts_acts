@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -57,7 +57,7 @@ export default function Grid_ScrollAndScrollIndex() {
      * @tc.name testGrid
      * @tc.desc An onScrollIndex event will be triggered during grid initialization
      */
-    it('Grid_ScrollAndScrollIndex_0100', 0, async (done: Function) => {
+    it('Grid_ScrollAndScrollIndex_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ScrollAndScrollIndex_0100] START');
       let strJson1 = getInspectorByKey('Grid_ScrollAndScrollIndex_tex1')
 
@@ -73,7 +73,7 @@ export default function Grid_ScrollAndScrollIndex() {
      * @tc.name testGrid
      * @tc.desc Trigger onScroll event when grid slides
      */
-    it('Grid_ScrollAndScrollIndex_0200', 0, async (done: Function) => {
+    it('Grid_ScrollAndScrollIndex_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ScrollAndScrollIndex_0200] START');
       let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollAndScrollIndex_grid')
       let driver = Driver.create()
@@ -99,7 +99,7 @@ export default function Grid_ScrollAndScrollIndex() {
      * @tc.name testGrid
      * @tc.desc Grid sliding triggers the onScrollIndex event when the index value of the first/last component in the display area changes
      */
-    it('Grid_ScrollAndScrollIndex_0300', 0, async (done: Function) => {
+    it('Grid_ScrollAndScrollIndex_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ScrollAndScrollIndex_0300] START');
       let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollAndScrollIndex_grid')
       let driver = Driver.create()
@@ -125,7 +125,7 @@ export default function Grid_ScrollAndScrollIndex() {
      * @tc.name testGrid
      * @tc.desc ScrollBar sliding triggers the onScrollIndex event when the index value of the first/last component on the grid display area changes
      */
-    it('Grid_ScrollAndScrollIndex_0400', 0, async (done: Function) => {
+    it('Grid_ScrollAndScrollIndex_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ScrollAndScrollIndex_0400] START');
       let scrollBarRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollAndScrollIndex_scrollBar')
       let driver = Driver.create()

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
 import { frameTime, sleep } from '../Utils';
 import { Theme, CustomTheme } from '@ohos.arkui.theme';
@@ -85,7 +85,7 @@ export default function toggleThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsToggleThemeColors_0100`, 0, () => {
+    it(`ActsToggleThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsToggleThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       toggleKeys.forEach((key) => {
@@ -126,7 +126,7 @@ export default function toggleThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsToggleThemeColors_0200`, 0, () => {
+    it(`ActsToggleThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsToggleThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       toggleKeys.forEach((key) => {
@@ -169,7 +169,7 @@ export default function toggleThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsToggleThemeColors_0300`, 0, async () => {
+    it(`ActsToggleThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsToggleThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

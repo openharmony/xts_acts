@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient001', 0, async (done: Function) => {
+    it('testTextLinearGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient002', 0, async (done: Function) => {
+    it('testTextLinearGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient003', 0, async (done: Function) => {
+    it('testTextLinearGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient004', 0, async (done: Function) => {
+    it('testTextLinearGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient005', 0, async (done: Function) => {
+    it('testTextLinearGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient006', 0, async (done: Function) => {
+    it('testTextLinearGradient006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient007', 0, async (done: Function) => {
+    it('testTextLinearGradient007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient008', 0, async (done: Function) => {
+    it('testTextLinearGradient008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient009', 0, async (done: Function) => {
+    it('testTextLinearGradient009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient010', 0, async (done: Function) => {
+    it('testTextLinearGradient010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function textLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLinearGradient011', 0, async (done: Function) => {
+    it('testTextLinearGradient011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLinearGradient011()).assertEqual(0)
       done()
     })

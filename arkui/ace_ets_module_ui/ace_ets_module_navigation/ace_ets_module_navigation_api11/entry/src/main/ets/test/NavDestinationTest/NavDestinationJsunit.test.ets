@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -58,7 +58,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0100', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0100',  Level.LEVEL0, async (done: Function) => {
       // Get title name of NavDestination component
       console.info('[NavDestinationJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0200', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0200',  Level.LEVEL0, async (done: Function) => {
       // Get backgroundColor of NavDestination component
       console.info('[NavDestinationJsunit_0200] START');
       await CommonFunc.sleep(1000);
@@ -87,7 +87,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0300', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0300',  Level.LEVEL0, async (done: Function) => {
       // Modify title name of NavDestination component
       console.info('[NavDestinationJsunit_0300] START');
       globalThis.value.message.notify({
@@ -104,7 +104,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0400', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0400',  Level.LEVEL0, async (done: Function) => {
       // Modify backgroundColor of NavDestination component
       console.info('[NavDestinationJsunit_0400] START');
       globalThis.value.message.notify({
@@ -120,7 +120,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0500', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0500',  Level.LEVEL0, async (done: Function) => {
       // illegal modify title name of NavDestination component
       console.info('[NavDestinationJsunit_0500] START');
       globalThis.value.message.notify({
@@ -137,7 +137,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0600', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0600',  Level.LEVEL0, async (done: Function) => {
       // illegal modify backgroundColor of NavDestination component
       console.info('[NavDestinationJsunit_0600] START');
       globalThis.value.message.notify({
@@ -153,7 +153,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0700', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0700',  Level.LEVEL0, async (done: Function) => {
       // Get hideTitleBar value of NavDestination component
       console.info('[NavDestinationJsunit_0700] START');
       await CommonFunc.sleep(1000);
@@ -166,7 +166,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0800', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0800',  Level.LEVEL0, async (done: Function) => {
       // Modify hideTitleBar value of NavDestination component 
       console.info('[NavDestinationJsunit_0700] START');
       globalThis.value.message.notify({
@@ -182,7 +182,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0900', 0, async (done: Function) => {
+    it('NavDestinationJsunit_0900',  Level.LEVEL0, async (done: Function) => {
       // illegal modify hideTitleBar value of NavDestination component 
       console.info('[NavDestinationJsunit_0900] START');
       globalThis.value.message.notify({

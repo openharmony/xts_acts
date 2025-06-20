@@ -357,7 +357,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Promise mode and pass in an invalid input parameter
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Promise_1000', Level.LEVEL2, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Promise_1000', Level.LEVEL0, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_1000';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
@@ -53,7 +53,7 @@ export default function List_scrollToIndex3() {
      * @tc.name List_scrollToIndex3_0100
      * @tc.desc scrollToIndex sets visible
      */
-    it('List_scrollToIndex3_0100', 0, async (done: Function) => {
+    it('List_scrollToIndex3_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex3_0100] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex3_visibility'));
@@ -73,7 +73,7 @@ export default function List_scrollToIndex3() {
      * @tc.name List_scrollToIndex3_0200
      * @tc.desc The value of scrollToIndex is set to 0
      */
-    it('List_scrollToIndex3_0200', 0, async (done: Function) => {
+    it('List_scrollToIndex3_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[List_scrollToIndex3_0200] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('List_scrollToIndex3_START0'));

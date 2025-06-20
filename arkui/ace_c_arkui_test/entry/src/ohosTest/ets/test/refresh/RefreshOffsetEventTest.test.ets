@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver } from '@ohos.UiTest';
 
@@ -34,7 +34,7 @@ export default function refreshOffsetEventTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRefreshOffset005', 0, async (done: Function) => {
+    it('testRefreshOffset005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'RefreshLessOffsetTest';
       await Utils.pushPage(`refresh/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -57,7 +57,7 @@ export default function refreshOffsetEventTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRefreshOffset006', 0, async (done: Function) => {
+    it('testRefreshOffset006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'RefreshOverOffsetTest';
       await Utils.pushPage(`refresh/${PAGE_TAG}`);
       await Utils.sleep(1000)

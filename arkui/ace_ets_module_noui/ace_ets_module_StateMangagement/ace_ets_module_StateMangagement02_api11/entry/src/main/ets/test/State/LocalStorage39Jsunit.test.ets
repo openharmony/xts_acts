@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -55,7 +55,7 @@ export default function LocalStorage39Jsunit() {
       done();
     });
 
-    it('LocalStorage39Jsunit_0200', 0, async (done: Function) => {
+    it('LocalStorage39Jsunit_0200', Level.LEVEL0, async (done: Function) => {
       //Size获取AppStorage中存在键值对的个数
       console.info('[LocalStorage39Jsunit_0200] START');
       let driver = await UiDriver.create()
@@ -73,7 +73,7 @@ export default function LocalStorage39Jsunit() {
       done();
     });
 
-    it('LocalStorage39Jsunit_0400', 0, async (done: Function) => {
+    it('LocalStorage39Jsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalStorage39Jsunit_0400] START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('button1'));
@@ -88,7 +88,7 @@ export default function LocalStorage39Jsunit() {
       done();
     });
 
-    it('LocalStorage39Jsunit_0600', 0, async (done: Function) => {
+    it('LocalStorage39Jsunit_0600', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalStorage39Jsunit_0600] START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('button2'));
@@ -104,7 +104,7 @@ export default function LocalStorage39Jsunit() {
       done();
     });
 
-    it('LocalStorage39Jsunit_0800', 0, async (done: Function) => {
+    it('LocalStorage39Jsunit_0800', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalStorage39Jsunit_0800] START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('button3'));

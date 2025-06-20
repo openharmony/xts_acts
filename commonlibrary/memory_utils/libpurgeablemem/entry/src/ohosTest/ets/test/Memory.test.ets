@@ -31,7 +31,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testPurgeAbleMemoryCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = memory.createOne();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -46,7 +46,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testPurgeAbleMemoryCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = memory.createTwo();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -61,7 +61,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testPurgeAbleMemoryDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = memory.destroyOne();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -74,7 +74,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_Destroy Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryDestroy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.destroyTwo();
@@ -89,7 +89,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_Destroy Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryDestroy003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.destroyThree();
@@ -104,7 +104,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_BeginRead Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryBeginRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -120,7 +120,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_BeginRead Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryBeginRead002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -136,7 +136,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_EndRead Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryEndRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.endRead();
@@ -151,7 +151,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_BeginWrite Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryBeginWrite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -167,7 +167,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_BeginWrite Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryBeginWrite002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -183,7 +183,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_EndWrite Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryEndWrite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.endWrite();
@@ -198,7 +198,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_GetContent Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryGetContent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -214,7 +214,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_GetContent Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryGetContent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -230,7 +230,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_ContentSize Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryContentSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -246,7 +246,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_ContentSize Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryContentSize002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -262,7 +262,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_AppendModify Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryAppendModify001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
@@ -278,7 +278,7 @@ export default function memoryTest() {
      * @tc.desc       : OH_PurgeableMemory_AppendModify Interface testing
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
     it('testPurgeAbleMemoryAppendModify002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {

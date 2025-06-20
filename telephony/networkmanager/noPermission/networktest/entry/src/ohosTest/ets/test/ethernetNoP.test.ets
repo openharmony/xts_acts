@@ -34,9 +34,9 @@ export default function EtherNetNoPTest() {
     * @tc.desc  : getMacAddress Permission denied
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it("testNetworkMgrGetMacAddressNoP0100",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+    it("testNetworkMgrGetMacAddressNoP0100",  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrGetMacAddressNoP0100';
       console.info(`${caseName} test start `)
       try {

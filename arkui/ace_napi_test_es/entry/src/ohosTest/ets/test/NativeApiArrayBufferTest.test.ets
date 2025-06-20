@@ -29,31 +29,40 @@ export default function napiArrayBufferTest() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0001
-     * @tc.name napiArrayBufferTest001
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0001
+     * @tc.name      : napiArrayBufferTest001
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiArrayBufferTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('napiArrayBufferTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const buffer = napitest.External();
       expect(!napitest.IsDetachedTest(buffer.buffer)).assertTrue();
     })
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0002
-     * @tc.name napiArrayBufferTest002
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0002
+     * @tc.name      : napiArrayBufferTest002
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiArrayBufferTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('napiArrayBufferTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const buffer = new ArrayBuffer(128);
       expect(!napitest.IsDetachedTest(buffer)).assertTrue();
     })
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0003
-     * @tc.name napiArrayBufferTest003
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0003
+     * @tc.name      : napiArrayBufferTest003
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiArrayBufferTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('napiArrayBufferTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const buffer = napitest.External();
       expect(!napitest.IsDetachedTest(buffer.buffer)).assertTrue();
       napitest.DetachTest(buffer);

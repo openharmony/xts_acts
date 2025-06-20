@@ -18,7 +18,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import { surfaceIds } from '../testability/pages/Index';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -519,7 +519,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_0100--------------");
 
       if (mCameraNum == 0) {
@@ -541,7 +541,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100--------------");
       if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100 FAILED with NoCamera");
@@ -574,7 +574,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_INPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_INPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_INPUT_PROMISE_0100--------------");
       if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_INPUT_PROMISE_0100 FAILED with NoCamera");
@@ -606,7 +606,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_INPUT_ERROR_PROMISE_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_INPUT_ERROR_PROMISE_0100', Level.LEVEL3, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_INPUT_ERROR_PROMISE_0100--------------");
       if (mCameraNum == 0) {
         console.info(TAG +
@@ -642,7 +642,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100--------------");
 
       try {
@@ -685,7 +685,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_OUTPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_OUTPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADD_OUTPUT_PROMISE_0100--------------");
       createCameraSessionInstance();
       mCameraSession.beginConfig();
@@ -753,7 +753,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_CAN_NOT_ADD_OUTPUT_PROMISE_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_CAN_NOT_ADD_OUTPUT_PROMISE_0100', Level.LEVEL3, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_CAN_NOT_ADD_OUTPUT_PROMISE_0100--------------");
 
       try {
@@ -814,7 +814,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_0100--------------");
 
       try {
@@ -858,7 +858,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_0100--------------");
 
       await mCameraSession.release();
@@ -875,7 +875,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100--------------");
 
       if (mCameraNum == 0) {
@@ -921,7 +921,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100--------------");
       try {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100");
@@ -951,7 +951,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100--------------");
       try {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100 SUCCESS");

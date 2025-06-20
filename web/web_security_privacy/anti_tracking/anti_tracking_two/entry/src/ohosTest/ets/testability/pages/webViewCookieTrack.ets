@@ -14,7 +14,7 @@
  */
 import events_emitter from '@ohos.events.emitter';
 import web_webview from '@ohos.web.webview';
-
+import business_error from '@ohos.base'
 import Utils from '../../test/Utils';
 import promptAction from '@ohos.promptAction';
 
@@ -24,7 +24,7 @@ class DataTrans {
     }
     
     trans() {
-        return "obj"
+        return 'obj'
     }
 }
 
@@ -32,13 +32,14 @@ class DataTrans {
 @Component
 struct webViewCookieTrack {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
-  @State emitKey: string = "emitCookieTrackRemoveTrackingPrevention";
-  @State getUrlStr: string = ""
-  @State cookie: string = ""
-  @State whiteUrlList: string[] = ["mc.yandex.ru","hm.baidu.com"]
-  @State webUrl: string = ""
+  @State emitKey: string = 'emitCookieTrackRemoveTrackingPrevention';
+  @State getUrlStr: string = ''
+  @State cookie: string = ''
+  @State whiteUrlList: string[] = ['mc.yandex.ru','hm.baidu.com']
+  @State webUrl: string = ''
   @State pageStatus: string = 'add'
   @State traceHosts: string[] = []
+  @State errorCode: number = 0
   
   onPageShow() {
       let valueChangeEvent: events_emitter.InnerEvent = {
@@ -50,7 +51,7 @@ struct webViewCookieTrack {
   
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
       if (eventData != null) {
-          console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+          console.info('valueChangeCallBack:' + JSON.stringify(eventData));
           if (eventData.data != null && eventData.data.ACTION != null) {
               this.emitKey = eventData.data.ACTION;
           }
@@ -58,12 +59,21 @@ struct webViewCookieTrack {
   }
   
   private triggerCookie = async () => {
-      this.controller.enableIntelligentTrackingPrevention(true);
+      try {
+          this.controller.enableIntelligentTrackingPrevention(true);
+          console.log('当前状态：' + this.controller.isIntelligentTrackingPreventionEnabled())
+      } catch (error) {
+          let e:business_error.BusinessError = error as business_error.BusinessError;
+          console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+          if(e.code == 801) {
+            console.log(`The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+            this.errorCode = 801
+          }
+      }
       web_webview.WebCookieManager.putAcceptThirdPartyCookieEnabled(true);
-      console.log("当前状态：" + this.controller.isIntelligentTrackingPreventionEnabled())
       web_webview.WebCookieManager.clearAllCookiesSync()
       this.controller.removeCache(true);
-      this.controller.loadUrl($rawfile("cookieTrack.html"))
+      this.controller.loadUrl($rawfile('cookieTrack.html'))
       await Utils.sleep(1000)
       let retryTime = 0
       while(this.traceHosts.length == 0 && retryTime < 5) {
@@ -77,101 +87,189 @@ struct webViewCookieTrack {
   build() {
       Column() {
           Row() {
-              Button("获取url").key('webViewCookieTrackTriggerButton')
+              Button('获取url').key('webViewCookieTrackTriggerButton')
               .onClick(async () => {
-                  console.info("key==>" + this.emitKey)
+                  console.info('key==>' + this.emitKey)
                 await Utils.sleep(1000)
                 switch (this.emitKey) {
-                    case "emitWebViewCookieTrackEnableTrue": {
-                        this.controller.enableIntelligentTrackingPrevention(true)
-                        this.controller.refresh()
-                        await Utils.sleep(2000)
-                        Utils.emitEvent(true,7701)
-                        await Utils.sleep(2000)
-                        Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 7701)
+                    case 'emitWebViewCookieTrackEnableTrue': {
+                        try {
+                            this.controller.enableIntelligentTrackingPrevention(true)
+                            this.controller.refresh()
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(true,7701)
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 7701)
+                        } catch (error) {
+                            let e:business_error.BusinessError = error as business_error.BusinessError;
+                            console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                            await Utils.sleep(1000)
+                            if(e.code == 801) {
+                              console.log(`emitWebViewCookieTrackEnableTrue The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                              Utils.emitEvent(true, 7701)
+                            } else {
+                              Utils.emitEvent(false, 7701)
+                            }
+                        }
                     }
-                    case "emitCookieTrackTrackerHost": {
+                    case 'emitCookieTrackTrackerHost': {
                         await this.triggerCookie()
-                        console.log("this.traceHosts before: " + this.traceHosts)
-                        Utils.emitEvent(this.traceHosts.length > 0, 7702)
+                        if(this.errorCode == 801){
+                            Utils.emitEvent(true, 7702)
+                        } else {
+                            console.log('this.traceHosts before: ' + this.traceHosts)
+                            Utils.emitEvent(this.traceHosts.length > 0, 7702)
+                        }
+
                     }
-                    case "emitWebViewCookieTrackEnableFalse": {
-                        this.controller.enableIntelligentTrackingPrevention(false)
-                        this.controller.refresh()
-                        Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == false, 1278)
+                    case 'emitWebViewCookieTrackEnableFalse': {
+                        try{
+                            this.controller.enableIntelligentTrackingPrevention(false)
+                            this.controller.refresh()
+                            Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == false, 1278)
+                        } catch (error) {
+                            let e:business_error.BusinessError = error as business_error.BusinessError;
+                            console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                            await Utils.sleep(1000)
+                            if(e.code == 801) {
+                               console.log(`emitWebViewCookieTrackEnableFalse The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                               Utils.emitEvent(true, 1278)
+                            } else {
+                               Utils.emitEvent(false, 1278)
+                            }
+                        }
                         break;
                     }
-                    case "emitCookieTrackOnIntelligentTrackingPreventionResult": {
+                    case 'emitCookieTrackOnIntelligentTrackingPreventionResult': {
                         await this.triggerCookie()
                         break;
                     }
-                    case "emitCookieTrackIsIntelligentTrackingPreventionEnabled": {
+                    case 'emitCookieTrackIsIntelligentTrackingPreventionEnabled': {
+                        try {
                           this.controller.enableIntelligentTrackingPrevention(true);
                           this.controller.refresh()
-                          Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 1382)                          
+                          Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 1382)
+                        } catch (error) {
+                           let e:business_error.BusinessError = error as business_error.BusinessError;
+                           console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                           await Utils.sleep(1000)
+                           if(e.code == 801) {
+                             console.log(`emitCookieTrackIsIntelligentTrackingPreventionEnabled The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                             Utils.emitEvent(true, 1382)
+                           } else {
+                             Utils.emitEvent(false, 1382)
+                           }
+                        }
                         break;
                     }
-                    case "emitCookieTrackAddTrackingPrevention": {
+                    case 'emitCookieTrackAddTrackingPrevention': {
                         await this.triggerCookie()
                           await Utils.sleep(1000)
+                        if(this.errorCode == 801){
+                            Utils.emitEvent(true, 1280)
+                        } else {
                           let beforeTraceLength = this.traceHosts.length
-                          console.log("this.traceHosts before: " + this.traceHosts)
-                          
-                          web_webview.WebviewController.addIntelligentTrackingPreventionBypassingList(this.whiteUrlList)
-                          this.controller.refresh()
-                          await Utils.sleep(1000)
-                          console.log("this.traceHosts after: " + this.traceHosts)
-                          let afterTraceLength = this.traceHosts.length
-                          console.log('beforeTraceLength' + beforeTraceLength)
-                          console.log('afterTraceLength' + afterTraceLength)
-                          await Utils.sleep(2000)
-                          Utils.emitEvent(beforeTraceLength >= 0 && afterTraceLength >= beforeTraceLength, 1280)
+                          console.log('this.traceHosts before: ' + this.traceHosts)
+                          try {
+                              web_webview.WebviewController.addIntelligentTrackingPreventionBypassingList(this.whiteUrlList)
+                              this.controller.refresh()
+                              await Utils.sleep(1000)
+                              console.log('this.traceHosts after: ' + this.traceHosts)
+                              let afterTraceLength = this.traceHosts.length
+                              console.log('beforeTraceLength' + beforeTraceLength)
+                              console.log('afterTraceLength' + afterTraceLength)
+                              await Utils.sleep(2000)
+                              Utils.emitEvent(beforeTraceLength >= 0 && afterTraceLength >= beforeTraceLength, 1280)
+                          } catch (error) {
+                              let e:business_error.BusinessError = error as business_error.BusinessError;
+                              console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                              await Utils.sleep(1000)
+                              if(e.code == 801) {
+                                console.log(`emitCookieTrackAddTrackingPrevention The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                                Utils.emitEvent(true, 1280)
+                              } else {
+                                Utils.emitEvent(false, 1280)
+                              }
+                          }
+                        }
                         break;
                     }
-                    case "emitCookieTrackRemoveTrackingPrevention": {
+                    case 'emitCookieTrackRemoveTrackingPrevention': {
                         await this.triggerCookie()
                           await Utils.sleep(1000)
-                          let beforeTraceLength = this.traceHosts.length
-                          console.log("this.traceHosts before: " + this.traceHosts)
-                          console.log("this.traceHosts beforeTraceLength: " + beforeTraceLength)
-                          
-                          web_webview.WebviewController.addIntelligentTrackingPreventionBypassingList(this.whiteUrlList)
-                          this.controller.refresh()
-                          await Utils.sleep(1000)
-                          console.log("this.traceHosts afterAdd: " + this.traceHosts)
-                          let afterAddTraceLength = this.traceHosts.length
-                          console.log("this.traceHosts afterAdd: " + afterAddTraceLength)
-                          
-                          web_webview.WebviewController.removeIntelligentTrackingPreventionBypassingList(this.whiteUrlList)
-                          this.controller.refresh()
-                          await Utils.sleep(1000)
-                          console.log("this.traceHosts afterRemove: " + this.traceHosts)
-                          let afterRemoveTraceLength = this.traceHosts.length
-                          console.log("this.traceHosts afterRemove: " + afterRemoveTraceLength)
-                          let result: Boolean = beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterRemoveTraceLength >= afterAddTraceLength
-                          console.log('result: ' + result)
-                          Utils.emitEvent(beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterRemoveTraceLength >= afterAddTraceLength, 1281)                          
-                        break;
+                          if(this.errorCode == 801){
+                              Utils.emitEvent(true, 1281)
+                          } else {
+                            let beforeTraceLength = this.traceHosts.length
+                            console.log('this.traceHosts before: ' + this.traceHosts)
+                            console.log('this.traceHosts beforeTraceLength: ' + beforeTraceLength)
+                            try {
+                                web_webview.WebviewController.addIntelligentTrackingPreventionBypassingList(this.whiteUrlList)
+                                this.controller.refresh()
+                                await Utils.sleep(1000)
+                                console.log('this.traceHosts afterAdd: ' + this.traceHosts)
+                                let afterAddTraceLength = this.traceHosts.length
+                                console.log('this.traceHosts afterAdd: ' + afterAddTraceLength)
+
+                                web_webview.WebviewController.removeIntelligentTrackingPreventionBypassingList(this.whiteUrlList)
+                                this.controller.refresh()
+                                await Utils.sleep(1000)
+                                console.log('this.traceHosts afterRemove: ' + this.traceHosts)
+                                let afterRemoveTraceLength = this.traceHosts.length
+                                console.log('this.traceHosts afterRemove: ' + afterRemoveTraceLength)
+                                let result: Boolean = beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterRemoveTraceLength >= afterAddTraceLength
+                                console.log('result: ' + result)
+                                Utils.emitEvent(beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterRemoveTraceLength >= afterAddTraceLength, 1281)
+                            } catch (error) {
+                                 let e:business_error.BusinessError = error as business_error.BusinessError;
+                                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                                 await Utils.sleep(1000)
+                                 if(e.code == 801) {
+                                   console.log(`emitCookieTrackRemoveTrackingPrevention The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                                   Utils.emitEvent(true, 1281)
+                                 } else {
+                                   Utils.emitEvent(false, 1281)
+                                 }
+                            }
+                          }
+
+                         break;
                     }
-                    case "emitCookieTrackClearTrackingPrevention": {
+                    case 'emitCookieTrackClearTrackingPrevention': {
                         await this.triggerCookie()
+                        if(this.errorCode == 801){
+                            Utils.emitEvent(true, 1282)
+                        } else {
                           let beforeTraceLength = this.traceHosts.length
-                          console.log("this.traceHosts before: " + this.traceHosts)
-                          
-                          web_webview.WebviewController.addIntelligentTrackingPreventionBypassingList(this.whiteUrlList)
-                          this.controller.refresh()
-                          await Utils.sleep(1000)
-                          console.log("this.traceHosts afterAdd: " + this.traceHosts)
-                          let afterAddTraceLength = this.traceHosts.length
-                          
-                          web_webview.WebviewController.clearIntelligentTrackingPreventionBypassingList()
-                          this.controller.refresh()
-                          await Utils.sleep(1000)
-                          console.log("this.traceHosts afterClear: " + this.traceHosts)
-                          let afterClearTraceLength = this.traceHosts.length
-                          await Utils.sleep(2000)
-                          Utils.emitEvent(beforeTraceLength >= 0 && beforeTraceLength <= afterAddTraceLength && afterClearTraceLength >= afterAddTraceLength, 1282)
-                          Utils.emitEvent(true, 1282)
+                          console.log('this.traceHosts before: ' + this.traceHosts)
+                          try {
+                              web_webview.WebviewController.addIntelligentTrackingPreventionBypassingList(this.whiteUrlList)
+                              this.controller.refresh()
+                              await Utils.sleep(1000)
+                              console.log('this.traceHosts afterAdd: ' + this.traceHosts)
+                              let afterAddTraceLength = this.traceHosts.length
+
+                              web_webview.WebviewController.clearIntelligentTrackingPreventionBypassingList()
+                              this.controller.refresh()
+                              await Utils.sleep(1000)
+                              console.log('this.traceHosts afterClear: ' + this.traceHosts)
+                              let afterClearTraceLength = this.traceHosts.length
+                              await Utils.sleep(2000)
+                              Utils.emitEvent(beforeTraceLength >= 0 && beforeTraceLength <= afterAddTraceLength && afterClearTraceLength >= afterAddTraceLength, 1282)
+                              Utils.emitEvent(true, 1282)
+                          } catch (error) {
+                            let e:business_error.BusinessError = error as business_error.BusinessError;
+                            console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                            await Utils.sleep(1000)
+                            if(e.code == 801) {
+                              console.log(`emitCookieTrackClearTrackingPrevention The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                              Utils.emitEvent(true, 1282)
+                            } else {
+                              Utils.emitEvent(false, 1282)
+                            }
+                          }
+                        }
+
                         break;
                     }
                 }
@@ -194,10 +292,10 @@ struct webViewCookieTrack {
                 })
                 .onIntelligentTrackingPreventionResult((event) => {
                     if (event) {
-                        this.cookie = "host:" + event.host + ",url:" + event.trackerHost
+                        this.cookie = 'host:' + event.host + ',url:' + event.trackerHost
                         this.traceHosts.push(this.cookie)
                         Utils.emitEvent(true,1381)
-                        console.log("onIntelligentTrackingPreventionResult ->" + this.cookie)
+                        console.log('onIntelligentTrackingPreventionResult ->' + this.cookie)
                     }
                 })
       }

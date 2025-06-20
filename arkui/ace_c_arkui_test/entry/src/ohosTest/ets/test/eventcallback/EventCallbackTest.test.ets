@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON } from '@kit.TestKit';
 
@@ -39,7 +39,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback001', 0, async (done: Function) => {
+    it('testEventCallback001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackAddReceiverTest';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('AddReceiver');
@@ -56,7 +56,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback002', 0, async (done: Function) => {
+    it('testEventCallback002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackRemoveReceiverTest';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('RemoveReceiver');
@@ -73,7 +73,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback003', 0, async (done: Function) => {
+    it('testEventCallback003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackRegisterEventTest';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('RegisterEvent');
@@ -90,7 +90,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback004', 0, async (done: Function) => {
+    it('testEventCallback004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackUnregisterEventTest';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('UnregisterEvent');
@@ -107,7 +107,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback005', 0, async (done: Function) => {
+    it('testEventCallback005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackRegisterReceiverTest';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('RegisterReceiver');
@@ -124,7 +124,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback006', 0, async (done: Function) => {
+    it('testEventCallback006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackUnregisterReceiverTest';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('UnregisterReceiver');
@@ -141,7 +141,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback007', 0, async (done: Function) => {
+    it('testEventCallback007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackAddReceiver401Test';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('AddReceiver');
@@ -158,7 +158,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback008', 0, async (done: Function) => {
+    it('testEventCallback008', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackRemoveReceiver401Test';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('RemoveReceiver');
@@ -175,7 +175,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback009', 0, async (done: Function) => {
+    it('testEventCallback009', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackRegisterEvent401Test';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('RegisterEvent');
@@ -192,7 +192,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback010', 0, async (done: Function) => {
+    it('testEventCallback010', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackRegisterEvent001Test';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('RegisterEvent');
@@ -209,7 +209,7 @@ export default function eventCallbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEventCallback011', 0, async (done: Function) => {
+    it('testEventCallback011', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventCallbackRegisterEvent002Test';
       await Utils.pushPage(`eventcallback/${PAGE_TAG}`);
       await Utils.clickComponent('RegisterEvent');

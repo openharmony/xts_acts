@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import audio from '@ohos.multimedia.audio';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import featureAbility from '@ohos.ability.featureAbility';
 import * as env from './Const';
 import uitest, { Driver, MatchPattern, ON } from "@ohos.UiTest";

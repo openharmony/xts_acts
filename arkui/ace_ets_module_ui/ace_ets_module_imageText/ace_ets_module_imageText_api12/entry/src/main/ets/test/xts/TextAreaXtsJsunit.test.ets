@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
@@ -49,7 +49,7 @@ export default function TextAreaXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextAreaXtsJsunit_0101', 0, async (done: Function) => {
+    it('TextAreaXtsJsunit_0101',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextAreaXtsJsunit_0101] START');
       let strJson = getInspectorByKey('key_textarea_selectedBackgroundColor');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -67,7 +67,7 @@ export default function TextAreaXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextAreaXtsJsunit_0102', 0, async (done: Function) => {
+    it('TextAreaXtsJsunit_0102',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextAreaXtsJsunit_0102] START');
       let strJson = getInspectorByKey('key_textarea_caretStyle');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -87,7 +87,7 @@ export default function TextAreaXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextAreaXtsJsunit_0103', 0, async (done: Function) => {
+    it('TextAreaXtsJsunit_0103',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextAreaXtsJsunit_0103] START');
       let strJson = getInspectorByKey('key_textarea_textIndent');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -105,7 +105,7 @@ export default function TextAreaXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextAreaXtsJsunit_0104', 0, async (done: Function) => {
+    it('TextAreaXtsJsunit_0104',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextAreaXtsJsunit_0104] START');
       let strJson = getInspectorByKey('key_textarea_textOverflow');
       let obj: Record<string, ESObject> = JSON.parse(strJson);

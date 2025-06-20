@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { Theme, CustomTheme } from '@ohos.arkui.theme';
 import { BadgeKeys, badgeThemeProperty } from '../../MainAbility/pages/components/BadgePage';
@@ -76,7 +76,7 @@ export default function badgeThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsBadgeThemeTest_0100`, 0, async () => {
+    it(`ActsBadgeThemeTest_0100`, Level.LEVEL0, async () => {
       const CASE: string = `ActsBadgeThemeTest_0100`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -101,7 +101,7 @@ export default function badgeThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsBadgeThemeTest_0200`, 0, () => {
+    it(`ActsBadgeThemeTest_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsBadgeThemeTest_0200`;
       console.info(`${SUITE} ${CASE} START`);
       const badgeJson = getInspectorByKey(BadgeKeys.badgeKeysWithTheme)
@@ -128,7 +128,7 @@ export default function badgeThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsBadgeThemeTest_0300`, 0, async () => {
+    it(`ActsBadgeThemeTest_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsBadgeThemeTest_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

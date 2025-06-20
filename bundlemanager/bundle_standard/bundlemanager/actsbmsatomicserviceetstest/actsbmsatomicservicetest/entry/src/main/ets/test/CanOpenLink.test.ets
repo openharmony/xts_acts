@@ -28,7 +28,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkCanOpen
      * @tc.desc: Test canOpenLink, return true.
      */
-    it('canOpenLinkCanOpen', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('canOpenLinkCanOpen', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("http://");
         expect(data).assertTrue();
@@ -44,7 +44,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkCanNotOpen
      * @tc.desc: Test canOpenLink, return false.
      */
-    it('canOpenLinkCanNotOpen', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('canOpenLinkCanNotOpen', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("welink://");
         expect(data).assertFalse();
@@ -60,7 +60,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkNotInQuerySchemes
      * @tc.desc: The scheme of the specified link is not in the querySchemes.
      */
-    it('canOpenLinkNotInQuerySchemes', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('canOpenLinkNotInQuerySchemes', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("https://");
         expect(data).assertFail();
@@ -76,7 +76,7 @@ export default function canOpenLink() {
      * @tc.name: canOpenLinkInvalidLink
      * @tc.desc: The specified link is invalid.
      */
-    it('canOpenLinkInvalidLink', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('canOpenLinkInvalidLink', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       try {
         let data = bundle.canOpenLink("http:/");
         expect(data).assertFail();

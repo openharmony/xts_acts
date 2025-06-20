@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -50,7 +50,7 @@ export default function TextHalfLeading() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextHalfLeading_0010', 0, async (done: Function) => {
+    it('TextHalfLeading_0010',  Level.LEVEL0, async (done: Function) => {
       console.info('TextHalfLeading_0010 START');
       let TextHalfLeading_1 = getInspectorByKey('TextHalfLeading1');
       expect(""+JSON.parse(TextHalfLeading_1).$type).assertEqual('Text');
@@ -66,7 +66,7 @@ export default function TextHalfLeading() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextHalfLeading_0020', 0, async (done: Function) => {
+    it('TextHalfLeading_0020',  Level.LEVEL0, async (done: Function) => {
       console.info('TextHalfLeading_0020 START');
       let TextHalfLeading_2 = getInspectorByKey('TextHalfLeading2');
       expect(""+JSON.parse(TextHalfLeading_2).$type).assertEqual('Text');

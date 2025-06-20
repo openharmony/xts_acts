@@ -46,9 +46,9 @@ export default function builtinsReadonlyArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('BuiltinsReadonlyArraySomeTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('BuiltinsReadonlyArraySomeTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         const inputArray: readonly number[] = [1, 2, 3, 4, 5]
         const even = (num: number) => num > 3;

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textTextCaseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextTextCase001', 0, async (done: Function) => {
+    it('testTextTextCase001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextCase001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textTextCaseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextTextCase002', 0, async (done: Function) => {
+    it('testTextTextCase002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextCase002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textTextCaseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextTextCase003', 0, async (done: Function) => {
+    it('testTextTextCase003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextCase003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textTextCaseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextTextCase004', 0, async (done: Function) => {
+    it('testTextTextCase004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextCase004()).assertEqual(0)
       done()
     })

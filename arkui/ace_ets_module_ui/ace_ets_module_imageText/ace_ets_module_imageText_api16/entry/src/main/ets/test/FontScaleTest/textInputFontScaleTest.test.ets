@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -53,7 +53,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0001', 0, async () => {
+    it('textInputFontScaleTest0001', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0001 START');
         await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0002', 0, async () => {
+    it('textInputFontScaleTest0002', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0002 START');
         await CommonFunc.sleep(1000);
@@ -95,7 +95,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0003', 0, async () => {
+    it('textInputFontScaleTest0003', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0003 START');
         await CommonFunc.sleep(1000);
@@ -116,7 +116,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0004', 0, async () => {
+    it('textInputFontScaleTest0004', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0004 START');
         await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0005', 0, async () => {
+    it('textInputFontScaleTest0005', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0005 START');
         await CommonFunc.sleep(1000);
@@ -159,7 +159,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0006', 0, async () => {
+    it('textInputFontScaleTest0006', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0006 START');
         await CommonFunc.sleep(1000);
@@ -180,7 +180,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0007', 0, async () => {
+    it('textInputFontScaleTest0007', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0007 START');
         await CommonFunc.sleep(1000);
@@ -201,7 +201,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0008', 0, async () => {
+    it('textInputFontScaleTest0008', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0008 START');
         await CommonFunc.sleep(1000);
@@ -222,7 +222,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0009', 0, async () => {
+    it('textInputFontScaleTest0009', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0009 START');
         await CommonFunc.sleep(1000);
@@ -244,7 +244,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0010', 0, async () => {
+    it('textInputFontScaleTest0010', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0010 START');
         await CommonFunc.sleep(1000);
@@ -265,7 +265,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0011', 0, async () => {
+    it('textInputFontScaleTest0011', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0011 START');
         await CommonFunc.sleep(1000);
@@ -287,7 +287,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0012', 0, async () => {
+    it('textInputFontScaleTest0012', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0012 START');
         await CommonFunc.sleep(1000);
@@ -309,7 +309,7 @@ export default function textInputFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textInputFontScaleTest0013', 0, async () => {
+    it('textInputFontScaleTest0013', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textInputFontScaleTest textInputFontScaleTest0013 START');
         await CommonFunc.sleep(1000);

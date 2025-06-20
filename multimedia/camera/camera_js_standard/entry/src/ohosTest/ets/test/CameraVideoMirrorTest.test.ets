@@ -18,7 +18,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
@@ -520,7 +520,7 @@ export default function CameraVideoMirrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_IS_MIRROR_SUPPORTED_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_IS_MIRROR_SUPPORTED_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_IS_MIRROR_SUPPORTED_0100--------------");
       let caseName: string = "SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_IS_MIRROR_SUPPORTED_0100";
       if (mCameraNum == 0) {
@@ -556,7 +556,7 @@ export default function CameraVideoMirrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ENABLE_MIRROR_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ENABLE_MIRROR_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ENABLE_MIRROR_0100--------------");
       let caseName: string = "SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ENABLE_MIRROR_0100";
       if (mCameraNum == 0) {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,  Level } from "@ohos/hypium"
 import router from '@system.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import { ComponentContent, LengthMetrics, ColorMetrics} from '@ohos.arkui.node';
@@ -87,7 +87,7 @@ export default function ArcListDemo() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUX_Stage_ArcList_ComponentTest_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcList_ComponentTest_0100',  Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUX_Stage_ArcList_ComponentTest_0100] START');
       let strJson = getInspectorByKey('arclistdefault');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -128,7 +128,7 @@ export default function ArcListDemo() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUX_Stage_ArcList_ComponentTest_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcList_ComponentTest_0200',  Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUX_Stage_ArcList_ComponentTest_0200] START');
       let strJson = getInspectorByKey('arclist01');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -168,7 +168,7 @@ export default function ArcListDemo() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUX_Stage_ArcList_ComponentTest_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcList_ComponentTest_0300',  Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUX_Stage_ArcList_ComponentTest_0300] START');
       let strJson = getInspectorByKey('arclist02');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -209,7 +209,7 @@ export default function ArcListDemo() {
     * @tc.size  : MediumTest
     * @tc.type  : Function
     */
-    it('ArkUX_Stage_ArcList_ComponentTest_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcList_ComponentTest_0400',  Level.LEVEL1, async (done: Function) => {
       // Verify the functions of the arclist component
       console.info('[ArkUX_Stage_ArcList_ComponentTest_0400] START');
       

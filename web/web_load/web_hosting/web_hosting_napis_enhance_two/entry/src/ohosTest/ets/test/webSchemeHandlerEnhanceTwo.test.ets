@@ -16,13 +16,20 @@ import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@oh
 import router from '@ohos.router';
 import Utils from './Utils';
 import hilog from '@ohos.hilog';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 
 export default function webviewApi() {
 
   describe('webResourceType', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(1000);
       console.info("web beforeEach start");
       done();
@@ -34,9 +41,9 @@ export default function webviewApi() {
     * @tc.desc       : testWeb_ResourceType_MAIN_FRAME
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testWeb_ResourceType_MAIN_FRAME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWeb_ResourceType_MAIN_FRAME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_MAIN_FRAME PASS');
 

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/utils/Common';
 import {
@@ -56,7 +56,7 @@ export default function SwiperMargin_4() {
       * @tc.type       : Function
       * @tc.size       : MediumTest
       */
-    it('testSwiperPrevMargin_0100', 0, async (done: Function) => {
+    it('testSwiperPrevMargin_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[testSwiperPrevMargin_0100] START");
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
@@ -89,7 +89,7 @@ export default function SwiperMargin_4() {
       * @tc.type       : Function
       * @tc.size       : MediumTest
       */
-    it('testSwiperPrevMargin_0200', 0, async (done: Function) => {
+    it('testSwiperPrevMargin_0200', Level.LEVEL1, async (done: Function) => {
       console.info("[testSwiperPrevMargin_0200] START");
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
@@ -120,7 +120,7 @@ export default function SwiperMargin_4() {
       * @tc.type       : Function
       * @tc.size       : MediumTest
       */
-    it('testSwiperNextMargin_0100', 0, async (done: Function) => {
+    it('testSwiperNextMargin_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[testSwiperNextMargin_0100] START");
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
@@ -151,7 +151,7 @@ export default function SwiperMargin_4() {
       * @tc.type       : Function
       * @tc.size       : MediumTest
       */
-    it('testSwiperNextMargin_0200', 0, async (done: Function) => {
+    it('testSwiperNextMargin_0200', Level.LEVEL1, async (done: Function) => {
       console.info("[testSwiperNextMargin_0200] START");
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
@@ -184,7 +184,7 @@ export default function SwiperMargin_4() {
      * @tc.type       : Function
      * @tc.size       : MediumTest
      */
-    it('testSwiperShowNext_0100', 0, async (done: Function) => {
+    it('testSwiperShowNext_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[testSwiperShowNext_0100] START");
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
@@ -211,7 +211,7 @@ export default function SwiperMargin_4() {
      * @tc.type       : Function
      * @tc.size       : MediumTest
      */
-    it('testSwiperShowPrevious_0100', 0, async (done: Function) => {
+    it('testSwiperShowPrevious_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[testSwiperShowPrevious_0100] START");
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);

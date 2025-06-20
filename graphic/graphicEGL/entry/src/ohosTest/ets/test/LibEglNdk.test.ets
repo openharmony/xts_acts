@@ -428,6 +428,21 @@ export default function libEglNdkTest() {
     });
     
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_LIBEGL_EGLSWAPBUFFERSWITHDAMAGEKHR_0100
+     * @tc.name       : testEglSwapBuffersWithDamageKHRRect1
+     * @tc.desc       : test eglSwapBuffersWithDamageKHR with one rectangle
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testEglSwapBuffersWithDamageKHRRect1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+       async (done: Function) => {
+      let result: number = eglndk.eglSwapBuffersWithDamageKHRRect1();
+      expect(result).assertEqual(1);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_LIBEGL_EGLQUERYCONTEXT_0100
      * @tc.name       : testEglQueryContext001
      * @tc.desc       : test eglQueryContext

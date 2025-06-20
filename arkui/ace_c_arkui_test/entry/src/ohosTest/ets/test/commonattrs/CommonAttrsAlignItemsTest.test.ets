@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignItems001', 0, async (done: Function) => {
+    it('testCommonAttrsAlignItems001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignItems001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function commonAttrsAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignItems002', 0, async (done: Function) => {
+    it('testCommonAttrsAlignItems002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignItems002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function commonAttrsAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignItems003', 0, async (done: Function) => {
+    it('testCommonAttrsAlignItems003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignItems003()).assertEqual(0)
       done();
     })
@@ -73,7 +73,7 @@ export default function commonAttrsAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignItems004', 0, async (done: Function) => {
+    it('testCommonAttrsAlignItems004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignItems004()).assertEqual(0)
       done();
     })
@@ -86,7 +86,7 @@ export default function commonAttrsAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignItems005', 0, async (done: Function) => {
+    it('testCommonAttrsAlignItems005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignItems005()).assertEqual(0)
       done();
     })
@@ -99,7 +99,7 @@ export default function commonAttrsAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignItems006', 0, async (done: Function) => {
+    it('testCommonAttrsAlignItems006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignItems006()).assertEqual(0)
       done();
     })

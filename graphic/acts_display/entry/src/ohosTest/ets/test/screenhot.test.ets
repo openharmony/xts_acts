@@ -71,7 +71,7 @@ export default function screenHotTest() {
         //  * @tc.type      : Function
         //  * @tc.level     : Level3
         //  */
-        // it('tesScreenHot_pick', 0, async function (done) {
+        // it('tesScreenHot_pick', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         //     let caseName = 'tesScreenHot_pick';
         //     let msgStr = 'jsunittest ' + caseName + ' ';
         //     console.log(msgStr + 'begin');

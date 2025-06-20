@@ -20,7 +20,7 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import UIAbility from '@ohos.app.ability.UIAbility';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { BusinessError } from '@ohos.base';
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 function sleep(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms));
 }
@@ -170,7 +170,7 @@ export default function UIContextWindowStageTest() {
             done();
           }
         } else if (data.event === 'ACTS_GetWindowStage_onForeground') {
-          if (deviceType === '2in1') {
+          if (deviceSupport === 'false') {
             done();
             return;
           }
@@ -207,7 +207,7 @@ export default function UIContextWindowStageTest() {
      */
     it('ACTS_GetWindowStage_onNewWant_0100', Level.LEVEL0, (done: Function) => {
       TAG = 'ACTS_GetWindowStage_onNewWant_0100';
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

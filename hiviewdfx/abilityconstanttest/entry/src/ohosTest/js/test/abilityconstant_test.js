@@ -14,7 +14,7 @@
  */
 import AbilityConstant from "@ohos.app.ability.AbilityConstant"
 import Ability from "@ohos.app.ability.UIAbility"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 
 class AbilityTest extends Ability {
     onSaveState(reason, wantParam) {
@@ -34,7 +34,7 @@ describe("ActsAbilityConstantTest", function () {
     * @tc.name: onSaveState接口测试
     * @tc.desc: appRecovery interface test.
     */
-    it("DFX_DFR_AbilityConstant_Interface_0100", 0, function () {
+    it("DFX_DFR_AbilityConstant_Interface_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info("-------------------------DFX_DFR_AbilityConstant_Interface_0100 start-------------------------");
         try{
             let StateType = AbilityConstant.StateType.APP_RECOVERY;
@@ -59,7 +59,7 @@ describe("ActsAbilityConstantTest", function () {
     * @tc.name: 检验AbilityConstant属性返回值是否符合预期
     * @tc.desc: appRecovery interface test.
     */
-    it("DFX_DFR_AbilityConstant_Interface_0200", 0, function () {
+    it("DFX_DFR_AbilityConstant_Interface_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info("-------------------------DFX_DFR_AbilityConstant_Interface_0200 start-------------------------");
         try{
             expect(AbilityConstant.LaunchReason.APP_RECOVERY).assertEqual(4);

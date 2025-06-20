@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -54,7 +54,7 @@ export default function flexWrapReverse_fixedParentMarPad() {
      * @tc.desc The parent component layout space is fixed, and the parent component setting padding and margin,
      *               and sub component setting padding
      */
-    it('testWrapReverseParentfixedMarPadChildPadding', 0, async () => {
+    it('testWrapReverseParentfixedMarPadChildPadding',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedMarPadChildPadding START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
@@ -101,7 +101,7 @@ export default function flexWrapReverse_fixedParentMarPad() {
      * @tc.desc The parent component layout space is fixed, and the parent component setting padding and margin,
      *               and sub component setting margin
      */
-    it('testWrapReverseParentfixedMarPadChildMargin', 0, async () => {
+    it('testWrapReverseParentfixedMarPadChildMargin',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedMarPadChildMargin START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 0
@@ -146,7 +146,7 @@ export default function flexWrapReverse_fixedParentMarPad() {
      * @tc.desc The parent component layout space is fixed, and the parent component setting padding and margin,
      *               and sub component setting padding and margin
      */
-    it('testWrapReverseParentfixedMarPadChildMarginAndPadding', 0, async () => {
+    it('testWrapReverseParentfixedMarPadChildMarginAndPadding',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedMarPadChildMarginAndPadding START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30

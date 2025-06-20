@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { common } from '@kit.AbilityKit';
@@ -75,7 +75,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_burst_assets_image_001", 0, async (done: Function) => {
+    it("get_burst_assets_image_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_image_001";
       try {
         let fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, imageDisplayName);
@@ -108,7 +108,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_burst_assets_video_001", 0, async (done: Function) => {
+    it("get_burst_assets_video_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_video_001";
       try {
         let fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, videoDisplayName);
@@ -141,7 +141,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_image_burst_assets_003", 0, async (done: Function) => {
+    it("get_image_burst_assets_003", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_image_003";
       try {
         let ops: photoAccessHelper.FetchOptions = fetchAllOption();
@@ -165,7 +165,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("sendable_error_get_burst_assets_invalid_fetchColumns_000", 0, async (done: Function) => {
+    it("sendable_error_get_burst_assets_invalid_fetchColumns_000", Level.LEVEL0, async (done: Function) => {
       const testNum = "sendable_error_get_burst_assets_invalid_fetchColumns_000";
       try {
         let ops:  photoAccessHelper.FetchOptions = fetchAllOption();

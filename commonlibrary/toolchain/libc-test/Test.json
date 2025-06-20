@@ -121,7 +121,12 @@
                 "rm -rf /data/local/tmp/libc-test/ipc_sem",
                 "rm -rf /data/local/tmp/libc-test/ipc_shm"
             ],
-            "cleanup-apps": true
+            "cleanup-apps": true,
+            "teardown-push": [
+                "rm -rf /data/local/tmp/zh_CN",
+                "rm -rf /data/local/tmp/libc-test",
+                "rm -rf /data/local/tmp/libc-test-lib"
+            ]
         }
     ]
 }

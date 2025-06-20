@@ -15,7 +15,7 @@
 import { appManager, common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import UIAbility from '@ohos.app.ability.UIAbility';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 function sleep(time: number){
   return new Promise<void>((resolve) => setTimeout(resolve, time))
@@ -62,6 +62,11 @@ struct Index {
             })
             .catch((error: BusinessError) => {
               hilog.info(0x0000, 'startAbility', '%{public}s', 'startAbility1 error');
+              if (error.code == 16000050) {
+                commonEventManager.publish('EventAppSelectNotExist', (error, result)=>{
+                  console.info(`publish EventAppSelectNotExist ${JSON.stringify(error)}`);
+                })
+              }
             })
 
         })

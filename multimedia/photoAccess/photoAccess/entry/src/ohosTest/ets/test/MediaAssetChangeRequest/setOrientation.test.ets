@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import common from '@ohos.app.ability.common';
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import { sleep } from '../common';
 
@@ -81,7 +81,7 @@ export default function setOrientationChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_orientation_change_request_000', 0, async (done: Function) => {
+    it('set_orientation_change_request_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'set_orientation_change_request_000';
       try {
         predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_TYPE, 1);
@@ -146,7 +146,7 @@ export default function setOrientationChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_orientation_change_request_001', 0, async (done: Function) => {
+    it('set_orientation_change_request_001', Level.LEVEL0, async (done: Function) => {
       let testNum = 'set_orientation_change_request_001';
       try {
         predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_TYPE, 1);
@@ -181,7 +181,7 @@ export default function setOrientationChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_orientation_change_request_002', 0, async (done: Function) => {
+    it('set_orientation_change_request_002', Level.LEVEL0, async (done: Function) => {
       let testNum = 'set_orientation_change_request_002';
       try {
         predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_TYPE, 1);
@@ -215,7 +215,7 @@ export default function setOrientationChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_orientation_change_request_003', 0, async (done: Function) => {
+    it('set_orientation_change_request_003', Level.LEVEL0, async (done: Function) => {
       let testNum = 'set_orientation_change_request_003';
       try {
         predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_TYPE, 2);
@@ -251,7 +251,7 @@ export default function setOrientationChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_orientation_change_request_004', 0, async (done: Function) => {
+    it('set_orientation_change_request_004', Level.LEVEL0, async (done: Function) => {
       let testNum = 'set_orientation_change_request_004';
       await createMovingPhoto(done, testNum);
       await sleep(3000);
@@ -289,7 +289,7 @@ export default function setOrientationChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_orientation_change_request_005', 0, async (done: Function) => {
+    it('set_orientation_change_request_005', Level.LEVEL0, async (done: Function) => {
       let testNum = 'set_orientation_change_request_005';
       await createMovingPhoto(done, testNum);
       await sleep(3000);

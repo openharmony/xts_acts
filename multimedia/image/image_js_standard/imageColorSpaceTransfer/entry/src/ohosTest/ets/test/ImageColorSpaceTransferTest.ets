@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import featureAbility from '@ohos.ability.featureAbility';
 import image from "@ohos.multimedia.image";
 import fs from "@ohos.file.fs";
@@ -60,6 +60,8 @@ async function createPixelmapTestPromise(done:Function, testNum:string, colorSpa
                 let csmn = cs.getColorSpaceName();
                 logger.log('csmn ' + csmn);
                 checkColorSpace(csmn);
+                await pixelMap.release();
+                logger.log("Success in releasing pixelMap")
                 done();
             } else {
                 logger.log('creat pixelMap failed ');
@@ -98,6 +100,8 @@ async function createPixelmapTestCb(done:Function, testNum:string, colorSpace:ES
                 let csmn = cs.getColorSpaceName();
                 logger.log('csmn ' + csmn);
                 checkColorSpace(csmn);
+                await pixelMap.release();
+                logger.log("Success in releasing pixelMap")
                 done();
             });
         } else {
@@ -131,6 +135,8 @@ async function applyColorSpacePromiseTest(done:Function, testNum:string, checkCo
                     checkColorSpace(csmn);
                     let pixelSize = pixelMap.getPixelBytesNumber();
                     logger.log(`new pixel size ${pixelSize}`);
+                    await pixelMap.release();
+                    logger.log("Success in releasing pixelMap")
                     done();
                 }).catch((error:BusinessError) => {
                     logger.log("apply colorSpace failed " + error);
@@ -178,6 +184,8 @@ async function applyColorSpaceCbTest(done:Function, testNum:string, checkColorSp
                     checkColorSpace(csmn);
                     let pixelSize = pixelMap.getPixelBytesNumber();
                     logger.log(`new pixel size ${pixelSize}`);
+                    await pixelMap.release();
+                    logger.log("Success in releasing pixelMap")
                     done();
                 })
             } else {
@@ -211,6 +219,9 @@ async function applyColorSpaceCbErrTest(done:Function, testNum:string, csmModify
                     expect(err == ERR_CODE).assertTrue();
                     done();
                 })
+                await pixelMap.release();
+                logger.log("Success in releasing pixelMap");
+                done();
             } else {
                 logger.log('creat pixelMap failed ');
                 expect(false).assertTrue();
@@ -246,6 +257,9 @@ async function applyColorSpacePromiseErrTest(done:Function, testNum:string, csmM
                     expect(error == ERR_CODE).assertTrue();
                     done();
                 }
+                await pixelMap.release();
+                logger.log("Success in releasing pixelMap");
+                done();
             } else {
                 logger.log('creat pixelMap failed ');
                 expect(false).assertTrue();
@@ -276,7 +290,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0100', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0100', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == ADOBE_RGB_1998).assertTrue();
             }
@@ -293,7 +307,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0200', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0200', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == DCI_P3).assertTrue();
             }
@@ -310,7 +324,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0300', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0300', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == DISPLAY_P3).assertTrue();
             }
@@ -327,7 +341,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0400', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0400', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == SRGB).assertTrue();
             }
@@ -344,7 +358,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0500', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0500', Level.LEVEL0, async (done:Function)=> {
             let bt2020:ESObject = {
                 redX: 0.708,
                 redY: 0.292,
@@ -372,7 +386,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0100', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0100', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == ADOBE_RGB_1998).assertTrue();
             }
@@ -389,7 +403,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0200', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0200', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == DCI_P3).assertTrue();
             }
@@ -406,7 +420,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0300', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0300', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == DISPLAY_P3).assertTrue();
             }
@@ -423,7 +437,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0400', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0400', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == SRGB).assertTrue();
             }
@@ -440,7 +454,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0500', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0500', Level.LEVEL0, async (done:Function)=> {
             let bt2020:ESObject = {
                 redX: 0.708,
                 redY: 0.292,
@@ -469,7 +483,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0100', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0100', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == ADOBE_RGB_1998).assertTrue();
             }
@@ -487,7 +501,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0200', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0200', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == DCI_P3).assertTrue();
             }
@@ -505,7 +519,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0300', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0300', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == DISPLAY_P3).assertTrue();
             }
@@ -523,7 +537,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0400', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0400', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == SRGB).assertTrue();
             }
@@ -541,7 +555,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0500', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0500', Level.LEVEL0, async (done:Function)=> {
             let bt2020:ESObject = {
                 redX: 0.708,
                 redY: 0.292,
@@ -570,7 +584,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0100', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0100', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == ADOBE_RGB_1998).assertTrue();
             }
@@ -588,7 +602,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0200', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0200', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == DCI_P3).assertTrue();
             }
@@ -606,7 +620,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0300', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0300', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == DISPLAY_P3).assertTrue();
             }
@@ -624,7 +638,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0400', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0400', Level.LEVEL0, async (done:Function)=> {
             let checkColorSpace = (colorSpaceName:colorSpaceManager.ColorSpace)=> {
                 expect(colorSpaceName == SRGB).assertTrue();
             }
@@ -642,7 +656,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0500', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0500', Level.LEVEL0, async (done:Function)=> {
             let bt2020:ESObject = {
                 redX: 0.708,
                 redY: 0.292,
@@ -671,7 +685,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0100', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0100', Level.LEVEL0, async (done:Function)=> {
             await applyColorSpaceCbErrTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0100',
                 'wrong')
         })
@@ -685,7 +699,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0200', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0200', Level.LEVEL0, async (done:Function)=> {
             await applyColorSpaceCbErrTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0200',
                 100)
         })
@@ -700,7 +714,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0300', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0300', Level.LEVEL0, async (done:Function)=> {
             await applyColorSpaceCbErrTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0300',
                 -100)
         })
@@ -715,7 +729,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0400', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0400', Level.LEVEL0, async (done:Function)=> {
             await applyColorSpaceCbErrTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_ERR_0400',
                 null)
         })
@@ -730,7 +744,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0100', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0100', Level.LEVEL0, async (done:Function)=> {
             await applyColorSpacePromiseErrTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0100',
                 'wrong')
         })
@@ -745,7 +759,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0200', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0200', Level.LEVEL0, async (done:Function)=> {
             await applyColorSpacePromiseErrTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0200',
                 100)
         })
@@ -760,7 +774,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0300', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0300', Level.LEVEL0, async (done:Function)=> {
             await applyColorSpacePromiseErrTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0300',
                 -100)
         })
@@ -775,7 +789,7 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0400', 0, async (done:Function)=> {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0400', Level.LEVEL0, async (done:Function)=> {
             await applyColorSpacePromiseErrTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_ERR_0400',
                 null)
         })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size} from '@ohos/hypium'
 import window from '@ohos.window'
 import display from '@ohos.display'
 import hdrCapability from '@ohos.graphics.hdrCapability'
@@ -35,7 +35,7 @@ describe('display_test', function () {
      * @tc.name			testGetDefaultDisplay_Function_Promise
      * @tc.desc			To test the function of obtaining the default screen
      */
-    it('testGetDefaultDisplay_Function_Promise', 0, async function (done) {
+    it('testGetDefaultDisplay_Function_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.log('displayTest testGetDefaultDisplay_Function_Promise begin');
         display.getDefaultDisplay().then(dsp => {
             console.log('displayTest getDefaultDisplayTest1 getDefaultDisplay id :' + JSON.stringify(dsp));
@@ -68,7 +68,7 @@ describe('display_test', function () {
      * @tc.name      testGetDefaultDisplay_Function_Callback
      * @tc.desc      To test the function if obtaining the default screen.
      */
-    it('testGetDefaultDisplay_Function_Callback', 0, async function (done) {
+    it('testGetDefaultDisplay_Function_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.log('displayTest testGetDefaultDisplay_Function_Callback begin');
         display.getDefaultDisplay((err, data) => {
             if (err.code != 0) {
@@ -100,7 +100,7 @@ describe('display_test', function () {
      * @tc.name			testGetAllDisplay_Promise
      * @tc.desc			To verify the function of obtaining all screens.
      */
-    it('testGetAllDisplay_Promise', 0, async function (done) {
+    it('testGetAllDisplay_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.log('displayTest getAllDisplayTest1 begin');
         display.getAllDisplay().then(dsp => {
             console.log('displayTest getAllDisplayTest1 getAllDisplay id :' + JSON.stringify(dsp));
@@ -130,7 +130,7 @@ describe('display_test', function () {
      * @tc.name      testGetAllDisplay_Callback
      * @tc.desc      To test the function if obtaining the default screen
      */
-    it('testGetAllDisplay_Callback', 0, async function (done) {
+    it('testGetAllDisplay_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.log('displayTest getAllDisplayTest2 begin');
         display.getAllDisplay((err, data) => {
             if (err.code != 0) {
@@ -161,7 +161,7 @@ describe('display_test', function () {
      * @tc.name			testGetDefaultDisplaySync_SyncFunction
      * @tc.desc			To test the sync function of obtaining the default display
      */
-    it('testGetDefaultDisplaySync_SyncFunction', 0, async function (done) {
+    it('testGetDefaultDisplaySync_SyncFunction', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('displayTest getDefaultDisplaySyncTest1 begin');
         try {
             var dsp = display.getDefaultDisplaySync();
@@ -192,7 +192,7 @@ describe('display_test', function () {
      * @tc.name			testGetDisplayByIdSync_SyncFunction
      * @tc.desc			To test the sync function of obtaining the target display by id
      */
-    it('testGetDisplayByIdSync_SyncFunction', 0, async function (done) {
+    it('testGetDisplayByIdSync_SyncFunction', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('displayTestGetDisplayByIdSyncTest1 begin');
         try {
             var displayId = display.getDefaultDisplaySync().id;
@@ -224,7 +224,7 @@ describe('display_test', function () {
      * @tc.name	    testDisplayState_Enum_Value
      * @tc.desc		To test the enum value of WindowDisplayState.
     */
-    it('testDisplayState_Enum_Value', 0, async function (done) {
+    it('testDisplayState_Enum_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('test the enum value of Window DisplayState begin');
         try {
             expect(0).assertEqual(display.DisplayState.STATE_UNKNOWN);
@@ -247,7 +247,7 @@ describe('display_test', function () {
      * @tc.name	    testWaterfallDisplayAreaRects_Value
      * @tc.desc		To test value of waterfallDisplayAreaRects.
     */
-    it('testWaterfallDisplayAreaRects_Value', 0, async function (done) {
+    it('testWaterfallDisplayAreaRects_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('test the  value of waterfallDisplayAreaRects begin');
         try {
             var waterfallDisplayAreaRects = {
@@ -294,7 +294,7 @@ describe('display_test', function () {
     * @tc.name	    testDisplayAreaRects_Value
     * @tc.desc		To test value of RECT.
     */
-    it('testDisplayAreaRects_Value', 0, async function (done) {
+    it('testDisplayAreaRects_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('test the value of aRect begin');
         try {
             var rect = {
@@ -320,7 +320,7 @@ describe('display_test', function () {
      * @tc.name	    testCutoutInfo_WaterFailDisplayAreaRects_Value
      * @tc.desc		To test value of CutoutInfo.
     */
-    it('testCutoutInfo_WaterFailDisplayAreaRects_Value', 0, async function (done) {
+    it('testCutoutInfo_WaterFailDisplayAreaRects_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('test the CutoutInfo of aRect begin');
         try {
             var cutoutInfo = {
@@ -375,7 +375,7 @@ describe('display_test', function () {
      * @tc.name			testGetCutoutInfo_Function_Promise
      * @tc.desc			To test the function of getCutoutInfo
      */
-    it('testGetCutoutInfo_Function_Promise', 0, async function (done) {
+    it('testGetCutoutInfo_Function_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('getCutoutInfo begin');
         display.getDefaultDisplay().then(dsp => {
             console.info('displayTest getCutoutInfo getDefaultDisplay id :' + JSON.stringify(dsp));
@@ -404,7 +404,7 @@ describe('display_test', function () {
      * @tc.name			testGetCutoutInfo_Function_Callback
      * @tc.desc			To test the function of getCutoutInfo
     */
-    it('testGetCutoutInfo_Function_Callback', 0, async function (done) {
+    it('testGetCutoutInfo_Function_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('getCutoutInfo begin');
         display.getDefaultDisplay().then(dsp => {
             console.info('displayTest getCutoutInfo getDefaultDisplay id2 :' + JSON.stringify(dsp));
@@ -430,7 +430,7 @@ describe('display_test', function () {
         * @tc.name			testOrientation_attr
         * @tc.desc			To test the attributes of Orientation
     */
-    it('testOrientation_attr',0, async function (done){
+    it('testOrientation_attr',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done){
         let msg = "testOrientation_attr"
         try {
             expect(display.Orientation.PORTRAIT).assertEqual(0)
@@ -452,7 +452,7 @@ describe('display_test', function () {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testHdrFormats_attr',0, async function (done){
+    it('testHdrFormats_attr',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
         let msg = "testHdrFormats_attr"
         try {
             expect(hdrCapability.hdrFormats.NONE == 0).assertTrue();

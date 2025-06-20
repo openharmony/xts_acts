@@ -480,7 +480,7 @@ export default function abilityTest() {
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: UIAbility uses a Call call with the want parameter undefined.
      */
-    it('Acts_CrossUserCall_1100',0, (done:Function) => {
+    it('Acts_CrossUserCall_1100', Level.LEVEL0, (done:Function) => {
       globalThis.abilityContext.startAbilityByCallWithAccount(undefined, -1).then((caller:Caller) => {
         console.info("====>Acts_CrossUserCall_1100 caller:  " + caller);
         done();

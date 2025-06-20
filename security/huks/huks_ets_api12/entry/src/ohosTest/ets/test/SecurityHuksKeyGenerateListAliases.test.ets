@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
-import { GenParam, GetDataBySize, DeleteParam } from './utils/HuksOptionUtil';
+import { DeleteParam, GenParam } from './utils/huks/HuksOptionsUtils';
+import { GetDataBySize } from './utils/CommonUtils';
 
 export default function SecurityHUKSKeyGenerateListAliasesTest() {
   let DEOption: huks.HuksOptions;
@@ -86,7 +87,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0100', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0100";
       let DEArr = ["DE_Alias-001", "DE_Alias-002", "DE_Alias-003", "DE_Alias-004", "DE_Alias-005"];
       let CEArr = ["CE_Alias-001", "CE_Alias-002", "CE_Alias-003", "CE_Alias-004", "CE_Alias-005"];
@@ -119,7 +120,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level1
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0200', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0200";
       let DEArr = ["DE_Alias-001", "DE_Alias-002", "DE_Alias-003", "DE_Alias-004", "DE_Alias-005"];
       let CEArr = ["CE_Alias#:<>?\\\|001", "CE_Alias#:<>?\\\|002", "CE_Alias#:<>?\\\|003", "CE_Alias#:<>?\\\|004", "CE_Alias#:<>?\\\|005"];
@@ -152,7 +153,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0300', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0300";
       let DEArr = ["DE_Alias-001", "DE_Alias-002", "DE_Alias-003", "DE_Alias-004", "DE_Alias-005"];
       let CEArr = ["CE_Alias-001", "CE_Alias-002", "CE_Alias-003", "CE_Alias-004", "CE_Alias-005"];
@@ -185,7 +186,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0400', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0400";
       let CEArr = ["C", "C" + GetDataBySize(63)];
       try {
@@ -213,7 +214,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0500', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0500";
       let DEArr = ["DE_Alias#001", "DE_Alias#002", "DE_Alias#003", "DE_Alias#004", "DE_Alias#005"];
       let CEArr = ["CE_Alias#001", "CE_Alias#002", "CE_Alias#003", "CE_Alias#004", "CE_Alias#005"];
@@ -254,7 +255,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0600', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0600";
       let DEArr = ["DE_Alias#001", "DE_Alias#002", "DE_Alias#003", "DE_Alias#004", "DE_Alias#005"];
       let CEArr = ["CE_Alias#001", "CE_Alias#002", "CE_Alias#003", "CE_Alias#004", "CE_Alias#005"];
@@ -295,7 +296,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0700', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0700";
       let DEArr = ["DE_Alias#001", "DE_Alias#002", "DE_Alias#003", "DE_Alias#004", "DE_Alias#005"];
       let CEArr = ["CE_Alias#001", "CE_Alias#002", "CE_Alias#003", "CE_Alias#004", "CE_Alias#005"];
@@ -327,7 +328,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0800', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0800";
       try {
         DeleteParam(DEOption, huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
@@ -347,7 +348,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0900', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0900";
       let CEArr = ["CE_Alias#001", "CE_Alias#002", "CE_Alias#003", "CE_Alias#004", "CE_Alias#005"];
       let ECEArr = ["ECE_Alias#001", "ECE_Alias#002", "ECE_Alias#003", "ECE_Alias#004", "ECE_Alias#005"];
@@ -393,7 +394,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_1000', 0, async () => {
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_1000";
       try {
         await huks.listAliases(null);

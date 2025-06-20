@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
@@ -57,7 +57,7 @@ export default function toolBarModifierPage() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('toolBarModifierPage_0100', 0, async (done: Function) => {
+    it('toolBarModifierPage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('[toolBarModifierPage_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

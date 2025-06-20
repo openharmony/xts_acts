@@ -356,6 +356,18 @@ export default function ActscommonEventSupportTest() {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3900 END`)
     })
 
+    /*
+     * @tc.number    : Sub_Notification_Ces_Publish_Support_4000
+     * @tc.name      : commonEvent.Support
+     * @tc.desc      : protected common event
+     */
+    it('Sub_Notification_Ces_Publish_Support_4000', Level.LEVEL2, async  function () {
+      console.info(`${TAG} Sub_Notification_Ces_Publish_Support_4000 START`)
+      expect(commonEvent.Support.COMMON_EVENT_CUSTOM_CONFIG_POLICY_UPDATED).assertEqual('usual.event.CUSTOM_CONFIG_POLICY_UPDATED')
+      expect(commonEvent.Support.COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED).assertEqual('usual.event.CUSTOM_ROAMING_REGION_UPDATED')
+      console.info(`${TAG} Sub_Notification_Ces_Publish_Support_4000 END`)
+    })
+
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST END`)
   })
 

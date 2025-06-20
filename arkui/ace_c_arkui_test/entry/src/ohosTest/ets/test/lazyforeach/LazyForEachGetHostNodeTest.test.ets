@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -37,7 +37,7 @@ export default function lazyForEachGetHostNodeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetHostNode001', 0, async (done: Function) => {
+    it('testLazyForEachGetHostNode001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`lazyforeach/LazyForEachGetHostNodeTest`)
       await Utils.sleep(SleepTime)
       expect(Utils.getComponentInfoByKey('gridHostNode').$attrs.backgroundColor).assertEqual(ColorGreen)
@@ -52,7 +52,7 @@ export default function lazyForEachGetHostNodeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetHostNode002', 0, async (done: Function) => {
+    it('testLazyForEachGetHostNode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLazyForEachGetHostNode002()).assertEqual(0)
       done()
     })

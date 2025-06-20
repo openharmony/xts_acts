@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../Utils/Utils';
 
 export default function datePickerJsunit() {
@@ -49,7 +49,7 @@ export default function datePickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDatePicker0021', 0, async (done: Function) => {
+    it('testDatePicker0021', Level.LEVEL1, async (done: Function) => {
       console.info('[testDatePicker0021] START');
       let strJson = getInspectorByKey('DatePicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function datePickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDatePicker0022', 0, async (done: Function) => {
+    it('testDatePicker0022', Level.LEVEL1, async (done: Function) => {
       console.info('[testDatePicker0022] START');
       let strJson = getInspectorByKey('DatePicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -90,7 +90,7 @@ export default function datePickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDatePicker0023', 0, async (done: Function) => {
+    it('testDatePicker0023', Level.LEVEL1, async (done: Function) => {
       console.info('[testDatePicker0023] START');
       let strJson = getInspectorByKey('DatePicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -112,7 +112,7 @@ export default function datePickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testDatePicker0024', 0, async (done: Function) => {
+    it('testDatePicker0024', Level.LEVEL1, async (done: Function) => {
       console.info('[testDatePicker0024] START');
       let strJson = getInspectorByKey('DatePicker');
       let obj: ESObject = JSON.parse(strJson);

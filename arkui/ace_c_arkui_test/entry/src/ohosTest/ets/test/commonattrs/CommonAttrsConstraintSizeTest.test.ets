@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsConstraintSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsConstraintSize001', 0, async (done: Function) => {
+    it('testCommonAttrsConstraintSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsConstraintSize001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsConstraintSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsConstraintSize002', 0, async (done: Function) => {
+    it('testCommonAttrsConstraintSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsConstraintSize002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsConstraintSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsConstraintSize003', 0, async (done: Function) => {
+    it('testCommonAttrsConstraintSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsConstraintSize003()).assertEqual(0)
       done()
     })
@@ -72,7 +72,7 @@ export default function commonAttrsConstraintSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsConstraintSize004', 0, async (done: Function) => {
+    it('testCommonAttrsConstraintSize004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsConstraintSize004()).assertEqual(0)
       done()
     })

@@ -30,6 +30,7 @@ export default class MediaTestBase {
   SET_MIC_ENABLE_EVENT = 'setMicEnable';
   CREATE_EVENT = 'create';
   INIT_EVENT = 'init';
+  INITWITHERROR_EVENT = 'init';
   STARTRECORDER_EVENT = 'start';
   SKIPPRIVACYMODE_EVENT = 'skipPrivacyMode';
   STOPRECORDER_EVENT = 'stop';
@@ -101,6 +102,10 @@ export default class MediaTestBase {
     steps: Array<string>, done: Function) {
     if (steps[0] == this.END_EVENT) {
       console.info('case success!!');
+      avScreenCaptureRecorder?.off('stateChange');
+      console.info('case success off stateChange');
+      avScreenCaptureRecorder?.off('error');
+      console.info('case success off error');
       done();
     }
 
@@ -140,6 +145,8 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder init failed, error: ' + err.message);
+          console.info('avScreenCaptureRecorder initwitherror failed, error code is:' + err.code);
+          expect(err.code).assertEqual(401);
           if (avConfig.fd == -1) {
             let mySteps = new Array(
               this.END_EVENT);
@@ -224,15 +231,133 @@ export default class MediaTestBase {
         break;
       case this.AV_CREATEAVPLAYER:
         steps.shift();
-        let sampleRate: ESObject = avConfig.audioSampleRate;
-        this.AvPlayerMp4(this.outputName, sampleRate, done)
+        this.AvPlayerMp4(this.outputName, avConfig, done)
         break;
       default:
         break;
     }
   }
 
-  AvPlayerMp4(outputName: string, audioSampleRate: number, done: Function) {
+  async toNextStep2(avScreenCaptureRecorder: media.AVScreenCaptureRecorder | null,
+    avConfig2: media.AVScreenCaptureRecordConfig, recorderTime: number,
+    steps: Array<string>, done: Function) {
+    if (steps[0] == this.END_EVENT) {
+      console.info('case success!!');
+      done();
+    }
+
+    console.info('case EVENT:::EVENT::::!!' + steps[0]);
+    switch (steps[0]) {
+      case this.CREATE_EVENT:
+        steps.shift();
+        await media.createAVScreenCaptureRecorder().then((captureRecorder) => {
+          if (captureRecorder != null) {
+            avScreenCaptureRecorder = captureRecorder;
+            this.avScreenCaptureRecorder = avScreenCaptureRecorder;
+            console.info('createAVScreenCaptureRecorder success');
+            this.toNextStep2(avScreenCaptureRecorder, avConfig2, recorderTime, steps, done);
+          } else {
+            console.error('createAVScreenCaptureRecorder fail');
+            expect().assertFail()
+          }
+        }).catch((error: BusinessError) => {
+          console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+          expect().assertFail()
+        });
+
+        break;
+        case this.INITWITHERROR_EVENT:
+          steps.shift();
+          await avScreenCaptureRecorder?.init(avConfig2).then(() => {
+            console.info('avScreenCaptureRecorder init success');
+            this.toNextStep2(avScreenCaptureRecorder, avConfig2, recorderTime, steps, done);
+          }).catch((err: BusinessError) => {
+            console.error('avScreenCaptureRecorder initwitherror failed, error: ' + err.message);
+            console.info('avScreenCaptureRecorder initwitherror failed, error code is:' + err.code)
+            expect(err.code).assertEqual(401)
+            if (avConfig2.fd == -1) {
+              let mySteps = new Array(
+                this.END_EVENT);
+              this.toNextStep2(avScreenCaptureRecorder, avConfig2, recorderTime, steps, done);
+            } else {
+              console.error('avScreenCaptureRecorder init failed, error: ' + err.message);
+              expect().assertFail()
+            }
+          });
+          done();
+          break;
+      case this.STARTRECORDER_EVENT:
+        steps.shift();
+        await avScreenCaptureRecorder?.startRecording().then(() => {
+          console.info('avScreenCaptureRecorder start success');
+        }).catch((err: BusinessError) => {
+          console.error('avScreenCaptureRecorder start failed, error: ' + err.message);
+          expect().assertFail()
+        })
+
+        this.driveFnNoSleep(1)
+        setTimeout(() => {
+          this.toNextStep2(avScreenCaptureRecorder, avConfig2, recorderTime, steps, done);
+        }, recorderTime);
+
+        break;
+      case this.SKIPPRIVACYMODE_EVENT:
+        steps.shift();
+        let windowAllIds = [];
+        await avScreenCaptureRecorder?.skipPrivacyMode(windowAllIds).then(() => {
+          console.info('avScreenCaptureRecorder skipPrivacyMode success');
+          this.toNextStep2(avScreenCaptureRecorder, avConfig2, recorderTime, steps, done);
+        }).catch((err: BusinessError) => {
+          console.error('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
+          expect().assertFail()
+        })
+
+        break;
+      case this.STOPRECORDER_EVENT:
+        steps.shift();
+        await avScreenCaptureRecorder?.stopRecording().then(() => {
+          console.info('avScreenCaptureRecorder stop success');
+          this.toNextStep2(avScreenCaptureRecorder, avConfig2, recorderTime, steps, done);
+        }).catch((err: BusinessError) => {
+          console.error('avScreenCaptureRecorder stop failed, error: ' + err.message);
+          expect().assertFail()
+        })
+
+        break;
+      case this.RELEASECORDER_EVENT:
+        steps.shift();
+        await avScreenCaptureRecorder?.release().then(() => {
+          console.info('avScreenCaptureRecorder release success');
+          this.avScreenCaptureRecorder = null;
+          this.toNextStep2(avScreenCaptureRecorder, avConfig2, recorderTime, steps, done);
+        }).catch((err: BusinessError) => {
+          console.error('avScreenCaptureRecorder release failed, error: ' + err.message);
+          expect().assertFail();
+        })
+
+        this.closeFd(this.outputFdObject.fd);
+
+        break;
+      case this.SET_MIC_ENABLE_EVENT:
+        steps.shift();
+        await avScreenCaptureRecorder?.setMicEnabled(true).then(() => {
+          console.info('avScreenCaptureRecorder setMicEnabled success');
+          this.toNextStep2(avScreenCaptureRecorder, avConfig2, recorderTime, steps, done);
+        }).catch((err: BusinessError) => {
+          console.error('avScreenCaptureRecorder setMicEnabled failed, error: ' + err.message);
+          expect().assertFail()
+        })
+        break;
+      case this.AV_CREATEAVPLAYER:
+        steps.shift();
+        this.AvPlayerMp4(this.outputName, avConfig2, done)
+        break;
+      default:
+        break;
+    }
+  }
+
+  AvPlayerMp4(outputName: string, avConfig: media.AVScreenCaptureRecordConfig, done: Function) {
     media.createAVPlayer((err, video) => {
       console.info(`case media err: ${err}`)
       if (typeof (video) != 'undefined') {
@@ -278,7 +403,7 @@ export default class MediaTestBase {
               break;
             case this.AV_PREPARED:
               if (this.avPlayer != null) {
-                this.getTrackDescriptionTest(this.avPlayer, audioSampleRate, done)
+                this.getTrackDescriptionTest(this.avPlayer, avConfig, done)
               }
               this.avPlayer?.play().then(() => {
                 console.info('Succeeded in playing');
@@ -288,7 +413,7 @@ export default class MediaTestBase {
               break;
             case this.AV_PLAYING:
               if (this.avPlayer != null) {
-                this.getTrackDescriptionTest(this.avPlayer, audioSampleRate, done)
+                this.getTrackDescriptionTest(this.avPlayer, avConfig, done)
               }
 
               this.avPlayer?.stop().then(() => {
@@ -333,14 +458,15 @@ export default class MediaTestBase {
 
   }
 
-  getTrackDescriptionTest(avPlayer: media.AVPlayer, audioSampleRate: number, done: Function) {
+  getTrackDescriptionTest(avPlayer: media.AVPlayer, avConfig: media.AVScreenCaptureRecordConfig, done: Function) {
 
     avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
           console.info(`case getTrackDescription is ${JSON.stringify(arrList[i])}`);
           if (arrList[i]['codec_mime'].toString() == "audio/mp4a-latm") {
-            expect(arrList[i]['bitrate']).assertLess(audioSampleRate / 3)
+            expect(Number(arrList[i]['bitrate']) / 3).assertLess(avConfig.audioBitrate);
+            expect(Number(arrList[i]['sample_rate'])).assertEqual(avConfig.audioSampleRate);
           }
         }
         done();

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -50,7 +50,7 @@ export default function preventDefault() {
      * @tc.name         preventDefault0001
      * @tc.desic        Intercepting Hyperlinks
      */
-    it('preventDefault0001', 0, async () => {
+    it('preventDefault0001', Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('preventDefault preventDefault0001 START');
         await CommonFunc.sleep(1000);
@@ -66,7 +66,5 @@ export default function preventDefault() {
         await driver.assertComponentExist(ON.text('禁掉onclick'));
         console.info("[preventDefault0001] end");
     });
-
-
   })
 }

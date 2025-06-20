@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -53,7 +53,7 @@ export default function motionPathJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('motionPathTest_0100', 0, async (done: Function) => {
+    it('motionPathTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('motionPathTest_0100 START');
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {

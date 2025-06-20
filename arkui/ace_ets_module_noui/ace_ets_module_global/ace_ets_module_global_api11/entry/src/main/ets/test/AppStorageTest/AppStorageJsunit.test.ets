@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils'
 
@@ -49,8 +49,12 @@ export default function AppStorageJsunit() {
      * @tc.number stateManagement_AppStorage_setOrCreate_0100
      * @tc.name stateManagement ContentStorage  validation
      * @tc.desc Function test
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
      */
-    it('stateManagement_AppStorage_setOrCreate_0100', 0, (done: Function) => {
+
+    it('stateManagement_AppStorage_setOrCreate_0100', Level.LEVEL0, (done: Function) => {
       console.info('[stateManagement_AppStorage_setOrCreate_0100] START');
       AppStorage.setOrCreate<string>("key1", "value1");
       AppStorage.setOrCreate<string>("key2", "value2");
@@ -69,8 +73,12 @@ export default function AppStorageJsunit() {
      * @tc.number stateManagement_Storage_setOrCreate_0100
      * @tc.name stateManagement Storage  validation
      * @tc.desc Function test
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
      */
-    it('stateManagement_Storage_set_0100', 0, (done: Function) => {
+
+    it('stateManagement_Storage_set_0100', Level.LEVEL0, (done: Function) => {
       done();
       return;
 
@@ -100,8 +108,12 @@ export default function AppStorageJsunit() {
      * @tc.number stateManagement_Environment_EnvProps_0100
      * @tc.name stateManagement Environment  validation
      * @tc.desc Function test
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
      */
-    it('stateManagement_Environment_EnvProps_0100', 0, (done: Function) => {
+
+    it('stateManagement_Environment_EnvProps_0100', Level.LEVEL0, (done: Function) => {
       console.info('[stateManagement_Environment_EnvProps_0100] START');
       try {
         Environment.EnvProps([{

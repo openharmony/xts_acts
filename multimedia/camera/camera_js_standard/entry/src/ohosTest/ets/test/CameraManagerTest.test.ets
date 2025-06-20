@@ -17,7 +17,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
 import media from '@ohos.multimedia.media';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
@@ -263,7 +263,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100--------------");
       let cameraManagerPromise = cameraObj.getCameraManager(context);
       expect(isEmpty(cameraManagerPromise)).assertFalse();
@@ -280,7 +280,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100--------------");
       if (isEmpty(mCameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 cameraManager == null || undefined")
@@ -343,7 +343,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100--------------");
       if (isEmpty(mCameraManager)) {
         console.info(TAG +
@@ -385,7 +385,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100', 2,
+    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100', Level.LEVEL2,
       async (done: Function) => {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100--------------");
         let camerasArray = mCameraDevicesArray;
@@ -444,7 +444,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100 to operate");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -478,7 +478,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_CALLBACK_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_CALLBACK_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_CALLBACK_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -532,7 +532,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_PROMISE_0100--------------");
       for (let i = 0; i < mCameraDevicesArray.length; i++) {
         let cameraOutputCap = getSupportedOutputCapability(mCameraDevicesArray[i]);
@@ -585,7 +585,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_PROFILES_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_PROFILES_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PREVIEW_PROFILES_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -626,7 +626,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_PROFILES_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_PROFILES_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_PROFILES_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -666,7 +666,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_PROFILES_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_PROFILES_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_PROFILES_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -711,7 +711,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100--------------");
       if (isEmpty(mCameraManager)) {
         console.info(TAG +
@@ -742,7 +742,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_BY_POSITION_AND_TYPE_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_BY_POSITION_AND_TYPE_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_BY_POSITION_AND_TYPE_PROMISE_0100--------------");
       if (isEmpty(mCameraManager)) {
         console.info(TAG +
@@ -776,7 +776,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_PROMISE_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -817,7 +817,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_PROMISE_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -856,7 +856,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       try {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100--------------");
         await getVideoReceiveSurface();
@@ -908,7 +908,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_METADATA_OUTPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_METADATA_OUTPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_METADATA_OUTPUT_PROMISE_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -946,7 +946,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_PROMISE_0100 to operate");
       let captureSessionPromise = mCameraManager.createCaptureSession();
       if (isEmpty(captureSessionPromise)) {
@@ -967,7 +967,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_IS_CAMERA_MUTED_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_IS_CAMERA_MUTED_0100', Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_IS_CAMERA_MUTED_0100--------------");
       if (isEmpty(mCameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_CAMERA_MUTED_0100 cameraManager == null || undefined")
@@ -992,7 +992,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_ON_CAMERASTATUS_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_CAMERASTATUS_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ON_CAMERASTATUS_0100--------------");
       if (isEmpty(mCameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_CAMERASTATUS_0100 mCameraManager == null || undefined")
@@ -1036,7 +1036,7 @@ export default function cameraManagerTest() {
       * @tc.type      : Function
       * @tc.level     : Level 1
     */
-    it('SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100--------------");
       if (isEmpty(mCameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_FOLD_STATUS_0100 mCameraManager == null || undefined")
@@ -1067,7 +1067,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {
@@ -1094,7 +1094,7 @@ export default function cameraManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100--------------");
       let camerasArray = mCameraDevicesArray;
       for (let i = 0; i < camerasArray.length; i++) {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -51,7 +51,7 @@ export default function navigation_pushDestination12() {
      * @tc.desc      Navigation pushDestination result test
      * @tc.level     Level 1
      */
-    it('navigation_pushDestination12_0100', 0, async  (done:Function) =>{
+    it('navigation_pushDestination12_0100',  Level.LEVEL0, async  (done:Function) =>{
       console.info('[navigation_pushDestination12_0100] START');
       await CommonFunc.sleep(2000);
 

@@ -16,7 +16,7 @@
 import cameraObj from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { GlobalThis } from './Constants';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
@@ -241,7 +241,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_BEGIN_CONFIG_001', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_BEGIN_CONFIG_001', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_BEGIN_CONFIG_001--------------");
       let ret = cameraObj.sessionBegin();
       if (ret != 0) {
@@ -258,7 +258,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_INPUT_PROMISE_002', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_INPUT_PROMISE_002', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_INPUT_PROMISE_002--------------");
       await cameraObj.sessionBegin();
       await createInput();
@@ -280,7 +280,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003--------------");
       let ret = createOutput();
       if (ret != true) {
@@ -302,7 +302,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004', 0, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004', Level.LEVEL0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004--------------");
       releaseCameraSessionInstance();
       let ret = createCameraSessionInstance();
@@ -327,7 +327,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_COMMIT_CONFIG_005', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_COMMIT_CONFIG_005', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_COMMIT_CONFIG_005--------------");
       releaseCameraSessionInstance();
       let ret = createCameraSessionInstance();
@@ -357,7 +357,7 @@ export default function cameraSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_RELEASE_PROMISE_006', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_RELEASE_PROMISE_006', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_RELEASE_PROMISE_006--------------");
       let ret = cameraObj.sessionRelease();
       if (ret != 0) {

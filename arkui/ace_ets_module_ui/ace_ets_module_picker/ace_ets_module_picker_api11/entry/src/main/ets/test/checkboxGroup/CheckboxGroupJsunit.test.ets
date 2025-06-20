@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
@@ -43,7 +43,7 @@ export default function checkboxGroupJsunit() {
       console.info("checkboxGroup after each called");
     });
 
-    it('testCheckboxGroup_100', 0, async (done: Function) => {
+    it('testCheckboxGroup_100', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckboxGroup_100] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('CheckboxGroup');
@@ -53,7 +53,7 @@ export default function checkboxGroupJsunit() {
       done();
     });
 
-    it('testCheckboxGroup_200', 0, async (done: Function) => {
+    it('testCheckboxGroup_200', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckboxGroup_200] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('CheckboxGroup');
@@ -63,7 +63,7 @@ export default function checkboxGroupJsunit() {
       done();
     });
 
-    it('testCheckboxGroup_300', 0, async (done: Function) => {
+    it('testCheckboxGroup_300', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckboxGroup_300] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('CheckboxGroup');
@@ -73,7 +73,7 @@ export default function checkboxGroupJsunit() {
       done();
     });
 
-    it('testCheckboxGroup_400', 0, async (done: Function) => {
+    it('testCheckboxGroup_400', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckboxGroup_400] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('CheckboxGroup');
@@ -83,7 +83,7 @@ export default function checkboxGroupJsunit() {
       done();
     });
 
-    it('testCheckboxGroup_500', 0, async (done: Function) => {
+    it('testCheckboxGroup_500', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckboxGroup_500] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('CheckboxGroup');
@@ -93,7 +93,7 @@ export default function checkboxGroupJsunit() {
       done();
     });
 
-    it('testCheckboxGroup_600', 0, async (done: Function) => {
+    it('testCheckboxGroup_600', Level.LEVEL1, async (done: Function) => {
       console.info('[testCheckboxGroup_600] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('CheckboxGroup');

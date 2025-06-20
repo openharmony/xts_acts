@@ -20,6 +20,7 @@
         "MainAbility/pages/Search/SearchGesture",
         "MainAbility/pages/Search/SearchPage",
         "MainAbility/pages/RichEditor/RichTextPage",
-        "MainAbility/pages/RichEditor/richText"
+        "MainAbility/pages/RichEditor/richText",
+        "MainAbility/pages/text/onTextSelectionChange"
     ]
 }

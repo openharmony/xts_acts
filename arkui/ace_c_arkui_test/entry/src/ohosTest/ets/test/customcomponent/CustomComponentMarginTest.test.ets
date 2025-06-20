@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMargin001', 0, async (done: Function) => {
+    it('testCustomComponentMargin001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMargin001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMargin002', 0, async (done: Function) => {
+    it('testCustomComponentMargin002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMargin002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMargin003', 0, async (done: Function) => {
+    it('testCustomComponentMargin003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMargin003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMargin004', 0, async (done: Function) => {
+    it('testCustomComponentMargin004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMargin004()).assertEqual(0)
       done()
     })

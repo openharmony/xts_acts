@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -62,7 +62,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1601', 0, async (done: Function) => {
+    it('testButton1601', Level.LEVEL0, async (done: Function) => {
       console.info('[testButton1601] START');
       let strJsonNew = getInspectorByKey('button');
 
@@ -79,7 +79,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1602', 0, async (done: Function) => {
+    it('testButton1602', Level.LEVEL0, async (done: Function) => {
       console.info('[testButton1602] START');
       let strJsonNew = getInspectorByKey('button');
 
@@ -96,7 +96,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1603', 0, async (done: Function) => {
+    it('testButton1603', Level.LEVEL0, async (done: Function) => {
       console.info('[testButton1603] START');
       let strJsonNew = getInspectorByKey('button');
 
@@ -113,7 +113,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1604', 0, async (done: Function) => {
+    it('testButton1604', Level.LEVEL0, async (done: Function) => {
       console.info('[testButton1604] START');
       let strJsonNew = getInspectorByKey('button');
 
@@ -130,7 +130,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1605', 0, async (done: Function) => {
+    it('testButton1605', Level.LEVEL0, async (done: Function) => {
       console.info('[testButton1605] START');
       let strJsonNew = getInspectorByKey('button');
 
@@ -147,7 +147,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1606', 0, async (done: Function) => {
+    it('testButton1606', Level.LEVEL0, async (done: Function) => {
       console.info('[testButton1606] START');
       let strJsonNew = getInspectorByKey('button');
 
@@ -164,7 +164,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1607', 0, async (done: Function) => {
+    it('testButton1607', Level.LEVEL0, async (done: Function) => {
       console.info('[testButton1607] START');
       let strJsonNew = getInspectorByKey('button');
 
@@ -181,7 +181,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1608', 0, async (done: Function) => {
+    it('testButton1608', Level.LEVEL0, async (done: Function) => {
       console.info('[testButton1608] START');
       let strJsonNew = getInspectorByKey('button2');
 
@@ -198,7 +198,7 @@ export default function buttonJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testButton1609', 0, async (done: Function) => {
+    it('testButton1609', Level.LEVEL0, async (done: Function) => {
       console.info('testButton1609 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

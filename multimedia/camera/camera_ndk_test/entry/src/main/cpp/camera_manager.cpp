@@ -2942,3 +2942,113 @@ Camera_ErrorCode NDKCamera::CameraManagerUnregisterFoldStatusCallback(int useCas
     }
     return ret_;
 }
+
+Camera_ErrorCode NDKCamera::GetCameraDevice(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        Camera_Device* cameranow = nullptr;
+        if (cameraManager_ == nullptr) {
+            return ret_;
+        }
+        ret_ = OH_CameraManager_GetCameraDevice(cameraManager_,
+            Camera_Position::CAMERA_POSITION_BACK, Camera_Type::CAMERA_TYPE_DEFAULT, cameranow);
+    }
+    return ret_;
+}
+ 
+Camera_ErrorCode NDKCamera::GetCameraConcurrentInfos(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        Camera_Device* cameraArray;
+        OH_CameraManager_GetSupportedCameras(cameraManager_, &cameraArray, &size_);
+        uint32_t deviceSize = 2;
+        if (size_ < deviceSize || cameraManager_ == nullptr) {
+            delete[] cameraArray;
+            cameraArray = nullptr;
+            GetSupportedCameras();
+            return ret_;
+        }
+        uint32_t infoSize = 0;
+        Camera_ConcurrentInfo* cameraConcurrentInfo;
+        int retcode = OH_CameraManager_GetCameraDevice(cameraManager_,
+            Camera_Position::CAMERA_POSITION_BACK, Camera_Type::CAMERA_TYPE_DEFAULT, &cameraArray[0]);
+        if (retcode != CAMERA_OK || cameraArray[0].cameraId == nullptr) {
+            delete[] cameraArray;
+            cameraArray = nullptr;
+            GetSupportedCameras();
+            return ret_;
+        }
+        retcode = OH_CameraManager_GetCameraDevice(cameraManager_,
+            Camera_Position::CAMERA_POSITION_FRONT, Camera_Type::CAMERA_TYPE_DEFAULT, &cameraArray[1]);
+        if (retcode != CAMERA_OK || cameraArray[1].cameraId == nullptr) {
+            delete[] cameraArray;
+            cameraArray = nullptr;
+            GetSupportedCameras();
+            return ret_;
+        }
+        retcode = OH_CameraManager_GetCameraConcurrentInfos(cameraManager_,
+            cameraArray, deviceSize, &cameraConcurrentInfo, &infoSize);
+        if (retcode != CAMERA_OK || cameraConcurrentInfo == nullptr) {
+            delete[] cameraArray;
+            cameraArray = nullptr;
+            GetSupportedCameras();
+            return ret_;
+        }
+        Camera_Input* cameraInputnow;
+        retcode = OH_CameraManager_CreateCameraInput(cameraManager_, &cameraArray[0], &cameraInputnow);
+        if (retcode == CAMERA_OK && cameraInputnow != nullptr) {
+            ret_ = OH_CameraInput_OpenConcurrentCameras(cameraInputnow,
+                Camera_ConcurrentType::CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY);
+        }
+        OH_CameraInput_Close(cameraInputnow);
+        OH_CameraInput_Release(cameraInputnow);
+        delete[] cameraArray;
+        cameraArray = nullptr;
+    }
+    GetSupportedCameras();
+    CreateCameraInput();
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::SessionIsMacroSupported(int useCaseCode)
+{
+    LOG("isMacroSupported begin.");
+    if (useCaseCode == PARAMETER_OK) {
+        Camera_ErrorCode ret_ = OH_CaptureSession_IsMacroSupported(captureSession_, &isMacroSupported_);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        Camera_ErrorCode ret_ = OH_CaptureSession_IsMacroSupported(captureSession_, nullptr);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        Camera_ErrorCode ret_ = OH_CaptureSession_IsMacroSupported(nullptr, &isMacroSupported_);
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::SessionEnableMacro(int useCaseCode, bool isEnable)
+{
+    LOG("EnableMacro begin.");
+    if (useCaseCode == PARAMETER_OK){
+        Camera_ErrorCode ret_ = OH_CaptureSession_EnableMacro(captureSession_, isEnable);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        Camera_ErrorCode ret_ = OH_CaptureSession_EnableMacro(nullptr, isEnable);
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::WhiteBalanceTest(void)
+{
+    LOG("WhiteBalanceTest begin.");
+    bool flag;
+    int ret = OH_CaptureSession_IsWhiteBalanceModeSupported(
+        captureSession_, Camera_WhiteBalanceMode::CAMERA_WHITE_BALANCE_MODE_CLOUDY, &flag);
+    int32_t max = 0;
+    int32_t min = 0;
+    ret = OH_CaptureSession_GetWhiteBalanceRange(captureSession_, &min, &max);
+    int32_t temp = 3000;
+    ret = OH_CaptureSession_SetWhiteBalance(captureSession_, temp);
+    ret = OH_CaptureSession_GetWhiteBalance(captureSession_, &temp);
+    ret = OH_CaptureSession_SetWhiteBalanceMode(
+        captureSession_, Camera_WhiteBalanceMode::CAMERA_WHITE_BALANCE_MODE_CLOUDY);
+    Camera_WhiteBalanceMode mode = Camera_WhiteBalanceMode::CAMERA_WHITE_BALANCE_MODE_AUTO;
+    ret = OH_CaptureSession_GetWhiteBalanceMode(captureSession_, &mode);
+    return ret_;
+}

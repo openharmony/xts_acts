@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -48,7 +48,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_001', 0, async (done: Function) => {
+    it('test_span_001', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_001] START');
       let strJson = getInspectorByKey('SpanKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -66,7 +66,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_002', 0, async (done: Function) => {
+    it('test_span_002', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_002] START');
       let strJson = getInspectorByKey('SpanKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -84,7 +84,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_003', 0, async (done: Function) => {
+    it('test_span_003', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_003] START');
       let strJson = getInspectorByKey('SpanKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -102,7 +102,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_004', 0, async (done: Function) => {
+    it('test_span_004', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_004] START');
       let strJson = getInspectorByKey('SpanKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -121,7 +121,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_005', 0, async (done: Function) => {
+    it('test_span_005', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_005] START');
       let strJson = getInspectorByKey('SpanKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -139,7 +139,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_006', 0, async (done: Function) => {
+    it('test_span_006', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_006] START');
       let strJson = getInspectorByKey('SpanKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -158,7 +158,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_007', 0, async (done: Function) => {
+    it('test_span_007', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_007] START');
       let strJson = getInspectorByKey('SpanKey2');
       let obj: ESObject = JSON.parse(strJson);
@@ -176,7 +176,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_008', 0, async (done: Function) => {
+    it('test_span_008', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_008] START');
       let strJson = getInspectorByKey('SpanKey2');
       let obj: ESObject = JSON.parse(strJson);
@@ -196,7 +196,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_009', 0, async (done: Function) => {
+    it('test_span_009', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_009] START');
       let strJson = getInspectorByKey('SpanKey2');
       let obj: ESObject = JSON.parse(strJson);
@@ -214,7 +214,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_010', 0, async (done: Function) => {
+    it('test_span_010', Level.LEVEL0, async (done: Function) => {
       console.info('[test_span_010] START');
       let strJson = getInspectorByKey('SpanKey2');
       let obj: ESObject = JSON.parse(strJson);
@@ -232,7 +232,7 @@ export default function spanJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_span_011', 0, async (done: Function) => {
+    it('test_span_011', Level.LEVEL0, async (done: Function) => {
       console.info('test_span_011 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

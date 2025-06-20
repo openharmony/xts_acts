@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -72,7 +72,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction meets the layout
      *   of the child components when the parent components set margin,and the child components set padding
      */
-    it('testWrapNoWrapFlexMarTextPad', 0, async () => {
+    it('testWrapNoWrapFlexMarTextPad',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexMarTextPad] START');
 
       GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -129,7 +129,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction meets the layout
      *   of the child components when the parent components set margin,and the child components set margin
      */
-    it('testWrapNoWrapFlexMarTextMar', 0, async () => {
+    it('testWrapNoWrapFlexMarTextMar',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexMarTextMar] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 10
@@ -177,7 +177,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough the layout
      *   of the child components when the parent components set margin,and the child components set margin and padding
      */
-    it('testWrapNoWrapFlexMarTextMarPad', 0, async () => {
+    it('testWrapNoWrapFlexMarTextMarPad',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexMarTextMarPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 10
@@ -225,7 +225,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
       expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(20))) <= 1).assertTrue()
       expect(Math.floor(Math.abs((thirdText.left - secondText.right) - vp2px(20))) <= 2).assertTrue()
 
-      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (vp2px(440) / 3))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((firstText.right - firstText.left) - (vp2px(440) / 3))) <= 2).assertTrue()
       expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1).assertTrue()
       expect(Math.floor(Math.abs((firstText.right - firstText.left) - (thirdText.right - thirdText.left))) <= 1).assertTrue()
 

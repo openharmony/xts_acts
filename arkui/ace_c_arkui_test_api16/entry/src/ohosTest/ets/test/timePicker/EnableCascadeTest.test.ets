@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function TimePickerTest() {
@@ -32,7 +32,7 @@ export default function TimePickerTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('EnableCascadeTest001', 0, async (done: Function) => {
+    it('EnableCascadeTest001', Level.LEVEL1, async (done: Function) => {
       console.info('EnableCascadeTest001 START');
       let PAGE_TAG = 'EnableCascadeTest';
       await Utils.pushPage(`timePicker/${PAGE_TAG}`);
@@ -41,7 +41,7 @@ export default function TimePickerTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[EnableCascadeTest001]markToday:" + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000)
-      expect(obj.$attrs.enableCascade).assertEqual('true');
+      expect(obj.$attrs.enableCascade).assertEqual(true);
       await Utils.sleep(1000)
       console.info('EnableCascadeTest001 END');
       done();
@@ -55,7 +55,7 @@ export default function TimePickerTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('EnableCascadeTest002', 0, async (done: Function) => {
+    it('EnableCascadeTest002', Level.LEVEL1, async (done: Function) => {
       console.info('EnableCascadeTest001 START');
       let PAGE_TAG = 'EnableCascadeTest';
       await Utils.pushPage(`timePicker/${PAGE_TAG}`);
@@ -64,7 +64,7 @@ export default function TimePickerTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[EnableCascadeTest002]markToday:" + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000)
-      expect(obj.$attrs.enableCascade).assertEqual('false');
+      expect(obj.$attrs.enableCascade).assertEqual(false);
       await Utils.sleep(1000)
       console.info('EnableCascadeTest002 END');
       done();
@@ -78,7 +78,7 @@ export default function TimePickerTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('EnableCascadeTest003', 0, async (done: Function) => {
+    it('EnableCascadeTest003', Level.LEVEL1, async (done: Function) => {
       console.info('EnableCascadeTest003 START');
       let PAGE_TAG = 'EnableCascadeTest';
       await Utils.pushPage(`timePicker/${PAGE_TAG}`);
@@ -87,7 +87,7 @@ export default function TimePickerTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[EnableCascadeTest003]markToday:" + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000)
-      expect(obj.$attrs.enableCascade).assertEqual('false');
+      expect(obj.$attrs.enableCascade).assertEqual(false);
       await Utils.sleep(1000)
       console.info('EnableCascadeTest003 END');
       done();

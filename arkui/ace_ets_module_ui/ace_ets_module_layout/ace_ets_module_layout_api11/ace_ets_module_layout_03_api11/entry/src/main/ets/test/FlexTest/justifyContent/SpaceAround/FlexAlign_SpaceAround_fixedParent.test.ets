@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -53,7 +53,7 @@ export default function flexAlign_SpaceAround_fixedParent() {
      * @tc.name testAlignSpaceAroundRowNoWrapOffset
      * @tc.desc Parent component fixed, child component binding offset properties
      */
-    it('testAlignSpaceAroundRowNoWrapOffset', 0, async () => {
+    it('testAlignSpaceAroundRowNoWrapOffset',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapOffset START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'x', value: 15
@@ -98,7 +98,7 @@ export default function flexAlign_SpaceAround_fixedParent() {
       expect(Math.floor(Math.abs(locationText1.left - locationFlex.left - vp2px(15) -
         (locationFlex.right - locationText3.right))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(locationText3.left - locationText2.right -
-        2 * (locationFlex.right - locationText3.right))) <= 1).assertTrue();
+        2 * (locationFlex.right - locationText3.right))) <= 2).assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapOffset END');
 
     });

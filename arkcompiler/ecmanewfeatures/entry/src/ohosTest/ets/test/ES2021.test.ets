@@ -27,7 +27,7 @@ export default function es2021Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testReplaceAll', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
+    it('testReplaceAll', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect('abbbaab'.replaceAll('b', 'x')).assertEqual("axxxaax");
       expect('abbbaab'.replaceAll(/b/g, 'x')).assertEqual("axxxaax");
     })
@@ -39,7 +39,7 @@ export default function es2021Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPromise.any Success', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
+    it('testPromise.any Success', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const Promise1: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => resolve('Promise 1'), 100)
       });
@@ -65,7 +65,7 @@ export default function es2021Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPromise.any Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
+    it('testPromise.any Error', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const Promise1: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => reject('Promise 1 error'), 100)
       });
@@ -92,7 +92,7 @@ export default function es2021Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testLogicalAssignment', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
+    it('testLogicalAssignment', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let a = 0;
       let b = 10;
       a &&= b;
@@ -112,7 +112,7 @@ export default function es2021Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNumberSeparator', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
+    it('testNumberSeparator', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(1_1).assertEqual(11)
       expect(1_1n).assertEqual(11n)
     })
@@ -124,7 +124,7 @@ export default function es2021Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWeakRef', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
+    it('testWeakRef', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(test2021_05_ans).assertEqual("21")
     })
   })

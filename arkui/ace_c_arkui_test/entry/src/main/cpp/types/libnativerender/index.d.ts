@@ -287,6 +287,8 @@ export const datePickerEnabledTest: (a: string) => void;
 
 export const sliderEnabledTest: (a: string) => void;
 
+export const SliderColorTest: (a: string) => void;
+
 export const textEnabledTest: (a: string) => void;
 
 export const textPickerOnChangeTest: (a: string) => void;

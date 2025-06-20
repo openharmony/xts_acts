@@ -51,9 +51,9 @@ export default function relationalStoreTest(){
          * @tc.require: I5PIL6
 		 * @tc.size MediumTest
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+        it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
             console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100 start *************");
             let config: dataRdb.StoreConfig = {
                 name: "secure.db",
@@ -72,9 +72,9 @@ export default function relationalStoreTest(){
          * @tc.require: I5PIL6
 		 * @tc.size MediumTest
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) =>{
+        it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
             console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0200 start *************");
             let config: dataRdb.StoreConfig = {
                 name: "secure.db",
@@ -102,9 +102,9 @@ export default function relationalStoreTest(){
          * @tc.require: I5PIL6
 		 * @tc.size MediumTest
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:  Function) => {
+        it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:  Function) => {
             console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0300 start *************");
             let config: dataRdb.StoreConfig = {
                 name: "secure.db",

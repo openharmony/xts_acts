@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -49,7 +49,7 @@ export default function navigationPosition() {
        * @tc.desc  : Set navBarPosition to Start
        * @tc.level : Level 2
        */
-    it('navigationPosition_001', 0, async  (done:Function) =>{
+    it('navigationPosition_001',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationPosition_001] START');
       await CommonFunc.sleep(1000);
@@ -71,7 +71,7 @@ export default function navigationPosition() {
        * @tc.desc  : Set navBarPosition to End
        * @tc.level : Level 2
        */
-    it('navigationPosition_002', 0, async  (done:Function) =>{
+    it('navigationPosition_002',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationPosition_002] START');
       globalThis.value.message.notify({name:'navBarPositionIndex', value: 1 });

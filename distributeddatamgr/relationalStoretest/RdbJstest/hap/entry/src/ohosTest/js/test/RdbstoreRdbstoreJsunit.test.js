@@ -57,9 +57,9 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store getRdbStore test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testRdbStore0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testRdbStore0001 start *************");
         await dataRdb.getRdbStore(STORE_CONFIG, 1).then(async (store) => {
             try {
@@ -80,9 +80,9 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store getRdbStore and create table
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testRdbStore0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testRdbStore0002 start *************");
         let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 2);
         storePromise.then(async (store) => {
@@ -137,9 +137,9 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store deleteRdbStore
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testRdbStore0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testRdbStore0004 start *************");
         try{
             let store =  await dataRdb.getRdbStore(STORE_CONFIG, 1)
@@ -158,9 +158,9 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store deleteRdbStore
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testRdbStore0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testRdbStore0005 start *************");
         try {
             let store = await dataRdb.getRdbStore(STORE_CONFIG, 2);

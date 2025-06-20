@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow001', 0, async (done: Function) => {
+    it('testCustomDialogShow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow002', 0, async (done: Function) => {
+    it('testCustomDialogShow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow003', 0, async (done: Function) => {
+    it('testCustomDialogShow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow003()).assertEqual(0)
       done()
     })
@@ -73,8 +73,21 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow004', 0, async (done: Function) => {
+    it('testCustomDialogShow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow004()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_CUSTOMDIALOG_SHOW_0500
+     * @tc.name       : testCustomDialogShow005
+     * @tc.desc       : testing show for customDialog with callback function
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testCustomDialogShow005', Level.LEVEL1, async (done: Function) => {
+      expect(nativeFunc.testCustomDialogShow005()).assertEqual(0)
       done()
     })
 

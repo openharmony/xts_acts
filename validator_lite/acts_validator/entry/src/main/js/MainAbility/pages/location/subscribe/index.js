@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import geolocation from '@system.geolocation';
 
 export default {
     data: {
+        itemIndex: -1,
         str: '',
         title: 'location(subscribe)',
         pass: 'true ;',
@@ -80,17 +80,24 @@ export default {
             params: {
                 step: '操作步骤：点击订阅和取消按钮',
                 result: '预期结果：点订阅时屏幕上显示位置信息订阅成功，取消后位置信息不会更新',
-                url: 'pages/location/subscribe/index'
+                url: 'pages/location/subscribe/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

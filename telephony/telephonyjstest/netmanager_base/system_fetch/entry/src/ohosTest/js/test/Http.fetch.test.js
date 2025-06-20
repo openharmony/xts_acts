@@ -15,7 +15,7 @@
 
 import fetch from '@system.fetch';
 import http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Size, Level  } from '@ohos/hypium'
 
 export default function Telephony_NetStack_HttpFetchTest() {
 
@@ -26,7 +26,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 基本场景，FETCH方式测试能否GET一个网址
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchBasicGet_0100", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchBasicGet_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -62,7 +62,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name FETCH方式返回用户代理
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchUserAgent_0100", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchUserAgent_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -101,7 +101,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name FETCH方式返回用户代理
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchUserAgent_0200", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchUserAgent_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -141,7 +141,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 返回Header
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchHeader_0100", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchHeader_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -180,7 +180,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 返回Header
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchHeader_0200", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchHeader_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -220,7 +220,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 返回Post内容
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchPost_0100", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchPost_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -261,7 +261,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 返回Post内容
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchPost_0200", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchPost_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -303,7 +303,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 返回Put内容
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchPut_0100", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchPut_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -344,7 +344,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 返回Put内容
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchPut_0200", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchPut_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -386,7 +386,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 返回Cookies内容
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchUrlEncode_0100", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchUrlEncode_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,
@@ -432,7 +432,7 @@ export default function Telephony_NetStack_HttpFetchTest() {
      * @tc.name 返回Cookies内容
      * @tc.desc function test
      */
-    it("Telephony_NetStack_HttpTestFetchUrlEncode_0200", 0, function (done) {
+    it("Telephony_NetStack_HttpTestFetchUrlEncode_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
       let httpRequest = http.createHttp();
       httpRequest.request("https://httpbin.org", {
         readTimeout: 10000,

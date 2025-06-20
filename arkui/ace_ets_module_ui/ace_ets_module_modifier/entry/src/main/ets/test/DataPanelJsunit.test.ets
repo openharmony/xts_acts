@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -51,7 +51,7 @@ export default function datapanelJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testDataPanel01', 0, async (done: Function) => {
+    it('testDataPanel01', Level.LEVEL0, async (done: Function) => {
       console.info('testDataPanel01 START');
       let strJson = getInspectorByKey('DataPanelKey1');
 
@@ -71,7 +71,7 @@ export default function datapanelJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testDataPanel02', 0, async (done: Function) => {
+    it('testDataPanel02', Level.LEVEL0, async (done: Function) => {
       console.info('testDataPanel02 START');
       let strJson = getInspectorByKey('DataPanelKey1');
 
@@ -89,7 +89,7 @@ export default function datapanelJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testDataPanel03', 0, async (done: Function) => {
+    it('testDataPanel03', Level.LEVEL0, async (done: Function) => {
       console.info('testDataPanel03 START');
       let strJson = getInspectorByKey('DataPanelKey1');
 
@@ -107,7 +107,7 @@ export default function datapanelJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testDataPanel04', 0, async (done: Function) => {
+    it('testDataPanel04', Level.LEVEL0, async (done: Function) => {
       console.info('testDataPanel04 START');
       let strJson = getInspectorByKey('DataPanelKey1');
 
@@ -126,7 +126,7 @@ export default function datapanelJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testDataPanel05', 0, async (done: Function) => {
+    it('testDataPanel05', Level.LEVEL0, async (done: Function) => {
       console.info('testDataPanel05 START');
       let strJson = getInspectorByKey('DataPanelKey1');
 
@@ -144,7 +144,7 @@ export default function datapanelJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testDataPanel06', 0, async (done: Function) => {
+    it('testDataPanel06', Level.LEVEL0, async (done: Function) => {
       console.info('testDataPanel06 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

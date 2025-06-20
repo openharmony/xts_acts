@@ -18,7 +18,7 @@ ohos_app_assist_suite("nativebuffer_ndk_main") {
   certificate_profile =
       "./signature/com_nativebuffer_napitest_openharmony_sx.p7b"
   hap_name = "ActsNativeBufferMainTest"
-  part_name = "graphic_2d"
+  part_name = "graphic_surface"
   subsystem_name = "graphic"
 }
 
@@ -28,7 +28,7 @@ ohos_js_app_suite("ActsNativeBufferTest") {
   certificate_profile =
       "./signature/com_nativebuffer_napitest_openharmony_sx.p7b"
   hap_name = "ActsNativeBufferTest"
-  part_name = "graphic_2d"
+  part_name = "graphic_surface"
   subsystem_name = "graphic"
   deps = [ ":nativebuffer_ndk_main" ]
 }

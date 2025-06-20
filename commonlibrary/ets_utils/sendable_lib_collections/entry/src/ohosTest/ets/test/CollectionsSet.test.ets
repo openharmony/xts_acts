@@ -45,9 +45,9 @@ export default function collectionsSetTest() {
     * @tc.desc  : Constructor that is used to create an ArkTS Set object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 0
     */
-    it('testSetConstructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetConstructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testSetConstructor0100';
       console.log(`${caseName} test start `);
       try {
@@ -69,9 +69,9 @@ export default function collectionsSetTest() {
     * @tc.desc  : Constructor that is used to create an ArkTS Set object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 0
     */
-    it('testSetConstructor0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetConstructor0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testSetConstructor0200';
       console.log(`${caseName} test start `);
       try {
@@ -93,7 +93,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Constructor that is used to create an ArkTS Set object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetConstructor0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetConstructor0300';
@@ -117,7 +117,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Constructor that is used to create an ArkTS Set object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetConstructor0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetConstructor0400';
@@ -141,7 +141,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns a Set iterator object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetEntries0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetEntries0100';
@@ -167,7 +167,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns a Set iterator object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetEntries0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetEntries0200';
@@ -195,7 +195,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns a Set iterator object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetEntries0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetEntries0300';
@@ -222,7 +222,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetKeys0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetKeys0100';
@@ -248,7 +248,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetKeys0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetKeys0200';
@@ -276,7 +276,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetKeys0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetKeys0300';
@@ -303,7 +303,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetValues0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetValues0100';
@@ -329,7 +329,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetValues0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetValues0200';
@@ -357,7 +357,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetValues0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetValues0300';
@@ -384,7 +384,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetClear0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetClear0100';
@@ -410,7 +410,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetClear0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetClear0200';
@@ -436,7 +436,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Returns an Set iterator object that contains the value of each element in this Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetClear0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetClear0300';
@@ -462,7 +462,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Deletes the specified element in the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetDelete0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetDelete0100';
@@ -488,7 +488,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Deletes the specified element in the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetDelete0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetDelete0200';
@@ -514,7 +514,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Deletes the specified element in the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetDelete0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetDelete0300';
@@ -540,7 +540,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : The callback function is executed once for each key / value pair in the Set in the insertion order.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetForEach0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetForEach0100';
@@ -569,7 +569,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : The callback function is executed once for each key / value pair in the Set in the insertion order.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetForEach0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetForEach0200';
@@ -598,7 +598,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Determines whether the specified element exists in the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetHas0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetHas0100';
@@ -623,7 +623,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Determines whether the specified element exists in the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetHas0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetHas0200';
@@ -648,7 +648,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : Determines whether the specified element exists in the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetHas0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetHas0300';
@@ -673,7 +673,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : If there is no same element, a new element is inserted into the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetAdd0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetAdd0100';
@@ -699,7 +699,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : If there is no same element, a new element is inserted into the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetAdd0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetAdd0200';
@@ -725,7 +725,7 @@ export default function collectionsSetTest() {
     * @tc.desc  : If there is no same element, a new element is inserted into the Set.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testSetAdd0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSetAdd0300';

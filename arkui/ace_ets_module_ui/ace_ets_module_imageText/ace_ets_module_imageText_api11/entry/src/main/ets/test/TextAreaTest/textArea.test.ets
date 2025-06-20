@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common'
 
 export default function textAreaOnCutJsunit() {
@@ -49,7 +49,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0001
      * @tc.desic         acetextAreaOnCutEtsTest0001
      */
-    it('testtextAreaOnCut0001', 0, async () => {
+    it('testtextAreaOnCut0001', Level.LEVEL1, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
@@ -66,7 +66,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0002
      * @tc.desic         acetextAreaOnCutEtsTest0002
      */
-    it('testtextAreaOnCut0002', 0, async () => {
+    it('testtextAreaOnCut0002', Level.LEVEL1, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0002 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
@@ -83,7 +83,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0003
      * @tc.desic         acetextAreaOnCutEtsTest0003
      */
-    it('testtextAreaOnCut0003', 0, async () => {
+    it('testtextAreaOnCut0003', Level.LEVEL1, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0003 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
@@ -100,7 +100,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0004
      * @tc.desic         acetextAreaOnCutEtsTest0004
      */
-    it('testtextAreaOnCut0004', 0, async () => {
+    it('testtextAreaOnCut0004', Level.LEVEL1, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0004 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
@@ -117,7 +117,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0005
      * @tc.desic         acetextAreaOnCutEtsTest0005
      */
-    it('testtextAreaOnCut0005', 0, async () => {
+    it('testtextAreaOnCut0005', Level.LEVEL1, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0005 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
@@ -134,7 +134,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0006
      * @tc.desic         acetextAreaOnCutEtsTest0006
      */
-    it('testtextAreaOnCut0006', 0, async () => {
+    it('testtextAreaOnCut0006', Level.LEVEL1, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0006 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
@@ -151,7 +151,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0009
      * @tc.desic         acetextAreaOnCutEtsTest0009
      */
-    it('testtextAreaOnCut0009', 0, async () => {
+    it('testtextAreaOnCut0009', Level.LEVEL1, async () => {
       console.info('textAreaOnCut testtextAreaOnCut009 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
@@ -168,7 +168,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0010
      * @tc.desic         acetextAreaOnCutEtsTest0010
      */
-    it('testtextAreaOnCut0010', 0, async () => {
+    it('testtextAreaOnCut0010', Level.LEVEL1, async () => {
       console.info('textAreaOnCut testtextAreaOnCut0010 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
@@ -185,7 +185,7 @@ export default function textAreaOnCutJsunit() {
      * @tc.name         testtextAreaOnCut0011
      * @tc.desic         acetextAreaOnCutEtsTest0011
      */
-    it('testtextAreaCopyOption0011', 0, async () => {
+    it('testtextAreaCopyOption0011', Level.LEVEL1, async () => {
       console.info('textAreaCopyOption testtextAreaCopyOption0011 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('textAreaCopyOptionText');
@@ -196,7 +196,5 @@ export default function textAreaOnCutJsunit() {
       console.info("[testtextAreaCopyOption0011] copyOption value :" + JSON.parse(strJson).$attrs.copyOption);
 
     });
-
-
   })
 }

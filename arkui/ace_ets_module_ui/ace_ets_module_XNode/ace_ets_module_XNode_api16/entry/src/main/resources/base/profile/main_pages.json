@@ -11,6 +11,7 @@
         "MainAbility/pages/FrameNode/componentContentDisposeTest",
         "MainAbility/pages/FrameNode/blendColorErrorCodeTest",
         "MainAbility/pages/FrameNode/resourceColorErrorCodeTest",
-        "MainAbility/pages/FrameNode/setCrossLanguageOptionsErrorCodeTest"
+        "MainAbility/pages/FrameNode/setCrossLanguageOptionsErrorCodeTest",
+        "MainAbility/pages/PostFrame/postFrameCallbackTest"
     ]
 }

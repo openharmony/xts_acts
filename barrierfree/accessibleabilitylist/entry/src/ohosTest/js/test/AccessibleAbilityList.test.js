@@ -54,7 +54,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100');
             let abilityType = 'audible';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
@@ -370,7 +370,7 @@ export default function AccessibleAbilityList() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400');
             let abilityType = 'audible';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
@@ -578,7 +578,7 @@ export default function AccessibleAbilityList() {
          * @tc.type    User
          * @tc.level   Level 1
          */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500');
             let abilityType = 'audible';
             let abilityState = 'install';

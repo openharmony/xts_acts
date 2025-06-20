@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageSpanObjectFitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanObjectFit001', 0, async (done: Function) => {
+    it('testImageSpanObjectFit001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanObjectFit001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageSpanObjectFitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanObjectFit002', 0, async (done: Function) => {
+    it('testImageSpanObjectFit002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanObjectFit002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageSpanObjectFitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanObjectFit003', 0, async (done: Function) => {
+    it('testImageSpanObjectFit003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanObjectFit003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageSpanObjectFitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanObjectFit004', 0, async (done: Function) => {
+    it('testImageSpanObjectFit004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanObjectFit004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageSpanObjectFitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanObjectFit005', 0, async (done: Function) => {
+    it('testImageSpanObjectFit005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanObjectFit005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function imageSpanObjectFitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanObjectFit006', 0, async (done: Function) => {
+    it('testImageSpanObjectFit006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanObjectFit006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function imageSpanObjectFitTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testImageSpanObjectFit007', 0, async (done: Function) => {
+    it('testImageSpanObjectFit007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanObjectFit007()).assertEqual(0)
       done()
     })

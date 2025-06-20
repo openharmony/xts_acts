@@ -20,8 +20,12 @@
         },{
             "type": "ShellKit",
             "run-command": [
-                "param set persist.sys.abilityms.support.start_other_app true"
-            ]
+                "param set persist.sys.abilityms.support.start_other_app true",
+                "param set persist.sys.abilityms.support.ecologicalrulemgrservice false"
+            ],
+            "teardown-command": [
+              "param set persist.sys.abilityms.support.ecologicalrulemgrservice true"
+          ]
         }
     ]
 }

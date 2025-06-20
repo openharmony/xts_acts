@@ -30,6 +30,7 @@
 #include "eventInfo/eventInfo.h"
 #include "snapShot/snap_shot.h"
 #include "snapShot/container.h"
+#include "swiper/swiper_change_index_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -94,12 +95,16 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"TestEventInfoGetPressedTime001", nullptr, EventInfoTest::TestEventInfoGetPressedTime001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-        {"TestEventInfoGetResult", nullptr, EventInfoTest::GetResult, nullptr,
+        {"TestEventInfoGetResultTouch", nullptr, EventInfoTest::GetResultTouch, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"TestEventInfoGetResultMove", nullptr, EventInfoTest::GetResultMove, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"snapShotTest001", nullptr, Manager::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"TestsnapShotetResult", nullptr, Manager::GetResult, nullptr, nullptr,
-         nullptr, napi_default, nullptr},   
+         nullptr, napi_default, nullptr},
+        {"testSwiperChangeIndex", nullptr, SwiperChangeIndexTest::SwiperChangeIndex,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

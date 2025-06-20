@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -56,7 +56,7 @@ export default function StorageProp26Jsunit() {
       done();
     });
 
-    it('StorageProp26Jsunit_0100', 0, async (done: Function) => {
+    it('StorageProp26Jsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[StorageProp26Jsunit_0100] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('son1PropA'));
@@ -79,7 +79,7 @@ export default function StorageProp26Jsunit() {
       done();
     });
 
-    it('StorageProp26Jsunit_0300', 0, async (done: Function) => {
+    it('StorageProp26Jsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[StorageProp26Jsunit_0300] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button221'));

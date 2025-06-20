@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest'
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -55,7 +55,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0100', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0100',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0100_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -79,7 +79,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0200', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0200',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0200_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -103,7 +103,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0300', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0300',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0300_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -127,7 +127,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0400', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0400',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0400_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -151,7 +151,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0500', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0500',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0500_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -175,7 +175,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0600', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0600',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0600_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -199,7 +199,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0700', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0700',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0700_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -223,7 +223,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0800', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0800',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0800_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -247,7 +247,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_0900', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_0900',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_0900_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -271,7 +271,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1000', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1000',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1000_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -295,7 +295,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1100', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1100',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1100_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -319,7 +319,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1200', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1200',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1200_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -343,7 +343,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1300', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1300',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1300_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -367,7 +367,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1400', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1400',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1400_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -391,7 +391,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1500', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1500',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1500_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -415,7 +415,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1600', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1600',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1600_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -439,7 +439,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1700', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1700',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1700_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -463,7 +463,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1800', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1800',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1800_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();
@@ -487,7 +487,7 @@ export default function textAreaAutoFillTest() {
      * @tc.type      : Function
      * @tc.level      : 0
      */
-    it('AutoFillTextAreaTest_1900', 0, async (done: Function) => {
+    it('AutoFillTextAreaTest_1900',  Level.LEVEL0, async (done: Function) => {
       const TAG = 'AutoFillTextAreaTest_1900_TAG';
       console.info(TAG, 'Start');
       let driver = Driver.create();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import { UIContext } from '@ohos.arkui.UIContext';
@@ -55,7 +55,7 @@ export default function stageMediaquery() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('testmediaQueryOff0001', 0, async (done: Function) => {
+    it('testmediaQueryOff0001', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff0001 START');
@@ -70,7 +70,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0002', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0002', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff0002 START');
@@ -85,7 +86,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0003', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0003', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff0003 START');
@@ -100,7 +102,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0004', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0004', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff0004 START');
@@ -115,7 +118,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0005', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0005', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff0005 START');
@@ -130,7 +134,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0006', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0006', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff0006 START');
@@ -145,7 +150,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0007', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0007', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff0007 START');
@@ -160,7 +166,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0009', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0009', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff009 START');
@@ -175,7 +182,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0010', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0010', Level.LEVEL2, async (done: Function) => {
       setTimeout(() => {
         try {
           console.info('mediaQueryOff testmediaQueryOff0010 START');
@@ -190,7 +198,8 @@ export default function stageMediaquery() {
         done();
       }, 500)
     });
-    it('testmediaQueryOff0011', 0, async (done: Function) => {
+
+    it('testmediaQueryOff0011', Level.LEVEL2, async (done: Function) => {
       console.info('mediaQueryOff testmediaQueryOff0011 START');
       try {
         let innerEventOne: events_emitter.InnerEvent = {
@@ -209,7 +218,8 @@ export default function stageMediaquery() {
       console.info('testmediaQueryOff0011 END');
       done();
     });
-    it('testmediaQueryOff0012', 0, async (done: Function) => {
+    
+    it('testmediaQueryOff0012', Level.LEVEL2, async (done: Function) => {
       console.info('matchMediaSync testmediaQueryOff0012 START');
       try {
         let innerEventOne: events_emitter.InnerEvent = {
@@ -229,7 +239,7 @@ export default function stageMediaquery() {
       done();
     });
 
-    it('testmediaQueryOff0013', 0, async (done: Function) => {
+    it('testmediaQueryOff0013', Level.LEVEL2, async (done: Function) => {
       let mediaQuery: ESObject = globalThis.uiContent.getMediaQuery();
       console.info('testmediaQueryOff0013 START');
       let result: ESObject;
@@ -244,7 +254,7 @@ export default function stageMediaquery() {
       done();
     });
 
-    it('testRunScopedTask0010', 0, async (done: Function) => {
+    it('testRunScopedTask0010', Level.LEVEL2, async (done: Function) => {
       let uiContent: UIContext = globalThis.uiContent
       console.info('testRunScopedTask0010 START');
       let result: ESObject;

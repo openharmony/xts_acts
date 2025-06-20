@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level} from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import screenshot from '@ohos.screenshot';
@@ -41,7 +41,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffAdd_RepeatOff', 0, async (done:Function) => {
+    it('testDisplayOffAdd_RepeatOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffAdd_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -78,9 +78,9 @@ export default function windowVerificationProblemTest() {
      * @tc.desc      : Turn off the monitor that shows device changes
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testDisplayOffAdd_UnregisteredOff', 0, async (done:Function) => {
+    it('testDisplayOffAdd_UnregisteredOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'testDisplayOffAdd_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -101,7 +101,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffRemove_RepeatOff', 0, async (done:Function) => {
+    it('testDisplayOffRemove_RepeatOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffRemove_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -139,7 +139,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffRemove_UnregisteredOff', 0, async (done:Function) => {
+    it('testDisplayOffRemove_UnregisteredOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffRemove_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -160,7 +160,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffChange_RepeatOff', 0, async (done:Function) => {
+    it('testDisplayOffChange_RepeatOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -199,7 +199,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffChange_UnregisteredOff', 0, async (done:Function) => {
+    it('testDisplayOffChange_UnregisteredOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -220,7 +220,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffFoldStatusChange_RepeatOff', 0, async (done:Function) => {
+    it('testDisplayOffFoldStatusChange_RepeatOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffFoldStatusChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -258,7 +258,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffFoldStatusChange_UnregisteredOff', 0, async (done:Function) => {
+    it('testDisplayOffFoldStatusChange_UnregisteredOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffFoldStatusChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -279,7 +279,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffFoldDisplayModeChange_RepeatOff', 0, async (done:Function) => {
+    it('testDisplayOffFoldDisplayModeChange_RepeatOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffFoldDisplayModeChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -317,7 +317,7 @@ export default function windowVerificationProblemTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDisplayOffFoldDisplayModeChange_UnregisteredOff', 0, async (done:Function) => {
+    it('testDisplayOffFoldDisplayModeChange_UnregisteredOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDisplayOffFoldDisplayModeChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

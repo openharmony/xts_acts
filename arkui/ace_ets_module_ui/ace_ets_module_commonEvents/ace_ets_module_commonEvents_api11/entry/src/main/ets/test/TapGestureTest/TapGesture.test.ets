@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -56,7 +56,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       console.info("tapGesture after each called");
     });
 
-    it('testTapGesture01', 0, async (done: Function) => {
+    it('testTapGesture01', Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000)
       let rect = CommonFunc.getComponentRect('tapGesture')
       console.info("[testTapGesture01] rectInfo is " + JSON.stringify(rect));

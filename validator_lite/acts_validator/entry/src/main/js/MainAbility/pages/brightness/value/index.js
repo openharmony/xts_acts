@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import brightness from '@system.brightness';
 
 export default {
     data: {
+        itemIndex: -1,
         value: 0,
         getValue : 0,
         str: '',
@@ -77,17 +77,24 @@ export default {
             params: {
                 step: '操作步骤：点击获取亮度、拖动滑动条',
                 result: '预期结果：获取亮度时显示当前屏幕的亮度值，调节滑动条时看到屏幕有明暗变化',
-                url: 'pages/brightness/value/index'
+                url: 'pages/brightness/value/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

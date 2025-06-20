@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
@@ -52,7 +52,7 @@ export default function flex_Wrap_FlexSizeTest() {
      * @tc.desc The size of the parent component in the main axis direction
      *               meets the layout of the child components
      */
-    it('SUB_ACE_FLEXWRAP_WRAP_1100', 0, async () => {
+    it('SUB_ACE_FLEXWRAP_WRAP_1100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1100] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
@@ -99,7 +99,7 @@ export default function flex_Wrap_FlexSizeTest() {
      * @tc.desc The size of the parent component in the main axis direction
      *               is not enough for the layout of the child components,and the cross axis meets
      */
-    it('SUB_ACE_FLEXWRAP_WRAP_1200', 0, async () => {
+    it('SUB_ACE_FLEXWRAP_WRAP_1200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1200] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 400
@@ -147,7 +147,7 @@ export default function flex_Wrap_FlexSizeTest() {
      * @tc.desc The size of the parent component in the main axis direction
      *               is not enough for the layout of the child componentsand,and the cross axis as well
      */
-    it('SUB_ACE_FLEXWRAP_WRAP_1300', 0, async () => {
+    it('SUB_ACE_FLEXWRAP_WRAP_1300',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1300] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 350

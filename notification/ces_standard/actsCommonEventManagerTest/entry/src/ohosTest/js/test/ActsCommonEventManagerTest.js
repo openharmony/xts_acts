@@ -200,6 +200,56 @@ export default function ActsCommonEventManagerTest() {
 
     })
 
+    it('Sub_Notification_Ans_Subscriber_SubscribeToEvent_0401', Level.LEVEL3, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0400 START`)
+
+      let subscriber
+
+      let subscribeInfo = {
+        events: ["event05"]
+      }
+
+      try {
+        commonEventManager.createSubscriber(subscribeInfo, (err, commonEventSubscriber) => {
+          if (err) {
+            console.error(`Sub_Notification_Ans_Subscriber_Subscribe_0400 err, error code: ${err.code}, message: ${err.message}`)
+            expect(false).assertTrue()
+            done()
+          } else {
+            console.info(`Sub_Notification_Ans_Subscriber_Subscribe_0400 success ${commonEventSubscriber}`)
+            subscriber = commonEventSubscriber
+            try {
+              commonEventManager.subscribeToEvent(subscriber, (data) => {
+                console.info(`subscribe_1 OnReceive event success`)
+                expect(true).assertTrue()
+                done()
+              }).then(() => {
+                console.info(`subscribe_1 success`)
+                expect(true).assertTrue()
+                done()
+              }).catch((err) => {
+                console.error(`subscribe_1 err, code is ${err.code}, message is ${err.message}`)
+                expect(false).assertTrue()
+                done()
+              })
+            } catch (err) {
+              console.error(`subscribe_1 failed, code is ${err.code}, message is ${err.message}`)
+            }
+            expect(true).assertTrue()
+            done()
+          }
+        })
+      } catch (err) {
+        console.info(`Sub_Notification_Ans_Subscriber_Subscribe_0400 failed, code is ${err.code}, message is ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      }
+
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0400 END`)
+
+    })
+
+
     /*
      * @tc.number: Sub_Notification_Ans_Subscriber_Unsubscribe_0200
      * @tc.name: unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void

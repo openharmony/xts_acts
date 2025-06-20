@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   sleep,
   fetchOption,
@@ -46,7 +46,7 @@ export default function unRegisterChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('unRegisterChange_001', 0, async (done: Function) => {
+    it('unRegisterChange_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'unRegisterChange_001';
       try {
         const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'off01.jpg');
@@ -81,7 +81,7 @@ export default function unRegisterChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('unRegisterChange_007', 0, async (done: Function) => {
+    it('unRegisterChange_007', Level.LEVEL0, async (done: Function) => {
       const testNum = 'unRegisterChange_007';
       try {
         let count = 0;
@@ -112,7 +112,7 @@ export default function unRegisterChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('unRegisterChange_008', 0, async (done: Function) => {
+    it('unRegisterChange_008', Level.LEVEL0, async (done: Function) => {
       const testNum = 'unRegisterChange_008';
       try {
         let albumUri = '';
@@ -148,8 +148,8 @@ export default function unRegisterChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    // it('unRegisterChange_010', 0, async example(done: Function) =>{
-    it('unRegisterChange_010', 0, async (done: Function) =>{
+    // it('unRegisterChange_010', Level.LEVEL0, async example(done: Function) =>{
+    it('unRegisterChange_010', Level.LEVEL0, async (done: Function) =>{
       const testNum = 'unRegisterChange_010';
       try {
         let albumUri = '';
@@ -188,7 +188,7 @@ export default function unRegisterChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('unRegisterChange_011', 0, async (done: Function) => {
+    it('unRegisterChange_011', Level.LEVEL0, async (done: Function) => {
       const testNum = 'unRegisterChange_011';
       try {
         let albumName = 'testAlbum' + Date.now();
@@ -223,7 +223,7 @@ export default function unRegisterChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('unRegisterChange_012', 0, async (done: Function) => {
+    it('unRegisterChange_012', Level.LEVEL0, async (done: Function) => {
       const testNum = 'unRegisterChange_012';
       try {
         let albumName = 'testAlbum' + Date.now();
@@ -259,7 +259,7 @@ export default function unRegisterChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('unRegisterChange_015', 3, async (done: Function) => {
+    it('unRegisterChange_015', Level.LEVEL3, async (done: Function) => {
       const testNum = 'unRegisterChange_015';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'off15.jpg');
@@ -298,7 +298,7 @@ export default function unRegisterChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('unRegisterChange_callback_000', 3, async (done: Function) => {
+    it('unRegisterChange_callback_000', Level.LEVEL3, async (done: Function) => {
       const testNum = 'unRegisterChange_callback_000';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'offCb01.jpg');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -64,7 +64,7 @@ export default function CalcJsunit01() {
      Text set width resource
      Column set height calc(45% + 45%)
      */
-    it('CalcJsunit01_0100', 0, async (done: Function) => {
+    it('CalcJsunit01_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[CalcJsunit01_0100] START');
       await CommonFunc.sleep(4000);
       let calc2: RectValue = CommonFunc.getComponentRect('calc01key2');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -51,7 +51,7 @@ export default function ColumnSetOffset_SubChange() {
      * @tc.name testColumnSubcomponentSetOffset
      * @tc.desc The first subcomponent set offset attribute.
      */
-    it('testColumnSubcomponentSetOffset', 0, async () => {
+    it('testColumnSubcomponentSetOffset',  Level.LEVEL0, async () => {
       console.info('new testColumnSubcomponentSetOffset START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'offset_x', value: 10

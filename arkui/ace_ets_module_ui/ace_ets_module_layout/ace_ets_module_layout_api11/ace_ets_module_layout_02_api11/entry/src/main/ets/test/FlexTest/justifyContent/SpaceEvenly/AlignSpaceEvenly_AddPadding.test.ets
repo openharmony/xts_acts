@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -52,7 +52,7 @@ export default function AlignSpaceEvenly_AddPadding() {
      * @tc.desc After subtracting the padding from the parent component layout space, the interface
      * display that does not meet the spindle layout of the child component
      */
-    it('testAlignSpaceEvenlyFlexPadMeet', 0, async () => {
+    it('testAlignSpaceEvenlyFlexPadMeet',  Level.LEVEL0, async () => {
       console.info('[testAlignSpaceEvenlyFlexPadMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadPadding', value: 30
@@ -98,7 +98,7 @@ export default function AlignSpaceEvenly_AddPadding() {
      * @tc.desc After subtracting the padding from the parent component layout space, the interface that
      * satisfies the spindle layout of the child component is displayed
      */
-    it('testAlignSpaceEvenlyFlexPadOverflow', 0, async () => {
+    it('testAlignSpaceEvenlyFlexPadOverflow',  Level.LEVEL0, async () => {
       console.info('[testAlignSpaceEvenlyFlexPadOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadPadding', value: 20

@@ -198,9 +198,9 @@ export default function   netStatisticsNoDataTest() {
      * @tc.desc  : Obtain real-time downlink traffic of all network adapters without Ethernet access;callback.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrStatisticsGetAllRxBytes0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetAllRxBytes0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetAllRxBytes0500';
       console.info(`${caseName} test start`);
       try {
@@ -264,9 +264,9 @@ export default function   netStatisticsNoDataTest() {
      * @tc.desc  : Obtain real-time upstream traffic of all nics without Ethernet access;callback.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrStatisticsGetAllTxBytes0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetAllTxBytes0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetAllTxBytes0500';
       console.info(`${caseName} test start`);
       try {
@@ -294,7 +294,7 @@ export default function   netStatisticsNoDataTest() {
     /* *
      * @tc.number: SUB_NetworkMgr_Statistics_GetAllTxBytes_0600
      * @tc.name  : testNetworkMgrStatisticsGetAllTxBytes0600
-     * @tc.desc  : Obtain real-time upstream traffic of all nics without Ethernet access;promise
+     * @tc.desc  : Obtain real-time upstream traffic of all nics without Ethernet access
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3

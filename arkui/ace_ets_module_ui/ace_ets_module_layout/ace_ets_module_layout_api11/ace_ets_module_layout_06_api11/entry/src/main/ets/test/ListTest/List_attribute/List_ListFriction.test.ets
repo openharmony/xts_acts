@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
@@ -50,7 +50,7 @@ export default function list_ListFrictionTest() {
      * @tc.name      testListFriction
      * @tc.desc      set friction to -1
      */
-    it('testListFriction', 0, async  (done: Function)=> {
+    it('testListFriction',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testListFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
       await CommonFunc.sleep(2000);
@@ -69,7 +69,7 @@ export default function list_ListFrictionTest() {
      * @tc.name      testListFriction
      * @tc.desc      set friction to 10
      */
-    it('testListFriction', 0, async  (done: Function)=> {
+    it('testListFriction',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testListFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
       await CommonFunc.sleep(2000);

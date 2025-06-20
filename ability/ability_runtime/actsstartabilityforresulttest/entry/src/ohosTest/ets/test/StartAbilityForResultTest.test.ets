@@ -22,7 +22,7 @@ import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
 import bundle from '@ohos.bundle.bundleManager';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let targetVersion: number = 12;
 export default function StartAbilityForResultTest() {
   describe('StartAbilityForResultTest', () => {
@@ -432,7 +432,7 @@ export default function StartAbilityForResultTest() {
         await driver.delayMs(2000);
         let cancel = await driver.findComponent(ON.text("label"));
         await cancel.click();
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           await driver.delayMs(900);
           let cancel1 = await driver.findComponent(ON.text("仅此一次"));
           await cancel1.click();

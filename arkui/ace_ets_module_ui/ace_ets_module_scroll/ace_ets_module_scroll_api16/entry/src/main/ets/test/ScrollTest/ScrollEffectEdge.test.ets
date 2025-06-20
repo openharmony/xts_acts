@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -45,7 +45,7 @@ export default function ScrollEffectEdge() {
      * @tc.name   :test effect edge callback
      * @tc.desc   :test whether edgeEffectiveness Options are effective
      */
-    it('ArkUI_Scroll_EffectEdge_0100', 0, async (done: Function) => {
+    it('ArkUI_Scroll_EffectEdge_0100', Level.LEVEL1, async (done: Function) => {
       let json1 = getInspectorByKey('scroll1')
       await sleep(1000)
       let obj: ESObject = JSON.parse(json1);
@@ -63,7 +63,7 @@ export default function ScrollEffectEdge() {
      * @tc.name   :test effect edge callback
      * @tc.desc   :test whether edgeEffectiveness Options are effective
      */
-    it('ArkUI_Scroll_EffectEdge_0200', 0, async (done: Function) => {
+    it('ArkUI_Scroll_EffectEdge_0200', Level.LEVEL1, async (done: Function) => {
       let json1 = getInspectorByKey('scroll2')
       await sleep(1000)
       let obj: ESObject = JSON.parse(json1);
@@ -81,7 +81,7 @@ export default function ScrollEffectEdge() {
      * @tc.name   :test effect edge callback
      * @tc.desc   :test whether edgeEffectiveness Options are effective
      */
-    it('ArkUI_Scroll_EffectEdge_0300', 0, async (done: Function) => {
+    it('ArkUI_Scroll_EffectEdge_0300', Level.LEVEL1, async (done: Function) => {
       let json1 = getInspectorByKey('list2')
       await sleep(1000)
       let obj: ESObject = JSON.parse(json1);
@@ -99,7 +99,7 @@ export default function ScrollEffectEdge() {
      * @tc.name   :test effect edge callback
      * @tc.desc   :test whether edgeEffectiveness Options are effective
      */
-    it('ArkUI_Scroll_EffectEdge_0400', 0, async (done: Function) => {
+    it('ArkUI_Scroll_EffectEdge_0400', Level.LEVEL1, async (done: Function) => {
       let json1 = getInspectorByKey('grid3')
       await sleep(1000)
       let obj: ESObject = JSON.parse(json1);

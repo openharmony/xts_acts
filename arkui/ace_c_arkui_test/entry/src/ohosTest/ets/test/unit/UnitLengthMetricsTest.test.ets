@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function unitLengthMetricsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitLengthMetrics001', 0, async (done: Function) => {
+    it('testUnitLengthMetrics001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitLengthMetrics001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function unitLengthMetricsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitLengthMetrics002', 0, async (done: Function) => {
+    it('testUnitLengthMetrics002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitLengthMetrics002()).assertEqual(0)
       done();
     }); 
@@ -58,7 +58,7 @@ export default function unitLengthMetricsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitLengthMetrics003', 0, async (done: Function) => {
+    it('testUnitLengthMetrics003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitLengthMetrics003()).assertEqual(0)
       done();
     }); 
@@ -70,7 +70,7 @@ export default function unitLengthMetricsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitLengthMetrics004', 0, async (done: Function) => {
+    it('testUnitLengthMetrics004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitLengthMetrics004()).assertEqual(0)
       done();
     }); 

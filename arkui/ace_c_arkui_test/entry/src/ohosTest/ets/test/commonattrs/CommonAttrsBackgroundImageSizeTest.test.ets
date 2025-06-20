@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize001', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize002', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize003', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize004', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize005', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize006', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize007', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize008', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize009', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize010', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize011', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize012', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize013', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function commonAttrsBackgroundImageSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImageSize014', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImageSize014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImageSize014()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function RelativeContainer_AnchorPoint_Absent() {
      * @tc.name testRelativeContainer
      * @tc.desc Relying on non-existent elements as anchors
      */
-    it('SUB_ACE_RelativeContainer_AnchorPoint_Absent_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_RelativeContainer_AnchorPoint_Absent_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_Absent_TEST_0100] START');
 
       await CommonFunc.sleep(3000);

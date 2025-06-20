@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0100', 0, async (done: Function) => {
+    it('RichTextJsunit_0100', Level.LEVEL0, async (done: Function) => {
       // Get the data of the RichText component
       console.info('[RichTextJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -64,7 +64,7 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0200', 0, async (done: Function) => {
+    it('RichTextJsunit_0200', Level.LEVEL0, async (done: Function) => {
       // Verify the onStart of the RichText component
       console.info('[RichTextJsunit_0200] START');
       await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0300', 0, async (done: Function) => {
+    it('RichTextJsunit_0300', Level.LEVEL0, async (done: Function) => {
       // Verify the onComplete of the RichText component
       console.info('[RichTextJsunit_0300] START');
       await CommonFunc.sleep(1000);
@@ -89,7 +89,7 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0400', 0, async (done: Function) => {
+    it('RichTextJsunit_0400', Level.LEVEL0, async (done: Function) => {
       // Modify data of the RichText component
       console.info('[RichTextJsunit_0400] START');
       globalThis.value.message.notify({name:'RichTextData',value:'<h1 style="text-align: center;">h1Test标题</h1>'})
@@ -103,7 +103,7 @@ export default function RichTextJsunit() {
       done();
     });
 
-    it('RichTextJsunit_0500', 0, async (done: Function) => {
+    it('RichTextJsunit_0500', Level.LEVEL0, async (done: Function) => {
       // Illegal modification content of the RichText component
       console.info('[RichTextJsunit_0500] START');
       globalThis.value.message.notify({name:'RichTextData',value:1})

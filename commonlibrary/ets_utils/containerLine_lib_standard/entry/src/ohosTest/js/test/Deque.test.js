@@ -21,7 +21,7 @@ describe("DequeTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an Deque instance. For example: let deque = new Deque().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let deque = new Deque();
     } catch (err) {
@@ -35,7 +35,7 @@ describe("DequeTest", function () {
    * @tc.name: testInsertFront002
    * @tc.desc: Add element to deque instance header. For example: deque.insertFront("一").
    */
-  it("testInsertFront002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsertFront002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertFront("一");
     let res = deque.getFirst();
@@ -46,7 +46,7 @@ describe("DequeTest", function () {
    * @tc.name: testInsertFront003
    * @tc.desc: Add element to deque instance header. For example: deque.insertFront(8).
    */
-  it("testInsertFront003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsertFront003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertFront(8);
     let res = deque.getFirst();
@@ -58,7 +58,7 @@ describe("DequeTest", function () {
    * @tc.desc: Add element to deque instance header. 
    * For example: let a = {name: "lala", age: "15"}; deque.insertFront(a).
    */
-  it("testInsertFront004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsertFront004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     let a = {name: "lala", age: "15"};
     deque.insertFront(a);
@@ -70,7 +70,7 @@ describe("DequeTest", function () {
    * @tc.name: testInsertFront005
    * @tc.desc: Add element to deque instance header. For example: let a = [1, 2, 3, 4]; deque.insertFront(a).
    */
-  it("testInsertFront005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsertFront005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     let a = [1, 2, 3, 4];
     deque.insertFront(a);
@@ -82,7 +82,7 @@ describe("DequeTest", function () {
    * @tc.name: testInsertEnd006
    * @tc.desc: Add element to deque instance end. For example: deque.insertEnd(8).
    */
-  it("testInsertEnd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsertEnd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     let res = deque.getLast();
@@ -93,7 +93,7 @@ describe("DequeTest", function () {
    * @tc.name: testInsertEnd007
    * @tc.desc: Add element to deque instance end. For example: let a = ["a", "b", "c"];deque.insertEnd(a).
    */
-  it("testInsertEnd007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsertEnd007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     let a = ["a", "b", "c"];
     deque.insertEnd(a);
@@ -105,7 +105,7 @@ describe("DequeTest", function () {
    * @tc.name: testInsertEnd008
    * @tc.desc: Add element to deque instance end. For example: let a = {class: "6班", say: "we"};deque.insertEnd(a).
    */
-  it("testInsertEnd008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsertEnd008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     let a = {class: "6班", say: "we"};
     deque.insertEnd(a);
@@ -117,7 +117,7 @@ describe("DequeTest", function () {
    * @tc.name: testGetFirst009
    * @tc.desc: Get the header element of the deque instance. For example: deque.getFirst().
    */
-  it("testGetFirst009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetFirst009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertEnd("四");
     deque.insertEnd("三");
@@ -129,7 +129,7 @@ describe("DequeTest", function () {
    * @tc.name: testGetLast010
    * @tc.desc: Get the end element of the deque instance. For example: deque.getLast().
    */
-  it("testGetLast010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetLast010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertEnd("三");
@@ -141,7 +141,7 @@ describe("DequeTest", function () {
    * @tc.name: testHas011
    * @tc.desc: Determine whether the deque instance contains the specified element. For example: deque.has(6).
    */
-  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertEnd(6);
     let res = deque.has(6);
@@ -152,7 +152,7 @@ describe("DequeTest", function () {
    * @tc.name: testHas012
    * @tc.desc: Determine whether the deque instance contains the specified element. For example: deque.has(6).
    */
-  it("testHas012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     let res = deque.has(6);
@@ -163,7 +163,7 @@ describe("DequeTest", function () {
    * @tc.name: testPopFirst013
    * @tc.desc: Delete the header element of a deque instance. For example: deque.popFirst().
    */
-  it("testPopFirst013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPopFirst013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("一");
@@ -175,7 +175,7 @@ describe("DequeTest", function () {
    * @tc.name: testPopLast014
    * @tc.desc: Delete the end element of a deque instance. For example: deque.popLast().
    */
-  it("testPopLast014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPopLast014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("一");
@@ -188,7 +188,7 @@ describe("DequeTest", function () {
    * @tc.name: testForEach015
    * @tc.desc: Traversing elements in deque instances. For example: deque.forEach((item, index) => {arr.push(item);}).
    */
-  it("testForEach015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testForEach015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("一");

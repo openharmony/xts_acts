@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function spanTextShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextShadow001', 0, async (done: Function) => {
+    it('testSpanTextShadow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextShadow001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function spanTextShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextShadow002', 0, async (done: Function) => {
+    it('testSpanTextShadow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextShadow002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function spanTextShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextShadow003', 0, async (done: Function) => {
+    it('testSpanTextShadow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextShadow003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function spanTextShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextShadow004', 0, async (done: Function) => {
+    it('testSpanTextShadow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextShadow004()).assertEqual(0)
       done()
     })

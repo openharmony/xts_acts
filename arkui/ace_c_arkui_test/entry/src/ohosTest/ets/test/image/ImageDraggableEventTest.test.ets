@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import { ComponentInfo } from '../common/Interfaces';
 import Utils from '../common/Utils';
 import { Component, Driver, ON } from '@ohos.UiTest';
@@ -31,7 +31,7 @@ export default function imageDraggableEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageDraggable006', 0, async (done: Function) => {
+    it('testImageDraggable006', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`image/${PAGE_TAG}`);
       let driver: Driver = Driver.create();
       await Utils.sleep(1000);

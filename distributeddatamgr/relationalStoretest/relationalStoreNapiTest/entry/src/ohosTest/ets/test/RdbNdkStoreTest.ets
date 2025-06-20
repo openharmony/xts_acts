@@ -50,9 +50,9 @@ export default function RdbNdkStoreTest() {
          * @tc.type: FUNC
          * @tc.name rdb normal test
          * @tc.size   : MediumTest
-         * @tc.level  : Level 2
+         * @tc.level  : Level 0
          */
-        it('SUB_DDM_RDB_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+        it('SUB_DDM_RDB_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -178,9 +178,9 @@ export default function RdbNdkStoreTest() {
          * @tc.type: FUNC
          * @tc.name rdb normal test
          * @tc.size   : MediumTest
-         * @tc.level  : Level 2
+         * @tc.level  : Level 0
          */
-        it('SUB_DDM_RDB_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+        it('SUB_DDM_RDB_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0900' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0900();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -258,9 +258,9 @@ export default function RdbNdkStoreTest() {
          * @tc.type: FUNC
          * @tc.name rdb normal test
          * @tc.size   : MediumTest
-         * @tc.level  : Level 2
+         * @tc.level  : Level 0
          */
-        it('SUB_DDM_RDB_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+        it('SUB_DDM_RDB_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1400' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1400();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');

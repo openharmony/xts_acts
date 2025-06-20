@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function ButtonTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonType001', 0, async (done: Function) => {
+    it('testButtonType001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonType001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function ButtonTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonType002', 0, async (done: Function) => {
+    it('testButtonType002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonType002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function ButtonTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonType003', 0, async (done: Function) => {
+    it('testButtonType003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonType003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function ButtonTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonType004', 0, async (done: Function) => {
+    it('testButtonType004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonType004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function ButtonTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testButtonType005', 0, async (done: Function) => {
+    it('testButtonType005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonType005()).assertEqual(0)
       done()
     })

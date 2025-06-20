@@ -16,7 +16,7 @@ import hidebug from '@ohos.hidebug'
 import fileio from '@ohos.fileio'
 import process from '@ohos.process'
 import featureAbility from '@ohos.ability.featureAbility'
-import {describe, it, expect} from '@ohos/hypium'
+import {describe, it, expect, TestType, Level, Size} from '@ohos/hypium'
 
 export default function HidebugJsTest() {
 describe('HidebugJsTest', function () {
@@ -30,7 +30,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0600', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0600 Test start*************');
         try {
             let heapSize = hidebug.getNativeHeapSize();
@@ -50,7 +50,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0400', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0400 Test start*************');
         try {
             let heapAllocatedSize = hidebug.getNativeHeapAllocatedSize();
@@ -70,7 +70,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0500', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0500 Test start*************');
         try {
             let heapFreeSize = hidebug.getNativeHeapFreeSize();
@@ -90,7 +90,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0800', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0800 Test start*************');
         try {
             const times = 3;
@@ -117,7 +117,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_1200', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1200 Test start*************');
         try {
             let temp = hidebug.getSharedDirty();
@@ -137,7 +137,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_1600', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1600 Test start*************');
         try {
             let timestamp = Date.now();
@@ -164,7 +164,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_1500', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1500 Test start*************');
         try {
             let path1 = '/data/app/el2/100/base/com.hidebug.test/files/cpuprofiler-111.json'
@@ -195,7 +195,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_1400', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1400 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
@@ -226,7 +226,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_1300', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1300 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
@@ -261,7 +261,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0300', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0300 Test start*************');
         try {
             let timestamp = Date.now();
@@ -286,7 +286,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0200', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0200 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.heapsnapshot'
         try {
@@ -315,7 +315,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0100', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0100 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.heapsnapshot'
         try {
@@ -348,7 +348,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0700', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0700 Test start*************');
         try {
             let temp = hidebug.getPrivateDirty();
@@ -368,7 +368,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_1700', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1700 Test start*************');
         try {
             let temp = -1;
@@ -396,7 +396,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_1100', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1100 Test start*************');
         let context = featureAbility.getContext();
         context.getFilesDir().then((data) => {
@@ -426,7 +426,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_0900', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0900 Test start*************');
         let context = featureAbility.getContext();
         context.getFilesDir().then((data) => {
@@ -456,7 +456,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('DFX_DFR_Hiprofiler_Interface_1000', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1000 Test start*************');
         let context = featureAbility.getContext();
         context.getFilesDir().then((data) => {
@@ -486,7 +486,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-     it('DFX_DFR_Hiprofiler_Interface_1800', 0, function() {
+     it('DFX_DFR_Hiprofiler_Interface_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1800 Test start*************');
         try {
             let timestamp = Date.now();
@@ -519,7 +519,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-     it('DFX_DFR_Hiprofiler_Interface_1900', 0, function() {
+     it('DFX_DFR_Hiprofiler_Interface_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1900 Test start*************');
         try {
             hidebug.startJsCpuProfiling();
@@ -544,7 +544,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-     it('DFX_DFR_Hiprofiler_Interface_2000', 0, function() {
+     it('DFX_DFR_Hiprofiler_Interface_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_2000 Test start*************');
         try {
             hidebug.dumpJsHeapData("heapData");
@@ -565,7 +565,7 @@ describe('HidebugJsTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-     it('DFX_DFR_Hiprofiler_Interface_2100', 0, function() {
+     it('DFX_DFR_Hiprofiler_Interface_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_2100 Test start*************');
         try {
             hidebug.dumpJsHeapData();
@@ -586,7 +586,7 @@ describe('HidebugJsTest', function () {
     * @tc.size: MediumTest
     * @tc.type: Function
     */
-    it('DFX_DFR_Hiprofiler_Interface_2200', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_2200 Test start*************');
         try {
             let temp = hidebug.getVss();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function checkboxOnChangeTest() {
@@ -34,7 +34,7 @@ export default function checkboxOnChangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxOnChange001', 0, async (done: Function) => {
+    it('testCheckboxOnChange001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnChangeTestCheckBox')
       await Utils.sleep(2000)
       await Utils.clickComponent('OnChangeTestCheckBoxSelected')

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -54,7 +54,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0001', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0001', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0001 START');
         await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0002', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0002', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0002 START');
         await CommonFunc.sleep(1000);
@@ -98,7 +98,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0003', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0003', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0003 START');
         await CommonFunc.sleep(1000);
@@ -122,7 +122,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0004', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0004', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0004 START');
         await CommonFunc.sleep(1000);
@@ -145,7 +145,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0005', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0005', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0005 START');
         await CommonFunc.sleep(1000);
@@ -166,7 +166,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0006', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0006', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0006 START');
         await CommonFunc.sleep(1000);
@@ -191,7 +191,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0007', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0007', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0007 START');
         await CommonFunc.sleep(1000);
@@ -214,7 +214,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0008', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0008', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0008 START');
         await CommonFunc.sleep(1000);
@@ -235,7 +235,7 @@ export default function bindSelectionMenuTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('bindSelectionMenuTest0009', 0, async (done: Function) => {
+    it('bindSelectionMenuTest0009', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('bindSelectionMenuTest bindSelectionMenuTest0009 START');
         await CommonFunc.sleep(1000);

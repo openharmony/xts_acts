@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common'
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function textAreaOnCaretAndKeyboardTest() {
        * @tc.type : Function
        * @tc.size : MediumTest
        */
-    it('textAreaOnCaretAndKeyboard001', 0, async () => {
+    it('textAreaOnCaretAndKeyboard001', Level.LEVEL1, async () => {
       console.info('textAreaOnCaretAndKeyboard001 START');
       let driver: Driver = Driver.create();
       let textAreaComponent = await driver.findComponent(ON.id('textAreaOnCaretAndKeyboard'));
@@ -94,7 +94,7 @@ export default function textAreaOnCaretAndKeyboardTest() {
        * @tc.type : Function
        * @tc.size : MediumTest
        */
-    it('textAreaOnCaretAndKeyboard002', 0, async () => {
+    it('textAreaOnCaretAndKeyboard002', Level.LEVEL1, async () => {
       console.info('textAreaOnCaretAndKeyboard002 START');
       let driver = Driver.create();
       let textAreaComponent = await driver.findComponent(ON.id('textAreaOnCaretAndKeyboard'));

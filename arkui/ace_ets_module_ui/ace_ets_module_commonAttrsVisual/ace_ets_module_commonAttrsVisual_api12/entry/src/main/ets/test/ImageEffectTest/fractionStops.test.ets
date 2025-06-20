@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {
   UiComponent,
   UiDriver,
@@ -68,7 +68,7 @@ export default function fractionStops() {
      * @tc.type :
      * @tc.size :
      */
-    it('fractionStops_0100', 0, async (done: Function) => {
+    it('fractionStops_0100', Level.LEVEL2, async (done: Function) => {
       console.info('fractionStops_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('fractionStops');

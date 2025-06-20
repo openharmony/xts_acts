@@ -13,7 +13,13 @@
 * limitations under the License.
 */
 import webviewNApi from './WebResponseSetUrlGetUrl.test';
+import webCookieManagerErrorCode from './WebCookieManagerErrorCode.test';
+import webMessagePortErrorCode from './WebMessagePortErrorCode.test'
+import webErrorCode from './WebErrorCode.test';
 
 export default function testsuite() {
   webviewNApi();
+  webCookieManagerErrorCode();
+  webMessagePortErrorCode();
+  webErrorCode();
 }

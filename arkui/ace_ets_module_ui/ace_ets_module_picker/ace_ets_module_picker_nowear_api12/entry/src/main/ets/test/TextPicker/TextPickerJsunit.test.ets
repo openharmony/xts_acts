@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import Utils from '../Utils/Utils';
 import router from '@ohos.router'
 export default function textpickerJsunit() {
@@ -48,7 +48,7 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_001', 0, async (done: Function) => {
+    it('ArkUI_textpicker_001', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_textpicker_001] START');
       let strJson = getInspectorByKey('textPickerDefault');
       let obj: ESObject = JSON.parse(strJson);
@@ -70,7 +70,7 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_002', 0, async (done: Function) => {
+    it('ArkUI_textpicker_002', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_textpicker_002] START');
       let strJson = getInspectorByKey('textPickerDefault');
       let obj: ESObject = JSON.parse(strJson);
@@ -93,7 +93,7 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_003', 0, async (done: Function) => {
+    it('ArkUI_textpicker_003', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_textpicker_003] START');
       let strJson = getInspectorByKey('textPickerDefault');
       let obj: ESObject = JSON.parse(strJson);
@@ -116,7 +116,7 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_004', 0, async (done: Function) => {
+    it('ArkUI_textpicker_004', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_textpicker_004] START');
       let strJson = getInspectorByKey('textPickerDefault');
       let obj: ESObject = JSON.parse(strJson);
@@ -139,7 +139,7 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_005', 0, async (done: Function) => {
+    it('ArkUI_textpicker_005', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_textpicker_005] START');
       let strJson = getInspectorByKey('textPickerDefault');
       let obj: ESObject = JSON.parse(strJson);
@@ -158,7 +158,7 @@ export default function textpickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_textpicker_006', 0, async (done: Function) => {
+    it('ArkUI_textpicker_006', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_textpicker_006] START');
       let strJson = getInspectorByKey('textPickerDefault');
       let obj: ESObject = JSON.parse(strJson);

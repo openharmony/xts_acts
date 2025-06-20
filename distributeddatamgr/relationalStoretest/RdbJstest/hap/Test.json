@@ -19,7 +19,7 @@
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
-                "uinput -T -g 100 100 500 500",
+                "uinput -T -g 500 2200 500 1700",
                 "power-shell setmode 602"
             ]
         }

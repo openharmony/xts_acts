@@ -17,11 +17,11 @@ export default function networkSecurityNoP() {
      * @tc.number : SUB_Telephony_networkSecurity_Nop_0100
      * @tc.name   : testTelephonyNetworkSecurityNop0100
      * @tc.desc   : isCleartextPermitted No permission
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it("testTelephonyNetworkSecurityNop0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it("testTelephonyNetworkSecurityNop0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testTelephonyNetfirewallNop0700';
       console.info(`${caseName}---Start`);
       try{
@@ -40,11 +40,11 @@ export default function networkSecurityNoP() {
      * @tc.number : SUB_Telephony_networkSecurity_Nop_0200
      * @tc.name   : testTelephonyNetworkSecurityNop0200
      * @tc.desc   : isCleartextPermittedByHostName No permission
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it("testTelephonyNetworkSecurityNop0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it("testTelephonyNetworkSecurityNop0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testTelephonyNetworkSecurityNop0200';
       console.info(`${caseName}---Start`);
       try{

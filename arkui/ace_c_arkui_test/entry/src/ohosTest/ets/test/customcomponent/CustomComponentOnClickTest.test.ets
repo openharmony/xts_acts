@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function customComponentOnClickTest() {
@@ -34,7 +34,7 @@ export default function customComponentOnClickTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentOnClick001', 0, async (done: Function) => {
+    it('testCustomComponentOnClick001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickTestCustomComponent')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnClickTestCustomComponent').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -49,7 +49,7 @@ export default function customComponentOnClickTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentOnClick002', 0, async (done: Function) => {
+    it('testCustomComponentOnClick002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickTestCustomComponentDisable')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnClickTestCustomComponentDisable').$attrs.backgroundColor)

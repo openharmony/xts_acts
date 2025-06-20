@@ -834,6 +834,12 @@ export default function Sim1Public() {
         console.info(`${caseName} test end`);
         done();
       }
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      }
       try {
         sim.setDefaultVoiceSlotId(0, (err: BusinessError) => {
           console.info(`${caseName} case success,setDefaultVoiceSlotId`);
@@ -884,6 +890,12 @@ export default function Sim1Public() {
         console.info(`${caseName} test end`);
         done();
       }
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      }
       sim.setDefaultVoiceSlotId(0, (err: BusinessError) => {
         if (!err) {
           sim.getDefaultVoiceSimId().then((data: number) => {
@@ -930,6 +942,12 @@ export default function Sim1Public() {
         console.info(`${caseName} test end`);
         done();
       }
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      }
       sim.getSimAuthentication(0, sim.AuthType.SIM_AUTH_EAP_SIM_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
         console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
         ExpectTrue(true);
@@ -957,6 +975,12 @@ export default function Sim1Public() {
       if (!hasSimCard) {
         console.info(`${caseName} failed, No SIM exists in slot 0`);
         ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
         console.info(`${caseName} test end`);
         done();
       }

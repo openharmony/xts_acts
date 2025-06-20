@@ -14,11 +14,11 @@
  */
 
 import { imageFrames as frames } from '../../../common/js/general';
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
+    itemIndex: -1,
     frames,
     state: null,
     str: '',
@@ -61,17 +61,24 @@ export default {
       params: {
         step: '操作步骤：点击播放，暂停，恢复，停止按钮',
         result: '预期结果：动画随操作步骤播放或停止，播放状态随之对应变化',
-        url: 'pages/image-animator/04/index'
+        url: 'pages/image-animator/04/index',
+        itemIndex: this.itemIndex
       }
     });
   },
 
   back() {
     console.info('onclick back ');
-    router.replace({ uri: 'pages/second-compent/index' });
+    router.replace({
+      uri: 'pages/second-compent/index',
+      params: {
+        itemIndex: this.itemIndex
+      }
+    });
   },
 
   changeResult(result) {
-    saveTxtData(this, result);
+    getApp().data.keyList[this.title] = result;
+    this.back();
   },
 };

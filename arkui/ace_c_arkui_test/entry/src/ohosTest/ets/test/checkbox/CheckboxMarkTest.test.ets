@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function checkboxMarkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxMark001', 0, async (done: Function) => {
+    it('testCheckboxMark001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxMark001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function checkboxMarkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxMark002', 0, async (done: Function) => {
+    it('testCheckboxMark002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxMark002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function checkboxMarkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxMark003', 0, async (done: Function) => {
+    it('testCheckboxMark003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxMark003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function checkboxMarkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxMark004', 0, async (done: Function) => {
+    it('testCheckboxMark004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxMark004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function checkboxMarkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCheckboxMark005', 0, async (done: Function) => {
+    it('testCheckboxMark005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxMark005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function checkboxMarkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCheckboxMark006', 0, async (done: Function) => {
+    it('testCheckboxMark006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxMark006()).assertEqual(0)
       done()
     })

@@ -14,7 +14,9 @@
  */
 
 import AxisEvent from './AxisEvent/AxisEvent.test';
+import RollAngle from './RollAngle/RollAngle.test';
 
 export default function testsuite() {
   AxisEvent();
+  RollAngle();
 }

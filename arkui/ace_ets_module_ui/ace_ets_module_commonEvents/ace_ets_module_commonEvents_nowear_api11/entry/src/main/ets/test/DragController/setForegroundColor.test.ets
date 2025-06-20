@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -49,7 +49,7 @@ export default function setForegroundColor() {
      * @tc.type :
      * @tc.size :
      */
-    it('setForegroundColor_0100', 0, async (done: Function) => {
+    it('setForegroundColor_0100', Level.LEVEL0, async (done: Function) => {
       console.info('setForegroundColor_0100 START');
       let driver: Driver = Driver.create();
       let button: Component = await driver.findComponent(ON.id('TouchParent_id'));
@@ -73,7 +73,7 @@ export default function setForegroundColor() {
      * @tc.type :
      * @tc.size :
      */
-    it('setForegroundColor_0200', 0, async (done: Function) => {
+    it('setForegroundColor_0200', Level.LEVEL0, async (done: Function) => {
       console.info('setForegroundColor_0200 START');
       let driver: Driver = Driver.create();
       let button: Component = await driver.findComponent(ON.id('TouchParent_id'));

@@ -18,7 +18,7 @@ import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import MediaUtils from './MediaUtils';
 import { BusinessError } from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
@@ -272,7 +272,7 @@ export default function Demo1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testCameraCuttingAndVideo0100', 0, () => {
+    it('testCameraCuttingAndVideo0100', Level.LEVEL0, () => {
       //拍照
       let capture =cameras.oHPhotoOutputCapture(0);
       console.log(TAG+"testCameraCuttingAndVideo0100:"+capture);

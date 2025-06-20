@@ -45,9 +45,9 @@ export default function builtinsReadonlyArrayForEachTest() {
      * @tc.desc Verify basic element iteration
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsReadonlyArrayForEachTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
+    it('builtinsReadonlyArrayForEachTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
       const arr: readonly number[] = [1, 2, 3];
       const logs: number[] = [];
       arr.forEach(x => logs.push(x));

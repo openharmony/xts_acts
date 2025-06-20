@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackOpacity001', 0, async (done: Function) => {
+    it('testStackOpacity001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackOpacity001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackOpacity002', 0, async (done: Function) => {
+    it('testStackOpacity002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackOpacity002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackOpacity003', 0, async (done: Function) => {
+    it('testStackOpacity003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackOpacity003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackOpacity004', 0, async (done: Function) => {
+    it('testStackOpacity004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackOpacity004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackOpacity005', 0, async (done: Function) => {
+    it('testStackOpacity005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackOpacity005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackOpacity006', 0, async (done: Function) => {
+    it('testStackOpacity006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackOpacity006()).assertEqual(0)
       done()
     })

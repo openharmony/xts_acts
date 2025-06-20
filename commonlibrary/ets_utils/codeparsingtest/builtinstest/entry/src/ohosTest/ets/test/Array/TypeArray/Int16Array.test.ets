@@ -59,9 +59,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array without param.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0001";
       try {
         let array = new Int16Array();
@@ -78,9 +78,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with length 0,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0002";
       try {
         let array = new Int16Array(0);
@@ -98,9 +98,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0003";
       try {
         let array = new Int16Array(10);
@@ -118,9 +118,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0004";
       try {
         let array = new Int16Array(10);
@@ -138,9 +138,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with length 10,and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0005";
       try {
         let array = new Int16Array(10);
@@ -157,9 +157,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with 'q',and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0006";
       try {
         const array = Constants.int16ConstructTestArray1;
@@ -176,9 +176,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with '56',and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0007";
       try {
         const array = Constants.int16ConstructTestArray2;
@@ -196,9 +196,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with array[21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0008";
       try {
         let array = new Int16Array([21, 31]);
@@ -215,9 +215,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with array[21,31],and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0009";
       try {
         let array = new Int16Array([21, 31]);
@@ -234,9 +234,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with array[21,31],and get value of index 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0010";
       try {
         let array = new Int16Array([21, 31]);
@@ -253,9 +253,9 @@ export default function Int16ArrayTest() {
      * @tc.desc       : Testing Constructor of Int16Array with array[21,31],and set value of index 10,get value of index 10.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInt16Constructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInt16Constructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInt16Constructor0011";
       try {
         let array = new Int16Array([21, 31]);

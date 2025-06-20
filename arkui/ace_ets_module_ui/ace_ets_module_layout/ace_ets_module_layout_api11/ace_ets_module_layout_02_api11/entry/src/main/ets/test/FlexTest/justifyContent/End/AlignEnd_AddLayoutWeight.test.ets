@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function AlignEnd_AddLayoutWeight() {
      * @tc.name testFlexAlignEndTextLayoutWeight01
      * @tc.desc The interface displays all subcomponents that set different layoutWeight properties
      */
-    it('testFlexAlignEndTextLayoutWeight01', 0, async () => {
+    it('testFlexAlignEndTextLayoutWeight01',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignEndTextLayoutWeight01] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight1', value: 1
@@ -99,7 +99,7 @@ export default function AlignEnd_AddLayoutWeight() {
      * @tc.name testFlexAlignEndTextLayoutWeight02
      * @tc.desc Some subcomponents are displayed with different layoutWeight properties
      */
-    it('testFlexAlignEndTextLayoutWeight02', 0, async () => {
+    it('testFlexAlignEndTextLayoutWeight02',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignEndTextLayoutWeight02] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight1', value: 1

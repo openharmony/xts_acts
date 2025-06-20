@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsGrayscaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsGrayscale001', 0, async (done: Function) => {
+    it('testCommonAttrsGrayscale001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsGrayscale001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsGrayscaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsGrayscale002', 0, async (done: Function) => {
+    it('testCommonAttrsGrayscale002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsGrayscale002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsGrayscaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsGrayscale003', 0, async (done: Function) => {
+    it('testCommonAttrsGrayscale003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsGrayscale003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsGrayscaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsGrayscale004', 0, async (done: Function) => {
+    it('testCommonAttrsGrayscale004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsGrayscale004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsGrayscaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsGrayscale005', 0, async (done: Function) => {
+    it('testCommonAttrsGrayscale005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsGrayscale005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsGrayscaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsGrayscale006', 0, async (done: Function) => {
+    it('testCommonAttrsGrayscale006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsGrayscale006()).assertEqual(0)
       done()
     })

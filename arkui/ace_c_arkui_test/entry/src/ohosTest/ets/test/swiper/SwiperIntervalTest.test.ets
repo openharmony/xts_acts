@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperIntervalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperInterval001', 0, async (done: Function) => {
+    it('testSwiperInterval001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperInterval001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperIntervalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperInterval002', 0, async (done: Function) => {
+    it('testSwiperInterval002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperInterval002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperIntervalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperInterval003', 0, async (done: Function) => {
+    it('testSwiperInterval003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperInterval003()).assertEqual(0)
       done()
     })

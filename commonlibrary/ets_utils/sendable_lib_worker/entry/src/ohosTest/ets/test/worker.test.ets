@@ -122,9 +122,9 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : LEVEL0
      */
-    it('testWorkerPostMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerPostMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage001';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass2 = new MySendAbleClass2(false,1,'');
@@ -164,9 +164,9 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : LEVEL0
      */
-    it('testWorkerPostMessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerPostMessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage002';
       console.info(`${caseName} test start`);
       let sendableObject: B = new B('');
@@ -206,9 +206,9 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : LEVEL0
      */
-    it('testWorkerPostMessage003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerPostMessage003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage003';
       console.info(`${caseName} test start`);
       let sendableObject: Car = new Car();
@@ -248,9 +248,9 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : LEVEL0
      */
-    it('testWorkerPostMessage004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerPostMessage004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage004';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass = new MySendAbleClass(true,1,'');
@@ -290,9 +290,9 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : LEVEL0
      */
-    it('testWorkerPostMessage005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerPostMessage005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage005';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass = new MySendAbleClass(false,1,'bbbb');
@@ -332,7 +332,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage006';
@@ -374,7 +374,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage007';
@@ -417,7 +417,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage008';
@@ -462,7 +462,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage009';
@@ -507,7 +507,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage010';
@@ -549,7 +549,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage011';
@@ -596,7 +596,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable001';
@@ -638,7 +638,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable002';
@@ -680,7 +680,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable003';
@@ -722,7 +722,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable004';
@@ -764,7 +764,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable005';
@@ -806,7 +806,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable006';
@@ -848,7 +848,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable007';
@@ -891,7 +891,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable008';
@@ -936,7 +936,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable009';
@@ -981,7 +981,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable010';
@@ -1023,7 +1023,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable011';
@@ -1069,7 +1069,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable012';
@@ -1111,7 +1111,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable013';
@@ -1153,7 +1153,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessageWithSharedSendable014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable014';

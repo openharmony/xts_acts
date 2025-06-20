@@ -23,9 +23,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0001';
       try {
         let buf1 = buffer.alloc(0);
@@ -42,9 +42,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0002';
       try {
         let buf2 = buffer.alloc(3, 'a');
@@ -61,9 +61,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0003';
       try {
         let buf3 = buffer.alloc(5, buffer.from('hello'));
@@ -81,9 +81,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0004';
       try {
         let buf4 = buffer.alloc(0, 0);
@@ -102,9 +102,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0005';
       try {
         let buf5 = buffer.alloc(0, -1);
@@ -121,9 +121,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0006';
       try {
         let buf6 = buffer.alloc(0, Infinity);
@@ -140,9 +140,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0007';
       try {
         let buf7 = buffer.alloc(0, -Infinity);
@@ -159,9 +159,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0008';
       try {
         let buf8 = buffer.alloc(3, 1);
@@ -180,9 +180,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0009';
       try {
         let buf9 = buffer.alloc(3, '');
@@ -201,9 +201,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0010';
       try {
         let buf10 = buffer.alloc(3, undefined);
@@ -222,9 +222,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0011';
       try {
         let buf11 = buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
@@ -242,9 +242,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0012';
       try {
         let buf12 = buffer.alloc(3, 'hello', 'utf8');
@@ -262,9 +262,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0013';
       try {
         let buf = buffer.alloc(0, 0);
@@ -280,12 +280,12 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0014';
       try {
-        let buf = buffer.alloc(0, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 'base64');
+        let buf = buffer.alloc(0, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, 'base64');
         expect(buf.length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -298,12 +298,12 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0015';
       try {
-        let buf = buffer.alloc(0, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 'utf-8');
+        let buf = buffer.alloc(0, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, 'utf-8');
         expect(buf.length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
@@ -316,9 +316,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0016';
       try {
         let buf = buffer.alloc(0, -1, 'base64');
@@ -334,9 +334,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0017';
       try {
         let buf = buffer.alloc(0, -1, 'utf-8');
@@ -352,9 +352,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Alloc.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAlloc0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAlloc0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferAlloc0018';
       try {
         let buf = buffer.alloc(0, -1, 'base64');
@@ -370,9 +370,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0001';
       try {
         let str = '\u00bd + \u00bc = \u00be'
@@ -389,9 +389,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0002';
       try {
         let buf = buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
@@ -408,9 +408,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0003';
       try {
         let uint8Array = new Uint8Array([0x74, 0x79, 0x70, 0x65, 0x64]);
@@ -427,9 +427,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0004';
       try {
         let arrayBuffer = new ArrayBuffer(8);
@@ -447,9 +447,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0005';
       try {
         let arrayBuffer = new ArrayBuffer(8);
@@ -465,9 +465,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0006';
       try {
         const sharedBuffer = new SharedArrayBuffer(8);
@@ -483,9 +483,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0007';
       try {
         let buf = buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
@@ -502,9 +502,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0008';
       try {
         let buf = buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
@@ -521,9 +521,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0009';
       try {
         const arrayBuffer = new ArrayBuffer(5);
@@ -546,9 +546,9 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferByteLength0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferByteLength0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testBufferByteLength0010';
       try {
         const arrayBuffer = new ArrayBuffer(5);
@@ -571,7 +571,7 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface ByteLength.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testBufferByteLength0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBufferByteLength0011';
@@ -596,7 +596,7 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Concat.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testBufferConcat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBufferConcat0001';
@@ -617,7 +617,7 @@ export default function bufferTest() {
      * @tc.desc       : Test the function of the interface Concat.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testBufferConcat0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBufferConcat0002';

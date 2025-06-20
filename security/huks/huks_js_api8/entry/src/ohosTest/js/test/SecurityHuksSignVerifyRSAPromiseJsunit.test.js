@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it } from '@ohos/hypium';
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
 import Data from './utils/data.json';
 import { HuksSignVerifyRSA } from './utils/param/signverify/publicSignverifyParam.js';
 import { stringToUint8Array } from './utils/param/publicFunc.js';
@@ -24,7 +24,7 @@ let srcData65Kb = stringToUint8Array(srcData65);
 let finishOutData;
 export default function SecurityHuksSignVerifyRSAPromiseJsunit() {
   describe('SecurityHuksSignVerifyRSAPromiseJsunit', function () {
-    it('Security_HUKS_SignVerify_API8_RSA_101', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API8_RSA_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize2048SIGNPKCS1SHA384KeyAlias101';
       let HuksOptions = {
         properties: new Array(
@@ -51,7 +51,7 @@ export default function SecurityHuksSignVerifyRSAPromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_SignVerify_API8_RSA_102', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API8_RSA_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize2048SIGNPKCS1SHA384KeyAlias102';
       let HuksOptions = {
         properties: new Array(
@@ -67,7 +67,7 @@ export default function SecurityHuksSignVerifyRSAPromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_SignVerify_API8_RSA_103', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API8_RSA_103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize2048SIGNPKCS1SHA256KeyAlias103';
       let HuksOptions = {
         properties: new Array(
@@ -95,7 +95,7 @@ export default function SecurityHuksSignVerifyRSAPromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_SignVerify_API8_RSA_104', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API8_RSA_104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize2048SIGNPKCS1SHA384KeyAlias104';
       let HuksOptions = {
         properties: new Array(

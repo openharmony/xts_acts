@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { common } from '@kit.AbilityKit';
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -48,7 +48,7 @@ export default function getLastObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('get_last_object_promise_001', 0, async (done: Function) => {
+    it('get_last_object_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'get_last_object_promise_001';
       try {
         const fetchOption: photoAccessHelper.FetchOptions = fetchAllOption();

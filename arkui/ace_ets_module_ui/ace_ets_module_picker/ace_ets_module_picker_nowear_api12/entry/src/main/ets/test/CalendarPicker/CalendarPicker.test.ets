@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils/Utils';
 import router from '@ohos.router'
@@ -49,7 +49,7 @@ export default function calendarPickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_CalendarPicker_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_CalendarPicker_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_Stage_CalendarPicker_0100] START');
       let strJson = getInspectorByKey('CalendarPickerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -71,7 +71,7 @@ export default function calendarPickerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Stage_CalendarPicker_attributeModifier_0101', 0, async (done: Function) => {
+    it('ArkUI_Stage_CalendarPicker_attributeModifier_0101', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_Stage_CalendarPicker_attributeModifier_0101] START');
       let strJson = getInspectorByKey('CalendarPickerKey1');
       let obj: ESObject = JSON.parse(strJson);

@@ -62,7 +62,7 @@ export default function ActsAceWebViewAvoidArea() {
     it('testWebViewAvoidArea01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = 'emitWebViewAvoidArea01'
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent('testWebViewAvoidArea01', 'success', 6201, done);
+      Utils.registerEvent('testWebViewAvoidArea01', ViewportFit.CONTAINS, 6201, done);
       sendEventByKey('webViewAvoidAreaButton', 10, '');
     })
     /*
@@ -76,7 +76,7 @@ export default function ActsAceWebViewAvoidArea() {
     it('testWebViewAvoidArea02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = 'emitWebViewAvoidArea02'
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewAvoidArea02", 'success', 6202, done);
+      Utils.registerEvent("testWebViewAvoidArea02", ViewportFit.AUTO, 6202, done);
       sendEventByKey('webViewAvoidAreaButton', 10, '');
     })
     /*
@@ -90,7 +90,7 @@ export default function ActsAceWebViewAvoidArea() {
     it('testWebViewAvoidArea03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = 'emitWebViewAvoidArea03'
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent('testWebViewAvoidArea03', 'success', 6203, done);
+      Utils.registerEvent('testWebViewAvoidArea03', ViewportFit.COVER, 6203, done);
       sendEventByKey('webViewAvoidAreaButton', 10, '');
     })
     /*
@@ -104,7 +104,7 @@ export default function ActsAceWebViewAvoidArea() {
     it('testWebViewAvoidArea04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = 'emitWebViewAvoidArea04'
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewAvoidArea04", 'success', 6204, done);
+      Utils.registerEvent("testWebViewAvoidArea04", ViewportFit.AUTO, 6204, done);
       sendEventByKey('webViewAvoidAreaButton', 10, '');
     })
 

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -56,7 +56,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0200', 0, async (done: Function) => {
+    it('StateArrayNewJsunit_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0200 START');
       let driver = await Driver.create()
@@ -72,7 +72,7 @@ export default function StateArrayNewJsunit() {
       done();
     });
 
-    it('StateArrayNewJsunit_0400', 0, async (done: Function) => {
+    it('StateArrayNewJsunit_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0400 START');
       let driver = await Driver.create()
@@ -89,7 +89,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0600', 0, async (done: Function) => {
+    it('StateArrayNewJsunit_0600', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0600 START');
       let driver = await Driver.create()
@@ -106,7 +106,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0800', 0, async (done: Function) => {
+    it('StateArrayNewJsunit_0800', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0800 START');
       let driver = await Driver.create()
@@ -122,7 +122,7 @@ export default function StateArrayNewJsunit() {
       done();
     });
 
-    it('StateArrayNewJsunit_1000', 0, async (done: Function) => {
+    it('StateArrayNewJsunit_1000', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_1000 START');
       let driver = await Driver.create()

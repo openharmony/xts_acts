@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function AlignSpaceEvenly_AddOneWidth() {
      * @tc.name testFlexAlignSpaceEvenlyTextWidth
      * @tc.desc The interface is displayed when you change the spindle length (width) of the first subassembly
      */
-    it('testFlexAlignSpaceEvenlyTextWidth', 0, async () => {
+    it('testFlexAlignSpaceEvenlyTextWidth',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignSpaceEvenlyTextWidth] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneWidth', value: 160

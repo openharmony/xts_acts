@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function RichEditorStyledStringTest() {
      * @tc.desc      Test RichEditor StyledStringKey
      * @tc.level     Level 2
      */
-    it('RichEditorStyledStringTest_0100', 0, async (done: Function) => {
+    it('RichEditorStyledStringTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('RichEditorStyledStringTest_0100 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);

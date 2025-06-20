@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { common } from '@kit.AbilityKit'
@@ -67,7 +67,7 @@ export default function getAssetsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_000', 0, async (done: Function) => {
+    it('getAssets_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_promise_000';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       const expectCount = 1;
@@ -82,7 +82,7 @@ export default function getAssetsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_001', 0, async (done: Function) => {
+    it('getAssets_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_promise_001';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, '666');
       const expectCount = 0;
@@ -97,7 +97,7 @@ export default function getAssetsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_004', 0, async (done: Function) => {
+    it('getAssets_promise_004', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_promise_004';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const expectCount = 1;
@@ -112,7 +112,7 @@ export default function getAssetsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_get_assets_error_000', 0, async (done: Function) => {
+    it('sendable_get_assets_error_000', Level.LEVEL0, async (done: Function) => {
       try {
         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
         let fetchOptions: photoAccessHelper.FetchOptions = {
@@ -137,7 +137,7 @@ export default function getAssetsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_get_assets_error_001', 0, async (done: Function) => {
+    it('sendable_get_assets_error_001', Level.LEVEL0, async (done: Function) => {
       try {
         await sendablePhAccessHelper.getAssets(undefined as ESObject);
         console.info("getAssets successfully");
@@ -157,7 +157,7 @@ export default function getAssetsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_get_albums_error_000', 0, async (done: Function) => {
+    it('sendable_get_albums_error_000', Level.LEVEL0, async (done: Function) => {
       try {
         await sendablePhAccessHelper.getAlbums(undefined as ESObject, undefined as ESObject, undefined as ESObject);
         console.info("getAlbums successfully");
@@ -177,7 +177,7 @@ export default function getAssetsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_get_albums_error_001', 0, async (done: Function) => {
+    it('sendable_get_albums_error_001', Level.LEVEL0, async (done: Function) => {
       try {
         await sendablePhAccessHelper.getAlbums(undefined as ESObject);
         console.info("getAlbums successfully");
@@ -197,7 +197,7 @@ export default function getAssetsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_get_albums_error_002', 0, async (done: Function) => {
+    it('sendable_get_albums_error_002', Level.LEVEL0, async (done: Function) => {
       try {
         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
         let fetchOptions: photoAccessHelper.FetchOptions = {

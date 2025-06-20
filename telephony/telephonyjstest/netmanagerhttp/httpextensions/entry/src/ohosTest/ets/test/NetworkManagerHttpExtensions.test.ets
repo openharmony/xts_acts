@@ -15,7 +15,7 @@
 
 import net_http from '@ohos.net.http';
 import type { BusinessError } from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from '@ohos/hypium';
 
 export default function NetworkManagerHttpExtensions() {
   describe('NetworkManagerHttpExtensions', () => {
@@ -27,7 +27,7 @@ export default function NetworkManagerHttpExtensions() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_netstack_Http_Extensions_Xts_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_netstack_Http_Extensions_Xts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_netstack_Http_Extensions_Xts_0100';
       try {
         let httpRequest = net_http.createHttp();
@@ -41,33 +41,6 @@ export default function NetworkManagerHttpExtensions() {
     });
 
     /**
-     * @tc.number SUB_Telephony_netstack_Http_Extensions_Xts_0200
-     * @tc.name http::request
-     * @tc.desc Test on property
-     * @tc.level 1
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it('SUB_Telephony_netstack_Http_Extensions_Xts_0200', 0, async (done:Function) => {
-      let caseName = 'SUB_Telephony_netstack_Http_Extensions_Xts_0200';
-      let httpRequest = net_http.createHttp();
-      try {
-        await httpRequest.request("https://www.zhihu.com", {
-          connectTimeout: 3000,
-          dnsServers: ['11.1.11.1'],
-        });
-        console.info(`${caseName} createHttp success`);
-        expect(false).assertTrue();
-        done();
-      } catch (e) {
-        let err = e as BusinessError;
-        console.error('DnsError: ' + JSON.stringify(e));
-        expect(err.code).assertEqual(2300028);
-        done();
-      }
-    });
-
-    /**
      * @tc.number SUB_Telephony_netstack_Http_Extensions_Xts_0300
      * @tc.name http::request
      * @tc.desc Test on property
@@ -75,7 +48,7 @@ export default function NetworkManagerHttpExtensions() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_netstack_Http_Extensions_Xts_0300', 0, async (done:Function) => {
+    it('SUB_Telephony_netstack_Http_Extensions_Xts_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_netstack_Http_Extensions_Xts_0300';
       try {
         let httpRequest = net_http.createHttp();

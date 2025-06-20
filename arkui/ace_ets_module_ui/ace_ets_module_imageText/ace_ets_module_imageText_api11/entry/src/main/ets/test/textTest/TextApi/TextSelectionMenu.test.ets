@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it,expect, Level } from "@ohos/hypium"
 import { Driver, ON ,MouseButton} from '@ohos.UiTest';
 import CommonFunc from "../../../MainAbility/common/Common";
 
@@ -51,7 +51,7 @@ export default function TextSelectionMenu() {
        * @tc.desc        TextSelectionMenu RichEditorResponseType test
        * @tc.level       Level 2
        */
-    it('TextSelectionMenu_001', 0, async (done: Function) => {
+    it('TextSelectionMenu_001', Level.LEVEL2, async (done: Function) => {
       console.info('[TextSelectionMenu_001] START');
       await CommonFunc.sleep(1000);
 
@@ -80,7 +80,7 @@ export default function TextSelectionMenu() {
     * @tc.desc        TextSelectionMenu RichEditorResponseType test
     * @tc.level       Level 2
     */
-    it('TextSelectionMenu_002', 0, async (done: Function) => {
+    it('TextSelectionMenu_002', Level.LEVEL2, async (done: Function) => {
       console.info('[TextSelectionMenu_002] START');
       await CommonFunc.sleep(1000);
 

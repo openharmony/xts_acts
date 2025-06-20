@@ -601,16 +601,16 @@ HWTEST_P(VERIFY_PKCS1_TEST, SUB_Security_CryptoFramework_NAPI_Verify_Test_0100, 
     ASSERT_EQ(OH_CryptoAsymKeyGenerator_Create((const char *)verifyData.keyAlgName, &keyCtx), CRYPTO_SUCCESS);
     // keypair
     if (strcmp((const char *)verifyData.keyAlgName, "RSA8192") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa8192_pubKey, .len = sizeof(g_rsa8192_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa8192_priKey, .len = sizeof(g_rsa8192_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa8192pubKey, .len = sizeof(g_rsa8192pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa8192priKey, .len = sizeof(g_rsa8192priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else if (strcmp((const char *)verifyData.keyAlgName, "RSA4096") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa4096_pubKey, .len = sizeof(g_rsa4096_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa4096_priKey, .len = sizeof(g_rsa4096_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa4096pubKey, .len = sizeof(g_rsa4096pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa4096priKey, .len = sizeof(g_rsa4096priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else if (strcmp((const char *)verifyData.keyAlgName, "RSA3072") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa3072_pubKey, .len = sizeof(g_rsa3072_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa3072_priKey, .len = sizeof(g_rsa3072_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa3072pubKey, .len = sizeof(g_rsa3072pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa3072priKey, .len = sizeof(g_rsa3072priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else {
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair), CRYPTO_SUCCESS);
@@ -631,6 +631,7 @@ HWTEST_P(VERIFY_PKCS1_TEST, SUB_Security_CryptoFramework_NAPI_Verify_Test_0100, 
     HcfObjDestroy(signObj);
     OH_CryptoVerify_Destroy(verify);
     HcfObjDestroy(randomObj);
+    OH_Crypto_FreeDataBlob(&n);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&msgBlob);
@@ -662,16 +663,16 @@ HWTEST_P(VERIFY_PSS_TEST, SUB_Security_CryptoFramework_NAPI_Verify_Test_0200, Te
     ASSERT_EQ(randomObj->generateRandom(randomObj, msgLen, &msgBlob), HCF_SUCCESS);
     ASSERT_EQ(OH_CryptoAsymKeyGenerator_Create((const char *)verifyData.keyAlgName, &keyCtx), CRYPTO_SUCCESS);
     if (strcmp((const char *)verifyData.keyAlgName, "RSA8192") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa8192_pubKey, .len = sizeof(g_rsa8192_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa8192_priKey, .len = sizeof(g_rsa8192_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa8192pubKey, .len = sizeof(g_rsa8192pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa8192priKey, .len = sizeof(g_rsa8192priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else if (strcmp((const char *)verifyData.keyAlgName, "RSA4096") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa4096_pubKey, .len = sizeof(g_rsa4096_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa4096_priKey, .len = sizeof(g_rsa4096_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa4096pubKey, .len = sizeof(g_rsa4096pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa4096priKey, .len = sizeof(g_rsa4096priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else if (strcmp((const char *)verifyData.keyAlgName, "RSA3072") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa3072_pubKey, .len = sizeof(g_rsa3072_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa3072_priKey, .len = sizeof(g_rsa3072_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa3072pubKey, .len = sizeof(g_rsa3072pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa3072priKey, .len = sizeof(g_rsa3072priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else {
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair), CRYPTO_SUCCESS);
@@ -707,8 +708,8 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
 {
     OH_CryptoAsymKeyGenerator *keyCtx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
-    Crypto_DataBlob pubKeyBlob = { .data = g_rsa8192_pubKey, .len = sizeof(g_rsa8192_pubKey) };
-    Crypto_DataBlob priKeyBlob = { .data = g_rsa8192_priKey, .len = sizeof(g_rsa8192_priKey) };
+    Crypto_DataBlob pubKeyBlob = { .data = g_rsa8192pubKey, .len = sizeof(g_rsa8192pubKey) };
+    Crypto_DataBlob priKeyBlob = { .data = g_rsa8192priKey, .len = sizeof(g_rsa8192priKey) };
 
     ASSERT_EQ(OH_CryptoAsymKeyGenerator_Create((const char *)"RSA8192", &keyCtx), CRYPTO_SUCCESS);
     ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
@@ -832,16 +833,16 @@ HWTEST_P(VERIFY_RSA_ONLY_SIGN_TEST, SUB_Security_CryptoFramework_NAPI_Verify_Tes
     ASSERT_EQ(OH_CryptoAsymKeyGenerator_Create((const char *)verifyData.keyAlgName, &keyCtx), CRYPTO_SUCCESS);
     msgBlob.data[0] = 0;
     if (strcmp((const char *)verifyData.keyAlgName, "RSA8192") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa8192_pubKey, .len = sizeof(g_rsa8192_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa8192_priKey, .len = sizeof(g_rsa8192_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa8192pubKey, .len = sizeof(g_rsa8192pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa8192priKey, .len = sizeof(g_rsa8192priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else if (strcmp((const char *)verifyData.keyAlgName, "RSA4096") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa4096_pubKey, .len = sizeof(g_rsa4096_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa4096_priKey, .len = sizeof(g_rsa4096_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa4096pubKey, .len = sizeof(g_rsa4096pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa4096priKey, .len = sizeof(g_rsa4096priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else if (strcmp((const char *)verifyData.keyAlgName, "RSA3072") == 0) {
-        Crypto_DataBlob pubKeyBlob = { .data = g_rsa3072_pubKey, .len = sizeof(g_rsa3072_pubKey) };
-        Crypto_DataBlob priKeyBlob = { .data = g_rsa3072_priKey, .len = sizeof(g_rsa3072_priKey) };
+        Crypto_DataBlob pubKeyBlob = { .data = g_rsa3072pubKey, .len = sizeof(g_rsa3072pubKey) };
+        Crypto_DataBlob priKeyBlob = { .data = g_rsa3072priKey, .len = sizeof(g_rsa3072priKey) };
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Convert(keyCtx, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPair), CRYPTO_SUCCESS);
     } else {
         ASSERT_EQ(OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair), CRYPTO_SUCCESS);
@@ -1198,6 +1199,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&signData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1244,6 +1246,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx_B);
     OH_CryptoKeyPair_Destroy(keyPair_B);
     HcfBlobDataClearAndFree(&signData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1287,6 +1290,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1329,6 +1333,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1371,6 +1376,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1422,6 +1428,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
     OH_Crypto_FreeDataBlob(&out);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1470,6 +1477,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoKeyPair_Destroy(keyPair_B);
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1651,6 +1659,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     HcfObjDestroy(signObj);
     OH_CryptoVerify_Destroy(verify);
     HcfObjDestroy(randomObj);
+    OH_Crypto_FreeDataBlob(&retBlob);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&msgBlob);
@@ -1695,6 +1704,8 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoVerify_Destroy(verify);
     OH_Crypto_FreeDataBlob(&rawSignData);
     HcfObjDestroy(signObj);
+    OH_Crypto_FreeDataBlob(&retBlob);
+    OH_Crypto_FreeDataBlob((Crypto_DataBlob *)&msgBlob);
     HcfObjDestroy(randomObj);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
@@ -1738,6 +1749,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     HcfObjDestroy(signObj);
     OH_CryptoVerify_Destroy(verify);
     HcfObjDestroy(randomObj);
+    OH_Crypto_FreeDataBlob(&retBlob);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&msgBlob);
@@ -1805,6 +1817,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     HcfObjDestroy(signObj);
     OH_CryptoVerify_Destroy(verify);
     HcfObjDestroy(randomObj);
+    OH_Crypto_FreeDataBlob(&retBlob);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&msgBlob);

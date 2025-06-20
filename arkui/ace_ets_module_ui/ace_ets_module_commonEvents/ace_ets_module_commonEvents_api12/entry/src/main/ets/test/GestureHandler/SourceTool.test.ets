@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, Component, Driver, ON, BY, MouseButton} from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SourceTool_0010', 0, async (done: Function) => {
+    it('SourceTool_0010', Level.LEVEL0, async (done: Function) => {
       console.info('SourceTool_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -81,7 +81,7 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SourceTool_0020', 0, async (done: Function) => {
+    it('SourceTool_0020', Level.LEVEL0, async (done: Function) => {
       console.info('SourceTool_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -108,7 +108,7 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SourceTool_0030', 0, async (done: Function) => {
+    it('SourceTool_0030', Level.LEVEL0, async (done: Function) => {
       console.info('SourceTool_0030 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -130,7 +130,7 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('axisHorizontal_0040', 0, async (done: Function) => {
+    it('axisHorizontal_0040', Level.LEVEL0, async (done: Function) => {
       console.info('axisHorizontal_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -157,7 +157,7 @@ export default function SourceToolTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('axisVertical_0050', 0, async (done: Function) => {
+    it('axisVertical_0050', Level.LEVEL0, async (done: Function) => {
       console.info('axisVertical_0050 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

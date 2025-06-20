@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {Driver, Component, ON} from '@ohos.UiTest';
 import Utils from '../../../MainAbility/common/Utils';
 
@@ -51,7 +51,7 @@ export default function stepperInterface005() {
      * @tc.name         stepperInterface0050
      * @tc.desic         stepperInterface0050
      */
-    it('stepperInterface0050', 0, async (done: Function) => {
+    it('stepperInterface0050',  Level.LEVEL0, async (done: Function) => {
       console.info('stepperInterface0050 START');
       let driver: Driver = Driver.create();
       await driver.delayMs(1000);

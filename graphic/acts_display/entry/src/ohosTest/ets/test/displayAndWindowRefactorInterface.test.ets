@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Level, TestType, Size} from "@ohos/hypium"
 import display from '@ohos.display';
 import displaySync from '@ohos.graphics.displaySync'
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -32,9 +32,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : Gets all current display objects
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('tesGetAllDisplays_Promise', 0, async (done:Function) => {
+    it('tesGetAllDisplays_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'tesGetAllDisplays_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -66,9 +66,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : Gets all current display objects
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('tesGetAllDisplays_Callback', 0, async (done:Function) => {
+    it('tesGetAllDisplays_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = 'tesGetAllDisplays_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -107,9 +107,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : test the enum value of hdrFormats
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level1
      */
-    it('testSetExpectedFrameRateRange', 0, async (done:Function) => {
+    it('testSetExpectedFrameRateRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let msg = "testSetExpectedFrameRateRange";
       let backDisplaySyncBigger = displaySync.create();
       console.log(msg + ' www data ' + backDisplaySyncBigger);
@@ -139,9 +139,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : test the enum value of IntervalInfo
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level2
      */
-    it('testTargetTimestamp', 0, async (done:Function) => {
+    it('testTargetTimestamp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let msg = "testTargetTimestamp";
       let backDisplaySyncBigger = displaySync.create();
       console.log(msg + ' www data ' + backDisplaySyncBigger);
@@ -168,9 +168,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : test_CreateVirtualScreen_ErrorCode201 when without permissions
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_CreateVirtualScreen_ErrorCode201', 0, async (done: Function) => {
+    it('test_CreateVirtualScreen_ErrorCode201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_CreateVirtualScreen_ErrorCode201 ';
       class VirtualScreenOptions {
         name: string = '';

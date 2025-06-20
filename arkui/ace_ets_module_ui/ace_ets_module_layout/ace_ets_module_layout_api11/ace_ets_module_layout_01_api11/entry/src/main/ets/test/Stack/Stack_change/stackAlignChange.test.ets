@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/utils/Common";
 import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
@@ -51,7 +51,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignTopStartAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -99,7 +99,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentTop
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignTopStartAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -147,7 +147,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignTopStartAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -195,7 +195,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentStart
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignTopStartAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -243,7 +243,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignTopStartAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -291,7 +291,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignTopStartAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -339,7 +339,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignTopStartAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -387,7 +387,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignTopStartAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -435,7 +435,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopStartAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.TopStart' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignTopStartAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignTopStartAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopStartAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopStart
@@ -483,7 +483,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignTopAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -533,7 +533,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentTop
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignTopAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -583,7 +583,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentTopEnd
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignTopAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentTopEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -633,7 +633,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentStart
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignTopAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -683,7 +683,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignTopAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -733,7 +733,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignTopAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -783,7 +783,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignTopAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -833,7 +833,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignTopAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -883,7 +883,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.Top' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignTopAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignTopAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Top
@@ -933,7 +933,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignTopEndAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -981,7 +981,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentTop
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignTopEndAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -1029,7 +1029,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentTopEnd
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignTopEndAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentTopEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -1077,7 +1077,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentStart
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignTopEndAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -1125,7 +1125,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignTopEndAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -1173,7 +1173,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignTopEndAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -1221,7 +1221,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignTopEndAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -1269,7 +1269,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignTopEndAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -1317,7 +1317,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignTopEndAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.TopEnd' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignTopEndAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignTopEndAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignTopEndAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.TopEnd
@@ -1365,7 +1365,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignStartAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1415,7 +1415,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentTop
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignStartAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1465,7 +1465,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentTopEnd
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignStartAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentTopEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1515,7 +1515,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentStart
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignStartAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1565,7 +1565,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignStartAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1615,7 +1615,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignStartAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1665,7 +1665,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignStartAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1715,7 +1715,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignStartAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1765,7 +1765,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignStartAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.Start' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignStartAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignStartAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignStartAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Start
@@ -1815,7 +1815,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignCenterAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -1867,7 +1867,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentTop
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignCenterAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -1919,7 +1919,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentTopEnd
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignCenterAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentTopEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -1970,7 +1970,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentStart
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignCenterAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -2022,7 +2022,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignCenterAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -2074,7 +2074,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignCenterAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -2126,7 +2126,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignCenterAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -2178,7 +2178,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignCenterAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -2230,7 +2230,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignCenterAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.Center' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignCenterAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignCenterAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignCenterAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Center
@@ -2282,7 +2282,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignEndAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2332,7 +2332,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentTop
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignEndAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2382,7 +2382,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentTopEnd
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignEndAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentTopEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2432,7 +2432,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentStart
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignEndAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2482,7 +2482,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignEndAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2532,7 +2532,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignEndAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2582,7 +2582,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignEndAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2632,7 +2632,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignEndAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2682,7 +2682,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignEndAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.End' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignEndAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignEndAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignEndAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.End
@@ -2732,7 +2732,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignBottomStartAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -2780,7 +2780,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentTop
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignBottomStartAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -2828,7 +2828,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentTopEnd
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignBottomStartAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentTopEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -2876,7 +2876,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentStart
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignBottomStartAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -2924,7 +2924,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignBottomStartAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -2972,7 +2972,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignBottomStartAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -3020,7 +3020,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignBottomStartAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -3068,7 +3068,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignBottomStartAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -3116,7 +3116,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomStartAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.BottomStart' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignBottomStartAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomStartAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomStartAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomStart
@@ -3164,7 +3164,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignBottomAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3214,7 +3214,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentTop
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignBottomAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3264,7 +3264,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentTopEnd
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignBottomAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentTopEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3314,7 +3314,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentStart
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignBottomAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3364,7 +3364,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignBottomAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3414,7 +3414,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignBottomAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3464,7 +3464,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignBottomAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3514,7 +3514,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignBottomAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3564,7 +3564,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.Bottom' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignBottomAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.Bottom
@@ -3614,7 +3614,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentTopStart
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.TopStart'.
      */
-    it('testStackAlignBottomEndAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentTopStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd
@@ -3662,7 +3662,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentTop
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.Top'.
      */
-    it('testStackAlignBottomEndAlignmentTop', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentTop START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd
@@ -3710,7 +3710,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentTopEnd
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.TopEnd'.
      */
-    it('testStackAlignBottomEndAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentTopEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd
@@ -3758,7 +3758,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentStart
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.Start'.
      */
-    it('testStackAlignBottomEndAlignmentStart', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd
@@ -3806,7 +3806,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentCenter
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.Center'.
      */
-    it('testStackAlignBottomEndAlignmentCenter', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentCenter START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd
@@ -3854,7 +3854,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentEnd
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.End'.
      */
-    it('testStackAlignBottomEndAlignmentEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd
@@ -3902,7 +3902,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentBottomStart
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.BottomStart'.
      */
-    it('testStackAlignBottomEndAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentBottomStart START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd
@@ -3950,7 +3950,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentBottom
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.Bottom'.
      */
-    it('testStackAlignBottomEndAlignmentBottom', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentBottom START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd
@@ -3998,7 +3998,7 @@ export default function stackAlignChange() {
      * @tc.name testStackAlignBottomEndAlignmentBottomEnd
      * @tc.desc Parent component set align 'Alignment.BottomEnd' and alignContent 'Alignment.BottomEnd'.
      */
-    it('testStackAlignBottomEndAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackAlignBottomEndAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackAlignBottomEndAlignmentBottomEnd START');
       globalThis.value.message.notify({
         name: 'align', value: Alignment.BottomEnd

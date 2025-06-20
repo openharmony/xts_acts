@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common'
 
 export default function copyOptionJsunit() {
@@ -50,7 +50,7 @@ export default function copyOptionJsunit() {
      * @tc.name         testcopyOption0001
      * @tc.desic         acecopyOptionEtsTest0001
      */
-    it('testcopyOption0001', 0, async (done: Function) => {
+    it('testcopyOption0001', Level.LEVEL1, async (done: Function) => {
       console.info('hoverEffect testcopyOption0001 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('InAppText');
@@ -66,7 +66,7 @@ export default function copyOptionJsunit() {
      * @tc.name         testcopyOption0002
      * @tc.desic         acecopyOptionEtsTest0002
      */
-    it('testcopyOption0002', 0, async (done: Function) => {
+    it('testcopyOption0002', Level.LEVEL1, async (done: Function) => {
       console.info('hoverEffect testcopyOption0002 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('LocalDeviceText');

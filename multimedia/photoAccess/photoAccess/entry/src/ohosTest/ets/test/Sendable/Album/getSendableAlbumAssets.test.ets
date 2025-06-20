@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 
 import {
@@ -52,7 +52,7 @@ export default function getSendableAlbumAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('addAssets_promise_001', 0, async (done: Function) => {
+    it('addAssets_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'addAssets_promise_001';
       try {
         // 创建相册

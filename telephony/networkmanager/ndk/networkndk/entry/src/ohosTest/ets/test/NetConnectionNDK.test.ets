@@ -50,9 +50,9 @@ export default function NetConnectionNDKTest() {
      * @tc.desc   ：Obtain DNS results through netId.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetConnGetAddrInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHNetConnGetAddrInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let host = 'www.baidu.com';
       let serv = 'https';
       let netid = 0;
@@ -101,9 +101,9 @@ export default function NetConnectionNDKTest() {
      * @tc.desc   ：Obtain DNS results through netId.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetConnGetAddrInfo_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHNetConnGetAddrInfo_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let host = 'www.baidu.com';
       let serv = 'https';
       let netid = 1;
@@ -251,9 +251,9 @@ export default function NetConnectionNDKTest() {
      * @tc.desc   ：Check if the default data network records traffic.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetConnIsDefaultNetMetered_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHNetConnIsDefaultNetMetered_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnIsDefaultNetMetered(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -295,9 +295,9 @@ export default function NetConnectionNDKTest() {
      * @tc.desc   ：Query the link information of a data network.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetConnGetConnectionProperties_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHNetConnGetConnectionProperties_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -508,9 +508,9 @@ export default function NetConnectionNDKTest() {
      * @tc.desc   ：Bind the socket to the specified network.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetConnBindSocket_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHNetConnBindSocket_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -578,9 +578,9 @@ export default function NetConnectionNDKTest() {
      * @tc.desc   ：Register net connection callback with invalid arg.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetConnRegisterNetConnCallback_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -690,9 +690,9 @@ export default function NetConnectionNDKTest() {
      * @tc.desc   ：Register net connection callback with wifi netspecifier, and timeout UINT32_MAX ms.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetConnRegisterNetConnCallback_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_5);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();

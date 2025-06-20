@@ -546,6 +546,168 @@ export default function actsWifiManagerCandidateNetWorkTest() {
               }
               done();
         })
-        
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0007
+         * @tc.name SUB_Communication_WiFi_XTS_CandidateNetWork_0007
+         * @tc.desc Connect to a specified candidate hotspot by networkId, and wait for user respond result
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            let wifiDeviceConfig = {
+                "ssid": "TEST_TYPE_OPEN",
+                "bssid": "22:9b:e6:48:1f:5c",
+                "bssidType": wifiMg.DeviceAddressType.RANDOM_DEVICE_ADDRESS,
+                "preSharedKey": "",
+                "isHiddenSsid": false,
+                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_OPEN
+            };
+            let notRespond = false;
+            let refusedAction = false;
+            let apiNotSupport = false;
+            let addNetworkId = -99;
+            let getNetworkId = -100;
+            try {
+                await wifiMg.addCandidateConfig(wifiDeviceConfig).then(netWorkId => {
+                    console.info("[wifi_test]add OPEN CandidateConfig promise reuslt: " + JSON.stringify(netWorkId));
+                    expect(true).assertEqual(netWorkId != -1);
+                    addNetworkId = netWorkId;
+                });
+                let getCandidateResult = wifiMg.getCandidateConfigs();
+                console.info("[wifi_test]wifi get OPEN CandidateConfigs result : " + JSON.stringify(getCandidateResult));
+                getNetworkId = getCandidateResult[(getCandidateResult.length)-1].netId;
+                console.info("[wifi_test]wifi get networkId result : " + JSON.stringify(getNetworkId));
+                expect(addNetworkId).assertEqual(getNetworkId);
+            }catch(error){
+                console.info("[wifi_test] use api get error: " + JSON.stringify(error));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
+            }
+            try {    
+                wifiMg.connectToCandidateConfigWithUserAction(getNetworkId).then(result => {
+                    console.info("result:" + JSON.stringify(result));
+                    expect().assertFail();
+                    done();
+                }).catch((err) => {
+                    console.error("connectToCandidateConfigWithUserAction get error:" + JSON.stringify(err));
+                    if (Number(err.code) == 801) {
+                        console.info('[wifi_js]api is not support');
+                        expect(true).assertTrue();
+                        notRespond = true;
+                    } else{
+                        expect(Number(err.code)).assertEqual(2501005);
+                        notRespond = true;
+                    }
+                });
+                console.info("[wifi_test]sleep start");
+                await sleep(11500);
+                console.info("[wifi_test]sleep end");
+                expect(notRespond).assertTrue();
+            
+                wifiMg.connectToCandidateConfigWithUserAction(getNetworkId).then(result => {
+                    console.info("result:" + JSON.stringify(result));
+                    expect().assertFail();
+                    done();
+                }).catch((err) => {
+                    console.error("connectToCandidateConfigWithUserAction get error:" + JSON.stringify(err));
+                    if (Number(err.code) == 801) {
+                        console.info('[wifi_js]api is not support');
+                        expect(true).assertTrue();
+                        refusedAction = true;
+                    } else{
+                        expect(Number(err.code)).assertEqual(2501006);
+                        refusedAction = true;
+                    }
+                });
+                let drivers = Driver.create();
+                await drivers.delayMs(900);
+                let buttons = await drivers.findComponent(ON.text("取消"));
+                await buttons.click();
+                await drivers.delayMs(900);
+                expect(refusedAction).assertTrue();
+            
+                wifiMg.connectToCandidateConfigWithUserAction(getNetworkId).then(result => {
+                    console.info("result:" + JSON.stringify(result));
+                    expect(result).assertTrue();
+                    done();
+                }).catch((err) => {
+                    console.error("connectToCandidateConfigWithUserAction get error:" + JSON.stringify(err));
+                    if (Number(err.code) == 801) {
+                        console.info('[wifi_js]api is not support');
+                        expect(true).assertTrue();
+                        apiNotSupport = true;
+                    } else{
+                        expect().assertFail();
+                    }
+                });
+                if (!apiNotSupport) {
+                    let driver = Driver.create();
+                    await driver.delayMs(900);
+                    let button = await driver.findComponent(ON.text("连接"));
+                    await button.click();
+                    await driver.delayMs(900);
+                }
+            }catch(error){
+                console.info("[wifi_test] use api get error: " + JSON.stringify(error));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
+            try {
+                await wifiMg.removeCandidateConfig(getNetworkId).then(() => {
+                    console.info("[wifi_test]removeCandidateConfig success");
+                });
+                let getCandidateResults = wifiMg.getCandidateConfigs();
+                console.info("[wifi_test]after removeCandidateConfig use getCandidateConfigs: " + JSON.stringify(getCandidateResults));
+                console.info("[wifi_test]after removeCandidateConfig use getCandidateConfigs length: " + JSON.stringify(getCandidateResults.length));
+                if (getCandidateResults.length != 0) {
+                    expect(true).assertEqual(getCandidateResults[(getCandidateResults.length)-1].netId != getNetworkId);
+                } else {
+                    expect(getCandidateResults.length).assertEqual(0);
+                }
+                }catch(error){
+                    console.info("[wifi_test] use api get error: " + JSON.stringify(error));
+                    if (error.code == 801) {
+                        console.info('[wifi_js]api is not support');
+                        expect(true).assertTrue();
+                    } else {
+                        expect().assertFail();
+                    }
+                }
+                done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0008
+         * @tc.name SUB_Communication_WiFi_XTS_CandidateNetWork_0008
+         * @tc.desc test connectToCandidateConfigWithUserAction result errorCode 2501007
+         * @tc.type Function
+         * @tc.size MediumTest
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            await wifiMg.connectToCandidateConfigWithUserAction(-1).then(() => {
+                console.info("[wifi_test]connectToCandidateConfigWithUserAction success");
+                console.info("[wifi_test]test <Parameter validation failed> fail");
+                expect().assertFail();
+                done();
+            }).catch((error) => {
+                console.error('[wifi_test]connectToCandidateConfigWithUserAction Parameter validation failed:' + JSON.stringify(error));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(Number(error.code)).assertEqual(2501007);
+                }
+            });
+            done();
+        })
     })
 }

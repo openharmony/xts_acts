@@ -543,7 +543,7 @@ export default function ActsJsDataAbilityTest() {
      * @tc.size   : MediumTest
      * @tc.type   : Function
      */
-    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23700', 3, function (done) {
+    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23700', Level.LEVEL3, function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23700';
       try {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
@@ -586,7 +586,7 @@ export default function ActsJsDataAbilityTest() {
      * @tc.size   : MediumTest
      * @tc.type   : Function
      */
-    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23800', 3, function (done) {
+    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23800', Level.LEVEL3, function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23800';
       try {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
@@ -629,7 +629,7 @@ export default function ActsJsDataAbilityTest() {
      * @tc.size   : MediumTest
      * @tc.type   : Function
      */
-    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23900', 3, function (done) {
+    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23900', Level.LEVEL3, function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_23900';
       try {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
@@ -672,7 +672,7 @@ export default function ActsJsDataAbilityTest() {
      * @tc.size   : MediumTest
      * @tc.type   : Function
      */
-    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24000', 3, function (done) {
+    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24000', Level.LEVEL3, function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24000';
       try {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
@@ -714,7 +714,7 @@ export default function ActsJsDataAbilityTest() {
      * @tc.size   : MediumTest
      * @tc.type   : Function
      */
-    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24100', 3, function (done) {
+    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24100', Level.LEVEL3, function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24100';
       try {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
@@ -756,7 +756,7 @@ export default function ActsJsDataAbilityTest() {
      * @tc.size   : MediumTest
      * @tc.type   : Function
      */
-    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24200', 3, function (done) {
+    it('SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24200', Level.LEVEL3, function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_DataAbility_JSDATAABILITY_24200';
       try {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function searchOnCutJsunit() {
@@ -49,7 +49,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0001
      * @tc.desic         acesearchOnCutEtsTest0001
      */
-    it('testsearchOnCut0001', 0, async () => {
+    it('testsearchOnCut0001',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');
@@ -66,7 +66,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0002
      * @tc.desic         acesearchOnCutEtsTest0002
      */
-    it('testsearchOnCut0002', 0, async () => {
+    it('testsearchOnCut0002',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut0002 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');
@@ -83,7 +83,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0003
      * @tc.desic         acesearchOnCutEtsTest0003
      */
-    it('testsearchOnCut0003', 0, async () => {
+    it('testsearchOnCut0003',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut0003 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');
@@ -100,7 +100,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0004
      * @tc.desic         acesearchOnCutEtsTest0004
      */
-    it('testsearchOnCut0004', 0, async () => {
+    it('testsearchOnCut0004',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut0004 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');
@@ -117,7 +117,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0005
      * @tc.desic         acesearchOnCutEtsTest0005
      */
-    it('testsearchOnCut0005', 0, async () => {
+    it('testsearchOnCut0005',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut0005 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');
@@ -134,7 +134,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0006
      * @tc.desic         acesearchOnCutEtsTest0006
      */
-    it('testsearchOnCut0006', 0, async () => {
+    it('testsearchOnCut0006',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut0006 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');
@@ -151,7 +151,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0007
      * @tc.desic         acesearchOnCutEtsTest0007
      */
-    it('testsearchOnCut0007', 0, async () => {
+    it('testsearchOnCut0007',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut0007 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');
@@ -168,7 +168,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0009
      * @tc.desic         acesearchOnCutEtsTest0009
      */
-    it('testsearchOnCut0009', 0, async () => {
+    it('testsearchOnCut0009',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut009 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');
@@ -185,7 +185,7 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0010
      * @tc.desic         acesearchOnCutEtsTest0010
      */
-    it('testsearchOnCut0010', 0, async () => {
+    it('testsearchOnCut0010',  Level.LEVEL0, async () => {
       console.info('searchOnCut testsearchOnCut0010 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('onCutText');

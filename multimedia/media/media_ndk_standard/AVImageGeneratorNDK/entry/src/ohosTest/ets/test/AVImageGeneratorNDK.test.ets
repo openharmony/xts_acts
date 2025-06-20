@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import avimagegenerator from 'libavimagegeneratorndk.so'
@@ -77,7 +77,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorCreate001', 0, (done: Function) => {
+    it('testOhAvImageGeneratorCreate001', Level.LEVEL0,(done: Function) => {
       console.info(`testOhAvImageGeneratorCreate001 test start `);
       try {
         let result: number = avimagegenerator.OhAvImageGeneratorCreate();
@@ -99,7 +99,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorSetFdSource001', 0, async (done: Function) => {
+    it('testOhAvImageGeneratorSetFdSource001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvImageGeneratorSetFdSource001 test start `);
       let fileDescribe: number = -1;
       try {
@@ -124,7 +124,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAVImageGeneratorSetFdPathSourceTwo0200', 0, (done: Function) => {
+    it('testOhAVImageGeneratorSetFdPathSourceTwo0200', Level.LEVEL0,(done: Function) => {
       console.info(`testOhAVImageGeneratorSetFdPathSourceTwo0200 test start `);
       try {
         let result: number = avimagegenerator.OhAVImageGeneratorSetFdPathSourceTwo();
@@ -145,7 +145,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorFetchFrameByTime001', 0, async (done: Function) => {
+    it('testOhAvImageGeneratorFetchFrameByTime001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvImageGeneratorFetchFrameByTime001 test start `);
       let fileDescribe: number = -1;
       try {
@@ -174,7 +174,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorFetchFrameByTime002', 0, async (done: Function) => {
+    it('testOhAvImageGeneratorFetchFrameByTime002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvImageGeneratorFetchFrameByTime002 test start `);
       let fileDescribe: number = -1;
       try {
@@ -203,7 +203,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorFetchFrameByTime003', 0, async (done: Function) => {
+    it('testOhAvImageGeneratorFetchFrameByTime003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvImageGeneratorFetchFrameByTime003 test start `);
       let fileDescribe: number = -1;
       try {
@@ -232,7 +232,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorFetchFrameByTime004', 0, async (done: Function) => {
+    it('testOhAvImageGeneratorFetchFrameByTime004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvImageGeneratorFetchFrameByTime004 test start `);
       let fileDescribe: number = -1;
       try {
@@ -261,7 +261,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorFetchFrameByTime005', 0, async (done: Function) => {
+    it('testOhAvImageGeneratorFetchFrameByTime005', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvImageGeneratorFetchFrameByTime005 test start `);
       let fileDescribe: number = -1;
       try {
@@ -290,7 +290,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorFetchFrameByTime006', 0, async (done: Function) => {
+    it('testOhAvImageGeneratorFetchFrameByTime006', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvImageGeneratorFetchFrameByTime006 test start `);
       let fileDescribe: number = -1;
       try {
@@ -319,7 +319,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorFetchFrameByTime007', 0, async (done: Function) => {
+    it('testOhAvImageGeneratorFetchFrameByTime007', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvImageGeneratorFetchFrameByTime007 test start `);
       let fileDescribe: number = -1;
       try {
@@ -348,7 +348,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorRelease001', 0, (done: Function) => {
+    it('testOhAvImageGeneratorRelease001', Level.LEVEL0,(done: Function) => {
       console.info(`testOhAvImageGeneratorRelease001 test start`);
       try {
         let result: number = avimagegenerator.OhAvImageGeneratorRelease();
@@ -370,7 +370,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorRelease002', 0, (done: Function) => {
+    it('testOhAvImageGeneratorRelease002', Level.LEVEL0,(done: Function) => {
       console.info(`testOhAvImageGeneratorRelease002 test start`);
       try {
         let result: number = avimagegenerator.OhAvImageGeneratorReleaseTwo();
@@ -392,7 +392,7 @@ export default function OhAvImageGeneratorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvImageGeneratorRelease003', 0, (done: Function) => {
+    it('testOhAvImageGeneratorRelease003', Level.LEVEL0,(done: Function) => {
       console.info(`testOhAvImageGeneratorRelease003 test start`);
       try {
         let result: number = avimagegenerator.OhAvImageGeneratorRelease();

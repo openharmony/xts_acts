@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility';
@@ -230,7 +230,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUMESYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUMESYNC_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let value: ESObject = audioRen.getMaxStreamVolumeSync()
         console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${value}`);
@@ -251,7 +251,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUMESYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUMESYNC_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let value: ESObject = audioRen.getMinStreamVolumeSync()
         console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${value}`);
@@ -273,7 +273,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.getMaxStreamVolume().then((data: ESObject) => {
           console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${data}`);
@@ -299,7 +299,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await renderPlay();
         await audioRen.getMaxStreamVolume().then((data: ESObject) => {
@@ -326,7 +326,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         for (let index = 0; index < env.StreamUsage.length; index++) {
           let audioRender: audio.AudioRenderer | ESObject;
@@ -386,7 +386,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.getMaxStreamVolume().then((data: ESObject) => {
           console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${data}`);
@@ -420,7 +420,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.getMinStreamVolume().then((data: ESObject) => {
           console.info(`${TagFrmwkRender}:getMinStreamVolume :SUCCESS ${data}`);
@@ -446,7 +446,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await renderPlay();
         await audioRen.getMinStreamVolume().then((data: ESObject) => {
@@ -473,7 +473,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         for (let index = 0; index < env.StreamUsage.length; index++) {
           let audioRender: audio.AudioRenderer | ESObject;
@@ -533,7 +533,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.getMinStreamVolume().then((data: ESObject) => {
           console.info(`${TagFrmwkRender}: getMinStreamVolume :SUCCESS ${data}`);
@@ -567,7 +567,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       audioRen.getMaxStreamVolume((err: BusinessError, maxVolume: ESObject) => {
         if (err) {
           console.error('${TagFrmwkRender} Get max stream volume Fail: ${err}');
@@ -589,7 +589,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await renderPlay();
       audioRen.getMaxStreamVolume((err: BusinessError, maxVolume: ESObject) => {
         if (err) {
@@ -612,7 +612,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         for (let index = 0; index < env.StreamUsage.length; index++) {
           let audioRender: audio.AudioRenderer | ESObject;
@@ -679,7 +679,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_CALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       audioRen.getMaxStreamVolume((err: BusinessError, maxVolume: ESObject) => {
         if (err) {
           console.error('${TagFrmwkRender} Get max stream volume Fail: ${err}');
@@ -709,7 +709,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       audioRen.getMinStreamVolume((err: BusinessError, minVolume: ESObject) => {
         if (err) {
           console.error('${TagFrmwkRender} Get min stream volume Fail: ${err}');
@@ -731,7 +731,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await renderPlay();
       audioRen.getMinStreamVolume((err: BusinessError, minVolume: ESObject) => {
         if (err) {
@@ -755,7 +755,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         for (let index = 0; index < env.StreamUsage.length; index++) {
           let audioRender: audio.AudioRenderer | ESObject;
@@ -819,7 +819,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_CALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let minVolume = 1.0;
       audioRen.getMinStreamVolume((err: BusinessError, minVolume: ESObject) => {
         if (err) {

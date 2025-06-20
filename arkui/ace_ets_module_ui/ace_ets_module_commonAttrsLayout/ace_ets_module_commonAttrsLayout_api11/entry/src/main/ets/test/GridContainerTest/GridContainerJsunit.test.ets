@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -46,7 +46,7 @@ export default function girdContainerJsunit() {
       console.info("girdContainer after each called");
     });
 
-    it('testGirdContainer01', 0, async (done:Function) => {
+    it('testGirdContainer01', Level.LEVEL0, async (done:Function) => {
       console.info('[testGirdContainer01] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('gridContainer');
@@ -61,7 +61,7 @@ export default function girdContainerJsunit() {
     });
 
 
-    it('testGirdContainer02', 0, async (done:Function) => {
+    it('testGirdContainer02', Level.LEVEL0, async (done:Function) => {
       console.info('[testEllipse02] START');
       try {
         let eventData: events_emitter.EventData = {

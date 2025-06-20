@@ -55,7 +55,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('ActsZlibInterfaceTest01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_01 start==================");
         let inFile = filesDir + '/test.txt';
         let outFile = filesDir + '/test.zip';
@@ -201,7 +201,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest05', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('ActsZlibInterfaceTest05', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_05 start==================");
         let inFile = filesDir + '/test.txt';
         let inFile2 = filesDir + '/test2.txt';
@@ -271,7 +271,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest07', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('ActsZlibInterfaceTest07', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_07 start==================");
         let inFile = filesDir + '/not_found.txt';
         let inFile2 = filesDir + '/not_found2.txt';
@@ -308,7 +308,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest08', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('ActsZlibInterfaceTest08', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_08 start==================");
         let inFile = filesDir + '/test.txt';
         let inFile2 = filesDir + '/test2.txt';

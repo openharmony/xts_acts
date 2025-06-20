@@ -50,7 +50,8 @@ describe("SensorJsTest_sensor_38", function () {
     const SERVICE_EXCEPTION_CODE = 14500101
     const EPS = 0.01
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-    const SERVICE_EXCEPTION_MSG = 'Service exception.'
+    const SERVICE_EXCEPTION_MSG = "Service exception.Possible causes:" +
+        "1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception."
 
     let GEOMAGNETIC_COMPONENT_YEAR_RESULT = [
         [6570.3935546875, -146.3289337158203, 54606.0078125, -1.2758207321166992, 83.13726043701172, 6572.02294921875, 55000.0703125],
@@ -79,7 +80,7 @@ describe("SensorJsTest_sensor_38", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0470
      */
-    it("SensorJsTest_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("SensorJsTest_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("---------------------------SensorJsTest_001----------------------------------");
         for (let i = 0; i < timeMillis.length; i++) {
             await sensor.getGeomagneticInfo({'latitude':80, 'longitude':0, 'altitude':0}, timeMillis[i], undefined).then((data) => {

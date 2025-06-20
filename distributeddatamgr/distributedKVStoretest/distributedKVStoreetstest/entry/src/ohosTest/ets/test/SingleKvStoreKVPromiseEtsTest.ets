@@ -171,9 +171,9 @@ export default function SingleKvStorePromiseTest(){
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(String) testcase 003
      * @tc.size: MediumTest
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTSTRING_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTSTRING_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTSTRING_PROMISE_0300');
       try {
         await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
@@ -232,9 +232,9 @@ export default function SingleKvStorePromiseTest(){
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreGetString testcase 001
      * @tc.size: MediumTest
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSTRING_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSTRING_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSTRING_PROMISE_0100');
       try {
         await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(async (data) => {

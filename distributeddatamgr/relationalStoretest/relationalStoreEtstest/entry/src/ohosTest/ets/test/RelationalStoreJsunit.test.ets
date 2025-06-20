@@ -61,9 +61,9 @@ export default function relationalStoreTest() {
      * @tc.desc RelationalStore store getRdbStore test
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testRdbStore0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(TAG + "************* testRdbStore0001 start *************");
       await data_Rdb.getRdbStore(context, STORE_CONFIG).then(async (store) => {
         try {
@@ -84,9 +84,9 @@ export default function relationalStoreTest() {
      * @tc.desc RelationalStore store getRdbStore and create table
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testRdbStore0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(TAG + "************* testRdbStore0002 start *************");
       let storePromise = data_Rdb.getRdbStore(context, STORE_CONFIG);
       await storePromise.then(async (store) => {

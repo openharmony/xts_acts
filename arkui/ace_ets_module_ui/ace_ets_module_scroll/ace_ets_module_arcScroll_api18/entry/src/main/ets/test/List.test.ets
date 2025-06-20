@@ -17,10 +17,16 @@ import arcDotIndicator from './ArcSwiperTest/arcDotIndicator.test';
 import arcSwiperEvent from './ArcSwiperTest/arcSwiperEvent.test';
 import arcSwiperShow from './ArcSwiperTest/arcSwiperShow.test';
 import arcSwiperContent from './ArcSwiperTest/arcSwiperContent.test';
+import arcScrollBar from './ArcScrollBar/arcScrollBar.test';
+import childrenSizeArcList from './ArcListTest/childrenSizeArcList.test';
+import swipeActionArcList from './ArcListTest/swipeActionArcList.test';
 
 export default function testsuite() {
   arcDotIndicator()
   arcSwiperEvent()
   arcSwiperShow()
   arcSwiperContent()
+  arcScrollBar()
+  childrenSizeArcList()
+  swipeActionArcList()
 }

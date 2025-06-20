@@ -19,6 +19,9 @@ import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
 import { router } from '@kit.ArkUI';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let driver: Driver = Driver.create();
 let flg: boolean = false
@@ -32,6 +35,11 @@ export default function GetCurrentSpeed() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       flg = false;
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
@@ -56,9 +64,9 @@ export default function GetCurrentSpeed() {
      * @tc.desc test getCurrentSpeed
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testWebView_getCurrentSpeed1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+    it('testWebView_getCurrentSpeed1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getCurrentSpeed_1001 start')
       console.info('SUB_ACE_WEB_getCurrentSpeed_1001 start')

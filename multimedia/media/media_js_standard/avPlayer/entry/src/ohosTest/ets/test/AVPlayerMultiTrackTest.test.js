@@ -16,7 +16,7 @@
 import * as mediaTestBase from '../../../../../../MediaTestBase.js';
 import media from '@ohos.multimedia.media'
 import { AV_PLAYER_STATE, setSource } from '../../../../../../AVPlayerTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function AVPlayerMultiTrackTest() {
     describe('AVPlayerMultiTrackTest', function () {
@@ -231,7 +231,7 @@ export default function AVPlayerMultiTrackTest() {
             * @tc.type      : Function test
             * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0100', Level.LEVEL0,async function (done) {
             async function preparedOperation() {
                 await getAudioTracks();
                 await getCurrentAudioTrackCall();
@@ -261,7 +261,7 @@ export default function AVPlayerMultiTrackTest() {
             * @tc.type      : Function test
             * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0200', Level.LEVEL0,async function (done) {
             async function preparedOperation() {
                 await getAudioTracks();
                 await getCurrentAudioTrack();
@@ -289,7 +289,7 @@ export default function AVPlayerMultiTrackTest() {
             * @tc.type      : Function test
             * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0300', Level.LEVEL0,async function (done) {
             async function preparedOperation() {
                 await getAudioTracks();
                 await getCurrentAudioTrack();
@@ -321,7 +321,7 @@ export default function AVPlayerMultiTrackTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0500', Level.LEVEL0,async function (done) {
             changeRepeatly = true;
             let changeCnt = 0;
             async function preparedOperation() {
@@ -367,7 +367,7 @@ export default function AVPlayerMultiTrackTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0600', Level.LEVEL0,async function (done) {
             let prepareCnt = 0;
             async function preparedOperation() {
                 prepareCnt += 1;
@@ -414,7 +414,7 @@ export default function AVPlayerMultiTrackTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_0700', Level.LEVEL0,async function (done) {
             let eosCnt = 0;
             async function preparedOperation() {
                 await getAudioTracks();
@@ -471,7 +471,7 @@ export default function AVPlayerMultiTrackTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_ABNORMAL_INPUT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_ABNORMAL_INPUT_0100', Level.LEVEL0,async function (done) {
             const NOAUDIOTRACK = -1;
             let un = undefined;
             let typeInvalid = [-1, 2, 1000000, '', 'aaa', un];

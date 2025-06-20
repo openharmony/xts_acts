@@ -24,7 +24,7 @@ export default function GetSecondModuleTest() {
      * @tc.name GetSecondModuleTest
      * @tc.desc Test the bundleManager secondary module
      */
-    it('GetSecondModuleTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('GetSecondModuleTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       let bundleInfo = await bundle.getBundleInfoForSelf(
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO |

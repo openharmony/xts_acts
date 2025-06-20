@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderDirectionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderDirection001', 0, async (done: Function) => {
+    it('testSliderDirection001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderDirection001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderDirectionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderDirection002', 0, async (done: Function) => {
+    it('testSliderDirection002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderDirection002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function sliderDirectionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderDirection003', 0, async (done: Function) => {
+    it('testSliderDirection003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderDirection003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function sliderDirectionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderDirection004', 0, async (done: Function) => {
+    it('testSliderDirection004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderDirection004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function sliderDirectionTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testSliderDirection005', 0, async (done: Function) => {
+    it('testSliderDirection005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderDirection005()).assertEqual(0)
       done()
     })

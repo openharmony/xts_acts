@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {
@@ -29,7 +29,6 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-
 export default function ParticleAnimatorTest() {
   describe('ParticleAnimatorTest', () => {
     beforeEach(async (done: Function) => {
@@ -57,7 +56,6 @@ export default function ParticleAnimatorTest() {
       await CommonFunc.sleep(1000);
       console.info("ParticleAnimatorTest after each called");
     });
-
     /**
      * @tc.number ParticleAnimatorTest_001
      * @tc.name ParticleAnimatorTest_001
@@ -66,7 +64,7 @@ export default function ParticleAnimatorTest() {
      * @tc.type
      * @tc.size
      */
-    it('ParticleAnimatorTest_001', 0, async (done: Function) => {
+    it('ParticleAnimatorTest_001', Level.LEVEL0, async (done: Function) => {
       console.info('[ParticleAnimatorTest_001] START');
       await CommonFunc.sleep(500);
       let json = getInspectorByKey('particleTest');
@@ -79,6 +77,5 @@ export default function ParticleAnimatorTest() {
       console.info('[ParticleAnimatorTest_001] END');
       done();
     });
-
   })
 }

@@ -17,7 +17,7 @@ import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import MediaTestBase from './MediaTestBase';
 import * as AVPlayerTestBase from './AVPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 let TAG = "[AVPlayerAmr] ";
 let callBackSet = 0;
@@ -86,7 +86,7 @@ export default function AVPlayerAmr() {
    * @tc.type      : Function test
    * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0100 start');
       await getConverts('amrnb_4.75k_8000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -100,7 +100,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0200 start');
       await getConverts('amrnb_5.9k_8000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -114,7 +114,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0300 start');
       await getConverts('amrnb_5.15k_8000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -128,7 +128,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0400 start');
       await getConverts('amrnb_6.7k_8000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -142,7 +142,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0500 start');
       await getConverts('amrnb_7.4k_8000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -156,7 +156,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0600 start');
       await getConverts('amrnb_7.95k_8000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -170,7 +170,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0700 start');
       await getConverts('amrnb_10.2k_8000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -184,7 +184,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0800', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0800 start');
       await getConverts('amrnb_12.2k_8000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -198,7 +198,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0900', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_0900 start');
       await getConverts('amrwb_6.6k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -212,7 +212,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1000', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1000 start');
       await getConverts('amrwb_8.85k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -226,7 +226,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1100 start');
       await getConverts('amrwb_12.65k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -240,7 +240,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1200 start');
       await getConverts('amrwb_14.25k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -254,7 +254,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1300 start');
       await getConverts('amrwb_15.85k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -268,7 +268,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1400 start');
       await getConverts('amrwb_18.25k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -282,7 +282,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1500 start');
       await getConverts('amrwb_19.85k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -296,7 +296,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1600 start');
       await getConverts('amrwb_23.05k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);
@@ -310,7 +310,7 @@ export default function AVPlayerAmr() {
         * @tc.type      : Function test
         * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_AMR_1700 start');
       await getConverts('amrwb_23.85k_16000.amr');
       await AVPlayerTestBase.avPlayerPlay(fdPath, avPlayer, done);

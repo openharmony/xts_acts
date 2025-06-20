@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -34,7 +34,7 @@ export default function swiperSwipeToIndexTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSwiperChangeIndex006', 0, async (done: Function) => {
+    it('testSwiperChangeIndex006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'SwiperSwipeToIndexTest';
       await Utils.pushPage(`swiper/${PAGE_TAG}`);
       await Utils.sleep(5000);

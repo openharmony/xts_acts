@@ -14,7 +14,7 @@
  */
 
 import avSession from '@ohos.multimedia.avsession';
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import WantAgent from '@ohos.wantAgent';
 import featureAbility from '@ohos.ability.featureAbility';
@@ -100,7 +100,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata0  = {
                 assetId: '121278',
             };
@@ -136,7 +136,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata1  = {
                 assetId: '121278',
                 artist: 'Eminem',
@@ -172,7 +172,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata2  = {
                 assetId: '121278',
                 author: 'ST',
@@ -208,7 +208,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata3  = {
                 assetId: '121278',
                 album: 'Slim shady',
@@ -244,7 +244,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata4  = {
                 assetId: '121278',
                 writer: 'ST',
@@ -280,7 +280,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata5  = {
                 assetId: '121278',
                 composer: 'ST',
@@ -316,7 +316,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata6  = {
                 assetId: '121278',
                 duration: 2222,
@@ -352,7 +352,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata7  = {
                 assetId: '121278',
                 mediaImage: 'https://img2.baidu.com/it/u=3583435814,2833583486&fm=253&fmt=auto&app=138&f=JPEG?w=526&h=500',
@@ -388,7 +388,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('TestLog: Create pixelmap');
             let pixelMap = await getPixelMap();
             let readBuffer0 = new ArrayBuffer(96);
@@ -444,7 +444,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata9  = {
                 assetId: '121278',
                 publishDate: new Date(1994,1,1,1),
@@ -482,7 +482,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata10  = {
                 assetId: '121278',
                 subtitle: '8 Mile',
@@ -521,7 +521,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata11  = {
                 assetId: '121278',
                 description: 'Rap',
@@ -557,7 +557,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata12  = {
                 assetId: '121278',
                 lyric: 'https://lyric.tingmall.com/lyric/58/970/58970104-LRC-LRC.lrc?t=1649918948000',
@@ -594,7 +594,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata13  = {
                 assetId: '121278',
                 previousAssetId: '121277',
@@ -633,7 +633,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata16  = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_CAST_PLUS_MIRROR
@@ -670,7 +670,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata17  = {
                 assetId: '121278',
                 skipIntervals: avSession.SkipIntervals.SECONDS_10
@@ -707,7 +707,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('TestLog: Creat pixelmap');
             let pixelMap = await getPixelMap();
             let readBuffer0 = new ArrayBuffer(96);
@@ -766,7 +766,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 avQueueName: '121278',
@@ -809,7 +809,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID
@@ -851,7 +851,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 singleLyricText: 'dream it possible'
@@ -893,7 +893,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState1 = {
                 state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
             };
@@ -930,7 +930,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState2 = {
                 speed: 2.6,
             };
@@ -968,7 +968,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState3 = {
                 position:{elapsedTime:10, updateTime:(new Date()).getTime()},
             };
@@ -1006,7 +1006,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState4 = {
                 bufferedTime: 1000,
             };
@@ -1044,7 +1044,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState5 = {
                 loopMode:avSession.LoopMode.LOOP_MODE_SEQUENCE,
             };
@@ -1082,7 +1082,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState6 = {
                 loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
             };
@@ -1120,7 +1120,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState7 = {
                 loopMode:avSession.LoopMode.LOOP_MODE_LIST,
             };
@@ -1158,7 +1158,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState8 = {
                 loopMode:avSession.LoopMode.LOOP_MODE_SHUFFLE,
             };
@@ -1196,7 +1196,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState9 = {
                 isFavorite:true,
             };
@@ -1234,7 +1234,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState10 = {
                 state:avSession.PlaybackState.PLAYBACK_STATE_IDLE,
             };
@@ -1271,7 +1271,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState11 = {
                 state:avSession.PlaybackState.PLAYBACK_STATE_BUFFERING,
             };
@@ -1308,7 +1308,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 loopMode: avSession.LoopMode.LOOP_MODE_CUSTOM
             };
@@ -1349,7 +1349,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 maxVolume: 6
             };
@@ -1390,7 +1390,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 muted: false
             };
@@ -1431,7 +1431,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 videoWidth: 1920,
                 videoHeight: 1080
@@ -1473,7 +1473,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 duration: 100
             };
@@ -1514,7 +1514,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_CALLBACK_0100', 0, async function(done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function(done) {
             let wantAgentInfo = {
                 wants : [
                     {
@@ -1572,7 +1572,7 @@ export default function AVSessionCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let flag = false;
             controller.on('sessionDestroy', () => {
                 console.info('TestLog: Session destroyed successfully');

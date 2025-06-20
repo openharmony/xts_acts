@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils';
 
 
@@ -52,7 +52,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_001', 0, async (done: Function) => {
+    it('GaugeContentModifier_001', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_001] START');
       let strJson = getInspectorByKey('GaugeContentModifier01');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -70,7 +70,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_002', 0, async (done: Function) => {
+    it('GaugeContentModifier_002', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_001] START');
       let strJson = getInspectorByKey('GaugeContentModifier02');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -88,7 +88,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_003', 0, async (done: Function) => {
+    it('GaugeContentModifier_003', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_003] START');
       let strJson = getInspectorByKey('GaugeContentModifier03');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -106,7 +106,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_004', 0, async (done: Function) => {
+    it('GaugeContentModifier_004', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_004] START');
       let strJson = getInspectorByKey('GaugeContentModifier04');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -124,7 +124,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_005', 0, async (done: Function) => {
+    it('GaugeContentModifier_005', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_005] START');
       let strJson = getInspectorByKey('GaugeContentModifier05');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -142,7 +142,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_006', 0, async (done: Function) => {
+    it('GaugeContentModifier_006', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_006] START');
       let strJson = getInspectorByKey('GaugeContentModifier06');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -160,7 +160,7 @@ export default function GaugeContentModifier() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('GaugeContentModifier_007', 0, async (done: Function) => {
+    it('GaugeContentModifier_007', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_007] START');
       let strJson = getInspectorByKey('GaugeContentModifier07');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -178,7 +178,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_008', 0, async (done: Function) => {
+    it('GaugeContentModifier_008', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_008] START');
       let strJson = getInspectorByKey('GaugeContentModifier08');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -197,7 +197,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_009', 0, async (done: Function) => {
+    it('GaugeContentModifier_009', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_009] START');
       let strJson = getInspectorByKey('GaugeContentModifier09');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -215,7 +215,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_010', 0, async (done: Function) => {
+    it('GaugeContentModifier_010', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_010] START');
       let strJson = getInspectorByKey('GaugeContentModifier10');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -234,7 +234,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_011', 0, async (done: Function) => {
+    it('GaugeContentModifier_011', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_011] START');
       let strJson = getInspectorByKey('GaugeContentModifier11');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -253,7 +253,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_012', 0, async (done: Function) => {
+    it('GaugeContentModifier_012', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_012] START');
       let strJson = getInspectorByKey('GaugeContentModifier12');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -272,7 +272,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_013', 0, async (done: Function) => {
+    it('GaugeContentModifier_013', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_013] START');
       let strJson = getInspectorByKey('GaugeContentModifier13');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -291,7 +291,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_014', 0, async (done: Function) => {
+    it('GaugeContentModifier_014', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_014] START');
       let strJson = getInspectorByKey('GaugeContentModifier14');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -310,7 +310,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_015', 0, async (done: Function) => {
+    it('GaugeContentModifier_015', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_015] START');
       let strJson = getInspectorByKey('GaugeContentModifier15');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -328,7 +328,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_016', 0, async (done: Function) => {
+    it('GaugeContentModifier_016', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_016] START');
       let strJson = getInspectorByKey('GaugeContentModifier16');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -346,7 +346,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_017', 0, async (done: Function) => {
+    it('GaugeContentModifier_017', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_017] START');
       let strJson = getInspectorByKey('GaugeContentModifier17');
       let obj: Record<string, ESObject>= JSON.parse(strJson);
@@ -364,7 +364,7 @@ export default function GaugeContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('GaugeContentModifier_018', 0, async (done: Function) => {
+    it('GaugeContentModifier_018', Level.LEVEL0, async (done: Function) => {
       console.info('[GaugeContentModifier_018] START');
       let strJson = getInspectorByKey('GaugeContentModifier18');
       let obj: Record<string, ESObject>= JSON.parse(strJson);

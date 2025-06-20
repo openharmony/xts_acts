@@ -15,7 +15,7 @@
 
 import featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 
@@ -86,7 +86,7 @@ export default function test() {
          * @tc.name: Reset host ability and requestForm.
          * @tc.desc: The provider's onDestroy event will be triggered.
          */
-        it(`FMS_hostDeathRecipient_0200`, 0, async (done: ()=>void) => {
+        it(`FMS_hostDeathRecipient_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=>void) => {
             tcNumber = `FMS_hostDeathRecipient_0200`;
             commonEvent.subscribe(onAcquiredEventSubscriber, async (err, data) => {
                 console.info(`${tcNumber} onAcquiredCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);

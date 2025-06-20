@@ -43,9 +43,9 @@ export default function abilityTest() {
      * @tc.desc abnormal test
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level2
+     * @tc.level Level0
      */
-    it('SUB_Security_IAM_authWidget_Func_0330', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async(done: Function) => {
+    it('SUB_Security_IAM_authWidget_Func_0330', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
       console.log("SUB_Security_IAM_authWidget_Func_0330: started ");
       let driver = Driver.create()
       let select = await driver.findComponent(ON.isAfter(ON.text("authTrustLevel=-1")))

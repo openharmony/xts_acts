@@ -45,7 +45,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.desc      : This application adds multiple account, other applications authorizes multiple accounts to this
     *                 application and this application obtains authorization
     */
-    it('ActsgetAllAccounts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('ActsgetAllAccounts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsGetMultipleAccounts_0100 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();
@@ -126,7 +126,7 @@ export default function ActsGetMultipleAccounts() {
     * @tc.desc      : This application adds multiple account, other applications authorizes multiple accounts to this
     *                 application and this application obtains authorization
     */
-    it('ActsgetAllAccounts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('ActsgetAllAccounts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsgetAllAccounts_0200 start====");
       let dataMap = new Map();
       var appAccountManager = account.createAppAccountManager();

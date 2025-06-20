@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { driveFn, genRadomStr, getPermission, photoType, sleep } from '../common';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -54,7 +54,7 @@ export default function createDeleteRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createDeleteRequest_callback_000', 0, async (done: Function) => {
+    it('createDeleteRequest_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createDeleteRequest_callback_000';
       try {
         let uriList = await createFiles(1);
@@ -85,7 +85,7 @@ export default function createDeleteRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createDeleteRequest_callback_001', 2, async (done: Function) => {
+    it('createDeleteRequest_callback_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createDeleteRequest_callback_001';
       try {
         let uriList = await createFiles(0);
@@ -108,7 +108,7 @@ export default function createDeleteRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createDeleteRequest_promise_000', 0, async (done: Function) => {
+    it('createDeleteRequest_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createDeleteRequest_promise_000';
       try {
         let uriList = await createFiles(1);
@@ -134,7 +134,7 @@ export default function createDeleteRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createDeleteRequest_promise_001', 2, async (done: Function) => {
+    it('createDeleteRequest_promise_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createDeleteRequest_promise_001';
       try {
         let uriList = await createFiles(0);

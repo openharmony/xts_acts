@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -54,7 +54,7 @@ export default function SwiperOnSelectedTest() {
      * @tc.type
      * @tc.size
      */
-    it('SwiperOnSelectedTest0010', 0, async (done: Function) => {
+    it('SwiperOnSelectedTest0010', Level.LEVEL1, async (done: Function) => {
         let tagName = 'SwiperOnSelectedTest0010';
         console.info('[' + tagName + '] START============================');
         await CommonFunc.sleep(5000);
@@ -75,7 +75,7 @@ export default function SwiperOnSelectedTest() {
        * @tc.type
        * @tc.size
        */
-      it('SwiperOnSelectedTest0020', 0, async (done: Function) => {
+      it('SwiperOnSelectedTest0020', Level.LEVEL1, async (done: Function) => {
         let tagName = 'SwiperOnSelectedTest0020';
         console.info('[' + tagName + '] START============================');
         await CommonFunc.sleep(5000);

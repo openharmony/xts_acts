@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterEach, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import ndkTest from 'libPixelMapNdk.so';
 import image from "@ohos.multimedia.image";
 import common from '@ohos.app.ability.common';
@@ -110,6 +110,8 @@ export default function pixelmapNdkForDMATest() {
       }
       let imageInfo = await pixelMap.getImageInfo();
       logger.log("getImageInfoFromPixelmapJS info is: " + JSON.stringify(imageInfo));
+      await imageSource?.release();
+      await pixelMap?.release();
       return imageInfo;
     }
 
@@ -191,7 +193,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0100");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -214,7 +217,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0200");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -237,7 +241,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0400");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -260,7 +265,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0500");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -283,7 +289,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0600");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -306,7 +313,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0700");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -329,7 +337,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0800");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -352,7 +361,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0900");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -375,7 +385,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0901', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0901', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_0901");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -398,7 +409,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1000");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -421,7 +433,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1100");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -444,7 +457,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1101', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1101");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -467,7 +481,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1102', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1102");
       let path = filesDir + "/" + twoParametersFile;
       const buffer = getBuffer(path);
@@ -491,7 +506,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -521,7 +537,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -551,7 +568,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -581,7 +599,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_1500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -611,7 +630,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0100");
       let path = filesDir + "/test.png";
       const buffer = getBuffer(path);
@@ -634,7 +654,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0200");
       let path = filesDir + "/test.png";
       const buffer = getBuffer(path);
@@ -657,7 +678,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_PNG_NATIVE_0300");
       let path = filesDir + "/test.png";
       const buffer = getBuffer(path);
@@ -680,7 +702,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0100");
       let path = filesDir + "/test.gif";
       const buffer = getBuffer(path);
@@ -703,7 +726,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0200");
       let path = filesDir + "/test.gif";
       const buffer = getBuffer(path);
@@ -726,7 +750,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_GIF_NATIVE_0300");
       let path = filesDir + "/test.gif";
       const buffer = getBuffer(path);
@@ -749,7 +774,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0100");
       let path = filesDir + "/test.ico";
       const buffer = getBuffer(path);
@@ -772,7 +798,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0200");
       let path = filesDir + "/test.ico";
       const buffer = getBuffer(path);
@@ -795,7 +822,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_ICO_NATIVE_0300");
       let path = filesDir + "/test.ico";
       const buffer = getBuffer(path);
@@ -818,7 +846,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0100");
       let path = filesDir + "/test.bmp";
       const buffer = getBuffer(path);
@@ -841,7 +870,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0200");
       let path = filesDir + "/test.bmp";
       const buffer = getBuffer(path);
@@ -864,7 +894,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_BMP_NATIVE_0300");
       let path = filesDir + "/test.bmp";
       const buffer = getBuffer(path);
@@ -887,7 +918,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0100");
       let path = filesDir + "/test.webp";
       const buffer = getBuffer(path);
@@ -910,7 +942,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0200");
       let path = filesDir + "/test.webp";
       const buffer = getBuffer(path);
@@ -933,7 +966,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_WEBP_NATIVE_0300");
       let path = filesDir + "/test.webp";
       const buffer = getBuffer(path);
@@ -956,7 +990,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -985,7 +1020,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1014,7 +1050,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_DNG_NATIVE_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1043,7 +1080,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0100");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -1072,7 +1110,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0200");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -1101,7 +1140,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_HEIF_NATIVE_0300");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -1127,7 +1167,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0100");
       let path = filesDir + "/" + twoParametersFile;
       let ret: number = ndkTest.CreatePixelMapUsingAllocatorError(path, AUTO);
@@ -1148,7 +1189,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1176,7 +1218,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1203,7 +1246,8 @@ export default function pixelmapNdkForDMATest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAP_JPEG_NATIVE_ERROR_0400");
       let path = filesDir + "/SIZE_0_0.jpg";
       let size: image.Size = {width: 3071, height: 4096};

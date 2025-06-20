@@ -108,9 +108,9 @@ export default function i18nStageTest() {
      * @tc.desc      : HolidayManager
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('HolidayManager_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+    it('HolidayManager_stagetest_0100', Level.LEVEL2, async (done: Function) => {
       let holiday = new I18n.HolidayManager('/system/lib/US.ics');
       console.log('HolidayManager_stagetest_0100 1' + holiday);
       expect(holiday !== null).assertTrue();
@@ -138,9 +138,9 @@ export default function i18nStageTest() {
      * @tc.desc     :resource list is empty
      * @tc.size     :MEDIUM
      * @tc.type     :Function
-     * @tc.level    :Level 0
+     * @tc.level    :Level 3
      */
-    it('i18n_test_getBestMatchLocale_0010', Level.LEVEL0, () => {
+    it('i18n_test_getBestMatchLocale_0010', Level.LEVEL3, () => {
       console.log('i18n_test_getBestMatchLocale_0010' + 'start');
       try {
         let matchedLocaledId: string = I18n.I18NUtil.getBestMatchLocale("en-US", [""]);
@@ -154,6 +154,9 @@ export default function i18nStageTest() {
      * @tc.number   :testgetThreeLetterRegion_0030
      * @tc.name     :Get a three-letter abbreviation of the specified language
      * @tc.desc     :transfer GB and return GBR
+     * @tc.size     :MEDIUM
+     * @tc.type     :Function
+     * @tc.level    :Level 0
      */
     it('testgetThreeLetterRegion_0030', Level.LEVEL0, () => {
       let language: string = I18n.I18NUtil.getThreeLetterRegion('GB');
@@ -165,6 +168,9 @@ export default function i18nStageTest() {
      * @tc.number   :testgetThreeLetterLanguage_0030
      * @tc.name     :Get a three-letter abbreviation of the specified language
      * @tc.desc     :transfer en and return eng
+     * @tc.size     :MEDIUM
+     * @tc.type     :Function
+     * @tc.level    :Level 0
      */
     it('testgetThreeLetterLanguage_0030', Level.LEVEL0, () => {
       let language: string = I18n.I18NUtil.getThreeLetterLanguage('en');

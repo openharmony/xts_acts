@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageSpanPaddingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanPadding001', 0, async (done: Function) => {
+    it('testImageSpanPadding001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanPadding001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageSpanPaddingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanPadding002', 0, async (done: Function) => {
+    it('testImageSpanPadding002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanPadding002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageSpanPaddingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanPadding003', 0, async (done: Function) => {
+    it('testImageSpanPadding003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanPadding003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageSpanPaddingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanPadding004', 0, async (done: Function) => {
+    it('testImageSpanPadding004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanPadding004()).assertEqual(0)
       done()
     })

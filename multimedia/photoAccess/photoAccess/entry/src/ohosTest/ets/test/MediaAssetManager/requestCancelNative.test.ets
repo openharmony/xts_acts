@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterAll, Level } from '@ohos/hypium'
 import mediaNative from "libentry.so";
 import { BusinessError } from '@ohos.base';
 import fs from '@ohos.file.fs';
@@ -89,7 +89,7 @@ export default function requestCancelNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_cancel_native_request_option_fast_mode', 0, async (done: Function) => {
+    it('request_cancel_native_request_option_fast_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_cancel_native_request_option_fast_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -105,7 +105,7 @@ export default function requestCancelNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_cancel_native_request_option_high_quality_mode', 0, async (done: Function) => {
+    it('request_cancel_native_request_option_high_quality_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_cancel_native_request_option_high_quality_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -121,7 +121,7 @@ export default function requestCancelNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_cancel_native_request_option_balance_mode', 0, async (done: Function) => {
+    it('request_cancel_native_request_option_balance_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_cancel_native_request_option_balance_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -54,7 +54,7 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
      * @tc.desc The size of the parent component in the cross direction meets the layout
      *               of the child components when the visibility of first subcomponent set to "Hidden"
      */
-    it('testFlexAlignContentSpaceAroundTextVisibilityHidden', 0, async () => {
+    it('testFlexAlignContentSpaceAroundTextVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignContentSpaceAroundTextVisibilityHidden] START');
       try {
         let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility01');
@@ -103,7 +103,7 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
      * @tc.desc The size of the parent component in the cross direction meets the layout
      *               of the child components when the visibility of first subcomponent set to "None"
      */
-    it('testFlexAlignContentSpaceAroundTextVisibilityNone', 0, async () => {
+    it('testFlexAlignContentSpaceAroundTextVisibilityNone',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignContentSpaceAroundTextVisibilityNone] START');
       try {
         let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility01');

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -62,7 +62,7 @@ export default function RichEditor016() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0006', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0006',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0006 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('rich_struct'));
@@ -99,7 +99,7 @@ export default function RichEditor016() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0001', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0001',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0001 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('rich_struct'));

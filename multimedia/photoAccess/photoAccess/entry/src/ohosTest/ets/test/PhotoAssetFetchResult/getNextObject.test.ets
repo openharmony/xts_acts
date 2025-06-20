@@ -15,7 +15,7 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { photoType, photoKeys, getPermission, driveFn, sleep } from '../common'
 import common from '@ohos.app.ability.common';
 
@@ -84,7 +84,7 @@ export default function assetGetNextObjectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getNextObject_callback_000', 0, async (done: Function) => {
+    it('getNextObject_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getNextObject_callback_000';
       const predicates = new dataSharePredicates.DataSharePredicates();
       predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.IMAGE).limit(2, 0);
@@ -104,7 +104,7 @@ export default function assetGetNextObjectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getNextObject_promise_000', 0, async (done: Function) => {
+    it('getNextObject_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getNextObject_promise_000';
       const predicates = new dataSharePredicates.DataSharePredicates();
       predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.IMAGE).limit(2, 0);
@@ -125,7 +125,7 @@ export default function assetGetNextObjectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getNextObject_callback_001', 0, async (done: Function) => {
+    it('getNextObject_callback_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getNextObject_callback_001';
       const predicates = new dataSharePredicates.DataSharePredicates();
       predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.VIDEO).limit(2, 0);
@@ -145,7 +145,7 @@ export default function assetGetNextObjectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getNextObject_promise_001', 0, async (done: Function) => {
+    it('getNextObject_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getNextObject_promise_001';
       const predicates = new dataSharePredicates.DataSharePredicates();
       predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.VIDEO).limit(2, 0);

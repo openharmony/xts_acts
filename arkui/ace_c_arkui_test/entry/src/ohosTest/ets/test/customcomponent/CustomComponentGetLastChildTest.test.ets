@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentGetLastChildTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentGetLastChild001', 0, async (done: Function) => {
+    it('testCustomComponentGetLastChild001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentGetLastChild001()).assertEqual(0)
       done()
     })
@@ -46,7 +46,7 @@ export default function customComponentGetLastChildTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentGetLastChild002', 0, async (done: Function) => {
+    it('testCustomComponentGetLastChild002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentGetLastChild002()).assertEqual(0)
       done()
     })
@@ -58,7 +58,7 @@ export default function customComponentGetLastChildTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentGetLastChild003', 0, async (done: Function) => {
+    it('testCustomComponentGetLastChild003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentGetLastChild003()).assertEqual(0)
       done()
     })                  

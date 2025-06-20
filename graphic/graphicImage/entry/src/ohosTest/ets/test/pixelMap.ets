@@ -64,7 +64,7 @@ export default function imagePixelMapTest() {
           url: 'MainAbility/pages/index/indexPixel',
         }
         let result = await router.replace(options);
-        await driver.delayMs(1000);
+        await driver.delayMs(4000);
         let button3 = await driver.findComponent(ON.id('createPixelMapFromSurfaceSync'));
         await button3.click();
         await driver.delayMs(1000);

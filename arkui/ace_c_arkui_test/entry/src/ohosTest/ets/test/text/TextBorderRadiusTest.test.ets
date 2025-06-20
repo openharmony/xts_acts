@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBorderRadius001', 0, async (done: Function) => {
+    it('testTextBorderRadius001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderRadius001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBorderRadius002', 0, async (done: Function) => {
+    it('testTextBorderRadius002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderRadius002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBorderRadius003', 0, async (done: Function) => {
+    it('testTextBorderRadius003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderRadius003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBorderRadius004', 0, async (done: Function) => {
+    it('testTextBorderRadius004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderRadius004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextBorderRadius005', 0, async (done: Function) => {
+    it('testTextBorderRadius005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBorderRadius005()).assertEqual(0)
       done()
     })

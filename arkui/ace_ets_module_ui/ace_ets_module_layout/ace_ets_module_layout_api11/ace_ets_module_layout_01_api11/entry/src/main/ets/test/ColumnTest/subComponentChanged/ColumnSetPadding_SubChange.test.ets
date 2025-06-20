@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -49,7 +49,7 @@ export default function ColumnSetPadding__SubChange() {
      * @tc.name testColumnParentPaddingSubMarPad
      * @tc.desc Parent component set paddding,subcomponent set paddding and margin.
      */
-    it('testColumnParentPaddingSubMarPad', 0, async () => {
+    it('testColumnParentPaddingSubMarPad',  Level.LEVEL0, async () => {
       console.info('new testColumnParentPaddingSubMarPad START');
       await CommonFunc.sleep(2000);
       let columnSetPadding_1: RectValue = CommonFunc.getComponentRect('columnSetPadding_1');

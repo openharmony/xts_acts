@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -56,7 +56,7 @@ export default function marqueeOptionsTest1() {
      * @tc.type
      * @tc.size
      */
-    it('marqueeOptionsTest1_001', 0, async (done: Function) => {
+    it('marqueeOptionsTest1_001', Level.LEVEL3, async (done: Function) => {
       console.info('[marqueeOptionsTest1_001] START');
       await CommonFunc.sleep(1000);
       let marqueeOptions = getInspectorByKey('MarqueeOptions');
@@ -73,7 +73,8 @@ export default function marqueeOptionsTest1() {
       console.info('[marqueeOptionsTest1_001] END');
       done();
     });
-    it('onMarqueeStateChangeTest_001', 0, async (done: Function) => {
+    
+    it('onMarqueeStateChangeTest_001', Level.LEVEL3, async (done: Function) => {
       console.info('[onMarqueeStateChangeTest_001] START');
       await CommonFunc.sleep(1000);
       let MarqueeState = getInspectorByKey('MarqueeState');

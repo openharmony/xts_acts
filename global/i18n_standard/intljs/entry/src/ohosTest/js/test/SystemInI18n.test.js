@@ -509,7 +509,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    is24HourClock
     * @tc.desc    check the is24HourClock
     */
-    it('i18n_system_test_3500', Level.LEVEL0, function () {
+    it('i18n_system_test_3500', Level.LEVEL2, function () {
         let value = I18n.System.is24HourClock();
         console.log('i18n_system_test_3500 ' + value);
         expect(value).assertFalse();
@@ -552,7 +552,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name test the getAppPreferredLanguage interface
     * @tc.desc check the value of getAppPreferredLanguage method
     */
-    it('i18n_system_test_3800', Level.LEVEL0, function () {
+    it('i18n_system_test_3800', Level.LEVEL2, function () {
         console.log('i18n_system_test_3800 ' + 'start');
         let value = I18n.System.getAppPreferredLanguage();
         console.log('i18n_system_test_3800 ' + value);

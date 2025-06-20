@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level  } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -59,7 +59,7 @@ export default function transFormJsunit() {
       console.info("transFrom each called");
     });
 
-    it('testTransForm001', 0, async (done: Function) => {
+    it('testTransForm001',  Level.LEVEL0, async (done: Function) => {
       console.info('[testTransForm001] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('rotate');
@@ -74,7 +74,7 @@ export default function transFormJsunit() {
       done();
     });
 
-    it('testTransForm002', 0, async (done: Function) => {
+    it('testTransForm002',  Level.LEVEL0, async (done: Function) => {
       console.info('[testTransForm002] START');
       await Utils.sleep(1000);
       let rotateValue: RotateValue = {
@@ -112,7 +112,7 @@ export default function transFormJsunit() {
       done();
     });
 
-    it('testTransForm003', 0, async (done: Function) => {
+    it('testTransForm003',  Level.LEVEL0, async (done: Function) => {
       console.info('[testTransForm003] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('rotate3');
@@ -123,7 +123,7 @@ export default function transFormJsunit() {
       done();
     });
 
-    it('testTransForm004', 0, async (done: Function) => {
+    it('testTransForm004',  Level.LEVEL0, async (done: Function) => {
       console.info('[testTransForm004] START');
       await Utils.sleep(1000);
       let scaleValue: ScaleValue = {

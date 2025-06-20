@@ -34,7 +34,7 @@ export default function screenLockJSUnit() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0001", Level.LEVEL2, async (done: Function) => {
+        it("SUB_MISC_THEME_screenLock_API_0001", Level.LEVEL0, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0001-------------------");
             try {
                 screenLock.isScreenLocked((err, data) => {

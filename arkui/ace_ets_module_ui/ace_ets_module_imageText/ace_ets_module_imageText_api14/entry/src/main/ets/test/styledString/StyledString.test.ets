@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function StyledString() {
      * @tc.type :
      * @tc.size :
      */
-    it('StyledString_0100', 0, async (done: Function) => {
+    it('StyledString_0100', Level.LEVEL2, async (done: Function) => {
       console.info('StyledString_0100 START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -65,7 +65,7 @@ export default function StyledString() {
       let strJson = getInspectorByKey('text');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[StyledString_0100] component obj is: " + JSON.stringify(obj));
-	    let str = 'font-style: normal;font-weight: normal;color: #008000FF;font-family: HarmonyOS Sans;">属性字符串</span><img src="file:///data/storage/el2/base/temp/htmlconvert/'
+	    let str = 'font-style: normal;font-weight: normal;color: #008000FF;font-family: HarmonyOS Sans;stroke-width: 0.00px;stroke-color: #008000FF;font-superscript: normal;">属性字符串</span><img src="file:///data/storage/el2/base/temp/htmlconvert/'
       expect(obj.$attrs.content).assertContain(str);
       console.info('[StyledString_0100] END');
       done();
@@ -79,7 +79,7 @@ export default function StyledString() {
      * @tc.type :
      * @tc.size :
      */
-    it('StyledString_0200', 0, async (done: Function) => {
+    it('StyledString_0200', Level.LEVEL2, async (done: Function) => {
       console.info('StyledString_0200 START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);

@@ -43,17 +43,17 @@ struct SetCircle {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('start')
-                .fontSize(13)
-            }.size({ width: '19%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '19%' })
             .onClick(() => {
               this.context.clearRect(0, 10, 500, 500);
               this.context.lineWidth = 2;
-              this.context.moveTo(250, 10);
-              this.context.lineTo(250, 310);
+              this.context.moveTo(100, 0);
+              this.context.lineTo(100, 150);
               this.context.stroke();
               this.context.textAlign = 'start';
               this.context.font = '40px sans-serif';
-              this.context.fillText('textAlign=start', 250, 160);
+              this.context.fillText('textAlign=start', 100, 50);
               this.num1 = 1;
               if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1) {
                 this.Vue = true;
@@ -62,17 +62,17 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('end')
-                .fontSize(13)
-            }.size({ width: '19%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '19%' })
             .onClick(() => {
               this.context.clearRect(0, 10, 500, 500);
               this.context.lineWidth = 2;
-              this.context.moveTo(250, 10);
-              this.context.lineTo(250, 310);
+              this.context.moveTo(100, 0);
+              this.context.lineTo(100, 150);
               this.context.stroke();
               this.context.textAlign = 'end';
               this.context.font = '40px sans-serif';
-              this.context.fillText('textAlign=end', 250, 160);
+              this.context.fillText('textAlign=end', 100, 50);
               this.num2 = 1;
               if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1) {
                 this.Vue = true;
@@ -81,17 +81,17 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('left')
-                .fontSize(13)
-            }.size({ width: '19%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '19%' })
             .onClick(() => {
               this.context.clearRect(0, 10, 500, 500);
               this.context.lineWidth = 2;
-              this.context.moveTo(250, 10);
-              this.context.lineTo(250, 310);
+              this.context.moveTo(100, 0);
+              this.context.lineTo(100, 150);
               this.context.stroke();
               this.context.textAlign = 'left';
               this.context.font = '40px sans-serif';
-              this.context.fillText('textAlign=left', 250, 160);
+              this.context.fillText('textAlign=left', 100, 50);
               this.num3 = 1;
               if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1) {
                 this.Vue = true;
@@ -100,17 +100,17 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('center')
-                .fontSize(13)
-            }.size({ width: '19%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '19%' })
             .onClick(() => {
               this.context.clearRect(0, 10, 500, 500);
               this.context.lineWidth = 2;
-              this.context.moveTo(250, 10);
-              this.context.lineTo(250, 310);
+              this.context.moveTo(100, 0);
+              this.context.lineTo(100, 150);
               this.context.stroke();
               this.context.textAlign = 'center';
               this.context.font = '40px sans-serif';
-              this.context.fillText('textAlign=center', 250, 160);
+              this.context.fillText('textAlign=center', 100, 50);
               this.num4 = 1;
               if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1) {
                 this.Vue = true;
@@ -119,17 +119,17 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('right')
-                .fontSize(13)
-            }.size({ width: '19%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '19%' })
             .onClick(() => {
               this.context.clearRect(0, 10, 500, 500);
               this.context.lineWidth = 2;
-              this.context.moveTo(250, 10);
-              this.context.lineTo(250, 310);
+              this.context.moveTo(100, 0);
+              this.context.lineTo(100, 150);
               this.context.stroke();
               this.context.textAlign = 'right';
               this.context.font = '40px sans-serif';
-              this.context.fillText('textAlign=right', 250, 160);
+              this.context.fillText('textAlign=right', 100, 50);
               this.num5 = 1;
               if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1) {
                 this.Vue = true;
@@ -146,8 +146,8 @@ struct SetCircle {
               .backgroundColor('#ffffffff')
               .onReady(() => {
                 this.context.lineWidth = 2;
-                this.context.moveTo(250, 10);
-                this.context.lineTo(250, 310);
+                this.context.moveTo(100, 0);
+                this.context.lineTo(100, 150);
                 this.context.stroke();
               })
           }

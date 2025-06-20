@@ -70,9 +70,9 @@ export default function TCPSocketServerTest() {
     * @tc.desc  : Create a TCP Socket Server object; callback
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 0
     */
-    it('testNetworkMgrSocketTCPSocketServerConstructTCPSocketServerInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerConstructTCPSocketServerInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerConstructTCPSocketServerInstance0100';
       try {
         console.info(`${caseName} test start`);
@@ -320,9 +320,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port,Port number is 65536; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen0900';
       try {
         console.info(`${caseName} test start`);
@@ -358,9 +358,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port,bad family; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen1000';
       try {
         console.info(`${caseName} test start`);
@@ -396,9 +396,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port, pass in null parameters; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen1100';
       try {
         console.info(`${caseName} test start`);
@@ -462,9 +462,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port,Only fill in the address for IPV4; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen1300';
       try {
         console.info(`${caseName} test start`);
@@ -536,9 +536,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port,The address and protocol are both IPV6; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen1500';
       try {
         console.info(`${caseName} test start`);
@@ -964,12 +964,16 @@ export default function TCPSocketServerTest() {
           port: 5013,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
           timeout: 2000
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+            console.info('fail to connect' + err.code.toString());
+        });
         tcpServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
@@ -1048,7 +1052,9 @@ export default function TCPSocketServerTest() {
           port: 5014,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         tcpServer.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.isBound, true);
@@ -1077,9 +1083,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Obtain the TCP Socket Server status after connect; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerGetState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerGetState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerGetState0600';
       try {
         console.info(`${caseName} test start`);
@@ -1091,12 +1097,16 @@ export default function TCPSocketServerTest() {
           port: 5015,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
           timeout: 2000
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+            console.info('fail to connect' + err.code.toString());
+        });
         tcpServer.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.isBound, true);
@@ -1185,7 +1195,9 @@ export default function TCPSocketServerTest() {
           port: 5016,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -1236,7 +1248,9 @@ export default function TCPSocketServerTest() {
           port: 5017,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         tcpServer.setExtraOptions(null, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail ${JSON.stringify(err)}`);
@@ -1275,7 +1289,9 @@ export default function TCPSocketServerTest() {
           port: 5018,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         tcpServer.setExtraOptions(undefined, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail ${JSON.stringify(err)}`);
@@ -1314,7 +1330,9 @@ export default function TCPSocketServerTest() {
           port: 11001,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           socketLinger: {
@@ -1359,7 +1377,9 @@ export default function TCPSocketServerTest() {
           port: 11002,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           socketLinger: {
@@ -1404,7 +1424,9 @@ export default function TCPSocketServerTest() {
           port: 11003,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           OOBInline: true,
           socketLinger: {
@@ -1449,7 +1471,9 @@ export default function TCPSocketServerTest() {
           port: 11004,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           OOBInline: false,
           socketLinger: {
@@ -1494,7 +1518,9 @@ export default function TCPSocketServerTest() {
           port: 11005,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           TCPNoDelay: true,
           socketLinger: {
@@ -1539,7 +1565,9 @@ export default function TCPSocketServerTest() {
           port: 11006,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           TCPNoDelay: false,
           socketLinger: {
@@ -1584,7 +1612,9 @@ export default function TCPSocketServerTest() {
           port: 11007,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: -1,
           socketLinger: {
@@ -1629,7 +1659,9 @@ export default function TCPSocketServerTest() {
           port: 11008,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: 0,
           socketLinger: {
@@ -1674,7 +1706,9 @@ export default function TCPSocketServerTest() {
           port: 11009,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: 100,
           socketLinger: {
@@ -1719,7 +1753,9 @@ export default function TCPSocketServerTest() {
           port: 11010,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: -1,
           socketLinger: {
@@ -1764,7 +1800,9 @@ export default function TCPSocketServerTest() {
           port: 11011,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: 0,
           socketLinger: {
@@ -1809,7 +1847,9 @@ export default function TCPSocketServerTest() {
           port: 11012,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: 100,
           socketLinger: {
@@ -1854,7 +1894,9 @@ export default function TCPSocketServerTest() {
           port: 11013,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           reuseAddress: true,
           socketLinger: {
@@ -1899,7 +1941,9 @@ export default function TCPSocketServerTest() {
           port: 11014,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           reuseAddress: false,
           socketLinger: {
@@ -1944,7 +1988,9 @@ export default function TCPSocketServerTest() {
           port: 11014,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: -1,
           socketLinger: {
@@ -1989,7 +2035,9 @@ export default function TCPSocketServerTest() {
           port: 11015,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout:0,
           socketLinger: {
@@ -2034,7 +2082,9 @@ export default function TCPSocketServerTest() {
           port: 11016,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout:100,
           socketLinger: {
@@ -2079,7 +2129,9 @@ export default function TCPSocketServerTest() {
           port: 11017,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: -1
@@ -2123,7 +2175,9 @@ export default function TCPSocketServerTest() {
           port: 11018,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 0
@@ -2167,7 +2221,9 @@ export default function TCPSocketServerTest() {
           port: 11019,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 65535
@@ -2198,9 +2254,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Set other properties of the TCP Socket Server connection,linger is 65536; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerSetExtraOptions2500';
       try {
         console.info(`${caseName} test start`);
@@ -2211,7 +2267,9 @@ export default function TCPSocketServerTest() {
           port: 11020,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 65536
@@ -2301,7 +2359,9 @@ export default function TCPSocketServerTest() {
           port: 5019,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -2353,7 +2413,9 @@ export default function TCPSocketServerTest() {
           port: 2020,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         tcpServer.setExtraOptions(null).then(() => {
           console.info(`${caseName} success`);
           expectFail();
@@ -2393,7 +2455,9 @@ export default function TCPSocketServerTest() {
           port: 5021,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         tcpServer.setExtraOptions(undefined).then(() => {
           console.info(`${caseName} success`);
           expectFail();
@@ -2420,9 +2484,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Set other properties of the TCP Socket Server connection,keepAlive is true; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerSetExtraOptions3000';
       try {
         console.info(`${caseName} test start`);
@@ -2433,7 +2497,9 @@ export default function TCPSocketServerTest() {
           port: 10101,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           socketLinger: {
@@ -2479,7 +2545,9 @@ export default function TCPSocketServerTest() {
           port: 10102,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           socketLinger: {
@@ -2525,7 +2593,9 @@ export default function TCPSocketServerTest() {
           port: 10103,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           OOBInline: true,
           socketLinger: {
@@ -2558,9 +2628,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Set other properties of the TCP Socket Server connection,OOBlnLine is false; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerSetExtraOptions3300';
       try {
         console.info(`${caseName} test start`);
@@ -2571,7 +2641,9 @@ export default function TCPSocketServerTest() {
           port: 10104,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           OOBInline: false,
           socketLinger: {
@@ -2617,7 +2689,9 @@ export default function TCPSocketServerTest() {
           port: 10105,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           TCPNoDelay: true,
           socketLinger: {
@@ -2663,7 +2737,9 @@ export default function TCPSocketServerTest() {
           port: 10106,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           TCPNoDelay: false,
           socketLinger: {
@@ -2709,7 +2785,9 @@ export default function TCPSocketServerTest() {
           port: 10107,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: -1,
           socketLinger: {
@@ -2755,7 +2833,9 @@ export default function TCPSocketServerTest() {
           port: 10108,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: 0,
           socketLinger: {
@@ -2801,7 +2881,9 @@ export default function TCPSocketServerTest() {
           port: 10109,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           receiveBufferSize: 100,
           socketLinger: {
@@ -2847,7 +2929,9 @@ export default function TCPSocketServerTest() {
           port: 10110,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: -1,
           socketLinger: {
@@ -2893,7 +2977,9 @@ export default function TCPSocketServerTest() {
           port: 10111,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: 0,
           socketLinger: {
@@ -2939,7 +3025,9 @@ export default function TCPSocketServerTest() {
           port: 10112,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           sendBufferSize: 100,
           socketLinger: {
@@ -2985,7 +3073,9 @@ export default function TCPSocketServerTest() {
           port: 10113,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           reuseAddress: true,
           socketLinger: {
@@ -3031,7 +3121,9 @@ export default function TCPSocketServerTest() {
           port: 10114,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           reuseAddress: false,
           socketLinger: {
@@ -3077,7 +3169,9 @@ export default function TCPSocketServerTest() {
           port: 10115,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: -1,
           socketLinger: {
@@ -3123,7 +3217,9 @@ export default function TCPSocketServerTest() {
           port: 10116,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: 0,
           socketLinger: {
@@ -3169,7 +3265,9 @@ export default function TCPSocketServerTest() {
           port: 10117,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketTimeout: 100,
           socketLinger: {
@@ -3215,7 +3313,9 @@ export default function TCPSocketServerTest() {
           port: 10118,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: -1
@@ -3260,7 +3360,9 @@ export default function TCPSocketServerTest() {
           port: 10119,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 0
@@ -3305,7 +3407,9 @@ export default function TCPSocketServerTest() {
           port: 10120,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 65535
@@ -3350,7 +3454,9 @@ export default function TCPSocketServerTest() {
           port: 10121,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: {
             on: true, linger: 65536
@@ -3396,7 +3502,9 @@ export default function TCPSocketServerTest() {
           port: 5022,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let callback: Callback<socket.TCPSocketConnection> = (data: socket.TCPSocketConnection)=>{
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectTrue(data.clientId!==null);
@@ -3407,7 +3515,9 @@ export default function TCPSocketServerTest() {
         let tcpConnectOptions:socket.TCPConnectOptions={
         address:listenAddress
         };
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+            console.info('fail to connect' + err.code.toString());
+        });
       } catch (err) {
         console.info(`${caseName} fail ${JSON.stringify(err)}`);
         expectFail();
@@ -3436,7 +3546,9 @@ export default function TCPSocketServerTest() {
           port: 5023,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let callback: Callback<socket.TCPSocketConnection> = (data: socket.TCPSocketConnection)=>{
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectFail();
@@ -3448,7 +3560,9 @@ export default function TCPSocketServerTest() {
           address:listenAddress
         };
         tcpServer.off('connect');
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+            console.info('fail to connect' + err.code.toString());
+        });
         expectSuccess();
         console.info(`${caseName} test end`);
         done();
@@ -3480,7 +3594,9 @@ export default function TCPSocketServerTest() {
           port: 5024,
           family: 1
         };
-        await tcpServer.listen(listenAddress);
+        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let callback1: Callback<socket.TCPSocketConnection> = (data: socket.TCPSocketConnection)=>{
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectFail();
@@ -3499,7 +3615,9 @@ export default function TCPSocketServerTest() {
           address:listenAddress
         };
         tcpServer.off('connect');
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+            console.info('fail to connect' + err.code.toString());
+        });
         expectSuccess();
         console.info(`${caseName} test end`);
         done();

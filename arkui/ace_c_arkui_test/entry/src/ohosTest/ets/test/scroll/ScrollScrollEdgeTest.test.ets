@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function scrollScrollEdgeTest() {
@@ -28,7 +28,7 @@ export default function scrollScrollEdgeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEdge001', 0, async (done: Function) => {
+    it('testScrollScrollEdge001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEdgeTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollEdgeButton');
@@ -45,7 +45,7 @@ export default function scrollScrollEdgeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEdge002', 0, async (done: Function) => {
+    it('testScrollScrollEdge002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEdgeStartTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollEdgeButton');
@@ -62,7 +62,7 @@ export default function scrollScrollEdgeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEdge003', 0, async (done: Function) => {
+    it('testScrollScrollEdge003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEdgeBottomTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollEdgeButton');
@@ -79,7 +79,7 @@ export default function scrollScrollEdgeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEdge004', 0, async (done: Function) => {
+    it('testScrollScrollEdge004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEdgeEndTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollEdgeButton');
@@ -96,7 +96,7 @@ export default function scrollScrollEdgeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEdge005', 0, async (done: Function) => {
+    it('testScrollScrollEdge005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEdge001Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollEdge001Button');
@@ -113,7 +113,7 @@ export default function scrollScrollEdgeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEdge006', 0, async (done: Function) => {
+    it('testScrollScrollEdge006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEdge002Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollEdge002Button');
@@ -130,7 +130,7 @@ export default function scrollScrollEdgeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEdge007', 0, async (done: Function) => {
+    it('testScrollScrollEdge007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEdge003Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.sleep(2000);

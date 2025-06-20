@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 export default function APIaccessibilityTextHint() {
@@ -51,7 +51,7 @@ export default function APIaccessibilityTextHint() {
      * @tc.type :    Column
      * @tc.size :
      */
-    it('APIaccessibilityTextHint_0100', 0, async (done: Function) => {
+    it('APIaccessibilityTextHint_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('APIaccessibilityTextHint_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

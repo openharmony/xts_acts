@@ -52,9 +52,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.entries() to validate it correctly parses and returns key-value pairs.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testParamsEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testParamsEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParamsEntries0001";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -76,9 +76,9 @@ export default function urlTest() {
      *                  key-value pairs correctly.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testParamsEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testParamsEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParamsEntries0002";
       try {
         const params = new Url.URLParams("");
@@ -100,9 +100,9 @@ export default function urlTest() {
      *                  pairs from a nested array.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testParamsEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testParamsEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParamsEntries0003";
       try {
         const params = new Url.URLParams([["key1", "value1"], ["key2", "value2"]]);
@@ -125,9 +125,9 @@ export default function urlTest() {
      *                  of key-value pairs correctly.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testParamsEntries0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testParamsEntries0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParamsEntries0004";
       try {
         const params = new Url.URLParams([]);
@@ -149,9 +149,9 @@ export default function urlTest() {
      *                  from an object.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testParamsEntries0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testParamsEntries0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParamsEntries0005";
       try {
         const params = new Url.URLParams({
@@ -176,9 +176,9 @@ export default function urlTest() {
      *                  key-value pairs correctly.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testParamsEntries0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testParamsEntries0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParamsEntries0006";
       try {
         const params = new Url.URLParams({});
@@ -200,9 +200,9 @@ export default function urlTest() {
      *                  from URL search parameters and toString() produces correct query string.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testParamsEntries0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testParamsEntries0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParamsEntries0007";
       try {
         const url = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
@@ -222,9 +222,9 @@ export default function urlTest() {
      *                   absence of key-value pairs correctly and toString() is an empty string.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testParamsEntries0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testParamsEntries0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testParamsEntries0008";
       try {
         const url = new Url.URL('http://username:password@host:8080/directory/file');

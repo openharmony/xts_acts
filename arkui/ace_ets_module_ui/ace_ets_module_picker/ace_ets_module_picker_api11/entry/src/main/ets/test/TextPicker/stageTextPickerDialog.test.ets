@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 
@@ -53,7 +53,7 @@ export default function stageTextPickerDialog() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('testTextPickerDialog001', 0, async (done: Function) => {
+    it('testTextPickerDialog001', Level.LEVEL1, async (done: Function) => {
       console.info('testTextPickerDialog001 START');
       setTimeout(() => {
         try {
@@ -81,7 +81,7 @@ export default function stageTextPickerDialog() {
       }, 500)
     });
 
-    it('testTextPickerDialog002', 0, async (done: Function) => {
+    it('testTextPickerDialog002', Level.LEVEL1, async (done: Function) => {
       console.info('testTextPickerDialog002 START');
       setTimeout(() => {
         try {
@@ -108,7 +108,7 @@ export default function stageTextPickerDialog() {
         done();
       }, 500)
     });
-    it('testTextPickerDialog003', 0, async (done: Function) => {
+    it('testTextPickerDialog003', Level.LEVEL1, async (done: Function) => {
       console.info('testTextPickerDialog003 START');
       setTimeout(() => {
         try {

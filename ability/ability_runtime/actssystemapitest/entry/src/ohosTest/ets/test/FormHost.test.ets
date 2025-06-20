@@ -28,7 +28,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0100',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0100';
       console.log(TAG + ' formHost deleteForm BEGIN');
       try {
@@ -55,7 +55,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0200',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0200';
       try {
         let formId = "12400633174999288";
@@ -84,7 +84,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0300',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0300', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0300';
       try {
         let formId = "12400633174999288";
@@ -110,7 +110,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call releaseForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0400',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0400', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0400';
       try {
         let formId = "12400633174999288";
@@ -136,7 +136,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call releaseForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0500',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0500', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0500';
       try {
         let formId = "12400633174999288";
@@ -163,7 +163,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call requestForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0600',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0600', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0600';
       try {
         let formId = "12400633174999288";
@@ -189,7 +189,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call requestForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0700',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0700', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0700';
       try {
         let formId = "12400633174999288";
@@ -216,7 +216,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call castToNormalForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0800',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0800', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0800';
       try {
         let formId = "12400633174999288";
@@ -242,7 +242,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call castToNormalForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0900',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_0900', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0900';
       try {
         let formId = "12400633174999288";
@@ -269,7 +269,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyVisibleForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1000',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1000', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1000';
       try {
         let formId = "12400633174999288";
@@ -295,7 +295,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyVisibleForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1100',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1100';
       try {
         let formId = "12400633174999288";
@@ -322,7 +322,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyInvisibleForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1200',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1200';
       try {
         let formId = "12400633174999288";
@@ -348,7 +348,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyInvisibleForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1300',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1300', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1300';
       try {
         let formId = "12400633174999288";
@@ -375,7 +375,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call enableFormsUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1400',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1400', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1400';
       try {
         let formId = "12400633174999288";
@@ -401,7 +401,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call enableFormsUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1500',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1500', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1500';
       try {
         let formId = "12400633174999288";
@@ -428,7 +428,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call disableFormsUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1600',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1600', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1600';
       try {
         let formId = "12400633174999288";
@@ -454,7 +454,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call disableFormsUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1700',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1700', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1700';
       try {
         let formId = "12400633174999288";
@@ -481,7 +481,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call isSystemReady will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1800',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1800', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1800';
       try {
         formHost.isSystemReady((data) => {
@@ -500,7 +500,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call isSystemReady will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1900',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_1900', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1900';
       try {
         formHost.isSystemReady()
@@ -524,7 +524,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getAllFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2000',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2000', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2000';
       try {
         formHost.getAllFormsInfo((error, data) => {
@@ -545,7 +545,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getAllFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2100',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2100';
       try {
         formHost.getAllFormsInfo()
@@ -572,7 +572,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2200',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2200';
       try {
         let bundleName = "bundleName";
@@ -598,7 +598,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2300',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2300', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2300';
       try {
         let bundleName = "bundleName";
@@ -625,7 +625,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2400',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2400', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2400';
       try {
         let bundleName = "bundleName";
@@ -652,7 +652,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteInvalidForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2500',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2500', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2500';
       try {
         let formId = "12400633174999288";
@@ -678,7 +678,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteInvalidForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2600',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2600', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2600';
       try {
         let formId = "12400633174999288";
@@ -705,7 +705,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call acquireFormState will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2700',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2700', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2700';
       try {
         let want: Want = {
@@ -734,7 +734,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2800',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2800', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2800';
       try {
         let want: Want = {
@@ -764,7 +764,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call on will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2900',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_2900', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2900';
       try {
         formHost.on("formUninstall", (data) => {
@@ -785,7 +785,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call off will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3000',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3000', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3000';
       try {
         formHost.off("formUninstall", (data) => {
@@ -806,7 +806,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsVisible will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3100',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3100';
       try {
         let formId: string = "12400633174999288";
@@ -832,7 +832,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsVisible will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3200',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3200';
       try {
         let formId: string = "12400633174999288";
@@ -858,7 +858,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsEnableUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3300',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3300', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3300';
       try {
         let formId: string = "12400633174999288";
@@ -884,7 +884,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsEnableUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3400',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3400', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3400';
       let formId: string = "12400633174999288";
       formHost.notifyFormsEnableUpdate([formId], false)
@@ -903,7 +903,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call shareForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3500',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3500', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3500';
       try {
         let formId: string = "1337079774";
@@ -930,7 +930,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call shareForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3600',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3600', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3600';
       let formId: string = "1337079774";
       let deviceId: string = "12400633174999288";
@@ -952,7 +952,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsPrivacyProtected will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3700',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3700', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3700';
       try {
         let formId: string = "12400633174999288";
@@ -978,7 +978,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsPrivacyProtected will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3800',0, async (done: Function) => {
+    it('System_API_Test_Form_Host_3800', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3800';
       try {
         let formId: string = "12400633174999288";

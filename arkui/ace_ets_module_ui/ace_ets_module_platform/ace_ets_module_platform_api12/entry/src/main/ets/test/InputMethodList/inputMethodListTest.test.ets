@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   Component,
@@ -64,7 +64,7 @@ export default function inputMethodListTest() {
      * @tc.desc Test defaultSelected
      * @tc.level Level 2
      */
-    it('inputMethodListTest_0100', 0, async (done: Function) => {
+    it('inputMethodListTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('inputMethodListTest_0100 START');
       await CommonFunc.sleep(2000);
 

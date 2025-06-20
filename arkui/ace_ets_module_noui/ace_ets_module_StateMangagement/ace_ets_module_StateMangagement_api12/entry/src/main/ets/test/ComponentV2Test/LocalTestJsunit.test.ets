@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function LocalTestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('LocalTestJsunit_001', 0, async (done: Function) => {
+    it('LocalTestJsunit_001', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalTestJsunit_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -77,7 +77,7 @@ export default function LocalTestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('LocalTestJsunit_002', 0, async (done: Function) => {
+    it('LocalTestJsunit_002', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalTestJsunit_002] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -100,7 +100,7 @@ export default function LocalTestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('LocalTestJsunit_003', 0, async (done: Function) => {
+    it('LocalTestJsunit_003', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalTestJsunit_003] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -150,7 +150,7 @@ export default function LocalTestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('LocalTestJsunit_004', 0, async (done: Function) => {
+    it('LocalTestJsunit_004', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalTestJsunit_004] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -173,7 +173,7 @@ export default function LocalTestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('LocalTestJsunit_005', 0, async (done: Function) => {
+    it('LocalTestJsunit_005', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalTestJsunit_005] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -196,7 +196,7 @@ export default function LocalTestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('LocalTestJsunit_006', 0, async (done: Function) => {
+    it('LocalTestJsunit_006', Level.LEVEL0, async (done: Function) => {
       console.info('[LocalTestJsunit_006] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

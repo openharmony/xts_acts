@@ -17,7 +17,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import { surfaceIds } from '../testability/pages/Index';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -449,7 +449,7 @@ export default function CameraVideoCodecTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100', 2,
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100', Level.LEVEL2,
       async (done: Function) => {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100--------------");
 
@@ -499,7 +499,7 @@ export default function CameraVideoCodecTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100--------------");
 
       if (mCameraNum == 0) {
@@ -544,7 +544,7 @@ export default function CameraVideoCodecTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100--------------");
 
       if (mCameraNum == 0) {

@@ -100,9 +100,9 @@ export default function timeNdkTest() {
      * @tc.desc get zone result.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('SUB_Time_TimeManagement_Obtaining_5600', Level.LEVEL2, async (done: Function) => {
+    it('SUB_Time_TimeManagement_Obtaining_5600', Level.LEVEL0, async (done: Function) => {
       console.info("====>SUB_Time_TimeManagement_Obtaining_5600 start");
       let result: string = testNapi.getTimezone_0400();
       console.info('====>SUB_Time_TimeManagement_Obtaining_5600 result: ' + result);

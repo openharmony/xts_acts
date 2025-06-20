@@ -18,3 +18,29 @@ export const testDatePickerMode: (a: string) => void;
 export const textPickerEnableHapticFeedback: (a: string) => void;
 
 export const datePickerEnableHapticFeedback: (a: string) => void;
+
+export const swiperIndicatorTest: (a: string) => void;
+
+export const testExpectedFrameRateRangeCallback: (a: string) => void;
+
+export const DragEndPendingTest_001: () => string[];
+
+export const VisibleAreaEventOptionsTest_a: () => string[];
+
+export const VisibleAreaEventOptionsTest_b: () => string[];
+
+export const VisibleAreaEventOptionsTest_c: () => string[];
+
+export const VisibleAreaEventOptionsTest_d: () => string[];
+
+export const TestGestureInterrupter: (a: string) => string[];
+
+export const XComponentCreateNativeNode: (content: NodeContent, tag: string, context: object) => void;
+export const XComponentAttachToMainTree: () => void;
+export const XComponentDetachFromMainTree: () => void;
+export const XComponentDispose: () => void;
+export const XComponentSetUserData: () => void;
+export const XComponentGetUserData: () => string;
+export const XComponentInitialize: () => number;
+export const XComponentFinalize: () => number;
+export const XComponentRemoveSurfaceCallback: () => number;

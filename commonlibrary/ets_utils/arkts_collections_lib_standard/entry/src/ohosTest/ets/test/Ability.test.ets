@@ -27,7 +27,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let arkTsEmpty: collections.Array<number> = new collections.Array<number>();
       expect(arkTsEmpty.length).assertEqual(0);
 
@@ -45,7 +45,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let test: collections.Int8Array = new collections.Int8Array(5);
       expect(test.length).assertEqual(5);
       const buffer : collections.ArrayBuffer = new collections.ArrayBuffer(8);
@@ -64,7 +64,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let test: collections.Int16Array = new collections.Int16Array(5);
       expect(test.length).assertEqual(5);
       const buffer : collections.ArrayBuffer = new collections.ArrayBuffer(6);
@@ -83,7 +83,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let test: collections.Int32Array = new collections.Int32Array(5);
       expect(test.length).assertEqual(5);
       const buffer: collections.ArrayBuffer = new collections.ArrayBuffer(12);
@@ -102,7 +102,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let set1: collections.Set<number> = new collections.Set();
       expect(set1.size).assertEqual(0);
       let set2: collections.Set<number> = new collections.Set(null);
@@ -120,7 +120,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let test: collections.Uint8Array = new collections.Uint8Array(5);
       expect(test.length).assertEqual(5);
       const buffer : collections.ArrayBuffer = new collections.ArrayBuffer(8);
@@ -139,7 +139,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let test: collections.Uint16Array = new collections.Uint16Array(5);
       expect(test.length).assertEqual(5);
       const buffer : collections.ArrayBuffer = new collections.ArrayBuffer(6);
@@ -158,7 +158,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let test: collections.Uint32Array = new collections.Uint32Array(5);
       expect(test.length).assertEqual(5);
       const buffer : collections.ArrayBuffer = new collections.ArrayBuffer(12);
@@ -175,7 +175,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS Collections Map
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it('CollectionsTestClass009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let map1: collections.Map<number, number> = new collections.Map();
@@ -193,7 +193,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS Collections Json
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it('CollectionsTestClass010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       @Sendable
@@ -227,7 +227,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS Collections Uint8ClampedArray
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it('CollectionsTestClass011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let arkTSTest : collections.Uint8ClampedArray = new collections.Uint8ClampedArray(5);
@@ -246,7 +246,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS Collections BigInt
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("CollectionsTestClass012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -265,7 +265,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS Collections Float32Array
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it('CollectionsTestClass013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let arkTSTest : collections.Float32Array = new collections.Float32Array(3);
@@ -284,7 +284,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS Sendable class implement interface
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it('CollectionsTestClass014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       interface I {

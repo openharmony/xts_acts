@@ -61,8 +61,8 @@ struct Index {
   private notificationOperations: NotificationOperations = new NotificationOperations(getContext(this));
   private notificationUtil = new NotificationUtil();
   @State isPromptTone: boolean = false;
-  @State name: string = 'CustomNotification';
-  @State StepTips: string = '操作步骤：\n分别点击6个小卡片，发送不同类型的通知' + '\n' + '预期结果：通知卡片变为绿色，上方状态栏下滑能收到不同类型的通知，则通过';
+  @State name: string = 'ans';
+  @State StepTips: string = '操作步骤：\n分别点击6个小卡片，发送不同类型的通知' + '\n' + '预期结果：通知卡片变为绿色，通知中心收到不同类型的通知，则通过';
   @State Vue: boolean = false;
   @State isVibrationEffect: boolean = false;
   @State count: number = 0;
@@ -234,195 +234,210 @@ struct Index {
       }
     });
   }
-
+  private scrollerForScroll: Scroller = new Scroller()
+  scroller: Scroller = new Scroller()
   build() {
-    Column() {
+    Scroll(this.scroller) {
       Column() {
-        Row() {
-          Button() {
-            Image($r('app.media.ic_public_back'))
-              .width('20vp')
-              .height('18vp')
-              .margin({ left: '20vp' })
+        Column() {
+          Row() {
+            Button() {
+              Image($r('app.media.ic_public_back'))
+                .width('20vp')
+                .height('18vp')
+                .margin({ left: '20vp' })
+            }
+            .backgroundColor(Color.Black)
+            .size({ width: '40vp', height: '30vp' })
+            .onClick(() => {
+              router.back({
+                url: 'pages/Notification/Notification_index',
+                params: { result: 'None', }
+              })
+            })
+
+            Text(this.name)
+              .fontColor(Color.White)
+              .fontSize('18fp')
+              .margin({ left: '-20vp' })
+            Text('hello')
+              .fontColor(Color.White)
+              .visibility(Visibility.Hidden)
           }
           .backgroundColor(Color.Black)
-          .size({ width: '40vp', height: '30vp' })
-          .onClick(() => {
-            router.back({
-              url: 'pages/Notification/Notification_index',
-              params: { result: 'None', }
-            })
-          })
+          .height('20%')
+          .width('60%')
+          .justifyContent(FlexAlign.SpaceBetween)
 
-          Text(this.name)
-            .fontColor(Color.White)
-            .fontSize('18fp')
-            .margin({ left: '-20vp' })
-          Text('hello')
-            .fontColor(Color.White)
-            .visibility(Visibility.Hidden)
-        }
-        .backgroundColor(Color.Black)
-        .height('10%')
-        .width('100%')
-        .justifyContent(FlexAlign.SpaceBetween)
+          Column() {
+            Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.SpaceEvenly }) {
+              Column() {
+                Image($r('app.media.ic_notice_jiben'))
+                  .width(40)
+                  .height(28)
+                  .objectFit(ImageFit.Contain)
+                  .margin({ bottom: 10 })
+                Text('基本型通知')
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .fontSize(16)
+                  .onClick(this.notificationOperations.publishBasicNotification)
+              }
+              .borderColor(this.flagOne ? Color.Green : Color.White)
+              .borderWidth(10)
+              .viewStyle()
+              .justifyContent(FlexAlign.Center)
+              .alignItems(HorizontalAlign.Center)
+              .opacity(0.6)
+              .onClick(this.notificationOperations.publishBasicNotification)
 
-        Column() {
-          Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.SpaceEvenly }) {
-            Column() {
-              Image($r('app.media.ic_notice_jiben'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('基本型通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishBasicNotification)
+              Column() {
+                Image($r('app.media.ic_notice_changwenben'))
+                  .width(40)
+                  .height(28)
+                  .objectFit(ImageFit.Contain)
+                  .margin({ bottom: 10 })
+                Text('长文本型通知')
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .fontSize(16)
+                  .onClick(this.notificationOperations.publishLongTextNotification)
+              }
+              .borderColor(this.flagTwo ? Color.Green : Color.White)
+              .borderWidth(10)
+              .viewStyle()
+              .justifyContent(FlexAlign.Center)
+              .alignItems(HorizontalAlign.Center)
+              .opacity(0.6)
+              .onClick(this.notificationOperations.publishLongTextNotification)
+
+              Column() {
+                Image($r('app.media.ic_notice_duohang'))
+                  .width(40)
+                  .height(28)
+                  .objectFit(ImageFit.Contain)
+                  .margin({ bottom: 10 })
+                Text('多行文本型通知')
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .fontSize(16)
+                  .onClick(this.notificationOperations.publishMultiLineNotification)
+              }
+              .borderColor(this.flagThree ? Color.Green : Color.White)
+              .borderWidth(10)
+              .viewStyle()
+              .justifyContent(FlexAlign.Center)
+              .alignItems(HorizontalAlign.Center)
+              .opacity(0.6)
+              .onClick(this.notificationOperations.publishMultiLineNotification)
+
+              Column() {
+                Image($r('app.media.ic_notice_tupian'))
+                  .width(40)
+                  .height(28)
+                  .objectFit(ImageFit.Contain)
+                  .margin({ bottom: 10 })
+                Text('图片型通知')
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .fontSize(16)
+                  .onClick(this.notificationOperations.publishPictureNotification)
+              }
+              .borderColor(this.flagFour ? Color.Green : Color.White)
+              .borderWidth(10)
+              .viewStyle()
+              .justifyContent(FlexAlign.Center)
+              .alignItems(HorizontalAlign.Center)
+              .opacity(0.6)
+              .onClick(this.notificationOperations.publishPictureNotification)
+
+              Column() {
+                Image($r('app.media.ic_notice_anniu'))
+                  .width(40)
+                  .height(28)
+                  .objectFit(ImageFit.Contain)
+                  .margin({ bottom: 10 })
+                Text('带按钮的通知')
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .fontSize(16)
+                  .onClick(this.notificationOperations.publishNotificationWithButtons)
+              }
+              .borderColor(this.flagFive ? Color.Green : Color.White)
+              .borderWidth(10)
+              .viewStyle()
+              .justifyContent(FlexAlign.Center)
+              .alignItems(HorizontalAlign.Center)
+              .opacity(0.6)
+              .onClick(this.notificationOperations.publishNotificationWithButtons)
+
+              Column() {
+                Image($r('app.media.ic_notice_tiaozhuan'))
+                  .width(40)
+                  .height(28)
+                  .objectFit(ImageFit.Contain)
+                  .margin({ bottom: 10 })
+                Text('点击可跳转的通知')
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .fontSize(16)
+                  .onClick(this.notificationOperations.publishNotificationWithWantAgent)
+              }
+              .borderColor(this.flagSix ? Color.Green : Color.White)
+              .borderWidth(10)
+              .viewStyle()
+              .justifyContent(FlexAlign.Center)
+              .alignItems(HorizontalAlign.Center)
+              .opacity(0.6)
+              .onClick(this.notificationOperations.publishNotificationWithWantAgent)
             }
-            .borderColor(this.flagOne ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishBasicNotification)
+            .width('90%')
 
-            Column() {
-              Image($r('app.media.ic_notice_changwenben'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('长文本型通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishLongTextNotification)
-            }
-            .borderColor(this.flagTwo ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishLongTextNotification)
-
-            Column() {
-              Image($r('app.media.ic_notice_duohang'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('多行文本型通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishMultiLineNotification)
-            }
-            .borderColor(this.flagThree ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishMultiLineNotification)
-
-            Column() {
-              Image($r('app.media.ic_notice_tupian'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('图片型通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishPictureNotification)
-            }
-            .borderColor(this.flagFour ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishPictureNotification)
-
-            Column() {
-              Image($r('app.media.ic_notice_anniu'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('带按钮的通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishNotificationWithButtons)
-            }
-            .borderColor(this.flagFive ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishNotificationWithButtons)
-
-            Column() {
-              Image($r('app.media.ic_notice_tiaozhuan'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('点击可跳转的通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishNotificationWithWantAgent)
-            }
-            .borderColor(this.flagSix ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishNotificationWithWantAgent)
+            Button('清空所有通知')
+              .backgroundColor(Color.White)
+              .width(230)
+              .height(40)
+              .margin(10)
+              .fontSize(16)
+              .margin({ top: 50 })
+              .fontColor(Color.Black)
+              .onClick(() => {
+                this.notificationUtil.cancelAllNotifications();
+                notificationManagement.resetTypeNotificationState();
+              })
           }
-          .width('90%')
+          .height('600')
+          .width('80%')
 
-          Button('清空所有通知')
-            .backgroundColor(Color.White)
-            .width(230)
-            .height(40)
-            .margin(10)
-            .fontSize(16)
-            .margin({ top: 50 })
-            .fontColor(Color.Black)
+
+          Row() {
+            this.PassBtn($r('app.string.btn_fullscreen'), true);
+            Button() {
+              Image($r('app.media.ic_public_help'))
+                .width('20vp')
+                .height('20vp')
+            }
+            .width('30%')
+            .height('30vp')
+            .backgroundColor(Color.Grey)
             .onClick(() => {
-              this.notificationUtil.cancelAllNotifications();
-              notificationManagement.resetTypeNotificationState();
-            })
-        }
-        .width('100%')
-        .height('80%')
-
-        Row() {
-          this.PassBtn($r('app.string.btn_fullscreen'), true);
-          Button() {
-            Image($r('app.media.ic_public_help'))
-              .width('20vp')
-              .height('20vp')
-          }
-          .width('30%')
-          .height('30vp')
-          .backgroundColor(Color.Grey)
-          .onClick(() => {
-            AlertDialog.show(
-              {
-                title: '操作提示',
-                message: this.StepTips,
-                confirm: {
-                  value: 'OK',
-                  action: () => {
+              AlertDialog.show(
+                {
+                  title: '操作提示',
+                  message: this.StepTips,
+                  confirm: {
+                    value: 'OK',
+                    action: () => {
+                    }
                   }
                 }
-              }
-            )
-          })
+              )
+            })
 
-          this.FailBtn($r('app.string.btn_fullscreen'), true);
+            this.FailBtn($r('app.string.btn_fullscreen'), true);
+          }
+          .height('20%')
+          .width('60%')
+          .justifyContent(FlexAlign.SpaceEvenly)
+          .backgroundColor(Color.Black)
         }
-        .height('10%')
-        .width('100%')
-        .justifyContent(FlexAlign.SpaceEvenly)
-        .backgroundColor(Color.Black)
       }
     }
     .backgroundColor(Color.Black)
     .width('100%')
-    .height('100%')
   }
 }

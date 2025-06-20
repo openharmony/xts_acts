@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../MainAbility/common/Common';
 
 export default function sideBarShowSideBarJsunit() {
@@ -49,7 +49,7 @@ export default function sideBarShowSideBarJsunit() {
      * @tc.name         testsideBarShowSideBar0001
      * @tc.desic        acesideBarShowSideBarEtsTest0001
      */
-    it('testsideBarShowSideBar0001', 0, async () => {
+    it('testsideBarShowSideBar0001',  Level.LEVEL0, async () => {
       console.info('sideBarShowSideBar testsideBarShowSideBar0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('SideBarContainer');
@@ -66,7 +66,7 @@ export default function sideBarShowSideBarJsunit() {
      * @tc.name         testsideBarShowSideBar0002
      * @tc.desic        acesideBarShowSideBarEtsTest0002
      */
-    it('testsideBarShowSideBar0002', 0, async () => {
+    it('testsideBarShowSideBar0002',  Level.LEVEL0, async () => {
       console.info('sideBarShowSideBar testsideBarShowSideBar0002 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('SideBarContainer');
@@ -83,7 +83,7 @@ export default function sideBarShowSideBarJsunit() {
      * @tc.name         testsideBarShowSideBar0003
      * @tc.desic        acesideBarShowSideBarEtsTest0003
      */
-    it('testsideBarShowSideBar0003', 0, async () => {
+    it('testsideBarShowSideBar0003',  Level.LEVEL0, async () => {
       console.info('sideBarShowSideBar testsideBarShowSideBar0003 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('SideBarContainer');

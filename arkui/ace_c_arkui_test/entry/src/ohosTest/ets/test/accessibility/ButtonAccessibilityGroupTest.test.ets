@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function buttonAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testButtonAccessibilityGroup001', 0, async (done: Function) => {
+    it('testButtonAccessibilityGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function buttonAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testButtonAccessibilityGroup002', 0, async (done: Function) => {
+    it('testButtonAccessibilityGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function buttonAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testButtonAccessibilityGroup003', 0, async (done: Function) => {
+    it('testButtonAccessibilityGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function buttonAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testButtonAccessibilityGroup004', 0, async (done: Function) => {
+    it('testButtonAccessibilityGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityGroup004()).assertEqual(0)
       done()
     })

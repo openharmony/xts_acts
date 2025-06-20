@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function CustomTransitionPage() {
      * @tc.desc      Test customTransitionPage return undefined, push enter
      * @tc.level     Level 2
      */
-    it('CustomTransitionPage_0100', 0, async (done: Function) => {
+    it('CustomTransitionPage_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('CustomTransitionPage_0100 START');
       await CommonFunc.sleep(1000);
 
@@ -82,7 +82,7 @@ export default function CustomTransitionPage() {
      * @tc.desc      Test customTransitionPage return array, push enter and exit
      * @tc.level     Level 2
      */
-    it('CustomTransitionPage_0200', 0, async (done: Function) => {
+    it('CustomTransitionPage_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('CustomTransitionPage_0200 START');
       await CommonFunc.sleep(1000);
 
@@ -117,7 +117,7 @@ export default function CustomTransitionPage() {
      * @tc.desc      Test customTransitionPage return array, pop enter and exit
      * @tc.level     Level 2
      */
-    it('CustomTransitionPage_0300', 0, async (done: Function) => {
+    it('CustomTransitionPage_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('CustomTransitionPage_0300 START');
       await CommonFunc.sleep(1000);
 
@@ -151,7 +151,7 @@ export default function CustomTransitionPage() {
      * @tc.desc      Test customTransitionPage return array, replacePath enter and exit
      * @tc.level     Level 2
      */
-    it('CustomTransitionPage_0400', 0, async (done: Function) => {
+    it('CustomTransitionPage_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('CustomTransitionPage_0400 START');
       await CommonFunc.sleep(1000);
 

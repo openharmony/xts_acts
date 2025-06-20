@@ -39,7 +39,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompress001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompress001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.compress(Z_OK);
       console.info("testCompress001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -54,7 +54,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompress002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompress002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.compress(Z_BUF_ERROR);
       console.info("testCompress002 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -69,7 +69,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUnCompress001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testUnCompress001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.unCompress(Z_OK);
       console.info("testUnCompress001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -84,7 +84,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUnCompress002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testUnCompress002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.unCompress(Z_BUF_ERROR);
       console.info("testUnCompress002 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -99,7 +99,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUnCompress003', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testUnCompress003', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.unCompress(Z_DATA_ERROR);
       console.info("testUnCompress003 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -114,7 +114,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompress2001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompress2001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.compress2(Z_NO_COMPRESSION, Z_OK);
       console.info("testCompress2001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -129,7 +129,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompress2002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompress2002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.compress2(Z_BEST_SPEED, Z_OK);
       console.info("testCompress2002 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -144,7 +144,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompress2003', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompress2003', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.compress2(Z_BEST_COMPRESSION, Z_OK);
       console.info("testCompress2003 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -159,7 +159,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompress2004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompress2004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.compress2(Z_DEFAULT_COMPRESSION, Z_OK);
       console.info("testCompress2004 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -174,7 +174,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompress2005', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompress2005', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = zLib.compress2(Z_DEFAULT_COMPRESSION, Z_BUF_ERROR);
       console.info("testCompress2005 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -189,7 +189,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompress2006', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompress2006', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.compress2(Z_ERROR_COMPRESSION, Z_STREAM_ERROR);
       console.info("testCompress2006 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -204,7 +204,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCompressBound001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCompressBound001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.compressBound();
       console.info("testCompressBound001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -219,7 +219,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCrc32001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCrc32001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.crc32(Z_NULL);
       console.info("testCrc32001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -234,7 +234,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCrc32002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCrc32002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.crc32(1);
       console.info("testCrc32002 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -249,7 +249,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCrc32Z001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCrc32Z001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.crc32_z();
       console.info("testCrc32Z001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -264,7 +264,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testCrc32Combine001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testCrc32Combine001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.crc32Combine();
       console.info("testCrc32Combine001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -279,7 +279,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testAdler32001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testAdler32001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.adler32(Z_NULL);
       console.info("testAdler32001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -294,7 +294,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testAdler32002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testAdler32002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.adler32(1);
       console.info("testAdler32002 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -309,7 +309,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testAdler32Z001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testAdler32Z001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.adler32_z();
       console.info("testAdler32Z001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -324,7 +324,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testAdler32Combine001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testAdler32Combine001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.adler32Combine();
       console.info("testAdler32Combine001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -339,7 +339,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDeflate001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testDeflate001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.deflate();
       console.info("testDeflate001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -354,7 +354,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testZLibVersion001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testZLibVersion001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.zLibVersion();
       console.info("testZLibVersion001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -369,7 +369,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testZLibCompileFlags001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testZLibCompileFlags001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.zLibCompileFlags();
       console.info("testZLibCompileFlags001 data = " + JSON.stringify(data));
       expect(data).assertEqual(TEST_SUCCESS)
@@ -384,7 +384,7 @@ export default function zlibNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testZLibZError001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testZLibZError001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = zLib.zError();
       console.info("testZLibZError001 data = " + JSON.stringify(data));
       expect(data).assertEqual("data error")

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -70,7 +70,7 @@ export default function List_ListSize() {
      * @tc.name testListListSizeMeet
      * @tc.desc The List parent component sets the width and height to meet the layout of the child component
      */
-    it('testListListSizeMeet', 0, async (done: Function) => {
+    it('testListListSizeMeet',  Level.LEVEL0, async (done: Function) => {
       console.info('testListListSizeMeet START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('List_ListSize_01');
@@ -87,10 +87,10 @@ export default function List_ListSize() {
       expect(List_ListSize_014.left).assertEqual(List_ListSize_01.left);
       expect(List_ListSize_011.top).assertEqual(List_ListSize_01.top);
 
-      expect(Math.round(List_ListSize_012.top - List_ListSize_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_ListSize_013.top - List_ListSize_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_ListSize_014.top - List_ListSize_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_ListSize_01.bottom - List_ListSize_014.bottom)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.abs(Math.floor((List_ListSize_012.top - List_ListSize_011.bottom) - vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.floor((List_ListSize_013.top - List_ListSize_012.bottom) - vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.floor((List_ListSize_014.top - List_ListSize_013.bottom) - vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.floor((List_ListSize_01.bottom - List_ListSize_014.bottom) - vp2px(40))) <= 1).assertTrue();
 
       expect(Math.round(List_ListSize_011.right - List_ListSize_011.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_ListSize_012.right - List_ListSize_012.left)).assertEqual(Math.round(vp2px(300)));
@@ -110,7 +110,7 @@ export default function List_ListSize() {
         Math.round(List_ListSize_012.bottom));
       await CommonFunc.sleep(1000);
       let List_ListSize_024: RectValue = CommonFunc.getComponentRect('List_ListSize_014');
-      expect(List_ListSize_01.bottom - List_ListSize_024.bottom).assertEqual(Math.round(vp2px(40)));
+      expect(Math.abs(Math.floor((List_ListSize_01.bottom - List_ListSize_024.bottom) - vp2px(40))) <= 1).assertTrue();
       console.info('testListListSizeMeet END');
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Size, Level} from '@ohos/hypium'
 import hitracendk from 'libentry.so'
 
 export default function hitraceNdkTest() {
@@ -26,7 +26,7 @@ export default function hitraceNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHHiTraceCountTrace001', 0, async (done: Function) => {
+    it('testOHHiTraceCountTrace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hitracendk.oHHiTraceCountTrace();
       expect(result).assertEqual(0);
       done();
@@ -40,7 +40,7 @@ export default function hitraceNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHHiTraceStartTrace001', 0, async (done: Function) => {
+    it('testOHHiTraceStartTrace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hitracendk.oHHiTraceStartTrace();
       expect(result).assertEqual(0);
       done();
@@ -54,7 +54,7 @@ export default function hitraceNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHHiTraceStartAsyncTrace001', 0, async (done: Function) => {
+    it('testOHHiTraceStartAsyncTrace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hitracendk.oHHiTraceStartAsyncTrace();
       expect(result).assertEqual(0);
       done();
@@ -68,7 +68,7 @@ export default function hitraceNdkTest() {
      * @tc.type  Function
      * @tc.level Level 1
      */
-    it('testOHHiTraceChainNd001', 0, async (done: Function) => {
+    it('testOHHiTraceChainNd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         let result: number = hitracendk.begin(); 
         expect(result).assertEqual(0);
         done();
@@ -82,7 +82,7 @@ export default function hitraceNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHHiTraceChainNd002', 0, async (done: Function) => {
+    it('testOHHiTraceChainNd002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         let result: number = hitracendk.beginflag(); 
         expect(result).assertEqual(0);
         done();
@@ -96,8 +96,14 @@ export default function hitraceNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHHiTraceChainNd003', 0, async (done: Function) => {
+    it('testOHHiTraceChainNd003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         let result: number = hitracendk.beginSpan(); 
+        expect(result).assertEqual(0);
+        done();
+    });
+
+    it('testoHHiTraceCountTraceEx', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let result: number = hitracendk.oHHiTraceCountTraceEx(); 
         expect(result).assertEqual(0);
         done();
     });

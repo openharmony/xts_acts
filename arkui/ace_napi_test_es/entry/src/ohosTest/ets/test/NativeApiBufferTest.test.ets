@@ -33,7 +33,7 @@ export default function napiBufferTest() {
      * @tc.name napiBufferTest003
      * @tc.desc aceNapiEtsTest
      */
-    it('napiBufferTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('napiBufferTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(napitest.BufferCopy().toString()).assertDeepEquals(napitest.testStr);
     })
   })

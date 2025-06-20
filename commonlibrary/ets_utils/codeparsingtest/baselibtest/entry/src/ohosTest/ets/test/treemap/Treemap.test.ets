@@ -43,9 +43,9 @@ export default function TreemapTest() {
      * @tc.desc       : Test the function of the constructor function.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructor0001";
       try {
         let treeMap: TreeMap<number, number> = new TreeMap();
@@ -66,9 +66,9 @@ export default function TreemapTest() {
      * @tc.desc       : Test the function of the constructor function.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructor0002";
       try {
         let treeMap: TreeMap<string, string> =
@@ -92,9 +92,9 @@ export default function TreemapTest() {
      * @tc.desc       : Test the function of the constructor function.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructor0003";
       try {
         class TestEntry {
@@ -126,9 +126,9 @@ export default function TreemapTest() {
      * @tc.desc       : Test the function of the constructor function.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructor0004";
       try {
         class TestEntry {
@@ -157,9 +157,9 @@ export default function TreemapTest() {
      * @tc.desc       : Test the function of the interface IsEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testIsEmpty0001";
       try {
         let treeMap: TreeMap<number, number> = new TreeMap();
@@ -177,9 +177,9 @@ export default function TreemapTest() {
      * @tc.desc       : Test the function of the interface IsEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testIsEmpty0002";
       try {
         let treeMap: TreeMap<string, number> = new TreeMap();
@@ -198,9 +198,9 @@ export default function TreemapTest() {
      * @tc.desc       : Test the function of the interface IsEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testIsEmpty0003";
       try {
         let treeMap: TreeMap<string, number> = new TreeMap();

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -46,7 +46,7 @@ export default function listJsunit() {
       console.info("list after each called");
     });
 
-    it('testList01', 0, async (done:Function) => {
+    it('testList01', Level.LEVEL1, async (done:Function) => {
       console.info('[testList01] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('list');
@@ -64,7 +64,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList02', 0, async (done:Function) => {
+    it('testList02', Level.LEVEL1, async (done:Function) => {
       console.info('[testList02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -90,7 +90,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList03', 0, async (done:Function) => {
+    it('testList03', Level.LEVEL1, async (done:Function) => {
       console.info('[testList03] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -116,7 +116,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList04', 0, async (done:Function) => {
+    it('testList04', Level.LEVEL1, async (done:Function) => {
       console.info('[testList04] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -142,7 +142,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList05', 0, async (done:Function) => {
+    it('testList05', Level.LEVEL1, async (done:Function) => {
       console.info('[testList05] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -168,7 +168,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList06', 0, async (done:Function) => {
+    it('testList06', Level.LEVEL1, async (done:Function) => {
       console.info('[testList06] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -194,7 +194,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList07', 0, async (done:Function) => {
+    it('testList07', Level.LEVEL1, async (done:Function) => {
       console.info('[testList07] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -220,7 +220,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList08', 0, async (done:Function) => {
+    it('testList08', Level.LEVEL1, async (done:Function) => {
       console.info('[testList08] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -246,7 +246,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList09', 0, async (done:Function) => {
+    it('testList09', Level.LEVEL1, async (done:Function) => {
       console.info('[testList09] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -272,7 +272,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList10', 0, async (done:Function) => {
+    it('testList10', Level.LEVEL1, async (done:Function) => {
       console.info('[testList10] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -298,7 +298,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList11', 0, async (done:Function) => {
+    it('testList11', Level.LEVEL1, async (done:Function) => {
       console.info('[testList11] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -324,7 +324,7 @@ export default function listJsunit() {
       done()
     });
 
-    it('testList12', 0, async (done:Function) => {
+    it('testList12', Level.LEVEL1, async (done:Function) => {
       console.info('[testList12] START');
       try {
         let eventData: events_emitter.EventData = {

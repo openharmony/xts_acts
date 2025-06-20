@@ -38,11 +38,11 @@ export default function HttpCreateHttpResponseCacheTest() {
      * @tc.number : SUB_NetworkMgr_Http_CreateHttpResponseCache_0100
      * @tc.name   : testNetworkMgrHttpCreateHttpResponseCache0100
      * @tc.desc   : Create a default object to store the response of HTTP access requests.
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpCreateHttpResponseCache0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrHttpCreateHttpResponseCache0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpCreateHttpResponseCache0100';
       console.info(`${caseName}---Start`);
       try {
@@ -61,11 +61,11 @@ export default function HttpCreateHttpResponseCacheTest() {
      * @tc.number : SUB_NetworkMgr_Http_CreateHttpResponseCache_0200
      * @tc.name   : testNetworkMgrHttpCreateHttpResponseCache0200
      * @tc.desc   : Create a default object to store the response of HTTP access requests.
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpCreateHttpResponseCache0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrHttpCreateHttpResponseCache0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpCreateHttpResponseCache0200';
       console.info(`${caseName}---Start`);
       try {
@@ -85,11 +85,11 @@ export default function HttpCreateHttpResponseCacheTest() {
      * @tc.number : SUB_NetworkMgr_Http_CreateHttpResponseCache_0300
      * @tc.name   : testNetworkMgrHttpCreateHttpResponseCache0300
      * @tc.desc   : Create a default object to store the response of HTTP access requests.
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpCreateHttpResponseCache0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrHttpCreateHttpResponseCache0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpCreateHttpResponseCache0300';
       console.info(`${caseName}---Start`);
       try {

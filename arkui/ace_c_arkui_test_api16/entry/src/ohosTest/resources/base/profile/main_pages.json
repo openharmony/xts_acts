@@ -11,7 +11,6 @@
     "MainAbility/pages/drag/DragCaseTest1",
     "MainAbility/pages/drag/DragCaseTest2",
     "MainAbility/pages/drag/DragCaseTest3",
-    "MainAbility/pages/ExpectedFrameRateRange/ExpectedFrameRateRangeCallback",
     "MainAbility/pages/move/TestNodeUtilMove001",
     "MainAbility/pages/timePicker/EnableCascadeTest"
   ]

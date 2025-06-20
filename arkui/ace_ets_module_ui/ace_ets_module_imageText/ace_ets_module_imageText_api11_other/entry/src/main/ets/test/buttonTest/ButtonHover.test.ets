@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 
 export default function ButtonHoverTest() {
@@ -52,7 +52,8 @@ export default function ButtonHoverTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('ArkUX_Hover_stoppropagation_0100', 0, async (done: Function) => {
+    
+    it('ArkUX_Hover_stoppropagation_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Hover_stoppropagation_0100 START');
       setTimeout(() => {
         try {

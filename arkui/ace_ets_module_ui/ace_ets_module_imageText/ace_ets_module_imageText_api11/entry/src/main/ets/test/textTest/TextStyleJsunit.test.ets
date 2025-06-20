@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -48,7 +48,7 @@ export default function textStyleJsunit() {
     });
 	let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_font_size').id)
 
-    it('testTextStyle006', 0, async () => {
+    it('testTextStyle006', Level.LEVEL1, async () => {
       console.info('[testTextStyle006] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontSize');
@@ -59,7 +59,7 @@ export default function textStyleJsunit() {
 	  
     });
 
-    it('testTextStyle007', 0, async () => {
+    it('testTextStyle007', Level.LEVEL1, async () => {
       console.info('[testTextStyle007] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -85,7 +85,7 @@ export default function textStyleJsunit() {
 	  expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
     });
 
-    it('testTextStyle008', 0, async () => {
+    it('testTextStyle008', Level.LEVEL1, async () => {
       console.info('[testTextStyle008] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -111,7 +111,7 @@ export default function textStyleJsunit() {
 	  expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
     });
 
-    it('testTextStyle009', 0, async () => {
+    it('testTextStyle009', Level.LEVEL1, async () => {
       console.info('[testTextStyle009] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -137,7 +137,7 @@ export default function textStyleJsunit() {
 	  expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
     });
 
-    it('testTextStyle010', 0, async () => {
+    it('testTextStyle010', Level.LEVEL1, async () => {
       console.info('[testTextStyle010] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -164,7 +164,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle011', 0, async () => {
+    it('testTextStyle011', Level.LEVEL1, async () => {
       console.info('[testTextStyle011] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontStyle');
@@ -175,7 +175,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle012', 0, async () => {
+    it('testTextStyle012', Level.LEVEL1, async () => {
       console.info('[testTextStyle012] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -201,7 +201,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle013', 0, async () => {
+    it('testTextStyle013', Level.LEVEL1, async () => {
       console.info('[testTextStyle013] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -227,7 +227,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle014', 0, async () => {
+    it('testTextStyle014', Level.LEVEL1, async () => {
       console.info('[testTextStyle014] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -253,7 +253,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle015', 0, async () => {
+    it('testTextStyle015', Level.LEVEL1, async () => {
       console.info('[testTextStyle015] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -279,7 +279,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle016', 0, async () => {
+    it('testTextStyle016', Level.LEVEL1, async () => {
       console.info('[testTextStyle016] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontWeight');
@@ -290,7 +290,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle017', 0, async () => {
+    it('testTextStyle017', Level.LEVEL1, async () => {
       console.info('[testTextStyle017] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -316,7 +316,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle018', 0, async () => {
+    it('testTextStyle018', Level.LEVEL1, async () => {
       console.info('[testTextStyle018] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -342,7 +342,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle019', 0, async () => {
+    it('testTextStyle019', Level.LEVEL1, async () => {
       console.info('[testTextStyle019] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -368,7 +368,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle020', 0, async () => {
+    it('testTextStyle020', Level.LEVEL1, async () => {
       console.info('[testTextStyle020] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -394,7 +394,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle021', 0, async () => {
+    it('testTextStyle021', Level.LEVEL1, async () => {
       console.info('[testTextStyle021] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontFamily');
@@ -405,7 +405,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle022', 0, async () => {
+    it('testTextStyle022', Level.LEVEL1, async () => {
       console.info('[testTextStyle022] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -431,7 +431,7 @@ export default function textStyleJsunit() {
 
     });
 
-    it('testTextStyle023', 0, async () => {
+    it('testTextStyle023', Level.LEVEL1, async () => {
       console.info('[testTextStyle023] START');
       try {
         let eventData: events_emitter.EventData = {

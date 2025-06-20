@@ -65,43 +65,39 @@ struct testExample {
           }
         })
       }
-      .maxCount(3)
-      .columnsGap(10)
-      .rowsGap(10)
+      .maxCount(3).columnsGap(10).rowsGap(10)
+      .padding(5)
       .height('50%')
     }.backgroundColor(Color.Gray).id('keyboard')
   }
 
   build() {
     Column() {
-      Text('Change text')
+      Row({ space: 20 }) {
+        Button('确认')  .onClick(() => {
+          if (this.controller != undefined) {
+            this.inputValue = this.textValue
+            this.controller.close()
+            this.confirm()
+          }
+        }).backgroundColor(0xffffff).fontColor(Color.Red)
+        Button('取消').onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close()
+            this.cancel()
+          }
+        }).backgroundColor(0xffffff).fontColor(Color.Black)
+      }.margin({top:0})
       TextInput({ placeholder: '', text: this.textValue, controller: this.controller1 })
         .id('input1')
-        .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: true })
-        .margin(10)
-        .border({ width: 1 })
         .width('90%')
+        .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance:true })
+        .border({ width: 1 })
         .onChange((value: string) => {
           this.textValue = value
         })
-      Flex({ justifyContent: FlexAlign.SpaceAround }) {
-        Button('取消')
-          .onClick(() => {
-            if (this.controller != undefined) {
-              this.controller.close()
-              this.cancel()
-            }
-          }).backgroundColor(0xffffff).fontColor(Color.Black)
-        Button('确认')
-          .onClick(() => {
-            if (this.controller != undefined) {
-              this.inputValue = this.textValue
-              this.controller.close()
-              this.confirm()
-            }
-          }).backgroundColor(0xffffff).fontColor(Color.Red)
-      }
-    }
+      Text('弹窗').fontSize(30)
+    }.justifyContent(FlexAlign.SpaceBetween)
   }
 }
 
@@ -126,7 +122,7 @@ struct CustomDialogUser2 {
     }),
     cancel: this.exitApp,
     autoCancel: true,
-    keyboardAvoidDistance: LengthMetrics.px(200),
+    keyboardAvoidDistance: LengthMetrics.vp(20),
     offset: { dx: 0, dy: -20 },
     gridCount: 4,
     customStyle: false,
@@ -153,7 +149,7 @@ struct CustomDialogUser2 {
   })
 
   aboutToDisappear() {
-    this.dialogController = null 
+    this.dialogController = null
   }
 
   onCancel() {
@@ -171,7 +167,7 @@ struct CustomDialogUser2 {
   build() {
     Column({ space: 2 }) {
       Text('custom')
-      Button('200px')
+      Button('20vp')
         .id('btn1')
         .onClick(() => {
           if (this.dialogController != null) {

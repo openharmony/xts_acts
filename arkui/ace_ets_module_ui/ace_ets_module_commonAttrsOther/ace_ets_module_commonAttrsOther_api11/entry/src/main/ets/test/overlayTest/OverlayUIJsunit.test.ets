@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -47,7 +47,7 @@ export default function overLayJsunit() {
       console.info("overlay after each called");
     });
 
-    it('overLayJsunit_0100', 0, async (done: Function) => {
+    it('overLayJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('overlay');
@@ -61,7 +61,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0200', 0, async (done: Function) => {
+    it('overLayJsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0200] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -87,7 +87,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0300', 0, async (done: Function) => {
+    it('overLayJsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0300] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -117,7 +117,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0400', 0, async (done: Function) => {
+    it('overLayJsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0400] START');
       await CommonFunc.sleep(1000);
       try {
@@ -144,7 +144,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0500', 0, async (done: Function) => {
+    it('overLayJsunit_0500', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0500] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -170,7 +170,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0600', 0, async (done: Function) => {
+    it('overLayJsunit_0600', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0600] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -198,7 +198,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0700', 0, async (done: Function) => {
+    it('overLayJsunit_0700', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0700] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -224,7 +224,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0800', 0, async (done: Function) => {
+    it('overLayJsunit_0800', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0800] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -250,7 +250,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0900', 0, async (done: Function) => {
+    it('overLayJsunit_0900', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_0900] START');
       await CommonFunc.sleep(1000);
       try {
@@ -277,7 +277,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_1000', 0, async (done: Function) => {
+    it('overLayJsunit_1000', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_1000] START');
       await CommonFunc.sleep(1000);
       try {
@@ -304,7 +304,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_1100', 0, async (done: Function) => {
+    it('overLayJsunit_1100', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_1100] START');
       await CommonFunc.sleep(1000);
       try {
@@ -331,7 +331,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_1200', 0, async (done: Function) => {
+    it('overLayJsunit_1200', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_1200] START');
       await CommonFunc.sleep(1000);
       try {
@@ -358,7 +358,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_1300', 0, async (done: Function) => {
+    it('overLayJsunit_1300', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_1300] START');
       await CommonFunc.sleep(1000);
       try {
@@ -385,7 +385,7 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_1400', 0, async (done: Function) => {
+    it('overLayJsunit_1400', Level.LEVEL0, async (done: Function) => {
       console.info('[overLayJsunit_1400] START');
       await CommonFunc.sleep(1000);
       try {

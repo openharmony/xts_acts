@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import image from '@ohos.multimedia.image'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   photoKeys,
   fetchOption, getPermission, driveFn, sleep,
@@ -40,7 +40,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_image_000', 0, async (done: Function) => {
+    it('request_image_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_image_000';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -74,7 +74,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_image_001', 0, async (done: Function) => {
+    it('request_image_001', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_image_001';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -108,7 +108,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_image_002', 0, async (done: Function) => {
+    it('request_image_002', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_image_002';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -142,7 +142,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_image_003', 0, async (done: Function) => {
+    it('request_image_003', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_image_003';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -176,7 +176,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_image_004', 0, async (done: Function) => {
+    it('request_image_004', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_image_004';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -210,7 +210,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_image_005', 0, async (done: Function) => {
+    it('request_image_005', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_image_005';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -244,7 +244,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_image_006', 2, async (done: Function) => {
+    it('request_image_006', Level.LEVEL2, async (done: Function) => {
       let testNum = 'request_image_006';
       try {
         let photoAsset = null;
@@ -278,7 +278,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('quick_request_image_001', 0, async (done: Function) => {
+    it('quick_request_image_001', Level.LEVEL0, async (done: Function) => {
       let testNum = 'quick_request_image_001';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -320,7 +320,7 @@ export default function requestImageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('quick_request_image_002', 2, async (done: Function) => {
+    it('quick_request_image_002', Level.LEVEL2, async (done: Function) => {
       let testNum = 'quick_request_image_002';
       try {
         let photoAsset = null;

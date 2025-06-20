@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption001', 0, async (done: Function) => {
+    it('testFlexOption001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testFlexOption002', 0, async (done: Function) => {
+    it('testFlexOption002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption003', 0, async (done: Function) => {
+    it('testFlexOption003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption004', 0, async (done: Function) => {
+    it('testFlexOption004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption005', 0, async (done: Function) => {
+    it('testFlexOption005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption006', 0, async (done: Function) => {
+    it('testFlexOption006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption007', 0, async (done: Function) => {
+    it('testFlexOption007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption008', 0, async (done: Function) => {
+    it('testFlexOption008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption009', 0, async (done: Function) => {
+    it('testFlexOption009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption010', 0, async (done: Function) => {
+    it('testFlexOption010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption011', 0, async (done: Function) => {
+    it('testFlexOption011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption012', 0, async (done: Function) => {
+    it('testFlexOption012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption013', 0, async (done: Function) => {
+    it('testFlexOption013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption014', 0, async (done: Function) => {
+    it('testFlexOption014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption015', 0, async (done: Function) => {
+    it('testFlexOption015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption016', 0, async (done: Function) => {
+    it('testFlexOption016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption017', 0, async (done: Function) => {
+    it('testFlexOption017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption018', 0, async (done: Function) => {
+    it('testFlexOption018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption019', 0, async (done: Function) => {
+    it('testFlexOption019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption019()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption020', 0, async (done: Function) => {
+    it('testFlexOption020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption020()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption021', 0, async (done: Function) => {
+    it('testFlexOption021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption021()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption022', 0, async (done: Function) => {
+    it('testFlexOption022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption022()).assertEqual(0)
       done()
     })
@@ -320,7 +320,7 @@ export default function FlexOptionTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testFlexOption023', 0, async (done: Function) => {
+    it('testFlexOption023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testFlexOption023()).assertEqual(0)
       done()
     })

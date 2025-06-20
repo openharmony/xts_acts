@@ -41,14 +41,14 @@ export default function HttpRequestInStreamTest() {
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_RequestInStream_0100
-     * @tc.name:    testHttpRequestInStream0100
+     * @tc.name:    testNetworkMgrHttpRequestInStream0100
      * @tc.desc:    test requestInStream
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequestInStream0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      const caseName: string = "testHttpRequestInStream0100";
+    it('testNetworkMgrHttpRequestInStream0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = "testNetworkMgrHttpRequestInStream0100";
       console.info(`${caseName} test Start`);
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
@@ -127,14 +127,14 @@ export default function HttpRequestInStreamTest() {
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_RequestInStream_0300
-     * @tc.name:    testHttpRequestInStream0300
+     * @tc.name:    testNetworkMgrHttpRequestInStream0300
      * @tc.desc:    test requestInStream
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequestInStream0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      const caseName: string = "testHttpRequestInStream0300";
+    it('testNetworkMgrHttpRequestInStream0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = "testNetworkMgrHttpRequestInStream0300";
       console.info(`${caseName} test Start`);
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it,expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -56,7 +56,7 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0001', 0, async (done: Function) => {
+    it('TextStyle_0001', Level.LEVEL1, async (done: Function) => {
 
       console.info('[TextStyle_0001] START');
       await CommonFunc.sleep(2000);
@@ -76,7 +76,7 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0002', 0, async (done: Function) => {
+    it('TextStyle_0002', Level.LEVEL1, async (done: Function) => {
 
       console.info('[TextStyle_0002] START');
       await CommonFunc.sleep(2000);
@@ -96,7 +96,7 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0003', 0, async (done: Function) => {
+    it('TextStyle_0003', Level.LEVEL1, async (done: Function) => {
 
       console.info('[TextStyle_0003] START');
       await CommonFunc.sleep(2000);
@@ -117,7 +117,7 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0004', 0, async (done: Function) => {
+    it('TextStyle_0004', Level.LEVEL1, async (done: Function) => {
 
       console.info('[TextStyle_0004] START');
       await CommonFunc.sleep(2000);
@@ -138,7 +138,7 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0005', 0, async (done: Function) => {
+    it('TextStyle_0005', Level.LEVEL1, async (done: Function) => {
 
       console.info('[TextStyle_0005] START');
       await CommonFunc.sleep(2000);
@@ -159,7 +159,7 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0006', 0, async (done: Function) => {
+    it('TextStyle_0006', Level.LEVEL1, async (done: Function) => {
 
       console.info('[TextStyle_0006] START');
       await CommonFunc.sleep(2000);
@@ -180,7 +180,7 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0007', 0, async (done: Function) => {
+    it('TextStyle_0007', Level.LEVEL1, async (done: Function) => {
 
       console.info('[TextStyle_0007] START');
       await CommonFunc.sleep(2000);
@@ -201,7 +201,7 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0008', 0, async (done: Function) => {
+    it('TextStyle_0008', Level.LEVEL1, async (done: Function) => {
       console.info('[TextStyle_0008] START');
       let driver= Driver.create();
       await CommonFunc.sleep(1000);

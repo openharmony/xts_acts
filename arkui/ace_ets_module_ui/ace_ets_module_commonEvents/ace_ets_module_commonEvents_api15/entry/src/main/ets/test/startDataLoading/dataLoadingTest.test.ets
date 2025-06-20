@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -56,7 +56,7 @@ export default function cancelDataLoadingTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('cancelDataLoading_0010', 0, async (done: Function) => {
+    it('cancelDataLoading_0010', Level.LEVEL0, async (done: Function) => {
       console.info('cancelDataLoading_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -81,7 +81,7 @@ export default function cancelDataLoadingTest() {
      */
 
 
-    it('startDataLoading_0010', 0, async (done: Function) => {
+    it('startDataLoading_0010', Level.LEVEL0, async (done: Function) => {
       console.info('startDataLoading_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -105,7 +105,7 @@ export default function cancelDataLoadingTest() {
      * @tc.size :
      */
 
-    it('disableDataPrefetch_0010', 0, async (done: Function) => {
+    it('disableDataPrefetch_0010', Level.LEVEL0, async (done: Function) => {
       console.info('disableDataPrefetch_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

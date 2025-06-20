@@ -39,6 +39,7 @@ struct Index {
             progressButtonWidth: this.buttonWidth,
             content: this.textState,
             enable: this.enableState,
+            progressButtonRadius: LengthMetrics.vp(8),
             clickCallback: () => {
               if (this.textState && !this.isRunning && this.progressIndex < 100) {
                 this.textState = '继续'

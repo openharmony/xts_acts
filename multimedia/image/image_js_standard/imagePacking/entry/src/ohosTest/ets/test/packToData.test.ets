@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 import fs from '@ohos.file.fs'
@@ -277,7 +277,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg",
         quality: 99
@@ -295,7 +295,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg",
         quality: 123
@@ -313,7 +313,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg"
       };
@@ -330,7 +330,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         quality: 99
       };
@@ -347,7 +347,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0500", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/txt", 
         quality: 99
@@ -365,7 +365,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0600", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg",
         quality: 50
@@ -383,7 +383,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0700", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg",
         quality: 123
@@ -401,7 +401,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0800", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg"
       };
@@ -418,7 +418,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_0900", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         quality: 99
       };
@@ -435,7 +435,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_PROMISE_1000", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/txt",
         quality: 99
@@ -453,7 +453,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_ADDBUFFERSIZE_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_ADDBUFFERSIZE_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", 
         quality: 99, 
@@ -472,7 +472,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_ADDBUFFERSIZE_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_ADDBUFFERSIZE_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", 
         quality: 99, 
@@ -492,7 +492,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_ADDBUFFERSIZE_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_PIXELMAP_ADDBUFFERSIZE_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", 
         quality: 99, 
@@ -511,7 +511,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", 
         quality: 99
@@ -531,7 +531,7 @@ export default function imagePackToData() {
      * @tc.level     : Level 1
      */
 
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", 
         quality: 123
@@ -550,7 +550,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg"
       };
@@ -568,7 +568,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         quality: 50
       };
@@ -586,7 +586,7 @@ export default function imagePackToData() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKTODATA_IMAGESOURCE_PROMISE_0500", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/txt", 
         quality: 99

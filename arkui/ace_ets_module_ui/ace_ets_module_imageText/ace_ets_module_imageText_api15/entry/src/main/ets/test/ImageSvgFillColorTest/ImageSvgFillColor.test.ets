@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTest_001', 0, async (done: Function) => {
+    it('ImageSVGFillColorTest_001', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let buttonID = 'svgFillColorButton1';
@@ -88,7 +88,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTest_002', 0, async (done: Function) => {
+    it('ImageSVGFillColorTest_002', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let buttonID = 'svgFillColorButton2';
@@ -126,7 +126,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTest_003', 0, async (done: Function) => {
+    it('ImageSVGFillColorTest_003', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let buttonID = 'svgFillColorButton3';
@@ -173,7 +173,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTest_004', 0, async (done: Function) => {
+    it('ImageSVGFillColorTest_004', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let buttonID = 'svgFillColorButton4';
@@ -210,7 +210,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTest_005', 0, async (done: Function) => {
+    it('ImageSVGFillColorTest_005', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let buttonID = 'svgFillColorButton5';
@@ -240,7 +240,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTest_006', 0, async (done: Function) => {
+    it('ImageSVGFillColorTest_006', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let buttonID = 'svgFillColorButton6';
@@ -271,7 +271,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTest_007', 0, async (done: Function) => {
+    it('ImageSVGFillColorTest_007', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let buttonID = 'svgFillColorButton7';
@@ -302,7 +302,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTest_008', 0, async (done: Function) => {
+    it('ImageSVGFillColorTest_008', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let buttonID = 'svgFillColorButton8';
@@ -333,7 +333,7 @@ export default function ImageSvgFillColorTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ImageSVGFillColorTestModifier_001', 0, async (done: Function) => {
+    it('ImageSVGFillColorTestModifier_001', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('modifierImage');

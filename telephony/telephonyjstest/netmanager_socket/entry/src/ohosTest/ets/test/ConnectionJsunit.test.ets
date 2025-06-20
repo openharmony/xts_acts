@@ -40,7 +40,16 @@ export default function connectionJsunit() {
 
 
     console.log("************* connection Test start*************");
-    it('Telephony_Connection_Request_Socket_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+    
+    /*
+     * @tc.number:SUB_Telephony_Connection_Request_Socket_0100
+     * @tc.name: testTelephonyConnectionRequestSocket_0100
+     * @tc.desc:Create  TCPSocket and UDPSocket success
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testTelephonyConnectionRequestSocket_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -57,12 +66,16 @@ export default function connectionJsunit() {
       udpSocket.close();
       done();
     });
+
     /*
-     * @tc.number    : Telephony_Connection_Connection_createNetConnection_0100
-     * @tc.name      : createNetConnection
-     * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
+     * @tc.number:SUB_Telephony_Connection_Connection_createNetConnection_0100
+     * @tc.name: testTelephonyConnectionConnectioncreateNetConnection0100
+     * @tc.desc:Create a network connection with optional netSpefifier and timeout.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it('Telephony_Connection_Connection_createNetConnection_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+    it('testTelephonyConnectionConnectioncreateNetConnection0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -78,12 +91,16 @@ export default function connectionJsunit() {
       console.log("************* Telephony_Connection_Connection_createNetConnection_0100 Test end*************");
       done();
     });
+
     /*
-     * @tc.number    : Telephony_Connection_Connection_createNetConnection_0200
-     * @tc.name      : createNetConnection
-     * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
+     * @tc.number:SUB_Telephony_Connection_Connection_createNetConnection_0200
+     * @tc.name: testTelephonyConnectionConnectioncreateNetConnection0200
+     * @tc.desc: Create a network connection with optional netSpefifier and timeout.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it('Telephony_Connection_Connection_createNetConnection_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+    it('testTelephonyConnectionConnectioncreateNetConnection0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -99,12 +116,16 @@ export default function connectionJsunit() {
       console.log("************* Telephony_Connection_Connection_createNetConnection_0200 Test end*************");
       done();
     });
+    
     /*
-     * @tc.number    : Telephony_Connection_Connection_createNetConnection_0300
-     * @tc.name      : createNetConnection
-     * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
+     * @tc.number:SUB_Telephony_Connection_Connection_createNetConnection_0300
+     * @tc.name: testTelephonyConnectionConnectioncreateNetConnection0300
+     * @tc.desc: Create a network connection with optional netSpefifier and timeout.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it('Telephony_Connection_Connection_createNetConnection_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+    it('Telephony_Connection_Connection_createNetConnection_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -120,12 +141,16 @@ export default function connectionJsunit() {
       console.log("************* Telephony_Connection_Connection_createNetConnection_0300 Test end*************");
       done();
     });
+
     /*
-     * @tc.number    : Telephony_Connection_Connection_createNetConnection_0400
-     * @tc.name      : createNetConnection
-     * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
+     * @tc.number:SUB_Telephony_Connection_Connection_createNetConnection_0400
+     * @tc.name: testTelephonyConnectionConnectioncreateNetConnection0400
+     * @tc.desc: Create a network connection with optional netSpefifier and timeout.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it('Telephony_Connection_Connection_createNetConnection_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+    it('testTelephonyConnectionConnectioncreateNetConnection0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();

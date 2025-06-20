@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -53,7 +53,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0001', 0, async () => {
+    it('searchFontScaleTest0001',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0001 START');
         await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0002', 0, async () => {
+    it('searchFontScaleTest0002',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0002 START');
         await CommonFunc.sleep(1000);
@@ -95,7 +95,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0003', 0, async () => {
+    it('searchFontScaleTest0003',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0003 START');
         await CommonFunc.sleep(1000);
@@ -116,7 +116,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0004', 0, async () => {
+    it('searchFontScaleTest0004',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0004 START');
         await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0005', 0, async () => {
+    it('searchFontScaleTest0005',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0005 START');
         await CommonFunc.sleep(1000);
@@ -158,7 +158,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0006', 0, async () => {
+    it('searchFontScaleTest0006',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0006 START');
         await CommonFunc.sleep(1000);
@@ -179,7 +179,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0007', 0, async () => {
+    it('searchFontScaleTest0007',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0007 START');
         await CommonFunc.sleep(1000);
@@ -200,7 +200,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0008', 0, async () => {
+    it('searchFontScaleTest0008',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0008 START');
         await CommonFunc.sleep(1000);
@@ -221,7 +221,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0009', 0, async () => {
+    it('searchFontScaleTest0009',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0009 START');
         await CommonFunc.sleep(1000);
@@ -243,7 +243,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0010', 0, async () => {
+    it('searchFontScaleTest0010',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0010 START');
         await CommonFunc.sleep(1000);
@@ -264,7 +264,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0011', 0, async () => {
+    it('searchFontScaleTest0011',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0011 START');
         await CommonFunc.sleep(1000);
@@ -286,7 +286,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0012', 0, async () => {
+    it('searchFontScaleTest0012',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0012 START');
         await CommonFunc.sleep(1000);
@@ -308,7 +308,7 @@ export default function searchFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('searchFontScaleTest0013', 0, async () => {
+    it('searchFontScaleTest0013',  Level.LEVEL0, async () => {
         let driver = Driver.create();
         console.info('searchFontScaleTest searchFontScaleTest0013 START');
         await CommonFunc.sleep(1000);

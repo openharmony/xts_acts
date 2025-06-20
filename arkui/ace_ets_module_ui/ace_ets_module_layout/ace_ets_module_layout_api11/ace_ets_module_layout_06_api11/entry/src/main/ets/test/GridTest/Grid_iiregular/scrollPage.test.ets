@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -70,7 +70,7 @@ export default function scrollByJsunit() {
       */
 
 
-    it('scrollPageJsunit_0001', 0, async (done: Function) => {
+    it('scrollPageJsunit_0001',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollPageJsunit_0010] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -101,7 +101,7 @@ export default function scrollByJsunit() {
      * @tc.level : Level 2
      */
 
-    it('scrollPageJsunit_0002', 0, async (done: Function) => {
+    it('scrollPageJsunit_0002',  Level.LEVEL0, async (done: Function) => {
       console.info('[scrollPageJsunit_0020] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

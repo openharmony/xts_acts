@@ -62,7 +62,7 @@ export default function ActsBmsGetBackGroundModes() {
         * @tc.name: getBackgroundModesMultiAbility
         * @tc.desc: Get the information of the background modes from multi-ability application
         */
-        it('getBackgroundModesMultiAbility', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getBackgroundModesMultiAbility', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -105,7 +105,7 @@ export default function ActsBmsGetBackGroundModes() {
         * @tc.desc: Get all background modes information, and each ability of the application
         *               contains one of the background mode
         */
-        it('getBackgroundModesAllModes', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getBackgroundModesAllModes', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
@@ -185,7 +185,7 @@ export default function ActsBmsGetBackGroundModes() {
         * @tc.name: getBackgroundModesMultiHap
         * @tc.desc: Get the backgroundModes information of the multi-hap package of the application 
         */
-        it('getBackgroundModesMultiHap', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getBackgroundModesMultiHap', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],

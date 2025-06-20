@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageObjectRepeatTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageObjectRepeat001', 0, async (done: Function) => {
+    it('testImageObjectRepeat001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageObjectRepeat001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageObjectRepeatTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageObjectRepeat002', 0, async (done: Function) => {
+    it('testImageObjectRepeat002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageObjectRepeat002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageObjectRepeatTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageObjectRepeat003', 0, async (done: Function) => {
+    it('testImageObjectRepeat003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageObjectRepeat003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageObjectRepeatTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageObjectRepeat004', 0, async (done: Function) => {
+    it('testImageObjectRepeat004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageObjectRepeat004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageObjectRepeatTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageObjectRepeat005', 0, async (done: Function) => {
+    it('testImageObjectRepeat005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageObjectRepeat005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function imageObjectRepeatTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageObjectRepeat006', 0, async (done: Function) => {
+    it('testImageObjectRepeat006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageObjectRepeat006()).assertEqual(0)
       done()
     })

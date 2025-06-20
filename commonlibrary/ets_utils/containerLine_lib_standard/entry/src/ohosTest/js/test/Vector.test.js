@@ -21,7 +21,7 @@ describe("VectorTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an Vector instance. For example: let vector = new Vector().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let vector = new Vector();
     } catch (err) {
@@ -34,7 +34,7 @@ describe("VectorTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add a element to the end of the Vector instance. For example: vector.add("四").
    */
-  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     let res = vector.getFirstElement();
@@ -45,7 +45,7 @@ describe("VectorTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add a element to the end of the Vector instance. For example: vector.add(4).
    */
-  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add(4);
     let res = vector.getFirstElement();
@@ -57,7 +57,7 @@ describe("VectorTest", function () {
    * @tc.desc: Add a element to the end of the Vector instance. 
    * For example: let a = {name: "lala", age: "13岁"}; vector.add(a).
    */
-  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     let a = {name: "lala", age: "13岁"};
     vector.add(a);
@@ -69,7 +69,7 @@ describe("VectorTest", function () {
    * @tc.name: testAdd005
    * @tc.desc: Add a element to the end of the Vector instance. For example: let a = [1, 2, 3, 4]; vector.add(a).
    */
-  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     let a = [1, 2, 3, 4];
     vector.add(a);
@@ -81,7 +81,7 @@ describe("VectorTest", function () {
    * @tc.name: testInsert006
    * @tc.desc: Insert an element into the middle of the Vector instance. For example: vector.insert(8, 2).
    */
-  it("testInsert006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsert006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -96,7 +96,7 @@ describe("VectorTest", function () {
    * @tc.name: testInsert007
    * @tc.desc: Insert an element into the middle of the Vector instance. For example: vector.insert(-1, 2).
    */
-  it("testInsert007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsert007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -114,7 +114,7 @@ describe("VectorTest", function () {
    * @tc.name: testInsert008
    * @tc.desc: Insert an element into the middle of the Vector instance. For example: vector.insert(capacity, 2).
    */
-  it("testInsert008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsert008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -130,7 +130,7 @@ describe("VectorTest", function () {
    * @tc.name: testInsert009
    * @tc.desc: Insert an element into the middle of the Vector instance. For example: vector.insert(2, capacity + 1).
    */
-  it("testInsert009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsert009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -149,7 +149,7 @@ describe("VectorTest", function () {
    * @tc.name: testLength010
    * @tc.desc: Get the number of elements contained in the Vector instance. For example: vector.length.
    */
-  it("testLength010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -163,7 +163,7 @@ describe("VectorTest", function () {
    * @tc.name: testHas011
    * @tc.desc: Check whether the Vector contains a specified element. For example: vector.has(8).
    */
-  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -178,7 +178,7 @@ describe("VectorTest", function () {
    * @tc.name: testHas012
    * @tc.desc: Check whether the Vector contains a specified element. For example: vector.has("二").
    */
-  it("testHas012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -193,7 +193,7 @@ describe("VectorTest", function () {
    * @tc.name: testGet013
    * @tc.desc: Gets the element corresponding to the specified index. For example: vector.get(1).
    */
-  it("testGet013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGet013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -208,7 +208,7 @@ describe("VectorTest", function () {
    * @tc.name: testGet014
    * @tc.desc: Gets the element corresponding to the specified index. For example: vector.get(10).
    */
-  it("testGet014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGet014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -228,7 +228,7 @@ describe("VectorTest", function () {
    * @tc.desc: In the Vector instance, find the index of a specified element from front to back, 
    * and return the index found for the first time. If not found, return -1. For example: vector.getIndexOf(1).
    */
-  it("testGetIndexOf015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetIndexOf015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add(1);
     vector.add("三");
@@ -243,7 +243,7 @@ describe("VectorTest", function () {
    * @tc.name: testGetFirstElement016
    * @tc.desc: Get the header element of the Vector instance. For example: vector.getFirstElement().
    */
-  it("testGetFirstElement016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetFirstElement016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -258,7 +258,7 @@ describe("VectorTest", function () {
    * @tc.name: testGetFirstElement017
    * @tc.desc: Get the header element of the Vector instance. For example: vector.getFirstElement().
    */
-  it("testGetFirstElement017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetFirstElement017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     let res = vector.getFirstElement();
     expect(res).assertEqual(undefined);
@@ -268,7 +268,7 @@ describe("VectorTest", function () {
    * @tc.name: testSet018
    * @tc.desc: Modify the element corresponding to the specified index. For example: vector.set(1, "二").
    */
-  it("testSet018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -284,7 +284,7 @@ describe("VectorTest", function () {
    * @tc.name: testRemoveByIndex019
    * @tc.desc: In the Vector instance, delete the element based on its index. For example: vector.removeByIndex(2).
    */
-  it("testRemoveByIndex019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveByIndex019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -299,7 +299,7 @@ describe("VectorTest", function () {
    * @tc.name: testRemove020
    * @tc.desc: Delete the specified element. For example: vector.remove("三").
    */
-  it("testRemove020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemove020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -314,7 +314,7 @@ describe("VectorTest", function () {
    * @tc.name: testRemove021
    * @tc.desc: Delete the specified element. For example: vector.remove(2).
    */
-  it("testRemove021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemove021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -328,7 +328,7 @@ describe("VectorTest", function () {
    * @tc.name: testGetLastElement022
    * @tc.desc: Get the end element of the Vector instance. For example: vector.getLastElement().
    */
-  it("testGetLastElement022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetLastElement022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -343,7 +343,7 @@ describe("VectorTest", function () {
    * @tc.name: testGetLastElement023
    * @tc.desc: Get the end element of the Vector instance. For example: vector.getLastElement().
    */
-  it("testGetLastElement023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetLastElement023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     let res = vector.getLastElement();
     expect(res).assertEqual(undefined);
@@ -354,7 +354,7 @@ describe("VectorTest", function () {
    * @tc.desc: In the Vector instance, find the index of a specified element from back to front, 
    * and return the index found for the first time. If not found, return -1. For example: vector.getLastIndexOf(1).
    */
-  it("testGetLastIndexOf024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetLastIndexOf024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -372,7 +372,7 @@ describe("VectorTest", function () {
    * from the specified index position, and return the index found for the first time If not found, 
    * return -1.vector.getLastIndexFrom(1, 5).
    */
-  it("testGetLastIndexFrom025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetLastIndexFrom025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -392,7 +392,7 @@ describe("VectorTest", function () {
    * from the specified index position, and return the index found for the first time If not found, 
    * return -1.vector.getLastIndexFrom(1, 5).
    */
-  it("testGetIndexFrom026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetIndexFrom026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -411,7 +411,7 @@ describe("VectorTest", function () {
    * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
    * elements at the end position. For example: vector.removeByRange(1, 3).
    */
-  it("testRemoveByRange027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveByRange027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");
@@ -437,7 +437,7 @@ describe("VectorTest", function () {
    * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
    * elements at the end position. For example: vector.removeByRange(3, 1).
    */
-  it("testRemoveByRange028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveByRange028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let vector = new Vector();
     vector.add("四");
     vector.add("三");

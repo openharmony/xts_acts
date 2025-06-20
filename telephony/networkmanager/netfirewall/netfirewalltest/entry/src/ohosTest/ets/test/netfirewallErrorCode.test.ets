@@ -1,4 +1,4 @@
-import { describe, it, expect, Level, TestType, Size, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, Level, TestType, Size, beforeAll, afterAll } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import netFirewall from '@ohos.net.netFirewall';
 import { JSON } from '@kit.ArkTS';
@@ -6,7 +6,7 @@ import { JSON } from '@kit.ArkTS';
 export default function NetfirewallErrorCode01() {
   describe('NetfirewallErrorCodeTest01',  () => {
     const UID:number = 100;
-    let CURRENT_ID :number = 1;
+    let CURRENT_ID :number | undefined = -1;
     let ipRule: netFirewall.NetFirewallRule = {
       name: "rule01",
       description: "rule01 description",
@@ -78,24 +78,36 @@ export default function NetfirewallErrorCode01() {
     const getDomainName:() => string=()=>{
       return "www.baidu"+ (Math.random()*1000).toFixed(0)+(Math.random()*10000).toFixed(0)+".com"
     }
-    const removedAll:  () => void = async ()=>{
-      let i = 0
-      while (i<100){
-        i++;
-        await updateCurrentId("remove 调用的")
-        await netFirewall.removeNetFirewallRule(UID,CURRENT_ID).catch((error : BusinessError) => {
-          i = 2000
-          console.error("delete firewall rule failed: " + JSON.stringify(error));
+
+   let updateCurrentId: (caseName: string) => void = async (caseName: string)=>{
+      try{
+        await netFirewall.getNetFirewallRules(UID, ruleParam).then((result: netFirewall.FirewallRulePage) => {
+          if(result.data.length == 0) CURRENT_ID = -1
+          else CURRENT_ID = result.data[0].id == undefined ? -1: result.data[0].id
+        }, (error: BusinessError) => {
+          console.error(caseName, " get firewall rules failed err in : " + JSON.stringify(error));
         });
+      }catch (err){
+        console.error(caseName, "  update CurrentId failed err in : " + JSON.stringify(err));
       }
     }
-    const updateCurrentId: (caseName: string) => void = async (caseName: string)=>{
-      await netFirewall.getNetFirewallRules(UID, ruleParam).then((result: netFirewall.FirewallRulePage) => {
-        CURRENT_ID = result.data[0].id == undefined ? 1: result.data[0].id;
-      }, (error: BusinessError) => {
-        console.error(caseName, "get firewall rules failed: " + JSON.stringify(error));
-      });
+
+    let removedAll:  (deleteNum: number) => void = async (deleteNum: number)=>{
+      try {
+        let i = 0
+        while (i<deleteNum && CURRENT_ID !=-1){
+          i++;
+          await netFirewall.removeNetFirewallRule(UID,CURRENT_ID).catch((error : BusinessError) => {
+            i = 2000
+            console.error(" delete firewall rule failed: " + JSON.stringify(error));
+          });
+          await updateCurrentId("remove调用")
+        }
+      }catch (err){
+        console.error(" remove netfirewall catch err in ",JSON.stringify(err))
+      }
     }
+
     let getIpRule: () => netFirewall.NetFirewallRule = ()=>{
       return  {
         name: getName(),
@@ -310,15 +322,18 @@ export default function NetfirewallErrorCode01() {
       }
       return resultIpRulers
     }
-    beforeAll(async ()=>{
-      await removedAll();
-      await netFirewall.getNetFirewallRules(UID, ruleParam).then((result: netFirewall.FirewallRulePage) => {
-        CURRENT_ID = result.data[0].id == undefined ? 1: result.data[0].id;
-      }, (error: BusinessError) => {
-        console.error("get firewall rules failed: " + JSON.stringify(error));
-      });
-    })
 
+
+    beforeAll(async ()=>{
+      await updateCurrentId("beforeAll 调用的");
+      await removedAll(100);
+
+    })
+    afterAll(async ()=>{
+      await updateCurrentId("afterAll 调用的");
+      await removedAll(700);
+    })
+    
     /**
      * @tc.number : SUB_Telephony_Netfirewall_ErrCo_0100
      * @tc.name   : testTelephonyNetfirewallErrCo0100
@@ -941,7 +956,7 @@ export default function NetfirewallErrorCode01() {
       try{
         let ipRuleUpd: netFirewall.NetFirewallRule = {
           userId:555,
-          id: CURRENT_ID,
+          id: 1,
           name: "rule2",
           description: "rule1 description update",
           direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
@@ -1125,7 +1140,6 @@ export default function NetfirewallErrorCode01() {
           await netFirewall.addNetFirewallRule(getMorePortRule()).catch(async (err:BusinessError)=>{
             console.log(`${caseName} err in`,JSON.stringify(err))
             ExpectTrue(err.code == 29400003)
-            await removedAll();
             i = 2000;
             done();
             return
@@ -1157,7 +1171,6 @@ export default function NetfirewallErrorCode01() {
           await netFirewall.addNetFirewallRule(getMoreIPRule(20)).catch(async (err:BusinessError)=>{
             console.log(`${caseName}  err in"`,JSON.stringify(err))
             ExpectTrue(err.code == 29400002)
-            await removedAll();
             i = 2000;
             done();
           });
@@ -1222,7 +1235,6 @@ export default function NetfirewallErrorCode01() {
           await netFirewall.updateNetFirewallRule(getUpdateDomainRuler(500)).catch(async (err:BusinessError)=>{
             console.log(`${caseName} err in"`,JSON.stringify(err))
             ExpectTrue(err.code == 29400004 )
-            await removedAll();
             i=2000;
             done();
           });
@@ -1255,7 +1267,6 @@ export default function NetfirewallErrorCode01() {
           .catch(async (err: BusinessError)=>{
             console.log(`${caseName} update ruler failed`,JSON.stringify(err))
             ExpectTrue(err.code == 29400002)
-            await removedAll();
             done();
           })
       }catch (err){
@@ -1286,7 +1297,6 @@ export default function NetfirewallErrorCode01() {
           .catch(async (err: BusinessError)=>{
             console.log(`${caseName} update ruler failed`,JSON.stringify(err))
             ExpectTrue(err.code == 29400003)
-            await removedAll();
             done();
           })
       }catch (err){
@@ -1381,7 +1391,6 @@ export default function NetfirewallErrorCode01() {
               ExpectTrue(err.code == 29400001)
               done();
               i = 2000;
-              await removedAll();
             });
         }
       }catch (err){
@@ -1393,3 +1402,4 @@ export default function NetfirewallErrorCode01() {
     })
   })
 }
+

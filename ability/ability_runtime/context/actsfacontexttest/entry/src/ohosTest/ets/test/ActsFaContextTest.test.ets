@@ -24,7 +24,7 @@ export default function actsFaContextTest() {
         * @tc.name      : get resource by $r
         * @tc.desc      : get resource by $r
         */
-        it('ACTS_FAContext_0100',0, async (done: Function) => {
+        it('ACTS_FAContext_0100', Level.LEVEL0, async (done: Function) => {
             await resourceManager.getResourceManager().then(rm => {
                 return rm.getString($r("app.string.fa").id)
             }).then(str => {

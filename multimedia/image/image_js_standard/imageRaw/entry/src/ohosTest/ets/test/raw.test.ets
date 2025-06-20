@@ -15,7 +15,7 @@
 
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import featureAbility from "@ohos.ability.featureAbility";
 import fs from '@ohos.file.fs'
 import { BusinessError } from '@ohos.base';
@@ -286,7 +286,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0100", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -314,7 +314,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0200", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -341,7 +341,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0300", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -375,7 +375,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0400", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -403,7 +403,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0500", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -431,7 +431,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0600", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -459,7 +459,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0700", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -487,7 +487,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0800", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -522,7 +522,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_0900", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -557,7 +557,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1000", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -592,7 +592,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1100", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -626,7 +626,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1200", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -660,7 +660,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1300", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -695,7 +695,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1400", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -729,7 +729,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1500", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: -1,
         editable: true,
@@ -757,7 +757,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1600", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -786,7 +786,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1700", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -815,7 +815,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1800", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: false,
@@ -844,7 +844,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_1900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_1900", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -873,7 +873,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_2000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_2000", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -902,7 +902,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_2100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_2100", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: -1,
         editable: true,
@@ -931,7 +931,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_2200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_2200", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -960,7 +960,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_2300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_2300", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -989,7 +989,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_2400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_2400", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: false,
@@ -1018,7 +1018,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_2500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_2500", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -1047,7 +1047,7 @@ export default function imageRaw() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_RAW_2600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_RAW_2600", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect,beforeAll} from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -57,7 +57,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       console.info("longPressGesture after each called");
     });
 
-    it('testLongPressGesture01', 0, async (done: Function) => {
+    it('testLongPressGesture01', Level.LEVEL0, async (done: Function) => {
       console.info('[testLongPressGesture01] START');
       await CommonFunc.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
@@ -81,7 +81,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       done();
     });
 
-    it('testLongPressGesture02', 0, async (done: Function) => {
+    it('testLongPressGesture02', Level.LEVEL0, async (done: Function) => {
       console.info('[testLongPressGesture02] START');
       await CommonFunc.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {

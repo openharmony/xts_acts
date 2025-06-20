@@ -52,9 +52,9 @@ export default function batteryInfoNdkTest() {
      * @tc.desc Test testNapi BatteryInfo.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      */
-    it('SUB_PowerSystem_BatteryInfo_NdkTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it('SUB_PowerSystem_BatteryInfo_NdkTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
         let TAG = 'SUB_PowerSystem_BatteryInfo_NdkTest_0100';
         try {
@@ -75,9 +75,9 @@ export default function batteryInfoNdkTest() {
      * @tc.desc Test testNapi BatteryInfo.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      */
-    it('SUB_PowerSystem_BatteryInfo_NdkTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it('SUB_PowerSystem_BatteryInfo_NdkTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
         let TAG = 'SUB_PowerSystem_BatteryInfo_NdkTest_0200';
         try {

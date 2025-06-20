@@ -62,7 +62,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       console.log(msg + ' beforeEach end!!!')
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5280
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWLEVEL_JS_API_0010
      * @tc.name      : testGetLastWindow_SubWindow_Promise
      * @tc.desc      : Gets the last window displayed in the current app.
      * @tc.size      : MediumTest
@@ -111,7 +111,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       await (subWindow as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5290
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWLEVEL_JS_API_0020
      * @tc.name      : testGetLastWindow_SubWindow_Callback
      * @tc.desc      : Gets the last window displayed in the current app.
      * @tc.size      : MediumTest
@@ -172,7 +172,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5300
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWLEVEL_JS_API_0030
      * @tc.name      : testGetLastWindow_TwoSubWindow_Promise
      * @tc.desc      : Gets the last window displayed in the current app.
      * @tc.size      : MediumTest
@@ -246,7 +246,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       await (subWindowTwo as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5310
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWLEVEL_JS_API_0040
      * @tc.name      : testGetLastWindow_TwoSubWindow_Callback
      * @tc.desc      : Gets the last window displayed in the current app.
      * @tc.size      : MediumTest
@@ -337,7 +337,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5320
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWLEVEL_JS_API_0050
      * @tc.name      : testGetLastWindow_DialogWindow_Promise
      * @tc.desc      : Gets the last window displayed in the current app.
      * @tc.size      : MediumTest
@@ -391,7 +391,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       await (tempWnd as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5330
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWLEVEL_JS_API_0060
      * @tc.name      : testGetLastWindow_DialogWindow_Callback
      * @tc.desc      : Gets the last window displayed in the current app.
      * @tc.size      : MediumTest

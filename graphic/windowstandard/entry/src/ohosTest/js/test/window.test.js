@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Level, TestType, Size} from '@ohos/hypium'
 import window from '@ohos.window'
 import display from '@ohos.display'
 
@@ -88,7 +88,7 @@ export default function window_test() {
 	 * @tc.name       testGetProperties_Promise
 	 * @tc.desc       Get the current application main window properties
 	 */
-        it('testGetProperties_Promise', 0, async function (done) {
+        it('testGetProperties_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getProperties_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -129,7 +129,7 @@ export default function window_test() {
         * @tc.name      testGetProperties_Callback
         * @tc.desc      Get the current application main window properties
         */
-        it('testGetProperties_Callback', 0, async function (done) {
+        it('testGetProperties_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getProperties_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -171,7 +171,7 @@ export default function window_test() {
 	 * @tc.name       testGetAvoidArea_SystemUI_Type_Promise
 	 * @tc.desc       Get SystemUI type avoidance area
 	 */
-        it('testGetAvoidArea_SystemUI_Type_Promise', 0, async function (done) {
+        it('testGetAvoidArea_SystemUI_Type_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getAvoidArea_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -202,7 +202,7 @@ export default function window_test() {
 	 * @tc.name       testGetAvoidArea_Notch_Type_Promise
 	 * @tc.desc       Get Notch type avoidance area
 	 */
-        it('testGetAvoidArea_Notch_Type_Promise', 0, async function (done) {
+        it('testGetAvoidArea_Notch_Type_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getAvoidArea_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -233,7 +233,7 @@ export default function window_test() {
 	 * @tc.name       testGetAvoidArea_System_Gesture_Type_Promise
 	 * @tc.desc       Get system gesture type avoidance area
 	 */
-        it('testGetAvoidArea_System_Gesture_Type_Promise', 0, async function (done) {
+        it('testGetAvoidArea_System_Gesture_Type_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getAvoidArea_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -264,7 +264,7 @@ export default function window_test() {
      * @tc.name      testGetAvoidArea_System_Type_Promise
      * @tc.desc      Get System type avoidance area
      */
-        it('testGetAvoidArea_System_Type_Promise', 0, async function (done) {
+        it('testGetAvoidArea_System_Type_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getAvoidArea_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -292,7 +292,7 @@ export default function window_test() {
      * @tc.name      testGetAvoidArea_Cutout_Type_Callback
      * @tc.desc      Get Cutout type avoidance area
      */
-        it('testGetAvoidArea_Cutout_Type_Callback', 0, async function (done) {
+        it('testGetAvoidArea_Cutout_Type_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getAvoidArea_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -325,7 +325,7 @@ export default function window_test() {
      * @tc.name      testGetAvoidArea_System_Gesture_Type_Callback
      * @tc.desc      Get system gesture type avoidance area
      */
-        it('testGetAvoidArea_System_Gesture_Type_Callback', 0, async function (done) {
+        it('testGetAvoidArea_System_Gesture_Type_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getAvoidArea_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -357,7 +357,7 @@ export default function window_test() {
 	 * @tc.name       testSetFullScreen_Parameter1_Promise
 	 * @tc.desc       Set the window to be non-fullscreen first and then fullscreen
 	 */
-        it('testSetFullScreen_Parameter1_Promise', 0, async function (done) {
+        it('testSetFullScreen_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setFullScreen_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -406,7 +406,7 @@ export default function window_test() {
      * @tc.name      testSetFullScreen_Parameter2_Callback
      * @tc.desc      Set the window to be non-fullscreen first and then fullscreen.
      */
-        it('testSetFullScreen_Parameter2_Callback', 0, async function (done) {
+        it('testSetFullScreen_Parameter2_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setFullScreen_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -460,7 +460,7 @@ export default function window_test() {
 	 * @tc.name       testSetLayoutFullScreen_Parameter1_Promise
 	 * @tc.desc       Set window and layout to full screen
 	 */
-        it('testSetLayoutFullScreen_Parameter1_Promise', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -507,7 +507,7 @@ export default function window_test() {
      * @tc.name      testSetLayoutFullScreen_Parameter2_Callback
      * @tc.desc      Set window and layout to full screen.
      */
-        it('testSetLayoutFullScreen_Parameter2_Callback', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter2_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -563,7 +563,7 @@ export default function window_test() {
 	 * @tc.name       testSetLayoutFullScreen_Parameter3_Promise
 	 * @tc.desc       Set the window to full screen, the layout is not full screen
 	 */
-        it('testSetLayoutFullScreen_Parameter3_Promise', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter3_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -610,7 +610,7 @@ export default function window_test() {
      * @tc.name      testSetLayoutFullScreen_Parameter4_Callback
      * @tc.desc      Set the window to full screen, the layout is not full screen
      */
-        it('testSetLayoutFullScreen_Parameter4_Callback', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter4_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -664,7 +664,7 @@ export default function window_test() {
 	 * @tc.name       testSetLayoutFullScreen_Parameter5_Promise
 	 * @tc.desc       Set the window to be non-full-screen and the layout to be full-screen
 	 */
-        it('testSetLayoutFullScreen_Parameter5_Promise', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter5_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -712,7 +712,7 @@ export default function window_test() {
      * @tc.name      testSetLayoutFullScreen_Parameter6_Callback
      * @tc.desc      Set the window to be non-full-screen and the layout to be full-screen.
      */
-        it('setLayoutFullScreen_Test_006', 0, async function (done) {
+        it('setLayoutFullScreen_Test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -765,7 +765,7 @@ export default function window_test() {
 	 * @tc.name       Test testSetLayoutFullScreen_Parameter7_Promise
 	 * @tc.desc       Setting windows and layouts to be non-fullscreen
 	 */
-        it('setLayoutFullScreen_Test_007', 0, async function (done) {
+        it('setLayoutFullScreen_Test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_007';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -811,7 +811,7 @@ export default function window_test() {
      * @tc.name      testSetLayoutFullScreen_Parameter8_Callback
      * @tc.desc      Setting window and layouts to be non-fullscreen.
      */
-        it('testSetLayoutFullScreen_Parameter8_Callback', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter8_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_008';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -865,7 +865,7 @@ export default function window_test() {
 	 * @tc.name       testFindWindow_Main_Window_Promise
 	 * @tc.desc       Query main window
 	 */
-        it('testFindWindow_Main_Window_Promise', 0, async function (done) {
+        it('testFindWindow_Main_Window_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let msgStr = 'find_Test_001';
             console.log(msgStr + ' begin');
             window.find('window0').then((data) => {
@@ -884,7 +884,7 @@ export default function window_test() {
 	 * @tc.name       testFindWindow_Non_Existing_Window_Promise
 	 * @tc.desc       Query for non-existing windows
 	 */
-        it('testFindWindow_Non_Existing_Window_Promise', 0, async function (done) {
+        it('testFindWindow_Non_Existing_Window_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             let msgStr = 'find_Test_002';
             console.log(msgStr + ' begin');
             window.find('window').then((window) => {
@@ -903,7 +903,7 @@ export default function window_test() {
      * @tc.name      testFindWindow_Main_Window_Callback
      * @tc.desc      Query main window.
      */
-        it('testFindWindow_Main_Window_Callback', 0, async function (done) {
+        it('testFindWindow_Main_Window_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let msgStr = 'find_Test_003';
             console.log(msgStr + ' begin');
             window.find('window0', (err, data) => {
@@ -924,7 +924,7 @@ export default function window_test() {
      * @tc.name      testFindWindow_Non_Existing_Window_Callback
      * @tc.desc      Query for non-existing windows
      */
-        it('testFindWindow_Non_Existing_Window_Callback', 0, async function (done) {
+        it('testFindWindow_Non_Existing_Window_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             let msgStr = 'find_Test_004';
             console.log(msgStr + ' begin');
             window.find('window', (err, data) => {
@@ -946,7 +946,7 @@ export default function window_test() {
      * @tc.name      testOnOff_SystemAvoidAreaChange_Callback
      * @tc.desc      To verify the function of enabling and disabling intercepting when the window size changes.
      */
-        it('testOnOff_SystemAvoidAreaChange_Callback', 0, async function (done) {
+        it('testOnOff_SystemAvoidAreaChange_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'onOff_Test_001';
             console.log(msgStr + ' begin');
             display.getDefaultDisplay().then(dsp => {
@@ -975,7 +975,7 @@ export default function window_test() {
      * @tc.name        testIsShowing_Promise
      * @tc.desc        To verify the function of obtaining the display status when a window is hidden and then displayed.
      */
-        it('testIsShowing_Promise', 0, async function (done) {
+        it('testIsShowing_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'isShowing_Test_001';
             console.log(msgStr + ' begin');
             window.create('subWindow1', window.WindowType.TYPE_APP).then(wnd => {
@@ -1023,7 +1023,7 @@ export default function window_test() {
      * @tc.name      testIsShowing_Callback
      * @tc.desc      To verify the function of obtaining the display status when a window is hidden and then displayed.
      */
-        it('testIsShowing_Callback', 0, async function (done) {
+        it('testIsShowing_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'isShowing_Test_002';
             console.log(msgStr + ' begin');
             window.create('subWindow2', window.WindowType.TYPE_APP, (err, data) => {
@@ -1080,7 +1080,7 @@ export default function window_test() {
      * @tc.name        testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Promise
      * @tc.desc        To verify the setting of the wide color gamut color space
      */
-        it('testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Promise', 0, async function (done) {
+        it('testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setColorSpace_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1121,7 +1121,7 @@ export default function window_test() {
      * @tc.name        testSetColorSpace_Parameter_Promise
      * @tc.desc        To verify that the color space of invaild values is set successfully
      */
-        it('testSetColorSpace_Parameter_Promise', 0, async function (done) {
+        it('testSetColorSpace_Parameter_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setColorSpace_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1148,7 +1148,7 @@ export default function window_test() {
      * @tc.name      testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Callback
      * @tc.desc      To verify the setting of the wide color gamut color space
      */
-        it('testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Callback', 0, async function (done) {
+        it('testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setColorSpace_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1193,7 +1193,7 @@ export default function window_test() {
      * @tc.name      testSetColorSpace_Parameter_Callback
      * @tc.desc      To verify that the color space of invalid values is set successfully
      */
-        it('testSetColorSpace_Parameter_Callback', 0, async function (done) {
+        it('testSetColorSpace_Parameter_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setColorSpace_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1222,7 +1222,7 @@ export default function window_test() {
      * @tc.name			testCreateWindow_Promise
      * @tc.desc			To verify the function of creating an application subwindow.
      */
-        it('testCreateWindow_Promise', 0, async function (done) {
+        it('testCreateWindow_Promise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'create_Test_001';
             console.log(msgStr + ' begin');
             window.create('subWindow3', window.WindowType.TYPE_APP).then(wnd => {
@@ -1252,7 +1252,7 @@ export default function window_test() {
      * @tc.name      testCreateWindow_Callback
      * @tc.desc      To verify the function of creating an application subwindow
      */
-        it('testCreateWindow_Callback', 0, async function (done) {
+        it('testCreateWindow_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'create_Test_002';
             console.log(msgStr + ' begin');
             window.create('subWindow4', window.WindowType.TYPE_APP, (err, data) => {
@@ -1283,7 +1283,7 @@ export default function window_test() {
      * @tc.name			testDestroyWiondow_Promise
      * @tc.desc			Verify that a window is destroyed after being created
      */
-        it('testDestroyWiondow_Promise', 0, async function (done) {
+        it('testDestroyWiondow_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'destroy_Test_001';
             console.log(msgStr + ' begin');
             window.create('subWindow5', window.WindowType.TYPE_APP).then(wnd => {
@@ -1321,7 +1321,7 @@ export default function window_test() {
      * @tc.name      testDestroyWiondow_Callback
      * @tc.desc      Verify that a window is destroyed after being created
      */
-        it('testDestroyWiondow_Callback', 0, async function (done) {
+        it('testDestroyWiondow_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'destroy_Test_002';
             console.log(msgStr + ' begin');
             window.create('subWindow6', window.WindowType.TYPE_APP, (err, data) => {
@@ -1366,7 +1366,7 @@ export default function window_test() {
      * @tc.name			testSetSystemBarEnable_Parameter1_Promise
      * @tc.desc			To verify the function of setting a scenario that is visible to the system bar
      */
-        it('setSystemBarEnable_Test_001', 0, async function (done) {
+        it('setSystemBarEnable_Test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setSystemBarEnable_Test_001';
             console.log(msgStr + ' begin');
             var names = ["status", "navigation"];
@@ -1400,7 +1400,7 @@ export default function window_test() {
      * @tc.name      testSetSystemBarEnable_Parameter2_Callback
      * @tc.desc      To verify the function of setting a scenario that is visible to the system bar
      */
-        it('testSetSystemBarEnable_Parameter2_Callback', 0, async function (done) {
+        it('testSetSystemBarEnable_Parameter2_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setSystemBarEnable_Test_002';
             console.log(msgStr + ' begin');
             var names = ["status", "navigation"];
@@ -1431,7 +1431,7 @@ export default function window_test() {
      * @tc.name			testSetSystemBarProperties_Parameter1_Promise
      * @tc.desc			To verify the function of setting system bar attributes
      */
-        it('testSetSystemBarProperties_Parameter1_Promise', 0, async function (done) {
+        it('testSetSystemBarProperties_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setSystemBarProperties_Test_001';
             console.log(msgStr + ' begin');
             var SystemBarProperties = {
@@ -1466,7 +1466,7 @@ export default function window_test() {
      * @tc.name      testSetSystemBarProperties_Parameter2_Callback
      * @tc.desc      To verify the function of setting system bar attributes
      */
-        it('testSetSystemBarProperties_Parameter2_Callback', 0, async function (done) {
+        it('testSetSystemBarProperties_Parameter2_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setSystemBarProperties_Test_002';
             console.log(msgStr + ' begin');
             var SystemBarProperties = {
@@ -1504,7 +1504,7 @@ export default function window_test() {
      * @tc.name      testMoveTo_Parameter1_Callback
      * @tc.desc      Verify the scene where the window moves
      */
-        it('testMoveTo_Parameter1_Callback', 0, function (done) {
+        it('testMoveTo_Parameter1_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let msgStr = 'move_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1528,7 +1528,7 @@ export default function window_test() {
     * @tc.name       testMoveTo_Parameter2_Promise
     * @tc.desc       Verify the scene where the window moves
     */
-        it('testMoveTo_Parameter2_Promise', 0, async function (done) {
+        it('testMoveTo_Parameter2_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'move_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1555,7 +1555,7 @@ export default function window_test() {
     * @tc.name       testMoveTo_Parameter3_Promise
     * @tc.desc       Verify the scene where the window moves
     */
-        it('testMoveTo_Parameter3_Promise', 0, async function (done) {
+        it('testMoveTo_Parameter3_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'move_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1582,7 +1582,7 @@ export default function window_test() {
     * @tc.name       testMoveTo_Parameter4_Promise
     * @tc.desc       Verify the scene where the window moves
     */
-        it('testMoveTo_Parameter4_Promise', 0, async function (done) {
+        it('testMoveTo_Parameter4_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'move_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1609,7 +1609,7 @@ export default function window_test() {
     * @tc.name       testMoveTo_Parameter5_Promise
     * @tc.desc       Verify that the window is moved into the normal scene
     */
-        it('testMoveTo_Parameter5_Promise', 0, async function (done) {
+        it('testMoveTo_Parameter5_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'move_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1637,7 +1637,7 @@ export default function window_test() {
     * @tc.name       testMoveTo_Parameter6_Callback
     * @tc.desc       Verify the scene where the window moves
     */
-        it('testMoveTo_Parameter6_Callback', 0, async function (done) {
+        it('testMoveTo_Parameter6_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'move_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1666,7 +1666,7 @@ export default function window_test() {
 	* @tc.name      testMove_Test_007
 	* @tc.desc      Verify the scene where the window moves
 	*/
-        it('testMove_Test_007', 0, async function (done) {
+        it('testMove_Test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'move_Test_007';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1693,7 +1693,7 @@ export default function window_test() {
 	* @tc.name      testMoveTo_Multi_Parameter1_Promise
 	* @tc.desc      Verify the scene where the window moves
 	*/
-        it('testMoveTo_Multi_Parameter1_Promise', 0, async function (done) {
+        it('testMoveTo_Multi_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'move_Test_008';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1725,7 +1725,7 @@ export default function window_test() {
     * @tc.name       testResetSize_Parameter1_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('testResetSize_Parameter1_Promise', 0, async function (done) {
+        it('testResetSize_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'resetSize_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1752,7 +1752,7 @@ export default function window_test() {
     * @tc.name       testResetSize_Parameter2_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('testResetSize_Parameter2_Promise', 0, async function (done) {
+        it('testResetSize_Parameter2_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'resetSize_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1779,7 +1779,7 @@ export default function window_test() {
     * @tc.name       testResetSize_Parameter3_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('testResetSize_Parameter3_Promise', 0, async function (done) {
+        it('testResetSize_Parameter3_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'resetSize_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1806,7 +1806,7 @@ export default function window_test() {
     * @tc.name       testResetSize_Parameter4_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('testResetSize_Parameter4_Promise', 0, async function (done) {
+        it('testResetSize_Parameter4_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'resetSize_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1833,7 +1833,7 @@ export default function window_test() {
     * @tc.name       testResetSize_Repeat_5_Times_Parameter5_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('testResetSize_Repeat_5_Times_Parameter5_Promise', 0, async function (done) {
+        it('testResetSize_Repeat_5_Times_Parameter5_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'resetSize_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1862,7 +1862,7 @@ export default function window_test() {
      * @tc.name      testResetSize_Parameter6_Callback
      * @tc.desc      Verify the scene where the window resets size
      */
-        it('testResetSize_Parameter6_Callback', 0, function (done) {
+        it('testResetSize_Parameter6_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             let msgStr = 'resetSize_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1887,7 +1887,7 @@ export default function window_test() {
 	* @tc.name      testResetSize_Repeat_5_Times_Parameter7_Promise
 	* @tc.desc      Verify the scene where the window resets size
 	*/
-        it('testResetSize_Repeat_5_Times_Parameter7_Promise', 0, async function (done) {
+        it('testResetSize_Repeat_5_Times_Parameter7_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             var width = 100;
             var height = 100;
             let msgStr = 'resetSize_Test_007';
@@ -1920,7 +1920,7 @@ export default function window_test() {
     * @tc.name       testGetTopWindow_Promise
     * @tc.desc       Verify the scene that gets the top window
     */
-        it('testGetTopWindow_Promise', 0, async function (done) {
+        it('testGetTopWindow_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let msgStr = 'getTopWindow_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1939,7 +1939,7 @@ export default function window_test() {
      * @tc.name			testWindowStageEventType_Enum_Value
      * @tc.desc			To test the enum value of WindowStageEventType.
      */
-        it('testWindowStageEventType_Enum_Value', 0, async function (done) {
+        it('testWindowStageEventType_Enum_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let msgStr = 'enumWindowStageEventType_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -1960,7 +1960,7 @@ export default function window_test() {
     * @tc.name			testWindowColorSpace_Enum_Value
     * @tc.desc			To test the enum value of WindowCOLORSPACE.
     */
-        it('testWindowColorSpace_Enum_Value', 0, async function (done) {
+        it('testWindowColorSpace_Enum_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let msgStr = 'enumWindowCOLORSPACE_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -1977,7 +1977,7 @@ export default function window_test() {
      * @tc.name			testWindowType_Enum_Value
      * @tc.desc			To test the enum value of WindowType.
      */
-        it('testWindowType_Enum_Value', 0, async function (done) {
+        it('testWindowType_Enum_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let msgStr = 'enumWindowType_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -1993,7 +1993,7 @@ export default function window_test() {
      * @tc.name	    testWindowProperties_Enum_Value
      * @tc.desc		To test the enum value of WindowProperties.
     */
-        it('testWindowProperties_Enum_Value', 0, async function (done) {
+        it('testWindowProperties_Enum_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'enumWindowProperties_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -2054,7 +2054,7 @@ export default function window_test() {
      * @tc.name			testSetFocusable_Parameter1_Promise
      * @tc.desc			Setting window focus acquisition and defocus
      */
-        it('testSetFocusable_Parameter1_Promise', 0, async function (done) {
+        it('testSetFocusable_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setFocusable_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2098,7 +2098,7 @@ export default function window_test() {
      * @tc.name			testSetFocusable_Parameter2_Promise
      * @tc.desc			The setting window loses focus and cannot be touched
      */
-        it('testSetFocusable_Parameter2_Promise', 0, async function (done) {
+        it('testSetFocusable_Parameter2_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setFocusable_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2145,7 +2145,7 @@ export default function window_test() {
      * @tc.name			testSetFocusable_Parameter3_Promise
      * @tc.desc			Set the window to lose focus and be touchable
      */
-        it('testSetFocusable_Parameter3_Promise', 0, async function (done) {
+        it('testSetFocusable_Parameter3_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setFocusable_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2192,7 +2192,7 @@ export default function window_test() {
      * @tc.name			testSetFocusable_Parameter4_Promise
      * @tc.desc			Setting the window to get focus is not touchable
      */
-        it('testSetFocusable_Parameter4_Promise', 0, async function (done) {
+        it('testSetFocusable_Parameter4_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setFocusable_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2239,7 +2239,7 @@ export default function window_test() {
      * @tc.name			testSetFocusable_Parameter5_Promise
      * @tc.desc			Set the window to get focus and touch
      */
-        it('testSetFocusable_Parameter5_Promise', 0, async function (done) {
+        it('testSetFocusable_Parameter5_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setFocusable_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2286,7 +2286,7 @@ export default function window_test() {
      * @tc.name		    testTouchable_Parameter1_Promise
      * @tc.desc			Set whether the window can be touched or not
      */
-        it('testTouchable_Parameter1_Promise', 0, async function (done) {
+        it('testTouchable_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setTouchable_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2340,7 +2340,7 @@ export default function window_test() {
      * @tc.name			testSetKeepScreenOn_Parameter3_Promise
      * @tc.desc			Set whether the window can be touched or not
      */
-        it('testSetKeepScreenOn_Parameter3_Promise', 0, async function (done) {
+        it('testSetKeepScreenOn_Parameter3_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setKeepScreenOn_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2394,7 +2394,7 @@ export default function window_test() {
      * @tc.name			testSetKeepScreenOn_Parameter4_Promise
      * @tc.desc			Set whether the window can be touched or not
      */
-        it('testSetKeepScreenOn_Parameter4_Promise', 0, async function (done) {
+        it('testSetKeepScreenOn_Parameter4_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setKeepScreenOn_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2450,7 +2450,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_IsTransparent_RGB_Promise
      * @tc.desc			Set the window background color to red and Default opacity
      */
-        it('testSetBackgroundColor_IsTransparent_RGB_Promise', 0, async function (done) {
+        it('testSetBackgroundColor_IsTransparent_RGB_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBackgroundColor_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2483,7 +2483,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_IsTransparent_RGBA_Promise
      * @tc.desc			Set the window background color to red opaque
      */
-        it('testSetBackgroundColor_IsTransparent_RGBA_Promise', 0, async function (done) {
+        it('testSetBackgroundColor_IsTransparent_RGBA_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBackgroundColor_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2516,7 +2516,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_IsTransparent_Transparent_RGBA_Promise
      * @tc.desc			Set the window background color to red transparent
      */
-        it('testSetBackgroundColor_IsTransparent_Transparent_RGBA_Promise', 0, async function (done) {
+        it('testSetBackgroundColor_IsTransparent_Transparent_RGBA_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBackgroundColor_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2549,7 +2549,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_Invalid_Parameter_Promise
      * @tc.desc			Set the background color input parameter as an outlier
      */
-        it('testSetBackgroundColor_Invalid_Parameter_Promise', 0, async function (done) {
+        it('testSetBackgroundColor_Invalid_Parameter_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBackgroundColor_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2576,7 +2576,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_16bit_Invalid_Parameter_Promise
      * @tc.desc			Setting window background color input exception ARGB
      */
-        it('testSetBackgroundColor_16bit_Invalid_Parameter_Promise', 0, async function (done) {
+        it('testSetBackgroundColor_16bit_Invalid_Parameter_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBackgroundColor_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2603,7 +2603,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_8bit_Invalid_Parameter_Promise
      * @tc.desc			Setting window background color input exception RGB
      */
-        it('testSetBackgroundColor_8bit_Invalid_Parameter_Promise', 0, async function (done) {
+        it('testSetBackgroundColor_8bit_Invalid_Parameter_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBackgroundColor_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2630,7 +2630,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Multi_Parameter1_Promise
      * @tc.desc			Setting the brightness bar input parameter is normal
      */
-        it('testSetBrightness_Multi_Parameter1_Promise', 0, async function (done) {
+        it('testSetBrightness_Multi_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBrightness_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2695,7 +2695,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Parameter1_Promise
      * @tc.desc			Set the brightness bar input parameter to decimal
      */
-        it('testSetBrightness_Parameter1_Promise', 0, async function (done) {
+        it('testSetBrightness_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBrightness_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2729,7 +2729,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Invalid_Parameter_MAX_Value_Promise
      * @tc.desc			Set the brightness bar input parameter to number max
      */
-        it('testSetBrightness_Invalid_Parameter_MAX_Value_Promise', 0, async function (done) {
+        it('testSetBrightness_Invalid_Parameter_MAX_Value_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBrightness_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2756,7 +2756,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Invalid_Parameter_MIN_Value_Promise
      * @tc.desc			Set the brightness bar input parameter to number min
      */
-        it('testSetBrightness_Invalid_Parameter_MIN_Value_Promise', 0, async function (done) {
+        it('testSetBrightness_Invalid_Parameter_MIN_Value_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBrightness_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2783,7 +2783,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Invalid_Multi_Parameter1_Promise
      * @tc.desc			Setting brightness bar input parameter exception
      */
-        it('testSetBrightness_Invalid_Multi_Parameter1_Promise', 0, async function (done) {
+        it('testSetBrightness_Invalid_Multi_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBrightness_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2818,7 +2818,7 @@ export default function window_test() {
      * @tc.name			testSetDimBehind_DeviceNotSupport_Promise
      * @tc.desc			Set the setDimBehind interface invalid
      */
-        it('testSetDimBehind_DeviceNotSupport_Promise', 0, async function (done) {
+        it('testSetDimBehind_DeviceNotSupport_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setDimBehindDeviceNotSupport_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2845,7 +2845,7 @@ export default function window_test() {
      * @tc.name			testSetDimBehind_DeviceNotSupport_Callback
      * @tc.desc			Set the setDimBehind interface invalid
      */
-        it('testSetDimBehind_DeviceNotSupport_Callback', 0, async function (done) {
+        it('testSetDimBehind_DeviceNotSupport_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setDimBehindDeviceNotSupport_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2874,7 +2874,7 @@ export default function window_test() {
      * @tc.name			testSetOutsideTouchable_Parameter1_Promise
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-        it('testSetOutsideTouchable_Parameter1_Promise', 0, async function (done) {
+        it('testSetOutsideTouchable_Parameter1_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2901,7 +2901,7 @@ export default function window_test() {
      * @tc.name			testSetOutsideTouchable_Parameter2_Promise
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-        it('testSetOutsideTouchable_Parameter2_Promise', 0, async function (done) {
+        it('testSetOutsideTouchable_Parameter2_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2928,7 +2928,7 @@ export default function window_test() {
      * @tc.name			testSetOutsideTouchable_Parameter3_Callback
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-        it('testSetOutsideTouchable_Parameter3_Callback', 0, async function (done) {
+        it('testSetOutsideTouchable_Parameter3_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2957,7 +2957,7 @@ export default function window_test() {
     * @tc.name			testSetOutsideTouchable_Parameter4_Callback
     * @tc.desc			Set the setOutsideTouchable interface invalid
     */
-        it('testSetOutsideTouchable_Parameter4_Callback', 0, async function (done) {
+        it('testSetOutsideTouchable_Parameter4_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2986,7 +2986,7 @@ export default function window_test() {
      * @tc.name			testWindowOrientation_Enum_Value
      * @tc.desc			To test the enum value of Orientation.
      */
-        it('testWindowOrientation_Enum_Value', 0, async function (done) {
+        it('testWindowOrientation_Enum_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_004';
             console.log(msgStr + ' begin');
             try {
@@ -3015,7 +3015,7 @@ export default function window_test() {
      * @tc.name			testSetKeepScreenOn_Parameter1_Callback
     * @tc.desc			Set whether setKeepScreenOn or not
     */
-        it('testSetKeepScreenOn_Parameter1_Callback', 0, async function (done) {
+        it('testSetKeepScreenOn_Parameter1_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setKeepScreenOnCallBack_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3057,7 +3057,7 @@ export default function window_test() {
      * @tc.name			testSetKeepScreenOn_Parameter2_Callback
      * @tc.desc			Set whether the window can be touched or not
      */
-        it('testSetKeepScreenOn_Parameter2_Callback', 0, async function (done) {
+        it('testSetKeepScreenOn_Parameter2_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setKeepScreenOnCallBack_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3110,7 +3110,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_RGB_Callback
      * @tc.desc			Set the window background color to red and Default opacity
      */
-        it('testSetBackgroundColor_RGB_Callback', 0, async function (done) {
+        it('testSetBackgroundColor_RGB_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3145,7 +3145,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_RGBA_Callback
     * @tc.desc			Set the window background color to red opaque
     */
-        it('testSetBackgroundColor_RGBA_Callback', 0, async function (done) {
+        it('testSetBackgroundColor_RGBA_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3180,7 +3180,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_Transparent_RGBA_Callback
      * @tc.desc			Set the window background color to red transparent
      */
-        it('testSetBackgroundColor_Transparent_RGBA_Callback', 0, async function (done) {
+        it('testSetBackgroundColor_Transparent_RGBA_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3215,7 +3215,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_Invalid_Parameter_Callback
      * @tc.desc			Set the background color input parameter as an outlier
      */
-        it('testSetBackgroundColor_Invalid_Parameter_Callback', 0, async function (done) {
+        it('testSetBackgroundColor_Invalid_Parameter_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3244,7 +3244,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_8bit_Invalid_Parameter_Callback
      * @tc.desc			Setting window background color input exception ARGB
      */
-        it('testSetBackgroundColor_8bit_Invalid_Parameter_Callback', 0, async function (done) {
+        it('testSetBackgroundColor_8bit_Invalid_Parameter_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3273,7 +3273,7 @@ export default function window_test() {
      * @tc.name			testSetBackgroundColor_16bit_Invalid_Parameter_Callback
      * @tc.desc			Setting window background color input exception RGB
      */
-        it('testSetBackgroundColor_16bit_Invalid_Parameter_Callback', 0, async function (done) {
+        it('testSetBackgroundColor_16bit_Invalid_Parameter_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3302,7 +3302,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Parameter1_Callback
      * @tc.desc			Set the brightness bar input parameter to decimal
      */
-        it('testSetBrightness_Parameter1_Callback', 0, async function (done) {
+        it('testSetBrightness_Parameter1_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setBrightnessCallBack_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3339,7 +3339,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Invalid_Parameter_MAX_Value_Callback
      * @tc.desc			Set the brightness bar input parameter to number max
      */
-        it('testSetBrightness_Invalid_Parameter_MAX_Value_Callback', 0, async function (done) {
+        it('testSetBrightness_Invalid_Parameter_MAX_Value_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBrightnessCallBack_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3368,7 +3368,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Invalid_Parameter_MIN_Value_Callback
      * @tc.desc			Set the brightness bar input parameter to number min
      */
-        it('testSetBrightness_Invalid_Parameter_MIN_Value_Callback', 0, async function (done) {
+        it('testSetBrightness_Invalid_Parameter_MIN_Value_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBrightnessCallBack_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3397,7 +3397,7 @@ export default function window_test() {
      * @tc.name			testSetBrightness_Parameter2_Callback
      * @tc.desc			Setting brightness bar input parameter exception
      */
-        it('testSetBrightness_Parameter2_Callback', 0, async function (done) {
+        it('testSetBrightness_Parameter2_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'setBrightnessCallBack_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3426,7 +3426,7 @@ export default function window_test() {
      * @tc.name			testSetTouchable_Parameter1_Callback
      * @tc.desc			Set whether the window can be touched or not
     */
-        it('testSetTouchable_Parameter1_Callback', 0, async function (done) {
+        it('testSetTouchable_Parameter1_Callback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setTouchableCallBack_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3475,7 +3475,7 @@ export default function window_test() {
      * @tc.name			testSetFocusable_Callback
      * @tc.desc			Setting window focus acquisition and defocus
      */
-        it('testSetFocusable_Callback', 0, async function (done) {
+        it('testSetFocusable_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let msgStr = 'setFocusableCallBack_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3525,7 +3525,7 @@ export default function window_test() {
      * @tc.name			testWindowAvoidAreaType_Enum_Value
      * @tc.desc			To test the enum value of avoidareatype.
     */
-        it('testWindowAvoidAreaType_Enum_Value', 0, async function (done) {
+        it('testWindowAvoidAreaType_Enum_Value', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let msgStr = 'enumAvoidAreaType_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -3547,7 +3547,7 @@ export default function window_test() {
      * @tc.name      testGetAvoidArea_Sytem_Type_Callback
      * @tc.desc      Get System type avoidance area
     */
-        it('testGetAvoidArea_Sytem_Type_Callback', 0, async function (done) {
+        it('testGetAvoidArea_Sytem_Type_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'enumAvoidAreaType_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3575,7 +3575,7 @@ export default function window_test() {
      * @tc.name      testGetAvoidArea_Invalid_Parameter_Callback
      * @tc.desc      Get invalid parameter avoidarea
      */
-        it('testGetAvoidArea_Invalid_Parameter_Callback', 0, async function (done) {
+        it('testGetAvoidArea_Invalid_Parameter_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let msgStr = 'getAvoidAreaAdd_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3601,7 +3601,7 @@ export default function window_test() {
      * @tc.name			testIsFoldable_Test
      * @tc.desc			To test the function of isFoldable
     */
-    it('testIsFoldable_Test', 0, async function (done) {
+    it('testIsFoldable_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         
         let tag = 'isFoldable_Test_001 '
         try {
@@ -3620,7 +3620,7 @@ export default function window_test() {
      * @tc.name			testGetFoldStatus_Test
      * @tc.desc			To test the function of getFoldStatus
     */
-    it('testGetFoldStatus_Test', 0, async function (done) {
+    it('testGetFoldStatus_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         
         let tag = 'getFoldStatus_Test_001 '
         
@@ -3644,7 +3644,7 @@ export default function window_test() {
      * @tc.name			testGetFoldDisplayMode_Test
      * @tc.desc			To test the function of getFoldDisplayMode
     */
-    it('testGetFoldDisplayMode_Test', 0, async function (done) {
+    it('testGetFoldDisplayMode_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         
         let tag = 'getFoldDisplayMode_Test_001 '
         
@@ -3669,7 +3669,7 @@ export default function window_test() {
      * @tc.name			testGetCurrentFoldCreaseRegion_Test
      * @tc.desc			To test the function of getCurrentFoldCreaseRegion
     */
-    it('testGetCurrentFoldCreaseRegion_Test', 0, async function (done) {
+    it('testGetCurrentFoldCreaseRegion_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         
         let tag = 'getCurrentFoldCreaseRegion_Test_001 '
         
@@ -3700,7 +3700,7 @@ export default function window_test() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-     it('testGetWindowLimits_Test', 0,  async function (done) {
+     it('testGetWindowLimits_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async function (done) {
         console.log('www data testGetWindowLimits_Test begin')
         try {
             let windowClass = await window.getTopWindow();
@@ -3732,7 +3732,7 @@ export default function window_test() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-     it('testMinimize_Function_Callback', 0, async function (done) {
+     it('testMinimize_Function_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let msgStr = 'testMinimize_Function_Callback';
         console.log(msgStr + ' begin');
         window.create('subWindow11', window.WindowType.TYPE_APP).then(wnd => {
@@ -3744,24 +3744,41 @@ export default function window_test() {
                     console.log(msgStr + ' wnd.isShowing data:' + res);
                     expect(!res).assertTrue();
                     wnd.show().then(() => {
-
-                        wnd.minimize((err) => {
-                            if (err.code && err.code != 202) {
-                              console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
-                              expect().assertFail()
+                        console.info(msgStr + 'show come in....');
+                        try {
+                            wnd.minimize((err) => {
+                                if (err.code) {
+                                  console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
+                                  expect().assertFail()
+                                }
+                                console.info(msgStr + 'Succeeded in minimizing the window.');
+                                expect(true).assertTrue()
+                                wnd.destroy((err) => {
+                                    if (err.code) {
+                                        console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                        return
+                                    }
+                                    console.info(msgStr + 'Succeeded in destroying the window.');
+                                });
+                                done();
+                            });
+                        } catch (err) {
+                            console.error(msgStr + 'catched Failed to minimize the window. Cause: ' + JSON.stringify(err)+'errCode'+ err.code);
+                            wnd.destroy((err) => {
+                                if (err.code) {
+                                    console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                    return
+                                }
+                                console.info(msgStr + 'Succeeded in destroying the window.');
+                            });
+                            if(err.code == 801){
+                                done();
+                            }else{
+                                expect().assertFail();
+                                done();
                             }
-                            console.info(msgStr + 'Succeeded in minimizing the window.');
-                            expect(true).assertTrue()
-                        });
-
-                        wnd.destroy((err) => {
-                            if (err.code) {
-                                console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
-                                return
-                            }
-                            console.info(msgStr + 'Succeeded in destroying the window.');
-                        });
-                        done();
+                        }                         
+                        
                     }, (err) => {
                         console.log(msgStr + ' wnd.show failed, err :' + JSON.stringify(err));
                         expect().assertFail();
@@ -3786,7 +3803,7 @@ export default function window_test() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-     it('testMinimize_Function_Promise', 0, async function (done) {
+     it('testMinimize_Function_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let msgStr = 'testMinimize_Function_Promise';
         console.log(msgStr + ' begin');
         window.create('subWindow12', window.WindowType.TYPE_APP).then(wnd => {
@@ -3798,28 +3815,42 @@ export default function window_test() {
                     console.log(msgStr + ' wnd.isShowing data:' + res);
                     expect(!res).assertTrue();
                     wnd.show().then(() => {
-
-                        let promise = wnd.minimize();
-                        promise.then(() => {
-                            console.info(msgStr + 'Succeeded in minimizing the window.');
-                            expect(true).assertTrue()
+                        console.info(msgStr + 'show come in....');
+                        try {
+                            let promise = wnd.minimize();
+                            promise.then(() => {
+                                console.info(msgStr + 'Succeeded in minimizing the window.');
+                                expect(true).assertTrue()
+                                wnd.destroy((err) => {
+                                    if (err.code) {
+                                        console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                        return
+                                    }
+                                    console.info(msgStr + 'Succeeded in destroying the window.');
+                            });
+                            done();
                         }).catch((err) => {
                             console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
-                            if (!err.code || err.code == 202) {
-                                expect(true).assertTrue()
-                            } else {
-                                expect().assertFail()
-                            }
+                            expect().assertFail()
+                            done();
                         });
-
-                        wnd.destroy((err) => {
-                            if (err.code) {
-                                console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
-                                return
+                        } catch (err) {
+                            console.error(msgStr + 'catched Failed to minimize the window. Cause: ' + JSON.stringify(err)+'errCode'+ err.code);
+                            wnd.destroy((err) => {
+                                if (err.code) {
+                                    console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                    return
+                                }
+                                console.info(msgStr + 'Succeeded in destroying the window.');
+                            });
+                            if(err.code == 801){
+                                done();
+                            }else{
+                                expect().assertFail();
+                                done();
                             }
-                            console.info(msgStr + 'Succeeded in destroying the window.');
-                        });
-                        done();
+                        }
+                          
                     }, (err) => {
                         console.log(msgStr + ' wnd.show failed, err :' + JSON.stringify(err));
                         expect().assertFail();
@@ -3845,7 +3876,7 @@ export default function window_test() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-     it('testWindowStatusType_attr', 0, async function (done) {
+     it('testWindowStatusType_attr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let msgStr = 'testWindowStatusType_attr';
         console.log(msgStr + ' begin');
         try {

@@ -37,10 +37,10 @@ export default function AssetErrorCodeTest() {
      * @tc.name test wraptype
      * @tc.desc 数据库允许导出字段测试
      * @tc.size MediumTest
-     * @tc.level Level3
+     * @tc.level Level0
      * @tc.type Function
      */
-    it('SUB_Security_DataSecurity_Asset_JS_wraptype_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_JS_wraptype_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.SECRET, StringToArray('demo_pwd1'));
       attr.set(asset.Tag.ALIAS, StringToArray('demo_alias1'));
@@ -553,7 +553,7 @@ export default function AssetErrorCodeTest() {
       attr1.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
       let challenge = await asset.preQuery(attr1) as Uint8Array;
       let attr2: asset.AssetMap = new Map();
-      let auth_token  = new Uint8Array ([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+      let auth_token  = new Uint8Array ([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
       attr2.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
       attr2.set(asset.Tag.AUTH_TYPE, asset.AuthType.ANY);
       attr2.set(asset.Tag.AUTH_TOKEN, auth_token);
@@ -657,7 +657,7 @@ export default function AssetErrorCodeTest() {
       attr1.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
       let challenge = await asset.preQuery(attr1) as Uint8Array;
       let attr2: asset.AssetMap = new Map();
-      let auth_token  = new Uint8Array ([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+      let auth_token  = new Uint8Array ([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
       attr2.set(asset.Tag.ALIAS, StringToArray('demo_alias'));
       attr2.set(asset.Tag.AUTH_TYPE, asset.AuthType.ANY);
       attr2.set(asset.Tag.AUTH_TOKEN, auth_token);
@@ -975,6 +975,113 @@ export default function AssetErrorCodeTest() {
         let err = error as BusinessError;
         console.error(`SUB_Security_DataSecurity_Asset_errorCode_update_401_0100 Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
         expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_querySyncResult_Func_0100
+     * @tc.name SUB_Security_DataSecurity_Asset_querySyncResult_Func_0100
+     * @tc.desc 普通数据库同步查询
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_querySyncResult_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.REQUIRE_ATTR_ENCRYPTED, false);
+      try {
+        asset.querySyncResult(attr).then((res: asset.SyncResult) => {
+          console.info(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0100 sync result is: ${JSON.stringify(res)}`);
+          expect(res.resultCode).assertEqual(0);
+          expect(res.totalCount).assertEqual(0);
+          expect(res.failedCount).assertEqual(0);
+        }).catch ((err: BusinessError) => {
+          console.error(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0100 Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+          expect(null).assertFail();
+        });
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0100 Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_querySyncResult_Func_0101
+     * @tc.name SUB_Security_DataSecurity_Asset_querySyncResult_Func_0101
+     * @tc.desc 加密数据库同步查询
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_querySyncResult_Func_0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.REQUIRE_ATTR_ENCRYPTED, true);
+      try {
+        asset.querySyncResult(attr).then((res: asset.SyncResult) => {
+          console.info(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0101 sync result is: ${JSON.stringify(res)}`);
+          expect(res.resultCode).assertEqual(0);
+          expect(res.totalCount).assertEqual(0);
+          expect(res.failedCount).assertEqual(0);
+        }).catch ((err: BusinessError) => {
+          console.error(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0101 Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+          expect(null).assertFail();
+        });
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0101 Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_querySyncResult_Func_0102
+     * @tc.name SUB_Security_DataSecurity_Asset_querySyncResult_Func_0102
+     * @tc.desc 不传REQUIRE_ATTR_ENCRYPTED
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_querySyncResult_Func_0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      try {
+        asset.querySyncResult(attr).then((res: asset.SyncResult) => {
+          console.info(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0102 sync result is: ${JSON.stringify(res)}`);
+          expect(res.resultCode).assertEqual(0);
+          expect(res.totalCount).assertEqual(0);
+          expect(res.failedCount).assertEqual(0);
+        }).catch ((err: BusinessError) => {
+          console.error(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0102 Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+          expect(null).assertFail();
+        });
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0102 Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_querySyncResult_Func_0103
+     * @tc.name SUB_Security_DataSecurity_Asset_querySyncResult_Func_0103
+     * @tc.desc 传入错误的alias，返回对应错误码
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_DataSecurity_Asset_querySyncResult_Func_0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ALIAS, StringToArray('demo_code'));
+      try {
+        await asset.querySyncResult(attr);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0103 Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+        expect(error.code).assertEqual(asset.ErrorCode.PARAM_VERIFICATION_FAILED);
       }
       done();
     });

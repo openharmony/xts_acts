@@ -78,7 +78,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       console.log(msg + ' beforeEach end!!!')
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4820
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0010
      * @tc.name      : testTouchOutside_OnDialogWindow_ClickMainWindow
      * @tc.desc      : Enable listening for click events outside this window area.
      * @tc.size      : MediumTest
@@ -133,7 +133,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4830
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0020
      * @tc.name      : testTouchOutside_OnMainWindow_ClickDialog
      * @tc.desc      : Enable listening for click events outside this window area.
      * @tc.size      : MediumTest
@@ -183,7 +183,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       })
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4840
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0030
      * @tc.name      : testTouchOutside_OnSubWindow_ClickMainWindow
      * @tc.desc      : Enable listening for click events outside this window area.
      * @tc.size      : MediumTest
@@ -227,7 +227,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       })
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4850
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0040
      * @tc.name      : testTouchOutside_OnMainWindow_ClickSubWindow
      * @tc.desc      : Enable listening for click events outside this window area.
      * @tc.size      : MediumTest
@@ -273,7 +273,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
 
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4860
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0050
      * @tc.name      : testDialogTargetTouch_OnMainWindow_ClickMainWindow
      * @tc.desc      : Enables listening for click or touch events for Windows covered by modal Windows
      * @tc.size      : MediumTest
@@ -327,7 +327,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4870
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0060
      * @tc.name      : testDialogTargetTouch_OnDialogWindow_ClickMainWindow
      * @tc.desc      : Enables listening for click or touch events for Windows covered by modal Windows
      * @tc.size      : MediumTest
@@ -375,7 +375,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       })
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4880
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0070
      * @tc.name      : testDialogTargetTouch_OnSubWindow_ClickSubWindow
      * @tc.desc      : Enables listening for click or touch events for Windows covered by modal Windows
      * @tc.size      : MediumTest
@@ -441,7 +441,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4890
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0080
      * @tc.name      : testDialogTargetTouch_OnDialogWindow_ClickSubWindow
      * @tc.desc      : Enables listening for click or touch events for Windows covered by modal Windows
      * @tc.size      : MediumTest
@@ -502,7 +502,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4900
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0090
      * @tc.name      : testNoInteractionDetected_OnMainWindow
      * @tc.desc      : Enables this window to not listen for interactive events within a specified timeout period
      * @tc.size      : MediumTest
@@ -538,7 +538,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       await sleep(800)
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4910
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0100
      * @tc.name      : testNoInteractionDetected_OnSubWindow
      * @tc.desc      : Enables this window to not listen for interactive events within a specified timeout period
      * @tc.size      : MediumTest
@@ -586,7 +586,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4920
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0110
      * @tc.name      : testSetWindowTouchable_MainWindow_Promise
      * @tc.desc      : Sets whether the window is touchable
      * @tc.size      : MediumTest
@@ -619,7 +619,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4930
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0120
      * @tc.name      : testSetWindowTouchable_MainWindow_Callback
      * @tc.desc      : Sets whether the window is touchable
      * @tc.size      : MediumTest
@@ -655,7 +655,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4940
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0130
      * @tc.name      : testSetWindowTouchable_SubWindow_Promise
      * @tc.desc      : Sets whether the window is touchable
      * @tc.size      : MediumTest
@@ -696,7 +696,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4950
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0140
      * @tc.name      : testSetWindowTouchable_SubWindow_Callback
      * @tc.desc      : Sets whether the window is touchable
      * @tc.size      : MediumTest
@@ -744,7 +744,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5480
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0150
      * @tc.name      : testTouchOutside_OnSubWindowWithOps_ClickMainWindow
      * @tc.desc      : Enable listening for click events outside this window area.
      * @tc.size      : MediumTest
@@ -804,7 +804,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5490
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0160
      * @tc.name      : testTouchOutside_OnMainWindow_ClickSubWindowWithOps
      * @tc.desc      : Enable listening for click events outside this window area.
      * @tc.size      : MediumTest
@@ -865,7 +865,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5500
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0170
      * @tc.name      : testDialogTargetTouch_OnSubWindowWithOps_ClickSubWinOps
      * @tc.desc      : Enables listening for click or touch events for Windows covered by modal Windows
      * @tc.size      : MediumTest
@@ -947,7 +947,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5510
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0180
      * @tc.name      : testDialogTargetTouch_OnDialogWindow_ClickSubWinOps
      * @tc.desc      : Enables listening for click or touch events for Windows covered by modal Windows
      * @tc.size      : MediumTest
@@ -1023,7 +1023,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5520
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0190
      * @tc.name      : testNoInteractionDetected_OnSubWindowWithOps
      * @tc.desc      : Enables this window to not listen for interactive events within a specified timeout period
      * @tc.size      : MediumTest
@@ -1084,7 +1084,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5530
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0200
      * @tc.name      : testSetWindowTouchable_SubWindowWithOps_Promise
      * @tc.desc      : Sets whether the window is touchable
      * @tc.size      : MediumTest
@@ -1140,7 +1140,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5540
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWEVENT_JS_API_0210
      * @tc.name      : testSetWindowTouchable_SubWindowWithOps_Callback
      * @tc.desc      : Sets whether the window is touchable
      * @tc.size      : MediumTest

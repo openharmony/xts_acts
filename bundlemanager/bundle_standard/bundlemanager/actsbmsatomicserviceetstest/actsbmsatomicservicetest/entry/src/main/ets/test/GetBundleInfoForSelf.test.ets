@@ -24,7 +24,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfAtomicService
      * @tc.desc: Test getBundleInfoForSelf with AtomicService
      */
-    it('getBundleInfoForSelfAtomicService', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getBundleInfoForSelfAtomicService', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
       bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE).then(data => {
         let preloadItemTest: bundle.PreloadItem = data.hapModulesInfo[2].preloads[0];
@@ -71,7 +71,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfSyncAtomicService
      * @tc.desc: Test getBundleInfoForSelfSync with AtomicService
      */
-    it('getBundleInfoForSelfSyncAtomicService', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getBundleInfoForSelfSyncAtomicService', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
       bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE);
       let preloadItemTest: bundle.PreloadItem = data.hapModulesInfo[2].preloads[0];

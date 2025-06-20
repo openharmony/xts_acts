@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 let emitKey = "emitUserAgent";
@@ -46,7 +46,7 @@ export default function buttonTest() {
      *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font 
      *               parameter size to 15, weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_FA_Button_TextOverFlow_0100 START');
       setTimeout(()=>{
         try{
@@ -76,7 +76,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter
      *               size to 15,weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_0200 START');
       setTimeout(()=>{
         try{
@@ -106,7 +106,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.MinFontSize,set the font
      *               parameter size to 15, weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_0300 START');
       setTimeout(()=>{
         try{
@@ -136,7 +136,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.MinFontSize,set the font 
      *               parameter weight to FontWeight.Normal,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_0400 START');
       setTimeout(()=>{
         try{
@@ -166,7 +166,7 @@ export default function buttonTest() {
   	 *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.LayoutConstraint,set the font
      *               parameter size to 15,  weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_0500 START');
       setTimeout(()=>{
         try{
@@ -196,7 +196,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter
      *               size to 15, weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_0600 START');
       setTimeout(()=>{
         try{
@@ -226,7 +226,7 @@ export default function buttonTest() {
   	 *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter
      *               size to 15,  weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_0700 START');
       setTimeout(()=>{
         try{
@@ -256,7 +256,7 @@ export default function buttonTest() {
   	 *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.MinFontSize,set the font 
      *               parameter size to 15, weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_0800 START');
       setTimeout(()=>{
         try{
@@ -286,7 +286,7 @@ export default function buttonTest() {
   	 *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.MinFontSize,
   	 *               set the font parameter weight to FontWeight.Normal,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_0900 START');
       setTimeout(()=>{
         try{
@@ -316,7 +316,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.LayoutConstraint,set the font
      *         parameter size to 15,weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1000 START');
       setTimeout(()=>{
         try{
@@ -346,7 +346,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter
      *               size to 15, weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1100 START');
       setTimeout(()=>{
         try{
@@ -376,7 +376,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter
      *               size to 15,weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1200 START');
       setTimeout(()=>{
         try{
@@ -406,7 +406,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.MinFontSize,set the font 
      *               parameter size to 15,weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_1300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1300 START');
       setTimeout(()=>{
         try{
@@ -436,7 +436,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.MinFontSize,
 	   *               set the font parameter weight to FontWeight.Normal,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_1400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1400 START');
       setTimeout(()=>{
         try{
@@ -466,7 +466,7 @@ export default function buttonTest() {
   	 *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.LayoutConstraint,set the font
      *               parameter size to 15,weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_1500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1500 START');
       setTimeout(()=>{
         try{
@@ -494,7 +494,7 @@ export default function buttonTest() {
      * @tc.name      Tests the labelStyle property of the button component
      * @tc.desc      Set labelStyle Set the labelStyle parameter overflow to TextOverflow.Ellipsis,maxLines to 1
      */
-    it('ArkUX_Stage_Button_LabelStyle_1600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1600 START');
       setTimeout(()=>{
         try{
@@ -522,7 +522,7 @@ export default function buttonTest() {
      * @tc.name      Tests the labelStyle property of the button component
      * @tc.desc      Set labelStyle Set the labelStyle parameter overflow to TextOverflow.Ellipsis,minFontSize to 5
      */
-    it('ArkUX_Stage_Button_LabelStyle_1700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1700 START');
       setTimeout(()=>{
         try{
@@ -552,7 +552,7 @@ export default function buttonTest() {
      * @tc.desc      Set labelStyle Set the labelStyle parameter overflow to TextOverflow.Ellipsis,
   	 *               heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines
      */
-    it('ArkUX_Stage_Button_LabelStyle_1800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_1800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1800 START');
       setTimeout(()=>{
         try{
@@ -582,7 +582,7 @@ export default function buttonTest() {
 	   *               set the font parameter size to 15, weight to FontWeight.Bolder,family to cursive,style 
      *               to FontStyle.Italic
      */
-	it('ArkUX_Stage_Button_LabelStyle_1900', 0, async (done: Function) => {
+	it('ArkUX_Stage_Button_LabelStyle_1900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_1900 START');
       setTimeout(()=>{
         try{
@@ -610,7 +610,7 @@ export default function buttonTest() {
      * @tc.name      Tests the labelStyle property of the button component
      * @tc.desc      Set labelStyle Set the labelStyle parameter overflow to TextOverflow.Ellipsis
      */
-    it('ArkUX_Stage_Button_LabelStyle_2000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2000 START');
       setTimeout(()=>{
         try{
@@ -640,7 +640,7 @@ export default function buttonTest() {
 	   *               heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter size to 15, 
 	   *               weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_2100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2100 START');
       setTimeout(()=>{
         try{
@@ -668,7 +668,7 @@ export default function buttonTest() {
      * @tc.name      Tests the labelStyle property of the button component
      * @tc.desc      The labelStyle parameter is not set
      */
-    it('ArkUX_Stage_Button_LabelStyle_2200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2200 START');
       setTimeout(()=>{
         try{
@@ -699,7 +699,7 @@ export default function buttonTest() {
      *               size to 15, weight to FontWeight.Bolder,family to cursive, s
      *               tyle to FontStyle.Italic(Not overlength)
      */
-    it('ArkUX_Stage_Button_LabelStyle_2300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2300 START');
       setTimeout(()=>{
         try{
@@ -730,7 +730,7 @@ export default function buttonTest() {
      *               size to 15, weight to FontWeight.Bolder,family to cursive, 
      *               style to FontStyle.Italic(Not overlength)
      */
-    it('ArkUX_Stage_Button_LabelStyle_2400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2400 START');
       setTimeout(()=>{
         try{
@@ -761,7 +761,7 @@ export default function buttonTest() {
      *               size to 15, weight to FontWeight.Bolder,family to cursive, style to 
      *               FontStyle.Italic(Not overlength)
      */
-    it('ArkUX_Stage_Button_LabelStyle_2500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2500 START');
       setTimeout(()=>{
         try{
@@ -789,7 +789,7 @@ export default function buttonTest() {
      * @tc.name      Tests the labelStyle property of the button component
      * @tc.desc      The labelStyle parameter is not set(Not overlength)
      */
-    it('ArkUX_Stage_Button_LabelStyle_2600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2600 START');
       setTimeout(()=>{
         try{
@@ -819,7 +819,7 @@ export default function buttonTest() {
      *               heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter size to 15, 
 	   *               weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic(Not overlength)
      */
-    it('ArkUX_Stage_Button_LabelStyle_2700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2700 START');
       setTimeout(()=>{
         try{
@@ -849,7 +849,7 @@ export default function buttonTest() {
      *               heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter size to 15, 
 	   *               weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic(Not overlength)
      */
-    it('ArkUX_Stage_Button_LabelStyle_2800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2800 START');
       setTimeout(()=>{
         try{
@@ -880,7 +880,7 @@ export default function buttonTest() {
      *               size to 15, weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic,set the 
      *               stateEffect parameter to false
      */
-    it('ArkUX_Stage_Button_LabelStyle_2900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_2900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_2900 START');
       setTimeout(()=>{
         try{
@@ -910,7 +910,7 @@ export default function buttonTest() {
 	   *               minFontSize to 5,heightAdaptivePolicy to TextHeightAdaptivePolicy.maxLines,set the font parameter
      *               size to 15, weight to FontWeight.Bolder,family to cursive, style to FontStyle.Italic
      */
-    it('ArkUX_Stage_Button_LabelStyle_3000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Button_LabelStyle_3000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Button_LabelStyle_3000 START');
       setTimeout(()=>{
         try{

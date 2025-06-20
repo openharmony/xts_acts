@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -62,7 +62,7 @@ export default function ChipOnClose() {
       * @tc.desc  : onClose event test
       * @tc.level : Level 3
       */
-    it('ChipOnClose_001', 0, async (done: Function) => {
+    it('ChipOnClose_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       console.info('ChipOnClose_001 START');
       let ChipActionCol = CommonFunc.getComponentRect('ChipOnCloseCol');

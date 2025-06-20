@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function column_Padding_ChangeParent() {
      * @tc.desc The parent component is bound with the padding attributes. Other parameters are default,
      *               the remaining space of the parent component meets the layout of the child components
      */
-    it('testColumnPaddingChangeParentInRange', 0, async () => {
+    it('testColumnPaddingChangeParentInRange',  Level.LEVEL0, async () => {
       console.info('new testColumnPaddingChangeParentInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 20
@@ -107,7 +107,7 @@ export default function column_Padding_ChangeParent() {
      * @tc.desc The parent component is bound with the padding attributes. Other parameters are default,
      *               the remaining space of the parent component does not meet the layout of the child components
      */
-    it('testColumnPaddingChangeParentOutRange', 0, async () => {
+    it('testColumnPaddingChangeParentOutRange',  Level.LEVEL0, async () => {
       console.info('new testColumnPaddingChangeParentOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50

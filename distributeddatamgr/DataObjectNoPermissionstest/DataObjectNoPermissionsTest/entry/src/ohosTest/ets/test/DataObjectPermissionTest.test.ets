@@ -53,9 +53,9 @@ export default function DataObjectPermissionTest() {
      * @tc.desc Test DataObject setSessionId Callback
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_DataObject_setSessionId_Callback_PermissionTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
+    it('SUB_DataObject_setSessionId_Callback_PermissionTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(TAG + '************ SUB_DataObject_setSessionId_Callback_PermissionTest_0100 start ************')
       try {
         g_object.setSessionId(distributedDataObject.genSessionId(), ()=>{});

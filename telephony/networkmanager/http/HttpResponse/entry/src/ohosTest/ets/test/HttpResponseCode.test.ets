@@ -856,11 +856,11 @@ export default function HttpResponseCodeTest() {
      * @tc.number : SUB_NetworkMgr_Http_ResponseCode_3600
      * @tc.name   : testNetworkMgrHttpResponseCode3600
      * @tc.desc   : Test ResponseCode property.
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : SmallTest
      */
-    it('testNetworkMgrHttpResponseCode3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3600';
       console.info(`${caseName} test Start`);
       try {
@@ -905,11 +905,11 @@ export default function HttpResponseCodeTest() {
      * @tc.number : SUB_NetworkMgr_Http_ResponseCode_3700
      * @tc.name   : testNetworkMgrHttpResponseCode3700
      * @tc.desc   : Test ResponseCode property.
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : SmallTest
      */
-    it('testNetworkMgrHttpResponseCode3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrHttpResponseCode3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpResponseCode3700';
       console.info(`${caseName} test Start`);
       try {

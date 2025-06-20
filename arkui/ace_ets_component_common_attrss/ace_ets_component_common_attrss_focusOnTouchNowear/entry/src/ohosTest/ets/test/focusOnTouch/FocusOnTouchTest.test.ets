@@ -13,103 +13,135 @@
  * limitations under the License.
  */
 
-import Utils from '../../MainAbility/common/Utils';
-import CommonTest from '../common/CommonTest';
-import { describe, expect } from '@ohos/hypium'
+import Utils from "../../MainAbility/common/Utils"
+import CommonTest from "../common/CommonTest"
+import { describe, expect } from "@ohos/hypium"
 
 class TestValue {
-  describe: string = '';
-  setValue: boolean = false;
+    describe: string = ""
+    setValue: boolean = false
 }
 
 class PageConfig {
-  testName: string = '';
-  pageName: string = '';
-  pageUrl: string = '';
-  referenceComponentKey: string = '';
-  sharePage: boolean = false;
+    testName: string = ""
+    pageName: string = ""
+    pageUrl: string = ""
+    referenceComponentKey: string = ""
+    sharePage: boolean = false
 }
 
 export default function FocusOnTouchTest() {
+    //A list of components that support the position attribute, which is required.
+    let supportView = [
+        "Select",
+        "DatePicker",
+        "TextInput",
+        "Stepper",
+        "StepperItem",
+        "TextPicker",
+        "TimePicker",
+        "Scroll",
+        "Stack",
+        "Swiper",
+        "Tabs",
+    ]
 
-  //A list of components that support the position attribute, which is required.
-  let supportView = [
-    
-     'Select',
-    'DatePicker',
-    'TextInput',
-   'Stepper',
-  'StepperItem',
-   'TextPicker',
-     'TimePicker',
-    
-    'Web',
-    'Scroll',
+    //Page config, this param is required.
+    let pageConfig: PageConfig = {
+        testName: "testFocusOnTouch",
+        pageName: "FocusOnTouchPage",
+        pageUrl: "MainAbility/pages/focusOnTouch/FocusOnTouchPage",
+        referenceComponentKey: "referenceComponentKey",
+        sharePage: false,
+    }
+    //Test values, looped to create cases, this param is required.
+    let testValues: TestValue[] = [
+        {
+            describe: "SetTrue",
+            setValue: true,
+        },
+        {
+            describe: "SetFalse",
+            setValue: false,
+        },
+    ]
 
-    'Stack',
-    'Swiper',
-    'Tabs',
-  ]
+    /**
+     * Create test suite.
+     */
 
-  //Page config, this param is required.
-  let pageConfig: PageConfig = {
-    testName: 'testFocusOnTouch',
-    pageName: 'FocusOnTouchPage',
-    pageUrl: 'MainAbility/pages/focusOnTouch/FocusOnTouchPage',
-    referenceComponentKey: 'referenceComponentKey',
-    sharePage: false
-  }
-  //Test values, looped to create cases, this param is required.
-  let testValues: TestValue[] = [{
-    describe: 'SetTrue',
-    setValue: true
-  }, {
-    describe: 'SetFalse',
-    setValue: false
-  }]
+    describe("FocusOnTouchTest", () => {
+        //Generate test cases (it) through a loop based on the support view * test values.
+        CommonTest.initTest(
+            pageConfig,
+            supportView,
+            testValues,
+            async (data: ESObject) => {
+                //Click on the target component
+                console.info("[" + data.caseTag + "] verify onClick.")
+                let clickResult = Utils.performClick(
+                    data.pageConfig.componentKey
+                )
+                expect(clickResult).assertEqual(true)
+                await Utils.sleep(1000)
 
-  /**
-   * Create test suite.
-   */
+                if ("SetTrue" == data.testValue.describe) {
+                    //Confirm reference component text
+                    let referenceComponent: ESObject = Utils.getComponentByKey(
+                        data.pageConfig.referenceComponentKey
+                    )
+                    console.info(
+                        "[" +
+                            data.caseTag +
+                            "] referenceComponent.$attrs.label: " +
+                            referenceComponent.$attrs.label
+                    )
+                    expect(referenceComponent.$attrs.label).assertContain(
+                        "onFocus"
+                    )
 
-  describe('FocusOnTouchTest', () => {
-    //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
-
-      //Click on the target component
-      console.info('[' + data.caseTag + '] verify onClick.');
-      let clickResult = Utils.performClick(data.pageConfig.componentKey);
-      expect(clickResult).assertEqual(true);
-      await Utils.sleep(1000);
-
-      if ('SetTrue' == data.testValue.describe) {
-
-        //Confirm reference component text
-        let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
-        console.info('[' + data.caseTag + '] referenceComponent.$attrs.label: ' + referenceComponent.$attrs.label);
-        expect(referenceComponent.$attrs.label).assertContain('onFocus');
-
-        //Confirm target component properties
-        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
-        console.info('[' + data.caseTag + '] focusOnTouch is ' + viewObj.$attrs.focusOnTouch);
-        expect(viewObj.$attrs.focusOnTouch).assertEqual(true);
-      } else if ('SetFalse' == data.testValue.describe) {
-
-        //Confirm reference component text
-        let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
-        console.info('[' + data.caseTag + '] referenceComponent.$attrs.label: ' + referenceComponent.$attrs.label);
-        if ('Web' ==  data.pageConfig.targetView) {
-          expect(referenceComponent.$attrs.label).assertContain('onFocus');
-        }
-        else {
-          expect(referenceComponent.$attrs.label).assertEqual('');
-        }
-        //Confirm target component properties
-        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
-        console.info('[' + data.caseTag + '] focusOnTouch is ' + viewObj.$attrs.focusOnTouch);
-        expect(viewObj.$attrs.focusOnTouch).assertEqual(false);
-
-      }
+                    //Confirm target component properties
+                    let viewObj: ESObject = Utils.getComponentByKey(
+                        data.pageConfig.componentKey
+                    )
+                    console.info(
+                        "[" +
+                            data.caseTag +
+                            "] focusOnTouch is " +
+                            viewObj.$attrs.focusOnTouch
+                    )
+                    expect(viewObj.$attrs.focusOnTouch).assertEqual(true)
+                } else if ("SetFalse" == data.testValue.describe) {
+                    //Confirm reference component text
+                    let referenceComponent: ESObject = Utils.getComponentByKey(
+                        data.pageConfig.referenceComponentKey
+                    )
+                    console.info(
+                        "[" +
+                            data.caseTag +
+                            "] referenceComponent.$attrs.label: " +
+                            referenceComponent.$attrs.label
+                    )
+                    if ("Web" == data.pageConfig.targetView) {
+                        expect(referenceComponent.$attrs.label).assertContain(
+                            "onFocus"
+                        )
+                    } else {
+                        expect(referenceComponent.$attrs.label).assertEqual("")
+                    }
+                    //Confirm target component properties
+                    let viewObj: ESObject = Utils.getComponentByKey(
+                        data.pageConfig.componentKey
+                    )
+                    console.info(
+                        "[" +
+                            data.caseTag +
+                            "] focusOnTouch is " +
+                            viewObj.$attrs.focusOnTouch
+                    )
+                    expect(viewObj.$attrs.focusOnTouch).assertEqual(false)
+                }
+            }
+        )
     })
-  })
 }

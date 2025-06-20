@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -48,7 +48,7 @@ export default function getCaretRect() {
      * @tc.desic        Returns the position of the cursor relative to the RichEditor 
                           component. If the cursor does not blink, undefined is returned.
      */
-    it('getCaretRect0001', 0, async (done: Function) => {
+    it('getCaretRect0001', Level.LEVEL0, async (done: Function) => {
       console.info("[getCaretRect0001] start");
       let driver = Driver.create();
       console.info('getCaretRect getCaretRect0001 START');
@@ -72,7 +72,7 @@ export default function getCaretRect() {
      * @tc.desic        Returns the position of the cursor relative to the RichEditor 
                           component. If the cursor does not blink, undefined is returned.
      */
-    it('getCaretRect0002', 0, async (done: Function) => {
+    it('getCaretRect0002', Level.LEVEL0, async (done: Function) => {
       console.info("[getCaretRect0002] start");
       let driver = Driver.create();
       console.info('getCaretRect getCaretRect0002 START');

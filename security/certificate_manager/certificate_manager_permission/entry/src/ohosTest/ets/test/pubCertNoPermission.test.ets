@@ -185,14 +185,16 @@ export default function pubCertJsAPINoPermissionTestUnit() {
      */
     it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0010: started ");
-      if (deviceInfo.deviceType == '2in1') {
-        const context :common.Context = GlobalContext.getContext();
-        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
-        let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
-        try {
-          await certManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert)
-          expect(null).assertFail()
-        } catch (err) {
+      const context :common.Context = GlobalContext.getContext();
+      let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+      let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
+      try {
+        await certManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert)
+        expect(null).assertFail()
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_GetPriCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_NO_PERMISSION);
         }

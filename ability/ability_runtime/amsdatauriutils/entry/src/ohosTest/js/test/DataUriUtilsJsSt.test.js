@@ -23,7 +23,7 @@ describe('ActsDataUriUtilsTest', function () {
 * @tc.name: getId : Obtains the ID attached to the end of the path component of the given URI.
 * @tc.desc: Check the return value of the interface
 */
-    it('ACTS_getId_0100', 0, function (done) {
+    it('ACTS_getId_0100', Level.LEVEL0, function (done) {
         console.log('dataUriUtils getId start1');
         var result = dataUriUtils.getId("com.ix.dataUriUtils/1221");
         console.log('dataUriUtils getId URI : ' + result);
@@ -39,7 +39,7 @@ describe('ActsDataUriUtilsTest', function () {
 * @tc.name: getId : Obtains the ID attached to the end of the path component of the given URI.
 * @tc.desc: Check the return value of the interface
 */
-    it('ACTS_getId_0200', 0, function (done) {
+    it('ACTS_getId_0200', Level.LEVEL0, function (done) {
         console.log('dataUriUtils getId start2 ');
         var result = dataUriUtils.getId("com.ix.dataUriUtils1221");
         console.log('dataUriUtils getId URI : ' + result);
@@ -56,7 +56,7 @@ describe('ActsDataUriUtilsTest', function () {
 * @tc.name: getId : Obtains the ID attached to the end of the path component of the given URI.
 * @tc.desc: Check the return value of the interface
 */
-    it('ACTS_getId_0300', 0, function (done) {
+    it('ACTS_getId_0300', Level.LEVEL0, function (done) {
         console.log('dataUriUtils getId start3 ');
         var result = dataUriUtils.getId("com.ix.dataUriUtils/11234567890");
         console.log('dataUriUtils getId URI : ' + result);
@@ -73,7 +73,7 @@ describe('ActsDataUriUtilsTest', function () {
 * @tc.name: getId : Obtains the ID attached to the end of the path component of the given URI.
 * @tc.desc: Check the return value of the interface
 */
-    it('ACTS_getId_0400', 0, function (done) {
+    it('ACTS_getId_0400', Level.LEVEL0, function (done) {
         console.log('dataUriUtils getId start4 ');
         var result = dataUriUtils.getId("com.ix.dataUriUtils");
         console.log('dataUriUtils getId URI : ' + result);
@@ -90,7 +90,7 @@ describe('ActsDataUriUtilsTest', function () {
 * @tc.name: getId : Obtains the ID attached to the end of the path component of the given URI.
 * @tc.desc: Check the return value of the interface
 */
-    it('ACTS_getId_0500', 0, function (done) {
+    it('ACTS_getId_0500', Level.LEVEL0, function (done) {
         console.log('dataUriUtils getId start5 ');
         var result = dataUriUtils.getId("com.ix.dataUriUtils/-777");
         console.log('dataUriUtils getId URI : ' + result);//-777

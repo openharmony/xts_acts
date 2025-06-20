@@ -12,10 +12,20 @@
         {
             "test-file-name": [
                 "ActsStartUpTest.hap",
-                "StartupManualHelp1.hap"
+                "StartupManualHelp1.hap",
+                "StartupManualHelp2.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+          "type": "ShellKit",
+          "run-command": [
+              "param set persist.sys.abilityms.support.ecologicalrulemgrservice false"
+          ],
+          "teardown-command": [
+              "param set persist.sys.abilityms.support.ecologicalrulemgrservice true"
+          ]
         }
     ]
 }

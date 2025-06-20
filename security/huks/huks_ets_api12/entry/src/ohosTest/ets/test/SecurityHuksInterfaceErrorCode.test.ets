@@ -12,20 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { huks } from '@kit.UniversalKeystoreKit';
-import * as huksCallback from './utils/HuksCallbackUtil';
-import { AddParam, DeleteParam, MergeOption, SetParam } from './utils/HuksOptionUtil';
-import { StringToUint8Array } from './utils/CommonUtil';
-import { GetAttestKeyOption } from './options/AttestKeyOptions';
-import { GetAesGenerateOption, GetEccGenerateOption } from './options/GenerateKeyOptions';
-import { GetAesImportData } from './options/ImportOptions';
-import { GetAccessControlOptions } from './options/AccessControlOptions';
-import { BuildWrappedKeyData } from './utils/ImportWrappedKeyUtil';
-import { GetAesCbcOptions } from './options/CipherOptions';
+import * as huksCallback from './utils/huks/HuksCallbackUtils';
+import { AddParam, CheckSoftware, DeleteParam, MergeOptions, SetMultiParam, SetParam } from './utils/huks/HuksOptionsUtils';
+import { StringToUint8Array } from './utils/CommonUtils';
+import { GetAttestKeyOption } from './utils/options/AttestKeyOptions';
+import { GetAesGenerateOption, GetEccGenerateOption } from './utils/options/GenerateKeyOptions';
+import { GetAesImportData } from './utils/options/ImportOptions';
+import { GetAccessControlOptions } from './utils/options/AccessControlOptions';
+import { BuildWrappedKeyData } from './utils/huks/ImportWrappedKeyUtils';
+import { GetAesCbcOptions } from './utils/options/CipherOptions';
+import { GetGenWrapKeyOptions, GetWrapKeyOptions } from './utils/huks/WrapKeyUtils';
 
 
 export default function SecurityHuksInterfaceErrorCodeTest() {
+  let useSoftware: boolean = true;
   let genKeyOption: huks.HuksOptions;
   let genKeyOptionMultiAlg: huks.HuksOptions;
   let genKeyOptionNoAlg: huks.HuksOptions;
@@ -40,6 +42,7 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
     beforeAll(async () => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
+      useSoftware = await CheckSoftware();
     })
     beforeEach(() => {
       genKeyOption = GetAesGenerateOption(256);
@@ -721,7 +724,7 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
      */
     it('SUB_Security_HUKS_ErrorCode_API16_Interface_2800', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
       let testNumber: string = "SUB_Security_HUKS_ErrorCode_API16_Interface_2800";
-      MergeOption(genKeyOption, GetAccessControlOptions());
+      MergeOptions(genKeyOption, GetAccessControlOptions());
       genKeyOption.inData = GetAesImportData(256);
       try {
         await huks.importKeyItem(testNumber, genKeyOption);
@@ -744,7 +747,7 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
      */
     it('SUB_Security_HUKS_ErrorCode_API16_Interface_2810', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
       let testNumber: string = "SUB_Security_HUKS_ErrorCode_API16_Interface_2810";
-      MergeOption(genKeyOption, GetAccessControlOptions());
+      MergeOptions(genKeyOption, GetAccessControlOptions());
       genKeyOption.inData = GetAesImportData(256);
       try {
         await huksCallback.importKeyItem(testNumber, genKeyOption);
@@ -945,7 +948,7 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
       let wrappedKeyData = await BuildWrappedKeyData(deviceAPubKeyData);
       let importWrappedKeyOption = GetAesGenerateOption(wrappedKeySize);
       SetParam(importWrappedKeyOption, huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE, huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING);
-      MergeOption(importWrappedKeyOption, GetAccessControlOptions());
+      MergeOptions(importWrappedKeyOption, GetAccessControlOptions());
       importWrappedKeyOption.inData = wrappedKeyData;
       try {
         await huks.importWrappedKeyItem(testNumber, deviceAKeyPairAlias, importWrappedKeyOption);
@@ -1104,7 +1107,7 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
       let wrappedKeyData = await BuildWrappedKeyData(deviceAPubKeyData);
       let importWrappedKeyOption = GetAesGenerateOption(wrappedKeySize);
       SetParam(importWrappedKeyOption, huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE, huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING);
-      MergeOption(importWrappedKeyOption, GetAccessControlOptions());
+      MergeOptions(importWrappedKeyOption, GetAccessControlOptions());
       importWrappedKeyOption.inData = wrappedKeyData;
       try {
         await huksCallback.importWrappedKeyItem(testNumber, deviceAKeyPairAlias, importWrappedKeyOption);
@@ -1158,6 +1161,53 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
         console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
       }
     })
+
+    /**
+     * @tc.number : SUB_Security_HUKS_ErrorCode_Api20_Interface_0100
+     * @tc.name   : SUB_Security_HUKS_ErrorCode_Api20_Interface_0100
+     * @tc.desc   : generate key, wrap key, error code 12000018
+     * @tc.type   : Safety
+     * @tc.size   : SmallTest
+     * @tc.level  : Level3
+     */
+    it('SUB_Security_HUKS_ErrorCode_Api20_Interface_0100', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
+      let testNumber: string = "SUB_Security_HUKS_ErrorCode_Api20_Interface_0100";
+      if (!useSoftware) {
+        try {
+          await huks.generateKeyItem(testNumber, MergeOptions(genKeyOption, GetGenWrapKeyOptions()));
+          await huks.wrapKeyItem(testNumber, SetMultiParam(GetWrapKeyOptions(), huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES));
+          expect(null).assertFail();
+        } catch (err) {
+          console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_ARGUMENT);
+        }
+      }
+    }
+    )
+
+    /**
+     * @tc.number : SUB_Security_HUKS_ErrorCode_Api20_Interface_0200
+     * @tc.name   : SUB_Security_HUKS_ErrorCode_Api20_Interface_0200
+     * @tc.desc   : generate key, unwrap key, error code 12000018
+     * @tc.type   : Safety
+     * @tc.size   : SmallTest
+     * @tc.level  : Level3
+     */
+    it('SUB_Security_HUKS_ErrorCode_Api20_Interface_0200', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
+      let testNumber: string = "SUB_Security_HUKS_ErrorCode_Api20_Interface_0200";
+      if (!useSoftware) {
+        try {
+          await huks.generateKeyItem(testNumber, MergeOptions(genKeyOption, GetGenWrapKeyOptions()));
+          let wrapRes = (await huks.wrapKeyItem(testNumber, GetWrapKeyOptions())).outData;
+          await huks.unwrapKeyItem(testNumber, SetMultiParam(GetWrapKeyOptions(), huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES), wrapRes);
+          expect(null).assertFail();
+        } catch (err) {
+          console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_ARGUMENT);
+        }
+      }
+    }
+    )
   }
   )
 }

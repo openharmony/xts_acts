@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -55,7 +55,7 @@ export default function ratingNodeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ratingNode0100', 0, async (done: Function) => {
+    it('ratingNode0100', Level.LEVEL1, async (done: Function) => {
 
       let tagName = 'ratingNode0100';
       console.info('[' + tagName + '] START============================');

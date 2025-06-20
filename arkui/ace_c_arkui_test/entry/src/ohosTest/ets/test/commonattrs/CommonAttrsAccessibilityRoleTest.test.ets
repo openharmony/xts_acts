@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole001', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole002', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole003', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole004', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole005', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole006', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole007', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole008', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole009', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole010', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole011', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole012', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole013', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole014', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole015', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole016', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole017', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole018', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole019', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole019()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole020', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole020()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole021', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole021()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole022', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole022()).assertEqual(0)
       done()
     })
@@ -320,7 +320,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole023', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole023()).assertEqual(0)
       done()
     })
@@ -333,7 +333,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole024', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole024()).assertEqual(0)
       done()
     })
@@ -346,7 +346,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole025', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole025()).assertEqual(0)
       done()
     })
@@ -359,7 +359,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole026', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole026()).assertEqual(0)
       done()
     })
@@ -371,7 +371,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole027', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole027', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole027()).assertEqual(0)
       done()
     })
@@ -383,7 +383,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole028', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole028()).assertEqual(0)
       done()
     })
@@ -396,7 +396,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole029', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole029()).assertEqual(0)
       done()
     })
@@ -409,7 +409,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole030', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole030()).assertEqual(0)
       done()
     })
@@ -422,7 +422,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole031', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole031()).assertEqual(0)
       done()
     })
@@ -435,7 +435,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole032', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole032()).assertEqual(0)
       done()
     })
@@ -448,7 +448,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole033', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole033', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole033()).assertEqual(0)
       done()
     })
@@ -461,7 +461,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole034', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole034', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole034()).assertEqual(0)
       done()
     })
@@ -474,7 +474,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole035', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole035', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole035()).assertEqual(0)
       done()
     })
@@ -487,7 +487,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole036', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole036', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole036()).assertEqual(0)
       done()
     })
@@ -500,7 +500,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole037', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole037', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole037()).assertEqual(0)
       done()
     })
@@ -513,7 +513,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole038', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole038', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole038()).assertEqual(0)
       done()
     })
@@ -526,7 +526,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole039', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole039', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole039()).assertEqual(0)
       done()
     })
@@ -539,7 +539,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole040', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole040', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole040()).assertEqual(0)
       done()
     })
@@ -552,7 +552,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole041', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole041', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole041()).assertEqual(0)
       done()
     })
@@ -565,7 +565,7 @@ export default function commonAttrsAccessibilityRoleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAccessibilityRole042', 0, async (done: Function) => {
+    it('testCommonAttrsAccessibilityRole042', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAccessibilityRole042()).assertEqual(0)
       done()
     })

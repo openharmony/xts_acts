@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsTouchableTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTouchable001', 0, async (done: Function) => {
+    it('testCommonAttrsTouchable001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`commonattrs/CommonAttrsTouchableTest`, done);
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('btnTouchable').$attrs.backgroundColor).assertEqual('#0xFF00FF00')
@@ -49,7 +49,7 @@ export default function commonAttrsTouchableTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTouchable002', 0, async (done: Function) => {
+    it('testCommonAttrsTouchable002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTouchable002()).assertEqual(0)
       done()
     })
@@ -62,7 +62,7 @@ export default function commonAttrsTouchableTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTouchable003', 0, async (done: Function) => {
+    it('testCommonAttrsTouchable003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTouchable003()).assertEqual(0)
       done()
     })
@@ -75,7 +75,7 @@ export default function commonAttrsTouchableTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTouchable004', 0, async (done: Function) => {
+    it('testCommonAttrsTouchable004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTouchable004()).assertEqual(0)
       done()
     })

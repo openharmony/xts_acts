@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType} from "@ohos/hypium";
 import { Decimal } from '@kit.ArkTS';
 type Rounding = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 function test_toFixed_001 (expected: string, n: string, dp: number) {
@@ -104,7 +104,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toFixed_Func_001", 0, () => {
+    it("Decimal_toFixed_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -548,7 +548,7 @@ export default function DecimalTest025() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it("Decimal_toHex_Func_002", 0, () => {
+    it("Decimal_toHex_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             toExpNeg: -9e15,
             toExpPos: 9e15,
@@ -862,7 +862,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toNearest_Func_003", 0, () => {
+    it("Decimal_toNearest_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -940,7 +940,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toNearest_Func_004", 0, () => {
+    it("Decimal_toNearest_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -966,7 +966,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toOctal_Func_005", 0, () => {
+    it("Decimal_toOctal_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             toExpNeg: -9e15,
             toExpPos: 9e15,
@@ -1275,7 +1275,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toPrecision_Func_006", 0, () => {
+    it("Decimal_toPrecision_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1351,7 +1351,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toPrecision_Func_007", 0, () => {
+    it("Decimal_toPrecision_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1377,7 +1377,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toString_Func_008", 0, () => {
+    it("Decimal_toString_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1734,7 +1734,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_trunc_Func_009", 0, () => {
+    it("Decimal_trunc_Func_009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1853,7 +1853,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_trunc_Func_010", 0, () => {
+    it("Decimal_trunc_Func_010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1879,7 +1879,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_valueOf_Func_011", 0, () => {
+    it("Decimal_valueOf_Func_011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -1938,7 +1938,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_sin_Func_012", 0, () => {
+    it("Decimal_sin_Func_012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -2047,6 +2047,7 @@ export default function DecimalTest025() {
         test_sin_020('22011131111011111.111111611113111111111151111111', 143, 2, '0.82582504036277799386306063085803210583251158969990606609364360685569588545519071481543672724620118406694191888115120286393881609546697317692404');
         test_sin_020('996270725099515169352424536636186062915113219400094989.8763797268889422850038402633796294758036260533902551191769915343780424028900449342752548782035', 46, 2, '0.6613706114081017074779805460666900787572253475');
         test_sin_020('0.780360750628373', 37, 5, '0.7035358359376557390803090830882458906');
+        test_sin_020('5900', 14, 4, '0.08887912368108');
     });
     /**
      * @tc.number    : DECIMAL_TEST_013
@@ -2056,7 +2057,7 @@ export default function DecimalTest025() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_sin_Func_013", 0, () => {
+    it("Decimal_sin_Func_013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,

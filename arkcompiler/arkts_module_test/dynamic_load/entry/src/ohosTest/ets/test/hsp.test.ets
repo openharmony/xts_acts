@@ -26,7 +26,7 @@ export default function dynamicLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressionsHsp01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstantExpressionsHsp01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const caseName: string = "testConstantExpressionsHsp01";
       import('hsp').then(m => {
         expect(m.add(3, 2)).assertEqual(5);
@@ -44,7 +44,7 @@ export default function dynamicLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressionsHsp02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstantExpressionsHsp02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const caseName: string = "testConstantExpressionsHsp02";
       import('hsp/src/main/ets/utils/Calc').then(m => {
         expect(m.add(3, 2)).assertEqual(5);
@@ -62,7 +62,7 @@ export default function dynamicLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressionsHsp03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstantExpressionsHsp03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const caseName: string = "testConstantExpressionsHsp03";
       import('@test/loadHsp').then(m => {
         expect(m.add(3, 2)).assertEqual(5);
@@ -80,7 +80,7 @@ export default function dynamicLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testConstantExpressionsHsp04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstantExpressionsHsp04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const caseName: string = "testConstantExpressionsHsp04";
       import('@test/loadHsp/src/main/ets/utils/Calc').then(m => {
         expect(m.add(3, 2)).assertEqual(5);
@@ -98,7 +98,7 @@ export default function dynamicLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressionsHsp01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testVariableExpressionsHsp01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const caseName: string = "testVariableExpressionsHsp01";
       let libname = 'hsp';
       import(libname).then((m: ESObject) => {
@@ -117,7 +117,7 @@ export default function dynamicLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressionsHsp02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testVariableExpressionsHsp02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const caseName: string = "testVariableExpressionsHsp02";
       let libname = 'hsp/src/main/ets/utils/Calc';
       import(libname).then((m: ESObject) => {
@@ -136,7 +136,7 @@ export default function dynamicLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressionsHsp03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testVariableExpressionsHsp03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const caseName: string = "testVariableExpressionsHsp03";
       let libname = '@test/loadHsp';
       import(libname).then((m: ESObject) => {
@@ -155,7 +155,7 @@ export default function dynamicLoadHsp() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testVariableExpressionsHsp04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testVariableExpressionsHsp04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const caseName: string = "testVariableExpressionsHsp04";
       let libname = '@test/loadHsp/src/main/ets/utils/Calc';
       import(libname).then((m: ESObject) => {

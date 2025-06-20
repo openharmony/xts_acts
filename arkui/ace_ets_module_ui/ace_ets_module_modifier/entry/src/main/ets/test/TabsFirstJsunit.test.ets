@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level} from '@ohos/hypium';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import Utils from './Utils';
 
@@ -49,7 +49,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_Divider_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0300', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0300 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Divider_0300]:" + strJson);
@@ -67,7 +67,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_FadingEdge_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_FadingEdge_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0100 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_FadingEdge_0100]:" + strJson);
@@ -84,7 +84,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_BarOverlap_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0200', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0200 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_BarOverlap_0200]:" + strJson);
@@ -101,7 +101,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_BarBackgroundColor_0100]:" + strJson);
@@ -119,7 +119,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0100 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0100]: " + strJson);
@@ -136,7 +136,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0200', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0200 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0200]: " + strJson);
@@ -153,7 +153,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0300', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0300 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0300]: " + strJson);
@@ -170,7 +170,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0400', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0400 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0400]: " + strJson);
@@ -191,7 +191,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0500', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0500 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0500]: " + strJson);
@@ -210,7 +210,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0600', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0600 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0600]: " + strJson);
@@ -227,7 +227,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_BarGridAlign_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarGridAlign_0200', Level.LEVEL0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BarGridAlign_0200] start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_BarGridAlign_0200]: " + strJson);
@@ -250,7 +250,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_BarMode_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarMode_0200', Level.LEVEL0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BarMode_0200] start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_BarMode_0200]: " + strJson);
@@ -269,7 +269,7 @@ export default function tabsFirstJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Tabs_0011', 0, async (done: Function) => {
+    it('ArkUI_Tabs_0011', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUI_Tabs_0011 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

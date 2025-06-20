@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, {RectValue} from '../../../MainAbility/utils/Common';
 export default function Stack_AlignContent() {
@@ -49,7 +49,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentNotConfig
      * @tc.desc      The stack component does not set alignContent
      */
-    it('testStackAlignContentCenter', 0, async  (done: Function)=> {
+    it('testStackAlignContentCenter',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentCenter] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Stack_AlignContent_01');
@@ -80,7 +80,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentTopStart
      * @tc.desc      The stack component sets alignContent to Alignment.TopStart
      */
-    it('testStackAlignContentTopStart', 0, async  (done: Function)=> {
+    it('testStackAlignContentTopStart',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentTopStart] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(3000);
@@ -112,7 +112,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentTop
      * @tc.desc      The stack component sets alignContent to Alignment.Top
      */
-    it('testStackAlignContentTop', 0, async  (done: Function)=> {
+    it('testStackAlignContentTop',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentTop] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Top });
       await CommonFunc.sleep(3000);
@@ -144,7 +144,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentTopEnd
      * @tc.desc      The stack component sets alignContent to Alignment.TopEnd
      */
-    it('testStackAlignContentTopEnd', 0, async  (done: Function)=> {
+    it('testStackAlignContentTopEnd',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentTopEnd] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(3000);
@@ -176,7 +176,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentStart
      * @tc.desc      The stack component sets alignContent to Alignment.Start
      */
-    it('testStackAlignContentStart', 0, async  (done: Function)=> {
+    it('testStackAlignContentStart',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentStart] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Start });
       await CommonFunc.sleep(3000);
@@ -208,7 +208,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentCenter
      * @tc.desc      The stack component sets alignContent to Alignment.Center
      */
-    it('testStackAlignContentCenter', 0, async  (done: Function)=> {
+    it('testStackAlignContentCenter',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentCenter] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Center });
       await CommonFunc.sleep(3000);
@@ -240,7 +240,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentEnd
      * @tc.desc      The stack component sets alignContent to Alignment.End
      */
-    it('testStackAlignContentEnd', 0, async  (done: Function)=> {
+    it('testStackAlignContentEnd',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentEnd] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.End });
       await CommonFunc.sleep(3000);
@@ -272,7 +272,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentBottomStart
      * @tc.desc      The stack component sets alignContent to Alignment.BottomStart
      */
-    it('testStackAlignContentBottomStart', 0, async  (done: Function)=> {
+    it('testStackAlignContentBottomStart',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentBottomStart] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(3000);
@@ -304,7 +304,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentBottom
      * @tc.desc      The stack component sets alignContent to Alignment.Bottom
      */
-    it('testStackAlignContentBottom', 0, async  (done: Function)=> {
+    it('testStackAlignContentBottom',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentBottom] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(3000);
@@ -336,7 +336,7 @@ export default function Stack_AlignContent() {
      * @tc.name      testStackAlignContentBottomEnd
      * @tc.desc      The stack component sets alignContent to Alignment.BottomEnd
      */
-    it('testStackAlignContentBottomEnd', 0, async  (done: Function)=> {
+    it('testStackAlignContentBottomEnd',  Level.LEVEL0, async  (done: Function)=> {
       console.info('[testStackAlignContentBottomEnd] START');
       globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(3000);

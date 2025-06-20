@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import audio from '@ohos.multimedia.audio';
+import { BusinessError } from '@kit.BasicServicesKit';
 import media from '@ohos.multimedia.media'
 import { expect } from '@ohos/hypium';
 
@@ -31,6 +33,10 @@ export function playAudioSource(src: string | media.AVFileDescriptor | undefined
     expect().assertFail();
     done();
   }
+  console.info('Pre-execution on audioInterrupt')
+  audioPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
+  console.info('audioInterrupt called,and InterruptEvent info is:' + info)
+  });
   if (typeof (src) == 'string') {
     console.error('case src test');
     audioPlayer.src = src;
@@ -46,6 +52,9 @@ export function playAudioSource(src: string | media.AVFileDescriptor | undefined
     // step 0: dataLoad -> play
     audioPlayer.play();
   });
+  audioPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
+    console.info('audioInterrupt called,and InterruptEvent info is:' + info)
+  })
   audioPlayer.on('play', () => {
     console.info('case start to play');
     expect(audioPlayer.state).assertEqual('playing');
@@ -69,6 +78,15 @@ export function playAudioSource(src: string | media.AVFileDescriptor | undefined
       // step 7: wait for finish
     } else if (playCount == 3) {
       // step 9: play -> stop
+      audioPlayer.audioInterruptMode = audio.InterruptMode.INDEPENDENT_MODE; 
+      //expect(audioPlayer.audioInterruptMode).assertEqual(audio.InterruptMode.INDEPENDENT_MODE);
+      console.info('success set audio.InterruptMode.INDEPENDENT_MODE');
+      audioPlayer.getTrackDescription().then((arrList: Array<media.MediaDescription>) => {
+        console.info(`case getTrackDescription is ${JSON.stringify(arrList)}`);
+        console.info('Succeeded in getting TrackDescription');
+      }).catch((error: BusinessError) => {
+        console.error(`Failed to get TrackDescription, error:${error}`);
+      });
       audioPlayer.stop();
     } else {
       // step 12: play -> pause

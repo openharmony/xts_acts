@@ -14,8 +14,10 @@
  */
 import abilityTest from './Ability.test';
 import FivePointOneTest from './FivePointOne.test';
+import SixPointZeroTest from './SixPointZero.test';
 
 export default function testsuite() {
   abilityTest();
   FivePointOneTest();
+  SixPointZeroTest();
 }

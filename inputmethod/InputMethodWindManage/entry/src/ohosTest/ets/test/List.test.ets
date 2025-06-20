@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import InputMethodWindManage from './InputMethodWindManage.test'
+import InputMethodPreviewText from './InputMethodPreviewText.test'
 
 export default function testsuite() {
   InputMethodWindManage();
+  InputMethodPreviewText();
 }

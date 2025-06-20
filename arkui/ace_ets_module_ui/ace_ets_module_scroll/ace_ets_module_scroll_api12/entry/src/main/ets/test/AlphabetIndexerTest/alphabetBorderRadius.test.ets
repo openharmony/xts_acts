@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -49,7 +49,7 @@ export default function alphabetBorderRadiusTest() {
      * @tc.type
      * @tc.size
      */
-    it('alphabetBorderRadiusTest_001', 0, async (done: Function) => {
+    it('alphabetBorderRadiusTest_001', Level.LEVEL1, async (done: Function) => {
       console.info('[alphabetBorderRadiusTest_001] START');
       await CommonFunc.sleep(1000);
 
@@ -70,7 +70,7 @@ export default function alphabetBorderRadiusTest() {
      * @tc.type
      * @tc.size
      */
-    it('alphabetBorderRadiusTest_002', 0, async (done: Function) => {
+    it('alphabetBorderRadiusTest_002', Level.LEVEL1, async (done: Function) => {
       console.info('[alphabetBorderRadiusTest_002] START');
       await CommonFunc.sleep(1000);
 
@@ -90,7 +90,7 @@ export default function alphabetBorderRadiusTest() {
      * @tc.type
      * @tc.size
      */
-    it('alphabetBorderRadiusTest_003', 0, async (done: Function) => {
+    it('alphabetBorderRadiusTest_003', Level.LEVEL1, async (done: Function) => {
       console.info('[alphabetBorderRadiusTest_003] START');
       await CommonFunc.sleep(1000);
 
@@ -115,7 +115,7 @@ export default function alphabetBorderRadiusTest() {
      * @tc.type
      * @tc.size
      */
-    it('alphabetBorderRadiusTest_004', 0, async (done: Function) => {
+    it('alphabetBorderRadiusTest_004', Level.LEVEL1, async (done: Function) => {
       console.info('[alphabetBorderRadiusTest_004] START');
       await CommonFunc.sleep(1000);
 
@@ -140,7 +140,7 @@ export default function alphabetBorderRadiusTest() {
      * @tc.type
      * @tc.size
      */
-    it('alphabetBorderRadiusTest_005', 0, async (done: Function) => {
+    it('alphabetBorderRadiusTest_005', Level.LEVEL1, async (done: Function) => {
       console.info('[alphabetBorderRadiusTest_005] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -169,7 +169,7 @@ export default function alphabetBorderRadiusTest() {
      * @tc.type
      * @tc.size
      */
-    it('alphabetBorderRadiusTest_006', 0, async (done: Function) => {
+    it('alphabetBorderRadiusTest_006', Level.LEVEL1, async (done: Function) => {
       console.info('[alphabetBorderRadiusTest_006] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

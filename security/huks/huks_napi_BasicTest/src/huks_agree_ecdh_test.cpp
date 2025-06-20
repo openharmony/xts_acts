@@ -96,7 +96,7 @@ static struct OH_Huks_Param g_agreeParams02Finish001[] = {
  * @tc.desc: alg-ECDH, pur-AGREE
  * @tc.type: FUNC
  */
-HWTEST_F(HuksAgreeECDHTest, Security_HUKS_NAPI_Agree_ECDH_0100, TestSize.Level0)
+HWTEST_F(HuksAgreeECDHTest, Security_HUKS_NAPI_Agree_ECDH_0100, TestSize.Level1)
 {
     struct OH_Huks_ParamSet *genParamSet = nullptr;
     struct OH_Huks_ParamSet *initParamSet01 = nullptr;

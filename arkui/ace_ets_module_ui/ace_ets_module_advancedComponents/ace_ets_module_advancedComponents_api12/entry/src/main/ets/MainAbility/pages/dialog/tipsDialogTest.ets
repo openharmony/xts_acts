@@ -36,17 +36,53 @@ struct TipsDialogTest {
 
   dialogControllerImage: CustomDialogController = new CustomDialogController({
     builder: TipsDialog({
-      imageRes: $r('sys.media.ohos_ic_public_voice'),
-      imageSize: { width: 60, height: 60 },
-      title: 'TipsDialog',
       content: '想要卸载这个APP嘛?',
+      theme: this.customTheme,
+      themeColorMode: ThemeColorMode.LIGHT,
+      primaryButton: {
+        value: '取消',
+        action: () => {
+          console.info('Callback when the first button is clicked')
+        },
+      },
+      secondaryButton: {
+        value: '删除',
+        role: ButtonRole.ERROR,
+        action: () => {
+          console.info('Callback when the second button is clicked')
+        }
+      },
+    }),
+  })
+
+  dialogControllerTitle: CustomDialogController = new CustomDialogController({
+    builder: TipsDialog({
+      imageRes: $r('sys.media.ohos_ic_public_voice'),
+      imageSize: { width: 10, height: 10 },
+      title: 'TipsDialog',
+      primaryButton: {
+        value: '取消',
+        action: () => {
+          console.info('Callback when the first button is clicked')
+        },
+      },
+      secondaryButton: {
+        value: '删除',
+        role: ButtonRole.ERROR,
+        action: () => {
+          console.info('Callback when the second button is clicked')
+        }
+      },
+    }),
+  })
+
+  dialogControllerTips: CustomDialogController = new CustomDialogController({
+    builder: TipsDialog({
       checkTips: 'checkTips',
       isChecked: true,
       checkAction: () => {
         console.log('checkAction')
       },
-      theme: this.customTheme,
-      themeColorMode: ThemeColorMode.LIGHT,
       primaryButton: {
         value: '取消',
         action: () => {
@@ -70,9 +106,18 @@ struct TipsDialogTest {
     Column() {
       Button('TipsDialog')
         .width(96)
-        .height(40)
         .onClick(() => {
           this.dialogControllerImage.open()
+        })
+      Button('TipsDialogTitle')
+        .width(96)
+        .onClick(() => {
+          this.dialogControllerTitle.open()
+        })
+      Button('TipsDialogTips')
+        .width(96)
+        .onClick(() => {
+          this.dialogControllerTips.open()
         })
     }
     .width('100%')

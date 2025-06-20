@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import { getPermission, driveFn,sleep} from '../common';
 
@@ -38,7 +38,7 @@ export default function createImageAssetRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('create_image_asset_request_000', 2, async (done: Function) => {
+    it('create_image_asset_request_000', Level.LEVEL2, async (done: Function) => {
       let testNum = 'create_image_asset_request_000';
       try {
         let fileUri = 'file://com.example.myapplication.MainAbility/data/storage/el2/base/haps/entry/files/test_this_api_with_demo.jpg';

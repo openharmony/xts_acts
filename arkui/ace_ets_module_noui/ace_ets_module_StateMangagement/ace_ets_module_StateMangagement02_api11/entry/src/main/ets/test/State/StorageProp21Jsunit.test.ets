@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -56,7 +56,7 @@ export default function StorageProp21Jsunit() {
       done();
     });
 
-    it('StorageProp21Jsunit_0200', 0, async (done: Function) => {
+    it('StorageProp21Jsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[StorageProp21Jsunit_0200] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button1'));
@@ -72,7 +72,7 @@ export default function StorageProp21Jsunit() {
       done();
     });
 
-    it('StorageProp21Jsunit_0300', 0, async (done: Function) => {
+    it('StorageProp21Jsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[StorageProp21Jsunit_0300] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button2'));
@@ -88,7 +88,7 @@ export default function StorageProp21Jsunit() {
       done();
     });
 
-    it('StorageProp21Jsunit_0400', 0, async (done: Function) => {
+    it('StorageProp21Jsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('[StorageProp21Jsunit_0400] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button3'));
@@ -104,7 +104,7 @@ export default function StorageProp21Jsunit() {
       done();
     });
 
-    it('StorageProp21Jsunit_0500', 0, async (done: Function) => {
+    it('StorageProp21Jsunit_0500', Level.LEVEL0, async (done: Function) => {
       console.info('[StorageProp21Jsunit_0500] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button4'));

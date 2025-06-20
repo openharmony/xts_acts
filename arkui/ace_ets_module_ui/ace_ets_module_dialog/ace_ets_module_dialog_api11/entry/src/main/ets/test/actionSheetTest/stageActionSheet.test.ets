@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -54,8 +54,15 @@ export default function stageActionSheet() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-
-    it('testShowActionShee001', 0, async (done: Function) => {
+    /**
+     * @tc.number    testShowActionShee001
+     * @tc.name      testShowActionShee001
+     * @tc.desc      set api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('testShowActionShee001', Level.LEVEL2, async (done: Function) => {
       console.info('testShowActionShee001 START');
       setTimeout(() => {
         try {
@@ -82,8 +89,15 @@ export default function stageActionSheet() {
         done();
       }, 500)
     });
-
-    it('testShowActionShee002', 0, async (done: Function) => {
+    /**
+     * @tc.number    testShowActionShee002
+     * @tc.name      testShowActionShee002
+     * @tc.desc      set api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('testShowActionShee002', Level.LEVEL2, async (done: Function) => {
       console.info('testShowActionShee002 START');
       setTimeout(() => {
         try {
@@ -110,7 +124,15 @@ export default function stageActionSheet() {
         done();
       }, 500)
     });
-    it('testShowActionShee003', 0, async (done: Function) => {
+    /**
+     * @tc.number    testShowActionShee003
+     * @tc.name      testShowActionShee003
+     * @tc.desc      set api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('testShowActionShee003', Level.LEVEL2, async (done: Function) => {
       console.info('testShowActionShee003 START');
       setTimeout(() => {
         try {

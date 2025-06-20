@@ -56,7 +56,8 @@ describe("SensorJsTest_sensor_36", function () {
     const SERVICE_EXCEPTION_CODE = 14500101
     const SENSOR_NO_SUPPORT_CODE = 14500102
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-    const SERVICE_EXCEPTION_MSG = 'Service exception.'
+    const SERVICE_EXCEPTION_MSG = "Service exception.Possible causes:" +
+        "1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception."
     let errMessages = ['ReferenceError: xxx is not defined','ReferenceError: string is not defined','TypeError: is not callable'];
     let errMessage;
     let TAG  = '';

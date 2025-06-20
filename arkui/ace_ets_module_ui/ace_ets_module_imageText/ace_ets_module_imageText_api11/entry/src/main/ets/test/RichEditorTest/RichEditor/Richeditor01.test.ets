@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common'
 
@@ -40,7 +40,7 @@ export default function ActsRichEditorTest() {
       done()
     });
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    it('Stage_RichEditor_Test_0100', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0100', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0100 START');
       try {
         let controller = new RichEditorController()
@@ -69,7 +69,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_0200', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0200', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0200 START');
       try {
         let controller = new RichEditorController()
@@ -85,7 +85,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_0300', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0300', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0300 START');
       try {
         let controller = new RichEditorController()
@@ -101,7 +101,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_0400', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0400', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0400 START');
       try {
         let controller = new RichEditorController()
@@ -117,7 +117,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_0500', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0500', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0500 START');
       try {
         let controller = new RichEditorController()
@@ -140,7 +140,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_0600', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0600', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0600 START');
       try {
         let controller = new RichEditorController()
@@ -156,7 +156,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_0700', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0700', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0700 START');
       try {
         let controller = new RichEditorController()
@@ -172,7 +172,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_0800', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0800', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0800 START');
       try {
         let controller = new RichEditorController()
@@ -188,7 +188,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_0900', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_0900', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_0900 START');
       try {
         let controller = new RichEditorController()
@@ -216,7 +216,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1000', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1000', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1000 START');
       try {
         let controller = new RichEditorController()
@@ -239,7 +239,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1100', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1100', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1100 START');
       try {
         let controller = new RichEditorController()
@@ -254,7 +254,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1200', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1200', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1200 START');
       try {
         let controller = new RichEditorController()
@@ -272,7 +272,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1300', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1300', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1300 START');
       try {
         let controller = new RichEditorController()
@@ -287,7 +287,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1400', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1400', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1400 START');
       try {
         let controller = new RichEditorController()
@@ -301,7 +301,7 @@ export default function ActsRichEditorTest() {
       }
       done();
     });
-    it('Stage_RichEditor_Test_1500', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1500', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1500 START');
       try {
         let controller = new RichEditorController();
@@ -318,7 +318,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1600', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1600', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1600 START');
       try {
         let controller = new RichEditorController();
@@ -333,7 +333,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1700', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1700', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1700 START');
       try {
         let controller = new RichEditorController();
@@ -348,7 +348,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1800', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1800', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1800 START');
       try {
         let controller = new RichEditorController();
@@ -366,7 +366,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_1900', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_1900', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_1900 START');
       try {
         let controller = new RichEditorController();
@@ -384,7 +384,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_2000', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_2000', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_2000 START');
       try {
         let controller = new RichEditorController();
@@ -402,7 +402,7 @@ export default function ActsRichEditorTest() {
       done();
     });
 
-    it('Stage_RichEditor_Test_2100', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_2100', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_2100 START');
       setTimeout(() => {
         try {
@@ -501,7 +501,7 @@ export default function ActsRichEditorTest() {
       }, 500)
     });
 
-    it('Stage_RichEditor_Test_2200', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_2200', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_2200 START');
       setTimeout(() => {
         try {
@@ -522,7 +522,7 @@ export default function ActsRichEditorTest() {
       }, 500)
     });
 
-    it('Stage_RichEditor_Test_2300', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_2300', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_2300 START');
       setTimeout(() => {
         try {
@@ -556,7 +556,7 @@ export default function ActsRichEditorTest() {
       }, 500)
     });
 
-    it('Stage_RichEditor_Test_2400', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_2400', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_2400 START');
       setTimeout(() => {
         try {
@@ -582,7 +582,7 @@ export default function ActsRichEditorTest() {
       }, 500)
     });
 
-    it('Stage_RichEditor_Test_2500', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_2500', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_2500 START');
       setTimeout(() => {
         try {
@@ -603,7 +603,7 @@ export default function ActsRichEditorTest() {
       }, 500)
     });
 
-    it('Stage_RichEditor_Test_2600', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_2600', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_2600 START');
       setTimeout(() => {
         try {
@@ -640,7 +640,7 @@ export default function ActsRichEditorTest() {
       }, 500)
     });
 
-    it('Stage_RichEditor_Test_2700', 0, async (done: Function) => {
+    it('Stage_RichEditor_Test_2700', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_RichEditor_Test_2700 START');
       setTimeout(() => {
         try {

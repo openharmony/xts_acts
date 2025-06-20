@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -49,7 +49,7 @@ export default function navigationNavbar01() {
       * @tc.desc  : Set NavigationWidth to 300
       * @tc.level : Level 2
       */
-    it('navigationNavbar01_001', 0, async  (done:Function) =>{
+    it('navigationNavbar01_001',  Level.LEVEL0, async  (done:Function) =>{
       console.info('[navigationNavbar01_001] START');
       globalThis.value.message.notify({name:'NavigationWidth', value: 300 });
       await CommonFunc.sleep(1000);
@@ -70,7 +70,7 @@ export default function navigationNavbar01() {
       * @tc.desc  : Set NavigationWidth to 200
       * @tc.level : Level 2
       */
-    it('navigationNavbar01_002', 0, async  (done:Function) =>{
+    it('navigationNavbar01_002',  Level.LEVEL0, async  (done:Function) =>{
       console.info('[navigationNavbar01_002] START');
       globalThis.value.message.notify({name:'NavigationWidth', value: 200 });
       await CommonFunc.sleep(1000);

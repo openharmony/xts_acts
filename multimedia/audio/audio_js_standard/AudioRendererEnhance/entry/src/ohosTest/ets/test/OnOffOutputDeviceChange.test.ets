@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import * as env from './Const';
 import common from '@ohos.app.ability.common';
@@ -137,9 +137,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         audioRen.on(-1, (error: BusinessError, data: ESObject) => {
           if (error) {
@@ -169,9 +169,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         audioRen.on('123', (error: BusinessError, data: ESObject) => {
           if (error) {
@@ -201,9 +201,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         audioRen.on((error: BusinessError, data: ESObject) => {
           if (error) {
@@ -234,9 +234,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         audioRen.off(-1, (error: BusinessError, data: ESObject) => {
           if (error) {
@@ -267,9 +267,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         audioRen.off('123', (error: BusinessError, data: ESObject) => {
           if (error) {
@@ -300,9 +300,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - off "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         audioRen.off((error: BusinessError, data: ESObject) => {
           if (error) {

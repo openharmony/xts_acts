@@ -276,9 +276,9 @@ export default function dlpTest() {
      * @tc.desc generateDLPFile success (Promise).
      * @tc.size LargeTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testGetDLPSupportedFileTypes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+    it('testGetDLPSupportedFileTypes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let curTag = TAG + "Test_getDLPSupportedFileTypes_001";
       console.info(curTag, "start");
 

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from "../../MainAbility/common/Common";
 import router from '@ohos.router';
@@ -73,7 +73,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         get the default value
      */
-    it('ArkUI_Stage_datePicker_disappearTextStyle_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_datePicker_disappearTextStyle_0100', Level.LEVEL1, async (done: Function) => {
         let strJson = getInspectorByKey('datePicker');
         let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info("[ArkUI_Stage_datePicker_disappearTextStyle_0100] disappearColor:" + obj.$attrs.disappearTextStyle.color);
@@ -88,7 +88,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         set disappearTextStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_disappearTextStyle_0200', 0, async (done: Function) => {      
+      it('ArkUI_Stage_datePicker_disappearTextStyle_0200', Level.LEVEL1, async (done: Function) => {      
         let value: DatePickerTextStyle = {color:Color.Black,font:{size:8,weight:FontWeight.Bolder}} 
         try {
           let eventData: events_emitter.EventData = {
@@ -120,7 +120,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         set disappearTextStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_disappearTextStyle_0300', 0, async (done: Function) => { 
+      it('ArkUI_Stage_datePicker_disappearTextStyle_0300', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:0x808080,font:{size:8,weight:100}}         
         try {
           let eventData: events_emitter.EventData = {
@@ -152,7 +152,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         set disappearTextStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_disappearTextStyle_0400', 0, async (done: Function) => {  
+      it('ArkUI_Stage_datePicker_disappearTextStyle_0400', Level.LEVEL1, async (done: Function) => {  
         let value: DatePickerTextStyle = {color:'#ff0000',font:{size:'1px',weight:'700'}}    
         try {
           let eventData: events_emitter.EventData = {
@@ -184,7 +184,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         set disappearTextStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_disappearTextStyle_0500', 0, async (done: Function) => { 
+      it('ArkUI_Stage_datePicker_disappearTextStyle_0500', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:Color.Green,font:{size:30,weight:450}}         
         try {
           let eventData: events_emitter.EventData = {
@@ -216,7 +216,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         set disappearTextStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_disappearTextStyle_0600', 0, async (done: Function) => {   
+      it('ArkUI_Stage_datePicker_disappearTextStyle_0600', Level.LEVEL1, async (done: Function) => {   
         let value: DatePickerTextStyle = {color:'#80808g',font:{size:-1,weight:1000}}      
         try {
           let eventData: events_emitter.EventData = {
@@ -252,7 +252,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         set disappearTextStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_disappearTextStyle_0700', 0, async (done: Function) => {   
+      it('ArkUI_Stage_datePicker_disappearTextStyle_0700', Level.LEVEL1, async (done: Function) => {   
         let value: DatePickerTextStyle = {color:'xxx',font:{size:'xxx',weight:FontWeight.Bold}}       
         try {
           let eventData: events_emitter.EventData = {
@@ -288,7 +288,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         set disappearTextStyle then get the value
      */
-      it('ArkUI_Stage_dataPicker_disappearTextStyle_0800', 0, async (done: Function) => { 
+      it('ArkUI_Stage_dataPicker_disappearTextStyle_0800', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:'rgb(138,43,226)',font:{size:'20vp',weight:900}} 
         try {
           let eventData: events_emitter.EventData = {
@@ -319,7 +319,7 @@ export default function datepicker() {
      * @tc.name         Tests the disappearTextStyle property of the picker component
      * @tc.desc         set disappearTextStyle then get the value
      */
-	  it('ArkUI_Stage_dataPicker_disappearTextStyle_0900', 0, async (done: Function) => { 
+	  it('ArkUI_Stage_dataPicker_disappearTextStyle_0900', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:'rgb(138,43,226)',font:{size:'15lpx',weight:90}} 
         try {
           let eventData: events_emitter.EventData = {
@@ -350,7 +350,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         get the default value
      */
-    it('ArkUI_Stage_datePicker_textStyle_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_datePicker_textStyle_0100', Level.LEVEL1, async (done: Function) => {
         let strJson = getInspectorByKey('datePicker');
         let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info("[ArkUI_Stage_datePicker_textStyle_0100] disappearColor:" + obj.$attrs.textStyle.color);
@@ -365,7 +365,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         set textStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_textStyle_0200', 0, async (done: Function) => {   
+      it('ArkUI_Stage_datePicker_textStyle_0200', Level.LEVEL1, async (done: Function) => {   
         let value: DatePickerTextStyle = {color:Color.Red,font:{size:'10px',weight:FontWeight.Bolder}}      
         try {
           let eventData: events_emitter.EventData = {
@@ -397,7 +397,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         set textStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_textStyle_0300', 0, async (done: Function) => {   
+      it('ArkUI_Stage_datePicker_textStyle_0300', Level.LEVEL1, async (done: Function) => {   
         let value: DatePickerTextStyle = {color:0xFF808080,font:{size:'10px',weight:100}}      
         try {
           let eventData: events_emitter.EventData = {
@@ -429,7 +429,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         set textStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_textStyle_0400', 0, async (done: Function) => {
+      it('ArkUI_Stage_datePicker_textStyle_0400', Level.LEVEL1, async (done: Function) => {
         let value: DatePickerTextStyle = {color:'#00ff00',font:{size:'1px',weight:'700'}}          
         try {
           let eventData: events_emitter.EventData = {
@@ -461,7 +461,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         set textStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_textStyle_0500', 0, async (done: Function) => { 
+      it('ArkUI_Stage_datePicker_textStyle_0500', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:Color.Green,font:{size:30,weight:450}}        
         try {
           let eventData: events_emitter.EventData = {
@@ -493,7 +493,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         set textStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_textStyle_0600', 0, async (done: Function) => {  
+      it('ArkUI_Stage_datePicker_textStyle_0600', Level.LEVEL1, async (done: Function) => {  
         let value: DatePickerTextStyle = {color:'#80808g',font:{size:-1,weight:1000}}         
         try {
           let eventData: events_emitter.EventData = {
@@ -529,7 +529,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         set textStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_textStyle_0700', 0, async (done: Function) => {
+      it('ArkUI_Stage_datePicker_textStyle_0700', Level.LEVEL1, async (done: Function) => {
         let value: DatePickerTextStyle = {color:'xxx',font:{size:'xxx',weight:FontWeight.Lighter}}          
         try {
           let eventData: events_emitter.EventData = {
@@ -565,7 +565,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         set textStyle then get the value
      */
-      it('ArkUI_Stage_datePicker_textStyle_0800', 0, async (done: Function) => { 
+      it('ArkUI_Stage_datePicker_textStyle_0800', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:'rgb(138,43,226)',font:{size:'20vp',weight:900}} 
         try {
           let eventData: events_emitter.EventData = {
@@ -596,7 +596,7 @@ export default function datepicker() {
      * @tc.name         Tests the textStyle property of the picker component
      * @tc.desc         set textStyle then get the value
      */
-	  it('ArkUI_Stage_datePicker_textStyle_0900', 0, async (done: Function) => { 
+	  it('ArkUI_Stage_datePicker_textStyle_0900', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:'rgb(138,43,226)',font:{size:'15lpx',weight:90}} 
         try {
           let eventData: events_emitter.EventData = {
@@ -627,7 +627,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         get the default value
      */
-    it('ArkUI_Stage_datepicker_selectedTextStyle_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_datepicker_selectedTextStyle_0100', Level.LEVEL1, async (done: Function) => {
         let strJson = getInspectorByKey('datePicker');
         let obj: Record<string, ESObject> = JSON.parse(strJson);
         console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0100] disappearColor:" + obj.$attrs.selectedTextStyle.color);
@@ -642,7 +642,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-      it('ArkUI_Stage_datepicker_selectedTextStyle_0200', 0, async (done: Function) => { 
+      it('ArkUI_Stage_datepicker_selectedTextStyle_0200', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:Color.Blue,font:{size:'20px',weight:FontWeight.Bolder}}       
         try {
           let eventData: events_emitter.EventData = {
@@ -674,7 +674,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-      it('ArkUI_Stage_datepicker_selectedTextStyle_0300', 0, async (done: Function) => {
+      it('ArkUI_Stage_datepicker_selectedTextStyle_0300', Level.LEVEL1, async (done: Function) => {
         let value: DatePickerTextStyle = {color:0xFF808080,font:{size:'20px',weight:100}}           
         try {
           let eventData: events_emitter.EventData = {
@@ -706,7 +706,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-      it('ArkUI_Stage_datepicker_selectedTextStyle_0400', 0, async (done: Function) => { 
+      it('ArkUI_Stage_datepicker_selectedTextStyle_0400', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:'#00ff00',font:{size:'1px',weight:'700'}}         
         try {
           let eventData: events_emitter.EventData = {
@@ -738,7 +738,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-      it('ArkUI_Stage_datepicker_selectedTextStyle_0500', 0, async (done: Function) => { 
+      it('ArkUI_Stage_datepicker_selectedTextStyle_0500', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:Color.Green,font:{size:30,weight:450}}         
         try {
           let eventData: events_emitter.EventData = {
@@ -770,7 +770,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-      it('ArkUI_Stage_datepicker_selectedTextStyle_0600', 0, async (done: Function) => {
+      it('ArkUI_Stage_datepicker_selectedTextStyle_0600', Level.LEVEL1, async (done: Function) => {
         let value: DatePickerTextStyle = {color:'#80808g',font:{size:-1,weight:1000}}           
         try {
           let eventData: events_emitter.EventData = {
@@ -806,7 +806,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-      it('ArkUI_Stage_datepicker_selectedTextStyle_0700', 0, async (done: Function) => {
+      it('ArkUI_Stage_datepicker_selectedTextStyle_0700', Level.LEVEL1, async (done: Function) => {
         let value: DatePickerTextStyle = {color:'xxx',font:{size:'xxx',weight:FontWeight.Lighter}}         
         try {
           let eventData: events_emitter.EventData = {
@@ -842,7 +842,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-      it('ArkUI_Stage_datepicker_selectedTextStyle_0800', 0, async (done: Function) => { 
+      it('ArkUI_Stage_datepicker_selectedTextStyle_0800', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:'rgb(138,43,226)',font:{size:'20vp',weight:900}} 
         try {
           let eventData: events_emitter.EventData = {
@@ -873,7 +873,7 @@ export default function datepicker() {
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-	  it('ArkUI_Stage_datepicker_selectedTextStyle_0900', 0, async (done: Function) => { 
+	  it('ArkUI_Stage_datepicker_selectedTextStyle_0900', Level.LEVEL1, async (done: Function) => { 
         let value: DatePickerTextStyle = {color:'rgb(138,43,226)',font:{size:'15lpx',weight:90}} 
         try {
           let eventData: events_emitter.EventData = {
@@ -905,7 +905,7 @@ export default function datepicker() {
      * @tc.name         Tests the property of the Dialog
      * @tc.desc         get the property of the Dialog
      */
-	  it('ArkUI_Stage_datepicker_dialog_0100', 0, async (done: Function) => { 
+	  it('ArkUI_Stage_datepicker_dialog_0100', Level.LEVEL1, async (done: Function) => { 
       console.info('testDialog START');
       await Utils.sleep(3000);
         try {

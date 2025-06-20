@@ -15,7 +15,6 @@
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
-import deviceInfo from '@ohos.deviceInfo';
 
 export default function ActsDlpNDKTest() {
   describe('ActsDlpNDKTest', () => {
@@ -45,12 +44,12 @@ export default function ActsDlpNDKTest() {
      * @tc.desc Obtains the permission info of this DLP file.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('getDlpPermissionInfoTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('getDlpPermissionInfoTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.log("=======> getDlpPermissionInfoTest  ==========");
-      if (deviceInfo.deviceType != 'wearable') {
-        try{
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        try {
           let result = await testNapi.osGetDlpPermissionInfoA();
           console.log("=======>getDlpPermissionInfoTest result:" + result);
           expect(result).assertEqual(19100006);
@@ -74,7 +73,7 @@ export default function ActsDlpNDKTest() {
      */
     it('getOriginalFileNameTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> getOriginalFileNameTest  ==========");
-      if (deviceInfo.deviceType != 'wearable') {
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
         try{
           let result = await testNapi.osGetOriginalFileNameA();
           console.log("=======>getOriginalFileNameTest result:" + result);
@@ -100,7 +99,7 @@ export default function ActsDlpNDKTest() {
      */
     it('isInSandboxTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> isInSandboxTest  ==========");
-      if (deviceInfo.deviceType != 'wearable') {
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
         try{
           let result = await testNapi.osIsInSandboxA();
           console.log("=======>isInSandboxTest result:" + result);
@@ -126,7 +125,7 @@ export default function ActsDlpNDKTest() {
      */
     it('setSandboxAppConfigTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> setSandboxAppConfigTest  ==========");
-      if (deviceInfo.deviceType != 'wearable') {
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
         try{
           let result = await testNapi.osSetSandboxAppConfigA();
           console.log("=======>setSandboxAppConfigTest result:" + result);
@@ -152,7 +151,7 @@ export default function ActsDlpNDKTest() {
      */
     it('getSandboxAppConfigTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> getSandboxAppConfigTest  ==========");
-      if (deviceInfo.deviceType != 'wearable') {
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
         try{
           let result = await testNapi.osGetSandboxAppConfigA();
           console.log("=======>getSandboxAppConfigTest result:" + result);
@@ -178,7 +177,7 @@ export default function ActsDlpNDKTest() {
      */
     it('cleanSandboxAppConfigTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> cleanSandboxAppConfigTest  ==========");
-      if (deviceInfo.deviceType != 'wearable') {
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
         try{
           let result = await testNapi.osCleanSandboxAppConfigA();
           console.log("=======>cleanSandboxAppConfigTest result:" + result);

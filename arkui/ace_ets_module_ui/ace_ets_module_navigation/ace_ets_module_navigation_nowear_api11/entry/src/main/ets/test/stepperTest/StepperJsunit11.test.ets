@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -46,7 +46,7 @@ export default function StepperJsunit11() {
     });
 
 
-    it('stepperTest_0100', 0, async (done: Function) => {
+    it('stepperTest_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('stepperTest_0100 START');
       let strJson: string = getInspectorByKey('stepper');
       console.info("stepperTest_0100 component strJson:" + strJson);
@@ -57,7 +57,7 @@ export default function StepperJsunit11() {
       done()
     });
 
-    it('stepperTest_0200', 0, async (done: Function) => {
+    it('stepperTest_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('stepperTest_0200 START');
       let strJson: string = getInspectorByKey('stepper');
       console.info("stepperTest_0200 component strJson:" + strJson);
@@ -86,7 +86,7 @@ export default function StepperJsunit11() {
       done()
     });
 
-    it('stepperTest_0400', 0, async (done: Function) => {
+    it('stepperTest_0400',  Level.LEVEL0, async (done: Function) => {
 
       await Utils.sleep(1000);
       globalThis.value.message.notify({
@@ -100,7 +100,7 @@ export default function StepperJsunit11() {
       done()
     });
 
-    it('stepperTest_0500', 0, async (done: Function) => {
+    it('stepperTest_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[stepperTest_0500] START');
       await Utils.sleep(1000);
       globalThis.value.message.notify({
@@ -114,7 +114,7 @@ export default function StepperJsunit11() {
       done()
     });
 
-    it('stepperTest_0300', 0, async (done: Function) => {
+    it('stepperTest_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('stepperTest_0300v START');
       let strJson: string = getInspectorByKey('stepper');
       console.info("stepperTest_0300 component strJson:" + strJson);

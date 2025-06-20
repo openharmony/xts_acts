@@ -43,11 +43,11 @@ export default function ActsAccessTokenNDKTest() {
      * @tc.number SUB_Access_Token_CheckPermission_0100.
      * @tc.name test OH_AT_CheckSelfPermission Test Normal Scene.
      * @tc.desc Checks whether this application has been granted the given permission.
-     * @tc.level Level3
+     * @tc.level Level0
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Access_Token_CheckPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_Access_Token_CheckPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       demo();
       
       try{

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -47,7 +47,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0001', 0, async (done: Function) => {
+    it('textTest_0001', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0001 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -65,7 +65,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0002', 0, async (done: Function) => {
+    it('textTest_0002', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0002 START');
       let strJsonNew = getInspectorByKey('text2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -84,7 +84,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0003', 0, async (done: Function) => {
+    it('textTest_0003', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0003 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -102,7 +102,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0004', 0, async (done: Function) => {
+    it('textTest_0004', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0004 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -120,7 +120,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0005', 0, async (done: Function) => {
+    it('textTest_0005', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0005 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -138,7 +138,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0006', 0, async (done: Function) => {
+    it('textTest_0006', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0006 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -156,7 +156,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0007', 0, async (done: Function) => {
+    it('textTest_0007', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0007 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -174,7 +174,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0008', 0, async (done: Function) => {
+    it('textTest_0008', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0008 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -196,7 +196,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0009', 0, async (done: Function) => {
+    it('textTest_0009', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0009 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -214,7 +214,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0010', 0, async (done: Function) => {
+    it('textTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0010 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -232,7 +232,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0011', 0, async (done: Function) => {
+    it('textTest_0011', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0011 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -250,7 +250,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0012', 0, async (done: Function) => {
+    it('textTest_0012', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0012 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -268,7 +268,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0013', 0, async (done: Function) => {
+    it('textTest_0013', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0013 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -286,7 +286,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0014', 0, async (done: Function) => {
+    it('textTest_0014', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0014 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -304,7 +304,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0015', 0, async (done: Function) => {
+    it('textTest_0015', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0015 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -322,7 +322,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0016', 0, async (done: Function) => {
+    it('textTest_0016', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0016 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -340,7 +340,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0017', 0, async (done: Function) => {
+    it('textTest_0017', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0017 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -358,7 +358,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0018', 0, async (done: Function) => {
+    it('textTest_0018', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0018 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -376,7 +376,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0019', 0, async (done: Function) => {
+    it('textTest_0019', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0019 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -395,7 +395,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0020', 0, async (done: Function) => {
+    it('textTest_0020', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0020 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -413,7 +413,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0021', 0, async (done: Function) => {
+    it('textTest_0021', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_00061 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -431,7 +431,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0022', 0, async (done: Function) => {
+    it('textTest_0022', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0022 START');
       let strJsonNew = getInspectorByKey('text1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -450,7 +450,7 @@ export default function textJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTest_0023', 0, async (done: Function) => {
+    it('textTest_0023', Level.LEVEL0, async (done: Function) => {
       console.info('textTest_0023 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

@@ -48,9 +48,9 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.desc The task takes less time than the delay time success
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('taskPoolExecuteDelayedTimeConsumTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('taskPoolExecuteDelayedTimeConsumTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Count1.count = 0
       // 创建一个任务
       let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: 测试参数
@@ -81,7 +81,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.desc The task takes less time than the delay time fail
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolExecuteDelayedTimeConsumTest0100_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间
@@ -108,7 +108,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.desc The task takes equal time than the delay time success
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('testTaskExecutionTimeEqualsDelay', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间
@@ -154,7 +154,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.desc The task takes equal time than the delay time fail
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolExecuteDelayedTimeConsumTest0101_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let startTime: number = Date.now();
@@ -188,7 +188,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.desc The task takes larger time than the delay time success
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolExecuteDelayedTimeConsumTest0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间
@@ -231,7 +231,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.desc The task takes larger time than the delay time fail
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolExecuteDelayedTimeConsumTest0102_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // 记录任务开始时间

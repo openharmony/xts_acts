@@ -54,9 +54,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc interface with normal value.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0001";
       try {
         let size = 10;
@@ -74,9 +74,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc for buffer with value '4294967296'
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0002";
       try {
         let size = 4294967296;
@@ -94,9 +94,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc for parameter with value undefined.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0003";
       try {
         buffer.alloc(undefined);
@@ -112,9 +112,9 @@ export default function BufferTest() {
       * @tc.desc  : Testing alloc for parameter with value null.
       * @tc.size: MediumTest
       * @tc.type  : Function
-      * @tc.level: Level 3
+      * @tc.level: Level 0
      */
-    it('testAlloc0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0004";
       try {
         buffer.alloc(null);
@@ -130,9 +130,9 @@ export default function BufferTest() {
      * @tc.desc: Testing alloc for buffer,the second parameter is empty string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
     */
-    it('testAlloc0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0005";
       try {
         let buf = buffer.alloc(10, ' ');
@@ -149,9 +149,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc for buffer,the second parameter is null.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0006";
       try {
         let buf = buffer.alloc(10, null);
@@ -168,9 +168,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc for buffer,the second parameter is buffer type.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0007";
       try {
         let buf1 = buffer.alloc(10);
@@ -188,9 +188,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc,the second and third parameter is string and null.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0009";
       try {
         let buf = buffer.alloc(10, "ab$#", null);
@@ -206,9 +206,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc for parameter with value 0.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0010";
       try {
         let buf = buffer.alloc(0);
@@ -225,9 +225,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc for parameter with value (0，bufferOBJ).
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0012";
       try {
         let buf1 = buffer.alloc(10);
@@ -246,9 +246,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc for buffer with value -5.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0013";
       try {
         buffer.alloc(-5);
@@ -264,9 +264,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing alloc for buffer with value 5.5.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAlloc0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAlloc0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAlloc0014";
       try {
         let buf = buffer.alloc(5.5);
@@ -283,9 +283,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitialized for buffer with normal value.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitialized0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitialized0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitialized0001";
       try {
         let buf = buffer.allocUninitialized(10);
@@ -302,9 +302,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitialized for buffer with value 0.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitialized0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitialized0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitialized0002";
       try {
         let buf = buffer.allocUninitialized(0);
@@ -321,9 +321,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitialized for buffer with value -5.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitialized0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitialized0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitialized0003";
       try {
         let buf = buffer.allocUninitialized(-5);
@@ -339,9 +339,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitialized for buffer with value 5.5.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitialized0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitialized0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitialized0004";
       try {
         let buf = buffer.allocUninitialized(5.5);
@@ -358,9 +358,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitialized for buffer with value undefined.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitialized0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitialized0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitialized0005";
       try {
         let buf = buffer.allocUninitialized(undefined);
@@ -377,9 +377,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitialized for buffer with value null.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitialized0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitialized0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitialized0006";
       try {
         let buf = buffer.allocUninitialized(null);
@@ -396,9 +396,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitializedFromPool for buffer with normal value.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitializedFromPool0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitializedFromPool0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitializedFromPool0001";
       try {
         let buf = buffer.allocUninitializedFromPool(10);
@@ -415,9 +415,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitializedFromPool for buffer with value 0.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitializedFromPool0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitializedFromPool0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitializedFromPool0002";
       try {
         let buf = buffer.allocUninitializedFromPool(0);
@@ -434,9 +434,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitializedFromPool for buffer with value -5.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitializedFromPool0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitializedFromPool0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitializedFromPool0003";
       try {
         let buf = buffer.allocUninitializedFromPool(-5);
@@ -453,9 +453,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitializedFromPool for buffer with value 5.5.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitializedFromPool0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitializedFromPool0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitializedFromPool0004";
       try {
         let buf = buffer.allocUninitializedFromPool(5.5);
@@ -472,9 +472,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitializedFromPool for buffer with value undefined.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitializedFromPool0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitializedFromPool0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitializedFromPool0005";
       try {
         let buf = buffer.allocUninitializedFromPool(undefined);
@@ -491,9 +491,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing allocUninitializedFromPool for buffer with value null.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testAllocUninitializedFromPool0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testAllocUninitializedFromPool0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testAllocUninitializedFromPool0006";
       try {
         let buf = buffer.allocUninitializedFromPool(null);
@@ -510,9 +510,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with normal value.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0001";
       try {
         let byteLen = buffer.byteLength("abcd");
@@ -529,9 +529,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with value '测试'.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0002";
       try {
         let byteLen = buffer.byteLength("测试");
@@ -548,9 +548,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with value '$&@*%'.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0003";
       try {
         let byteLen = buffer.byteLength("$&@*%");
@@ -567,9 +567,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with uint8array objects.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0006";
       try {
         let uintarr = new Uint8Array(2);
@@ -589,9 +589,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with buffer objects.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0007";
       try {
         let buf1 = buffer.from("abc");
@@ -609,9 +609,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with buffer objects.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0008";
       try {
         let buf1 = buffer.alloc(8);
@@ -629,9 +629,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with value empty string.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0009";
       try {
         let buf1 = buffer.from("");
@@ -649,9 +649,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with value undefined.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0010";
       try {
         let byteLen = buffer.byteLength(undefined);
@@ -668,9 +668,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing byteLength for buffer with value null.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testByteLength0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testByteLength0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testByteLength0011";
       try {
         let byteLen = buffer.byteLength(null);
@@ -687,9 +687,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing isBuffer for buffer with normal value.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testIsBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testIsBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testIsBuffer0001";
       try {
         let buf = buffer.alloc(1);
@@ -707,9 +707,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing isBuffer for buffer with object value.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testIsBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testIsBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testIsBuffer0002";
       try {
         let obj = new Object(1);
@@ -727,9 +727,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing isBuffer for buffer with value '[]'.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testIsBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testIsBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testIsBuffer0003";
       try {
         let flag = buffer.isBuffer([]);
@@ -746,9 +746,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing isBuffer for buffer with value string type.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testIsBuffer0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testIsBuffer0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testIsBuffer0004";
       try {
         let flag = buffer.isBuffer('ABC');
@@ -765,9 +765,9 @@ export default function BufferTest() {
      * @tc.desc  : Testing isBuffer for buffer with value empty string.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testIsBuffer0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testIsBuffer0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testIsBuffer0005";
       try {
         let flag = buffer.isBuffer('');
@@ -784,9 +784,9 @@ export default function BufferTest() {
      * @tc.desc  : testing alloc for buffer with normal value
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      */
-    it('testIsBuffer0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('testIsBuffer0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       TAG = "testIsBuffer0006";
       try {
         let flag = buffer.isBuffer(5);

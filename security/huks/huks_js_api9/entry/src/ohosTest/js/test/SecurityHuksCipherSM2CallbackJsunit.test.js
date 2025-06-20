@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherRSA } from './utils/param/cipher/publicCipherParam';
 import { stringToUint8Array, uint8ArrayToString, arrayEqual } from './utils/param/publicFunc';
@@ -401,7 +401,7 @@ async function publicCipherFunc(
 
 export default function SecurityHuksCipherSM2CallbackJsunit() {
     describe('SecurityHuksCipherSM2CallbackJsunit', function () {
-        it('Security_HUKS_Cipher_API9_SM2_001', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // init-update-finish
             const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_001_001';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_001_002';
@@ -466,7 +466,7 @@ export default function SecurityHuksCipherSM2CallbackJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_002', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // init-finish
             const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_002_001';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_002_002';

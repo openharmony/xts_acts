@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import inputEventClient from '@ohos.multimodalInput.inputEventClient';
@@ -54,7 +54,7 @@ export default function RatingAdvancedTest() {
       * @tc.desc        rating 2,stars 8,steps 2,click rating
       * @tc.level       Level 3
       */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0010', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0010', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0010] START');
       await routerPush("rating01")
       await Utils.sleep(2000);
@@ -85,7 +85,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        rating 0,stars 0,steps 1.5,click rating
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020] START');
       await routerPush("rating02")
       await Utils.sleep(2000);
@@ -121,7 +121,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        rating -1,stars -1,steps 0,click rating
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0030', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0030', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0030] START');
       await routerPush("rating03")
       await Utils.sleep(2000);
@@ -160,7 +160,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        rating 0,stars 10,steps 6,click rating
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0040', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0040', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0040] START');
       await routerPush("rating04")
       await Utils.sleep(2000);
@@ -192,7 +192,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        rating 8,stars 7,steps 10,click rating
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0050', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0050', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0050] START');
       await routerPush("rating05")
       await Utils.sleep(2000);
@@ -228,7 +228,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        rating 5,stars 10,steps 0.3,click rating
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0060', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0060', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0060] START');
       await routerPush("rating06")
       await Utils.sleep(2000);
@@ -255,7 +255,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        buildRating ,change indicator and click rating
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0070', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0070', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0070] START');
       await routerPush("rating07")
       await Utils.sleep(2000);
@@ -294,7 +294,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        buildRating ,change indicator and change stars
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0080', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0080', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0080] START');
       await routerPush("rating08")
       await Utils.sleep(2000);
@@ -331,7 +331,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        triggerChange = null
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0200', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0200', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0200] START');
       await routerPush("rating10")
       await Utils.sleep(2000);
@@ -355,7 +355,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        triggerChange = undefined
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0210', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0210', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0210] START');
       await routerPush("rating11")
       await Utils.sleep(2000);

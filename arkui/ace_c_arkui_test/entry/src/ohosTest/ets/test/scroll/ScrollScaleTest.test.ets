@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScale001', 0, async (done: Function) => {
+    it('testScrollScale001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollScale001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScale002', 0, async (done: Function) => {
+    it('testScrollScale002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollScale002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScale003', 0, async (done: Function) => {
+    it('testScrollScale003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollScale003()).assertEqual(0)
       done();
     });

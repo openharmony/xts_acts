@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperIndicator001', 0, async (done: Function) => {
+    it('testSwiperIndicator001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperIndicator002', 0, async (done: Function) => {
+    it('testSwiperIndicator002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator003', 0, async (done: Function) => {
+    it('testSwiperIndicator003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator004', 0, async (done: Function) => {
+    it('testSwiperIndicator004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator005', 0, async (done: Function) => {
+    it('testSwiperIndicator005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator006', 0, async (done: Function) => {
+    it('testSwiperIndicator006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator007', 0, async (done: Function) => {
+    it('testSwiperIndicator007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator008', 0, async (done: Function) => {
+    it('testSwiperIndicator008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator009', 0, async (done: Function) => {
+    it('testSwiperIndicator009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator010', 0, async (done: Function) => {
+    it('testSwiperIndicator010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function swiperIndicatorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperIndicator011', 0, async (done: Function) => {
+    it('testSwiperIndicator011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperIndicator011()).assertEqual(0)
       done()
     })

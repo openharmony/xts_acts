@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import inputEventClient from '@ohos.multimodalInput.inputEventClient';
@@ -65,7 +65,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        direction Axis.Vertical ,reverse true
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0180', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0180', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider01")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -86,7 +86,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        direction Axis.Vertical
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0200', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0200', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider02")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -106,7 +106,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        max < 0
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0210', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0210', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider03")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -126,7 +126,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        min = decimal number greater than 0
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0250', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0250', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider04")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -146,7 +146,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        Do not set showTips, the default value of showTips is false
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0380', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0380', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider05")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -166,7 +166,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        Repeated setting of showTips
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0390', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0390', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider06")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -186,7 +186,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        showTips = false
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0420', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0420', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider07")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -206,7 +206,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        showTips = true
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0430', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0430', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider08")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -226,7 +226,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        Do not set the width
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0440', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0440', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider09")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -247,7 +247,7 @@ export default function SliderInterfaceTest() {
      * @tc.name        SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0450
      * @tc.desc        drag and look onChange
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0450', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0450', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider10")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -275,7 +275,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        Set step to an integer greater than 0
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0480', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0480', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider11")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -304,7 +304,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        Set value to a negative number
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0640', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0640', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider12")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -325,7 +325,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        Set value to exceed the default maximum value
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0650', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0650', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider13")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -346,7 +346,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        click and drag, Begin 0 -> Moving 1 -> End 2
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0660', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0660', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider14")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -374,7 +374,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        click block and drag, Begin 0 -> Moving 1 -> End 2
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0670', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0670', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider15")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -404,7 +404,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        click block and drag, Begin 0 -> End 2 ,without Moving as steps
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0680', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0680', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider16")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -433,7 +433,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        click , Begin 0 -> Click 3 -> End 2
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0690', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0690', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider17")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -460,7 +460,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        click block ， Begin 0
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0700', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0700', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider18")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -485,7 +485,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        click block，End 2
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0710', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0710', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider19")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -510,7 +510,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        drag block, Moving 1
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0720', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0720', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider20")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -539,7 +539,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        click, Click 3
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0730', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0730', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider20")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -567,7 +567,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        set blockStyle img , drag block
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_1080', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_1080', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider21")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -596,7 +596,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        width 300 height 300
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0010', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0010', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider22")
       await Utils.sleep(2000);
       let driver = Driver.create();
@@ -619,7 +619,7 @@ export default function SliderInterfaceTest() {
      * @tc.desc        trackThickness = 60
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0020', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0020', Level.LEVEL3, async (done: Function) => {
       await routerPush("slider23")
       await Utils.sleep(2000);
       let driver = Driver.create();

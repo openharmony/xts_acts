@@ -172,6 +172,7 @@ HWTEST_P(SYMKEY_CONVERT_TEST, SUB_Security_CryptoFramework_NAPI_SymKey_Test_0200
 
     OH_CryptoSymKeyGenerator_Destroy(ctx);
     OH_CryptoSymKey_Destroy(convertKeyCtx);
+    OH_Crypto_FreeDataBlob(&in);
     HcfBlobDataClearAndFree((HcfBlob *)&convertOut);
 }
 
@@ -189,7 +190,7 @@ HWTEST_F(OHCryptoFrameworkSymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_SymK
 
     EXPECT_EQ(OH_CryptoSymKeyGenerator_Create((const char *)"RC4", &ctx), CRYPTO_NOT_SUPPORTED);
     EXPECT_EQ(OH_CryptoSymKeyGenerator_Create((const char *)"AES128", nullptr), CRYPTO_INVALID_PARAMS);
-    EXPECT_EQ(OH_CryptoSymKeyGenerator_Create((const char *)"aes128", &ctx), CRYPTO_NOT_SUPPORTED); // 返回码有问题
+    EXPECT_EQ(OH_CryptoSymKeyGenerator_Create((const char *)"aes128", &ctx), CRYPTO_NOT_SUPPORTED);
     EXPECT_EQ(OH_CryptoSymKeyGenerator_Create(nullptr, &ctx), CRYPTO_INVALID_PARAMS);
     EXPECT_EQ(OH_CryptoSymKeyGenerator_Create((const char *)"AES225", &ctx), CRYPTO_NOT_SUPPORTED);
 }
@@ -272,6 +273,9 @@ HWTEST_F(OHCryptoFrameworkSymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_SymK
 
     OH_CryptoSymKeyGenerator_Destroy(ctx);
     OH_CryptoSymKey_Destroy(convertKeyCtx);
+    OH_Crypto_FreeDataBlob(&in1);
+    OH_Crypto_FreeDataBlob(&in2);
+    OH_Crypto_FreeDataBlob(&in3);
 }
 
 /**

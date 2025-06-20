@@ -183,10 +183,21 @@ export default function channelCallbacktest() {
                     }
                     await LogicalChannel_callback().then((data) => {
                         console.info("[NFC_test]10 openBasicChannel done");
+						let seChannel = data
+						let seSession = seChannel.getSession();
+                        expect(true).assertEqual(seSession!=null);
                     })
-                    .catch(e => {
-                        console.info("[NFC_test]10 openBasicChannel failed" + e);
-                        expect(3300103).assertEqual(e);
+                    .catch(error => {
+                        console.info("[NFC_test]10 openBasicChannel failed" + error + "--error.code--" + error.code);
+						if (error == 801){
+							console.inlfo("[NFC_test]10 not support" + error);
+							expect(true).assertTrue();
+						}else if(error == 3300103){
+							console.info("[NFC_test]10 3300103" + error)
+							expect(true).assertTrue();
+						}else{
+							expect().assertFail();
+						}
                     })
                 }
             } catch (error) {
@@ -454,6 +465,84 @@ export default function channelCallbacktest() {
             }
             done();
         })
+
+		/**
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1700
+         * @tc.name Test closeChannels
+         * @tc.desc hasHceCapability to support a certain type of card emulation.
+		 * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_Ese_LogicalChannel_js_1700', Level.LEVEL0, function () {
+			try{
+				if (getReader == undefined){
+					console.info("[NFC_test]17 This Function is not support because the phone NFC chip is ST chip");
+				}else{
+					let closeChannels = Session.closeChannels();
+					console.info("[NFC_test]17 Session.closeChannels success" + closeChannels);
+				}
+			}catch(error){
+					console.info("[NFC_test]17 closeChannels error" + error.code + "---" + JSON.stringify(error));
+					expect(801).assertEqual(error.code)
+				}
+			})
+			
+		/**
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1900
+         * @tc.name Test isBasicChannel
+         * @tc.desc open asicChannel Check whether the channel is a basic channel
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_Ese_LogicalChannel_js_1900', Level.LEVEL0, async function (done) {
+			try{
+				function getServiceStateFunc(ServiceState){console.info("[NFC_js] get ServiceState result:" + JSON.stringify(ServiceState));}
+				let seService = secureElement.newSEService("serviceState", getServiceStateFunc);
+				expect(true).assertEqual(seService != null);
+				done();
+			}catch(error){
+				console.info("[NFC_test]1900 openBasicChannel error result:" + JSON.stringify(error) + "error_code:" + error.code);
+				if (error.code == 401){
+					expect(true).assertTrue();
+				}else if (error.code == 801){
+					expect(true).assertTrue();
+				}else{
+					expect().assertFail();
+				}
+                done();
+			}
+		})
+		
+		/**
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_2500
+         * @tc.name Test transmit
+         * @tc.desc createService
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_Ese_LogicalChannel_js_2500', Level.LEVEL0, async function (done) {
+			try{
+				await secureElemente.createService().then( (data) => {
+					console.info("[NFC_test]25 SecureElementDemo createService data ="+data);
+					Service = data;
+					let connect = Service.isConnected();
+					console.info("[NFC_test]25 SecureElementDemo createService connect = " + connect);
+					return Service;
+				})
+				.catch ((err) => {
+					console.info("[NFC_test]25 createService createService err = " + err);
+				})
+			} catch (error) {
+				console.info("[NFC_test]25 createService occurs exception:" + error.code + "---" + JSON.stringify(error));
+				if (error.code == 801){
+					expect(true).assertTrue();
+				}else{
+					expect().assertFail;
+				}
+			}
+			done();
+		})
 
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })

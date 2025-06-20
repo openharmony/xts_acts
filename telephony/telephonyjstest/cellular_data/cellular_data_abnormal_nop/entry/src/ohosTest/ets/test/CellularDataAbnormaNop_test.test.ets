@@ -48,13 +48,13 @@ export default function telephony_data_NopTest() {
 
     /*
      * @tc.number:SUB_telephony_data_nop0100
-     * @tc.name: telephony_data_nop0100
+     * @tc.name: testTelephonyDataNop0100
      * @tc.desc:Using the isCellularDataEnabled (callback) method without permission
-     * @tc.level:Level 2
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("telephony_data_nop001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("testTelephonyDataNop0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('--------telephony_data_nop001----before----');
       try {
         data.isCellularDataEnabled().then((data: boolean) => {
@@ -78,13 +78,13 @@ export default function telephony_data_NopTest() {
 
     /*
      * @tc.number:SUB_telephony_data_nop002
-     * @tc.name: telephony_data_nop002
+     * @tc.name: testTelephonyDataNop0200
      * @tc.desc:Using the isCellularDataEnabled (callback) method without permission
-     * @tc.level:Level 2
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("telephony_data_nop002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("testTelephonyDataNop0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('--------telephony_data_nop002----before----');
       try {
         data.isCellularDataEnabled((err: BusinessError, data: boolean) => {
@@ -110,13 +110,13 @@ export default function telephony_data_NopTest() {
 
     /*
      * @tc.number:SUB_telephony_data_nop003
-     * @tc.name: telephony_data_nop003
+     * @tc.name: testTelephonyDataNop0300
      * @tc.desc:Using the isCellularDataRoamingEnabled (then) method without permission
-     * @tc.level:Level 2
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("telephony_data_nop003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("testTelephonyDataNop0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('--------telephony_data_nop003----before----');
       try {
         data.isCellularDataRoamingEnabled(0).then((data: boolean) => {
@@ -140,13 +140,13 @@ export default function telephony_data_NopTest() {
 
     /*
      * @tc.number:SUB_telephony_data_nop004
-     * @tc.name: telephony_data_nop004
+     * @tc.name: testTelephonyDataNop0400
      * @tc.desc:Using the isCellularDataRoamingEnabled (callback) method without permission
-     * @tc.level:Level 2
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("telephony_data_nop004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("testTelephonyDataNop0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('--------telephony_data_nop004----before----');
       try {
         data.isCellularDataRoamingEnabled(0,(err: BusinessError, data: boolean) => {

@@ -74,9 +74,9 @@ export default function ActsAcewebViewCookieTrack() {
      * @tc.desc       : test enableIntelligentTrackingPrevention true
      * @tc.size_t     : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('testWebViewCookieTrackEnableTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testWebViewCookieTrackEnableTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnableTrue";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnableTrue", true, 7701, done);

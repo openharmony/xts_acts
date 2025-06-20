@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsWidth001', 0, async (done: Function) => {
+    it('testCommonAttrsWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsWidth001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsWidth002', 0, async (done: Function) => {
+    it('testCommonAttrsWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsWidth002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level2
      */
-    it('testCommonAttrsWidth003', 0, async (done: Function) => {
+    it('testCommonAttrsWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsWidth003()).assertEqual(0)
       done()
     })

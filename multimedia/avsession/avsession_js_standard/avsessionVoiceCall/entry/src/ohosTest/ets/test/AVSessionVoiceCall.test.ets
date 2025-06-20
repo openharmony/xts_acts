@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import avSession from '@ohos.multimedia.avsession';
 import featureAbility from '@ohos.ability.featureAbility';
 import image from '@ohos.multimedia.image';
@@ -27,7 +27,7 @@ let sleep = (ms: number): Promise<string> => {
   })
 }
 
-interface Size {
+interface Size_Pixel {
   height: number,
   width: number
 }
@@ -35,7 +35,7 @@ interface Size {
 interface Opts {
   editable: boolean,
   pixelFormat: number,
-  size: Size,
+  size: Size_Pixel,
   AlphaType: number
 };
 
@@ -101,6 +101,12 @@ export default function abilityTest() {
     let receivedCallback1: boolean = false;
     let receivedCallback2: boolean = false;
     let tag: string = 'VoiceCallXTS';
+    let assetId: string = 'assetIdTest';
+    let assetId1: string = '';
+    let assetId2: string = '';
+    let assetId3: string = '~!@#$%^&*()_+{}:">?,./123456789'+'a'.repeat(40928);
+    let assetId4: string = 'a'.repeat(40960)
+    let assetId5: number = 123
 
     let getPixelMap = async () => {
       let color = new ArrayBuffer(96);
@@ -183,6 +189,16 @@ export default function abilityTest() {
       receivedCallback2 = true;
     }
 
+    let playWithAssetIdCallback1 = (data: string) => {
+      console.info(`${TAG}: playWithAssetIdCallback1 received ${data}`);
+      assetId1 = data;
+    }
+
+    let playWithAssetIdCallback2 = (data: string) => {
+      console.info(`${TAG}: playWithAssetIdCallback2 received ${data}`);
+      assetId2 = data;
+    }
+
     beforeAll(() => {
       context = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext;
       console.info(`${TAG}: beforeAll in`);
@@ -247,7 +263,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let pixelMap = await getPixelMap();
       let readBuffer0 = new ArrayBuffer(96);
       await pixelMap.readPixelsToBuffer(readBuffer0);
@@ -301,7 +317,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata1: callMetadata1 = {
         name: 1
       };
@@ -328,7 +344,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata2: callMetadata2 = {
         phoneNumber: 123
       };
@@ -355,7 +371,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata3: callMetadata3 = {
         avatar: 1
       };
@@ -382,7 +398,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata4: ESObject = {};
       await session.setCallMetadata(callMetadata4).then(() => {
         console.info(`${TAG}: setCallMetadata with error callMetadata test fail, set successful!`);
@@ -407,7 +423,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata5: callMetadata5 = {
         name: '12345678',
         phoneNumber: '65432111'
@@ -437,7 +453,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0700', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata6: callMetadata6 = {
         name: '12345678'
       };
@@ -472,7 +488,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0800', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata7: callMetadata7 = {
         phoneNumber: '65432111'
       };
@@ -507,7 +523,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0900', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let pixelMap = await getPixelMap();
       let readBuffer0 = new ArrayBuffer(96);
       await pixelMap.readPixelsToBuffer(readBuffer0);
@@ -550,7 +566,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata0: callMetadata0 = {
         name: '1234568',
         phoneNumber: '65432111'
@@ -591,7 +607,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_PROMISE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata1: callMetadataOne = {
         name: '12345678',
         phoneNumber: '65432111'
@@ -632,7 +648,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let pixelMap = await getPixelMap();
         let readBuffer0 = new ArrayBuffer(96);
@@ -697,7 +713,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata1: callMetadata1 = {
         name: 1
       };
@@ -732,7 +748,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata2: callMetadata2 = {
         phoneNumber: 123
       };
@@ -767,7 +783,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata3: callMetadata3 = {
         avatar: 1
       };
@@ -802,7 +818,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata4: ESObject = {};
       session.setCallMetadata(callMetadata4, (err: BusinessError, data: ESObject) => {
         if (err) {
@@ -829,7 +845,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata5: callMetadata5 = {
         name: '12345678',
         phoneNumber: '65432111'
@@ -867,7 +883,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0070', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata6: callMetadata6 = {
         name: '12345678'
       };
@@ -910,7 +926,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0080', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata7: callMetadata7 = {
         phoneNumber: '65432111'
       };
@@ -953,7 +969,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0090', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let pixelMap = await getPixelMap();
         let readBuffer0 = new ArrayBuffer(96);
@@ -1008,7 +1024,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_CALLBACK_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await session.destroy();
         controller.getCallMetadata((err: BusinessError, data: ESObject) => {
@@ -1042,7 +1058,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_CALLBACK_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await controller.destroy();
         controller.getCallMetadata((err: BusinessError, data: ESObject) => {
@@ -1076,7 +1092,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState0: avCallState = {
         state: avSession.CallState.CALL_STATE_ACTIVE,
         muted: true,
@@ -1111,7 +1127,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState1: avCallState = {
         state: avSession.CallState.CALL_STATE_IDLE,
         muted: true,
@@ -1146,7 +1162,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState2: avCallState = {
         state: avSession.CallState.CALL_STATE_INCOMING,
         muted: true,
@@ -1181,7 +1197,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState3: avCallState = {
         state: avSession.CallState.CALL_STATE_DIALING,
         muted: true,
@@ -1216,7 +1232,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState4: avCallState = {
         state: avSession.CallState.CALL_STATE_WAITING,
         muted: true,
@@ -1251,7 +1267,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState5: avCallState = {
         state: avSession.CallState.CALL_STATE_HOLDING,
         muted: true,
@@ -1286,7 +1302,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0700', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState6: avCallState = {
         state: avSession.CallState.CALL_STATE_DISCONNECTING,
         muted: true,
@@ -1321,7 +1337,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0800', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState7: avCallState = {
         state: avSession.CallState.CALL_STATE_IDLE,
         muted: false,
@@ -1356,7 +1372,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0900', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState8: avCallState = {
         state: -1,
         muted: true,
@@ -1384,7 +1400,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1000', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState9: avCallState = {
         state: 8,
         muted: true,
@@ -1412,7 +1428,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState10: avCallState = {
         state: '123',
         muted: true,
@@ -1440,7 +1456,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState11: avCallState = {
         state: avSession.CallState.CALL_STATE_IDLE,
         muted: '123',
@@ -1468,7 +1484,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState12: avCallState = {
         state: avSession.CallState.CALL_STATE_IDLE,
         muted: true,
@@ -1498,7 +1514,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState13: avCallState = {
         state: avSession.CallState.CALL_STATE_DISCONNECTING,
       };
@@ -1525,7 +1541,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_PROMISE_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState14: avCallState = {
         muted: true,
       };
@@ -1552,7 +1568,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState0: avCallState = {
         state: avSession.CallState.CALL_STATE_DIALING,
         muted: true,
@@ -1594,7 +1610,7 @@ export default function abilityTest() {
     * @tc.type      : Function
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_PROMISE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState1: avCallState = {
         state: avSession.CallState.CALL_STATE_DIALING,
         muted: true,
@@ -1637,7 +1653,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState0: avCallState = {
         state: avSession.CallState.CALL_STATE_ACTIVE,
         muted: true,
@@ -1680,7 +1696,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState1: avCallState = {
         state: avSession.CallState.CALL_STATE_IDLE,
         muted: true,
@@ -1723,7 +1739,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState2: avCallState = {
         state: avSession.CallState.CALL_STATE_INCOMING,
         muted: true,
@@ -1766,7 +1782,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState3: avCallState = {
         state: avSession.CallState.CALL_STATE_DIALING,
         muted: true,
@@ -1809,7 +1825,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState4: avCallState = {
         state: avSession.CallState.CALL_STATE_WAITING,
         muted: true,
@@ -1852,7 +1868,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState5: avCallState = {
         state: avSession.CallState.CALL_STATE_HOLDING,
         muted: true,
@@ -1895,7 +1911,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0700', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState6: avCallState = {
         state: avSession.CallState.CALL_STATE_DISCONNECTING,
         muted: true,
@@ -1938,7 +1954,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0800', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState7: avCallState = {
         state: avSession.CallState.CALL_STATE_IDLE,
         muted: false,
@@ -1981,7 +1997,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0900', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState8: avCallState = {
         state: -1,
         muted: true,
@@ -2017,7 +2033,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1000', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState9: avCallState = {
         state: 8,
         muted: true,
@@ -2053,7 +2069,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState10: avCallState = {
         state: '123',
         muted: true,
@@ -2089,7 +2105,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState11: avCallState = {
         state: avSession.CallState.CALL_STATE_IDLE,
         muted: '123',
@@ -2125,7 +2141,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState12: avCallState = {
         state: avSession.CallState.CALL_STATE_IDLE,
         muted: true,
@@ -2163,7 +2179,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState13: avCallState = {
         state: avSession.CallState.CALL_STATE_DISCONNECTING,
       };
@@ -2198,7 +2214,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVCALLSTATE_CALLBACK_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCallState14: avCallState = {
         muted: false,
       };
@@ -2233,7 +2249,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_CALLBACK_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await session.destroy();
         controller.getAVCallState((err: BusinessError, data: ESObject) => {
@@ -2267,7 +2283,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_CALLBACK_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await controller.destroy();
         controller.getAVCallState((err: BusinessError, data: ESObject) => {
@@ -2301,7 +2317,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata: callMetadata = {
         name: '12345678',
         phoneNumber: '65432111'
@@ -2335,7 +2351,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata: callMetadata = {
         name: '12345678',
         phoneNumber: '654321111'
@@ -2368,7 +2384,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata: callMetadata = {
         name: '12345678',
         phoneNumber: '65432111'
@@ -2405,7 +2421,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata: callMetadata = {
         name: '123456789',
         phoneNumber: '65432111'
@@ -2446,7 +2462,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata: callMetadata = {
         name: '123456789',
         phoneNumber: '65432111'
@@ -2488,7 +2504,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata: callMetadata = {
         name: '123456789',
         phoneNumber: '65432111'
@@ -2529,7 +2545,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0700', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let callMetadata: callMetadata = {
         name: '123456789',
         phoneNumber: '65432111'
@@ -2563,7 +2579,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0800', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await controller.destroy();
         let metadata = ['name', 'phoneNumber'];
@@ -2593,7 +2609,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0900', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let metadata = ['abc'];
         controller.on('callMetadataChange', metadata, (callMetadata: ESObject) => {
@@ -2621,7 +2637,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_1000', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         controller.on(-1, 'all', (callMetadata: ESObject) => {
           console.error(`${TAG}: on callMetadataChange called, test failed!`);
@@ -2648,7 +2664,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_OFF_CALLMETADATACHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_CALLMETADATACHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await controller.destroy();
       try {
         await controller.off('callMetadataChange');
@@ -2673,7 +2689,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AVCallState: AVCallState = {
         state: avSession.CallState.CALL_STATE_DIALING,
         muted: false
@@ -2706,7 +2722,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AVCallState: AVCallState = {
         state: avSession.CallState.CALL_STATE_INCOMING,
         muted: true
@@ -2738,7 +2754,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AVCallState: AVCallState = {
         state: avSession.CallState.CALL_STATE_HOLDING,
         muted: true
@@ -2775,7 +2791,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AVCallState: AVCallState = {
         state: avSession.CallState.CALL_STATE_WAITING,
         muted: false
@@ -2810,12 +2826,12 @@ export default function abilityTest() {
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0500
      * @tc.name      : ON_CALLSTATECHANGE_0500
-     * @tc.desc      : Testing on('callStateChange')
+     * @tc.desc      : Testing on('callStateChange')f
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AVCallState: AVCallState = {
         state: avSession.CallState.CALL_STATE_WAITING,
         muted: false
@@ -2856,7 +2872,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AVCallState: AVCallState = {
         state: avSession.CallState.CALL_STATE_WAITING,
         muted: false
@@ -2896,7 +2912,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0700', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AVCallState: AVCallState = {
         state: avSession.CallState.CALL_STATE_DIALING,
         muted: false
@@ -2930,7 +2946,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0800', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await controller.destroy();
         let state = ['muted'];
@@ -2960,7 +2976,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0900', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let state = ['abc'];
         controller.on('callStateChange', state, (stateChange: ESObject) => {
@@ -2988,7 +3004,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_1000', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         controller.on(-1, 'all', (stateChange: ESObject) => {
           console.info(`${TAG}: on callStateChange with error param test failed! stateChange: ${JSON.stringify(stateChange)}`);
@@ -3015,7 +3031,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_OFF_CALLSTATECHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_CALLSTATECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await controller.destroy();
       try {
         await controller.off('callStateChange');
@@ -3040,7 +3056,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'answer',
       }
@@ -3066,7 +3082,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'answer',
       }
@@ -3102,7 +3118,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'answer',
       }
@@ -3141,7 +3157,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'answer',
       }
@@ -3181,7 +3197,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'answer',
       }
@@ -3220,7 +3236,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await session.destroy();
         session.on('answer', () => {
@@ -3249,7 +3265,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0700', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         session.on('123456', () => {
           console.info(`${TAG}: on answer called`);
@@ -3276,7 +3292,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_OFF_ANSWER_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_ANSWER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await session.destroy();
       try {
         await session.off('answer');
@@ -3301,7 +3317,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'hangUp',
       }
@@ -3327,7 +3343,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'hangUp',
       }
@@ -3363,7 +3379,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'hangUp',
       }
@@ -3402,7 +3418,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'hangUp',
       }
@@ -3442,7 +3458,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'hangUp',
       }
@@ -3481,7 +3497,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await session.destroy();
         session.on('hangUp', () => {
@@ -3510,7 +3526,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_OFF_HANGUP_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_HANGUP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await session.destroy();
       try {
         await session.off('hangUp');
@@ -3535,7 +3551,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'toggleCallMute',
       }
@@ -3561,7 +3577,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'toggleCallMute',
       }
@@ -3597,7 +3613,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'toggleCallMute',
       }
@@ -3636,7 +3652,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'toggleCallMute',
       }
@@ -3676,7 +3692,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let command: avSession.AVControlCommand = {
         command: 'toggleCallMute',
       }
@@ -3715,7 +3731,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await session.destroy();
         session.on('toggleCallMute', () => {
@@ -3744,7 +3760,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_OFF_TOGGLECALLMUTE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_TOGGLECALLMUTE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await session.destroy();
       try {
         await session.off('toggleCallMute');
@@ -3760,5 +3776,590 @@ export default function abilityTest() {
         done();
       }
     })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0100
+     * @tc.name      : ON_PLAYWITHASSETID_0100
+     * @tc.desc      : Testing on('playWithAssetId') -- one on function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', (data: string) => {
+          console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+          expect(data === assetId).assertTrue();
+          done();
+        });
+        await controller.sendControlCommand(command)
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0200
+     * @tc.name      : ON_PLAYWITHASSETID_0200
+     * @tc.desc      : Testing on('playWithAssetId') -- many on functions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', playWithAssetIdCallback1);
+        session.on('playWithAssetId', playWithAssetIdCallback2);
+        await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(false).assertTrue();
+          done();
+        });
+        await sleep(500);
+        if ((assetId1 === assetId) && (assetId2 === assetId)) {
+          console.log(`${TAG}: on playWithAssetId called`);
+          expect(true).assertTrue();
+        } else {
+          console.error(`${TAG}: on playWithAssetId not received`);
+          expect(false).assertTrue();
+        }
+        assetId1 = '';
+        assetId2 = '';
+        await session.off('playWithAssetId');
+        done();
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0300
+     * @tc.name      : ON_TOGGLECALLMUTE_0300
+     * @tc.desc      : Testing destroy before on('playWithAssetId')
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        await session.destroy();
+        session.on('playWithAssetId', (data: string) => {
+          console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        if (error.code == 6600102) {
+          console.info(`${TAG}: on playWithAssetId without avsession test success, error: code: ${error.code}, message: ${error.message}`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: on playWithAssetId errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
+          expect(false).assertTrue();
+        }
+        session = null;
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0100
+     * @tc.name      : OFF_PLAYWITHASSETID_0100
+     * @tc.desc      : Testing off('playWithAssetId') --off one function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', (data: string) => {
+          console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+          assetId1=data;
+        });
+        await session.off('playWithAssetId')
+        await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(6600105);
+          done();
+        });
+        await sleep(500);
+        if (assetId1 === assetId) {
+          console.log(`${TAG}: off playWithAssetId fail, on playWithAssetId called`);
+          expect(false).assertTrue();
+        } else {
+          console.info(`${TAG}: playWithAssetId off`);
+          expect(true).assertTrue();
+        }
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0200
+     * @tc.name      : OFF_PLAYWITHASSETID_0200
+     * @tc.desc      : Testing off('playWithAssetId') -- off select on functions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', playWithAssetIdCallback1);
+        session.on('playWithAssetId', playWithAssetIdCallback2);
+        await session.off('playWithAssetId', playWithAssetIdCallback2);
+        await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(false).assertTrue();
+          done();
+        });
+        await sleep(500);
+        if (assetId2 === assetId) {
+          console.log(`${TAG}: on playWithAssetId called`);
+          expect(false).assertTrue();
+        } else {
+          console.error(`${TAG}: on playWithAssetId not received`);
+          expect(true).assertTrue();
+        }
+        assetId1 = '';
+        assetId2 = '';
+        await session.off('playWithAssetId');
+        done();
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0300
+     * @tc.name      : OFF_PLAYWITHASSETID_0300
+     * @tc.desc      : Testing off('playWithAssetId') -- off all on functions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', playWithAssetIdCallback1);
+        session.on('playWithAssetId', playWithAssetIdCallback2);
+        await session.off('playWithAssetId');
+        await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(6600105);
+          done();
+        });
+        done();
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0400
+     * @tc.name      : OFF_PLAYWITHASSETID_0400
+     * @tc.desc      : Testing not on('playWithAssetId') before off('playWithAssetId')
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        await session.off('playWithAssetId');
+      } catch (error) {
+        if (error.code == 6600101) {
+          console.info(`${TAG}: off playWithAssetId without avsession test success, error: code: ${error.code}, message: ${error.message}`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: off playWithAssetId errorCode != 6600101, error: code: ${error.code}, message: ${error.message}`);
+          expect(false).assertTrue();
+        }
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0500
+     * @tc.name      : OFF_PLAYWITHASSETID_0500
+     * @tc.desc      : Testing destroy before off('playWithAssetId')
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      await session.destroy();
+      try {
+        await session.off('playWithAssetId')
+      } catch (error) {
+        if (error.code == 6600102) {
+          console.info(`${TAG}: off playWithAssetId without avsession test success, error: code: ${error.code}, message: ${error.message}`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: off playWithAssetId errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
+          expect(false).assertTrue();
+        }
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1200
+     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1200
+     * @tc.desc      : Testing sendControlCommand(command)-promise-special characters &max length
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId3
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId3 = ${data}`);
+            expect(data == assetId3).assertTrue();
+            session.off('playWithAssetId')
+            done();
+          });
+        await controller.sendControlCommand(command);
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1300
+     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1300
+     * @tc.desc      : Testing sendControlCommand(command)-promise-exceed max length
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId4
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId4 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1400
+     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1400
+     * @tc.desc      : Testing sendControlCommand(command)-promise-with no parameters
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1500
+     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1500
+     * @tc.desc      : Testing sendControlCommand(command)-promise-type error
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId5
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId5 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1600
+     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1600
+     * @tc.desc      : Testing sendControlCommand(command)-promise-parameter to None
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId1
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId1 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1200
+     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1200
+     * @tc.desc      : Testing sendControlCommand(command)-callback-special characters &max length
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId3
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId3 = ${data}`);
+            expect(data == assetId3).assertTrue();
+            session.off('playWithAssetId')
+            done();
+          });
+        await controller.sendControlCommand(command, (err: BusinessError) => {
+          if (err) {
+            console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info('SendControlCommand successfully');
+          }
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1300
+     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1300
+     * @tc.desc      : Testing sendControlCommand(command)-callback-exceed max length
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId4
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId4 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command, (err: BusinessError) => {
+            if (err) {
+              console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(401);
+            } else {
+              console.info('SendControlCommand successfully');
+            }
+          });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1400
+     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1400
+     * @tc.desc      : Testing sendControlCommand(command)-callback-with no parameters
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command, (err: BusinessError) => {
+            if (err) {
+              console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(401);
+            } else {
+              console.info('SendControlCommand successfully');
+            }
+          });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1500
+     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1500
+     * @tc.desc      : Testing sendControlCommand(command)-callback-type error
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId5
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId5 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command, (err: BusinessError) => {
+            if (err) {
+              console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(401);
+            } else {
+              console.info('SendControlCommand successfully');
+            }
+          });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1600
+     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1600
+     * @tc.desc      : Testing sendControlCommand(command)-callback-parameter to None
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId1
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId1 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command, (err: BusinessError) => {
+            if (err) {
+              console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(401);
+            } else {
+              console.info('SendControlCommand successfully');
+            }
+          });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+
   })
 }

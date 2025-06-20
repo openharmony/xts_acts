@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function getAttrsTest() {
   describe('getAttrsTest', () => {
     beforeEach(async (done: Function) => {
@@ -40,7 +39,6 @@ export default function getAttrsTest() {
       }
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0100
      * @tc.name      getAttrsTest_0100
@@ -49,7 +47,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0100', 0, async (done: Function) => {
+    it('getAttrsTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -63,7 +61,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0100] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0200
      * @tc.name      getAttrsTest_0200
@@ -72,7 +69,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0200', 0, async (done: Function) => {
+    it('getAttrsTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -86,7 +83,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0200] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0300
      * @tc.name      getAttrsTest_0300
@@ -95,7 +91,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0300', 0, async (done: Function) => {
+    it('getAttrsTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -109,7 +105,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0300] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0400
      * @tc.name      getAttrsTest_0400
@@ -118,7 +113,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0400', 0, async (done: Function) => {
+    it('getAttrsTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -132,7 +127,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0400] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0500
      * @tc.name      getAttrsTest_0500
@@ -141,7 +135,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0500', 0, async (done: Function) => {
+    it('getAttrsTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -155,7 +149,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0500] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0600
      * @tc.name      getAttrsTest_0600
@@ -164,7 +157,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0600', 0, async (done: Function) => {
+    it('getAttrsTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0600 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -178,7 +171,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0600] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0700
      * @tc.name      getAttrsTest_0700
@@ -187,7 +179,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0700', 0, async (done: Function) => {
+    it('getAttrsTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0700 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -201,7 +193,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0700] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0800
      * @tc.name      getAttrsTest_0800
@@ -210,7 +201,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0800', 0, async (done: Function) => {
+    it('getAttrsTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0800 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -224,7 +215,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0800] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_0900
      * @tc.name      getAttrsTest_0900
@@ -233,7 +223,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_0900', 0, async (done: Function) => {
+    it('getAttrsTest_0900', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_0900 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -247,7 +237,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_0900] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_1000
      * @tc.name      getAttrsTest_1000
@@ -256,7 +245,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_1000', 0, async (done: Function) => {
+    it('getAttrsTest_1000', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_1000 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -270,7 +259,6 @@ export default function getAttrsTest() {
       console.info('[getAttrsTest_1000] END');
       done();
     });
-
     /**
      * @tc.number    getAttrsTest_1100
      * @tc.name      getAttrsTest_1100
@@ -279,7 +267,7 @@ export default function getAttrsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAttrsTest_1100', 0, async (done: Function) => {
+    it('getAttrsTest_1100', Level.LEVEL0, async (done: Function) => {
       console.info('getAttrsTest_1100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -295,4 +283,3 @@ export default function getAttrsTest() {
     });
   })
 }
-

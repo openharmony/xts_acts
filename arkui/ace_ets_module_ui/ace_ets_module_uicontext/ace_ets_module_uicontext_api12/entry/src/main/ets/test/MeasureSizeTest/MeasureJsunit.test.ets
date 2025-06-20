@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from '@ohos/hypium'
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -30,8 +30,6 @@ import {
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
-
-
 export default function MeasureJsunit() {
   describe('MeasureJsunit', () => {
     beforeEach(async (done: Function) => {
@@ -55,7 +53,6 @@ export default function MeasureJsunit() {
       }
       done();
     });
-
     /**
      * @tc.number: ArkUI_Stage_Measure_0100
      * @tc.name  : Test the text computing power of the context
@@ -64,19 +61,16 @@ export default function MeasureJsunit() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Measure_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Measure_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUI_Stage_Measure_0100 START');
       await CommonFunc.sleep(2000);
-
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
       console.log('[ArkUI_Stage_Measure_0100] component strJsonMaxLine2 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine2)));
       console.log('[ArkUI_Stage_Measure_0100] component strJsonMaxLine3 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine3)));
       expect(JSON.parse(strJsonMaxLine2).$attrs.content).assertEqual(JSON.parse(strJsonMaxLine3).$attrs.content);
       done();
     });
-
     /**
      * @tc.number: ArkUI_Stage_Measure_0200
      * @tc.name  : Test the text computing power of the context
@@ -85,27 +79,23 @@ export default function MeasureJsunit() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Measure_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Measure_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUI_Stage_Measure_0200 START');
       await CommonFunc.sleep(2000);
-
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
       let testForTextIndentButton = await driver.findComponent(ON.id('testForTextIndent'));
       await CommonFunc.sleep(500);
       testForTextIndentButton.click();
       await CommonFunc.sleep(2000);
-
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
       console.log('[ArkUI_Stage_Measure_0200] component strJsonMaxLine2 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine2)));
       console.log('[ArkUI_Stage_Measure_0200] component strJsonMaxLine3 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine3)));
       expect(Number.parseInt(JSON.parse(strJsonMaxLine3).$attrs.content))
         .assertLarger(Number.parseInt(JSON.parse(strJsonMaxLine2).$attrs.content));
       done();
     });
-
     /**
      * @tc.number: ArkUI_Stage_Measure_0300
      * @tc.name  : Test the text computing power of the context
@@ -114,7 +104,7 @@ export default function MeasureJsunit() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Measure_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Measure_0300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUI_Stage_Measure_0300 START');
       await CommonFunc.sleep(2000);
       let driver = await Driver.create();
@@ -123,28 +113,22 @@ export default function MeasureJsunit() {
       await CommonFunc.sleep(500);
       resetButton.click();
       await CommonFunc.sleep(2000);
-
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
       console.log('[ArkUI_Stage_Measure_0300] component strJsonMaxLine2 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine2)));
       console.log('[ArkUI_Stage_Measure_0300] component strJsonMaxLine3 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine3)));
       expect(JSON.parse(strJsonMaxLine2).$attrs.content).assertEqual(JSON.parse(strJsonMaxLine3).$attrs.content);
-
       let testForWordBreakButton = await driver.findComponent(ON.id('testForWordBreak'));
       await CommonFunc.sleep(500);
       testForWordBreakButton.click();
       await CommonFunc.sleep(2000);
-
       strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
       console.log('[ArkUI_Stage_Measure_0300] component strJsonMaxLine2 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine2)));
       console.log('[ArkUI_Stage_Measure_0300] component strJsonMaxLine3 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine3)));
       expect(Number.parseInt(JSON.parse(strJsonMaxLine3).$attrs.content)).assertLarger(Number.parseInt(JSON.parse(strJsonMaxLine2).$attrs.content));
       done();
     });
-
     /**
      * @tc.number: ArkUI_Stage_Measure_0400
      * @tc.name  : Test the text computing power of the context
@@ -153,7 +137,7 @@ export default function MeasureJsunit() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Measure_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Measure_0400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUI_Stage_Measure_0400 START');
       await CommonFunc.sleep(2000);
       let driver = await Driver.create();
@@ -162,16 +146,13 @@ export default function MeasureJsunit() {
       await CommonFunc.sleep(500);
       resetButton.click();
       await CommonFunc.sleep(2000);
-
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
       console.log('[ArkUI_Stage_Measure_0400] component strJsonMaxLine2 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine2)));
       console.log('[ArkUI_Stage_Measure_0400] component strJsonMaxLine3 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine3)));
       expect(JSON.parse(strJsonMaxLine2).$attrs.content).assertEqual(JSON.parse(strJsonMaxLine3).$attrs.content);
       done();
     });
-
     /**
      * @tc.number: ArkUI_Stage_Measure_0500
      * @tc.name  : Test the text computing power of the context
@@ -180,7 +161,7 @@ export default function MeasureJsunit() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Measure_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Measure_0500', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUI_Stage_Measure_0500 START');
       await CommonFunc.sleep(2000);
       let driver = await Driver.create();
@@ -189,15 +170,12 @@ export default function MeasureJsunit() {
       await CommonFunc.sleep(500);
       resetButton.click();
       await CommonFunc.sleep(2000);
-
       let testForTextIndentButton = await driver.findComponent(ON.id('testForTextIndentInChinese'));
       await CommonFunc.sleep(500);
       testForTextIndentButton.click();
       await CommonFunc.sleep(2000);
-
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-
       console.log('[ArkUI_Stage_Measure_0500] component strJsonMaxLine2 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine2)));
       console.log('[ArkUI_Stage_Measure_0500] component strJsonMaxLine3 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine3)));
       expect(Number.parseInt(JSON.parse(strJsonMaxLine3).$attrs.content))

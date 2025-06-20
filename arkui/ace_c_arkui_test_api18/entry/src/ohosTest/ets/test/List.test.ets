@@ -16,9 +16,23 @@
 import datePickerTest from "./datepicker/DatePickerMode.test"
 import textPickerEnableHapticFeedbackTest from "./textpicker/textPickerEnableHapticFeedback.test"
 import datePickerEnableHapticFeedbackTest from "./datepicker/datePickerEnableHapticFeedback.test"
+import swiperIndicatorDistanceTest from "./swiper/SwiperIndicatorDistanceTest.test"
+import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
+import XComponentLifeCycleTest from './XComponent/XComponentLifeCycleTest.test'
+import visibleAreaEventOptions from './visibleAreaEventOptions/visibleAreaEventOptions.test'
+import gestureInterrupterTest from './gestureRecognizer/GestureInterrupterTest.test'
+import swiperDigitIndicatorTest from "./swiper/SwiperDigitIndicatorTest.test"
+import swiperArrowStyleTest from "./swiper/SwiperArrowStyleTest.test"
 
 export default function testsuite() {
   datePickerTest();
   textPickerEnableHapticFeedbackTest();
   datePickerEnableHapticFeedbackTest();
+  swiperIndicatorDistanceTest();
+  ExpectedFrameRateRangeCallback();
+  XComponentLifeCycleTest();
+  visibleAreaEventOptions();
+  gestureInterrupterTest();
+  swiperDigitIndicatorTest();
+  swiperArrowStyleTest();
 }

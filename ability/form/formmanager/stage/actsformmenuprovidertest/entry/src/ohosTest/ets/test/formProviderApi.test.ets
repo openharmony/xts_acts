@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, it, expect, beforeEach, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeEach, beforeAll, TestType, Size, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
 import formProvider from '@ohos.app.form.formProvider'
@@ -60,7 +60,7 @@ export default function formProviderTest() {
      * @tc.desc:  Query the cards that the application has loaded on the desktop
      * @tc.level   3
      */
-    it('Test_Form_Provider_0100', 0, async (done:Function) => {
+    it('Test_Form_Provider_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let TAG:string = 'Test_Form_Provider_0100';
       hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} start`);
       formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
@@ -91,7 +91,7 @@ export default function formProviderTest() {
      * @tc.desc:  Query the cards that the application has loaded on the desktop by formId
      * @tc.level   3
      */
-    it('Test_Form_Provider_0200', 0, async (done: Function) => {
+    it('Test_Form_Provider_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let TAG: string = 'Test_Form_Provider_0200';
       hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} start`);
       let formId: string = '0';
@@ -142,7 +142,7 @@ export default function formProviderTest() {
      * @tc.desc:  Open the card management page
      * @tc.level   3
      */
-    it('Test_Form_Provider_0300', 0, async (done:Function) => {
+    it('Test_Form_Provider_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let TAG = 'Test_Form_Provider_0300';
       hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} start`);
       let want: Want = {

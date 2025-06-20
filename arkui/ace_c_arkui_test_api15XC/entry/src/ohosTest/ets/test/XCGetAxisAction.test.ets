@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeEach } from '@ohos/hypium';
+import { describe, it, expect, beforeEach, Level } from '@ohos/hypium';
 import Utils from './common/Utils';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 
@@ -35,7 +35,7 @@ export default function XCGetAxisAction() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('XCGetAxisAction001', 0, async (done: Function) => {
+    it('XCGetAxisAction001', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[XCGetAxisAction001] start succ");
       await Utils.sleep(500);

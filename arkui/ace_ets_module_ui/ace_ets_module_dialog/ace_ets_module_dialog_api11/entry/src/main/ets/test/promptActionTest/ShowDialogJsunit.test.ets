@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -44,7 +44,7 @@ export default function ShowDialogJsunit() {
     });
 
 
-    it('ShowDialogJsunit_0100', 0, async (done: Function) => {
+    it('ShowDialogJsunit_0100', Level.LEVEL2, async (done: Function) => {
       console.info('ShowDialogJsunit_0100 START');
 	    let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('ShowDialog'));

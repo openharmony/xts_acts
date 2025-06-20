@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import { router } from '@kit.ArkUI';
@@ -59,7 +59,7 @@ export default function datePickerOnChangeModifierTest() {
     * @tc.type
     * @tc.size
     */
-    it('DatePicker_OnChange_Modifier_001', 0, async (done: Function) => {
+    it('DatePicker_OnChange_Modifier_001', Level.LEVEL1, async (done: Function) => {
         console.info('DatePicker_OnChange_Modifier_001 START');
         let driver = Driver.create();
         let switchButton = await driver.findComponent(ON.id('LunarBtn'));
@@ -93,7 +93,7 @@ export default function datePickerOnChangeModifierTest() {
       * @tc.type
       * @tc.size
       */
-      it('DatePicker_OnChange_Modifier_002', 0, async (done: Function) => {
+      it('DatePicker_OnChange_Modifier_002', Level.LEVEL1, async (done: Function) => {
         console.info('DatePicker_OnChange_Modifier_002 START');
         let driver = Driver.create();
         let switchButton = await driver.findComponent(ON.id('LunarBtn'));

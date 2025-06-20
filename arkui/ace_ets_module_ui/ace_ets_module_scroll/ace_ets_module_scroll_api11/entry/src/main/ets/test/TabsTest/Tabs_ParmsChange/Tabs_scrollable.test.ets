@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -69,7 +69,7 @@ export default function Tabs_scrollable() {
      * @tc.name testTabsScrollableToTrue
      * @tc.desc The parent component sets scrollable to true
      */
-    it('testTabsScrollableToTrue', 0, async (done: Function) => {
+    it('testTabsScrollableToTrue', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsScrollableToTrue] START');
       let strJson = getInspectorByKey('Tabs_scrollable_01');
 
@@ -173,7 +173,7 @@ export default function Tabs_scrollable() {
      * @tc.name testTabsScrollableToFalse
      * @tc.desc The parent component sets scrollable to false
      */
-    it('testTabsScrollableToFalse', 0, async (done: Function) => {
+    it('testTabsScrollableToFalse', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsScrollableToFalse] START');
       let strJson = getInspectorByKey('Tabs_scrollable_02');
 

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClip001', 0, async (done: Function) => {
+    it('testTextInputClip001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClip001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClip002', 0, async (done: Function) => {
+    it('testTextInputClip002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClip002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextInputClip003', 0, async (done: Function) => {
+    it('testTextInputClip003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClip003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClip004', 0, async (done: Function) => {
+    it('testTextInputClip004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClip004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClip005', 0, async (done: Function) => {
+    it('testTextInputClip005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClip005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClip006', 0, async (done: Function) => {
+    it('testTextInputClip006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClip006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClip007', 0, async (done: Function) => {
+    it('testTextInputClip007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClip007()).assertEqual(0)
       done()
     })

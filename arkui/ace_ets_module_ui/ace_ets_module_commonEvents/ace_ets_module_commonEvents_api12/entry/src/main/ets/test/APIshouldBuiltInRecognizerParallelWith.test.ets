@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIshouldBuiltInRecognizerParallelWith_0100', 0, async (done: Function) => {
+    it('APIshouldBuiltInRecognizerParallelWith_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIshouldBuiltInRecognizerParallelWith_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIshouldBuiltInRecognizerParallelWith_Text01');
@@ -72,7 +72,7 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIshouldBuiltInRecognizerParallelWith_0200', 0, async (done: Function) => {
+    it('APIshouldBuiltInRecognizerParallelWith_0200', Level.LEVEL0, async (done: Function) => {
       console.info('APIshouldBuiltInRecognizerParallelWith_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIshouldBuiltInRecognizerParallelWith_Text02');
@@ -91,7 +91,7 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIshouldBuiltInRecognizerParallelWith_0300', 0, async (done: Function) => {
+    it('APIshouldBuiltInRecognizerParallelWith_0300', Level.LEVEL0, async (done: Function) => {
       console.info('APIshouldBuiltInRecognizerParallelWith_0300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIshouldBuiltInRecognizerParallelWith_Text03');
@@ -110,7 +110,7 @@ export default function APIshouldBuiltInRecognizerParallelWith() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIshouldBuiltInRecognizerParallelWith_0400', 0, async (done: Function) => {
+    it('APIshouldBuiltInRecognizerParallelWith_0400', Level.LEVEL0, async (done: Function) => {
       console.info('APIshouldBuiltInRecognizerParallelWith_0400 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIshouldBuiltInRecognizerParallelWith_Text04');

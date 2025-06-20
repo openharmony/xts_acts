@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -57,7 +57,7 @@ export default function AlignContent_End_FlexP_fixed() {
      *               subcomponent to meet the height requirements of the subcomponent in the container.
      */
 
-    it('testAlignContentEndFlexFixedSatisfy', 0, async () => {
+    it('testAlignContentEndFlexFixedSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentEndFlexFixedSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
@@ -112,7 +112,7 @@ export default function AlignContent_End_FlexP_fixed() {
      *               subcomponent to meet the height requirements of the subcomponent in the container.
      */
 
-    it('testAlignContentEndFlexFixedNoSatisfy', 0, async () => {
+    it('testAlignContentEndFlexFixedNoSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentEndFlexFixedNoSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300

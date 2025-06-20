@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 
 export default function marqueeOptionsTest2() {
@@ -48,7 +48,7 @@ export default function marqueeOptionsTest2() {
      * @tc.name testFocus
      * @tc.desc
      */
-    it('marqueeOptionsTest2_0100', 0, async (done: Function) => {
+    it('marqueeOptionsTest2_0100', Level.LEVEL0, async (done: Function) => {
       console.info('marqueeOptionsTest2_0100 START');
       await CommonFunc.sleep(5000);
 

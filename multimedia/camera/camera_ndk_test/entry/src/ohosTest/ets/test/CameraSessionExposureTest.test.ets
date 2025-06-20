@@ -16,7 +16,7 @@
 import cameraObj from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
 import { Camera_ExposureMode, GlobalThis } from './Constants';
@@ -361,7 +361,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_001', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_001', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_001--------------");
       let sessionIsExposureModeSupported = cameraObj.sessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_LOCKED);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_001 finish");
@@ -383,7 +383,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_002', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_002', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_002--------------");
       cameraObj.sessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_LOCKED);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_002 finish");
@@ -407,7 +407,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_003', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_003', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_003--------------");
       let sessionIsExposureModeSupported = cameraObj.sessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_AUTO);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_003 finish");
@@ -428,7 +428,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_004', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_004', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_004--------------");
       cameraObj.sessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_AUTO);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_004 finish");
@@ -452,7 +452,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_005', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_005', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_005--------------");
       let sessionIsExposureModeSupported = cameraObj.sessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_005 finish");
@@ -473,7 +473,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_006', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_006', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_006--------------");
       if(!cameraObj.sessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_006 skip EXPOSURE_MODE_CONTINUOUS_AUTO is not supported");
@@ -501,7 +501,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_007', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_007', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_007--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPoint);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_007 finish");
@@ -525,7 +525,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_008', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_008', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_008--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPointLT);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_008 finish");
@@ -549,7 +549,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_009', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_009', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_009--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPointRT);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_009 finish");
@@ -573,7 +573,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_010', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_010', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_010--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPointLB);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_010 finish");
@@ -597,7 +597,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_011', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_011', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_011--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPointRB);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_011 finish");
@@ -621,7 +621,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_012', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_012', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_012--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPointInvalidLT);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_012 finish");
@@ -645,7 +645,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_013', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_013', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_013--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPointInvalidRT);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_013 finish");
@@ -669,7 +669,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_014', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_014', Level.LEVEL2, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_014--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPointInvalidLB);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_014 finish");
@@ -693,7 +693,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_015', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_015', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_015--------------");
       cameraObj.sessionSetMeteringPoint(mMETERINGPointInvalidRB);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_METERING_POINT_PROMISE_015 finish");
@@ -717,7 +717,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_016', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_016', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_016--------------");
       let exposureBiasRange = cameraObj.sessionGetExposureBiasRange();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_016");
@@ -746,7 +746,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_017', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_017', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_017--------------");
       let exposureBias = cameraObj.sessionGetExposureBiasRange().minExposureBias;
       if (exposureBias == 0) {
@@ -776,7 +776,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_018', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_018', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_018--------------");
       let exposureBias = mExposureBiasMinArray[0];
       if (exposureBias == 0) {
@@ -806,7 +806,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_019', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_019', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_019--------------");
       let exposureBias = mExposureBiasMinArray[0];
       if (exposureBias == 0) {
@@ -836,7 +836,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_020', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_020', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_020--------------");
       let exposureBias = mExposureBiasMaxArray[0];
       if (exposureBias == 0) {
@@ -866,7 +866,7 @@ export default function cameraSessionExposureTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_021', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_021', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_021--------------");
       let exposureBias = mExposureBiasMaxArray[0];
       if (exposureBias == 0) {

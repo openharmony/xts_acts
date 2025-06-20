@@ -32,9 +32,9 @@ export default function SendableChainTest() {
          * @tc.author: oleg-ignatenko
          * @tc.size: MediumTest
          * @tc.type: Function
-         * @tc.level: Level 2
+         * @tc.level: Level 0
          */
-        it('testChainedPath0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        it('testChainedPath0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
            let result = await skipConditional("testChainedPath0 in progress", true, testChainedPath0);
            expect(result).assertEqual("PASSED");
            done();

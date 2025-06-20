@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flex_Wrap_VisibilityTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for the layout
      *               of the child components when one of the child components set "Visibility.NOne"
      */
-    it('testWrapWrapTextVisibilityNoneOverflow', 0, async () => {
+    it('testWrapWrapTextVisibilityNoneOverflow',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapTextVisibilityNoneOverflow] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -102,7 +102,7 @@ export default function flex_Wrap_VisibilityTest() {
      * @tc.desc The size of the parent component in the main axis direction meets the layout
      *               of the child components when one of the child components set "Visibility.NOne"
      */
-    it('testWrapWrapTextVisibilityNoneMeet', 0, async () => {
+    it('testWrapWrapTextVisibilityNoneMeet',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapTextVisibilityNoneMeet] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -153,7 +153,7 @@ export default function flex_Wrap_VisibilityTest() {
      * @tc.desc The size of the parent component in the main axis direction meets the layout
      *               of the child components when one of the child components set "Visibility.Hidden"
      */
-    it('testWrapWrapTextVisibilityHidden', 0, async () => {
+    it('testWrapWrapTextVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapTextVisibilityHidden] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({

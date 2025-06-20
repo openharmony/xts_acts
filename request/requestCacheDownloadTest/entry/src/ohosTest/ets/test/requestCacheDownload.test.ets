@@ -60,9 +60,9 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.desc Starts a upload session.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_Request_cacheDownload_0200', Level.LEVEL2, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0200', Level.LEVEL0, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0200 is starting-----------------------");
       class cacheDownloadOptions implements cacheDownload.CacheDownloadOptions {
         headers?: Record<string, string> | undefined = {'Accept': '*/*'}

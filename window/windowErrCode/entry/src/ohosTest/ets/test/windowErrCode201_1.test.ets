@@ -36,9 +36,9 @@ export default function windowErrCode201_1() {
      * @tc.desc       : testsetWindowTopmostErrCode201_0100
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testsetWindowTopmostErrCode201_0100', Level.LEVEL3, async (done: Function) => {
+    it('testsetWindowTopmostErrCode201_0100', Level.LEVEL0, async (done: Function) => {
       let caseName = "testsetWindowTopmostErrCode201_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');

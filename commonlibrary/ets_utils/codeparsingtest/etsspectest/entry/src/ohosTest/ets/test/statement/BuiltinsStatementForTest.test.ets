@@ -44,9 +44,9 @@ export default function builtinsStatementForTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementForInitTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('builtinsStatementForInitTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         const Tag: string = 'builtinsStatementForInitTest_1000'
         console.info(`${Tag}`, '%{public}s', 'it begin');
@@ -66,9 +66,9 @@ export default function builtinsStatementForTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementForInitTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('builtinsStatementForInitTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         const Tag: string = 'builtinsStatementForInitTest_1100'
         console.info(`${Tag}`, '%{public}s', 'it begin');
@@ -86,9 +86,9 @@ export default function builtinsStatementForTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementForInitTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('builtinsStatementForInitTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         const Tag: string = 'builtinsStatementForInitTest_1200'
         console.info(`${Tag}`, '%{public}s', 'it begin');
@@ -106,9 +106,9 @@ export default function builtinsStatementForTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementForInitTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('builtinsStatementForInitTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         const Tag: string = 'builtinsStatementForInitTest_1300'
         console.info(`${Tag}`, '%{public}s', 'it begin');

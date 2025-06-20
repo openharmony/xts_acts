@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level} from '@ohos/hypium';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import router from '@ohos.router';
 import Utils from './Utils';
@@ -49,7 +49,7 @@ export default function hyperLinkJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_hyperLink_attrs_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_hyperLink_attrs_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_hyperLink_attrs_0100 START');
 
       let strJson = getInspectorByKey('HyperlinkKey1');
@@ -69,7 +69,7 @@ export default function hyperLinkJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_hyperLink_attrs_0101', 0, async (done: Function) => {
+    it('ArkUX_Stage_hyperLink_attrs_0101', Level.LEVEL0, async (done: Function) => {
 
       console.info('ArkUX_Stage_hyperLink_attrs_0101 START');
       let driver = Driver.create();

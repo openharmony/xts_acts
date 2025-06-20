@@ -43,9 +43,9 @@ describe('userAuthTestExecute', function () {
     * @tc.number    JSAPI_Function_Execute_2100
     * @tc.size      MEDIUM
     * @tc.type      FUNC
-    * @tc.level     Level2
+    * @tc.level     Level0
     */
-      it('JSAPI_Function_Nopermission_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
+      it('JSAPI_Function_Nopermission_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
         console.log("JSAPI_Function_Nopermission_2100 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("FACE_ONLY", "S1").catch(function(data) {

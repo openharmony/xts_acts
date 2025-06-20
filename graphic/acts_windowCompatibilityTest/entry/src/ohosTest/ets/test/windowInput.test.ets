@@ -45,7 +45,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       console.log(msg + ' beforeEach end!!!')
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5060
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0010
      * @tc.name      : testKeepKeyboardOnFocus_DialogWindow
      * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus
      * @tc.size      : MediumTest
@@ -82,7 +82,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       await (tempWnd as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5070
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0020
      * @tc.name      : testKeepKeyboardOnFocus_SubWindow
      * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus
      * @tc.size      : MediumTest
@@ -115,7 +115,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       await (subWin as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5080
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0030
      * @tc.name      : testKeepKeyboardOnFocus_MainWindow
      * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus
      * @tc.size      : MediumTest
@@ -144,7 +144,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5590
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0040
      * @tc.name      : testKeepKeyboardOnFocus_SubWindowWithOps
      * @tc.desc      : The soft keyboard created by other Windows is retained when the window is in focus
      * @tc.size      : MediumTest
@@ -190,7 +190,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5740
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0050
      * @tc.name      : testWindow_on_off_keyboardDidShow_normal
      * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
      * @tc.size      : MediumTest
@@ -287,7 +287,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5750
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0060
      * @tc.name      : testWindowOffKeyboardDidShow_UnregisteredOff
      * @tc.desc      : Disable listening for the height change of the soft keyboard in the fixed state input method window
      * @tc.size      : MediumTest
@@ -320,7 +320,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5760
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0070
      * @tc.name      : testWindowOffKeyboardDidShow_RepeatOff
      * @tc.desc      : test testWindowOffKeyboardDidShow_RepeatOff
      * @tc.size      : MediumTest
@@ -381,7 +381,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5770
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0080
      * @tc.name      : testWindow_on_off_keyboardDidHide_normal
      * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
      * @tc.size      : MediumTest
@@ -467,7 +467,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5780
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0090
      * @tc.name      : testWindowOffKeyboardDidHide_UnregisteredOff
      * @tc.desc      : test testWindowOffKeyboardDidHide_UnregisteredOff
      * @tc.size      : MediumTest
@@ -500,7 +500,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5790
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0100
      * @tc.name      : testWindowOffKeyboardDidHide_RepeatOff
      * @tc.desc      : test testWindowOffKeyboardDidHide_RepeatOff
      * @tc.size      : MediumTest
@@ -553,6 +553,142 @@ export default function windowInputTest(context: common.UIAbilityContext, window
         if (exception.code != 801) {
           console.error(msgStr + `Failed to enable the unregister for keyboard hide. Cause code: ${exception.code}, message: ${exception.message}`);
           expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0110
+     * @tc.name      : testWindowOnkeyboardDidShow_WindowAbnormal
+     * @tc.desc      : test testWindowOnkeyboardDidShow_WindowAbnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 4
+     */
+    it('testWindowOnkeyboardDidShow_WindowAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async () => {
+      let caseName = 'testWindowOnkeyboardDidShow_WindowAbnormal';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindowOnkeyboardDidShow_WindowAbnormal').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as window.Window).destroyWindow();
+      try {
+        (tempWnd as window.Window).on('keyboardDidShow', (keyboardInfo: window.KeyboardInfo) => {
+          console.info(msgStr +  'keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
+        });
+        expect().assertFail();
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect(exception.code).assertEqual(1300002);
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0120
+     * @tc.name      : testWindowOffkeyboardDidShow_WindowAbnormal
+     * @tc.desc      : test testWindowOffkeyboardDidShow_WindowAbnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 4
+     */
+    it('testWindowOffkeyboardDidShow_WindowAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async () => {
+      let caseName = 'testWindowOffkeyboardDidShow_WindowAbnormal';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindowOffkeyboardDidShow_WindowAbnormal').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as window.Window).destroyWindow();
+      try {
+        (tempWnd as window.Window).off('keyboardDidShow');
+        expect().assertFail();
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect(exception.code).assertEqual(1300002);
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0130
+     * @tc.name      : testWindowOnkeyboardDidHide_WindowAbnormal
+     * @tc.desc      : test testWindowOnkeyboardDidHide_WindowAbnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 4
+     */
+    it('testWindowOnkeyboardDidHide_WindowAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async () => {
+      let caseName = 'testWindowOnkeyboardDidHide_WindowAbnormal';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindowOnkeyboardDidHide_WindowAbnormal').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as window.Window).destroyWindow();
+      try {
+        (tempWnd as window.Window).on('keyboardDidHide', (keyboardInfo: window.KeyboardInfo) => {
+          console.info(msgStr +  'keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
+        });
+        expect().assertFail();
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect(exception.code).assertEqual(1300002);
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(801);
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWINPUT_JS_API_0140
+     * @tc.name      : testWindowOffkeyboardDidHide_WindowAbnormal
+     * @tc.desc      : test testWindowOffkeyboardDidHide_WindowAbnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 4
+     */
+    it('testWindowOffkeyboardDidHide_WindowAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async () => {
+      let caseName = 'testWindowOffkeyboardDidHide_WindowAbnormal';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      tempWnd = await windowStage.createSubWindow('testWindowOffkeyboardDidHide_WindowAbnormal').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as window.Window).destroyWindow();
+      try {
+        (tempWnd as window.Window).off('keyboardDidHide');
+        expect().assertFail();
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + `Failed to enable the listener for keyboard show. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect(exception.code).assertEqual(1300002);
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
           console.log(msgStr + JSON.stringify(exception))

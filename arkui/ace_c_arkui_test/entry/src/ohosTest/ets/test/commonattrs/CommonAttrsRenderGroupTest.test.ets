@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsRenderGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderGroup001', 0, async (done: Function) => {
+    it('testCommonAttrsRenderGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsRenderGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderGroup002', 0, async (done: Function) => {
+    it('testCommonAttrsRenderGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsRenderGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderGroup003', 0, async (done: Function) => {
+    it('testCommonAttrsRenderGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsRenderGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderGroup004', 0, async (done: Function) => {
+    it('testCommonAttrsRenderGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderGroup004()).assertEqual(0)
       done()
     })

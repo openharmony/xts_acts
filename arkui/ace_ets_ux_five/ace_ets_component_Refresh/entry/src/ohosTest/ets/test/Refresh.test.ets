@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 
 export default function RefreshTest() {
@@ -43,8 +43,13 @@ export default function RefreshTest() {
       *@tc.number ArkUX_Refresh_Visual_0010
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
+      *@tc.size       : MediumTest
+      *@tc.type       : Function
+      *@tc.level      : Level 0  
       */
-    it('ArkUX_Refresh_Visual_0010', 0, async (done: Function) => {
+
+
+    it('ArkUX_Refresh_Visual_0010', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0010 START');
       setTimeout(() => {
         try {
@@ -68,8 +73,13 @@ export default function RefreshTest() {
       *@tc.number ArkUX_Refresh_Visual_0020
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
+      *@tc.size       : MediumTest
+      *@tc.type       : Function
+      *@tc.level      : Level 0  
       */
-    it('ArkUX_Refresh_Visual_0020', 0, async (done: Function) => {
+
+
+    it('ArkUX_Refresh_Visual_0020', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0020 START');
       setTimeout(() => {
         try {
@@ -93,8 +103,13 @@ export default function RefreshTest() {
       *@tc.number ArkUX_Refresh_Visual_0030
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
+      *@tc.size       : MediumTest
+      *@tc.type       : Function
+      *@tc.level      : Level 0  
       */
-    it('ArkUX_Refresh_Visual_0030', 0, async (done: Function) => {
+
+
+    it('ArkUX_Refresh_Visual_0030', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0030 START');
       setTimeout(() => {
         try {
@@ -118,8 +133,13 @@ export default function RefreshTest() {
       *@tc.number ArkUX_Refresh_Visual_0040
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
+      *@tc.size       : MediumTest
+      *@tc.type       : Function
+      *@tc.level      : Level 0  
       */
-    it('ArkUX_Refresh_Visual_0040', 0, async (done: Function) => {
+
+
+    it('ArkUX_Refresh_Visual_0040', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0040 START');
       setTimeout(() => {
         try {
@@ -143,8 +163,13 @@ export default function RefreshTest() {
      *@tc.number ArkUX_Refresh_Visual_0050
      *@tc.name   Support modifying the refresh promptText change of refresh component
      *@tc.desc   Sets the promptText property parameter to different text
+      *@tc.size       : MediumTest
+      *@tc.type       : Function
+      *@tc.level      : Level 0  
      */
-    it('ArkUX_Refresh_Visual_0050', 0, async (done: Function) => {
+
+
+    it('ArkUX_Refresh_Visual_0050', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0050 START');
       setTimeout(() => {
         try {

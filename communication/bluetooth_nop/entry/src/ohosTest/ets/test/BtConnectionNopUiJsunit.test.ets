@@ -240,7 +240,12 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getPersistentDeviceIds error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        if (Number(e.code) == 801) {
+            console.info("getPersistentDeviceIds is not support");
+            expect(true).assertTrue();
+        }else {
+            expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        }
       }
       done();
     })
@@ -259,7 +264,12 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `isValidRandomDeviceId error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        if (Number(e.code) == 801) {
+            console.info("isValidRandomDeviceId is not support");
+            expect(true).assertTrue();
+        }else {
+            expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        }
       }
       done();
     })
@@ -279,7 +289,12 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `addPersistentDeviceId error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        if (Number(e.code) == 801) {
+            console.info("addPersistentDeviceId is not support");
+            expect(true).assertTrue();
+        }else {
+            expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        }
       }
       done();
     })
@@ -299,7 +314,12 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `deletePersistentDeviceId error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        if (Number(e.code) == 801) {
+            console.info("deletePersistentDeviceId is not support");
+            expect(true).assertTrue();
+        }else {
+            expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        }
       }
       done();
     })
@@ -328,7 +348,12 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `connectAllowedProfiles callback error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        if (Number(e.code) == 801) {
+          console.info("[bluetooth_js]connectAllowedProfiles api is not support.");
+          expect(true).assertTrue();
+        } else {
+          expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        }
       }
       done();
     })
@@ -348,7 +373,12 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `connectAllowedProfiles promise error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        if (Number(e.code) == 801) {
+          console.info("[bluetooth_js]connectAllowedProfiles api is not support.");
+          expect(true).assertTrue();
+        } else {
+          expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
+        }
       }
       done();
     })

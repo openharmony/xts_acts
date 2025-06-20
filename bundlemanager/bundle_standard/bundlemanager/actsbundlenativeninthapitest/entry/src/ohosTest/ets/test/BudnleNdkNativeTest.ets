@@ -29,7 +29,7 @@ export default function budnleNdkNativeTest() {
       * @tc.name      budnleNdkNativeTest002
       * @tc.desc      budnleNdkNativeTest
       */
-      it('BundleNdkTest002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () =>  {
+      it('BundleNdkTest002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () =>  {
           console.info("Test NAPI data= " + JSON.stringify(bundlendk.getCurrentApplicationInfo()));
           expect(bundlendk.getCurrentApplicationInfo().bundleName).assertEqual(BUNDLE_NAME);
           expect(bundlendk.getCurrentApplicationInfo().fingerprint).assertEqual(FINGER_PRINT);

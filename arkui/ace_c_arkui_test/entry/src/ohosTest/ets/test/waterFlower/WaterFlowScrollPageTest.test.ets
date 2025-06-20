@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import nativeRender from 'libnativerender.so'
@@ -30,7 +30,7 @@ export default function waterFlowScrollPageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollPage001', 0, async (done: Function) => {
+    it('testWaterFlowScrollPage001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowScrollPageTest`);
       await Utils.clickComponent('btn2')
       await Utils.sleep(1500)
@@ -52,7 +52,7 @@ export default function waterFlowScrollPageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollPage002', 0, async (done: Function) => {
+    it('testWaterFlowScrollPage002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowScrollPageTest`);
       await Utils.clickComponent('btn1')
       await Utils.sleep(1500)

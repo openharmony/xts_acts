@@ -50,7 +50,7 @@ describe('AccessibleCheckAbility', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0100');
         accessibility.isOpenAccessibility((err, data) => {
             if (err && err.code != 0) {
@@ -72,7 +72,7 @@ describe('AccessibleCheckAbility', function () {
       * @tc.type    User
       * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0200');
         accessibility.isOpenAccessibility().then((result) => {
             console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0200 result: ${result}`);
@@ -98,7 +98,7 @@ describe('AccessibleCheckAbility', function () {
       * @tc.type    User
       * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0300');
         accessibility.isOpenTouchGuide((err, data) => {
             if (err && err.code != 0) {
@@ -120,7 +120,7 @@ describe('AccessibleCheckAbility', function () {
       * @tc.type    User
       * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0400');
         accessibility.isOpenTouchGuide().then((result) => {
             console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0400 result: ${result}`);
@@ -142,7 +142,7 @@ describe('AccessibleCheckAbility', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0500');
         try {
             let status = accessibility.isOpenAccessibilitySync();
@@ -164,7 +164,7 @@ describe('AccessibleCheckAbility', function () {
       * @tc.type    User
       * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0600');
         try {
             let status = accessibility.isOpenTouchGuideSync();
@@ -184,7 +184,7 @@ describe('AccessibleCheckAbility', function () {
       * @tc.type    User
       * @tc.level   Level 1
       */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700');
         try {
             let status = accessibility.isScreenReaderOpenSync();

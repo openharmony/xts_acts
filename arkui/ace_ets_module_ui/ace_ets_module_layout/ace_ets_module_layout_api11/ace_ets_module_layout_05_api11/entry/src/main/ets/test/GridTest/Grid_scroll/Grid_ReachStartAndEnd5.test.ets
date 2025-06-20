@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -60,7 +60,7 @@ export default function Grid_ReachStartAndEnd5() {
      * @tc.name testGrid
      * @tc.desc Scroll to the end position to trigger the onReachEnd event, and slide to the start position to trigger the onReachStart event
      */
-    it('Grid_ReachStartAndEnd5_0300', 0, async (done: Function) => {
+    it('Grid_ReachStartAndEnd5_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd5_0300] START');
       let driver = Driver.create()
       let button1 = await driver.findComponent(ON.id('Grid_ReachStartAndEnd_toBottom'))

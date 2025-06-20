@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function upDownTreeEventTest() {
   describe('upDownTreeEventTest', () => {
     beforeEach(async (done: Function) => {
@@ -40,12 +39,10 @@ export default function upDownTreeEventTest() {
       console.info("upDownTreeEventTest beforeEach end");
       done();
     });
-
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("upDownTreeEventTest after each called");
     });
-
     /**
      * @tc.number    nodeOnWillUnbindTest_0100
      * @tc.name      nodeOnWillUnbindTest_0100
@@ -54,7 +51,7 @@ export default function upDownTreeEventTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('nodeOnWillUnbindTest_0100', 0, async (done: Function) => {
+    it('nodeOnWillUnbindTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('nodeOnWillUnbindTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -72,7 +69,6 @@ export default function upDownTreeEventTest() {
       console.info('[nodeOnWillUnbindTest_0600] END');
       done();
     });
-
     /**
      * @tc.number    nodeOnUnBindTest_0200
      * @tc.name      nodeOnUnBindTest_0200
@@ -81,7 +77,7 @@ export default function upDownTreeEventTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('nodeOnUnBindTest_0200', 0, async (done: Function) => {
+    it('nodeOnUnBindTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('nodeOnUnBindTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -99,7 +95,6 @@ export default function upDownTreeEventTest() {
       console.info('[nodeOnUnBindTest_0500] END');
       done();
     });
-
     /**
      * @tc.number    nodeOnDetachTest_0300
      * @tc.name      nodeOnDetachTest_0300
@@ -108,7 +103,7 @@ export default function upDownTreeEventTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('nodeOnDetachTest_0300', 0, async (done: Function) => {
+    it('nodeOnDetachTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('nodeOnDetachTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -126,7 +121,6 @@ export default function upDownTreeEventTest() {
       console.info('[nodeOnDetachTest_0300] END');
       done();
     });
-
     /**
      * @tc.number    nodeOnAttachTest_0400
      * @tc.name      nodeOnAttachTest_0400
@@ -135,7 +129,7 @@ export default function upDownTreeEventTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('nodeOnAttachTest_0400', 0, async (done: Function) => {
+    it('nodeOnAttachTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('nodeOnAttachTest_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -150,8 +144,6 @@ export default function upDownTreeEventTest() {
       console.info('[nodeOnAttachTest_0400] END');
       done();
     });
-
-
     /**
      * @tc.number    nodeOnBindTest_0500
      * @tc.name      nodeOnBindTest_0500
@@ -160,7 +152,7 @@ export default function upDownTreeEventTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('nodeOnBindTest_0500', 0, async (done: Function) => {
+    it('nodeOnBindTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('nodeOnBindTest_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -175,8 +167,6 @@ export default function upDownTreeEventTest() {
       console.info('[nodeOnBindTest_0500] END');
       done();
     });
-
-
     /**
      * @tc.number    nodeOnWillBindTest_0600
      * @tc.name      nodeOnWillBindTest_0600
@@ -185,7 +175,7 @@ export default function upDownTreeEventTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('nodeOnWillBindTest_0600', 0, async (done: Function) => {
+    it('nodeOnWillBindTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('nodeOnWillBindTest_0600 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -200,7 +190,5 @@ export default function upDownTreeEventTest() {
       console.info('[nodeOnWillBindTest_0600] END');
       done();
     });
-
-
   })
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -51,7 +51,7 @@ export default function ColumnSetPosition_SubChange() {
      * @tc.name testColumnSubcomponentSetPosition
      * @tc.desc The first subcomponent set position attribute.
      */
-    it('testColumnSubcomponentSetPosition', 0, async () => {
+    it('testColumnSubcomponentSetPosition',  Level.LEVEL0, async () => {
       console.info('new testColumnSubcomponentSetPosition START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'position_x', value: 10

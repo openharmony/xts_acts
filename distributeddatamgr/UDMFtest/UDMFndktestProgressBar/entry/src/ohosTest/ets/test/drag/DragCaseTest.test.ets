@@ -60,37 +60,47 @@ export default function DragTest(){
      * @tc.desc       : testing List lanes
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('UDMFCaseTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-        let PAGE_TAG:string = 'DragCaseTest1';
-        await Utils.pushPage(`drag/${PAGE_TAG}`);
-        await panAndPinchGesture('image');
-        let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest001', dataArray[0]);
-        expect( dataArray[0] == 0 ).assertEqual(true);
-        done();
+    it('UDMFCaseTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'DragCaseTest1';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      await panAndPinchGesture('image');
+      await Utils.sleep(100);
+      let button = await driver.findComponent(ON.text('取消'));
+      await button?.click();
+      await Utils.sleep(100);
+      let dataArray: number[] = nativeRender.GetResult();
+      console.log('UDMFCaseTest001', dataArray[0]);
+      expect( dataArray[0] == 0 ).assertEqual(true);
+      done();
     })
 
     /*
      * @tc.number     : SUB_UDMFndk_CASE_002
-     * @tc.name       : 002
+     * @tc.name       : UDMFCaseTest002
      * @tc.desc       : testing List contentStartOffset And contentAndOffset
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
     it('UDMFCaseTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-        let PAGE_TAG:string = 'DragCaseTest2';
-        await Utils.pushPage(`drag/${PAGE_TAG}`);
-        await panAndPinchGesture('image');
-        let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest002', dataArray[0]);
-        expect( dataArray[0] == 0 ).assertEqual(true);
-        done();
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'DragCaseTest2';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      await panAndPinchGesture('image');
+      await Utils.sleep(100);
+      let button = await driver.findComponent(ON.text('取消'));
+      await button?.click();
+      await Utils.sleep(100);
+      let dataArray: number[] = nativeRender.GetResult();
+      console.log('UDMFCaseTest002', dataArray[0]);
+      expect( dataArray[0] == 0 ).assertEqual(true);
+      done();
     })
 
-    /*
+    /**
      * @tc.number     : SUB_UDMFndk_CASE_003
      * @tc.name       : UDMFCaseTest003
      * @tc.desc       : testing List maintainVisibleContentPosition
@@ -99,12 +109,107 @@ export default function DragTest(){
      * @tc.level      : Level 2
      */
     it('UDMFCaseTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-        let PAGE_TAG:string = 'DragCaseTest3';
-        await panAndPinchGesture('image');
-        let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest003', dataArray[0]);
-        expect( dataArray[0] == 0 ).assertEqual(true);
-        done();
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'DragCaseTest3';
+      await panAndPinchGesture('image');
+      await Utils.sleep(100);
+      let button = await driver.findComponent(ON.text('取消'));
+      await button?.click();
+      await Utils.sleep(100);
+      let dataArray: number[] = nativeRender.GetResult();
+      console.log('UDMFCaseTest003', dataArray[0]);
+      expect( dataArray[0] == 0 ).assertEqual(true);
+      done();
+    })
+
+    /**
+     * @tc.number     : SUB_UDMFndk_CASE_004
+     * @tc.name       : SUB_UDMFndk_CASE_004
+     * @tc.desc       : testing List maintainVisibleContentPosition
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('SUB_UDMFndk_CASE_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'ContentCardTest1';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      let button = await driver.findComponent(ON.id('card'));
+      await Utils.sleep(100);
+      await button?.click();
+      await Utils.sleep(10000);
+      let smallCard = await driver.findComponent(ON.id('smallCard'));
+      let strJson = getInspectorByKey('smallCard');
+      let obj: ESObject = JSON.parse(strJson);
+      expect( JSON.stringify(obj) != '').assertEqual(true);
+      done();
+    })
+    /**
+     * @tc.number     : SUB_UDMFndk_CASE_005
+     * @tc.name       : SUB_UDMFndk_CASE_005
+     * @tc.desc       : testing List maintainVisibleContentPosition
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('SUB_UDMFndk_CASE_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'ContentCardTest2';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      let button = await driver.findComponent(ON.id('card'));
+      await Utils.sleep(100);
+      await button?.click();
+      await Utils.sleep(10000);
+      let midCard = await driver.findComponent(ON.id('midCard'));
+      let strJson = getInspectorByKey('midCard');
+      let obj: ESObject = JSON.parse(strJson);
+      expect( JSON.stringify(obj) != '').assertEqual(true);
+      done();
+    })
+    /**
+     * @tc.number     : SUB_UDMFndk_CASE_006
+     * @tc.name       : SUB_UDMFndk_CASE_006
+     * @tc.desc       : testing List maintainVisibleContentPosition
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('SUB_UDMFndk_CASE_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'ContentCardTest3';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      let button = await driver.findComponent(ON.id('card'));
+      await Utils.sleep(100);
+      await button?.click();
+      await Utils.sleep(10000);
+      let bigCard = await driver.findComponent(ON.id('bigCard'));
+      let strJson = getInspectorByKey('bigCard');
+      let obj: ESObject = JSON.parse(strJson);
+      expect( JSON.stringify(obj) != '').assertEqual(true);
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_UDMFndk_CASE_007
+     * @tc.name       : SUB_UDMFndk_CASE_007
+     * @tc.desc       : testing List contentStartOffset And contentAndOffset
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('SUB_UDMFndk_CASE_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'DragCaseTest4';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      await panAndPinchGesture('image');
+      await Utils.sleep(100);
+      let button = await driver.findComponent(ON.text('取消'));
+      await button?.click();
+      await Utils.sleep(100);
+      let dataArray: number[] = nativeRender.GetResult();
+      console.log('UDMFCaseTest004', dataArray[0]);
+      expect( dataArray[0] == 0 ).assertEqual(true);
+      done();
     })
   })
 }

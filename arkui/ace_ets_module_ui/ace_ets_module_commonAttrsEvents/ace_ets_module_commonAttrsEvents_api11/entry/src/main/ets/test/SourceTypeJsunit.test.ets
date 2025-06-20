@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
@@ -48,7 +48,7 @@ export default function sourceTypeJsunit() {
       console.info("sourceType after each called");
     });
 
-    it('sourceTypeTest_0100', 0, async (done: Function) => {
+    it('sourceTypeTest_0100', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000)
 
       let rect: RectValue= await Utils.getComponentRect('button')

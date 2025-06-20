@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function OhosRouterJsunit() {
       console.info("ohosRouter after each called");
     });
 
-    it('ohosRouterTest001', 0, async (done: Function) => {
+    it('ohosRouterTest001', Level.LEVEL2, async (done: Function) => {
       console.info('[ohosRouterTest001] START');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/ohosRouterA',
@@ -64,7 +64,7 @@ export default function OhosRouterJsunit() {
       done();
     });
 
-    it('ohosRouterTest002', 0, async (done: Function) => {
+    it('ohosRouterTest002', Level.LEVEL2, async (done: Function) => {
       console.info('[ohosRouterTest002] START');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/ohosRouterA'
@@ -97,7 +97,7 @@ export default function OhosRouterJsunit() {
       done();
     });
 
-    it('ohosRouterTest003', 0, async (done: Function) => {
+    it('ohosRouterTest003', Level.LEVEL2, async (done: Function) => {
       console.info('[ohosRouterTest003] START');
       await CommonFunc.sleep(1000);
       router.clear();
@@ -109,7 +109,7 @@ export default function OhosRouterJsunit() {
       done();
     });
 
-    it('ohosRouterTest004', 0, async (done: Function) => {
+    it('ohosRouterTest004', Level.LEVEL2, async (done: Function) => {
       console.info('[ohosRouterTest004] START');
       router.clear();
       await CommonFunc.sleep(1000);
@@ -139,7 +139,7 @@ export default function OhosRouterJsunit() {
       done();
     });
 
-    it('ohosRouterTest005', 0, async (done: Function) => {
+    it('ohosRouterTest005', Level.LEVEL2, async (done: Function) => {
       console.info('[ohosRouterTest005] START');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/ohosRouterA'

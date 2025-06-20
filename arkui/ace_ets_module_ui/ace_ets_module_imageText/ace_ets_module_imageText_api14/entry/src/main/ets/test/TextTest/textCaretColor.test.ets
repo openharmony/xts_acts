@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -50,7 +50,7 @@ export default function textCaretColor() {
      * @tc.name         textCaretColor0001
      * @tc.desic        textCaretColor0001
      */
-    it('textCaretColor0001', 0, async () => {
+    it('textCaretColor0001', Level.LEVEL1, async () => {
       console.info('textCaretColor0001 START');
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('text');
@@ -62,7 +62,5 @@ export default function textCaretColor() {
       expect(obj.$attrs.selectedBackgroundColor).assertEqual('#33008000');
       console.info('[textCaretColor0001] END');
     });
-
-
   })
 }

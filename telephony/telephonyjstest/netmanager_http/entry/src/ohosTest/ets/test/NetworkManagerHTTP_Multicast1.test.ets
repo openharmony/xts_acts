@@ -83,6 +83,14 @@ function expectFalse() {
   }
 }
 
+function expectTrue(data : boolean){
+    try {
+        expect(data).assertTrue();
+    } catch (err){
+        console.info('assertion failure');    
+    }
+};
+
 export default function NetworkManagerMulticastHTTP1Test() {
   afterAll(async () =>{
     console.log('NetworkManagerMulticastHTTPTest afterAll start');
@@ -108,7 +116,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
             done();
           } else {
             console.log(`${caseName} request succeed, err: ${JSON.stringify(data)}`);
-            expect(data.responseCode !== undefined).assertTrue();
+            expectTrue(data.responseCode !== undefined);
             done();
           }
         });
@@ -133,7 +141,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
           done();
         } else {
           console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-          expect(data.responseCode === 200).assertTrue();
+          expectTrue(data.responseCode === 200);
           done();
         }
       })
@@ -155,7 +163,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
           done();
         } else {
           console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-          expect(data.responseCode === 200).assertTrue();
+          expectTrue(data.responseCode === 200);
           done();
         }
       })

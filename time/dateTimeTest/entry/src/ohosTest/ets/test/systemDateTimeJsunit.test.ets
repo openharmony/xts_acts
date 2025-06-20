@@ -27,9 +27,9 @@ export default function systemDateTimeJsunit() {
      * @tc.desc      Obtains the number of milliseconds that have elapsed since the Unix epoch.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it("SUB_systemDateTime_getCurrentTime_JS_API_0001", Level.LEVEL2, async (done: Function) => {
+    it("SUB_systemDateTime_getCurrentTime_JS_API_0001", Level.LEVEL0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getCurrentTime_JS_API_0001 start----------------");
       systemDateTime.getCurrentTime(true, (error, data) => {
         try {

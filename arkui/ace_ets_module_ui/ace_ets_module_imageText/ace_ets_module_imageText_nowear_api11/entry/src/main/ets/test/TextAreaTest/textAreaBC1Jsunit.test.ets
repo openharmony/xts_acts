@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -48,7 +48,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Move the cursor out of the TextArea component
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0100', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0100', Level.LEVEL3, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0100 START');
       let driver = await UiDriver.create()
       await CommonFunc.sleep(1000);
@@ -72,7 +72,7 @@ export default function textAreaBC1Jsunit() {
    * @tc.desc  : In the TextArea, delete and add the text content verification effect in the TextArea
    * @tc.level : Level 3
    */
-    it('textAreaBC1Jsunit_0200', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0200', Level.LEVEL3, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0200 START');
       let driver = UiDriver.create();
       await CommonFunc.sleep(1000);
@@ -107,7 +107,7 @@ export default function textAreaBC1Jsunit() {
   * @tc.desc  : Set the text color and text size
   * @tc.level : Level 3
   */
-    it('textAreaBC1Jsunit_0300', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0300', Level.LEVEL3, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0300 START');
       let driver = UiDriver.create();
       await CommonFunc.sleep(1000);
@@ -146,7 +146,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Activate the handle inside the textArea component to verify the effect
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0400', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0400', Level.LEVEL3, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0400 START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('textArea1'));
@@ -174,7 +174,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : View the default in the TextArea component
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0500', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0500', Level.LEVEL3, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0500 START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('textArea1'));
@@ -194,7 +194,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Raise the handle in the TextArea component and copy and paste the text
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0600', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0600', Level.LEVEL3, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0600 START');
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
@@ -248,7 +248,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Cut text in the TextArea component
     * @tc.level : Level 3
     */
-    it('textAreaBC1Jsunit_0700', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0700', Level.LEVEL3, async (done: Function) => {
       console.info('textAreaBC1Jsunit_0700 START');
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
@@ -287,7 +287,7 @@ export default function textAreaBC1Jsunit() {
     * @tc.desc  : Move position within the textArea by hand keyboard and mouse in the TextArea component
     * @tc.level : Level 2
     */
-    it('textAreaBC1Jsunit_0800', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0800', Level.LEVEL2, async (done: Function) => {
       let driver = await UiDriver.create()
       let text = await driver.findComponent(BY.key('textArea1'));
       await text.inputText('ee');
@@ -313,7 +313,7 @@ export default function textAreaBC1Jsunit() {
    * @tc.desc  : Move position inside the textArea by hand keyboard and mouse outside the TextArea component
    * @tc.level : Level 3
    */
-    it('textAreaBC1Jsunit_0900', 0, async (done: Function) => {
+    it('textAreaBC1Jsunit_0900', Level.LEVEL3, async (done: Function) => {
       let driver = await UiDriver.create()
       let text = await driver.findComponent(BY.key('textArea2'));
       await text.inputText('yy');

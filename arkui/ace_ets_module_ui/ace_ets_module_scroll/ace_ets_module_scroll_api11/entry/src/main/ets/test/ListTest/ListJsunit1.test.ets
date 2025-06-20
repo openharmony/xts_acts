@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function listJsunit1() {
      * @tc.name listTest001
      * @tc.desc aceEtsTest
      */
-    it('listTest001', 0, async () => {
+    it('listTest001', Level.LEVEL1, async () => {
       console.info('++++++++++++++++ List TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('list');

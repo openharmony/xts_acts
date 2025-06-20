@@ -14,71 +14,71 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 
 export default function aceJsTest() {
-describe('aceJsTest', function () {
+    describe('aceJsTest', function() {
 
-    async function sleep(time) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve()
-            }, time)
-        }).then(() => {
-            console.info(`sleep ${time} over...`)
-        })
-    }
-    async function backToIndex() {
-        let backToIndexPromise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                router.back({
-                    uri: 'pages/index/index'
-                });
-                resolve();
-            }, 500);
-        });
-        let clearPromise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                router.clear();
-                resolve();
-            }, 500);
-        });
-        await backToIndexPromise.then(() => {
-            return clearPromise;
-        });
-    }
-
-    /**
-    * run after testcase
-    */
-    afterEach(async function () {
-        console.info('[aceJsTest] after each called')
-        await backToIndex();
-        await sleep(5000)
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testVideoComponent
-     * @tc.desc      ACE
-     */
-    it('testVideoComponent', 0, async function (done) {
-        let result;
-        let options = {
-            uri: 'pages/video/router/index'
+        async function sleep(time) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve()
+                }, time)
+            }).then(() => {
+                console.info(`sleep ${time} over...`)
+            })
         }
-        try {
-            result = router.push(options)
-            console.info("push video page success " + JSON.stringify(result));
-        } catch (err) {
-            console.error("push video page error " + JSON.stringify(result));
+        async function backToIndex() {
+            let backToIndexPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    router.back({
+                        uri: 'pages/index/index'
+                    });
+                    resolve();
+                }, 500);
+            });
+            let clearPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    router.clear();
+                    resolve();
+                }, 500);
+            });
+            await backToIndexPromise.then(() => {
+                return clearPromise;
+            });
         }
-        await sleep(5000)
-        let pages = router.getState();
-        console.info("[router.video] getState" + JSON.stringify(pages));
-        expect("pages/video/router/").assertEqual(pages.path);
-        done();
+
+        /**
+         * run after testcase
+         */
+        afterEach(async function() {
+            console.info('[aceJsTest] after each called')
+            await backToIndex();
+            await sleep(5000)
+        });
+
+        /**
+         * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+         * @tc.name      testVideoComponent
+         * @tc.desc      ACE
+         */
+        it('testVideoComponent', Level.LEVEL0, async function(done) {
+            let result;
+            let options = {
+                uri: 'pages/video/router/index'
+            }
+            try {
+                result = router.push(options)
+                console.info("push video page success " + JSON.stringify(result));
+            } catch (err) {
+                console.error("push video page error " + JSON.stringify(result));
+            }
+            await sleep(5000)
+            let pages = router.getState();
+            console.info("[router.video] getState" + JSON.stringify(pages));
+            expect("pages/video/router/").assertEqual(pages.path);
+            done();
+        });
     });
-});
 }

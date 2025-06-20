@@ -62,11 +62,11 @@ export default function AccessTokenTest() {
          * @tc.number Test_verifyAccessToken_001
          * @tc.name Test atManager.verifyAccessToken.
          * @tc.desc After the installation, user_grant permission is not granted by default(Promise).
-         * @tc.level: Level1
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it('Test_verifyAccessToken_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it('Test_verifyAccessToken_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("Test_verifyAccessToken_001 start");
             var atManager = abilityAccessCtrl.createAtManager();
             var result = await atManager.verifyAccessToken(tokenID, permissionNameUser);
@@ -80,11 +80,11 @@ export default function AccessTokenTest() {
          * @tc.number Test_verifyAccessToken_002
          * @tc.name Test atManager.verifyAccessToken.
          * @tc.desc After the installation, system_grant permission is granted by default(Promise).
-         * @tc.level: Level1
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it('Test_verifyAccessToken_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it('Test_verifyAccessToken_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("Test_verifyAccessToken_002 start");
             var atManager = abilityAccessCtrl.createAtManager();
             var result = await atManager.verifyAccessToken(tokenID, permissionNameSystem);
@@ -977,11 +977,11 @@ export default function AccessTokenTest() {
          * @tc.number:Test_SwitchType_0100
          * @tc.name: Test_SwitchType_001
          * @tc.desc: abilityAccessCtrl SwitchType CAMERA
-         * @tc.level: Level1
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("Test_SwitchType_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
+        it("Test_SwitchType_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.info('----------------------Test_SwitchType_001---------------------------');
             let value = abilityAccessCtrl.SwitchType.CAMERA;
             console.info('Test_SwitchType_001 value is: ' + value);
@@ -993,11 +993,11 @@ export default function AccessTokenTest() {
          * @tc.number:Test_SwitchType_0200
          * @tc.name: Test_SwitchType_002
          * @tc.desc: abilityAccessCtrl SwitchType MICROPHONE
-         * @tc.level: Level1
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("Test_SwitchType_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
+        it("Test_SwitchType_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.info('----------------------Test_SwitchType_002---------------------------');
             let value = abilityAccessCtrl.SwitchType.MICROPHONE;
             console.info('Test_SwitchType_002 value is: ' + value);
@@ -1009,11 +1009,11 @@ export default function AccessTokenTest() {
          * @tc.number:Test_SwitchType_0300
          * @tc.name: Test_SwitchType_003
          * @tc.desc: abilityAccessCtrl SwitchType LOCATION
-         * @tc.level: Level1
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("Test_SwitchType_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
+        it("Test_SwitchType_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.info('----------------------Test_SwitchType_003---------------------------');
             let value = abilityAccessCtrl.SwitchType.LOCATION;
             console.info('Test_SwitchType_003 value is: ' + value);
@@ -1067,11 +1067,11 @@ export default function AccessTokenTest() {
          * @tc.number:SUB_Security_AccessToken_On_PROTest_0100
          * @tc.name: Test AT on PERMISSION_REVOKED_OPER Const Attribute
          * @tc.desc: Test PermissionStateChangeType const PERMISSION_REVOKED_OPER
-         * @tc.level: Level3
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_AccessToken_On_PROTest_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it("SUB_Security_AccessToken_On_PROTest_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('----------------------SUB_Security_AccessToken_On_PROTest_0100---------------------------');
             let value = abilityAccessCtrl.PermissionStateChangeType.PERMISSION_REVOKED_OPER;
             console.info('SUB_Security_AccessToken_On_PROTest_0100 value is: ' + value);
@@ -1083,11 +1083,11 @@ export default function AccessTokenTest() {
          * @tc.number:SUB_Security_AccessToken_On_PGOTest_0200
          * @tc.name: Test AT on PERMISSION_GRANTED_OPER Const Attribute
          * @tc.desc: Test PermissionStateChangeType const PERMISSION_GRANTED_OPER
-         * @tc.level: Level1
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_AccessToken_On_PGOTest_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it("SUB_Security_AccessToken_On_PGOTest_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('----------------------SUB_Security_AccessToken_On_PGOTest_0200---------------------------');
             let value = abilityAccessCtrl.PermissionStateChangeType.PERMISSION_GRANTED_OPER;
             console.info('SUB_Security_AccessToken_On_PGOTest_0200 value is: ' + value);

@@ -17,7 +17,7 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import avmetadataextractor from 'libavmetadataextractorndk.so';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import fs from '@ohos.file.fs';
 import hilog from '@ohos.hilog';
 import media from '@ohos.multimedia.media';
@@ -82,7 +82,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorCreate0100', 0, (done: Function) => {
+    it('testohAvMetadataExtractorCreate0100', Level.LEVEL0,(done: Function) => {
       console.info(`testohAvMetadataExtractorCreate0100 test start`);
       try {
         let result: number = avmetadataextractor.ohAvMetadataExtractorCreate();
@@ -104,7 +104,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorSetFDSource0100', 0, async (done: Function) => {
+    it('testohAvMetadataExtractorSetFDSource0100', Level.LEVEL0,async (done: Function) => {
       console.info(`testohAvMetadataExtractorSetFDSource0100 test start`);
       let fileDescribe: number = -1;
       try {
@@ -130,7 +130,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorSetFDSource0200', 0, async (done: Function) => {
+    it('testohAvMetadataExtractorSetFDSource0200', Level.LEVEL0,async (done: Function) => {
       console.info(`testohAvMetadataExtractorSetFDSource0200 test start`);
       let fileDescribe: number = -1;
       try {
@@ -156,7 +156,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorSetFDSource0300', 0, (done: Function) => {
+    it('testohAvMetadataExtractorSetFDSource0300', Level.LEVEL0,(done: Function) => {
       console.info(`testohAvMetadataExtractorSetFDSource0300 test start`);
       try {
         let errorFileDescribe : number = -1;
@@ -179,7 +179,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorFetchMetadata0100', 0, async (done: Function) => {
+    it('testohAvMetadataExtractorFetchMetadata0100', Level.LEVEL0,async (done: Function) => {
       console.info(`testohAvMetadataExtractorFetchMetadata0100 test start`);
       let fileDescribe: number = -1;
       try {
@@ -206,7 +206,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorFetchMetadata0200', 0, async (done: Function) => {
+    it('testohAvMetadataExtractorFetchMetadata0200', Level.LEVEL0,async (done: Function) => {
       console.info(`testohAvMetadataExtractorFetchMetadata0200 test start`);
       let fileDescribe: number = -1;
       try {
@@ -233,7 +233,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorFetchAlbumCover0100', 0, async (done: Function) => {
+    it('testohAvMetadataExtractorFetchAlbumCover0100', Level.LEVEL0,async (done: Function) => {
       console.info(`testohAvMetadataExtractorFetchAlbumCover0100 test start`);
       let fileDescribe: number = -1;
       try {
@@ -260,7 +260,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorFetchAlbumCover0200', 0, async (done: Function) => {
+    it('testohAvMetadataExtractorFetchAlbumCover0200', Level.LEVEL0,async (done: Function) => {
       console.info(`testohAvMetadataExtractorFetchAlbumCover0200 test start`);
       let fileDescribe: number = -1;
       try {
@@ -287,7 +287,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorRelease0100', 0, (done: Function) => {
+    it('testohAvMetadataExtractorRelease0100', Level.LEVEL0,(done: Function) => {
       console.info(`testohAvMetadataExtractorRelease0100 test start`);
       try {
         let result = avmetadataextractor.ohAvMetadataExtractorRelease();
@@ -309,7 +309,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorRelease0200', 0, (done: Function) => {
+    it('testohAvMetadataExtractorRelease0200', Level.LEVEL0,(done: Function) => {
       console.info(`testohAvMetadataExtractorReleaseTwo0200 test start`);
       try {
         let result: number = avmetadataextractor.ohAvMetadataExtractorReleaseTwo();
@@ -331,7 +331,7 @@ export default function OhAVMetadataExtractorNDKTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testohAvMetadataExtractorAll0100', 0, async (done: Function) => {
+    it('testohAvMetadataExtractorAll0100', Level.LEVEL0,async (done: Function) => {
       console.info(`testohAvMetadataExtractorAll0100 test start`);
       let fileDescribe: number = -1;
 

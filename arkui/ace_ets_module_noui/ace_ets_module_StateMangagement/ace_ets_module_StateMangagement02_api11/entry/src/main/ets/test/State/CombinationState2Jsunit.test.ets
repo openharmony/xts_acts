@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -55,7 +55,7 @@ export default function CombinationState2Jsunit() {
       done();
     });
 
-    it('CombinationState2Jsunit_0100', 0, async (done: Function) => {
+    it('CombinationState2Jsunit_0100', Level.LEVEL0, async (done: Function) => {
       // Get the information of the State component
       console.info('[CombinationState2Jsunit_0100] START');
       let strJson = getInspectorByKey('PropLink1');
@@ -67,7 +67,7 @@ export default function CombinationState2Jsunit() {
       done();
     });
 
-    it('CombinationState2Jsunit_0200', 0, async (done: Function) => {
+    it('CombinationState2Jsunit_0200', Level.LEVEL0, async (done: Function) => {
       // Get the information of the State component
       let strJson1 = getInspectorByKey('PropLink47');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -78,7 +78,7 @@ export default function CombinationState2Jsunit() {
       done();
     });
 
-    it('CombinationState2Jsunit_0300', 0, async (done: Function) => {
+    it('CombinationState2Jsunit_0300', Level.LEVEL0, async (done: Function) => {
       // Get the information of the State component
       let strJson2 = getInspectorByKey('ChildLink47');
       let obj2: ESObject = JSON.parse(strJson2);
@@ -89,7 +89,7 @@ export default function CombinationState2Jsunit() {
       done();
     });
 
-    it('CombinationState2Jsunit_0400', 0, async (done: Function) => {
+    it('CombinationState2Jsunit_0400', Level.LEVEL0, async (done: Function) => {
       // Get the information of the State component
       let strJson3 = getInspectorByKey('PropLink7');
       let obj3: ESObject = JSON.parse(strJson3);
@@ -100,7 +100,7 @@ export default function CombinationState2Jsunit() {
       done();
     });
 
-    it('CombinationState2Jsunit_0500', 0, async (done: Function) => {
+    it('CombinationState2Jsunit_0500', Level.LEVEL0, async (done: Function) => {
       // Get the information of the State component
       let strJson4 = getInspectorByKey('ChildLink7');
       let obj4: ESObject = JSON.parse(strJson4);
@@ -111,7 +111,7 @@ export default function CombinationState2Jsunit() {
       done();
     });
 
-    it('CombinationState2Jsunit_0600', 0, async (done: Function) => {
+    it('CombinationState2Jsunit_0600', Level.LEVEL0, async (done: Function) => {
       // Click and get the value of State component
       console.info('[CombinationState2Jsunit_0600] START');
       let driver = await UiDriver.create()
@@ -128,7 +128,7 @@ export default function CombinationState2Jsunit() {
       done();
     });
 
-    it('CombinationState2Jsunit_0700', 0, async (done: Function) => {
+    it('CombinationState2Jsunit_0700', Level.LEVEL0, async (done: Function) => {
       // Click and get the value of State component
       console.info('[CombinationState2Jsunit_0700] START');
       let driver = await UiDriver.create()
@@ -145,7 +145,7 @@ export default function CombinationState2Jsunit() {
       done();
     });
 
-    it('CombinationState2Jsunit_0800', 0, async (done: Function) => {
+    it('CombinationState2Jsunit_0800', Level.LEVEL0, async (done: Function) => {
       // Click and get the value of State component
       console.info('[CombinationState2Jsunit_0800] START');
       let driver = await UiDriver.create()

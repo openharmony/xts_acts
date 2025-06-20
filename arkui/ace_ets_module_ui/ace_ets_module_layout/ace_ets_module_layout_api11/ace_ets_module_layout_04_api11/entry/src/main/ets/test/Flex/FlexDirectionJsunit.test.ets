@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -45,7 +45,7 @@ export default function flexDirectionJsunit(){
       console.info("flexDirection after each called");
     });
 
-    it('flexDirection_0100', 0, async (done: Function) => {
+    it('flexDirection_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0100 START');
       let strJson = getInspectorByKey('flexDirection');
       console.info("flexDirection_0100 component strJson:" + strJson);
@@ -57,7 +57,7 @@ export default function flexDirectionJsunit(){
       done();
     });
 
-    it('flexDirection_0200', 0, async (done: Function) => {
+    it('flexDirection_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0200 START');
       let strJson = getInspectorByKey('flexDirection');
       console.info("flexDirection_0200 component strJson:" + strJson);
@@ -69,7 +69,7 @@ export default function flexDirectionJsunit(){
       done();
     });
 
-    it('flexDirection_0300', 0, async (done: Function) => {
+    it('flexDirection_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0300 START');
       let strJson = getInspectorByKey('ColumnReverse');
       console.info("flexDirection_0300 component strJson:" + strJson);
@@ -81,7 +81,7 @@ export default function flexDirectionJsunit(){
       done();
     });
 
-    it('flexDirection_0400', 0, async (done: Function) => {
+    it('flexDirection_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0400 START');
       let strJson = getInspectorByKey('ColumnReverse');
       console.info("flexDirection_0400 component strJson:" + strJson);
@@ -93,7 +93,7 @@ export default function flexDirectionJsunit(){
       done();
     });
 
-    it('flexDirection_0500', 0, async (done: Function) => {
+    it('flexDirection_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0500 START');
       let strJson = getInspectorByKey('Column');
       console.info("flexDirection_0500 component strJson:" + strJson);
@@ -105,7 +105,7 @@ export default function flexDirectionJsunit(){
       done();
     });
 
-    it('flexDirection_0600', 0, async (done: Function) => {
+    it('flexDirection_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0600 START');
       let strJson = getInspectorByKey('Column');
       console.info("flexDirection_0600 component strJson:" + strJson);
@@ -117,7 +117,7 @@ export default function flexDirectionJsunit(){
       done();
     });
 
-    it('flexDirection_0700', 0, async (done: Function) => {
+    it('flexDirection_0700',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0700 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -147,7 +147,7 @@ export default function flexDirectionJsunit(){
       done();
       });
 
-    it('flexDirection_0800', 0, async (done: Function) => {
+    it('flexDirection_0800',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0800 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -177,7 +177,7 @@ export default function flexDirectionJsunit(){
       done();
     });
 
-    it('flexDirection_0900', 0, async (done: Function) => {
+    it('flexDirection_0900',  Level.LEVEL0, async (done: Function) => {
       console.info('flexDirection_0900 START');
       try {
         let eventData: events_emitter.EventData = {

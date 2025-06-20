@@ -14,15 +14,23 @@
  */
 import { beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
-
-
+import { accessibility, config } from '@kit.AccessibilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
+
+
 
 export default function webviewApi() {
 
   describe('webRegisterCustomsTwo', () => {
       
     beforeEach(async (done:Function) => {
+        config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(1000);
       console.info("web beforeEach start");
       done();

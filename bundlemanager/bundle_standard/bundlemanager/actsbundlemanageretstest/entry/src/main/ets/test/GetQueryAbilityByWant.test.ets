@@ -76,7 +76,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0540', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0540', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
       bundle.queryAbilityByWant(
         {
           action: "action_a"
@@ -98,7 +98,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0560', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0560', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_b2"
@@ -119,7 +119,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0580', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0580', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_c1"
@@ -140,7 +140,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third appl
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_d2"
@@ -181,7 +181,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0640', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0640', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -227,7 +227,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0680', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0680', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -249,7 +249,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -271,7 +271,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5020', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5020', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -70,7 +70,7 @@ export default function getGridItemRect1() {
     * @tc.desc  : set index to 3
     * @tc.level : Level 2
     */
-    it('getGridItemRect1_0100', 0, async (done: Function) => {
+    it('getGridItemRect1_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect1_0100] START');
       globalThis.value.message.notify({
@@ -130,7 +130,7 @@ export default function getGridItemRect1() {
     * @tc.desc  : set index to 4
     * @tc.level : Level 2
     */
-    it('getGridItemRect1_0200', 0, async (done: Function) => {
+    it('getGridItemRect1_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect1_0200] START');
       globalThis.value.message.notify({
@@ -186,7 +186,7 @@ export default function getGridItemRect1() {
     * @tc.desc  : set index to 100
     * @tc.level : Level 2
     */
-    it('getGridItemRect1_0400', 0, async (done: Function) => {
+    it('getGridItemRect1_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect1_0400] START');
       globalThis.value.message.notify({
@@ -242,7 +242,7 @@ export default function getGridItemRect1() {
     * @tc.desc  : set index to 0
     * @tc.level : Level 2
     */
-    it('getGridItemRect1_0500', 0, async (done: Function) => {
+    it('getGridItemRect1_0500', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect1_0500] START');
       globalThis.value.message.notify({
@@ -298,7 +298,7 @@ export default function getGridItemRect1() {
     * @tc.desc  : set index to 1
     * @tc.level : Level 2
     */
-    it('getGridItemRect1_0600', 0, async (done: Function) => {
+    it('getGridItemRect1_0600', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect1_0600] START');
       globalThis.value.message.notify({
@@ -353,7 +353,7 @@ export default function getGridItemRect1() {
     * @tc.desc  : set index to 0,set the padding of grid to 20
     * @tc.level : Level 2
     */
-    it('getGridItemRect1_0700', 0, async (done: Function) => {
+    it('getGridItemRect1_0700', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getGridItemRect1_0700] START');
       globalThis.value.message.notify({

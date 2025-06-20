@@ -17,6 +17,9 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 export default function webViewNativeMediaPlayerProps() {
   describe('ActsAcewebViewNativeMediaPlayerProps', () => {
@@ -44,6 +47,11 @@ export default function webViewNativeMediaPlayerProps() {
     });
       
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
         await Utils.sleep(2500);
       console.info("webViewNativeMediaPlayerProps beforeEach start");
       done();
@@ -55,9 +63,9 @@ export default function webViewNativeMediaPlayerProps() {
      *@tc.desc test MediaError.NETWORK_ERROR
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 1
+     *@tc.level Level 0
      */
-    it('testWebViewNativeMediaPlayerNetworkError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerNetworkError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerNetworkError";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerNetworkError", true, 1300, done);
@@ -100,9 +108,9 @@ export default function webViewNativeMediaPlayerProps() {
      *@tc.desc test CreateNativeMediaPlayerCallback
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 0
+     *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback", true, 1303, done);
@@ -175,9 +183,9 @@ export default function webViewNativeMediaPlayerProps() {
      *@tc.desc test MediaPlayerProps2
      *@tc.type Function
      *@tc.size MediumTest
-     *@tc.level Level 0
+     *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerPreload', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPreload', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerProps2";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerProps2", true, 1355, done);
