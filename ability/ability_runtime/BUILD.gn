@@ -69,6 +69,7 @@ group("ability_runtime") {
       "actsrequestdialogtest:actsrequestdialogtest",
       "actsrestartapptest:ActsRestartAppTest",
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
+      "actssandboxcontexttest:ActsSandboxContextTest",
       "actsserviceabilityclienttest:serviceability",
       "actsshareacquiresharedata:ActsShareAcquireShareData",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
