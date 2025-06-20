@@ -62,7 +62,7 @@ export default class AssistAbility01 extends UIAbility {
           abilityName: 'callerInfo02'
         }).then(() => {
         hilog.info(0x0000, 'testTag', '%{public}s', `CallerInfo01 startAbility end====>`);
-      })
+      });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
