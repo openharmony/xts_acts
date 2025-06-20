@@ -46,6 +46,7 @@ struct Index {
 
         Button('set_callback')
           .id('setCallbackButton')
+          .size({ width: '1%', height: '1%' })
           .onClick(() => {
             try {
               autoStartupManager.setApplicationAutoStartup({
@@ -91,6 +92,7 @@ struct Index {
           .margin({top: 10})
 
         Button('cancel_callback')
+          .size({ width: '1%', height: '1%' })
           .id('cancelCallbackButton')
           .onClick(() => {
             try {
@@ -137,6 +139,7 @@ struct Index {
           .margin({top: 10})
 
         Button('set_promise')
+          .size({ width: '1%', height: '1%' })
           .id('setPromiseButton')
           .onClick(() => {
             try {
@@ -200,6 +203,7 @@ struct Index {
           .margin({top: 10})
 
         Button('cancel_promise')
+          .size({ width: '1%', height: '1%' })
           .id('cancelPromiseButton')
           .onClick(() => {
             try {
@@ -263,6 +267,7 @@ struct Index {
           .margin({top: 10})
 
         Button('query_callback')
+          .size({ width: '1%', height: '1%' })
           .id('queryCallbackButton')
           .onClick(() => {
             try {
@@ -306,6 +311,7 @@ struct Index {
           .margin({top: 10})
 
         Button('query_promise')
+          .size({ width: '1%', height: '1%' })
           .id('queryPromiseButton')
           .onClick(() => {
             try {
@@ -366,6 +372,7 @@ struct Index {
           .margin({top: 10})
 
         Button('on')
+          .size({ width: '1%', height: '1%' })
           .id('onButton')
           .onClick(() => {
             try {
@@ -414,6 +421,7 @@ struct Index {
           .margin({top: 10})
 
         Button('off')
+          .size({ width: '1%', height: '1%' })
           .id('offButton')
           .onClick(() => {
             try {
@@ -462,6 +470,7 @@ struct Index {
           .margin({top: 10})
 
         Button('terminate')
+          .size({ width: '1%', height: '1%' })
           .id('terminateButton')
           .onClick(() => {
             try {
