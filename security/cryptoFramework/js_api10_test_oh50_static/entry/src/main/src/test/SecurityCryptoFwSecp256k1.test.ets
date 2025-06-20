@@ -874,7 +874,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
         let algName: string = "ECC_Secp256k1";
         let dataLen: int = 64;
         let msgData: cryptoFramework.DataBlob = await createFullData(dataLen);
-        let ret = await taskpool.execute(doSignVerifyByDigestSpec, algName, msgData)
+        let ret: boolean = (await taskpool.execute(doSignVerifyByDigestSpec, algName, msgData)) as boolean;
         expect(ret).assertTrue();
       } catch (error: BusinessError) {
         console.error(`“${error}“, error code: ${error.code}`);
@@ -897,7 +897,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
         let dataLen: int = 60;
         let msgBlob: cryptoFramework.DataBlob = await commonUtils.createFullData(dataLen);
         let blockSize: number = 8;
-        let ret = await taskpool.execute(doSignVerifyWithUpdateByDigestSpec, algName, msgBlob, blockSize)
+        let ret: boolean = (await taskpool.execute(doSignVerifyWithUpdateByDigestSpec, algName, msgBlob, blockSize)) as boolean;
         expect(ret).assertTrue();
       } catch (error: BusinessError) {
         console.error(`“${error}“, error code: ${error.code}`);
@@ -920,7 +920,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
         let dataLen: int = 60;
         let msgBlob: cryptoFramework.DataBlob = await commonUtils.createFullData(dataLen);
         let blockSize: number = 8;
-        let ret = await taskpool.execute(doSignVerifyWithUpdateByDigestSpecSync, algName, msgBlob, blockSize)
+        let ret: boolean = (await taskpool.execute(doSignVerifyWithUpdateByDigestSpecSync, algName, msgBlob, blockSize)) as boolean;
         expect(ret).assertTrue();
       } catch (error: BusinessError) {
         console.error(`“${error}“, error code: ${error.code}`);
@@ -942,7 +942,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
         let algName: string = "ECC_Secp256k1";
         let dataLen: int = 60;
         let msgBlob: cryptoFramework.DataBlob = await commonUtils.createFullData(dataLen);
-        let ret = await taskpool.execute(doSignVerifyByDigestSpecSync, algName, msgBlob)
+        let ret: boolean = (await taskpool.execute(doSignVerifyByDigestSpecSync, algName, msgBlob)) as boolean;
         expect(ret).assertTrue();
       } catch (error: BusinessError) {
         console.error(`“${error}“, error code: ${error.code}`);
@@ -1429,7 +1429,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
         let algName: string = "ECC_Secp256k1";
         let dataLen: int = 64;
         let msgData: cryptoFramework.DataBlob = await createFullData(dataLen);
-        let ret = await taskpool.execute(doSignVerifyByDigestSpecCallback, algName, msgData)
+        let ret: boolean = (await taskpool.execute(doSignVerifyByDigestSpecCallback, algName, msgData)) as boolean;
         expect(ret).assertTrue();
       } catch (error: BusinessError) {
         console.error(`“${error}“, error code: ${error.code}`);
@@ -1452,7 +1452,7 @@ export default function SecurityCryptoFwSECP256K1TestUnit() {
         let dataLen: int = 60;
         let msgBlob: cryptoFramework.DataBlob = await commonUtils.createFullData(dataLen);
         let blockSize: number = 8;
-        let ret = await taskpool.execute(doSignVerifyWithUpdateByDigestSpecCallback, algName, msgBlob, blockSize)
+        let ret: boolean = (await taskpool.execute(doSignVerifyWithUpdateByDigestSpecCallback, algName, msgBlob, blockSize)) as boolean;
         expect(ret).assertTrue();
       } catch (error: BusinessError) {
         console.error(`“${error}“, error code: ${error.code}`);
