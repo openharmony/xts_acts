@@ -674,10 +674,15 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-
-
-
-        it('ActsAccountOAuthToken_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        /*
+        * @tc.number    : ActsAccountOAuthToken_0100
+        * @tc.name      : ActsAccountOAuthToken_0100
+        * @tc.desc      : test setOAuthToken
+        * @tc.level     : Level0
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('ActsAccountOAuthToken_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountOAuthToken_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0100 addAccount start====");
@@ -713,8 +718,15 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-
-        it('ActsAccountOAuthToken_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        /*
+        * @tc.number    : ActsAccountOAuthToken_0200
+        * @tc.name      : ActsAccountOAuthToken_0200
+        * @tc.desc      : test setOAuthToken
+        * @tc.level     : Level0
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('ActsAccountOAuthToken_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountOAuthToken_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0200 addAccount start====");
@@ -1621,7 +1633,7 @@ export default function ActsAccountOAuthToken() {
             /*
         * @tc.number     : ActsAccountOAuthToken_2700
         * @tc.name       : Test oauth token in callback form
-        * @tc.desc       : 设置一个authType长度刚好为限制长度的token  查询
+        * @tc.desc       : ����һ��authType���ȸպ�Ϊ���Ƴ��ȵ�token  ��ѯ
         */
             it('ActsAccountOAuthToken_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function(done) {
                 console.info("====>ActsAccountOAuthToken_3500 start====");
@@ -1656,7 +1668,7 @@ export default function ActsAccountOAuthToken() {
             /*
             * @tc.number     : ActsAccountOAuthToken_2800
             * @tc.name       : Test oauth token in promise form
-            * @tc.desc       : 设置一个authType长度刚好为限制长度的token
+            * @tc.desc       : ����һ��authType���ȸպ�Ϊ���Ƴ��ȵ�token
             */
             
             /*
@@ -1664,7 +1676,7 @@ export default function ActsAccountOAuthToken() {
             * @tc.name       : Test oauth token in callback form
             * @tc.desc       : Clear token parameter name is an empty string
             */
-            //测试 删除一个账号名为空的token callback方式
+            //���� ɾ��һ���˺���Ϊ�յ�token callback��ʽ
             it('ActsAccountOAuthToken_4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4100 start====");
                 var appAccountManager = account.createAppAccountManager();
@@ -1682,7 +1694,7 @@ export default function ActsAccountOAuthToken() {
             * @tc.name       : Test oauth token in promise form
             * @tc.desc       : Clear token parameter name is an empty string
             */
-            //测试 删除一个账号名为空的token promise方式
+            //���� ɾ��һ���˺���Ϊ�յ�token promise��ʽ
             it('ActsAccountOAuthToken_4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4200 start====");
                 var appAccountManager = account.createAppAccountManager();
@@ -1783,7 +1795,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            //查询无效包名owner（为其他字符串时）账号的token callback方式
+            //��ѯ��Ч����owner��Ϊ�����ַ���ʱ���˺ŵ�token callback��ʽ
             it('ActsAccountOAuthToken_4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4700 start====");
                 var appAccountManager = account.createAppAccountManager();
