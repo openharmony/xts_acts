@@ -19,9 +19,9 @@ import window from '@ohos.window';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 export default class CallerInfo04 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want, launchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo04 onCreate');
-    globalThis.CallerInfo04 = this.context
+    globalThis.CallerInfo04 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `CallerInfo04 JSON.stringify(want) is: ${JSON.stringify(want)}`);
     let options = {
       parameters: {
@@ -33,14 +33,14 @@ export default class CallerInfo04 extends UIAbility {
     });
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo04 onDestroy');
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'commonEventManager CallerInfo04 publish ACTS_TEST_DESTROY');
     });
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo04 onWindowStageCreate');
 
     windowStage.loadContent('testability/pages/Index', (err, data) => {
@@ -52,11 +52,11 @@ export default class CallerInfo04 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo04 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo04 onForeground');
 
     setTimeout( () => {
@@ -64,7 +64,7 @@ export default class CallerInfo04 extends UIAbility {
     }, 2000);
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo04 onBackground');
   }

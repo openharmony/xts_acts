@@ -18,17 +18,17 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 
 export default class AssistAbility03 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want, launchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility03 onCreate');
-    globalThis.AssistAbility03 = this.context
+    globalThis.AssistAbility03 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `AssistAbility03 JSON.stringify(want) is: ${JSON.stringify(want)}`);
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility03 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility03 onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -40,15 +40,15 @@ export default class AssistAbility03 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility03 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility03 onForeground');
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility03 onBackground');
   }

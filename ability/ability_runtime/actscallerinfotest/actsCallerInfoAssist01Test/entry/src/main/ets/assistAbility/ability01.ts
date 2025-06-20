@@ -19,9 +19,9 @@ import window from '@ohos.window';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 export default class AssistAbility01 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want, launchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility01 onCreate');
-    globalThis.AssistAbility01 = this.context
+    globalThis.AssistAbility01 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `AssistAbility01 JSON.stringify(want) is: ${JSON.stringify(want)}`);
     let optionsWant = {
       parameters: {
@@ -33,11 +33,11 @@ export default class AssistAbility01 extends UIAbility {
     });
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility01 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility01 onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -49,11 +49,11 @@ export default class AssistAbility01 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility01 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility01 onForeground');
     try {
       globalThis.AssistAbility01.startAbility(
@@ -71,7 +71,7 @@ export default class AssistAbility01 extends UIAbility {
     }
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility01 onBackground');
     globalThis.AssistAbility01.terminateSelf();

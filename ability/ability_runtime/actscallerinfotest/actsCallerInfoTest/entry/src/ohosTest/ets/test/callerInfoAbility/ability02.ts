@@ -19,17 +19,17 @@ import window from '@ohos.window';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class CallerInfo02 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want, launchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo02 onCreate');
-    globalThis.CallerInfo02 = this.context
+    globalThis.CallerInfo02 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `CallerInfo02 JSON.stringify(want) is: ${JSON.stringify(want)}`);
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo02 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo02 onWindowStageCreate');
 
     windowStage.loadContent('testability/pages/Index', (err, data) => {
@@ -41,11 +41,11 @@ export default class CallerInfo02 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo02 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo02 onForeground');
     try {
       globalThis.CallerInfo02.startAbility(
@@ -63,7 +63,7 @@ export default class CallerInfo02 extends UIAbility {
     }
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo02 onBackground');
     globalThis.CallerInfo02.terminateSelf();

@@ -20,9 +20,9 @@ import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 export default class CallerInfo10 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want, launchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo10 onCreate');
-    globalThis.CallerInfo10 = this.context
+    globalThis.CallerInfo10 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `CallerInfo10 JSON.stringify(want) is: ${JSON.stringify(want)}`);
     let options = {
       parameters: {
@@ -34,14 +34,14 @@ export default class CallerInfo10 extends UIAbility {
     });
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo10 onDestroy');
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'commonEventManager CallerInfo10 publish ACTS_TEST_DESTROY');
     });
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo10 onWindowStageCreate');
 
     windowStage.loadContent('testability/pages/Index', (err, data) => {
@@ -53,11 +53,11 @@ export default class CallerInfo10 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo10 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo10 onForeground');
     let caller: Caller;
     // 前台启动Ability，将parameters中的'ohos.aafwk.param.callAbilityToForeground'配置为true
@@ -92,7 +92,7 @@ export default class CallerInfo10 extends UIAbility {
     }, 2000);
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo10 onBackground');
   }

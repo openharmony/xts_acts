@@ -22,9 +22,9 @@ import { AbilityConstant, Want } from '@kit.AbilityKit';
 let backSet:number = 0
 
 export default class CallerInfo01 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want, launchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo01 onCreate');
-    globalThis.CallerInfo01 = this.context
+    globalThis.CallerInfo01 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `CallerInfo01 JSON.stringify(want) is: ${JSON.stringify(want)}`);
     hilog.info(0x0000, 'testTag', '%{public}s', `CallerInfo01 JSON.stringify(want.parameters) is: ${JSON.stringify(want.parameters)}`);
     let optionsWant = {
@@ -37,7 +37,7 @@ export default class CallerInfo01 extends UIAbility {
     });
   }
 
-  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam):void {
     hilog.info(0x0000, 'testTag', `%{public}s', onNewWant, want.parameters: ${JSON.stringify(want.parameters)}`);
     hilog.info(0x0000, 'testTag', `%{public}s', onNewWant, launchParam: ${JSON.stringify(launchParam)}`);
     let options = {
@@ -50,11 +50,11 @@ export default class CallerInfo01 extends UIAbility {
     });
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo01 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo01 onWindowStageCreate');
 
     windowStage.loadContent('testability/pages/Index', (err, data) => {
@@ -66,11 +66,11 @@ export default class CallerInfo01 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo01 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo01 onForeground');
     if(backSet==0){
       backSet++;
@@ -97,7 +97,7 @@ export default class CallerInfo01 extends UIAbility {
     }
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'CallerInfo01 onBackground');
   }
