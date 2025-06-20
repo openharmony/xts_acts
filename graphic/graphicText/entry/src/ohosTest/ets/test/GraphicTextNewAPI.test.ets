@@ -19,6 +19,7 @@ WindowMode, PointerMatrix } from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
 import { text, drawing, common2D } from "@kit.ArkGraphics2D"
+import { image } from '@kit.ImageKit'
 
 export default function graphicTextNewAPI() {
   describe('graphicTextNewAPI', () => {
@@ -287,7 +288,7 @@ export default function graphicTextNewAPI() {
      * @tc.level     : Level1
      */
     it('graphicTextNewAPI_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
-      let msg  = "====graphicTextNewAPI_0500===="
+      let msg  = "====graphicTextNewAPI_0600===="
       let fontCollection: text.FontCollection = new text.FontCollection();
       try {
         let fontFamilies: Array<string> = ["Clock_01"]
@@ -311,6 +312,168 @@ export default function graphicTextNewAPI() {
         }
         paragraph.layoutSync(600);
         expect(true).assertTrue();
+        done();
+      } catch(err){
+        console.info(msg + 'test error' + err);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : graphicTextNewAPI_0700
+     * @tc.name      : graphicTextNewAPI_0700
+     * @tc.desc      : text newAPI
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it('graphicTextNewAPI_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      let msg  = "====graphicTextNewAPI_0700===="
+      let fontCollection: text.FontCollection = new text.FontCollection();
+      try {
+        let fontFamilies: Array<string> = ["Clock_01"]
+        let myTextStyle: text.TextStyle = {
+          fontFamilies: fontFamilies,
+        };
+        let myParagraphStyle: text.ParagraphStyle = {
+          textStyle: myTextStyle,
+        }
+        let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+        let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
+        paragraphBuilder.addText(textData);
+        expect(true).assertTrue();
+        let paragraph: text.Paragraph = paragraphBuilder.build();
+        try {
+          text.setTextUndefinedGlyphDisplay(text.TextUndefinedGlyphDisplay.USE_TOFU);
+          expect(true).assertTrue();
+        } catch (err) {
+          console.info('www data test error ' + msg + err);
+          expect().assertFail();
+        }
+        paragraph.layoutSync(600);
+        expect(true).assertTrue();
+        let lines: Array<text.TextLine> = paragraph.getTextLines();
+        let length = lines.length;
+        for(let i =0 ; i < length ; i++) {
+          let runs: Array<text.Run> = lines[i].getGlyphRuns();
+          let x: number = 0;
+          let y: number = 0;
+          for (let j = 0; j < runs.length; j++) {
+            let glyphs = runs[j].getGlyphs();
+            let font = runs[j].getFont();
+            try {
+              let textDirection = runs[0].getTextDirection();
+              expect(textDirection).assertEqual(1);
+            } catch (err) {
+              console.info(msg + JSON.stringify(err));
+              expect().assertFail();
+            }
+            try {
+              let advancesRange = runs[0].getAdvances({start:1, end:2});
+              expect(true).assertTrue();
+            } catch (err) {
+              console.info(msg + JSON.stringify(err));
+              expect().assertFail();
+            }
+            try {
+              let advancesRange = runs[0].getAdvances({start:-1, end:2});
+              expect(advancesRange).assertEqual(undefined);
+            } catch (err) {
+              console.info(msg + JSON.stringify(err));
+              expect().assertFail();
+            }
+
+          }
+        }
+        try {
+          fontCollection.unloadFontSync('custom');
+          expect(true).assertTrue();
+        } catch (err) {
+          console.info('www data test error ' + msg + err);
+          expect().assertFail();
+        }
+        done();
+      } catch(err){
+        console.info(msg + 'test error' + err);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : graphicTextNewAPI_0800
+     * @tc.name      : graphicTextNewAPI_0800
+     * @tc.desc      : text newAPI
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it('graphicTextNewAPI_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      let msg  = "====graphicTextNewAPI_0800===="
+      let fontCollection: text.FontCollection = new text.FontCollection();
+      try {
+        let fontFamilies: Array<string> = ["Clock_01"]
+        let myTextStyle: text.TextStyle = {
+          fontFamilies: fontFamilies,
+        };
+        let myParagraphStyle: text.ParagraphStyle = {
+          textStyle: myTextStyle,
+        }
+        let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+        let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
+        paragraphBuilder.addText(textData);
+        expect(true).assertTrue();
+        let paragraph: text.Paragraph = paragraphBuilder.build();
+        try {
+          text.setTextUndefinedGlyphDisplay(text.TextUndefinedGlyphDisplay.USE_DEFAULT);
+          expect(true).assertTrue();
+        } catch (err) {
+          console.info('www data test error ' + msg + err);
+          expect().assertFail();
+        }
+        paragraph.layoutSync(600);
+        expect(true).assertTrue();
+        let lines: Array<text.TextLine> = paragraph.getTextLines();
+        let length = lines.length;
+        for(let i =0 ; i < length ; i++) {
+          let runs: Array<text.Run> = lines[i].getGlyphRuns();
+          let x: number = 0;
+          let y: number = 0;
+          for (let j = 0; j < runs.length; j++) {
+            let glyphs = runs[j].getGlyphs();
+            let font = runs[j].getFont();
+            try {
+              let textDirection = runs[0].getTextDirection();
+              expect(textDirection).assertEqual(1);
+            } catch (err) {
+              console.info(msg + JSON.stringify(err));
+              expect().assertFail();
+            }
+            try {
+              let advancesRange = runs[0].getAdvances({start:0, end:-10});
+              expect(advancesRange).assertEqual(undefined);
+            } catch (err) {
+              console.info(msg + JSON.stringify(err));
+              expect().assertFail();
+            }
+            try {
+              let advancesNull = runs[0].getAdvances(null);
+              expect(advancesNull).assertEqual(undefined);
+            } catch (err) {
+              console.info(msg + JSON.stringify(err));
+              expect().assertFail();
+            }
+
+          }
+        }
+        try {
+          fontCollection.unloadFont('custom');
+          expect(true).assertTrue();
+        } catch (err) {
+          console.info('www data test error ' + msg + err);
+          expect().assertFail();
+        }
         done();
       } catch(err){
         console.info(msg + 'test error' + err);
