@@ -16,6 +16,8 @@ import account from '@ohos.account.appAccount'
 import Want from '@ohos.app.ability.Want';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { Driver, ON } from '@ohos.UiTest'
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
 
 const name = 'zhangsan'
 const fakeOwner = 'com.acts.notExist'
@@ -35,11 +37,11 @@ export default function AppAccountAuthenticatorStage2Stage() {
         action: "action1",
         parameters: {},
       }
-      try {
-        await globalThis.abilityContext.startAbility(wantInfo);
-      } catch (err) {
-        console.info("====>startAbility err:" + JSON.stringify(err));
-      }
+      globalThis.abilityContext.startAbilityForResult(wantInfo, (err: BusinessError, result: common.AbilityResult) => {
+        console.info("====>startAbilityForResult err: " + JSON.stringify(err));
+        console.info("====>startAbilityForResult result: " + JSON.stringify(result));
+        done();
+      });
       await driver.delayMs(500);
       try {
         let allowed = await driver.findComponent(ON.text("允许"));
@@ -54,7 +56,6 @@ export default function AppAccountAuthenticatorStage2Stage() {
       } catch (err) {
         console.info("====>click button err:" + JSON.stringify(err));
       }
-      done();
     });
 
     /*
@@ -65,7 +66,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0100 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start createAccountImplicitly");
@@ -99,7 +100,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0200 start====");
       let appAccountManager = account.createAppAccountManager();
       let setOptions: account.SetPropertiesOptions = {
@@ -150,7 +151,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0300 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start auth");
@@ -188,7 +189,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: Record<string, Object> = {
@@ -228,7 +229,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0500 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start verifyCredential");
@@ -261,7 +262,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -297,7 +298,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0700 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start setAuthenticatorProperties");
@@ -327,7 +328,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -360,7 +361,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_0900 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start checkAccountLabels");
@@ -385,7 +386,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_1000 start====");
       let appAccountManager = account.createAppAccountManager();
       try {
@@ -409,7 +410,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_1100 start====");
       let select_options: account.SelectAccountsOptions = {
         allowedOwners:[owner_stage]
@@ -437,7 +438,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_1200 start====");
       let select_options: account.SelectAccountsOptions = {
         requiredLabels: ["male", "30-40"]
@@ -465,7 +466,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_1300 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start queryAuthenticatorInfo");
@@ -490,7 +491,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('AppAccountAuthenticatorStage2Stage_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AppAccountAuthenticatorStage2Stage_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("====>AppAccountAuthenticatorStage2Stage_1400 start====");
       let appAccountManager = account.createAppAccountManager();
       try {

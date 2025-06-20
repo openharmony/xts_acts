@@ -77,7 +77,7 @@ export default function ActsDAGetSetTest() {
         * @tc.number   : getDistributedAccountAbility_test
         * @tc.name     : testDistributedFunction
         * @tc.desc     : Test distributedAccount.getDistributedAccountAbility API functionality.
-        * @tc.level    : Level3
+        * @tc.level    : Level0
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
@@ -96,11 +96,11 @@ export default function ActsDAGetSetTest() {
         * @tc.number   : getOsAccountDistributedInfo_test001
         * @tc.name     : testDistributedFunction
         * @tc.desc     : Test distributedAccount.getOsAccountDistributedInfo API functionality.
-        * @tc.level    : Level3
+        * @tc.level    : Level0
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getOsAccountDistributedInfo_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('getOsAccountDistributedInfo_test001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfo().then( (data) => {
                 console.info('====>getOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
@@ -115,7 +115,7 @@ export default function ActsDAGetSetTest() {
         * @tc.number   : getOsAccountDistributedInfo_test002
         * @tc.name     : testDistributedFunction
         * @tc.desc     : Test distributedAccount.getOsAccountDistributedInfo API functionality by callback.
-               * @tc.level    : Level3
+        * @tc.level    : Level0
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
@@ -155,11 +155,11 @@ export default function ActsDAGetSetTest() {
         * @tc.number   : getOsAccountDistributedInfoByLocalId_test002
         * @tc.name     : testDistributedFunction
         * @tc.desc     : Test distributedAccount.getOsAccountDistributedInfo API functionality by callback.
-        * @tc.level    : Level3
+        * @tc.level    : Level0
         * @tc.size     : MediumTest
         * @tc.type     : Function
         */
-        it('getOsAccountDistributedInfoByLocalId_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('getOsAccountDistributedInfoByLocalId_test002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfoByLocalId(100, function (err, data) {
                 console.info('====>getOsAccountDistributedInfoByLocalId_test002 err:' + JSON.stringify(err))
@@ -1322,7 +1322,7 @@ export default function ActsDAGetSetTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_ErrCode_0100', 3, async function (done) {
+        it('SUB_Account_DistributedAccount_ErrCode_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>SUB_Account_DistributedAccount_ErrCode_0100 start====");
             let accountAbility = account.getDistributedAccountAbility();
             try {
@@ -1351,7 +1351,7 @@ export default function ActsDAGetSetTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_ErrCode_0200', 3, async function (done) {
+        it('SUB_Account_DistributedAccount_ErrCode_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>SUB_Account_DistributedAccount_ErrCode_0200 start====");
             let accountAbility = account.getDistributedAccountAbility();
             try {
@@ -1379,7 +1379,7 @@ export default function ActsDAGetSetTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_ErrCode_0300', 3, async function (done) {
+        it('SUB_Account_DistributedAccount_ErrCode_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>SUB_Account_DistributedAccount_ErrCode_0300 start====");
             let accountAbility = account.getDistributedAccountAbility();
             try {
@@ -1407,7 +1407,7 @@ export default function ActsDAGetSetTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_ErrCode_0400', 3, async function (done) {
+        it('SUB_Account_DistributedAccount_ErrCode_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>SUB_Account_DistributedAccount_ErrCode_0400 start====");
             let accountAbility = account.getDistributedAccountAbility();
             try {
@@ -1435,7 +1435,7 @@ export default function ActsDAGetSetTest() {
          * @tc.size    : MediumTest
          * @tc.type    : Function
          */
-        it('SUB_Account_DistributedAccount_ErrCode_0500', 3, async function (done) {
+        it('SUB_Account_DistributedAccount_ErrCode_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>SUB_Account_DistributedAccount_ErrCode_0500 start====");
             let accountAbility = account.getDistributedAccountAbility();
             try {
