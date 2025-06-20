@@ -40,6 +40,7 @@ group("hiviewdfxtestacts") {
       "hitracechainjstest:ActsHiTraceChainJsTest",
       "hitracemetertest:ActsHitraceMeterTest",
       "hitracendktest:ActsHitraceNdkTest",
+      "hitracemeterteststatic:ActsHitraceMeterStaticTest",
       "hiview/faultlogger/faultloggerjs:faultloggerjs_test",
     ]
   }
