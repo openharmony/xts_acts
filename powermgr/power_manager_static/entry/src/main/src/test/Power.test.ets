@@ -357,7 +357,7 @@ export default function PowerTest() {
         ohos_power.setPowerMode(ohos_power.DevicePowerMode.MODE_NORMAL, (error: BusinessError | null) => {
           if (error) {
             hilog.error(domain, tag, `${TAG} error.toString: ${JSON.stringify(error)}`);
-            expect(error.message).assertContain('System permission is denied');
+            expect(error?.message).assertContain('System permission is denied');
             done();
           } else {
             hilog.error(domain, tag, `${TAG} setPowerMode Failure`);
