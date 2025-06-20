@@ -70,6 +70,7 @@ group("ability_runtime") {
       "actsrestartapptest:ActsRestartAppTest",
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
       "actsserviceabilityclienttest:serviceability",
+      "actsshareacquiresharedata:ActsShareAcquireShareData",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
       "actsstartAndTerminatetest:ActsStartAndTerminate",
       "actsstartabilityforresulttest:actsstartabilityforresulttest",
