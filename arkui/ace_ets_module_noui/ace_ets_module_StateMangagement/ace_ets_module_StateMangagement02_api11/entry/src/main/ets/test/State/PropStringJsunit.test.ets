@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -55,7 +55,7 @@ export default function PropStringJsunit() {
       done();
     });
 
-    it('PropStringJsunit_0200', 0, async (done: Function) => {
+    it('PropStringJsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('PropStringJsunit_0200 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('PropString_A'));
@@ -70,7 +70,7 @@ export default function PropStringJsunit() {
       done();
     });
 
-    it('PropStringJsunit_0400', 0, async (done: Function) => {
+    it('PropStringJsunit_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('PropStringJsunit_0400 START');
       let driver = await UiDriver.create()

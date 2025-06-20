@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 
 import {
@@ -66,7 +66,7 @@ export default function onGetIrregular2Jsunit() {
     * @tc.desc  : Set onGetIrregularSizeByIndex[1,2], and the custom size of the obtained index setting is laid out in 1 row and 2 columns
     * @tc.level : Level 2
     */
-    it('onGetIrregular2Jsunit_0001', 0, async (done: Function) => {
+    it('onGetIrregular2Jsunit_0001',  Level.LEVEL0, async (done: Function) => {
       console.info('[onGetIrregular2Jsunit_0000] START');
       await CommonFunc.sleep(1000);
       let Grid: RectValue = CommonFunc.getComponentRect('GridItem2');

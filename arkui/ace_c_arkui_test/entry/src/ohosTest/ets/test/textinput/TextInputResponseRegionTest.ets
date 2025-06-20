@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputResponseRegion001', 0, async (done: Function) => {
+    it('testTextInputResponseRegion001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputResponseRegion001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textInputResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputResponseRegion002', 0, async (done: Function) => {
+    it('testTextInputResponseRegion002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputResponseRegion002()).assertEqual(0)
       done();
     });

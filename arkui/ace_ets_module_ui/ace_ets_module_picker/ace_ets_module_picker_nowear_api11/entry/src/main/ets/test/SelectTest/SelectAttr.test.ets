@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from "../../MainAbility/common/Common";
 import { Driver, ON ,MouseButton} from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function SelectAttr() {
     * @tc.desc        SelectAttr OptionWidthMode.FIT_TRIGGER test
     * @tc.level       Level 2
     */
-    it('SelectAttr_001', 0, async (done: Function) => {
+    it('SelectAttr_001', Level.LEVEL1, async (done: Function) => {
       console.info('[SelectAttr_001] START');
       await Utils.sleep(1000);
 

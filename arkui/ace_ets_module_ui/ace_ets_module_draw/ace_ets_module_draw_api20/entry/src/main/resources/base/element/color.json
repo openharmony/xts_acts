@@ -11,6 +11,14 @@
     {
       "name": "color_world",
       "value": "#ff0000ff"
+    },
+    {
+      "name": "color_stroke",
+      "value": "#FFEE8443"
+    },
+    {
+      "name": "color_fill",
+      "value": "#FF317AF7"
     }
   ]
 }

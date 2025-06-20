@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 export default function ActsDatePickerTest() {
@@ -38,7 +38,7 @@ export default function ActsDatePickerTest() {
       }
       done()
     });
-    it('Stage_DatePicker_Test_0010', 0, async (done: Function) => {
+    it('Stage_DatePicker_Test_0010', Level.LEVEL1, async (done: Function) => {
       console.info('Stage_DatePicker_Test_0010 START');
       try{
         let strJson = getInspectorByKey('Stage_DatePicker_Test_0010');

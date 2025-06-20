@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function sidebarTypeTest() {
   describe('sidebarTypeTest', () => {
@@ -37,7 +37,7 @@ export default function sidebarTypeTest() {
       done()
     });
 
-    it('ArkUX_SideBarContainer_1000', 0, async (done: Function) => {
+    it('ArkUX_SideBarContainer_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1000 START');
       setTimeout(() => {
         try {
@@ -56,7 +56,7 @@ export default function sidebarTypeTest() {
       }, 500)
     });
 
-    it('ArkUX_SideBarContainer_1100', 0, async (done: Function) => {
+    it('ArkUX_SideBarContainer_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1100 START');
       setTimeout(() => {
         try {
@@ -76,7 +76,7 @@ export default function sidebarTypeTest() {
       }, 500)
     });
 
-    it('ArkUX_SideBarContainer_1200', 0, async (done: Function) => {
+    it('ArkUX_SideBarContainer_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1200 START');
       setTimeout(() => {
         try {
@@ -95,7 +95,7 @@ export default function sidebarTypeTest() {
       }, 500)
     });
 
-    it('ArkUX_SideBarContainer_1300', 0, async (done: Function) => {
+    it('ArkUX_SideBarContainer_1300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1300 START');
       setTimeout(() => {
         try {
@@ -114,7 +114,7 @@ export default function sidebarTypeTest() {
       }, 500)
     });
 
-    it('ArkUX_SideBarContainer_1400', 0, async (done: Function) => {
+    it('ArkUX_SideBarContainer_1400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1400 START');
       setTimeout(() => {
         try {

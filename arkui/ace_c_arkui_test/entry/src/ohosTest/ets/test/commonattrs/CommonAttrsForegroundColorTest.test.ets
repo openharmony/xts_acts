@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsForegroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsForegroundColor001', 0, async (done: Function) => {
+    it('testCommonAttrsForegroundColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsForegroundColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsForegroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsForegroundColor002', 0, async (done: Function) => {
+    it('testCommonAttrsForegroundColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsForegroundColor002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsForegroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsForegroundColor003', 0, async (done: Function) => {
+    it('testCommonAttrsForegroundColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsForegroundColor003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsForegroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsForegroundColor004', 0, async (done: Function) => {
+    it('testCommonAttrsForegroundColor004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsForegroundColor004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsForegroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsForegroundColor005', 0, async (done: Function) => {
+    it('testCommonAttrsForegroundColor005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsForegroundColor005()).assertEqual(0)
       done()
     })

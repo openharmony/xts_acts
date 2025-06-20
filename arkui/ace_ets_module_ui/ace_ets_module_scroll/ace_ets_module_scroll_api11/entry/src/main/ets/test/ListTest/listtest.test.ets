@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
@@ -51,7 +51,7 @@ export default function listtestIdleJsunit() {
      * @tc.name         testlisttestIdle0001
      * @tc.desic         acelisttestIdleEtsTest0001
      */
-    it('testlisttestIdle0001', 0, async (done: Function) => {
+    it('testlisttestIdle0001', Level.LEVEL1, async (done: Function) => {
       console.info('listtestIdle testlisttestIdle0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('ScrollList');

@@ -45,7 +45,7 @@ export default function AbilityMonitor2Test() {
   let TAG: string = "";
   let LABLE: string = "AbilityMonitor2Test";
   let monitor: AbilityDelegatorRegistry.AbilityMonitor | null | undefined = undefined;
-  let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+  let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 
   describe("AbilityMonitor2Test", () => {
     beforeEach(async (done: Function) => {
@@ -199,8 +199,8 @@ export default function AbilityMonitor2Test() {
     it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0300";
       console.log(LABLE + TAG + " start");
-      if (deviceType === '2in1') {
-        console.log(LABLE + TAG + " deviceType: " + deviceType);
+      if (deviceSupport === 'false') {
+        console.log(LABLE + TAG + " deviceSupport: " + deviceSupport);
         done();
         return;
       }
@@ -452,8 +452,8 @@ export default function AbilityMonitor2Test() {
     it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0300";
       console.log(LABLE + TAG + " start");
-      if (deviceType === '2in1') {
-        console.log(LABLE + TAG + " deviceType: " + deviceType);
+      if (deviceSupport === 'false') {
+        console.log(LABLE + TAG + " deviceSupport: " + deviceSupport);
         done();
         return;
       }

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function navigationTypeTest() {
   describe('navigationTypeTest', () => {
@@ -38,7 +38,7 @@ export default function navigationTypeTest() {
       done()
     });
 
-    it('ArkUX_Navigation_1600', 0, async (done: Function) => {
+    it('ArkUX_Navigation_1600',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Navigation_1600 START');
       setTimeout(() => {
         try {
@@ -58,7 +58,7 @@ export default function navigationTypeTest() {
       }, 500)
     })
 
-    it('ArkUX_Navigation_1700', 0, async (done: Function) => {
+    it('ArkUX_Navigation_1700',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Navigation_1700 START');
       setTimeout(() => {
         try {
@@ -78,7 +78,7 @@ export default function navigationTypeTest() {
       }, 500)
     })
 
-    it('ArkUX_Navigation_1800', 0, async (done: Function) => {
+    it('ArkUX_Navigation_1800',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Navigation_1800 START');
       setTimeout(() => {
         try {
@@ -98,7 +98,7 @@ export default function navigationTypeTest() {
       }, 500)
     });
 
-    it('ArkUX_Navigation_1900', 0, async (done: Function) => {
+    it('ArkUX_Navigation_1900',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Navigation_1900 START');
       setTimeout(() => {
         try {
@@ -118,7 +118,7 @@ export default function navigationTypeTest() {
       }, 500)
     });
 
-    it('ArkUX_Navigation_2000', 0, async (done: Function) => {
+    it('ArkUX_Navigation_2000',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Navigation_2000 START');
       setTimeout(() => {
         try {
@@ -138,7 +138,7 @@ export default function navigationTypeTest() {
       }, 500)
     });
 
-    it('ArkUX_Navigation_2100', 0, async (done: Function) => {
+    it('ArkUX_Navigation_2100',  Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Navigation_2100 START');
       setTimeout(() => {
         try {

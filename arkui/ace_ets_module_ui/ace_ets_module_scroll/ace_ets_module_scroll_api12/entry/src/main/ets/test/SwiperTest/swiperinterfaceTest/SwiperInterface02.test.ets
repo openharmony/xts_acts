@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
@@ -52,7 +52,7 @@ export default function SwiperInterface02() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1300', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1300', Level.LEVEL1, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1300 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_1300');
@@ -70,7 +70,7 @@ export default function SwiperInterface02() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1310', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1310', Level.LEVEL1, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1310 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_1310');
@@ -88,7 +88,7 @@ export default function SwiperInterface02() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1320', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1320', Level.LEVEL1, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1320 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_1320');

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 
 export default function DialogTest() {
   describe('DialogTest', () => {
@@ -42,8 +42,13 @@ export default function DialogTest() {
      *@tc.number ArkUX_Dialog_Visual_0060
      *@tc.name   Support modifying the change of Dialog component
      *@tc.desc   Sets the Dialog property parameter to default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
      */
-    it('ArkUX_Dialog_Visual_0060', 0, async (done: Function) => {
+
+
+    it('ArkUX_Dialog_Visual_0060', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Dialog_Visual_0060 START');
       setTimeout(() => {
         try {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -70,7 +70,7 @@ export default function List_lanes() {
      * @tc.name testListLanesToTwo
      * @tc.desc List parent component binds the lanes property lanes(2)
      */
-    it('testListLanesToTwo', 0, async (done: Function) => {
+    it('testListLanesToTwo',  Level.LEVEL0, async (done: Function) => {
       console.info('testListLanesToTwo START');
       globalThis.value.message.notify({
         name: 'addLanes', value: 2
@@ -119,7 +119,7 @@ export default function List_lanes() {
      * @tc.name testListLanesToRange01
      * @tc.desc List parent component binds the lanes property lanes({minLength:100,maxLength:150})
      */
-    it('testListLanesToRange01', 0, async (done: Function) => {
+    it('testListLanesToRange01',  Level.LEVEL0, async (done: Function) => {
       console.info('testListLanesToRange01 START');
       globalThis.value.message.notify({
         name: 'addLanes', value: {
@@ -170,7 +170,7 @@ export default function List_lanes() {
      * @tc.name testListLanesToRange02
      * @tc.desc List parent component binds the lanes property lanes({minLength:150,maxLength:200})
      */
-    it('testListLanesToRange02', 0, async (done: Function) => {
+    it('testListLanesToRange02',  Level.LEVEL0, async (done: Function) => {
       console.info('testListLanesToRange02 START');
       globalThis.value.message.notify({
         name: 'addLanes', value: {

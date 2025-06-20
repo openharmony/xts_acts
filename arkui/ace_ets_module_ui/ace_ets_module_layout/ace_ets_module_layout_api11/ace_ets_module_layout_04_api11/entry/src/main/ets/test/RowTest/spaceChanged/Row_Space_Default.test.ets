@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function Row_Space_Default() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to null
      */
-    it('SUB_ACE_Row_Space_Default_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Row_Space_Default_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_Space_Default_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addSpace1', value: null
@@ -101,7 +101,7 @@ export default function Row_Space_Default() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to -10
      */
-    it('SUB_ACE_Row_Space_Default_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Row_Space_Default_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_Space_Default_TEST_0300] START');
       globalThis.value.message.notify({
         name: 'addSpace1', value: -10
@@ -150,7 +150,7 @@ export default function Row_Space_Default() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to 'abc'
      */
-    it('SUB_ACE_Row_Space_Default_TEST_0400', 0, async (done: Function) => {
+    it('SUB_ACE_Row_Space_Default_TEST_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_Space_Default_TEST_0400] START');
       globalThis.value.message.notify({
         name: 'addSpace2', value: 'abc'
@@ -200,7 +200,7 @@ export default function Row_Space_Default() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to '80%'
      */
-    it('SUB_ACE_Row_Space_Default_TEST_0500', 0, async (done: Function) => {
+    it('SUB_ACE_Row_Space_Default_TEST_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_Space_Default_TEST_0500] START');
       globalThis.value.message.notify({
         name: 'addSpace2', value: '80%'
@@ -250,7 +250,7 @@ export default function Row_Space_Default() {
      * @tc.name testColumnSpace
      * @tc.desc The value of space is set to null
      */
-    it('SUB_ACE_Row_Space_Default_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Row_Space_Default_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_Space_Default_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addSpace1', value: undefined

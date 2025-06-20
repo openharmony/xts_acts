@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function flexHeightModify_StretchJsunit() {
      * @tc.name testFlexItemAlignStretchDefaultSize
      * @tc.desc Check the the default height of the first subcomponent.
      */
-    it('testFlexItemAlignStretchDefaultSize', 0, async () => {
+    it('testFlexItemAlignStretchDefaultSize',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStretchDefaultSize START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
@@ -92,7 +92,7 @@ export default function flexHeightModify_StretchJsunit() {
      * @tc.name testFlexItemAlignStretchHeightModify
      * @tc.desc Modify the first subcomponent's height.
      */
-    it('testFlexItemAlignStretchHeightModify', 0, async () => {
+    it('testFlexItemAlignStretchHeightModify',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStretchHeightModify START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80

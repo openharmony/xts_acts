@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLayoutDirection001', 0, async (done: Function) => {
+    it('testLayoutDirection001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutDirection001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLayoutDirection002', 0, async (done: Function) => {
+    it('testLayoutDirection002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutDirection002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLayoutDirection003', 0, async (done: Function) => {
+    it('testLayoutDirection003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutDirection003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLayoutDirection004', 0, async (done: Function) => {
+    it('testLayoutDirection004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutDirection004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLayoutDirection005', 0, async (done: Function) => {
+    it('testLayoutDirection005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutDirection005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLayoutDirection006', 0, async (done: Function) => {
+    it('testLayoutDirection006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutDirection006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLayoutDirection007', 0, async (done: Function) => {
+    it('testLayoutDirection007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutDirection007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnsTemplate001', 0, async (done: Function) => {
+    it('testColumnsTemplate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnsTemplate001()).assertEqual(0);
       done();
     });
@@ -138,7 +138,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnsTemplate002', 0, async (done: Function) => {
+    it('testColumnsTemplate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnsTemplate002()).assertEqual(0);
       done();
     });
@@ -151,7 +151,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnsTemplate003', 0, async (done: Function) => {
+    it('testColumnsTemplate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnsTemplate003()).assertEqual(0);
       done();
     });
@@ -164,7 +164,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRowsTemplate001', 0, async (done: Function) => {
+    it('testRowsTemplate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowsTemplate001()).assertEqual(0);
       done();
     });
@@ -177,7 +177,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRowsTemplate002', 0, async (done: Function) => {
+    it('testRowsTemplate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowsTemplate002()).assertEqual(0);
       done();
     });
@@ -190,7 +190,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRowsTemplate003', 0, async (done: Function) => {
+    it('testRowsTemplate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowsTemplate003()).assertEqual(0);
       done();
     });
@@ -203,7 +203,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnsGap001', 0, async (done: Function) => {
+    it('testColumnsGap001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnsGap001()).assertEqual(0);
       done();
     });
@@ -216,7 +216,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnsGap002', 0, async (done: Function) => {
+    it('testColumnsGap002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnsGap002()).assertEqual(0);
       done();
     });
@@ -229,7 +229,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnsGap003', 0, async (done: Function) => {
+    it('testColumnsGap003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnsGap003()).assertEqual(0);
       done();
     });
@@ -242,7 +242,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRowsGap001', 0, async (done: Function) => {
+    it('testRowsGap001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowsGap001()).assertEqual(0);
       done();
     });
@@ -255,7 +255,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRowsGap002', 0, async (done: Function) => {
+    it('testRowsGap002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowsGap002()).assertEqual(0);
       done();
     });
@@ -268,7 +268,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRowsGap003', 0, async (done: Function) => {
+    it('testRowsGap003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowsGap003()).assertEqual(0);
       done();
     });
@@ -281,7 +281,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNestedScroll001', 0, async (done: Function) => {
+    it('testNestedScroll001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNestedScroll001()).assertEqual(0);
       done();
     });
@@ -294,7 +294,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNestedScroll002', 0, async (done: Function) => {
+    it('testNestedScroll002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNestedScroll002()).assertEqual(0);
       done();
     });
@@ -307,7 +307,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNestedScroll003', 0, async (done: Function) => {
+    it('testNestedScroll003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNestedScroll003()).assertEqual(0);
       done();
     });
@@ -320,7 +320,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNestedScroll004', 0, async (done: Function) => {
+    it('testNestedScroll004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNestedScroll004()).assertEqual(0);
       done();
     });
@@ -333,7 +333,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNestedScroll005', 0, async (done: Function) => {
+    it('testNestedScroll005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNestedScroll005()).assertEqual(0);
       done();
     });
@@ -346,7 +346,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNestedScroll006', 0, async (done: Function) => {
+    it('testNestedScroll006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNestedScroll006()).assertEqual(0);
       done();
     });
@@ -359,7 +359,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCachedCount001', 0, async (done: Function) => {
+    it('testCachedCount001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCachedCount001()).assertEqual(0);
       done();
     });
@@ -372,7 +372,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCachedCount002', 0, async (done: Function) => {
+    it('testCachedCount002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCachedCount002()).assertEqual(0);
       done();
     });
@@ -385,7 +385,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCachedCount003', 0, async (done: Function) => {
+    it('testCachedCount003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCachedCount003()).assertEqual(0);
       done();
     });
@@ -398,7 +398,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCachedCount004', 0, async (done: Function) => {
+    it('testCachedCount004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCachedCount004()).assertEqual(0);
       done();
     });
@@ -411,7 +411,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBar001', 0, async (done: Function) => {
+    it('testScrollBar001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBar001()).assertEqual(0);
       done();
     });
@@ -424,7 +424,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBar002', 0, async (done: Function) => {
+    it('testScrollBar002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBar002()).assertEqual(0);
       done();
     });
@@ -437,7 +437,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBar003', 0, async (done: Function) => {
+    it('testScrollBar003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBar003()).assertEqual(0);
       done();
     });
@@ -450,7 +450,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBar004', 0, async (done: Function) => {
+    it('testScrollBar004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBar004()).assertEqual(0);
       done();
     });
@@ -463,7 +463,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBar005', 0, async (done: Function) => {
+    it('testScrollBar005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBar005()).assertEqual(0);
       done();
     });
@@ -476,7 +476,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollBarWidth001', 0, async (done: Function) => {
+    it('testWaterFlowScrollBarWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlowScrollBarWidth001()).assertEqual(0);
       done();
     });
@@ -489,7 +489,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollBarWidth002', 0, async (done: Function) => {
+    it('testWaterFlowScrollBarWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlowScrollBarWidth002()).assertEqual(0);
       done();
     });
@@ -502,7 +502,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollBarWidth003', 0, async (done: Function) => {
+    it('testWaterFlowScrollBarWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlowScrollBarWidth003()).assertEqual(0);
       done();
     });
@@ -515,7 +515,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollBarWidth004', 0, async (done: Function) => {
+    it('testWaterFlowScrollBarWidth004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlowScrollBarWidth004()).assertEqual(0);
       done();
     });
@@ -528,7 +528,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarColor001', 0, async (done: Function) => {
+    it('testScrollBarColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarColor001()).assertEqual(0);
       done();
     });
@@ -541,7 +541,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarColor002', 0, async (done: Function) => {
+    it('testScrollBarColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarColor002()).assertEqual(0);
       done();
     });
@@ -554,7 +554,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarColor003', 0, async (done: Function) => {
+    it('testScrollBarColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarColor003()).assertEqual(0);
       done();
     });
@@ -567,7 +567,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testItemConstraintSize001', 0, async (done: Function) => {
+    it('testItemConstraintSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testItemConstraintSize001()).assertEqual(0);
       done();
     });
@@ -580,7 +580,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testItemConstraintSize002', 0, async (done: Function) => {
+    it('testItemConstraintSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testItemConstraintSize002()).assertEqual(0);
       done();
     });
@@ -593,7 +593,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testItemConstraintSize003', 0, async (done: Function) => {
+    it('testItemConstraintSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testItemConstraintSize003()).assertEqual(0);
       done();
     });
@@ -606,7 +606,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testItemConstraintSize004', 0, async (done: Function) => {
+    it('testItemConstraintSize004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testItemConstraintSize004()).assertEqual(0);
       done();
     });
@@ -619,7 +619,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEnableScrollInteraction001', 0, async (done: Function) => {
+    it('testEnableScrollInteraction001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testEnableScrollInteraction001()).assertEqual(0);
       done();
     });
@@ -632,7 +632,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEnableScrollInteraction002', 0, async (done: Function) => {
+    it('testEnableScrollInteraction002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testEnableScrollInteraction002()).assertEqual(0);
       done();
     });
@@ -645,7 +645,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEnableScrollInteraction003', 0, async (done: Function) => {
+    it('testEnableScrollInteraction003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testEnableScrollInteraction003()).assertEqual(0);
       done();
     });
@@ -658,7 +658,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEdgeEffect001', 0, async (done: Function) => {
+    it('testEdgeEffect001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testEdgeEffect001()).assertEqual(0);
       done();
     });
@@ -671,7 +671,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEdgeEffect002', 0, async (done: Function) => {
+    it('testEdgeEffect002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testEdgeEffect002()).assertEqual(0);
       done();
     });
@@ -684,7 +684,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEdgeEffect003', 0, async (done: Function) => {
+    it('testEdgeEffect003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testEdgeEffect003()).assertEqual(0);
       done();
     });
@@ -697,7 +697,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEdgeEffect004', 0, async (done: Function) => {
+    it('testEdgeEffect004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testEdgeEffect004()).assertEqual(0);
       done();
     });
@@ -710,7 +710,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEdgeEffect005', 0, async (done: Function) => {
+    it('testEdgeEffect005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testEdgeEffect005()).assertEqual(0);
       done();
     });
@@ -723,7 +723,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset001', 0, async (done: Function) => {
+    it('testScrollOffset001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset001()).assertEqual(0);
       done();
     });
@@ -736,7 +736,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset002', 0, async (done: Function) => {
+    it('testScrollOffset002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset002()).assertEqual(0);
       done();
     });
@@ -749,7 +749,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset003', 0, async (done: Function) => {
+    it('testScrollOffset003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset003()).assertEqual(0);
       done();
     });
@@ -762,7 +762,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset004', 0, async (done: Function) => {
+    it('testScrollOffset004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset004()).assertEqual(0);
       done();
     });
@@ -775,7 +775,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset005', 0, async (done: Function) => {
+    it('testScrollOffset005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset005()).assertEqual(0);
       done();
     });
@@ -788,7 +788,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset006', 0, async (done: Function) => {
+    it('testScrollOffset006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset006()).assertEqual(0);
       done();
     });
@@ -801,7 +801,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset007', 0, async (done: Function) => {
+    it('testScrollOffset007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset007()).assertEqual(0);
       done();
     });
@@ -814,7 +814,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset008', 0, async (done: Function) => {
+    it('testScrollOffset008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset008()).assertEqual(0);
       done();
     });
@@ -827,7 +827,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset009', 0, async (done: Function) => {
+    it('testScrollOffset009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset009()).assertEqual(0);
       done();
     });
@@ -840,7 +840,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset0010', 0, async (done: Function) => {
+    it('testScrollOffset0010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0010()).assertEqual(0);
       done();
     });
@@ -853,7 +853,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset0011', 0, async (done: Function) => {
+    it('testScrollOffset0011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0011()).assertEqual(0);
       done();
     });
@@ -866,7 +866,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset0012', 0, async (done: Function) => {
+    it('testScrollOffset0012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0012()).assertEqual(0);
       done();
     });
@@ -879,7 +879,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset0013', 0, async (done: Function) => {
+    it('testScrollOffset0013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0013()).assertEqual(0);
       done();
     });
@@ -892,7 +892,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset0014', 0, async (done: Function) => {
+    it('testScrollOffset0014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0014()).assertEqual(0);
       done();
     });
@@ -905,7 +905,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset0015', 0, async (done: Function) => {
+    it('testScrollOffset0015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0015()).assertEqual(0);
       done();
     });
@@ -918,7 +918,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollOffset0016', 0, async (done: Function) => {
+    it('testScrollOffset0016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0016()).assertEqual(0);
       done();
     });
@@ -931,7 +931,7 @@ export default function waterFlowAttrsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-    it('testScrollOffset0017', 0, async (done: Function) => {
+    it('testScrollOffset0017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0017()).assertEqual(0);
       done();
     });
@@ -944,7 +944,7 @@ export default function waterFlowAttrsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-    it('testScrollOffset0018', 0, async (done: Function) => {
+    it('testScrollOffset0018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0018()).assertEqual(0);
       done();
     });
@@ -957,7 +957,7 @@ export default function waterFlowAttrsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-    it('testScrollOffset0019', 0, async (done: Function) => {
+    it('testScrollOffset0019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollOffset0019()).assertEqual(0);
       done();
     });
@@ -970,7 +970,7 @@ export default function waterFlowAttrsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-    it('testScrollEdge001', 0, async (done: Function) => {
+    it('testScrollEdge001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollEdge001()).assertEqual(0);
       done();
     });
@@ -983,7 +983,7 @@ export default function waterFlowAttrsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-    it('testScrollEdge002', 0, async (done: Function) => {
+    it('testScrollEdge002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollEdge002()).assertEqual(0);
       done();
     });
@@ -996,7 +996,7 @@ export default function waterFlowAttrsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-    it('testScrollEdge003', 0, async (done: Function) => {
+    it('testScrollEdge003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollEdge003()).assertEqual(0);
       done();
     });
@@ -1009,7 +1009,7 @@ export default function waterFlowAttrsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-    it('testScrollEdge004', 0, async (done: Function) => {
+    it('testScrollEdge004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollEdge004()).assertEqual(0);
       done();
     });
@@ -1022,7 +1022,7 @@ export default function waterFlowAttrsTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-    it('testScrollEdge005', 0, async (done: Function) => {
+    it('testScrollEdge005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollEdge005()).assertEqual(0);
       done();
     });
@@ -1035,7 +1035,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollPage001', 0, async (done: Function) => {
+    it('testScrollPage001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollPage001()).assertEqual(0);
       done();
     });
@@ -1048,7 +1048,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollPage002', 0, async (done: Function) => {
+    it('testScrollPage002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollPage002()).assertEqual(0);
       done();
     });
@@ -1061,7 +1061,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollPage003', 0, async (done: Function) => {
+    it('testScrollPage003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollPage003()).assertEqual(0);
       done();
     });
@@ -1074,7 +1074,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBy001', 0, async (done: Function) => {
+    it('testScrollBy001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBy001()).assertEqual(0);
       done();
     });
@@ -1087,7 +1087,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBy002', 0, async (done: Function) => {
+    it('testScrollBy002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBy002()).assertEqual(0);
       done();
     });
@@ -1100,7 +1100,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBy003', 0, async (done: Function) => {
+    it('testScrollBy003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBy003()).assertEqual(0);
       done();
     });
@@ -1113,7 +1113,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBy004', 0, async (done: Function) => {
+    it('testScrollBy004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBy004()).assertEqual(0);
       done();
     });
@@ -1126,7 +1126,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption001', 0, async (done: Function) => {
+    it('testSectionOption001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption001()).assertEqual(0);
       done();
     });
@@ -1139,7 +1139,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption002', 0, async (done: Function) => {
+    it('testSectionOption002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption002()).assertEqual(0);
       done();
     });
@@ -1152,7 +1152,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption003', 0, async (done: Function) => {
+    it('testSectionOption003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption003()).assertEqual(0);
       done();
     });
@@ -1165,7 +1165,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption004', 0, async (done: Function) => {
+    it('testSectionOption004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption004()).assertEqual(0);
       done();
     });
@@ -1178,7 +1178,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption005', 0, async (done: Function) => {
+    it('testSectionOption005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption005()).assertEqual(0);
       done();
     });
@@ -1191,7 +1191,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption006', 0, async (done: Function) => {
+    it('testSectionOption006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption006()).assertEqual(0);
       done();
     });
@@ -1204,7 +1204,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption007', 0, async (done: Function) => {
+    it('testSectionOption007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption007()).assertEqual(0);
       done();
     });
@@ -1217,7 +1217,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption008', 0, async (done: Function) => {
+    it('testSectionOption008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption008()).assertEqual(0);
       done();
     });
@@ -1230,7 +1230,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption009', 0, async (done: Function) => {
+    it('testSectionOption009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption009()).assertEqual(0);
       done();
     });
@@ -1243,7 +1243,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption010', 0, async (done: Function) => {
+    it('testSectionOption010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption010()).assertEqual(0);
       done();
     });
@@ -1256,7 +1256,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption011', 0, async (done: Function) => {
+    it('testSectionOption011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption011()).assertEqual(0);
       done();
     });
@@ -1269,7 +1269,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSectionOption012', 0, async (done: Function) => {
+    it('testSectionOption012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSectionOption012()).assertEqual(0);
       done();
     });
@@ -1282,7 +1282,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowNodeAdapter001', 0, async (done: Function) => {
+    it('testWaterFlowNodeAdapter001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlowNodeAdapter001()).assertEqual(0);
       done();
     });
@@ -1295,7 +1295,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowFooter001', 0, async (done: Function) => {
+    it('testWaterFlowFooter001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlowFooter001()).assertEqual(0);
       done();
     });
@@ -1308,7 +1308,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollFriction001', 0, async (done: Function) => {
+    it('testWaterFlowScrollFriction001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlowScrollFriction001()).assertEqual(0);
       done();
     });
@@ -1321,7 +1321,7 @@ export default function waterFlowAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollFriction002', 0, async (done: Function) => {
+    it('testWaterFlowScrollFriction002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlowScrollFriction002()).assertEqual(0);
       done();
     });

@@ -16,7 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
-
+import { BusinessError } from '@ohos.base';
+import uniformDataStruct from '@ohos.data.uniformDataStruct';
 let resProgressInfo:unifiedDataChannel.ProgressInfo;
 
 export default function UDMFApiTest() {
@@ -2024,6 +2025,1075 @@ export default function UDMFApiTest() {
       expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
       expect(resProgressInfo.status).assertEqual(progressInfo.status);
       console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6300 end");
+      done();
+    })
+     /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.SYSTEM_SHARE
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400 " + data);
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.SYSTEM_SHARE,
+          key:data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(plainText.uniformDataType);
+                expect(record["textContent"]).assertEqual(plainText.textContent);
+                expect(record["abstract"]).assertEqual(plainText.abstract);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(plainText.details));
+              }
+            }
+          }
+          await unifiedDataChannel.deleteData(options1);
+          }).catch((err: BusinessError) => {
+            console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400 " + err.code + err.message);
+            expect().assertFail();
+          })
+        }).catch((err: BusinessError) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400 " + err.code + err.message);
+          expect().assertFail();
+        });
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400 end");
+        done();
+      })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.PICKER
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500 " + data);
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.PICKER,
+          key:data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(plainText.uniformDataType);
+                expect(record["textContent"]).assertEqual(plainText.textContent);
+                expect(record["abstract"]).assertEqual(plainText.abstract);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(plainText.details));
+              }
+            }
+          }
+          await unifiedDataChannel.deleteData(options1);
+        }).catch((err: BusinessError) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500 " + err.code + err.message);
+          expect().assertFail();
+        })
+      }).catch((err: BusinessError) => {
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400 " + err.code + err.message);
+        expect().assertFail();
+      });
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6600
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6600
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6600 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.MENU
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+     console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500 " + data);
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.MENU,
+          key:data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(plainText.uniformDataType);
+                expect(record["textContent"]).assertEqual(plainText.textContent);
+                expect(record["abstract"]).assertEqual(plainText.abstract);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(plainText.details));
+              }
+            }
+          }
+          await unifiedDataChannel.deleteData(options1);
+        }).catch((err: BusinessError) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6500 " + err.code + err.message);
+          expect().assertFail();
+        })
+      }).catch((err: BusinessError) => {
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6400 " + err.code + err.message);
+        expect().assertFail();
+      });
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6600 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6700
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6700
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6700 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DRAG
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      try{
+        await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6700 " + data);
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6700 " + err.code + err.message);
+          expect(err.code).assertEqual("401");
+        });
+      }catch(e){
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6700 e" + e.code + e.message);
+        expect(e.code).assertEqual("401");
+      } 
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6700 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6800
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6800
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6800 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DRAG
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      try{
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6800 " + data);
+          expect().assertFail();
+        })
+      }catch(e){
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6800 e" + e.code + e.message);
+        expect(e.code).assertEqual("401");
+      } 
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6800 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6900
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6900
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6900 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DRAG
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      try{
+        await unifiedDataChannel.queryData(options).then(async (data) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6900 " + data);
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6900 " + err.code + err.message);
+          expect(err.code).assertEqual("401");
+        });
+      }catch(e){
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6900 e" + e.code + e.message);
+        expect(e.code).assertEqual("401");
+      } 
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6900 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7000
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7000
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6800 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DRAG
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      try{
+        unifiedDataChannel.queryData(options, (data) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7000 " + data);
+          expect().assertFail();
+        })
+      }catch(e){
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7000 e" + e.code + e.message);
+        expect(e.code).assertEqual("401");
+      } 
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7000 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7100
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7100
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7100 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DRAG
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      try{
+        await unifiedDataChannel.deleteData(options).then(async (data) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7100 " + data);
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7100 " + err.code + err.message);
+          expect(err.code).assertEqual("401");
+        });
+      }catch(e){
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7100 e" + e.code + e.message);
+        expect(e.code).assertEqual("401");
+      } 
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7100 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7200
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7200
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7200 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DRAG
+      };
+      let plainTextDetails: Record<string, string> = {
+        'attr1': 'value1',
+        'attr2': 'value2',
+      }
+      let plainText: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example',
+        abstract: 'this is abstract',
+        details: plainTextDetails,
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      try{
+        unifiedDataChannel.deleteData(options, (data) => {
+          console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7200 " + data);
+          expect().assertFail();
+        })
+      }catch(e){
+        console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7200 e" + e.code + e.message);
+        expect(e.code).assertEqual("401");
+      } 
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7200 end");
+      done();
+    })
+
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7300
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7300
+     * @tc.desc      : unifiedDataChannel updateData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options= {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      }
+      let plainText = new unifiedDataChannel.PlainText();
+      plainText.textContent = "hello world!";
+      let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
+      try {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+          if (e !== undefined) {
+            console.info(` Failed to insertData. code is ${e.code},message is ${e.message} `);
+            return;
+          }
+          console.info( `insertData0100 success; data = ${data}, options = ${options}`);
+          unifiedDataChannel.updateData({
+            intention: unifiedDataChannel.Intention.DATA_HUB,
+            key: data
+          }, unifiedData, (err, ret) => {
+            if (err === undefined) {
+              console.info( `updateData success; data = ${ret}, options = ${options}`);
+              expect(err === undefined).assertTrue()
+              done();
+            } else {
+              console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
+              expect(err !== null).assertFail();
+              done();
+            }
+          });
+        });
+      } catch (error) {
+        console.error(`Failed, code is ${error.code},message is ${error.message} `);
+        expect(error !== null).assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7400
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7400
+     * @tc.desc      : unifiedDataChannel updateData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      }
+      let plainText = new unifiedDataChannel.PlainText();
+      plainText.textContent = "hello world!";
+      let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
+      try {
+        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+          if (e !== undefined) {
+            console.info( ` Failed to insertData. code is ${e.code},message is ${e.message} `);
+            return;
+          }
+          console.info( `insertData0100 success; data = ${data}, options = ${options}`);
+          unifiedDataChannel.updateData({
+            intention: unifiedDataChannel.Intention.DATA_HUB,
+            key: data
+          }, unifiedData).then((ret) => {
+            console.info(`updateData success; data = ${ret}, options = ${options}`);
+            expect(ret !== null).assertTrue();
+            done();
+          }).catch((err:BusinessError) => {
+            console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
+            expect(err !== null).assertFail();
+            done();
+          });
+        });
+      } catch (error) {
+        console.error( `Failed, code is ${error.code},message is ${error.message} `);
+        expect(error !== null).assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7500
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7500
+     * @tc.desc      : unifiedDataChannel updateData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.MENU
+      }
+      let plainText = new unifiedDataChannel.PlainText();
+      plainText.textContent = "hello world!";
+      let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
+      unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+        if (e !== undefined) {
+          console.info( ` Failed to insertData. code is ${e.code},message is ${e.message} `);
+          return;
+        }
+        console.info( `insertData0100 success; data = ${data}, options = ${options}`);
+          try{
+            unifiedDataChannel.updateData({
+              intention: unifiedDataChannel.Intention.MENU,
+              key: data
+            }, unifiedData).then((ret) => {
+              console.info( `updateData success; data = ${ret}, options = ${options}`);
+              expect(ret !== null).assertTrue();
+              done();
+            }).catch((err:BusinessError) => {
+              console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
+              expect(err !== null).assertFail();
+              done();
+            });
+          } catch (error) {
+            console.error( `Failed, code is ${error.code},message is ${error.message} `);
+            expect(error.code).assertEqual("401");
+            done();
+          }
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7600
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7600
+     * @tc.desc      : unifiedDataChannel updateData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.SYSTEM_SHARE
+      }
+      let plainText = new unifiedDataChannel.PlainText();
+      plainText.textContent = "hello world!";
+      let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
+      unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+        if (e !== undefined) {
+          console.info(` Failed to insertData. code is ${e.code},message is ${e.message} `);
+          return;
+        }
+        console.info(`insertData0100 success; data = ${data}, options = ${options}`);
+          try{
+            unifiedDataChannel.updateData({
+              intention: unifiedDataChannel.Intention.SYSTEM_SHARE,
+              key: data
+            }, unifiedData).then((ret) => {
+              console.info(`updateData success; data = ${ret}, options = ${options}`);
+              expect(ret !== null).assertFail();
+              done();
+            }).catch((err:BusinessError) => {
+              console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
+              expect(err.code).assertEqual("401");
+              done();
+            });
+          } catch (error) {
+            console.error(`Failed, code is ${error.code},message is ${error.message} `);
+            expect(error.code).assertEqual("401");
+            done();
+          }
+      });
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7700
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7700
+     * @tc.desc      : unifiedDataChannel updateData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.PICKER
+      }
+      let plainText = new unifiedDataChannel.PlainText();
+      plainText.textContent = "hello world!";
+      let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
+      unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+        if (e !== undefined) {
+          console.info(` Failed to insertData. code is ${e.code},message is ${e.message} `);
+          return;
+        }
+        console.info(`insertData0100 success; data = ${data}, options = ${options}`);
+          try{
+            unifiedDataChannel.updateData({
+              intention: unifiedDataChannel.Intention.PICKER,
+              key: data
+            }, unifiedData).then((ret) => {
+              console.info( `updateData success; data = ${ret}, options = ${options}`);
+              expect(ret !== null).assertFail();
+              done();
+            }).catch((err:BusinessError) => {
+              console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
+              expect(err.code).assertEqual("401");
+              done();
+            });
+          } catch (error) {
+            console.error( `Failed, code is ${error.code},message is ${error.message} `);
+            expect(error.code).assertEqual("401");
+            done();
+          }
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7800
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7800
+     * @tc.desc      : unifiedDataChannel updateData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options= {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      }
+      let plainText = new unifiedDataChannel.PlainText();
+      plainText.textContent = "hello world!";
+      let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
+      unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+        if (e !== undefined) {
+          console.info(` Failed to insertData. code is ${e.code},message is ${e.message} `);
+          return;
+        }
+        console.info(`insertData0100 success; data = ${data}, options = ${options}`);
+        try{
+          unifiedDataChannel.updateData({
+            intention: unifiedDataChannel.Intention.PICKER,
+            key: data
+          }, unifiedData, (err, ret) => {
+            if (err === undefined) {
+              console.info(`updateData success; data = ${ret}, options = ${options}`);
+              expect(err === undefined).assertTrue()
+              done();
+            } else {
+              console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
+              expect(err !== null).assertFail();
+              done();
+            }
+          });
+      }catch (error) {
+        console.error(`Failed, code is ${error.code},message is ${error.message} `);
+        expect(error.code).assertEqual("401");
+        done();
+      }
+      })
+    })
+     /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7900
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7900
+     * @tc.desc      : unifiedDataChannel updateData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_7900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let options:unifiedDataChannel.Options= {
+        intention: unifiedDataChannel.Intention.PICKER
+      }
+      let plainText = new unifiedDataChannel.PlainText();
+      plainText.textContent = "hello world!";
+      let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
+      unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+        if (e !== undefined) {
+          console.info(` Failed to insertData. code is ${e.code},message is ${e.message} `);
+          return;
+        }
+        console.info( `insertData0100 success; data = ${data}, options = ${options}`);
+        try{
+          unifiedDataChannel.updateData({
+            intention: unifiedDataChannel.Intention.DATA_HUB,
+            key: data
+          }, unifiedData, (err, ret) => {
+            if (err === undefined) {
+              console.info( `updateData success; data = ${ret}, options = ${options}`);
+              expect(err === undefined).assertTrue()
+              done();
+            } else {
+              console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
+              expect(err !== null).assertFail();
+              done();
+            }
+          });
+        }catch (error) {
+          console.error(`Failed, code is ${error.code},message is ${error.message} `);
+          expect(error.code).assertEqual("401");
+          done();
+        }
+      })
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8800
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8800 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = {
+        recordCount: 0
+      }
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+        acceptableInfo: dataLoadInfo
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(obj.acceptableInfo).assertEqual(getDataParams.acceptableInfo);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8800 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8100
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8000 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = {
+      }
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+        acceptableInfo: dataLoadInfo
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(obj.acceptableInfo).assertEqual(getDataParams.acceptableInfo);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8100 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8200
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8000 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = null;
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+        acceptableInfo: dataLoadInfo
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(obj.acceptableInfo).assertEqual(getDataParams.acceptableInfo);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8200 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8700
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8700 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = undefined;
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+        acceptableInfo: dataLoadInfo
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(obj.acceptableInfo).assertEqual(getDataParams.acceptableInfo);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8700 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8300
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8300 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const stringSet = new Set<string>();
+      stringSet.add("111");
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = {
+        types:  stringSet
+      }
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+        acceptableInfo: dataLoadInfo
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(obj.acceptableInfo).assertEqual(getDataParams.acceptableInfo);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8300 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8400
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8400 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const stringSet = new Set<string>();
+      stringSet.add("");
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = {
+        types: stringSet,
+        recordCount: 0
+      }
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+        acceptableInfo: dataLoadInfo
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(obj.acceptableInfo).assertEqual(getDataParams.acceptableInfo);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8400 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8500
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8500 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = {
+        recordCount: null
+      }
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+        acceptableInfo: dataLoadInfo
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(obj.acceptableInfo).assertEqual(getDataParams.acceptableInfo);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8500 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8600
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8600 start');
+      const stringSet = new Set<string>();
+      stringSet.add("general.plain-text");
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = {
+        types: stringSet,
+        recordCount: 0
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
+      let dataLoadHandler = (dataLoadInfo: unifiedDataChannel.DataLoadInfo) => {
+        return unifiedData;
+      };
+
+      const dataLoadParams :unifiedDataChannel.DataLoadParams   = {
+       loadHandler: dataLoadHandler,
+       dataLoadInfo:dataLoadInfo
+      }
+      let obj = dataLoadParams;
+      let reunifiedData = dataLoadHandler(dataLoadInfo);
+      let records = reunifiedData.getRecords();
+      let record:unifiedDataChannel.PlainText = (records[0]) as unifiedDataChannel.PlainText;
+      expect(records.length).assertEqual(1);
+      if (record.details != undefined){
+        expect(record.details.title).assertEqual('标题');
+        expect(record.details.content).assertEqual('内容');
+      }
+      expect(record.textContent).assertEqual('textContent');
+      expect(record.abstract).assertEqual('abstract');
+      expect(obj.loadHandler).assertEqual(dataLoadParams.loadHandler);
+      expect(obj.dataLoadInfo).assertEqual(dataLoadParams.dataLoadInfo);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8600 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8900
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8900 start');
+      const stringSet = new Set<string>();
+      stringSet.add("hello");
+      let dataLoadInfo: unifiedDataChannel.DataLoadInfo = {
+        types: stringSet,
+        recordCount: 0
+      }
+      let dataLoadHandler = () =>{
+        return null;
+      };
+
+      const dataLoadParams :unifiedDataChannel.DataLoadParams   = {
+       loadHandler: dataLoadHandler,
+       dataLoadInfo:dataLoadInfo
+      }
+      let obj = dataLoadParams;
+      let obj2 = dataLoadHandler();
+      expect(obj.loadHandler).assertEqual(dataLoadParams.loadHandler);
+      expect(obj2).assertEqual(null);
+      expect(obj.dataLoadInfo).assertEqual(dataLoadParams.dataLoadInfo);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8900 end");
       done();
     })
   })

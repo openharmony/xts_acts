@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -65,7 +65,7 @@ export default function list_ListInitialIndex6Test() {
      * @tc.name testListInitialIndexToThreeWithTwoLane
      * @tc.desc set the InitialIndex of list to 3,the lanes of list to 2
      */
-    it('testListInitialIndexToThreeWithTwoLane', 0, async (done: Function) => {
+    it('testListInitialIndexToThreeWithTwoLane',  Level.LEVEL0, async (done: Function) => {
       console.info('[testListInitialIndexToThreeWithTwoLane] START');
       let firstListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex6_1');
       let secondListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex6_2');
@@ -81,6 +81,11 @@ export default function list_ListInitialIndex6Test() {
       let twelfthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex6_12');
       let listContainer: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex6_Container01');
       let listContainerStrJson = getInspectorByKey('List_ListInitialIndex6_Container01');
+      
+      let listContainer_width = listContainer.right - listContainer.left
+      let listContainer_height = listContainer.bottom - listContainer.top
+      console.info('[testListInitialIndexToThreeWithTwoLane] listContainer_width: ' + listContainer_width);
+      console.info('[testListInitialIndexToThreeWithTwoLane] listContainer_height: ' + listContainer_height);
 
       expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
@@ -142,9 +147,9 @@ export default function list_ListInitialIndex6Test() {
 
 
       let driver = Driver.create();
-      await driver.swipe(Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
-        Math.round(globalThis.winTop + thirdListItem.bottom), Math.round(globalThis.winLeft + fifthListItem.left + (fifthListItem.right - fifthListItem.left) / 2),
-        Math.round(globalThis.winTop + fifthListItem.bottom));
+      await driver.swipe(Math.round(globalThis.winLeft + listContainer.left + listContainer_width / 2),
+        Math.round(globalThis.winTop + listContainer.top + listContainer_height / 6), Math.round(globalThis.winLeft + listContainer.left + listContainer_width / 2),
+        Math.round(globalThis.winTop + listContainer.bottom - listContainer_height / 6));
       await CommonFunc.sleep(2000);
       firstListItem = CommonFunc.getComponentRect('List_ListInitialIndex6_1');
       secondListItem = CommonFunc.getComponentRect('List_ListInitialIndex6_2');

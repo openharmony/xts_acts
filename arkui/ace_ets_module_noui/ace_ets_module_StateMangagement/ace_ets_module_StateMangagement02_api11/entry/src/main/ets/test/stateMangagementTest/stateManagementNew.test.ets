@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../../MainAbility/common/Common'
 
 export default function stateManagementGetSharedJsunit() {
@@ -50,7 +50,7 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         teststateManagementGetShared0001
      * @tc.desic         acestateManagementGetSharedEtsTest0001
      */
-    it('teststateManagementGetShared0001', 0, async () => {
+    it('teststateManagementGetShared0001', Level.LEVEL0, async () => {
       console.info('stateManagementGetShared teststateManagementGetShared0001 START');
       await CommonFunc.sleep(2000);
       try {
@@ -76,7 +76,7 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         teststateManagementsetAndLink0001
      * @tc.desic         acestateManagementsetAndLinkEtsTest0001
      */
-    it('teststateManagementsetAndLink0001', 0, async () => {
+    it('teststateManagementsetAndLink0001', Level.LEVEL0, async () => {
       console.info('stateManagementsetAndLink teststateManagementsetAndLink0001 START');
       await CommonFunc.sleep(1000);
       try {
@@ -102,7 +102,7 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         teststateManagementsetOrCreate0001
      * @tc.desic         acestateManagementsetOrCreateEtsTest0001
      */
-    it('teststateManagementsetOrCreate0001', 0, async () => {
+    it('teststateManagementsetOrCreate0001', Level.LEVEL0, async () => {
       console.info('stateManagementsetOrCreate teststateManagementsetOrCreate0001 START');
       await CommonFunc.sleep(1000);
       try {
@@ -129,7 +129,7 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         teststateManagementsetAndProp0001
      * @tc.desic         acestateManagementsetAndPropEtsTest0001
      */
-    it('teststateManagementsetAndProp0001', 0, async () => {
+    it('teststateManagementsetAndProp0001', Level.LEVEL0, async () => {
       console.info('stateManagementsetAndProp teststateManagementsetAndProp0001 START');
       await CommonFunc.sleep(1000);
       try {
@@ -155,7 +155,7 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         test_staticClear_0001
      * @tc.desc         delete the property
      */
-    it('test_staticClear_0001', 0, async () => {
+    it('test_staticClear_0001', Level.LEVEL0, async () => {
       console.info('test_staticClear_0001 Register a customized font in the FontManagerSTART');
       await CommonFunc.sleep(2000);
       try {
@@ -174,7 +174,7 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         test_setAndLink_0001
      * @tc.desc         bind localStorage
     */
-    it('test_setAndLink_0001', 0, async () => {
+    it('test_setAndLink_0001', Level.LEVEL0, async () => {
       console.info('test_setAndLink_0001 START');
       await CommonFunc.sleep(2000);
       try {
@@ -195,7 +195,7 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         test_setAndProp_0002
      * @tc.desc         bind localStorage
      */
-    it('test_setAndProp_0002', 0, async () => {
+    it('test_setAndProp_0002', Level.LEVEL0, async () => {
       console.info('test_setAndProp_0002 START');
       await CommonFunc.sleep(2000);
       try {

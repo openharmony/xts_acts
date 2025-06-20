@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -51,7 +51,7 @@ export default function MarqueeMirroringTest() {
      * @tc.level     Level 3
      * @tc.type
      */
-    it('MarqueeMirroringTest_001', 0, async (done: Function) => {
+    it('MarqueeMirroringTest_001',  Level.LEVEL0, async (done: Function) => {
       console.info('[MarqueeMirroringTest_001] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function MarqueeMirroringTest() {
      * @tc.level     Level 3
      * @tc.type
      */
-    it('MarqueeMirroringTest_002', 0, async (done: Function) => {
+    it('MarqueeMirroringTest_002',  Level.LEVEL0, async (done: Function) => {
       console.info('[MarqueeMirroringTest_002] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -98,7 +98,7 @@ export default function MarqueeMirroringTest() {
      * @tc.level     Level 3
      * @tc.type
      */
-    it('MarqueeMirroringTest_003', 0, async (done: Function) => {
+    it('MarqueeMirroringTest_003',  Level.LEVEL0, async (done: Function) => {
       console.info('[MarqueeMirroringTest_003] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);

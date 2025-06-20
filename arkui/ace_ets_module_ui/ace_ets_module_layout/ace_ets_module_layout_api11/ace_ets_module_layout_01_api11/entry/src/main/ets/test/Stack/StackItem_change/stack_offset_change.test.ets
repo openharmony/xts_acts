@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/utils/Common';
 
@@ -51,7 +51,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.TopStart and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentTopStart', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentTopStart] START');
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
@@ -84,7 +84,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.Top and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentTop', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentTop] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Top
@@ -121,7 +121,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.TopEnd and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentTopEnd', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentTopEnd] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.TopEnd
@@ -157,7 +157,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.Start and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentStart', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentStart] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Start
@@ -194,7 +194,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.Center and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentCenter', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentCenter] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Center
@@ -232,7 +232,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.End and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentEnd', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentEnd] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.End
@@ -269,7 +269,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.BottomStart and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentBottomStart', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentBottomStart] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.BottomStart
@@ -305,7 +305,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.Bottom and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentBottom', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentBottom] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.Bottom
@@ -342,7 +342,7 @@ export default function Stack_Offset_Change() {
      * @tc.desc The stack component sets alignContent to Alignment.BottomEnd and sets the offset of
      *               the first subcomponent
      */
-    it('testStackOffsetChangeWithAlignmentBottomEnd', 0, async (done: Function) => {
+    it('testStackOffsetChangeWithAlignmentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('[testStackOffsetChangeWithAlignmentBottomEnd] START');
       globalThis.value.message.notify({
         name: 'addAlignContent', value: Alignment.BottomEnd

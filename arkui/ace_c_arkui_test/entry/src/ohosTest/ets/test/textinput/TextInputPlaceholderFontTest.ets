@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont001', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont002', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont003', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont004', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont005', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont006', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont006()).assertEqual(0)
       done();
     });
@@ -112,7 +112,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont007', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont007()).assertEqual(0)
       done();
     });
@@ -125,7 +125,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont008', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont008()).assertEqual(0)
       done();
     });
@@ -138,7 +138,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont009', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont009()).assertEqual(0)
       done();
     });
@@ -151,7 +151,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont010', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont010()).assertEqual(0)
       done();
     });
@@ -164,7 +164,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont011', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont011()).assertEqual(0)
       done();
     });
@@ -177,7 +177,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont012', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont012()).assertEqual(0)
       done();
     });
@@ -190,7 +190,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont013', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont013()).assertEqual(0)
       done();
     });
@@ -203,7 +203,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont014', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont014()).assertEqual(0)
       done();
     });
@@ -216,7 +216,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont015', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont015()).assertEqual(0)
       done();
     });
@@ -229,7 +229,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont016', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont016()).assertEqual(0)
       done();
     });
@@ -242,7 +242,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont017', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont017()).assertEqual(0)
       done();
     });
@@ -255,7 +255,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont018', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont018()).assertEqual(0)
       done();
     });
@@ -268,7 +268,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont019', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont019()).assertEqual(0)
       done();
     });
@@ -281,7 +281,7 @@ export default function textInputPlaceholderFontTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderFont020', 0, async (done: Function) => {
+    it('testTextInputPlaceholderFont020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderFont020()).assertEqual(0)
       done();
     });

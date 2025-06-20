@@ -1290,6 +1290,8 @@ export default function OhAVRecorderNDKMp3Test() { // L2
         avRecorderNdkTestBase.RELEASE_RECORDER_EVENT,
         //check video
         avRecorderNdkTestBase.CHECK_VIDEO_EVENT,
+        //check set mute when interrupted
+        avRecorderNdkTestBase.SET_WILL_MUTE_WHEN_INTERRUPTED,
         //done recorder
         avRecorderNdkTestBase.END_EVENT
       );

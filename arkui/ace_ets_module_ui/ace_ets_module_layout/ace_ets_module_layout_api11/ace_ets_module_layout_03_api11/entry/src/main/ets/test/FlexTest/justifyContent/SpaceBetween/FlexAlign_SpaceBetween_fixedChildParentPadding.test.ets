@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -54,7 +54,7 @@ export default function flexAlign_SpaceBetween_fixedChildParentPadding() {
      * @tc.desc The child component is fixed, and parent component is bound with padding attributes, the layout
      *               space of parent component is insufficient to meet the spindle layout requirements of child component
      */
-    it('testAlignSpaceBetweenRowNoWrapPaddingOutRange', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapPaddingOutRange',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapPaddingOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
@@ -97,7 +97,7 @@ export default function flexAlign_SpaceBetween_fixedChildParentPadding() {
      * @tc.desc The child component is fixed, and parent component is bound with padding attributes, the layout
      *               space of parent component meets the spindle layout requirements of the child component
      */
-    it('testAlignSpaceBetweenRowNoWrapPaddingInRange', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapPaddingInRange',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapPaddingInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 5

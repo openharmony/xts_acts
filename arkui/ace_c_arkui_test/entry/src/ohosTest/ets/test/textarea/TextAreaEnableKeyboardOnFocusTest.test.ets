@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaEnableKeyboardOnFocusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnableKeyboardOnFocus001', 0, async (done: Function) => {
+    it('testTextAreaEnableKeyboardOnFocus001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnableKeyboardOnFocus001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textAreaEnableKeyboardOnFocusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnableKeyboardOnFocus002', 0, async (done: Function) => {
+    it('testTextAreaEnableKeyboardOnFocus002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnableKeyboardOnFocus002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textAreaEnableKeyboardOnFocusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnableKeyboardOnFocus003', 0, async (done: Function) => {
+    it('testTextAreaEnableKeyboardOnFocus003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnableKeyboardOnFocus003()).assertEqual(0)
       done();
     }); 

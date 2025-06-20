@@ -1896,6 +1896,49 @@ export default function CameraPhotoSessionTest() {
           done();
     })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_WHITE_BALANCE_PROMISE_0100
+     * @tc.name      : SUB_MULTIMEDIA_CAMERA_SESSION_WHITE_BALANCE_PROMISE_0100
+     * @tc.desc      : white balance api
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_WHITE_BALANCE_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_WHITE_BALANCE_PROMISE_0100--------------");
+
+      if (mCameraNum == 0) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_WHITE_BALANCE_PROMISE_0100 FAILED with NoCamera");
+        expect().assertFail();
+        done();
+      } else {
+        try{
+          createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0);
+          let flag = mCameraSession.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.CLOUDY);
+          let range = mCameraSession.getWhiteBalanceRange();
+          mCameraSession.setWhiteBalanceMode(camera.WhiteBalanceMode.DAYLIGHT);
+          let mode = mCameraSession.getWhiteBalanceMode();
+          flag = mCameraSession.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.AUTO);
+          flag = mCameraSession.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.CLOUDY);
+          flag = mCameraSession.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.INCANDESCENT);
+          flag = mCameraSession.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.FLUORESCENT);
+          flag = mCameraSession.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.DAYLIGHT);
+          flag = mCameraSession.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.MANUAL);
+          flag = mCameraSession.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.LOCKED);
+          let value = 5000;
+          mCameraSession.setWhiteBalance(value);
+          let whiteBalance = mCameraSession.getWhiteBalance();
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_WHITE_BALANCE_PROMISE_0100 start PASSED");
+          expect(true).assertTrue();
+        } catch (err) {
+            console.info(TAG + " SUB_MULTIMEDIA_CAMERA_SESSION_WHITE_BALANCE_PROMISE_0100 FAILED" + err.code);
+            expect(true).assertFalse();
+        }
+        done();
+      }
+    })
+
     /**无法抛出7400103，已提单，等下一个版本回归测试通过后使用
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_SETSMOOTHZOOM_ERRORCODE_0100
      * @tc.name      : Create photo session setSmoothZoom errorcode

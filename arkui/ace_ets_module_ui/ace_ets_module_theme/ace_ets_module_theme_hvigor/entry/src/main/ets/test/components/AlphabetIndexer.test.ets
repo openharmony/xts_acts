@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { frameTime, sleep } from '../Utils';
 import { AlphabetIndexerKeys, alphabetIndexerThemeProperty } from '../../MainAbility/pages/components/AlphabetIndexerPage';
@@ -72,7 +72,7 @@ export default function alphabetIndexerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsAlphabetIndexerThemeColors_0100`, 0, () => {
+    it(`ActsAlphabetIndexerThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsAlphabetIndexerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       const indexerJSON = getInspectorByKey(AlphabetIndexerKeys.alphabetIndexerSystem);
@@ -99,7 +99,7 @@ export default function alphabetIndexerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsAlphabetIndexerThemeColors_0200`, 0, () => {
+    it(`ActsAlphabetIndexerThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsAlphabetIndexerThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       const indexerJSON = getInspectorByKey(AlphabetIndexerKeys.alphabetIndexerWithTheme);
@@ -128,7 +128,7 @@ export default function alphabetIndexerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsAlphabetIndexerThemeColors_0300`, 0, async () => {
+    it(`ActsAlphabetIndexerThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsAlphabetIndexerThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

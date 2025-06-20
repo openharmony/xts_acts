@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -70,7 +70,7 @@ export default function List_PadMar() {
      * @tc.name testListPadMar
      * @tc.desc List parent component binding padding and margin property and padding set to 10,margin set to 5
      */
-    it('testListPadMar', 0, async (done: Function) => {
+    it('testListPadMar',  Level.LEVEL0, async (done: Function) => {
       console.info('testListPadMar START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('List_PadMar_01');

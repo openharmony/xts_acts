@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level  } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -52,7 +52,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0100', 0, async (done: Function) => {
+    it('GridJsunit_0100',  Level.LEVEL0, async (done: Function) => {
       // Get the information of the Grid component
       console.info('[GridJsunit_0100] START');
       let strJson1 = getInspectorByKey('grid1');
@@ -83,7 +83,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0200', 0, async (done: Function) => {
+    it('GridJsunit_0200',  Level.LEVEL0, async (done: Function) => {
       // Modify the properties of component Grid
       console.info('[GridJsunit_0200] START');
       await CommonFunc.sleep(200);
@@ -137,7 +137,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0300', 0, async (done: Function) => {
+    it('GridJsunit_0300',  Level.LEVEL0, async (done: Function) => {
       // Illegal modification of properties of component grid
       console.info('[GridJsunit_0300] START');
       await CommonFunc.sleep(1000);
@@ -192,7 +192,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0400', 0, async (done: Function) => {
+    it('GridJsunit_0400',  Level.LEVEL0, async (done: Function) => {
       // Verify the event of the Grid component
       console.info('[GridJsunit_0400] START');
       await CommonFunc.sleep(1000);
@@ -237,7 +237,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0500', 0, async (done: Function) => {
+    it('GridJsunit_0500',  Level.LEVEL0, async (done: Function) => {
       // Get the default attribute value of the Grid component
       console.info('[GridJsunit_0500] START');
       await CommonFunc.sleep(1000);
@@ -266,7 +266,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0600', 0, async (done: Function) => {
+    it('GridJsunit_0600',  Level.LEVEL0, async (done: Function) => {
       // Verify that rowsTemplate and columnsTemplate are set at the same time
       console.info('[GridJsunit_0600] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
@@ -300,7 +300,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0700', 0, async (done: Function) => {
+    it('GridJsunit_0700',  Level.LEVEL0, async (done: Function) => {
       // Verify only setting columnsTemplate of Grid component
       console.info('[GridJsunit_0700] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
@@ -328,7 +328,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0800', 0, async (done: Function) => {
+    it('GridJsunit_0800',  Level.LEVEL0, async (done: Function) => {
       // Verify only setting rowsTemplate of grid component
       console.info('[GridJsunit_0800] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
@@ -357,7 +357,7 @@ export default function GridJsunit() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it('GridJsunit_0900', 0, async (done: Function) => {
+    it('GridJsunit_0900',  Level.LEVEL0, async (done: Function) => {
       // Verify Neither rowsTemplate nor columnsTemplate is set
       console.info('[GridJsunit_0900] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({

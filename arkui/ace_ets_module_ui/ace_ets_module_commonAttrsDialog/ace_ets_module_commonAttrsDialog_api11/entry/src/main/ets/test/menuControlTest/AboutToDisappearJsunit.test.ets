@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach,  it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach,  it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -45,7 +45,7 @@ export default function aboutToDisappearJsunit() {
       console.info("aboutToDisappear after each called");
     });
 
-    it('aboutToDisappearTest_0100', 0, async (done: Function) => {
+    it('aboutToDisappearTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('aboutToDisappearTest_0100 START');
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {

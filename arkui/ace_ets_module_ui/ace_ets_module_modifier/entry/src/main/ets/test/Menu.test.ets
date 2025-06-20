@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level} from '@ohos/hypium';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import router from '@ohos.router';
 import Utils from './Utils';
@@ -49,7 +49,7 @@ export default function MenuJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Menu_attrs_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_attrs_0100', Level.LEVEL0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0100 START');
         let strJson = getInspectorByKey('MenuKey1');
@@ -71,7 +71,7 @@ export default function MenuJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Menu_attrs_0101', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_attrs_0101', Level.LEVEL0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0101 START');
         let strJson = getInspectorByKey('MenuKey1');
@@ -96,7 +96,7 @@ export default function MenuJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Menu_attrs_0102', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_attrs_0102', Level.LEVEL0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0102 START');
         let strJson = getInspectorByKey('MenuKey1');
@@ -121,7 +121,7 @@ export default function MenuJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_Menu_attrs_0103', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_attrs_0103', Level.LEVEL0, async (done: Function) => {
 
       console.info('ArkUX_Stage_Menu_attrs_0103 START');
       let driver = Driver.create();

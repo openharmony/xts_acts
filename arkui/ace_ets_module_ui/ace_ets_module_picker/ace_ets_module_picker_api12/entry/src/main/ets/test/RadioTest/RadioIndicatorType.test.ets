@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function RadioIndicatorType() {
     * @tc.desc        Test RadioIndicatorType.TICK
     * @tc.level       Level 2
     */
-    it('RadioIndicatorType_001', 0, async (done: Function) => {
+    it('RadioIndicatorType_001', Level.LEVEL1, async (done: Function) => {
       console.info('[RadioIndicatorType_001] START');
       await Utils.sleep(1000);
 
@@ -75,7 +75,7 @@ export default function RadioIndicatorType() {
     * @tc.desc        Test RadioIndicatorType.DOT
     * @tc.level       Level 2
     */
-    it('RadioIndicatorType_002', 0, async (done: Function) => {
+    it('RadioIndicatorType_002', Level.LEVEL1, async (done: Function) => {
       console.info('[RadioIndicatorType_002] START');
       await Utils.sleep(1000);
 
@@ -95,7 +95,7 @@ export default function RadioIndicatorType() {
      * @tc.desc        Test indicatorBuilder
      * @tc.level       Level 2
      */
-    it('RadioIndicatorType_003', 0, async (done: Function) => {
+    it('RadioIndicatorType_003', Level.LEVEL1, async (done: Function) => {
       console.info('[RadioIndicatorType_003] START');
       await Utils.sleep(1000);
 

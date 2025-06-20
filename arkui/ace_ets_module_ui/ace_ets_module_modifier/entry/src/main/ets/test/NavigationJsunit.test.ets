@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1000', 0, async (done: Function) => {
+    it('NavigationJsunit_1000', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1000] START');
       let strJson = getInspectorByKey('navigation1');
@@ -83,7 +83,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1001', 0, async (done: Function) => {
+    it('NavigationJsunit_1001', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1001] START');
       let strJson = getInspectorByKey('navigation1');
@@ -103,7 +103,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1002', 0, async (done: Function) => {
+    it('NavigationJsunit_1002', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1002] START');
       let strJson = getInspectorByKey('navigation1');
@@ -123,7 +123,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1003', 0, async (done: Function) => {
+    it('NavigationJsunit_1003', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1003] START');
       let strJson = getInspectorByKey('navigation1');
@@ -143,7 +143,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1004', 0, async (done: Function) => {
+    it('NavigationJsunit_1004', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1004] START');
       let strJson = getInspectorByKey('navigation1');
@@ -163,7 +163,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1005', 0, async (done: Function) => {
+    it('NavigationJsunit_1005', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1005] START');
       let strJson = getInspectorByKey('navigation1');
@@ -183,7 +183,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1006', 0, async (done: Function) => {
+    it('NavigationJsunit_1006', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1006] START');
       let strJson = getInspectorByKey('navigation1');
@@ -203,7 +203,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1007', 0, async (done: Function) => {
+    it('NavigationJsunit_1007', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1007] START');
       let strJson = getInspectorByKey('navigation1');
@@ -223,7 +223,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1008', 0, async (done: Function) => {
+    it('NavigationJsunit_1008', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1008] START');
       let strJson = getInspectorByKey('navigation1');
@@ -243,7 +243,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1009', 0, async (done: Function) => {
+    it('NavigationJsunit_1009', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1009] START');
       let strJson = getInspectorByKey('navigation1');
@@ -263,7 +263,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1010', 0, async (done: Function) => {
+    it('NavigationJsunit_1010', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1010] START');
       let strJson = getInspectorByKey('navigation1');
@@ -283,7 +283,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1011', 0, async (done: Function) => {
+    it('NavigationJsunit_1011', Level.LEVEL0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1011] START');
       let strJson = getInspectorByKey('navigation1');
@@ -303,7 +303,7 @@ export default function navigationJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('NavigationJsunit_1012', 0, async (done: Function) => {
+    it('NavigationJsunit_1012', Level.LEVEL0, async (done: Function) => {
       console.info('[NavigationJsunit_1012] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

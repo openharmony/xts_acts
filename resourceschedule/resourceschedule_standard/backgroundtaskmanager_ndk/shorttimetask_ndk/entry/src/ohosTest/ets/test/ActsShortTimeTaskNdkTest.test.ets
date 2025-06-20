@@ -82,5 +82,29 @@ export default function ActsShortTimeTaskNdkTest() {
         done()
       }
     })
+
+    /**
+     * @tc.number  : SUB_Resourceschedule_ShortTimeTask_GetTransientTaskInfo_0100
+     * @tc.name    : test Res_ShortTimeTask_GetTransientTaskInfo Test Normal Scene
+     * @tc.desc    : Test GetTransientTaskInfo native function.
+     * @tc.level   : Level3
+     * @tc.size    : MediumTest
+     * @tc.type    : Function
+     */
+    it('SUB_Resourceschedule_ShortTimeTask_GetTransientTaskInfo_0100', Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info("====>SUB_Resourceschedule_ShortTimeTask_GetTransientTaskInfo_0100 start====");
+        let res = shortTimeTaskNdk.GetTransientTaskInfo();
+        console.log("SUB_Resourceschedule_ShortTimeTask_GetTransientTaskInfo_0100 res: " + JSON.stringify(res));
+        expect(res.remainingQuota).assertInstanceOf('Number');
+        expect(res.transientTasks.length == 0).assertTrue();
+        done();
+      } catch (err) {
+        console.error("SUB_Resourceschedule_ShortTimeTask_GetTransientTaskInfo_0100 catch err: " + err);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
   })
 }

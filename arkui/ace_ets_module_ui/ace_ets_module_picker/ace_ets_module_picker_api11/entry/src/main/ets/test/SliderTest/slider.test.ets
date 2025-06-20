@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 import events_emitter from '@ohos.events.emitter';
 
@@ -46,7 +46,7 @@ export default function sliderMovingJsunit() {
       console.info("sliderMoving after each called");
     });
 
-    it('testsliderMoving0011', 0, async (done: Function) => {
+    it('testsliderMoving0011', Level.LEVEL1, async (done: Function) => {
       console.info('sliderMoving testsliderMoving0011 START');
       await Utils.sleep(2000);
       try {

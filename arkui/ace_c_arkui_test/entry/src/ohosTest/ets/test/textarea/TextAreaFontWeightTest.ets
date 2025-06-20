@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAreaFontWeight001', 0, async (done: Function) => {
+    it('testTextAreaFontWeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAreaFontWeight002', 0, async (done: Function) => {
+    it('testTextAreaFontWeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight003', 0, async (done: Function) => {
+    it('testTextAreaFontWeight003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight004', 0, async (done: Function) => {
+    it('testTextAreaFontWeight004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight005', 0, async (done: Function) => {
+    it('testTextAreaFontWeight005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight006', 0, async (done: Function) => {
+    it('testTextAreaFontWeight006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight006()).assertEqual(0)
       done();
     });
@@ -112,7 +112,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight007', 0, async (done: Function) => {
+    it('testTextAreaFontWeight007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight007()).assertEqual(0)
       done();
     });
@@ -125,7 +125,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight008', 0, async (done: Function) => {
+    it('testTextAreaFontWeight008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight008()).assertEqual(0)
       done();
     });
@@ -138,7 +138,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight009', 0, async (done: Function) => {
+    it('testTextAreaFontWeight009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight009()).assertEqual(0)
       done();
     });
@@ -151,7 +151,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight010', 0, async (done: Function) => {
+    it('testTextAreaFontWeight010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight010()).assertEqual(0)
       done();
     });
@@ -164,7 +164,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight011', 0, async (done: Function) => {
+    it('testTextAreaFontWeight011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight011()).assertEqual(0)
       done();
     });
@@ -177,7 +177,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight012', 0, async (done: Function) => {
+    it('testTextAreaFontWeight012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight012()).assertEqual(0)
       done();
     });
@@ -190,7 +190,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight013', 0, async (done: Function) => {
+    it('testTextAreaFontWeight013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight013()).assertEqual(0)
       done();
     });
@@ -203,7 +203,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight014', 0, async (done: Function) => {
+    it('testTextAreaFontWeight014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight014()).assertEqual(0)
       done();
     });
@@ -216,7 +216,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight015', 0, async (done: Function) => {
+    it('testTextAreaFontWeight015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight015()).assertEqual(0)
       done();
     });
@@ -229,7 +229,7 @@ export default function textAreaFontWeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaFontWeight016', 0, async (done: Function) => {
+    it('testTextAreaFontWeight016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontWeight016()).assertEqual(0)
       done();
     });

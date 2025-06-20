@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
@@ -46,7 +46,7 @@ export default function enableJsunit() {
       console.info("enable after each called");
     });
 
-    it('testEnable01', 0, async (done: Function) => {
+    it('testEnable01', Level.LEVEL0, async (done: Function) => {
       console.info('[testEnable01] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('enabled');
@@ -55,7 +55,7 @@ export default function enableJsunit() {
       console.info('[testEnable01] END');
       done()
     });
-    it('testEnable03', 0, async (done: Function) => {
+    it('testEnable03', Level.LEVEL0, async (done: Function) => {
       console.info('[testEnable03] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -80,7 +80,7 @@ export default function enableJsunit() {
       done()
     });
 
-    it('testEnable04', 0, async (done: Function) => {
+    it('testEnable04', Level.LEVEL0, async (done: Function) => {
       console.info('testEnable04 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -104,7 +104,7 @@ export default function enableJsunit() {
       done()
     });
 
-    it('testEnable02', 0, async (done: Function) => {
+    it('testEnable02', Level.LEVEL0, async (done: Function) => {
       console.info('[testEnable02] START');
       try {
         let eventData: events_emitter.EventData = {

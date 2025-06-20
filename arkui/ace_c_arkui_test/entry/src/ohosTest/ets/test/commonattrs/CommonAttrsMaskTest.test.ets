@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask001', 0, async (done: Function) => {
+    it('testCommonAttrsMask001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask002', 0, async (done: Function) => {
+    it('testCommonAttrsMask002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsMask003', 0, async (done: Function) => {
+    it('testCommonAttrsMask003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask003()).assertEqual(0)
       done()
     })
@@ -75,7 +75,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask004', 0, async (done: Function) => {
+    it('testCommonAttrsMask004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask004()).assertEqual(0)
       done()
     })
@@ -88,7 +88,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask005', 0, async (done: Function) => {
+    it('testCommonAttrsMask005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask005()).assertEqual(0)
       done()
     })
@@ -101,7 +101,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsMask006', 0, async (done: Function) => {
+    it('testCommonAttrsMask006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask006()).assertEqual(0)
       done()
     })
@@ -114,7 +114,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask007', 0, async (done: Function) => {
+    it('testCommonAttrsMask007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask007()).assertEqual(0)
       done()
     })
@@ -127,7 +127,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask008', 0, async (done: Function) => {
+    it('testCommonAttrsMask008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask008()).assertEqual(0)
       done()
     })
@@ -140,7 +140,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask009', 0, async (done: Function) => {
+    it('testCommonAttrsMask009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask009()).assertEqual(0)
       done()
     })
@@ -153,7 +153,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsMask010', 0, async (done: Function) => {
+    it('testCommonAttrsMask010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask010()).assertEqual(0)
       done()
     })
@@ -166,7 +166,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask011', 0, async (done: Function) => {
+    it('testCommonAttrsMask011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask011()).assertEqual(0)
       done()
     })
@@ -179,7 +179,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask012', 0, async (done: Function) => {
+    it('testCommonAttrsMask012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask012()).assertEqual(0)
       done()
     })
@@ -192,7 +192,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsMask013', 0, async (done: Function) => {
+    it('testCommonAttrsMask013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask013()).assertEqual(0)
       done()
     })
@@ -205,7 +205,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask014', 0, async (done: Function) => {
+    it('testCommonAttrsMask014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask014()).assertEqual(0)
       done()
     })
@@ -218,7 +218,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMask015', 0, async (done: Function) => {
+    it('testCommonAttrsMask015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask015()).assertEqual(0)
       done()
     })
@@ -231,7 +231,7 @@ export default function commonAttrsMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsMask016', 0, async (done: Function) => {
+    it('testCommonAttrsMask016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMask016()).assertEqual(0)
       done()
     })

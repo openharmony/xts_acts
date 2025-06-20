@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -60,7 +60,7 @@ export default function SegBtnItemTest0010() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('SegBtnItemTest0010_0100', 0, async (done: Function) => {
+    it('SegBtnItemTest0010_0100', Level.LEVEL0, async (done: Function) => {
       console.log("SegBtnItemTest0010_0100 ", "START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -99,7 +99,7 @@ export default function SegBtnItemTest0010() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('SegBtnItemTest0010_0200', 0, async (done: Function) => {
+    it('SegBtnItemTest0010_0200', Level.LEVEL0, async (done: Function) => {
       console.log("SegBtnItemTest0010_0200 ", "START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -151,7 +151,7 @@ export default function SegBtnItemTest0010() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('SegBtnItemTest0010_0300', 0, async (done: Function) => {
+    it('SegBtnItemTest0010_0300', Level.LEVEL0, async (done: Function) => {
       console.log("SegBtnItemTest0010_0300 ", "START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -200,7 +200,7 @@ export default function SegBtnItemTest0010() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('SegBtnItemTest0010_0400', 0, async (done: Function) => {
+    it('SegBtnItemTest0010_0400', Level.LEVEL0, async (done: Function) => {
       console.log("SegBtnItemTest0010_0400 ", "START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

@@ -44,7 +44,7 @@ export default function refreshJsunit() {
       console.info("refresh after each called");
     });
 
-    it('testRefresh01', 0, async (done: Function) => {
+    it('testRefresh01', Level.LEVEL1, async (done: Function) => {
       console.info('[testRefresh01] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('refresh');
@@ -53,7 +53,7 @@ export default function refreshJsunit() {
       done();
     });
 
-    it('testRefresh02', 0, async (done: Function) => {
+    it('testRefresh02', Level.LEVEL1, async (done: Function) => {
       console.info('[testRefresh02] START');
       console.info("[testRefresh02] OverDrag: " + JSON.stringify(RefreshStatus.OverDrag));
       expect(RefreshStatus.OverDrag).assertEqual(2);
@@ -61,7 +61,7 @@ export default function refreshJsunit() {
       done();
     });
 
-    it('testRefresh03', 0, async (done: Function) => {
+    it('testRefresh03', Level.LEVEL1, async (done: Function) => {
       console.info('[testRefresh03] START');
       console.info("[testRefresh03] Inactive: " + JSON.stringify(RefreshStatus.Inactive));
       expect(RefreshStatus.Inactive).assertEqual(0);

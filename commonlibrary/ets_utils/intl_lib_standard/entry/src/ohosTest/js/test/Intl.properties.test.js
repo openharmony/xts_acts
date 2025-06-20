@@ -1018,7 +1018,7 @@ describe('etsIntlPtsFunTest', function () {
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         let value = date.toLocaleString('en-US', {timeZone: 'UTC'});
-        let zerotime = "10/20/2022, 6:00:00 PM";
+        let zerotime = "10/20/2022, 6:00:00 PM";
         expect(value).assertEqual(zerotime);
     })
 
@@ -1264,7 +1264,7 @@ describe('etsIntlPtsFunTest', function () {
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         let value = date.toLocaleTimeString('en-US', { timeZone: 'UTC' });
-        let zerotime = "6:00:00 PM";
+        let zerotime = "6:00:00 PM";
         expect(value).assertEqual(zerotime);
     })
 
@@ -1349,7 +1349,7 @@ describe('etsIntlPtsFunTest', function () {
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 20, 0, 0));
         let value = date.toLocaleTimeString('en-US', { timeZone: 'UTC' });
-        let zerotime = "8:00:00 PM";
+        let zerotime = "8:00:00 PM";
         expect(value).assertEqual(zerotime);
     })
 
@@ -1366,7 +1366,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = [1, 'a', new Date('21 Dec 2022 14:12:00 UTC')];
         var value = array.toLocaleString('en', { timeZone: 'UTC' });
         console.log('ArrayTest001 :' + value);
-        expect(value).assertEqual('1,a,12/21/2022, 2:12:00 PM');
+        expect(value).assertEqual('1,a,12/21/2022, 2:12:00 PM');
     })
     
     /**
@@ -1381,7 +1381,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = [1, 'a', new Date('21 Dec 2022 14:12:00 UTC')];
         var value = array.toLocaleString('en', { timeZone: 'UTC' });
         console.log('ArrayTest002 :' + value);
-        expect(value).assertEqual('1,a,12/21/2022, 2:12:00 PM');
+        expect(value).assertEqual('1,a,12/21/2022, 2:12:00 PM');
     })
     
     /**
@@ -1396,7 +1396,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = [1, 'a', new Date('21 Dec 2022 14:12:00 UTC')];
         var value = array.toLocaleString('en', { timeZone: 'UTC' });
         console.log('ArrayTest003 :' + value);
-        expect(value).assertEqual('1,a,12/21/2022, 2:12:00 PM');
+        expect(value).assertEqual('1,a,12/21/2022, 2:12:00 PM');
     })
 
     /**

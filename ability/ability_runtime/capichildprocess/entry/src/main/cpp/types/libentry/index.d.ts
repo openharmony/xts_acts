@@ -15,13 +15,30 @@
 
 export const childProcessAdd: (a: number, b: number) => number;
 export const startNativeChildProcess: (libName: String) => number;
-export const requestExitChildProcess: () => number;
+export const requestExitChildProcess: (a: number) => number;
 export const callApiWithNullCallback: () => number;
 export const callApiWithNullLibName: () => number;
 export const callApiWithNull: () => number;
 export const childProcessStartNewProcess: () => number;
 export const busyTest: () => number;
+export const registerNativeChildExit: () => number;
+export const unregisterNativeChildExit: () => number;
+export const createThread: () => void;
+export const destroyThread: () => void;
 
 export const startChildIsolated: () => number;
 export const startChildNormal: () => number;
 export const startChildNoArgs: () => number;
+
+export const CreateNativeChildProcessWithConfigs: (libName: String) => number;
+export const CreateNativeChildProcessWithConfigsLibNamenullptr: () => number;
+export const CreateNativeChildProcessWithConfigsNullCallback: () => number;
+export const StartNativeChildProcessWithConfigs: (entryName: String) => number;
+export const StartNativeChildProcessWithConfigsEntryNull: () => number;
+export const StartNativeChildProcessWithConfigsFdlistNum17: () => number;
+export const StartNativeChildProcessWithConfigsEntryParams200K: () => number;
+export const SetIsolationModeConfigsNullptr: () => number;
+export const SetProcessName: (processName: String) => number;
+export const SetProcessNameConfigsNullptr: () => number;
+export const DestroyChildProcessConfigs: () => number;
+export const DestroyChildProcessConfigsNullptr: () => number;

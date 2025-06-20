@@ -570,19 +570,19 @@ export default function relationalStoreSetDistributedTables() {
               }
               console.info(`update rows: ${rows}`);
               expect(rows).assertEqual(1);
-            });
-            predicates = new data_relationalStore.RdbPredicates(TABLE);
-            predicates.equalTo("name", "lisi");
-            rdbStore.delete(predicates, async (err, rows) => {
-              if (err) {
-                console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
-                expect().assertFail();
+              predicates = new data_relationalStore.RdbPredicates(TABLE);
+              predicates.equalTo("name", "lisi");
+              rdbStore.delete(predicates, async (err, rows) => {
+                if (err) {
+                  console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+                  expect().assertFail();
+                  done();
+                }
+                console.info(`Delete rows: ${rows}`);
+                expect(rows).assertEqual(1);
+                await rdbStore?.executeSql(DROP_TABLE_TEST, null);
                 done();
-              }
-              console.info(`Delete rows: ${rows}`);
-              expect(rows).assertEqual(1);
-              await rdbStore?.executeSql(DROP_TABLE_TEST, null);
-              done();
+              });
             });
           } else {
             expect().assertFail();

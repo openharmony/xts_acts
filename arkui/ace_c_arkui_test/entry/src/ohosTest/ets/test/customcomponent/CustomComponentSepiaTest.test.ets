@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentSepia001', 0, async (done: Function) => {
+    it('testCustomComponentSepia001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSepia001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentSepia002', 0, async (done: Function) => {
+    it('testCustomComponentSepia002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSepia002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentSepia003', 0, async (done: Function) => {
+    it('testCustomComponentSepia003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSepia003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentSepia004', 0, async (done: Function) => {
+    it('testCustomComponentSepia004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSepia004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentSepia005', 0, async (done: Function) => {
+    it('testCustomComponentSepia005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSepia005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customComponentSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentSepia006', 0, async (done: Function) => {
+    it('testCustomComponentSepia006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSepia006()).assertEqual(0)
       done()
     })

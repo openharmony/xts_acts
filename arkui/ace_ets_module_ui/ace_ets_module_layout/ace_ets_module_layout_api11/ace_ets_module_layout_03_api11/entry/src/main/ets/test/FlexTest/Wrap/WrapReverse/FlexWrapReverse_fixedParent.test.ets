@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -54,7 +54,7 @@ export default function flexWrapReverse_fixedParent() {
      * @tc.desc The layout space of the parent component is fixed, and the size of the child component is changed,
      *               child component width is smaller than parent component width
      */
-    it('testWrapReverseParentfixedChangeChildWidthLessThanParent', 0, async () => {
+    it('testWrapReverseParentfixedChangeChildWidthLessThanParent',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedChangeChildWidthLessThanParent START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 150
@@ -96,7 +96,7 @@ export default function flexWrapReverse_fixedParent() {
      * @tc.desc The layout space of the parent component is fixed, and the size of the child component is changed,
      *               child component width is larger than parent component width
      */
-    it('testWrapReverseParentfixedChangeChildWidthLargerThanParent', 0, async () => {
+    it('testWrapReverseParentfixedChangeChildWidthLargerThanParent',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedChangeChildWidthLargerThanParent START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 200

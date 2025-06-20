@@ -13898,5 +13898,236 @@ export default function napiApiTest() {
       }
       done();
     });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0100
+    * @tc.name      : testNapiNewContextEnv0100
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0100 START');
+      try {
+      let value = napitest.DestroyEnvByNull();
+      console.info('DestroyEnvByNull value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('DestroyEnvByNull err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0200
+    * @tc.name      : testNapiNewContextEnv0200
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0200 START');
+      try {
+      let value = napitest.CreateEnv();
+      console.info('CreateEnv value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('CreateEnv err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0300
+    * @tc.name      : testNapiNewContextEnv0300
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0300 START');
+      try {
+      let value = napitest.CreateEnvByNotContextEnv();
+      console.info('CreateEnvByNotContextEnv value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('CreateEnvByNotContextEnv err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0400
+    * @tc.name      : testNapiNewContextEnv0400
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0400 START');
+      try {
+      let value = napitest.DestroyEnv();
+      console.info('DestroyEnv value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('DestroyEnv err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0500
+    * @tc.name      : testNapiNewContextEnv0500
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0500 START');
+      try {
+      let value = napitest.CreateEnvByEnvContext();
+      console.info('CreateEnvByEnvContext value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('CreateEnvByEnvContext err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0600
+    * @tc.name      : testNapiNewContextEnv0600
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0600 START');
+      try {
+      let value = napitest.CreateEnvByEnvIsNull();
+      console.info('CreateEnvByEnvIsNull value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('CreateEnvByEnvIsNull err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0700
+    * @tc.name      : testNapiNewContextEnv0700
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0700 START');
+      try {
+      let value = napitest.UseContext();
+      console.info('UseContext value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('UseContext err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0800
+    * @tc.name      : testNapiNewContextEnv0800
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0800 START');
+      try {
+      let value = napitest.UseMutilContext();
+      console.info('UseMutilContext value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('UseMutilContext err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV0900
+    * @tc.name      : testNapiNewContextEnv0900
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv0900 START');
+      try {
+      let value = napitest.SwitchEnv();
+      console.info('SwitchEnv value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('SwitchEnv err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_TESTNAPINEWCONTEXTENV1000
+    * @tc.name      : testNapiNewContextEnv1000
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv1000 START');
+      try {
+      let value = napitest.SwitchEnvByNull();
+      console.info('SwitchEnvByNull value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('SwitchEnvByNull err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+    * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_SWITCHENVBYNEWENV
+    * @tc.name      : testNapiNewContextEnv1100
+    * @tc.desc      : Testing EnvContext NAPI interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testNapiNewContextEnv1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiNewContextEnv1100 START');
+      try {
+      let value = napitest.SwitchEnvByNewEnv();
+      console.info('SwitchEnvByNewEnv value is: ' + value);
+      expect(value).assertEqual(true);
+      } catch (err) {
+      console.error('SwitchEnvByNewEnv err msg' + err.message);
+      expect().assertFail();
+      }
+      done();
+    });
   })
 }

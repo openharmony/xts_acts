@@ -14,7 +14,7 @@
  */
 
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function calendarPickerOnChangeTest() {
@@ -35,7 +35,7 @@ export default function calendarPickerOnChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCalendarPickerOnChange001', 0, async (done: Function) => {
+    it('testCalendarPickerOnChange001', Level.LEVEL1, async  (done: Function) => {
       let Rect = Utils.getComponentRect('calendarPickerOnChangeTest')
       await Utils.clickLocation(Math.round(globalThis.winLeft + Rect.right-vp2px(5)) , Math.round( globalThis.winTop + Rect.bottom-vp2px(5)))
       await Utils.sleep(2000)

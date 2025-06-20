@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function radioRadioStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioRadioStyle001', 0, async (done: Function) => {
+    it('testRadioRadioStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioRadioStyle001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function radioRadioStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioRadioStyle002', 0, async (done: Function) => {
+    it('testRadioRadioStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioRadioStyle002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function radioRadioStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioRadioStyle003', 0, async (done: Function) => {
+    it('testRadioRadioStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioRadioStyle003()).assertEqual(0)
       done();
     })
@@ -73,7 +73,7 @@ export default function radioRadioStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioRadioStyle004', 0, async (done: Function) => {
+    it('testRadioRadioStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioRadioStyle004()).assertEqual(0)
       done();
     })
@@ -86,7 +86,7 @@ export default function radioRadioStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioRadioStyle005', 0, async (done: Function) => {
+    it('testRadioRadioStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioRadioStyle005()).assertEqual(0)
       done();
     })

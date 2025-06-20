@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -50,7 +50,7 @@ export default function Grid_RowCol_PadMar() {
      * @tc.name testGridRowColGridPad
      * @tc.desc Add padding,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridPad', 0, async (done: Function) => {
+    it('testGridRowColGridPad',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridPad] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_PadMar_01');
@@ -110,7 +110,7 @@ export default function Grid_RowCol_PadMar() {
      * @tc.name testGridRowColGridMargin
      * @tc.desc Add margin,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridMargin', 0, async (done: Function) => {
+    it('testGridRowColGridMargin',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridMargin] START');
       globalThis.value.message.notify({
         name: 'addPadding', value: 0
@@ -168,7 +168,7 @@ export default function Grid_RowCol_PadMar() {
      * @tc.name testGridRowColGridPadMar
      * @tc.desc Add padding and margin,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridPadMar', 0, async (done: Function) => {
+    it('testGridRowColGridPadMar',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridPadMar] START');
       globalThis.value.message.notify({
         name: 'addPadding', value: 10

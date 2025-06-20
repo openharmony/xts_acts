@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -52,7 +52,7 @@ export default function VideoReset6() {
      * @tc.desc Test video reset
      * @tc.level Level 2
      */
-    it('VideoReset6_0100', 0, async (done: Function) => {
+    it('VideoReset6_0100', Level.LEVEL2, async (done: Function) => {
       console.info('[VideoReset6_0100] START');
       await CommonFunc.sleep(3000);
 

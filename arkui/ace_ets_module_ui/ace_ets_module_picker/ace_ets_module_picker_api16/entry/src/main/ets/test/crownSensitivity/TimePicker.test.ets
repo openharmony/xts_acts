@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@system.router';
 import { Driver, ON } from '@ohos.UiTest'
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -63,7 +63,7 @@ export default function TimePicker() {
          * @tc.type  : Function
          * @tc.level : Level 0
          */
-        it('ArkUX_Stage_TimePicker_ComponentTest_0100', 0, async (done: Function) => {
+        it('ArkUX_Stage_TimePicker_ComponentTest_0100', Level.LEVEL1, async (done: Function) => {
           // Verify the functions of the ArcAlphabetIndexer component
           console.info('[ArkUX_Stage_TimePicker_ComponentTest_0100] START');
           let strJson = getInspectorByKey('timepicker01');
@@ -85,7 +85,7 @@ export default function TimePicker() {
          * @tc.type  : Function
          * @tc.level : Level 0
          */
-        it('ArkUX_Stage_TimePicker_ComponentTest_0200', 0, async (done: Function) => {
+        it('ArkUX_Stage_TimePicker_ComponentTest_0200', Level.LEVEL1, async (done: Function) => {
           // Verify the functions of the ArcAlphabetIndexer component
           console.info('[ArkUX_Stage_TimePicker_ComponentTest_0200] START');
           let strJson = getInspectorByKey('timepicker02');
@@ -108,7 +108,7 @@ export default function TimePicker() {
          * @tc.type  : Function
          * @tc.level : Level 0
          */
-        it('ArkUX_Stage_TimePicker_ComponentTest_0300', 0, async (done: Function) => {
+        it('ArkUX_Stage_TimePicker_ComponentTest_0300', Level.LEVEL1, async (done: Function) => {
           // Verify the functions of the ArcAlphabetIndexer component
           console.info('[ArkUX_Stage_TimePicker_ComponentTest_0300] START');
           let strJson = getInspectorByKey('timepicker03');
@@ -129,7 +129,7 @@ export default function TimePicker() {
          * @tc.type  : Function
          * @tc.level : Level 0
          */
-        it('ArkUX_Stage_TimePicker_ComponentTest_0400', 0, async (done: Function) => {
+        it('ArkUX_Stage_TimePicker_ComponentTest_0400', Level.LEVEL1, async (done: Function) => {
           // Verify the functions of the ArcAlphabetIndexer component
           console.info('[ArkUX_Stage_TimePicker_ComponentTest_0400] START');
           let strJson = getInspectorByKey('timepicker04');
@@ -150,7 +150,7 @@ export default function TimePicker() {
          * @tc.type  : Function
          * @tc.level : Level 0
          */
-        it('ArkUX_Stage_TimePicker_ComponentTest_0500', 0, async (done: Function) => {
+        it('ArkUX_Stage_TimePicker_ComponentTest_0500', Level.LEVEL1, async (done: Function) => {
           // Verify the functions of the ArcAlphabetIndexer component
           console.info('[ArkUX_Stage_TimePicker_ComponentTest_0500] START');
           let strJson = getInspectorByKey('timepicker05');
@@ -171,7 +171,7 @@ export default function TimePicker() {
        * @tc.type  : Function
        * @tc.level : Level 0
        */
-      it('ArkUX_Stage_TimePicker_ComponentTest_0600', 0, async (done: Function) => {
+      it('ArkUX_Stage_TimePicker_ComponentTest_0600', Level.LEVEL1, async (done: Function) => {
         // Verify the functions of the ArcAlphabetIndexer component
         console.info('[ArkUX_Stage_TimePicker_ComponentTest_0500] START');
         let strJson = getInspectorByKey('timepicker06');
@@ -192,7 +192,7 @@ export default function TimePicker() {
        * @tc.type  : Function
        * @tc.level : Level 0
        */
-      it('ArkUX_Stage_TimePicker_ComponentTest_0700', 0, async (done: Function) => {
+      it('ArkUX_Stage_TimePicker_ComponentTest_0700', Level.LEVEL1, async (done: Function) => {
         // Verify the functions of the ArcAlphabetIndexer component
         console.info('[ArkUX_Stage_TimePicker_ComponentTest_0700] START');
         let strJson = getInspectorByKey('timepicker07');

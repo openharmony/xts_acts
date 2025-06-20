@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -53,7 +53,7 @@ export default function flexAlign_SpaceBetween_fixedParentVisibility() {
      * @tc.name testAlignSpaceBetweenRowNoWrapVisibilityNone
      * @tc.desc Parent component fixed, child component binding visibility none properties
      */
-    it('testAlignSpaceBetweenRowNoWrapVisibilityNone', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapVisibilityNone',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapVisibilityNone START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None
@@ -98,7 +98,7 @@ export default function flexAlign_SpaceBetween_fixedParentVisibility() {
      * @tc.name testAlignSpaceBetweenRowNoWrapVisibilityHidden
      * @tc.desc Parent component fixed, child component binding visibility hidden properties
      */
-    it('testAlignSpaceBetweenRowNoWrapVisibilityHidden', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapVisibilityHidden START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Hidden

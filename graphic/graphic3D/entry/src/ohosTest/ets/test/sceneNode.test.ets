@@ -16,6 +16,7 @@ import { ToneMappingType, ToneMappingSettings, PostProcessSettings, Vec3, Vec4, 
   SceneResourceFactory, Scene } from '@ohos.graphics.scene'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import * as scene3d from '@ohos.graphics.scene'
+import { lookAt } from '../common/utils';
 
 export default function sceneNodeTest() {
   describe('sceneNodeTest', ()=> {
@@ -41,7 +42,7 @@ export default function sceneNodeTest() {
       let msg = "============================testGetNodeByPath";
       console.info(msg + ' begin ');
       try {
-        scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"));
         expect(scene != undefined).assertTrue();
         console.info(msg + " get scene success ");
         node = scene?.root?.getNodeByPath('Scene/node_damagedHelmet_-6514') as Node;
@@ -655,7 +656,7 @@ export default function sceneNodeTest() {
       console.info(msg + ' begin ');
       try {
         let node1 = await rf.createNode({ name: "createNode1" })
-        scene1 = await Scene.load($rawfile("gltf/Cube/glTF/Cube.gltf"));
+        scene1 = await Scene.load($rawfile("gltf/Cube/glTF/Cube.glb"));
         expect(scene1 != undefined).assertTrue();
         console.info(msg + " succeed in load ");
         geom = scene1.getNodeByPath("rootNode_/Unnamed Node 1/Cube") as Geometry;
@@ -821,8 +822,6 @@ export default function sceneNodeTest() {
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0610
      * @tc.name      : testSphereGeometry
      * @tc.desc      : Used to import a scene
-     *
-     *
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -841,5 +840,108 @@ export default function sceneNodeTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0740
+     * @tc.name      : testGeometry_Morpher
+     * @tc.desc      : Verifies that a Geometry node can have an optional Morpher
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testGeometry_Morpher', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let msg = "============================testGeometry_Morpher";
+      console.info(msg + ' begin ');
+      try {
+
+        let scene = await Scene.load($rawfile('gltf/Morpher/MorphStressTest.glb'));
+        console.info(msg, 'scene loaded:', scene != null);
+        expect(scene != null).assertTrue();
+
+        let rootNode: Node | null = scene.root;
+        console.info(msg, 'rootNode:', rootNode != null);
+        expect(rootNode != null).assertTrue();
+
+        let geometryNode = scene.getNodeByPath('rootNode_/Scene/Main');
+        console.info(msg, 'geometryNode:', geometryNode != null);
+        expect(geometryNode != null).assertTrue();
+
+        if (geometryNode != null) {
+          let morpher: scene3d.Morpher | undefined = (geometryNode as Geometry).morpher;
+          console.info(msg, 'morpher:', morpher != null);
+          expect(morpher != null).assertTrue();
+
+          if (morpher != null) {
+            let targets = morpher.targets;
+            console.info(msg, 'morpher.targets:', targets != null);
+            expect(targets != null).assertTrue();
+            Object.values(targets).forEach(weight => {
+              expect(weight >= 0.0 && weight <= 1.0).assertTrue();
+            });
+          }
+        }
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testGeometry_Morpher " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0750
+     * @tc.name      : testCamera_raycast
+     * @tc.desc      : Verifies Camera raycast returns valid hit results with node, centerDistance,
+     *                 and hitPosition using a screen-space ray
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCamera_raycast', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let msg = "============================testCamera_raycast";
+      console.info(msg + ' begin');
+      try {
+        let scene = await Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
+        console.info(msg, 'scene loaded:', scene != null);
+        expect(scene != null).assertTrue();
+
+        let rootNode: Node | null = scene.root;
+        console.info(msg + " root node:", rootNode);
+        expect(rootNode != null).assertTrue();
+
+        let raycastNode = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Node;
+        console.info(msg + " target node obtained:", raycastNode?.name ?? "null");
+        expect(raycastNode != null).assertTrue();
+
+        let factory: SceneResourceFactory = scene.getResourceFactory();
+        let cameraParams: scene3d.SceneNodeParameters = { name: "camera1" };
+        let camera = await factory.createCamera(cameraParams);
+        camera.enabled = true;
+
+        lookAt(camera, { x: 15, y: 10, z: 20 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
+        let viewPos: scene3d.Vec2 = { x: 0.5, y: 0.5 };
+
+        let results: scene3d.RaycastResult[] = await camera.raycast(viewPos, { rootNode: raycastNode });
+        expect(results != null && results.length > 0).assertTrue();
+        let hit = results[0];
+
+        expect(hit.node != null).assertTrue();
+        console.info(msg + " Hit node name:", hit.node.name);
+
+        expect(typeof hit.centerDistance === 'number' && hit.centerDistance > 0).assertTrue();
+        console.info(msg + " Hit centerDistance:", hit.centerDistance);
+
+        expect(hit.hitPosition != null).assertTrue();
+        console.info(msg + " Hit position:", JSON.stringify(hit.hitPosition));
+
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.error(msg + " Failed in testCamera_raycast: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }

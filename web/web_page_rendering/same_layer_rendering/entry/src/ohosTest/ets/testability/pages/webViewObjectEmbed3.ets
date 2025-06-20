@@ -158,10 +158,6 @@ struct webViewObjectEmbed3 {
             console.info('key==>' + this.emitKey)
             this.controller.refresh();
             await Utils.sleep(2000);
-            if ( Utils.isPC ( this.controller ) ) {
-              Utils.emitEvent('error', 8016);
-              return
-            }
             switch (this.emitKey) {
               case 'emitWebViewObjectEmbed03': {
                 try {

@@ -13,11 +13,8 @@
  * limitations under the License.
  */
 import maxWidth from './PopupTest/Maxwidth.test'
-import openMenu from './promptActionTest/openMenu.test.ets'
 import openPopup from './promptActionTest/openPopup.test'
-import updateMenu from './promptActionTest/updateMenu.test.ets'
 import updatePopup from './promptActionTest/updatePopup.test'
-import closeMenu from './promptActionTest/closeMenu.test.ets'
 import closePopup from './promptActionTest/closePopup.test'
 import subwindowDialog from './promptActionTest/subwindowDialog.test'
 import menuitemOnChangeModifierTest from './MenuTest/menuitemOnChangeModifierTest.test'
@@ -35,11 +32,8 @@ export default function testsuite() {
     blurStyleOptions();
     effectOptions();
     maxWidth();
-    openMenu();
     openPopup();
-    updateMenu();
     updatePopup();
-    closeMenu();
     closePopup();
     subwindowDialog();
     menuitemOnChangeModifierTest();

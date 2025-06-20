@@ -43,7 +43,7 @@ export default function ApiCoverTest() {
       expect("ohos.extra.param.key.host_bg_inverse_color").assertEqual(FormInfo.FormParam.HOST_BG_INVERSE_COLOR_KEY);
       expect("ohos.extra.param.key.permission_name").assertEqual(FormInfo.FormParam.FORM_PERMISSION_NAME_KEY);
       expect("ohos.extra.param.key.permission_granted").assertEqual(FormInfo.FormParam.FORM_PERMISSION_GRANTED_KEY);
-	  expect("ohos.extra.param.key.form_dimension").assertEqual(FormInfo.FormParam.DIMENSION_KEY);
+      expect("ohos.extra.param.key.form_dimension").assertEqual(FormInfo.FormParam.DIMENSION_KEY);
       expect("ohos.extra.param.key.form_name").assertEqual(FormInfo.FormParam.NAME_KEY);
       expect("ohos.extra.param.key.module_name").assertEqual(FormInfo.FormParam.MODULE_NAME_KEY);
       expect("ohos.extra.param.key.form_width").assertEqual(FormInfo.FormParam.WIDTH_KEY);
@@ -54,7 +54,7 @@ export default function ApiCoverTest() {
       expect(2).assertEqual(FormInfo.FormType.eTS);
       expect(1).assertEqual(FormInfo.FormShape.RECT);
       expect(2).assertEqual(FormInfo.FormShape.CIRCLE);
-	  expect(0).assertEqual(FormInfo.VisibilityType.UNKNOWN);
+      expect(0).assertEqual(FormInfo.VisibilityType.UNKNOWN);
       expect(1).assertEqual(FormInfo.VisibilityType.FORM_VISIBLE);
       expect(2).assertEqual(FormInfo.VisibilityType.FORM_INVISIBLE);
       expect(1).assertEqual(FormInfo.LaunchReason.FORM_DEFAULT);
@@ -71,11 +71,21 @@ export default function ApiCoverTest() {
       expect(2).assertEqual(FormInfo.FormDimension.Dimension_2_2);
       expect(3).assertEqual(FormInfo.FormDimension.Dimension_2_4);
       expect(4).assertEqual(FormInfo.FormDimension.Dimension_4_4);
-	  expect(5).assertEqual(FormInfo.FormDimension.Dimension_2_1);
+      expect(5).assertEqual(FormInfo.FormDimension.Dimension_2_1);
       expect(6).assertEqual(FormInfo.FormDimension.DIMENSION_1_1);
       expect(7).assertEqual(FormInfo.FormDimension.DIMENSION_6_4);
       expect(FormInfo.FormDimension.DIMENSION_2_3).assertEqual(FormInfo.FormDimension.DIMENSION_2_3);
       expect(FormInfo.FormDimension.DIMENSION_3_3).assertEqual(FormInfo.FormDimension.DIMENSION_3_3);
+
+      expect(-1).assertEqual(FormInfo.FormLocation.OTHER);
+      expect(0).assertEqual(FormInfo.FormLocation.DESKTOP);
+      expect(1).assertEqual(FormInfo.FormLocation.FORM_CENTER);
+      expect(2).assertEqual(FormInfo.FormLocation.FORM_MANAGER);
+      expect(3).assertEqual(FormInfo.FormLocation.NEGATIVE_SCREEN);
+      expect(4).assertEqual(FormInfo.FormLocation.FORM_CENTER_NEGATIVE_SCREEN);
+      expect(5).assertEqual(FormInfo.FormLocation.FORM_MANAGER_NEGATIVE_SCREEN);
+      expect(6).assertEqual(FormInfo.FormLocation.SCREEN_LOCK);
+      expect(7).assertEqual(FormInfo.FormLocation.AI_SUGGESTION);
 
       console.info("FMS_apiCoverTest_001 end");
       done();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -37,9 +37,9 @@ export default function lazyForEachGetAllItemsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetAllItems001', 0, async (done: Function) => {
+    it('testLazyForEachGetAllItems001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`lazyforeach/LazyForEachGetAllItemsTest`)
-      await Utils.clickComponent("btn")
+      await Utils.clickComponent('btn')
       await Utils.sleep(SleepTime)
       expect(Utils.getComponentInfoByKey('colGetAllItems').$attrs.backgroundColor).assertEqual(ColorGreen)
       done()
@@ -53,7 +53,7 @@ export default function lazyForEachGetAllItemsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetAllItems002', 0, async (done: Function) => {
+    it('testLazyForEachGetAllItems002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLazyForEachGetAllItems002()).assertEqual(0)
       done()
     })
@@ -66,7 +66,7 @@ export default function lazyForEachGetAllItemsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetAllItems003', 0, async (done: Function) => {
+    it('testLazyForEachGetAllItems003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLazyForEachGetAllItems003()).assertEqual(0)
       done()
     })

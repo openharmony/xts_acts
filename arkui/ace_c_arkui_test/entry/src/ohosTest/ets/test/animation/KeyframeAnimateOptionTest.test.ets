@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption001', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption002', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption003', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption004', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption005', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption006', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption007', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption008', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption009', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption010', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption011', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption013', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption013()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption014', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption014()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption015', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption015()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption016', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption016()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption017', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption017()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption018', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption018()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption019', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption019()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption020', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption020()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption021', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption021()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption022', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption022()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption024', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption024()).assertEqual(0)
       done()
     })
@@ -320,7 +320,7 @@ export default function keyframeAnimateOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption025', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testKeyframeAnimateOption025()).assertEqual(0)
       done()
     })

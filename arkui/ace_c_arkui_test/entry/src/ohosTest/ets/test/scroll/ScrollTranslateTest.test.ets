@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollTranslate001', 0, async (done: Function) => {
+    it('testScrollTranslate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollTranslate001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollTranslate002', 0, async (done: Function) => {
+    it('testScrollTranslate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollTranslate002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollTranslate003', 0, async (done: Function) => {
+    it('testScrollTranslate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollTranslate003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function scrollTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testScrollTranslate004', 0, async (done: Function) => {
+    it('testScrollTranslate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollTranslate004()).assertEqual(0)
       done();
     });

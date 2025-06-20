@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -60,7 +60,7 @@ export default function Grid_ReachStartAndEnd3() {
      * @tc.name testGrid
      * @tc.desc When initializing the Grid, an initialIndex of 0 will trigger an onReachStart event
      */
-    it('Grid_ReachStartAndEnd3_0400', 0, async (done: Function) => {
+    it('Grid_ReachStartAndEnd3_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd3_0400] START');
       let strJson = getInspectorByKey('Grid_ReachStartAndEnd_tex1');
       console.info("[Grid_ReachStartAndEnd3_0400] component obj is: " + JSON.stringify(JSON.parse(strJson)))

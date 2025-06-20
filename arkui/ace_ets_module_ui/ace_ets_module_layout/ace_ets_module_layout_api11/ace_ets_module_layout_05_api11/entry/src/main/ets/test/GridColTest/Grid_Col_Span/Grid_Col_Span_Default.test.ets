@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function Grid_Col_Span_Default() {
      * @tc.name testGridColSpan
      * @tc.desc GridCol does not set span
      */
-    it('SUB_ACE_Grid_Col_Span_Default_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Span_Default_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Span_Default_TEST_0100] START');
 
       await CommonFunc.sleep(3000);

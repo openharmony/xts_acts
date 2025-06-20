@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function flexPadding_EndJsunit() {
      * @tc.name testFlexItemAlignEndParentSetPadding
      * @tc.desc Parent component set paddding,subcomponent does not exceed the parent component.
      */
-    it('testFlexItemAlignEndParentSetPadding', 0, async () => {
+    it('testFlexItemAlignEndParentSetPadding',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignEndParentSetPadding START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSaturate001', 0, async (done: Function) => {
+    it('testImageSaturate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSaturate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSaturate002', 0, async (done: Function) => {
+    it('testImageSaturate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSaturate002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSaturate003', 0, async (done: Function) => {
+    it('testImageSaturate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSaturate003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSaturate004', 0, async (done: Function) => {
+    it('testImageSaturate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSaturate004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSaturate005', 0, async (done: Function) => {
+    it('testImageSaturate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSaturate005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function imageSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageSaturate006', 0, async (done: Function) => {
+    it('testImageSaturate006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSaturate006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function imageSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageSaturate007', 0, async (done: Function) => {
+    it('testImageSaturate007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSaturate007()).assertEqual(0)
       done()
     })

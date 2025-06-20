@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function AlignCenter_AddOffset() {
      * @tc.name testFlexAlignCenterTextOffset
      * @tc.desc the offset of fist subcomponent set to "{ x: 10, y: 15 }"
      */
-    it('testFlexAlignCenterTextOffset', 0, async () => {
+    it('testFlexAlignCenterTextOffset',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignCenterTextOffset] START');
       GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'OneOffset', value: {

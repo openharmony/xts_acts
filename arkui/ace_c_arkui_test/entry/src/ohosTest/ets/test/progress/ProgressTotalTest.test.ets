@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function progressTotalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressTotal001', 0, async (done: Function) => {
+    it('testProgressTotal001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressTotal001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function progressTotalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressTotal002', 0, async (done: Function) => {
+    it('testProgressTotal002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressTotal002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function progressTotalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressTotal003', 0, async (done: Function) => {
+    it('testProgressTotal003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressTotal003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function progressTotalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressTotal004', 0, async (done: Function) => {
+    it('testProgressTotal004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressTotal004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function progressTotalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressTotal005', 0, async (done: Function) => {
+    it('testProgressTotal005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressTotal005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function progressTotalTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressTotal006', 0, async (done: Function) => {
+    it('testProgressTotal006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressTotal006()).assertEqual(0)
       done();
     });

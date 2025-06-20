@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -57,7 +57,7 @@ export default function motionPathJsunit() {
       console.info("motionPath after each called");
     });
 
-    it('motionPathTest_0100', 0, async (done: Function) => {
+    it('motionPathTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('motionPathTest_0100 START');
       let strJson = getInspectorByKey('motionPath');
       console.info("motionPathTest_0100 component strJson:" + strJson);
@@ -66,7 +66,7 @@ export default function motionPathJsunit() {
       done();
     });
 
-    it('motionPathTest_0200', 0, async (done: Function) => {
+    it('motionPathTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('motionPathTest_0200 START');
       let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("motionPathTest_0200 get state result is: " + JSON.stringify(indexEventOne));
@@ -89,7 +89,7 @@ export default function motionPathJsunit() {
       done();
     });
 
-    it('motionPathTest_0300', 0, async (done: Function) => {
+    it('motionPathTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('motionPathTest_0300 START');
       await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {

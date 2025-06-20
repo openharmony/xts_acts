@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaEnableAutoFillTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnableAutoFill001', 0, async (done: Function) => {
+    it('testTextAreaEnableAutoFill001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnableAutoFill001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textAreaEnableAutoFillTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnableAutoFill002', 0, async (done: Function) => {
+    it('testTextAreaEnableAutoFill002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnableAutoFill002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textAreaEnableAutoFillTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnableAutoFill003', 0, async (done: Function) => {
+    it('testTextAreaEnableAutoFill003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnableAutoFill003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function textAreaEnableAutoFillTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnableAutoFill004', 0, async (done: Function) => {
+    it('testTextAreaEnableAutoFill004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnableAutoFill004()).assertEqual(0)
       done();
     });  

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 
@@ -52,7 +52,7 @@ export default function stagePromptTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('testPromptActionShowToast001', 0, async (done: Function) => {
+    it('testPromptActionShowToast001', Level.LEVEL2, async (done: Function) => {
       console.info('testPromptActionShowToast001 START');
       try {
         let innerEventOne: events_emitter.InnerEvent = {
@@ -78,7 +78,7 @@ export default function stagePromptTest() {
       done();
     });
 
-    it('testPromptActionShowToast002', 0, async (done: Function) => {
+    it('testPromptActionShowToast002', Level.LEVEL2, async (done: Function) => {
       console.info('testPromptActionShowToast002 START');
       try {
         let innerEventTwo: events_emitter.InnerEvent = {
@@ -103,7 +103,7 @@ export default function stagePromptTest() {
       }
       done();
     });
-    it('testPromptActionShowToast003', 0, async (done: Function) => {
+    it('testPromptActionShowToast003', Level.LEVEL2, async (done: Function) => {
       console.info('testPromptActionShowToast003 START');
       try {
         let innerEventThree: events_emitter.InnerEvent = {
@@ -128,7 +128,7 @@ export default function stagePromptTest() {
       }
       done();
     });
-    it('testPromptActionShowToast004', 0, async (done: Function) => {
+    it('testPromptActionShowToast004', Level.LEVEL2, async (done: Function) => {
       console.info('testPromptActionShowToast004 START');
       try {
         let innerEventFour: events_emitter.InnerEvent = {
@@ -153,7 +153,7 @@ export default function stagePromptTest() {
       }
       done();
     });
-    it('testPromptActionShowToast005', 0, async (done: Function) => {
+    it('testPromptActionShowToast005', Level.LEVEL2, async (done: Function) => {
       console.info('testPromptActionShowToast005 START');
       try {
         let innerEventFive: events_emitter.InnerEvent = {

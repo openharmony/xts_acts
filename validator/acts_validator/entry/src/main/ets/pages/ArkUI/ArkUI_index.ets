@@ -51,6 +51,7 @@ struct IndexPage {
     { title: 'LongPressGesture', uri: 'pages/ArkUI/LongPressGesture' },
     { title: 'TapGesture', uri: 'pages/ArkUI/TapGesture' },
     { title: 'PanGesture', uri: 'pages/ArkUI/PanGesture' },
+    { title: 'KeyEvent', uri: 'pages/ArkUI/KeyEvent' },
     { title: 'bindSheetTest', uri: 'pages/ArkUI/bindSheetTest' },
     { title: 'CanvasFillStyle', uri: 'pages/ArkUI/CanvasFillStyle' },
     { title: 'CanvasLineWidth', uri: 'pages/ArkUI/CanvasLineWidth' },
@@ -107,6 +108,7 @@ struct IndexPage {
     { title: 'Touchhand', uri: 'pages/ArkUI/Touchhand' },
     { title: 'HoverSpen', uri: 'pages/ArkUI/HoverSpen' },
     { title: 'stopSwiper', uri: 'pages/ArkUI/stopSwiper' },
+    { title: 'moveList', uri: 'pages/ArkUI/moveList' },
     { title: 'AccessibilityRoleTypeTest', uri: 'pages/ArkUI/AccessibilityRoleTypeTest' },
     { title: 'StylusPen', uri: 'pages/ArkUI/StylusPen' },
     { title: 'AccessibilityFocusDrawLevel', uri: 'pages/ArkUI/AccessibilityFocusDrawLevel' },
@@ -114,7 +116,8 @@ struct IndexPage {
     { title: 'AccessibilityNextFocusIdPage', uri: 'pages/ArkUI/AccessibilityNextFocusIdPage' },
     { title: 'AccessibilityDefaultFocusPage', uri: 'pages/ArkUI/AccessibilityDefaultFocusPage' },
     { title: 'AccessibilityScrollTriggerablePage', uri: 'pages/ArkUI/AccessibilityScrollTriggerablePage' },
-    
+    { title: 'OnAccessibilityActionIntercept', uri: 'pages/ArkUI/OnAccessibilityActionIntercept' },
+
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];

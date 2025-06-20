@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../TextInput/Utils';
@@ -55,7 +55,7 @@ export default function textInputUnderlineColorTest() {
     * @tc.type : Function
     * @tc.size : MediumTest
     */
-    it('textInputUnderlineColor_0100', 0, async  (done:Function) =>{
+    it('textInputUnderlineColor_0100',  Level.LEVEL0, async  (done:Function) =>{
       let tagName = 'textInputUnderlineColor_0100';
       console.info('[' + tagName + '] START============================');
 
@@ -78,7 +78,7 @@ export default function textInputUnderlineColorTest() {
     * @tc.type : Function
     * @tc.size : MediumTest
     */
-    it('textInputUnderlineColor_0200', 0, async  (done:Function) =>{
+    it('textInputUnderlineColor_0200',  Level.LEVEL0, async  (done:Function) =>{
       let tagName = 'textInputUnderlineColor_0200';
       console.info('[' + tagName + '] START============================');
 
@@ -101,7 +101,7 @@ export default function textInputUnderlineColorTest() {
     * @tc.type : Function
     * @tc.size : MediumTest
     */
-    it('textInputUnderlineColor_0300', 0, async  (done:Function) =>{
+    it('textInputUnderlineColor_0300',  Level.LEVEL0, async  (done:Function) =>{
       let tagName = 'textInputUnderlineColor_0300';
       console.info('[' + tagName + '] START============================');
 
@@ -124,7 +124,7 @@ export default function textInputUnderlineColorTest() {
     * @tc.type : Function
     * @tc.size : MediumTest
     */
-    it('textInputUnderlineColor_0400', 0, async  (done:Function) =>{
+    it('textInputUnderlineColor_0400',  Level.LEVEL0, async  (done:Function) =>{
       let tagName = 'ArkUI_textInputUnderlineColor_0400';
       console.info('[' + tagName + '] START============================');
 

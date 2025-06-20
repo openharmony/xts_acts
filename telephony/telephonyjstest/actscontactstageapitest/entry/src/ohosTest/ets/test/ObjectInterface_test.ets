@@ -192,6 +192,97 @@ export default function ObjectInterfaceTest() {
         contact.Attribute.ATTR_SIP_ADDRESS, contact.Attribute.ATTR_WEBSITE]
     };
     let cdata:contact.Contact = contactData;
+    it("contactsApi_queryMyCard_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.queryMyCard(context,(err, data) => {
+        if (err) {
+          console.info("contactsApi_queryMyCard_test_100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("contactsApi_queryMyCard_test_100  data = " + JSON.stringify(data));
+        done();
+      });
+      sleep(500);
+    });
+    it("contactsApi_queryMyCard_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.queryMyCard(context,attr, (err, data) => {
+        if (err) {
+          console.info("contactsApi_queryMyCard_test_200  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("contactsApi_queryMyCard_test_200  data = " + JSON.stringify(data));
+        done();
+      });
+      sleep(500);
+    });
+    it("contactsApi_queryMyCard_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      let promise = contact.queryMyCard(context,attr);
+      promise.then((data) => {
+        console.info("contactsApi_queryMyCard_test_200  data = " + JSON.stringify(data));
+        done();
+      }).catch((err:BusinessError) => {
+        console.info("contactsApi_queryMyCard_test_200  err = " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+        return;
+      });
+      sleep(500);
+    });
+    it("contactsApi_isMyCard_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.addContact(context,contactData, (err, data) => {
+        if (err) {
+          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
+        expect(data > 0).assertTrue();
+        contact.isMyCard(context,data, (err, data) => {
+          if (err) {
+            console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
+            expect(false).assertTrue();
+            done();
+            return;
+          }
+          console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
+          done();
+        });
+      });
+      sleep(500);
+    });
+    it("contactsApi_isMyCard_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      sleep(1000);
+      contact.addContact(context,contactData, (err, data) => {
+        if (err) {
+          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
+        expect(data > 0).assertTrue();
+        let promise = contact.isMyCard(context,data);
+        promise.then((data) => {
+          console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
+          done();
+        }).catch((err:BusinessError) => {
+          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        });
+      });
+      sleep(500);
+    });
     it("contactsApi_contactdata_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info("contactData.id" + contactData.id);
       console.info("contactData.id" + (contactData.id == 0));
@@ -1457,48 +1548,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_queryMyCard_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      contact.queryMyCard(context,(err, data) => {
-        if (err) {
-          console.info("contactsApi_queryMyCard_test_100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("contactsApi_queryMyCard_test_100  data = " + JSON.stringify(data));
-        done();
-      });
-      sleep(500);
-    });
-    it("contactsApi_queryMyCard_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      contact.queryMyCard(context,attr, (err, data) => {
-        if (err) {
-          console.info("contactsApi_queryMyCard_test_200  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("contactsApi_queryMyCard_test_200  data = " + JSON.stringify(data));
-        done();
-      });
-      sleep(500);
-    });
-    it("contactsApi_queryMyCard_test_300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      let promise = contact.queryMyCard(context,attr);
-      promise.then((data) => {
-        console.info("contactsApi_queryMyCard_test_200  data = " + JSON.stringify(data));
-        done();
-      }).catch((err:BusinessError) => {
-        console.info("contactsApi_queryMyCard_test_200  err = " + JSON.stringify(err));
-        expect(false).assertTrue();
-        done();
-        return;
-      });
-      sleep(500);
-    });
+
     it("contactsApi_updateContact_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
@@ -1767,58 +1817,7 @@ export default function ObjectInterfaceTest() {
       });
       sleep(500);
     });
-    it("contactsApi_isMyCard_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      sleep(500);
-      contact.addContact(context,contactData, (err, data) => {
-        sleep(500);
-        if (err) {
-          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
-        expect(data > 0).assertTrue();
-        contact.isMyCard(context,data, (err, data) => {
-          if (err) {
-            console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
-            expect(false).assertTrue();
-            done();
-            return;
-          }
-          console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
-          done();
-        });
-      });
-      sleep(500);
-    });
-    it("contactsApi_isMyCard_test_200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      sleep(500);
-      contact.addContact(context,contactData, (err, data) => {
-        sleep(500);
-        if (err) {
-          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
-        expect(data > 0).assertTrue();
-        let promise = contact.isMyCard(context,data);
-        promise.then((data) => {
-          console.info("contactsApi_isMyCard_test_100  data = " + JSON.stringify(data));
-          done();
-        }).catch((err:BusinessError) => {
-          console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        });
-      });
-      sleep(500);
-    });
+
     it("contactsApi_sendMessage_test_100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let sendCallback = (err:BusinessError, data:sms.ISendShortMessageCallback) => {

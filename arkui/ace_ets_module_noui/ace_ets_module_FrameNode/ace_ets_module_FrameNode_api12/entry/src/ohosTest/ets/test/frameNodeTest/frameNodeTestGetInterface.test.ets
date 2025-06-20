@@ -60,6 +60,8 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('frameNodeGetInterfaceTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0100 START');
       let driver = await Driver.create()
@@ -84,6 +86,8 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('frameNodeGetInterfaceTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0200  START');
       let driver = await Driver.create()
@@ -108,6 +112,8 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('frameNodeGetInterfaceTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0300 START');
       let driver = await Driver.create()
@@ -132,6 +138,8 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('frameNodeGetInterfaceTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0300 START');
       let driver = await Driver.create()
@@ -156,6 +164,8 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('frameNodeGetInterfaceTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0500 START');
       let driver = await Driver.create()
@@ -180,6 +190,8 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('frameNodeGetInterfaceTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0600 START');
       let driver = await Driver.create()

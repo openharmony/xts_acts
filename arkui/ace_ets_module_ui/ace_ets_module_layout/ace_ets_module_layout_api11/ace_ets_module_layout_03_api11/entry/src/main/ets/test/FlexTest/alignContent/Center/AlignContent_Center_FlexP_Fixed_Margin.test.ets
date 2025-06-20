@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common'
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -60,7 +60,7 @@ export default function AlignContent_Center_FlexP_Fixed_Margin() {
      *               the subcomponents to meet the height requirements of the flex container
      */
 
-    it('testAlignContentCenterFlexfixedMarginSatisfy', 0, async () => {
+    it('testAlignContentCenterFlexfixedMarginSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentCenterFlexfixedMarginSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
@@ -121,7 +121,7 @@ export default function AlignContent_Center_FlexP_Fixed_Margin() {
      *               the subcomponents to prevent the flex container from meeting the height requirements.
      */
 
-    it('testAlignContentCenterFlexfixedMarginNoSatisfy', 0, async () => {
+    it('testAlignContentCenterFlexfixedMarginNoSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentCenterFlexfixedMarginNoSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 100

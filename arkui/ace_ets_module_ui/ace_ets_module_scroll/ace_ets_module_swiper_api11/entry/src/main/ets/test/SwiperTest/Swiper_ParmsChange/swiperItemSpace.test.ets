@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
 import {
@@ -67,7 +67,7 @@ export default function swiperItemSpace() {
      * @tc.name testSwiperSetItemSpace
      * @tc.desc Set swiper's  ItemSpace  value ' 20 '.
      */
-    it('testSwiperSetItemSpace', 0, async (done: Function) => {
+    it('testSwiperSetItemSpace', Level.LEVEL1, async (done: Function) => {
       console.info('new testSwiperSetItemSpace START');
       globalThis.value.message.notify({
         name: 'itemspace', value: 20
@@ -145,7 +145,7 @@ export default function swiperItemSpace() {
      * @tc.name testSwiperSetItemSpaceInvalid
      * @tc.desc Set swiper's  ItemSpace  value ' -20 '.
      */
-    it('testSwiperSetItemSpaceInvalid', 0, async (done: Function) => {
+    it('testSwiperSetItemSpaceInvalid', Level.LEVEL1, async (done: Function) => {
       console.info('new testSwiperSetItemSpaceInvalid START');
       globalThis.value.message.notify({
         name: 'itemspace', value: -20

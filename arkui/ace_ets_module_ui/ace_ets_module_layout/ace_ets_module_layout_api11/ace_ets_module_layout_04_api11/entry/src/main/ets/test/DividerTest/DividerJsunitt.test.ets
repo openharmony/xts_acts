@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -44,7 +44,7 @@ export default function dividerJsunitt() {
       console.info("divider after each called");
     });
 
-    it('dividerTest_0100', 0, async (done: Function) => {
+    it('dividerTest_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('dividerTest_0100 START');
       let strJson = getInspectorByKey('Divider');
       console.info("dividerTest_0100 component strJson:" + strJson);
@@ -55,7 +55,7 @@ export default function dividerJsunitt() {
       done();
     });
 
-    it('dividerTest_0200', 0, async (done: Function) => {
+    it('dividerTest_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('dividerTest_0200 START');
       let strJson = getInspectorByKey('Divider');
       console.info("dividerTest_0200 component strJson:" + strJson);
@@ -66,7 +66,7 @@ export default function dividerJsunitt() {
       done();
     });
 
-    it('dividerTest_0300', 0, async (done: Function) => {
+    it('dividerTest_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('dividerTest_0300 START');
       try {
         let eventData: events_emitter.EventData = {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListTranslate001', 0, async (done: Function) => {
+    it('testListTranslate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListTranslate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListTranslate002', 0, async (done: Function) => {
+    it('testListTranslate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListTranslate002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListTranslate003', 0, async (done: Function) => {
+    it('testListTranslate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListTranslate003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListTranslate004', 0, async (done: Function) => {
+    it('testListTranslate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListTranslate004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListTranslate005', 0, async (done: Function) => {
+    it('testListTranslate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListTranslate005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function listTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListTranslate006', 0, async (done: Function) => {
+    it('testListTranslate006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListTranslate006()).assertEqual(0)
       done()
     })

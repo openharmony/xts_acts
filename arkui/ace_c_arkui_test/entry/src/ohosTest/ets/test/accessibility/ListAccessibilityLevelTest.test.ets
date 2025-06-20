@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAccessibilityLevel001', 0, async (done: Function) => {
+    it('testListAccessibilityLevel001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAccessibilityLevel001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAccessibilityLevel002', 0, async (done: Function) => {
+    it('testListAccessibilityLevel002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAccessibilityLevel002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAccessibilityLevel003', 0, async (done: Function) => {
+    it('testListAccessibilityLevel003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAccessibilityLevel003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAccessibilityLevel004', 0, async (done: Function) => {
+    it('testListAccessibilityLevel004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAccessibilityLevel004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListAccessibilityLevel005', 0, async (done: Function) => {
+    it('testListAccessibilityLevel005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAccessibilityLevel005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function listAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListAccessibilityLevel006', 0, async (done: Function) => {
+    it('testListAccessibilityLevel006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAccessibilityLevel006()).assertEqual(0)
       done()
     })

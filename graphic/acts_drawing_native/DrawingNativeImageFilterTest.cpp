@@ -304,6 +304,169 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyMultipleCalls, Func
     }
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_FILTER_0400
+ * @tc.name: testImageFilterCreateOffsetNormal
+ * @tc.desc: test for testImageFilterCreateOffsetNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateOffsetNormal, Function | SmallTest | Level0) {
+    // 1. Create an instance object through the interface OH_Drawing_ImageFilterCreateBlur.
+    OH_Drawing_ImageFilter *imageFilter1 =
+        OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+    EXPECT_NE(imageFilter1, nullptr);
+    // 2. Create an instance object through the interface OH_Drawing_ImageFilterCreateOffset.
+    OH_Drawing_ImageFilter *imageFilter2 =
+        OH_Drawing_ImageFilterCreateOffset(10, 10, imageFilter1);
+    EXPECT_NE(imageFilter2, nullptr);
+    // 3. Destroy objects.
+    OH_Drawing_ImageFilterDestroy(imageFilter1);
+    OH_Drawing_ImageFilterDestroy(imageFilter2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_FILTER_0401
+ * @tc.name: testImageFilterCreateOffsetNULL
+ * @tc.desc: test for testImageFilterCreateOffsetNULL.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateOffsetNULL, Function | SmallTest | Level3) {
+    // 1. Create an instance object through the interface OH_Drawing_ImageFilterCreateBlur.
+    OH_Drawing_ImageFilter *imageFilter1 =
+        OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+    EXPECT_NE(imageFilter1, nullptr);
+    // 2. The first parameter of the interface OH_Drawing_ImageFilterCreateOffset passes to 0.
+    OH_Drawing_ImageFilter *imageFilter2 =
+        OH_Drawing_ImageFilterCreateOffset(0, 10, imageFilter1);
+    EXPECT_NE(imageFilter2, nullptr);
+    // 3. The second parameter of the interface OH_Drawing_ImageFilterCreateOffset passes to 0.
+    OH_Drawing_ImageFilter *imageFilter3 =
+        OH_Drawing_ImageFilterCreateOffset(10, 0, imageFilter1);
+    EXPECT_NE(imageFilter3, nullptr);
+    // 4. The third parameter of the interface OH_Drawing_ImageFilterCreateOffset passes to nullptr.
+    OH_Drawing_ImageFilter *imageFilter4 =
+        OH_Drawing_ImageFilterCreateOffset(10, 10, nullptr);
+    EXPECT_NE(imageFilter4, nullptr);
+    // 5. Destroy objects.
+    OH_Drawing_ImageFilterDestroy(imageFilter1);
+    OH_Drawing_ImageFilterDestroy(imageFilter2);
+    OH_Drawing_ImageFilterDestroy(imageFilter3);
+    OH_Drawing_ImageFilterDestroy(imageFilter4);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_FILTER_0402
+ * @tc.name: testImageFilterCreateOffsetAbnormal
+ * @tc.desc: test for testImageFilterCreateOffsetAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateOffsetAbnormal, Function | SmallTest | Level3) {
+    // 1. Create an instance object through the interface OH_Drawing_ImageFilterCreateBlur.
+    OH_Drawing_ImageFilter *imageFilter1 =
+        OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+    EXPECT_NE(imageFilter1, nullptr);
+    // 2. The first parameter of the interface OH_Drawing_ImageFilterCreateOffset passes to maximum value.
+    OH_Drawing_ImageFilter *imageFilter2 =
+        OH_Drawing_ImageFilterCreateOffset(0xFFFFFFFF, 10, imageFilter1);
+    EXPECT_NE(imageFilter2, nullptr);
+    // 3. The second parameter of the interface OH_Drawing_ImageFilterCreateOffset passes to maximum value.
+    OH_Drawing_ImageFilter *imageFilter3 =
+        OH_Drawing_ImageFilterCreateOffset(10, 0xFFFFFFFF, imageFilter1);
+    EXPECT_NE(imageFilter3, nullptr);
+    // 4. Destroy objects.
+    OH_Drawing_ImageFilterDestroy(imageFilter1);
+    OH_Drawing_ImageFilterDestroy(imageFilter2);
+    OH_Drawing_ImageFilterDestroy(imageFilter3);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_FILTER_0403
+ * @tc.name: testImageFilterCreateOffsetMultipleCalls
+ * @tc.desc: test for testImageFilterCreateOffsetMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateOffsetMultipleCalls, Function | SmallTest | Level3) {
+    // 1. Create an instance object through the interface OH_Drawing_ImageFilterCreateBlur.
+    OH_Drawing_ImageFilter *imageFilter1 =
+        OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+    EXPECT_NE(imageFilter1, nullptr);
+    // 2. OH_Drawing_ImageFilterCreateOffset is called multiple times.
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ImageFilter *imageFilter2 =
+        OH_Drawing_ImageFilterCreateOffset(0xFFFFFFFF, 10, imageFilter1);
+        EXPECT_NE(imageFilter2, nullptr);
+        OH_Drawing_ImageFilterDestroy(imageFilter2);
+    }
+    // 3. Destroy objects.
+    OH_Drawing_ImageFilterDestroy(imageFilter1);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_FILTER_0500
+ * @tc.name: testImageFilterCreateFromShderEffectNormal
+ * @tc.desc: test for testImageFilterCreateFromShderEffectNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromShderEffectNormal, Function | SmallTest | Level0) {
+    // 1. Create an instance object through the interface OH_Drawing_ShaderEffectCreateColorShder.
+    OH_Drawing_ShaderEffect *shaderEffect = OH_Drawing_ShaderEffectCreateColorShader(0xFF00FF00);
+    EXPECT_NE(shaderEffect, nullptr);
+    // 2. Create an instance object through the interface OH_Drawing_ImageFilterCreateFromShaderEffect.
+    OH_Drawing_ImageFilter *imageFilter = OH_Drawing_ImageFilterCreateFromShaderEffect(shaderEffect);
+    EXPECT_NE(imageFilter, nullptr);
+    // 3. Destroy objects.
+    OH_Drawing_ShaderEffectDestroy(shaderEffect);
+    OH_Drawing_ImageFilterDestroy(imageFilter);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_FILTER_0501
+ * @tc.name: testImageFilterCreateFromShderEffectNULL
+ * @tc.desc: test for testImageFilterCreateFromShderEffectNULL.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromShderEffectNULL, Function | SmallTest | Level3) {
+    // 1. Create an instance object through the interface OH_Drawing_ImageFilterCreateFromShaderEffect.
+    OH_Drawing_ImageFilter *imageFilter = OH_Drawing_ImageFilterCreateFromShaderEffect(nullptr);
+    EXPECT_EQ(imageFilter, nullptr);
+    // 2. Destroy objects.
+    OH_Drawing_ImageFilterDestroy(imageFilter);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_FILTER_0502
+ * @tc.name: testImageFilterCreateFromShderEffectMultipleCalls
+ * @tc.desc: test for testImageFilterCreateFromShderEffectMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromShderEffectMultipleCalls,
+    Function | SmallTest | Level3) {
+    // 1. Create an instance object through the interface OH_Drawing_ShaderEffectCreateColorShder.
+    OH_Drawing_ShaderEffect *shaderEffect = OH_Drawing_ShaderEffectCreateColorShader(0xFF00FF00);
+    EXPECT_NE(shaderEffect, nullptr);
+    // 2. Create an instance object through the interface OH_Drawing_ImageFilterCreateFromShaderEffect.
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ImageFilter *imageFilter = OH_Drawing_ImageFilterCreateFromShaderEffect(shaderEffect);
+        EXPECT_NE(imageFilter, nullptr);
+        OH_Drawing_ImageFilterDestroy(imageFilter);
+    }
+    // 3. Destroy objects.
+    OH_Drawing_ShaderEffectDestroy(shaderEffect);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

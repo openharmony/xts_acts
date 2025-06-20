@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils'
@@ -99,7 +99,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      the default divier parameter is {}
      */
-    it('ArkUI_Tabs_Divider_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0100 start");
       let strJson = getInspectorByKey('tabsTest5');
       let obj: ESObject = JSON.parse(strJson);
@@ -117,7 +117,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to type number
      */
-    it('ArkUI_Tabs_Divider_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0200 start");
       let strJson = getInspectorByKey('tabsTest');
       let obj: ESObject = JSON.parse(strJson);
@@ -136,7 +136,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to type string
      */
-    it('ArkUI_Tabs_Divider_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0300 start");
       let strJson = getInspectorByKey('tabsTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -154,7 +154,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to type Resource
      */
-    it('ArkUI_Tabs_Divider_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0400 start");
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest3');
@@ -173,7 +173,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to type Color
      */
-    it('ArkUI_Tabs_Divider_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0500 start");
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest4');
@@ -192,7 +192,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to null
      */
-    it('ArkUI_Tabs_Divider_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0600 start");
 
       try {
@@ -233,7 +233,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol color value
      */
-    it('ArkUI_Tabs_Divider_0700', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0700 start");
 
       try {
@@ -277,7 +277,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol strokeWidthStr value
      */
-    it('ArkUI_Tabs_Divider_0800', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0800', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0800 start");
 
       try {
@@ -312,7 +312,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol startMarginStr value
      */
-    it('ArkUI_Tabs_Divider_0900', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0900', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0900 start");
 
       try {
@@ -347,7 +347,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol endMarginStr value
      */
-    it('ArkUI_Tabs_Divider_1000', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_1000', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_1000 start");
 
       try {
@@ -382,7 +382,7 @@ export default function tabs() {
      * @tc.name      Tests the divider and indicator.selectedMode property of the tabs component
      * @tc.desc      set divider and indicator.selectedMode test
      */
-    it('ArkUI_Tabs_Divider_1100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_1100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_1100 start");
       
       try {
@@ -425,7 +425,7 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol endMarginStr value
      */
-    it('ArkUI_Tabs_Divider_1200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_1200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_1200 start");
 
       try {
@@ -539,7 +539,7 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle default
      * @tc.desc      the default labelStyle parameter is true
      */
-    it('ArkUI_Tabs_LabelStyle_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_LabelStyle_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0100 start");
 
       let defaultStrJson = getInspectorByKey('defaultSubTab');
@@ -569,7 +569,7 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when single line truncation with ellipsis
      * @tc.desc      set labelStyle to Single line truncation with ellipsis
      */
-    it('ArkUI_Tabs_LabelStyle_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_LabelStyle_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -588,7 +588,7 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when Reduce and then truncate
      * @tc.desc      set labelStyle to Reduce and then truncate
      */
-    it('ArkUI_Tabs_LabelStyle_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_LabelStyle_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0300 start");
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
@@ -608,7 +608,7 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when shrink, wrap, and truncate
      * @tc.desc      set labelStyle to shrink, wrap, and truncate
      */
-    it('ArkUI_Tabs_LabelStyle_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_LabelStyle_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0400 start");
 
       let strJson = getInspectorByKey('indicatorTest3');
@@ -628,7 +628,7 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when line feed
      * @tc.desc      set labelStyle to line feed
      */
-    it('ArkUI_Tabs_LabelStyle_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_LabelStyle_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0500 start");
 
       let strJson = getInspectorByKey('indicatorTest4');
@@ -648,7 +648,7 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when null
      * @tc.desc      set labelStyle to when null
      */
-    it('ArkUI_Tabs_LabelStyle_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_LabelStyle_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0600 start");
 
       let defaultStrJson = getInspectorByKey('defaultSubTab');
@@ -677,7 +677,7 @@ export default function tabs() {
      * @tc.name      Tests the fadingEdge property of the tabs component
      * @tc.desc      the default fadingEdge parameter is true
      */
-    it('ArkUI_Tabs_FadingEdge_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_FadingEdge_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0100 start");      
       let strJson = getInspectorByKey('tabsTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -691,7 +691,7 @@ export default function tabs() {
      * @tc.name      Tests the fadingEdge property of the tabs component
      * @tc.desc      set fadingEdge to true
      */
-    it('ArkUI_Tabs_FadingEdge_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_FadingEdge_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0200 start");
 
       try {
@@ -722,7 +722,7 @@ export default function tabs() {
      * @tc.name      Tests the fadingEdge property of the tabs component
      * @tc.desc      set fadingEdge to false
      */
-    it('ArkUI_Tabs_FadingEdge_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_FadingEdge_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0300 start");
 
       try {
@@ -753,7 +753,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      the default indicator.color parameter is "#FF007DFF"
      */
-    it('ArkUI_Tabs_IndicatorColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0100 start");
 
       await Utils.sleep(2000);
@@ -775,7 +775,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to number type
      */
-    it('ArkUI_Tabs_IndicatorColor_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -790,7 +790,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to string type
      */
-    it('ArkUI_Tabs_IndicatorColor_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -805,7 +805,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to Resource type
      */
-    it('ArkUI_Tabs_IndicatorColor_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
       let obj: ESObject = JSON.parse(strJson);
@@ -820,7 +820,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to Color type
      */
-    it('ArkUI_Tabs_IndicatorColor_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0500 start");
       let strJson = getInspectorByKey('indicatorTest4');
       let obj: ESObject = JSON.parse(strJson);
@@ -835,7 +835,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to abnormol value "xxxxxxxx" then get the default value "#FF007DFF"
      */
-    it('ArkUI_Tabs_IndicatorColor_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0600 start");
 
       try {
@@ -872,7 +872,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator property of the tabs component
      * @tc.desc      set indicator property
      */
-    it('ArkUI_Tabs_IndicatorColor_0700', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0700 start");
       
       try {
@@ -916,7 +916,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      the default indicator.height parameter is "2.00vp".
      */
-    it('ArkUI_Tabs_IndicatorHeight_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorHeight_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0100 start ")
       let defaultStrJson = getInspectorByKey('defaultSubTab');
       let defaultObj: ESObject = JSON.parse(defaultStrJson);
@@ -936,7 +936,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height to number type
      */
-    it('ArkUI_Tabs_IndicatorHeight_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorHeight_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0200 start ")
       let strJson = getInspectorByKey('indicatorTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -951,7 +951,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height to string type
      */
-    it('ArkUI_Tabs_IndicatorHeight_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorHeight_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start ")
       let strJson = getInspectorByKey('indicatorTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -966,7 +966,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height to resource type
      */
-    it('ArkUI_Tabs_IndicatorHeight_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorHeight_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0400 start ")
       let strJson = getInspectorByKey('indicatorTest3');
       let obj: ESObject = JSON.parse(strJson);
@@ -981,7 +981,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height to abnormol value -1 then get the default value "2.00vp"
      */
-    it('ArkUI_Tabs_IndicatorHeight_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorHeight_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
@@ -1018,7 +1018,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorHeight_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorHeight_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
@@ -1094,7 +1094,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      the default indicator.width parameter is "0.00vp".
      */
-    it('ArkUI_Tabs_IndicatorWidth_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorWidth_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0100 start");
       let strJson = getInspectorByKey('indicatorTest5');
       let obj: ESObject = JSON.parse(strJson);
@@ -1109,7 +1109,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.width to number type
      */
-    it('ArkUI_Tabs_IndicatorWidth_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorWidth_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -1124,7 +1124,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.width to string type
      */
-    it('ArkUI_Tabs_IndicatorWidth_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorWidth_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -1139,7 +1139,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.width to Resource type
      */
-    it('ArkUI_Tabs_IndicatorWidth_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorWidth_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
       let obj: ESObject = JSON.parse(strJson);
@@ -1155,7 +1155,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.color to abnormol value -1 then get the default value "0.00vp"
      */
-    it('ArkUI_Tabs_IndicatorWidth_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorWidth_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0500 start");
       
       try {
@@ -1187,7 +1187,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.width with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorWidth_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorWidth_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
@@ -1263,7 +1263,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      the default indicator.borderRadius parameter is "0.00vp".
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0100 start");
       let strJson = getInspectorByKey('indicatorTest5');
       let obj: ESObject = JSON.parse(strJson);
@@ -1278,7 +1278,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius to number type
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -1293,7 +1293,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius to string type
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -1308,7 +1308,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius to Resource type
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
       let obj: ESObject = JSON.parse(strJson);
@@ -1323,7 +1323,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius to abnormol value -1 then get the default value "0.00vp"
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0500 start");
       
       try {
@@ -1355,7 +1355,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
@@ -1431,7 +1431,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      the default indicator.height parameter is "8.00vp".
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SubTabBorderRadius_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0100 start");
       let defaultStrJson = getInspectorByKey('defaultSubTab');
       let defaultObj: ESObject = JSON.parse(defaultStrJson);
@@ -1450,7 +1450,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      set indicator.board.borderRadius to number type
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SubTabBorderRadius_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -1464,7 +1464,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      set indicator.board.borderRadius to string type
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SubTabBorderRadius_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -1478,7 +1478,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      set indicator.board.borderRadius to Resource type
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SubTabBorderRadius_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
       let obj: ESObject = JSON.parse(strJson);
@@ -1492,7 +1492,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      set indicator.board.borderRadius to abnormol value -1 then get the default value "8.00vp"
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SubTabBorderRadius_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0500 start");
       
       try {
@@ -1528,7 +1528,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.border.borderRadius property of the tabs component
      * @tc.desc      set indicator.border.borderRadius with different length's unit
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SubTabBorderRadius_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
@@ -1601,7 +1601,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator SelectedMode.BOARD property of the tabs component
      * @tc.desc      set indicator property with SelectedMode.BOARD
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0700', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SubTabBorderRadius_0700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0700 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -1633,7 +1633,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.selectedMode property of the tabs component
      * @tc.desc      the default indicator.selectedMode parameter is "SelectedMode.INDICATOR".
      */
-    it('ArkUI_Tabs_SelectedMode_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SelectedMode_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SelectedMode_0100 start");
       let strJson = getInspectorByKey('indicatorTest5');
       let obj: ESObject = JSON.parse(strJson);
@@ -1647,7 +1647,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.selectedMode property of the tabs component
      * @tc.desc      set indicator.selectedMode to SelectedMode.INDICATOR
      */
-    it('ArkUI_Tabs_SelectedMode_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SelectedMode_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SelectedMode_0200 start");
       
       let strJson = getInspectorByKey('indicatorTest1');
@@ -1662,7 +1662,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.selectedMode property of the tabs component
      * @tc.desc      set indicator.selectedMode to SelectedMode.BOARD
      */
-    it('ArkUI_Tabs_SelectedMode_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_SelectedMode_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_SelectedMode_0300 start");
       
       try {
@@ -1694,7 +1694,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      the default indicator.marginTop parameter is "8.00vp".
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorMarginTop_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0100 start");
       let defaultStrJson = getInspectorByKey('defaultSubTab');
       let defaultObj: ESObject = JSON.parse(defaultStrJson);
@@ -1714,7 +1714,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.marginTop to number type.
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorMarginTop_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -1729,7 +1729,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.width to string type.
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorMarginTop_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -1744,7 +1744,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.width to Resource type.
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorMarginTop_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
       let obj: ESObject = JSON.parse(strJson);
@@ -1759,7 +1759,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.marginTop to abnormol value -1 then get the default value "8.00vp"
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorMarginTop_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0500 start");
       
       try {
@@ -1797,7 +1797,7 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.marginTop with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_IndicatorMarginTop_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0600 start");
       
       try {

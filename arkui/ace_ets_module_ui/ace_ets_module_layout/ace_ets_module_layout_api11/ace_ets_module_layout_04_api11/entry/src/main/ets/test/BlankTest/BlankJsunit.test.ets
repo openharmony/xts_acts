@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function blankJsunit() {
      * @tc.name testBlankGetInspectorByKey010
      * @tc.desc aceEtsTest
      */
-    it('BlankGetInspectorByKey', 0, async (done: Function) => {
+    it('BlankGetInspectorByKey',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('BlankTest_blank');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd blank component obj is: " + JSON.stringify(obj));

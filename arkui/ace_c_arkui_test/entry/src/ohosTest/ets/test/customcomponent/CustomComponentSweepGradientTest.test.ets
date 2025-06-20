@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentSweepGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentSweepGradient001', 0, async (done: Function) => {
+    it('testCustomComponentSweepGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSweepGradient001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentSweepGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentSweepGradient002', 0, async (done: Function) => {
+    it('testCustomComponentSweepGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSweepGradient002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentSweepGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentSweepGradient003', 0, async (done: Function) => {
+    it('testCustomComponentSweepGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSweepGradient003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentSweepGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentSweepGradient004', 0, async (done: Function) => {
+    it('testCustomComponentSweepGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSweepGradient004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentSweepGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentSweepGradient005', 0, async (done: Function) => {
+    it('testCustomComponentSweepGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentSweepGradient005()).assertEqual(0)
       done()
     })

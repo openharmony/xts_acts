@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignCenter
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.Center. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignCenter', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignCenter',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignCenter START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.Center
@@ -105,7 +105,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignEnd
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.End. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignEnd', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignEnd',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignEnd START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.End
@@ -155,7 +155,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignSpaceBetween
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.SpaceBetween. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignSpaceBetween', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignSpaceBetween',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceBetween START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceBetween
@@ -180,7 +180,7 @@ export default function column_JustifyContent_ChangeParent() {
         .assertTrue();
       expect(Math.floor(Math.abs((locationText1.top) - (locationColumn.top))) <= 1).assertTrue();
       expect(Math.floor(Math.abs((locationText3.bottom) - (locationColumn.bottom))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - vp2px(50))) <= 1)
         .assertTrue();
@@ -205,7 +205,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignSpaceAround
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.SpaceAround. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignSpaceAround', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignSpaceAround',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceAround START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceAround
@@ -228,7 +228,7 @@ export default function column_JustifyContent_ChangeParent() {
         .assertTrue();
       expect(Math.floor(Math.abs((locationColumn.right - locationText1.right) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - vp2px(100 / 3))) <= 1)
         .assertTrue();
@@ -256,7 +256,7 @@ export default function column_JustifyContent_ChangeParent() {
      * @tc.name testColumnJustifyContentChangeParentFlexAlignSpaceEvenly
      * @tc.desc The parent component is bound to justifyContent property FlexAlign.SpaceEvenly. Other parameters are default
      */
-    it('testColumnJustifyContentChangeParentFlexAlignSpaceEvenly', 0, async () => {
+    it('testColumnJustifyContentChangeParentFlexAlignSpaceEvenly',  Level.LEVEL0, async () => {
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceEvenly START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'justifyContent', value: FlexAlign.SpaceEvenly

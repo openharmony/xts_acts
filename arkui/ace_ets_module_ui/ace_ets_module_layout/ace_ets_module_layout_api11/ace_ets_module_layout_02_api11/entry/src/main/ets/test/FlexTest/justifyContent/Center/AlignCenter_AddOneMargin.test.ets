@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -52,7 +52,7 @@ export default function AlignCenter_AddOneMargin() {
      * @tc.desc After setting margin for the first subcomponent, the layout of the parent component's spindle
      * meets the interface display of the subcomponent's layout
      */
-    it('testFlexAlignCenterTextMarginMeet', 0, async () => {
+    it('testFlexAlignCenterTextMarginMeet',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignCenterTextMarginMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneMargin', value: 20
@@ -99,7 +99,7 @@ export default function AlignCenter_AddOneMargin() {
      * @tc.desc After setting margin for the first subcomponent, the layout of the parent component's spindle does
      * not meet the interface display of the subcomponent's layout
      */
-    it('testFlexAlignCenterTextMarginOverflow', 0, async () => {
+    it('testFlexAlignCenterTextMarginOverflow',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignCenterTextMarginOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneMargin', value: 30

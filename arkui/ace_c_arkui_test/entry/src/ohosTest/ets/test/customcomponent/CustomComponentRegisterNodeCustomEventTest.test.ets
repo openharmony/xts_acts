@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function customComponentRegisterNodeCustomEventTest() {
@@ -35,7 +35,7 @@ export default function customComponentRegisterNodeCustomEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentRegisterNodeCustomEvent001', 0, async (done: Function) => {
+    it('testCustomComponentRegisterNodeCustomEvent001', Level.LEVEL1, async (done: Function) => {
       expect(Utils.getComponentInfoByKey('customNode1').$attrs.backgroundColor).assertEqual('#FF0000FF')
       expect(Utils.getComponentInfoByKey('customNode2').$attrs.backgroundColor).assertEqual('#FFFF0000')
       done()

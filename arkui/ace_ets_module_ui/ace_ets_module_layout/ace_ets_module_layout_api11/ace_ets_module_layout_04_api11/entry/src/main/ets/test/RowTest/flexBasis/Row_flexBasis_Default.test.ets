@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -50,7 +50,7 @@ export default function Row_flexBasis_Default() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis(null) , the width of row1 is  the original width
      */
-    it('SUB_ACE_Row_flexBasis_Default_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexBasis_Default_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexBasis_Default_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addflexBasis', value: null
@@ -105,7 +105,7 @@ export default function Row_flexBasis_Default() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis(undefined) , the width of row1 is  the original width
      */
-    it('SUB_ACE_Row_flexBasis_Default_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexBasis_Default_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexBasis_Default_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addflexBasis', value: undefined
@@ -159,7 +159,7 @@ export default function Row_flexBasis_Default() {
      * @tc.name testFlexBasis
      * @tc.desc row1 is set to flexBasis(-5) , the width of row1 is  the original width
      */
-    it('SUB_ACE_Row_flexBasis_Default_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexBasis_Default_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexBasis_Default_TEST_0300] START');
       globalThis.value.message.notify({
         name: 'addflexBasis', value: -5
@@ -214,7 +214,7 @@ export default function Row_flexBasis_Default() {
      * @tc.name testFlexBasis
      * @tc.desc row1、row2 and row3 do not set  flexBasis, the width of column1 is  the original width
      */
-    it('SUB_ACE_flexBasis_Type_TEST_0400', 0, async (done: Function) => {
+    it('SUB_ACE_flexBasis_Type_TEST_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0400] START');
 
       await CommonFunc.sleep(3000);

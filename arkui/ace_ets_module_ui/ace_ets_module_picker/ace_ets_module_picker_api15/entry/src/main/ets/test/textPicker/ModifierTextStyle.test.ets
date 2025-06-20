@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -47,7 +47,7 @@ export default function ModifierTextStyleTest() {
     * @tc.type
     * @tc.size
     */
-    it('ModifierTextStyleTest_0100', 0, async (done: Function) => {
+    it('ModifierTextStyleTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ModifierTextStyleTest_0100 start');
       let strJson = getInspectorByKey('modifierDefaultTextStyle');
       console.info('[ModifierTextStyleTest_0100]:' + JSON.stringify(strJson));

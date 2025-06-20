@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect,afterEach, beforeAll, describe, it } from '@ohos/hypium';
+import { expect,afterEach, beforeAll, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON, PointerMatrix, Rect,MouseButton } from '@ohos.UiTest';
 import nativeFunc from 'libnativefunc.so'
@@ -105,7 +105,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent001', 0, async (done: Function) => {
+    it('testInputEvent001', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent001', 'OH_ArkUI_UIInputEvent_GetType',
         MouseButton.MOUSE_BUTTON_RIGHT, true, 3);
       done();
@@ -118,7 +118,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent002', 0, async (done: Function) => {
+    it('testInputEvent002', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent002', 'OH_ArkUI_UIInputEvent_GetAction',
         MouseButton.MOUSE_BUTTON_RIGHT, true, 2);
       done();
@@ -131,7 +131,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent003', 0, async (done: Function) => {
+    it('testInputEvent003', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent003', 'OH_ArkUI_UIInputEvent_GetSourceType',
         MouseButton.MOUSE_BUTTON_RIGHT, true, 1);
       done();
@@ -144,7 +144,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent004', 0, async (done: Function) => {
+    it('testInputEvent004', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent004', 'OH_ArkUI_UIInputEvent_GetToolType',
         MouseButton.MOUSE_BUTTON_RIGHT, true, 3);
       let state = nativeRender.getEventState();
@@ -158,7 +158,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent005', 0, async (done: Function) => {
+    it('testInputEvent005', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent005', 'OH_ArkUI_UIInputEvent_GetEventTime',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -171,7 +171,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent006', 0, async (done: Function) => {
+    it('testInputEvent006', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent006', 'OH_ArkUI_PointerEvent_GetPointerCount',
         MouseButton.MOUSE_BUTTON_RIGHT,true, 1);
       done();
@@ -184,7 +184,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent007', 0, async (done: Function) => {
+    it('testInputEvent007', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent007', 'OH_ArkUI_PointerEvent_GetPointerId',
         MouseButton.MOUSE_BUTTON_RIGHT,true, 0);
       done();
@@ -197,7 +197,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent008', 0, async (done: Function) => {
+    it('testInputEvent008', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent008', 'OH_ArkUI_PointerEvent_GetX',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -210,7 +210,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent009', 0, async (done: Function) => {
+    it('testInputEvent009', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent009', 'OH_ArkUI_PointerEvent_GetXByIndex',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -223,7 +223,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent010', 0, async (done: Function) => {
+    it('testInputEvent010', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent010', 'OH_ArkUI_PointerEvent_GetY',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -236,7 +236,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent011', 0, async (done: Function) => {
+    it('testInputEvent011', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent011', 'OH_ArkUI_PointerEvent_GetYByIndex',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -249,7 +249,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent012', 0, async (done: Function) => {
+    it('testInputEvent012', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent012', 'OH_ArkUI_PointerEvent_GetWindowX',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -262,7 +262,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent013', 0, async (done: Function) => {
+    it('testInputEvent013', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent013', 'OH_ArkUI_PointerEvent_GetWindowXByIndex',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -275,7 +275,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent014', 0, async (done: Function) => {
+    it('testInputEvent014', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent014', 'OH_ArkUI_PointerEvent_GetWindowY',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -288,7 +288,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent015', 0, async (done: Function) => {
+    it('testInputEvent015', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent015', 'OH_ArkUI_PointerEvent_GetWindowYByIndex',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -301,7 +301,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent016', 0, async (done: Function) => {
+    it('testInputEvent016', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent016', 'OH_ArkUI_PointerEvent_GetDisplayX',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -314,7 +314,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent017', 0, async (done: Function) => {
+    it('testInputEvent017', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent017', 'OH_ArkUI_PointerEvent_GetDisplayXByIndex',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -327,7 +327,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent018', 0, async (done: Function) => {
+    it('testInputEvent018', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent018', 'OH_ArkUI_PointerEvent_GetDisplayY',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -340,7 +340,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent019', 0, async (done: Function) => {
+    it('testInputEvent019', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent019', 'OH_ArkUI_PointerEvent_GetDisplayYByIndex',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -353,7 +353,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent020', 0, async (done: Function) => {
+    it('testInputEvent020', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent020', 'OH_ArkUI_PointerEvent_GetPressure',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -366,7 +366,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent021', 0, async (done: Function) => {
+    it('testInputEvent021', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent021', 'OH_ArkUI_PointerEvent_GetTiltX',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -379,7 +379,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent022', 0, async (done: Function) => {
+    it('testInputEvent022', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent022', 'OH_ArkUI_PointerEvent_GetTiltY',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -392,7 +392,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent023', 0, async (done: Function) => {
+    it('testInputEvent023', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent023', 'OH_ArkUI_PointerEvent_GetTouchAreaWidth',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -405,7 +405,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent024', 0, async (done: Function) => {
+    it('testInputEvent024', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent024', 'OH_ArkUI_PointerEvent_GetTouchAreaHeight',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -418,7 +418,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent025', 0, async (done: Function) => {
+    it('testInputEvent025', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent025', 'OH_ArkUI_PointerEvent_GetHistorySize',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -431,7 +431,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent026', 0, async (done: Function) => {
+    it('testInputEvent026', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent026', 'OH_ArkUI_PointerEvent_GetHistoryEventTime',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -444,7 +444,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent027', 0, async (done: Function) => {
+    it('testInputEvent027', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent027', 'OH_ArkUI_PointerEvent_GetHistoryPointerCount',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -457,7 +457,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent028', 0, async (done: Function) => {
+    it('testInputEvent028', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent028', 'OH_ArkUI_PointerEvent_GetHistoryPointerId',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -470,7 +470,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent029', 0, async (done: Function) => {
+    it('testInputEvent029', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent029', 'OH_ArkUI_PointerEvent_GetHistoryX',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -483,7 +483,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent030', 0, async (done: Function) => {
+    it('testInputEvent030', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent030', 'OH_ArkUI_PointerEvent_GetHistoryY',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -496,7 +496,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent031', 0, async (done: Function) => {
+    it('testInputEvent031', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent031', 'OH_ArkUI_PointerEvent_GetHistoryWindowX',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -509,7 +509,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent032', 0, async (done: Function) => {
+    it('testInputEvent032', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent032', 'OH_ArkUI_PointerEvent_GetHistoryWindowY',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -522,7 +522,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent033', 0, async (done: Function) => {
+    it('testInputEvent033', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent033', 'OH_ArkUI_PointerEvent_GetHistoryDisplayX',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -535,7 +535,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent034', 0, async (done: Function) => {
+    it('testInputEvent034', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent034', 'OH_ArkUI_PointerEvent_GetHistoryDisplayY',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -548,7 +548,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent035', 0, async (done: Function) => {
+    it('testInputEvent035', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent035', 'OH_ArkUI_PointerEvent_GetHistoryPressure',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -561,7 +561,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent036', 0, async (done: Function) => {
+    it('testInputEvent036', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent036', 'OH_ArkUI_PointerEvent_GetHistoryTiltX',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -574,7 +574,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent037', 0, async (done: Function) => {
+    it('testInputEvent037', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent037', 'OH_ArkUI_PointerEvent_GetHistoryTiltY',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -587,7 +587,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent038', 0, async (done: Function) => {
+    it('testInputEvent038', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent038', 'OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -600,7 +600,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent039', 0, async (done: Function) => {
+    it('testInputEvent039', Level.LEVEL1, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent039', 'OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight',
         MouseButton.MOUSE_BUTTON_RIGHT);
       done();
@@ -613,7 +613,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent040', 0, async (done: Function) => {
+    it('testInputEvent040', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent040', 'OH_ArkUI_UIInputEvent_GetType', true,
         1); //ARKUI_UIINPUTEVENT_TYPE_TOUCH
       done();
@@ -626,7 +626,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent041', 0, async (done: Function) => {
+    it('testInputEvent041', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent041', 'OH_ArkUI_UIInputEvent_GetAction', true, 3); //CANCEL
       done();
     });
@@ -638,7 +638,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent042', 0, async (done: Function) => {
+    it('testInputEvent042', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent042', 'OH_ArkUI_UIInputEvent_GetSourceType', true, 2); //TOUCH
       done();
     });
@@ -650,7 +650,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent043', 0, async (done: Function) => {
+    it('testInputEvent043', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent043', 'OH_ArkUI_UIInputEvent_GetToolType', true,
         1); //ARKUI_UIINPUTEVENT_TYPE_TOUCH
       done();
@@ -663,7 +663,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent044', 0, async (done: Function) => {
+    it('testInputEvent044', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent044', 'OH_ArkUI_UIInputEvent_GetEventTime');
       done();
     });
@@ -675,7 +675,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent045', 0, async (done: Function) => {
+    it('testInputEvent045', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent045', 'OH_ArkUI_PointerEvent_GetPointerCount', true);
       done();
     });
@@ -687,7 +687,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent046', 0, async (done: Function) => {
+    it('testInputEvent046', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent046', 'OH_ArkUI_PointerEvent_GetPointerId', true);
       done();
     });
@@ -699,7 +699,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent047', 0, async (done: Function) => {
+    it('testInputEvent047', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent047', 'OH_ArkUI_PointerEvent_GetX', true);
       done();
     });
@@ -711,7 +711,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent048', 0, async (done: Function) => {
+    it('testInputEvent048', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent048', 'OH_ArkUI_PointerEvent_GetXByIndex', true);
       done();
     });
@@ -723,7 +723,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent049', 0, async (done: Function) => {
+    it('testInputEvent049', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent049', 'OH_ArkUI_PointerEvent_GetY', true);
       done();
     });
@@ -735,7 +735,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent050', 0, async (done: Function) => {
+    it('testInputEvent050', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent050', 'OH_ArkUI_PointerEvent_GetYByIndex', true);
       done();
     });
@@ -747,7 +747,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent051', 0, async (done: Function) => {
+    it('testInputEvent051', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent051', 'OH_ArkUI_PointerEvent_GetWindowX', true);
       done();
     });
@@ -759,7 +759,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent052', 0, async (done: Function) => {
+    it('testInputEvent052', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent052', 'OH_ArkUI_PointerEvent_GetWindowXByIndex', true);
       done();
     });
@@ -771,7 +771,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent053', 0, async (done: Function) => {
+    it('testInputEvent053', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent053', 'OH_ArkUI_PointerEvent_GetWindowY', true);
       done();
     });
@@ -783,7 +783,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent054', 0, async (done: Function) => {
+    it('testInputEvent054', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent054', 'OH_ArkUI_PointerEvent_GetWindowYByIndex', true);
       done();
     });
@@ -795,7 +795,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent055', 0, async (done: Function) => {
+    it('testInputEvent055', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent055', 'OH_ArkUI_PointerEvent_GetDisplayX', true);
       done();
     });
@@ -807,7 +807,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent056', 0, async (done: Function) => {
+    it('testInputEvent056', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent056', 'OH_ArkUI_PointerEvent_GetDisplayXByIndex', true);
       done();
     });
@@ -819,7 +819,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent057', 0, async (done: Function) => {
+    it('testInputEvent057', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent057', 'OH_ArkUI_PointerEvent_GetDisplayY', true);
       done();
     });
@@ -831,7 +831,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent058', 0, async (done: Function) => {
+    it('testInputEvent058', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent058', 'OH_ArkUI_PointerEvent_GetDisplayYByIndex', true);
       done();
     });
@@ -843,7 +843,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent059', 0, async (done: Function) => {
+    it('testInputEvent059', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent059', 'OH_ArkUI_PointerEvent_GetPressure', true);
       done();
     });
@@ -855,7 +855,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent060', 0, async (done: Function) => {
+    it('testInputEvent060', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent060', 'OH_ArkUI_PointerEvent_GetTiltX', true);
       done();
     });
@@ -867,7 +867,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent061', 0, async (done: Function) => {
+    it('testInputEvent061', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent061', 'OH_ArkUI_PointerEvent_GetTiltY', true);
       done();
     });
@@ -879,7 +879,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent062', 0, async (done: Function) => {
+    it('testInputEvent062', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent062', 'OH_ArkUI_PointerEvent_GetTouchAreaWidth', true);
       done();
     });
@@ -891,7 +891,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent063', 0, async (done: Function) => {
+    it('testInputEvent063', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent063', 'OH_ArkUI_PointerEvent_GetTouchAreaHeight', true);
       done();
     });
@@ -903,7 +903,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent064', 0, async (done: Function) => {
+    it('testInputEvent064', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent064', 'OH_ArkUI_PointerEvent_GetHistorySize', true);
       done();
     });
@@ -915,7 +915,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent065', 0, async (done: Function) => {
+    it('testInputEvent065', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent065', 'OH_ArkUI_PointerEvent_GetHistoryEventTime', true);
       done();
     });
@@ -927,7 +927,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent066', 0, async (done: Function) => {
+    it('testInputEvent066', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent066', 'OH_ArkUI_PointerEvent_GetHistoryPointerCount', true);
       done();
     });
@@ -939,7 +939,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent067', 0, async (done: Function) => {
+    it('testInputEvent067', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent067', 'OH_ArkUI_PointerEvent_GetHistoryPointerId', true);
       done();
     });
@@ -951,7 +951,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent068', 0, async (done: Function) => {
+    it('testInputEvent068', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent068', 'OH_ArkUI_PointerEvent_GetHistoryX', true);
       done();
     });
@@ -963,7 +963,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent069', 0, async (done: Function) => {
+    it('testInputEvent069', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent069', 'OH_ArkUI_PointerEvent_GetHistoryY', true);
       done();
     });
@@ -975,7 +975,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent070', 0, async (done: Function) => {
+    it('testInputEvent070', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent070', 'OH_ArkUI_PointerEvent_GetHistoryWindowX', true);
       done();
     });
@@ -987,7 +987,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent071', 0, async (done: Function) => {
+    it('testInputEvent071', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent071', 'OH_ArkUI_PointerEvent_GetHistoryWindowY', true);
       done();
     });
@@ -999,7 +999,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent072', 0, async (done: Function) => {
+    it('testInputEvent072', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent072', 'OH_ArkUI_PointerEvent_GetHistoryDisplayX', true);
       done();
     });
@@ -1011,7 +1011,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent073', 0, async (done: Function) => {
+    it('testInputEvent073', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent073', 'OH_ArkUI_PointerEvent_GetHistoryDisplayY', true);
       done();
     });
@@ -1023,7 +1023,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent074', 0, async (done: Function) => {
+    it('testInputEvent074', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent074', 'OH_ArkUI_PointerEvent_GetHistoryPressure', true);
       done();
     });
@@ -1035,7 +1035,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent075', 0, async (done: Function) => {
+    it('testInputEvent075', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent075', 'OH_ArkUI_PointerEvent_GetHistoryTiltX', true);
       done();
     });
@@ -1047,7 +1047,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent076', 0, async (done: Function) => {
+    it('testInputEvent076', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent076', 'OH_ArkUI_PointerEvent_GetHistoryTiltY', true);
       done();
     });
@@ -1059,7 +1059,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent077', 0, async (done: Function) => {
+    it('testInputEvent077', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent077', 'OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth', true);
       done();
     });
@@ -1071,7 +1071,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent078', 0, async (done: Function) => {
+    it('testInputEvent078', Level.LEVEL1, async (done: Function) => {
       await fingerTouchInputEventTest('testInputEvent078', 'OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight', true);
       done();
     });
@@ -1083,7 +1083,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent079', 0, async (done: Function) => {
+    it('testInputEvent079', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent079', 'OH_ArkUI_UIInputEvent_GetType', true,
         2); //ARKUI_UIINPUTEVENT_TYPE_AXIS
       done();
@@ -1096,9 +1096,9 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent080', 0, async (done: Function) => {
+    it('testInputEvent080', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent080', 'OH_ArkUI_UIInputEvent_GetAction', true,
-        -1); //Axis event has no action
+        3); // AXIS_EVENT_ACTION_END
       done();
     });
     /*
@@ -1109,7 +1109,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent081', 0, async (done: Function) => {
+    it('testInputEvent081', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent081', 'OH_ArkUI_UIInputEvent_GetSourceType', true, 1); //MOUSE
       done();
     });
@@ -1121,7 +1121,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent082', 0, async (done: Function) => {
+    it('testInputEvent082', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent082',
         'OH_ArkUI_UIInputEvent_GetToolType', true, 3); // Failed to get tool type,return RUBBER = 3, which is not correct
       done();
@@ -1134,7 +1134,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent083', 0, async (done: Function) => {
+    it('testInputEvent083', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent083', 'OH_ArkUI_UIInputEvent_GetEventTime');
       done();
     });
@@ -1146,7 +1146,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent084', 0, async (done: Function) => {
+    it('testInputEvent084', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent084', 'OH_ArkUI_PointerEvent_GetPointerCount');
       done();
     });
@@ -1158,7 +1158,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent085', 0, async (done: Function) => {
+    it('testInputEvent085', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent085', 'OH_ArkUI_PointerEvent_GetPointerId', true, 0);
       done();
     });
@@ -1170,7 +1170,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent086', 0, async (done: Function) => {
+    it('testInputEvent086', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent086', 'OH_ArkUI_PointerEvent_GetX');
       done();
     });
@@ -1182,7 +1182,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent087', 0, async (done: Function) => {
+    it('testInputEvent087', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent087', 'OH_ArkUI_PointerEvent_GetXByIndex');
       done();
     });
@@ -1194,7 +1194,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent088', 0, async (done: Function) => {
+    it('testInputEvent088', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent088', 'OH_ArkUI_PointerEvent_GetY');
       done();
     });
@@ -1206,7 +1206,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent089', 0, async (done: Function) => {
+    it('testInputEvent089', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent089', 'OH_ArkUI_PointerEvent_GetYByIndex');
       done();
     });
@@ -1218,7 +1218,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent090', 0, async (done: Function) => {
+    it('testInputEvent090', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent090', 'OH_ArkUI_PointerEvent_GetWindowX');
       done();
     });
@@ -1230,7 +1230,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent091', 0, async (done: Function) => {
+    it('testInputEvent091', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent091', 'OH_ArkUI_PointerEvent_GetWindowXByIndex');
       done();
     });
@@ -1242,7 +1242,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent092', 0, async (done: Function) => {
+    it('testInputEvent092', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent092', 'OH_ArkUI_PointerEvent_GetWindowY');
       done();
     });
@@ -1254,7 +1254,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent093', 0, async (done: Function) => {
+    it('testInputEvent093', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent093', 'OH_ArkUI_PointerEvent_GetWindowYByIndex');
       done();
     });
@@ -1266,7 +1266,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent094', 0, async (done: Function) => {
+    it('testInputEvent094', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent094', 'OH_ArkUI_PointerEvent_GetDisplayX');
       done();
     });
@@ -1278,7 +1278,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent095', 0, async (done: Function) => {
+    it('testInputEvent095', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent095', 'OH_ArkUI_PointerEvent_GetDisplayXByIndex');
       done();
     });
@@ -1290,7 +1290,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent096', 0, async (done: Function) => {
+    it('testInputEvent096', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent096', 'OH_ArkUI_PointerEvent_GetDisplayY');
       done();
     });
@@ -1302,7 +1302,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent097', 0, async (done: Function) => {
+    it('testInputEvent097', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent097', 'OH_ArkUI_PointerEvent_GetDisplayYByIndex');
       done();
     });
@@ -1314,7 +1314,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent098', 0, async (done: Function) => {
+    it('testInputEvent098', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent098', 'OH_ArkUI_PointerEvent_GetPressure');
       done();
     });
@@ -1326,7 +1326,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent099', 0, async (done: Function) => {
+    it('testInputEvent099', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent099', 'OH_ArkUI_PointerEvent_GetTiltX');
       done();
     });
@@ -1338,7 +1338,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent100', 0, async (done: Function) => {
+    it('testInputEvent100', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent100', 'OH_ArkUI_PointerEvent_GetTiltY');
       done();
     });
@@ -1350,7 +1350,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent101', 0, async (done: Function) => {
+    it('testInputEvent101', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent101', 'OH_ArkUI_PointerEvent_GetTouchAreaWidth');
       done();
     });
@@ -1362,7 +1362,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent102', 0, async (done: Function) => {
+    it('testInputEvent102', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent102', 'OH_ArkUI_PointerEvent_GetTouchAreaHeight');
       done();
     });
@@ -1374,7 +1374,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent103', 0, async (done: Function) => {
+    it('testInputEvent103', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent103', 'OH_ArkUI_PointerEvent_GetHistorySize');
       done();
     });
@@ -1386,7 +1386,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent104', 0, async (done: Function) => {
+    it('testInputEvent104', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent104', 'OH_ArkUI_PointerEvent_GetHistoryEventTime');
       done();
     })
@@ -1398,7 +1398,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent105', 0, async (done: Function) => {
+    it('testInputEvent105', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent105', 'OH_ArkUI_PointerEvent_GetHistoryPointerCount');
       done();
     })
@@ -1410,7 +1410,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent106', 0, async (done: Function) => {
+    it('testInputEvent106', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent106', 'OH_ArkUI_PointerEvent_GetHistoryPointerId');
       done();
     })
@@ -1422,7 +1422,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent107', 0, async (done: Function) => {
+    it('testInputEvent107', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent107', 'OH_ArkUI_PointerEvent_GetHistoryX');
       done();
     })
@@ -1434,7 +1434,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent108', 0, async (done: Function) => {
+    it('testInputEvent108', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent108', 'OH_ArkUI_PointerEvent_GetHistoryY');
       done();
     })
@@ -1446,7 +1446,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent109', 0, async (done: Function) => {
+    it('testInputEvent109', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent109', 'OH_ArkUI_PointerEvent_GetHistoryWindowX');
       done();
     })
@@ -1458,7 +1458,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent110', 0, async (done: Function) => {
+    it('testInputEvent110', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent110', 'OH_ArkUI_PointerEvent_GetHistoryWindowY');
       done();
     })
@@ -1470,7 +1470,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent111', 0, async (done: Function) => {
+    it('testInputEvent111', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent111', 'OH_ArkUI_PointerEvent_GetHistoryDisplayX');
       done();
     })
@@ -1482,7 +1482,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent112', 0, async (done: Function) => {
+    it('testInputEvent112', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent112', 'OH_ArkUI_PointerEvent_GetHistoryDisplayY');
       done();
     })
@@ -1494,7 +1494,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent113', 0, async (done: Function) => {
+    it('testInputEvent113', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent113', 'OH_ArkUI_PointerEvent_GetHistoryPressure');
       done();
     })
@@ -1506,7 +1506,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent114', 0, async (done: Function) => {
+    it('testInputEvent114', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent114', 'OH_ArkUI_PointerEvent_GetHistoryTiltX');
       done();
     })
@@ -1518,7 +1518,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent115', 0, async (done: Function) => {
+    it('testInputEvent115', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent115', 'OH_ArkUI_PointerEvent_GetHistoryTiltY');
       done();
     })
@@ -1530,7 +1530,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent116', 0, async (done: Function) => {
+    it('testInputEvent116', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent116', 'OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth');
       done();
     })
@@ -1542,7 +1542,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent117', 0, async (done: Function) => {
+    it('testInputEvent117', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent117', 'OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight');
       done();
     })
@@ -1554,7 +1554,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent118', 0, async (done: Function) => {
+    it('testInputEvent118', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent118', 'OH_ArkUI_AxisEvent_GetVerticalAxisValue');
       done();
     })
@@ -1566,7 +1566,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent119', 0, async (done: Function) => {
+    it('testInputEvent119', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent119', 'OH_ArkUI_AxisEvent_GetHorizontalAxisValue');
       done();
     })
@@ -1578,7 +1578,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent120', 0, async (done: Function) => {
+    it('testInputEvent120', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent120', 'OH_ArkUI_AxisEvent_GetPinchAxisScaleValue');
       done();
     })
@@ -1590,7 +1590,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent121', 0, async (done: Function) => {
+    it('testInputEvent121', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent121()).assertEqual(0);
       done()
     });
@@ -1602,7 +1602,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent122', 0, async (done: Function) => {
+    it('testInputEvent122', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent122()).assertEqual(0);
       done()
     });
@@ -1615,7 +1615,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent123', 0, async (done: Function) => {
+    it('testInputEvent123', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent123()).assertEqual(0);
       done()
     });
@@ -1628,7 +1628,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent124', 0, async (done: Function) => {
+    it('testInputEvent124', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent124()).assertEqual(0);
       done()
     });
@@ -1641,7 +1641,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent125', 0, async (done: Function) => {
+    it('testInputEvent125', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent125()).assertEqual(0);
       done()
     });
@@ -1654,7 +1654,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent126', 0, async (done: Function) => {
+    it('testInputEvent126', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent126()).assertEqual(0);
       done()
     });
@@ -1667,7 +1667,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent127', 0, async (done: Function) => {
+    it('testInputEvent127', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent127()).assertEqual(0);
       done()
     });
@@ -1680,7 +1680,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent128', 0, async (done: Function) => {
+    it('testInputEvent128', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent128()).assertEqual(0);
       done()
     });
@@ -1693,7 +1693,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent129', 0, async (done: Function) => {
+    it('testInputEvent129', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent129()).assertEqual(0);
       done()
     });
@@ -1706,7 +1706,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent130', 0, async (done: Function) => {
+    it('testInputEvent130', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent130()).assertEqual(0);
       done()
     });
@@ -1719,7 +1719,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent131', 0, async (done: Function) => {
+    it('testInputEvent131', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent131()).assertEqual(0);
       done()
     });
@@ -1732,7 +1732,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent132', 0, async (done: Function) => {
+    it('testInputEvent132', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent132()).assertEqual(0);
       done()
     });
@@ -1745,7 +1745,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent133', 0, async (done: Function) => {
+    it('testInputEvent133', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent133()).assertEqual(0);
       done()
     });
@@ -1758,7 +1758,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent134', 0, async (done: Function) => {
+    it('testInputEvent134', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent134()).assertEqual(0);
       done()
     });
@@ -1771,7 +1771,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent135', 0, async (done: Function) => {
+    it('testInputEvent135', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent135()).assertEqual(0);
       done()
     });
@@ -1784,7 +1784,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent136', 0, async (done: Function) => {
+    it('testInputEvent136', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent136()).assertEqual(0);
       done()
     });
@@ -1797,7 +1797,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent137', 0, async (done: Function) => {
+    it('testInputEvent137', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent137()).assertEqual(0);
       done()
     });
@@ -1810,7 +1810,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent138', 0, async (done: Function) => {
+    it('testInputEvent138', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent138()).assertEqual(0);
       done()
     });
@@ -1823,7 +1823,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent139', 0, async (done: Function) => {
+    it('testInputEvent139', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent139()).assertEqual(0);
       done()
     });
@@ -1836,7 +1836,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent140', 0, async (done: Function) => {
+    it('testInputEvent140', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent140()).assertEqual(0);
       done()
     });
@@ -1849,7 +1849,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent141', 0, async (done: Function) => {
+    it('testInputEvent141', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent141()).assertEqual(0);
       done()
     });
@@ -1862,7 +1862,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent142', 0, async (done: Function) => {
+    it('testInputEvent142', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent142()).assertEqual(0);
       done()
     });
@@ -1875,7 +1875,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent143', 0, async (done: Function) => {
+    it('testInputEvent143', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent143()).assertEqual(0);
       done()
     });
@@ -1888,7 +1888,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent144', 0, async (done: Function) => {
+    it('testInputEvent144', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent144()).assertEqual(0);
       done()
     });
@@ -1901,7 +1901,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent145', 0, async (done: Function) => {
+    it('testInputEvent145', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent145()).assertEqual(0);
       done()
     });
@@ -1914,7 +1914,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent146', 0, async (done: Function) => {
+    it('testInputEvent146', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent146()).assertEqual(0);
       done()
     });
@@ -1927,7 +1927,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent147', 0, async (done: Function) => {
+    it('testInputEvent147', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent147()).assertEqual(0);
       done()
     });
@@ -1940,7 +1940,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent148', 0, async (done: Function) => {
+    it('testInputEvent148', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent148()).assertEqual(0);
       done()
     });
@@ -1953,7 +1953,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent149', 0, async (done: Function) => {
+    it('testInputEvent149', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent149()).assertEqual(0);
       done()
     });
@@ -1966,7 +1966,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent150', 0, async (done: Function) => {
+    it('testInputEvent150', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent150()).assertEqual(0);
       done()
     });
@@ -1979,7 +1979,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent151', 0, async (done: Function) => {
+    it('testInputEvent151', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent151()).assertEqual(0);
       done()
     });
@@ -1991,7 +1991,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent152', 0, async (done: Function) => {
+    it('testInputEvent152', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent152()).assertEqual(0);
       done()
     });
@@ -2003,7 +2003,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent153', 0, async (done: Function) => {
+    it('testInputEvent153', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent153()).assertEqual(0);
       done()
     });
@@ -2016,7 +2016,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent154', 0, async (done: Function) => {
+    it('testInputEvent154', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent154()).assertEqual(0);
       done()
     });
@@ -2029,7 +2029,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent155', 0, async (done: Function) => {
+    it('testInputEvent155', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent155()).assertEqual(0);
       done()
     });
@@ -2042,7 +2042,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent156', 0, async (done: Function) => {
+    it('testInputEvent156', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent156()).assertEqual(0);
       done()
     });
@@ -2055,7 +2055,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent157', 0, async (done: Function) => {
+    it('testInputEvent157', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent157()).assertEqual(0);
       done()
     });
@@ -2068,7 +2068,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent158', 0, async (done: Function) => {
+    it('testInputEvent158', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent158()).assertEqual(0);
       done()
     });
@@ -2081,7 +2081,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent159', 0, async (done: Function) => {
+    it('testInputEvent159', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent159()).assertEqual(0);
       done()
     });
@@ -2094,7 +2094,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent160', 0, async (done: Function) => {
+    it('testInputEvent160', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent160()).assertEqual(0);
       done()
     });
@@ -2107,7 +2107,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent161', 0, async (done: Function) => {
+    it('testInputEvent161', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent161()).assertEqual(0);
       done()
     });
@@ -2120,7 +2120,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent162', 0, async (done: Function) => {
+    it('testInputEvent162', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent162()).assertEqual(0);
       done()
     });
@@ -2133,7 +2133,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent163', 0, async (done: Function) => {
+    it('testInputEvent163', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent163()).assertEqual(0);
       done()
     });
@@ -2146,7 +2146,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent164', 0, async (done: Function) => {
+    it('testInputEvent164', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent164()).assertEqual(0);
       done()
     });
@@ -2159,7 +2159,7 @@ export default function InputEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputEvent165', 0, async (done: Function) => {
+    it('testInputEvent165', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testInputEvent165()).assertEqual(0);
       done()
     });
@@ -2171,7 +2171,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent166', 0, async (done: Function) => {
+    it('testInputEvent166', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'InputEventMouseTest';
       await Utils.pushPage(`inputevent/${PAGE_TAG}`);
       await MouseClickComponent('onMouseRightTest', MouseButton.MOUSE_BUTTON_RIGHT);
@@ -2191,7 +2191,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent167', 0, async (done: Function) => {
+    it('testInputEvent167', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'InputEventMouseTest';
       await Utils.pushPage(`inputevent/${PAGE_TAG}`);
       await MouseClickComponent('onMouseLeftTest',MouseButton.MOUSE_BUTTON_LEFT);
@@ -2210,7 +2210,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent168', 0, async (done: Function) => {
+    it('testInputEvent168', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'InputEventMouseTest';
       await Utils.pushPage(`inputevent/${PAGE_TAG}`);
       await MouseClickComponent('onMouseMiddleTest',MouseButton.MOUSE_BUTTON_MIDDLE);
@@ -2230,7 +2230,7 @@ export default function InputEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testInputEvent169', 0, async (done: Function) => {
+    it('testInputEvent169', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'InputEventMouseTest';
       await Utils.pushPage(`inputevent/${PAGE_TAG}`);
       await MouseClickComponent('onMouseMoveTest',MouseButton.MOUSE_BUTTON_LEFT);

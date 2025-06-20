@@ -16,9 +16,9 @@
 @Component
 struct ListExampleA {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  @State message:string=''
-  @State message1:string=''
-  @State message2:string=''
+  @State message:string='111'
+  @State message1:string='111'
+  @State message2:string='111'
   build() {
     Column() {
       Text(this.message).id('listScroll_1')
@@ -28,7 +28,7 @@ struct ListExampleA {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(100).fontSize(16)
+              .width('100%').height('20%').fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
         }, (item: string) => item)
@@ -49,6 +49,7 @@ struct ListExampleA {
         this.message2='onScrollVisibleContentChange'
       })
       .width('70%')
+      .height('70%')
     }
     .width('100%')
     .height('100%')

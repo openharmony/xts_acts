@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
      * @tc.desc The size of the parent component in the cross direction is not enough for the layout
      *               of the child components when the padding and margin of parent component was changed
      */
-    it('testAlignContentSpaceAroundFlexPadOverflow', 0, async () => {
+    it('testAlignContentSpaceAroundFlexPadOverflow',  Level.LEVEL0, async () => {
       console.info('[testAlignContentSpaceAroundFlexPadOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
@@ -92,7 +92,7 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
      * @tc.desc The size of the parent component in the cross direction meets the layout
      *               of the child components when the padding of parent component was changed
      */
-    it('testAlignContentSpaceAroundFlexPadMeet', 0, async () => {
+    it('testAlignContentSpaceAroundFlexPadMeet',  Level.LEVEL0, async () => {
       console.info('[testAlignContentSpaceAroundFlexPadMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10

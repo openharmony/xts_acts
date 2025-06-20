@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -58,7 +58,7 @@ export default function Grid_ScrollStartandStop() {
      * @tc.name testGrid
      * @tc.desc Scroller with animation, sliding triggers onScrollStart and onScrollStop
      */
-    it('Grid_ScrollStartandStop_0100', 0, async (done: Function) => {
+    it('Grid_ScrollStartandStop_0100',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[Grid_ScrollStartandStop_0100] START');
       let driver = Driver.create()
@@ -85,7 +85,7 @@ export default function Grid_ScrollStartandStop() {
      * @tc.name testGrid
      * @tc.desc Scroller without animation, sliding triggers onScrollStart and onScrollStop
      */
-    it('Grid_ScrollStartandStop_0200', 0, async (done: Function) => {
+    it('Grid_ScrollStartandStop_0200',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[Grid_ScrollStartandStop_0200] START');
       let driver = Driver.create()

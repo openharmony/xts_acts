@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperEffectModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperEffectMode001', 0, async (done: Function) => {
+    it('testSwiperEffectMode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperEffectMode001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperEffectModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperEffectMode002', 0, async (done: Function) => {
+    it('testSwiperEffectMode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperEffectMode002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperEffectModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperEffectMode003', 0, async (done: Function) => {
+    it('testSwiperEffectMode003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperEffectMode003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function swiperEffectModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperEffectMode004', 0, async (done: Function) => {
+    it('testSwiperEffectMode004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperEffectMode004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function swiperEffectModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperEffectMode005', 0, async (done: Function) => {
+    it('testSwiperEffectMode005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperEffectMode005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function swiperEffectModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperEffectMode006', 0, async (done: Function) => {
+    it('testSwiperEffectMode006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperEffectMode006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function swiperEffectModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperEffectMode007', 0, async (done: Function) => {
+    it('testSwiperEffectMode007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperEffectMode007()).assertEqual(0)
       done()
     })

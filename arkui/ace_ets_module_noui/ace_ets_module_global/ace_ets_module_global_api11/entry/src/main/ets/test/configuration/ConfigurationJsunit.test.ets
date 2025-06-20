@@ -43,6 +43,14 @@ export default function configurationJsunit() {
       await CommonFunc.sleep(1000);
       console.info("prompt each called");
     });
+   /*
+     * @tc.number     : configurationTest
+     * @tc.name       : configurationTest_0100
+     * @tc.desc       : configuration test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('configurationTest_0100', Level.LEVEL0, async(done: Function) => {
       console.info('configurationTest_0100 is start');
       try {

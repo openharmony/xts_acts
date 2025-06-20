@@ -186,6 +186,137 @@ export default function ContactInterfaceStageTest() {
         contact.Attribute.ATTR_SIP_ADDRESS, contact.Attribute.ATTR_WEBSITE]
     };
     /**
+     * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0100
+     * @tc.name contact::queryMyCard
+     * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_Telephony_ContactsApi_queryMyCard_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.queryMyCard(context, (err, data) => {
+        if (err) {
+          console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0100  data = " + JSON.stringify(data));
+        done();
+      });
+      sleep(500);
+    });
+    /**
+     * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0200
+     * @tc.name contact::queryMyCard
+     * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_Telephony_ContactsApi_queryMyCard_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.queryMyCard(context, attr, (err, data) => {
+        if (err) {
+          console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0200  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0200  data = " + JSON.stringify(data));
+        done();
+      });
+      sleep(500);
+    });
+    /**
+     * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0300
+     * @tc.name contact::queryMyCard
+     * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_Telephony_ContactsApi_queryMyCard_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      let promise = contact.queryMyCard(context, attr);
+      promise.then((data) => {
+        console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0300  data = " + JSON.stringify(data));
+        done();
+      }).catch((err:BusinessError) => {
+        console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0300  err = " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+        return;
+      });
+      sleep(500);
+    });
+    /**
+     * @tc.number SUB_Telephony_ContactsApi_isMyCard_test_0100
+     * @tc.name contact::addContact
+     * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_Telephony_ContactsApi_isMyCard_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      contact.addContact(context, contactData, (err, data) => {
+        if (err) {
+          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  data = " + JSON.stringify(data));
+        expect(data > 0).assertTrue();
+        contact.isMyCard(context, data, (err, data) => {
+          if (err) {
+            console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  err = " + JSON.stringify(err));
+            expect(false).assertTrue();
+            done();
+            return;
+          }
+          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  data = " + JSON.stringify(data));
+          done();
+        });
+      });
+      sleep(500);
+    });
+    /**
+     * @tc.number SUB_Telephony_ContactsApi_isMyCard_test_0200
+     * @tc.name contact::addContact
+     * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_Telephony_ContactsApi_isMyCard_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
+      let context: Context = AppStorage.get('context') as Context;
+      sleep(1000);
+      contact.addContact(context, contactData, (err, data) => {
+        if (err) {
+          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  data = " + JSON.stringify(data));
+        expect(data > 0).assertTrue();
+        let promise = contact.isMyCard(context, data);
+        promise.then((data) => {
+          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  data = " + JSON.stringify(data));
+          done();
+        }).catch((err:BusinessError) => {
+          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        });
+      });
+      sleep(500);
+    });
+    /**
      * @tc.number SUB_Telephony_ContactsApi_updateContact_test_0100
      * @tc.name contact::queryKey
      * @tc.desc Function test
@@ -494,74 +625,7 @@ export default function ContactInterfaceStageTest() {
       });
       sleep(500);
     });
-    /**
-     * @tc.number SUB_Telephony_ContactsApi_isMyCard_test_0100
-     * @tc.name contact::addContact
-     * @tc.desc Function test
-     * @tc.level 3
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it("SUB_Telephony_ContactsApi_isMyCard_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      sleep(500);
-      contact.addContact(context, contactData, (err, data) => {
-        sleep(500);
-        if (err) {
-          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  data = " + JSON.stringify(data));
-        expect(data > 0).assertTrue();
-        contact.isMyCard(context, data, (err, data) => {
-          if (err) {
-            console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  err = " + JSON.stringify(err));
-            expect(false).assertTrue();
-            done();
-            return;
-          }
-          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  data = " + JSON.stringify(data));
-          done();
-        });
-      });
-      sleep(500);
-    });
-    /**
-     * @tc.number SUB_Telephony_ContactsApi_isMyCard_test_0200
-     * @tc.name contact::addContact
-     * @tc.desc Function test
-     * @tc.level 3
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it("SUB_Telephony_ContactsApi_isMyCard_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      sleep(500);
-      contact.addContact(context, contactData, (err, data) => {
-        sleep(500);
-        if (err) {
-          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  data = " + JSON.stringify(data));
-        expect(data > 0).assertTrue();
-        let promise = contact.isMyCard(context, data);
-        promise.then((data) => {
-          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  data = " + JSON.stringify(data));
-          done();
-        }).catch((err:BusinessError) => {
-          console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        });
-      });
-      sleep(500);
-    });
+ 
     /**
      * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0100
      * @tc.name contact::addContact
@@ -1982,71 +2046,6 @@ export default function ContactInterfaceStageTest() {
       });
       sleep(500);
     });
-    /**
-     * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0100
-     * @tc.name contact::queryMyCard
-     * @tc.desc Function test
-     * @tc.level 3
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it("SUB_Telephony_ContactsApi_queryMyCard_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      contact.queryMyCard(context, (err, data) => {
-        if (err) {
-          console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0100  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0100  data = " + JSON.stringify(data));
-        done();
-      });
-      sleep(500);
-    });
-    /**
-     * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0200
-     * @tc.name contact::queryMyCard
-     * @tc.desc Function test
-     * @tc.level 2
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it("SUB_Telephony_ContactsApi_queryMyCard_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      contact.queryMyCard(context, attr, (err, data) => {
-        if (err) {
-          console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0200  err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0200  data = " + JSON.stringify(data));
-        done();
-      });
-      sleep(500);
-    });
-    /**
-     * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0300
-     * @tc.name contact::queryMyCard
-     * @tc.desc Function test
-     * @tc.level 2
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it("SUB_Telephony_ContactsApi_queryMyCard_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
-      let context: Context = AppStorage.get('context') as Context;
-      let promise = contact.queryMyCard(context, attr);
-      promise.then((data) => {
-        console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0300  data = " + JSON.stringify(data));
-        done();
-      }).catch((err:BusinessError) => {
-        console.info("SUB_Telephony_ContactsApi_queryMyCard_test_0300  err = " + JSON.stringify(err));
-        expect(false).assertTrue();
-        done();
-        return;
-      });
-      sleep(500);
-    });
+
   });
 }

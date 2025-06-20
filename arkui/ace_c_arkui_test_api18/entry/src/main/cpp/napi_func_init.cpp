@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 #include "common/common.h"
-#include "customdialog/customdialog_background.cpp"
-#include "customdialog/customdialog_test.cpp"
 #include "swiper/swiper_dot_indicator_test.cpp"
 #include "swiper/swiper_arrowStyle_test.cpp"
 
@@ -28,27 +26,6 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
-        {"testCustomDialog001", nullptr, TestCustomDialog001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialog002", nullptr, TestCustomDialog002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialogWidth", nullptr, TestCustomDialogWidth, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialogHeight", nullptr, TestCustomDialogHeight, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialogBorderWidth", nullptr, TestCustomDialogBorderWidth, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"testCustomDialogBorderColor", nullptr, TestCustomDialogBorderColor, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"testCustomDialogBorderStyle", nullptr, TestCustomDialogBorderStyle, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"testCustomDialogShadow", nullptr, TestCustomDialogShadow, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialogCustomShadow", nullptr, TestCustomDialogCustomShadow, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"testCustomDialogBackgroundBlurStyle", nullptr, TestCustomDialogBackgroundBlurStyle, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-        {"testCustomDialogKeyboardAvoidMode", nullptr, TestCustomDialogKeyboardAvoidMode, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"testCustomDialogEnableHoverMode", nullptr, TestCustomDialogEnableHoverMode, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"testCustomDialogHoverModeArea", nullptr, TestCustomDialogHoverModeArea, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
         {"testSwiperDigitIndicator001", nullptr, TestSwiperDigitIndicator001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperDigitIndicator002", nullptr, TestSwiperDigitIndicator002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperDigitIndicator003", nullptr, TestSwiperDigitIndicator003, nullptr, nullptr, nullptr, napi_default, nullptr},

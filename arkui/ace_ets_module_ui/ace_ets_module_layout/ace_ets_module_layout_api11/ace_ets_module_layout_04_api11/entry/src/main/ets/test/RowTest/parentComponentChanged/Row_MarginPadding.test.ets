@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -58,7 +58,7 @@ export default function Row_MarginPadding() {
      *               requirements
      */
 
-    it('testRowMarginPaddingSatisfy', 0, async (done: Function) => {
+    it('testRowMarginPaddingSatisfy',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowMarginPaddingSatisfy START');
       globalThis.value.message.notify({
         name: 'padding', value: 15
@@ -107,7 +107,7 @@ export default function Row_MarginPadding() {
      *               the Row component
      */
 
-    it('testRowMarginPaddingNoSatisfy', 0, async (done: Function) => {
+    it('testRowMarginPaddingNoSatisfy',  Level.LEVEL0, async (done: Function) => {
       console.info('testRowMarginPaddingNoSatisfy START');
       globalThis.value.message.notify({
         name: 'padding', value: 40

@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function ReplaceDestination2() {
      * @tc.desc      Test replaceDestination error code 100005
      * @tc.level     Level 2
      */
-    it('ReplaceDestination2_0100', 0, async (done: Function) => {
+    it('ReplaceDestination2_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('ReplaceDestination2_0100 START');
       await CommonFunc.sleep(1000);
 

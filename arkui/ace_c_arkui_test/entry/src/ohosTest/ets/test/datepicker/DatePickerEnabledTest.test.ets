@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function datePickerEnabledTest() {
@@ -34,7 +34,7 @@ export default function datePickerEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDatePickerEnabled001', 0, async (done: Function) => {
+    it('testDatePickerEnabled001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickEnabledDatePicker')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledDatePicker').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -59,7 +59,7 @@ export default function datePickerEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDatePickerEnabled002', 0, async (done: Function) => {
+    it('testDatePickerEnabled002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickDisabledDatePicker')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickDisabledDatePicker').$attrs.backgroundColor).assertEqual('#FFFF0000')
@@ -84,7 +84,7 @@ export default function datePickerEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDatePickerEnabled003', 0, async (done: Function) => {
+    it('testDatePickerEnabled003', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickAbnormalDatePicker')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickAbnormalDatePicker').$attrs.backgroundColor).assertEqual('#FF00FF00')

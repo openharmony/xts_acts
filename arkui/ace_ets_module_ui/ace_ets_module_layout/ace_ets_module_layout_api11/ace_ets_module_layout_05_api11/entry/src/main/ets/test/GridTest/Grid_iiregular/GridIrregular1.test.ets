@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 
 import {
@@ -63,7 +63,7 @@ export default function GridIrregular1Jsunit() {
     * @tc.desc  : irregularIndexes: [1], items with index 1 are custom dimensions
     * @tc.level : Level 2
     */
-    it('GridIrregular1Jsunit_0001', 0, async (done: Function) => {
+    it('GridIrregular1Jsunit_0001',  Level.LEVEL0, async (done: Function) => {
       console.info('[GridIrregular1Jsunit_0000] START');
       let GridItem1: RectValue = CommonFunc.getComponentRect('GridIrr1');
       let Grid: RectValue = CommonFunc.getComponentRect('gridIrregular1')

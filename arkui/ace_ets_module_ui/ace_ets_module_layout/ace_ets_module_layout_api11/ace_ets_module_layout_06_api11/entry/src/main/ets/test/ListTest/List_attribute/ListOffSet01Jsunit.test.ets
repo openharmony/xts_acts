@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -58,7 +58,7 @@ export default function ListOffSet01Jsunit() {
     });
 
     // end set -2
-    it('ListOffSet01Jsunit_0010', 0, async (done: Function) => {
+    it('ListOffSet01Jsunit_0010',  Level.LEVEL0, async (done: Function) => {
       console.info('[ListOffSet01Jsunit_0010] START');
       let driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('ListoffSet01_End_Negative2'));
@@ -76,7 +76,7 @@ export default function ListOffSet01Jsunit() {
     });
 
     // end set 5
-    it('ListOffSet01Jsunit_0020', 0, async (done: Function) => {
+    it('ListOffSet01Jsunit_0020',  Level.LEVEL0, async (done: Function) => {
       console.info('[ListOffSet01Jsunit_0020] START');
       let driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('ListoffSet01_End5'));
@@ -94,7 +94,7 @@ export default function ListOffSet01Jsunit() {
     });
 
     // end set 10,start set 10
-    it('ListOffSet01Jsunit_0030', 0, async (done: Function) => {
+    it('ListOffSet01Jsunit_0030',  Level.LEVEL0, async (done: Function) => {
       console.info('[ListOffSet01Jsunit_0030] START');
       let driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('ListoffSet01_End10'));
@@ -122,7 +122,7 @@ export default function ListOffSet01Jsunit() {
     });
 
     // start set -2
-    it('ListOffSet01Jsunit_0040', 0, async (done: Function) => {
+    it('ListOffSet01Jsunit_0040',  Level.LEVEL0, async (done: Function) => {
       console.info('[ListOffSet01Jsunit_0040] START');
       let driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('ListoffSet01_Start_Negative2'));
@@ -141,7 +141,7 @@ export default function ListOffSet01Jsunit() {
     });
 
     // start set 5
-    it('ListOffSet01Jsunit_0050', 0, async (done: Function) => {
+    it('ListOffSet01Jsunit_0050',  Level.LEVEL0, async (done: Function) => {
       console.info('[ListOffSet01Jsunit_0050] START');
       let driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('ListoffSet01_Start5'));
@@ -160,7 +160,7 @@ export default function ListOffSet01Jsunit() {
     });
 
     // start set 5 , end set 0 , padding set 5
-    it('ListOffSet01Jsunit_0060', 0, async (done: Function) => {
+    it('ListOffSet01Jsunit_0060',  Level.LEVEL0, async (done: Function) => {
       console.info('[ListOffSet01Jsunit_0060] START');
       let driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('ListoffSet01_Start5'));
@@ -185,7 +185,7 @@ export default function ListOffSet01Jsunit() {
     });
 
     // start set 0 , end set 5 , padding set 5
-    it('ListOffSet01Jsunit_0070', 0, async (done: Function) => {
+    it('ListOffSet01Jsunit_0070',  Level.LEVEL0, async (done: Function) => {
       console.info('[ListOffSet01Jsunit_0070] START');
       let driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('ListoffSet01_Start0'));
@@ -210,7 +210,7 @@ export default function ListOffSet01Jsunit() {
     });
 
     // start set 10 , end set 10 , padding set 0 , get currentOffset value
-    it('ListOffSet01Jsunit_0080', 0, async (done: Function) => {
+    it('ListOffSet01Jsunit_0080',  Level.LEVEL0, async (done: Function) => {
       console.info('[ListOffSet01Jsunit_0080] START');
       let driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('ListoffSet01_Start10'));

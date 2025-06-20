@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect , beforeEach} from '@ohos/hypium';
+import { describe, it, expect , beforeEach, Level } from '@ohos/hypium';
 import Utils from './common/Utils';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 
@@ -35,7 +35,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest001', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest001', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest001] start succ");
       await Utils.sleep(500);
@@ -59,7 +59,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest002', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest002', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest001] start succ");
       await Utils.sleep(500);
@@ -83,7 +83,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest003', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest003', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest001] start succ");
       await Utils.sleep(500);
@@ -107,7 +107,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest004', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest004', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest004] start succ");
       await Utils.sleep(500);
@@ -131,7 +131,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest005', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest005', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest004] start succ");
       await Utils.sleep(500);
@@ -155,7 +155,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest006', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest006', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest006] start succ");
       await Utils.sleep(500);
@@ -179,7 +179,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest007', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest007', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest007] start succ");
       await Utils.sleep(500);
@@ -203,7 +203,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest008', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest008', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest008] start succ");
       await Utils.sleep(500);
@@ -227,7 +227,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest009', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest009', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest009] start succ");
       await Utils.sleep(500);
@@ -251,7 +251,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest010', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest010', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest010] start succ");
       await Utils.sleep(500);
@@ -275,7 +275,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest011', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest011', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest011] start succ");
       await Utils.sleep(500);
@@ -299,7 +299,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest012', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest012', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest012] start succ");
       await Utils.sleep(500);
@@ -323,7 +323,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest013', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest013', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}_TS`, done);
       console.info("[ScrollCrossAttributeTest013] start succ");
       await Utils.sleep(500);
@@ -347,7 +347,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest014', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest014', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}_TS_False`, done);
       console.info("[ScrollCrossAttributeTest014] start succ");
       await Utils.sleep(500);
@@ -371,7 +371,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest015', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest015', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}_TS_True`, done);
       console.info("[ScrollCrossAttributeTest015] start succ");
       await Utils.sleep(500);
@@ -396,7 +396,7 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest016', 0, async (done: Function) => {
+    it('ScrollCrossAttributeTest016', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[ScrollCrossAttributeTest016] start succ");
       await Utils.sleep(500);

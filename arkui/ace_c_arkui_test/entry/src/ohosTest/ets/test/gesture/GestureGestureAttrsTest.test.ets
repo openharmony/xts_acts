@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddChildGesture001', 0, async (done: Function) => {
+    it('testAddChildGesture001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddChildGesture001()).assertEqual(0);
       done();
     });
@@ -47,7 +47,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddChildGesture002', 0, async (done: Function) => {
+    it('testAddChildGesture002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddChildGesture002()).assertEqual(0);
       done();
     });
@@ -60,7 +60,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddChildGesture003', 0, async (done: Function) => {
+    it('testAddChildGesture003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddChildGesture003()).assertEqual(0);
       done();
     });
@@ -73,7 +73,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddChildGesture004', 0, async (done: Function) => {
+    it('testAddChildGesture004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddChildGesture004()).assertEqual(0);
       done();
     });
@@ -86,7 +86,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddChildGesture005', 0, async (done: Function) => {
+    it('testAddChildGesture005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddChildGesture005()).assertEqual(0);
       done();
     });
@@ -99,7 +99,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddChildGesture006', 0, async (done: Function) => {
+    it('testAddChildGesture006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddChildGesture006()).assertEqual(0);
       done();
     });
@@ -112,7 +112,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testRemoveChildGesture001', 0, async (done: Function) => {
+    it('testRemoveChildGesture001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRemoveChildGesture001()).assertEqual(0);
       done();
     });
@@ -125,7 +125,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testRemoveChildGesture002', 0, async (done: Function) => {
+    it('testRemoveChildGesture002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRemoveChildGesture002()).assertEqual(0);
       done();
     });
@@ -138,7 +138,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testRemoveChildGesture003', 0, async (done: Function) => {
+    it('testRemoveChildGesture003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRemoveChildGesture003()).assertEqual(0);
       done();
     });
@@ -151,7 +151,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testRemoveChildGesture004', 0, async (done: Function) => {
+    it('testRemoveChildGesture004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRemoveChildGesture004()).assertEqual(0);
       done();
     });
@@ -164,7 +164,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testRemoveChildGesture005', 0, async (done: Function) => {
+    it('testRemoveChildGesture005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRemoveChildGesture005()).assertEqual(0);
       done();
     });
@@ -177,7 +177,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testRemoveChildGesture006', 0, async (done: Function) => {
+    it('testRemoveChildGesture006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRemoveChildGesture006()).assertEqual(0);
       done();
     });
@@ -190,7 +190,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testSetGestureEventTarget001', 0, async (done: Function) => {
+    it('testSetGestureEventTarget001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSetGestureEventTarget001()).assertEqual(0);
       done();
     });
@@ -203,7 +203,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testSetGestureEventTarget002', 0, async (done: Function) => {
+    it('testSetGestureEventTarget002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSetGestureEventTarget002()).assertEqual(0);
       done();
     });
@@ -216,7 +216,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testSetGestureEventTarget003', 0, async (done: Function) => {
+    it('testSetGestureEventTarget003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSetGestureEventTarget003()).assertEqual(0);
       done();
     });
@@ -229,7 +229,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testSetGestureEventTarget004', 0, async (done: Function) => {
+    it('testSetGestureEventTarget004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSetGestureEventTarget004()).assertEqual(0);
       done();
     });
@@ -242,7 +242,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddGestureToNode001', 0, async (done: Function) => {
+    it('testAddGestureToNode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddGestureToNode001()).assertEqual(0);
       done();
     });
@@ -255,7 +255,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddGestureToNode002', 0, async (done: Function) => {
+    it('testAddGestureToNode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddGestureToNode002()).assertEqual(0);
       done();
     });
@@ -268,7 +268,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddGestureToNode003', 0, async (done: Function) => {
+    it('testAddGestureToNode003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddGestureToNode003()).assertEqual(0);
       done();
     });
@@ -281,7 +281,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddGestureToNode004', 0, async (done: Function) => {
+    it('testAddGestureToNode004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddGestureToNode004()).assertEqual(0);
       done();
     });
@@ -294,7 +294,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddGestureToNode005', 0, async (done: Function) => {
+    it('testAddGestureToNode005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddGestureToNode005()).assertEqual(0);
       done();
     });
@@ -307,7 +307,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testAddGestureToNode006', 0, async (done: Function) => {
+    it('testAddGestureToNode006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAddGestureToNode006()).assertEqual(0);
       done();
     });
@@ -320,7 +320,7 @@ export default function gestureGestureAttrsTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testRemoveGestureFromNode001', 0, async (done: Function) => {
+    it('testRemoveGestureFromNode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRemoveGestureFromNode001()).assertEqual(0);
       done();
     });
@@ -333,7 +333,7 @@ export default function gestureGestureAttrsTest() {
     * @tc.type       : Function
     * @tc.level      : Level1
     */
-    it('testSetGestureInterrupterToNode001', 0, async (done: Function) => {
+    it('testSetGestureInterrupterToNode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSetGestureInterrupterToNode001()).assertEqual(0);
       done();
     });
@@ -346,7 +346,7 @@ export default function gestureGestureAttrsTest() {
     * @tc.type       : Function
     * @tc.level      : Level1
     */
-    it('testDisposeToNode001', 0, async (done: Function) => {
+    it('testDisposeToNode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDisposeToNode001()).assertEqual(0);
       done();
     });

@@ -192,9 +192,9 @@ export default function windowRotationTest() {
      * @tc.desc      : test_RotationChange_0500
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
-    it('test_RotationChange_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_0500';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -237,7 +237,7 @@ export default function windowRotationTest() {
             sleep(2000)
             let subWindowProperties1 = subWindowClass.getWindowProperties()
             console.error(`${caseName} :subWindowProperties1.windowRect 1: ${JSON.stringify(subWindowProperties1.windowRect)}`);
-            expect(rotationInfo.orientation).assertEqual(1)
+            expect(rotationInfo.orientation).assertEqual(3)
             expect(rotationInfo.displayId).assertEqual(displayInfo.id)
             expect(rotationInfo.displayRect.left).assertEqual(0)
             expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -264,7 +264,7 @@ export default function windowRotationTest() {
             console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
             let subWindowProperties2 = subWindowClass.getWindowProperties()
             console.error(`${caseName} :subWindowProperties2.windowRect 2: ${JSON.stringify(subWindowProperties2.windowRect)}`);
-            expect(rotationInfo.orientation).assertEqual(1);
+            expect(rotationInfo.orientation).assertEqual(3);
             expect(rotationInfo.displayId).assertEqual(displayInfo.id);
             expect(rotationInfo.displayRect.left).assertEqual(0)
             expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -310,7 +310,7 @@ export default function windowRotationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('test_RotationChange_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_0600';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -426,7 +426,7 @@ export default function windowRotationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('test_RotationChange_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_0700';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -469,7 +469,7 @@ export default function windowRotationTest() {
             sleep(2000)
             let subWindowProperties1 = subWindowClass.getWindowProperties()
             console.error(`${caseName} :subWindowProperties1.windowRect 1: ${JSON.stringify(subWindowProperties1.windowRect)}`);
-            expect(rotationInfo.orientation).assertEqual(3)
+            expect(rotationInfo.orientation).assertEqual(1)
             expect(rotationInfo.displayId).assertEqual(displayInfo.id)
             expect(rotationInfo.displayRect.left).assertEqual(0)
             expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -496,7 +496,7 @@ export default function windowRotationTest() {
             console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
             let subWindowProperties2 = subWindowClass.getWindowProperties()
             console.error(`${caseName} :subWindowProperties2.windowRect 2: ${JSON.stringify(subWindowProperties2.windowRect)}`);
-            expect(rotationInfo.orientation).assertEqual(3);
+            expect(rotationInfo.orientation).assertEqual(1);
             expect(rotationInfo.displayId).assertEqual(displayInfo.id);
             expect(rotationInfo.displayRect.left).assertEqual(0)
             expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -540,9 +540,9 @@ export default function windowRotationTest() {
      * @tc.desc      : test_RotationChange_0800
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
-    it('test_RotationChange_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_0800';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -621,9 +621,9 @@ export default function windowRotationTest() {
      * @tc.desc      : test_RotationChange_0900
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
-    it('test_RotationChange_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_0900';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -735,9 +735,9 @@ export default function windowRotationTest() {
      * @tc.desc      : test_RotationChange_1000
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
-    it('test_RotationChange_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_1000';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -824,9 +824,9 @@ export default function windowRotationTest() {
      * @tc.desc      : test_RotationChange_1100
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
-    it('test_RotationChange_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_1100';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -913,9 +913,9 @@ export default function windowRotationTest() {
      * @tc.desc      : test_RotationChange_1200
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
-    it('test_RotationChange_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_1200';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -964,7 +964,7 @@ export default function windowRotationTest() {
             sleep(2000)
             let subWindowProperties1 = subWindowClass.getWindowProperties()
             console.error(`${caseName} :subWindowProperties1.windowRect 1: ${JSON.stringify(subWindowProperties1.windowRect)}`);
-            expect(rotationInfo.orientation).assertEqual(1)
+            expect(rotationInfo.orientation).assertEqual(3)
             expect(rotationInfo.displayId).assertEqual(displayInfo.id)
             expect(rotationInfo.displayRect.left).assertEqual(0)
             expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -991,7 +991,7 @@ export default function windowRotationTest() {
             console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
             let subWindowProperties2 = subWindowClass.getWindowProperties()
             console.error(`${caseName} :subWindowProperties2.windowRect 2: ${JSON.stringify(subWindowProperties2.windowRect)}`);
-            expect(rotationInfo.orientation).assertEqual(1);
+            expect(rotationInfo.orientation).assertEqual(3);
             expect(rotationInfo.displayId).assertEqual(displayInfo.id);
             expect(rotationInfo.displayRect.left).assertEqual(0)
             expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -1035,9 +1035,9 @@ export default function windowRotationTest() {
      * @tc.desc      : test_RotationChange_1300
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
-    it('test_RotationChange_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_1300';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1082,7 +1082,7 @@ export default function windowRotationTest() {
             sleep(2000)
             let subWindowProperties1 = subWindowClass.getWindowProperties()
             console.error(`${caseName} :subWindowProperties1.windowRect 1: ${JSON.stringify(subWindowProperties1.windowRect)}`);
-            expect(rotationInfo.orientation).assertEqual(1)
+            expect(rotationInfo.orientation).assertEqual(3)
             expect(rotationInfo.displayId).assertEqual(displayInfo.id)
             expect(rotationInfo.displayRect.left).assertEqual(0)
             expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -1109,7 +1109,7 @@ export default function windowRotationTest() {
             console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
             let subWindowProperties2 = subWindowClass.getWindowProperties()
             console.error(`${caseName} :subWindowProperties2.windowRect 2: ${JSON.stringify(subWindowProperties2.windowRect)}`);
-            expect(rotationInfo.orientation).assertEqual(1);
+            expect(rotationInfo.orientation).assertEqual(3);
             expect(rotationInfo.displayId).assertEqual(displayInfo.id);
             expect(rotationInfo.displayRect.left).assertEqual(0)
             expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -1153,9 +1153,9 @@ export default function windowRotationTest() {
      * @tc.desc      : test_RotationChange_1400
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
-    it('test_RotationChange_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('test_RotationChange_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'test_RotationChange_1400';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

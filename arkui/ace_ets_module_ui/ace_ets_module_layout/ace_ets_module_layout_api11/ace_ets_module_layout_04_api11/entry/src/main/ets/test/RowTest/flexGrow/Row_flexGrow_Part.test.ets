@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -50,7 +50,7 @@ export default function Row_flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc row1 set layoutWeight(1), row2、row3 set flexGrow(1)
      */
-    it('SUB_ACE_Row_flexGrow_Part_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexGrow_Part_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexGrow_Part_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addflexGrow2', value: 1
@@ -106,7 +106,7 @@ export default function Row_flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc row1 set layoutWeight(1), row2、row3 set flexGrow(2)
      */
-    it('SUB_ACE_Row_flexGrow_Part_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexGrow_Part_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexGrow_Part_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addflexGrow2', value: 2
@@ -163,7 +163,7 @@ export default function Row_flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc row1 set layoutWeight(1), row、row2、row3 set flexGrow(3)、flexGrow(2)、flexGrow(1)
      */
-    it('SUB_ACE_Row_flexGrow_Part_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexGrow_Part_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexGrow_Part_TEST_0300] START');
       globalThis.value.message.notify({
         name: 'addflexGrow2', value: 3
@@ -220,7 +220,7 @@ export default function Row_flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc row1 set layoutWeight(1), row2、row3 set flexGrow(3)
      */
-    it('SUB_ACE_Row_flexGrow_Part_TEST_0400', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexGrow_Part_TEST_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexGrow_Part_TEST_0400] START');
       globalThis.value.message.notify({
         name: 'addflexGrow1', value: 3
@@ -278,7 +278,7 @@ export default function Row_flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc colum1 set layoutWeight('aaa'),column1, column2, and column3 are displayed according to their own height
      */
-    it('SUB_ACE_Row_flexGrow_Part_TEST_0500', 0, async (done: Function) => {
+    it('SUB_ACE_Row_flexGrow_Part_TEST_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_flexGrow_Part_TEST_0500] START');
       await CommonFunc.sleep(3000);
       console.log('get Initial value')

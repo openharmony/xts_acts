@@ -58,6 +58,22 @@ function UnregisterPrintTaskWithoutCallback(printTask: print.PrintTask) {
   printTask.off('cancel');
 }
 
+async function AddPrinterToDiscovery(printerInfo: print.PrinterInformation) {
+  await print.addPrinterToDiscovery(printerInfo).then((data : void) => {
+    console.log('addPrinterToDiscovery data : ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.log('addPrinterToDiscovery error : ' + JSON.stringify(error));
+  })
+}
+
+async function UpdatePrinterInDiscovery(printerInfo: print.PrinterInformation) {
+  await print.updatePrinterInDiscovery(printerInfo).then((data : void) => {
+    console.log('updatePrinterInDiscovery data : ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.log('updatePrinterInDiscovery error : ' + JSON.stringify(error));
+  })
+}
+
 export default function printTest() {
   describe('printTest', () => {
 
@@ -80,7 +96,7 @@ export default function printTest() {
         done();
       }).catch((error: BusinessError) => {
         console.log('print_function_0100 failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(401);
+        expect(error).assertEqual(401);
         done();
       })
     })
@@ -100,7 +116,7 @@ export default function printTest() {
         try {
           if (err) {  
             console.log('print_function_0200 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect(err).assertEqual(401);
             done();
           } else {
             expect(typeof (printTask)).assertEqual('object');
@@ -128,7 +144,7 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0300 failed, err: ' + JSON.stringify(err));
             expect(err.code).assertEqual(13100003);
             done();
@@ -162,6 +178,7 @@ export default function printTest() {
         console.log('print_function_0400 succeed');
         done();
       }).catch((error: BusinessError) => {
+        console.log('print_function_0400 failed, err: ' + JSON.stringify(error));
         expect(false).assertTrue();
         done();
       })
@@ -452,7 +469,7 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('addPrinterToDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
       })
     })
@@ -540,7 +557,7 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('updatePrinterInDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
       })
     })
@@ -588,7 +605,7 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('removePrinterFromDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
       })
     })
@@ -640,7 +657,7 @@ export default function printTest() {
         done();
       }).catch((error: BusinessError) => {
         console.log('getPrinterInformationById failed, error: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(print.PrintErrorCode.E_PRINT_INVALID_PRINTER);
+        expect(error).assertEqual(print.PrintErrorCode.E_PRINT_INVALID_PRINTER);
         done();
       })
     })
@@ -665,7 +682,7 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('getPrinterInformationById expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
       })
     })
@@ -816,14 +833,57 @@ export default function printTest() {
      * @tc.level Level 1
      */
     it('print_function_1200', Level.LEVEL2, async (done: Function) => {
+      let callBackCount : number = 0;
       let onPrinterChange =
         (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+          console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+          if (event === print.PrinterEvent.PRINTER_EVENT_ADDED || event === print.PrinterEvent.PRINTER_EVENT_STATE_CHANGED) {
+            console.log('printerChange, callBackCount: ' + ++callBackCount);
+          }
+        };
+      let testPageSize : print.PrintPageSize = {
+        id : 'ISO_A4',
+        name : 'iso_a4_210x297mm',
+        width : 8268,
+        height : 11692
       };
+      let testCapability : print.PrinterCapabilities = {
+        supportedPageSizes : [testPageSize],
+        supportedColorModes : [print.PrintColorMode.COLOR_MODE_MONOCHROME],
+        supportedDuplexModes : [print.PrintDuplexMode.DUPLEX_MODE_NONE],
+        supportedMediaTypes : ['stationery'],
+        supportedQualities : [print.PrintQuality.QUALITY_NORMAL],
+        supportedOrientations : [print.PrintOrientationMode.ORIENTATION_MODE_PORTRAIT],
+        options : 'testOptions'
+      };
+      let printerInformation : print.PrinterInformation = {
+        printerId : 'testPrinterId',
+        printerName : 'testPrinterName',
+        printerStatus : 0,
+        description : 'testDesc',
+        capability : testCapability,
+        uri : 'file:/dev/null',
+        printerMake : 'raw',
+        options : 'testOptions'
+      };
+
       // Permissions required: ohos.permission.PRINT
-      print.on('printerChange', onPrinterChange);
-      print.off('printerChange');
-      done();
+      try {
+        print.on('printerChange', onPrinterChange);
+
+        await AddPrinterToDiscovery(printerInformation);
+        await UpdatePrinterInDiscovery(printerInformation);
+        expect(callBackCount).assertEqual(1);
+
+        print.off('printerChange');
+        await UpdatePrinterInDiscovery(printerInformation);
+        expect(callBackCount).assertEqual(1);
+        done();
+      } catch (error) {
+        console.log('print_function_1200 expect failed, err: ' + JSON.stringify(error));
+        expect().assertFalse();
+        done();
+      }
     })
   })
 }

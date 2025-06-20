@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function row_TextVisibilityTest() {
      * @tc.name testRowTextVisibilityNone
      * @tc.desc The visibility of second subcomponent set to 'None'
      */
-    it('testRowTextVisibilityNone', 0, async (done: Function) => {
+    it('testRowTextVisibilityNone',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextVisibilityNone] START');
       try {
         globalThis.value.message.notify({
@@ -96,7 +96,7 @@ export default function row_TextVisibilityTest() {
      * @tc.name testRowTextVisibilityHidden
      * @tc.desc The visibility of second subcomponent set to 'Hidden'
      */
-    it('testRowTextVisibilityHidden', 0, async (done: Function) => {
+    it('testRowTextVisibilityHidden',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextVisibilityHidden] START');
       try {
         globalThis.value.message.notify({
@@ -141,7 +141,7 @@ export default function row_TextVisibilityTest() {
      * @tc.name testRowTextVisibilityVisible
      * @tc.desc The visibility of second subcomponent set to 'visible'
      */
-    it('testRowTextVisibilityVisible', 0, async (done: Function) => {
+    it('testRowTextVisibilityVisible',  Level.LEVEL0, async (done: Function) => {
       console.info('[testRowTextVisibilityVisible] START');
       try {
         globalThis.value.message.notify({

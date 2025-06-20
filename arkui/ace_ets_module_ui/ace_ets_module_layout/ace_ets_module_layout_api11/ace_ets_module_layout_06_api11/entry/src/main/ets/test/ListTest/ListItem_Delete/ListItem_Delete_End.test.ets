@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -70,7 +70,7 @@ export default function ListItem_Delete_End() {
      * @tc.name testListItem
      * @tc.desc Set actionAreaDistance to 100 and slide 200
      */
-    it('SUB_ACE_ListItem_Delete_End_0200', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_Delete_End_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_End_0200] START');
       globalThis.value.message.notify({
         name: 'actionAreaDistance', value: 50
@@ -125,7 +125,7 @@ export default function ListItem_Delete_End() {
      * @tc.name testListItem
      * @tc.desc Set actionAreaDistance to 100 and slide 80
      */
-    it('SUB_ACE_ListItem_Delete_End_0300', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_Delete_End_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_End_0300] START');
       globalThis.value.message.notify({
         name: 'actionAreaDistance', value: 100
@@ -176,7 +176,7 @@ export default function ListItem_Delete_End() {
      * @tc.name testListItem
      * @tc.desc Set actionAreaDistance to 0 and slide 50
      */
-    it('SUB_ACE_ListItem_Delete_End_0400', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_Delete_End_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_End_0400] START');
       globalThis.value.message.notify({
         name: 'actionAreaDistance', value: 0
@@ -229,7 +229,7 @@ export default function ListItem_Delete_End() {
      * @tc.name testListItem
      * @tc.desc Set actionAreaDistance to -100 and slide 50
      */
-    it('SUB_ACE_ListItem_Delete_End_0500', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_Delete_End_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_End_0500] START');
       globalThis.value.message.notify({
         name: 'actionAreaDistance', value: -100
@@ -282,7 +282,7 @@ export default function ListItem_Delete_End() {
      * @tc.name testListItem
      * @tc.desc Set actionAreaDistance to 400 and slide 50
      */
-    it('SUB_ACE_ListItem_Delete_End_0600', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_Delete_End_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_End_0600] START');
       globalThis.value.message.notify({
         name: 'actionAreaDistance', value: 400
@@ -334,7 +334,7 @@ export default function ListItem_Delete_End() {
     //  * @tc.name      testListItem
     //  * @tc.desc      Set actionAreaDistance to 100 and slide 100
     //  */
-    // it('SUB_ACE_ListItem_Delete_End_0100', 0, async  (done: Function)=> {
+    // it('SUB_ACE_ListItem_Delete_End_0100',  Level.LEVEL0, async  (done: Function)=> {
     //   console.info('[SUB_ACE_ListItem_Delete_End_0100] START');
     //   globalThis.value.message.notify({name:'actionAreaDistance', value:100});
     //   await CommonFunc.sleep(1000);

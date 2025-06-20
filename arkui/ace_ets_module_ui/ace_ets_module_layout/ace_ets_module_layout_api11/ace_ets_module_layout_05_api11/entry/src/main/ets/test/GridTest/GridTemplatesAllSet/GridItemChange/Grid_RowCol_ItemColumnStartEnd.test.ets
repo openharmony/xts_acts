@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function grid_RowCol_ItemColumnStartEndTest() {
      * @tc.name testGridRowColItemColumnStartToZeroEndToThree
      * @tc.desc The first griditem set columnStart to 0,columnEnd to 3
      */
-    it('testGridRowColItemColumnStartToZeroEndToThree', 0, async (done: Function) => {
+    it('testGridRowColItemColumnStartToZeroEndToThree',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColItemColumnStartToZeroEndToThree] START');
       globalThis.value.message.notify({
         name: 'ColumnStart', value: 0
@@ -140,7 +140,7 @@ export default function grid_RowCol_ItemColumnStartEndTest() {
      * @tc.name testGridRowColItemColumnStartToZeroEndToTwo
      * @tc.desc The first griditem set columnStart to 0,columnEnd to 2
      */
-    it('testGridRowColItemColumnStartToZeroEndToTwo', 0, async (done: Function) => {
+    it('testGridRowColItemColumnStartToZeroEndToTwo',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColItemColumnStartToZeroEndToTwo] START');
       globalThis.value.message.notify({
         name: 'ColumnStart', value: 0

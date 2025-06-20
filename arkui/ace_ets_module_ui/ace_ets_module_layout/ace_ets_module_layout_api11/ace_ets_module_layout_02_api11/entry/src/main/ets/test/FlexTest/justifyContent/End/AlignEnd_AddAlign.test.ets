@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function AlignEnd_AddAlign() {
      * @tc.name testFlexAlignEndAlignBottomEnd
      * @tc.desc Setting generic properties does not take effect, and owned properties take precedence
      */
-    it('testFlexAlignEndAlignBottomEnd', 0, async () => {
+    it('testFlexAlignEndAlignBottomEnd',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignEndAlignBottomEnd] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAlign', value: Alignment.BottomEnd

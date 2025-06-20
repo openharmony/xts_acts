@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { textClockFontColor, textClockThemeProperty, textClockThemeSetProperty } from '../../MainAbility/pages/components/TextClockPage';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
@@ -87,7 +87,7 @@ export default function textClockThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsTextClockThemeColors_0100`, 0, () => {
+    it(`ActsTextClockThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsTextClockThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       textClockKeys.forEach((key) => {
@@ -110,7 +110,7 @@ export default function textClockThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsTextClockThemeColors_0200`, 0, () => {
+    it(`ActsTextClockThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsTextClockThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       textClockKeys.forEach((key) => {
@@ -134,7 +134,7 @@ export default function textClockThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsTextClockThemeColors_0300`, 0, async () => {
+    it(`ActsTextClockThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTextClockThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime)
@@ -159,7 +159,7 @@ export default function textClockThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsTextClockThemeColors_0400`, 0, async () => {
+    it(`ActsTextClockThemeColors_0400`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTextClockThemeColors_0400`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime)

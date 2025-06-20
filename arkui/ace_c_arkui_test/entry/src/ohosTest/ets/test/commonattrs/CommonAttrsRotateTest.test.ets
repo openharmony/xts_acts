@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate001', 0, async (done: Function) => {
+    it('testCommonAttrsRotate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate002', 0, async (done: Function) => {
+    it('testCommonAttrsRotate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate003', 0, async (done: Function) => {
+    it('testCommonAttrsRotate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate004', 0, async (done: Function) => {
+    it('testCommonAttrsRotate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate005', 0, async (done: Function) => {
+    it('testCommonAttrsRotate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate006', 0, async (done: Function) => {
+    it('testCommonAttrsRotate006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate007', 0, async (done: Function) => {
+    it('testCommonAttrsRotate007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate008', 0, async (done: Function) => {
+    it('testCommonAttrsRotate008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRotate009', 0, async (done: Function) => {
+    it('testCommonAttrsRotate009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRotate009()).assertEqual(0)
       done()
     })

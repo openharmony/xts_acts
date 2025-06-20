@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function testAnimationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimationTest001', 0, async (done: Function) => {
+    it('testAnimationTest001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimation_001()).assertEqual(0)
       done()
     })
@@ -46,7 +46,7 @@ export default function testAnimationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimationTest002', 0, async (done: Function) => {
+    it('testAnimationTest002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimation_002()).assertEqual(0)
       done()
     })
@@ -58,7 +58,7 @@ export default function testAnimationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimationTest003', 0, async (done: Function) => {
+    it('testAnimationTest003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimation_003()).assertEqual(0)
       done()
     })
@@ -70,7 +70,7 @@ export default function testAnimationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimationTest004', 0, async (done: Function) => {
+    it('testAnimationTest004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimation_004()).assertEqual(0)
       done()
     })
@@ -82,7 +82,7 @@ export default function testAnimationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimationTest005', 0, async (done: Function) => {
+    it('testAnimationTest005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimation_005()).assertEqual(0)
       done()
     })

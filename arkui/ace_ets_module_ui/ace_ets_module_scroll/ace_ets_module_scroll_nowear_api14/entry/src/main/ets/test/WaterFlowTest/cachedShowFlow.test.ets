@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Driver, Component, UiWindow, ON } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function cachedShowFlow() {
      * @tc.type
      * @tc.size
      */
-    it('cachedShowFlow_0100', 0, async (done: Function) => {
+    it('cachedShowFlow_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[cachedShowFlow_0100] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -73,7 +73,7 @@ export default function cachedShowFlow() {
      * @tc.type
      * @tc.size
      */
-    it('cachedShowFlow_0200', 0, async (done: Function) => {
+    it('cachedShowFlow_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[cachedShowFlow_0200] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -93,7 +93,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       console.info("[cachedShowFlow_0200] onText is: " + onText);
       expect(onText).assertEqual(null);
       console.info('[cachedShowFlow_0200] END');
@@ -108,7 +108,7 @@ export default function cachedShowFlow() {
      * @tc.type
      * @tc.size
      */
-    it('cachedShowFlow_0300', 0, async (done: Function) => {
+    it('cachedShowFlow_0300', Level.LEVEL1, async (done: Function) => {
       console.info('[cachedShowFlow_0300] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -128,7 +128,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       console.info("[cachedShowFlow_0300] onText is: " + onText);
       expect(onText).assertEqual(null);
       console.info('[cachedShowFlow_0300] END');
@@ -143,7 +143,7 @@ export default function cachedShowFlow() {
      * @tc.type
      * @tc.size
      */
-    it('cachedShowFlow_0400', 0, async (done: Function) => {
+    it('cachedShowFlow_0400', Level.LEVEL1, async (done: Function) => {
       console.info('[cachedShowFlow_0400] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -163,7 +163,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       let text = await onText.getText();
       console.info("[cachedShowFlow_0400'] text is: " + text);
       await driver.assertComponentExist(ON.text('N9'));
@@ -179,7 +179,7 @@ export default function cachedShowFlow() {
      * @tc.type
      * @tc.size
      */
-    it('cachedShowFlow_0500', 0, async (done: Function) => {
+    it('cachedShowFlow_0500', Level.LEVEL1, async (done: Function) => {
       console.info('[cachedShowFlow_0500] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -199,7 +199,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       console.info("[cachedShowFlow_0500] onText is: " + onText);
       expect(onText).assertEqual(null);
       console.info('[cachedShowFlow_0500] END');
@@ -214,7 +214,7 @@ export default function cachedShowFlow() {
      * @tc.type
      * @tc.size
      */
-    it('cachedShowFlow_0600', 0, async (done: Function) => {
+    it('cachedShowFlow_0600', Level.LEVEL1, async (done: Function) => {
       console.info('[cachedShowFlow_0600] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -234,7 +234,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       console.info("[cachedShowFlow_0600] onText is: " + onText);
       expect(onText).assertEqual(null);
       console.info('[cachedShowFlow_0600] END');

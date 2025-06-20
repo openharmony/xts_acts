@@ -320,7 +320,7 @@ export default function audioManagerApi9() {
         done();
       } catch (error) {
         console.error(`audioManagerApi9Test: failed to setAppVolumePercentage: Callback:  ${error.message},code:${error.code}`);
-        expect(Number(error.code)).assertEqual(6800301);
+        expect(Number(error.code)).assertEqual(6800101);
         done();
       }
 
@@ -1534,12 +1534,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ALARM, 1);
         await audioManager.mute(audio.AudioVolumeType.ALARM, true);
@@ -1586,12 +1580,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2901', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
         await audioManager.setVolume(audio.AudioVolumeType.ALARM, maxVolumeSetting);
@@ -1764,12 +1752,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 1);
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
@@ -1815,12 +1797,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3001', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, maxVolumeSetting);
@@ -1936,12 +1912,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3003', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, -1);
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
@@ -2117,6 +2087,54 @@ export default function audioManagerApi9() {
         done();
       }
       done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ONAUDIOSCENECHANGE_0100
+     * @tc.name      : OnAudioSceneChange - audioManager
+     * @tc.desc      : OnAudioSceneChange - audioManager
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONAUDIOSCENECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        audioManager.on('audioSceneChange', (audioScene) => {
+          console.info(`AudioSceneChange event: ${audioScene} `);
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_OFFAUDIOSCENECHANGE_0100
+     * @tc.name      : OffAudioSceneChange - audioManager
+     * @tc.desc      : OffAudioSceneChange - audioManager
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_OFFAUDIOSCENECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let cb = (audioScene: audio.AudioScene) => {
+          console.info(`AudioSceneChange event: ${audioScene} `);
+      }
+      try {
+        audioManager.on('audioSceneChange', cb);
+        audioManager.off('audioSceneChange', cb);
+        audioManager.on('audioSceneChange', cb);
+        audioManager.off('audioSceneChange');
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(false).assertTrue();
+        done();
+      }
     })
   })
 

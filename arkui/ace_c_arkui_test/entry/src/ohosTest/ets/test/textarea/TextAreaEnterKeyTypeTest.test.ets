@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType001', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType002', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType003', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType004', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType004()).assertEqual(0)
       done();
     });
@@ -82,7 +82,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType005', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType005()).assertEqual(0)
       done();
     });
@@ -94,7 +94,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType006', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType006()).assertEqual(0)
       done();
     });
@@ -106,7 +106,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType007', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType007()).assertEqual(0)
       done();
     });
@@ -118,7 +118,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType008', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType008()).assertEqual(0)
       done();
     });
@@ -130,7 +130,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType009', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType009()).assertEqual(0)
       done();
     });
@@ -142,7 +142,7 @@ export default function textAreaEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaEnterKeyType010', 0, async (done: Function) => {
+    it('testTextAreaEnterKeyType010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaEnterKeyType010()).assertEqual(0)
       done();
     });

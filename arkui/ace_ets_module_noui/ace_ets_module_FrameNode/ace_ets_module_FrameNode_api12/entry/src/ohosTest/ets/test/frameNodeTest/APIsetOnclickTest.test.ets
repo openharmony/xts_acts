@@ -60,6 +60,8 @@ export default function APIsetOnclickTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('APIsetOnclickTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetOnclickTest_0100 START');
       let driver = await Driver.create()

@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "600000",
-        "bundle-name": "com.example.myapplication",
+        "bundle-name": "com.edm.acts.network",
         "module-name": "entry_test",
         "testcase-timeout": "20000"
     },

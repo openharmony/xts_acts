@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -43,7 +43,7 @@ export default function RadioJsunit() {
       done();
     });
 
-    it('RadioJsunit_0100', 0, async (done: Function) => {
+    it('RadioJsunit_0100', Level.LEVEL1, async (done: Function) => {
       // Get the information of the Radio component
       console.info('[RadioJsunit_0100] START');
       let strJson1 = getInspectorByKey('r1');
@@ -66,7 +66,7 @@ export default function RadioJsunit() {
       done();
     });
 
-    it('RadioJsunit_0200', 0, async (done: Function) => {
+    it('RadioJsunit_0200', Level.LEVEL1, async (done: Function) => {
       // Verify Radio Components Click to select
       console.info('[RadioJsunit_0200] START');
       // Get the component Radio1 and click
@@ -84,7 +84,7 @@ export default function RadioJsunit() {
       done();
     });
 
-    it('RadioJsunit_0300', 0, async (done: Function) => {
+    it('RadioJsunit_0300', Level.LEVEL1, async (done: Function) => {
       // Verify that the radio components are in the same group Click to select only one of the three
       console.info('[RadioJsunit_0300] START');
 
@@ -117,7 +117,7 @@ export default function RadioJsunit() {
       done();
     });
 
-    it('RadioJsunit_0400', 0, async (done: Function) => {
+    it('RadioJsunit_0400', Level.LEVEL1, async (done: Function) => {
       // Verify onChange event of of component Radio
       console.info('[RadioJsunit_0400] START');
       let driver = await UiDriver.create()

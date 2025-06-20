@@ -4551,5 +4551,161 @@ export default function imageNdkTest() {
       }
     });
 
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_GET_PROPERTY_WITH_NULL_0100
+     * @tc.name     : GetPropertyWithNull
+     * @tc.desc     : 1.check getproperty equal to setProperty
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_GET_PROPERTY_WITH_NULL_0100", Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_GET_PROPERTY_WITH_NULL_0100';
+      let res = ndkTest.GetPropertyWithNull();
+      expect(res == 0).assertTrue();
+      hilog.info(0x0000, testTag, `GetPropertyWithNull success`);
+      done();
+    });
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_GET_MIMETYPE_WITH_NULL_0100
+     * @tc.name     : GetMimeTypeWithNull
+     * @tc.desc     : 1.check getMimeType equal to setMimeType
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_GET_MIMETYPE_WITH_NULL_0100", Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_GET_MIMETYPE_WITH_NULL_0100';
+      let res = ndkTest.GetMimeTypeWithNull();
+      expect(res == 0).assertTrue();
+      hilog.info(0x0000, testTag, `GetMimeTypeWithNull success`);
+      done();
+    });
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_GET_IMAGE_PROPERTY_WITH_NULL_0100
+     * @tc.name     : GetImagePropertyWithNull
+     * @tc.desc     : 1.check GetImageProperty equal to picture's exif
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_GET_IMAGE_PROPERTY_WITH_NULL_0100", Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_GET_IMAGE_PROPERTY_WITH_NULL_0100';
+      await getFd("JpegFragmentMap.jpg");
+      let res = ndkTest.GetImagePropertyWithNull(fileFd);
+      expect(res == 0).assertTrue();
+      hilog.info(0x0000, testTag, `GetImagePropertyWithNull success`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_0100
+     * @tc.desc      : 1.test Image getDecodeSupportedFormats
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_0100', Level.LEVEL0, async (done: Function) => {
+      let testTag = "SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_0100";
+      const srcSupportedFormatsList: Array<string> = await ndkTest.GetImageSourceSupportedFormats();
+      const dstSupportedFormatsList: Array<string> = image.createImageSource(filesDir + '/' + "test.jpg").supportedFormats;
+      hilog.info(0x0000, testTag, `srcSupportedFormatsList: ` + JSON.stringify(srcSupportedFormatsList));
+      hilog.info(0x0000, testTag, `dstSupportedFormatsList: ` + JSON.stringify(dstSupportedFormatsList));
+      const ret = (JSON.stringify(srcSupportedFormatsList) == JSON.stringify(dstSupportedFormatsList));
+      hilog.info(0x0000, testTag, "compare result is: " + ret);
+      expect(ret).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_0100
+     * @tc.desc      : 1.test Image getEncodeSupportedFormats
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_0100', Level.LEVEL0, async (done: Function) => {
+      let testTag = "SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_0100";
+      const srcSupportedFormatsList: Array<string> = await ndkTest.GetImagePackerSupportedFormats();
+      const dstSupportedFormatsList: Array<string> = image.createImagePacker().supportedFormats;
+      hilog.info(0x0000, testTag, `srcSupportedFormatsList: ` + JSON.stringify(srcSupportedFormatsList));
+      hilog.info(0x0000, testTag, `dstSupportedFormatsList: ` + JSON.stringify(dstSupportedFormatsList));
+      const ret = (JSON.stringify(srcSupportedFormatsList) == JSON.stringify(dstSupportedFormatsList));
+      hilog.info(0x0000, testTag, "compare result is: " + ret);
+      expect(ret).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_ERROR_0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_ERROR_0100
+     * @tc.desc      : 1.test Image getDecodeSupportedFormats
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_ERROR_0100', Level.LEVEL0, async (done: Function) => {
+      let testTag = "SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_ERROR_0100";
+      const PARA_ERROR_CODE = 7700204;
+      const ret: number = ndkTest.GetImageSourceSupportedFormatsError(true);
+      hilog.info(0x0000, testTag, "GetImageSourceSupportedFormatsError result is: " + ret);
+      expect(ret == PARA_ERROR_CODE).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_ERROR_0200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_ERROR_0200
+     * @tc.desc      : 1.test Image getDecodeSupportedFormats
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_ERROR_0200', Level.LEVEL0, async (done: Function) => {
+      let testTag = "SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_NATIVE_ERROR_0200";
+      const PARA_ERROR_CODE = 7700204;
+      const ret: number = ndkTest.GetImageSourceSupportedFormatsError(false);
+      hilog.info(0x0000, testTag, "GetImageSourceSupportedFormatsError result is: " + ret);
+      expect(ret == PARA_ERROR_CODE).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_ERROR_0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_ERROR_0100
+     * @tc.desc      : 1.test Image getEncodeSupportedFormats
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_ERROR_0100', Level.LEVEL0, async (done: Function) => {
+      let testTag = "SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_ERROR_0100";
+      const PARA_ERROR_CODE = 7800202;
+      const ret: number = ndkTest.GetImagePackerSupportedFormatsError(true);
+      hilog.info(0x0000, testTag, "GetImagePackerSupportedFormatsError result is: " + ret);
+      expect(ret == PARA_ERROR_CODE).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_ERROR_0200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_ERROR_0200
+     * @tc.desc      : 1.test Image getEncodeSupportedFormats
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_ERROR_0200', Level.LEVEL0, async (done: Function) => {
+      let testTag = "SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_NATIVE_ERROR_0200";
+      const PARA_ERROR_CODE = 7800202;
+      const ret: number = ndkTest.GetImagePackerSupportedFormatsError(false);
+      hilog.info(0x0000, testTag, "GetImagePackerSupportedFormatsError result is: " + ret);
+      expect(ret == PARA_ERROR_CODE).assertTrue();
+      done();
+    })
   })
 }

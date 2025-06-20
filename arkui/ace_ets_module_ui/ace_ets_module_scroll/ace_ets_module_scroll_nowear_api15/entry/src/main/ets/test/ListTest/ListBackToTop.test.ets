@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
 import { Component, Driver, On, ON, MouseButton } from '@kit.TestKit';
 
@@ -41,7 +41,7 @@ export default function ListBackToTopTest() {
      * @tc.name   :test list back to top
      * @tc.desc   :test whether backToTop events are effective
      */
-    it('ListBackToTop_0100', 0, async () => {
+    it('ListBackToTop_0100', Level.LEVEL1, async () => {
       console.info('ListBackToTop_0100 START');
       await sleep(1000)
       let driverList: Driver = Driver.create();

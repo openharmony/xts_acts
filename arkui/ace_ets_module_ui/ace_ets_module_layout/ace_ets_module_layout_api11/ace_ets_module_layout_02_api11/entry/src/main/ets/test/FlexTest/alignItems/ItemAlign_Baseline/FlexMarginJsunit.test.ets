@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 
@@ -49,7 +49,7 @@ export default function flexMargin_BaselineJsunit() {
      * @tc.name testItemAlignBaselineParentSetMargin
      * @tc.desc Parent component set margin attribute.
      */
-    it('testItemAlignBaselineParentSetMargin', 0, async () => {
+    it('testItemAlignBaselineParentSetMargin',  Level.LEVEL0, async () => {
       console.info('new testItemAlignBaselineParentSetMargin START');
       let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexMargin');
 

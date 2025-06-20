@@ -66,7 +66,8 @@ const int NAPI_INVALID_NUM1 = -2;
 const int NAPI_INVALID_NUM2 = -5;
 const int NAPI_UTF8_MAX = 255;
 const int NAPI_ARGS_LENGTH = 2;
-
+const uint32_t NAPI_NATIVE_VALUE1 = 11;
+const uint32_t NAPI_NATIVE_VALUE2 = 22;
 
 
 struct CallbackData {
@@ -17306,6 +17307,181 @@ static napi_value NapiWrapEnhanceTest(napi_env env, napi_callback_info info)
     napi_create_int32(env, 1, &rst);
     return rst;
 }
+
+static napi_value DestroyEnvByNull(napi_env env, napi_callback_info info)
+{
+    auto status = napi_destroy_ark_context(nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "napi_destroy_ark_context failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value CreateEnv(napi_env env, napi_callback_info info)
+{
+    napi_env newEnv = nullptr;
+    auto status = napi_create_ark_context(env, &newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_ark_context failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value CreateEnvByNotContextEnv(napi_env env, napi_callback_info info)
+{
+    auto status = napi_create_ark_context(env, nullptr);
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value DestroyEnv(napi_env env, napi_callback_info info)
+{
+    napi_env newEnv = nullptr;
+    auto status = napi_create_ark_context(env, &newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_ark_context failed.");
+
+    status = napi_destroy_ark_context(newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_destroy_ark_context failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value CreateEnvByEnvContext(napi_env env, napi_callback_info info)
+{
+    napi_env newEnv = nullptr;
+    auto status = napi_create_ark_context(env, &newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_ark_context failed.");
+
+    napi_env newEnv1 = nullptr;
+    status = napi_create_ark_context(newEnv, &newEnv1);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "napi_create_ark_context by NewEnv failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value CreateEnvByEnvIsNull(napi_env env, napi_callback_info info)
+{
+    napi_env newEnv = nullptr;
+    auto status = napi_create_ark_context(nullptr, &newEnv);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "napi_create_ark_context failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value UseContext(napi_env env, napi_callback_info info)
+{
+    napi_env newEnv = nullptr;
+    auto status = napi_create_ark_context(env, &newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_ark_context failed.");
+
+    const char16_t *str = u"你好, World!, successes to create UTF-16 string!";
+    size_t length =  NAPI_AUTO_LENGTH;
+    napi_value result = nullptr;
+    status = napi_create_string_utf16(newEnv, str, length, &result);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_string_utf16 failed.");
+
+    status = napi_destroy_ark_context(newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_destroy_ark_context failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value UseMutilContext(napi_env env, napi_callback_info info)
+{
+    napi_env newEnv1 = nullptr;
+    auto status = napi_create_ark_context(env, &newEnv1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_ark_context1 failed.");
+
+    napi_env newEnv2 = nullptr;
+    status = napi_create_ark_context(env, &newEnv2);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_ark_context2 failed.");
+
+    uint32_t nativeInt1 = NAPI_NATIVE_VALUE1;
+    napi_value jsInt1;
+    status = napi_create_uint32(newEnv1, nativeInt1, &jsInt1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_int32 failed.");
+
+    uint32_t nativeInt2 = NAPI_NATIVE_VALUE2;
+    napi_value jsInt2;
+    status = napi_create_uint32(newEnv2, nativeInt2, &jsInt2);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_int32 failed.");
+
+    uint32_t nativeInt11;
+    status = napi_get_value_uint32(env, jsInt1, &nativeInt11);
+    NAPI_ASSERT(env, status == napi_ok, "napi_get_value_uint32 failed.");
+
+    uint32_t nativeInt22;
+    status = napi_get_value_uint32(env, jsInt2, &nativeInt22);
+    NAPI_ASSERT(env, status == napi_ok, "napi_get_value_uint32 failed.");
+
+    NAPI_ASSERT(env, nativeInt11 == NAPI_NATIVE_VALUE1 && nativeInt22 == NAPI_NATIVE_VALUE2,
+                "nativeInt11 != nativeInt22.");
+
+    status = napi_destroy_ark_context(newEnv1);
+    NAPI_ASSERT(env, status == napi_ok, "napi_destroy_ark_context failed.");
+
+    status = napi_destroy_ark_context(newEnv2);
+    NAPI_ASSERT(env, status == napi_ok, "napi_destroy_ark_context failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value SwitchEnv(napi_env env, napi_callback_info info)
+{
+    napi_env newEnv = nullptr;
+    auto status = napi_create_ark_context(env, &newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_ark_context failed.");
+
+    status = napi_switch_ark_context(env);
+    NAPI_ASSERT(env, status == napi_ok, "napi_switch_ark_context failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value SwitchEnvByNull(napi_env env, napi_callback_info info)
+{
+    auto status = napi_switch_ark_context(nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "napi_switch_ark_context failed.");
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value SwitchEnvByNewEnv(napi_env env, napi_callback_info info)
+{
+    napi_env newEnv = nullptr;
+    auto status = napi_create_ark_context(env, &newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_ark_context failed.");
+
+    status = napi_switch_ark_context(newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_switch_ark_context failed.");
+
+    status = napi_switch_ark_context(env);
+    NAPI_ASSERT(env, status == napi_ok, "napi_switch_ark_context failed.");
+
+    status = napi_destroy_ark_context(newEnv);
+    NAPI_ASSERT(env, status == napi_ok, "napi_destroy_ark_context failed.");
+
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -17315,6 +17491,17 @@ static napi_value Init(napi_env env, napi_value exports)
     NAPI_CALL(env, napi_create_string_utf8(env, TEST_STR, sizeof(TEST_STR), &theValue));
     NAPI_CALL(env, napi_set_named_property(env, exports, "testStr", theValue));
     napi_property_descriptor properties[] = {
+        DECLARE_NAPI_FUNCTION("DestroyEnvByNull", DestroyEnvByNull),
+        DECLARE_NAPI_FUNCTION("CreateEnv", CreateEnv),
+        DECLARE_NAPI_FUNCTION("CreateEnvByNotContextEnv", CreateEnvByNotContextEnv),
+        DECLARE_NAPI_FUNCTION("DestroyEnv", DestroyEnv),
+        DECLARE_NAPI_FUNCTION("CreateEnvByEnvContext", CreateEnvByEnvContext),
+        DECLARE_NAPI_FUNCTION("CreateEnvByEnvIsNull", CreateEnvByEnvIsNull),
+        DECLARE_NAPI_FUNCTION("UseContext", UseContext),
+        DECLARE_NAPI_FUNCTION("UseMutilContext", UseMutilContext),
+        DECLARE_NAPI_FUNCTION("SwitchEnv", SwitchEnv),
+        DECLARE_NAPI_FUNCTION("SwitchEnvByNull", SwitchEnvByNull),
+        DECLARE_NAPI_FUNCTION("SwitchEnvByNewEnv", SwitchEnvByNewEnv),
         DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest", NapiWrapEnhanceTest),
         DECLARE_NAPI_FUNCTION("getLastErrorInfo", getLastErrorInfo),
         DECLARE_NAPI_FUNCTION("cleanUpErrorInfo", cleanUpErrorInfo),

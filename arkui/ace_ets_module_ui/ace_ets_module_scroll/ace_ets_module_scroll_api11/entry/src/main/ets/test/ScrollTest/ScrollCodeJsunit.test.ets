@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -44,7 +44,7 @@ export default function scrollCodeJsunit() {
       console.info("ScrollCode after each called");
     });
 
-    it('test_scrollCode_001', 0, async (done: Function) => {
+    it('test_scrollCode_001', Level.LEVEL1, async (done: Function) => {
       console.info('[test_scrollCode_001] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ScrollCode');
@@ -58,7 +58,7 @@ export default function scrollCodeJsunit() {
       done();
     });
 
-    it('test_scrollCode_002', 0, async (done: Function) => {
+    it('test_scrollCode_002', Level.LEVEL1, async (done: Function) => {
       console.info('[test_scrollCode_002] START');
       await CommonFunc.sleep(1000);
       try {
@@ -84,7 +84,7 @@ export default function scrollCodeJsunit() {
       done();
     });
 
-    it('test_scrollCode_003', 0, async (done: Function) => {
+    it('test_scrollCode_003', Level.LEVEL1, async (done: Function) => {
       console.info('[test_scrollCode_003] START');
       await CommonFunc.sleep(1000);
       try {
@@ -110,7 +110,7 @@ export default function scrollCodeJsunit() {
       done();
     });
 
-    it('test_scrollCode_004', 0, async (done: Function) => {
+    it('test_scrollCode_004', Level.LEVEL1, async (done: Function) => {
       console.info('[test_scrollCode_004] START');
       await CommonFunc.sleep(1000);
       try {
@@ -136,7 +136,7 @@ export default function scrollCodeJsunit() {
       done();
     });
 
-    it('test_scrollCode_005', 0, async (done: Function) => {
+    it('test_scrollCode_005', Level.LEVEL1, async (done: Function) => {
       console.info('[test_scrollCode_005] START');
       await CommonFunc.sleep(1000);
       try {
@@ -163,7 +163,7 @@ export default function scrollCodeJsunit() {
     });
 
 
-    it('test_scrollCode_006', 0, async (done: Function) => {
+    it('test_scrollCode_006', Level.LEVEL1, async (done: Function) => {
       await CommonFunc.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_scrollCode_06] get event state result is: " + JSON.stringify(eventData));

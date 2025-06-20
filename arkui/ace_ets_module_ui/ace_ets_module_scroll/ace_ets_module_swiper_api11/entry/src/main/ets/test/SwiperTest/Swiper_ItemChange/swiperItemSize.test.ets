@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, {RectValue} from "../../../MainAbility/common/Common";
 
@@ -65,7 +65,7 @@ export default function swiperItemSize() {
      * @tc.name testSwiperItemSize
      * @tc.desc Set item's  height and width   values '150*150'.
      */
-    it('testSwiperItemSize', 0, async (done: Function) => {
+    it('testSwiperItemSize', Level.LEVEL1, async (done: Function) => {
       console.info('new testSwiperItemSize START');
       let strJson = getInspectorByKey('itemSizekey');
       

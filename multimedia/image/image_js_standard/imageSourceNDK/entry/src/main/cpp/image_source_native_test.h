@@ -20,6 +20,7 @@
 #include <string>
 #include "napi/native_api.h"
 #include "image_source_module_test.h"
+#include "multimedia/image_framework/image/image_packer_native.h"
 
 namespace OHOS {
 namespace Media {
@@ -27,7 +28,26 @@ class ImageSourceTest {
 public:
     static napi_value JsGetImageProperty(napi_env env, napi_callback_info info);
     static napi_value JsModifyImageProperty(napi_env env, napi_callback_info info);
+    static napi_value setDecodingOptColorSpace(napi_env env, napi_callback_info info);
+    static napi_value setDecodingOptColorSpaceErr(napi_env env, napi_callback_info info);
+    static napi_value getDecodingOptColorSpace(napi_env env, napi_callback_info info);
+    static napi_value getDecodingOptColorSpaceErr(napi_env env, napi_callback_info info);
+    static napi_value getPixelMapForColorSpace(napi_env env, napi_callback_info info);
+    static napi_value SetDesiredDynamicRangeToDecodingOptions(napi_env env, napi_callback_info info);
+    static napi_value createImageSource(napi_env env, napi_callback_info info);
+    static napi_value createDecodingOptions(napi_env env, napi_callback_info info);
+    static napi_value createPixelmap(napi_env env, napi_callback_info info);
+    static napi_value releaseImageSource(napi_env env, napi_callback_info info);
+    static napi_value releaseDecodingOptions(napi_env env, napi_callback_info info);
+    static napi_value releasePixelMap(napi_env env, napi_callback_info info);
     static std::string getStringFromArgs(napi_env env, napi_value arg);
+    static napi_value ModifyMakerNoteImageProperty(napi_env env, napi_callback_info info);
+    static napi_value GetMakerNoteImageProperty(napi_env env, napi_callback_info info);
+    static napi_value testPackPixelMapToFile(napi_env env, napi_callback_info info);
+    static napi_value SetMimeTypeToTestPackingOptions(napi_env env, napi_callback_info info);
+    static napi_value SetQualityToTestPackingOptions(napi_env env, napi_callback_info info);
+    static napi_value SetNeedsPackPropertiesToTestPackingOptions(napi_env env, napi_callback_info info);
+    static napi_value CreatePackingOptions(napi_env env, napi_callback_info info);
 private:
 };
 } // namespace Media

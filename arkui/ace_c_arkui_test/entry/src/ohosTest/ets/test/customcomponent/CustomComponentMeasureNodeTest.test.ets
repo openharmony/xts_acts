@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 
@@ -36,7 +36,7 @@ export default function customComponentMeasureNodeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentMeasureNode001', 0, async (done: Function) => {
+    it('testCustomComponentMeasureNode001', Level.LEVEL1, async (done: Function) => {
       let dataArray: number[][] = nativeRender.getMeasureNodeData();
       let measureNodeData: number[] = dataArray[0];
       console.log('testCustomComponentMeasureNode001', JSON.stringify(dataArray))

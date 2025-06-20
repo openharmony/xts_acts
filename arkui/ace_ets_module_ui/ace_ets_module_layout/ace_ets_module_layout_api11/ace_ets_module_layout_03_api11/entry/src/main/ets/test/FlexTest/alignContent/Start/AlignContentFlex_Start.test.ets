@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -56,7 +56,7 @@ export default function AlignContentFlex_Start() {
      * @tc.desc Change the height of the flex component so that its subcomponents do not overflow.
      */
 
-    it('testAlignContentStartFlexHeightSatisfy', 0, async () => {
+    it('testAlignContentStartFlexHeightSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentStartFlexHeightSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 360
@@ -109,7 +109,7 @@ export default function AlignContentFlex_Start() {
      * @tc.desc Change the height of the flex component to overflow its subcomponents
      */
 
-    it('testAlignContentStartFlexHeightNoSatisfy', 0, async () => {
+    it('testAlignContentStartFlexHeightNoSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentStartFlexHeightNoSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 250

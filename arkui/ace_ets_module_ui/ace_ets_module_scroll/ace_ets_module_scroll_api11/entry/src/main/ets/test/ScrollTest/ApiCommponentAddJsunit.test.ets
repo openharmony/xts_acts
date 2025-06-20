@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import ohosrouter from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function ApiCommponentAddJsunit() {
 
     });
 
-    it('apiCommponentAddJsunit_0100', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_0100', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_0100 START');
       ohosrouter.pushUrl({
         url: 'MainAbility/pages/Scroll/loadingprogrees_add',
@@ -78,7 +78,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_0200', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_0200', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_0200 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -95,11 +95,11 @@ export default function ApiCommponentAddJsunit() {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
-      let gridTop = CommonFunc.getComponentRect('listadd');
+      let gridTop = CommonFunc.getComponentRectOnScreen('listadd');
       let top = gridTop.top;
-      let gridBottom = CommonFunc.getComponentRect('listadd');
+      let gridBottom = CommonFunc.getComponentRectOnScreen('listadd');
       let bottom = gridBottom.bottom;
-      let gridRight = CommonFunc.getComponentRect('listadd');
+      let gridRight = CommonFunc.getComponentRectOnScreen('listadd');
       let right = gridRight.right;
       let left = gridRight.left;
       let driver = await Driver.create();
@@ -113,7 +113,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_0300', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_0300', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_0300 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -142,7 +142,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_0400', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_0400', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_0400 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -171,7 +171,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_0500', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_0500', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_0500 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -195,7 +195,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_0600', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_0600', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_0600 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -220,7 +220,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_0700', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_0700', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_0700 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -244,7 +244,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_0800', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_0800', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_0800 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -268,7 +268,7 @@ export default function ApiCommponentAddJsunit() {
     
     });
 
-    it('apiCommponentAddJsunit_1000', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_1000', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_1000 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -291,7 +291,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_1100', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_1100', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_1100 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -315,7 +315,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-   it('apiCommponentAddJsunit_1200', 0, async (done: Function) => {
+   it('apiCommponentAddJsunit_1200', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_1200 START');
       try {
          expect(SafeAreaType.SYSTEM).assertEqual(0);
@@ -327,7 +327,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_1300', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_1300', Level.LEVEL1, async (done: Function) => {
        console.info("[apiCommponentAddJsunit_1300] START" );
        ohosrouter.clear();
        ohosrouter.pushUrl({
@@ -357,7 +357,7 @@ export default function ApiCommponentAddJsunit() {
       
     });
 
-     it('apiCommponentAddJsunit_1400', 0, async (done: Function) => {
+     it('apiCommponentAddJsunit_1400', Level.LEVEL1, async (done: Function) => {
        console.info("[apiCommponentAddJsunit_1400] START" );
        ohosrouter.clear();
        ohosrouter.pushUrl({
@@ -381,7 +381,7 @@ export default function ApiCommponentAddJsunit() {
       done();   
     });
 
-     it('apiCommponentAddJsunit_1500', 0, async (done: Function) => {
+     it('apiCommponentAddJsunit_1500', Level.LEVEL1, async (done: Function) => {
        console.info("[apiCommponentAddJsunit_1500] START" );
        ohosrouter.clear();
        ohosrouter.pushUrl({
@@ -405,7 +405,7 @@ export default function ApiCommponentAddJsunit() {
       done();   
     });
 
-    it('apiCommponentAddJsunit_1600', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_1600', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_1600] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -429,7 +429,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_1700', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_1700', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_1700] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -453,7 +453,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_1800', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_1800', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_1800] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -478,7 +478,7 @@ export default function ApiCommponentAddJsunit() {
     });
 
 
-    it('apiCommponentAddJsunit_1900', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_1900', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_1900] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -502,7 +502,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_2000', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_2000', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_2000] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -525,7 +525,7 @@ export default function ApiCommponentAddJsunit() {
       expect(obj.$attrs.borderWidth).assertEqual('0.00vp');
       done();
     });
-    it('apiCommponentAddJsunit_2100', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_2100', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_2100] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -549,7 +549,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
    
-    it('apiCommponentAddJsunit_2200', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_2200', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_2200] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -573,7 +573,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_2300', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_2300', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_2300] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -606,7 +606,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-     it('apiCommponentAddJsunit_2400', 0, async (done: Function) => {
+     it('apiCommponentAddJsunit_2400', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_2400] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -630,7 +630,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-     it('apiCommponentAddJsunit_2500', 0, async (done: Function) => {
+     it('apiCommponentAddJsunit_2500', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_2500] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({
@@ -654,7 +654,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
-    it('apiCommponentAddJsunit_2600', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_2600', Level.LEVEL1, async (done: Function) => {
       console.info('apiCommponentAddJsunit_2600 START');
       try {
          expect(DialogButtonStyle.HIGHLIGHT).assertEqual(1);
@@ -664,7 +664,7 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
     
-    it('apiCommponentAddJsunit_2700', 0, async (done: Function) => {
+    it('apiCommponentAddJsunit_2700', Level.LEVEL1, async (done: Function) => {
       console.info("[apiCommponentAddJsunit_2700] START" );
       ohosrouter.clear();
       ohosrouter.pushUrl({

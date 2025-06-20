@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve001', 0, async (done: Function) => {
+    it('testAnimateCurve001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve002', 0, async (done: Function) => {
+    it('testAnimateCurve002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve003', 0, async (done: Function) => {
+    it('testAnimateCurve003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve004', 0, async (done: Function) => {
+    it('testAnimateCurve004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve005', 0, async (done: Function) => {
+    it('testAnimateCurve005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve006', 0, async (done: Function) => {
+    it('testAnimateCurve006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve007', 0, async (done: Function) => {
+    it('testAnimateCurve007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve008', 0, async (done: Function) => {
+    it('testAnimateCurve008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve009', 0, async (done: Function) => {
+    it('testAnimateCurve009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve010', 0, async (done: Function) => {
+    it('testAnimateCurve010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function animateCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateCurve011', 0, async (done: Function) => {
+    it('testAnimateCurve011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimateCurve011()).assertEqual(0)
       done()
     })

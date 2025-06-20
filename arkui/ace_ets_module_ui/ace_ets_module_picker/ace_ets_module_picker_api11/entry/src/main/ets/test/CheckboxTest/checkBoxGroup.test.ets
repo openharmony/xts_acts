@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils'
 
@@ -46,7 +46,7 @@ export default function checkBoxGroupPartJsunit() {
       console.info("checkBoxGroupPart after each called");
     });
 
-    it('testcheckBoxGroupPart0011', 0, async (done: Function) => {
+    it('testcheckBoxGroupPart0011', Level.LEVEL1, async (done: Function) => {
       console.info('checkBoxGroupPart testcheckBoxGroupPart0011 START');
       await Utils.sleep(2000);
       try {
@@ -65,7 +65,7 @@ export default function checkBoxGroupPartJsunit() {
       done();
     });
 
-    it('testcheckBoxGroup0001', 0, async (done: Function) => {
+    it('testcheckBoxGroup0001', Level.LEVEL1, async (done: Function) => {
       console.info('checkBoxGroup testcheckBoxGroup0001 START');
       await Utils.sleep(2000);
       try {

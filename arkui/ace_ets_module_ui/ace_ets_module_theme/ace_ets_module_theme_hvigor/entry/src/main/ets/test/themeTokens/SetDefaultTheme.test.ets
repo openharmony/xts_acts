@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, beforeAll, afterAll, beforeEach, expect } from '@ohos/hypium';
+import { describe, it, beforeAll, afterAll, beforeEach, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { ThemeControl } from '@ohos.arkui.theme';
 import { defaultThemeProperty } from '../../MainAbility/pages/themeTokensPages/SetDefaultThemeTestPage';
@@ -70,7 +70,7 @@ export default function setDefaultThemeTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsSetDefaultThemeColors_0100', 0, () => {
+    it('ActsSetDefaultThemeColors_0100', Level.LEVEL2, () => {
       const CASE: string = 'ActsSetDefaultThemeColors_0100';
       const checkKeys: string[] = Object.keys(redThemeColors);
       const checkValues = (Object.values(redThemeColors) as string[]);
@@ -99,7 +99,7 @@ export default function setDefaultThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsSetDefaultThemeColors_0200', 0, () => {
+    it('ActsSetDefaultThemeColors_0200', Level.LEVEL2, () => {
       const CASE: string = 'ActsSetDefaultThemeColors_0200';
       const checkKeys: string[] = Object.keys(greenThemeColors);
       const checkValues = (Object.values(greenThemeColors) as string[]);

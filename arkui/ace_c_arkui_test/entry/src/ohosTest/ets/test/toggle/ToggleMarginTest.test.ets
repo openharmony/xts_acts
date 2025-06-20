@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function toggleMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleMargin001', 0, async (done: Function) => {
+    it('testToggleMargin001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleMargin001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function toggleMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleMargin002', 0, async (done: Function) => {
+    it('testToggleMargin002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleMargin002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function toggleMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleMargin003', 0, async (done: Function) => {
+    it('testToggleMargin003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleMargin003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function toggleMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleMargin004', 0, async (done: Function) => {
+    it('testToggleMargin004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleMargin004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function toggleMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleMargin005', 0, async (done: Function) => {
+    it('testToggleMargin005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleMargin005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function toggleMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleMargin006', 0, async (done: Function) => {
+    it('testToggleMargin006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleMargin006()).assertEqual(0)
       done()
     })

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 import measure, { MeasureOptions } from '@ohos.measure'
@@ -53,8 +53,11 @@ export default function alertDialogCenterStartJsunit() {
      * @tc.number       SUB_ACE_BASIC_ETS_API_0001
      * @tc.name         testalertDialogCenterStart0001
      * @tc.desic         acealertDialogCenterStartEtsTest0001
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
      */
-    it('testalertDialogCenterStart0001', 0, async (done: Function) => {
+    it('testalertDialogCenterStart0001', Level.LEVEL2, async (done: Function) => {
       console.info('alertDialogCenterStart testalertDialogCenterStart0011 START');
       let driver = await Driver.create()
       await Utils.sleep(2000);
@@ -83,8 +86,12 @@ export default function alertDialogCenterStartJsunit() {
      * @tc.number       SUB_ACE_BASIC_ETS_API_0002
      * @tc.name         testMeasureText0001
      * @tc.desic        test text width
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
      */
-    it('testMeasureText0001', 0, async (done: Function) => {
+     
+    it('testMeasureText0001', Level.LEVEL2, async (done: Function) => {
       console.info('testMeasureText0001 start');
       let driver = await Driver.create()
       await Utils.sleep(2000);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperChangeIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperChangeIndex001', 0, async (done: Function) => {
+    it('testSwiperChangeIndex001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperChangeIndex001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperChangeIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperChangeIndex002', 0, async (done: Function) => {
+    it('testSwiperChangeIndex002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperChangeIndex002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperChangeIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperChangeIndex003', 0, async (done: Function) => {
+    it('testSwiperChangeIndex003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperChangeIndex003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function swiperChangeIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperChangeIndex004', 0, async (done: Function) => {
+    it('testSwiperChangeIndex004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperChangeIndex004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function swiperChangeIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperChangeIndex005', 0, async (done: Function) => {
+    it('testSwiperChangeIndex005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperChangeIndex005()).assertEqual(0)
       done()
     })

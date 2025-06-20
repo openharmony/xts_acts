@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -60,7 +60,7 @@ export default function Grid_ScrollFrameBegin() {
      * @tc.name testGrid
      * @tc.desc Grid using scroller scrolling will not trigger the onScrollFrameBegin event
      */
-    it('Grid_ScrollFrameBegin_0100', 0, async (done: Function) => {
+    it('Grid_ScrollFrameBegin_0100',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[Grid_ScrollFrameBegin_0100] START');
       let driver = Driver.create()
@@ -82,7 +82,7 @@ export default function Grid_ScrollFrameBegin() {
      * @tc.name testGrid
      * @tc.desc Grid sliding triggers the onScrollFrameBegin event
      */
-    it('Grid_ScrollFrameBegin_0200', 0, async (done: Function) => {
+    it('Grid_ScrollFrameBegin_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ScrollFrameBegin_0200] START');
       let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollFrameBegin_grid')
       let driver = Driver.create()
@@ -108,7 +108,7 @@ export default function Grid_ScrollFrameBegin() {
      * @tc.name testGrid
      * @tc.desc Grid quick sliding triggers onScrollFrameBegin event
      */
-    it('Grid_ScrollFrameBegin_0300', 0, async (done: Function) => {
+    it('Grid_ScrollFrameBegin_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[Grid_ScrollFrameBegin_0300] START');
       let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollFrameBegin_grid')
       let driver = Driver.create()

@@ -18,4 +18,6 @@ export const TestDragDisableDropDataPrefetch002: (a: string) => void;
 
 export const TestDragCancelDataLoading003: (a: string) => void;
 
+export const TestDragDisableDropDataDelay004: (a: string) => void;
+
 export const GetResult: () => number[];

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit001', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit002', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit003', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit004', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit005', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit006', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit007', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit008', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit009', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit010', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit011', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit012', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit013', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit014', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit015', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit016', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit017', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit018', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function commonAttrsRenderFitTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsRenderFit019', 0, async (done: Function) => {
+    it('testCommonAttrsRenderFit019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsRenderFit019()).assertEqual(0)
       done()
     })

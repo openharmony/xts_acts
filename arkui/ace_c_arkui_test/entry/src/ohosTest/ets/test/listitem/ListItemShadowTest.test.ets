@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listItemShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemShadow001', 0, async (done: Function) => {
+    it('testListItemShadow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemShadow001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listItemShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemShadow002', 0, async (done: Function) => {
+    it('testListItemShadow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemShadow002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listItemShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemShadow003', 0, async (done: Function) => {
+    it('testListItemShadow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemShadow003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listItemShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemShadow004', 0, async (done: Function) => {
+    it('testListItemShadow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemShadow004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listItemShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemShadow005', 0, async (done: Function) => {
+    it('testListItemShadow005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemShadow005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function listItemShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemShadow006', 0, async (done: Function) => {
+    it('testListItemShadow006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemShadow006()).assertEqual(0)
       done()
     })

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -61,7 +61,7 @@ export default function MeasureJsunit() {
      * @tc.name  : Test measureJsunit_0100
      * @tc.desc  : Test measureTextSize function
      */
-    it('measureJsunit_0100', 0, async (done: Function) => {
+    it('measureJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('measureJsunit_0100 START');
       await CommonFunc.sleep(2000);
 
@@ -81,7 +81,7 @@ export default function MeasureJsunit() {
      * @tc.name  : Test measureJsunit_0200
      * @tc.desc  : Test measureTextSize function
      */
-    it('measureJsunit_0200', 0, async (done: Function) => {
+    it('measureJsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('measureJsunit_0200 START');
       await CommonFunc.sleep(2000);
 
@@ -108,7 +108,7 @@ export default function MeasureJsunit() {
      * @tc.name  : Test measureJsunit_0300
      * @tc.desc  : Test measureTextSize function
      */
-    it('measureJsunit_0300', 0, async (done: Function) => {
+    it('measureJsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('measureJsunit_0300 START');
       await CommonFunc.sleep(2000);
       let driver = await Driver.create();
@@ -148,7 +148,7 @@ export default function MeasureJsunit() {
      * @tc.name  : Test measureJsunit_0400
      * @tc.desc  : Test measureTextSize function
      */
-    it('measureJsunit_0400', 0, async (done: Function) => {
+    it('measureJsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('measureJsunit_0400 START');
       await CommonFunc.sleep(2000);
       let driver = await Driver.create();
@@ -174,7 +174,7 @@ export default function MeasureJsunit() {
      * @tc.name  : Test measureJsunit_0500
      * @tc.desc  : Test measureTextSize function
      */
-    it('measureJsunit_0500', 0, async (done: Function) => {
+    it('measureJsunit_0500', Level.LEVEL0, async (done: Function) => {
       console.info('measureJsunit_0500 START');
       await CommonFunc.sleep(2000);
       let driver = await Driver.create();

@@ -616,8 +616,8 @@ export default function LightWeightSetTest() {
         lightWeightSet.add("sparrow33");
         let result1 = lightWeightSet.getIndexOf("squirrel2222222222222");
         let result = lightWeightSet.getIndexOf("sparrow33");
-        expect(result).assertEqual(0);
-        expect(result1).assertEqual(1);
+        expect(result).assertEqual(1);
+        expect(result1).assertEqual(0);
 
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);

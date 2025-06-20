@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function makeObserved0110Test() {
      * @tc.type :    FUNC
      * @tc.size :    MEDIUM
      */
-    it('makeObserved0110Test_01', 0, async (done: Function) => {
+    it('makeObserved0110Test_01', Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000)
 
       console.info('makeObserved0110Test_01 START');

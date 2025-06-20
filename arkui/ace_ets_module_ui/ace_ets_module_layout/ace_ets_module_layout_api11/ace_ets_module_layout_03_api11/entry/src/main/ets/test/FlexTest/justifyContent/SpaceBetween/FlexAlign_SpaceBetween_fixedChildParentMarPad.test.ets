@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -54,7 +54,7 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
      * @tc.desc The child component is fixed, and parent component is bound with padding and margin attributes,
      *               the layout space of parent is insufficient to meet the spindle layout requirements of child
      */
-    it('testAlignSpaceBetweenRowNoWrapMarPadOutRange', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapMarPadOutRange',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapMarPadOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20
@@ -99,7 +99,7 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
      * @tc.desc The child component is fixed, and parent component is bound with padding and margin attributes,
      *               the layout space of parent component meets the spindle layout requirements of child component
      */
-    it('testAlignSpaceBetweenRowNoWrapMarPadInRange', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapMarPadInRange',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapMarPadInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20

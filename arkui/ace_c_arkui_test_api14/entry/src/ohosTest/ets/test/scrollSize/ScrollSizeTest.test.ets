@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 // import nativeFunc from 'libnativefunc.so'
@@ -34,7 +34,7 @@ export default function ScrollSizeTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetScrollSizeTest001', 0, async (done: Function) => {
+    it('testGetScrollSizeTest001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollSizeTest';
       await Utils.pushPage(`scrollSize/${PAGE_TAG}`);
       await Utils.sleep(1000)

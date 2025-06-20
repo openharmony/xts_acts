@@ -42,7 +42,7 @@ struct Index {
         Button('ExitChildProcess')
           .margin({ top : 5 })
           .onClick(() => {
-            testNapi.requestExitChildProcess();
+            testNapi.requestExitChildProcess(0);
           })
 
         Button('StartNativeChildProcess_50')
@@ -57,7 +57,23 @@ struct Index {
           .margin({ top : 5 })
           .onClick(() => {
             for(let i = 0; i < 50; i++) {
-              testNapi.requestExitChildProcess();
+              testNapi.requestExitChildProcess(0);
+            }
+          })
+
+        Button('RegisterNativeChildExit_50')
+          .margin({ top : 5 })
+          .onClick(() => {
+            for(let i = 0; i < 50; i++) {
+              testNapi.registerNativeChildExit();
+            }
+          })
+
+        Button('UnregisterNativeChildExit_50')
+          .margin({ top : 5 })
+          .onClick(() => {
+            for(let i = 0; i < 50; i++) {
+              testNapi.unregisterNativeChildExit();
             }
           })
 

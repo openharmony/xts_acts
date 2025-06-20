@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputWordBreakTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputWordBreak001', 0, async (done: Function) => {
+    it('testTextInputWordBreak001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputWordBreak001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textInputWordBreakTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputWordBreak002', 0, async (done: Function) => {
+    it('testTextInputWordBreak002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputWordBreak002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textInputWordBreakTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputWordBreak003', 0, async (done: Function) => {
+    it('testTextInputWordBreak003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputWordBreak003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function textInputWordBreakTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputWordBreak004', 0, async (done: Function) => {
+    it('testTextInputWordBreak004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputWordBreak004()).assertEqual(0)
       done();
     });
@@ -82,7 +82,7 @@ export default function textInputWordBreakTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputWordBreak005', 0, async (done: Function) => {
+    it('testTextInputWordBreak005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputWordBreak005()).assertEqual(0)
       done();
     });
@@ -94,7 +94,7 @@ export default function textInputWordBreakTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputWordBreak006', 0, async (done: Function) => {
+    it('testTextInputWordBreak006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputWordBreak006()).assertEqual(0)
       done();
     });

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level} from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import { Component, Driver, ON } from '@ohos.UiTest';
@@ -36,7 +36,7 @@ export default function KeyEventStopPropagationTest() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-     it('KeyEventStopPropagationTest_001', 0, async (done: Function) => {
+     it('KeyEventStopPropagationTest_001', Level.LEVEL1, async (done: Function) => {
         console.info('KeyEventStopPropagationTest_001 START');
         let driver = await Driver.create()
         await Utils.sleep(500);

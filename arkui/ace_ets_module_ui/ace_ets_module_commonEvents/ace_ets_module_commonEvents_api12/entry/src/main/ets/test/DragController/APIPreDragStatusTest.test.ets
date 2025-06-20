@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -54,7 +54,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0010', 0, async (done: Function) => {
+    it('APIPreDragStatusTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0010 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -79,7 +79,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0020', 0, async (done: Function) => {
+    it('APIPreDragStatusTest_0020', Level.LEVEL0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0020 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -108,7 +108,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0030', 0, async (done: Function) => {
+    it('APIPreDragStatusTest_0030', Level.LEVEL0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0030 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -136,7 +136,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0040', 0, async (done: Function) => {
+    it('APIPreDragStatusTest_0040', Level.LEVEL0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0040 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -165,7 +165,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0050', 0, async (done: Function) => {
+    it('APIPreDragStatusTest_0050', Level.LEVEL0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0050 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -194,7 +194,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0060', 0, async (done: Function) => {
+    it('APIPreDragStatusTest_0060', Level.LEVEL0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0060 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

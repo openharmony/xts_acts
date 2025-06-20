@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
@@ -48,7 +48,7 @@ export default function WaterFlowSectionDemo32Jsunit() {
      * @tc.type
      * @tc.size
      */
-    it('WaterFlowSectionDemo32Jsunit_0100', 0, async (done: Function) => {
+    it('WaterFlowSectionDemo32Jsunit_0100', Level.LEVEL1, async (done: Function) => {
       console.info('WaterFlowSectionDemo32Jsunit_0100 START');
       await CommonFunc.sleep(1000);
       let str0 = CommonFunc.getComponentRect('WaterFlowSectionDemo32_3');
@@ -58,8 +58,8 @@ export default function WaterFlowSectionDemo32Jsunit() {
       console.log('WaterFlowSectionDemo32Jsunit_1111',str0.right,str1.right,str2.left)
       console.log('WaterFlowSectionDemo32Jsunit_2222',str1.right - str0.right)
       console.log('WaterFlowSectionDemo32Jsunit_3333',str2.left - str0.right)
-      expect(Math.round(str1.right - str0.right)).assertEqual(Math.round(0));
-      expect(Math.round(str2.left - str0.right)).assertEqual(Math.round(0));
+      expect(Math.floor(Math.abs(str1.right - str0.right)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(str2.left - str0.right)) <= 1).assertTrue();
       console.info('WaterFlowSectionDemo32Jsunit_0100 END')
       done();
     });

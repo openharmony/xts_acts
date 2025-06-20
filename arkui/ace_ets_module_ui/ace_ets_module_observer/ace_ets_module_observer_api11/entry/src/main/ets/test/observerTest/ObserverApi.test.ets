@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import CommonFunc from '../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function ObserverApi() {
      * @tc.desc        Navigation RouterPageState test
      * @tc.level       Level 2
      */
-    it('ObserverApi_001', 0, async (done: Function) => {
+    it('ObserverApi_001', Level.LEVEL0, async (done: Function) => {
       console.info('[ObserverApi_001] START');
       await CommonFunc.sleep(1000);
 
@@ -112,7 +112,7 @@ export default function ObserverApi() {
      * @tc.desc        Navigation RouterPageState2 test
      * @tc.level       Level 2
      */
-    it('ObserverApi_002', 0, async (done: Function) => {
+    it('ObserverApi_002', Level.LEVEL0, async (done: Function) => {
       console.info('[ObserverApi_002] START');
       await CommonFunc.sleep(1000);
 

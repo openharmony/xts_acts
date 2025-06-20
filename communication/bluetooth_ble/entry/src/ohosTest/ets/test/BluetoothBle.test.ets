@@ -762,6 +762,10 @@ describe('bluetoothBleTest', () => {
         let ON_LOST = bluetooth.ScanReportType.ON_LOST;
         console.info("[bluetooth_js]ScanReportType ON_LOST: " + JSON.stringify(ON_LOST));
         expect(ON_LOST).assertEqual(2);
+
+        let ON_BATCH = bluetooth.ScanReportType.ON_BATCH;
+        console.info("[bluetooth_js]ScanReportType ON_BATCH: " + JSON.stringify(ON_BATCH));
+        expect(ON_BATCH).assertEqual(3);
         done();
     })
 
@@ -784,6 +788,10 @@ describe('bluetoothBleTest', () => {
         let FENCE_SENSITIVITY_HIGH = bluetooth.ScanReportMode.FENCE_SENSITIVITY_HIGH;
         console.info("[bluetooth_js]ScanReportMode FENCE_SENSITIVITY_HIGH: " + JSON.stringify(FENCE_SENSITIVITY_HIGH));
         expect(FENCE_SENSITIVITY_HIGH).assertEqual(11);
+
+        let BATCH = bluetooth.ScanReportMode.BATCH;
+        console.info("[bluetooth_js]ScanReportMode BATCH: " + JSON.stringify(BATCH));
+        expect(BATCH).assertEqual(2);
         done();
     })
 })

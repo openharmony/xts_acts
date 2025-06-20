@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
@@ -48,7 +48,7 @@ export default function SwiperMarginTest() {
      *tc.name   Set Swiper's nextMargin and prevMargin with negative
      *tc.desc   Set Swiper's nextMargin and prevMargin with negative
      */
-    it('ArkUI_Swiper_0100', 0, async (done: Function) => {
+    it('ArkUI_Swiper_0100', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUI_Swiper_0100'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -67,7 +67,7 @@ export default function SwiperMarginTest() {
      *tc.name   Set Swiper's nextMargin and prevMargin with positive
      *tc.desc   Set Swiper's nextMargin and prevMargin with positive
      */
-    it('ArkUI_Swiper_0200', 0, async (done: Function) => {
+    it('ArkUI_Swiper_0200', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUI_Swiper_0200'
       console.info(`${SUITE} ${CASE} START`);
       let driver = Driver.create()
@@ -85,7 +85,7 @@ export default function SwiperMarginTest() {
      *tc.name   Set Swiper's nextMargin and prevMargin with string
      *tc.desc   Set Swiper's nextMargin and prevMargin with string
      */
-    it('ArkUI_Swiper_0300', 0, async (done: Function) => {
+    it('ArkUI_Swiper_0300', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUI_Swiper_0300'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -104,7 +104,7 @@ export default function SwiperMarginTest() {
      *tc.name   Set Swiper's nextMargin and prevMargin with Resource
      *tc.desc   Set Swiper's nextMargin and prevMargin with Resource
      */
-    it('ArkUI_Swiper_0400', 0, async (done: Function) => {
+    it('ArkUI_Swiper_0400', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUI_Swiper_0400'
       console.info(`${SUITE} ${CASE} START`);
       let driver = Driver.create()

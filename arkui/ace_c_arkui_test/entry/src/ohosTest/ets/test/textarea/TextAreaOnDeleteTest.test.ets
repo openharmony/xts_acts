@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 
@@ -35,7 +35,7 @@ export default function textAreaOnDeleteTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextAreaOnDelete001', 0, async (done: Function) => {
+    it('testTextAreaOnDelete001', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnDeleteTestTextArea')
       await Utils.sleep(1000)
       await Utils.triggerKey(2055)

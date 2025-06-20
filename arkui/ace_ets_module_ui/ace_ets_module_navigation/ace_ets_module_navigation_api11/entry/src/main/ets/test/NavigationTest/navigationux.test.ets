@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 let emitKey = "emitUserAgent";
@@ -46,7 +46,7 @@ export default function navigationuxtest() {
      *tc.name   Add interfaces to control the disable and active states on the toolbar
      *tc.desc   Gets the toolbarConfiguration value undefined
      */
-    it('ArkUX_Stage_Navigation_0100', 0, async  (done:Function) =>{
+    it('ArkUX_Stage_Navigation_0100',  Level.LEVEL0, async  (done:Function) =>{
       console.info('ArkUX_Stage_Navigation_0100 START');
       setTimeout(() => {
         try {

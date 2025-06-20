@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -65,7 +65,7 @@ export default function V2ToV1() {
      * @tc.type
      * @tc.size
      */
-    it('v2Tov1_0100', 0, async (done: Function) => {
+    it('v2Tov1_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0100] START');
       let Json = getInspectorByKey('string_param1');
       let Obj: ESObject = JSON.parse(Json);
@@ -74,7 +74,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 stringValue1: hello2');
       done();
     })
-    it('v2Tov1_0200', 0, async (done: Function) => {
+    it('v2Tov1_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0200] START');
       let Json = getInspectorByKey('enum_value1');
       let Obj: ESObject = JSON.parse(Json);
@@ -82,7 +82,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 enumValue1: 2');
       done();
     })
-    it('v2Tov1_0300', 0, async (done: Function) => {
+    it('v2Tov1_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0300] START');
       let Json = getInspectorByKey('local_value1');
       let Obj: ESObject = JSON.parse(Json);
@@ -91,7 +91,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 localValue1: TestProvider');
       done();
     })
-    it('v2Tov1_0400', 0, async (done: Function) => {
+    it('v2Tov1_0400', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0400] START');
       let Json = getInspectorByKey('bool_value1');
       let Obj: ESObject = JSON.parse(Json);
@@ -100,7 +100,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 boolValue1: false');
       done();
     })
-    it('v2Tov1_0500', 0, async (done: Function) => {
+    it('v2Tov1_0500', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0500] START');
       let Json = getInspectorByKey('undefined_value1');
       let Obj: ESObject = JSON.parse(Json);
@@ -109,7 +109,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 undefinedValue1: undefined');
       done();
     })
-    it('v2Tov1_0600', 0, async (done: Function) => {
+    it('v2Tov1_0600', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0600] START');
       let Json = getInspectorByKey('null_value1');
       let Obj: ESObject = JSON.parse(Json);
@@ -118,7 +118,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 nullValue1: null');
       done();
     })
-    it('v2Tov1_0700', 0, async (done: Function) => {
+    it('v2Tov1_0700', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0700] START');
       let Json = getInspectorByKey('func_value2');
       let Obj: ESObject = JSON.parse(Json);
@@ -127,7 +127,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 funcValue2: 0');
       done();
     })
-    it('v2Tov1_0800', 0, async (done: Function) => {
+    it('v2Tov1_0800', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0800] START');
       let Json = getInspectorByKey('map_value');
       let Obj: ESObject = JSON.parse(Json);
@@ -136,7 +136,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 mapValue: v2,v2');
       done();
     })
-    it('v2Tov1_0900', 0, async (done: Function) => {
+    it('v2Tov1_0900', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_0900] START');
       let Json = getInspectorByKey('date_value');
       let Obj: ESObject = JSON.parse(Json);
@@ -145,7 +145,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 dateValue: Mon Nov 11 2024 00:00:00 GMT+0800');
       done();
     })
-    it('v2Tov1_1000', 0, async (done: Function) => {
+    it('v2Tov1_1000', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_1000] START');
       let Json = getInspectorByKey('arr_value');
       let Obj: ESObject = JSON.parse(Json);
@@ -154,7 +154,7 @@ export default function V2ToV1() {
       expect(Obj.$attrs.content).assertEqual('v1 arrValue: 1,2');
       done();
     })
-    it('v2Tov1_1100', 0, async (done: Function) => {
+    it('v2Tov1_1100', Level.LEVEL0, async (done: Function) => {
       console.info('[v2Tov1_1100] START');
       let Json = getInspectorByKey('set_value');
       let Obj: ESObject = JSON.parse(Json);

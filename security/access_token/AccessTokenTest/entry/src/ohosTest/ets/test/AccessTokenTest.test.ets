@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium'
-import bundleManager from '@ohos.bundle.bundleManager'
+import { describe, beforeAll, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium';
+import bundleManager from '@ohos.bundle.bundleManager';
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -50,7 +50,7 @@ export default function AccessTokenTest() {
           console.error('AccessTokenTest getBundleInfoForSelf err is: ' + err.code);
         })
       } catch (error) {
-        console.error('AccessTokenTest getBundleInfoForSelf error is: ' + error.code)
+        console.error('AccessTokenTest getBundleInfoForSelf error is: ' + error.code);
       }
     })
     afterEach(() => {
@@ -68,7 +68,7 @@ export default function AccessTokenTest() {
       console.info("Test_verifyAccessToken_001 start");
       let atManager = abilityAccessCtrl.createAtManager();
       atManager.verifyAccessToken(tokenID, permissionNameUser).then((data: abilityAccessCtrl.GrantStatus) => {
-        console.info("Test_verifyAccessToken_001 tokenID: " + tokenID + " data: " + data)
+        console.info("Test_verifyAccessToken_001 tokenID: " + tokenID + " data: " + data);
         expect(data).assertEqual(GrantStatus.PERMISSION_DENIED);
         done();
       }).catch((err: BusinessError) => {
@@ -88,7 +88,7 @@ export default function AccessTokenTest() {
       console.info("Test_verifyAccessToken_002 start");
       let atManager = abilityAccessCtrl.createAtManager();
       atManager.verifyAccessToken(tokenID, permissionNameSystem).then((data: abilityAccessCtrl.GrantStatus) => {
-        console.info("Test_verifyAccessToken_002 tokenID: " + tokenID + " data: " + data)
+        console.info("Test_verifyAccessToken_002 tokenID: " + tokenID + " data: " + data);
         expect(data).assertEqual(GrantStatus.PERMISSION_GRANTED);
         done();
       }).catch((err: BusinessError) => {
@@ -108,7 +108,7 @@ export default function AccessTokenTest() {
       console.info("Test_verifyAccessToken_003 start");
       let atManager = abilityAccessCtrl.createAtManager();
       atManager.verifyAccessToken(0, permissionNameUser).then((data: abilityAccessCtrl.GrantStatus) => {
-        console.info("Test_verifyAccessToken_003 tokenID: " + tokenID + " data: " + data)
+        console.info("Test_verifyAccessToken_003 tokenID: " + tokenID + " data: " + data);
         expect(data).assertEqual(GrantStatus.PERMISSION_DENIED);
         done();
       }).catch((err: BusinessError) => {
@@ -127,8 +127,9 @@ export default function AccessTokenTest() {
     it('Test_verifyAccessToken_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("Test_verifyAccessToken_004 start");
       let atManager = abilityAccessCtrl.createAtManager();
-      let result = await atManager.verifyAccessToken(tokenID, "");
-      console.info("Test_verifyAccessToken_004 tokenID: " + tokenID + " result: " + result)
+      let permissionName: Permissions = "" as Permissions;
+      let result = await atManager.verifyAccessToken(tokenID, permissionName);
+      console.info("Test_verifyAccessToken_004 tokenID: " + tokenID + " result: " + result);
       expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
 
       done();
@@ -147,10 +148,11 @@ export default function AccessTokenTest() {
       let atManager = abilityAccessCtrl.createAtManager();
       let permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
         + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
-        + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+        +
+        "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest" as Permissions;
 
       let result = await atManager.verifyAccessToken(tokenID, permissionName);
-      console.info("Test_verifyAccessToken_005 tokenID: " + tokenID + " result: " + result)
+      console.info("Test_verifyAccessToken_005 tokenID: " + tokenID + " result: " + result);
       expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
 
       done();
@@ -170,7 +172,7 @@ export default function AccessTokenTest() {
       let permissionName: Permissions = "ohos.permission.GRANT_SENSITIVE_PERMISSIONS";
 
       atManager.verifyAccessToken(1111111111, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
-        console.info("Test_verifyAccessToken_006 tokenID: " + tokenID + " data: " + data)
+        console.info("Test_verifyAccessToken_006 tokenID: " + tokenID + " data: " + data);
         expect(data).assertEqual(GrantStatus.PERMISSION_DENIED);
         done();
       }).catch((err: BusinessError) => {
@@ -190,10 +192,10 @@ export default function AccessTokenTest() {
     it('Test_verifyAccessToken_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("Test_verifyAccessToken_007 start");
       let atManager = abilityAccessCtrl.createAtManager();
-      let permissionName = "ohos.permission.GRANT_SENSITIVE_PERMISSIO";
+      let permissionName = "ohos.permission.GRANT_SENSITIVE_PERMISSIO" as Permissions;
 
       let result = await atManager.verifyAccessToken(tokenID, permissionName);
-      console.info("Test_verifyAccessToken_007 tokenID: " + tokenID + " result: " + result)
+      console.info("Test_verifyAccessToken_007 tokenID: " + tokenID + " result: " + result);
       expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
 
       done();
@@ -211,7 +213,7 @@ export default function AccessTokenTest() {
       console.info("Test_verifyAccessTokenSync_000 start");
       let atManager = abilityAccessCtrl.createAtManager();
       let result = atManager.verifyAccessTokenSync(tokenID, permissionNameUser);
-      console.info("Test_verifyAccessTokenSync_000 tokenID: " + tokenID + " result: " + result)
+      console.info("Test_verifyAccessTokenSync_000 tokenID: " + tokenID + " result: " + result);
       expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
       done();
     })
@@ -228,7 +230,7 @@ export default function AccessTokenTest() {
       console.info("Test_verifyAccessTokenSync_001 start");
       let atManager = abilityAccessCtrl.createAtManager();
       let result = atManager.verifyAccessTokenSync(tokenID, permissionNameSystem);
-      console.info("Test_verifyAccessTokenSync_001 tokenID: " + tokenID + " result: " + result)
+      console.info("Test_verifyAccessTokenSync_001 tokenID: " + tokenID + " result: " + result);
       expect(result).assertEqual(GrantStatus.PERMISSION_GRANTED);
       done();
     })
@@ -247,7 +249,7 @@ export default function AccessTokenTest() {
       try {
         atManager.verifyAccessTokenSync(0, permissionNameUser);
       } catch (error) {
-        console.error("Test_verifyAccessTokenSync_002 error " + JSON.stringify(error))
+        console.error("Test_verifyAccessTokenSync_002 error " + JSON.stringify(error));
         expect(error.code).assertEqual(ERR_PARAM_INVALID);
         done();
       }
@@ -291,7 +293,7 @@ export default function AccessTokenTest() {
       let atManager = abilityAccessCtrl.createAtManager();
       try {
         atManager.checkAccessToken(tokenID, permissionNameUser).then((data: abilityAccessCtrl.GrantStatus) => {
-          console.info("Test_checkAccessToken_001 tokenID: " + tokenID + " data: " + data)
+          console.info("Test_checkAccessToken_001 tokenID: " + tokenID + " data: " + data);
           expect(data).assertEqual(GrantStatus.PERMISSION_DENIED);
           done();
         }).catch((err: BusinessError) => {
@@ -299,7 +301,7 @@ export default function AccessTokenTest() {
           expect(err.code).assertEqual(ERR_PARAM_INVALID);
         });
       } catch (error) {
-        console.error("Test_checkAccessToken_001 error " + JSON.stringify(error))
+        console.error("Test_checkAccessToken_001 error " + JSON.stringify(error));
       }
     })
 
@@ -316,7 +318,7 @@ export default function AccessTokenTest() {
       let atManager = abilityAccessCtrl.createAtManager();
       try {
         atManager.checkAccessToken(tokenID, permissionNameSystem).then((data: abilityAccessCtrl.GrantStatus) => {
-          console.info("Test_checkAccessToken_002 tokenID: " + tokenID + " data: " + data)
+          console.info("Test_checkAccessToken_002 tokenID: " + tokenID + " data: " + data);
           expect(data).assertEqual(GrantStatus.PERMISSION_GRANTED);
           done();
         }).catch((err: BusinessError) => {
@@ -417,7 +419,7 @@ export default function AccessTokenTest() {
         expect(data).assertEqual(GrantStatus.PERMISSION_DENIED);
         done();
       } catch (err) {
-        console.error("Test_checkAccessTokenSync_001 error " + JSON.stringify(err))
+        console.error("Test_checkAccessTokenSync_001 error " + JSON.stringify(err));
       }
     })
 
@@ -484,6 +486,118 @@ export default function AccessTokenTest() {
         console.error("Test_checkAccessTokenSync_006 error " + JSON.stringify(err));
       }
     })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_001
+     * @tc.name Test_getSelfPermissionStatus_001
+     * @tc.desc After the installation, user_grant permission is not granted by default(Promise).
+     * @tc.level: Level0
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_001 start");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let result = atManager.getSelfPermissionStatus(permissionNameUser);
+        console.info("Test_getSelfPermissionStatus_001 result: " + result);
+        expect(result).assertEqual(abilityAccessCtrl.PermissionStatus.NOT_DETERMINED);
+
+        done();
+      })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_002
+     * @tc.name Test_getSelfPermissionStatus_002
+     * @tc.desc After the installation, system_grant permission is granted by default(Promise).
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_002 start");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let result = atManager.getSelfPermissionStatus(permissionNameSystem);
+        console.info("Test_getSelfPermissionStatus_002 result: " + result);
+        expect(result).assertEqual(abilityAccessCtrl.PermissionStatus.GRANTED);
+
+        done();
+      })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_003
+     * @tc.name Test_getSelfPermissionStatus_003
+     * @tc.desc Call getSelfPermissionStatus with invalid value
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_003 start");
+        try {
+          let atManager = abilityAccessCtrl.createAtManager();
+          let permissionName: Permissions = "" as Permissions;
+          let result = atManager.getSelfPermissionStatus(permissionName);
+        } catch (error) {
+          console.error("Test_getSelfPermissionStatus_003 error code " + error.code + " error message " +
+          error.message);
+          expect(error.code).assertEqual(ERR_PARAM_INVALID);
+          done();
+        }
+      })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_004
+     * @tc.name Test_getSelfPermissionStatus_004
+     * @tc.desc Call getSelfPermissionStatus with invalid value
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_004 start");
+        try {
+          let atManager = abilityAccessCtrl.createAtManager();
+          let permissionName: Permissions =
+            "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+              + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+              +
+              "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest" as Permissions;
+          let result = atManager.getSelfPermissionStatus(permissionName);
+        } catch (error) {
+          console.error("Test_getSelfPermissionStatus_004 error code " + error.code + " error message " +
+          error.message);
+          expect(error.code).assertEqual(ERR_PARAM_INVALID);
+          done();
+        }
+      })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_005
+     * @tc.name Test_getSelfPermissionStatus_005
+     * @tc.desc Call getSelfPermissionStatus with invalid value
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_005 start");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let permissionName: Permissions = "ohos.permission.INVALID_PERM" as Permissions;
+        let result = atManager.getSelfPermissionStatus(permissionName);
+        console.info("Test_getSelfPermissionStatus_005 result: " + result);
+        expect(result).assertEqual(abilityAccessCtrl.PermissionStatus.INVALID);
+
+        let result2 = atManager.getSelfPermissionStatus("ohos.permission.LOCATION");
+        console.info("Test_getSelfPermissionStatus_005 result2: " + result2);
+        expect(result2).assertEqual(abilityAccessCtrl.PermissionStatus.INVALID);
+
+        done();
+      })
 
   })
 }

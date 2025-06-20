@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderStyle001', 0, async (done: Function) => {
+    it('testImageBorderStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderStyle002', 0, async (done: Function) => {
+    it('testImageBorderStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderStyle003', 0, async (done: Function) => {
+    it('testImageBorderStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderStyle004', 0, async (done: Function) => {
+    it('testImageBorderStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderStyle005', 0, async (done: Function) => {
+    it('testImageBorderStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderStyle005()).assertEqual(0)
       done()
     })

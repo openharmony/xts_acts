@@ -49,7 +49,7 @@ export default function animateToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('animateToTest_001', Level.LEVEL0, async (done: Function) => {
+    it('animateToTest_001', Level.LEVEL3, async (done: Function) => {
       console.info('[animateToTest_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

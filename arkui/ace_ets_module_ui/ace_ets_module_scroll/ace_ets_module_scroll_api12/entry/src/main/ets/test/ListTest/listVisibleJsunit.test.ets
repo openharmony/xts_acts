@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -55,14 +55,14 @@ export default function listVisibleJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('listVisibleJsunit_0100', 0, async (done: Function) => {
+    it('listVisibleJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('listVisibleJsunit_0100 START');
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('listVisible_mess');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[listVisibleJsunit_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('onScrollVisibleContentChange: 2');//IN_HEADER_AREA
+      expect(obj.$attrs.content).assertEqual('ListItemGroupArea.IN_HEADER_AREA');//IN_HEADER_AREA
       console.info("[listVisibleJsunit_0100] IN_HEADER_AREA success");
 
       let driver = await Driver.create();
@@ -76,7 +76,7 @@ export default function listVisibleJsunit() {
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[listVisibleJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[listVisibleJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
-      expect(obj1.$attrs.content).assertEqual('onScrollVisibleContentChange: 1');//IN_LIST_ITEM_AREA
+      expect(obj1.$attrs.content).assertEqual('ListItemGroupArea.IN_LIST_ITEM_AREA');//IN_LIST_ITEM_AREA
       expect(obj2.$attrs.content).assertEqual('itemIndexInGroup: 0');
       console.info("[listVisibleJsunit_0100] IN_LIST_ITEM_AREA success");
 
@@ -87,7 +87,7 @@ export default function listVisibleJsunit() {
       let strJson3 = getInspectorByKey('listVisible_mess');
       let obj3: ESObject = JSON.parse(strJson3);
       console.info("[listVisibleJsunit_0100] component obj3 is: " + JSON.stringify(obj3));
-      expect(obj3.$attrs.content).assertEqual('onScrollVisibleContentChange: 3');//IN_FOOTER_AREA
+      expect(obj3.$attrs.content).assertEqual('ListItemGroupArea.IN_FOOTER_AREA');//IN_FOOTER_AREA
       console.info("[listVisibleJsunit_0100] IN_FOOTER_AREA success");
 
       console.info('[listVisibleJsunit_0100] END');

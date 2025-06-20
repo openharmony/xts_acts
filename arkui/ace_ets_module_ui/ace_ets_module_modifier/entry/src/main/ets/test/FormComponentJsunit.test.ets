@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -48,7 +48,7 @@ export default function formComponentJsunitJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_formComponentJsunit001', 0, async (done: Function) => {
+    it('test_formComponentJsunit001', Level.LEVEL0, async (done: Function) => {
       console.info('[test_formComponentJsunit001] START');
       let strJson = getInspectorByKey('FormComponentKey1');
 
@@ -66,7 +66,7 @@ export default function formComponentJsunitJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_formComponentJsunit002', 0, async (done: Function) => {
+    it('test_formComponentJsunit002', Level.LEVEL0, async (done: Function) => {
       console.info('[test_formComponentJsunit002] START');
       let strJson = getInspectorByKey('FormComponentKey1');
 
@@ -85,7 +85,7 @@ export default function formComponentJsunitJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_formComponentJsunit003', 0, async (done: Function) => {
+    it('test_formComponentJsunit003', Level.LEVEL0, async (done: Function) => {
       console.info('[test_formComponentJsunit003] START');
       let strJson = getInspectorByKey('FormComponentKey1');
 
@@ -104,7 +104,7 @@ export default function formComponentJsunitJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_formComponentJsunit004', 0, async (done: Function) => {
+    it('test_formComponentJsunit004', Level.LEVEL0, async (done: Function) => {
       console.info('[test_formComponentJsunit004] START');
       let strJson = getInspectorByKey('FormComponentKey1');
 
@@ -124,7 +124,7 @@ export default function formComponentJsunitJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_formComponentJsunit005', 0, async (done: Function) => {
+    it('test_formComponentJsunit005', Level.LEVEL0, async (done: Function) => {
       console.info('[test_formComponentJsunit005] START');
       let strJson = getInspectorByKey('FormComponentKey1');
 
@@ -147,7 +147,7 @@ export default function formComponentJsunitJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_formComponentJsunit006', 0, async (done: Function) => {
+    it('test_formComponentJsunit006', Level.LEVEL0, async (done: Function) => {
 
       console.info('test_formComponentJsunit006 START');
       let driver = Driver.create();

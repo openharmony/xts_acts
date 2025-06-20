@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -44,7 +44,7 @@ export default function sliderJsunit1() {
       console.info("slider after each called");
     });
 
-    it('testSlider001', 0, async (done: Function) => {
+    it('testSlider001', Level.LEVEL1, async (done: Function) => {
       console.info('[testSlider001] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('slider');
@@ -54,7 +54,7 @@ export default function sliderJsunit1() {
       done();
     });
 
-    it('testSlider002', 0, async (done: Function) => {
+    it('testSlider002', Level.LEVEL1, async (done: Function) => {
       console.info('[testSlider002] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -79,7 +79,7 @@ export default function sliderJsunit1() {
       done();
     });
 
-    it('testSlider003', 0, async (done: Function) => {
+    it('testSlider003', Level.LEVEL1, async (done: Function) => {
       console.info('[testSlider003] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('slider');
@@ -88,7 +88,7 @@ export default function sliderJsunit1() {
       done();
     });
 
-    it('testSlider004', 0, async (done: Function) => {
+    it('testSlider004', Level.LEVEL1, async (done: Function) => {
       console.info('[testSlider004] START');
       await Utils.sleep(1000);
       try {
@@ -113,7 +113,7 @@ export default function sliderJsunit1() {
       done();
     });
 
-    it('testSlider005', 0, async (done: Function) => {
+    it('testSlider005', Level.LEVEL1, async (done: Function) => {
       console.info('testSlider005 START');
       let strJson: string = getInspectorByKey('slider');
       console.info("testSlider005 component strJson:" + strJson);
@@ -123,7 +123,7 @@ export default function sliderJsunit1() {
       done();
     });
 
-    it('testSlider006', 0, async (done: Function) => {
+    it('testSlider006', Level.LEVEL1, async (done: Function) => {
       console.info('testSlider006 START');
       try {
         let eventData: events_emitter.EventData = {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, it, expect } from '@ohos/hypium';
+import { beforeEach, describe, it, expect, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsFlexGrowTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsFlexGrow001', 0, async (done: Function) => {
+    it('testCommonAttrsFlexGrow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsFlexGrow001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function commonAttrsFlexGrowTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testCommonAttrsFlexGrow002', 0, async (done: Function) => {
+    it('testCommonAttrsFlexGrow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsFlexGrow002()).assertEqual(0)
       done();
     })

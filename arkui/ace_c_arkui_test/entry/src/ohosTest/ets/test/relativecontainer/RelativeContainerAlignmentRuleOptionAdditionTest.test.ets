@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -29,7 +29,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionCreate001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionCreate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionCreate001()).assertEqual(0)
       done()
     })
@@ -42,7 +42,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionDispose001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionDispose001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionDispose001()).assertEqual(0);
       done();
     });
@@ -55,7 +55,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetStart001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetStart001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetStart001()).assertEqual(0);
       done();
     });
@@ -68,7 +68,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetStart002', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetStart002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetStart002()).assertEqual(0);
       done();
     });
@@ -81,7 +81,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetStart003', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetStart003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetStart003()).assertEqual(0);
       done();
     });
@@ -94,7 +94,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetEnd001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetEnd001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetEnd001()).assertEqual(0);
       done();
     });
@@ -107,7 +107,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetEnd002', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetEnd002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetEnd002()).assertEqual(0);
       done();
     });
@@ -120,7 +120,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetEnd003', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetEnd003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetEnd003()).assertEqual(0);
       done();
     });
@@ -133,7 +133,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetCenterHorizontal001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetCenterHorizontal001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetCenterHorizontal001()).assertEqual(0);
       done();
     });
@@ -146,7 +146,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetCenterHorizontal002', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetCenterHorizontal002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetCenterHorizontal002()).assertEqual(0);
       done();
     });
@@ -159,7 +159,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetCenterHorizontal003', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetCenterHorizontal003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetCenterHorizontal003()).assertEqual(0);
       done();
     });
@@ -172,7 +172,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetTop001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetTop001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetTop001()).assertEqual(0);
       done();
     });
@@ -185,7 +185,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetTop002', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetTop002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetTop002()).assertEqual(0);
       done();
     });
@@ -198,7 +198,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetTop003', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetTop003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetTop003()).assertEqual(0);
       done();
     });
@@ -211,7 +211,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetBottom001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetBottom001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetBottom001()).assertEqual(0);
       done();
     });
@@ -224,7 +224,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetBottom002', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetBottom002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetBottom002()).assertEqual(0);
       done();
     });
@@ -237,7 +237,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetBottom003', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetBottom003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetBottom003()).assertEqual(0);
       done();
     });
@@ -250,7 +250,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetCenterVertical001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetCenterVertical001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetCenterVertical001()).assertEqual(0);
       done();
     });
@@ -263,7 +263,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetCenterVertical002', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetCenterVertical002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetCenterVertical002()).assertEqual(0);
       done();
     });
@@ -276,7 +276,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetCenterVertical003', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetCenterVertical003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetCenterVertical003()).assertEqual(0);
       done();
     });
@@ -289,7 +289,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetBiasHorizontal001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetBiasHorizontal001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetBiasHorizontal001()).assertEqual(0);
       done();
     });
@@ -302,7 +302,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetBiasHorizontal002', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetBiasHorizontal002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetBiasHorizontal002()).assertEqual(0);
       done();
     });
@@ -315,7 +315,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetBiasVertical001', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetBiasVertical001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetBiasVertical001()).assertEqual(0);
       done();
     });
@@ -328,7 +328,7 @@ export default function relativecontaineAlignmentRuleOptionAdditionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContaineAlignmentRuleOptionSetBiasVertical002', 0, async (done: Function) => {
+    it('testRelativeContaineAlignmentRuleOptionSetBiasVertical002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContaineAlignmentRuleOptionSetBiasVertical002()).assertEqual(0);
       done();
     });

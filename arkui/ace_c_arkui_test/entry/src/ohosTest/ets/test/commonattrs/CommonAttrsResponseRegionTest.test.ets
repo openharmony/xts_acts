@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsResponseRegion001', 0, async (done: Function) => {
+    it('testCommonAttrsResponseRegion001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsResponseRegion001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsResponseRegion002', 0, async (done: Function) => {
+    it('testCommonAttrsResponseRegion002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsResponseRegion002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsResponseRegion003', 0, async (done: Function) => {
+    it('testCommonAttrsResponseRegion003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsResponseRegion003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsResponseRegion004', 0, async (done: Function) => {
+    it('testCommonAttrsResponseRegion004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsResponseRegion004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsResponseRegion005', 0, async (done: Function) => {
+    it('testCommonAttrsResponseRegion005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsResponseRegion005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsResponseRegion006', 0, async (done: Function) => {
+    it('testCommonAttrsResponseRegion006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsResponseRegion006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsResponseRegionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsResponseRegion007', 0, async (done: Function) => {
+    it('testCommonAttrsResponseRegion007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsResponseRegion007()).assertEqual(0)
       done()
     })

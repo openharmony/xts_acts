@@ -23,7 +23,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 const moduleName = "entry_test";
 const otherBundle = "com.example.commontestabilityapp";
 const otherModuleName = "feature";
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 
 let TAG: string = "";
 let tempCallbackId: number;
@@ -232,7 +232,7 @@ export default function lifecycleTest() {
           let listTemp = JSON.stringify(globalThis.list1);
           console.log(TAG + " listTemp is :" + listTemp);
           expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
-          if (deviceType !== '2in1') {
+          if (deviceSupport !== 'false') {
             expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(2);
             expect(listTemp.indexOf("MainAbility1 onAbilityBackground") !== -1).assertTrue();
           }
@@ -309,7 +309,7 @@ export default function lifecycleTest() {
           let listTemp = JSON.stringify(globalThis.list1);
           console.log(TAG + " listTemp is :" + listTemp);
           expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
-          if (deviceType !== '2in1') {
+          if (deviceSupport !== 'false') {
             expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(2);
             expect(listTemp.indexOf("MainAbility1 onAbilityBackground") !== -1).assertTrue();
           }
@@ -397,7 +397,7 @@ export default function lifecycleTest() {
           let listTemp = JSON.stringify(globalThis.list3);
           console.log(TAG + " listTemp is :" + listTemp);
           expect(listTemp.indexOf("MainAbility3 onWindowStageCreate") !== -1).assertTrue();
-          if (deviceType !== '2in1') {
+          if (deviceSupport !== 'false') {
             expect(listTemp.split("MainAbility3 onAbilityForeground").length - 1).assertEqual(2);
             expect(listTemp.indexOf("MainAbility3 onAbilityBackground") !== -1).assertTrue();
           }
@@ -758,7 +758,7 @@ export default function lifecycleTest() {
             let listTemp = JSON.stringify(globalThis.list1);
             console.log(TAG + " listTemp is :" + listTemp);
             expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
-            if (deviceType !== '2in1') {
+            if (deviceSupport !== 'false') {
               expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(4);
               expect(listTemp.split("MainAbility1 onAbilityBackground").length - 1).assertEqual(3);
             }
@@ -849,7 +849,7 @@ export default function lifecycleTest() {
             let listTemp = JSON.stringify(globalThis.list1);
             console.log(TAG + " listTemp is :" + listTemp);
             expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
-            if (deviceType !== '2in1') {
+            if (deviceSupport !== 'false') {
               expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(3);
               expect(listTemp.split("MainAbility1 onAbilityBackground").length - 1).assertEqual(2);
             }

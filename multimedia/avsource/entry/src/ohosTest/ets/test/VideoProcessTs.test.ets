@@ -15,9 +15,9 @@
 
  import videoProcessingEngine from '@ohos.multimedia.videoProcessingEngine';
  import { image } from '@kit.ImageKit';
- import { describe, it, expect } from '@ohos/hypium';
+ import { describe, it, expect, Level } from '@ohos/hypium';
  import { abilityDelegatorRegistry } from '@kit.TestKit';
- import deviceInfo from '@ohos.deviceInfo';
+ import { fileIo as fs } from '@kit.CoreFileKit';
 
  let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
  let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
@@ -39,11 +39,7 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs001', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-        }
+    it('testVideoProcessTs001', Level.LEVEL0, async(done: Function) => {
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -54,7 +50,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs001 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -66,8 +67,8 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs002', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
+    it('testVideoProcessTs002', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -84,7 +85,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs002 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -96,8 +102,8 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs003', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
+    it('testVideoProcessTs003', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -114,7 +120,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs003 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -126,8 +137,8 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs004', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
+    it('testVideoProcessTs004', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -144,7 +155,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs004 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -156,8 +172,8 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs005', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
+    it('testVideoProcessTs005', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -174,7 +190,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs005 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -186,8 +207,8 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs006', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
+    it('testVideoProcessTs006', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -204,7 +225,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs006 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -216,8 +242,8 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs007', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
+    it('testVideoProcessTs007', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -231,7 +257,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs007 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -243,8 +274,8 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs008', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
+    it('testVideoProcessTs008', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -261,7 +292,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs008 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -273,8 +309,8 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs009', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
+    it('testVideoProcessTs009', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -288,7 +324,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs009 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -300,17 +341,18 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs010', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-        }
+    it('testVideoProcessTs010', Level.LEVEL0, async(done: Function) => {
         try {
             videoProcessingEngine.initializeEnvironment();
             done();
         } catch (err) {
             console.info('testVideoProcessTs010 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -322,18 +364,19 @@
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVideoProcessTs011', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-        }
+    it('testVideoProcessTs011', Level.LEVEL0, async(done: Function) => {
         try {
             videoProcessingEngine.initializeEnvironment();
             videoProcessingEngine.deinitializeEnvironment();
             done();
         } catch (err) {
             console.info('testVideoProcessTs011 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
     })

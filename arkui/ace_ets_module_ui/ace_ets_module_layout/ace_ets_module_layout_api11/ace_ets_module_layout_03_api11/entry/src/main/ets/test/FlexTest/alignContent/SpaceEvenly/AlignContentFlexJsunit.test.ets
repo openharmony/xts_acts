@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -57,7 +57,7 @@ export default function AlignContentFlexJsunit() {
      *               the flex component so that it meets the subcomponent size requirements.
      */
 
-    it('testAlignContentSpaceEvenlyFlexHeightSatisfy', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexHeightSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexHeightSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 360
@@ -114,7 +114,7 @@ export default function AlignContentFlexJsunit() {
      *               the flex component so that it does not meet the subcomponent size requirements.
      */
 
-    it('testAlignContentSpaceEvenlyFlexHeightNoSatisfy', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexHeightNoSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexHeightNoSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 250

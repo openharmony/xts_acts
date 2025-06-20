@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -69,7 +69,7 @@ export default function tabs_WidHeiTest() {
      * @tc.name testTabsWidHei01
      * @tc.desc set width of tabs to 330,height of tabs to 350
      */
-    it('testTabsWidHei01', 0, async (done: Function) => {
+    it('testTabsWidHei01', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsWidHei01] START');
       globalThis.value.message.notify({
         name: 'width', value: 330
@@ -181,7 +181,7 @@ export default function tabs_WidHeiTest() {
      * @tc.name testTabsWidHei02
      * @tc.desc set width of tabs to 300,height of tabs to 400
      */
-    it('testTabsWidHei02', 0, async (done: Function) => {
+    it('testTabsWidHei02', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsWidHei02] START');
       globalThis.value.message.notify({
         name: 'width', value: 300

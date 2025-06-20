@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -48,7 +48,7 @@ export default function openPopupTest() {
      * @tc.type :
      * @tc.size :
      */
-      it('openPopupTest_0100', 0, async (done: Function) => {
+      it('openPopupTest_0100', Level.LEVEL2, async (done: Function) => {
         let tagName = 'openPopupTest_0100';
         console.info('[' + tagName + '] START============================');
         await CommonFunc.sleep(1000);

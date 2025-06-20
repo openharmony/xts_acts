@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach,  Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -28,7 +28,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_a', 0, async (done: Function) => {
+    it('GetGestureParamTest_a',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_a()).assertEqual(0)
       console.log('GetGestureParamTest_a will drag and check:: ')
       await Utils.sleep(200)
@@ -36,7 +36,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_a1', 0, async (done: Function) => {
+    it('GetGestureParamTest_a1',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_a1()).assertEqual(0)
       console.log('GetGestureParamTest_a1 will drag and check:: ')
       await Utils.sleep(200)
@@ -44,7 +44,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_b', 0, async (done: Function) => {
+    it('GetGestureParamTest_b',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_b()).assertEqual(0)
       console.log('GetGestureParamTest_b will drag and check:: ')
       await Utils.sleep(200)
@@ -52,7 +52,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_c', 0, async (done: Function) => {
+    it('GetGestureParamTest_c',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_c()).assertEqual(0)
       console.log('GetGestureParamTest_c will drag and check:: ')
       await Utils.sleep(200)
@@ -60,7 +60,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_d', 0, async (done: Function) => {
+    it('GetGestureParamTest_d',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_d()).assertEqual(0)
       console.log('GetGestureParamTest_d will drag and check:: ')
       await Utils.sleep(200)
@@ -68,7 +68,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_e', 0, async (done: Function) => {
+    it('GetGestureParamTest_e',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_e()).assertEqual(0)
       console.log('GetGestureParamTest_e will drag and check:: ')
       await Utils.sleep(200)
@@ -76,7 +76,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_f', 0, async (done: Function) => {
+    it('GetGestureParamTest_f',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_f()).assertEqual(0)
       console.log('GetGestureParamTest_f will drag and check:: ')
       await Utils.sleep(200)
@@ -84,7 +84,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_g', 0, async (done: Function) => {
+    it('GetGestureParamTest_g',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_g()).assertEqual(0)
       console.log('GetGestureParamTest_g will drag and check:: ')
       await Utils.sleep(200)
@@ -92,7 +92,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_h', 0, async (done: Function) => {
+    it('GetGestureParamTest_h',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_h()).assertEqual(0)
       console.log('GetGestureParamTest_h will drag and check:: ')
       await Utils.sleep(200)
@@ -100,7 +100,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_i', 0, async (done: Function) => {
+    it('GetGestureParamTest_i',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_i()).assertEqual(0)
       console.log('GetGestureParamTest_i will drag and check:: ')
       await Utils.sleep(200)
@@ -108,7 +108,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_j', 0, async (done: Function) => {
+    it('GetGestureParamTest_j',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_j()).assertEqual(0)
       console.log('GetGestureParamTest_j will drag and check:: ')
       await Utils.sleep(200)
@@ -116,7 +116,7 @@ export default function GetGestureParamTest(){
       done()
     })
 
-    it('GetGestureParamTest_j1', 0, async (done: Function) => {
+    it('GetGestureParamTest_j1',  Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.GetGestureParamTest_j1()).assertEqual(0)
       console.log('GetGestureParamTest_j1 will drag and check:: ')
       await Utils.sleep(200)

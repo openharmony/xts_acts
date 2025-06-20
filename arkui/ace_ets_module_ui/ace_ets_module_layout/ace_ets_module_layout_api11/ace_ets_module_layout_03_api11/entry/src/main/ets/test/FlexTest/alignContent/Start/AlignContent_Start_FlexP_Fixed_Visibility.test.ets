@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -56,7 +56,7 @@ export default function AlignContent_Start_FlexP_Fixed_Visibility() {
      * @tc.desc Set the visibility property of the child component to Visibility.Hidden.
      */
 
-    it('testAlignContentStartFlexfixedVisibilityHidden', 0, async () => {
+    it('testAlignContentStartFlexfixedVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('testAlignContentStartFlexfixedVisibilityHidden START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Hidden
@@ -115,7 +115,7 @@ export default function AlignContent_Start_FlexP_Fixed_Visibility() {
      * @tc.desc Set the visibility property of the child component to Visibility.None.
      */
 
-    it('testAlignContentStartFlexfixedVisibilityNone', 0, async () => {
+    it('testAlignContentStartFlexfixedVisibilityNone',  Level.LEVEL0, async () => {
       console.info('testAlignContentStartFlexfixedVisibilityNone START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None

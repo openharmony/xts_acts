@@ -1446,7 +1446,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setAVQueueItems(ITEMS_ARRAY).then(async () => {
                 await controller.getAVQueueItems().then((items) => {
                     console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300 data " + JSON.stringify(items));

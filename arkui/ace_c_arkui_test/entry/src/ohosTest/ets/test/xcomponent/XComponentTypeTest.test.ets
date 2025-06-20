@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function xComponentTypeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXComponentType001', 0, async (done: Function) => {
+    it('testXComponentType001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testXComponentType001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function xComponentTypeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXComponentType002', 0, async (done: Function) => {
+    it('testXComponentType002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testXComponentType002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function xComponentTypeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXComponentType003', 0, async (done: Function) => {
+    it('testXComponentType003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testXComponentType003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function xComponentTypeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testXComponentType004', 0, async (done: Function) => {
+    it('testXComponentType004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testXComponentType004()).assertEqual(0)
       done()
     })

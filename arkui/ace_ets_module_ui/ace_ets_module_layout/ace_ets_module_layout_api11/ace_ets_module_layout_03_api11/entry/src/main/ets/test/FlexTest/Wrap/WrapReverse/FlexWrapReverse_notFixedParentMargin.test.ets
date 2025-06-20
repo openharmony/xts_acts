@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -54,7 +54,7 @@ export default function flexWrapReverse_notFixedParentMargin() {
      * @tc.desc The parent component changes the location and space of the layout, affecting the layout of the
      *               child components, parent component setting margin
      */
-    it('testWrapReverseChildfixedParentMargin', 0, async () => {
+    it('testWrapReverseChildfixedParentMargin',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseChildfixedParentMargin START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300
@@ -105,7 +105,7 @@ export default function flexWrapReverse_notFixedParentMargin() {
      * @tc.desc The parent component changes the location and space of the layout, affecting the layout of the
      *               child components, parent component setting margin and padding
      */
-    it('testWrapReverseChildfixedParentMarPad', 0, async () => {
+    it('testWrapReverseChildfixedParentMarPad',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseChildfixedParentMarPad START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Driver, Component, UiWindow, ON } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function tabsTransition() {
      * @tc.type
      * @tc.size
      */
-    it('tabsTransition_0100', 0, async (done: Function) => {
+    it('tabsTransition_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[tabsTransition_0100] START');
       let swiperTabs = CommonFunc.getComponentRectOnScreen('callback_tabs_tran');
       let top = swiperTabs.top;
@@ -82,7 +82,7 @@ export default function tabsTransition() {
      * @tc.type
      * @tc.size
      */
-    it('tabsTransition_0200', 0, async (done: Function) => {
+    it('tabsTransition_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[tabsTransition_0200] START');
       let driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.text('3'));

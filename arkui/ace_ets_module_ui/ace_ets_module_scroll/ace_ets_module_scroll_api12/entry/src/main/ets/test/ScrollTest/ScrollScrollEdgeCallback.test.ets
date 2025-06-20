@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   Component,
@@ -64,7 +64,7 @@ export default function ScrollScrollEdgeCallbackJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ScrollScrollEdgeCallbackTest_0100', 0, async (done: Function) => {
+    it('ScrollScrollEdgeCallbackTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ScrollScrollEdgeCallbackTest_0100 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('ScrollScrollEdgeCallback01'));

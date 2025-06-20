@@ -124,5 +124,56 @@ export default function FileShareTest() {
         expect(value).assertEqual(1);
         done();
       })
+      
+    /*
+     * @tc.number:SUB_Security_FileShare_OperationMode_0100
+     * @tc.name: SUB_Security_FileShare_OperationMode_0100
+     * @tc.desc: Test fileShare OperationMode CREATE_MODE
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it("SUB_Security_FileShare_OperationMode_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info('----------------------SUB_Security_FileShare_OperationMode_0100---------------------------');
+        let value = fileShare.OperationMode.CREATE_MODE;
+        console.info('SUB_Security_FileShare_OperationMode_0100 value is: ' + value);
+        expect(value).assertEqual(0b100);
+        done();
+      })
+
+    /*
+     * @tc.number:SUB_Security_FileShare_OperationMode_0200
+     * @tc.name: SUB_Security_FileShare_OperationMode_0200
+     * @tc.desc: Test fileShare OperationMode DELETE_MODE
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it("SUB_Security_FileShare_OperationMode_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info('----------------------SUB_Security_FileShare_OperationMode_0200---------------------------');
+        let value = fileShare.OperationMode.DELETE_MODE;
+        console.info('SUB_Security_FileShare_OperationMode_0200 value is: ' + value);
+        expect(value).assertEqual(0b1000);
+        done();
+      })
+
+    /*
+     * @tc.number:SUB_Security_FileShare_OperationMode_0300
+     * @tc.name: SUB_Security_FileShare_OperationMode_0300
+     * @tc.desc: Test fileShare OperationMode RENAME_MODE
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it("SUB_Security_FileShare_OperationMode_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info('----------------------SUB_Security_FileShare_OperationMode_0300---------------------------');
+        let value = fileShare.OperationMode.RENAME_MODE;
+        console.info('SUB_Security_FileShare_OperationMode_0300 value is: ' + value);
+        expect(value).assertEqual(0b10000);
+        done();
+      })
   })
 }

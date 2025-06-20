@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -50,7 +50,7 @@ export default function ColumnSetFlexShink_SubChange() {
      * @tc.name testColumnSetFlexShink
      * @tc.desc Subcomponents set flexshink (3-2-1) attribute.
      */
-    it('testColumnSetFlexShink', 0, async () => {
+    it('testColumnSetFlexShink',  Level.LEVEL0, async () => {
       console.info('new testColumnSetFlexShink START');
       await CommonFunc.sleep(2000);
       let columnSetFlexShink_1: RectValue = CommonFunc.getComponentRect('columnSetFlexShink_1');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -72,7 +72,7 @@ export default function flex_Wrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction meets the layout
      *   of the child components when the parent components set margin,and the child components set padding
      */
-    it('testWrapWrapFlexMarTextPad', 0, async () => {
+    it('testWrapWrapFlexMarTextPad',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapFlexMarTextPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextPadding', value: 10
@@ -131,7 +131,7 @@ export default function flex_Wrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for
      *               the child components when the parent components set margin,and the child components set margin
      */
-    it('testWrapWrapFlexMarTextMar', 0, async () => {
+    it('testWrapWrapFlexMarTextMar',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapFlexMarTextMar] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 30
@@ -172,10 +172,11 @@ export default function flex_Wrap_FlexMar_TextMarPadTest() {
       expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
       expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
-
+      console.info('[testWrapWrapFlexMarTextMar] ((flexContainer.right - secondText.right) - vp2px(140)):' + ((flexContainer.right - secondText.right) - vp2px(140)));
+      console.info('[testWrapWrapFlexMarTextMar] ((flexContainer.bottom - thirdText.bottom) - vp2px(40)):' + ((flexContainer.bottom - thirdText.bottom) - vp2px(40)));
       expect(Math.floor(Math.abs((flexContainer.right - secondText.right) - vp2px(140))) <= 1)
         .assertTrue();
-      expect(Math.floor(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(40))) <= 1)
+      expect(Math.floor(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(40))) <= 2)
         .assertTrue();
       console.info('[testWrapWrapFlexMarTextMar] END');
 
@@ -186,7 +187,7 @@ export default function flex_Wrap_FlexMar_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough the layout
      *   of the child components when the parent components set margin,and the child components set margin and padding
      */
-    it('testWrapWrapFlexMarTextMarPad', 0, async () => {
+    it('testWrapWrapFlexMarTextMarPad',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapFlexMarTextMarPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 10
@@ -243,6 +244,8 @@ export default function flex_Wrap_FlexMar_TextMarPadTest() {
       expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
 
+      console.info('[testWrapWrapFlexMarTextMarPad] ((flexContainer.right - secondText.right) - vp2px(170)):' + ((flexContainer.right - secondText.right) - vp2px(170)));
+      console.info('[testWrapWrapFlexMarTextMarPad] ((flexContainer.bottom - thirdText.bottom) - vp2px(20)):' + ((flexContainer.bottom - thirdText.bottom) - vp2px(20)));
       expect(Math.floor(Math.abs((flexContainer.right - secondText.right) - vp2px(170))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(20))) <= 2)

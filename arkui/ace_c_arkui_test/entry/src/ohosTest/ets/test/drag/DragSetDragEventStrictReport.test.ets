@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function DragSetDragEventStrictReportTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragSetDragEventStrictReportTest001', 0, async (done: Function) => {
+    it('DragSetDragEventStrictReportTest001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_setDragEventStrictReportWidthNode_001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function DragSetDragEventStrictReportTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragSetDragEventStrictReportTest002', 0, async (done: Function) => {
+    it('DragSetDragEventStrictReportTest002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_setDragEventStrictReportWidthNode_002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function DragSetDragEventStrictReportTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragSetDragEventStrictReportTest003', 0, async (done: Function) => {
+    it('DragSetDragEventStrictReportTest003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_setDragEventStrictReportWidthContext_003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function DragSetDragEventStrictReportTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragSetDragEventStrictReportTest004', 0, async (done: Function) => {
+    it('DragSetDragEventStrictReportTest004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_setDragEventStrictReportWidthContext_004()).assertEqual(0)
       done()
     })

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../../MainAbility/common/Common'
 
 export default function stateManagementDARKJsunit() {
@@ -50,7 +50,7 @@ export default function stateManagementDARKJsunit() {
      * @tc.name         teststateManagementDARK001
      * @tc.desic         acestateManagementDARKEtsTest001
      */
-    it('teststateManagementDARK001', 0, async (done: Function) => {
+    it('teststateManagementDARK001', Level.LEVEL0, async (done: Function) => {
       console.info('stateManagementDARK teststateManagementDARK001 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('DARKText');

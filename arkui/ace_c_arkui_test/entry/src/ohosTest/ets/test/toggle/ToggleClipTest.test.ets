@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip001', 0, async (done: Function) => {
+    it('testToggleClip001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testToggleClip002', 0, async (done: Function) => {
+    it('testToggleClip002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip003', 0, async (done: Function) => {
+    it('testToggleClip003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip004', 0, async (done: Function) => {
+    it('testToggleClip004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testToggleClip005', 0, async (done: Function) => {
+    it('testToggleClip005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip006', 0, async (done: Function) => {
+    it('testToggleClip006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip007', 0, async (done: Function) => {
+    it('testToggleClip007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testToggleClip008', 0, async (done: Function) => {
+    it('testToggleClip008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip009', 0, async (done: Function) => {
+    it('testToggleClip009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip010', 0, async (done: Function) => {
+    it('testToggleClip010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testToggleClip011', 0, async (done: Function) => {
+    it('testToggleClip011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip012', 0, async (done: Function) => {
+    it('testToggleClip012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip013', 0, async (done: Function) => {
+    it('testToggleClip013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleClip014', 0, async (done: Function) => {
+    it('testToggleClip014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function toggleClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testToggleClip015', 0, async (done: Function) => {
+    it('testToggleClip015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleClip015()).assertEqual(0)
       done()
     })

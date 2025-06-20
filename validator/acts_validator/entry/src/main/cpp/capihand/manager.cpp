@@ -365,7 +365,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                         auto res1= OH_ArkUI_PointerEvent_GetInteractionHandByIndex(uiInputEvent, 0, &hand1);
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(uiInputEvent, &hand2);
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                            "handEvent touch event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
+                            "handEvent touch event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d", hand1,res1, hand2, res2);
                         break;
                     }
                     case NODE_ON_CLICK: {
@@ -375,7 +375,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(uiInputEvent, &hand2);
                         HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                            "handEvent click event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
+                            "handEvent click event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d", hand1,res1, hand2, res2);
                         break;
                     }
 
@@ -409,7 +409,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
                 HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                            "handEvent pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
+                            "handEvent pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d", hand1,res1, hand2, res2);
             };
         
             gestureApi->setGestureEventTarget(gesture, GESTURE_EVENT_ACTION_ACCEPT|GESTURE_EVENT_ACTION_UPDATE|GESTURE_EVENT_ACTION_END|GESTURE_EVENT_ACTION_CANCEL, button, onActionCallback);
@@ -434,7 +434,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent tap1 event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent tap1 event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
  auto onSwipeActionCallback1 = [](ArkUI_GestureEvent *event, void *extraParams) {
@@ -446,7 +446,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent Swipe event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent Swipe event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
             auto ontapActionCallback2 = [](ArkUI_GestureEvent *event, void *extraParams) {
@@ -458,7 +458,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent tap2 event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent tap2 event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
 
@@ -471,7 +471,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
 
@@ -484,7 +484,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent rotate event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent rotate event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
 
@@ -497,7 +497,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent pinch event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent pinch event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
             gestureApi->setGestureEventTarget(longPressGesture,
@@ -566,7 +566,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent PARALLEL long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent PARALLEL long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
             
@@ -578,7 +578,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
                 HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                            "handEvent PARALLEL pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
+                            "handEvent PARALLEL pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d", hand1,res1, hand2, res2);
             };
             
             auto onLogPressActionEXCLUSIVECallback = [](ArkUI_GestureEvent *event, void *extraParams) {
@@ -590,7 +590,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent EXCLUSIVE long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent EXCLUSIVE long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
             
@@ -602,7 +602,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
                 HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                            "handEvent EXCLUSIVE pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
+                            "handEvent EXCLUSIVE pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d", hand1,res1, hand2, res2);
             };
             
             auto onLogPressActionSEQUENTIALCallback = [](ArkUI_GestureEvent *event, void *extraParams) {
@@ -614,7 +614,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                    "handEvent SEQUENTIAL long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
+                    "handEvent SEQUENTIAL long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d",
                     hand1, res1, hand2, res2);
             };
             
@@ -626,7 +626,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
                 HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
-                            "handEvent SEQUENTIAL pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
+                            "handEvent SEQUENTIAL pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result2=%{public}d", hand1,res1, hand2, res2);
             };
             
             gestureApi->setGestureEventTarget(longPressGesturePARALLEL,

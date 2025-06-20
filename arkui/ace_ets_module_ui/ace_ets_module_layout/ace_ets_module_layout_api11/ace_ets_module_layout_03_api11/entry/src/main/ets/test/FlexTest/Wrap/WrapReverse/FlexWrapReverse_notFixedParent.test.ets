@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -54,7 +54,7 @@ export default function flexWrapReverse_notFixedParent() {
      * @tc.desc The parent component changes the location and space of the layout, affecting the layout of child
      *               components, the width and height of parent component meets the requirements of the child components
      */
-    it('testWrapReverseChildfixedChangeParentInRange', 0, async () => {
+    it('testWrapReverseChildfixedChangeParentInRange',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 150
@@ -96,7 +96,7 @@ export default function flexWrapReverse_notFixedParent() {
      * @tc.desc The parent component changes location and space of layout, affecting layout of child components,
      *               the width of parent component does not meet the requirements of child components, but height meets
      */
-    it('testWrapReverseChildfixedChangeParentChildWidthOutRange', 0, async () => {
+    it('testWrapReverseChildfixedChangeParentChildWidthOutRange',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentChildWidthOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 250
@@ -139,7 +139,7 @@ export default function flexWrapReverse_notFixedParent() {
      * @tc.desc The parent component changes location and space of layout, affecting layout of child components,
      *               the width and height of parent component does not meet the requirements of the child components
      */
-    it('testWrapReverseChildfixedChangeParentChildAllOutRange', 0, async () => {
+    it('testWrapReverseChildfixedChangeParentChildAllOutRange',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentChildAllOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 100

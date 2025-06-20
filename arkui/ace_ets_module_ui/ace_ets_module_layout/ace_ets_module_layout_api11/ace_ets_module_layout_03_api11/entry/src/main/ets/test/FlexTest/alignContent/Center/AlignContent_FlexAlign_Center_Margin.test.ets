@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common'
 
@@ -58,7 +58,7 @@ export default function AlignContent_FlexAlign_Center_Margin() {
      *               the flex component to meet the size requirements of the subcomponent.
      */
 
-    it('testAlignContentCenterFlexMarginSatisfy', 0, async () => {
+    it('testAlignContentCenterFlexMarginSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentCenterFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexCenterMargin_flex');
 

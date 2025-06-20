@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -69,7 +69,7 @@ export default function List_Margin() {
      * @tc.name testListMargin
      * @tc.desc List parent component binding margin property
      */
-    it('testListMargin', 0, async (done: Function) => {
+    it('testListMargin',  Level.LEVEL0, async (done: Function) => {
       console.info('testListMargin START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('List_Margin_01');

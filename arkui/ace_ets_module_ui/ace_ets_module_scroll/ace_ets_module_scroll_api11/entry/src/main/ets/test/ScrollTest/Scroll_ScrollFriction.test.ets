@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../MainAbility/common/MessageManager1';
@@ -50,7 +50,7 @@ export default function scroll_ScrollFrictionTest() {
      * @tc.name testScrollFriction_0100
      * @tc.desc set friction to -1
      */
-    it('testScrollFriction_0100', 0, async (done: Function) => {
+    it('testScrollFriction_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[testScrollFriction_0100] START');
       globalThis.value.message.notify({
         name: 'friction', value: -1
@@ -71,7 +71,7 @@ export default function scroll_ScrollFrictionTest() {
      * @tc.name testScrollFriction_0200
      * @tc.desc set friction to 10
      */
-    it('testScrollFriction_0200', 0, async (done: Function) => {
+    it('testScrollFriction_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[testScrollFriction_0200] START');
       globalThis.value.message.notify({
         name: 'friction', value: 10

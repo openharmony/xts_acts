@@ -23,8 +23,9 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
   errorManageTest, dealHashMapTest, noUseConcurrentTest, sendDataTest, sendableClassTestFunc, Int8ArrayTestFunc,
   SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray,
-  sendableFuncTest, sendableClassTest, promiseTest, measureTest } from './testFunclist'
-import { A, B, StrCat, printArgs, printStrArgs, fun, cancelById } from './exportFunclist'
+  sendableFuncTest, sendableClassTest, promiseTest, measureTest, loop, returnError, longString, sendableClassArrFunc,
+  promiseNumber } from './testFunclist'
+import { A, B, StrCat, printArgs, printStrArgs, fun, cancelById, getLongString } from './exportFunclist'
 import { SendableClass, SimpleSendable, sendableFunc, SendableClassTest } from './sendable';
 import HashMap from '@ohos.util.HashMap';
 
@@ -2484,12 +2485,12 @@ export default function TaskPoolTest() {
       let isTerminate1: boolean = false;
       let task: taskpool.Task = new taskpool.Task(hashMapTest, 1);
       task.onExecutionFailed((e: Error)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
 
       taskpool.execute(task).then((res)=>{
       }).catch((e:BusinessError)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
       done();
     })
@@ -4055,7 +4056,7 @@ export default function TaskPoolTest() {
     it('TaskPoolTestClass176', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let task: taskpool.Task = new taskpool.Task(hashMapTest, 1);
       await taskpool.executeDelayed(500, task).catch((e: Error)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
 
       done();
@@ -4076,7 +4077,7 @@ export default function TaskPoolTest() {
       try {
         taskpool.executeDelayed(500, task)
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
+        expect((e as BusinessError).toString()).assertContain("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
       done();
     })
@@ -4111,7 +4112,7 @@ export default function TaskPoolTest() {
       try {
         taskpool.executeDelayed(500, task)
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
+        expect((e as BusinessError).toString()).assertContain("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
       }
       done();
     })
@@ -4129,7 +4130,7 @@ export default function TaskPoolTest() {
         let task = new taskpool.Task(printArgs, isConcurrentTest2);
         taskpool.executePeriodically(10, task, taskpool.Priority.HIGH)
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
+        expect((e as BusinessError).toString()).assertContain("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
       done();
     })
@@ -4146,7 +4147,7 @@ export default function TaskPoolTest() {
         let task: taskpool.Task = new taskpool.Task(isConcurrentTest2);
         taskpool.executePeriodically(10, task, taskpool.Priority.HIGH)
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
+        expect((e as BusinessError).toString()).assertContain("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
       }
 
       done();
@@ -4703,7 +4704,7 @@ export default function TaskPoolTest() {
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       let task1: taskpool.Task = new taskpool.Task(hashMapTest, 300); // 300: test number
       task1.onExecutionFailed((e:Error)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
       taskGroup.addTask(task1);
       taskpool.execute(taskGroup).then((res)=>{
@@ -4738,7 +4739,7 @@ export default function TaskPoolTest() {
         result += 300;
       })
       task3.onExecutionFailed((e:Error)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
       let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       runner.execute(task1);
@@ -5428,6 +5429,884 @@ export default function TaskPoolTest() {
       }
       expect(cancelNum).assertEqual(size);
       expect(asyncCatchNum).assertEqual(asyncSize);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0236
+     * @tc.name      : TaskPoolTestClass236
+     * @tc.desc      : Test waiting task cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass236', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      taskpool.executeDelayed(1000, task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 500);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(undefined);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0237
+     * @tc.name      : TaskPoolTestClass237
+     * @tc.desc      : Test running task cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass237', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 300);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0238
+     * @tc.name      : TaskPoolTestClass238
+     * @tc.desc      : Test running task cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass238', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("Error: this is loop error");
+      expect(result).assertEqual(undefined);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0239
+     * @tc.name      : TaskPoolTestClass239
+     * @tc.desc      : Test running task cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass239', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:string = "";
+      let task = new taskpool.Task(returnError, 1000);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = (e.data.result as object).toString();
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 500);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual("Error: this is return error");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0240
+     * @tc.name      : TaskPoolTestClass240
+     * @tc.desc      : Test running asyncTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass240', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let code:number = 0;
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      let runner = new taskpool.AsyncRunner(1,1);
+      runner.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        code = e.code;
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 300);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("The asyncRunner task has been canceled.");
+      expect(result).assertEqual(0);
+      expect(code).assertEqual(10200055);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0241
+     * @tc.name      : TaskPoolTestClass241
+     * @tc.desc      : Test running asyncTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass241', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let code:number = 0;
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      let runner = new taskpool.AsyncRunner(1,1);
+      runner.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        code = e.code;
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("Error: this is loop error");
+      expect(result).assertEqual(undefined);
+      expect(code).assertEqual(10200055);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0242
+     * @tc.name      : TaskPoolTestClass242
+     * @tc.desc      : Test waiting asyncTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass242', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let code:number = 0;
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      let task2 = new taskpool.Task(loop);
+      let runner = new taskpool.AsyncRunner(1,1);
+      runner.execute(task);
+      runner.execute(task2).catch((e:BusinessError<taskpool.TaskResult>) => {
+        code = e.code;
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task2.taskId);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("The asyncRunner task has been canceled.");
+      expect(result).assertEqual(undefined);
+      expect(code).assertEqual(10200055);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0243
+     * @tc.name      : TaskPoolTestClass243
+     * @tc.desc      : Test running asyncTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass243', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let code:number = 0;
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(delaySum, 10, 20, 500);
+      let runner = new taskpool.AsyncRunner(1,1);
+      runner.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        code = e.code;
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 300);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("The asyncRunner task has been canceled.");
+      expect(result).assertEqual(30);
+      expect(code).assertEqual(10200055);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0244
+     * @tc.name      : TaskPoolTestClass244
+     * @tc.desc      : Test running sequenceTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass244', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let code:number = 0;
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      let runner = new taskpool.SequenceRunner();
+      runner.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        code = e.code;
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 300);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(0);
+      expect(code).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0245
+     * @tc.name      : TaskPoolTestClass245
+     * @tc.desc      : Test running sequenceTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass245', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      let runner = new taskpool.SequenceRunner();
+      runner.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("Error: this is loop error");
+      expect(result).assertEqual(undefined);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0246
+     * @tc.name      : TaskPoolTestClass246
+     * @tc.desc      : Test running sequenceTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass246', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(delaySum, 10, 20, 1000);
+      let runner = new taskpool.SequenceRunner();
+      runner.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(30);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0247
+     * @tc.name      : TaskPoolTestClass247
+     * @tc.desc      : Test running delayTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass247', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let code:number = 0;
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      taskpool.executeDelayed(500, task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        code = e.code;
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(0);
+      expect(code).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0248
+     * @tc.name      : TaskPoolTestClass248
+     * @tc.desc      : Test running delayTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass248', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(loop);
+      taskpool.executeDelayed(500, task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 1300);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("Error: this is loop error");
+      expect(result).assertEqual(undefined);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0249
+     * @tc.name      : TaskPoolTestClass249
+     * @tc.desc      : Test running delayTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass249', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let code:number = 0;
+      let result:object | undefined = undefined;
+      let task = new taskpool.Task(longString, 500);
+      taskpool.executeDelayed(500, task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        code = e.code;
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(getLongString());
+      expect(code).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0250
+     * @tc.name      : TaskPoolTestClass250
+     * @tc.desc      : Test running groupTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task1 = new taskpool.Task(delaySum, 10, 10, 300);
+      let task2 = new taskpool.Task(delaySum, 20, 10, 800);
+      let group = new taskpool.TaskGroup();
+      group.addTask(task1);
+      group.addTask(task2);
+      taskpool.execute(group).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task1);
+      }, 200);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(20);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0251
+     * @tc.name      : TaskPoolTestClass251
+     * @tc.desc      : Test running groupTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass251', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task1 = new taskpool.Task(delaySum, 10, 10, 300);
+      let task2 = new taskpool.Task(delaySum, 20, 10, 800);
+      let group = new taskpool.TaskGroup();
+      group.addTask(task1);
+      group.addTask(task2);
+      taskpool.execute(group).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(group);
+      }, 200);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(20);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0252
+     * @tc.name      : TaskPoolTestClass252
+     * @tc.desc      : Test running groupTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass252', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task1 = new taskpool.Task(loop);
+      let task2 = new taskpool.Task(loop);
+      let group = new taskpool.TaskGroup();
+      group.addTask(task1);
+      group.addTask(task2);
+      taskpool.execute(group).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task1);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("Error: this is loop error");
+      expect(result).assertEqual(undefined);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0253
+     * @tc.name      : TaskPoolTestClass253
+     * @tc.desc      : Test running groupTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass253', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task1 = new taskpool.Task(longString, 1000);
+      let task2 = new taskpool.Task(longString, 2000);
+      let group = new taskpool.TaskGroup();
+      group.addTask(task1);
+      group.addTask(task2);
+      taskpool.execute(group).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task1.taskId);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(getLongString());
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0254
+     * @tc.name      : TaskPoolTestClass254
+     * @tc.desc      : Test running longTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass254', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.LongTask(delaySum, 10, 10, 1000);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+          taskpool.terminateTask(task);
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 500);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(20);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0255
+     * @tc.name      : TaskPoolTestClass255
+     * @tc.desc      : Test running longTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass255', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.LongTask(loop);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+          taskpool.terminateTask(task);
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 300);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0256
+     * @tc.name      : TaskPoolTestClass256
+     * @tc.desc      : Test running longTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass256', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:object | undefined = undefined;
+      let task = new taskpool.LongTask(loop);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as object;
+          }
+          taskpool.terminateTask(task);
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("Error: this is loop error");
+      expect(result).assertEqual(undefined);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0257
+     * @tc.name      : TaskPoolTestClass257
+     * @tc.desc      : Test running task cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass257', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:number = -1;
+      let size = 1024;
+      let arr = new collections.Array<SendableClass>()
+      for (let i = 0; i < size; i++) {
+        arr.push(new SendableClass(i));
+      }
+      let task: taskpool.Task = new taskpool.Task(sendableClassArrFunc, arr);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            let res = e.data.result as collections.Array<SendableClass>;
+            result = res.length;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 400);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(size);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0258
+     * @tc.name      : TaskPoolTestClass258
+     * @tc.desc      : Test running task cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass258', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:number = -1;
+      let size = 1024;
+      let arr = new collections.Array<SendableClass>()
+      for (let i = 0; i < size; i++) {
+        arr.push(new SendableClass(i));
+      }
+      let task: taskpool.Task = new taskpool.Task(sendableClassArrFunc, arr);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            let res = e.data.result as collections.Array<SendableClass>;
+            result = res.length;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0259
+     * @tc.name      : TaskPoolTestClass259
+     * @tc.desc      : Test running task cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass259', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let terminate = false;
+      let error:string = "";
+      let result:number = -1;
+      let value: number = 500;
+      let task: taskpool.Task = new taskpool.Task(promiseNumber, value);
+      taskpool.execute(task).catch((e:BusinessError<taskpool.TaskResult>) => {
+        if (e.data !== undefined) {
+          error = (e.data.error as Error).toString();
+          if (e.data.result!== undefined) {
+            result = e.data.result as number;
+          }
+        }
+        terminate = true;
+      })
+      setTimeout(() => {
+        taskpool.cancel(task);
+      }, 800);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(error).assertEqual("taskpool:: task has been canceled");
+      expect(result).assertEqual(value);
       done();
     })
   })

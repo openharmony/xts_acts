@@ -36,3 +36,6 @@ export const oHPixelmapNativeAccessPixels001: () => number;
 export const oHPixelmapNativeUnaccessPixels001: () => number;
 export const oHPixelmapInitializationOptionsEditable001: () => Array<number>;
 export const oHPixelmapNativeDestroy001: () => Array<number>;
+export const oHPixelmapImageInfoGetAlphaMode001: () => number;
+export const oHPixelmapNativeCreatePixelmapUsingAllocator001: () => number;
+export const oHPixelmapNativeCreateEmptyPixelmapUsingAllocator001: () => number;

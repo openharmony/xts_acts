@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import CommonFunc from '../../MainAbility/utils/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function ObserverPageId() {
      * @tc.desc      Test Observer RouterPageInfo pageId
      * @tc.level:    Level 2
      */
-    it('ObserverPageId_0100', 0, async (done: Function) => {
+    it('ObserverPageId_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[ObserverPageId_0100] START');
       await CommonFunc.sleep(1000);
 

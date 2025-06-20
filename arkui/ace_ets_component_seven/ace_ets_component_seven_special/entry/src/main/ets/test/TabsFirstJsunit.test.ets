@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router'
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import Utils from './Utils';
 export default function tabsFirstJsunit() {
   describe('tabsFirstTest', () => {
@@ -48,7 +48,7 @@ export default function tabsFirstJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_Divider_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Divider_0300', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0300 start");
       let strJson = getInspectorByKey('tabsTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -69,7 +69,7 @@ export default function tabsFirstJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_FadingEdge_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_FadingEdge_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0100 start");      
       let strJson = getInspectorByKey('tabsTest2');
       let obj: ESObject = JSON.parse(strJson);

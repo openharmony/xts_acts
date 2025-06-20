@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -51,7 +51,7 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_0100', 0, async (done: Function) => {
+    it('menuItemDivider_0100', Level.LEVEL2, async (done: Function) => {
       console.info('[menuItemDivider_0100] START');
 
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_0200', 0, async (done: Function) => {
+    it('menuItemDivider_0200', Level.LEVEL2, async (done: Function) => {
       console.info('[menuItemDivider_0200] START');
 
       await CommonFunc.sleep(1000);
@@ -98,7 +98,7 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_0300', 0, async (done: Function) => {
+    it('menuItemDivider_0300', Level.LEVEL2, async (done: Function) => {
       console.info('[menuItemDivider_0300] START');
 
       await CommonFunc.sleep(1000);
@@ -121,7 +121,7 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_0400', 0, async (done: Function) => {
+    it('menuItemDivider_0400', Level.LEVEL2, async (done: Function) => {
       console.info('[menuItemDivider_0400] START');
 
       await CommonFunc.sleep(1000);

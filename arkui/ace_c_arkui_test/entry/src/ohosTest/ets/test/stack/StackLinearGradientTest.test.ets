@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient001', 0, async (done: Function) => {
+    it('testStackLinearGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient002', 0, async (done: Function) => {
+    it('testStackLinearGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient003', 0, async (done: Function) => {
+    it('testStackLinearGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient004', 0, async (done: Function) => {
+    it('testStackLinearGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient005', 0, async (done: Function) => {
+    it('testStackLinearGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient006', 0, async (done: Function) => {
+    it('testStackLinearGradient006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient007', 0, async (done: Function) => {
+    it('testStackLinearGradient007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient008', 0, async (done: Function) => {
+    it('testStackLinearGradient008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient009', 0, async (done: Function) => {
+    it('testStackLinearGradient009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function stackLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLinearGradient010', 0, async (done: Function) => {
+    it('testStackLinearGradient010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackLinearGradient010()).assertEqual(0)
       done()
     })

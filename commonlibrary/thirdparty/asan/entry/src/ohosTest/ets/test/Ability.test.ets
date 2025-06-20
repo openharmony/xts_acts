@@ -14,11 +14,24 @@
  */
 
 import asan from 'libentry.so'
-import { describe, it, expect , TestType, Size, Level } from "@ohos/hypium";
+import Utils from './Utils'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from "@ohos/hypium";
 
 export default function abilityTest() {
 
   describe('ActsThirdPartyAsanTest', () => {
+    beforeAll(async () => {
+      // Presets an action, which is performed only once before all test cases of the test suite start.
+      // This API supports only one parameter: preset action function.
+      await Utils.sleep(100)
+    })
+    beforeEach(async () => {
+      // Presets an action, which is performed before each unit test case starts.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: preset action function.
+      await Utils.sleep(100)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_ASAN_STACKBUFFEROVERFLOW_0100
      * @tc.name       : testStackBufferOverflow001

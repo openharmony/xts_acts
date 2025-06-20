@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -45,7 +45,7 @@ export default function gridSettingsJsunit() {
       console.info("gridSettings after each called");
     });
 
-    it('testGridSettings000', 0, async (done:Function) => {
+    it('testGridSettings000', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings000] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('gridContainer');
@@ -54,7 +54,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings001', 0, async (done:Function) => {
+    it('testGridSettings001', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings001] START');
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('gridRow');
@@ -66,7 +66,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings002', 0, async (done:Function) => {
+    it('testGridSettings002', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings002] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -104,7 +104,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings003', 0, async (done:Function) => {
+    it('testGridSettings003', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings003] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -132,7 +132,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings004', 0, async (done:Function) => {
+    it('testGridSettings004', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings004] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -160,7 +160,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings005', 0, async (done:Function) => {
+    it('testGridSettings005', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings005] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -188,7 +188,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings006', 0, async (done:Function) => {
+    it('testGridSettings006', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings006] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('gridOffset');
@@ -199,7 +199,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings007', 0, async (done:Function) => {
+    it('testGridSettings007', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings007] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -225,7 +225,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings008', 0, async (done:Function) => {
+    it('testGridSettings008', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings008] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -251,7 +251,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings009', 0, async (done:Function) => {
+    it('testGridSettings009', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings009] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -277,7 +277,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings010', 0, async (done:Function) => {
+    it('testGridSettings010', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings010] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -302,7 +302,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings011', 0, async (done:Function) => {
+    it('testGridSettings011', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings011] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('gridSpan');
@@ -312,7 +312,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings012', 0, async (done:Function) => {
+    it('testGridSettings012', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings012] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -337,7 +337,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings013', 0, async (done:Function) => {
+    it('testGridSettings013', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings013] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -362,7 +362,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings014', 0, async (done:Function) => {
+    it('testGridSettings014', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings014] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -387,7 +387,7 @@ export default function gridSettingsJsunit() {
       done()
     });
 
-    it('testGridSettings015', 0, async (done:Function) => {
+    it('testGridSettings015', Level.LEVEL0, async (done:Function) => {
       console.info('[testGridSettings015] START');
       try {
         let eventData: events_emitter.EventData = {

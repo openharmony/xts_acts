@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -49,7 +49,7 @@ export default function ListLanes04() {
       * @tc.desc  : set gutter to 0 and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes04_001', 0, async (done: Function) => {
+    it('ListLanes04_001',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[ListLanes04_001] START');
       await CommonFunc.sleep(1000);
@@ -69,7 +69,7 @@ export default function ListLanes04() {
       * @tc.desc  : set gutter to -1 and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes04_002', 0, async (done: Function) => {
+    it('ListLanes04_002',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[ListLanes04_002] START');
       await CommonFunc.sleep(1000);
@@ -89,7 +89,7 @@ export default function ListLanes04() {
       * @tc.desc  : set gutter to 10% and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes04_003', 0, async (done: Function) => {
+    it('ListLanes04_003',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[ListLanes04_003] START');
       await CommonFunc.sleep(1000);

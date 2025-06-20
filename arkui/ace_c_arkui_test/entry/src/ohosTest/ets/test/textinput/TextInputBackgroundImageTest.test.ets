@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputBackgroundImage001', 0, async (done: Function) => {
+    it('testTextInputBackgroundImage001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputBackgroundImage001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputBackgroundImage002', 0, async (done: Function) => {
+    it('testTextInputBackgroundImage002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputBackgroundImage002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputBackgroundImage003', 0, async (done: Function) => {
+    it('testTextInputBackgroundImage003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputBackgroundImage003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputBackgroundImage004', 0, async (done: Function) => {
+    it('testTextInputBackgroundImage004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputBackgroundImage004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputBackgroundImage005', 0, async (done: Function) => {
+    it('testTextInputBackgroundImage005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputBackgroundImage005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextInputBackgroundImage006', 0, async (done: Function) => {
+    it('testTextInputBackgroundImage006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputBackgroundImage006()).assertEqual(0)
       done()
     })

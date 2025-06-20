@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape001', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape002', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape003', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape004', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape005', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape006', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape007', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape008', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape009', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape010', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape011', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape012', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape013', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape014', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape015', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape016', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape017', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape018', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape019', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape019()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape020', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape020()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function commonAttrsClipShapeTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsClipShape021', 0, async (done: Function) => {
+    it('testCommonAttrsClipShape021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClipShape021()).assertEqual(0)
       done()
     })

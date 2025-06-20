@@ -980,7 +980,7 @@ export default function sequenceRunnerAbilityTest_2() {
             ir = '';
           }).catch((error: BusinessError) => {
 
-            expect(error.message).assertContain('TypeError: is not callable')
+            expect(error.message).assertContain('TypeError: undefined is not callable')
             task4Count++;
             console.error(`error message error2: ${JSON.stringify(error.message)}`)
           })

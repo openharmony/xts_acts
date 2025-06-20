@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -65,7 +65,7 @@ export default function list_SpaceChangeTest() {
      * @tc.name testListSpaceChangeUnfill
      * @tc.desc set the space of list to 20
      */
-    it('testListSpaceChangeUnfill', 0, async (done: Function) => {
+    it('testListSpaceChangeUnfill',  Level.LEVEL0, async (done: Function) => {
       console.info('[testListSpaceChangeUnfill] START');
       globalThis.value.message.notify({
         name: 'Space', value: 20
@@ -108,7 +108,7 @@ export default function list_SpaceChangeTest() {
         ${(listContainer.bottom - fourthListItem.bottom)}`);
       console.info(`[testListSpaceChangeUnfill](listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60))=
         ${(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60))}`);
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60)))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -120,7 +120,7 @@ export default function list_SpaceChangeTest() {
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60)))) <= 1).assertTrue();
 
       console.info('[testListSpaceChangeUnfill] END');
 
@@ -136,7 +136,7 @@ export default function list_SpaceChangeTest() {
      * @tc.name testListSpaceChangeFill
      * @tc.desc set the space of list to 40
      */
-    it('testListSpaceChangeFill', 0, async (done: Function) => {
+    it('testListSpaceChangeFill',  Level.LEVEL0, async (done: Function) => {
       console.info('[testListSpaceChangeFill] START');
       globalThis.value.message.notify({
         name: 'Space', value: 40
@@ -179,7 +179,7 @@ export default function list_SpaceChangeTest() {
         ${(listContainer.bottom - fourthListItem.bottom)}`);
       console.info(`[testListSpaceChangeFill](listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120))=
         ${(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120))}`);
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120)))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -192,7 +192,7 @@ export default function list_SpaceChangeTest() {
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
       if (fourthListItem.bottom < listContainer.bottom ){
-       expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120)))) <= 1).assertTrue();
+       expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120)))) <= 1).assertTrue();
       } else {
        expect(listContainer.bottom <= fourthListItem.bottom).assertTrue();
       }
@@ -211,7 +211,7 @@ export default function list_SpaceChangeTest() {
      * @tc.name testListSpaceChangeOverflow
      * @tc.desc set the space of list to 60
      */
-    it('testListSpaceChangeOverflow', 0, async (done: Function) => {
+    it('testListSpaceChangeOverflow',  Level.LEVEL0, async (done: Function) => {
       console.info('[testListSpaceChangeOverflow] START');
       globalThis.value.message.notify({
         name: 'Space', value: 60
@@ -254,7 +254,7 @@ export default function list_SpaceChangeTest() {
         ${(listContainer.bottom - fourthListItem.bottom)}`);
       console.info(`[testListSpaceChangeOverflow](listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180))=
         ${(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180))}`);
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180)))) <= 1).assertTrue();
       let driver = Driver.create();
       await driver.swipe(
         Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
@@ -265,7 +265,7 @@ export default function list_SpaceChangeTest() {
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
       if (fourthListItem.bottom < listContainer.bottom ){
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180)))) <= 1).assertTrue();
       } else {
        expect(listContainer.bottom <= fourthListItem.bottom).assertTrue();
       }

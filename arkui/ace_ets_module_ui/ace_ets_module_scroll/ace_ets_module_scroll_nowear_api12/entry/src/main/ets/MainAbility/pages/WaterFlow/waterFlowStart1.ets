@@ -54,15 +54,16 @@ struct WaterFlowStart1 {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text('N' + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12)
+              .height('100%')
             }
           }
           .width('100%')
-          .height(this.itemHeightArray[item % 100])
+          .height('10%')
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
-      .columnsTemplate('repeat(auto-fill,80)')
+      .columnsTemplate('1fr 1fr 1fr 1fr')
       .columnsGap(10)
       .rowsGap(5)
       .height('60%')

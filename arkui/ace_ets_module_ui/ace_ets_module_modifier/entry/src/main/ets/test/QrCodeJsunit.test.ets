@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -48,7 +48,7 @@ export default function qrCodeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_qrCode_001', 0, async (done: Function) => {
+    it('test_qrCode_001', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_001] START');
       let strJson = getInspectorByKey('QrCodeColorKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -66,7 +66,7 @@ export default function qrCodeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_qrCode_002', 0, async (done: Function) => {
+    it('test_qrCode_002', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_002] START');
       let strJson = getInspectorByKey('QrCodeColorKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -86,7 +86,7 @@ export default function qrCodeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_qrCode_003', 0, async (done: Function) => {
+    it('test_qrCode_003', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_003] START');
       let strJson = getInspectorByKey('QrCodeColorKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -104,7 +104,7 @@ export default function qrCodeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_qrCode_004', 0, async (done: Function) => {
+    it('test_qrCode_004', Level.LEVEL0, async (done: Function) => {
       console.info('test_qrCode_004 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

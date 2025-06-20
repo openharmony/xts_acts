@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function AlignSpaceEvenly_AddOffset() {
      * @tc.name testFlexAlignSpaceEvenlyTextOffset
      * @tc.desc The interface display of the component that sets the offset position when drawing
      */
-    it('testFlexAlignSpaceEvenlyTextOffset', 0, async () => {
+    it('testFlexAlignSpaceEvenlyTextOffset',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignSpaceEvenlyTextOffset] START');
       GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'OneOffset', value: {
@@ -68,19 +68,19 @@ export default function AlignSpaceEvenly_AddOffset() {
       let SpaceEvenly_AddOffset_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_012');
       let SpaceEvenly_AddOffset_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_013');
       let SpaceEvenly_AddOffset_01: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_01');
-      expect(Math.abs(SpaceEvenly_AddOffset_011.top - SpaceEvenly_AddOffset_01.top - vp2px(15)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_011.left - SpaceEvenly_AddOffset_01.left - vp2px(22.5)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_012.top - SpaceEvenly_AddOffset_013.top) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_012.top - SpaceEvenly_AddOffset_01.top) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_01.right - SpaceEvenly_AddOffset_013.right - vp2px(12.5)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_012.left - SpaceEvenly_AddOffset_011.right - vp2px(2.5)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_013.left - SpaceEvenly_AddOffset_012.right - vp2px(12.5)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_011.right - SpaceEvenly_AddOffset_011.left - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_012.right - SpaceEvenly_AddOffset_012.left - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_013.right - SpaceEvenly_AddOffset_013.left - vp2px(150)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_011.bottom - SpaceEvenly_AddOffset_011.top - vp2px(50)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_012.bottom - SpaceEvenly_AddOffset_012.top - vp2px(100)) <= 1).assertTrue()
-      expect(Math.abs(SpaceEvenly_AddOffset_013.bottom - SpaceEvenly_AddOffset_013.top - vp2px(150)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_011.top - SpaceEvenly_AddOffset_01.top - vp2px(15))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_011.left - SpaceEvenly_AddOffset_01.left - vp2px(22.5))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_012.top - SpaceEvenly_AddOffset_013.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_012.top - SpaceEvenly_AddOffset_01.top)) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_01.right - SpaceEvenly_AddOffset_013.right - vp2px(12.5))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_012.left - SpaceEvenly_AddOffset_011.right - vp2px(2.5))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_013.left - SpaceEvenly_AddOffset_012.right - vp2px(12.5))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_011.right - SpaceEvenly_AddOffset_011.left - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_012.right - SpaceEvenly_AddOffset_012.left - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_013.right - SpaceEvenly_AddOffset_013.left - vp2px(150))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_011.bottom - SpaceEvenly_AddOffset_011.top - vp2px(50))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_012.bottom - SpaceEvenly_AddOffset_012.top - vp2px(100))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs(SpaceEvenly_AddOffset_013.bottom - SpaceEvenly_AddOffset_013.top - vp2px(150))) <= 1).assertTrue()
       console.info('[testFlexAlignSpaceEvenlyTextOffset] END');
 
     });

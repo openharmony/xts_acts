@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function flexPadding_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineParentSetPadding
      * @tc.desc Parent component set paddding,subcomponent does not exceed the parent component.
      */
-    it('testFlexItemAlignBaselineParentSetPadding', 0, async () => {
+    it('testFlexItemAlignBaselineParentSetPadding',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineParentSetPadding START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
@@ -92,7 +92,7 @@ export default function flexPadding_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineParentSetPaddingExceed
      * @tc.desc Parent component set paddding,subcomponent exceedS the parent component.
      */
-    it('testFlexItemAlignBaselineParentSetPaddingExceed', 0, async () => {
+    it('testFlexItemAlignBaselineParentSetPaddingExceed',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineParentSetPaddingExceed START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30

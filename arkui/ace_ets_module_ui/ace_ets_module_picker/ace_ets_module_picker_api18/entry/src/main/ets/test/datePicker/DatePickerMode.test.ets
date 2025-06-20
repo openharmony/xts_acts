@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 
@@ -47,7 +47,7 @@ export default function datePickerMode() {
     * @tc.type :
     * @tc.size :
     */
-    it('DatePicker0100', 0, async (done: Function) => {
+    it('DatePicker0100', Level.LEVEL1, async (done: Function) => {
       await Utils.sleep(2000);
       let tagName = 'DatePicker0100';
       console.info('[' + tagName + '] START============================');
@@ -68,7 +68,7 @@ export default function datePickerMode() {
     * @tc.type :
     * @tc.size :
     */
-    it('DatePicker0200', 0, async (done: Function) => {
+    it('DatePicker0200', Level.LEVEL1, async (done: Function) => {
       await Utils.sleep(2000);
       let tagName = 'DatePicker0200';
       console.info('[' + tagName + '] START============================');
@@ -89,7 +89,7 @@ export default function datePickerMode() {
     * @tc.type :
     * @tc.size :
     */
-    it('DatePicker0300', 0, async (done: Function) => {
+    it('DatePicker0300', Level.LEVEL1, async (done: Function) => {
       await Utils.sleep(2000);
       let tagName = 'DatePicker0300';
       console.info('[' + tagName + '] START============================');
@@ -110,7 +110,7 @@ export default function datePickerMode() {
     * @tc.type :
     * @tc.size :
     */
-    it('DatePicker0400', 0, async (done: Function) => {
+    it('DatePicker0400', Level.LEVEL1, async (done: Function) => {
       await Utils.sleep(2000);
       let tagName = 'DatePicker0400';
       console.info('[' + tagName + '] START============================');
@@ -131,7 +131,7 @@ export default function datePickerMode() {
     * @tc.type :
     * @tc.size :
     */
-    it('DatePicker0500', 0, async (done: Function) => {
+    it('DatePicker0500', Level.LEVEL1, async (done: Function) => {
       await Utils.sleep(2000);
       let tagName = 'DatePicker0500';
       console.info('[' + tagName + '] START============================');
@@ -152,7 +152,7 @@ export default function datePickerMode() {
    * @tc.type :
    * @tc.size :
    */
-    it('DatePicker0600', 0, async (done: Function) => {
+    it('DatePicker0600', Level.LEVEL1, async (done: Function) => {
       await Utils.sleep(2000);
       let tagName = 'DatePicker0600';
       console.info('[' + tagName + '] START============================');
@@ -173,7 +173,7 @@ export default function datePickerMode() {
     * @tc.type :
     * @tc.size :
     */
-    it('DatePicker0700', 0, async (done: Function) => {
+    it('DatePicker0700', Level.LEVEL1, async (done: Function) => {
       await Utils.sleep(2000);
       let tagName = 'DatePicker0700';
       console.info('[' + tagName + '] START============================');

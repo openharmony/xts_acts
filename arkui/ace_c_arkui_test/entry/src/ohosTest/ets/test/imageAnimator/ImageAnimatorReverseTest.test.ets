@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageAnimatorReverseTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorReverse001', 0, async (done: Function) => {
+    it('testImageAnimatorReverse001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorReverse001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageAnimatorReverseTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorReverse002', 0, async (done: Function) => {
+    it('testImageAnimatorReverse002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorReverse002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageAnimatorReverseTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorReverse003', 0, async (done: Function) => {
+    it('testImageAnimatorReverse003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorReverse003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageAnimatorReverseTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorReverse004', 0, async (done: Function) => {
+    it('testImageAnimatorReverse004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorReverse004()).assertEqual(0)
       done()
     })

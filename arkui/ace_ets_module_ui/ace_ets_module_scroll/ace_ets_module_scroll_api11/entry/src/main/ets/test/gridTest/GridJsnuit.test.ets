@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -59,7 +59,7 @@ export default function gridJsunit1() {
      * @tc.name gridItemTest001
      * @tc.desc aceEtsTest
      */
-    it('gridTest001', 0, async () => {
+    it('gridTest001', Level.LEVEL1, async () => {
       console.info('gridTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('Grid');

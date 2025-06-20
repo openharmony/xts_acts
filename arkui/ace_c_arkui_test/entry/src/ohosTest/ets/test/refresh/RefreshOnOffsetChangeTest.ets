@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver } from '@ohos.UiTest';
 
@@ -29,7 +29,7 @@ export default function refreshOnOffsetChangeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRefreshOnOffsetChange001', 0, async (done: Function) => {
+    it('testRefreshOnOffsetChange001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'RefreshOnOffsetChangeTest';
       await Utils.pushPage(`refresh/${PAGE_TAG}`);
       await Utils.sleep(1000)

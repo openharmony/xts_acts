@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function DragInteractionOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('DragInteractionOptions_0010', 0, async (done: Function) => {
+    it('DragInteractionOptions_0010', Level.LEVEL0, async (done: Function) => {
       console.info('DragInteractionOptions_0010 START');
       let driver = await Driver.create()
       let grid = await driver.findComponent(ON.id('DragInteractionOptionsGridItem1'));
@@ -82,7 +82,7 @@ export default function DragInteractionOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('DragInteractionOptions_0020', 0, async (done: Function) => {
+    it('DragInteractionOptions_0020', Level.LEVEL0, async (done: Function) => {
       console.info('DragInteractionOptions_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

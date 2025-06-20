@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -49,7 +49,7 @@ export default function ShortcutKeyTABTest() {
      *tc.name   ShortcutKeyTABTest_0100
      *tc.desc   Custom keyboard shortcuts TAB
     */
-    it('ShortcutKeyTABTest_0100', 0, async () => {
+    it('ShortcutKeyTABTest_0100', Level.LEVEL0, async () => {
       let CASE = 'ShortcutKeyTABTest_0100'
       console.info(`ShortcutKeyTABTest_0100 START`);
       let callback = (event: events_emitter.EventData) => {

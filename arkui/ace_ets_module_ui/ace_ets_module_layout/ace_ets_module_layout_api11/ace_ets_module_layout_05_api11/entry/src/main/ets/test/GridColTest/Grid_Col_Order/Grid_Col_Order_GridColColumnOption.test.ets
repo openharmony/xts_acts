@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import GlobalContext from '../../../MainAbility/common/GlobalContext'
@@ -51,7 +51,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      * @tc.name testGridColOrder
      * @tc.desc Set the width of Column to 40vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addOrder', value: "40vp"
@@ -83,7 +83,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      * @tc.name testGridColOrder
      * @tc.desc Set the width of Column to 80vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '80vp'
@@ -115,7 +115,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      * @tc.name testGridColOrder
      * @tc.desc Set the width of Column to 120vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '130vp'
@@ -146,7 +146,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      * @tc.name testGridColOrder
      * @tc.desc Set the width of Column to 180vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '180vp'
@@ -177,7 +177,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      * @tc.name testGridColOrder
      * @tc.desc Set the width of Column to 220vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '230vp'
@@ -208,7 +208,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
      * @tc.name testGridColOrder
      * @tc.desc Set the width of Column to 320vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addWidth', value: '330vp'

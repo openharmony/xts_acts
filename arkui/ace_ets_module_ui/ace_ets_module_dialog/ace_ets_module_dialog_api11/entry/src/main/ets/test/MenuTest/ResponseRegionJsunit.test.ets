@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -48,7 +48,7 @@ export default function ResponseRegionJsunit() {
       console.info("ResponseRegion after each called");
     });
 
-    it('testResponseRegion01', 0, async (done: Function) => {
+    it('testResponseRegion01', Level.LEVEL2, async (done: Function) => {
       console.info('[testResponseRegion01] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -70,7 +70,7 @@ export default function ResponseRegionJsunit() {
       done();
     });
 
-    it('testResponseRegion02', 0, async (done: Function) => {
+    it('testResponseRegion02', Level.LEVEL2, async (done: Function) => {
       let rect = Utils.getComponentRect('region')
       console.info("[testResponseRegion02] rectInfo is " + JSON.stringify(rect));
       x_value = rect.left + (rect.right - rect.left) / 10

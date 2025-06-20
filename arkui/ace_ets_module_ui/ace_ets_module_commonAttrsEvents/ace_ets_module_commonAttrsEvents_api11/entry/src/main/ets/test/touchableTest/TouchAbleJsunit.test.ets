@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -46,14 +46,14 @@ export default function touchAbleJsunit() {
       console.info("touchAble after each called");
     });
 
-    it('testTouchAble001', 0, async () => {
+    it('testTouchAble001', Level.LEVEL0, async () => {
       await Utils.sleep(1000)
       let strJson: string = getInspectorByKey('ellipse');
       console.info("[testTouchAble001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.focusable).assertEqual(false);
     });
 
-    it('testTouchAble002', 0, async (done:Function) => {
+    it('testTouchAble002', Level.LEVEL0, async (done:Function) => {
       await Utils.sleep(1000);
       let callbackTwo = (eventData: events_emitter.EventData) => {
         console.info("[testTouchAble002] get event state result is: " + JSON.stringify(eventData));

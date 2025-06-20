@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
@@ -51,7 +51,7 @@ export default function refreshDragJsunit() {
      * @tc.name         testrefreshDrag0011
      * @tc.desic         acerefreshDragEtsTest0011
      */
-    it('testrefreshDrag0011', 0, async (done: Function) => {
+    it('testrefreshDrag0011', Level.LEVEL1, async (done: Function) => {
       console.info('refreshDrag testrefreshDrag0011 START');
       await Utils.sleep(2000);
       try {
@@ -77,7 +77,7 @@ export default function refreshDragJsunit() {
      * @tc.name         testrefreshRefresh0001
      * @tc.desic         acerefreshRefreshEtsTest0001
      */
-    it('testrefreshRefresh0001', 0, async (done: Function) => {
+    it('testrefreshRefresh0001', Level.LEVEL1, async (done: Function) => {
       console.info('refreshDrag testrefreshRefresh0001 START');
       await Utils.sleep(2000);
       try {

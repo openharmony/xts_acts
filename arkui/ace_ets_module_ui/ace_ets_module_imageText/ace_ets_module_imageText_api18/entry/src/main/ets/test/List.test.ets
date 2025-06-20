@@ -45,5 +45,4 @@ export default function testsuite() {
   WordBreakTest();
   ImageContentEmpty();
   ImageOnError();
-
 }

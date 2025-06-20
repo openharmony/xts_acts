@@ -625,21 +625,22 @@ export default function audioManagerTest() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200
-     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200
      * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((data) => {
+        let para:ESObject = -100
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, para).then((data) => {
           console.info(`getSystemVolumeInDb :SUCCESS ${data}, test fail!`);
           expect(false).assertTrue();
           done();
         }).catch((error: BusinessError) => {
           console.log(`getSystemVolumeInDb : error ${error.code}, check the error code`);
-          expect(Number(error.code) == 401).assertTrue();
+          expect(Number(error.code) == 6800101).assertTrue();
           done();
         });
       } catch (error) {

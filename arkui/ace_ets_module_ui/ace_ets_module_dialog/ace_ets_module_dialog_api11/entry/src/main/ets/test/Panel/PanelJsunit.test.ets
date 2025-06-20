@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -59,7 +59,7 @@ export default function panelJsunit() {
      * @tc.name panelTest001
      * @tc.desc aceEtsTest
      */
-    it('panelTest001', 0, async () => {
+    it('panelTest001', Level.LEVEL2, async () => {
       console.info('++++++++++++++++ Panel TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('panel');
@@ -87,7 +87,7 @@ export default function panelJsunit() {
      * @tc.name panelTest002
      * @tc.desc aceEtsTest
      */
-    it('panelTest002', 0, async () => {
+    it('panelTest002', Level.LEVEL2, async () => {
       console.info('++++++++++++++++ Panel TestCase 2 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('panel2');
@@ -109,7 +109,7 @@ export default function panelJsunit() {
      * @tc.name panelTest003
      * @tc.desc aceEtsTest
      */
-    it('panelTest003', 0, async () => {
+    it('panelTest003', Level.LEVEL2, async () => {
       console.info('++++++++++++++++ Panel TestCase 3 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('panel3');

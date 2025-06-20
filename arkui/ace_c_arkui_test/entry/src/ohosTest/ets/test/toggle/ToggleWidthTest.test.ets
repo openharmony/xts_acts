@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function toggleWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleWidth001', 0, async (done: Function) => {
+    it('testToggleWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleWidth001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function toggleWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleWidth002', 0, async (done: Function) => {
+    it('testToggleWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleWidth002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function toggleWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testToggleWidth003', 0, async (done: Function) => {
+    it('testToggleWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleWidth003()).assertEqual(0)
       done()
     })

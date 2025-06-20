@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
@@ -50,7 +50,7 @@ export default function dividerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_TextPicker_DividerJsunit_1000', 0, async (done: Function) => {
+    it('ArkUI_TextPicker_DividerJsunit_1000', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_TextPicker_DividerJsunit_1000] START');
       let strJson = getInspectorByKey('dividerKey0');
       let obj: ESObject = JSON.parse(strJson);

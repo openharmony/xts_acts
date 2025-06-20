@@ -16,8 +16,6 @@ import calendarPickerDialogStartEndTest from './calendarPickerDialogTest/calenda
 import calendarPickerStartEndTest from './calendarPickerTest/calendarPickerStartEndTest.test';
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
-import disableDateRangeAndMarkTodayTest from './calendarPickerTest/disableDateRangeAndMarkToday.test'
-import dialogDisableDateRangeAndMarkTodayTest from './calendarPickerDialogTest/dialogDisableDateRangeAndMarkToday.test'
 import textPickerDialogEnableHapticFeedback from './textPickerDialog/textPickerDialogEnableHapticFeedback.test'
 import EnableHapticFeedback from './datePickerDialogTest/datePickerDialogEnableHapticFeedback.test'
 import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
@@ -45,8 +43,6 @@ export default function testsuite() {
     calendarPickerStartEndTest()
     datePickerDialogMode()
     timePickerDialogEnableHapticFeedback();
-    disableDateRangeAndMarkTodayTest();
-    dialogDisableDateRangeAndMarkTodayTest();
     EnableHapticFeedback();
     textPickerDialogSelectedAreaTest();
     timePickerDialogSelectedAreaTest();

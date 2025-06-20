@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -43,7 +43,7 @@ export default function systempromptJsunit() {
       await Utils.sleep(1000);
       console.info("prompt each called");
     });
-    it('promptTest_0100', 0, async (done: Function) => {
+    it('promptTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('promptTest_0100 is start');
       await Utils.sleep(1500);
       console.info("promptTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
@@ -51,7 +51,7 @@ export default function systempromptJsunit() {
       console.info('promptTest_0100 END');
       done();
     });
-    it('promptTest_0200', 0, async (done: Function) => {
+    it('promptTest_0200', Level.LEVEL1, async (done: Function) => {
       console.info('promptTest_0200 is start');
       await Utils.sleep(1500);
       console.info("promptTest_0200 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));

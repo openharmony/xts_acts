@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from "../../MainAbility/common/Common";
 
@@ -46,7 +46,7 @@ export default function RefreshTest() {
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
       */
-    it('ArkUX_Refresh_Visual_0010', 0, async (done: Function) => {
+    it('ArkUX_Refresh_Visual_0010', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0010 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0010');
@@ -68,7 +68,7 @@ export default function RefreshTest() {
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
       */
-    it('ArkUX_Refresh_Visual_0020', 0, async (done: Function) => {
+    it('ArkUX_Refresh_Visual_0020', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0020 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0020');
@@ -90,7 +90,7 @@ export default function RefreshTest() {
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
       */
-    it('ArkUX_Refresh_Visual_0030', 0, async (done: Function) => {
+    it('ArkUX_Refresh_Visual_0030', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0030 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0030');
@@ -112,7 +112,7 @@ export default function RefreshTest() {
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
       */
-    it('ArkUX_Refresh_Visual_0040', 0, async (done: Function) => {
+    it('ArkUX_Refresh_Visual_0040', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0040 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0040');
@@ -134,7 +134,7 @@ export default function RefreshTest() {
      *@tc.name   Support modifying the refresh promptText change of refresh component
      *@tc.desc   Sets the promptText property parameter to different text
      */
-    it('ArkUX_Refresh_Visual_0050', 0, async (done: Function) => {
+    it('ArkUX_Refresh_Visual_0050', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0050 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0050');

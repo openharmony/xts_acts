@@ -27,6 +27,7 @@ public:
     static napi_value TestDragStartDataLoading001(napi_env env, napi_callback_info info);
     static napi_value TestDragDisableDropDataPrefetch002(napi_env env, napi_callback_info info);
     static napi_value TestDragCancelDataLoading003(napi_env env, napi_callback_info info);
+    static napi_value TestDragDisableDropDataDelay004(napi_env env, napi_callback_info info);
     static napi_value GetResult(napi_env env, napi_callback_info info);
     static std::vector<int32_t> result;
 };

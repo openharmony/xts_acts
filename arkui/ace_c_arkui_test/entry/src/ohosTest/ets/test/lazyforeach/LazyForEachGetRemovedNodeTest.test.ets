@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -37,9 +37,9 @@ export default function lazyForEachGetRemovedNodeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetRemovedNode001', 0, async (done: Function) => {
+    it('testLazyForEachGetRemovedNode001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`lazyforeach/LazyForEachGetRemovedNodeTest`)
-      await Utils.clickComponent("btn")
+      await Utils.clickComponent('btn')
       await Utils.sleep(SleepTime)
       expect(Utils.getComponentInfoByKey('gridGetRemovedNode').$attrs.backgroundColor).assertEqual(ColorGreen)
       done()
@@ -53,7 +53,7 @@ export default function lazyForEachGetRemovedNodeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetRemovedNode002', 0, async (done: Function) => {
+    it('testLazyForEachGetRemovedNode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLazyForEachGetRemovedNode002()).assertEqual(0)
       done()
     })

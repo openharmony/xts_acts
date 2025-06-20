@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
+import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import componentUtils from '@ohos.arkui.componentUtils';
@@ -60,7 +60,7 @@ export default function comSizeAbilityTest_08() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_23', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_23', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_23 START')
       await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Navigation_Size");
@@ -104,7 +104,7 @@ export default function comSizeAbilityTest_08() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_24', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_24', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_24 START')
       await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("NavRouter_Size");

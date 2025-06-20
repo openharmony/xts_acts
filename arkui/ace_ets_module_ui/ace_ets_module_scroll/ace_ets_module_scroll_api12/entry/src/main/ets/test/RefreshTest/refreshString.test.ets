@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -51,7 +51,7 @@ export default function refreshString() {
      * @tc.size
      */
 
-    it('refreshString_0100', 0, async (done: Function) => {
+    it('refreshString_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[refreshString_0100] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -85,7 +85,7 @@ export default function refreshString() {
      * @tc.size
      */
 
-    it('refreshString_0200', 0, async (done: Function) => {
+    it('refreshString_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[refreshString_0200] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -119,7 +119,7 @@ export default function refreshString() {
      * @tc.size
      */
 
-    it('refreshString_0300', 0, async (done: Function) => {
+    it('refreshString_0300', Level.LEVEL1, async (done: Function) => {
       console.info('[refreshString_0300] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -153,7 +153,7 @@ export default function refreshString() {
      * @tc.size
      */
 
-    it('refreshString_0400', 0, async (done: Function) => {
+    it('refreshString_0400', Level.LEVEL1, async (done: Function) => {
       console.info('[refreshString_0400] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -187,7 +187,7 @@ export default function refreshString() {
      * @tc.size
      */
 
-    it('refreshString_0500', 0, async (done: Function) => {
+    it('refreshString_0500', Level.LEVEL1, async (done: Function) => {
       console.info('[refreshString_0500] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -221,7 +221,7 @@ export default function refreshString() {
      * @tc.size
      */
 
-    it('refreshString_0600', 0, async (done: Function) => {
+    it('refreshString_0600', Level.LEVEL1, async (done: Function) => {
       console.info('[refreshString_0600] START');
       try {
         let eventData: events_emitter.EventData = {

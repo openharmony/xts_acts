@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function interstitialDialogActionTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('interstitialDialogActionTest_0010', 0, async (done: Function) => {
+    it('interstitialDialogActionTest_0010', Level.LEVEL2, async (done: Function) => {
       console.info('interstitialDialogActionTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -76,7 +76,7 @@ export default function interstitialDialogActionTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('interstitialDialogActionTest_0020', 0, async (done: Function) => {
+    it('interstitialDialogActionTest_0020', Level.LEVEL2, async (done: Function) => {
       console.info('interstitialDialogActionTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

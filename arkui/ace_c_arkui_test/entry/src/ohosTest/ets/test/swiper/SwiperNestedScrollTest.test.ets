@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperNestedScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperNestedScroll001', 0, async (done: Function) => {
+    it('testSwiperNestedScroll001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperNestedScroll001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperNestedScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperNestedScroll002', 0, async (done: Function) => {
+    it('testSwiperNestedScroll002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperNestedScroll002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperNestedScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperNestedScroll003', 0, async (done: Function) => {
+    it('testSwiperNestedScroll003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperNestedScroll003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function swiperNestedScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperNestedScroll004', 0, async (done: Function) => {
+    it('testSwiperNestedScroll004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperNestedScroll004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function swiperNestedScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperNestedScroll005', 0, async (done: Function) => {
+    it('testSwiperNestedScroll005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperNestedScroll005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function swiperNestedScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperNestedScroll006', 0, async (done: Function) => {
+    it('testSwiperNestedScroll006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperNestedScroll006()).assertEqual(0)
       done()
     })

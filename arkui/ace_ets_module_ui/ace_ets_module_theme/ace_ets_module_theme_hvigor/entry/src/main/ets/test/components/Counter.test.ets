@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import router from '@ohos.router';
 import { CounterKeys, counterThemeProperty, counterThemeSetProperty } from '../../MainAbility/pages/components/CounterPage';
@@ -86,7 +86,7 @@ export default function counterThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsCounterThemeColors_0100`, 0, () => {
+    it(`ActsCounterThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsCounterThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       counterKeys.forEach((key) => {
@@ -103,7 +103,7 @@ export default function counterThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsCounterThemeColors_0200`, 0, async () => {
+    it(`ActsCounterThemeColors_0200`, Level.LEVEL0, async () => {
       const CASE: string = `ActsCounterThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       counterKeys.forEach((key) => {
@@ -121,7 +121,7 @@ export default function counterThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsCounterThemeColors_0300`, 0, async () => {
+    it(`ActsCounterThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsCounterThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -141,7 +141,7 @@ export default function counterThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsCounterThemeColors_0400`, 0, async () => {
+    it(`ActsCounterThemeColors_0400`, Level.LEVEL0, async () => {
       const CASE: string = `ActsCounterThemeColors_0400`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

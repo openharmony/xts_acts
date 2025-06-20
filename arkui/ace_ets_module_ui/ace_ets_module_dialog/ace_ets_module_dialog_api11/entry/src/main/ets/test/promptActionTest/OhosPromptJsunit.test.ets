@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';
@@ -45,7 +45,7 @@ export default function ohosPromptJsunit() {
       console.info("OhosPrompt each called");
     });
 
-    it('test_OhosPrompt_001', 0, async (done: Function) => {
+    it('test_OhosPrompt_001', Level.LEVEL2, async (done: Function) => {
       await Utils.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_OhosPrompt_001] get event state result is: " + JSON.stringify(eventData));

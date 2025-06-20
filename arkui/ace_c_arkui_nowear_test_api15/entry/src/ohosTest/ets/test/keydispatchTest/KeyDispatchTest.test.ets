@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach,  Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import router from '@ohos.router';
@@ -35,7 +35,7 @@ export default function keyDispatchTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testkeyDisPatchTest001', 0, async (done: Function) => {
+    it('testkeyDisPatchTest001',  Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'KeydispatchTest';
       await Utils.pushPage(`keydispatchtest/${PAGE_TAG}`);
       await Utils.sleep(3000);

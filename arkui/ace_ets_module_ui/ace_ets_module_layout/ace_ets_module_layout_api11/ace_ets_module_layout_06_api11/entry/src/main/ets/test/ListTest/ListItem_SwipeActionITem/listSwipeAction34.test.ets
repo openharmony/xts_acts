@@ -16,7 +16,7 @@
 
 import router from '@ohos.router';
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import { Driver, ON, On } from '@ohos.UiTest';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
@@ -58,7 +58,7 @@ export default function listSwipeAction34Jsunit() {
     * @tc.name   : when swipe,then return the init position
     * @tc.desc   : test the onStateChange function parameter state
     */
-    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0340', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0340',  Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -67,8 +67,17 @@ export default function listSwipeAction34Jsunit() {
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0340] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
 
       // swipe the listItem to right
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipe34Action0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0340 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      // swipe the listItem
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(300)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + left + vp2px(50)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(150)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionOffset
@@ -78,7 +87,7 @@ export default function listSwipeAction34Jsunit() {
       expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('160')
       // reset
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(2000)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + left + vp2px(20)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + right - vp2px(10)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(6500);
       let buttonReset2 = await driver.findComponent(ON.id('btreset34'));
@@ -88,7 +97,7 @@ export default function listSwipeAction34Jsunit() {
 
       // swipe to left
       await driver.swipe(
-        Math.round(vp2px(240)), Math.round(vp2px(108)), Math.round(vp2px(100)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + left + vp2px(150)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(100)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe34Offset');
@@ -97,7 +106,7 @@ export default function listSwipeAction34Jsunit() {
       expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('-160')
       // reset init the state
       await driver.swipe(
-        Math.round(vp2px(240)), Math.round(vp2px(108)), Math.round(vp2px(-1000)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + right - vp2px(10)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(20)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(5000);
       done();
@@ -108,14 +117,22 @@ export default function listSwipeAction34Jsunit() {
     * @tc.name   : when swipe,then return the init position
     * @tc.desc   : test the onStateChange function parameter state
     */
-    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0350', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0350',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0350 START');
       await CommonFunc.sleep(1000);
       let driver35 = Driver.create();
       await CommonFunc.sleep(500);
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipe34Action0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0350 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe the listItem to right
       await driver35.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(3000)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + left + vp2px(10)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + right - vp2px(10)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
@@ -132,7 +149,7 @@ export default function listSwipeAction34Jsunit() {
       await CommonFunc.sleep(3000);
       // swipe to left
       await driver35.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(108)), Math.round(vp2px(5)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + right - vp2px(10)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(10)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(8000);
       let textSwipeOffset2 = getInspectorByKey('swipe34Offset');

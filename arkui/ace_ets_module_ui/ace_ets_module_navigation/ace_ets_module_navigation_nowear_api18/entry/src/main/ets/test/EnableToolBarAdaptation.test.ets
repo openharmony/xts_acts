@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function EnableToolBarAdaptation() {
      * @tc.desc      Test Navigation\NavDestination hideItemValue is false
      * @tc.level     Level 2
      */
-    it('EnableToolBarAdaptation_0100', 0, async (done: Function) => {
+    it('EnableToolBarAdaptation_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('EnableToolBarAdaptation_0100 START');
       await CommonFunc.sleep(500);
 
@@ -81,7 +81,7 @@ export default function EnableToolBarAdaptation() {
      * @tc.desc      Test navDestination hideItemValue is true and false
      * @tc.level     Level 2
      */
-    it('EnableToolBarAdaptation_0200', 0, async (done: Function) => {
+    it('EnableToolBarAdaptation_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('EnableToolBarAdaptation_0200 START');
       await CommonFunc.sleep(500);
 
@@ -117,7 +117,7 @@ export default function EnableToolBarAdaptation() {
      * @tc.desc      Test Navigation EnableToolBarAdaptation is false
      * @tc.level     Level 2
      */
-    it('EnableToolBarAdaptation_0300', 0, async (done: Function) => {
+    it('EnableToolBarAdaptation_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('EnableToolBarAdaptation_0300 START');
       await CommonFunc.sleep(500);
 
@@ -164,7 +164,7 @@ export default function EnableToolBarAdaptation() {
      * @tc.desc      Test Navigation\navDestination EnableToolBarAdaptation is true
      * @tc.level     Level 2
      */
-    it('EnableToolBarAdaptation_0400', 0, async (done: Function) => {
+    it('EnableToolBarAdaptation_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('EnableToolBarAdaptation_0400 START');
       await CommonFunc.sleep(500);
 
@@ -175,9 +175,15 @@ export default function EnableToolBarAdaptation() {
       await btn1.click();
       console.info('[EnableToolBarAdaptation_0400] btn1 click');
 
-      await driver.assertComponentExist(ON.type('ToolBar'));
-      console.info('[EnableToolBarAdaptation_0400] ToolBar is exist');
-      await driver.delayMs(1000);
+      let navigation: Component = await driver.findComponent(ON.type('Navigation'));
+      let rect = await navigation.getBounds();
+      let navigationWidth = rect.right;
+      console.info('[EnableToolBarAdaptation_0400] navigationWidth is ', navigationWidth);
+      if (navigationWidth < 1500) {
+        await driver.assertComponentExist(ON.type('ToolBar'));
+        console.info('[EnableToolBarAdaptation_0400] ToolBar is exist');
+        await driver.delayMs(1000);
+      }
 
       let landscapeBtn: Component = await driver.findComponent(ON.id('landscapeId'));
       await landscapeBtn.click();

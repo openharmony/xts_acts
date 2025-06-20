@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function datePickerLunarJsunit() {
@@ -50,7 +50,7 @@ export default function datePickerLunarJsunit() {
      * @tc.name         testdatePickerLunar001
      * @tc.desic         acedatePickerLunarEtsTest001
      */
-    it('testdatePickerLunar001', 0, async (done:Function) => {
+    it('testdatePickerLunar001', Level.LEVEL1, async (done:Function) => {
       console.info('datePickerLunar testdatePickerLunar001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('DatePicker');

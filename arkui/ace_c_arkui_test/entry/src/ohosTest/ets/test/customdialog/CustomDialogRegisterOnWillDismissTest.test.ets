@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import { Driver } from '@ohos.UiTest';
@@ -35,9 +35,9 @@ export default function customDialogRegisterOnWillDismissTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogRegisterOnWillDismiss001', 0, async (done: Function) => {
+    it('testCustomDialogRegisterOnWillDismiss001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`customdialog/CustomDialogRegisterOnWillDismissTest`)
-      await Utils.clickComponent("buttonRegisterOnWillDismiss")
+      await Utils.clickComponent('buttonRegisterOnWillDismiss')
       await Utils.sleep(2000)
       let driver: Driver = Driver.create();
       await driver.pressBack()
@@ -54,7 +54,7 @@ export default function customDialogRegisterOnWillDismissTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogRegisterOnWillDismiss002', 0, async (done: Function) => {
+    it('testCustomDialogRegisterOnWillDismiss002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogRegisterOnWillDismiss002()).assertEqual(0)
       done()
     })
@@ -67,7 +67,7 @@ export default function customDialogRegisterOnWillDismissTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogRegisterOnWillDismiss003', 0, async (done: Function) => {
+    it('testCustomDialogRegisterOnWillDismiss003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogRegisterOnWillDismiss003()).assertEqual(0)
       done()
     })

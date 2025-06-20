@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnterKeyType001', 0, async (done: Function) => {
+    it('testTextInputEnterKeyType001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnterKeyType001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnterKeyType002', 0, async (done: Function) => {
+    it('testTextInputEnterKeyType002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnterKeyType002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnterKeyType003', 0, async (done: Function) => {
+    it('testTextInputEnterKeyType003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnterKeyType003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnterKeyType004', 0, async (done: Function) => {
+    it('testTextInputEnterKeyType004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnterKeyType004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnterKeyType005', 0, async (done: Function) => {
+    it('testTextInputEnterKeyType005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnterKeyType005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnterKeyType006', 0, async (done: Function) => {
+    it('testTextInputEnterKeyType006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnterKeyType006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputEnterKeyType007', 0, async (done: Function) => {
+    it('testTextInputEnterKeyType007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnterKeyType007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textInputEnterKeyTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testTextInputEnterKeyType008', 0, async (done: Function) => {
+    it('testTextInputEnterKeyType008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputEnterKeyType008()).assertEqual(0)
       done()
     })

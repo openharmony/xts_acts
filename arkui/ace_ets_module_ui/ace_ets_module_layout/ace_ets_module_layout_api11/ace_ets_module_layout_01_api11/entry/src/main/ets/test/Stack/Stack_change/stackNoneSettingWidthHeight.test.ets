@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/utils/Common";
 import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
@@ -50,7 +50,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentTopStart
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'TopStart'.
      */
-    it('testStackDefaultSizeAlignContentTopStart', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentTopStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentTopStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopStart
@@ -77,7 +77,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentTop
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'Top'.
      */
-    it('testStackDefaultSizeAlignContentTop', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentTop',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentTop START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Top
@@ -104,7 +104,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentTopEnd
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'TopEnd'.
      */
-    it('testStackDefaultSizeAlignContentTopEnd', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentTopEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentTopEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.TopEnd
@@ -131,7 +131,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentStart
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'START'.
      */
-    it('testStackDefaultSizeAlignContentStart', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Start
@@ -158,7 +158,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentCenter
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'Center'.
      */
-    it('testStackDefaultSizeAlignContentCenter', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentCenter START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Center
@@ -185,7 +185,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentEnd
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'End'.
      */
-    it('testStackDefaultSizeAlignContentEnd', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.End
@@ -212,7 +212,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentBottomStart
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'BottomStart'.
      */
-    it('testStackDefaultSizeAlignContentBottomStart', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentBottomStart',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentBottomStart START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomStart
@@ -239,7 +239,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentBottom
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'Bottom'.
      */
-    it('testStackDefaultSizeAlignContentBottom', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentBottom',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentBottom START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.Bottom
@@ -266,7 +266,7 @@ export default function stackNoneSettingWidthHeight() {
      * @tc.name testStackDefaultSizeAlignContentBottomEnd
      * @tc.desc Set stack's  default height and width  ,set alignContent mode 'BottomEnd'.
      */
-    it('testStackDefaultSizeAlignContentBottomEnd', 0, async (done: Function) => {
+    it('testStackDefaultSizeAlignContentBottomEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('new testStackDefaultSizeAlignContentBottomEnd START');
       globalThis.value.message.notify({
         name: 'alignContent', value: Alignment.BottomEnd

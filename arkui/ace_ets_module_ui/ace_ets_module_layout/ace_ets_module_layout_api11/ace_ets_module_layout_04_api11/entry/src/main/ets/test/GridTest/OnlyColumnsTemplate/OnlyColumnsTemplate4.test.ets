@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function OnlyColumnsTemplate4() {
      * @tc.name testGrid
      * @tc.desc GridItem sets columnStart to be greater than the total number of columns
      */
-    it('SUB_ACE_GRID_OnlyColumnsTemplate4_0300', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_OnlyColumnsTemplate4_0300',  Level.LEVEL0, async (done: Function) => {
 
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate4_0300] START');
       await CommonFunc.sleep(2000);
@@ -97,7 +97,7 @@ export default function OnlyColumnsTemplate4() {
      * @tc.name testGrid
      * @tc.desc GridItem sets columnStart to a negative number
      */
-    it('SUB_ACE_GRID_OnlyColumnsTemplate4_0500', 0, async (done: Function) => {
+    it('SUB_ACE_GRID_OnlyColumnsTemplate4_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate4_0500] START');
       await CommonFunc.sleep(2000);
       let driver = Driver.create();

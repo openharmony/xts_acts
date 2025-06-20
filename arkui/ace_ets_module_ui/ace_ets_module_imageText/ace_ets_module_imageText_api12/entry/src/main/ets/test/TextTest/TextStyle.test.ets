@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -49,7 +49,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_001', 0, async (done: Function) => {
+    it('TextStyle_001',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextStyle_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -77,7 +77,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_002', 0, async (done: Function) => {
+    it('TextStyle_002',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextStyle_002] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -105,7 +105,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_003', 0, async (done: Function) => {
+    it('TextStyle_003',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextStyle_003] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -133,7 +133,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_004', 0, async (done: Function) => {
+    it('TextStyle_004',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextStyle_004] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -161,7 +161,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_005', 0, async (done: Function) => {
+    it('TextStyle_005',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextStyle_005] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -189,7 +189,7 @@ export default function TextStyle() {
      * @tc.type
      */
 
-    it('TextStyle_006', 0, async (done: Function) => {
+    it('TextStyle_006',  Level.LEVEL0, async (done: Function) => {
       console.info('[TextStyle_006] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

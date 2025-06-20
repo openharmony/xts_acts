@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function flexTextMargin_StartJsunit() {
      * @tc.name testFlexItemAlignStartSubSetMargin
      * @tc.desc Center alignment，subcomponents set margin within the scope of the parent component.
      */
-    it('testFlexItemAlignStartSubSetMargin', 0, async () => {
+    it('testFlexItemAlignStartSubSetMargin',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStartSubSetMargin START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
@@ -89,7 +89,7 @@ export default function flexTextMargin_StartJsunit() {
      * @tc.name testFlexItemAlignStartSubSetMarginExceed
      * @tc.desc Center alignment，subcomponents set margin outside the scope of the parent component.
      */
-    it('testFlexItemAlignStartSubSetMarginExceed', 0, async () => {
+    it('testFlexItemAlignStartSubSetMarginExceed',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignStartSubSetMarginExceed START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30

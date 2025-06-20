@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -37,7 +37,7 @@ export default function lazyForEachGetItemIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetItemIndex001', 0, async (done: Function) => {
+    it('testLazyForEachGetItemIndex001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`lazyforeach/LazyForEachGetItemIndexTest`);
       await Utils.sleep(SleepTime)
       expect(Utils.getComponentInfoByKey('gridItem0').$attrs.backgroundColor).assertEqual(ColorGreen)
@@ -52,7 +52,7 @@ export default function lazyForEachGetItemIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachGetItemIndex002', 0, async (done: Function) => {
+    it('testLazyForEachGetItemIndex002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLazyForEachGetItemIndex002()).assertEqual(0)
       done()
     })

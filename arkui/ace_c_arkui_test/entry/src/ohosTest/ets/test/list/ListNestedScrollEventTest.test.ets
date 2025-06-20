@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver } from '@kit.TestKit';
 import nativeRender from 'libnativerender.so'
@@ -53,7 +53,7 @@ export default function listNestedScrollEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListNestedScrollEvent001', 0, async (done: Function) => {
+    it('testListNestedScrollEvent001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListNestedScroll001Test`, ()=>{
         setTimeout(()=>{}, 7000);
       });
@@ -107,7 +107,7 @@ export default function listNestedScrollEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListNestedScrollEvent002', 0, async (done: Function) => {
+    it('testListNestedScrollEvent002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListNestedScroll002Test`, ()=>{
         setTimeout(()=>{}, 7000);
       });
@@ -161,7 +161,7 @@ export default function listNestedScrollEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListNestedScrollEvent003', 0, async (done: Function) => {
+    it('testListNestedScrollEvent003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListNestedScroll003Test`, ()=>{
         setTimeout(()=>{}, 7000);
       });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderWidth001', 0, async (done: Function) => {
+    it('testCustomComponentBorderWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderWidth001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderWidth002', 0, async (done: Function) => {
+    it('testCustomComponentBorderWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderWidth002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level2
      */
-    it('testCustomComponentBorderWidth003', 0, async (done: Function) => {
+    it('testCustomComponentBorderWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderWidth003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level2
      */
-    it('testCustomComponentBorderWidth004', 0, async (done: Function) => {
+    it('testCustomComponentBorderWidth004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderWidth004()).assertEqual(0)
       done()
     })

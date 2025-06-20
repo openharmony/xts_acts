@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -66,7 +66,7 @@ export default function tabs_IndexTest() {
      * @tc.name testTabsIndexLessThanMin
      * @tc.desc set index of tabs to -1
      */
-    it('testTabsIndexLessThanMin', 0, async (done: Function) => {
+    it('testTabsIndexLessThanMin', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsIndexLessThanMin] START');
       globalThis.value.message.notify({
         name: 'index', value: -1
@@ -178,7 +178,7 @@ export default function tabs_IndexTest() {
      * @tc.name testTabsIndexNormal
      * @tc.desc set index of tabs to 1
      */
-    it('testTabsIndexNormal', 0, async (done: Function) => {
+    it('testTabsIndexNormal', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsIndexNormal] START');
       globalThis.value.message.notify({
         name: 'index', value: 1
@@ -284,7 +284,7 @@ export default function tabs_IndexTest() {
      * @tc.name testTabsIndexMoreThanMax
      * @tc.desc set index of tabs to 3
      */
-    it('testTabsIndexMoreThanMax', 0, async (done: Function) => {
+    it('testTabsIndexMoreThanMax', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsIndexMoreThanMax] START');
       globalThis.value.message.notify({
         name: 'index', value: 3

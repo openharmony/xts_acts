@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -29,7 +29,7 @@ export default function listSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSpace001', 0, async (done: Function) => {
+    it('testListSpace001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSpace001()).assertEqual(0)
       done()
     })
@@ -41,7 +41,7 @@ export default function listSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSpace002', 0, async (done: Function) => {
+    it('testListSpace002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSpace002()).assertEqual(0)
       done()
     })
@@ -53,7 +53,7 @@ export default function listSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSpace003', 0, async (done: Function) => {
+    it('testListSpace003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSpace003()).assertEqual(0)
       done()
     })
@@ -65,7 +65,7 @@ export default function listSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSpace004', 0, async (done: Function) => {
+    it('testListSpace004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSpace004()).assertEqual(0)
       done()
     })
@@ -77,7 +77,7 @@ export default function listSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSpace005', 0, async (done: Function) => {
+    it('testListSpace005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSpace005()).assertEqual(0)
       done()
     })

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@system.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function DataOperationTypeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('DataOperationTypeTest_0100', 0, async (done: Function) => {
+    it('DataOperationTypeTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('DataOperationTypeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function DataOperationTypeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('DataOperationTypeTest_0200', 0, async (done: Function) => {
+    it('DataOperationTypeTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('DataOperationTypeTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -97,7 +97,7 @@ export default function DataOperationTypeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('DataOperationTypeTest_0300', 0, async (done: Function) => {
+    it('DataOperationTypeTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('DataOperationTypeTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

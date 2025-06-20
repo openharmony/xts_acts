@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -62,7 +62,7 @@ export default function StateNumberJsunit() {
       });
     });
 
-    it('StateNumberJsunit_0100', 0, async (done: Function) => {
+    it('StateNumberJsunit_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateNumberJsunit_0100 START');
       let strJson = getInspectorByKey('state_string');
@@ -74,7 +74,7 @@ export default function StateNumberJsunit() {
       done();
     });
 
-    it('StateNumberJsunit_0200', 0, async (done: Function) => {
+    it('StateNumberJsunit_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateNumberJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -90,7 +90,7 @@ export default function StateNumberJsunit() {
       done();
     });
 
-    it('StateNumberJsunit_0300', 0, async (done: Function) => {
+    it('StateNumberJsunit_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateNumberJsunit_0300 START');
       let strJson = getInspectorByKey('state_number');
@@ -102,7 +102,7 @@ export default function StateNumberJsunit() {
       done();
     });
 
-    it('StateNumberJsunit_0400', 0, async (done: Function) => {
+    it('StateNumberJsunit_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateNumberJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -118,7 +118,7 @@ export default function StateNumberJsunit() {
       done();
     });
 
-    it('StateNumberJsunit_0500', 0, async (done: Function) => {
+    it('StateNumberJsunit_0500', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateNumberJsunit_0500 START');
       let strJson = getInspectorByKey('state_Boolean');
@@ -130,7 +130,7 @@ export default function StateNumberJsunit() {
       done();
     });
 
-    it('StateNumberJsunit_0600', 0, async (done: Function) => {
+    it('StateNumberJsunit_0600', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateNumberJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -146,7 +146,7 @@ export default function StateNumberJsunit() {
       done();
     });
 
-    it('StateNumberJsunit_0700', 0, async (done: Function) => {
+    it('StateNumberJsunit_0700', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateNumberJsunit_0700 START');
       let strJson = getInspectorByKey('state_enum');
@@ -158,7 +158,7 @@ export default function StateNumberJsunit() {
       done();
     });
 
-    it('StateNumberJsunit_0800', 0, async (done: Function) => {
+    it('StateNumberJsunit_0800', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateNumberJsunit_0800 START');
       let driver = await UiDriver.create()

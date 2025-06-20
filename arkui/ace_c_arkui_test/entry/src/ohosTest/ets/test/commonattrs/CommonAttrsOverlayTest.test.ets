@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOverlay001', 0, async (done: Function) => {
+    it('testCommonAttrsOverlay001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOverlay001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOverlay002', 0, async (done: Function) => {
+    it('testCommonAttrsOverlay002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOverlay002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOverlay003', 0, async (done: Function) => {
+    it('testCommonAttrsOverlay003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOverlay003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOverlay004', 0, async (done: Function) => {
+    it('testCommonAttrsOverlay004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOverlay004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOverlay005', 0, async (done: Function) => {
+    it('testCommonAttrsOverlay005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOverlay005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOverlay006', 0, async (done: Function) => {
+    it('testCommonAttrsOverlay006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOverlay006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOverlay007', 0, async (done: Function) => {
+    it('testCommonAttrsOverlay007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOverlay007()).assertEqual(0)
       done()
     })

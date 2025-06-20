@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function stackHitTestBehaviorTest() {
@@ -34,7 +34,7 @@ export default function stackHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackHitTestBehavior001', 0, async (done: Function) => {
+    it('testStackHitTestBehavior001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnTouchTestStackBrotherDefault')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnTouchStackDefault').$attrs.backgroundColor).assertEqual('#FFFF0000')
@@ -51,7 +51,7 @@ export default function stackHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackHitTestBehavior002', 0, async (done: Function) => {
+    it('testStackHitTestBehavior002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnTouchTestStackBrotherBlock')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnTouchTestStackBlock').$attrs.backgroundColor).assertEqual('#FFFF0000')
@@ -68,7 +68,7 @@ export default function stackHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackHitTestBehavior003', 0, async (done: Function) => {
+    it('testStackHitTestBehavior003', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnTouchTestStackBrotherTransparent')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnTouchTestStackTransparent').$attrs.backgroundColor)
@@ -86,7 +86,7 @@ export default function stackHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackHitTestBehavior004', 0, async (done: Function) => {
+    it('testStackHitTestBehavior004', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnTouchTestStackBrotherNone')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnTouchTestStackNone').$attrs.backgroundColor)
@@ -104,7 +104,7 @@ export default function stackHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStackHitTestBehavior005', 0, async (done: Function) => {
+    it('testStackHitTestBehavior005', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnTouchTestStackBrotherExceptBelow')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnTouchTestStackExceptBelow').$attrs.backgroundColor)
@@ -122,7 +122,7 @@ export default function stackHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStackHitTestBehavior006', 0, async (done: Function) => {
+    it('testStackHitTestBehavior006', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnTouchTestStackBrotherExceptAbove')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnTouchTestStackExceptAbove').$attrs.backgroundColor)

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function Grid_Row_Gutter() {
      * @tc.name testGridColOffset
      * @tc.desc GridCol set offset to -2
      */
-    it('SUB_ACE_Grid_Row_Gutter_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Row_Gutter_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Row_Gutter_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addLength', value: -10
@@ -99,7 +99,7 @@ export default function Grid_Row_Gutter() {
      * @tc.name testGridColOffset
      * @tc.desc GridCol set offset to 0
      */
-    it('SUB_ACE_Grid_Row_Gutter_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Row_Gutter_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Row_Gutter_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addLength', value: 0
@@ -145,7 +145,7 @@ export default function Grid_Row_Gutter() {
      * @tc.name testGridColOffset
      * @tc.desc GridCol set offset to 0
      */
-    it('SUB_ACE_Grid_Row_Gutter_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Row_Gutter_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Row_Gutter_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addLength', value: 5
@@ -190,7 +190,7 @@ export default function Grid_Row_Gutter() {
      * @tc.name testGridColOffset
      * @tc.desc GridCol set offset to 0
      */
-    it('SUB_ACE_Grid_Row_Gutter_TEST_0400', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Row_Gutter_TEST_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Row_Gutter_TEST_0400] START');
       globalThis.value.message.notify({
         name: 'addLength', value: 10

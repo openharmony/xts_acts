@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -68,7 +68,7 @@ export default function List_divider_number() {
      * @tc.name testListItem
      * @tc.desc Set strokeWidth to 0
      */
-    it('SUB_ACE_List_divider_number_0100', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_number_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_number_0100] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: 0
@@ -92,7 +92,7 @@ export default function List_divider_number() {
      * @tc.name testListItem
      * @tc.desc Set strokeWidth to -5
      */
-    it('SUB_ACE_List_divider_number_0200', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_number_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_number_0200] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: -5
@@ -116,7 +116,7 @@ export default function List_divider_number() {
      * @tc.name testListItem
      * @tc.desc Set strokeWidth to 20
      */
-    it('SUB_ACE_List_divider_number_0300', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_number_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_number_0300] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: 20
@@ -140,7 +140,7 @@ export default function List_divider_number() {
      * @tc.name testListItem
      * @tc.desc Set strokeWidth to 20,set space to 10
      */
-    it('SUB_ACE_List_divider_number_0400', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_number_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_number_0400] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: 20

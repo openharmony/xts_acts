@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -45,7 +45,7 @@ export default function navigationJsunittt() {
       console.info("navigation after each called");
     });
 
-    it('testNavigation_100', 0, async  (done:Function) =>{
+    it('testNavigation_100',  Level.LEVEL0, async  (done:Function) =>{
       console.info('[testNavigation_100] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('Navigation');
@@ -56,7 +56,7 @@ export default function navigationJsunittt() {
       done();
     });
 
-    it('testNavigation_200', 0, async  (done:Function) =>{
+    it('testNavigation_200',  Level.LEVEL0, async  (done:Function) =>{
       console.info('testNavigation_200 START');
       await Utils.sleep(1000);
       let callback = (indexEvent: events_emitter.EventData) => {
@@ -78,7 +78,7 @@ export default function navigationJsunittt() {
       console.info('testNavigation_200 END');
     });
 
-    it('testNavigation_300', 0, async  (done:Function) =>{
+    it('testNavigation_300',  Level.LEVEL0, async  (done:Function) =>{
       console.info('[testNavigation_300] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('Navigation');
@@ -89,7 +89,7 @@ export default function navigationJsunittt() {
       done();
     });
 
-    it('testNavigation_400', 0, async  (done:Function) =>{
+    it('testNavigation_400',  Level.LEVEL0, async  (done:Function) =>{
       console.info('[testNavigation_400] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('Navigation');

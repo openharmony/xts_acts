@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "600000",
-        "bundle-name": "com.example.myapplication",
+        "bundle-name": "com.edm.acts.nopermission",
         "module-name": "entry_test",
         "testcase-timeout": "30000"
     },
@@ -13,8 +13,8 @@
             "type": "ShellKit",
             "run-command": [
                 "remount",
-                "mkdir -p /data/app/el2/100/base/com.example.myapplication/haps/entry",
-                "mkdir -p /data/app/el2/100/base/com.example.myapplication/haps/entry/testinstall",
+                "mkdir -p /data/app/el2/100/base/com.edm.acts.nopermission/haps/entry",
+                "mkdir -p /data/app/el2/100/base/com.edm.acts.nopermission/haps/entry/testinstall",
                 "param set const.product.developmentmode 1",
                 "param set const.bms.allowenterprisebundle true"
             ]
@@ -22,7 +22,7 @@
         {
             "type": "PushKit",
             "push":[
-                "ExtensionZeroTest.hap->/data/app/el2/100/base/com.example.myapplication/haps/entry/testinstall/ExtensionZeroTest.hap"
+                "ExtensionZeroTest.hap->/data/app/el2/100/base/com.edm.acts.nopermission/haps/entry/testinstall/ExtensionZeroTest.hap"
             ]
         },
         {

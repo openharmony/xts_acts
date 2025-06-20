@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -44,7 +44,7 @@ export default function selectJsunit() {
       console.info("select after each called");
     });
 
-    it('selectTest_0100', 0, async (done: Function) => {
+    it('selectTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('selectTest_0100 START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('select');
@@ -54,7 +54,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_0200', 0, async (done: Function) => {
+    it('selectTest_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_0200] START');
       await Utils.sleep(1000);
       try {
@@ -79,7 +79,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_0300', 0, async (done: Function) => {
+    it('selectTest_0300', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_0300] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('select');
@@ -92,7 +92,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_0400', 0, async (done: Function) => {
+    it('selectTest_0400', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_0400] START');
       await Utils.sleep(1000);
       let font: Font = {
@@ -124,7 +124,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_0500', 0, async (done: Function) => {
+    it('selectTest_0500', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_0500] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('select');
@@ -134,7 +134,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_0600', 0, async (done: Function) => {
+    it('selectTest_0600', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_0600] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -159,7 +159,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_0700', 0, async (done: Function) => {
+    it('selectTest_0700', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_0700] START');
       await Utils.sleep(1000);
       try {
@@ -184,7 +184,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_0800', 0, async (done: Function) => {
+    it('selectTest_0800', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_0800] START');
       await Utils.sleep(1000);
       try {
@@ -209,7 +209,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_0900', 0, async (done: Function) => {
+    it('selectTest_0900', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_0900] START');
       await Utils.sleep(1000);
       try {
@@ -234,7 +234,7 @@ export default function selectJsunit() {
       done();
     });
 
-    it('selectTest_1000', 0, async (done: Function) => {
+    it('selectTest_1000', Level.LEVEL1, async (done: Function) => {
       console.info('[selectTest_1000] START');
       try {
         let eventData: events_emitter.EventData = {

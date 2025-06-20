@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -52,7 +52,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0001', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0001', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0001] START');
 
       let myJson = getInspectorByKey('menuItemDividerText');
@@ -73,7 +73,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0002', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0002', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0200] START');
 
       let strJson = getInspectorByKey('menuItemDividerText');
@@ -93,7 +93,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0003', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0003', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0003] START');
 
       let strJson = getInspectorByKey('menuItemDividerText');
@@ -112,7 +112,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemDivider test
      * @tc.desc      menuItemDivider test
      */
-    it('ArkUX_Stage_Menu_menuItemDivider_0004', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0004', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0004] START');
 
       let strJson = getInspectorByKey('menuItemDividerText');
@@ -132,7 +132,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0005', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0005', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0005] START');
 
       let myJson = getInspectorByKey('menuItemDividerText1');
@@ -153,7 +153,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0006', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0006', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0006] START');
 
       let strJson = getInspectorByKey('menuItemDividerText1');
@@ -173,7 +173,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0007', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0007', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0007] START');
 
       let strJson = getInspectorByKey('menuItemDividerText1');
@@ -192,7 +192,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemDivider test
      * @tc.desc      menuItemDivider test
      */
-    it('ArkUX_Stage_Menu_menuItemDivider_0008', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0008', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0012] START');
 
       let strJson = getInspectorByKey('menuItemDividerText2');
@@ -212,7 +212,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0009', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0009', Level.LEVEL2, async (done: Function) => {
       console.info('[menuItemDivider_0100] START');
 
       let myJson = getInspectorByKey('menuItemDividerText1');
@@ -233,7 +233,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0010', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0010', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0010] START');
 
       let strJson = getInspectorByKey('menuItemDividerText2');
@@ -253,7 +253,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemDivider_0011', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0011', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0011] START');
 
       let strJson = getInspectorByKey('menuItemDividerText2');
@@ -272,7 +272,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemDivider test
      * @tc.desc      menuItemDivider test
      */
-    it('ArkUX_Stage_Menu_menuItemDivider_0012', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemDivider_0012', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemDivider_0012] START');
 
       let strJson = getInspectorByKey('menuItemDividerText2');
@@ -292,7 +292,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemDivider test
      */
 
-      it('ArkUX_Stage_Menu_menuItemDivider_0013', 0, async (done: Function) => {
+      it('ArkUX_Stage_Menu_menuItemDivider_0013', Level.LEVEL2, async (done: Function) => {
         console.info('[ArkUX_Stage_Menu_menuItemDivider_0013] START');
   
         let strJson = getInspectorByKey('menuItemDividerText3');
@@ -312,7 +312,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_001', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_001', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_001] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText');
@@ -332,7 +332,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0002', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0002', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0002] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText');
@@ -352,7 +352,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0003', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0003', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0003] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText');
@@ -371,7 +371,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemDivider test
      * @tc.desc      menuItemDivider test
      */
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0004', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0004', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0004] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText');
@@ -391,7 +391,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0005', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0005', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0005] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText1');
@@ -411,7 +411,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0006', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0006', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0006] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText1');
@@ -431,7 +431,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0007', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0007', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_006] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText1');
@@ -450,7 +450,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemDivider test
      * @tc.desc      menuItemDivider test
      */
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0008', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0008', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_007] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText1');
@@ -470,7 +470,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0009', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0009', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0009] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText2');
@@ -490,7 +490,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0010', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0010', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0010] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText2');
@@ -510,7 +510,7 @@ export default function menuDividerTest() {
      * @tc.desc      menuItemGroupDivider test
      */
 
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0011', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0011', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0011] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText2');
@@ -529,7 +529,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemDivider test
      * @tc.desc      menuItemDivider test
      */
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0012', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0012', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0013] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText2');
@@ -549,7 +549,7 @@ export default function menuDividerTest() {
        * @tc.desc      menuItemGroupDivider test
        */
 
-      it('ArkUX_Stage_Menu_menuItemGroupDivider_0013', 0, async (done: Function) => {
+      it('ArkUX_Stage_Menu_menuItemGroupDivider_0013', Level.LEVEL2, async (done: Function) => {
         console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0013] START');
   
         let strJson = getInspectorByKey('menuItemGroupDividerText3');
@@ -568,7 +568,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemGroupDivider test
      * @tc.desc      subMenuExpandingMode test
      */
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0014', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0014', Level.LEVEL2, async (done: Function) => {
         console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0014] START');
   
         let strJson = getInspectorByKey('menuItemGroupDividerText');
@@ -587,7 +587,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemGroupDivider test
      * @tc.desc      subMenuExpandingMode test
      */
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0015', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0015', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0015] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText1');
@@ -606,7 +606,7 @@ export default function menuDividerTest() {
      * @tc.name      menuItemGroupDivider test
      * @tc.desc      subMenuExpandingMode test
      */
-    it('ArkUX_Stage_Menu_menuItemGroupDivider_0016', 0, async (done: Function) => {
+    it('ArkUX_Stage_Menu_menuItemGroupDivider_0016', Level.LEVEL2, async (done: Function) => {
       console.info('[ArkUX_Stage_Menu_menuItemGroupDivider_0016] START');
 
       let strJson = getInspectorByKey('menuItemGroupDividerText2');

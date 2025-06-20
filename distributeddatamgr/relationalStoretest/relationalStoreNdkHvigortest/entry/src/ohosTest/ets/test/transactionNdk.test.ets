@@ -251,5 +251,68 @@ export default function transactionNdktest() {
       done();
     });
 
+    
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_OH_RdbTrans_InsertWithConflictResolution0100
+     * @tc.name OH_RdbTrans_InsertWithConflictResolution0100
+     * @tc.desc OH_RdbTrans_InsertWithConflictResolution0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_RdbTrans_InsertWithConflictResolution0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testrdb.OH_RdbTrans_InsertWithConflictResolution0100();
+      console.info(TAG + "OH_RdbTrans_InsertWithConflictResolution0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_OH_Rdb_SetCustomDir0100
+     * @tc.name OH_Rdb_SetCustomDir0100
+     * @tc.desc OH_Rdb_SetCustomDir0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetCustomDir0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testrdb.OH_Rdb_SetCustomDir0100();
+      console.info(TAG + "OH_Rdb_SetCustomDir0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_OH_Rdb_SetReadOnly0100
+     * @tc.name OH_Rdb_SetReadOnly0100
+     * @tc.desc OH_Rdb_SetReadOnly0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetReadOnly0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testrdb.OH_Rdb_SetReadOnly0100();
+      console.info(TAG + "OH_Rdb_SetReadOnly0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_OH_Rdb_SetPlugins0100
+     * @tc.name OH_Rdb_SetPlugins0100
+     * @tc.desc OH_Rdb_SetPlugins0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetPlugins0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testrdb.OH_Rdb_SetPlugins0100();
+      console.info(TAG + "OH_Rdb_SetPlugins0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
   })
 }

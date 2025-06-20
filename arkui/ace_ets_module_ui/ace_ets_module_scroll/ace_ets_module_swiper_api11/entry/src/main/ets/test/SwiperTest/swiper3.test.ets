@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils.ets'
 
 export default function swiperMaskJsunit() {
@@ -50,7 +50,7 @@ export default function swiperMaskJsunit() {
      * @tc.name         testswiperMask001
      * @tc.desic        aceswiperMaskEtsTest001
      */
-    it('testswiperMask001', 0, async (done: Function) => {
+    it('testswiperMask001', Level.LEVEL1, async (done: Function) => {
       console.info('swiperMask testswiperMask001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('maskSwiper');

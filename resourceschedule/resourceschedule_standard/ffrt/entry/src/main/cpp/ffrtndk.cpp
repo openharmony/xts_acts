@@ -55,7 +55,7 @@ const uint64_t PLUS_SLEEP_TIME = 200000;
 const uint64_t FUNC_SIGNAL_SLEEP = 30000;
 const uint64_t SLEEP_TIME = 2000;
 const uint64_t UNIT_TASK_DELAY_500 = 500000;
-const double COST_TIME = 0.5;
+const double COST_TIME = 1.0;
 const uint64_t COST_TIME_200 = 200;
 const uint64_t COST_TIME_300 = 300;
 const uint64_t COST_TIME_500 = 500;
@@ -1529,6 +1529,55 @@ static napi_value QueueApiTest013(napi_env env, napi_callback_info info)
     return flag;
 }
 
+static napi_value QueueApiTest014(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    // ffrt_queue_wait接口handle为异常值
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
+    if (queue_handle == nullptr) {
+        result += 1;
+    }
+    int a = 0;
+    ffrt_task_handle_t handle = ffrt_queue_submit_h_f(queue_handle, OnePlusForTest, &a, nullptr);
+    ffrt_queue_wait(handle);
+    if (a != 1) {
+        result += 1;
+    }
+    // 销毁队列
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_task_handle_destroy(handle);
+    ffrt_queue_destroy(queue_handle);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value QueueApiTest015(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    // ffrt_queue_wait接口handle为异常值
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
+    if (queue_handle == nullptr) {
+        result += 1;
+    }
+    int a = 0;
+    ffrt_queue_submit_f(queue_handle, OnePlusForTest, &a, nullptr);
+    usleep(SLEEP_TIME);
+    if (a != 1) {
+        result += 1;
+    }
+    // 销毁队列
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
 static napi_value QueueCancelTest001(napi_env env, napi_callback_info info)
 {
     int result = 0;
@@ -2605,6 +2654,43 @@ static napi_value SubmitHBasicTest002(napi_env env, napi_callback_info info)
     }
     ffrt_task_attr_destroy(&attr);
     ffrt_task_handle_destroy(task);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value SubmitHFTest001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    int a = 0;
+    ffrt_task_attr_t attr;
+    ffrt_task_attr_init(&attr);
+    ffrt_task_handle_t task = ffrt_submit_h_f(OnePlusForTest, &a, nullptr, nullptr, &attr);
+    const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task}};
+    ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
+    ffrt_wait_deps(&wait);
+    if (a != 1) {
+        result += 1;
+    }
+    ffrt_task_attr_destroy(&attr);
+    ffrt_task_handle_destroy(task);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value SubmitFTest001(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    int a = 0;
+    ffrt_task_attr_t attr;
+    ffrt_task_attr_init(&attr);
+    ffrt_submit_f(OnePlusForTest, &a, nullptr, nullptr, &attr);
+    ffrt_wait();
+    if (a != 1) {
+        result += 1;
+    }
+    ffrt_task_attr_destroy(&attr);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -3857,6 +3943,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "queueApiTest011", nullptr, QueueApiTest011, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueApiTest012", nullptr, QueueApiTest012, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueApiTest013", nullptr, QueueApiTest013, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "queueApiTest014", nullptr, QueueApiTest014, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "queueApiTest015", nullptr, QueueApiTest015, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueCancelTest001", nullptr, QueueCancelTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueCancelTest003", nullptr, QueueCancelTest003, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueCancelTest004", nullptr, QueueCancelTest004, nullptr, nullptr, nullptr, napi_default, nullptr },
@@ -3892,6 +3980,8 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr },
         { "submitHBasicTest001", nullptr, SubmitHBasicTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitHBasicTest002", nullptr, SubmitHBasicTest002, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "submitHFTest001", nullptr, SubmitHFTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "submitFTest001", nullptr, SubmitFTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitHInDependEmptyTest", nullptr, SubmitHInDependEmptyTest, nullptr, nullptr, nullptr,
             napi_default, nullptr },
         { "submitHInDependNullptrTest", nullptr, SubmitHInDependNullptrTest, nullptr, nullptr, nullptr,

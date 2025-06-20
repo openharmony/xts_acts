@@ -1092,5 +1092,195 @@ export default function fontTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_SetTextStyleBadgeType_001
+     * @tc.name       : testOHDrawingSetTextStyleBadgeType001
+     * @tc.desc       : test OHDrawingSetTextStyleBadgeType001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingSetTextStyleBadgeType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingSetTextStyleBadgeType001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_SetTextStyleBadgeType_002
+     * @tc.name       : testOHDrawingSetTextStyleBadgeType002
+     * @tc.desc       : test OHDrawingSetTextStyleBadgeType002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingSetTextStyleBadgeType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingSetTextStyleBadgeType002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_001
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText001
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      expect(result[4]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_002
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText002
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_003
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText003
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_004
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText004
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText004();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_005
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText005
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText005
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText005();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_006
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText006
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText006
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText006();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_007
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText007
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText007
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText007();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_008
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText008
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText008
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText008();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_TypographyHandlerAddEncodedText_009
+     * @tc.name       : testOHDrawingTypographyHandlerAddEncodedText009
+     * @tc.desc       : test OHDrawingTypographyHandlerAddEncodedText009
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingTypographyHandlerAddEncodedText009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingTypographyHandlerAddEncodedText009();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
   })
 }

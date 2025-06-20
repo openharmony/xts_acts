@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
@@ -73,7 +73,7 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for
      *               the layout of the child components when all of the components set padding
      */
-    it('testWrapWrapFlexPadTextPad', 0, async () => {
+    it('testWrapWrapFlexPadTextPad',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapFlexPadTextPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextPadding', value: 10
@@ -126,7 +126,7 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for the layout
      *               of the child components when the parent component set padding and the child components set margin
      */
-    it('testWrapWrapFlexPadTextMargin', 0, async () => {
+    it('testWrapWrapFlexPadTextMargin',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapFlexPadTextMargin] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 20
@@ -173,7 +173,7 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
      *               of the child components when the parent component set padding and the child components set margin
      *               and padding
      */
-    it('testWrapWrapFlexPadTextMarPad', 0, async () => {
+    it('testWrapWrapFlexPadTextMarPad',  Level.LEVEL0, async () => {
       console.info('[testWrapWrapFlexPadTextMarPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 10

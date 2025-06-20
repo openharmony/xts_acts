@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey010
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey010', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey010',  Level.LEVEL0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('stack');
       let obj: ESObject = JSON.parse(strJson);
@@ -78,7 +78,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey020
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey020', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey020',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('stack1');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd stack1 component obj is: " + JSON.stringify(obj));
@@ -94,7 +94,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey030
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey030', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey030',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('stack2');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd stack2 component obj is: " + JSON.stringify(obj));
@@ -109,7 +109,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey040
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey040', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey040',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('stack3');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd stack3 component obj is: " + JSON.stringify(obj));
@@ -123,7 +123,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey050
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey050', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey050',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('stack4');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd stack4 component obj is: " + JSON.stringify(obj));
@@ -138,7 +138,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey060
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey060', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey060',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('stack5');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd stack5 component obj is: " + JSON.stringify(obj));
@@ -153,7 +153,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey070
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey070', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey070',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('stack6');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd stack6 component obj is: " + JSON.stringify(obj));
@@ -168,7 +168,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey080
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey080', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey080',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('stack7');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd stack7 component obj is: " + JSON.stringify(obj));
@@ -183,7 +183,7 @@ export default function StackJsunit() {
      * @tc.name testStackGetInspectorByKey090
      * @tc.desc aceEtsTest
      */
-    it('testStackGetInspectorByKey090', 0, async (done: Function) => {
+    it('testStackGetInspectorByKey090',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('stack8');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd stack8 component obj is: " + JSON.stringify(obj));

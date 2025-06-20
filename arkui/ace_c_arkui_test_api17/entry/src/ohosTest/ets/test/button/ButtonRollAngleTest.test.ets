@@ -44,7 +44,7 @@ export default function buttonRollAngleTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('buttonRollAngleTest001', Level.LEVEL0, async (done: Function) => {
+    it('buttonRollAngleTest001', Level.LEVEL1, async (done: Function) => {
       await penClickEvent('RollAngleTestButton')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('RollAngleTestButton').$attrs.backgroundColor).assertEqual('#FF00FF00')

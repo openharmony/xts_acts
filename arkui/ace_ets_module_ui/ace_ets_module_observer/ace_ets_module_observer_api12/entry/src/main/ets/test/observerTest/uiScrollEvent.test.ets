@@ -53,7 +53,7 @@ export default function uiScrollEvent() {
      * @tc.type
      * @tc.size
      */
-    it('uiScrollEvent_0100', 0, async (done: Function) => {
+    it('uiScrollEvent_0100', Level.LEVEL0, async (done: Function) => {
       console.info('uiScrollEvent_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

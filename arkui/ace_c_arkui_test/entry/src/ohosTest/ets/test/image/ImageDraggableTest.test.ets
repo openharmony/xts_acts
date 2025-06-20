@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageDraggableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageDraggable001', 0, async (done: Function) => {
+    it('testImageDraggable001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageDraggable001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageDraggableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageDraggable002', 0, async (done: Function) => {
+    it('testImageDraggable002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageDraggable002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageDraggableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageDraggable003', 0, async (done: Function) => {
+    it('testImageDraggable003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageDraggable003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageDraggableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageDraggable004', 0, async (done: Function) => {
+    it('testImageDraggable004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageDraggable004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageDraggableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageDraggable005', 0, async (done: Function) => {
+    it('testImageDraggable005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageDraggable005()).assertEqual(0)
       done()
     })

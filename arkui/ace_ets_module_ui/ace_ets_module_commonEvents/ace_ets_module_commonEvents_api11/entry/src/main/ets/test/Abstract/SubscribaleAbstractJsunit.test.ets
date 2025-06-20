@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function SubscribaleAbstractJsunit() {
   describe('SubscribaleAbstract', () =>{
@@ -22,7 +22,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement SubscribaleAbstract  setOrCreate validation
     * @tc.desc    Function test
     */
-    it('stateManagement_SubscribaleAbstract_addOwningProperty_0100', 0, (done:Function) =>{
+    it('stateManagement_SubscribaleAbstract_addOwningProperty_0100', Level.LEVEL0, (done:Function) =>{
       done();
       return;
       /*
@@ -45,7 +45,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement ISinglePropertyChangeSubscriber  hasChanged validation
     * @tc.desc    Function test
     */
-    it('stateManagement_ISinglePropertyChangeSubscriber_hasChanged_0100', 0, (done:Function) =>{
+    it('stateManagement_ISinglePropertyChangeSubscriber_hasChanged_0100', Level.LEVEL0, (done:Function) =>{
       done();
       return;
       /*
@@ -66,7 +66,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement PersistentStorage   validation
     * @tc.desc    Function test
     */
-    it('stateManagement_PersistentStorage_0100', 0, (done:Function) =>{
+    it('stateManagement_PersistentStorage_0100', Level.LEVEL0, (done:Function) =>{
       done();
       return;
       /*
@@ -93,7 +93,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement IPropertySubscriber   validation
     * @tc.desc    Function test
     */
-    it('stateManagement_IPropertySubscriber_0100', 0, (done:Function) =>{
+    it('stateManagement_IPropertySubscriber_0100', Level.LEVEL0, (done:Function) =>{
       done();
       return;
       /*
@@ -112,7 +112,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement stateManagement_SyncedPropertyOneWay_0100   validation
     * @tc.desc    Function test
     */
-    it('stateManagement_SyncedPropertyOneWay_0100', 0, (done:Function) =>{
+    it('stateManagement_SyncedPropertyOneWay_0100', Level.LEVEL0, (done:Function) =>{
       done();
       return;
       /*
@@ -135,7 +135,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement SyncedPropertyTwoWay   validation
     * @tc.desc    Function test
     */
-    it('stateManagement_SyncedPropertyTwoWay_0100', 0, (done:Function) =>{
+    it('stateManagement_SyncedPropertyTwoWay_0100', Level.LEVEL0, (done:Function) =>{
       done();
       return;
       /*

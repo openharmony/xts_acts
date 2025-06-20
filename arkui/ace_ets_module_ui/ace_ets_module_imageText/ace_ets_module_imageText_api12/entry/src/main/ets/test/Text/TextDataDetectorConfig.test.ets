@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -50,7 +50,7 @@ export default function TextDataDetectorConfig() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextDataDetectorConfig_0010', 0, async (done: Function) => {
+    it('TextDataDetectorConfig_0010',  Level.LEVEL0, async (done: Function) => {
       console.info('TextDataDetectorConfig_0010 START');
       let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
       expect(""+JSON.parse(JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig).color).assertEqual('#FF0000FF');
@@ -66,7 +66,7 @@ export default function TextDataDetectorConfig() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextDataDetectorConfig_0020', 0, async (done: Function) => {
+    it('TextDataDetectorConfig_0020',  Level.LEVEL0, async (done: Function) => {
       console.info('TextDataDetectorConfig_0020 START');
       let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
       expect(""+JSON.parse(JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig).decoration.type).assertEqual('1');
@@ -82,7 +82,7 @@ export default function TextDataDetectorConfig() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextDataDetectorConfig_0030', 0, async (done: Function) => {
+    it('TextDataDetectorConfig_0030',  Level.LEVEL0, async (done: Function) => {
       console.info('TextDataDetectorConfig_0030 START');
       let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
       expect(""+JSON.parse(JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig).decoration.color).assertEqual('#FFFF0000');
@@ -98,7 +98,7 @@ export default function TextDataDetectorConfig() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextDataDetectorConfig_0040', 0, async (done: Function) => {
+    it('TextDataDetectorConfig_0040',  Level.LEVEL0, async (done: Function) => {
       console.info('TextDataDetectorConfig_0040 START');
       let TextDataDetectorConfig_1 = getInspectorByKey('text_dataDetectorConfig');
       expect(""+JSON.parse(JSON.parse(TextDataDetectorConfig_1).$attrs.dataDetectorConfig).decoration.style).assertEqual('0');
