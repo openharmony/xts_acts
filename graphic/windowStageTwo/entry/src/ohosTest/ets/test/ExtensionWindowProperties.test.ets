@@ -809,7 +809,7 @@ export default function extensionWindowPropertiesTest() {
           }
         };
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
-        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentHidePage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -885,7 +885,7 @@ export default function extensionWindowPropertiesTest() {
         };
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
         mainWindow.on("uiExtensionSecureLimitChange", callback2);
-        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentHidePage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -958,7 +958,7 @@ export default function extensionWindowPropertiesTest() {
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
         mainWindow.off("uiExtensionSecureLimitChange", callback1);
         mainWindow.on("uiExtensionSecureLimitChange", callback2);
-        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentHidePage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1026,7 +1026,7 @@ export default function extensionWindowPropertiesTest() {
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
         mainWindow.on("uiExtensionSecureLimitChange", callback2);
         mainWindow.off("uiExtensionSecureLimitChange");
-        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentHidePage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1091,7 +1091,7 @@ export default function extensionWindowPropertiesTest() {
           mainWindow.off("uiExtensionSecureLimitChange");
         };
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
-        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage2');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentHidePage2');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1175,7 +1175,7 @@ export default function extensionWindowPropertiesTest() {
           }
         };
         subWindow.on("uiExtensionSecureLimitChange", callback1);
-        await subWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await subWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentHidePage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1247,7 +1247,7 @@ export default function extensionWindowPropertiesTest() {
           }
         };
         subWindow.on("uiExtensionSecureLimitChange", callback1);
-        await subWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await subWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentHidePage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));

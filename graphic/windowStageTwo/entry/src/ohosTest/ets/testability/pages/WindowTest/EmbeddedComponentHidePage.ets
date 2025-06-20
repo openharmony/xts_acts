@@ -21,7 +21,7 @@ struct EmbeddedComponentPage {
   @State message: string = 'Message: '
   private want: Want = {
     bundleName: 'com.example.myapplication',
-    abilityName: 'ExampleEmbeddedAbility',
+    abilityName: 'EmbeddedHideTestAbility',
     parameters: {
       'ohos.extension.processMode.hostInstance': 'true',
       'reason': 'back'
