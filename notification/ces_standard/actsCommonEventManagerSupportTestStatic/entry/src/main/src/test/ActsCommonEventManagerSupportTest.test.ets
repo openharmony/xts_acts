@@ -754,22 +754,9 @@ export default function ActsCommonEventManagerSupportTest() {
     //   hilog.info(domain,TAG, `SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST END`)
 
 
-    // /*
-    //  * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2900
-    //  * @tc.name      : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2900
-    //  * @tc.desc      : SECOND_MOUNTED common event
-    //  */
-    // //需求编号:SR20250614428594
-    // it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> =>{
-    //   hilog.info(domain,TAG, `SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2600 START`)
-    //   expect(commonEventManager.Support.COMMON_EVENT_SECOND_MOUNTED  as string).assertEqual('usual.event.SECOND_MOUNTED')
-    //   hilog.info(domain,TAG, `SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2600 END`)
-    //   done()
-    // })
-
     /*
      * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_3000
-     * @tc.name      :  SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_3000
+     * @tc.name      : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_3000
      * @tc.desc      : enter/exit force sleep common event
      */
     it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_3000',

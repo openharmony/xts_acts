@@ -191,6 +191,8 @@ export default function ActsNotificationEmitterTest() {
         done();
       }
     })
+
+    //DTS2025060627133
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2000
      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2000
@@ -199,7 +201,6 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    //DTS2025060627133
     it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_2000';
       let eventId20:string = ''
@@ -1513,6 +1514,7 @@ export default function ActsNotificationEmitterTest() {
         done();
       })
 
+    //DTS2025060627133
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_0800
      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_0800
@@ -1521,7 +1523,6 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    //DTS2025060627133
     it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_0800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_0800';
       let eventId08:string = ''
@@ -1724,6 +1725,7 @@ export default function ActsNotificationEmitterTest() {
         done();
       })
 
+    //DTS2025060627133
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_3200
      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_3200
@@ -1732,7 +1734,6 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    //DTS2025060627133
     it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_3200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_3200';
       let eventId32:string = ''
@@ -2867,6 +2868,8 @@ export default function ActsNotificationEmitterTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       })
+
+    //DTS2025060627133
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_6700
      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_6700
@@ -2875,7 +2878,6 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    //DTS2025060627133
     it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_6700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_6700';
       let eventId67 = ''

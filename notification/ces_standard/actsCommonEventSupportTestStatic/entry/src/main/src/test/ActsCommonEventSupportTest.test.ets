@@ -233,12 +233,12 @@ export default function ActsCommonEventSupportTest() {
     })
 
     /*
-     * @tc.number    : Sub_Notification_Ces_Publish_Support_Static_3200
-     * @tc.name      : Sub_Notification_Ces_Publish_Support_Static_3200
+     * @tc.number    : Sub_Notification_Ces_Publish_Support_Static_3100
+     * @tc.name      : Sub_Notification_Ces_Publish_Support_Static_3100
      * @tc.desc      : Bluetooth
      */
-    it('Sub_Notification_Ces_Publish_Support_Static_3200',TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> =>{
-      hilog.info(domain,TAG, `Sub_Notification_Ces_Publish_Support_Static_3200 START`)
+    it('Sub_Notification_Ces_Publish_Support_Static_3100',TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> =>{
+      hilog.info(domain,TAG, `Sub_Notification_Ces_Publish_Support_Static_3100 START`)
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE as string).assertEqual('usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE')
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE as string).assertEqual('usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE')
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE as string).assertEqual('usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE')
@@ -262,7 +262,7 @@ export default function ActsCommonEventSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ as string).assertEqual('usual.event.bluetooth.remotedevice.CONNECT_REQ')
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY as string).assertEqual('usual.event.bluetooth.remotedevice.CONNECT_REPLY')
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL as string).assertEqual('usual.event.bluetooth.remotedevice.CONNECT_CANCEL')
-      hilog.info(domain,TAG, `Sub_Notification_Ces_Publish_Support_Static_3200 END`)
+      hilog.info(domain,TAG, `Sub_Notification_Ces_Publish_Support_Static_3100 END`)
       done()
     })
 

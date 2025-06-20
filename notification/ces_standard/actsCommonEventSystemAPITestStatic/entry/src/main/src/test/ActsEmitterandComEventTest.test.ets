@@ -209,6 +209,7 @@ export default function ActsEmitterandComEventTest() {
         done()
       })
 
+    //问题单号:DTS2025061412066
     /**
      * @tc.number     : Sub_NotificationAns_CommonEvent_Basic_Static_0002
      * @tc.name       : Sub_NotificationAns_CommonEvent_Basic_Static_0002
@@ -217,7 +218,6 @@ export default function ActsEmitterandComEventTest() {
      * @tc.type       : Function test
      * @tc.level      : Level 0
      */
-    //问题单号:DTS2025061412066
     it('Sub_NotificationAns_CommonEvent_Basic_Static_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         let Tag: string = 'Sub_NotificationAns_CommonEvent_Basic_Static_0002==>'
@@ -524,6 +524,7 @@ export default function ActsEmitterandComEventTest() {
       done()
     })
 
+    //问题单号：DTS2025051640226
     /**
      * @tc.number     : Sub_Notification_Emitter_Publish_Sendable_Static_0001
      * @tc.name       : Sub_Notification_Emitter_Publish_Sendable_Static_0001
@@ -532,7 +533,6 @@ export default function ActsEmitterandComEventTest() {
      * @tc.type       : Function test
      * @tc.level      : Level 2
      */
-    //问题单号：DTS2025051640226
     it('Sub_Notification_Emitter_Publish_Sendable_Static_0001',  TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
       let Tag :string = 'Sub_Notification_Emitter_Publish_Sendable_Static_0001==>'
       //调用持续订阅指定事件接口
@@ -596,6 +596,8 @@ export default function ActsEmitterandComEventTest() {
       expect(onConsume_number).assertEqual(0)
       done()
     })
+
+     //问题单号：DTS2025051640226
     /**
      * @tc.number     : Sub_Notification_Emitter_Publish_Sendable_Static_0003
      * @tc.name       : Sub_Notification_Emitter_Publish_Sendable_Static_0003
@@ -604,7 +606,6 @@ export default function ActsEmitterandComEventTest() {
      * @tc.type       : Function test
      * @tc.level      : Level 2
      */
-    //问题单号：DTS2025051640226
     it('Sub_Notification_Emitter_Publish_Sendable_Static_0003', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       let Tag :string = 'Sub_Notification_Emitter_Publish_Sendable_Static_0003==>'
 
@@ -624,6 +625,8 @@ export default function ActsEmitterandComEventTest() {
       expect(onConsume_number).assertEqual(1)
       done()
     })
+
+    //问题单号：DTS2025051640226
     /**
      * @tc.number     : Sub_Notification_Emitter_Publish_Sendable_Static_0004
      * @tc.name       : Sub_Notification_Emitter_Publish_Sendable_Static_0004
@@ -632,7 +635,6 @@ export default function ActsEmitterandComEventTest() {
      * @tc.type       : Function test
      * @tc.level      : Level 0
      */
-    //问题单号：DTS2025051640226
     it('Sub_Notification_Emitter_Publish_Sendable_Static_0004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
       let Tag :string = 'Sub_Notification_Emitter_Publish_Sendable_Static_0004==>'
 

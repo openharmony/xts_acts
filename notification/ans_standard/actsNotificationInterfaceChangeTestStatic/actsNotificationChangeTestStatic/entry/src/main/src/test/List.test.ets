@@ -1,6 +1,6 @@
-import  ActsNotificationContentTest from "./notificationContent.test";
-import  ActsNotificationRequestTest from "./notificationRequest.test";
-import  ActsNotificationwantAgentInfoTest from "./notificationWantAgent.test";
+import  ActsNotificationContentTest from "./NotificationContent.test";
+import  ActsNotificationRequestTest from "./NotificationRequest.test";
+import  ActsNotificationwantAgentInfoTest from "./NotificationWantAgent.test";
 export default function testsuite() {
   ActsNotificationRequestTest();
   ActsNotificationContentTest();

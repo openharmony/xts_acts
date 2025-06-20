@@ -142,12 +142,13 @@ export default function ActsCommonEventSystemAPITest() {
 
         console.info(`${Tag} Sub_Notification_Ces_StaticEvent_Config_1300 END`);
       })
+
+    //问题单号：DTS2025060627133
     /*
      * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_278
      * @tc.name: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_278
      * @tc.desc: test function publishAsUser
      */
-    //问题单号：DTS2025060627133
     // it('Sub_Notification_Ces_Publish_CommonEvent_Static_7900_278', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> =>  {
     //   let Tag :string ='Sub_Notification_Ces_StaticEvent_Config_Static_1300'
     //   //构造commonEventManager.publish401错误码
@@ -387,13 +388,12 @@ export default function ActsCommonEventSystemAPITest() {
         });
       })
 
-
+    //问题单号：DTS2025060627133
     /*
      * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_280
      * @tc.name: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_280
      * @tc.desc: test function publishAsUser
      */
-    //问题单号：DTS2025060627133
     // it('Sub_Notification_Ces_Publish_CommonEvent_Static_7900_280', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
     //   let TAG :string ='Sub_Notification_Ces_Publish_CommonEvent_Static_7900_280'
     //   let id :number = 1
@@ -448,12 +448,12 @@ export default function ActsCommonEventSystemAPITest() {
     //
     // })
 
+    //问题单号：DTS2025060627133
     /*
      * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_281
      * @tc.name: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_281
      * @tc.desc: test function publishAsUser
      */
-    //问题单号：DTS2025060627133
     // it('Sub_Notification_Ces_Publish_CommonEvent_Static_7900_281', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> =>{
     // let TAG :string ='Sub_Notification_Ces_Publish_CommonEvent_Static_7900_281'
     //   try {
@@ -530,12 +530,12 @@ export default function ActsCommonEventSystemAPITest() {
     //
     // })
 
+    //问题单号：DTS2025060627133
     /*
      * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_284
      * @tc.name: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_284
      * @tc.desc: test function publishAsUser
      */
-    //问题单号：DTS2025060627133
     // it('Sub_Notification_Ces_Publish_CommonEvent_Static_7900_284',  TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> =>{
     //   let Tag :string ='Sub_Notification_Ces_Publish_CommonEvent_Static_7900_284'
     //   try {
@@ -737,12 +737,14 @@ export default function ActsCommonEventSystemAPITest() {
         });
         await Utils.msSleep(2000)
       })
+
+
+     //问题单号：DTS2025061850295
     /*
      * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_282
      * @tc.name: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_282
      * @tc.desc: test function publishAsUser
      */
-    //问题单号：DTS2025061850295
     it('Sub_Notification_Ces_Publish_CommonEvent_Static_7900_282', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let Tag: string = 'Sub_Notification_Ces_Publish_CommonEvent_Static_7900_282'

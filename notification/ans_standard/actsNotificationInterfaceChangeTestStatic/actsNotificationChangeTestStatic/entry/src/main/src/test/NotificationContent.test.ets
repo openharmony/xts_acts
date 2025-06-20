@@ -13,77 +13,38 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, TestType, Size, Level, beforeAll } from "../../../hypium/index";
-import { Component, Driver, ON, On, MatchPattern, MouseButton, WindowMode, UIElementInfo, UiDirection, PointerMatrix, DisplayRotation, loadAndSetUpUiTest } from '@ohos.UiTest'
-import notificationManager from '@ohos.notificationManager';
-import hilog from '@ohos.hilog';
-import image from '@ohos.multimedia.image';
 import { BusinessError } from '@ohos.base';
+import notificationManager from '@ohos.notificationManager'
+import { describe, it, expect, TestType, Size, Level } from "../../../hypium/index";
+import image from '@ohos.multimedia.image';
+import hilog from '@ohos.hilog';
 import Utils from './Util.test';
 import common from '@ohos.app.ability.common';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import UIAbility from '@ohos.app.ability.UIAbility';
-let domain: number = 0x0000; //日志标识,0x0000作为测试框架的业务标识
-let tag: string = 'testTag'; //日志标识字符串,作为tag标识当前runner类下的测试行为
-let testAbilityContext:common.UIAbilityContext;
-let bundle_name: string = 'com.example.notificationchangetest.static';
 
-export default function ActsNotificationRequestTest() {
-  describe('ActsNotificationRequestTest', () => {
-    const TAG = 'ActsNotificationRequestTest ===>';
-    beforeAll(() => {
-      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
-      loadAndSetUpUiTest();
-      let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName:"entry",
-        onAbilityCreate: (abilitys : UIAbility) : void => {
-          testAbilityContext = abilitys.context
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
+export default function ActsNotificationContentTest() {
+  describe('ActsNotificationContentTest', () => {
 
-        },
-      }, (err : BusinessError) : void => {
-        if (err != null ) {
-          hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
-      await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b " + bundle_name)
-      await Utils.msSleep(2000)
-      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
-    })
-    /**
-     * @tc.number: Acts_NotificationRequest_Static_0100
-     * @tc.name: Acts_NotificationRequest_Static_0100
-     * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.SOCIAL_COMMUNICATION.
-     */
+    const TAG = 'ActsNotificationContentTest ===>';
+    let ctx: common.UIAbilityContext;
+
     //DTS2025060627133
-    it('Acts_NotificationRequest_Static_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    /**
+     * @tc.number: Acts_NotificationContent_Static_0100
+     * @tc.name: Acts_NotificationContent_Static_0100
+     * @tc.desc: Set notificationContentType attribute parameters
+     *           notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT.
+     */
+    it('Acts_NotificationContent_Static_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
-        const TEST_CASE_NAME:string = 'Acts_NotificationRequest_Static_0100';
+        const TEST_CASE_NAME = 'Acts_NotificationContent_Static_0100';
 
-        notificationManager.requestEnableNotification(testAbilityContext,(err) => {
+        notificationManager.requestEnableNotification(ctx, (err: BusinessError) => {
           if (err) {
-            console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`Acts_NotificationContent_Static_0100 requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
           } else {
-            console.info("requestEnableNotification success");
+            console.info("Acts_NotificationContent_Static_0100 requestEnableNotification success");
           }
         });
-
-        await Utils.msSleep(1500);
-        let driver = Driver.create();
-        hilog.info(0x0000, 'testTag', `${TAG} driver is ${JSON.stringify(driver)}`);
-        await driver.assertComponentExist(ON.text('允许'));
-        let button = await driver.findComponent(ON.text('允许'));
-        hilog.info(0x0000, 'testTag',`${TAG} button is ${JSON.stringify(button)}`);
-        if (button !== null) {
-          await button.click();
-          await Utils.msSleep(1500);
-        } else {
-          hilog.info(0x0000, 'testTag',`button is null`)
-        }
 
         let notificationRequest: notificationManager.NotificationRequest = {
           id: 1,
@@ -93,7 +54,7 @@ export default function ActsNotificationRequestTest() {
               title: 'text_title',
               text: 'text_text',
               additionalText: ''
-            }as notificationManager.NotificationBasicContent
+            } as notificationManager.NotificationBasicContent
           } as notificationManager.NotificationContent,
           creatorBundleName: "creatorBundleName",
           creatorUid: 100,
@@ -101,11 +62,10 @@ export default function ActsNotificationRequestTest() {
           creatorUserId: 100,
           hashCode: "hashCode",
           source: 0,
-          deviceId: "1",
+          deviceId: undefined,
           notificationFlags: undefined,
           agentBundle: undefined,
           appInstanceKey: undefined,
-          notificationSlotType: notificationManager.SlotType.SOCIAL_COMMUNICATION
         }
         hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
         try {
@@ -115,27 +75,28 @@ export default function ActsNotificationRequestTest() {
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
             done();
           })
-        } catch (err) {
-          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish22 fail,result_1 is : %{public}s', JSON.stringify(err));
+        } catch (err: BusinessError) {
+          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish22 fail,result is : %{public}s', JSON.stringify(err));
           expect().assertFail();
           hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test22 case end`);
           done();
         }
       })
 
-
     /**
-     * @tc.number: Acts_NotificationRequest_Static_0200
-     * @tc.name: Acts_NotificationRequest_Static_0200
-     * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.SERVICE_INFORMATION.
+     * @tc.number: Acts_NotificationContent_Static_0200
+     * @tc.name: Acts_NotificationContent_Static_0200
+     * @tc.desc: Set notificationContentType attribute parameters
+     *           notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT.
      */
-    it('Acts_NotificationRequest_Static_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it('Acts_NotificationContent_Static_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
-        const TEST_CASE_NAME:string = 'Acts_NotificationRequest_Static_0200';
+        const TEST_CASE_NAME = 'Acts_NotificationContent_Static_0200';
 
         let notificationRequest: notificationManager.NotificationRequest = {
           id: 1,
-          content: {
+          content:
+          {
             notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
             longText: {
               title: '',
@@ -156,7 +117,6 @@ export default function ActsNotificationRequestTest() {
           notificationFlags: undefined,
           agentBundle: undefined,
           appInstanceKey: undefined,
-          notificationSlotType: notificationManager.SlotType.SERVICE_INFORMATION
         }
         hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
         try {
@@ -166,22 +126,24 @@ export default function ActsNotificationRequestTest() {
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
             done();
           })
-        } catch (err:BusinessError) {
-          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result1 is : %{public}s', JSON.stringify(err));
+        } catch (err: BusinessError) {
+          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result1 is : %{public}s',
+            JSON.stringify(err));
           expect(err.code).assertEqual(401);
           hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
           done();
         }
       })
+
     /**
-     * @tc.number: Acts_NotificationRequest_Static_0300
-     * @tc.name: Acts_NotificationRequest_Static_0300
-     * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.CONTENT_INFORMATION.
+     * @tc.number: Acts_NotificationContent_Static_0300
+     * @tc.name: Acts_NotificationContent_Static_0300
+     * @tc.desc: Set notificationContentType attribute parameters
+     *           notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE.
      */
-    //DTS2025060627133
-    it('Acts_NotificationRequest_Static_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it('Acts_NotificationContent_Static_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
-        const TEST_CASE_NAME:string = 'Acts_NotificationRequest_Static_0300';
+        const TEST_CASE_NAME = 'Acts_NotificationContent_Static_0300';
 
         const color = new ArrayBuffer(60000);
         let bufferArr = new Uint8Array(color);
@@ -192,16 +154,15 @@ export default function ActsNotificationRequestTest() {
           bufferArr[i] = 100;
         }
         let opts: image.InitializationOptions = {
-          editable: true, pixelFormat: image.PixelMapFormat.RGB_565, size: {
+          editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: {
             height: 100, width: 150
           }
         };
         let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
-        await pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
-          console.info(`=====size: ==== + ${JSON.stringify(imageInfo.size)}`);
+        pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} =====size: ====  ${imageInfo.size}`);
         }).catch((err: BusinessError): void => {
           console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
-          return;
         })
         let notificationRequest: notificationManager.NotificationRequest = {
           id: 1,
@@ -214,7 +175,7 @@ export default function ActsNotificationRequestTest() {
               briefText: 'text_briefText',
               expandedTitle: 'text_expand',
               picture: pixelMap
-            }as notificationManager.NotificationPictureContent
+            } as notificationManager.NotificationPictureContent
           } as notificationManager.NotificationContent,
           creatorBundleName: "creatorBundleName",
           creatorUid: 100,
@@ -226,34 +187,37 @@ export default function ActsNotificationRequestTest() {
           notificationFlags: undefined,
           agentBundle: undefined,
           appInstanceKey: undefined,
-          notificationSlotType: notificationManager.SlotType.CONTENT_INFORMATION
         }
         hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
         try {
           await Utils.msSleep(2500);
           notificationManager.publish(notificationRequest, (data) => {
-            hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
+            hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
+              JSON.stringify(data));
             expect(data).assertEqual(null);
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
             done();
           })
-        } catch (err:BusinessError) {
-          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
-          expect().assertFail();
+        } catch (err: BusinessError) {
+          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
+            JSON.stringify(err));
+          expect(err.code).assertEqual(401);
           hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
           done();
         }
       })
 
-    /**
-     * @tc.number: Acts_NotificationRequest_Static_0400
-     * @tc.name: Acts_NotificationRequest_Static_0400
-     * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.OTHER_TYPES.
-     */
     //DTS2025060627133
-    it('Acts_NotificationRequest_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    /**
+     * @tc.number: Acts_NotificationContent_Static_0400
+     * @tc.name: Acts_NotificationContent_Static_0400
+     * @tc.desc: Set notificationContentType attribute parameters
+     *           notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE.
+     */
+    
+    it('Acts_NotificationContent_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
-        const TEST_CASE_NAME:string = 'Acts_NotificationRequest_Static_0400';
+        const TEST_CASE_NAME = 'Acts_NotificationContent_Static_0400';
 
         let notificationRequest: notificationManager.NotificationRequest = {
           id: 1,
@@ -284,13 +248,15 @@ export default function ActsNotificationRequestTest() {
         try {
           await Utils.msSleep(2500);
           notificationManager.publish(notificationRequest, (data) => {
-            hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
+            hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
+              JSON.stringify(data));
             expect(data).assertEqual(null);
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
             done();
           })
-        } catch (err:BusinessError) {
-          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result1 is : %{public}s', JSON.stringify(err));
+        } catch (err: BusinessError) {
+          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result1 is : %{public}s',
+            JSON.stringify(err));
           expect().assertFail();
           hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
           done();

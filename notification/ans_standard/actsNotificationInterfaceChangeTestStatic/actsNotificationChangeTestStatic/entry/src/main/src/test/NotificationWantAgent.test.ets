@@ -23,9 +23,9 @@ export default function ActsNotificationwantAgentInfoTest() {
   describe('ActsNotificationwantAgentInfoTest',  ()=> {
 
     /**
-     * @tc.number Acts_WantAgentInfo_Static_0100
-     * @tc.name Verify operationType properties and getOperationType properties.
-     * @tc.desc Set wantAgent.OperationType.START_ABILITY and [wantAgent.WantAgentFlags.ONE_TIME_FLAG].
+     * @tc.number: Acts_WantAgentInfo_Static_0100
+     * @tc.name: Acts_WantAgentInfo_Static_0100
+     * @tc.desc:Set wantAgent.OperationType.START_ABILITY and [wantAgent.WantAgentFlags.ONE_TIME_FLAG].
      */
     it('Acts_WantAgentInfo_Static_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> =>{
@@ -79,9 +79,9 @@ export default function ActsNotificationwantAgentInfoTest() {
       });
 
     /**
-     * @tc.number Acts_WantAgentInfo_Static_0200
-     * @tc.name Acts_WantAgentInfo_Static_0200
-     * @tc.desc Set wantAgent.OperationType.START_ABILITY and [wantAgent.WantAgentFlags.NO_BUILD_FLAG].
+     * @tc.number: Acts_WantAgentInfo_Static_0200
+     * @tc.name: Acts_WantAgentInfo_Static_0200
+     * @tc.desc: Set wantAgent.OperationType.START_ABILITY and [wantAgent.WantAgentFlags.NO_BUILD_FLAG].
      */
     it('Acts_WantAgentInfo_Static_0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
@@ -135,9 +135,9 @@ export default function ActsNotificationwantAgentInfoTest() {
       });
 
     /**
-     * @tc.number Acts_WantAgentInfo_Static_0300
-     * @tc.name Acts_WantAgentInfo_Static_0300
-     * @tc.desc Set wantAgent.OperationType.START_ABILITIES and [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG].
+     * @tc.number: Acts_WantAgentInfo_Static_0300
+     * @tc.name: Acts_WantAgentInfo_Static_0300
+     * @tc.desc:Set wantAgent.OperationType.START_ABILITIES and [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG].
      */
     it('Acts_WantAgentInfo_Static_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
@@ -191,9 +191,9 @@ export default function ActsNotificationwantAgentInfoTest() {
       });
 
     /**
-     * @tc.number Acts_WantAgentInfo_Static_0400
-     * @tc.name Verify operationType properties and getOperationType properties.
-     * @tc.desc Set wantAgent.OperationType.START_SERVICE and [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG].
+     * @tc.number: Acts_WantAgentInfo_Static_0400
+     * @tc.name: Acts_WantAgentInfo_Static_0400
+     * @tc.desc: Set wantAgent.OperationType.START_SERVICE and [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG].
      */
     it('Acts_WantAgentInfo_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
@@ -247,9 +247,9 @@ export default function ActsNotificationwantAgentInfoTest() {
       });
 
     /**
-     * @tc.number Acts_WantAgentInfo_Static_0500
-     * @tc.name Verify operationType properties and getOperationType properties.
-     * @tc.desc Set wantAgent.OperationType.SEND_COMMON_EVENT and [wantAgent.WantAgentFlags.CONSTANT_FLAG].
+     * @tc.number: Acts_WantAgentInfo_Static_0500
+     * @tc.name: Acts_WantAgentInfo_Static_0500
+     * @tc.desc: Set wantAgent.OperationType.SEND_COMMON_EVENT and [wantAgent.WantAgentFlags.CONSTANT_FLAG].
      */
     it('Acts_WantAgentInfo_Static_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {

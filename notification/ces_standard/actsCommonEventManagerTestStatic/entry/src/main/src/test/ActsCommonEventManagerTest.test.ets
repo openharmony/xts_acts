@@ -507,12 +507,12 @@ export default function ActsCommonEventManagerTest() {
 
     })
 
+    //问题单号：DTS2025061412066
     /*
      * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_1800
      * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_1800
      * @tc.desc: verify the promise function
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_1800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_1800'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1800 START`)

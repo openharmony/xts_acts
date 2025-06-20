@@ -120,12 +120,12 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Publish_Cancel_Static_3300 END`)
       })
 
-    // /*
-    //      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400
-    //      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400
-    //      * @tc.desc      : Cancels a notification with the specified label and ID
-    //      */
-    //     //问题单号：DTS2025060627133
+     //问题单号：DTS2025060627133
+     /*
+      * @tc.number:SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400
+      * @tc.name:SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400
+      * @tc.desc:Cancels a notification with the specified label and ID
+      */
     // it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400'
@@ -229,12 +229,12 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Publish_Cancel_Static_3400 END`)
       })
 
-    // /*
-    //      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_Static_0300
-    //      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_Static_0300
-    //      * @tc.desc      : Cancels all notifications of the current application
-    //      */
-    //     //问题单号：DTS2025060627133
+      //问题单号：DTS2025060627133
+     /*
+      * @tc.number:SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_Static_0300
+      * @tc.name:SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_Static_0300
+      * @tc.desc:Cancels all notifications of the current application
+      */
     // it('SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_Static_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_CANCELAll_TEST_Static_0300'
@@ -325,12 +325,12 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_Static_0300 END`)
       })
 
+    //  //问题单号：DTS2025060627133
     // /*
     //  * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_Static_0400
     //  * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_Static_0400
     //  * @tc.desc      : Cancel the notification of a specified group for this application
     //  */
-    //  //问题单号：DTS2025060627133
     // it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_CANCEL_GROUP_TEST_Static_0400'
@@ -399,12 +399,12 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Enable_Query_Static_2600 END`)
       })
 
+    //     //问题单号：DTS2025060627133
     // /*
     //      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_Static_0300
     //      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_Static_0300
     //      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
     //      */
-    //     //问题单号：DTS2025060627133
     // it('SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_Static_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_Static_0300'
@@ -525,12 +525,12 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Distributed_Search_Static_1600 END`)
       })
 
-    // /*
-    //      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500
-    //      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500
-    //      * @tc.desc      : Obtains the number of all active notifications
-    //      */
-    //     //问题单号：DTS2025060627133
+       //问题单号：DTS2025060627133
+       /*
+        * @tc.number:SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500
+        * @tc.name:SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500
+        *@tc.desc      : Obtains the number of all active notifications
+        */
     // it('SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500'
@@ -547,12 +547,13 @@ export default function ActsNotificationManagerPublishTest() {
     //   console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500 END`)
     // })
     //
-    // /*
-    //  * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0600
-    //  * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0600
-    //  * @tc.desc      : Obtains an array of active notifications
-    //  */
-    //  //问题单号：DTS2025060627133
+
+     //问题单号：DTS2025060627133
+     /*
+      * @tc.number:SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0600
+      * @tc.name:SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0600
+      * @tc.desc:Obtains an array of active notifications
+      */
     // it('SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0600'
@@ -643,12 +644,12 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0300 END`)
       })
 
+    //  //问题单号：DTS2025060627133
     // /*
     //  * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400
     //  * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400
     //  * @tc.desc      : Obtains whether the template is supported by the system
     //  */
-    //  //问题单号：DTS2025060627133
     // it('SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400'
@@ -799,12 +800,12 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
+    //问题单号：DTS2025060627133
     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0310
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0310
      * @tc.desc: test publish success
      */
-    //问题单号：DTS2025060627133
     it('Sub_Notification_Ans_Publish_Publish_Static_0310', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_0310'
@@ -967,12 +968,12 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
+    //问题单号：DTS2025060627133
     /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0610
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0610
     * @tc.desc: test publish success
     */
-    //问题单号：DTS2025060627133
     it("Sub_Notification_Ans_Publish_Publish_Static_0610", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_0610'
@@ -1291,12 +1292,13 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
+
+    //问题单号：DTS2025060627133
     /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1210
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1210
     * @tc.desc: test publish success
- */
-    //问题单号：DTS2025060627133
+    */
     it(" Sub_Notification_Ans_Publish_Publish_Static_1210", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_1210'
@@ -1462,12 +1464,12 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
+    //    //问题单号：DTS2025060627133
     //    /*
     //    * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1510
     //    * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1510
     //    * @tc.desc: test publish fail
-    // */
-    //    //问题单号：DTS2025060627133
+    //    */
     //    it('Sub_Notification_Ans_Publish_Publish_Static_1510', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //      async (done: () => void): Promise<void> => {
     //        const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_1510'
@@ -1658,12 +1660,12 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
+    //问题单号：DTS2025060627133
     /*
        * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1810
        * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1810
        * @tc.desc: test publish success
     */
-    //问题单号：DTS2025060627133
     it('Sub_Notification_Ans_Publish_Publish_Static_1810', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_1810'
@@ -1891,12 +1893,12 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
+    // //问题单号：DTS2025060627133
     // /*
     //      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_2110
     //      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_2110
     //      * @tc.desc: test publish fail
     //  */
-    // //问题单号：DTS2025060627133
     // it('Sub_Notification_Ans_Publish_Publish_Static_2110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //     const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_2110'

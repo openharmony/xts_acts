@@ -54,12 +54,12 @@ export default function ActsCommonEventManagerSubscribeTest() {
       hilog.info(domain, TAG, '%{public}s', 'beforeAll end');
     })
 
+    //问题单号：DTS2025061412066
     /*
      * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_1900
      * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_1900
      * @tc.desc: verify the callback function
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_1900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_1900'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 START`)
@@ -154,12 +154,12 @@ export default function ActsCommonEventManagerSubscribeTest() {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 END`)
     })
 
+    //问题单号：DTS2025061412066
     /*
      * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
      * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
      * @tc.desc: verify the promise function
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_2000'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 START`)
@@ -237,13 +237,12 @@ export default function ActsCommonEventManagerSubscribeTest() {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 END`)
     })
 
-
+    //问题单号：DTS2025061412066
     /*
      * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
      * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
      * @tc.desc: verify the callback function
      */
-    //问题单号：DTS2025061412066
     it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100 START`)
 
@@ -328,12 +327,13 @@ export default function ActsCommonEventManagerSubscribeTest() {
       }
     })
 
+    //问题单号：DTS2025061412066
     /*
      * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
      * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
      * @tc.desc: verify the callback function
      */
-    //问题单号：DTS2025061412066
+
     it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 START`)
 

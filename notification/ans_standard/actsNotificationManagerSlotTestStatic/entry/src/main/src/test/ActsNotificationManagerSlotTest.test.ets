@@ -283,7 +283,7 @@ export default function ActsNotificationManagerSlotTest() {
 
     /*
      * @tc.number    : Sub_Notification_Ans_Slot_CreateSlot_Static_8650
-     * @tc.name      : aSub_Notification_Ans_Slot_CreateSlot_Static_8650
+     * @tc.name      : Sub_Notification_Ans_Slot_CreateSlot_Static_8650
      * @tc.desc      : NotificationSlot for other purposes
      */
     it('Sub_Notification_Ans_Slot_CreateSlot_Static_8650', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
@@ -441,12 +441,13 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1600 END')
     })
 
+
+    //DTS2025060627133
     /*
      * @tc.number    : Sub_Notification_Ans_Slot_GetSlot_Static_1700
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1700
      * @tc.desc      : Get the UNKNOWN_TYPE type slot without add
      */
-    //DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_1700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_1700 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1700 START')
@@ -1592,12 +1593,13 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'Sub_Notification_Ans_Slot_CreateSlot_Static_0250 END')
     })
 
+
+    //DTS2025060627133
     /*
      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_4900
      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_4900
      * @tc.desc      : NotificationSlot for other purposes
      */
-    //DTS2025060627133
     // it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_4900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_4900 '
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_4900 START')
@@ -1613,12 +1615,12 @@ export default function ActsNotificationManagerSlotTest() {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_4900 END')
     // })
 
+    //DTS2025060627133
     /*
      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5000
      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5000
      * @tc.desc      : Get the UNKNOWN_TYPE type slot without add
      */
-    //DTS2025060627133
     // it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5000 '
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5000 START')
@@ -1634,12 +1636,12 @@ export default function ActsNotificationManagerSlotTest() {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5000 END')
     // })
 
+    //DTS2025060627133
     /*
      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5100
      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5100
      * @tc.desc      : Get all NotificationSlot without add
      */
-    //DTS2025060627133
     // it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5100 '
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5100 START')
@@ -1655,12 +1657,12 @@ export default function ActsNotificationManagerSlotTest() {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5100 END')
     // })
 
+    //DTS2025060627133
     /*
      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5200
      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5200
      * @tc.desc      : Remove the UNKNOWN_TYPE type slot without add
      */
-    //DTS2025060627133
     // it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5200 '
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5200 START')
@@ -1676,12 +1678,12 @@ export default function ActsNotificationManagerSlotTest() {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5200 END')
     // })
 
+    //DTS2025060627133
     /*
      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5300
      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5300
      * @tc.desc      : Removes all NotificationSlot
      */
-    //DTS2025060627133
     // it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5300 '
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_Static_5300 START')

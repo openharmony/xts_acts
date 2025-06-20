@@ -1521,11 +1521,12 @@ export default function ActsNotificationSlotTest() {
         console.info(TAG + 'Sub_Notification_Ans_Slot_CreateSlot_5800 END')
       })
 
-    // /*
-    //  * @tc.number    : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_4900
-    //  * @tc.name      : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_4900
-    //  * @tc.desc      : Get the OTHER_TYPES type slot without add
-    //  */
+    //问题单号：DTS2025060627133
+     /*
+      * @tc.number    : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_4900
+      * @tc.name      : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_4900
+      * @tc.desc      : Get the OTHER_TYPES type slot without add
+      */
     // it('SUB_NOTIFICATION_ANS_SLOT_TEST_Static_4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //     let TAG: string = 'SUB_NOTIFICATION_ANS_SLOT_TEST_Static_4900'
@@ -1549,11 +1550,13 @@ export default function ActsNotificationSlotTest() {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_SLOT_TEST_4900 END')
     // })
     //
-    // /*
-    //  * @tc.number    : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5000
-    //  * @tc.name      : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5000
-    //  * @tc.desc      : NotificationSlot of an unknown type
-    //  */
+
+      //问题单号：DTS2025060627133
+     /*
+      * @tc.number    : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5000
+      * @tc.name      : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5000
+      * @tc.desc      : NotificationSlot of an unknown type
+      */
     // it('SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_SLOT_TEST_5000 START')
@@ -1569,11 +1572,13 @@ export default function ActsNotificationSlotTest() {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_SLOT_TEST_5000 END')
     // })
     //
-    // /*
-    //  * @tc.number    : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5100
-    //  * @tc.name      : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5100
-    //  * @tc.desc      : Get all NotificationSlot without add
-    //  */
+
+    //问题单号：DTS2025060627133
+     /*
+      * @tc.number    : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5100
+      * @tc.name      : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5100
+      * @tc.desc      : Get all NotificationSlot without add
+      */
     // it('SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_SLOT_TEST_5100 START')
@@ -1589,11 +1594,13 @@ export default function ActsNotificationSlotTest() {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_SLOT_TEST_5100 END')
     // })
     //
-    // /*
-    //  * @tc.number    : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5200
-    //  * @tc.name      : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5200
-    //  * @tc.desc      : Remove the UNKNOWN_TYPE type slot without add
-    //  */
+
+      //问题单号：DTS2025060627133
+     /*
+      * @tc.number:SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5200
+      * @tc.name:SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5200
+      * @tc.desc:Remove the UNKNOWN_TYPE type slot without add
+       */
     // it('SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_SLOT_TEST_5200 START')
@@ -1609,11 +1616,13 @@ export default function ActsNotificationSlotTest() {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_SLOT_TEST_5200 END')
     // })
     //
-    // /*
-    //  * @tc.number    : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5300
-    //  * @tc.name      : SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5300
-    //  * @tc.desc      : Removes all NotificationSlot
-    //  */
+    
+     //问题单号：DTS2025060627133
+     /*
+      * @tc.number:SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5300
+      * @tc.name:SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5300
+      * @tc.desc:Removes all NotificationSlot
+      */
     // it('SUB_NOTIFICATION_ANS_SLOT_TEST_Static_5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   console.info(TAG + 'SUB_NOTIFICATION_ANS_SLOT_TEST_5300 START')
