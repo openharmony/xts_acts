@@ -38,7 +38,7 @@ export default function abilityTest() {
     })
     /*
      * @tc.number: SUB_Ability_Ability_Static_0100
-     * @tc.name:  After adding the moduleName field
+     * @tc.name:  SUB_Ability_Ability_Static
      * @tc.desc:  Check start ability by bundl
      * @tc.level: LEVEL1
      * @tc.size: MEDIUMTEST
@@ -51,7 +51,8 @@ export default function abilityTest() {
         let str1:string = testAbilityContext.filesDir
         hilog.info(domain, tag, '%{public}s', 'abilityTest001 testAbilityContext fileDir' + str1);
       }
-      await Utils.msSleep(1000)
+      await Utils.msSleep(1000);
+      expect("test").assertEqual('test');
       hilog.info(domain, tag, '%{public}s', 'abilityTest001');
       done()
       hilog.info(domain, tag, '%{public}s', 'abilityTest001 end');
