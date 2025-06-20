@@ -11,14 +11,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("webLifeCycle") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "component_life_cycle:ActsWebComponentLifeCycleTest",
-      "component_life_cycle_static:ActsWebComponentLifeCycleStaticTest",
-      "declarative_creation:ActsWebDeclarativeCreationTest",
-      "rendering_process_sharing:ActsWebRenderingProcessSharingTest",
-    ]
-  }
+import("//test/xts/tools/build/suite.gni")
+
+# xts_acts_arkts1.2/ability/ability_runtime/actsAbilitytest2
+ohos_js_app_static_suite("ActsWebLoadStatusEnhancedTwoStaticTest") {
+#   test_hap = true
+#   testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsWebLoadStatusEnhancedTwoStaticTest"
+  part_name = "webview"
+  subsystem_name = "web"
 }
+

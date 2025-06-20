@@ -16,6 +16,7 @@ group("webPageRenderingTest") {
   if (is_standard_system) {
     deps = [
       "basic_rendering:ActsWebBasicRenderingTest",
+      "basic_rendering_static:ActsWebBasicRenderingStaticTest",
       "dark_color_mode:ActsWebDarkColorModeTest",
       "same_layer_rendering:ActsWebSameLayerRenderingTest",
       "screen_capture:ActsWebScreenCaptureTest",

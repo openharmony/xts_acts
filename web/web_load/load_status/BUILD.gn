@@ -21,6 +21,7 @@ group("ActsWebLoadStatusTest") {
       "ace_load_status_enhanced_one:ActsWebLoadStatusEnhancedTest",
       "ace_load_status_enhanced_three:ActsWebLoadStatusEnhancedThreeTest",
       "ace_load_status_enhanced_two:ActsWebLoadStatusEnhancedTwoTest",
+      "ace_load_status_enhanced_two_static:ActsWebLoadStatusEnhancedTwoStaticTest",
     ]
   }
 }
