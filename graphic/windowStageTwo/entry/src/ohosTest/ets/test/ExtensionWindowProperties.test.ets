@@ -27,11 +27,14 @@ export default function extensionWindowPropertiesTest() {
     let windowStage:ohosWindow.WindowStage;
     let isPCStatus:string = '';
     let isAutoWindow:string = '';
-    
+
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+      let mainWindow = windowStage.getMainWindowSync();
+      mainWindow.resizeAsync(1500,1000);
+      mainWindow.moveWindowToAsync(1200,200);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -50,7 +53,7 @@ export default function extensionWindowPropertiesTest() {
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_UIEXTENSION_WINDOW_JS_API_0100
      * @tc.name      : testUIExtensionHostWindowProxyRect
-     * @tc.desc      : Obtain the area that the window rect 
+     * @tc.desc      : Obtain the area that the window rect
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level0
@@ -59,10 +62,10 @@ export default function extensionWindowPropertiesTest() {
       let caseName = 'testUIExtensionHostWindowProxyRectTest';
       console.log(caseName + 'start run');
       let windowClass = windowStage.getMainWindowSync();
-      windowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+      await windowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
       await sleep(2000);
       let driver = Driver.create();
-      let btn = await driver.findComponent(ON.id('button'));
+      let btn = await driver.findComponent(ON.id('button1'));
       console.log(caseName + ' btn1 : ' + btn);
 
       if (btn == undefined) {
@@ -72,7 +75,7 @@ export default function extensionWindowPropertiesTest() {
         await btn.click();
         await sleep(1000);
         let btn2 = await driver.findComponent(ON.id('HelloWorld'));
-        
+
         let txt = await btn2.getText();
         console.log(caseName + ' btn2 : ' + txt);
         expect(txt == 'true').assertTrue();
@@ -99,25 +102,27 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowRectChange', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
           await sleep(1000)
           let driver = Driver.create()
           let btn = await driver.findComponent(ON.id('button'))
-
+          console.log(caseName + ' btn : ' + btn);
           if (btn == undefined) {
             console.log(caseName + 'device not support')
           } else {
             await btn.click()
             await sleep(1000)
 
-            await subWindowClass.resizeAsync(1200, 800)
-            await subWindowClass.moveWindowToAsync(0, 0)
+            subWindowClass.resizeAsync(1200, 800)
+            await sleep(300);
+            console.log(caseName + 'resizeAsync success');
+            subWindowClass.moveWindowToAsync(0, 0)
 
             let hw = await driver.findComponent(ON.id('testNum'))
             let testNum = await hw.getText()
@@ -162,17 +167,17 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowOffRectChange1', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
           await sleep(1000)
           let driver = Driver.create()
           let btn = await driver.findComponent(ON.id('off_single'))
-
+          console.log(caseName + ' btn : ' + btn);
           if (btn == undefined) {
             console.log(caseName + 'device not support')
           } else {
@@ -181,8 +186,8 @@ export default function extensionWindowPropertiesTest() {
             await sleep(1000)
 
             // 触发两次rectChange
-            await subWindowClass.resizeAsync(1200, 800)
-            await subWindowClass.moveWindowToAsync(0, 0)
+            subWindowClass.resizeAsync(1200, 800)
+            subWindowClass.moveWindowToAsync(0, 0)
 
             let hw = await driver.findComponent(ON.id('testNum'))
             let testNum = await hw.getText()
@@ -227,17 +232,17 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowOffRectChange2', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
           await sleep(1000)
           let driver = Driver.create()
           let btn = await driver.findComponent(ON.id('off_all'))
-
+          console.log(caseName + ' btn : ' + btn);
           if (btn == undefined) {
             console.log(caseName + 'device not support')
           } else {
@@ -246,8 +251,8 @@ export default function extensionWindowPropertiesTest() {
             await sleep(1000)
 
             // 触发两次rectChange
-            await subWindowClass.resizeAsync(1200, 800)
-            await subWindowClass.moveWindowToAsync(0, 0)
+            subWindowClass.resizeAsync(1200, 800)
+            subWindowClass.moveWindowToAsync(0, 0)
 
             let hw = await driver.findComponent(ON.id('testNum'))
             let testNum = await hw.getText()
@@ -292,17 +297,17 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowRectChange401', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
           await sleep(1000)
           let driver = Driver.create()
           let btn = await driver.findComponent(ON.id('button401'))
-
+          console.log(caseName + ' btn : ' + btn);
           // 只针对pc设别
           if (btn == undefined) {
             console.log(caseName + 'device not support')
@@ -312,8 +317,8 @@ export default function extensionWindowPropertiesTest() {
             await btn.click()
             await sleep(1000)
 
-            await subWindowClass.resizeAsync(1200, 800)
-            await subWindowClass.moveWindowToAsync(0, 0)
+            subWindowClass.resizeAsync(1200, 800)
+            subWindowClass.moveWindowToAsync(0, 0)
 
             let hw = await driver.findComponent(ON.id('errorMessage'))
             let testNum = await hw.getText()
@@ -358,10 +363,10 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowOccupyEvents', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentOccupyPage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentOccupyPage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
@@ -369,6 +374,7 @@ export default function extensionWindowPropertiesTest() {
           let driver = Driver.create()
           // UEC独占事件按钮
           let btn = await driver.findComponent(ON.id('button'))
+          console.log(caseName + ' btn : ' + btn);
           // UEC点击事件按钮
           let btnClick = await driver.findComponent(ON.id('clickBtn'))
           // UEC点击事件响应次数
@@ -452,10 +458,10 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowOccupyEvents', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentOccupyPage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentOccupyPage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
@@ -463,7 +469,7 @@ export default function extensionWindowPropertiesTest() {
           let driver = Driver.create()
           // 设置独占事件
           let btn = await driver.findComponent(ON.id('button401'))
-
+          console.log(caseName + ' btn : ' + btn);
           // 只针对pc设备
           if (btn == undefined) {
             console.log(caseName + 'device not support')
@@ -516,10 +522,10 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowOccupyEvents', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentErrorCodePage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentErrorCodePage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
@@ -527,7 +533,7 @@ export default function extensionWindowPropertiesTest() {
           let driver = Driver.create()
           // 设置独占事件
           let btn = await driver.findComponent(ON.id('getWindowAvoidArea401'))
-
+          console.log(caseName + ' btn : ' + btn);
           // 只针对pc设备
           if (btn == undefined) {
             console.log(caseName + 'device not support')
@@ -579,10 +585,10 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowOccupyEvents', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentErrorCodePage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentErrorCodePage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
@@ -590,7 +596,7 @@ export default function extensionWindowPropertiesTest() {
           let driver = Driver.create()
           // 设置独占事件
           let btn = await driver.findComponent(ON.id('onAvoidAreaChange401'))
-
+          console.log(caseName + ' btn : ' + btn);
           // 只针对pc设备
           if (btn == undefined) {
             console.log(caseName + 'device not support')
@@ -642,9 +648,9 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowOccupyEvents', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentErrorCodePage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentErrorCodePage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
           subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
@@ -653,7 +659,7 @@ export default function extensionWindowPropertiesTest() {
           let driver = Driver.create()
           // 设置独占事件
           let btn = await driver.findComponent(ON.id('onWindowSizeChange401'))
-
+          console.log(caseName + ' btn : ' + btn);
           // 只针对pc设备
           if (btn == undefined) {
             console.log(caseName + 'device not support')
@@ -705,10 +711,10 @@ export default function extensionWindowPropertiesTest() {
         }
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindowOccupyEvents', options).then(async (subWindowClass) => {
-          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentErrorCodePage')
-          await subWindowClass.resizeAsync(1000, 1200)
-          await subWindowClass.moveWindowToAsync(300, 200)
-          subWindowClass.showWindow()
+          await subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentErrorCodePage')
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
 
@@ -716,7 +722,7 @@ export default function extensionWindowPropertiesTest() {
           let driver = Driver.create()
           // extensionWindow?.createSubWindowWithOptions('createSubWindowWithOptions401', null)
           let btn = await driver.findComponent(ON.id('createSubWindowWithOptions401'))
-
+          console.log(caseName + ' btn : ' + btn);
           // 只针对pc设备
           if (btn == undefined) {
             console.log(caseName + 'device not support')
@@ -750,7 +756,7 @@ export default function extensionWindowPropertiesTest() {
       done()
     })
 
-    
+
     /**
      * @tc.number    : SUB_BASIC_WMS_WINDOW_ON_UIEXTENSION_SECURElIMITCHANGE_ERROECODE_0100
      * @tc.name      : testOnuiExtensionLimitChange_DestoryedSubWindow
@@ -803,7 +809,7 @@ export default function extensionWindowPropertiesTest() {
           }
         };
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
-        mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -879,7 +885,7 @@ export default function extensionWindowPropertiesTest() {
         };
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
         mainWindow.on("uiExtensionSecureLimitChange", callback2);
-        mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -952,7 +958,7 @@ export default function extensionWindowPropertiesTest() {
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
         mainWindow.off("uiExtensionSecureLimitChange", callback1);
         mainWindow.on("uiExtensionSecureLimitChange", callback2);
-        mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1020,7 +1026,7 @@ export default function extensionWindowPropertiesTest() {
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
         mainWindow.on("uiExtensionSecureLimitChange", callback2);
         mainWindow.off("uiExtensionSecureLimitChange");
-        mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1085,7 +1091,7 @@ export default function extensionWindowPropertiesTest() {
           mainWindow.off("uiExtensionSecureLimitChange");
         };
         mainWindow.on("uiExtensionSecureLimitChange", callback1);
-        mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage2');
+        await mainWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage2');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1169,7 +1175,7 @@ export default function extensionWindowPropertiesTest() {
           }
         };
         subWindow.on("uiExtensionSecureLimitChange", callback1);
-        subWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await subWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1241,7 +1247,7 @@ export default function extensionWindowPropertiesTest() {
           }
         };
         subWindow.on("uiExtensionSecureLimitChange", callback1);
-        subWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
+        await subWindow.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
         await sleep(2000);
         let driver = Driver.create();
         let btn = await driver.findComponent(ON.id('button1'));
@@ -1286,7 +1292,7 @@ export default function extensionWindowPropertiesTest() {
 
 
 
-    
+
   })
 }
 
