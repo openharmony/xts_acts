@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsCryptoFrameworkAPI12JSFuncTestStatic") {
+ohos_js_app_suite("ActsCryptoFrameworkAPI12JSFuncStaticTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsCryptoFrameworkAPI12JSFuncTestStatic"
+  hap_name = "ActsCryptoFrameworkAPI12JSFuncStaticTest"
   part_name = "crypto_framework"
   subsystem_name = "security"
 }

@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsCryptoFrameworkAPI10JSFuncTestStatic.hap"
+            "ActsCryptoFrameworkAPI10JSFuncStaticTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
