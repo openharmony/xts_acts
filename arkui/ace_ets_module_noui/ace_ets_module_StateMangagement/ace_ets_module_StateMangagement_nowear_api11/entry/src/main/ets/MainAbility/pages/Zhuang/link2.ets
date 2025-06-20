@@ -91,7 +91,7 @@ struct Link1 {
         Row() {
 
           Column() {
-
+            Button('compare').key('compareBtn')
             Row(){
               Column(){
                 Text("Link:type->undefined")
