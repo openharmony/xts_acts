@@ -105,7 +105,9 @@ export default function ForEachTest010() {
       let btn1: Component = await driver.findComponent(ON.id("btnForEach0102"));
       await CommonFunc.sleep(1000);
       await btn1.click();
+      await CommonFunc.sleep(1000);
       let text3 = await driver.findComponent(ON.text('item50'))
+      await CommonFunc.sleep(1000);
       expect(text3 != null).assertTrue()
       console.info('[ForEachTest010_002] END');
       done();

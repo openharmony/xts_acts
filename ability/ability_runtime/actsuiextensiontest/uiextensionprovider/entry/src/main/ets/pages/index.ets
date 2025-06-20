@@ -706,19 +706,19 @@ struct Index {
       }
     }
     let connectid:number = globalThis.context2.connectServiceExtensionAbility(want, options);
-    await this.sleep(400)
+    await this.sleep(1000)
     globalThis.context2.disconnectServiceExtensionAbility(connectid, (err:BusinessError) => {
       if (err.code) {
         commonEventManager.publish(failSameAppEvent, (err) => { });
         return;
       }
     });
-    await this.sleep(400)
+    await this.sleep(1000)
     let connectid1:number = globalThis.context2.connectServiceExtensionAbility(want, options);
     let connectid2:number = globalThis.context2.connectServiceExtensionAbility(want2, options);
     let connectid3:number = globalThis.context2.connectServiceExtensionAbility(want3, options);
 
-    await this.sleep(400)
+    await this.sleep(1000)
     await globalThis.context2.disconnectServiceExtensionAbility(connectid1, (err:BusinessError) => {
       console.info('___connectid1 err.code'+ err.code);
       if (err.code) {

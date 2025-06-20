@@ -100,6 +100,7 @@ struct ViewB {
         Row() {
 
           Column() {
+            Button('compare').key('compareBtn')
             Row(){
               Column(){
                 Text("父type-->undefined").height('5%')
