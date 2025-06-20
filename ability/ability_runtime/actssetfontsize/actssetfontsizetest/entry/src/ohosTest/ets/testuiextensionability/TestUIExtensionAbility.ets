@@ -21,7 +21,6 @@ import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
 
 const DOMAIN = 0x0000;
-// const TAG: string = 'testTag-TestUIExtensionAbility';
 const TAG: string = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_TestUIExtensionAbility';
 
 
@@ -67,9 +66,9 @@ export default class TestUIExtensionAbility extends EmbeddedUIExtensionAbility {
     };
     commonEventManager.publish('TestUIExtensionAbility_onConfigurationUpdate', options, (err: BusinessError) => {
       if (err) {
-        hilog.info(0x0000, TAG, "[%{public}s] PublishCallBack err: %{public}s", caseTAG, JSON.stringify(err));
+        hilog.info(0x0000, TAG, '[%{public}s] PublishCallBack err: %{public}s', caseTAG, JSON.stringify(err));
       } else {
-        hilog.info(0x0000, TAG, "[%{public}s] Publish success", caseTAG);
+        hilog.info(0x0000, TAG, '[%{public}s] Publish success', caseTAG);
       }
     });
   }

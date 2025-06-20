@@ -38,9 +38,9 @@ export default class TestAbilityStage extends AbilityStage {
     };
     commonEventManager.publish('TestAbilityStage_onConfigurationUpdate', options, (err: BusinessError) => {
       if (err) {
-        hilog.info(0x0000, TAG, "[%{public}s] PublishCallBack err: %{public}s", caseTAG, JSON.stringify(err));
+        hilog.info(0x0000, TAG, '[%{public}s] PublishCallBack err: %{public}s', caseTAG, JSON.stringify(err));
       } else {
-        hilog.info(0x0000, TAG, "[%{public}s] Publish success", caseTAG);
+        hilog.info(0x0000, TAG, '[%{public}s] Publish success', caseTAG);
       }
     });
   }
