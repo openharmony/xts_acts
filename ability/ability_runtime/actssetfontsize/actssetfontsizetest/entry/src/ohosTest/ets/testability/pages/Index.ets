@@ -36,6 +36,7 @@ struct Index {
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
         }
+        .size({ width: '1%', height: '1%' })
         .type(ButtonType.Capsule)
         .margin({
           top: 20

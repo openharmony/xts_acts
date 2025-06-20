@@ -42,6 +42,7 @@ struct IndexEntry {
 
         Button('getFontSizeScale')
           .id('getFontSizeScaleButton')
+          .size({ width: '1%', height: '1%' })
           .onClick(() => {
             let config = this.context.config;
             this.message = JSON.stringify(config);
@@ -64,6 +65,7 @@ struct IndexEntry {
 
         Button('setFontSizeScale')
           .id('setFontSizeScaleButton')
+          .size({ width: '1%', height: '1%' })
           .onClick(() => {
             let applicationContext = this.context.getApplicationContext();
             applicationContext.setFontSizeScale(1.3);
@@ -90,6 +92,7 @@ struct IndexEntry {
 
         Button('start feature')
           .id('startFeatureButton')
+          .size({ width: '1%', height: '1%' })
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             let want: Want = {
@@ -112,6 +115,7 @@ struct IndexEntry {
 
         Button('terminate')
           .id('terminateEntryButton')
+          .size({ width: '1%', height: '1%' })
           .onClick(() => {
             try {
               this.context.terminateSelf((err: BusinessError) => {
