@@ -130,7 +130,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0100
-     * @tc.name fileIO_test_moveDir_sync_001
+     * @tc.name fileIO_test_moveDir_sync_static_001
      * @tc.desc Test moveDirSync() interface.
      * There is a target folder(src) under path dest but it is empty.
      * @tc.size MEDIUM
@@ -178,7 +178,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0200
-     * @tc.name fileIO_test_moveDir_sync_002
+     * @tc.name fileIO_test_moveDir_sync_static_002
      * @tc.desc Test moveDirSync() interface.
      * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_REPLACE.
      * @tc.size MEDIUM
@@ -214,7 +214,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0300
-     * @tc.name fileIO_test_moveDir_sync_003
+     * @tc.name fileIO_test_moveDir_sync_static_003
      * @tc.desc Test moveDirSync() interface.
      * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_REPLACE.
      * @tc.size MEDIUM
@@ -289,7 +289,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0500
-     * @tc.name fileIO_test_moveDir_sync_005
+     * @tc.name fileIO_test_moveDir_sync_static_005
      * @tc.desc Test moveDirSync() interface.
      * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_THROW_ERR.
      * @tc.size MEDIUM
@@ -330,7 +330,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0600
-     * @tc.name fileIO_test_moveDir_sync_006
+     * @tc.name fileIO_test_moveDir_sync_static_006
      * @tc.desc Test moveDirSync() interface.
      * Src is empty and there is a target folder(src) under path dest but it is empty.
      * @tc.size MEDIUM
@@ -364,7 +364,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0700
-     * @tc.name fileIO_test_moveDir_sync_007
+     * @tc.name fileIO_test_moveDir_sync_static_007
      * @tc.desc Test moveDirSync() interface.
      * Src is empty and there is no target folder(src) under path dest.
      * @tc.size MEDIUM
@@ -396,7 +396,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0800
-     * @tc.name fileIO_test_moveDir_sync_008
+     * @tc.name fileIO_test_moveDir_sync_static_008
      * @tc.desc Test moveDirSync() interface.
      * Invalid mode.
      * @tc.size MEDIUM
@@ -429,7 +429,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0900
-     * @tc.name fileIO_test_moveDir_sync_009
+     * @tc.name fileIO_test_moveDir_sync_static_009
      * @tc.desc Test moveDirSync() interface.
      * The path point to a file, not a directory.
      * @tc.size MEDIUM
@@ -458,7 +458,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1000
-     * @tc.name fileIO_test_moveDir_sync_010
+     * @tc.name fileIO_test_moveDir_sync_static_010
      * @tc.desc Test moveDirSync() interface.
      * Invalid path. Can not move the same path.
      * @tc.size MEDIUM
@@ -490,7 +490,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1100
-     * @tc.name fileIO_test_moveDir_sync_011
+     * @tc.name fileIO_test_moveDir_sync_static_011
      * @tc.desc Test moveDirSync() interface.
      * Invalid path. Can not move subPath.
      * @tc.size MEDIUM
@@ -526,7 +526,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1200
-     * @tc.name fileIO_test_moveDir_sync_012
+     * @tc.name fileIO_test_moveDir_sync_static_012
      * @tc.desc Test moveDirSync() interface.
      * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_THROW_ERR.
      * @tc.size MEDIUM
@@ -714,7 +714,7 @@ export default function fileIOMoveDir() {
 
     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIR_ASYNC_0300
-     * @tc.name fileIO_test_moveDir_async_003
+     * @tc.name fileIO_test_moveDir_async_static_003
      * @tc.desc Test moveDir() interface.Callback.
      * There is a target folder(src) under path dest but it is empty.
      * @tc.size MEDIUM
@@ -931,7 +931,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0800
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_0800
      * @tc.name fileIO_test_moveDir_async_static_008
      * @tc.desc Test moveFile() interface.Promise.
      * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_THROW_ERR.
@@ -971,7 +971,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0900
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_0900
      * @tc.name fileIO_test_moveDir_async_static_009
      * @tc.desc Test moveFile() interface.Callback.
      * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_THROW_ERR.
@@ -1014,7 +1014,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1000
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1000
      * @tc.name fileIO_test_moveDir_async_static_010
      * @tc.desc Test moveFile() interface.Promise.
      * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_THROW_ERR.
@@ -1039,7 +1039,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1100
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1100
      * @tc.name fileIO_test_moveDir_async_static_011
      * @tc.desc Test moveFile() interface.Callback.
      * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_THROW_ERR.
@@ -1068,7 +1068,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1200
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1200
      * @tc.name fileIO_test_moveDir_async_static_012
      * @tc.desc Test moveFile() interface.Promise.
      * Src is empty and there is a target folder(src) under path dest but it is empty.
@@ -1103,7 +1103,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1300
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1300
      * @tc.name fileIO_test_moveDir_async_static_013
      * @tc.desc Test moveFile() interface.Callback.
      * Src is empty and there is a target folder(src) under path dest but it is empty.
@@ -1143,7 +1143,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1400
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1400
      * @tc.name fileIO_test_moveDir_async_static_014
      * @tc.desc Test moveFile() interface.Promise.
      * Src is empty and there is no target folder(src) under path dest.
@@ -1176,7 +1176,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1500
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1500
      * @tc.name fileIO_test_moveDir_async_static_015
      * @tc.desc Test moveFile() interface.CallBack.
      * Src is empty and there is no target folder(src) under path dest.
@@ -1214,7 +1214,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1600
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1600
      * @tc.name fileIO_test_moveDir_async_static_016
      * @tc.desc Test moveFile() interface.Promise.
      * Invalid mode.
@@ -1240,7 +1240,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1700
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1700
      * @tc.name fileIO_test_moveDir_async_static_017
      * @tc.desc Test moveFile() interface.Callback.
      * Invalid mode.
@@ -1270,7 +1270,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1800
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1800
      * @tc.name fileIO_test_moveDir_async_static_018
      * @tc.desc Test moveFile() interface.Promise.
      * Invalid path.The path point to a file, not a directory.
@@ -1295,7 +1295,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1900
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_1900
      * @tc.name fileIO_test_moveDir_async_static_019
      * @tc.desc Test moveFile() interface.Callback.
      * Invalid path.The path point to a file, not a directory.
@@ -1324,7 +1324,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_2000
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_2000
      * @tc.name fileIO_test_moveDir_async_static_020
      * @tc.desc Test moveFile() interface.Promise.
      * Invalid path. Can not move the same path.
@@ -1349,7 +1349,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_2100
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_2100
      * @tc.name fileIO_test_moveDir_async_static_021
      * @tc.desc Test moveFile() interface.Callback.
      * Invalid path.Can not move the same path.
@@ -1378,7 +1378,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_2200
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_2200
      * @tc.name fileIO_test_moveDir_async_static_022
      * @tc.desc Test moveFile() interface.Promise.
      * Invalid path. Can not move subPath.
@@ -1403,7 +1403,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_2300
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_2300
      * @tc.name fileIO_test_moveDir_async_static_023
      * @tc.desc Test moveFile() interface.Callback.
      * Invalid path.Can not move subPath.
@@ -1432,7 +1432,7 @@ export default function fileIOMoveDir() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_2400
+     * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_2400
      * @tc.name fileIO_test_moveDir_async_static_024
      * @tc.desc Test moveFile() interface. Promise.
      * Undefined option arguments, use default mode = DIRMODE_DIRECTORY_THROW_ERR.

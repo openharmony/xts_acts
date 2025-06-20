@@ -59,59 +59,6 @@ function startWatcher(testNum: string, eventCode: number, watchPath: string): Te
 
 export default function fileIOFdopenStream() {
   describe('fileIO_fs_watcher', (): void => {
-    /**
-     * @tc.number SUB_DF_FILEIO_WATCHER_0000
-     * @tc.name fileIO_test_watcher_static_000
-     * @tc.desc Create multiple watcher events in multi-level directories.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_test_watcher_static_000', Level.LEVEL3, async (done:()=>void) : Promise<void> => {
-    //   let testNum = 'fileIO_test_watcher_static_000';
-    //   let dpath = await Utils.nextFileName(testNum);
-    //   let fpath = dpath + '/file_000';
-    //   let ddpath = dpath + '/dir_000';
-    //   let ffpath = ddpath + '/file_000_1';
-    //   let dddpath = ddpath + '/dir_000_1';
-    //   let fffpath = dddpath + '/file_000_2';
-    //   fs.mkdirSync(dpath);
-    //   fs.mkdirSync(ddpath);
-    //   fs.mkdirSync(dddpath);
-    //   let res = await Utils.prepareFile(fpath, FILE_CONTENT);
-    //   expect(res).assertTrue();
-    //   res = await Utils.prepareFile(ffpath, FILE_CONTENT);
-    //   expect(res).assertTrue();
-    //
-    //   try {
-    //     let resWatcher: TestWatcher[] = new Array<TestWatcher>(3);
-    //     let file1 = fs.openSync(fpath, fs.OpenMode.WRITE_ONLY);
-    //     let file2 = fs.openSync(ffpath, fs.OpenMode.READ_ONLY);
-    //     resWatcher[0] = startWatcher(testNum, Number(watcherEvent.get('IN_MODIFY')), dpath);
-    //     resWatcher[1] = startWatcher(testNum, Number(watcherEvent.get('IN_ACCESS')), ddpath);
-    //     resWatcher[2] = startWatcher(testNum, Number(watcherEvent.get('IN_CREATE')), dddpath);
-    //     let file3 = fs.openSync(fffpath, fs.OpenMode.CREATE);
-    //     await Utils.msSleep(WAIT_HALF_SECOND);
-    //     expect(resWatcher[2].flag == true).assertTrue();
-    //     fs.readSync(file2.fd, new ArrayBuffer(20));
-    //     await Utils.msSleep(WAIT_HALF_SECOND);
-    //     expect(resWatcher[1].flag == true).assertTrue();
-    //     fs.writeSync(file1.fd, FILE_CONTENT);
-    //     await Utils.msSleep(WAIT_HALF_SECOND);
-    //     expect(resWatcher[0].flag == true).assertTrue();
-    //     hilog.info(domain, tag, '%{public}s', testNum + ' before stop ');
-    //     resWatcher.forEach(element => { element.watcher.stop(); });
-    //     fs.closeSync(file3);
-    //     fs.closeSync(file2);
-    //     fs.closeSync(file1);
-    //     fs.rmdirSync(dpath);
-    //     done();
-    //   } catch (e: BusinessError) {
-    //     hilog.info(domain, tag, '%{public}s', testNum + ' has failed for ' + e.message + ', code: ' + e.code);
-    //     expect(false).assertTrue();
-    //   }
-    // });
 
     /**
      * @tc.number SUB_DF_FILEIO_WATCHER_0100

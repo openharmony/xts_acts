@@ -229,17 +229,17 @@ export default function fileIORmdir() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_rmdir_async_static_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_rmdir_async_static_002 start');
+    it('fileIO_test_rmdir_async_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
+      hilog.info(domain, tag, '%{public}s', 'fileIO_test_rmdir_async_static_004 start');
       try {
-        let dpath = await Utils.nextFileName('fileIO_test_rmdir_async_static_002');
+        let dpath = await Utils.nextFileName('fileIO_test_rmdir_async_static_004');
         fs.mkdirSync(dpath);
         expect(fs.accessSync(dpath)).assertTrue();
         await fs.rmdir(dpath);
         expect(!fs.accessSync(dpath)).assertTrue();
         done();
       } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_rmdir_async_static_002 has failed for' + JSON.stringify(e));
+        hilog.info(domain, tag, '%{public}s', 'fileIO_test_rmdir_async_static_004 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
     });

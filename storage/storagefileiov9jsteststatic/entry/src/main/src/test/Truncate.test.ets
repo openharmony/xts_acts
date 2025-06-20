@@ -537,23 +537,22 @@ export default function fileIOTruncate() {
      * @tc.number SUB_DF_fileIO_truncate_sync_static_0700
      * @tc.name fileIO_test_truncate_sync_static_007
      * @tc.desc Test the truncateSync() interface.
-     * 	fileIO_test_truncate_sync_static_007.
      * @tc.size MEDIUM
      * @tc.type Functoin
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_truncate_sync_static_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_truncate_sync_static_002 start');
-      let fpath = await Utils.nextFileName('fileIO_test_truncate_sync_static_002');
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_truncate_sync_static_002 fpath: ' + fpath);
+    it('fileIO_test_truncate_sync_static_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
+      hilog.info(domain, tag, '%{public}s', 'fileIO_test_truncate_sync_static_007 start');
+      let fpath = await Utils.nextFileName('fileIO_test_truncate_sync_static_007');
+      hilog.info(domain, tag, '%{public}s', 'fileIO_test_truncate_sync_static_007 fpath: ' + fpath);
       try {
         fs.mkdirSync(fpath);
         fs.truncateSync(fpath);
         expect(false).assertTrue();
       } catch (e: BusinessError) {
         fs.rmdirSync(fpath);
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_truncate_sync_static_002 has failed for' + JSON.stringify(e));
+        hilog.info(domain, tag, '%{public}s', 'fileIO_test_truncate_sync_static_007 has failed for' + JSON.stringify(e));
         expect(e.code == 13900019 && e.message == 'Is a directory').assertTrue();
       }
     });

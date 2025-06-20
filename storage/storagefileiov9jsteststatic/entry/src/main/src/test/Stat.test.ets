@@ -522,7 +522,7 @@ export default function fileIOStat() {
 
     /**
      * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISFILE_0100
-     * @tc.name fileIO_stat_sync_is_file_static_002
+     * @tc.name fileIO_stat_sync_is_file_static_001
      * @tc.desc Test the isFile() method of class Stat.
      * This interface shall not treat a directory as a normal file.
      * @tc.size MEDIUM
@@ -1894,7 +1894,7 @@ export default function fileIOStat() {
 
     /**
      * @tc.number SUB_DF_FILEIO_STAT_SYNC_APPEND_FILE_SYNC_0000
-     * @tc.name fileIO_stat_sync_append_file_sync_000
+     * @tc.name fileIO_test_append_file_sync_static_000
      * @tc.desc Test statSync() interface.
      * Modify the file, view the file status changes by path.
      * @tc.size MEDIUM
@@ -1927,7 +1927,7 @@ export default function fileIOStat() {
 
     /**
      * @tc.number SUB_DF_FILEIO_STAT_SYNC_APPEND_FILE_SYNC_0100
-     * @tc.name fileIO_stat_sync_append_file_sync_001
+     * @tc.name fileIO_test_append_file_sync_static_001
      * @tc.desc Test statSync() interface.
      * Modify the file, view the file status changes by fd.
      * @tc.size MEDIUM
@@ -1958,36 +1958,6 @@ export default function fileIOStat() {
         expect(false).assertTrue();
       }
     });
-
-    /**
-     * @tc.number SUB_DF_fileIO_stat_async_location_static_0000
-     * @tc.name fileIO_stat_async_location_static_000
-     * @tc.desc Test the location member of class Stat. Promise.
-     * Enter the path or fd parameter to get stat.location is LOCAl.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_stat_async_location_static_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
-    //   hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_000 start');
-    //   try {
-    //     let fpath = await Utils.nextFileName('fileIO_stat_async_location_static_000');
-    //     expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    //     let res = await fs.stat(fpath);
-    //     expect(res.location == LocationType.LOCAl).assertTrue();
-    //
-    //     let file = fs.openSync(fpath);
-    //     let stat2 = await fs.stat(file.fd);
-    //     expect(stat2.location == 1).assertTrue();
-    //     fs.closeSync(file);
-    //     fs.unlinkSync(fpath);
-    //     done();
-    //   } catch (e: BusinessError) {
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_000 has failed for' + JSON.stringify(e));
-    //     expect(false).assertTrue();
-    //   }
-    // });
 
     /**
      * @tc.number SUB_DF_fileIO_stat_async_location_static_0100
@@ -2030,35 +2000,6 @@ export default function fileIOStat() {
         expect(false).assertTrue();
       }
     });
-
-    /**
-     * @tc.number SUB_DF_fileIO_stat_async_location_static_0200
-     * @tc.name fileIO_stat_async_location_static_002
-     * @tc.desc Test the location member of class Stat. Promise.
-     * Enter the path or fd parameter to get stat.location is CLOUD.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_stat_async_location_static_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
-    //   hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_002 start');
-    //   try {
-    //     let fpath = await Utils.nextFileName('fileIO_stat_async_location_static_002');
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_002 fpath: ' + fpath);
-    //     expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    //     let file = fs.openSync(fpath);
-    //     let res = await fs.stat(file.fd);
-    //     let filelocation = fs.LocationType.CLOUD;
-    //     expect(filelocation == fs.LocationType.CLOUD).assertTrue();
-    //     fs.closeSync(file);
-    //     fs.unlinkSync(fpath);
-    //     done();
-    //   } catch (e: BusinessError) {
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_002 has failed for' + JSON.stringify(e));
-    //     expect(false).assertTrue();
-    //   }
-    // });
 
     /**
      * @tc.number SUB_DF_fileIO_stat_sync_atimeNs_static_0000

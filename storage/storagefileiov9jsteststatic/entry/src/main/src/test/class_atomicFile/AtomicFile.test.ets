@@ -66,60 +66,6 @@ export default function atomicFileTest() {
     });
 
     /**
-     * @tc.number SUB_DF_ATOMIC_FILE_0200
-     * @tc.name fileIO_test_atomicFile_static_002
-     * @tc.desc Test the startWrite() interface of class AtomicFile
-     * Create a file when file is not exist, create a new file
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 0
-     * @tc.require
-     */
-    // it('fileIO_test_atomicFile_static_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
-    //   hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_002 start');
-    //   let fpath = await Utils.nextFileName('fileIO_test_atomicFile_static_002');
-    //   try {
-    //     let file = new fs.AtomicFile(fpath);
-    //     let ws = file.startWrite();
-    //     ws.write("fileIO_test_atomicFile_static_002");
-    //     await Utils.msSleep(WAIT_ONE_SECOND);
-    //     file.finishWrite();
-    //
-    //     let data = file.readFully();
-    //     let decoder = util.TextDecoder.create('utf-8');
-    //     let str = decoder.decodeToString(new Uint8Array(data));
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_002 has str ' + str);
-    //     expect(str === "fileIO_test_atomicFile_static_002").assertTrue();
-    //   } catch (e: BusinessError) {
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_002 has failed for' + JSON.stringify(e));
-    //     expect(false).assertTrue();
-    //   }
-    // });
-
-    //13900005
-    // it('fileIO_test_atomicFile_static_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
-    //   hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_002 start');
-    //   let fpath = await Utils.nextFileName('fileIO_test_atomicFile_static_002');
-    //   try {
-    //     let file = new fs.AtomicFile(fpath);
-    //     let ws = file.startWrite();
-    //     ws.write("fileIO_test_atomicFile_static_002");
-    //     await Utils.msSleep(WAIT_ONE_SECOND)
-    //     file.finishWrite();
-    //
-    //     let data = file.readFully();
-    //     let decoder = util.TextDecoder.create('utf-8');
-    //     let str = decoder.decodeToString(new Uint8Array(data));
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_002 has str ' + str);
-    //     expect(str === "fileIO_test_atomicFile_static_002").assertTrue();
-    //     file.delete();
-    //   } catch (e: BusinessError) {
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_002 has failed for' + JSON.stringify(e));
-    //     expect(false).assertTrue();
-    //   }
-    // });
-
-    /**
      * @tc.number SUB_DF_ATOMIC_FILE_0300
      * @tc.name fileIO_test_atomicFile_static_003
      * @tc.desc Test the startWrite() interface of class AtomicFile
@@ -269,15 +215,6 @@ export default function atomicFileTest() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_007 writeStr' + writeStr);
           },1000);
         })
-        //ws.write(readStr);
-        //await Utils.msSleep(WAIT_ONE_SECOND);
-        //wFile.finishWrite();
-
-        // let writeData = wFile.readFully();
-        // let wDecoder = util.TextDecoder.create('utf-8');
-        // let writeStr = wDecoder.decodeToString(new Uint8Array(writeData));
-        // hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_007 writeStr' + writeStr);
-        // expect(writeStr === "fileIO_test_atomicFile_static_007").assertTrue();
         rFile.delete();
         wFile.delete();
       } catch (e: BusinessError) {

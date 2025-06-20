@@ -14,7 +14,7 @@ export default function fileIOFileProperties() {
   describe('fileIO_file_properties', (): void => {
 
     /**
-     * @tc.number SUB_DF_FILEIO_DUP_SYNC_0000
+     * @tc.number SUB_BASIC_FM_FileAPI_FILE_0100
      * @tc.name fileIO_test_open_file_static_000
      * @tc.desc Test the properties of the File object.
      * The File object is obtained through the open interface.
@@ -41,7 +41,7 @@ export default function fileIOFileProperties() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_DUP_SYNC_0100
+     * @tc.number SUB_BASIC_FM_FileAPI_FILE_0200
      * @tc.name fileIO_test_dup_file_static_001
      * @tc.desc Test the properties of the File object.
      * The File object is obtained through the dup interface.

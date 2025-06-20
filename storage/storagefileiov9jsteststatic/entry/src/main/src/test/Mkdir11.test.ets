@@ -92,32 +92,6 @@ export default function fileIOMkdir11() {
     });
 
     /**
-     * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_MKDIRSYNC_NEW_0400
-     * @tc.name fileIO_test_mkdir_sync_new_static_004
-     * @tc.desc Test mkdirSync() interfaces.
-     * Undefined recursion arguments,use default recursion = false.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_test_mkdir_sync_new_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
-    //   let dpath = await Utils.nextFileName('fileIO_test_mkdir_sync_new_static_004');
-    //   let dpath1 = dpath + '/d1/d2';
-    //
-    //   try {
-    //     fs.mkdirSync(dpath,undefined);
-    //     expect(fs.accessSync(dpath)).assertTrue();
-    //     fs.mkdirSync(dpath1,undefined);
-    //     expect(false).assertTrue();
-    //   } catch (e: BusinessError) {
-    //     fs.rmdirSync(dpath);
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_sync_new_static_004 end error' + JSON.stringify(e));
-    //     expect(e.code == 13900002 && e.message == 'No such file or directory').assertTrue();
-    //   }
-    // });
-
-    /**
      * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_MKDIRSYNC_NEW_0500
      * @tc.name fileIO_test_mkdir_sync_new_static_005
      * @tc.desc Test mkdirSync() interfaces.
@@ -261,33 +235,6 @@ export default function fileIOMkdir11() {
         done();
       }
     });
-
-    /**
-     * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_MKDIR_ASYNC_NEW_0400
-     * @tc.name fileIO_test_mkdir_async_new_static_004
-     * @tc.desc Test mkdir() interfaces. Promise.
-     * Undefined recursion arguments,use default recursion = false.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_test_mkdir_async_new_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
-    //   let dpath = await Utils.nextFileName('fileIO_test_mkdir_async_new_static_004');
-    //   let dpath1 = dpath + '/d1/d2';
-    //
-    //   try {
-    //     await fs.mkdir(dpath,undefined);
-    //     expect(fs.accessSync(dpath)).assertTrue();
-    //     await fs.mkdir(dpath1,undefined);
-    //     expect(false).assertTrue();
-    //   } catch (e: BusinessError) {
-    //     fs.rmdirSync(dpath);
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_004 end error' + JSON.stringify(e));
-    //     expect(e.code == 13900002 && e.message == 'No such file or directory').assertTrue();
-    //     done();
-    //   }
-    // });
 
     /**
      * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_MKDIR_ASYNC_NEW_0500
@@ -464,42 +411,6 @@ export default function fileIOMkdir11() {
         expect(false).assertTrue();
       }
     });
-
-    /**
-     * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_MKDIR_ASYNC_NEW_1100
-     * @tc.name fileIO_test_mkdir_async_new_static_011
-     * @tc.desc Test mkdir() interfaces. Callback.
-     * Undefined recursion arguments,use default recursion = false.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_test_mkdir_async_new_static_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
-    //   let dpath = await Utils.nextFileName('fileIO_test_mkdir_async_new_static_011');
-    //   let dpath1 = dpath + '/d1/d2';
-    //
-    //   try {
-    //     fs.mkdir(dpath, undefined, (err: BusinessError) => {
-    //       if(err.code != 0){
-    //         hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_011 error1 package: ' + JSON.stringify(err));
-    //         expect(false).assertTrue();
-    //       }
-    //       expect(fs.accessSync(dpath)).assertTrue();
-    //       fs.mkdir(dpath1, undefined, (err: BusinessError) => {
-    //         if(err.code != 0) {
-    //           hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_011 error package: ' + JSON.stringify(err));
-    //           fs.rmdirSync(dpath);
-    //           expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
-    //           done();
-    //         }
-    //       });
-    //     });
-    //   } catch (e: BusinessError) {
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_011 end error' + JSON.stringify(e));
-    //     expect(false).assertTrue();
-    //   }
-    // });
 
     /**
      * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_MKDIR_ASYNC_NEW_1200
