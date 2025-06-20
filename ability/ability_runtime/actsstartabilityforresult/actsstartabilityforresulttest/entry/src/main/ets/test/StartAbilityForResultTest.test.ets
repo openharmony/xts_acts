@@ -40,13 +40,14 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2400
-     * @tc.name      : The input parameter 'want' is empty
-     * @tc.desc      : Call the startAbility interface through context, and validate the want input parameter as {}
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2400
+     * @tc.desc      : The input parameter 'want' is empty
+     * Call the startAbility interface through context, and validate the want input parameter as {}
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2400', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2400', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2400';
@@ -73,13 +74,14 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2600
-     * @tc.name      : The input parameter 'want' is undefined
-     * @tc.desc      : Call the startAbility interface through context, with want as undefined
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2600
+     * @tc.desc      : The input parameter 'want' is undefined
+     * Call the startAbility interface through context, with want as undefined
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2600', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2600', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2600';
@@ -106,14 +108,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2700
-     * @tc.name      : BundleName and activityName are both correct values
-     * @tc.desc      : By calling the startAbility interface through context,
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2700
+     * @tc.desc      : BundleName and activityName are both correct values
+     * By calling the startAbility interface through context,
      *                 both the wantAbilityName and bundleName parameters are correct values
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2700', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2700', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2700';
@@ -180,14 +183,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800
-     * @tc.name      : BundleName is the correct value, activityName is the incorrect value
-     * @tc.desc      : Call the startAbility interface through context, where the wantBundleName
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800
+     * @tc.desc      : BundleName is the correct value, activityName is the incorrect value
+     * Call the startAbility interface through context, where the wantBundleName
      *                 parameter is the correct value and the activityName parameter is the incorrect value
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2800', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800';
@@ -219,14 +223,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900
-     * @tc.name      : AbilityName is the correct value, bundleName is the incorrect value
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900
+     * @tc.desc      : AbilityName is the correct value, bundleName is the incorrect value
+     * Call the startAbility interface through context, where the wantAbilityName
      *                 parameter is the correct value and the bundleName parameter is the incorrect value
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2900', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900';
@@ -258,16 +263,17 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000
-     * @tc.name      : Call the startAbility interface through context, where the wantAbilityName parameter is the correct value,
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000
+     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName parameter is the correct value,
      *                 the bundleName parameter is the incorrect value, configure bundleName, activityName,
      *                 and deviceId, and the deviceid parameter is undefined
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
+     * Call the startAbility interface through context, where the wantAbilityName
      *                 and bundleName are the correct values, and deviceid is undefined
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3000', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -336,14 +342,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100
-     * @tc.name      : Configure bundleName, activityName, and uri, corresponding to the ability configured with uri
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100
+     * @tc.desc      : Configure bundleName, activityName, and uri, corresponding to the ability configured with uri
+     * Call the startAbility interface through context, where the wantAbilityName
      *                 and bundleName are the correct values,and the uri has a corresponding Ability
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3100', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100';
@@ -417,14 +424,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3200
-     * @tc.name      : Configure bundleName, activityName, and flags with a correct flag value
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3200
+     * @tc.desc      : Configure bundleName, activityName, and flags with a correct flag value
+     * Call the startAbility interface through context, where the wantAbilityName
      *                 and bundleName are the correct values,and the flag is the correct value
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3200', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3200', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -494,14 +502,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3300
-     * @tc.name      : Configure bundleName, activityName, and flags to match the two correct flag values
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3300
+     * @tc.desc      : Configure bundleName, activityName, and flags to match the two correct flag values
+     * Call the startAbility interface through context, where the wantAbilityName
      *                 and bundleName are the correct values,and the flag is the sum of the two correct flag values
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3300', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3300', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -577,14 +586,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400
-     * @tc.name      : Configure bundleName, activityName, and flags, with a floating-point flag value
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400
+     * @tc.desc      : Configure bundleName, activityName, and flags, with a floating-point flag value
+     * Call the startAbility interface through context, where the wantAbilityName
      *                 and bundleName are the correct values,and the flag is a floating-point flag value
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3400', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -653,14 +663,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3500
-     * @tc.name      : Configure bundleName, activityName, and flags, where flags are numeric strings
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3500
+     * @tc.desc      : Configure bundleName, activityName, and flags, where flags are numeric strings
+     * Call the startAbility interface through context, where the wantAbilityName
      *                 and bundleName are the correct values,the flag is a string, and the string is a number
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3500', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3500', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -729,14 +740,15 @@ export default function StartAbilityForResultTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3600
-     * @tc.name      : Configure bundleName, activityName, and flags, where flags are non numeric strings
-     * @tc.desc      : Call the startAbility interface through context, where the wantAbilityName
+     * @tc.name      : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3600
+     * @tc.desc      : Configure bundleName, activityName, and flags, where flags are non numeric strings
+     * Call the startAbility interface through context, where the wantAbilityName
      *                 and bundleName are the correct values,the flag is a string, and the string is a non numeric value
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3600', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3600', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
