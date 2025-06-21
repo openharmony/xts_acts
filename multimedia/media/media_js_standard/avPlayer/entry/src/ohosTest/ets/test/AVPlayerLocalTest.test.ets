@@ -710,6 +710,14 @@ async function setPlaybackStrategyFlv(avPlayer: media.AVPlayer | null, done: Fun
   avPlayer?.on('stateChange', stateChangeCallback)
 }
 
+function setPlayerVideoMuted(avPlayer: media.AVPlayer | null, isMuted: boolean) {
+  console.info(`setPlayerVideoMuted: ${isMuted}`)
+  avPlayer?.setMediaMuted(media.MediaType.MEDIA_TYPE_VID, isMuted).catch((error: BusinessError) => {
+    console.error(`setPlayerVideoMuted faild, err code ${error.code} msg ${error.message}`)
+    expect().assertFail()
+  })
+}
+
 function setPlayerMediaMuted(avPlayer: media.AVPlayer | null) {
   avPlayer?.setMediaMuted(media.MediaType.MEDIA_TYPE_AUD, true).catch((error: BusinessError) => {
     console.error(`setMediaMuted failed, err code ${error.code} msg ${error.message}`)
@@ -747,6 +755,55 @@ async function setMediaMuted(avPlayer: media.AVPlayer | null, done: Function) {
         break;
       case COMPLETED:
         setPlayerMediaMuted(avPlayer)
+        avPlayer?.release()
+        break;
+      case RELEASED:
+        avPlayer = null;
+        done();
+        break;
+      case ERROR:
+        expect().assertFail();
+        avPlayer?.release().then(() => {
+        },
+          mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        avPlayer = null;
+        break;
+      default:
+        break;
+    }
+  }
+  avPlayer?.on('stateChange', stateChangeCallback)
+}
+
+async function setVideoMuted(avPlayer: media.AVPlayer | null, done: Function) {
+  let surfaceID: string = globalThis.value;
+  let pauseCount = 0
+  let stateChangeCallback = async (state: media.AVPlayerState) => {
+    switch (state) {
+      case INITIALIZED:
+        if (!avPlayer) {
+          console.info(`avPlayer is null`);
+          break;
+        }
+        avPlayer.surfaceId = surfaceID;
+        avPlayer.prepare()
+        break;
+      case PREPARED:
+        avPlayer?.play()
+        break;
+      case PLAYING:
+        setPlayerVideoMuted(avPlayer, true)
+        if (pauseCount++ > 0) {
+          break
+        }
+        avPlayer?.pause()
+        break;
+      case PAUSED:
+        avPlayer?.play()
+        setPlayerVideoMuted(avPlayer, false)
+        break;
+      case COMPLETED:
+        setPlayerVideoMuted(avPlayer, true)
         avPlayer?.release()
         break;
       case RELEASED:
@@ -895,6 +952,25 @@ async function testSetMediaMuted(src: string | media.AVFileDescriptor, avPlayer:
       console.info('case createAVPlayer success');
       avPlayer = video;
       setMediaMuted(avPlayer, done)
+      setSource(avPlayer, src);
+    }
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      expect().assertFail();
+      done();
+    }
+  });
+}
+
+async function testSetVideoMuted(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null,
+  done: Function) {
+  console.info(`case media source: ${src}`)
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`)
+    if (typeof (video) !== 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+      setVideoMuted(avPlayer, done)
       setSource(avPlayer, src);
     }
     if (err != null) {
@@ -1337,6 +1413,20 @@ export default function AVPlayerLocalTest() {
       }
     });
     /* *
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0300
+    * @tc.name      : 003.test setPlaybackStrategy Function
+    * @tc.desc      : Local Video subtitle control test
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0300', Level.LEVEL0,async (done: Function) => {
+      if (fileDescriptor) {
+        let playbackStrategy: media.PlaybackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_VID, keepDecodingOnMute:true}
+        testSetPlaybackStrategy(fileDescriptor, avPlayer, done, playbackStrategy);
+      }
+    });
+    /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_RANGE_0100
         * @tc.name      : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_RANGE_0100
         * @tc.desc      : Local Video preferred set playback start position and end position control test
@@ -1383,6 +1473,19 @@ export default function AVPlayerLocalTest() {
         testSetMediaMuted(fileDescriptor, avPlayer, done);
       }
     });
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_MUTE_0200
+    * @tc.name      : 002.test setMediaMuted Function
+    * @tc.desc      : Local Video subtitle control test
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_MUTE_0200', Level.LEVEL0,async (done: Function) => {
+      if (fileDescriptor) {
+        testSetVideoMuted(fileDescriptor, avPlayer, done);
+      }
+    });       
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_DASH_0100
         * @tc.name      : 001.test setPlaybackStrategy Function
