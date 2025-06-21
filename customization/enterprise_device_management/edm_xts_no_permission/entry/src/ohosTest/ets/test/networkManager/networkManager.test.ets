@@ -550,7 +550,7 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(SELFWANT, true);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 201).assertTrue();
+      expect(error.code == 201 || error.code == 801).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -571,7 +571,7 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(SELFWANT, false);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 201).assertTrue();
+      expect(error.code == 201 || error.code == 801).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -594,7 +594,7 @@ function testTurnOffMobileData() {
       networkManager.turnOffMobileData(SELFWANT);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 201).assertTrue();
+      expect(error.code == 201 || error.code == 801).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }

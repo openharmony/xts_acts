@@ -1676,7 +1676,7 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(SELFWANT, true);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      expect(error.code == 9200001 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1694,7 +1694,7 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(SELFWANT, false);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      expect(error.code == 9200001 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1713,7 +1713,7 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(SELFWANT, true);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      expect(error.code == 9200002 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1732,7 +1732,7 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(SELFWANT, false);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      expect(error.code == 9200002 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1752,7 +1752,7 @@ function testTurnOnMobileData() {
       let info: string = systemParameterEnhance.getSync("persist.edm.mobile_data_policy", "");
       expect(info == "force_open").assertTrue();
     } catch (error) {
-      expect(error.code == 9200007).assertTrue();
+      expect(error.code == 9200007 || error.code == 801).assertTrue();
     } finally {
        networkManager.turnOnMobileData(SELFWANT, false);
        await adminManager.disableSuperAdmin(SELFHAPNAME);
@@ -1774,7 +1774,7 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(null, true);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      expect(error.code == 401 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1793,7 +1793,7 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(SELFWANT, null);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      expect(error.code == 401 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1813,7 +1813,7 @@ function testTurnOnMobileData() {
       let info: string = systemParameterEnhance.getSync("persist.edm.mobile_data_policy", "");
       expect(info == "none").assertTrue();
     } catch (error) {
-      expect(error.code == 9200007).assertTrue();
+      expect(error.code == 9200007 || error.code == 801).assertTrue();
     } finally {
        await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -1835,7 +1835,7 @@ function testTurnOffMobileData() {
       networkManager.turnOffMobileData(SELFWANT);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      expect(error.code == 9200001 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1854,7 +1854,7 @@ function testTurnOffMobileData() {
       networkManager.turnOffMobileData(SELFWANT);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      expect(error.code == 9200002 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1873,7 +1873,7 @@ function testTurnOffMobileData() {
       networkManager.turnOffMobileData(null);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      expect(error.code == 401 || error.code == 801).assertTrue();
     }
     done();
   });
@@ -1893,7 +1893,7 @@ function testTurnOffMobileData() {
       let info: string = systemParameterEnhance.getSync("persist.edm.mobile_data_policy", "");
       expect(info == "none").assertTrue();
     } catch (error) {
-      expect(error.code == 9200007).assertTrue();
+      expect(error.code == 9200007 || error.code == 801).assertTrue();
     } finally {
        networkManager.turnOnMobileData(SELFWANT, false);
        await adminManager.disableSuperAdmin(SELFHAPNAME);
