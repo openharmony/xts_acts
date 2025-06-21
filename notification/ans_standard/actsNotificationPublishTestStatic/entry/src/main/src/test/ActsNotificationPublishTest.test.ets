@@ -30,7 +30,7 @@ let domain: number = 0x0000;
 
 
 export default function ActsNotificationPublishTest() {
-  describe('SUB_NOTIFICATION_ANS_Publish_TEST', () => {
+  describe('ActsNotificationPublishTest', () => {
     let TAG:string = 'SUB_NOTIFICATION_ANS_Publish_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_Publish_TEST START')
     let testAbilityContext:common.UIAbilityContext;
@@ -858,12 +858,12 @@ export default function ActsNotificationPublishTest() {
         console.info(`SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0600 END`)
       })
 
-       //问题单号：DTS2025060627133
-     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0700
-      * @tc.name      : SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0700
-      * @tc.desc      : Cancels a notification with the ID
-      */
+    //  //问题单号：DTS2025060627133
+    // /*
+    //  * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0700
+    //  * @tc.name      : SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0700
+    //  * @tc.desc      : Cancels a notification with the ID
+    //  */
     // it('SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0700'
@@ -925,12 +925,12 @@ export default function ActsNotificationPublishTest() {
         console.info(`Sub_Notification_Ans_Publish_Cancel_Static_3050 END`)
       })
 
-      //问题单号：DTS2025060627133
-     /*
-      * @tc.number:SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300
-      * @tc.name:SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300
-      * @tc.desc:Cancels all notifications of the current application
-      */
+    //  //问题单号：DTS2025060627133
+    // /*
+    //  * @tc.number:SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300
+    //  * @tc.name:SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300
+    //  * @tc.desc:Cancels all notifications of the current application
+    //  */
     // it('SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300'
@@ -1014,12 +1014,12 @@ export default function ActsNotificationPublishTest() {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_Static_0300 END`)
       })
 
-      //问题单号：DTS2025060627133
-     /*
-      * @tc.number:SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_Static_0400
-      * @tc.name:SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_Static_0400
-      * @tc.desc:Cancel the notification of a specified group for this application
-      */
+    //  //问题单号：DTS2025060627133
+    // /*
+    //  * @tc.number:SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_Static_0400
+    //  * @tc.name:SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_Static_0400
+    // * @tc.desc:Cancel the notification of a specified group for this application
+    //  */
     // it('SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //     let TAG:string = 'SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_Static_0400'

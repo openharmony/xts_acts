@@ -28,7 +28,7 @@ let bundle_name:string = "com.example.actsnotificationpublish.static"
 
 
 export default function ActsNotificationManagerPublishTest() {
-  describe('SUB_NOTIFICATION_ANS_MANAGER_Publish_TEST', () => {
+  describe('ActsNotificationManagerPublishTest', () => {
     let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_Publish_TEST ===>'
     hilog.info(DOMAIN_NUMBER, TAG, 'SUB_NOTIFICATION_ANS_MANAGER_Publish_TEST START')
     let testAbilityContext:common.UIAbilityContext;
@@ -121,11 +121,11 @@ export default function ActsNotificationManagerPublishTest() {
       })
 
      //问题单号：DTS2025060627133
-     /*
-      * @tc.number:SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400
-      * @tc.name:SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400
-      * @tc.desc:Cancels a notification with the specified label and ID
-      */
+    // /*
+    //  * @tc.number:SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400
+    //  * @tc.name:SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400
+    //  * @tc.desc:Cancels a notification with the specified label and ID
+    //  */
     // it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0400'
@@ -1822,10 +1822,10 @@ export default function ActsNotificationManagerPublishTest() {
       })
 
     /*
-  * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_2010
-  * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_2010
-  * @tc.desc: test publish fail
-*/
+      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_2010
+      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_2010
+      * @tc.desc: test publish fail
+    */
     it('Sub_Notification_Ans_Publish_Publish_Static_2010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_2010'

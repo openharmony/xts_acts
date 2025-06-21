@@ -21,7 +21,7 @@ import common from '@ohos.app.ability.common';
 import {BusinessError} from '@ohos.base';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { Component, Driver, ON, loadAndSetUpUiTest } from '@ohos.UiTest'
-let bundle_name:string = "com.example.actscommoneventmanager.static"
+let bundle_name:string = "com.example.actscommoneventmanagertest.static"
 let domain: number = 0x0000;
 let testAbilityContext:common.UIAbilityContext;
 
