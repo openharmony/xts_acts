@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 {
   "app": {
     "signingConfigs": [
@@ -21,23 +20,8 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compatibleSdkVersion": 14,
         "compileSdkVersion": 20,
-        "runtimeOS": "OpenHarmony",
-        "buildOption": {
-          "strictMode": {
-            "caseSensitiveCheck": true,
-            "useNormalizedOHMUrl": true
-          }
-        }
-      }
-    ],
-    "buildModeSet": [
-      {
-        "name": "debug",
-      },
-      {
-        "name": "release"
+        "compatibleSdkVersion": 16,
       }
     ]
   },
