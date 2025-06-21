@@ -472,7 +472,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0170
-     * @tc.name System_API_Test_Power_Manager_1000
+     * @tc.name System_API_Test_Power_Manager_1100
      * @tc.desc Test the third-party application call setScreenOffTime will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
