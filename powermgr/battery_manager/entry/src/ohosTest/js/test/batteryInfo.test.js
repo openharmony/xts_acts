@@ -40,7 +40,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0010
-     * @tc.name testbattery_soc_JSTest
+     * @tc.name battery_soc_JSTest
      * @tc.desc Battery acquisition kit
      * @tc.level: Level 0
      * @tc.type: Function
@@ -63,7 +63,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0020
-     * @tc.name testcharging_status_JSTest
+     * @tc.name charging_status_JSTest
      * @tc.desc Battery charging kit
      * @tc.level: Level 0
      * @tc.type: Function
@@ -84,7 +84,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0030
-     * @tc.name testhealth_status_JSTest
+     * @tc.name health_status_JSTest
      * @tc.desc Get Battery Health Get KIT
      * @tc.level: Level 1
      * @tc.type: Function
@@ -105,7 +105,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0040
-     * @tc.name testplugged_type_JSTest
+     * @tc.name plugged_type_JSTest
      * @tc.desc Obtaining the SUB Connection Type KIT
      * @tc.level: Level 3
      * @tc.type: Function
@@ -126,7 +126,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0050
-     * @tc.name testvoltage_JSTest
+     * @tc.name voltage_JSTest
      * @tc.desc Obtaining the Voltage Interface KIT
      * @tc.level: Level 3
      * @tc.type: Function
@@ -147,7 +147,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0060
-     * @tc.name testtechnology_JSTest
+     * @tc.name technology_JSTest
      * @tc.desc Obtaining the Battery Technology Interface KIT
      * @tc.level: Level 3
      * @tc.type: Function
@@ -168,7 +168,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0070
-     * @tc.name testbattery_temperature_JSTest
+     * @tc.name battery_temperature_JSTest
      * @tc.desc BatteryTemperature values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -190,7 +190,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0080
-     * @tc.name testenum_health_state_JSTest_unknown
+     * @tc.name enum_health_state_JSTest_unknown
      * @tc.desc BatteryHealthState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -210,7 +210,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0090
-     * @tc.name testenum_health_state_JSTest_good
+     * @tc.name enum_health_state_JSTest_good
      * @tc.desc BatteryHealthState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -230,7 +230,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0100
-     * @tc.name testenum_health_state_JSTest_overheat
+     * @tc.name enum_health_state_JSTest_overheat
      * @tc.desc BatteryHealthState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -250,7 +250,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0110
-     * @tc.name testenum_health_state_JSTest_overvoltage
+     * @tc.name enum_health_state_JSTest_overvoltage
      * @tc.desc BatteryHealthState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -270,7 +270,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0120
-     * @tc.name testenum_health_state_JSTest_cold
+     * @tc.name enum_health_state_JSTest_cold
      * @tc.desc BatteryHealthState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -290,7 +290,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0130
-     * @tc.name testenum_health_state_JSTest_dead
+     * @tc.name enum_health_state_JSTest_dead
      * @tc.desc BatteryHealthState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Functiontion
@@ -310,7 +310,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0140
-     * @tc.name testenum_charge_state_JSTest_none
+     * @tc.name enum_charge_state_JSTest_none
      * @tc.desc BatteryChargeState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -330,7 +330,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0150
-     * @tc.name testenum_charge_state_JSTest_enable
+     * @tc.name enum_charge_state_JSTest_enable
      * @tc.desc BatteryChargeState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -350,7 +350,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0160
-     * @tc.name testenum_charge_state_JSTest_disable
+     * @tc.name enum_charge_state_JSTest_disable
      * @tc.desc BatteryChargeState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -370,7 +370,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0170
-     * @tc.name testenum_charge_state_JSTest_full
+     * @tc.name enum_charge_state_JSTest_full
      * @tc.desc BatteryChargeState values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -390,7 +390,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0180
-     * @tc.name testenum_plugged_type_JSTest_none
+     * @tc.name enum_plugged_type_JSTest_none
      * @tc.desc BatteryPluggedType values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -410,7 +410,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0190
-     * @tc.name testenum_plugged_type_JSTest_ac
+     * @tc.name enum_plugged_type_JSTest_ac
      * @tc.desc BatteryPluggedType values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -430,7 +430,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0200
-     * @tc.name testenum_plugged_type_JSTest_usb
+     * @tc.name enum_plugged_type_JSTest_usb
      * @tc.desc BatteryPluggedType values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -450,7 +450,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0210
-     * @tc.name testenum_plugged_type_JSTest_wireless
+     * @tc.name enum_plugged_type_JSTest_wireless
      * @tc.desc BatteryPluggedType values Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -470,7 +470,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0220
-     * @tc.name testis_battery_present_JSTest
+     * @tc.name is_battery_present_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -491,7 +491,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0230
-     * @tc.name testbatterylevel_JSTest
+     * @tc.name batterylevel_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -513,7 +513,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0240
-     * @tc.name testenum_level_state_JSTest_full
+     * @tc.name enum_level_state_JSTest_full
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -533,7 +533,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0250
-     * @tc.name testenum_level_state_JSTest_high
+     * @tc.name enum_level_state_JSTest_high
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -553,7 +553,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0260
-     * @tc.name testenum_level_state_JSTest_normal
+     * @tc.name enum_level_state_JSTest_normal
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -573,7 +573,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0270
-     * @tc.name testenum_level_state_JSTest_low
+     * @tc.name enum_level_state_JSTest_low
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -593,7 +593,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0280
-     * @tc.name testenum_level_state_JSTest_warning
+     * @tc.name enum_level_state_JSTest_warning
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -613,7 +613,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0290
-     * @tc.name testenum_level_state_JSTest_critical
+     * @tc.name enum_level_state_JSTest_critical
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -633,7 +633,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0300
-     * @tc.name testenum_level_state_JSTest_shutdown
+     * @tc.name enum_level_state_JSTest_shutdown
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -653,7 +653,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0310
-     * @tc.name testCommonEventBatteryChangedCode_EXTRA_SOC_JSTest
+     * @tc.name CommonEventBatteryChangedCode_EXTRA_SOC_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -674,7 +674,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0320
-     * @tc.name testCommonEventBatteryChangedCode_EXTRA_CHARGE_STATE_JSTest
+     * @tc.name CommonEventBatteryChangedCode_EXTRA_CHARGE_STATE_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -695,7 +695,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0330
-     * @tc.name testCommonEventBatteryChangedCode_EXTRA_HEALTH_STATE_JSTest
+     * @tc.name CommonEventBatteryChangedCode_EXTRA_HEALTH_STATE_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -716,7 +716,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0340
-     * @tc.name testCommonEventBatteryChangedCode_EXTRA_PLUGGED_TYPE_JSTest
+     * @tc.name CommonEventBatteryChangedCode_EXTRA_PLUGGED_TYPE_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -737,7 +737,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0350
-     * @tc.name testCommonEventBatteryChangedCode_EXTRA_VOLTAGE_JSTest
+     * @tc.name CommonEventBatteryChangedCode_EXTRA_VOLTAGE_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -758,7 +758,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0360
-     * @tc.name testCommonEventBatteryChangedCode_EXTRA_TECHNOLOGY_JSTest
+     * @tc.name CommonEventBatteryChangedCode_EXTRA_TECHNOLOGY_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -779,7 +779,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0370
-     * @tc.name testCommonEventBatteryChangedCode_EXTRA_TEMPERATURE_JSTest
+     * @tc.name CommonEventBatteryChangedCode_EXTRA_TEMPERATURE_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -800,7 +800,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0380
-     * @tc.name testCommonEventBatteryChangedCode_EXTRA_PRESENT_JSTest
+     * @tc.name CommonEventBatteryChangedCode_EXTRA_PRESENT_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -821,7 +821,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0390
-     * @tc.name testCommonEventBatteryChangedCode_CAPACITY_LEVEL_JSTest
+     * @tc.name CommonEventBatteryChangedCode_CAPACITY_LEVEL_JSTest
      * @tc.desc Battery Present Interface Test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -849,7 +849,7 @@ export default function BatteryInfoTest() {
      * @tc.size: MediumTest
      */
     it('nowCurrent_JSTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
-      let TAG = 'battery_soc_JSTest';
+      let TAG = 'nowCurrent_JSTest';
       try {
         let nowCurrent = batteryInfo.nowCurrent;
         console.info(`${TAG} nowCurrent: ${nowCurrent}`);
@@ -865,7 +865,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0010
-     * @tc.name testSystem_API_Test_batteryInfo_Manager_0100
+     * @tc.name System_API_Test_batteryInfo_Manager_0100
      * @tc.desc Test the third-party application call setBatteryConfig will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -888,7 +888,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0020
-     * @tc.name testSystem_API_Test_batteryInfo_Manager_0200
+     * @tc.name System_API_Test_batteryInfo_Manager_0200
      * @tc.desc Test the third-party application call getBatteryConfig will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -910,7 +910,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0030
-     * @tc.name testSystem_API_Test_batteryInfo_Manager_0300
+     * @tc.name System_API_Test_batteryInfo_Manager_0300
      * @tc.desc Test the third-party application call isBatteryConfigSupported will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -932,7 +932,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0040
-     * @tc.name testSystem_API_Test_batteryInfo_Manager_0400
+     * @tc.name System_API_Test_batteryInfo_Manager_0400
      * @tc.desc Test the third-party application call estimatedRemainingChargeTime will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -955,7 +955,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0050
-     * @tc.name testSystem_API_Test_batteryInfo_Manager_0500
+     * @tc.name System_API_Test_batteryInfo_Manager_0500
      * @tc.desc Test the third-party application call totalEnergy will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -978,7 +978,7 @@ export default function BatteryInfoTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0030
-     * @tc.name testSystem_API_Test_batteryInfo_Manager_0600
+     * @tc.name System_API_Test_batteryInfo_Manager_0600
      * @tc.desc Test the third-party application call remainingEnergy will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
