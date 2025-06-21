@@ -40,6 +40,25 @@ export default function abilityTest() {
       hilog.info(domain, TAG, '%{public}s', 'beforeAll end');
     })
 
+    /*
+     * @tc.number    : abilityTest001
+     * @tc.name      : abilityTest001
+     * @tc.desc      : Cancels a notification with the specified label and ID
+     */
+    it("abilityTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
+
+      await Utils.msSleep(1000)
+      hilog.info(domain, TAG, '%{public}s', 'abilityTest001 start');
+      if (testAbilityContext) {
+        let str1:string = testAbilityContext.filesDir
+        hilog.info(domain, TAG, '%{public}s', 'abilityTest001 testAbilityContext fileDir' + str1);
+      }
+      await Utils.msSleep(1000)
+      hilog.info(domain, TAG, '%{public}s', 'abilityTest001');
+      done()
+      hilog.info(domain, TAG, '%{public}s', 'abilityTest001 end');
+    })
+
   })
 
 }

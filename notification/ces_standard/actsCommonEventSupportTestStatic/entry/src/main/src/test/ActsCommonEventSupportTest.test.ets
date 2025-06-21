@@ -21,7 +21,7 @@ import Utils from './Util.test';
 import common from '@ohos.app.ability.common';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { Component, Driver, ON, loadAndSetUpUiTest } from '@ohos.UiTest'
-let bundle_name:string = "com.example.actscommoneventsupport.static"
+let bundle_name:string = "com.example.actscommoneventsupporttest.static"
 let testAbilityContext:common.UIAbilityContext;
 
 let domain: number = 0x0000; //日志标识,0x0000作为测试框架的业务标识

@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_static_suite("ActsNotificationManagerRequestEnableNotificationCallbackStaticTest") {
+ohos_js_app_static_suite("ActsNotificationCallbackStaticTest") {
 #  test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsNotificationManagerRequestEnableNotificationCallbackStaticTest"
+  hap_name = "ActsNotificationCallbackStaticTest"
   part_name = "distributed_notification_service"
   subsystem_name = "notification"
 }

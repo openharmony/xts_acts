@@ -14,7 +14,7 @@
  */
 {
   "app": {
-    "bundleName": "com.example.actscommoneventsupport.static",
+    "bundleName": "com.example.actscommoneventsupporttest.static",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",

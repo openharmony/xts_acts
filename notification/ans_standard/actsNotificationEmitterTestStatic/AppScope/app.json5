@@ -14,7 +14,7 @@
  */
 {
   "app": {
-    "bundleName": "com.example.badge.static",
+    "bundleName": "com.example.badgeemitter.static",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",

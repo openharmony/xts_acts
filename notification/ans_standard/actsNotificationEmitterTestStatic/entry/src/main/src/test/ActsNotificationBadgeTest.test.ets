@@ -25,7 +25,7 @@ import { Component, Driver, ON, loadAndSetUpUiTest } from '@ohos.UiTest'
 
 const TAG: string = 'NotificationActs';
 const TEST_SUITE_NAME: string = 'testemitterNotification';
-let bundle_name: string = "com.example.badge.static"
+let bundle_name: string = "com.example.badgeemitter.static"
 let domain: number = 0x000
 let testAbilityContext: common.UIAbilityContext;
 

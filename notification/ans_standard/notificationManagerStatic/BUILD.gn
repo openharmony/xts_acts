@@ -16,9 +16,9 @@ group("NotificationManagerStaticTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ActsCallbackTestStatic:ActsNotificationManagerRequestEnableNotificationCallbackStaticTest",
-      "ActsDenyTestStatic:ActsNotificationManagerRequestEnableNotificationDenyStaticTest",
-      "ActsAllowTestStatic:ActsNotificationManagerRequestEnableNotificationAllowStaticTest",
+      "ActsCallbackTestStatic:ActsNotificationCallbackStaticTest",
+      "ActsDenyTestStatic:ActsNotificationDenyStaticTest",
+      "ActsAllowTestStatic:ActsNotificationAllowStaticTest",
     ]
   }
 }
