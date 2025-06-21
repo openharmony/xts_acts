@@ -51,6 +51,7 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "NativeImageTest.cpp",
     "NativeTypographyTestAutoSpace.cpp",
     "NativeTypographyUpdate.cpp",
+    "NativeUndefinedGlyphDisplayTest.cpp",
     "OH_Drawing_FontCollectionTest.cpp",
     "OH_Drawing_TypographyLargeValueTest.cpp",
     "OH_Drawing_TypographyTest.cpp",

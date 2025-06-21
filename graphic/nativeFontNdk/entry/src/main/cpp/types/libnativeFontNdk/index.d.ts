@@ -93,3 +93,4 @@ export const oHDrawingTypographyHandlerAddEncodedText006: () => Array<number>;
 export const oHDrawingTypographyHandlerAddEncodedText007: () => Array<number>;
 export const oHDrawingTypographyHandlerAddEncodedText008: () => Array<number>;
 export const oHDrawingTypographyHandlerAddEncodedText009: () => Array<number>;
+export const oHDrawingGetRun001: () => Array<number>;
