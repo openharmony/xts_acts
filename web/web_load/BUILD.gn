@@ -26,6 +26,7 @@ group("WebLoad") {
       "resource_interception:ActsWebResourceInterceptionTest",
       "web_hosting:ActsWebHostingTest",
       "website_certificate:ActsWebsiteCertificateTest",
+      "ActsWebCloudServiceTestStatic:ActsWebCloudServiceStaticTest",
     ]
   }
 }
