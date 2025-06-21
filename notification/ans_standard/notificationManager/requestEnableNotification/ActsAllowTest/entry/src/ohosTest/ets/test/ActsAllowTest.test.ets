@@ -96,6 +96,7 @@ export default function ActsAllowTest() {
           let exit = exitGenerator(TAG, reject);
           notificationManager.requestEnableNotification(ctx).then(() => {
             succeed(`requestEnableNotification succeeded`);
+            done()
           }).catch((err: Error) => {
             exit(`requestEnableNotification err: JSON.stringify(err)`);
           });
@@ -107,6 +108,7 @@ export default function ActsAllowTest() {
           if (button !== null) {
             await sleep(1500);
             await button.click();
+            await sleep(500);
             done()
           } else {
             exit('null button');
@@ -130,6 +132,7 @@ export default function ActsAllowTest() {
           let exit = exitGenerator(TAG, reject);
           notificationManager.openNotificationSettings(ctx).then(() => {
             succeed(`openNotificationSettings succeeded`);
+            done()
           }).catch((err: BusinessError) => {
             exit(`openNotificationSettings err: JSON.stringify(err)`);
             if (err.code == 801) {
@@ -187,6 +190,7 @@ export default function ActsAllowTest() {
         creatorUserId: 123,
         hashCode: '123'
       };
+      await sleep(500);
       notificationManager.publish(notificationRequest).then(() => {
         console.info(TAG + "publish update success");
         expect(false).assertTrue()
