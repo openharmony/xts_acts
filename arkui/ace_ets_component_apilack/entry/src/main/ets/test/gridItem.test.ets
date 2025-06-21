@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
@@ -46,7 +46,7 @@ export default function gridItemOnSelectJsunit() {
     });
 
 
-    it('testgridItemOnSelect0001', 0, async () => {
+    it('testgridItemOnSelect0001', Level.LEVEL0, async () => {
       console.info('testgridItemOnSelect testgridItemOnSelect0001 START');
       await Utils.sleep(2000);
       let callback = (indexEvent: events_emitter.EventData) => {

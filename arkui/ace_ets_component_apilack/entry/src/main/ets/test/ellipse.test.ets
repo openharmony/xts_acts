@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function ellipseNeJsunit() {
@@ -49,7 +49,7 @@ export default function ellipseNeJsunit() {
      * @tc.name         testellipseNe0001
      * @tc.desic         aceellipseNeEtsTest0001
      */
-    it('testellipseNe0001', 0, async () => {
+    it('testellipseNe0001', Level.LEVEL0, async () => {
       console.info('ellipseNe testellipseNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ellipse');
@@ -66,7 +66,7 @@ export default function ellipseNeJsunit() {
      * @tc.name         testellipseNe0002
      * @tc.desic         aceellipseNeEtsTest0002
      */
-    it('testellipseNe0002', 0, async () => {
+    it('testellipseNe0002', Level.LEVEL0, async () => {
       console.info('ellipseNe testellipseNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ellipse');

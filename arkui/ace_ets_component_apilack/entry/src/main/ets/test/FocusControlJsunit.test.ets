@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -45,7 +45,7 @@ export default function focusControlJsunit() {
       console.info("focus after each called");
     })
 
-    it('testFocusOnTouch01', 0, async () => {
+    it('testFocusOnTouch01', Level.LEVEL0, async () => {
       console.info('[testFocusOnTouch01] START');
       await Utils.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
@@ -67,7 +67,7 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch01] testSendTouchEvent END');
     });
 
-    it('testFocusOnTouch02', 0, async () => {
+    it('testFocusOnTouch02', Level.LEVEL0, async () => {
       console.info('[testFocusOnTouch02] START');
       await Utils.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
@@ -89,7 +89,7 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch02] testSendTouchEvent END');
     });
 
-    it('testFocusOnTouch03', 0, async () => {
+    it('testFocusOnTouch03', Level.LEVEL0, async () => {
       console.info('[testFocusOnTouch03] START');
       await Utils.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
@@ -111,7 +111,7 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch03] testSendTouchEvent END');
     });
 
-    it('testFocusOnTouch04', 0, async () => {
+    it('testFocusOnTouch04', Level.LEVEL0, async () => {
       console.info('[testFocusOnTouch04] START');
       await Utils.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
@@ -133,7 +133,7 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch04] testSendTouchEvent END');
     });
 
-    it('testFocusOnTouch05', 0, async () => {
+    it('testFocusOnTouch05', Level.LEVEL0, async () => {
       console.info('[testFocusOnTouch05] START');
       await Utils.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {
@@ -155,7 +155,7 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch05] testSendTouchEvent END');
     });
 
-    it('testDefaultFocus06', 0, async () => {
+    it('testDefaultFocus06', Level.LEVEL0, async () => {
       console.info('[testDefaultFocus06] START');
       await Utils.sleep(1000);
       let callback = (eventData: events_emitter.EventData) => {

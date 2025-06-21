@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
@@ -53,7 +53,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0001
      * @tc.desic         acemediaQueryOffEtsTest0001
      */
-    it('testmediaQueryOff0001', 0, async () => {
+    it('testmediaQueryOff0001', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -70,7 +70,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0002
      * @tc.desic         acemediaQueryOffEtsTest0002
      */
-    it('testmediaQueryOff0002', 0, async () => {
+    it('testmediaQueryOff0002', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -87,7 +87,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0003
      * @tc.desic         acemediaQueryOffEtsTest0003
      */
-    it('testmediaQueryOff0003', 0, async () => {
+    it('testmediaQueryOff0003', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -104,7 +104,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0004
      * @tc.desic         acemediaQueryOffEtsTest0004
      */
-    it('testmediaQueryOff0004', 0, async () => {
+    it('testmediaQueryOff0004', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -121,7 +121,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0005
      * @tc.desic         acemediaQueryOffEtsTest0005
      */
-    it('testmediaQueryOff0005', 0, async () => {
+    it('testmediaQueryOff0005', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -138,7 +138,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0006
      * @tc.desic         acemediaQueryOffEtsTest0006
      */
-    it('testmediaQueryOff0006', 0, async () => {
+    it('testmediaQueryOff0006', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -155,7 +155,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0007
      * @tc.desic         acemediaQueryOffEtsTest0007
      */
-    it('testmediaQueryOff0007', 0, async () => {
+    it('testmediaQueryOff0007', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -172,7 +172,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0009
      * @tc.desic         acemediaQueryOffEtsTest0009
      */
-    it('testmediaQueryOff0009', 0, async () => {
+    it('testmediaQueryOff0009', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -189,7 +189,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0010
      * @tc.desic         acemediaQueryOffEtsTest0010
      */
-    it('testmediaQueryOff0010', 0, async () => {
+    it('testmediaQueryOff0010', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('offText');
@@ -206,7 +206,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmediaQueryOff0011
      * @tc.desic         acemediaQueryOffEtsTest0011
      */
-    it('testmediaQueryOff0011', 0, async () => {
+    it('testmediaQueryOff0011', Level.LEVEL0, async () => {
       console.info('mediaQueryOff testmediaQueryOff0011 START');
       await Utils.sleep(2000);
       try {
@@ -232,7 +232,7 @@ export default function mediaQueryOffJsunit() {
      * @tc.name         testmatchMediaSync0001
      * @tc.desic         acetestmatchMediaSyncEtsTest0001
      */
-    it('testmatchMediaSync0001', 0, async () => {
+    it('testmatchMediaSync0001', Level.LEVEL0, async () => {
       console.info('matchMediaSync testmatchMediaSync0001 START');
       await Utils.sleep(2000);
       try {

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function stackAlignContentJsunit() {
@@ -49,7 +49,7 @@ export default function stackAlignContentJsunit() {
      * @tc.name         teststackAlignContent0001
      * @tc.desic         acestackAlignContentEtsTest0001
      */
-    it('teststackAlignContent0001', 0, async () => {
+    it('teststackAlignContent0001', Level.LEVEL0, async () => {
       console.info('stackAlignContent teststackAlignContent0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Stack');
@@ -66,7 +66,7 @@ export default function stackAlignContentJsunit() {
      * @tc.name         teststackAlignContent0002
      * @tc.desic         acestackAlignContentEtsTest0002
      */
-    it('teststackAlignContent0002', 0, async () => {
+    it('teststackAlignContent0002', Level.LEVEL0, async () => {
       console.info('stackAlignContent teststackAlignContent0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Stack');

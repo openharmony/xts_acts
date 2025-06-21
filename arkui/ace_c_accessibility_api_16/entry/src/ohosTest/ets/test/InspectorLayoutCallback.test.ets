@@ -61,7 +61,7 @@ export default function InspectorLayoutCallbackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('InspectorLayoutCallback002', 0, async (done: Function) => {
+    it('InspectorLayoutCallback002', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[InspectorLayoutCallback002] start succ");
       await Utils.sleep(500);
@@ -87,7 +87,7 @@ export default function InspectorLayoutCallbackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('InspectorLayoutCallback003', 0, async (done: Function) => {
+    it('InspectorLayoutCallback003', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[InspectorLayoutCallback003] start succ");
       await Utils.sleep(500);
@@ -113,7 +113,7 @@ export default function InspectorLayoutCallbackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('InspectorLayoutCallback004', 0, async (done: Function) => {
+    it('InspectorLayoutCallback004', Level.LEVEL0, async (done: Function) => {
       await Utils.pushPage(`${PAGE_TAG}`, done);
       console.info("[InspectorLayoutCallback004] start succ");
       await Utils.sleep(500);

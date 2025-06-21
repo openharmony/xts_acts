@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function commonBackgroundBlurStyleJsunit() {
@@ -49,7 +49,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle001
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest001
      */
-    it('testcommonBackgroundBlurStyle001', 0, async () => {
+    it('testcommonBackgroundBlurStyle001', Level.LEVEL0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('borderImageText');
@@ -82,7 +82,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle002
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest002
      */
-    it('testcommonBackgroundBlurStyle002', 0, async () => {
+    it('testcommonBackgroundBlurStyle002', Level.LEVEL0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabIndexText');
@@ -98,7 +98,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle003
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest003
      */
-    it('testcommonBackgroundBlurStyle003', 0, async () => {
+    it('testcommonBackgroundBlurStyle003', Level.LEVEL0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('sepiaText');
@@ -114,7 +114,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle004
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest004
      */
-    it('testcommonBackgroundBlurStyle004', 0, async () => {
+    it('testcommonBackgroundBlurStyle004', Level.LEVEL0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alignRulesText');
@@ -140,7 +140,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle005
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest005
      */
-    it('testcommonBackgroundBlurStyle005', 0, async () => {
+    it('testcommonBackgroundBlurStyle005', Level.LEVEL0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('backgroundBlurStyleText');
@@ -157,7 +157,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle006
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest006
      */
-    it('testcommonBackgroundBlurStyle006', 0, async () => {
+    it('testcommonBackgroundBlurStyle006', Level.LEVEL0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle006 START');
       console.info("common onKeyEvent click result is: " + JSON.stringify(sendEventByKey('onKeyEventButton', 10, "")));
     });
@@ -167,7 +167,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonHoverEffectHighlight0006
      * @tc.desic        acecommonHoverEffectHighlightEtsTest0006
      */
-    it('testcommonHoverEffectHighlight0001', 0, async () => {
+    it('testcommonHoverEffectHighlight0001', Level.LEVEL0, async () => {
       console.info('commonHoverEffectHighlight testcommonHoverEffectHighlight0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('hoverEffectText');
@@ -182,7 +182,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonHoverEffectScale0007
      * @tc.desic        acecommonHoverEffectScaleEtsTest0007
      */
-    it('testcommonHoverEffectScale0001', 0, async () => {
+    it('testcommonHoverEffectScale0001', Level.LEVEL0, async () => {
       console.info('commonHoverEffectScale testcommonHoverEffectScale0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('hoverEffectScaleText');
@@ -198,7 +198,7 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonhitTestBehavior0008
      * @tc.desic        acecommonhitTestBehaviorEtsTest0008
      */
-    it('testcommonhitTestBehavior0001', 0, async () => {
+    it('testcommonhitTestBehavior0001', Level.LEVEL0, async () => {
       console.info('commonhitTestBehavior testcommonhitTestBehavior0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('hoverEffectScaleText');
