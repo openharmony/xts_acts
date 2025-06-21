@@ -1444,7 +1444,7 @@ export default function SecurityCryptoFwKeyGenerateECCTestUnit() {
       let format: string = "UNCOMPRESSED";
       try {
         let point: cryptoFramework.Point = specUtil.pkPoint(algName);
-        point.x++;
+        point.x = BigInt("1214654654542154542124541214");
         cryptoFramework.ECCKeyUtil.getEncodedPoint(specUtil.curveName(algName), point, format);
         expect(null).assertFail();
       } catch (err: BusinessError) {
