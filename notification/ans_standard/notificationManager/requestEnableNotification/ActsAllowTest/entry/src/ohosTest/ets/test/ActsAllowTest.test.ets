@@ -170,7 +170,7 @@ export default function ActsAllowTest() {
     * @tc.type      : Function test
     * @tc.level     : Level 0
     */
-    it('Sub_Notification_Ans_Publish_updateOnly_0003', Level.LEVEL0, (done: Function) => {
+    it('Sub_Notification_Ans_Publish_updateOnly_0003', Level.LEVEL0, async (done: Function) => {
       // 通知Request对象
       let notificationRequest: notificationManager.NotificationRequest = {
         id: 2025012101,
