@@ -4,6 +4,7 @@ import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
 import { waitForExist} from '../../test/WaitTest.test';
 import { Driver, ON } from '@ohos.UiTest';
+import { waitForExist} from '../../test/WaitTest.test';
 
 
 // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
@@ -45,6 +46,7 @@ struct WebComponent {
   @State offsetY: number = 0;
   @State isReceive: number = -1;
   @State str:string = 'emitOnActivateContent'
+  @State isReceive: number = -1;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {

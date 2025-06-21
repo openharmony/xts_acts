@@ -25,7 +25,7 @@ export default function webWaitForAttachedTest() {
 
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/onActivateContent',
+        url: 'testability/pages/OnActivateContent',
       }
       try {
         router.clear();

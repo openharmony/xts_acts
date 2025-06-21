@@ -4,6 +4,6 @@
     "testability/pages/WebOnOffOne",
     "testability/pages/WebOnOffTwo",
     "testability/pages/WaitForAttached",
-    "testability/pages/onActivateContent"
+    "testability/pages/OnActivateContent"
   ]
 }
