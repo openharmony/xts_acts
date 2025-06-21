@@ -41,6 +41,7 @@ group("ability_runtime") {
       "actsabilityusertest:ActsAbilityuserTest",
       "actsactionextensionability:actsactionextensionability",
       "actsamstest:actsamstest",
+      "actsapplicationcontext:ActsChainApplicationContext",
       "actsautofilltest:actsautofilltest",
       "actscalldataabilitytest:ActsCallDataAbilityTest",
       "actscallerinfotest:actscallerinfotest",
