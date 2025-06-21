@@ -44,7 +44,7 @@ struct WebComponent {
   @State offsetY: number = 0;
   @State isReceive: number = -1;
   @State str:string = 'emitOnActivateContent'
-  @State isReceive: number = -1;
+
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
