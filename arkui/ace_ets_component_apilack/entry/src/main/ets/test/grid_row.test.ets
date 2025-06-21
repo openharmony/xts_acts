@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function grid_rowOnBreakpointChangeJsunit() {
@@ -49,7 +49,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      * @tc.name      testgrid_rowOnBreakpointChange001
      * @tc.desic     acegrid_rowOnBreakpointChangeEtsTest001
      */
-    it('testgrid_rowOnBreakpointChange001', 0, async () => {
+    it('testgrid_rowOnBreakpointChange001', Level.LEVEL0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
@@ -66,7 +66,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      * @tc.name      testgrid_rowOnBreakpointChange002
      * @tc.desic     acegrid_rowOnBreakpointChangeEtsTest002
      */
-    it('testgrid_rowOnBreakpointChange002', 0, async () => {
+    it('testgrid_rowOnBreakpointChange002', Level.LEVEL0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
@@ -83,7 +83,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      * @tc.name      testgrid_rowOnBreakpointChange003
      * @tc.desic     acegrid_rowOnBreakpointChangeEtsTest003
      */
-    it('testgrid_rowOnBreakpointChange003', 0, async () => {
+    it('testgrid_rowOnBreakpointChange003', Level.LEVEL0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');

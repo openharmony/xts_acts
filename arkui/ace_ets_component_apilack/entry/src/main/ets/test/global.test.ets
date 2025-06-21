@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 import RectValue from './Rect';
 
@@ -50,7 +50,7 @@ export default function globalJsunit() {
      * @tc.name         testglobal_getInspectorTree0001
      * @tc.desic         aceGlobal_getInspectorTree0001
      */
-    it('testglobal_getInspectorTree0001', 0, async () => {
+    it('testglobal_getInspectorTree0001', Level.LEVEL0, async () => {
       console.info('testglobal_getInspectorTree0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorTree();
@@ -64,7 +64,7 @@ export default function globalJsunit() {
      * @tc.name         testglobal_sendKeyEvent0002
      * @tc.desic         aceGlobal_sendKeyEvent0002
      */
-    it('testglobal_sendKeyEvent0002', 0, async () => {
+    it('testglobal_sendKeyEvent0002', Level.LEVEL0, async () => {
       console.info('testglobal_sendKeyEvent0002 START');
       await Utils.sleep(2000);
       let KeyEvent: KeyEvent = {
@@ -94,7 +94,7 @@ export default function globalJsunit() {
      * @tc.name         testglobal_sendMouseEvent0003
      * @tc.desic         aceGlobal_sendMouseEvent0003
      */
-    it('testglobal_sendMouseEvent0003', 0, async () => {
+    it('testglobal_sendMouseEvent0003', Level.LEVEL0, async () => {
       console.info('testglobal_sendMouseEvent0003 START');
       await Utils.sleep(2000);
       let rect: RectValue = Utils.getComponentRect('ListItem');

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function webGetTitleJsunit() {
@@ -49,7 +49,7 @@ export default function webGetTitleJsunit() {
      * @tc.name         testwebGetTitle0002
      * @tc.desic         acewebGetTitleEtsTest0002
      */
-    it('testwebGetTitle0001', 0, async () => {
+    it('testwebGetTitle0001', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
@@ -61,7 +61,7 @@ export default function webGetTitleJsunit() {
 
     });
 
-    it('testwebGetTitle0002', 0, async () => {
+    it('testwebGetTitle0002', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
@@ -73,7 +73,7 @@ export default function webGetTitleJsunit() {
 
     });
 
-    it('testwebGetTitle0003', 0, async () => {
+    it('testwebGetTitle0003', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
@@ -85,7 +85,7 @@ export default function webGetTitleJsunit() {
 
     });
 
-    it('testwebGetTitle0004', 0, async () => {
+    it('testwebGetTitle0004', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
@@ -97,7 +97,7 @@ export default function webGetTitleJsunit() {
 
     });
 
-    it('testwebGetTitle0005', 0, async () => {
+    it('testwebGetTitle0005', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
@@ -109,7 +109,7 @@ export default function webGetTitleJsunit() {
 
     });
 
-    it('testwebGetTitle0006', 0, async () => {
+    it('testwebGetTitle0006', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
@@ -121,7 +121,7 @@ export default function webGetTitleJsunit() {
 
     });
 
-    it('testwebGetTitle0007', 0, async () => {
+    it('testwebGetTitle0007', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
@@ -133,7 +133,7 @@ export default function webGetTitleJsunit() {
 
     });
 
-    it('testwebGetTitle0008', 0, async () => {
+    it('testwebGetTitle0008', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0008 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
@@ -145,7 +145,7 @@ export default function webGetTitleJsunit() {
 
     });
 
-    it('testwebGetTitle0009', 0, async () => {
+    it('testwebGetTitle0009', Level.LEVEL0, async () => {
       console.info('webGetTitle testwebGetTitle0009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');

@@ -46,7 +46,7 @@ export default function listUxTest() {
       done()
     });
 
-    it('ArkUX_Stage_List_Style_0100', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0100', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let left = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal"))
@@ -83,7 +83,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to ListItemStyle.CARD
      */
 
-    it('ArkUX_Stage_List_Style_0200', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0200', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let left = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).left)
@@ -118,7 +118,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to ListItemStyle.NONE
      */
 
-    it('ArkUX_Stage_List_Style_0300', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0300', Level.LEVEL0,(done: Function) => {
       try {
         let left = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).left)
         let right = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).right)
@@ -150,7 +150,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to null
      */
 
-    it('ArkUX_Stage_List_Style_0400', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0400', Level.LEVEL0,(done: Function) => {
       try {
         let left = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).left)
         let right = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).right)
@@ -182,7 +182,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to undefined
      */
 
-    it('ArkUX_Stage_List_Style_0500', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0500', Level.LEVEL0,(done: Function) => {
       try {
         let left = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).left)
         let right = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).right)
@@ -214,7 +214,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to ""
      */
 
-    it('ArkUX_Stage_List_Style_0600', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0600', Level.LEVEL0,(done: Function) => {
       try {
         let left = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).left)
         let right = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).right)
@@ -246,7 +246,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter  is not set
      */
 
-    it('ArkUX_Stage_List_Style_0700', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0700', Level.LEVEL0,(done: Function) => {
       try {
         let left = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).left)
         let right = JSON.stringify(JSON.parse(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin).right)
@@ -278,7 +278,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to ListItemStyle.CARD
      */
 
-    it('ArkUX_Stage_List_Style_0800', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0800', Level.LEVEL0,(done: Function) => {
       try {
         let margin = JSON.stringify(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin)
         console.log("====> ArkUX_Stage_List_Style_0800 margin:" + margin)
@@ -301,7 +301,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to ListItemStyle.CARD
      */
 
-    it('ArkUX_Stage_List_Style_0900', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_0900', Level.LEVEL0,(done: Function) => {
       try {
         let margin = JSON.stringify(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin)
         console.log("====> ArkUX_Stage_List_Style_0900 margin:" + margin)
@@ -324,7 +324,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to ListItemStyle.CARD
      */
 
-    it('ArkUX_Stage_List_Style_1000', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_1000', Level.LEVEL0,(done: Function) => {
       try {
         let margin = JSON.stringify(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin)
         console.log("====> ArkUX_Stage_List_Style_1000 margin:" + margin)
@@ -347,7 +347,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to ListItemStyle.CARD
      */
 
-    it('ArkUX_Stage_List_Style_1100', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_1100', Level.LEVEL0,(done: Function) => {
       try {
         let margin = JSON.stringify(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin)
         console.log("====> ArkUX_Stage_List_Style_1100 margin:" + margin)
@@ -370,7 +370,7 @@ export default function listUxTest() {
      *            Does the style take effect after setting the style parameter in ListItem to ListItemStyle.CARD
      */
 
-    it('ArkUX_Stage_List_Style_1200', 0, (done: Function) => {
+    it('ArkUX_Stage_List_Style_1200', Level.LEVEL0,(done: Function) => {
       try {
         let margin = JSON.stringify(JSON.parse(getInspectorByKey("nurmal")).$attrs.margin)
         console.log("====> ArkUX_Stage_List_Style_1200 margin:" + margin)
@@ -392,7 +392,7 @@ export default function listUxTest() {
      * @tc.desc ScrollerForList calls the interface scrollTo(), and the animation parameter is passed in as true
      */
 
-    it('ArkUX_Stage_List_RollBack_0100', 0, (done: Function) => {
+    it('ArkUX_Stage_List_RollBack_0100', Level.LEVEL0,(done: Function) => {
       try {
         sendEventByKey("scrollerForList", 10, "")
         let obj = JSON.stringify(JSON.parse(getInspectorByKey("RollBack")).$attrs.scrollerForList)
@@ -410,7 +410,7 @@ export default function listUxTest() {
      *             including stepless style animations and limit style animations
      * @tc.desc Test List's scrollSnapAlign interface incoming to ScrollSnapAlign.NONE
      */
-    it('ArkUX_Stage_List_LimitAnimation_0100', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0100', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0100"))
@@ -431,7 +431,7 @@ export default function listUxTest() {
      *             including stepless style animations and limit style animations
      * @tc.desc Test List's scrollSnapAlign interface incoming to ScrollSnapAlign.START
      */
-    it('ArkUX_Stage_List_LimitAnimation_0200', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0200', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0200"))
@@ -453,7 +453,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to ScrollSnapAlign.CENTER
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_0300', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0300', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0300"))
@@ -475,7 +475,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to ScrollSnapAlign.END
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_0400', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0400', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0400"))
@@ -497,7 +497,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to null
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_0500', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0500', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0500"))
@@ -519,7 +519,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to ""
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_0600', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0600', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0600"))
@@ -541,7 +541,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to undefined
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_0700', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0700', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0700"))
@@ -563,7 +563,7 @@ export default function listUxTest() {
      * @tc.desc Test List does not call scrollSnapAlign
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_0800', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0800', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0800"))
@@ -585,7 +585,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to "ScrollSnapAlign.START"
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_0900', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_0900', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0900"))
@@ -608,7 +608,7 @@ export default function listUxTest() {
      *             and then pass in ScrollSnapAlign.NONE
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_1000', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_1000', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1000"))
@@ -631,7 +631,7 @@ export default function listUxTest() {
      *             and then pass in ScrollSnapAlign.Start
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_1100', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_1100', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1100"))
@@ -654,7 +654,7 @@ export default function listUxTest() {
      *             and then pass in ""
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_1200', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_1200', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1200"))
@@ -677,7 +677,7 @@ export default function listUxTest() {
      *             and then pass in ScrollSnapAlign.Start
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_1300', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_1300', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1300"))
@@ -699,7 +699,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to 0
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_1400', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_1400', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1400"))
@@ -721,7 +721,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to 1
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_1500', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_1500', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1500"))
@@ -743,7 +743,7 @@ export default function listUxTest() {
      * @tc.desc Test List's scrollSnapAlign interface incoming to 6
      */
 
-    it('ArkUX_Stage_List_LimitAnimation_1600', 0, (done: Function) => {
+    it('ArkUX_Stage_List_LimitAnimation_1600', Level.LEVEL0,(done: Function) => {
       setTimeout(() => {
         try {
           let scrollSnapAlign : ESObject= JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1600"))

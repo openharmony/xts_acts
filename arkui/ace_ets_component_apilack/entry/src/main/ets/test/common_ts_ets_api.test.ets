@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 import font from '@ohos.font'
 
@@ -51,7 +51,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
      * @tc.name         testcommon_ts_ets_apiPersistProp0001
      * @tc.desic         acecommon_ts_ets_apiPersistPropEtsTest0001
      */
-    it('testcommon_ts_ets_apiPersistProp0001', 0, async () => {
+    it('testcommon_ts_ets_apiPersistProp0001', Level.LEVEL0, async () => {
       console.info('common_ts_ets_apiPersistProp testcommon_ts_ets_apiPersistProp0001 START');
       await Utils.sleep(2000);
       try {
@@ -75,7 +75,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
      * @tc.name         testcommon_ts_ets_apiEnvProp0001
      * @tc.desic         acecommon_ts_ets_apiEnvPropEtsTest0001
      */
-    it('testcommon_ts_ets_apiEnvProp0001', 0, async () => {
+    it('testcommon_ts_ets_apiEnvProp0001', Level.LEVEL0, async () => {
       console.info('common_ts_ets_apiEnvProp testcommon_ts_ets_apiEnvProp0001 START');
       await Utils.sleep(2000);
       try {
@@ -99,7 +99,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
     * @tc.name         test_font_registerFont_0001
     * @tc.desc        Register a customized font in the FontManager
     */
-    it('test_font_registerFont_0001', 0, async () => {
+    it('test_font_registerFont_0001', Level.LEVEL0, async () => {
       console.info('test_font_registerFont_0001 Register a customized font in the FontManagerSTART');
       await Utils.sleep(2000);
       let fontOptions: font.FontOptions = {

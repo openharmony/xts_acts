@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function listNewJsunit() {
@@ -50,7 +50,7 @@ export default function listNewJsunit() {
      * @tc.name         testListNew0001
      * @tc.desic        acelistNewEtsTest0001
      */
-    it('testListNew0001', 0, async () => {
+    it('testListNew0001', Level.LEVEL0, async () => {
       console.info('listNe testListNew0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
@@ -67,7 +67,7 @@ export default function listNewJsunit() {
      * @tc.name         testListNe0002
      * @tc.desic         acelistNeEtsTest0002
      */
-    it('testListNe0002', 0, async () => {
+    it('testListNe0002', Level.LEVEL0, async () => {
       console.info('listNe testListNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
@@ -84,7 +84,7 @@ export default function listNewJsunit() {
      * @tc.name         testListNe0003
      * @tc.desic         acelistNeEtsTest0003
      */
-    it('testListNe0003', 0, async () => {
+    it('testListNe0003', Level.LEVEL0, async () => {
       console.info('listNe testListNe0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
@@ -101,7 +101,7 @@ export default function listNewJsunit() {
      * @tc.name         testListNe0004
      * @tc.desic         acelistNeEtsTest0004
      */
-    it('testListNe0004', 0, async () => {
+    it('testListNe0004', Level.LEVEL0, async () => {
       console.info('listNe testListNe0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
@@ -118,7 +118,7 @@ export default function listNewJsunit() {
      * @tc.name         testListNe0005
      * @tc.desic         acelistNeEtsTest0005
      */
-    it('testListNe0005', 0, async () => {
+    it('testListNe0005', Level.LEVEL0, async () => {
       console.info('listNe testListNe0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
@@ -135,7 +135,7 @@ export default function listNewJsunit() {
      * @tc.name         testListNe0006
      * @tc.desic         acelistNeEtsTest0006
      */
-    it('testListNe0006', 0, async () => {
+    it('testListNe0006', Level.LEVEL0, async () => {
       console.info('listNe testListNe0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
@@ -152,7 +152,7 @@ export default function listNewJsunit() {
      * @tc.name         testListNe0007
      * @tc.desic        acelistNeEtsTest0007
      */
-    it('testListNe0007', 0, async () => {
+    it('testListNe0007', Level.LEVEL0, async () => {
       console.info('listNe testListNe0007 START');
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 60216,

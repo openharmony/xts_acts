@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function curvesStepsJsunit() {
@@ -53,7 +53,7 @@ export default function curvesStepsJsunit() {
      * @tc.name         testcurvesSteps0001
      * @tc.desic         acecurvesStepsEtsTest0001
      */
-    it('testcurvesSteps0001', 0, async () => {
+    it('testcurvesSteps0001', Level.LEVEL0, async () => {
       console.info('curvesSteps testcurvesSteps0001 START');
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 60229,

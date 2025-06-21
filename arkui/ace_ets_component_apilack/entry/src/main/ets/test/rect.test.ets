@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function rectNeJsunit() {
@@ -49,7 +49,7 @@ export default function rectNeJsunit() {
      * @tc.name         testrectNe0001
      * @tc.desic         acerectNeEtsTest0001
      */
-    it('testrectNe0001', 0, async () => {
+    it('testrectNe0001', Level.LEVEL0, async () => {
       console.info('rectNe testrectNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rect');
@@ -66,7 +66,7 @@ export default function rectNeJsunit() {
      * @tc.name         testrectNe0002
      * @tc.desic         acerectNeEtsTest0002
      */
-    it('testrectNe0002', 0, async () => {
+    it('testrectNe0002', Level.LEVEL0, async () => {
       console.info('rectNe testrectNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rect');
