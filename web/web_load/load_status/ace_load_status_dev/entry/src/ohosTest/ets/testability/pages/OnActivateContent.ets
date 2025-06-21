@@ -11,7 +11,7 @@ import { Driver, ON } from '@ohos.UiTest';
 struct NewWebViewComp {
   controller?: CustomDialogController;
   webviewController1: webview.WebviewController = new webview.WebviewController();
-  @State str:String = ''
+
 
 
   build() {
