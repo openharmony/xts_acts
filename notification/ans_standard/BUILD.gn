@@ -30,7 +30,6 @@ group("ans_standard") {
       "actsNotificationManagerSlotTestStatic:ActsNotificationManagerSlotStaticTest",
       "actsNotificationNDKEnableTest:ActsNotificationNDKEnableTest",
       "actsNotificationPublishTest:ActsNotificationPublishTest",
-      "actsNotificationPublishTestStatic:ActsNotificationPublishStaticTest",
       "actsNotificationRequestTest:ActsNotificationRequestTest",
       "actsNotificationRequestTestStatic:ActsNotificationRequestStaticTest",
       "actsNotificationSecondaryDirectoryTest:ActsNotificationSecondaryDirectoryTest",

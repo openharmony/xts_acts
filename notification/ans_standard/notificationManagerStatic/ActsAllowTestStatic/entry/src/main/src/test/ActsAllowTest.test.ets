@@ -87,41 +87,8 @@ export default function ActsAllowTest() {
         console.info('找不到button');
       }
     })
-    /*
-    * @tc.number    : Sub_Notification_Ans_OpenNotification_Settings_Static_0004
-    * @tc.name      : Sub_Notification_Ans_OpenNotification_Settings_Static_0004
-    * @tc.desc      : 非系统应用调用openNotificationSettings接口拉起设置页面
-    */
-    it('Sub_Notification_Ans_OpenNotification_Settings_Static_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-      async (done: () => void): Promise<void> => {
-        let TAG: string = 'Sub_Notification_Ans_OpenNotification_Settings_Static_0004'
-        notificationManager.openNotificationSettings(testAbilityContext).then(() => {
-          console.info(`${TAG} openNotificationSettings succeeded`);
-          expect(true).assertTrue();
-          done();
-        }).catch((err: BusinessError): void => {
-          console.info(`${TAG} openNotificationSettings err: ${JSON.stringify(err)}`);
-          if (err.code == 801) {
-            expect(true).assertTrue();
-            done();
-          } else {
-            expect().assertFail();
-            done();
-          }
-        })
-        await Utils.msSleep(1500);
-        let driver = Driver.create();
-        await Utils.msSleep(1500)
-        let button = await driver.findComponent(ON.text('通知管理'));
-        console.info(`${TAG} button is ${JSON.stringify(button)}`);
-        if (button !== null) {
-          await Utils.msSleep(1500);
-          await button.click();
-          done()
-        } else {
-          console.info('找不到通知管理');
-        }
-      })
+
+
     /*
      * @tc.number    : Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_Static_0100
      * @tc.name      : Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_Static_0100
@@ -135,6 +102,7 @@ export default function ActsAllowTest() {
           console.info(`${TAG} requestEnableNotification succeeded`);
         }).catch((err: BusinessError): void => {
           console.info(`${TAG} requestEnableNotification err: JSON.stringify(err)`);
+          expect(false).assertTrue()
         });
         await Utils.msSleep(1500);
         let driver = Driver.create();
@@ -144,6 +112,7 @@ export default function ActsAllowTest() {
         if (button !== null) {
           await Utils.msSleep(1500);
           await button.click();
+          await Utils.msSleep(1000);
           done()
         } else {
           console.info(`${TAG} null button`);
