@@ -16,7 +16,6 @@ struct NewWebViewComp {
 
   build() {
     Column() {
-      Text('' + this.str)
       Web({ src: "https://www.zhihu.com/", controller: this.webviewController1 })
         .javaScriptAccess(true)
         .multiWindowAccess(false)
