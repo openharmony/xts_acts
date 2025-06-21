@@ -327,7 +327,7 @@ export default function PowerTest() {
     })
 
     /**
-     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0110
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0111
      * @tc.name System_API_Test_Power_Manager_0500
      * @tc.desc Test the third-party application call suspend will be blocked
      * @tc.level: Level 3
