@@ -58,7 +58,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETINPUTFIELDTYPE_0100
-    * @tc.name       : testWebContextMenuParamGetInputFieldType001
+    * @tc.name       : testWebContextMenuParamGetInputFieldTypeStatic001
     * @tc.desc       : test WebContextMenuParamGetInputFieldType
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -76,7 +76,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETSOURCETYPE_0100
-    * @tc.name       : testWebContextMenuParamGetSourceType001
+    * @tc.name       : testWebContextMenuParamGetSourceTypeStatic001
     * @tc.desc       : test WebContextMenuParamGetSourceType
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -94,7 +94,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETMEDIATYPE_0100
-    * @tc.name       : testWebContextMenuParamGetMediaType001
+    * @tc.name       : testWebContextMenuParamGetMediaTypeStatic001
     * @tc.desc       : test WebContextMenuParamGetMediaType
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -112,7 +112,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETUNFILTEREDLINKURL_0100
-    * @tc.name       : testWebContextMenuParamGetUnfilteredLinkUrl001
+    * @tc.name       : testWebContextMenuParamGetUnfilteredLinkUrlStatic001
     * @tc.desc       : test WebContextMenuParamGetUnfilteredLinkUrl
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -130,7 +130,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETLINKURL_0100
-    * @tc.name       : testWebContextMenuParamGetLinkUrl001
+    * @tc.name       : testWebContextMenuParamGetLinkUrlStatic001
     * @tc.desc       : test WebContextMenuParamGetLinkUrl
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -148,7 +148,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENURESULTCOPY_0100
-    * @tc.name       : testWebContextMenuResultCopy001
+    * @tc.name       : testWebContextMenuResultCopyStatic001
     * @tc.desc       : test WebContextMenuResultCopy
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -166,7 +166,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENURESULTCUT_0100
-    * @tc.name       : testWebContextMenuResultCut001
+    * @tc.name       : testWebContextMenuResultCutStatic001
     * @tc.desc       : test WebContextMenuResultCut
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -184,7 +184,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENURESULTCOPYIMAGE_0100
-    * @tc.name       : testWebContextMenuResultCopyImage001
+    * @tc.name       : testWebContextMenuResultCopyImageStatic001
     * @tc.desc       : test WebContextMenuResultCopyImage
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -202,7 +202,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENURESULTSELECTALL_0100
-    * @tc.name       : testWebContextMenuResultSelectAll001
+    * @tc.name       : testWebContextMenuResultSelectAllStatic001
     * @tc.desc       : test WebContextMenuResultSelectAll
     * @tc.size       : MediumTest
     * @tc.type       : Function
@@ -220,7 +220,7 @@ export default function WebViewEnumAndFontLibrary() {
 
     /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENURESULTCLOSECONTEXTMENU_0100
-    * @tc.name       : testWebContextMenuResultCloseContextMenu001
+    * @tc.name       : testWebContextMenuResultCloseContextMenuStatic001
     * @tc.desc       : test WebContextMenuResultCloseContextMenu
     * @tc.size       : MediumTest
     * @tc.type       : Function

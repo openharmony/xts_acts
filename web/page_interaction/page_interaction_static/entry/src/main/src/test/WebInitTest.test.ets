@@ -57,9 +57,9 @@ export default function webInitTest() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_033
-     *tc.name ContextMenuMediaType
-     *tc.desic Save current page
+     * @tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_033
+     * @tc.name ContextMenuMediaTypeStatic
+     * @tc.desc Save current page
      */
     it('ContextMenuMediaTypeStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       await Utils.emitEvent("emitContextMenuMediaType", 10)
@@ -70,9 +70,9 @@ export default function webInitTest() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_034
-     *tc.name ContextMenuInputFieldType
-     *tc.desic Save current page
+     * @tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_034
+     * @tc.name ContextMenuInputFieldTypeStatic
+     * @tc.desc Save current page
      */
     it('ContextMenuInputFieldTypeStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       await Utils.emitEvent("emitContextMenuInputFieldType", 10)
@@ -85,9 +85,9 @@ export default function webInitTest() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_035
-     *tc.name ContextMenuEditStateFlags
-     *tc.desic Save current page
+     * @tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_035
+     * @tc.name ContextMenuSourceTypeStatic
+     * @tc.desc Save current page
      */
     it('ContextMenuSourceTypeStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       await Utils.emitEvent("ContextMenuSourceType", 10)
@@ -100,9 +100,9 @@ export default function webInitTest() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_014
-     *tc.name requestFocus
-     *tc.desic Gets the request focus
+     * @tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_014
+     * @tc.name requestFocusStatic
+     * @tc.desc Gets the request focus
      */
     it('requestFocusStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       Utils.emitEvent("emitGetRequestFocus", 10)
@@ -114,10 +114,10 @@ export default function webInitTest() {
     })
 
     /*
-      * tc.number SUB_ACE_BASIC_ETS_API_TESTSCROLLABLE_1100
-      * tc.name testScrollableEleven
-      * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
-      * parameter is a positive number, both of which are greater than the page width and height
+      * @tc.number SUB_ACE_BASIC_ETS_API_TESTSCROLLABLE_1100
+      * @tc.name testScrollableElevenStatic
+      * @tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
+      * @parameter is a positive number, both of which are greater than the page width and height
     */
     it('testScrollableElevenStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       Utils.emitEvent("testScrollableEleven", 10)
@@ -129,10 +129,10 @@ export default function webInitTest() {
     })
 
     /*
-      * tc.number SUB_ACE_BASIC_ETS_API_TESTSCROLLABLE_1200
-      * tc.name testScrollableTwelve
-      * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
-      * parameter is a positive number, both of which are greater than the page width and height
+      * @tc.number SUB_ACE_BASIC_ETS_API_TESTSCROLLABLE_1200
+      * @tc.name testScrollableTwelveStatic
+      * @tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
+      * @parameter is a positive number, both of which are greater than the page width and height
     */
     it('testScrollableTwelveStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       Utils.emitEvent("testScrollableTwelve", 10)
@@ -145,7 +145,7 @@ export default function webInitTest() {
 
     /*
     * @tc.number      : SUB_WEB_JSRESULT_HANDLECANCEL_0100
-    * @tc.name        : testJsResultHandleCancel001
+    * @tc.name        : testJsResultHandleCancelStatic001
     * @tc.desc        : test JsResultHandle.cancel()
     * @tc.size        : MediumTest
     * @tc.type        : Function
@@ -162,7 +162,7 @@ export default function webInitTest() {
 
     /*
     * @tc.number      : SUB_WEB_JSRESULT_HANDLECONFIRM_0100
-    * @tc.name        : testJsResultHandleConfirm001
+    * @tc.name        : testJsResultHandleConfirmStatic001
     * @tc.desc        : test JsResultHandle.confirm()
     * @tc.size        : MediumTest
     * @tc.type        : Function
@@ -179,7 +179,7 @@ export default function webInitTest() {
 
     /*
     * @tc.number      : SUB_WEB_JSRESULT_HANDLEPROMPTCONFIRM_0100
-    * @tc.name        : testJsResultHandlePromptConfirm001
+    * @tc.name        : testJsResultHandlePromptConfirmStatic001
     * @tc.desc        : test JsResultHandle.promptConfirm()
     * @tc.size        : MediumTest
     * @tc.type        : Function
