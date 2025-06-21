@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
 export default function polygonNewJsunit() {
@@ -49,7 +49,7 @@ export default function polygonNewJsunit() {
      * @tc.name         testpolygonNe0001
      * @tc.desic         acepolygonNeEtsTest0001
      */
-    it('testpolygonNe0001', 0, async () => {
+    it('testpolygonNe0001', Level.LEVEL0, async () => {
       console.info('polygonNe testpolygonNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Polygon');
@@ -66,7 +66,7 @@ export default function polygonNewJsunit() {
      * @tc.name         testpolygonNe0002
      * @tc.desic         acepolygonNeEtsTest0002
      */
-    it('testpolygonNe0002', 0, async () => {
+    it('testpolygonNe0002', Level.LEVEL0, async () => {
       console.info('polygonNe testpolygonNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Polygon');

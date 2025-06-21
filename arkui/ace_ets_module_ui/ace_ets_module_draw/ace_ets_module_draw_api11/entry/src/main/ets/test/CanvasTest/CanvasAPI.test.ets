@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 
 
@@ -44,7 +44,7 @@ export default function CanvasAPITest() {
      *tc.name   Path2D.addPath and CanvasPattern.setTransform support Matrix2D
      *tc.desc   Path2D.addPath and CanvasPattern.setTransform support Matrix2D
      */
-    it('ArkUI_Canvas_API_0100', 0, async (done: Function) => {
+    it('ArkUI_Canvas_API_0100', Level.LEVEL0, async (done: Function) => {
       let CASE: string = 'ArkUI_Canvas_API_0100'
       console.info(`${SUITE} ${CASE} START`)
       let strJson: string = getInspectorByKey('CanvasAPI_Canvas1')

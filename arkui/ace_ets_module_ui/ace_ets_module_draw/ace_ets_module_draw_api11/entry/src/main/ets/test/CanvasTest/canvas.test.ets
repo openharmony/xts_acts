@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
 export default function canvasActualBoundingBoxAscentJsunit() {
@@ -45,7 +45,7 @@ export default function canvasActualBoundingBoxAscentJsunit() {
       console.info("canvasActualBoundingBoxAscent after each called");
     });
 
-    it('testcanvasAttributes0001', 0, async (done:Function) => {
+    it('testcanvasAttributes0001', Level.LEVEL0, async (done:Function) => {
       console.info('canvasAttributes0001 testcanvasAttributes0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Canvas');
@@ -56,7 +56,7 @@ export default function canvasActualBoundingBoxAscentJsunit() {
       done();
     });
 
-    it('testcanvasAttributes0002', 0, async (done:Function) => {
+    it('testcanvasAttributes0002', Level.LEVEL0, async (done:Function) => {
       console.info('canvasAttributes0002 testcanvasAttributes0002 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Canvas');
@@ -68,7 +68,7 @@ export default function canvasActualBoundingBoxAscentJsunit() {
       done();
     });
 
-    it('testcanvasAttributes0003', 0, async (done:Function) => {
+    it('testcanvasAttributes0003', Level.LEVEL0, async (done:Function) => {
       console.info('canvasAttributes0003 testcanvasAttributes0003 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Canvas');
@@ -80,7 +80,7 @@ export default function canvasActualBoundingBoxAscentJsunit() {
       done();
     });
 
-    it('testcanvasAttributes0004', 0, async (done:Function) => {
+    it('testcanvasAttributes0004', Level.LEVEL0, async (done:Function) => {
       console.info('canvasAttributes0003 testcanvasAttributes0004 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Canvas');
@@ -92,7 +92,7 @@ export default function canvasActualBoundingBoxAscentJsunit() {
       done();
     });
 
-    it('testcanvasAttributes0005', 0, async (done:Function) => {
+    it('testcanvasAttributes0005', Level.LEVEL0, async (done:Function) => {
       console.info('canvasAttributes0005 testcanvasAttributes0004 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Canvas');

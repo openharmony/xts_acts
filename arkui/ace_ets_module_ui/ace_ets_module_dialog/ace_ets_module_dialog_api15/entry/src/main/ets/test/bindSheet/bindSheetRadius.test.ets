@@ -58,7 +58,7 @@ export default function bindSheetRadius() {
      * @tc.type :
      * @tc.size :
      */
-    it('bindSheetRadius_0100', 1, async (done: Function) => {
+    it('bindSheetRadius_0100', Level.LEVEL1, async (done: Function) => {
       console.info('bindSheetRadius_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -97,7 +97,7 @@ export default function bindSheetRadius() {
      * @tc.type :
      * @tc.size :
      */
-    it('bindSheetRadius_0200', 1, async (done: Function) => {
+    it('bindSheetRadius_0200', Level.LEVEL1, async (done: Function) => {
       console.info('bindSheetRadius_0200 START');
       await CommonFunc.sleep(1000)
       let driver: Driver = Driver.create();
@@ -135,7 +135,7 @@ export default function bindSheetRadius() {
      * @tc.type :
      * @tc.size :
      */
-    it('bindSheetRadius_0300', 1, async (done: Function) => {
+    it('bindSheetRadius_0300', Level.LEVEL1, async (done: Function) => {
       console.info('bindSheetRadius_0300 START');
       await CommonFunc.sleep(1000)
       let driver: Driver = Driver.create();
@@ -173,7 +173,7 @@ export default function bindSheetRadius() {
      * @tc.type :
      * @tc.size :
      */
-    it('bindSheetRadius_0400', 1, async (done: Function) => {
+    it('bindSheetRadius_0400', Level.LEVEL1, async (done: Function) => {
       console.info('bindSheetRadius_0400 START');
       await CommonFunc.sleep(1000)
       let driver: Driver = Driver.create();
@@ -211,7 +211,7 @@ export default function bindSheetRadius() {
      * @tc.type :
      * @tc.size :
      */
-    it('bindSheetRadius_0500', 1, async (done: Function) => {
+    it('bindSheetRadius_0500', Level.LEVEL1, async (done: Function) => {
       console.info('bindSheetRadius_0500 START');
       await CommonFunc.sleep(1000)
       let driver: Driver = Driver.create();
@@ -249,7 +249,7 @@ export default function bindSheetRadius() {
      * @tc.type :
      * @tc.size :
      */
-    it('bindSheetRadius_0600', 1, async (done: Function) => {
+    it('bindSheetRadius_0600', Level.LEVEL1, async (done: Function) => {
       console.info('bindSheetRadius_0600 START');
       await CommonFunc.sleep(1000)
       let driver: Driver = Driver.create();
@@ -291,7 +291,7 @@ export default function bindSheetRadius() {
      * @tc.type :
      * @tc.size :
      */
-    it('bindSheetRadius_0700', 1, async (done: Function) => {
+    it('bindSheetRadius_0700', Level.LEVEL1, async (done: Function) => {
       console.info('bindSheetRadius_0700 START');
       await CommonFunc.sleep(1000)
       let driver: Driver = Driver.create();

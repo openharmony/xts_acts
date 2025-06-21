@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
@@ -51,7 +51,7 @@ export default function CounterEnableTest() {
      *tc.name   Counter support maximum and minimum
      *tc.desc   Counter support maximum and minimum
      */
-    it('ArkUI_Counter_0100', 0, async (done: Function) => {
+    it('ArkUI_Counter_0100', Level.LEVEL0, async (done: Function) => {
       let CASE: string = 'ArkUI_Counter_0100'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -68,7 +68,7 @@ export default function CounterEnableTest() {
      *tc.name   Counter support maximum and minimum
      *tc.desc   Counter support maximum and minimum
      */
-    it('ArkUI_Counter_0200', 0, async (done: Function) => {
+    it('ArkUI_Counter_0200', Level.LEVEL0, async (done: Function) => {
       let CASE: string = 'ArkUI_Counter_0200'
       console.info(`${SUITE} ${CASE} START`);
       sendEventByKey('CounterEnable_Button_2', 10, "")

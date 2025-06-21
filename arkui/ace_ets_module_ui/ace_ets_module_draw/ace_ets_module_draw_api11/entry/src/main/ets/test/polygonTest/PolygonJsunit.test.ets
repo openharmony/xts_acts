@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';;
 
@@ -44,7 +44,7 @@ export default function polygonJsunit() {
       console.info("polygon after each called");
     });
 
-    it('testPolygon001', 0, async (done: Function) => {
+    it('testPolygon001', Level.LEVEL0, async (done: Function) => {
       console.info('[testPolygon001] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('polygon');

@@ -509,7 +509,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to BarState.Off
      */
-    it('ArkUX_Stage_TextArea_barState_0100', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0100', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0100');
@@ -529,7 +529,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to BarState.AUTO
      */
-    it('ArkUX_Stage_TextArea_barState_0200', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0200', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0200');
@@ -549,7 +549,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to BarState.ON
      */
-    it('ArkUX_Stage_TextArea_barState_0300', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0300', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0300');
@@ -570,7 +570,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the BarState property parameter of the TextArea component to BarState.OFF,
      *               and then set the parameter to BarState.AUTO again
      */
-    it('ArkUX_Stage_TextArea_barState_0400', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0400', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0400');
@@ -590,7 +590,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to 0
      */
-    it('ArkUX_Stage_TextArea_barState_0500', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0500', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0500');
@@ -610,7 +610,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to 10
      */
-    it('ArkUX_Stage_TextArea_barState_0600', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0600', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0600');
@@ -630,7 +630,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to "sfasf"
      */
-    it('ArkUX_Stage_TextArea_barState_0700', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0700', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0700');
@@ -650,7 +650,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to ""
      */
-    it('ArkUX_Stage_TextArea_barState_0800', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0800', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0800');
@@ -670,7 +670,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to null
      */
-    it('ArkUX_Stage_TextArea_barState_0900', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_0900', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_0900');
@@ -690,7 +690,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Set the BarState property parameter of the TextArea component to undefined
      */
-    it('ArkUX_Stage_TextArea_barState_1000', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_1000', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_1000');
@@ -711,7 +711,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the barState property parameter of the TextArea component to Outlier undefined,
      *               and set the parameter BarState.OFF again
      */
-    it('ArkUX_Stage_TextArea_barState_1100', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_1100', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_1100');
@@ -732,7 +732,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the barState property parameter of the TextArea component to BarState.OFF,
      *               and set the parameter again to Outlier undefined
      */
-    it('ArkUX_Stage_TextArea_barState_1200', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_1200', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_barState_1200');
@@ -752,7 +752,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text status
      * @tc.desc Do not set the TextArea component barState property
      */
-    it('ArkUX_Stage_TextArea_barState_1300', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_1300', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('TextAreaNO');
@@ -773,7 +773,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the BarState property parameter to BarState.ON
      *               when the TextArea component is not in inline mode
      */
-    it('ArkUX_Stage_TextArea_barState_1400', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_barState_1400', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('TextAreaStyleDefault');
@@ -794,7 +794,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea text input style, set the TextArea component Style property
      *               parameter to TextContentStyle.DEFAULT
      */
-    it('ArkUX_Stage_TextArea_Style_0100', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0100', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0100');
@@ -815,7 +815,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea text input style, set the TextArea component Style property
      *               parameter to TextContentStyle.INLINE
      */
-    it('ArkUX_Stage_TextArea_Style_0200', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0200', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0200');
@@ -836,7 +836,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea text input style, set the TextArea component Style property
      *               parameter to 0
      */
-    it('ArkUX_Stage_TextArea_Style_0300', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0300', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0300');
@@ -857,7 +857,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea text input style, set the TextArea component Style property
      *               parameter to 10
      */
-    it('ArkUX_Stage_TextArea_Style_0400', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0400', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0400');
@@ -878,7 +878,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea text input style, set the TextArea component Style property
      *               parameter to "10"
      */
-    it('ArkUX_Stage_TextArea_Style_0500', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0500', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0500');
@@ -899,7 +899,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea text input style, set the TextArea component Style property
      *               parameter to ""
      */
-    it('ArkUX_Stage_TextArea_Style_0600', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0600', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0600');
@@ -920,7 +920,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea text input style, set the TextArea component Style property
      *               parameter to null
      */
-    it('ArkUX_Stage_TextArea_Style_0700', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0700', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0700');
@@ -941,7 +941,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea text input style, set the TextArea component Style property
      *               parameter to undefined
      */
-    it('ArkUX_Stage_TextArea_Style_0800', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0800', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0800');
@@ -962,7 +962,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea component Style property parameter to TextContentStyle. DEFAULT, and
      *               then set the parameter to TextContentStyle. INLINE again
      */
-    it('ArkUX_Stage_TextArea_Style_0900', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_0900', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_0900');
@@ -983,7 +983,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea component Style property parameter to TextContentStyle. NLINE,
      *               and then set the parameter to Outlier undefined
      */
-    it('ArkUX_Stage_TextArea_Style_1000', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_1000', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_1000');
@@ -1004,7 +1004,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea component Style property parameter to Outlier undefined,
      *               and set the parameter to TextContentStyle. INLINE again
      */
-    it('ArkUX_Stage_TextArea_Style_1100', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_1100', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextArea_Style_1100');
@@ -1024,7 +1024,7 @@ export default function textAreaUxTest() {
      * @tc.name Set TextArea text input style
      * @tc.desc Do not set the TextArea component Style property
      */
-    it('ArkUX_Stage_TextArea_Style_1200', 0, (done: Function) => {
+    it('ArkUX_Stage_TextArea_Style_1200', Level.LEVEL0, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('TextAreaStyleDefault');

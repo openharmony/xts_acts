@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import Utils from '../Utils';
 
@@ -44,7 +44,7 @@ export default function canvasJsunit() {
       console.info("canvas after each called");
     });
 
-    it('testCanvas01', 0, async (done: Function) => {
+    it('testCanvas01', Level.LEVEL0, async (done: Function) => {
       console.info('[testCanvas01] START');
       await Utils.sleep(1000);
       console.info('[testCanvas01]----------- START');

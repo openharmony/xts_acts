@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function qrCodeJsunit() {
       console.info("QrCode after each called");
     });
 
-    it('test_qrCode_001', 0, async (done: Function) => {
+    it('test_qrCode_001', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_001] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('QrCodeColor');
@@ -67,7 +67,7 @@ export default function qrCodeJsunit() {
       done();
     });
 
-    it('test_qrCode_002', 0, async (done: Function) => {
+    it('test_qrCode_002', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_002] START');
       await CommonFunc.sleep(1000);
       try {
@@ -95,7 +95,7 @@ export default function qrCodeJsunit() {
       done();
     });
 
-    it('test_qrCode_003', 0, async (done: Function) => {
+    it('test_qrCode_003', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_003] START');
       await CommonFunc.sleep(1000);
       try {
@@ -123,7 +123,7 @@ export default function qrCodeJsunit() {
       done();
     });
 
-    it('test_qrCode_004', 0, async (done: Function) => {
+    it('test_qrCode_004', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_004] START');
       await CommonFunc.sleep(1000);
       try {
@@ -155,7 +155,7 @@ export default function qrCodeJsunit() {
       done();
     });
 
-    it('test_qrCode_005', 0, async (done: Function) => {
+    it('test_qrCode_005', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_005] START');
       await CommonFunc.sleep(1000);
       try {
@@ -180,7 +180,7 @@ export default function qrCodeJsunit() {
       done();
     });
 
-    it('test_qrCode_006', 0, async (done: Function) => {
+    it('test_qrCode_006', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_006] START');
       await CommonFunc.sleep(1000);
       try {
@@ -215,7 +215,7 @@ export default function qrCodeJsunit() {
       done();
     });
 
-    it('test_qrCode_007', 0, async (done: Function) => {
+    it('test_qrCode_007', Level.LEVEL0, async (done: Function) => {
       console.info('[test_qrCode_007] START');
       await CommonFunc.sleep(1000);
       try {

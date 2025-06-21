@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import CommonFunc from '../../MainAbility/common/Common';
 import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
@@ -59,7 +59,7 @@ export default function progressScaleCountJsunit() {
      * @tc.name         testprogressScaleCount0001
      * @tc.desic         aceprogressScaleCountEtsTest0001
      */
-    it('testprogressScaleCount0001', 0, async (done: Function) => {
+    it('testprogressScaleCount0001', Level.LEVEL0, async (done: Function) => {
       console.info('progressScaleCount testprogressScaleCount0001 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('progressStyleOptions');
@@ -75,7 +75,7 @@ export default function progressScaleCountJsunit() {
      * @tc.name         testprogressScaleCount0002
      * @tc.desic         aceprogressScaleCountEtsTest0002
      */
-    it('testprogressScaleCount0002', 0, async (done: Function) => {
+    it('testprogressScaleCount0002', Level.LEVEL0, async (done: Function) => {
       console.info('progressScaleCount testprogressScaleCount0002 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('progressStyleOptions');
