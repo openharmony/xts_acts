@@ -40,7 +40,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0010
-     * @tc.name testPower_IsScreenOn_Promise_Test
+     * @tc.name Power_IsScreenOn_Promise_Test
      * @tc.desc Checks whether the screen of a device is on or off (deprecated since 9)
      * @tc.level: Level 1
      * @tc.type: Function
@@ -66,7 +66,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0020
-     * @tc.name testPower_IsScreenOn_Callback_Test
+     * @tc.name Power_IsScreenOn_Callback_Test
      * @tc.desc Checks whether the screen of a device is on or off (deprecated since 9)
      * @tc.level: Level 1
      * @tc.type: Function
@@ -92,7 +92,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0030
-     * @tc.name testPower_IsActive_Test
+     * @tc.name Power_IsActive_Test
      * @tc.desc On and Off Screen and get the current screen on and off
      * @tc.level: Level 0
      * @tc.type: Function
@@ -115,7 +115,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0040
-     * @tc.name testPower_GetPowerMode_Test
+     * @tc.name Power_GetPowerMode_Test
      * @tc.desc Gets and sets the power mode
      * @tc.level: Level 0
      * @tc.type: Function
@@ -138,7 +138,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0050
-     * @tc.name testPower_DevicePowerMode_MODENORMAL_Test
+     * @tc.name Power_DevicePowerMode_MODENORMAL_Test
      * @tc.desc Get device power mode MODE_NORMAL
      * @tc.level: Level 3
      * @tc.type: Function
@@ -161,7 +161,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0060
-     * @tc.name testPower_DevicePowerMode_MODEPOWERSAVE_Test
+     * @tc.name Power_DevicePowerMode_MODEPOWERSAVE_Test
      * @tc.desc Get device power mode MODE_POWER_SAVE
      * @tc.level: Level 3
      * @tc.type: Function
@@ -184,7 +184,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0070
-     * @tc.name testPower_DevicePowerMode_MODEPERFORMANCE_Test
+     * @tc.name Power_DevicePowerMode_MODEPERFORMANCE_Test
      * @tc.desc Get device power mode MODE_PERFORMANCE
      * @tc.level: Level 3
      * @tc.type: Function
@@ -207,7 +207,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0080
-     * @tc.name testPower_DevicePowerMode_MODE_EXTREME_POWER_SAVE_Test
+     * @tc.name Power_DevicePowerMode_MODE_EXTREME_POWER_SAVE_Test
      * @tc.desc Get device power mode MODE_EXTREME_POWER_SAVE
      * @tc.level: Level 3
      * @tc.type: Function
@@ -230,7 +230,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0090
-     * @tc.name testPower_IsStandby_Test
+     * @tc.name Power_IsStandby_Test
      * @tc.desc Device isStandby interface verification
      * @tc.level: Level 3
      * @tc.type: Function
@@ -252,7 +252,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0080
-     * @tc.name testSystem_API_Test_Power_Manager_0100
+     * @tc.name System_API_Test_Power_Manager_0100
      * @tc.desc Test the third-party application call reboot will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -271,7 +271,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0090
-     * @tc.name testSystem_API_Test_Power_Manager_0200
+     * @tc.name System_API_Test_Power_Manager_0200
      * @tc.desc Test the third-party application call wakeup will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -290,7 +290,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0100
-     * @tc.name testSystem_API_Test_Power_Manager_0300
+     * @tc.name System_API_Test_Power_Manager_0300
      * @tc.desc Test the third-party application call suspend will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -309,7 +309,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0110
-     * @tc.name testSystem_API_Test_Power_Manager_0400
+     * @tc.name System_API_Test_Power_Manager_0400
      * @tc.desc Test the third-party application call suspend will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -328,7 +328,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0110
-     * @tc.name testSystem_API_Test_Power_Manager_0500
+     * @tc.name System_API_Test_Power_Manager_0500
      * @tc.desc Test the third-party application call suspend will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -347,7 +347,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0120
-     * @tc.name testSystem_API_Test_Power_Manager_0600
+     * @tc.name System_API_Test_Power_Manager_0600
      * @tc.desc Test the third-party application call setPowerMode will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -376,7 +376,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0130
-     * @tc.name testSystem_API_Test_Power_Manager_0700
+     * @tc.name System_API_Test_Power_Manager_0700
      * @tc.desc Test the third-party application call setPowerMode will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -405,7 +405,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0140
-     * @tc.name testSystem_API_Test_Power_Manager_0800
+     * @tc.name System_API_Test_Power_Manager_0800
      * @tc.desc Test the third-party application call setPowerMode will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -434,7 +434,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0150
-     * @tc.name testSystem_API_Test_Power_Manager_0900
+     * @tc.name System_API_Test_Power_Manager_0900
      * @tc.desc Test the third-party application call setScreenOffTime will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -453,7 +453,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0160
-     * @tc.name testSystem_API_Test_Power_Manager_1000
+     * @tc.name System_API_Test_Power_Manager_1000
      * @tc.desc Test the third-party application call setScreenOffTime will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
@@ -472,7 +472,7 @@ export default function PowerTest() {
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0170
-     * @tc.name testSystem_API_Test_Power_Manager_1000
+     * @tc.name System_API_Test_Power_Manager_1000
      * @tc.desc Test the third-party application call setScreenOffTime will be blocked
      * @tc.level: Level 3
      * @tc.type: Function
