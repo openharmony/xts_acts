@@ -4,7 +4,6 @@ import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
 import { waitForExist} from '../../test/WaitTest.test';
 import { Driver, ON } from '@ohos.UiTest';
-import { waitForExist} from '../../test/WaitTest.test';
 
 
 // 在同一page页有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
