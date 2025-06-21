@@ -1056,6 +1056,7 @@ static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeScreen(napi_env
 
     OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
     OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, 0);
+    OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
     OH_AVScreenCapture_SetCaptureStrategy(screenCaptureStrategyForPrivacyMaskMode, strategy);
 
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureStrategyForPrivacyMaskMode, config_);
@@ -1090,6 +1091,7 @@ static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeDisplay(napi_en
 
     OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
     OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, 1);
+    OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, false);
     OH_AVScreenCapture_SetCaptureStrategy(screenCaptureStrategyForPrivacyMaskMode, strategy);
 
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureStrategyForPrivacyMaskMode, config_);
