@@ -89,7 +89,7 @@ export default function ThermalTest() {
       }
     })
 
-    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0020
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0030
      * @tc.name Unsubscribe_Thermal_Level_JSTest0030
      * @tc.desc Thermal acquisition kit
      * @tc.level: Level 1
