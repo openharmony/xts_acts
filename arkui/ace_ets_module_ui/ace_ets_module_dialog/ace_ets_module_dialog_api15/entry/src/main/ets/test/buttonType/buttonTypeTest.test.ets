@@ -53,7 +53,7 @@ export default function buttonTypeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('buttonTypeTest_0100', Level.LEVEL2, async (done: Function) => {
+    it('buttonTypeTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('buttonTypeTest_0100 START');
       await CommonFunc.sleep(1000);
       let btn = getInspectorByKey('btn');

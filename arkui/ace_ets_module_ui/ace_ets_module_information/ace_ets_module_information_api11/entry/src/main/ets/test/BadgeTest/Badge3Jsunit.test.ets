@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function badge3Jsunit() {
       console.info("badge after each called");
     })
 
-    it('testBadge01', 0, async (done: Function) => {
+    it('testBadge01', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge01] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('badge');
@@ -67,7 +67,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge03', 0, async (done: Function) => {
+    it('testBadge03', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge03] START');
       await CommonFunc.sleep(1000);
       try {
@@ -94,7 +94,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge02', 0, async (done: Function) => {
+    it('testBadge02', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge02] START');
       await CommonFunc.sleep(1000);
       try {
@@ -120,7 +120,7 @@ export default function badge3Jsunit() {
     });
 
 
-    it('testBadge04', 0, async (done: Function) => {
+    it('testBadge04', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge04] START');
       await CommonFunc.sleep(1000);
       try {
@@ -145,7 +145,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge05', 0, async (done: Function) => {
+    it('testBadge05', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge05] START');
       await CommonFunc.sleep(1000);
       try {
@@ -173,7 +173,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge06', 0, async (done: Function) => {
+    it('testBadge06', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge06] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('badge2');
@@ -184,7 +184,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge07', 0, async (done: Function) => {
+    it('testBadge07', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge07] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('badge2');
@@ -195,7 +195,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge08', 0, async (done: Function) => {
+    it('testBadge08', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge08] START');
       await CommonFunc.sleep(1000);
       try {
@@ -220,7 +220,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge09', 0, async (done: Function) => {
+    it('testBadge09', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge09] START');
       await CommonFunc.sleep(1000);
       try {
@@ -245,7 +245,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge10', 0, async (done: Function) => {
+    it('testBadge10', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge10] START');
       await CommonFunc.sleep(1000);
       try {
@@ -270,7 +270,7 @@ export default function badge3Jsunit() {
       done();
     });
 
-    it('testBadge11', 0, async (done: Function) => {
+    it('testBadge11', Level.LEVEL0, async (done: Function) => {
       console.info('[testBadge11] START');
       await CommonFunc.sleep(1000);
       try {

@@ -49,7 +49,7 @@ export default function openCustomDialogWithCtrMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogWithCtrMode_0100', 1, async (done: Function) => {
+    it('openCustomDialogWithCtrMode_0100', Level.LEVEL1, async (done: Function) => {
       console.info('openCustomDialogWithCtrMode_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -101,7 +101,7 @@ export default function openCustomDialogWithCtrMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogWithCtrMode_0200', 1, async (done: Function) => {
+    it('openCustomDialogWithCtrMode_0200', Level.LEVEL1, async (done: Function) => {
       console.info('openCustomDialogWithCtrMode_0200 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -152,7 +152,7 @@ export default function openCustomDialogWithCtrMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogWithCtrMode_0300', 1, async (done: Function) => {
+    it('openCustomDialogWithCtrMode_0300', Level.LEVEL1, async (done: Function) => {
       console.info('openCustomDialogWithCtrMode_0300 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -203,7 +203,7 @@ export default function openCustomDialogWithCtrMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogWithCtrMode_0400', 1, async (done: Function) => {
+    it('openCustomDialogWithCtrMode_0400', Level.LEVEL1, async (done: Function) => {
       console.info('openCustomDialogWithCtrMode_0400 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -255,7 +255,7 @@ export default function openCustomDialogWithCtrMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogWithCtrMode_0500', 1, async (done: Function) => {
+    it('openCustomDialogWithCtrMode_0500', Level.LEVEL1, async (done: Function) => {
       console.info('openCustomDialogWithCtrMode_0500 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -296,7 +296,7 @@ export default function openCustomDialogWithCtrMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogWithCtrMode_0600', 1, async (done: Function) => {
+    it('openCustomDialogWithCtrMode_0600', Level.LEVEL1, async (done: Function) => {
       console.info('openCustomDialogWithCtrMode_0600 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -336,7 +336,7 @@ export default function openCustomDialogWithCtrMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogWithCtrMode_0700', 1, async (done: Function) => {
+    it('openCustomDialogWithCtrMode_0700', Level.LEVEL1, async (done: Function) => {
       console.info('openCustomDialogWithCtrMode_0700 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -388,7 +388,7 @@ export default function openCustomDialogWithCtrMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialogWithCtrMode_0800', 1, async (done: Function) => {
+    it('openCustomDialogWithCtrMode_0800', Level.LEVEL1, async (done: Function) => {
       console.info('openCustomDialogWithCtrMode_0800 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

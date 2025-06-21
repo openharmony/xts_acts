@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';;
@@ -45,7 +45,7 @@ export default function ellipseJsunit() {
       console.info("ellipse after each called");
     });
 
-    it('testEllipse01', 0, async (done: Function) => {
+    it('testEllipse01', Level.LEVEL0, async (done: Function) => {
       console.info('[testEllipse01] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('ellipse');
@@ -56,7 +56,7 @@ export default function ellipseJsunit() {
       done()
     });
 
-    it('testEllipse02', 0, async (done: Function) => {
+    it('testEllipse02', Level.LEVEL0, async (done: Function) => {
       console.info('[testEllipse02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -81,7 +81,7 @@ export default function ellipseJsunit() {
       done()
     });
 
-    it('testEllipse03', 0, async (done: Function) => {
+    it('testEllipse03', Level.LEVEL0, async (done: Function) => {
       console.info('[testEllipse03] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -106,7 +106,7 @@ export default function ellipseJsunit() {
       done()
     });
 
-    it('testEllipse04', 0, async (done: Function) => {
+    it('testEllipse04', Level.LEVEL0, async (done: Function) => {
       console.info('[testEllipse04] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -131,7 +131,7 @@ export default function ellipseJsunit() {
       done()
     });
 
-    it('testEllipse05', 0, async (done: Function) => {
+    it('testEllipse05', Level.LEVEL0, async (done: Function) => {
       console.info('[testEllipse05] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -156,7 +156,7 @@ export default function ellipseJsunit() {
       done()
     });
 
-    it('testEllipse06', 0, async (done: Function) => {
+    it('testEllipse06', Level.LEVEL0, async (done: Function) => {
       console.info('[testEllipse06] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -181,7 +181,7 @@ export default function ellipseJsunit() {
       done()
     });
 
-    it('testEllipse07', 0, async (done: Function) => {
+    it('testEllipse07', Level.LEVEL0, async (done: Function) => {
       console.info('[testEllipse07] START');
       try {
         let eventData: events_emitter.EventData = {

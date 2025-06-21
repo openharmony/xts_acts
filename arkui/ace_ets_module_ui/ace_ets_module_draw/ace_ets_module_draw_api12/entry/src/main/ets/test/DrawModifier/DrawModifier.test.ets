@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -49,7 +49,7 @@ export default function DrawModifier() {
      * @tc.type
      */
 
-    it('DrawModifier_001', 0, async (done: Function) => {
+    it('DrawModifier_001', Level.LEVEL0, async (done: Function) => {
       console.info('[DrawModifier_001] START');
 
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function DrawModifier() {
      * @tc.type
      */
 
-    it('DrawModifier_002', 0, async (done: Function) => {
+    it('DrawModifier_002', Level.LEVEL0, async (done: Function) => {
       console.info('[DrawModifier_002] START');
 
       await CommonFunc.sleep(1000);
@@ -101,7 +101,7 @@ export default function DrawModifier() {
      * @tc.type
      */
 
-    it('DrawModifier_003', 0, async (done: Function) => {
+    it('DrawModifier_003', Level.LEVEL0, async (done: Function) => {
       console.info('[DrawModifier_003] START');
 
       await CommonFunc.sleep(1000);

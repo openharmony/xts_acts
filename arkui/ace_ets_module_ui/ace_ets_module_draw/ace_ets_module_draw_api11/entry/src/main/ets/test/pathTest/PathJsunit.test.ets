@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../../MainAbility/common/Utils';;
@@ -45,7 +45,7 @@ export default function enableJsunit() {
       console.info("path after each called");
     });
 
-    it('testPath01', 0, async (done: Function) => {
+    it('testPath01', Level.LEVEL0, async (done: Function) => {
       console.info('[testPath01] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('path1');
@@ -56,7 +56,7 @@ export default function enableJsunit() {
       done();
     });
 
-    it('testPath02', 0, async (done: Function) => {
+    it('testPath02', Level.LEVEL0, async (done: Function) => {
       console.info('[testPath02] START');
       try {
         let eventData: events_emitter.EventData = {

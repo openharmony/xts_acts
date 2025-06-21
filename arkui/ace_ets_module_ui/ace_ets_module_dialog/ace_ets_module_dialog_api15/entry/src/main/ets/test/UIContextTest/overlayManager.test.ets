@@ -49,7 +49,7 @@ export default function overlayManager() {
      * @tc.type :
      * @tc.size :
      */
-    it('overlayManager_0100', 1, async (done: Function) => {
+    it('overlayManager_0100', Level.LEVEL1, async (done: Function) => {
       console.info('overlayManager_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -75,7 +75,7 @@ export default function overlayManager() {
      * @tc.type :
      * @tc.size :
      */
-    it('overlayManager_0200', 1, async (done: Function) => {
+    it('overlayManager_0200', Level.LEVEL1, async (done: Function) => {
       console.info('overlayManager_0200 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

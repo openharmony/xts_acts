@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -59,7 +59,7 @@ export default function badgeJsunit() {
      * @tc.name testBadge010
      * @tc.desc aceEtsTest
      */
-    it('testBadge010', 0, async (done: Function) => {
+    it('testBadge010', Level.LEVEL0, async (done: Function) => {
       console.info('new Badge0 START');
       let strJson = getInspectorByKey('badge');
       let obj: ESObject = JSON.parse(strJson);
@@ -90,7 +90,7 @@ export default function badgeJsunit() {
      * @tc.name testBadge020
      * @tc.desc aceEtsTest
      */
-    it('testBadge020', 0, async (done: Function) => {
+    it('testBadge020', Level.LEVEL0, async (done: Function) => {
       console.info('new Badge1 START');
       let strJson = getInspectorByKey('badge1');
       let obj: ESObject = JSON.parse(strJson);
@@ -111,7 +111,7 @@ export default function badgeJsunit() {
      * @tc.name testBadge030
      * @tc.desc aceEtsTest
      */
-    it('testBadge030', 0, async (done: Function) => {
+    it('testBadge030', Level.LEVEL0, async (done: Function) => {
       console.info('new Badge2 START');
       let strJson = getInspectorByKey('badge2');
       let obj: ESObject = JSON.parse(strJson);

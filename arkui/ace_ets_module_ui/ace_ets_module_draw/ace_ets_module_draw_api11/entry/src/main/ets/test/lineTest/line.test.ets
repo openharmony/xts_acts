@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
 export default function lineNeJsunit() {
@@ -49,7 +49,7 @@ export default function lineNeJsunit() {
      * @tc.name         testlineNe0001
      * @tc.desic         acelineNeEtsTest0001
      */
-    it('testlineNe0001', 0, async () => {
+    it('testlineNe0001', Level.LEVEL0, async () => {
       console.info('lineNe testlineNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line1');
@@ -66,7 +66,7 @@ export default function lineNeJsunit() {
      * @tc.name         testlineNe0002
      * @tc.desic         acelineNeEtsTest0002
      */
-    it('testlineNe0002', 0, async () => {
+    it('testlineNe0002', Level.LEVEL0, async () => {
       console.info('lineNe testlineNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line1');
@@ -83,7 +83,7 @@ export default function lineNeJsunit() {
      * @tc.name         testlineNe0005
      * @tc.desic         acelineNeEtsTest0005
      */
-    it('testlineNe0005', 0, async () => {
+    it('testlineNe0005', Level.LEVEL0, async () => {
       console.info('lineNe testlineNe0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line2');
@@ -100,7 +100,7 @@ export default function lineNeJsunit() {
      * @tc.name         testlineNe0006
      * @tc.desic         acelineNeEtsTest0006
      */
-    it('testlineNe0006', 0, async () => {
+    it('testlineNe0006', Level.LEVEL0, async () => {
       console.info('lineNe testlineNe0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line2');

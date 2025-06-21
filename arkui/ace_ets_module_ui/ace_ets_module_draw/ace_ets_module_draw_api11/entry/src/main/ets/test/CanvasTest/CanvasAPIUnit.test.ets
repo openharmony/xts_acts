@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -45,7 +45,7 @@ export default function CanvasAPIUnitTest() {
      *tc.name   Attribute font support unit 'vp' and putImageData support unit 'px'
      *tc.desc   Attribute font support unit 'vp' and putImageData support unit 'px'
      */
-    it('ArkUI_Canvas_API_Unit_0100', 0, async (done: Function) => {
+    it('ArkUI_Canvas_API_Unit_0100', Level.LEVEL0, async (done: Function) => {
       let CASE: string = 'ArkUI_Canvas_API_Unit_0100'
       console.info(`${SUITE} ${CASE} START`)
       let strJson: string = getInspectorByKey('CanvasAPIUnit_Canvas1')
