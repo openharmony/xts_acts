@@ -27,7 +27,7 @@ export default function ActsNotificationContentTest() {
     const TAG = 'ActsNotificationContentTest ===>';
     let ctx: common.UIAbilityContext;
 
-    //DTS2025060627133
+    //问题单号：DTS2025060627133
     /**
      * @tc.number: Acts_NotificationContent_Static_0100
      * @tc.name: Acts_NotificationContent_Static_0100
@@ -207,7 +207,7 @@ export default function ActsNotificationContentTest() {
         }
       })
 
-    //DTS2025060627133
+    //问题单号：DTS2025060627133
     /**
      * @tc.number: Acts_NotificationContent_Static_0400
      * @tc.name: Acts_NotificationContent_Static_0400

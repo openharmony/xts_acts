@@ -164,14 +164,20 @@ export default function ActsEmitterandComEventTest() {
               } catch (error) {
                 let err: BusinessError = error as BusinessError;
                 console.error(Tag + ` subscribe failed, code is err.code,messageis{err.code}, message is {err.message}`);
+                expect(false).assertTrue()
+                done()
               }
             } else {
               console.error(Tag + ` createSubscriber failed, code is err.code,messageis{err.code}, message is {err.message}`);
+              expect(false).assertTrue()
+              done()
             }
           });
         } catch (error) {
           let err: BusinessError = error as BusinessError;
           console.error(Tag + ` createSubscriber failed, code is err.code,messageis{err.code}, message is {err.message}`);
+          expect(false).assertTrue()
+          done()
         }
         await Utils.msSleep(100)
         //调用commonEventManager.publish接口，发布公共事件
@@ -188,6 +194,8 @@ export default function ActsEmitterandComEventTest() {
         } catch (error) {
           let err: BusinessError = error as BusinessError;
           console.error(Tag+` publish failed, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
+          done()
         }
         await Utils.msSleep(1000)
         //调用commonEventManager.unsubscribe接口，回调形式取消订阅公共事件
@@ -204,6 +212,8 @@ export default function ActsEmitterandComEventTest() {
         } catch (error) {
           let err: BusinessError = error as BusinessError;
           console.error(Tag+` unsubscribe failed, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
+          done()
         }
         console.info(Tag+' Sub_NotificationAns_CommonEvent_Basic_Static_0001 PASS');
         done()
@@ -263,6 +273,8 @@ export default function ActsEmitterandComEventTest() {
                     } catch (error) {
                       let err: BusinessError = error as BusinessError;
                       console.error(Tag +`订阅者a unsubscribe failed, code is ${err.code}, message is ${err.message}`);
+                      expect(false).assertTrue()
+                      done()
                     }
                     try {
                       commonEventManager.unsubscribe(subscriber_b, (err: BusinessError) =>{
@@ -277,6 +289,8 @@ export default function ActsEmitterandComEventTest() {
                     } catch (error) {
                       let err: BusinessError = error as BusinessError;
                       console.error(Tag +`订阅者b unsubscribe failed, code is ${err.code}, message is ${err.message}`);
+                      expect(false).assertTrue()
+                      done()
                     }
                     console.info(Tag +'Sub_NotificationAns_CommonEvent_Basic_0002 PASS');
                     done()
@@ -285,14 +299,20 @@ export default function ActsEmitterandComEventTest() {
               } catch (error) {
                 let err: BusinessError = error as BusinessError;
                 console.error(Tag + `订阅者a subscribe failed, code is ${err.code}, message is ${err.message}`);
+                expect(false).assertTrue()
+                done()
               }
             } else {
               console.error(Tag + `订阅者a createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+              expect(false).assertTrue()
+              done()
             }
           });
         } catch (error) {
           let err: BusinessError = error as BusinessError;
           console.error(Tag + `订阅者a createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
+          done()
         }
         await Utils.msSleep(100)
         //订阅者b,优先级为2
@@ -327,14 +347,20 @@ export default function ActsEmitterandComEventTest() {
               } catch (error) {
                 let err: BusinessError = error as BusinessError;
                 console.error(Tag + `订阅者b subscribe failed, code is ${err.code}, message is ${err.message}`);
+                expect(false).assertTrue()
+                done()
               }
             } else {
               console.error(Tag + `订阅者b createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+              expect(false).assertTrue()
+              done()
             }
           });
         } catch (error) {
           let err: BusinessError = error as BusinessError;
           console.error(Tag + `订阅者b createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
+          done()
         }
         await Utils.msSleep(100)
         //调用commonEventManager.publish接口，发布有序公共事件
@@ -358,6 +384,7 @@ export default function ActsEmitterandComEventTest() {
         } catch (error) {
           let err: BusinessError = error as BusinessError;
           console.error(Tag+`publish failed, code is ${err.code}, message is ${err.message}`);
+          done()
         }
       })
 

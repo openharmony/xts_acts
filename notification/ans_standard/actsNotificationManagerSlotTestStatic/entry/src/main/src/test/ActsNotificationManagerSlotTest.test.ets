@@ -306,12 +306,13 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1200
      * @tc.desc      : Get the UNKNOWN_TYPE type slot without add
      */
+     //问题单号:DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_1200 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1200 START')
       try {
         notificationManager.getSlot(notificationManager.SlotType.UNKNOWN_TYPE, (err: BusinessError, data: notificationManager.NotificationSlot) => {
-          if (err && err.code!==0 && err.code!== -1) {
+          if (err && err.code!==0) {
             console.info(`${TAG} getSlot_1 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()
@@ -334,12 +335,13 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1300
      * @tc.desc      : Get the SOCIAL_COMMUNICATION type slot without add
      */
+     //问题单号：DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_1300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_1300 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1300 START')
       try {
         notificationManager.getSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err: BusinessError, data: notificationManager.NotificationSlot) => {
-          if (err&&err.code!==0 && err.code!== -1) {
+          if (err&&err.code!==0) {
             console.info(`${TAG} getSlot_2 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()
@@ -362,12 +364,13 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1400
      * @tc.desc      : Get the SERVICE_INFORMATION type slot without add
      */
+     //问题单号：DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_1400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_1400 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1400 START')
       try {
         notificationManager.getSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err: BusinessError, data: notificationManager.NotificationSlot) => {
-          if (err&&err.code!==0 && err.code!== -1) {
+          if (err&&err.code!==0) {
             console.info(`${TAG} getSlot_3 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()
@@ -390,12 +393,13 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1500
      * @tc.desc      : Get the CONTENT_INFORMATION type slot without add
      */
+     //问题单号：DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_1500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_1500 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_1500 START')
       try {
         notificationManager.getSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err: BusinessError, data: notificationManager.NotificationSlot) => {
-          if (err&&err.code!==0 && err.code!== -1) {
+          if (err&&err.code!==0) {
             console.info(`${TAG} getSlot_4 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()
@@ -418,12 +422,13 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1600
      * @tc.desc      : Get the OTHER_TYPES type slot without add
      */
+     //问题单号:DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_1600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_1600 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1600 START')
       try {
         notificationManager.getSlot(notificationManager.SlotType.OTHER_TYPES, (err: BusinessError, data: notificationManager.NotificationSlot) => {
-          if (err&&err.code!==0 && err.code!== -1) {
+          if (err&&err.code!==0) {
             console.info(`${TAG} getSlot_5 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()
@@ -442,7 +447,7 @@ export default function ActsNotificationManagerSlotTest() {
     })
 
 
-    //DTS2025060627133
+    //问题单号:DTS2025060627133
     /*
      * @tc.number    : Sub_Notification_Ans_Slot_GetSlot_Static_1700
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1700
@@ -457,15 +462,9 @@ export default function ActsNotificationManagerSlotTest() {
         done()
       }).catch((err: BusinessError):void => {
         console.info(`${TAG} getSlot_6 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        if (err.code == -1) {
-          console.info(`${TAG} getSlot_5 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(true).assertTrue()
-          done()
-        } else {
-          console.info(`${TAG} getSlot_5 AsyncCallback `)
-          expect(false).assertTrue()
-          done()
-        }
+        expect(false).assertTrue()
+        done()
+        
       })
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1700 END')
     })
@@ -475,6 +474,7 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1800
      * @tc.desc      : Get the SOCIAL_COMMUNICATION type slot without add
      */
+     //问题单号:DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_1800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_1800 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1800 START')
@@ -484,15 +484,8 @@ export default function ActsNotificationManagerSlotTest() {
         done()
       }).catch((err: BusinessError):void => {
         console.info(`${TAG} getSlot_7 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        if (err.code == -1) {
-          console.info(`${TAG} getSlot_5 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(true).assertTrue()
-          done()
-        } else {
-          console.info(`${TAG} getSlot_5 AsyncCallback `)
-          expect(false).assertTrue()
-          done()
-        }
+        expect(false).assertTrue()
+        done()
       })
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1800 END')
     })
@@ -502,6 +495,7 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_1900
      * @tc.desc      : Get the SERVICE_INFORMATION type slot without add
      */
+     //问题单号:DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_1900',TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_1900 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1900 START')
@@ -511,15 +505,9 @@ export default function ActsNotificationManagerSlotTest() {
         done()
       }).catch((err: BusinessError):void => {
         console.info(`${TAG} getSlot_8 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        if (err.code == -1) {
-          console.info(`${TAG} getSlot_5 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(true).assertTrue()
-          done()
-        } else {
-          console.info(`${TAG} getSlot_5 AsyncCallback `)
-          expect(false).assertTrue()
-          done()
-        }
+        expect(false).assertTrue()
+        done()
+        
       })
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_1900 END')
     })
@@ -529,6 +517,7 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_2000
      * @tc.desc      : Get the CONTENT_INFORMATION type slot without add
      */
+     //问题单号:DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_2000 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_2000 START')
@@ -538,15 +527,8 @@ export default function ActsNotificationManagerSlotTest() {
         done()
       }).catch((err: BusinessError):void => {
         console.info(`${TAG} getSlot_9 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        if (err.code == -1) {
-          console.info(`${TAG} getSlot_5 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(true).assertTrue()
-          done()
-        } else {
-          console.info(`${TAG} getSlot_5 AsyncCallback `)
-          expect(false).assertTrue()
-          done()
-        }
+        expect(false).assertTrue()
+        done()
       })
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_2000 END')
     })
@@ -556,6 +538,7 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_GetSlot_Static_2100
      * @tc.desc      : Get the OTHER_TYPES type slot without add
      */
+     //问题单号:DTS2025060627133
     it('Sub_Notification_Ans_Slot_GetSlot_Static_2100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_GetSlot_Static_2100 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_2100 START')
@@ -565,15 +548,9 @@ export default function ActsNotificationManagerSlotTest() {
         done()
       }).catch((err: BusinessError):void => {
         console.info(`${TAG} getSlot_10 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        if (err.code == -1) {
-          console.info(`${TAG} getSlot_5 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(true).assertTrue()
-          done()
-        } else {
-          console.info(`${TAG} getSlot_5 AsyncCallback `)
-          expect(false).assertTrue()
-          done()
-        }
+        expect(false).assertTrue()
+        done()
+        
       })
       console.info(TAG + 'Sub_Notification_Ans_Slot_GetSlot_Static_2100 END')
     })
@@ -1263,7 +1240,7 @@ export default function ActsNotificationManagerSlotTest() {
      * @tc.name      : Sub_Notification_Ans_Slot_CreateSlot_Static_1700
      * @tc.desc      : Get the Different type slot after add
      */
-    //
+    //问题单号:DTS2025060627133
     it('Sub_Notification_Ans_Slot_CreateSlot_Static_1700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Slot_CreateSlot_Static_1700 '
       console.info(TAG + 'Sub_Notification_Ans_Slot_CreateSlot_Static_1700 START')
@@ -1290,7 +1267,7 @@ export default function ActsNotificationManagerSlotTest() {
         })
       } catch (err: BusinessError) {
         console.info(`${TAG} getSlot_21 errCode: ${err}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       }
       console.info(TAG + 'Sub_Notification_Ans_Slot_CreateSlot_Static_1700 END')

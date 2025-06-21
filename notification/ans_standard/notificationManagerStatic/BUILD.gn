@@ -12,11 +12,11 @@
 # limitations under the License.
 import("//build/ohos_var.gni")
 
-group("notificationManagerStatic") {
+group("NotificationManagerStaticTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "requestEnableNotificationStatic:notificationManagerStatic_requestEnableNotificationStatic",
+      "requestEnableNotificationStatic:NotificationManagerStatic_requestEnableNotificationStaticTest",
     ]
   }
 }

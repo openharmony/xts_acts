@@ -737,22 +737,6 @@ export default function ActsCommonEventManagerSupportTest() {
         done()
       })
 
-    //   /*
-    //    * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2800
-    //    * @tc.name      : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2800
-    //    * @tc.desc      : default application changed common event
-    //    */
-    //   //需求编号:SR20250614428594
-    //   it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> =>{
-    //     hilog.info(domain,TAG, `SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2800 START`)
-    //     expect(commonEventManager.Support.COMMON_EVENT_DEFAULT_APPLICATION_CHANGED as string)
-    //       .assertEqual('usual.event.DEFAULT_APPLICATION_CHANGED')
-    //     hilog.info(domain,TAG, `SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_2800 END`)
-    //     done()
-    //   })
-    //
-    //   hilog.info(domain,TAG, `SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST END`)
-
 
     /*
      * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_Static_3000

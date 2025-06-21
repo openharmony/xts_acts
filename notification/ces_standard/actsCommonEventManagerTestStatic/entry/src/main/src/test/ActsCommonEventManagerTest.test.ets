@@ -209,57 +209,6 @@ export default function ActsCommonEventManagerTest() {
 
     })
 
-    // //需求编号：SR20250614428594
-    // it('Sub_Notification_Ans_Subscriber_SubscribeToEvent_Static_0401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-    //   let TAG:string = 'Sub_Notification_Ans_Subscriber_SubscribeToEvent_Static_0401'
-    //   console.info(`${TAG} Sub_Notification_Ans_Subscriber_SubscribeToEvent_Static_0401 START`)
-    //
-    //   let subscriber: commonEventManager.CommonEventSubscriber
-    //
-    //   let subscribeInfo : commonEventManager.CommonEventSubscribeInfo = {
-    //     events: new Array<string>("event05")
-    //   }
-    //
-    //   try {
-    //     commonEventManager.createSubscriber(subscribeInfo, (err:BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-    //       if (err&&err.code!==0) {
-    //         console.error(TAG+`Sub_Notification_Ans_Subscriber_SubscribeToEvent_Static_0401 err, error code: ${err.code}, message: ${err.message}`)
-    //         expect(false).assertTrue()
-    //         done()
-    //       } else {
-    //         console.info(TAG+`Sub_Notification_Ans_Subscriber_SubscribeToEvent_Static_0401 success `+ commonEventSubscriber)
-    //         subscriber = commonEventSubscriber
-    //         try {
-    //           commonEventManager.subscribeToEvent(subscriber, (data:commonEventManager.CommonEventData) => {
-    //             console.info(TAG+`subscribe_1 OnReceive event success`)
-    //             expect(true).assertTrue()
-    //             done()
-    //           }).then(() => {
-    //             console.info(TAG+`subscribe_1 success`)
-    //             expect(true).assertTrue()
-    //             done()
-    //           }).catch((err:BusinessError):void => {
-    //             console.error(TAG+`subscribe_1 err, code is ${err.code}, message is ${err.message}`)
-    //             expect(false).assertTrue()
-    //             done()
-    //           })
-    //         } catch (err:BusinessError) {
-    //           console.error(TAG+`subscribe_1 failed, code is ${err.code}, message is ${err.message}`)
-    //         }
-    //         expect(true).assertTrue()
-    //         done()
-    //       }
-    //     })
-    //   } catch (err:BusinessError) {
-    //     console.info(TAG+`Sub_Notification_Ans_Subscriber_SubscribeToEvent_Static_0401 failed, code is ${err.code}, message is ${err.message}`)
-    //     expect(false).assertTrue()
-    //     done()
-    //   }
-    //
-    //   console.info(`${TAG} Sub_Notification_Ans_Subscriber_SubscribeToEvent_Static_0401 END`)
-    //
-    // })
-
 
     /*
       * @tc.number: Sub_Notification_Ans_Subscriber_Unsubscribe_Static_0200
