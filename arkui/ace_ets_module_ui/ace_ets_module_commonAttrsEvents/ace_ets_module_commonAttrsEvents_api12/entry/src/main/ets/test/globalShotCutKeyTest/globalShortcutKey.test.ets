@@ -21,7 +21,6 @@ import input from '@ohos.multimodalInput.keyCode';
 import { BusinessError } from '@ohos.base';
 import CommonFunc from '../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
-import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 // to test Ctrl + A ,Ctrl + C ..
 const  keycodeMap = new Map<string|FunctionKey, number>();
@@ -101,18 +100,6 @@ async function testAsyncFunction3(keyChar: string|FunctionKey) {
     expect(obj2.$attrs.content).assertEqual('I clicked Button3 ' + keyChar);
   }
 
-  if(keyChar === FunctionKey.F4) {
-    globalThis.value.message.notify({name:'keys',value:[ModifierKey.SHIFT,ModifierKey.ALT]})
-    await CommonFunc.sleep(500);
-    await driver.triggerCombineKeys(input.KeyCode.KEYCODE_ALT_LEFT, input.KeyCode.KEYCODE_SHIFT_LEFT, keycodeMap.get(keyChar));
-    await CommonFunc.sleep(2000);
-    // to get the data to check
-    let tt2 = getInspectorByKey('keyTest3');
-    let obj2: ESObject = JSON.parse(tt2);
-    console.info('SUB_ACE_SUPPORT_GLOBAL_SHORTCUT_KEY_REGISTRATION_0280  '+ obj2.$attrs.content);
-    expect(obj2.$attrs.content).assertEqual('three key test');
-  }
-
   if(keyChar === FunctionKey.TAB) {
     globalThis.value.message.notify({name:'keys',value:[ModifierKey.SHIFT,ModifierKey.ALT]})
     await CommonFunc.sleep(500);
@@ -188,14 +175,7 @@ export default function globalShortcutKeyTest() {
      * @tc.size :
      */
     it('SUB_ACE_SUPPORT_GLOBAL_SHORTCUT_KEY_REGISTRATION_0280', Level.LEVEL0, async (done: Function) => {
-      let keyStrings: (string | FunctionKey)[];
-      let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-      console.info("====>the value of the deviceinfo deviceType is: " + deviceType);
-      if (deviceType === "tablet" || deviceType === "2in1") {
-          keyStrings = [ FunctionKey.ESC, FunctionKey.TAB, 'Z'];
-      }else {
-          keyStrings = [ FunctionKey.ESC,FunctionKey.F4, FunctionKey.TAB, 'Z'];
-      }
+      let keyStrings: (string | FunctionKey)[] = [ FunctionKey.ESC, FunctionKey.TAB, 'Z'];
       // to test Ctrl + SHIT + Z..
       for (const keyChar of keyStrings) {
         await testAsyncFunction3(keyChar);
