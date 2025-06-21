@@ -24,6 +24,9 @@ group("barrierfree") {
       "accessiblecheckability:ActsAccessibleCheckAbilityTest",
       "accessibleregisterstate:ActsAccessibleRegisterStateTest",
       "accessiblesendevent:ActsAccessibleSendEventTest",
+      "accessiblecheckabilitystatic:ActsAccessibleCheckAbilityStaticTest",
+      "accessibleregisterstatestatic:ActsAccessibleRegisterStateStaticTest", 
+      "accessibilitysendaccessibilityeventstatic:ActsAccessibilitySendAccessibilityEventStaticTest",  
     ]
   }
 }
