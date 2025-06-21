@@ -16,9 +16,11 @@ import webJsunit from './WebJsunit.test';
 import webOnOffOne from './WebOnOffOne.test';
 import webOnOffTwo from './WebOnOffTwo.test';
 import waitForAttached from './WaitForAttached.test';
+import onActivateContent from './onActivateContent.test';
 export default function testsuite() {
   webJsunit();
   webOnOffOne();
   webOnOffTwo();
   waitForAttached();
+  onActivateContent();
 }
