@@ -28,13 +28,13 @@ export default function getTargetOverlayModuleInfos() {
       async (done: () => void): Promise<void> => {
 
         overlay.getTargetOverlayModuleInfos("",
-          (err: BusinessError<void>, result: Array<OverlayModuleInfo>) => {
-            if (err.code != 0) {
+          (err: BusinessError<void> | null, result: Array<OverlayModuleInfo> | undefined) => {
+            if (err && err.code != 0) {
               hilog.error(0x0000, 'testParamTag', 'o7 getTargetOverlayModuleInfos callback failed: %{public}s', JSON.stringify(err));
-              expect(err.code).assertEqual(401);
+              expect(err?.code).assertEqual(401);
               done();
             } else {
-              hilog.info(0x0000, 'testParamTag', 'o7 getTargetOverlayModuleInfos success, Array<OverlayModuleInfo> length: ' + result.length);
+              hilog.info(0x0000, 'testParamTag', 'o7 getTargetOverlayModuleInfos success, Array<OverlayModuleInfo> length: ' + result!.length);
               expect().assertFail();
               done();
             }
@@ -60,10 +60,10 @@ export default function getTargetOverlayModuleInfos() {
     it("Sub_Bms_Framework_Overlay_Query_static_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         overlay.getTargetOverlayModuleInfos(MODULE_NAME1,
-          (err: BusinessError<void>, result: Array<OverlayModuleInfo>) => {
-            if (err.code != 0) {
+          (err: BusinessError<void> | null, result: Array<OverlayModuleInfo> | undefined) => {
+            if (err && err.code != 0) {
               hilog.error(0x0000, 'testParamTag', 'o7 getTargetOverlayModuleInfos callback failed: %{public}s', JSON.stringify(err));
-              expect(err.code).assertEqual(17700002);
+              expect(err?.code).assertEqual(17700002);
               done();
             } else {
               hilog.info(0x0000, 'testParamTag', 'o7 getTargetOverlayModuleInfos success, Array<OverlayModuleInfo> length: ' + result.length);
