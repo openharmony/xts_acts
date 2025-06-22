@@ -225,7 +225,7 @@ export default function statvfs_test() {
           }
           hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_001 getFreeSize dev===> ');
           if (num !== undefined) {
-            expect(await Utils.isIntNum(num)).assertTrue();
+              expect(await Utils.isIntNum(Number(num)) as boolean).assertTrue();
           }
           done();
         });
@@ -344,7 +344,7 @@ export default function statvfs_test() {
           }
           hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_001 getTotalSize dev===> ');
           if (num !== undefined) {
-            expect(await Utils.isIntNum(num)).assertTrue();
+            expect(await Utils.isIntNum(Number(num)) as boolean).assertTrue();
           }
           done();
         });
