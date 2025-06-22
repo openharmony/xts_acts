@@ -15,5 +15,9 @@ import("//build/ohos_var.gni")
 
 group("websocket") {
   testonly = true
-  deps = [ "websocketalltest:ActsNetworkMgrWebsocketTest" ]
+  deps = [
+ "websocketalltest:ActsNetworkMgrWebsocketTest",
+"ActsNetworkMgrWebsocketTestStatic:ActsNetworkMgrWebsocketStaticTest",
+"ActsNetworkMgrWsNoPermissionTestStatic:ActsNetworkMgrWsNoPermissionStaticTest"
+ ]
 }
