@@ -66,7 +66,7 @@ export default function getTargetOverlayModuleInfos() {
               expect(err?.code).assertEqual(17700002);
               done();
             } else {
-              hilog.info(0x0000, 'testParamTag', 'o7 getTargetOverlayModuleInfos success, Array<OverlayModuleInfo> length: ' + result.length);
+              hilog.info(0x0000, 'testParamTag', 'o7 getTargetOverlayModuleInfos success, Array<OverlayModuleInfo> length: ' + result!.length);
               expect().assertFail();
               done();
             }

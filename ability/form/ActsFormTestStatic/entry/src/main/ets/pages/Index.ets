@@ -63,7 +63,7 @@ struct MyStateSample {
 
     let formId: string = '1671231085'; //用hap包装好的应用的卡片id
     try {
-      formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
+      formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError<void> | null) => {
         if (error?.code) {
           hilog.info(DOMAIN, TAG, `formProvider callback error, code:${error?.code}`);
         }
