@@ -18,6 +18,7 @@ group("utils_static") {
   if (is_standard_system) {
     deps = [
       "arkts_static:arkts_static",
+      "concurrency_static:concurrency_static",
     ]
   }
 }

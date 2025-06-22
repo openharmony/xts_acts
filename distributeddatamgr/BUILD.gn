@@ -23,6 +23,7 @@ group("distributeddatamgr") {
       "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
       "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
       "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
+      "PasteboardTestStatic:ActsPasteboardStaticTest",
       "UDMFtest:UDMFtest",
       "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
       "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
