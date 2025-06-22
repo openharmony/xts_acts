@@ -18,6 +18,6 @@ ohos_js_app_static_suite("ActsWebInteractionStaticTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsWebInteractionStaticTest"
-  part_name = "page_interaction"
+  part_name = "webview"
   subsystem_name = "web"
 }
