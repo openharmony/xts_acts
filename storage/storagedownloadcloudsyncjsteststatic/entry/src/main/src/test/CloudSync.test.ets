@@ -521,9 +521,9 @@ export default function cloudCloudSyncTest() {
     it('test_cloudSync_State_static_020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
       try {
         let fileSync = new cloudSync.FileSync();
-        fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
-          if (err.code != 0) {
-            hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_020 get last sync time failed : " + err.message + ", error code: " + err.code);
+        fileSync.getLastSyncTime((err: BusinessError | null, timeStamp: number | undefined) => {
+          if (err && err.code != 0) {
+            hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_020 get last sync time failed : " + err?.message + ", error code: " + err?.code);
             expect(err.code == 401 && err.message =='The input parameter is invalid').assertTrue();
             done();
           } else {

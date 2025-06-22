@@ -9,11 +9,11 @@ export class MyCallback {
     callback('myCallback');
   }
 
-  static myAsyncCallback(callback: AsyncCallback<string, string>): void {
+  static myAsyncCallback(callback: AsyncCallback<string, string> | null): void {
     hilog.info(0x0000, 'testTag', 'myAsyncCallback');
     let error = new Error('Business Error', 'basicError2 message', undefined);
     let be2: BusinessError<string> = new BusinessError<string>(SYNTAX_ERROR_CODE, error);
-    callback(be2, 'yAsyncCallback');
+    callback!(be2, 'yAsyncCallback');
   }
 
   static myErrorCallback(callback: ErrorCallback<BusinessError<string>>): void {

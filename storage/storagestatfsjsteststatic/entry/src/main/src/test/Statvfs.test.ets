@@ -218,9 +218,9 @@ export default function statvfs_test() {
     it('statvfs_test_get_free_size_async_static_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_001 start');
       try {
-        statvfs.getFreeSize("/dev", (err: BusinessError, num: number) => {
-          if(err.code != 0){
-            hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_001 has error ' + err.message + ' code: ' + err.code);
+        statvfs.getFreeSize("/dev", (err: BusinessError | null, num: number | undefined) => {
+          if(err?.code != 0){
+            hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_001 has error ' + err?.message + ' code: ' + err?.code);
             expect(false).assertTrue();
           }
           hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_001 getFreeSize dev===> '+ (num / 1024));
@@ -287,9 +287,9 @@ export default function statvfs_test() {
     it('statvfs_test_get_free_size_async_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_004 start');
       try {
-        statvfs.getFreeSize("", (err: BusinessError, num: number) => {
-          if(err.code != 0){
-            hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_004 has error ' + err.message + ' code: ' + err.code);
+        statvfs.getFreeSize("", (err: BusinessError | null, num: number | undefined) => {
+          if(err?.code != 0){
+            hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_004 has error ' + err?.message + ' code: ' + err?.code);
             expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
             done();
           }
@@ -335,9 +335,9 @@ export default function statvfs_test() {
     it('statvfs_test_get_total_size_async_static_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_001 start');
       try {
-        statvfs.getTotalSize("/dev", (err: BusinessError, num: number) => {
-          if(err.code != 0){
-            hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_001 has error ' + err.message + ' code: ' + err.code);
+        statvfs.getTotalSize("/dev", (err: BusinessError | null, num: number | undefined) => {
+          if(err?.code != 0){
+            hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_001 has error ' + err?.message + ' code: ' + err?.code);
             expect(false).assertTrue();
           }
           hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_001 getTotalSize dev===> '+ (num / 1024));
@@ -404,9 +404,9 @@ export default function statvfs_test() {
     it('statvfs_test_get_total_size_async_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_004 start');
       try {
-        statvfs.getTotalSize("", (err: BusinessError, num: number) => {
-          if(err.code != 0){
-            hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_004 has error ' + err.message + ' code: ' + err.code);
+        statvfs.getTotalSize("", (err: BusinessError | null, num: number | undefined) => {
+          if(err?.code != 0){
+            hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_004 has error ' + err?.message + ' code: ' + err?.code);
             expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
             done();
           }

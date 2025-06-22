@@ -214,7 +214,7 @@ let s4: securityLabel.DataLevel = "s4";
         let prepareFile = await Utils.prepareFile(fpath, FILE_CONTENT);
         expect(prepareFile).assertTrue();
         securityLabel.setSecurityLabel(fpath, s0, (err: BusinessError) => {
-          securityLabel.getSecurityLabel(fpath, (err: BusinessError, level: string) => {
+          securityLabel.getSecurityLabel(fpath, (err: BusinessError | null, level: string | undefined) => {
             expect(level == s0).assertTrue();
             fs.unlinkSync(fpath);
             done();
@@ -273,7 +273,7 @@ let s4: securityLabel.DataLevel = "s4";
         let prepareFile = await Utils.prepareFile(fpath, FILE_CONTENT);
         expect(prepareFile).assertTrue();
         await securityLabel.setSecurityLabel(fpath, s2);
-        securityLabel.getSecurityLabel(fpath, (err: BusinessError, level: string) => {
+        securityLabel.getSecurityLabel(fpath, (err: BusinessError | null, level: string | undefined) => {
           expect(level == s2).assertTrue();
           fs.unlinkSync(fpath);
           done();

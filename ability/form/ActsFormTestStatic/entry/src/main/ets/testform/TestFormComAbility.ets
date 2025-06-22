@@ -38,7 +38,7 @@ class TestFormComAbility extends UIAbility {
     this.xtsWindowStage = windowStage;
     try {
       this.xtsWindowStage?.loadContent('testform/pages/XtsFormComponent', (err: BusinessError<void> | null): void => {
-        if (err.code) {
+        if (err?.code) {
           hilog.info(DOMAIN, TAG, 'loadContent error');
           return;
         }
