@@ -527,8 +527,10 @@ export default function cloudCloudSyncTest() {
             expect(err.code == 401 && err.message =='The input parameter is invalid').assertTrue();
             done();
           } else {
-            let date = new Date(timeStamp);
-            hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_020 stop sync successfully');
+            if (timeStamp !== undefined) {
+                let date = new Date(timeStamp);
+                hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_020 stop sync successfully');
+            }
           }
         });
       } catch (e: BusinessError) {
@@ -636,9 +638,9 @@ export default function cloudCloudSyncTest() {
           hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_024 download state： ' + pg.state);
         }
         fileCache.on('progress', callback);
-        fileCache.start(uri, (err: BusinessError) => {
-          if (err.code != 0) {
-            hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_024 start download failed: " + err.message + ", error code: " + err.code);
+        fileCache.start(uri, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_024 start download failed: " + err?.message + ", error code: " + err?.code);
           } else {
             hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_024 start download successfully');
             expect(true).assertTrue();
@@ -692,10 +694,10 @@ export default function cloudCloudSyncTest() {
       let uri = fileUri.getUriFromPath(path);
       try {
         let fileCache = new cloudSync.CloudFileCache();
-        fileCache.stop(uri, (err: BusinessError) => {
-          if (err.code != 0) {
-            hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_026 start download failed: " + err.message + ", error code: " + err.code);
-            expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+        fileCache.stop(uri, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_026 start download failed: " + err?.message + ", error code: " + err?.code);
+            expect(err?.code == 13600001 && err?.message =='IPC error').assertTrue();
           } else {
             hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_026 start download successfully');
           }

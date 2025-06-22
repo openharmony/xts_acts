@@ -772,8 +772,10 @@ export default function cloudFileDownloadTest() {
           if (err && err.code) {
             hilog.info(domain, tag, '%{public}s', "test_Getlastsynctime_static_002 get last sync time failed: " + err?.message + ", error code: " + err?.code);
           } else {
-            let date = new Date(timeStamp);
-            hilog.info(domain, tag, '%{public}s', "test_Getlastsynctime_static_002 get last sync time successfully:" + date);
+            if (timeStamp !== undefined) {
+              let date = new Date(timeStamp);
+              hilog.info(domain, tag, '%{public}s', "test_Getlastsynctime_static_002 get last sync time successfully:" + date);
+            }
           }
         });
         expect(true).assertTrue();

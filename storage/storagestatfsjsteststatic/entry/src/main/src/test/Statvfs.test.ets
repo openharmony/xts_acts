@@ -223,8 +223,10 @@ export default function statvfs_test() {
             hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_001 has error ' + err?.message + ' code: ' + err?.code);
             expect(false).assertTrue();
           }
-          hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_001 getFreeSize dev===> '+ (num / 1024));
-          expect(await Utils.isIntNum(num)).assertTrue();
+          hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_001 getFreeSize dev===> ');
+          if (num !== undefined) {
+            expect(await Utils.isIntNum(num)).assertTrue();
+          }
           done();
         });
       } catch (e: BusinessError) {
@@ -290,7 +292,7 @@ export default function statvfs_test() {
         statvfs.getFreeSize("", (err: BusinessError | null, num: number | undefined) => {
           if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_free_size_async_static_004 has error ' + err?.message + ' code: ' + err?.code);
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -340,8 +342,10 @@ export default function statvfs_test() {
             hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_001 has error ' + err?.message + ' code: ' + err?.code);
             expect(false).assertTrue();
           }
-          hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_001 getTotalSize dev===> '+ (num / 1024));
-          expect(await Utils.isIntNum(num)).assertTrue();
+          hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_001 getTotalSize dev===> ');
+          if (num !== undefined) {
+            expect(await Utils.isIntNum(num)).assertTrue();
+          }
           done();
         });
       } catch (e: BusinessError) {
@@ -407,7 +411,7 @@ export default function statvfs_test() {
         statvfs.getTotalSize("", (err: BusinessError | null, num: number | undefined) => {
           if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'statvfs_test_get_total_size_async_static_004 has error ' + err?.message + ' code: ' + err?.code);
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
