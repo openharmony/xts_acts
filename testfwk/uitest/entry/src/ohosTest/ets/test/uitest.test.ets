@@ -3362,37 +3362,6 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_9044
-         * @tc.name: testWindowMaximize
-         * @tc.desc: maximize this UiWindow.
-         */
-        it('testWindowMaximize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-            try{
-                let windowMode = await window.getWindowMode()
-                if (windowMode != WindowMode.FLOATING) {
-                    await window.resume()
-                }
-                let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-                await window2.maximize()
-                await driver.delayMs(waitUiReadyMs)
-                let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-                let mode = await window3.getWindowMode()
-                expect(mode == WindowMode.FULLSCREEN).assertTrue()
-                await stopApplication('com.uitestScene.acts')
-            }
-            catch (err) {
-                if (err.message == 'this device can not support this action') {
-                    expect(window != null).assertTrue()
-                } else {
-                    expect(false).assertTrue()
-                }
-            }
-        })
-
-        /*
          * @tc.number: uiTest_9045
          * @tc.name: testWindowMinimize
          * @tc.desc: minimize this UiWindow.
@@ -3519,6 +3488,37 @@ export default function UiTest() {
                 }
             }
             await stopApplication('com.uitestScene.acts')
+        })
+        
+        /*
+         * @tc.number: uiTest_9044
+         * @tc.name: testWindowMaximize
+         * @tc.desc: maximize this UiWindow.
+         */
+        it('testWindowMaximize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(waitUiReadyMs)
+            let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+            try{
+                let windowMode = await window.getWindowMode()
+                if (windowMode != WindowMode.FLOATING) {
+                    await window.resume()
+                }
+                let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+                await window2.maximize()
+                await driver.delayMs(waitUiReadyMs)
+                let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+                let mode = await window3.getWindowMode()
+                expect(mode == WindowMode.FULLSCREEN).assertTrue()
+                await stopApplication('com.uitestScene.acts')
+            }
+            catch (err) {
+                if (err.message == 'this device can not support this action') {
+                    expect(window != null).assertTrue()
+                } else {
+                    expect(false).assertTrue()
+                }
+            }
         })
     })
 
