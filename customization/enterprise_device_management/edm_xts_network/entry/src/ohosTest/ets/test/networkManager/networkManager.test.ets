@@ -1751,10 +1751,10 @@ function testTurnOnMobileData() {
       networkManager.turnOnMobileData(SELFWANT, true);
       let info: string = systemParameterEnhance.getSync("persist.edm.mobile_data_policy", "");
       expect(info == "force_open").assertTrue();
+      networkManager.turnOnMobileData(SELFWANT, false);
     } catch (error) {
       expect(error.code == 9200007 || error.code == 801).assertTrue();
     } finally {
-       networkManager.turnOnMobileData(SELFWANT, false);
        await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
@@ -1892,10 +1892,10 @@ function testTurnOffMobileData() {
       networkManager.turnOffMobileData(SELFWANT);
       let info: string = systemParameterEnhance.getSync("persist.edm.mobile_data_policy", "");
       expect(info == "none").assertTrue();
+      networkManager.turnOnMobileData(SELFWANT, false);
     } catch (error) {
       expect(error.code == 9200007 || error.code == 801).assertTrue();
     } finally {
-       networkManager.turnOnMobileData(SELFWANT, false);
        await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
