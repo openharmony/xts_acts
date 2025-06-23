@@ -136,9 +136,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0100";
+        let caseName: string = "testSendableExecute_static_0100";
         console.log(`${caseName} test start `);
         let sendAble: SendAbleClassB = new SendAbleClassB();
         try {
@@ -168,9 +168,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0200";
+        let caseName: string = "testSendableExecute_static_0200";
         console.log(`${caseName} test start `);
         let sendAble: SendAbleClassB = new SendAbleClassB();
         try {
@@ -199,9 +199,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0300";
+        let caseName: string = "testSendableExecute_static_0300";
         console.log(`${caseName} test start `);
         let sendAble: SendAbleClassB = new SendAbleClassB();
         try {
@@ -230,9 +230,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0400";
+        let caseName: string = "testSendableExecute_static_0400";
         console.log(`${caseName} test start `);
         let sendAble: SendAbleClassB = new SendAbleClassB();
         try {
@@ -261,9 +261,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0500";
+        let caseName: string = "testSendableExecute_static_0500";
         console.log(`${caseName} test start `);
         let arr1: Array<Number> = new Array<Number>();
         let num: number = 1;
@@ -293,9 +293,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0600";
+        let caseName: string = "testSendableExecute_static_0600";
         console.log(`${caseName} test start `);
         const myMap: Map<Number, string> = new Map<Number, string>([
           [1, "one"],
@@ -330,9 +330,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0700";
+        let caseName: string = "testSendableExecute_static_0700";
         console.log(`${caseName} test start `);
         let mySet: Set<string> = new Set<string>();
         mySet.add("foo")
@@ -365,9 +365,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0800";
+        let caseName: string = "testSendableExecute_static_0800";
         console.log(`${caseName} test start `);
         let num1: ClassB = new ClassB();
         try {
@@ -396,9 +396,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute0900";
+        let caseName: string = "testSendableExecute_static_0900";
         console.log(`${caseName} test start `);
         let sendableA1: SendableA = new SendableA();
         try {
@@ -427,9 +427,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute1000";
+        let caseName: string = "testSendableExecute_static_1000";
         console.log(`${caseName} test start `);
         let a1: A = new A();
         try {
@@ -458,9 +458,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute1100";
+        let caseName: string = "testSendableExecute_static_1100";
         console.log(`${caseName} test start `);
         let sendAble: SendAbleClassB = new SendAbleClassB();
         try {
@@ -496,9 +496,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute1200";
+        let caseName: string = "testSendableExecute_static_1200";
         console.log(`${caseName} test start `);
         let sendAble1: SendAbleClassB = new SendAbleClassB();
         try {
@@ -536,9 +536,9 @@ export default function taskPoolSendableTest() {
      * @tc.type  : Function
      * @tc.level : level 0
      */
-    it('testSendableExecute1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testSendableExecute_static_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
-        let caseName: string = "testSendableExecute1300";
+        let caseName: string = "testSendableExecute_static_1300";
         console.log(`${caseName} test start `);
         let num1: ClassB2 = new ClassB2();
         try {
