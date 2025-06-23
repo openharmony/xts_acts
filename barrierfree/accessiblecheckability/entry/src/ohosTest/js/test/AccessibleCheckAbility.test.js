@@ -195,6 +195,26 @@ describe('AccessibleCheckAbility', function () {
             console.error('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700 failed to isScreenReaderOpenSync because ' + JSON.stringify(exception));
         }
     })
+
+    /*
+      * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0800
+      * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0800
+      * @tc.desc    The result of getTouchModeSync() should be boolean type.
+      * @tc.size    SmallTest
+      * @tc.type    User
+      * @tc.level   Level 1
+      */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
+        console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0800');
+        try {
+            let status = accessibility.getTouchModeSync();
+            console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0800 result: ${status}`);
+            expect(typeof (status)).assertEqual('boolean');
+            done();
+        } catch (exception) {
+            console.error('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0800 failed to getTouchModeSync because ' + JSON.stringify(exception));
+        }
+    })
 })
 
 }
