@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import huks from '@ohos.security.huks';
 import { StringToUint8Array } from "../utils/CommonUtil";
 import { SetParam } from "../utils/HuksOptionUtil";
