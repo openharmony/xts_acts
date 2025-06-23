@@ -14129,5 +14129,257 @@ export default function napiApiTest() {
       }
       done();
     });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0100
+     * @tc.name      : testNapiWrapEnhanceTest0001
+     * @tc.desc      : Testing NapiWrapEnhanceTest synchronize binding of string type object test cases.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0001 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest1();
+        console.info('NapiWrapEnhanceTest1 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest1 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0200
+     * @tc.name      : testNapiWrapEnhanceTest0002
+     * @tc.desc      : Testing NapiWrapEnhanceTest synchronize binding of number type object test cases.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0002 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest2();
+        console.info('NapiWrapEnhanceTest2 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest2 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0300
+     * @tc.name      : testNapiWrapEnhanceTest0003
+     * @tc.desc      : Testing NapiWrapEnhanceTest asynchronous binding of complex object test cases.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0003 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest3();
+        console.info('NapiWrapEnhanceTest3 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest3 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0400
+     * @tc.name      : testNapiWrapEnhanceTest0004
+     * @tc.desc      : Testing NapiWrapEnhanceTest each parameter value is null.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0004 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest4();
+        console.info('NapiWrapEnhanceTest4 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest4 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0500
+     * @tc.name      : testNapiWrapEnhanceTest0005
+     * @tc.desc      : Testing NapiWrapEnhanceTest each parameter value is null.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0005 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest5();
+        console.info('NapiWrapEnhanceTest5 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest5 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0600
+     * @tc.name      : testNapiWrapEnhanceTest0006
+     * @tc.desc      : Testing NapiWrapEnhanceTest synchronized callback execution successful.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0006 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest6();
+        console.info('NapiWrapEnhanceTest6 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest6 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0700
+     * @tc.name      : testNapiWrapEnhanceTest0007
+     * @tc.desc      : Testing NapiWrapEnhanceTest asynchronous callback execution successful.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0007 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest7();
+        console.info('NapiWrapEnhanceTest7 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest7 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0800
+     * @tc.name      : testNapiWrapEnhanceTest0008
+     * @tc.desc      : Testing NapiWrapEnhanceTest obtaining and managing references.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0008 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest8();
+        console.info('NapiWrapEnhanceTest8 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest8 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_0900
+     * @tc.name      : testNapiWrapEnhanceTest0009
+     * @tc.desc      : Testing NapiWrapEnhanceTest called when there are uncaught exceptions.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0009 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest9();
+        console.info('NapiWrapEnhanceTest9 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest9 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_1000
+     * @tc.name      : testNapiWrapEnhanceTest0010
+     * @tc.desc      : Testing NapiWrapEnhanceTest zero size binding.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0010 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest10();
+        console.info('NapiWrapEnhanceTest10 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest10 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_1100
+     * @tc.name      : testNapiWrapEnhanceTest0011
+     * @tc.desc      : Testing NapiWrapEnhanceTest binding of super large objects.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0011 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest11();
+        console.info('NapiWrapEnhanceTest11 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest11 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIWRAPENHANCETEST_1200
+     * @tc.name      : testNapiWrapEnhanceTest0012
+     * @tc.desc      : Testing NapiWrapEnhanceTest multi object binding testing.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWrapEnhanceTest0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiWrapEnhanceTest0012 START');
+      try {
+        let value = napitest.NapiWrapEnhanceTest12();
+        console.info('NapiWrapEnhanceTest12 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest12 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
   })
 }

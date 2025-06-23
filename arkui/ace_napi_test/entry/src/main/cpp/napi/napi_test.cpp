@@ -17482,6 +17482,310 @@ static napi_value SwitchEnvByNewEnv(napi_env env, napi_callback_info info)
     return res;
 }
 
+//Normal scenario: Synchronize binding of string type object test cases
+static napi_value NapiWrapEnhanceTest1(napi_env env, napi_callback_info info)
+{
+    napi_value testClass = nullptr;
+    napi_define_class(
+        env, "TestClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            return thisVar;
+        },
+        nullptr, 0, nullptr, &testClass);
+
+    napi_value obj = nullptr;
+    napi_new_instance(env, testClass, 0, nullptr, &obj);
+    const char* testStr = "test";
+    napi_ref wrappedRef = nullptr;
+    void* finalizeHint;
+    napi_status status = napi_wrap_enhance(env, obj, (void*)testStr, 
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), &wrappedRef);
+    NAPI_ASSERT(env, status == napi_ok, "napi_wrap_enhance is normal, return status napi_ok.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Normal scenario: Synchronize binding of number type object test cases
+static napi_value NapiWrapEnhanceTest2(napi_env env, napi_callback_info info)
+{
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    int* number = new int(42);
+    napi_status status = napi_wrap_enhance(
+         env, jsObject, number,
+         [](napi_env env, void* data, void* hint) {
+             delete  static_cast<int*>(data);
+         },
+         false, nullptr, sizeof(int), nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "napi_wrap_enhance is normal, return status napi_ok."); 
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Normal scenario: Asynchronous binding of complex object test cases
+static napi_value NapiWrapEnhanceTest3(napi_env env, napi_callback_info info)
+{
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    napi_property_descriptor descClass[] = {DECLARE_NAPI_FUNCTION("sayHello", SayHello)};
+    napi_value myClass;
+    void *data;
+    napi_define_class(env, "myClass", NAPI_AUTO_LENGTH, MyConstructor, data,
+                      sizeof(descClass) / sizeof(descClass[0]), descClass, &myClass);
+    napi_status status = napi_wrap_enhance(
+        env, jsObject, myClass,
+        [](napi_env env, void* data, void* hint){}, true, nullptr, sizeof(myClass), nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "napi_wrap_enhance is normal, return status napi_ok.");     
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Parameter validity test: Each parameter value is null
+static napi_value NapiWrapEnhanceTest4(napi_env env, napi_callback_info info)
+{
+    napi_value testClass = nullptr;
+    napi_define_class(
+        env, "TestClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            return thisVar;
+        },
+        nullptr, 0, nullptr, &testClass);
+
+    napi_value obj = nullptr;
+    napi_new_instance(env, testClass, 0, nullptr, &obj);
+    const char* testStr = "test";
+    napi_ref wrappedRef = nullptr;
+    void* finalizeHint;
+    // env is null
+    napi_status status = napi_wrap_enhance(nullptr, obj, (void*)testStr, 
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), &wrappedRef);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_enhance failed.");
+    // js_object is null
+    status = napi_wrap_enhance(env, nullptr, (void*)testStr, 
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), &wrappedRef);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "js_object is null, napi_wrap_enhance failed.");
+    // native_object is null
+    status = napi_wrap_enhance(env, obj, nullptr, 
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), &wrappedRef);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "native_object is null, napi_wrap_enhance failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+static napi_value NapiWrapEnhanceTest5(napi_env env, napi_callback_info info)
+{
+    napi_value testClass = nullptr;
+    napi_define_class(
+        env, "TestClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            return thisVar;
+        },
+        nullptr, 0, nullptr, &testClass);
+
+    napi_value obj = nullptr;
+    napi_new_instance(env, testClass, 0, nullptr, &obj);
+    const char* testStr = "test";
+    napi_ref wrappedRef = nullptr;
+    void* finalizeHint;
+
+    // finalize_hint is null
+    napi_status status = napi_wrap_enhance(nullptr, obj, (void*)testStr, 
+                      [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr), &wrappedRef);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_enhance failed.");
+    // result is null
+    status = napi_wrap_enhance(nullptr, obj, (void*)testStr, 
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_enhance failed.");
+    // all is null
+    status = napi_wrap_enhance(nullptr, nullptr, nullptr, nullptr, false, nullptr, sizeof(testStr), nullptr);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_enhance failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Callback function test, synchronized callback execution successful
+static napi_value NapiWrapEnhanceTest6(napi_env env, napi_callback_info info)
+{
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    bool callbackCalled = false;
+    int* number = new int(42);
+    napi_status status = napi_wrap_enhance(
+         env, jsObject, number,
+         [](napi_env env, void* data, void* hint) {
+             *static_cast<bool*>(hint) = true;
+             delete static_cast<int*>(data);
+         },
+         false, &callbackCalled, sizeof(int), nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "parameter is normal, napi_wrap_enhance ok.");
+    
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Callback function test, asynchronous callback execution successful
+static napi_value NapiWrapEnhanceTest7(napi_env env, napi_callback_info info)
+{
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    std::atomic<bool> callbackCalled(false);
+    napi_property_descriptor descClass[] = {DECLARE_NAPI_FUNCTION("sayHello", SayHello)};
+    napi_value myClass;
+    void *data;
+
+    napi_status status = napi_wrap_enhance(
+         env, jsObject, myClass,
+         [](napi_env env, void* data, void* hint) {
+             auto* flag = static_cast<std::atomic<bool>*>(hint);
+             flag->store(true);
+         },
+         true, &callbackCalled, sizeof(myClass), nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "parameter is normal, napi_wrap_enhance ok.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Reference management test cases, obtaining and managing references
+static napi_value NapiWrapEnhanceTest8(napi_env env, napi_callback_info info)
+{
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    int* number = new int(42);
+    napi_ref ref = nullptr;
+    napi_status status = napi_wrap_enhance(
+        env, jsObject, number,
+        [](napi_env env, void* data, void* hint) {
+            delete static_cast<int*>(data);
+        },
+        false, nullptr, sizeof(int), &ref);
+    NAPI_ASSERT(env, status == napi_ok, "parameter is normal, napi_wrap_enhance ok.");
+    //Using References
+    napi_value referencedObject;
+    napi_get_reference_value(env, ref, &referencedObject);
+    //clean
+    status = napi_delete_reference(env, ref);
+    NAPI_ASSERT(env, status == napi_ok, "delete reference, result is ok.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Exception handling test case, called when there are uncaught exceptions
+static napi_value NapiWrapEnhanceTest9(napi_env env, napi_callback_info info)
+{
+    //Create an uncaught exception
+    napi_value error;
+    napi_create_string_utf8(env, "Test error", NAPI_AUTO_LENGTH, &error);
+    napi_throw(env, error);
+
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    int number = 42;
+    napi_status status = napi_wrap_enhance(env, jsObject, &number, nullptr, false, nullptr, sizeof(int), nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "exist abnormal, napi_wrap_enhance return napi_pending_exception.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Boundary condition test case, zero size binding
+static napi_value NapiWrapEnhanceTest10(napi_env env, napi_callback_info info)
+{
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    int number = 42;
+    napi_status status = napi_wrap_enhance(
+        env, jsObject, &number,
+        nullptr, false, nullptr, 0, nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "parameter is size 0, napi_wrap_enhance return napi_ok.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Boundary condition test case, binding of super large objects
+static napi_value NapiWrapEnhanceTest11(napi_env env, napi_callback_info info)
+{
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    const size_t largeSize = 1024*1024;//1MB
+    void* largeData = malloc(largeSize);
+    napi_status status = napi_wrap_enhance(
+        env, jsObject, largeData,
+        [](napi_env env, void* data, void* hint) {
+            free(data);
+        },
+        false, nullptr, largeSize, nullptr);
+    NAPI_ASSERT(env, status == napi_ok, "parameter is size 1MB, napi_wrap_enhance return napi_ok.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//Comprehensive test cases, multi object binding testing
+static napi_value NapiWrapEnhanceTest12(napi_env env, napi_callback_info info)
+{
+    const int objectCount = 18;
+    std::vector<napi_value> jsObjects(objectCount);
+    std::vector<napi_ref> refs(objectCount);
+    for(int i = 0; i < objectCount; ++i) {
+        napi_create_object(env, &jsObjects[i]);
+        auto* data = new int(i);
+        napi_status status = napi_wrap_enhance(
+            env, jsObjects[i], data,
+            [](napi_env env, void* data, void* hint) {
+                delete static_cast<int*>(data);
+            },
+            i % 2 == 0, //Alternating between synchronous and asynchronous use
+            nullptr, sizeof(int), &refs[i]);
+        NAPI_ASSERT(env, status == napi_ok, "parameter is normal, napi_wrap_enhance return napi_ok.");
+    }
+    //clean
+    for(auto ref:refs) {
+        napi_status status = napi_delete_reference(env, ref);
+        NAPI_ASSERT(env, status == napi_ok, "delete reference, napi_delete_reference return napi_ok.");
+    }
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -18228,6 +18532,18 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("NapiCreateFunctionTest", NapiCreateFunctionTest),
         DECLARE_NAPI_FUNCTION("NapiCallFunctionTest", NapiCallFunctionTest),
         DECLARE_NAPI_FUNCTION("NapiCheckObjectTypeTagTest", NapiCheckObjectTypeTagTest),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest1", NapiWrapEnhanceTest1),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest2", NapiWrapEnhanceTest2),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest3", NapiWrapEnhanceTest3),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest4", NapiWrapEnhanceTest4),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest5", NapiWrapEnhanceTest5),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest6", NapiWrapEnhanceTest6),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest7", NapiWrapEnhanceTest7),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest8", NapiWrapEnhanceTest8),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest9", NapiWrapEnhanceTest9),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest10", NapiWrapEnhanceTest10),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest11", NapiWrapEnhanceTest11),
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest12", NapiWrapEnhanceTest12),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
