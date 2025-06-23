@@ -52,7 +52,7 @@ export default function budnleNdkNativeTest() {
       * @tc.name      budnleNdkNativeTest002
       * @tc.desc      budnleNdkNativeTest_IsDebugMode
       */
-      it('BundleNdkTest002', 0, (done: Function) => {
+      it('BundleNdkTest002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, (done: Function) => {
         try{
           let data = bundlendk.IsDebugMode();
           hilog.info(0x0000, 'Debug_Metadata_test', 'IsDebugModeTest %{public}s ', data);
@@ -69,7 +69,7 @@ export default function budnleNdkNativeTest() {
       * @tc.name      budnleNdkNativeTest003
       * @tc.desc      budnleNdkNativeTest_IsDebugMode
       */
-     it('BundleNdkTest003', 0, (done: Function) => {
+     it('BundleNdkTest003', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, (done: Function) => {
       try{
         let data  = bundlendk.GetModuleMetadata();
         hilog.info(0x0000, 'Debug_Metadata_test ', '%{public}s', JSON.stringify(data));
