@@ -10,6 +10,7 @@ export default function signNormalNotAccessBiometricEnumExecute() {
         /*
             * @tc.number    : Security_IAM_userAuthType_Kit_Func_Static_0084
             * @tc.name      : Security_IAM_userAuthType_Kit_Func_Static_0084
+            * @tc.desc      : UserAuthType parameter check
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level.LEVEL2
@@ -26,6 +27,7 @@ export default function signNormalNotAccessBiometricEnumExecute() {
         /*
             * @tc.number    : Security_IAM_widgetNotice_Kit_Func_Static_0085
             * @tc.name      : Security_IAM_widgetNotice_Kit_Func_Static_0085
+            * @tc.desc      : WindowModeType parameter check
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level.LEVEL2
@@ -40,6 +42,7 @@ export default function signNormalNotAccessBiometricEnumExecute() {
         /*
             * @tc.number    : Security_IAM_widgetNotice_Kit_Func_Static_0086
             * @tc.name      : Security_IAM_widgetNotice_Kit_Func_Static_0086
+            * @tc.desc      : NoticeType parameter check
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level.LEVEL2
@@ -53,6 +56,7 @@ export default function signNormalNotAccessBiometricEnumExecute() {
         /*
             * @tc.number    : Security_IAM_userAuthResultCode_Kit_Func_Static_0087
             * @tc.name      : Security_IAM_userAuthResultCode_Kit_Func_Static_0087
+            * @tc.desc      : UserAuthResultCode parameter check
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level.LEVEL2

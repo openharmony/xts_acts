@@ -101,6 +101,7 @@ export default function signNormalNotAccessBiometricExecute() {
     /*
         * @tc.number    : Security_IAM_UserAuthInstance_Func_static_0042
         * @tc.name      : Security_IAM_UserAuthInstance_Func_static_0042
+        * @tc.desc      : userAuthInstance interface not null
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
@@ -123,6 +124,7 @@ export default function signNormalNotAccessBiometricExecute() {
     /*
         * @tc.number    : Security_IAM_UserAuthInstance_Func_static_0050
         * @tc.name      : Security_IAM_UserAuthInstance_Func_static_0050
+        * @tc.desc      : Nopermisson on
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
@@ -147,6 +149,7 @@ export default function signNormalNotAccessBiometricExecute() {
     /*
         * @tc.number    : Security_IAM_UserAuthInstance_Func_static_0090
         * @tc.name      : Security_IAM_UserAuthInstance_Func_static_0090
+        * @tc.desc      : call cancel interface return GENERAL_ERROR
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
@@ -168,7 +171,7 @@ export default function signNormalNotAccessBiometricExecute() {
     /*
         * @tc.number    : SUB_Security_IAM_authWidget_API_0200
         * @tc.name      : SUB_Security_IAM_authWidget_API_0200.
-        * @tc.desc      :
+        * @tc.desc      : call ReuseMode interface parameter check
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3

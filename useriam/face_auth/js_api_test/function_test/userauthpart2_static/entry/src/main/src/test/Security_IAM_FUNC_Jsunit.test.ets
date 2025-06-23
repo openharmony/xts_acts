@@ -143,7 +143,7 @@ export default function userauthTest_API9() {
 
     /*
         * @tc.number    : Security_IAM_PIN_Kit_Func_Static_0106
-        * @tc.name      : kit interface enum UserAuthType
+        * @tc.name      : Security_IAM_PIN_Kit_Func_Static_0106
         * @tc.desc      : Enumeration testing
         * @tc.size      : MediumTest
         * @tc.type      : Function
@@ -159,7 +159,7 @@ export default function userauthTest_API9() {
 
     /*
         * @tc.number    : Security_IAM_Func_Static_0107
-        * @tc.name      : kit interface enum ResultCode
+        * @tc.name      : Security_IAM_Func_Static_0107
         * @tc.desc      : Enumeration testing
         * @tc.size      : MediumTest
         * @tc.type      : Function

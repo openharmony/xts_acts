@@ -133,8 +133,9 @@ export default function signNormalAccessBiometricExecute() {
     })
 
     /*
-      * @tc.number    : Security_IAM_getUserAuthInstance_Func_0043
-      * @tc.name      : Security_IAM_getUserAuthInstance_Func_0043
+      * @tc.number    : Security_IAM_getUserAuthInstance_Func_Static_0043
+      * @tc.name      : Security_IAM_getUserAuthInstance_Func_Static_0043
+      * @tc.desc      : call any userauth UserAuthResultCode return value check
       * @tc.size      : MediumTest
       * @tc.type      : Function
       * @tc.level     : Level.LEVEL0
@@ -266,6 +267,7 @@ export default function signNormalAccessBiometricExecute() {
     /*
         * @tc.number    : Security_IAM_getUserAuthInstance_Func_Static_0088
         * @tc.name      : Security_IAM_getUserAuthInstance_Func_Static_0088
+        * @tc.desc      : call off return value check
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
@@ -278,7 +280,7 @@ export default function signNormalAccessBiometricExecute() {
            onResult:(result:userAuth.UserAuthResult)=>{
            }
          });
-         hilog.info(domain, tag, format,`Security_IAM_getUserAuthInsSecurity_IAM_getUserAuthInstance_Func_Static_0088tance_Func_0088 step1 success`);
+         hilog.info(domain, tag, format,`Security_IAM_getUserAuthInstance_Func_Static_0088 step1 success`);
          expect(null).assertFail();
        } catch (e:BusinessError) {
          hilog.info(domain, tag, format,`Security_IAM_getUserAuthInstance_Func_Static_0088 step1 fail ${e.code}`);
@@ -290,6 +292,7 @@ export default function signNormalAccessBiometricExecute() {
     /*
         * @tc.number    : Security_IAM_getUserAuthInstance_Func_Static_0089
         * @tc.name      : Security_IAM_getUserAuthInstance_Func_Static_0089
+        * @tc.desc      : call cancel return value check
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2

@@ -90,7 +90,7 @@ export default function userauthTest_API12() {
 
     /*
     * @tc.number    : SUB_Security_IAM_Func_API12_Static_0100
-    * @tc.name      : SUB_Security_IAM_authWidget_API_Static_0130
+    * @tc.name      : SUB_Security_IAM_Func_API12_Static_0100
     * @tc.desc      : GetEnrolledState parameter validity check
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -146,7 +146,7 @@ export default function userauthTest_API12() {
 
     /*
     * @tc.number    : SUB_Security_IAM_authWidget_API_Static_0140
-    * @tc.name      : SUB_Security_IAM_authWidget_API_Static_0130
+    * @tc.name      : SUB_Security_IAM_authWidget_API_Static_0140
     * @tc.desc      : reuseUnlockResultMode Parameter transmission test.
     * @tc.size      : MediumTest
     * @tc.type      : Function
