@@ -50,7 +50,7 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0100',0,async (done: Function) => {
+    it('testGridItem_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0100] START');
       let strJson = getInspectorByKey('GridItemKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -70,7 +70,7 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0101',0,async (done: Function) => {
+    it('testGridItem_0101', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0101] START');
       let strJson = getInspectorByKey('GridItemKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -89,7 +89,7 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0102',0,async (done: Function) => {
+    it('testGridItem_0102', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0102] START');
       let strJson = getInspectorByKey('GridItemKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -108,7 +108,7 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0103',0,async (done: Function) => {
+    it('testGridItem_0103', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0103] START');
       let strJson = getInspectorByKey('GridItemKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -127,7 +127,7 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0104',0,async (done: Function) => {
+    it('testGridItem_0104', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0104] START');
       let strJson = getInspectorByKey('GridItemKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -146,7 +146,7 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0105',0,async (done: Function) => {
+    it('testGridItem_0105', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0105] START');
       let strJson = getInspectorByKey('GridItemKey1');
       let obj: ESObject = JSON.parse(strJson);

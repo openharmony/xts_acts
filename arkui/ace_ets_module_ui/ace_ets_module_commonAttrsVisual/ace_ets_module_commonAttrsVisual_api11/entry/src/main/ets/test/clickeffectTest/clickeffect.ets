@@ -67,7 +67,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the parameter to Middle level with default scale
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0200', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0200', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_0200 start");
       setTimeout(() => {
         try {
@@ -89,7 +89,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the parameter to Heavy level with default scale
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0300', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0300', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_0300 start");
       setTimeout(() => {
         try {
@@ -111,7 +111,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the level to Light and set scale to 0
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0400', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0400', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_0400 start");
       setTimeout(() => {
         try {
@@ -133,7 +133,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the level to Light and set scale to 1
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0500', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0500', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_0500 start");
       setTimeout(() => {
         try {
@@ -155,7 +155,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the level to Light and set scale to 0.5
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0600', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0600', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Options_0600 start");
       setTimeout(() => {
         try {
@@ -177,7 +177,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the level to Light and set scale to 0.8
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0700', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0700', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_0700 start");
       setTimeout(() => {
         try {
@@ -199,7 +199,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the level to Light and set scale to -1
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0800', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0800', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_0800 start");
       setTimeout(() => {
         try {
@@ -221,7 +221,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the level to null and set scale to 0.1
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0900', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0900', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_0900 start");
       setTimeout(() => {
         try {
@@ -243,7 +243,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the level to undefine and set scale to 0
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_1000', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_1000', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_1000 start");
       setTimeout(() => {
         try {
@@ -266,7 +266,7 @@ export default function clickeffectTest() {
      * @tc.desc      First Set the level to Middle, set the scale to 0.2
      *               Second Set the level to Heavy, set the scale to 0.1
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_1100', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_1100', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Options_01000 start");
       setTimeout(() => {
         try {
@@ -289,7 +289,7 @@ export default function clickeffectTest() {
      * @tc.desc      First Set the level to Middle
      *               Second Set the level to null
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_1200', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_1200', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_1200 start");
       setTimeout(() => {
         try {
@@ -334,7 +334,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      First Set the level to Heavy and set the scale to null
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_1400', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_1400', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_1400 start");
       setTimeout(() => {
         try {
@@ -356,7 +356,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      First Set the level to Middle and set the scale to undefined
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_1500', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_1500', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_1500 start");
       setTimeout(() => {
         try {
@@ -378,7 +378,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      First Set the level to undefined and set the scale to null
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_1600', 0,  async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_1600', Level.LEVEL0, async (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_1600 start");
       setTimeout(() => {
         try {

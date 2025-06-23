@@ -80,7 +80,7 @@ export default function styledStringAddApi() {
      * @tc.level      : Level 3
      */
 
-    it('styledStringAddApi_002', 7, async () => {
+    it('styledStringAddApi_002', Level.LEVEL3, async () => {
       let msg = 'testPositionWithAffinity'
       console.info(msg + 'begin');
       try {

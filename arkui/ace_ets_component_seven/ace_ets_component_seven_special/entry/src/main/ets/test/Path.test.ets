@@ -48,7 +48,7 @@ export default function pathNewTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testPathNe0004',0,async (done: Function) => {
+    it('testPathNe0004', Level.LEVEL0, async (done: Function) => {
       console.info('pathNe testPathNe0004 START');
       let strJson = getInspectorByKey('PathKey1');
       console.info("[testPathNe0004] component fontSize strJson:" + strJson);

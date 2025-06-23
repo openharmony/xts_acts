@@ -44,7 +44,7 @@ export default function enumsVerticalAlignJsunit() {
       console.info('[ afterEach ] ===================enumsFlexItemTest test after each called===================');
     });
 
-    it('enumsHorizontalAlignTest_0100', 0,  async (done: Function) =>{
+    it('enumsHorizontalAlignTest_0100', Level.LEVEL0,  async (done: Function) =>{
       console.info('enumsHorizontalAlignTest_0100 START');
       await Utils.sleep(1500);
       let strJson: string = getInspectorByKey('HorizontalAlign');
