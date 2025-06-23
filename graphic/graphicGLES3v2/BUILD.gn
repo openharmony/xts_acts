@@ -36,9 +36,9 @@ ohos_js_app_suite("ActsGraphicGles3v2Test") {
   hap_name = "ActsGraphicGles3v2Test"
 
   # 部件名称，真实数据，需要子系统对应
-  part_name = "window_manager"
+  part_name = "graphic_2d"
 
   # 子系统名称，真实数据，需要部件对应
-  subsystem_name = "window"
+  subsystem_name = "graphic"
   deps = [ ":ActsGraphicGles3v2Test_main" ]
 }
