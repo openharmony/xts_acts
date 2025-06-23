@@ -43,6 +43,7 @@ struct IndexFeature {
 
         Button('getFontSizeScale')
           .id('getFontSizeScaleButton')
+          .size({ width: '1%', height: '1%' })
           .onClick(() => {
             let config = this.context.config;
             this.message = JSON.stringify(config);
