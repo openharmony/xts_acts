@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 ohos_app_assist_suite("ActsArkTsDynamicLoadLibTest") {
   hap_name = "ActsArkTsDynamicLoadLibTest"
   testonly = true
-  part_name = "ets_runtime"
+  part_name = "runtime_core"
   subsystem_name = "arkcompiler"
   certificate_profile = "./signature/myApplication_ohos_Provision.p7b"
 }
@@ -25,7 +25,7 @@ ohos_js_app_suite("ActsArkTsDynamicLoadTest") {
   hap_name = "ActsArkTsDynamicLoadTest"
   testonly = true
   test_hap = true
-  part_name = "ets_runtime"
+  part_name = "runtime_core"
   subsystem_name = "arkcompiler"
   certificate_profile = "./signature/myApplication_ohos_Provision.p7b"
   deps = [ ":ActsArkTsDynamicLoadLibTest" ]
