@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function patternLockJsunit() {
       console.info("patternLock after each called");
     })
 
-    it('testPatternLock_01', 0, async (done: Function) => {
+    it('testPatternLock_01', Level.LEVEL0, async (done: Function) => {
       console.info('testPatternLock_01 START');
       await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {

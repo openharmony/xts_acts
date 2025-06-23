@@ -49,7 +49,7 @@ export default function RectRadiusTest() {
      * @tc.name         testRectRadiusTest_0010
      * @tc.desic        test Rect radius
      */
-    it('testRectRadiusTest_0010', Level.LEVEL1, async (done: Function) => {
+    it('testRectRadiusTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('[testRectRadiusTest_0010] START');
       await Utils.sleep(1000);
 
@@ -71,7 +71,7 @@ export default function RectRadiusTest() {
      * @tc.name         testRectRadiusTest_0020
      * @tc.desic        test Rect radius
      */
-    it('testRectRadiusTest_0020', Level.LEVEL1, async (done: Function) => {
+    it('testRectRadiusTest_0020', Level.LEVEL0, async (done: Function) => {
       console.info('[testRectRadiusTest_0020] START');
       await Utils.sleep(1000);
 

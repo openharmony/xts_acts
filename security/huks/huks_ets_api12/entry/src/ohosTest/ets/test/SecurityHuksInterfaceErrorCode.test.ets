@@ -1165,22 +1165,19 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
     /**
      * @tc.number : SUB_Security_HUKS_ErrorCode_Api20_Interface_0100
      * @tc.name   : SUB_Security_HUKS_ErrorCode_Api20_Interface_0100
-     * @tc.desc   : generate key, wrap key, error code 12000018
+     * @tc.desc   : test wrap key, error code 12000018
      * @tc.type   : Safety
      * @tc.size   : SmallTest
      * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_ErrorCode_Api20_Interface_0100', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
       let testNumber: string = "SUB_Security_HUKS_ErrorCode_Api20_Interface_0100";
-      if (!useSoftware) {
-        try {
-          await huks.generateKeyItem(testNumber, MergeOptions(genKeyOption, GetGenWrapKeyOptions()));
-          await huks.wrapKeyItem(testNumber, SetMultiParam(GetWrapKeyOptions(), huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES));
-          expect(null).assertFail();
-        } catch (err) {
-          console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_ARGUMENT);
-        }
+      try {
+        await huks.wrapKeyItem(testNumber, SetMultiParam(GetWrapKeyOptions(), huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES));
+        expect(null).assertFail();
+      } catch (err) {
+        console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
+        expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_ARGUMENT);
       }
     }
     )
@@ -1188,23 +1185,40 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
     /**
      * @tc.number : SUB_Security_HUKS_ErrorCode_Api20_Interface_0200
      * @tc.name   : SUB_Security_HUKS_ErrorCode_Api20_Interface_0200
-     * @tc.desc   : generate key, unwrap key, error code 12000018
+     * @tc.desc   : test unwrap key, error code 12000018
      * @tc.type   : Safety
      * @tc.size   : SmallTest
      * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_ErrorCode_Api20_Interface_0200', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
       let testNumber: string = "SUB_Security_HUKS_ErrorCode_Api20_Interface_0200";
-      if (!useSoftware) {
-        try {
-          await huks.generateKeyItem(testNumber, MergeOptions(genKeyOption, GetGenWrapKeyOptions()));
-          let wrapRes = (await huks.wrapKeyItem(testNumber, GetWrapKeyOptions())).outData;
-          await huks.unwrapKeyItem(testNumber, SetMultiParam(GetWrapKeyOptions(), huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES), wrapRes);
-          expect(null).assertFail();
-        } catch (err) {
-          console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_ARGUMENT);
-        }
+      try {
+        let wrapRes = new Uint8Array([0, 0, 0, 0]);
+        await huks.unwrapKeyItem(testNumber, SetMultiParam(GetWrapKeyOptions(), huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES), wrapRes);
+        expect(null).assertFail();
+      } catch (err) {
+        console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
+        expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_ARGUMENT);
+      }
+    }
+    )
+
+    /**
+     * @tc.number : SUB_Security_HUKS_ErrorCode_Api20_Interface_0300
+     * @tc.name   : SUB_Security_HUKS_ErrorCode_Api20_Interface_0300
+     * @tc.desc   : test generate key, error code 12000014
+     * @tc.type   : Safety
+     * @tc.size   : SmallTest
+     * @tc.level  : Level3
+     */
+    it('SUB_Security_HUKS_ErrorCode_Api20_Interface_0300', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async () => {
+      let testNumber: string = "SUB_Security_HUKS_ErrorCode_Api20_Interface_0300";
+      try {
+        await huks.generateKeyItem(testNumber, MergeOptions(genKeyOption, GetGenWrapKeyOptions()));
+        expect(null).assertFail();
+      } catch (err) {
+        console.error(testNumber + `: catch error ${JSON.stringify(err)}`);
+        expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INSUFFICIENT_MEMORY);
       }
     }
     )

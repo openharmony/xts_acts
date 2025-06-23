@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -52,7 +52,7 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0100', 0, async (done: Function) => {
+    it('QRCodeUIJsunit_0100', Level.LEVEL0, async (done: Function) => {
       // Get the information of the QRCode component
       console.info('[QRCodeUIJsunit_0100] START');
       let strJson = getInspectorByKey('qr');
@@ -75,7 +75,7 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0200', 0, async (done: Function) => {
+    it('QRCodeUIJsunit_0200', Level.LEVEL0, async (done: Function) => {
       // Modify the color of the QRCode component
       console.info('[QRCodeUIJsunit_0200] START');
       globalThis.value.message.notify({name:'QRCodeColor',value:Color.Yellow})
@@ -89,7 +89,7 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0300', 0, async (done: Function) => {
+    it('QRCodeUIJsunit_0300', Level.LEVEL0, async (done: Function) => {
       // Modify the backgroundColor of the QRCode component
       console.info('[QRCodeUIJsunit_0300] START');
       globalThis.value.message.notify({name:'backgroundColor',value:Color.Green})
@@ -103,7 +103,7 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0400', 0, async (done: Function) => {
+    it('QRCodeUIJsunit_0400', Level.LEVEL0, async (done: Function) => {
       // Modify the value of the QRCode component
       console.info('[QRCodeUIJsunit_0400] START');
       globalThis.value.message.notify({name:'QRCodeValue',value:'myTest'})
@@ -118,7 +118,7 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0500', 0, async (done: Function) => {
+    it('QRCodeUIJsunit_0500', Level.LEVEL0, async (done: Function) => {
       // Illegal modification of the QRCode component value
       console.info('[QRCodeUIJsunit_0500] START');
       globalThis.value.message.notify({name:'QRCodeColor',value:1})
@@ -151,7 +151,7 @@ export default function QRCodeUIJsunit() {
       done();
     });
 
-    it('QRCodeUIJsunit_0600', 0, async (done: Function) => {
+    it('QRCodeUIJsunit_0600', Level.LEVEL0, async (done: Function) => {
       // Verify that component QRCode only supports click events
       console.info('[QRCodeUIJsunit_0600] START');
       let driver = await UiDriver.create()

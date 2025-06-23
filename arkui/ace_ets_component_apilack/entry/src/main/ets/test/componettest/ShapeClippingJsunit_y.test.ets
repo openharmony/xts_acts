@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -44,7 +44,7 @@ export default function shapeClippingJsunit() {
       console.info("shapeClipping after each called");
     });
 
-    it('testShapeClipping001', 0, async () => {
+    it('testShapeClipping001', Level.LEVEL0, async () => {
       console.info('[testShapeClipping001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('image_clip');
@@ -60,7 +60,7 @@ export default function shapeClippingJsunit() {
 
     });
 
-    it('testShapeClipping002', 0, async () => {
+    it('testShapeClipping002', Level.LEVEL0, async () => {
       console.info('[testShapeClipping002] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('image_mask');
@@ -72,7 +72,7 @@ export default function shapeClippingJsunit() {
 
     });
 
-    it('testShapeClipping003', 0, async () => {
+    it('testShapeClipping003', Level.LEVEL0, async () => {
       console.info('[testShapeClipping003] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -98,7 +98,7 @@ export default function shapeClippingJsunit() {
 
     });
 
-    it('testShapeClipping004', 0, async () => {
+    it('testShapeClipping004', Level.LEVEL0, async () => {
       console.info('[testShapeClipping004] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -125,7 +125,7 @@ export default function shapeClippingJsunit() {
 
     });
 
-    it('testShapeClipping004', 0, async () => {
+    it('testShapeClipping004', Level.LEVEL0, async () => {
       console.info('[testShapeClipping004] START');
       try {
         let eventData: events_emitter.EventData = {

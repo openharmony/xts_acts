@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function OhosRouterJsunit() {
       console.info("ohosRouter after each called");
     });
 
-    it('ohosRouterTest001', 0, async () => {
+    it('ohosRouterTest001', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest001] START');
       let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA',
@@ -64,7 +64,7 @@ export default function OhosRouterJsunit() {
 
     });
 
-    it('ohosRouterTest002', 0, async () => {
+    it('ohosRouterTest002', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest002] START');
       let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
@@ -97,7 +97,7 @@ export default function OhosRouterJsunit() {
 
     });
 
-    it('ohosRouterTest003', 0, async () => {
+    it('ohosRouterTest003', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest003] START');
       await Utils.sleep(1000);
       router.clear();
@@ -109,7 +109,7 @@ export default function OhosRouterJsunit() {
 
     });
 
-    it('ohosRouterTest004', 0, async () => {
+    it('ohosRouterTest004', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest004] START');
       router.clear();
       await Utils.sleep(1000);
@@ -139,7 +139,7 @@ export default function OhosRouterJsunit() {
 
     });
 
-    it('ohosRouterTest005', 0, async () => {
+    it('ohosRouterTest005', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest005] START');
       let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
@@ -172,7 +172,7 @@ export default function OhosRouterJsunit() {
     });
 
 
-    it('ohosRouterTest006', 0, async () => {
+    it('ohosRouterTest006', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest006] START');
       let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
@@ -204,7 +204,7 @@ export default function OhosRouterJsunit() {
 
     });
 
-    it('ohosRouterTest008', 0, async () => {
+    it('ohosRouterTest008', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest008] START');
       let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
@@ -236,7 +236,7 @@ export default function OhosRouterJsunit() {
 
     });
 
-    it('ohosRouterTest007', 0, async () => {
+    it('ohosRouterTest007', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest007] START');
       let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'
@@ -267,7 +267,7 @@ export default function OhosRouterJsunit() {
         + JSON.stringify(sendEventByKey('ReplaceButtonA', 10, "")));
 
     });
-    it('ohosRouterTest009', 0, async () => {
+    it('ohosRouterTest009', Level.LEVEL0, async () => {
       console.info('[ohosRouterTest009] START');
       let options: router.RouterOptions  = {
         uri: 'pages/ohosRouterA'

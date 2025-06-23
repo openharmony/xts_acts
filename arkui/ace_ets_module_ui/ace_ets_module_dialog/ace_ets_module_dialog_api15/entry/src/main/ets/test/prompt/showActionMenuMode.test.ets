@@ -61,7 +61,7 @@ export default function showActionMenuMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionMenuMode_0100', 1, async (done: Function) => {
+    it('showActionMenuMode_0100', Level.LEVEL1, async (done: Function) => {
       console.info('showActionMenuMode_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -103,7 +103,7 @@ export default function showActionMenuMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionMenuMode_0200', 1, async (done: Function) => {
+    it('showActionMenuMode_0200', Level.LEVEL1, async (done: Function) => {
       console.info('showActionMenuMode_0200 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -146,7 +146,7 @@ export default function showActionMenuMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionMenuMode_0300', 1, async (done: Function) => {
+    it('showActionMenuMode_0300', Level.LEVEL1, async (done: Function) => {
       console.info('showActionMenuMode_0300 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -189,7 +189,7 @@ export default function showActionMenuMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionMenuMode_0400', 1, async (done: Function) => {
+    it('showActionMenuMode_0400', Level.LEVEL1, async (done: Function) => {
       console.info('showActionMenuMode_0400 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -232,7 +232,7 @@ export default function showActionMenuMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionMenuMode_0500', 1, async (done: Function) => {
+    it('showActionMenuMode_0500', Level.LEVEL1, async (done: Function) => {
       console.info('showActionMenuMode_0500 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -273,7 +273,7 @@ export default function showActionMenuMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionMenuMode_0600', 1, async (done: Function) => {
+    it('showActionMenuMode_0600', Level.LEVEL1, async (done: Function) => {
       console.info('showActionMenuMode_0600 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -61,7 +61,7 @@ export default function counterJsunit() {
      * @tc.name testCounterGetInspectorByKey010
      * @tc.desc aceEtsTest
      */
-    it('testCounterGetInspectorByKey010', 0, async (done: Function) => {
+    it('testCounterGetInspectorByKey010', Level.LEVEL0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('counter');
       let obj: ESObject = JSON.parse(strJson);

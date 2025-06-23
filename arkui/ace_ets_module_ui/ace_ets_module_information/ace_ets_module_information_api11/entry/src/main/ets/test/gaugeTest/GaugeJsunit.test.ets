@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -46,7 +46,7 @@ export default function gaugeJsunit() {
       console.info("gauge after each called");
     });
 
-    it('testGauge001', 0, async (done:Function) => {
+    it('testGauge001', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge001] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('gauge');
@@ -59,7 +59,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge002', 0, async (done:Function) => {
+    it('testGauge002', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge002] START');
       await CommonFunc.sleep(1000);
       try {
@@ -85,7 +85,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge003', 0, async (done:Function) => {
+    it('testGauge003', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge003] START');
       await CommonFunc.sleep(1000);
       try {
@@ -111,7 +111,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge004', 0, async (done:Function) => {
+    it('testGauge004', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge004] START');
       await CommonFunc.sleep(1000);
       try {
@@ -137,7 +137,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge005', 0, async (done:Function) => {
+    it('testGauge005', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge005] START');
       await CommonFunc.sleep(1000);
       try {
@@ -163,7 +163,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge006', 0, async (done:Function) => {
+    it('testGauge006', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge006] START');
       await CommonFunc.sleep(1000);
       try {
@@ -184,7 +184,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge007', 0, async (done:Function) => {
+    it('testGauge007', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge007] START');
       await CommonFunc.sleep(1000);
       try {
@@ -210,7 +210,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge008', 0, async (done:Function) => {
+    it('testGauge008', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge008] START');
       await CommonFunc.sleep(1000);
       try {
@@ -236,7 +236,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge009', 0, async (done:Function) => {
+    it('testGauge009', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge009] START');
       await CommonFunc.sleep(1000);
       try {
@@ -262,7 +262,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge010', 0, async (done:Function) => {
+    it('testGauge010', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge010] START');
       await CommonFunc.sleep(1000);
       try {
@@ -287,7 +287,7 @@ export default function gaugeJsunit() {
       done()
     });
 
-    it('testGauge011', 0, async (done:Function) => {
+    it('testGauge011', Level.LEVEL0, async (done:Function) => {
       console.info('[testGauge011] START');
       await CommonFunc.sleep(1000);
       try {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function LineJsunit() {
       console.info("line after each called");
     });
 
-    it('lineTest_0100', 0, async (done: Function) => {
+    it('lineTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('lineTest_0100 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line');
@@ -54,7 +54,7 @@ export default function LineJsunit() {
       done();
     });
 
-    it('lineTest_0200', 0, async (done: Function) => {
+    it('lineTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('lineTest_0200 START');
       let strJson = getInspectorByKey('line');
       console.info("lineTest_0200 component strJson:" + strJson);
@@ -63,7 +63,7 @@ export default function LineJsunit() {
       done();
     });
 
-    it('lineTest_0300', 0, async (done: Function) => {
+    it('lineTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('lineTest_0300 START');
       let strJson = getInspectorByKey('line');
       console.info("lineTest_0300 component strJson:" + strJson);
@@ -72,7 +72,7 @@ export default function LineJsunit() {
       done();
     });
 
-    it('lineTest_0400', 0, async (done: Function) => {
+    it('lineTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('lineTest_0400 START');
       let strJson = getInspectorByKey('line');
       console.info("lineTest_0400 component strJson:" + strJson);
@@ -81,7 +81,7 @@ export default function LineJsunit() {
       done();
     });
 
-    it('lineTest_0500', 0, async (done: Function) => {
+    it('lineTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('lineTest_0500 START');
       await Utils.sleep(1000);
       try {
@@ -111,7 +111,7 @@ export default function LineJsunit() {
       done();
     });
 
-    it('lineTest_0600', 0, async (done: Function) => {
+    it('lineTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('lineTest_0600 START');
       await Utils.sleep(1000);
       try {
@@ -141,7 +141,7 @@ export default function LineJsunit() {
       done();
     });
 
-    it('lineTest_0700', 0, async (done: Function) => {
+    it('lineTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('lineTest_0700 START');
       await Utils.sleep(1000);
       try {
@@ -171,7 +171,7 @@ export default function LineJsunit() {
       done();
     });
 
-    it('lineTest_0800', 0, async (done: Function) => {
+    it('lineTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('lineTest_0900 START');
       await Utils.sleep(1000);
       try {

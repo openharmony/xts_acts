@@ -29,11 +29,12 @@ struct StackSafeArea {
         Stack(){
         }
         .id('StackSafeArea1')
-        .width(40)
-        .height(40)
+        .width(LayoutPolicy.matchParent)
+        .height(LayoutPolicy.matchParent)
         .backgroundColor(Color.Orange)
         .ignoreLayoutSafeArea(this.layoutSafeAreaType,this.layoutSafeAreaEdge)
       }
+      .id('StackSafeArea2')
       .width(100)
       .height(80)
       .backgroundColor(Color.Pink)
@@ -47,18 +48,7 @@ struct StackSafeArea {
             this.layoutSafeAreaType = [LayoutSafeAreaType.SYSTEM]
             this.str = this.layoutSafeAreaType.toString()
           }).width(55).height(25)
-        Button('KEYBOARD')
-          .id('KeyboardButton1')
-          .onClick(() => {
-            this.layoutSafeAreaType = [LayoutSafeAreaType.KEYBOARD]
-            this.str = this.layoutSafeAreaType.toString()
-          }).width(55).height(25)
-        Button('ALL1')
-          .id('AllButton1')
-          .onClick(() => {
-            this.layoutSafeAreaType = [LayoutSafeAreaType.ALL]
-            this.str = this.layoutSafeAreaType.toString()
-          }).width(55).height(25)
+        
         Button('NULL1')
           .id('NullButton1')
           .onClick(() => {

@@ -21,6 +21,7 @@ import { Driver, ON } from '@kit.TestKit';
 import settings from '@ohos.settings';
 import type Want from '@ohos.app.ability.Want';
 import { StartOptions, bundleManager } from '@kit.AbilityKit';
+import display from '@ohos.display';
 
 let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
 
@@ -515,12 +516,14 @@ export default function windowPCTest() {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
-        let options: window.SubWindowOptions = {
+        let Display = display.getDefaultDisplaySync();
+        console.log('Display.width: '+ Display.width+',Display.height: '+Display.height);
+          let options: window.SubWindowOptions = {
           title: 'subwindow0',
           decorEnabled: false,
           windowRect: {
-            left: 10000,
-            top: 10000,
+            left: Display.width,
+            top: Display.height,
             width: Number(limit.maxWidth),
             height: Number(limit.maxHeight)
           }

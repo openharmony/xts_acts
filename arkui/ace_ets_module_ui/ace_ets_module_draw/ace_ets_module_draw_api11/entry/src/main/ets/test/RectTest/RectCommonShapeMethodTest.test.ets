@@ -49,7 +49,7 @@ export default function RectCommonShapeMethodTest() {
      * @tc.name         RectCommonShapeMethodTest_0010
      * @tc.desic        test Rect radius
      */
-    it('RectCommonShapeMethodTest_0010', Level.LEVEL1, async (done: Function) => {
+    it('RectCommonShapeMethodTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('[RectCommonShapeMethodTest_0010] START');
       await Utils.sleep(1000);
 

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function tabsBarPositionJsunit() {
@@ -49,7 +49,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0001
      * @tc.desic         acetabsBarPositionEtsTest0001
      */
-    it('testtabsBarPosition0001', 0, async () => {
+    it('testtabsBarPosition0001', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -66,7 +66,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0002
      * @tc.desic         acetabsBarPositionEtsTest0002
      */
-    it('testtabsBarPosition0002', 0, async () => {
+    it('testtabsBarPosition0002', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -83,7 +83,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0003
      * @tc.desic         acetabsBarPositionEtsTest0003
      */
-    it('testtabsBarPosition0003', 0, async () => {
+    it('testtabsBarPosition0003', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -100,7 +100,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0004
      * @tc.desic         acetabsBarPositionEtsTest0004
      */
-    it('testtabsBarPosition0004', 0, async () => {
+    it('testtabsBarPosition0004', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -117,7 +117,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0005
      * @tc.desic         acetabsBarPositionEtsTest0005
      */
-    it('testtabsBarPosition0005', 0, async () => {
+    it('testtabsBarPosition0005', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -134,7 +134,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0006
      * @tc.desic         acetabsBarPositionEtsTest0006
      */
-    it('testtabsBarPosition0006', 0, async () => {
+    it('testtabsBarPosition0006', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -151,7 +151,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0007
      * @tc.desic         acetabsBarPositionEtsTest0007
      */
-    it('testtabsBarPosition0007', 0, async () => {
+    it('testtabsBarPosition0007', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -168,7 +168,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0009
      * @tc.desic         acetabsBarPositionEtsTest0009
      */
-    it('testtabsBarPosition0009', 0, async () => {
+    it('testtabsBarPosition0009', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -185,7 +185,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0010
      * @tc.desic         acetabsBarPositionEtsTest0010
      */
-    it('testtabsBarPosition0010', 0, async () => {
+    it('testtabsBarPosition0010', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionText');
@@ -202,7 +202,7 @@ export default function tabsBarPositionJsunit() {
      * @tc.name         testtabsBarPosition0011
      * @tc.desic         acetabsBarPositionEtsTest0011
      */
-    it('testtabsBarPosition0011', 0, async () => {
+    it('testtabsBarPosition0011', Level.LEVEL0, async () => {
       console.info('tabsBarPosition testtabsBarPosition0011 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('barPositionTabs');

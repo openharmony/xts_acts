@@ -49,7 +49,7 @@ export default function showActionSheetMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionSheetMode_0100', 1, async (done: Function) => {
+    it('showActionSheetMode_0100', Level.LEVEL1, async (done: Function) => {
       console.info('showActionSheetMode_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -91,7 +91,7 @@ export default function showActionSheetMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionSheetMode_0200', 1, async (done: Function) => {
+    it('showActionSheetMode_0200', Level.LEVEL1, async (done: Function) => {
       console.info('showActionSheetMode_0200 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -134,7 +134,7 @@ export default function showActionSheetMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionSheetMode_0300', 1, async (done: Function) => {
+    it('showActionSheetMode_0300', Level.LEVEL1, async (done: Function) => {
       console.info('showActionSheetMode_0300 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -177,7 +177,7 @@ export default function showActionSheetMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionSheetMode_0400', 1, async (done: Function) => {
+    it('showActionSheetMode_0400', Level.LEVEL1, async (done: Function) => {
       console.info('showActionSheetMode_0400 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -221,7 +221,7 @@ export default function showActionSheetMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionSheetMode_0500', 1, async (done: Function) => {
+    it('showActionSheetMode_0500', Level.LEVEL1, async (done: Function) => {
       console.info('showActionSheetMode_0500 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -261,7 +261,7 @@ export default function showActionSheetMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionSheetMode_0600', 1, async (done: Function) => {
+    it('showActionSheetMode_0600', Level.LEVEL1, async (done: Function) => {
       console.info('showActionSheetMode_0500 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -299,7 +299,7 @@ export default function showActionSheetMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionSheetMode_0700', 1, async (done: Function) => {
+    it('showActionSheetMode_0700', Level.LEVEL1, async (done: Function) => {
       console.info('showActionSheetMode_0700 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -341,7 +341,7 @@ export default function showActionSheetMode() {
      * @tc.type :
      * @tc.size :
      */
-    it('showActionSheetMode_0800', 1, async (done: Function) => {
+    it('showActionSheetMode_0800', Level.LEVEL1, async (done: Function) => {
       console.info('showActionSheetMode_0800 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

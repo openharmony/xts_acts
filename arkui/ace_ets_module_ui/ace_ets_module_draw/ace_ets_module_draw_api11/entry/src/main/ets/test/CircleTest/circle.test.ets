@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 import ohosrouter from '@ohos.router';
 import resourceManager from '@ohos.resourceManager';
@@ -52,7 +52,7 @@ export default function circleNewJsunit() {
      * @tc.name         testcircleNew001
      * @tc.desic         acecircleNewEtsTest001
      */
-    it('testcircleNew001', 0, async () => {
+    it('testcircleNew001', Level.LEVEL0, async () => {
       console.info('circleNew testcircleNew0011 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('circle');
@@ -69,7 +69,7 @@ export default function circleNewJsunit() {
      * @tc.name         testcircleNew002
      * @tc.desic         acecircleNewEtsTest002
      */
-    it('testcircleNew002', 0, async () => {
+    it('testcircleNew002', Level.LEVEL0, async () => {
       console.info('circleNew testcircleNew002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('circle');
@@ -86,7 +86,7 @@ export default function circleNewJsunit() {
      * @tc.name console::debug
      * @tc.desc Test console debug printing
      */
-    it("ACE_global_console_debug_0100", 0, async () => {
+    it("ACE_global_console_debug_0100", Level.LEVEL0, async () => {
       let casename = "ACE_global_003";
       console.log("-----------------------ACE_global_console_debug Test is starting-----------------------");
       try {
@@ -106,7 +106,7 @@ export default function circleNewJsunit() {
      * @tc.name console::error
      * @tc.desc Test console error printing
      */
-    it("ACE_global_console_error_0200", 0, async () => {
+    it("ACE_global_console_error_0200", Level.LEVEL0, async () => {
       let casename = "ACE_global_004";
       console.log("-----------------------ACE_global_console_error Test is starting-----------------------");
       try {
@@ -126,7 +126,7 @@ export default function circleNewJsunit() {
      * @tc.name ACE_pushUrl_callback_0100
      * @tc.desc Test pushUrl
      */
-    it("ACE_pushUrl_callback_0100", 0, async () => {
+    it("ACE_pushUrl_callback_0100", Level.LEVEL0, async () => {
       console.info("-----------------------ACE_pushUrl_callback_0100 start-----------------------");
       ohosrouter.pushUrl({
         url: 'MainAbility/pages/common',
@@ -154,7 +154,7 @@ export default function circleNewJsunit() {
      * @tc.name ACE_pushUrl_promise_0200
      * @tc.desc Test pushUrl
      */
-    it("ACE_pushUrl_callback_0200", 0, async () => {
+    it("ACE_pushUrl_callback_0200", Level.LEVEL0, async () => {
       console.info("-----------------------ACE_pushUrl_promise_0200 start-----------------------");
       ohosrouter.pushUrl({
         url: 'MainAbility/pages/Ellipse/ellipse1',
@@ -180,7 +180,7 @@ export default function circleNewJsunit() {
      * @tc.name ACE_showAlertBeforeBackPage_0100
      * @tc.desc Test showAlertBeforeBackPage
      */
-    it("ACE_showAlertBeforeBackPage_0100", 0, async () => {
+    it("ACE_showAlertBeforeBackPage_0100", Level.LEVEL0, async () => {
       console.info("-----------------------ACE_showAlertBeforeBackPage_0100-----------------------");
       try {
         ohosrouter.showAlertBeforeBackPage({
@@ -199,7 +199,7 @@ export default function circleNewJsunit() {
      * @tc.name ACE_showAlertBeforeBackPage_0200
      * @tc.desc Test showAlertBeforeBackPage
      */
-    it("ACE_showAlertBeforeBackPage_0200", 0, async () => {
+    it("ACE_showAlertBeforeBackPage_0200", Level.LEVEL0, async () => {
       console.info("-----------------------ACE_showAlertBeforeBackPage_0200-----------------------");
       try {
         ohosrouter.showAlertBeforeBackPage({
@@ -218,7 +218,7 @@ export default function circleNewJsunit() {
      * @tc.name ACE_hideAlertBeforeBackPage_0100
      * @tc.desc Test hideAlertBeforeBackPage
      */
-    it("ACE_hideAlertBeforeBackPage_0100", 0, async () => {
+    it("ACE_hideAlertBeforeBackPage_0100", Level.LEVEL0, async () => {
       console.info("-----------------------ACE_showAlertBeforeBackPage_0200-----------------------");
       try {
         ohosrouter.hideAlertBeforeBackPage();
@@ -235,7 +235,7 @@ export default function circleNewJsunit() {
      * @tc.name         testGlobal_attribute_0100
     * @tc.desc          test global attribute
    */
-    it('testGlobal_attribute_0100', 0, async () => {
+    it('testGlobal_attribute_0100', Level.LEVEL0, async () => {
       console.info('testGlobal_attribute_0100 START');
       await Utils.sleep(1000);
       let resource: resourceManager.Resource = {

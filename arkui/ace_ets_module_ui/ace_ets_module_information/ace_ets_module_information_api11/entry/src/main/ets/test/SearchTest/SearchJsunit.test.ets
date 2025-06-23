@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from "@ohos/hypium";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -55,7 +55,7 @@ export default function searchJsunit() {
       console.info("search after each called");
     });
 
-    it('testSearch001', 0, async (done: Function) => {
+    it('testSearch001', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch001] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -65,7 +65,7 @@ export default function searchJsunit() {
       done();
     });
 
-    it('testSearch002', 0, async (done: Function) => {
+    it('testSearch002', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch002] START');
       await CommonFunc.sleep(1000);
       try {
@@ -96,7 +96,7 @@ export default function searchJsunit() {
      * @tc.name   :test maxLength interface
      * @tc.desc   :set max length 19, get backend max length property
      */
-    it('testSearch003', 0, async (done: Function) => {
+    it('testSearch003', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch003] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -111,7 +111,7 @@ export default function searchJsunit() {
      * @tc.name   :test maxLength interface
      * @tc.desc   :set max length 0, get backend max length property
      */
-    it('testSearch004', 0, async (done: Function) => {
+    it('testSearch004', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch004] START');
       await CommonFunc.sleep(1000);
       try {
@@ -142,7 +142,7 @@ export default function searchJsunit() {
      * @tc.name   :test maxLength interface
      * @tc.desc   :set max length 0, get backend max length property
      */
-    it('testSearch005', 0, async (done: Function) => {
+    it('testSearch005', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch005] START');
       await CommonFunc.sleep(1000);
       try {
@@ -173,7 +173,7 @@ export default function searchJsunit() {
      * @tc.name   :test maxLength interface
      * @tc.desc   :set max length 1000000, get backend max length property
      */
-    it('testSearch006', 0, async (done: Function) => {
+    it('testSearch006', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch006] START');
       await CommonFunc.sleep(1000);
       try {
@@ -204,7 +204,7 @@ export default function searchJsunit() {
      * @tc.name   :test maxLength interface
      * @tc.desc   :set max length illeggal value, get backend max length property
      */
-    it('testSearch007', 0, async (done: Function) => {
+    it('testSearch007', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch007] START');
       await CommonFunc.sleep(1000);
       try {
@@ -235,7 +235,7 @@ export default function searchJsunit() {
      * @tc.name   :test maxLength interface
      * @tc.desc   :set max length illeggal value, get backend max length property
      */
-    it('testSearch008', 0, async (done: Function) => {
+    it('testSearch008', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch008] START');
       await CommonFunc.sleep(1000);
       try {
@@ -266,7 +266,7 @@ export default function searchJsunit() {
      * @tc.name   :test copy options
      * @tc.desc   :get default copy options
      */
-    it('testSearch009', 0, async (done: Function) => {
+    it('testSearch009', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch009] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('search');
@@ -281,7 +281,7 @@ export default function searchJsunit() {
      * @tc.name   :test copy options
      * @tc.desc   :get default copy options
      */
-    it('testSearch0010', 0, async (done: Function) => {
+    it('testSearch0010', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch0010] START');
       await CommonFunc.sleep(1000);
       try {
@@ -312,7 +312,7 @@ export default function searchJsunit() {
      * @tc.name   :test copy options
      * @tc.desc   :get CopyOptions.CROSS_DEVICE
      */
-    it('testSearch0011', 0, async (done: Function) => {
+    it('testSearch0011', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch0011] START');
       await CommonFunc.sleep(1000);
       try {
@@ -343,7 +343,7 @@ export default function searchJsunit() {
      * @tc.name   :test  getCaretOffset when null input
      * @tc.desc   :expect caretOffset index 0 when text is null
      */
-    it('testSearch099', 0, async (done: Function) => {
+    it('testSearch099', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch099] START');
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
@@ -362,7 +362,7 @@ export default function searchJsunit() {
      * @tc.name   :test getCaretOffset
      * @tc.desc   :expect caretOffset index 9 when text length is 9
      */
-    it('testSearch100', 0, async (done: Function) => {
+    it('testSearch100', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch100] START');
       await CommonFunc.sleep(1000);
       try {
@@ -397,7 +397,7 @@ export default function searchJsunit() {
      * @tc.name   :test getCaretOffset when iput text exceed maxLength
      * @tc.desc   :expect caretOffset index max length.
      */
-    it('testSearch101', 0, async (done: Function) => {
+    it('testSearch101', Level.LEVEL0, async (done: Function) => {
       console.info('[testSearch101] START');
       await CommonFunc.sleep(1000);
       try {

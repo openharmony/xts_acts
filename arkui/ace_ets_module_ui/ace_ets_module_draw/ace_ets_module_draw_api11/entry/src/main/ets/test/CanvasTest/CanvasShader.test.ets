@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -45,7 +45,7 @@ export default function CanvasShaderTest() {
      *tc.name   CanvasRenderingContext2D support createConicGradient
      *tc.desc   CanvasRenderingContext2D support createConicGradient
      */
-    it('ArkUI_Canvas_Shader_0100', 0, async (done: Function) => {
+    it('ArkUI_Canvas_Shader_0100', Level.LEVEL0, async (done: Function) => {
       let CASE: string = 'ArkUI_Canvas_Shader_0100'
       console.info(`${SUITE} ${CASE} START`)
       let strJson = getInspectorByKey('CanvasShader_Canvas1')
@@ -59,7 +59,7 @@ export default function CanvasShaderTest() {
      *tc.name   CanvasRenderingContext2D.createPattern support "clamp" and "mirror"
      *tc.desc   CanvasRenderingContext2D.createPattern support "clamp" and "mirror"
      */
-    it('ArkUI_Canvas_Shader_0200', 0, async (done: Function) => {
+    it('ArkUI_Canvas_Shader_0200', Level.LEVEL0, async (done: Function) => {
       let CASE: string = 'ArkUI_Canvas_Shader_0200'
       console.info(`${SUITE} ${CASE} START`)
       let strJson: string = getInspectorByKey('CanvasShader_Canvas2')

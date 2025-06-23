@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import bundle from '@ohos.bundle.bundleManager';
 import router from '@ohos.router';
@@ -56,7 +56,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors attribute parameter to $r('app.color.gaugeColor1')
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0100', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0100 START');
       setTimeout(() => {
         try {
@@ -84,7 +84,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors attribute parameter to 0xffffff
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0200', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0200 START');
       setTimeout(() => {
         try {
@@ -113,7 +113,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors attribute parameter to "rgb(255,118,118)"
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0300', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0300 START');
       setTimeout(() => {
         try {
@@ -142,7 +142,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors attribute parameter to Color.Pink
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0400', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0400 START');
       setTimeout(() => {
         try {
@@ -171,7 +171,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors attribute parameter to "#FF7FFFAA"
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0500', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0500', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0500 START');
       setTimeout(() => {
         try {
@@ -201,7 +201,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the colors property parameter to $r('app.color.gaugeColor1'),
                 and then set the colors property parameter to $r('app.color.gaugeColor2') again
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0600', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0600', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0600 START');
       setTimeout(() => {
         try {
@@ -231,7 +231,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the colors property parameter to " ",
                 and then set the colors property parameter to "#FF0000FF" again
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0700', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0700', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0700 START');
       setTimeout(() => {
         try {
@@ -260,7 +260,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the Colors property parameter to ResourceColor type monochrome segmented display
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0800', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0800', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0800 START');
       setTimeout(() => {
         try {
@@ -297,7 +297,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the Colors attribute parameter to LinearGradient type gradient segmentation display
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_0900', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_0900', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_0900 START');
       setTimeout(() => {
         try {
@@ -337,7 +337,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the colors property parameter to "#6646B1E3",
                 and then set the colors property parameter to undefined again
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1000', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1000', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1000 START');
       setTimeout(() => {
         try {
@@ -369,7 +369,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors property parameter to 1
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1100', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1100 START');
       setTimeout(() => {
         try {
@@ -398,7 +398,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors property parameter to an outlier -1
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1200', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1200 START');
       setTimeout(() => {
         try {
@@ -427,7 +427,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors property parameter to 0
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1300', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1300 START');
       setTimeout(() => {
         try {
@@ -456,7 +456,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors property parameter to " "
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1400', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1400 START');
       setTimeout(() => {
         try {
@@ -485,7 +485,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Do not set parameters for the colors property
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1500', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1500', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1500 START');
       setTimeout(() => {
         try {
@@ -517,7 +517,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors property parameter to null
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1600', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1600', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1600 START');
       setTimeout(() => {
         try {
@@ -549,7 +549,7 @@ export default function GaugeUxTest() {
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
      *tc.desc   Set the colors property parameter to undefined
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1700', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1700', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1700 START');
       setTimeout(() => {
         try {
@@ -582,7 +582,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the colors property parameter to new LinearGradient([{ color: "#FFFFC0CB", offset: "aa"},
                 {color: "#FF008000", offset: 0.5 }, {color: "#FFFF0000", offset: "" }])
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1800', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1800', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1800 START');
       setTimeout(() => {
         try {
@@ -616,7 +616,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the colors property parameter to new LinearGradient([{ color: "#FFFFC0CB", offset: "1px"},
                 {color: "#FF008000", offset: "10vp" }, {color: "#FFFF0000", offset: "10%" }])
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_1900', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_1900', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_1900 START');
       setTimeout(() => {
         try {
@@ -650,7 +650,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the colors property parameter to new LinearGradient([{ color: "#FFFFC0CB", offset: 0},
                 {color: "#FF008000", offset: 0 }, {color: "#FFFF0000", offset: 0 }])
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_2000', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_2000', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_2000 START');
       setTimeout(() => {
         try {
@@ -682,7 +682,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the colors property parameter to new LinearGradient([{ color: "#FFFFC0CB", offset: 0.9},
                 {color: "#FF008000", offset: 0.6 }, {color: "#FFFF0000", offset: 0.2 }])
      */
-    it('ArkUX_Gauge_Colors_InterfaceName_2100', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Colors_InterfaceName_2100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Colors_InterfaceName_2000 START');
       setTimeout(() => {
         try {
@@ -717,7 +717,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the indicator property parameter to {JSON.parse(strJson).$attrs.indicator.icon:'resources/base/media/icon1.svg',JSON.parse(strJson).$attrs.indicator.space:10}
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0100', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0100 START');
       setTimeout(() => {
         try {
@@ -747,7 +747,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the indicator property parameter to {JSON.parse(strJson).$attrs.indicator.icon:$r('app.media.icon1'),JSON.parse(strJson).$attrs.indicator.space:5}
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0200', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0200 START');
       setTimeout(() => {
         try {
@@ -776,7 +776,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the indicator property parameter to {JSON.parse(strJson).$attrs.indicator.icon:$r('app.media.icon1'),JSON.parse(strJson).$attrs.indicator.space:-5}
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0300', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0300 START');
       setTimeout(() => {
         try {
@@ -805,7 +805,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the indicator property parameter to {JSON.parse(strJson).$attrs.indicator.icon:$r('app.media.icon1'),JSON.parse(strJson).$attrs.indicator.space:0}
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0400', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0400 START');
       setTimeout(() => {
         try {
@@ -834,7 +834,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the indicator property parameter to {JSON.parse(strJson).$attrs.indicator.icon:'resources/base/media/JSON.parse(strJson).$attrs.indicator.icon.png',JSON.parse(strJson).$attrs.indicator.space:10},
                 and then set the indicator property parameter to {JSON.parse(strJson).$attrs.indicator.icon:$r('app.media.icon1'),JSON.parse(strJson).$attrs.indicator.space:5} again
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0500', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0500', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0500 START');
       setTimeout(() => {
         try {
@@ -864,7 +864,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the indicator property parameter to " ",
                 and then set the indicator property parameter to {JSON.parse(strJson).$attrs.indicator.icon:$r('app.media.icon1'),JSON.parse(strJson).$attrs.indicator.space:5} again
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0600', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0600', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0600 START');
       setTimeout(() => {
         try {
@@ -893,7 +893,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the indicator property parameter to {JSON.parse(strJson).$attrs.indicator.icon:'resources/base/media/icon1.svg',JSON.parse(strJson).$attrs.indicator.space:10},
                 and then set the indicator property parameter to " " again
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0700', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0700', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0700 START');
       setTimeout(() => {
         try {
@@ -922,7 +922,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the indicator property parameter to 1
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0800', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0800', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0800 START');
       setTimeout(() => {
         try {
@@ -953,7 +953,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the description property parameter to -1
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_0900', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_0900', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_0900 START');
       setTimeout(() => {
         try {
@@ -982,7 +982,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the description property parameter to 0
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_1000', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_1000', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_1000 START');
       setTimeout(() => {
         try {
@@ -1013,7 +1013,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the description property parameter to " "
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_1100', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_1100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_1100 START');
       setTimeout(() => {
         try {
@@ -1042,7 +1042,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Do not set parameters for the indicator property
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_1200', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_1200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_1200 START');
       setTimeout(() => {
         try {
@@ -1071,7 +1071,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the description property parameter to null
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_1300', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_1300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_1300 START');
       setTimeout(() => {
         try {
@@ -1100,7 +1100,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for setting the pointer style of the gauge component
      *tc.desc   Set the description property parameter to undefined
      */
-    it('ArkUX_Gauge_Indicator_InterfaceName_1400', 0, async (done: Function) => {
+    it('ArkUX_Gauge_Indicator_InterfaceName_1400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_Indicator_InterfaceName_1400 START');
       setTimeout(() => {
         try {
@@ -1129,7 +1129,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to {radius:10,offsetX:10,offsetY:10}
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0100', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0100 START');
       setTimeout(() => {
         try {
@@ -1160,7 +1160,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to {radius:-10,offsetX:-10,offsetY:-10}
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0200', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0200 START');
       setTimeout(() => {
         try {
@@ -1191,7 +1191,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to {radius:0,offsetX:0,offsetY:0}
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0300', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0300 START');
       setTimeout(() => {
         try {
@@ -1223,7 +1223,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the trackShadow property parameter to
                 {radius:$r('app.string.num'),offsetX:$r('app.string.num'),offsetY:$r('app.string.num')}
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0400', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0400 START');
       setTimeout(() => {
         try {
@@ -1255,7 +1255,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the trackShadow property parameter to {radius:10,offsetX:10,offsetY:10},
                 and then set the trackShadow property parameter to {radius:-10,offsetX:-10,offsetY:-10} again
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0500', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0500', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0500 START');
       setTimeout(() => {
         try {
@@ -1287,7 +1287,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the trackShadow property parameter to " ",
                 and then set the trackShadow property parameter to {radius:-10,offsetX:-10,offsetY:-10} again
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0600', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0600', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0600 START');
       setTimeout(() => {
         try {
@@ -1319,7 +1319,7 @@ export default function GaugeUxTest() {
      *tc.desc   Set the trackShadow property parameter to {radius:10,offsetX:10,offsetY:10},
                 and then set the trackShadow property parameter to " " again
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0700', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0700', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0700 START');
       setTimeout(() => {
         try {
@@ -1350,7 +1350,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to 1
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0800', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0800', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0800 START');
       setTimeout(() => {
         try {
@@ -1381,7 +1381,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to -1
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_0900', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_0900', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_0900 START');
       setTimeout(() => {
         try {
@@ -1412,7 +1412,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to 0
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_1000', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_1000', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_1000 START');
       setTimeout(() => {
         try {
@@ -1443,7 +1443,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to " "
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_1100', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_1100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_1100 START');
       setTimeout(() => {
         try {
@@ -1474,7 +1474,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Do not set parameters for the trackShadow property
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_1200', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_1200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_1200 START');
       setTimeout(() => {
         try {
@@ -1505,7 +1505,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to null
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_1300', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_1300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_1300 START');
       setTimeout(() => {
         try {
@@ -1534,7 +1534,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to undefined
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_1400', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_1400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_1400 START');
       setTimeout(() => {
         try {
@@ -1566,7 +1566,7 @@ export default function GaugeUxTest() {
      *tc.name   Support for modifying the shadow style of gauge components
      *tc.desc   Set the trackShadow property parameter to {radius:10,offsetX:10,offsetY:undefined}
      */
-    it('ArkUX_Gauge_TrackShadow_InterfaceName_1500', 0, async (done: Function) => {
+    it('ArkUX_Gauge_TrackShadow_InterfaceName_1500', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Gauge_TrackShadow_InterfaceName_1400 START');
       setTimeout(() => {
         try {

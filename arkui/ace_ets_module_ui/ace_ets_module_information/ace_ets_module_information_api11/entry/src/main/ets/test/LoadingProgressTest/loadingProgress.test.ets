@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import CommonFunc from '../../MainAbility/common/Common';
 import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
@@ -59,7 +59,7 @@ export default function loadingProgressCircularJsunit() {
      * @tc.name         testloadingProgressCircular0011
      * @tc.desic         aceloadingProgressCircularEtsTest0011
      */
-    it('testloadingProgressCircular0011', 0, async (done: Function) => {
+    it('testloadingProgressCircular0011', Level.LEVEL0, async (done: Function) => {
       console.info('loadingProgressCircular testloadingProgressCircular0010 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('CircularText');
@@ -79,7 +79,7 @@ export default function loadingProgressCircularJsunit() {
      * @tc.name         testloadingProgressCircular0001
      * @tc.desic         aceloadingProgressCircularEtsTest0011
      */
-    it('testloadingProgressOrbital0001', 0, async (done: Function) => {
+    it('testloadingProgressOrbital0001', Level.LEVEL0, async (done: Function) => {
       console.info('loadingProgressOrbital testloadingProgressCircular0001 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('OrbitalText');

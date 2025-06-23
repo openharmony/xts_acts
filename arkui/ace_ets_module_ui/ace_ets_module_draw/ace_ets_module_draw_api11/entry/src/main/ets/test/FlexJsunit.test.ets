@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -46,7 +46,7 @@ export default function flexJsunit() {
       console.info("flex after each called");
     });
 
-    it('testFlex_0100', 0, async (done:Function) => {
+    it('testFlex_0100', Level.LEVEL0, async (done:Function) => {
       console.info("testFlex_0100 START");
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('flexBasis');
@@ -58,7 +58,7 @@ export default function flexJsunit() {
       done()
     });
 
-    it('testFlex_0200', 0, async (done:Function) => {
+    it('testFlex_0200', Level.LEVEL0, async (done:Function) => {
       console.info('testFlex_0200 START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('flexGrow');
@@ -69,7 +69,7 @@ export default function flexJsunit() {
       done()
     });
 
-    it('testFlex_0300', 0, async (done:Function) => {
+    it('testFlex_0300', Level.LEVEL0, async (done:Function) => {
       console.info('testFlex_0300 START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('flexShrink');
@@ -80,7 +80,7 @@ export default function flexJsunit() {
       done()
     });
 
-    it('testFlex_0400', 0, async (done:Function) => {
+    it('testFlex_0400', Level.LEVEL0, async (done:Function) => {
       console.info('testFlex_0400 START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('alignSelf');
@@ -91,7 +91,7 @@ export default function flexJsunit() {
       done()
     });
 
-    it('testFlex_0500', 0, async (done:Function) => {
+    it('testFlex_0500', Level.LEVEL0, async (done:Function) => {
       console.info('testFlex_0500 START');
       let strJson: string = getInspectorByKey('flex');
       console.info("testFlex_0500 component strJson:" + strJson);
@@ -100,7 +100,7 @@ export default function flexJsunit() {
       done()
     });
 
-    it('testFlex_0600', 0, async (done:Function) => {
+    it('testFlex_0600', Level.LEVEL0, async (done:Function) => {
       console.info('testFlex_0600 START');
       let strJson: string = getInspectorByKey('flex');
       console.info("testFlex_0600 component strJson:" + strJson);

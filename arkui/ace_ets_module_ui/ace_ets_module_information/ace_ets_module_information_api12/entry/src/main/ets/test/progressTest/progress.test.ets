@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function progressStyleJsunit() {
@@ -49,7 +49,7 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0001
      * @tc.desic         aceprogressStyleEtsTest0001
      */
-    it('testprogressStyle0001', 0, async () => {
+    it('testprogressStyle0001', Level.LEVEL0, async () => {
       console.info('progressStyle testprogressStyle0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
@@ -66,7 +66,7 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0002
      * @tc.desic         aceprogressStyleEtsTest0002
      */
-    it('testprogressStyle0002', 0, async () => {
+    it('testprogressStyle0002', Level.LEVEL0, async () => {
       console.info('progressStyle testprogressStyle0002 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
@@ -83,7 +83,7 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0003
      * @tc.desic         aceprogressStyleEtsTest0003
      */
-    it('testprogressStyle0003', 0, async () => {
+    it('testprogressStyle0003', Level.LEVEL0, async () => {
       console.info('progressStyle testprogressStyle0003 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
@@ -100,7 +100,7 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0004
      * @tc.desic         aceprogressStyleEtsTest0004
      */
-    it('testprogressStyle0004', 0, async () => {
+    it('testprogressStyle0004', Level.LEVEL0, async () => {
       console.info('progressStyle testprogressStyle0004 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
@@ -118,7 +118,7 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0005
      * @tc.desic         aceprogressStyleEtsTest0005
      */
-    it('testprogressStyle0005', 0, async () => {
+    it('testprogressStyle0005', Level.LEVEL0, async () => {
       console.info('progressStyle testprogressStyle0005 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');
@@ -135,7 +135,7 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0006
      * @tc.desic         aceprogressStyleEtsTest0006
      */
-    it('testprogressStyle0006', 0, async () => {
+    it('testprogressStyle0006', Level.LEVEL0, async () => {
       console.info('progressStyle testprogressStyle0006 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Progress');

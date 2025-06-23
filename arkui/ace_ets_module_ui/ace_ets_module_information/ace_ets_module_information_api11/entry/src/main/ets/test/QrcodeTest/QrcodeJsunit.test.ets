@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function qrcodeJsunit() {
      * @tc.name testGetQrcodeAttr010
      * @tc.desc aceEtsTest
      */
-    it('testGetQrcodeAttr010', 0, async (done: Function) => {
+    it('testGetQrcodeAttr010', Level.LEVEL0, async (done: Function) => {
       console.info('testGetQrcodeAttr START');
       let strJson = getInspectorByKey('qrcode');
       let obj: ESObject = JSON.parse(strJson);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils'
@@ -46,7 +46,7 @@ export default function pageRouteTest() {
       console.info("pageRouteTest after each called");
     })
 
-    it('testOnPageHide01', 0, async () => {
+    it('testOnPageHide01', Level.LEVEL0, async () => {
       console.info('[testOnPageHide01] START');
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[testOnPageHide01] get event state result is: " + JSON.stringify(eventData));

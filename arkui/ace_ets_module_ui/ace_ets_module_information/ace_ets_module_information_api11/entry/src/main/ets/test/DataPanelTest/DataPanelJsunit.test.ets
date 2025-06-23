@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -62,7 +62,7 @@ export default function datapanelJsunit() {
      * @tc.name testDataPanelGetInspectorByKey010
      * @tc.desc aceEtsTest
      */
-    it('testDataPanelGetInspectorByKey010', 0, async (done: Function) => {
+    it('testDataPanelGetInspectorByKey010', Level.LEVEL0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('DataPanel');
       let obj: ESObject = JSON.parse(strJson);
@@ -87,7 +87,7 @@ export default function datapanelJsunit() {
      * @tc.name testDataPanelGetInspectorByKey020
      * @tc.desc aceEtsTest
      */
-    it('testDataPanelGetInspectorByKey020', 0, async (done: Function) => {
+    it('testDataPanelGetInspectorByKey020', Level.LEVEL0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('DataPanel2');
       let obj: ESObject = JSON.parse(strJson);
@@ -106,7 +106,7 @@ export default function datapanelJsunit() {
      * @tc.name testDataPanelGetInspectorByKey020
      * @tc.desc aceEtsTest
      */
-    it('testDataPanelGetInspectorByKey030', 0, async (done: Function) => {
+    it('testDataPanelGetInspectorByKey030', Level.LEVEL0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('DataPanel3');
       let obj: ESObject = JSON.parse(strJson);
