@@ -46,7 +46,7 @@ export default function audioLoopBack() {
 
      
     
-	   /**
+	  /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ISAUDIOLOOPBACKSUPPORTED_JS_0100
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_ISAUDIOLOOPBACKSUPPORTED_0100
      * @tc.desc      : isAudioLoopbackSupported
@@ -93,7 +93,7 @@ export default function audioLoopBack() {
       }
     })
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ISAUDIOLOOPBACKSUPPORTED_JS_0400
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_ISAUDIOLOOPBACKSUPPORTED_0400
      * @tc.desc      : isAudioLoopbackSupported
@@ -110,7 +110,7 @@ export default function audioLoopBack() {
       }
     })
 	
-	/**
+	  /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOLOOPBACK_JS_0100
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOLOOPBACK_0100
      * @tc.desc      : createAudioLoopback
@@ -129,7 +129,7 @@ export default function audioLoopBack() {
     })
 
 
-     /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOLOOPBACK_JS_0200
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOLOOPBACK_0200
      * @tc.desc      : createAudioLoopback
@@ -147,7 +147,7 @@ export default function audioLoopBack() {
       }
     })
 
-     /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOLOOPBACK_JS_0300
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_CREATEAUDIOLOOPBACK_0300
      * @tc.desc      : createAudioLoopback
@@ -162,7 +162,7 @@ export default function audioLoopBack() {
       expect(null != audioLoopBack);
     })
     
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETVOLUME_JS_0100
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_SETVOLUME_0100
      * @tc.desc      : createAudioLoopback
@@ -183,7 +183,7 @@ export default function audioLoopBack() {
     })
 
 
-          /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETVOLUME_JS_0200
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_SETVOLUME_0200
      * @tc.desc      : createAudioLoopback
@@ -203,7 +203,7 @@ export default function audioLoopBack() {
       }
     })
 
-     /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETVOLUME_JS_0300
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_SETVOLUME_0300
      * @tc.desc      : createAudioLoopback
@@ -223,7 +223,7 @@ export default function audioLoopBack() {
       }
     })
 
-       /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETVOLUME_JS_0400
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_SETVOLUME_0400
      * @tc.desc      : createAudioLoopback
@@ -244,7 +244,7 @@ export default function audioLoopBack() {
     })
 
 
-           /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETVOLUME_JS_0500
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_SETVOLUME_0500
      * @tc.desc      : createAudioLoopback
@@ -265,7 +265,7 @@ export default function audioLoopBack() {
     })
 
 
-              /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETVOLUME_JS_0600
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_SETVOLUME_0600
      * @tc.desc      : createAudioLoopback
@@ -285,7 +285,7 @@ export default function audioLoopBack() {
       }
     })
 
-                  /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_GETSTATUS_JS_0100
      * @tc.name      : SUB_MULTIMEDIA_AUDIO_GETSTATUS_0100
      * @tc.desc      : createAudioLoopback
