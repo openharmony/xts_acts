@@ -38,6 +38,7 @@ group("hiviewdfxtestacts") {
       "hisyseventtest/hisyseventnormaltest:ActsHiSysEventNormalTest",
       "hisyseventtest/hisyseventsertest:ActsHiSysEventSerTest",
       "hitracechainjstest:ActsHiTraceChainJsTest",
+      "hitracechainteststatic:ActsHiTraceChainJsStaticTest",
       "hitracemetertest:ActsHitraceMeterTest",
       "hitracendktest:ActsHitraceNdkTest",
       "hiview/faultlogger/faultloggerjs:faultloggerjs_test",
