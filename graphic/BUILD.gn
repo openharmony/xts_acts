@@ -39,6 +39,7 @@ group("graphic") {
       "graphicGlesExtension:ActsGraphicGlesExtensionTest",
       "graphicHdr:ActsGraphicHdrTest",
       "graphicImage:ActsGraphicImageTest",
+      "graphicImageStatic:ActsGraphicImageStaticTest",
       "graphicText:ActsGraphicTextTest",
       "graphicUiEffect:ActsGraphicUiEffectTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
