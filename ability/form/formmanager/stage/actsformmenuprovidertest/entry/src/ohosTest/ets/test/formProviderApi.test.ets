@@ -140,7 +140,7 @@ export default function formProviderTest() {
     /**
      * @tc.number: Test_Form_Provider_0300
      * @tc.name: promise form openFormManager system interface interception test
-     * @tc.desc:  Open the card management page
+     * @tc.desc:  Open the card management page 
      * @tc.level   3
      */
     it('Test_Form_Provider_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
@@ -177,8 +177,8 @@ export default function formProviderTest() {
 
     /**
      * @tc.number: Test_Form_Provider_0400
-     * @tc.name: promise form openFormManagerCrossBundle system interface interception test
-     * @tc.desc:  Open the card management page
+     * @tc.name: Test_Form_Provider_0400
+     * @tc.desc:  Open the card management page belonging to the specified bundle 
      * @tc.level   3
      */
     it('Test_Form_Provider_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
