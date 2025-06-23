@@ -12,8 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "AccessingFiledsOfObjects.h"
 #include "Common.h"
 #include "ClassOperations.h"
+#include "Exceptions.h"
+#include "GlobalRef.h"
+#include "ObjectOperations.h"
 #include "VersionInfo.h"
 
 static ani_int add([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object, ani_int arg1, ani_int arg2)
@@ -39,8 +43,18 @@ static ani_status bindCase(ani_vm *vm, const char *clsName)
         ani_native_function {"add", "II:I", reinterpret_cast<void *>(add)},
         ani_native_function {"test_GetVersion", ":I", reinterpret_cast<void *>(test_GetVersion)},
         ani_native_function {"test_FindClass", ":Z", reinterpret_cast<void *>(test_FindClass)},
-        ani_native_function {"test_Class_FindStaticMethod", ":Z",
-                             reinterpret_cast<void *>(test_Class_FindStaticMethod)},
+        ani_native_function {"test_Class_FindStaticMethodBoolean", ":Z",
+                             reinterpret_cast<void *>(test_Class_FindStaticMethodBoolean)},
+        ani_native_function {"test_Class_FindStaticMethodInt", ":Z",
+                             reinterpret_cast<void *>(test_Class_FindStaticMethodInt)},
+        ani_native_function {"test_GlobalReference_Create", ":Z",
+                             reinterpret_cast<void *>(test_GlobalReference_Create)},
+        ani_native_function {"test_Object_New", ":Z",
+                             reinterpret_cast<void *>(test_Object_New)},
+        ani_native_function {"test_ExistUnhandledError", ":Z",
+                             reinterpret_cast<void *>(test_ExistUnhandledError)},
+        ani_native_function {"test_Object_GetFieldByName_Ref", ":Z",
+                             reinterpret_cast<void *>(test_Object_GetFieldByName_Ref)},
     };
     
     if (ANI_OK != env->Class_BindNativeMethods(cls, methods.data(), methods.size())) {
