@@ -28,8 +28,8 @@ export default function ActsNotificationBadgeTest() {
      */
     it('Sub_Notification_Ans_Corner_SetNum_Static_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
       try {
-        notificationManager.setBadgeNumber(10, (err) => {
-          if (err&&err.code !== 0) {
+        notificationManager.setBadgeNumber(10, (err: BusinessError | null) => {
+          if (err) {
             console.info(`${TAG} Sub_Notification_Ans_Corner_SetNum_Static_0900 failed, error code: ${err.code}, message: ${err.message}`)
             if(err.code == 801){
               expect(true).assertTrue()

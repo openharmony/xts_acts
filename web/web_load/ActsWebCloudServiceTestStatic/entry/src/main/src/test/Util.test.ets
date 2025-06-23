@@ -18,7 +18,7 @@ abilityDelegator.addAbilityMonitor({
     hilog.info(0x0000, 'testTag', '%{public}s', 'onAbilityCreate end');
 
   },
-}, (err : BusinessError) : void => {
+}, (err : BusinessError | null) : void => {
   if (err != null ) {
     hilog.info(0x0000, 'testTag', '%{public}s', '-----'+ err.code);
   }
