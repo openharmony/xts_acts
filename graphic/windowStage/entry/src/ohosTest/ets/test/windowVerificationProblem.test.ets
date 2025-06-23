@@ -20,6 +20,7 @@ import screenshot from '@ohos.screenshot';
 import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import settings from '@ohos.settings';
 
 async function sleep(time: number) {
   let timeoutId: number = 0;
@@ -35,7 +36,16 @@ async function sleep(time: number) {
 export default function windowVerificationProblemTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
   describe('window_verification_problem_test', () => {
     console.log('describe window_verification_problem_test start!!!')
-
+    let isPCStatus: string = '';
+    beforeAll(() => {
+      console.info('window_layout_test beforeAll begin');
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
+      console.info('window_layout_test beforeAll end');
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4040
      * @tc.name      : testSetWindowBrightness_NotAppWin_Callback
@@ -273,31 +283,52 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
         console.log(msgStr + 'tempWnd.showWindow failed');
         expect().assertFail();
       });
-      await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
-        console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      let names: Array<'status' | 'navigation'> = [];
-      try {
-        await (win as ohosWindow.Window).setWindowSystemBarEnable(names).then(() => {
-          console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+      if(isPCStatus != ''){
+        await (win as ohosWindow.Window).maximize(ohosWindow.MaximizePresentation.ENTER_IMMERSIVE).then(async () => {
+          console.info(msgStr + 'Succeeded in maximizing the main window.');
+          await (win as ohosWindow.Window).resize(707, 707).then(() => {
+            console.info(msgStr + 'Succeeded in changing the window size.');
+            expect().assertFail();
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
+            expect(err.code).assertEqual(1300002);
+          });
         }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          if (err.code == 801) {
+            console.log(msgStr + `The current device type does not support calling maximize Cause code: ${err.code}, message: ${err.message}`)
+            expect(err.code).assertEqual(801);
+          } else {
+            console.error(msgStr + `Failed to maximize the main window. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          }
+        });
+      } else {
+        await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
+          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
           expect().assertFail();
         });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
+        let names: Array<'status' | 'navigation'> = [];
+        try {
+          await (win as ohosWindow.Window).setWindowSystemBarEnable(names).then(() => {
+            console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+            expect().assertFail();
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+          expect().assertFail();
+        }
+        await (win as ohosWindow.Window).resize(707, 707).then(() => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(1300002);
+        });
       }
-      await (win as ohosWindow.Window).resize(707, 707).then(() => {
-        console.info(msgStr + 'Succeeded in changing the window size.');
-        expect().assertFail();
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(1300002);
-      });
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4600
@@ -318,40 +349,70 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
         console.log(msgStr + 'tempWnd.showWindow failed');
         expect().assertFail();
       });
-      await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
-        console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      let names: Array<'status' | 'navigation'> = [];
-      try {
-        await (win as ohosWindow.Window).setWindowSystemBarEnable(names).then(() => {
-          console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+      if(isPCStatus != ''){
+        await (win as ohosWindow.Window).maximize(ohosWindow.MaximizePresentation.ENTER_IMMERSIVE).then(async () => {
+          console.info(msgStr + 'Succeeded in maximizing the main window.');
+          await (win as ohosWindow.Window).resizeAsync(707, 707).then(() => {
+            console.info(msgStr + 'Succeeded in changing the window size.');
+            expect().assertFail();
+          }).catch((exception: BusinessError) => {
+            if (exception.code == 801) {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+            } else if (exception.code == 1300010) {
+              console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+              expect(exception.code).assertEqual(1300010);
+            } else {
+              console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+              expect().assertFail();
+            }
+          });
         }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          if (err.code == 801) {
+            console.log(msgStr + `The current device type does not support calling maximize Cause code: ${err.code}, message: ${err.message}`)
+            expect(err.code).assertEqual(801);
+          } else {
+            console.error(msgStr + `Failed to maximize the main window. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          }
+        });
+      } else {
+        await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
+          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
           expect().assertFail();
         });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-      }
-      await (win as ohosWindow.Window).resizeAsync(707, 707).then(() => {
-        console.info(msgStr + 'Succeeded in changing the window size.');
-        expect().assertFail();
-      }).catch((exception: BusinessError) => {
-        if (exception.code == 801) {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        } else if (exception.code == 1300010) {
-          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(1300010);
-        } else {
-          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        let names: Array<'status' | 'navigation'> = [];
+        try {
+          await (win as ohosWindow.Window).setWindowSystemBarEnable(names).then(() => {
+            console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+            expect().assertFail();
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
           expect().assertFail();
         }
-      });
+        await (win as ohosWindow.Window).resizeAsync(707, 707).then(() => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          expect().assertFail();
+        }).catch((exception: BusinessError) => {
+          if (exception.code == 801) {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(exception))
+            expect(exception.code).assertEqual(801);
+          } else if (exception.code == 1300010) {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+            expect(exception.code).assertEqual(1300010);
+          } else {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+            expect().assertFail();
+          }
+        });
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4610
@@ -372,41 +433,72 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
         console.log(msgStr + 'tempWnd.showWindow failed');
         expect().assertFail();
       });
-      await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
-        console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      let names: Array<'status' | 'navigation'> = [];
-      try {
-        await (win as ohosWindow.Window).setWindowSystemBarEnable(names).then(() => {
-          console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+      if(isPCStatus != ''){
+        await (win as ohosWindow.Window).maximize(ohosWindow.MaximizePresentation.ENTER_IMMERSIVE).then(async () => {
+          console.info(msgStr + 'Succeeded in maximizing the main window.');
+          await (win as ohosWindow.Window).moveWindowToAsync(808, 808).then(() => {
+            console.info(msgStr + 'Succeeded in changing the window size.');
+            expect().assertFail();
+          }).catch((exception: BusinessError) => {
+            if (exception.code == 801) {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
+            }
+            else if (exception.code == 1300010) {
+              console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+              expect(exception.code).assertEqual(1300010);
+            } else {
+              console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+              expect().assertFail();
+            }
+          });
         }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          if (err.code == 801) {
+            console.log(msgStr + `The current device type does not support calling maximize Cause code: ${err.code}, message: ${err.message}`)
+            expect(err.code).assertEqual(801);
+          } else {
+            console.error(msgStr + `Failed to maximize the main window. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          }
+        });
+      } else {
+        await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
+          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
           expect().assertFail();
         });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-      }
-      await (win as ohosWindow.Window).moveWindowToAsync(808, 808).then(() => {
-        console.info(msgStr + 'Succeeded in changing the window size.');
-        expect().assertFail();
-      }).catch((exception: BusinessError) => {
-        if (exception.code == 801) {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
-        else if (exception.code == 1300010) {
-          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(1300010);
-        } else {
-          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        let names: Array<'status' | 'navigation'> = [];
+        try {
+          await (win as ohosWindow.Window).setWindowSystemBarEnable(names).then(() => {
+            console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+            expect().assertFail();
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
           expect().assertFail();
         }
-      });
+        await (win as ohosWindow.Window).moveWindowToAsync(808, 808).then(() => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          expect().assertFail();
+        }).catch((exception: BusinessError) => {
+          if (exception.code == 801) {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(exception))
+            expect(exception.code).assertEqual(801);
+          }
+          else if (exception.code == 1300010) {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+            expect(exception.code).assertEqual(1300010);
+          } else {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+            expect().assertFail();
+          }
+        });
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4110
