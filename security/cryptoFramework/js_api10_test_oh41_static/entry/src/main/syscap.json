@@ -1,0 +1,27 @@
+{
+    "devices": {
+        "general": [],
+        "custom": [
+            {
+                "xts": [
+                    "SystemCapability.Driver.HID.Extension",
+                    "SystemCapability.Driver.ExternalDevice",
+                    "SystemCapability.Driver.USB.Extension",
+                    "SystemCapability.Driver.DDK.Extension",
+                    "SystemCapability.Driver.UsbSerial.Extension",
+                    "SystemCapability.Driver.SCSI.Extension",
+                    "SystemCapability.Security.CryptoFramework.Cipher",
+                    "SystemCapability.Security.CryptoFramework.Key",
+                    "SystemCapability.Security.CryptoFramework.Key.SymKey",
+                    "SystemCapability.Security.CryptoFramework.Key.AsymKey",
+                    "SystemCapability.Security.CryptoFramework.Rand",
+                    "SystemCapability.Security.CryptoFramework.Mac",
+                    "SystemCapability.Security.CryptoFramework.MessageDigest",
+                    "SystemCapability.Security.CryptoFramework.Signature",
+                    "SystemCapability.Security.CryptoFramework.KeyAgreement",
+                    "SystemCapability.Security.CryptoFramework.Kdf"
+                ]
+            }
+        ]
+    }
+}
