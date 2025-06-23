@@ -17,7 +17,9 @@
         "MainAbility/pages/popupControl/PopupOptionsFalse",
         "MainAbility/pages/popupControl/PopupOptionsTrue",
         "MainAbility/pages/menuControl/BindMenu1",
-        "MainAbility/pages/menuControl/aboutToDisappear"
+        "MainAbility/pages/menuControl/aboutToDisappear",
+        "MainAbility/pages/menuControl/bindContextMenuAnchorPosition",
+        "MainAbility/pages/menuControl/bindMenuAnchorPosition"
 
     ]
 }
