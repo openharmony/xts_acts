@@ -40,6 +40,8 @@ export const testChangeRequestAddResourceWithBuffer: (a: number) => ESObject;
 
 export const testChangeRequestSaveCameraPhoto: (a: number) => ESObject;
 
+export const testChangeRequestSaveCameraVideo: (a: number) => ESObject;
+
 export const testChangeRequestDiscardCameraPhoto: (a: number) => ESObject;
 
 export const testChangeRequestRelease: (a: number) => ESObject;
