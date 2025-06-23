@@ -20,7 +20,7 @@ import relationalStoreEmitTest from './relationalStoreEmit.test'
 import relationalStoreDifferenceCustomDirMultipleTest from './relationalStoreDifferenceCustomDirMultiple.test'
 import relationalStoreAsyncDownloadAssetTest from './relationalStoreAsyncDownloadAssetEts.test'
 import relationalStoreSetDistributedTablesTest from './relationalStoreSetDistributedTables.test'
-import cloudDataSetStrategyEtsTest from './CloudDataSetStrategyEts.test',
+import cloudDataSetStrategyEtsTest from './CloudDataSetStrategyEts.test'
 import relationalStoreRagStatusTest from './RelationalStoreRagStatus.test'
 export default function testsuite() {
   relationalStoreCloudSyncEtsTest()
