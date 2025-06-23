@@ -26,8 +26,8 @@ export default function isDefaultApplicationTest() {
     it("Sub_Bms_Framework_Status_DefaultApp_static_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         try {
-          defaultAppManager.isDefaultApplication(type, (err: BusinessError<void>, result: boolean) => {
-            if (err.code != null && err.code != 0) {
+          defaultAppManager.isDefaultApplication(type, (err: BusinessError<void> | null, result: boolean | undefined) => {
+            if (err !== null && err.code != null && err.code != 0) {
               hilog.error(0x0000, 'bmsTag', 'Sub_Bms_Framework_Status_DefaultApp_static_0900 failed: %{public}s',
                 JSON.stringify(err));
               expect().assertFail();

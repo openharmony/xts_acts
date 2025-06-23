@@ -28,8 +28,8 @@ export class MyCallback {
     MyCallback.myCallback((data: string) => {
       hilog.info(0x0000, 'testTag', 'MyCallback' + data);
     })
-    MyCallback.myAsyncCallback((error: BusinessError<string>, result: string) => {
-      hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error.message}, result:${result}`);
+    MyCallback.myAsyncCallback((error: BusinessError<string> | null, result: string | undefined) => {
+      hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error?.message}, result:${result}`);
     })
     MyCallback.myErrorCallback((error: BusinessError<string>) => {
       hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error.message}`);

@@ -113,7 +113,7 @@ export default function RunningLockTest() {
         hilog.info(domain, tag, `${TAG} start`);
         try {
           runningLock.create(TAG, runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL,
-            (error: BusinessError, lock: runningLock.RunningLock) => {
+            (error: BusinessError | null, lock: runningLock.RunningLock | undefined) => {
               if (lock !== null && lock !== undefined) {
                 hilog.info(domain, tag, `${TAG} lock: ${JSON.stringify(lock)}`);
                 expect(lock).not().assertUndefined();
@@ -145,7 +145,7 @@ export default function RunningLockTest() {
         hilog.info(domain, tag, `${TAG} start`);
         try {
           runningLock.create(TAG, runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL,
-            (error: BusinessError, lock: runningLock.RunningLock) => {
+            (error: BusinessError | null, lock: runningLock.RunningLock | undefined) => {
               if (lock !== null && lock !== undefined) {
                 hilog.info(domain, tag, `${TAG} lock: ${JSON.stringify(lock)}`);
                 expect(lock).not().assertUndefined();

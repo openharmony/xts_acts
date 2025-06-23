@@ -213,8 +213,8 @@ let s4: securityLabel.DataLevel = "s4";
         hilog.info(domain, tag, '%{public}s', 'securitylabel_test_set_security_label_async_static_000 fpath' + fpath);
         let prepareFile = await Utils.prepareFile(fpath, FILE_CONTENT);
         expect(prepareFile).assertTrue();
-        securityLabel.setSecurityLabel(fpath, s0, (err: BusinessError) => {
-          securityLabel.getSecurityLabel(fpath, (err: BusinessError, level: string) => {
+        securityLabel.setSecurityLabel(fpath, s0, (err: BusinessError<void> | null) => {
+          securityLabel.getSecurityLabel(fpath, (err: BusinessError | null, level: string | undefined) => {
             expect(level == s0).assertTrue();
             fs.unlinkSync(fpath);
             done();
@@ -243,7 +243,7 @@ let s4: securityLabel.DataLevel = "s4";
         hilog.info(domain, tag, '%{public}s', 'securitylabel_test_set_security_label_async_static_001 fpath' + fpath);
         let prepareFile = await Utils.prepareFile(fpath, FILE_CONTENT);
         expect(prepareFile).assertTrue();
-        securityLabel.setSecurityLabel(fpath, s1, (err: BusinessError) => {
+        securityLabel.setSecurityLabel(fpath, s1, (err: BusinessError<void> | null) => {
           let level = await securityLabel.getSecurityLabel(fpath);
           expect(level == s1).assertTrue();
           fs.unlinkSync(fpath);
@@ -273,7 +273,7 @@ let s4: securityLabel.DataLevel = "s4";
         let prepareFile = await Utils.prepareFile(fpath, FILE_CONTENT);
         expect(prepareFile).assertTrue();
         await securityLabel.setSecurityLabel(fpath, s2);
-        securityLabel.getSecurityLabel(fpath, (err: BusinessError, level: string) => {
+        securityLabel.getSecurityLabel(fpath, (err: BusinessError | null, level: string | undefined) => {
           expect(level == s2).assertTrue();
           fs.unlinkSync(fpath);
           done();
@@ -373,10 +373,10 @@ let s4: securityLabel.DataLevel = "s4";
     it('securitylabel_test_set_security_label_async_static_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', 'securitylabel_test_set_security_label_async_static_007 start');
       try {
-        securityLabel.setSecurityLabel('/data/test.txt', s1, (err: BusinessError) => {
-          if(err.code != 0){
+        securityLabel.setSecurityLabel('/data/test.txt', s1, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'securitylabel_test_set_security_label_async_static_007 has failed for ' + JSON.stringify(err));
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -403,10 +403,10 @@ let s4: securityLabel.DataLevel = "s4";
       expect(prepareFile).assertTrue();
       try {
         securityLabel.setSecurityLabelSync(fpath, s4);
-        securityLabel.setSecurityLabel(fpath, s3, (err: BusinessError) => {
-          if(err.code != 0){
+        securityLabel.setSecurityLabel(fpath, s3, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'securitylabel_test_set_security_label_async_static_008 has failed for ' + JSON.stringify(err));
-            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
             done();
           }
         });

@@ -41,7 +41,7 @@ export default function ActsNotificationRequestTest() {
           testAbilityContext = abilitys.context
           hilog.info(domain, TAG, '%{public}s', 'onAbilityCreate end');
         },
-      }, (err : BusinessError) : void => {
+      }, (err : BusinessError | null) : void => {
         if (err != null ) {
           hilog.info(domain, TAG, '%{public}s', '-----'+ err.code);
         }
@@ -62,10 +62,10 @@ export default function ActsNotificationRequestTest() {
       async (done: () => void): Promise<void> => {
         let TEST_CASE_NAME = 'Sub_Notification_Ans_Publish_Publish_Static_0900'
         console.info(`${TEST_CASE_NAME} START requestEnableNotification`)
-        notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError) => {
+        notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError | null) => {
           console.info(`${TEST_CASE_NAME} requestEnableNotification about ctx is ${testAbilityContext}`)
           console.info(`${TEST_CASE_NAME} come in requestEnableNotification`);
-          if (err.code!==0) {
+          if (err) {
             console.info(`${TEST_CASE_NAME} requestEnableNotification err: ${err.code}`)
             expect(false).assertTrue()
             done()
@@ -113,9 +113,9 @@ export default function ActsNotificationRequestTest() {
         hilog.info(0x000, `${TEST_CASE_NAME}`, `${TEST_CASE_NAME} test case start`);
 
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TEST_CASE_NAME}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
-            if (err.code!==0) {
+            if (err) {
               console.info(`${TEST_CASE_NAME} publish err: ${err.code}`)
               expect(false).assertTrue()
               done()
