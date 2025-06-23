@@ -265,6 +265,7 @@ export default function pasteBoardTest() {
 
       try {
         let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, "file:///C:/Users/Documents/report.pdf");
+        expect(pasteData != null).assertTrue();
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
@@ -287,6 +288,7 @@ export default function pasteBoardTest() {
 
       try {
         let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, "hello");
+        expect(pasteData != null).assertTrue();
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
@@ -309,6 +311,7 @@ export default function pasteBoardTest() {
 
       try {
         let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_HTML, HTMLTEXT);
+        expect(pasteData != null).assertTrue();
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
@@ -331,6 +334,7 @@ export default function pasteBoardTest() {
 
       try {
         let pasteData = pasteboard.createData('text/want', OBJECTWANT);
+        expect(pasteData != null).assertTrue();
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
@@ -354,6 +358,7 @@ export default function pasteBoardTest() {
       const pixelMap = image.createPixelMapSync(OPTS);
       try {
         let pasteData = pasteboard.createData('pixelMap', pixelMap);
+        expect(pasteData != null).assertTrue();
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
@@ -382,6 +387,7 @@ export default function pasteBoardTest() {
       record['selfdefined'] = ARRAY_BUFFER;
       try {
         let pasteData = pasteboard.createData(record);
+        expect(pasteData != null).assertTrue();
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
@@ -481,6 +487,7 @@ export default function pasteBoardTest() {
       let catchFlag = false;
       try {
         let pasteData = pasteboard.createData(record);
+        expect(pasteData != null).assertTrue();
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
@@ -503,6 +510,7 @@ export default function pasteBoardTest() {
 
       try {
         let pasteData = pasteboard.createData("x".repeat(1023), ARRAY_BUFFER);
+        expect(pasteData != null).assertTrue();
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
@@ -606,6 +614,7 @@ export default function pasteBoardTest() {
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, "file:///C:/Users/Documents/report.pdf")
       try {
         pasteData.addRecord('x'.repeat(1023), ARRAY_BUFFER);
+        expect(pasteData.getRecordCount()).assertEqual(2);
       } catch (err: BusinessError) {
         hilog.info(domain, tag, `catch error ${err.code}`);
         expect().assertFail();
