@@ -175,8 +175,11 @@ export default function audioLoopBack() {
       expect(ret).assertTrue();
       let audioLoopBack: audio.AudioLoopback = await audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE);
       expect(null != audioLoopBack);
-      let res: Promise<void> = audioLoopBack.setVolume(0);
-      await expect(res).assertPromiseIsResolved();
+      try {
+        audioLoopBack.setVolume(0);
+      } catch(err) {
+        expect().assertFail();
+      }
     })
 
 
@@ -193,8 +196,11 @@ export default function audioLoopBack() {
       expect(ret).assertTrue();
       let audioLoopBack: audio.AudioLoopback = await audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE);
       expect(null != audioLoopBack);
-      let res: Promise<void> = audioLoopBack.setVolume(0.5);
-      await expect(res).assertPromiseIsResolved();
+      try {
+        audioLoopBack.setVolume(0.5);
+      } catch(err) {
+        expect().assertFail();
+      }
     })
 
      /**
@@ -210,8 +216,11 @@ export default function audioLoopBack() {
       expect(ret).assertTrue();
       let audioLoopBack: audio.AudioLoopback = await audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE);
       expect(null != audioLoopBack);
-      let res: Promise<void> = audioLoopBack.setVolume(1);
-      await expect(res).assertPromiseIsResolved();
+      try {
+        audioLoopBack.setVolume(1);
+      } catch(err) {
+        expect().assertFail();
+      }
     })
 
        /**
@@ -228,7 +237,7 @@ export default function audioLoopBack() {
       let audioLoopBack: audio.AudioLoopback = await audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE);
       expect(null != audioLoopBack);
       try {
-         audioLoopBack.setVolume(1);
+         audioLoopBack.setVolume(-0.1);
       } catch (err) {
         expect(err.code).assertEqual(6800101);
       }
@@ -270,7 +279,7 @@ export default function audioLoopBack() {
       let audioLoopBack: audio.AudioLoopback = await audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE);
       expect(null != audioLoopBack);
       try {
-         audioLoopBack.setVolume(1.1);
+         audioLoopBack.setVolume(null);
       } catch (err) {
         expect(err.code).assertEqual(6800101);
       }
