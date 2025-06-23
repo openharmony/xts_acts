@@ -71,6 +71,8 @@ GLenum Gl4ApiTest::GLBufferARBAbnormal()
     GLfloat vertices[] = {CLEAR_10, CLEAR_10, CLEAR_10, CLEAR_10};
     glBufferDataARB(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     glBufferSubDataARB(GL_ZERO, FAILED, FAILED, nullptr);
+    glDrawBuffersARB(FAILED, nullptr);
+    glGetBufferSubDataARB(GL_ZERO, FAILED, FAILED, nullptr);
     glDeleteBuffersARB(CREAT_NUM_ONE, &vbo);
     return glGetError();
 }

@@ -37,10 +37,10 @@ if (graphic_2d_feature_enable_opengl_to_vulkan) {
     hap_name = "ActsGraphicGl4Test"
 
     # 部件名称，真实数据，需要子系统对应
-    part_name = "window_manager"
+    part_name = "graphic_2d"
 
     # 子系统名称，真实数据，需要部件对应
-    subsystem_name = "window"
+    subsystem_name = "graphic"
     deps = [ ":ActsGraphicGl4Test_main" ]
   }
 }
