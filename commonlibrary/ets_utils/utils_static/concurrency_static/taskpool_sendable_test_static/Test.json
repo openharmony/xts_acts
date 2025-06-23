@@ -1,5 +1,5 @@
 {
-    "description": "process test",
+    "description": "taskpool test",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
