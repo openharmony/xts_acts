@@ -330,4 +330,39 @@ HWTEST_F(NativeTypographyUpdate, OHDrawingSetTypographyTextTrailingSpaceOptimize
     OH_Drawing_SetTypographyTextTrailingSpaceOptimized(fTypoStyle, false);
     PrepareWorkForAlignmentTest();
 }
+
+/*
+ * @tc.number: SUB_GRAPHIC_GRAPHIC_2D_TypographyUpdateDecorationColor_001
+ * @tc.name  : OHDrawingTypographyUpdateDecorationColor001
+ * @tc.desc  : test for updating the decoration color
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(NativeTypographyUpdate, OHDrawingTypographyUpdateDecorationColor001, Function | MediumTest | Level0)
+{
+    OH_Drawing_TypographyUpdateDecorationColor(nullptr, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF, 0xFF));
+    OH_Drawing_TypographyUpdateDecorationColor(fTypography, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF, 0xFF));
+
+    Typography* typography = ConvertToOriginalText(fTypography);
+    auto runMetrics = typography->GetLineMetrics()[0].runMetrics;
+    for (const auto& item : runMetrics) {
+        EXPECT_EQ(item.second.textStyle->decorationColor.CastToColorQuad(),
+            Drawing::Color::ColorQuadSetARGB(255, 0, 255, 255));
+    }
+}
+
+/*
+ * @tc.number: SUB_GRAPHIC_GRAPHIC_2D_SetTypographyVerticalAlignment_001
+ * @tc.name  : OHDrawingSetTypographyVerticalAlignment001
+ * @tc.desc  : Test for vertical align valid params
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(NativeTypographyUpdate, OHDrawingSetTypographyVerticalAlignment001, Function | MediumTest | Level0)
+{
+    EXPECT_NO_FATAL_FAILURE(OH_Drawing_SetTypographyVerticalAlignment(nullptr,
+        OH_Drawing_TextVerticalAlignment::TEXT_VERTICAL_ALIGNMENT_BOTTOM));
+}
 } // namespace OHOS

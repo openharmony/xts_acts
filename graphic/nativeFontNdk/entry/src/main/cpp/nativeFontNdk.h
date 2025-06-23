@@ -120,4 +120,5 @@ napi_value OHDrawingTypographyHandlerAddEncodedText006(napi_env env, napi_callba
 napi_value OHDrawingTypographyHandlerAddEncodedText007(napi_env env, napi_callback_info info);
 napi_value OHDrawingTypographyHandlerAddEncodedText008(napi_env env, napi_callback_info info);
 napi_value OHDrawingTypographyHandlerAddEncodedText009(napi_env env, napi_callback_info info);
+napi_value OHDrawingGetRun001(napi_env env, napi_callback_info info);
 #endif // NATIVEFONTNDK_USELESS_H

@@ -34,6 +34,7 @@
 #include "text/text_blob.h"
 #include "text_style.h"
 #include "typography.h"
+#include "drawing_register_font.h"
 
 #include <string>
 #include <fstream>
@@ -105,6 +106,8 @@ const double MAX_WIDTH = 800.0;
 const double RADIAN_TER = 180.0;
 const double LEFT_POS = 50.0;
 const double RIGHT_POS = 150.0;
+const char* EXISTFONTPATH = "/system/fonts/Roboto-Regular.ttf";
+const char* OHOS_THEME_FONT = "OhosThemeFont";
 
 static TypographyStyle* ConvertToOriginalText(OH_Drawing_TypographyStyle* style)
 {
@@ -2463,5 +2466,48 @@ HWTEST_F(OH_Drawing_TypographyTest, OHDrawingSetTextHighContrast002, Function | 
     uint32_t preValue = GetTextHighContrast();
     OH_Drawing_SetTextHighContrast(static_cast<OH_Drawing_TextHighContrast>(Rosen::SrvText::TEXT_HIGH_CONTRAST_BUTT));
     EXPECT_EQ(GetTextHighContrast(), preValue);
+}
+
+/*
+ * @tc.number: SUB_GRAPHIC_GRAPHIC_2D_DrawingUnregisterFont_001
+ * @tc.name  : testOHDrawingUnregisterFont001
+ * @tc.desc  : test for unregister font
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(OH_Drawing_TypographyTest, testOHDrawingUnregisterFont001, Function | MediumTest | Level1)
+{
+    OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
+    uint32_t result = OH_Drawing_RegisterFont(fontCollection, "test1", EXISTFONTPATH);
+    EXPECT_EQ(result, 0);
+    result = OH_Drawing_RegisterFont(fontCollection, "test2", EXISTFONTPATH);
+    EXPECT_EQ(result, 0);
+    EXPECT_EQ(OH_Drawing_UnregisterFont(fontCollection, "test1"), 0);
+    EXPECT_EQ(OH_Drawing_UnregisterFont(fontCollection, "test2"), 0);
+    EXPECT_EQ(OH_Drawing_UnregisterFont(fontCollection, "test3"), 0);
+
+    OH_Drawing_DestroyFontCollection(fontCollection);
+}
+
+/*
+ * @tc.number: SUB_GRAPHIC_GRAPHIC_2D_DrawingUnregisterFont_002
+ * @tc.name  : testOHDrawingUnregisterFont002
+ * @tc.desc  : test for unregister font
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(OH_Drawing_TypographyTest, testOHDrawingUnregisterFont002, Function | MediumTest | Level1)
+{
+    // ERROR_NULL_FONT_COLLECTION is 8
+    const uint32_t nullFontCollection = 8;
+    OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
+    EXPECT_EQ(OH_Drawing_UnregisterFont(nullptr, ""), nullFontCollection);
+    EXPECT_EQ(OH_Drawing_UnregisterFont(nullptr, nullptr), nullFontCollection);
+    EXPECT_EQ(OH_Drawing_UnregisterFont(fontCollection, nullptr), nullFontCollection);
+    EXPECT_EQ(OH_Drawing_UnregisterFont(fontCollection, ""), nullFontCollection);
+    EXPECT_EQ(OH_Drawing_UnregisterFont(fontCollection, OHOS_THEME_FONT), nullFontCollection);
+    OH_Drawing_DestroyFontCollection(fontCollection);
 }
 }

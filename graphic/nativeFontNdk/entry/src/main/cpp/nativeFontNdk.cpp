@@ -176,6 +176,8 @@ napi_property_descriptor desc[] = {
      nullptr, nullptr, nullptr, napi_default, nullptr},
     {"oHDrawingTypographyHandlerAddEncodedText009", nullptr, OHDrawingTypographyHandlerAddEncodedText009,
      nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHDrawingGetRun001", nullptr, OHDrawingGetRun001,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
 };
 
 EXTERN_C_START

@@ -1815,3 +1815,47 @@ napi_value OHDrawingGetFontCollectionGlobalInstance001(napi_env env, napi_callba
     }
     return result;
 }
+
+napi_value OHDrawingGetRun001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_4, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_value result4 = nullptr;
+
+    OH_Drawing_Font *font = OH_Drawing_GetRunFont(nullptr);
+    if (font == nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    OH_Drawing_TextDirection direction = OH_Drawing_GetRunTextDirection(nullptr);
+    if (direction == TEXT_DIRECTION_LTR) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    OH_Drawing_Array *advances = OH_Drawing_GetRunGlyphAdvances(nullptr, 0, 0);
+    if (advances == nullptr) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+
+    OH_Drawing_Point *advance = OH_Drawing_GetRunGlyphAdvanceByIndex(advances, 0);
+    if (advance == nullptr) {
+        napi_create_int32(env, SUCCESS, &result4);
+    } else {
+        napi_create_int32(env, FAIL, &result4);
+    }
+    napi_set_element(env, result, ARR_NUM_3, result4);
+    OH_Drawing_DestroyRunGlyphAdvances(advances);
+    return result;
+}
