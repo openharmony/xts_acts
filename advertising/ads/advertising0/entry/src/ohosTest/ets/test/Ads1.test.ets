@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,14 +14,14 @@
  */
 import hilog from '@ohos.hilog';
 import common from '@ohos.app.ability.common';
-
 import router from '@ohos.router';
-import { it, expect, TestType, Size, Level } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import advertising from '@ohos.advertising';
 
 const TAG: string = 'AdTestTag';
 const Domain: number = 0x0000;
 const context = getContext(this) as common.Context;
+const uiContext: common.UIAbilityContext = getContext(this) as common.UIAbilityContext;
 
 const multiAdRequest: advertising.AdRequestParams[] = [{
   adId: 'testx9dtjwj8hp',
@@ -67,7 +67,7 @@ const adResponse =
     "}";
 
 export default function adsTestPart2() {
-  describe('ActsAdsTest1', function () {
+  describe('ActsAdsTest1', () => {
     /**
      * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0500
      * @tc.name: testGetAdRequestBody
@@ -76,16 +76,21 @@ export default function adsTestPart2() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testGetAdRequestBody", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done) => {
-      advertising.getAdRequestBody(multiAdRequest, adOption).then((data) => {
-        hilog.info(Domain, TAG, `testGetAdRequestBody result = ${JSON.stringify(JSON.parse(data))}`);
-        expect(data != null).assertEqual(true);
-        done();
-      }).catch((error) => {
+    it("testGetAdRequestBody", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        advertising.getAdRequestBody(multiAdRequest, adOption).then((data) => {
+          hilog.info(Domain, TAG, `testGetAdRequestBody result = ${JSON.stringify(JSON.parse(data))}`);
+          expect(data != null).assertEqual(true);
+          done();
+        }).catch(() => {
+          hilog.info(Domain, TAG, `testGetAdRequestBody get some error`);
+          done();
+        })
+      } catch (error) {
         hilog.error(Domain, TAG, `testGetAdRequestBody failed, ERROR= ${error}`);
-        expect(error != null).assertEqual(true);
+        expect(error.code).assertLarger(0);
         done();
-      })
+      }
     })
 
     /**
@@ -96,8 +101,8 @@ export default function adsTestPart2() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testParseAdResponse", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done) => {
-      let adLoaderListener = {
+    it("testParseAdResponse", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
               errorCode, errorMsg);
@@ -114,7 +119,7 @@ export default function adsTestPart2() {
       }
     };
       try {
-        advertising.parseAdResponse(adResponse, adLoaderListener, context);
+        advertising.parseAdResponse(adResponse, adLoaderListener, uiContext);
       } catch (e) {
         hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
         expect(e != null).assertEqual(true);

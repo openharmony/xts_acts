@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -71,7 +71,7 @@ const advertisement: advertising.Advertisement = {
 };
 
 export default function adsTestPart1() {
-  describe('ActsAdsTest', function () {
+  describe('ActsAdsTest', () => {
 
     /**
      * @tc.number: SUB_CLOUD_ADS_LOAD_AD_0100
@@ -81,8 +81,8 @@ export default function adsTestPart1() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testLoadAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async function (done) {
-      let adLoaderListener = {
+    it("testLoadAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.AdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
               errorCode, errorMsg);
@@ -108,14 +108,16 @@ export default function adsTestPart1() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testShowAd", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, function () {
+    it("testShowAd", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
         advertising.showAd(advertisement, adDisplayOptions);
+        done();
       } catch (e) {
         hilog.error(Domain, TAG, 'show ad error, error code is %{public}d, error message is %{public}s.', e.code,
             e.message);
         expect(e.code).assertLarger(0);
+        done();
       }
     })
 
@@ -127,8 +129,8 @@ export default function adsTestPart1() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testLoadMultiAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async function (done) {
-      let adLoaderListener = {
+    it("testLoadMultiAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
               errorCode, errorMsg);
