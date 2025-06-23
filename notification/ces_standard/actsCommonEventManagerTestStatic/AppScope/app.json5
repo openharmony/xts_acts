@@ -14,7 +14,7 @@
  */
 {
   "app": {
-    "bundleName": "com.example.actscommoneventmanager.static",
+    "bundleName": "com.example.actscommoneventmanagertest.static",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
