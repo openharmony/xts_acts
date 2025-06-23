@@ -17,21 +17,31 @@ group("ans_standard") {
   if (is_standard_system) {
     deps = [
       "actsNotificationBadgeTest:ActsNotificationBadgeTest",
+      "actsNotificationBadgeTestStatic:ActsNotificationBadgeStaticTest",
       "actsNotificationDistributedTest:ActsNotificationDistributedTest",
+      "actsNotificationDistributedTestStatic:ActsNotificationDistributedStaticTest",
       "actsNotificationEmitterNewTest:ActsNotificationEmitterNewTest",
       "actsNotificationEmitterNewTestStatic:ActsNotificationEmitterNewStaticTest",
       "actsNotificationEmitterTest:ActsNotificationEmitterTest",
+      "actsNotificationEmitterTestStatic:ActsNotificationEmitterStaticTest",
       "actsNotificationInterfaceChangeTest:ActsNotificationInterfaceChangeTest",
+      "actsNotificationInterfaceChangeTestStatic:ActsNotificationInterfaceChangeTestStatic",
       "actsNotificationManagerSlotTest:ActsNotificationManagerSlotTest",
+      "actsNotificationManagerSlotTestStatic:ActsNotificationManagerSlotStaticTest",
       "actsNotificationNDKEnableTest:ActsNotificationNDKEnableTest",
       "actsNotificationPublishTest:ActsNotificationPublishTest",
       "actsNotificationRequestTest:ActsNotificationRequestTest",
+      "actsNotificationRequestTestStatic:ActsNotificationRequestStaticTest",
       "actsNotificationSecondaryDirectoryTest:ActsNotificationSecondaryDirectoryTest",
+      "actsNotificationSecondaryDirectoryTestStatic:ActsNotificationSecondaryDirectoryStaticTest",
       "actsNotificationShowTest:ActsNotificationShowTest",
       "actsNotificationSlotTest:ActsNotificationSlotTest",
+      "actsNotificationSlotTestStatic:ActsNotificationSlotStaticTest",
       "actsNotificationSystemAPITest:ActsNotificationSystemAPITest",
+      "actsNotificationSystemAPITestStatic:ActsNotificationSystemAPIStaticTest",
       "actsNotificationSystemLiveViewTest:ActsNotificationSystemLiveViewTest",
       "notificationManager:notificationManager",
+      "notificationManagerStatic:NotificationManagerStaticTest",
     ]
   }
 }

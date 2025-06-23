@@ -20,7 +20,7 @@ group("arkcompiler") {
       "arkts_module_test:ActsArktsModuleTest",
       "ecmanewfeatures:ActsEcmaNewFeaturesTest",
       "esmodule:esmodule",
-      "arkts_ani_test:ActsArktsAniStaticTest",
+      "arkts_ani_test_static:ActsArktsAniStaticTest",
     ]
   }
 }

@@ -22,7 +22,7 @@ group("webPageRenderingTest") {
       "viewport_processing:ActsWebViewportProcessingTest",
       "web_page_font:ActsWebPageFontTest",
       "web_page_zoom_rotate:ActsWebPageZoomRotateTest",
-      "web_page_size:ActsWebPageSizeStaticTest",
+      "web_page_size_static:ActsWebPageSizeStaticTest",
     ]
   }
 }

@@ -14,7 +14,9 @@
  */
 
 import abilityManagerStaticTest from './AbilityManagerStatic.test';
+import appManagerStaticTest from './AppManagerStatic.test';
 
 export default function testsuite() {
     abilityManagerStaticTest();
+    appManagerStaticTest();
 }
