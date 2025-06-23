@@ -354,5 +354,29 @@ export default function applicationManagerTest() {
       }
       done();
     })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_SETKIOSKFEATURES_001
+     * @tc.name      : test_setKioskFeatures_001
+     * @tc.desc      : test setKioskFeatures method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_setKioskFeatures_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        let kioskFeatures: Array<applicationManager.KioskFeature> = [];
+        kioskFeatures.push(applicationManager.KioskFeature.ALLOW_NOTIFICATION_CENTER);
+        kioskFeatures.push(applicationManager.KioskFeature.ALLOW_CONTROL_CENTER);
+        applicationManager.setKioskFeatures(SELFWANT, kioskFeatures);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
   })
 }
