@@ -17500,8 +17500,9 @@ static napi_value NapiWrapEnhanceTest1(napi_env env, napi_callback_info info)
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
     void* finalizeHint;
+    size_t testStrSize = sizeof(testStr);
     napi_status status = napi_wrap_enhance(env, obj, (void*)testStr, 
-                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), &wrappedRef);
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, testStrSize, &wrappedRef);
     NAPI_ASSERT(env, status == napi_ok, "napi_wrap_enhance is normal, return status napi_ok.");
 
     napi_value rst;
@@ -17569,17 +17570,18 @@ static napi_value NapiWrapEnhanceTest4(napi_env env, napi_callback_info info)
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
     void* finalizeHint;
+    size_t testStrSize = sizeof(testStr);
     // env is null
     napi_status status = napi_wrap_enhance(nullptr, obj, (void*)testStr, 
-                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), &wrappedRef);
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, testStrSize, &wrappedRef);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_enhance failed.");
     // js_object is null
     status = napi_wrap_enhance(env, nullptr, (void*)testStr, 
-                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), &wrappedRef);
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, testStrSize, &wrappedRef);
     NAPI_ASSERT(env, status == napi_invalid_arg, "js_object is null, napi_wrap_enhance failed.");
     // native_object is null
     status = napi_wrap_enhance(env, obj, nullptr, 
-                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), &wrappedRef);
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, testStrSize, &wrappedRef);
     NAPI_ASSERT(env, status == napi_invalid_arg, "native_object is null, napi_wrap_enhance failed.");
 
     napi_value rst;
@@ -17605,17 +17607,18 @@ static napi_value NapiWrapEnhanceTest5(napi_env env, napi_callback_info info)
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
     void* finalizeHint;
+    size_t testStrSize = sizeof(testStr);
 
     // finalize_hint is null
     napi_status status = napi_wrap_enhance(nullptr, obj, (void*)testStr, 
-                      [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr), &wrappedRef);
+                      [](napi_env env, void* data, void* hint) {}, false, nullptr, testStrSize, &wrappedRef);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_enhance failed.");
     // result is null
     status = napi_wrap_enhance(nullptr, obj, (void*)testStr, 
-                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, sizeof(testStr), nullptr);
+                      [](napi_env env, void* data, void* hint) {}, false, finalizeHint, testStrSize, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_enhance failed.");
     // all is null
-    status = napi_wrap_enhance(nullptr, nullptr, nullptr, nullptr, false, nullptr, sizeof(testStr), nullptr);
+    status = napi_wrap_enhance(nullptr, nullptr, nullptr, nullptr, false, nullptr, testStrSize, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_enhance failed.");
 
     napi_value rst;
@@ -17740,7 +17743,7 @@ static napi_value NapiWrapEnhanceTest11(napi_env env, napi_callback_info info)
 {
     napi_value jsObject = nullptr;
     napi_create_object(env, &jsObject);
-    const size_t largeSize = 1024*1024;//1MB
+    const size_t largeSize = 1024 * 1024;//1MB
     void* largeData = malloc(largeSize);
     napi_status status = napi_wrap_enhance(
         env, jsObject, largeData,
