@@ -10,13 +10,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/ohos_var.gni")
 
-group("notificationManagerStatic") {
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_app_static_suite("ActsNotificationManagerRequestEnableNotificationDenyStaticTest") {
+#  test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "requestEnableNotificationStatic:notificationManagerStatic_requestEnableNotificationStatic",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsNotificationManagerRequestEnableNotificationDenyStaticTest"
+  part_name = "distributed_notification_service"
+  subsystem_name = "notification"
 }
