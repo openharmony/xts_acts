@@ -3049,7 +3049,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300', 1, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 48000;
@@ -3110,7 +3110,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400', 2, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 48000;

@@ -18,7 +18,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import common from '@ohos.app.ability.common';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import abilityAccessCtrl, { PermissionRequestResult, Permissions } from '@ohos.abilityAccessCtrl';
 
@@ -112,7 +112,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0100', 1, async (done: ESObject) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: ESObject) => {
       let audioCap: audio.AudioStreamManager | ESObject;
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -175,7 +175,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0200', 2, async (done: ESObject) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: ESObject) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -243,7 +243,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0300', 2, async (done: ESObject) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: ESObject) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -328,7 +328,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0400', 2, async (done: ESObject) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: ESObject) => {
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -411,7 +411,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0500', 0, async (done: ESObject) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ESObject) => {
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -463,7 +463,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0600', 0, async (done: ESObject) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ESObject) => {
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -532,7 +532,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0700', 0, async (done: ESObject) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ESObject) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -583,7 +583,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0800', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -635,7 +635,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0900', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -692,7 +692,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -741,7 +741,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0200', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -796,7 +796,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -853,7 +853,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -910,7 +910,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -967,7 +967,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CURRENT_AUDIOCAPTURERINFOARRAY_SYNC_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CURRENT_AUDIOCAPTURERINFOARRAY_SYNC_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1048,7 +1048,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1129,7 +1129,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1219,7 +1219,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1314,7 +1314,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1397,7 +1397,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1476,7 +1476,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1564,7 +1564,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1659,7 +1659,7 @@ export default function audioCapturerChange() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,

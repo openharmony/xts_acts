@@ -190,7 +190,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_REGISTERSOURCE_0300", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_REGISTERSOURCE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await AudioHapticManager.registerSource(1, 1).then((data: ESObject) => {
           console.log(`${tag} registerSource success: Notification_Audio_Uri: ${JSON.stringify(Notification_Audio_Uri)}, Notificatio_Haptic_Uri:${Notificatio_Haptic_Uri}`);
@@ -217,7 +217,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_REGISTERSOURCE_0400", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_REGISTERSOURCE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await AudioHapticManager.registerSource().then((data: ESObject) => {
           console.log(`${tag} registerSource success: Notification_Audio_Uri: ${JSON.stringify(Notification_Audio_Uri)}, Notificatio_Haptic_Uri:${Notificatio_Haptic_Uri}`);
@@ -320,7 +320,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_UNREGISTERSOURCE_0300", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_UNREGISTERSOURCE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let sourceId = '1'
         await AudioHapticManager.unregisterSource(sourceId).then(() => {
@@ -348,7 +348,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_UNREGISTERSOURCE_0400", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_UNREGISTERSOURCE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await AudioHapticManager.unregisterSource().then(() => {
           console.log(`${tag} unregisterSource success`);
@@ -395,7 +395,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0200", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
         AudioHapticManager.setAudioLatencyMode(sourceId_Notification, AudioLatencyMode);
@@ -417,7 +417,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0300", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
         AudioHapticManager.setAudioLatencyMode(sourceId_Ringtone, AudioLatencyMode);
@@ -438,7 +438,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0400", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
         AudioHapticManager.setAudioLatencyMode(sourceId_Ringtone, AudioLatencyMode);
@@ -459,7 +459,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0500", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioLatencyMode = 4;
       try {
@@ -481,7 +481,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0600", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = '4';
       try {
         AudioHapticManager.setAudioLatencyMode(sourceId_Ringtone, AudioLatencyMode);
@@ -502,7 +502,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0700", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETAUDIOLATENCYMODE_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         AudioHapticManager.setAudioLatencyMode();
         expect(false).assertTrue();
@@ -584,7 +584,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0400", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -606,7 +606,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0500", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -627,7 +627,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0600", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_ALARM;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -648,7 +648,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0700", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_VOICE_MESSAGE;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -669,7 +669,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0800", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_RINGTONE;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -690,7 +690,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0900", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -711,7 +711,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1000", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_ACCESSIBILITY;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -732,7 +732,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1100", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_MOVIE;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -753,7 +753,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1200", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_GAME;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -774,7 +774,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1300", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_AUDIOBOOK;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -795,7 +795,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1400", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = audio.StreamUsage.STREAM_USAGE_NAVIGATION;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -816,7 +816,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1500", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = 20;
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -837,7 +837,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1600", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let setStreamUsage = '20';
       try {
         AudioHapticManager.setStreamUsage(sourceId_Notification, setStreamUsage);
@@ -858,7 +858,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1700", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_SETSTREAMUSAGE_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         AudioHapticManager.setStreamUsage();
         console.log(`${tag} setStreamUsage success`);
@@ -919,7 +919,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_CREATEPLAYER_0200", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_CREATEPLAYER_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioHapticPlayerOptions = '123'
       try {
         await AudioHapticManager.createPlayer(sourceId_Notification, AudioHapticPlayerOptions)
@@ -951,7 +951,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_CREATEPLAYER_0300", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_CREATEPLAYER_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await AudioHapticManager.createPlayer().then(async (data: ESObject) => {
           let AudioHapticPlayer: ESObject = data;
@@ -1027,7 +1027,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0200", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = audioHaptic.AudioHapticType.AUDIO_HAPTIC_TYPE_AUDIO;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: false,
@@ -1074,7 +1074,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0300", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = audioHaptic.AudioHapticType.AUDIO_HAPTIC_TYPE_HAPTIC;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
@@ -1122,7 +1122,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0400", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = audioHaptic.AudioHapticType.AUDIO_HAPTIC_TYPE_HAPTIC;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
@@ -1170,7 +1170,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0500", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = audioHaptic.AudioHapticType.AUDIO_HAPTIC_TYPE_AUDIO;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
@@ -1218,7 +1218,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0600", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = audioHaptic.AudioHapticType.AUDIO_HAPTIC_TYPE_AUDIO;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: false,
@@ -1265,7 +1265,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0700", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = audioHaptic.AudioHapticType.AUDIO_HAPTIC_TYPE_HAPTIC;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
@@ -1312,7 +1312,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0800", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = audioHaptic.AudioHapticType.AUDIO_HAPTIC_TYPE_HAPTIC;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
@@ -1359,7 +1359,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0900", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = 3;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
@@ -1404,7 +1404,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_1000", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let type = '3';
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
@@ -1450,7 +1450,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_1100", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ISMUTE_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
         muteHaptics: false
@@ -1542,7 +1542,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0200", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
       AudioHapticManager.setStreamUsage(sourceId_Notification, audio.StreamUsage.STREAM_USAGE_NOTIFICATION);
       console.log(`${tag} setStreamUsage success`);
@@ -1594,7 +1594,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0300", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
       AudioHapticManager.setAudioLatencyMode(sourceId_Notification, AudioLatencyMode);
       console.log(`${tag} setAudioLatencyMode success: ${JSON.stringify(AudioLatencyMode)}`);
@@ -1642,7 +1642,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0400", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
       AudioHapticManager.setStreamUsage(sourceId_Notification, audio.StreamUsage.STREAM_USAGE_NOTIFICATION);
       console.log(`${tag} setStreamUsage success`);
@@ -1695,7 +1695,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0500", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
       let AudioHapticPlayerOptions: AudioHapticPlayerOptions = {
         muteAudio: true,
@@ -1743,7 +1743,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0600", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
       AudioHapticManager.setStreamUsage(sourceId_Ringtone, audio.StreamUsage.STREAM_USAGE_RINGTONE);
       console.log(`${tag} setStreamUsage success`);
@@ -1795,7 +1795,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0700", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
       AudioHapticManager.setAudioLatencyMode(sourceId_Ringtone, AudioLatencyMode);
       console.log(`${tag} setAudioLatencyMode success: ${JSON.stringify(AudioLatencyMode)}`);
@@ -1843,7 +1843,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0800", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_PLAY_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
       AudioHapticManager.setStreamUsage(sourceId_Ringtone, audio.StreamUsage.STREAM_USAGE_RINGTONE);
       console.log(`${tag} setStreamUsage success`);
@@ -1948,7 +1948,7 @@ export default function AudioHapticTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ON_ENDOFSTREAM_0200", 2, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOHAPTIC_ON_ENDOFSTREAM_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
       AudioHapticManager.setAudioLatencyMode(sourceId_Notification, AudioLatencyMode);
       AudioHapticManager.setStreamUsage(sourceId_Notification, audio.StreamUsage.STREAM_USAGE_NOTIFICATION);

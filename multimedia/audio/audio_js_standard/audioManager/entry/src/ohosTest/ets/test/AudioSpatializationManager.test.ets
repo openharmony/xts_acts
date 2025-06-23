@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import { BusinessError } from '@ohos.base';
 import { Driver } from '@ohos.UiTest';
@@ -89,7 +89,7 @@ export default function audioSpatializationManager() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_AUDIO_SPATIALIZATION_MANAGER_ON_SPATIALIZATION_ENABLED_CHANGE_FOR_CURRENT_DEVICE_001", 0, async (done: Function) => {
+    it("SUB_AUDIO_SPATIALIZATION_MANAGER_ON_SPATIALIZATION_ENABLED_CHANGE_FOR_CURRENT_DEVICE_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioManager = audio.getAudioManager();
       let audioSpatializationManager = audioManager.getSpatializationManager();
       let ret = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
@@ -114,7 +114,7 @@ export default function audioSpatializationManager() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_AUDIO_SPATIALIZATION_MANAGER_OFF_SPATIALIZATION_ENABLED_CHANGE_FOR_CURRENT_DEVICE_001", 0, async (done: Function) => {
+    it("SUB_AUDIO_SPATIALIZATION_MANAGER_OFF_SPATIALIZATION_ENABLED_CHANGE_FOR_CURRENT_DEVICE_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioManager = audio.getAudioManager();
       let audioSpatializationManager = audioManager.getSpatializationManager();
       let ret = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
@@ -140,7 +140,7 @@ export default function audioSpatializationManager() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_AUDIO_SPATIALIZATION_MANAGER_ISSPATIALIZATIONENABLEDFORCURRENTDEVICE_TEST_001", 0, async (done: Function) => {
+    it("SUB_AUDIO_SPATIALIZATION_MANAGER_ISSPATIALIZATIONENABLEDFORCURRENTDEVICE_TEST_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let audioSpatializationManager:audio.AudioSpatializationManager;
         let audioManager = audio.getAudioManager();
@@ -161,7 +161,7 @@ export default function audioSpatializationManager() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_AUDIO_SPATIALIZATION_MANAGER_SPATIALIZATIONSUPPORTED_TEST_001", 0, async (done: Function) => {
+    it("SUB_AUDIO_SPATIALIZATION_MANAGER_SPATIALIZATIONSUPPORTED_TEST_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let audioRoutingManager: audio.AudioRoutingManager;
         let audioManager = audio.getAudioManager();

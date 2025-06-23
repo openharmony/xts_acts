@@ -132,7 +132,7 @@ export default function audioSessionManagerTest() {
 		* @tc.type      : Function
 		* @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_0', 0, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy | undefined | null = null;
       await activateAudioSession(strategy, done, !isDone);
       isAudioSessionActivatedFalse(done, !isDone);
@@ -148,7 +148,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_1', 1, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       await deactivateAudioSession(done, !isDone);
       isAudioSessionActivatedFalse(done, !isDone);
       let strategy: audio.AudioSessionStrategy = {
@@ -166,7 +166,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_2', 2, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
         concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
       }
@@ -184,7 +184,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_3', 3, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
         concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DUCK_OTHERS
       }
@@ -200,7 +200,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_4', 3, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
         concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_PAUSE_OTHERS
       }
@@ -216,7 +216,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_5', 3, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy | undefined = undefined;
       await activateAudioSession(strategy, done, !isDone);
       isAudioSessionActivatedTrue(done, !isDone);
@@ -232,7 +232,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_6', 3, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await deactivateAudioSession(done, !isDone);
       isAudioSessionActivatedFalse(done, isDone);
     })
@@ -245,7 +245,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_7', 3, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
         concurrencyMode: AudioConcurrencyMode.CONCURRENCY_DEFAULT
       }
@@ -261,7 +261,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_8', 3, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
         concurrencyMode: AudioConcurrencyMode.CONCURRENCY_DEFAULT
       }
@@ -279,7 +279,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_9', 3, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await deactivateAudioSession(done, !isDone);
       isAudioSessionActivatedFalse(done, !isDone);
       let strategy: audio.AudioSessionStrategy = {
@@ -297,7 +297,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_10', 3, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       sessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
         if(audioSessionDeactivatedEvent.reason === audio.AudioSessionDeactivatedReason.DEACTIVATED_LOWER_PRIORITY){
           console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
