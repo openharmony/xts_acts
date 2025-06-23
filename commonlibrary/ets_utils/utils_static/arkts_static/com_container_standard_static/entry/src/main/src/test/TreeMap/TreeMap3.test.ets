@@ -33,8 +33,8 @@ class TestEntry {
   public id: number = 0;
 }
 
-export default function TreemapTest2() {
-  describe('TreemapTest2', (): void => {
+export default function TreemapTest3() {
+  describe('TreemapTest3', (): void => {
     afterEach(() => {
       await Utils.msSleep(10)
     })

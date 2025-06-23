@@ -25,7 +25,7 @@ import LightWeightSetTest2 from "./LightWeightSet/LightWeightSet2.test";
 import PlainArrayTest1 from "./PlainArray/PlainArray1.test";
 import PlainArrayTest2 from "./PlainArray/PlainArray2.test";
 import TreeMapTest1 from "./TreeMap/TreeMap1.test";
-import TreeMapTest2 from "./TreeMap/TreeMap2.test";
+import TreeMapTest3 from "./TreeMap/TreeMap3.test";
 import TreeSetTest1 from "./TreeSet/TreeSet1.test";
 import TreeSetTest2 from "./TreeSet/TreeSet2.test";
 import ListTest1 from "./List/List1.test";
@@ -47,7 +47,7 @@ export default function testsuite() {
   PlainArrayTest1();
   PlainArrayTest2();
   TreeMapTest1();
-  TreeMapTest2();
+  TreeMapTest3();
   TreeSetTest1();
   TreeSetTest2();
   ListTest1();
