@@ -32,10 +32,9 @@ group("security") {
       "dlp_errorcode_func:ActsDlpErrorCodeTest",
       "dlp_permission_service:DlpTest",
       "huks",
-      "security_component/security_component_locationbutton:ActsSecLocationButtonTest",
+      "security_component/save_component_customize:ActsSaveButtonCustomizeTest",
       "security_component/security_component_pastebutton:ActsSecPasteButtonTest",
       "security_component/security_component_savebutton:ActsSecSaveButtonTest",
-      "security_component/save_component_customize:ActsSaveButtonCustomizeTest",
     ]
   }
 }
