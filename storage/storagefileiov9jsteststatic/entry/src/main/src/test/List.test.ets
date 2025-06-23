@@ -83,6 +83,4 @@ export default function testsuite() {
     // fileIORandomAccessFileClose();
     // fileIORandomAccessFileRead();
     //atomicFileTest();
-    // fileIOMoveDir();
-    // fileIOCopyDir();
 }
