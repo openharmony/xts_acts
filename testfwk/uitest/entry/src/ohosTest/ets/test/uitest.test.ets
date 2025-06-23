@@ -850,7 +850,6 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let disPlay = display.getDefaultDisplaySync();
             console.log(`${TestTag}, testGetDisplayRotationWithId disPlay is: ${JSON.stringify(disPlay)}`);
-            await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
             await driver.delayMs(waitUiReadyMs)
             let rotation = await driver.getDisplayRotation(disPlay.id)
             expect(rotation == DisplayRotation.ROTATION_0
