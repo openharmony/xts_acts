@@ -24,9 +24,15 @@ import LightWeightSetTest1 from "./LightWeightSet/LightWeightSet1.test";
 import LightWeightSetTest2 from "./LightWeightSet/LightWeightSet2.test";
 import PlainArrayTest1 from "./PlainArray/PlainArray1.test";
 import PlainArrayTest2 from "./PlainArray/PlainArray2.test";
+import TreeMapTest1 from "./TreeMap/TreeMap1.test";
+import TreeMapTest2 from "./TreeMap/TreeMap2.test";
+import TreeSetTest1 from "./TreeSet/TreeSet1.test";
+import TreeSetTest2 from "./TreeSet/TreeSet2.test";
 import ListTest1 from "./List/List1.test";
 import DequeTest1 from "./Deque/Deque1.test";
 import LinkedListTest1 from "./LinkedList/LinkedList1.test";
+import QueueTest1 from "./Queue/Queue1.test";
+import StackTest1 from "./Stack/Stack1.test";
 
 export default function testsuite() {
   ArraylistTest1();
@@ -40,8 +46,14 @@ export default function testsuite() {
   LightWeightSetTest2();
   PlainArrayTest1();
   PlainArrayTest2();
+  TreeMapTest1();
+  TreeMapTest2();
+  TreeSetTest1();
+  TreeSetTest2();
   ListTest1();
   DequeTest1()
   LinkedListTest1();
+  QueueTest1();
+  StackTest1();
 
 }
