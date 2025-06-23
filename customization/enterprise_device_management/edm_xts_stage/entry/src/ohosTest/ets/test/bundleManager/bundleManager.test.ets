@@ -456,6 +456,267 @@ export default function bundleManagerTest() {
     })
 
     /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0100
+     * @tc.name      : test_add_installation_allowed_app_distribution_types_0100
+     * @tc.desc      : test addInstallationAllowedAppDistributionTypes method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_add_installation_allowed_app_distribution_types_0100', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.addInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_ADD_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0200
+     * @tc.name test_add_installation_allowed_app_distribution_types_0200
+     * @tc.desc test addInstallationAllowedAppDistributionTypes method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_add_installation_allowed_app_distribution_types_0200', Level.LEVEL2, async (done: Function) => {
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.addInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_ADD_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0300
+     * @tc.name test_add_installation_allowed_app_distribution_types_0300
+     * @tc.desc test addInstallationAllowedAppDistributionTypes method with null admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_add_installation_allowed_app_distribution_types_0300', Level.LEVEL2, async (done: Function) => {
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.addInstallationAllowedAppDistributionTypes(null, allowedAppDistributionTypes);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_ADD_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0400
+     * @tc.name test_add_installation_allowed_app_distribution_types_0400
+     * @tc.desc test addInstallationAllowedAppDistributionTypes method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_add_installation_allowed_app_distribution_types_0400', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY,
+            bundleManager.AppDistributionType.ENTERPRISE, bundleManager.AppDistributionType.ENTERPRISE_NORMAL,
+            bundleManager.AppDistributionType.ENTERPRISE_MDM, bundleManager.AppDistributionType.INTERNALTESTING,
+            bundleManager.AppDistributionType.CROWDTESTING];
+        bundleManager.addInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes);
+        let ret: Array<bundleManager.AppDistributionType> =
+          bundleManager.getInstallationAllowedAppDistributionTypes(SELFWANT);
+        expect(ret.length == 6).assertTrue();
+      } catch(error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_GET_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0100
+     * @tc.name test_get_installation_allowed_app_distribution_types_0100
+     * @tc.desc test getInstallationAllowedAppDistributionTypes method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_get_installation_allowed_app_distribution_types_0100', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        bundleManager.getInstallationAllowedAppDistributionTypes(SELFWANT);
+      } catch(error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_GET_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0200
+     * @tc.name test_get_installation_allowed_app_distribution_types_0200
+     * @tc.desc test getInstallationAllowedAppDistributionTypes method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_get_installation_allowed_app_distribution_types_0200', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        bundleManager.getInstallationAllowedAppDistributionTypes(SELFWANT);
+      } catch(error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_GET_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0300
+     * @tc.name test_get_installation_allowed_app_distribution_types_0300
+     * @tc.desc test getInstallationAllowedAppDistributionTypes method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_get_installation_allowed_app_distribution_types_0300', Level.LEVEL2, async (done: Function) => {
+      try {
+        bundleManager.getInstallationAllowedAppDistributionTypes(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_GET_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0400
+     * @tc.name test_get_installation_allowed_app_distribution_types_0400
+     * @tc.desc test getInstallationAllowedAppDistributionTypes method with null admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_get_installation_allowed_app_distribution_types_0400', Level.LEVEL2, async (done: Function) => {
+      try {
+        bundleManager.getInstallationAllowedAppDistributionTypes(null);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_REMOVE_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0100
+     * @tc.name test_remove_installation_allowed_app_distribution_types_0100
+     * @tc.desc test removeInstallationAllowedAppDistributionTypes method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_remove_installation_allowed_app_distribution_types_0100', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.removeInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_REMOVE_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0200
+     * @tc.name test_remove_installation_allowed_app_distribution_types_0200
+     * @tc.desc test removeInstallationAllowedAppDistributionTypes method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_remove_installation_allowed_app_distribution_types_0200', Level.LEVEL2, async (done: Function) => {
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.removeInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_REMOVE_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0300
+     * @tc.name test_remove_installation_allowed_app_distribution_types_0300
+     * @tc.desc test removeInstallationAllowedAppDistributionTypes method with null admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_remove_installation_allowed_app_distribution_types_0300', Level.LEVEL2, async (done: Function) => {
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.removeInstallationAllowedAppDistributionTypes(null, allowedAppDistributionTypes);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_REMOVE_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0400
+     * @tc.name test_remove_installation_allowed_app_distribution_types_0400
+     * @tc.desc test removeInstallationAllowedAppDistributionTypes method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_remove_installation_allowed_app_distribution_types_0400', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        let allowedAppDistributionTypes: Array<bundleManager.AppDistributionType>  =
+          [bundleManager.AppDistributionType.APP_GALLERY, bundleManager.AppDistributionType.ENTERPRISE];
+        bundleManager.addInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes);
+        let ret1: Array<bundleManager.AppDistributionType> =
+          bundleManager.getInstallationAllowedAppDistributionTypes(SELFWANT);
+        expect(ret1.length == 2).assertTrue();
+        let allowedAppDistributionTypes2:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.removeInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes2);
+        let ret2: Array<bundleManager.AppDistributionType> =
+          bundleManager.getInstallationAllowedAppDistributionTypes(SELFWANT);
+        expect(ret2.length == 1).assertTrue();
+      } catch(error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    });
+
+    /**
      * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDDISALLOWEDINSTALLBUNDLESSYNC_001
      * @tc.name      : test_addDisallowedInstallBundlesSync_001
      * @tc.desc      : test addDisallowedInstallBundlesSync method with unActive admin
