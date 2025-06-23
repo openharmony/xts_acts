@@ -23,7 +23,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0100
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0100
     * @tc.desc    The parameter eventType input is accessibilityFocus, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -54,7 +54,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0200
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0200
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0200
     * @tc.desc    The parameter input eventType is accessibilityFocus, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -80,7 +80,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0300
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0300
     * @tc.desc    The parameter eventType input is accessibilityFocusClear, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -111,7 +111,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0400
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0400
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0400
     * @tc.desc    The parameter input eventType is accessibilityFocusClear, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -139,7 +139,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0500
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0500
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0500
     * @tc.desc    The parameter eventType input is click, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -170,7 +170,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0600
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0600
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0600
     * @tc.desc    The parameter input eventType is click, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -198,7 +198,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0700
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0700
     * @tc.desc    The parameter eventType input is longClick, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -229,7 +229,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0800
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0800
     * @tc.desc    The parameter input eventType is longClick, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -257,7 +257,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_0900
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0900
     * @tc.desc    The parameter eventType input is focus, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -288,7 +288,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1000
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1000
     * @tc.desc    The parameter input eventType is focus, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -316,7 +316,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1100
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1100
     * @tc.desc    The parameter eventType input is select, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -347,7 +347,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1200
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1200
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1200
     * @tc.desc    The parameter input eventType is select, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -375,7 +375,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1300
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1300
     * @tc.desc    The parameter eventType input is hoverEnter, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -406,7 +406,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1400
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1400
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1400
     * @tc.desc    The parameter input eventType is hoverEnter, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -434,7 +434,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1500
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1500
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1500
     * @tc.desc    The parameter eventType input is hoverExit, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -465,7 +465,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1600
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1600
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1600
     * @tc.desc    The parameter input eventType is hoverExit, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -493,7 +493,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1700
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1700
     * @tc.desc    The parameter eventType input is textUpdate, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -524,7 +524,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1800
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1800
     * @tc.desc    The parameter input eventType is textUpdate, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -552,7 +552,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_1900
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1900
     * @tc.desc    The parameter eventType input is textSelectionUpdate, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -583,7 +583,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2000
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2000
     * @tc.desc    The parameter input eventType is textSelectionUpdate, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -611,7 +611,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2100
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2100
     * @tc.desc    The parameter eventType input is scroll, test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -642,7 +642,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2200
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2200
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2200
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -670,7 +670,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2300
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2300
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -698,7 +698,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2400
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2400
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2400
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -726,7 +726,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2500
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2500
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2500
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -754,7 +754,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2600
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2600
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2600
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -782,7 +782,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2700
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2700
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -810,7 +810,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2800
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2800
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -838,7 +838,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_2900
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2900
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -866,7 +866,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3000
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3000
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -894,7 +894,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3100
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3100
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -922,7 +922,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3300
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3300
     * @tc.desc    The parameter triggerAction input is 'accessibilityFocus', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -953,7 +953,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3400
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3400
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3400
     * @tc.desc    The parameter triggerAction input is 'accessibilityFocus', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -981,7 +981,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3500
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3500
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3500
     * @tc.desc    The parameter triggerAction input is 'clearAccessibilityFocus', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1012,7 +1012,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3600
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3600
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3600
     * @tc.desc    The parameter triggerAction input is 'clearAccessibilityFocus', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1040,7 +1040,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3700
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3700
     * @tc.desc    The parameter triggerAction input is 'focus', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1071,7 +1071,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3800
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3800
     * @tc.desc    The parameter triggerAction input is 'focus', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1099,7 +1099,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3900
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3900
     * @tc.desc    The parameter triggerAction input is 'clearFocus', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1130,7 +1130,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4000
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4000
     * @tc.desc    The parameter triggerAction input is 'clearFocus', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1158,7 +1158,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4100
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4100
     * @tc.desc    The parameter triggerAction input is 'clearSelection', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1189,7 +1189,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4200
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4200
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4200
     * @tc.desc    The parameter triggerAction input is 'clearSelection', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1217,7 +1217,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4300
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4300
     * @tc.desc    The parameter triggerAction input is 'click', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1248,7 +1248,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4400
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4400
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4400
     * @tc.desc    The parameter triggerAction input is 'click', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1276,7 +1276,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4500
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4500
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4500
     * @tc.desc    The parameter triggerAction input is 'longClick', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1307,7 +1307,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4600
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4600
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4600
     * @tc.desc    The parameter triggerAction input is 'longClick', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1335,7 +1335,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4700
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4700
     * @tc.desc    The parameter triggerAction input is 'cut', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1366,7 +1366,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4800
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4800
     * @tc.desc    The parameter triggerAction input is 'cut', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1394,7 +1394,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_4900
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4900
     * @tc.desc    The parameter triggerAction input is 'copy', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1425,7 +1425,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5000
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5000
     * @tc.desc    The parameter triggerAction input is 'copy', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1453,7 +1453,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5100
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5100
     * @tc.desc    The parameter triggerAction input is 'paste', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1484,7 +1484,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5200
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5200
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5200
     * @tc.desc    The parameter triggerAction input is 'paste', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1512,7 +1512,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5300
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5300
     * @tc.desc    The parameter triggerAction input is 'select', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1543,7 +1543,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5400
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5400
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5400
     * @tc.desc    The parameter triggerAction input is 'select', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1571,7 +1571,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5500
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5500
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5500
     * @tc.desc    The parameter triggerAction input is 'setText', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1602,7 +1602,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5600
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5600
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5600
     * @tc.desc    The parameter triggerAction input is 'setText', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1630,7 +1630,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5700
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5700
     * @tc.desc    The parameter triggerAction input is 'delete', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1661,7 +1661,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5800
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5800
     * @tc.desc    The parameter triggerAction input is 'delete', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1689,7 +1689,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_5900
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5900
     * @tc.desc    The parameter triggerAction input is 'scrollForward', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1720,7 +1720,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6000
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6000
     * @tc.desc    The parameter triggerAction input is 'scrollForward', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1748,7 +1748,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6100
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6100
     * @tc.desc    The parameter triggerAction input is 'scrollBackward', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1779,7 +1779,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6200
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6200
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6200
     * @tc.desc    The parameter triggerAction input is 'scrollBackward', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1807,7 +1807,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6300
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6300
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1838,7 +1838,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6400
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6400
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6400
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1866,7 +1866,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6500
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6500
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6500
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1894,7 +1894,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6600
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6600
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6600
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1925,7 +1925,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6700
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6700
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1953,7 +1953,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6800
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6800
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -1984,7 +1984,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_6900
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6900
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2012,7 +2012,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_7000
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7000
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent()
     *             function. The result of sendAccessibilityEvent() should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2043,7 +2043,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7100
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_7100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7100
     * @tc.desc    The parameter triggerAction input is 'setSelection', test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2071,7 +2071,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7200
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7200
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2099,7 +2099,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7300
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7300
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2127,7 +2127,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7400
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7400
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2155,7 +2155,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7500
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7500
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2183,7 +2183,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7600
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7600
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2211,7 +2211,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7700
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2239,7 +2239,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7800
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2267,7 +2267,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7900
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2295,7 +2295,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_3100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8000
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
@@ -2323,7 +2323,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8700
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_8700
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8700
     * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
     *             The result of sendEvent() should be equal to a Callback of undefined
     * @tc.size    MEDIUMTEST
@@ -2353,7 +2353,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8800
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_8800
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8800
     * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    MEDIUMTEST
@@ -2380,7 +2380,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8900
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_8900
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8900
     * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
     *             The result of sendEvent() should be equal to a Callback of undefined
     * @tc.size    MEDIUMTEST
@@ -2410,7 +2410,7 @@ export default function abilityTest() {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_9000
-    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_AccessibilitySendAccessibilityEvent_static_9000
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_9000
     * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    MEDIUMTEST
