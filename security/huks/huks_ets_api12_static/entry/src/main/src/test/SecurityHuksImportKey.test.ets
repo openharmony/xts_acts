@@ -44,7 +44,7 @@ export default function SecurityHuksImportKeyTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_ImportKey_API18_Func_0100', TestType.Fu | Size.SMALLTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('SUB_Security_HUKS_ImportKey_API18_Func_0100', TestType.SAFETY | Size.SMALLTEST | Level.LEVEL3, async (): Promise<void> => {
       let testNumber: string = "SUB_Security_HUKS_ImportKey_API18_Func_0100";
       try {
         let deviceAKeyPairAlias: string = testNumber + "_deviceAKeyPairAlias";
