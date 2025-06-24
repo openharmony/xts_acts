@@ -74,6 +74,7 @@ group("ability_runtime") {
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
       "actssandboxcontexttest:ActsSandboxContextTest",
       "actsserviceabilityclienttest:serviceability",
+      "actssetfontsizetest:ActsSetFontSizeTest",
       "actssetfonttest:ActsSetFontTest",
       "actsshareacquiresharedata:ActsShareAcquireShareData",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
