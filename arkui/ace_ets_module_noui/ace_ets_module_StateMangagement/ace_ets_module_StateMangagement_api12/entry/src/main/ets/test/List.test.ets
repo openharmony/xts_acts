@@ -202,6 +202,7 @@ import RepeatTest0020 from './RepeatTest/RepeatTest0020.test';
 import LazyForEachInterface from './LazyForEach/LazyForEachInterface.test';
 import RepeatTest0010 from './RepeatTest/RepeatTest0010.test';
 import RepeatTest0400 from './RepeatTest/RepeatTest0400.test';
+import RepeatwithAnimateTo from './RepeatTest/RepeatwithAnimateTo.test';
 
 export default function testsuite() {
     ExtendTrackTest();
@@ -393,4 +394,5 @@ export default function testsuite() {
 	  RepeatTest0020();
     RepeatTest0010();
     RepeatTest0400();
+    RepeatwithAnimateTo();
 }
