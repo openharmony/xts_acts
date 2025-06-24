@@ -34,6 +34,7 @@ group("hiviewdfxtestacts") {
       "hilogndktest:ActsHilogNdkTest",
       "hilogtest/hilogdomainofftest:ActsHilogDomainOffJsTest",
       "hilogtest/hilogdomainontest:ActsHilogDomainOnJsTest",
+      "hilogtsteststatic:ActsHilogStaticTest",
       "hisyseventtest/hisyseventboxtest:ActsHiSysEventBoxTest",
       "hisyseventtest/hisyseventjstest:ActsHiSysEventJsTest",
       "hisyseventtest/hisyseventnormaltest:ActsHiSysEventNormalTest",
