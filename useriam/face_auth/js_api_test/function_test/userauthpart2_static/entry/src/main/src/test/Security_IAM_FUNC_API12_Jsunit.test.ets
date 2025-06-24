@@ -117,7 +117,7 @@ export default function userauthTest_API12() {
     })
     /*
     * @tc.number    : SUB_Security_IAM_authWidget_API_Static_0120
-    * @tc.name      : SUB_Security_IAM_authWidget_API_Static_0130
+    * @tc.name      : SUB_Security_IAM_authWidget_API_Static_0120
     * @tc.desc      : ReuseUnlockResultDuration: 120000. ReuseUnlockResultMode: 2.
     * @tc.size      : MediumTest
     * @tc.type      : Function

@@ -169,20 +169,20 @@ export default function signNormalNotAccessBiometricExecute() {
     });
 
     /*
-        * @tc.number    : SUB_Security_IAM_authWidget_API_0200
-        * @tc.name      : SUB_Security_IAM_authWidget_API_0200.
+        * @tc.number    : SUB_Security_IAM_authWidget_API_static_0200
+        * @tc.name      : SUB_Security_IAM_authWidget_API_static_0200
         * @tc.desc      : call ReuseMode interface parameter check
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3
     */
-    it('SUB_Security_IAM_authWidget_API_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, format,"SUB_Security_IAM_authWidget_API_0200 start");
+    it('SUB_Security_IAM_authWidget_API_static_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, format,"SUB_Security_IAM_authWidget_API_static_0200 start");
       expect(''+1).assertEqual(''+userAuth.ReuseMode.AUTH_TYPE_RELEVANT);
       expect(''+2).assertEqual(''+userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT);
       expect(''+3).assertEqual(''+userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT);
       expect(''+4).assertEqual(''+userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT);
-      hilog.info(domain, tag, format,'SUB_Security_IAM_authWidget_API_0200 end');
+      hilog.info(domain, tag, format,'SUB_Security_IAM_authWidget_API_static_0200 end');
       done();
     });
   });
