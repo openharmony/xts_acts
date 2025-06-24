@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, Level } from '@ohos/hypium'
+import { describe, it, expect, Level, TestType, Size } from '@ohos/hypium'
 import userAuth from '@ohos.userIAM.userAuth'
 import { checkSupportOrNot } from './utils/commonFunc';
 
@@ -74,7 +74,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_UserAuthInstance_Func_0042', Level.LEVEL2, async function (done) {
+    it('Security_IAM_UserAuthInstance_Func_0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_UserAuthInstance_Func_0042 start");
       try {
         const userAuthInstance = userAuth.getUserAuthInstance(authParamDefault, widgetParamDefault);
@@ -96,7 +96,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_UserAuthInstance_Func_0050', Level.LEVEL2, async function (done) {
+    it('Security_IAM_UserAuthInstance_Func_0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_UserAuthInstance_Func_0050 start");
       try {
         const userAuthInstance = userAuth.getUserAuthInstance(authParamDefault, widgetParamDefault);     
@@ -116,7 +116,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_UserAuthInstance_Func_0090', Level.LEVEL2, async function (done) {
+    it('Security_IAM_UserAuthInstance_Func_0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_UserAuthInstance_Func_0090 start");
       try {
         const userAuthInstance = userAuth.getUserAuthInstance(authParamDefault, widgetParamDefault);
@@ -138,7 +138,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3
     */
-    it('SUB_Security_IAM_authWidget_API_0130', Level.LEVEL2, async function (done) {
+    it('SUB_Security_IAM_authWidget_API_0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0130 start");
       let reuseDuration1 = [-1, 300001, 0];
       let reuseDuration2 = [1, 5, userAuth.MAX_ALLOWABLE_REUSE_DURATION];
@@ -200,7 +200,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3
     */
-    it('SUB_Security_IAM_authWidget_API_0150', Level.LEVEL2, async function (done) {
+    it('SUB_Security_IAM_authWidget_API_0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0150 start");
       let reuseUnlockResult = {
         reuseMode: userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT,
@@ -229,7 +229,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3
     */
-    it('SUB_Security_IAM_authWidget_API_0100', Level.LEVEL2, async function (done) {
+    it('SUB_Security_IAM_authWidget_API_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0100 start");
       let reuseUnlockResult = {
         reuseMode: null,
@@ -268,7 +268,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3
     */
-    it('SUB_Security_IAM_authWidget_API_0120', Level.LEVEL2, async function (done) {
+    it('SUB_Security_IAM_authWidget_API_0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0120 start");
       let reuseUnlockResult = {
         reuseMode: userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT,
@@ -296,7 +296,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3
     */
-    it('SUB_Security_IAM_authWidget_API_0140', Level.LEVEL2, async function (done) {
+    it('SUB_Security_IAM_authWidget_API_0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0140 start");
       let checkFace = await checkSupportOrNot(userAuth.UserAuthType.FACE);
       if (checkFace == 0) {
@@ -361,7 +361,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3
     */
-    it('SUB_Security_IAM_authWidget_API_0110', Level.LEVEL2, async function (done) {
+    it('SUB_Security_IAM_authWidget_API_0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0110 start");
       let reuseUnlockResult = {
         reuseMode: userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT,
@@ -400,7 +400,7 @@ export default function signNormalNotAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL3
     */
-    it('SUB_Security_IAM_authWidget_API_0200', Level.LEVEL2, async function (done) {
+    it('SUB_Security_IAM_authWidget_API_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0200 start");
       expect(1).assertEqual(userAuth.ReuseMode.AUTH_TYPE_RELEVANT);
       expect(2).assertEqual(userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT);

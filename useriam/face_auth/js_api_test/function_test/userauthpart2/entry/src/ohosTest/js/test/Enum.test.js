@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, Level } from '@ohos/hypium'
+import { describe, it, expect, Level, TestType, Size } from '@ohos/hypium'
 import userAuth from '@ohos.userIAM.userAuth'
 
 export default function signNormalNotAccessBiometricEnumExecute() {
@@ -25,7 +25,7 @@ export default function signNormalNotAccessBiometricEnumExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_userAuthType_Kit_Func_0084', Level.LEVEL2, async function (done) {
+    it('Security_IAM_userAuthType_Kit_Func_0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testFace Security_IAM_userAuthType_Kit_Func_0084 start');
       expect(1).assertEqual(userAuth.UserAuthType.PIN);
       expect(2).assertEqual(userAuth.UserAuthType.FACE);
@@ -42,7 +42,7 @@ export default function signNormalNotAccessBiometricEnumExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_widgetNotice_Kit_Func_0085', Level.LEVEL2, async function (done) {
+    it('Security_IAM_widgetNotice_Kit_Func_0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('Security_IAM_widgetNotice_Kit_Func_0085 start');
       expect(1).assertEqual(userAuth.WindowModeType.DIALOG_BOX);
       expect(2).assertEqual(userAuth.WindowModeType.FULLSCREEN);
@@ -57,7 +57,7 @@ export default function signNormalNotAccessBiometricEnumExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_widgetNotice_Kit_Func_0086', Level.LEVEL2, async function (done) {
+    it('Security_IAM_widgetNotice_Kit_Func_0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testFace Security_IAM_widgetNotice_Kit_Func_0086 start');
       expect(1).assertEqual(userAuth.NoticeType.WIDGET_NOTICE);
       console.info('Security_IAM_widgetNotice_Kit_Func_0086 end');
@@ -71,7 +71,7 @@ export default function signNormalNotAccessBiometricEnumExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_userAuthResultCode_Kit_Func_0087', Level.LEVEL2, async function (done) {
+    it('Security_IAM_userAuthResultCode_Kit_Func_0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('Security_IAM_userAuthResultCode_Kit_Func_0087 start');
       expect(12500011).assertEqual(userAuth.UserAuthResultCode.CANCELED_FROM_WIDGET);
       console.info('Security_IAM_userAuthResultCode_Kit_Func_0087 end');
