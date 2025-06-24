@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsSetFontSizeTest.hap",
+                "ActsSetFontSizeTestTest.hap",
                 "ActsSetFontSizeRely-entry-default-signed.hap",
                 "ActsSetFontSizeRely-feature-default-signed.hap"
             ],

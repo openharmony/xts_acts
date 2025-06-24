@@ -17,7 +17,7 @@ group("ActsSetFontSize") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actssetfontsizetest:ActsSetFontSizeTest",
+      "actssetfontsizetest:ActsSetFontSizeTestTest",
       "actssetfontsizerely:ActsSetFontSizeRely"
     ]
   }
