@@ -1277,4 +1277,45 @@ describe("SensorJsTest_sensor_41", function () {
             done();
         }
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0270
+     * @tc.name: newAmbientLight_SensorJsTest027
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newAmbientLight_SensorJsTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAmbientLight_SensorJsTest027--------------');
+        const TAG = 'newAmbientLight_SensorJsTest027'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.AMBIENT_LIGHT, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback, options);
+                setTimeout(() => {
+                    console.info('----------------------newAmbientLight_SensorJsTest027 off in--------------');
+                    sensor.off(sensor.SensorId.AMBIENT_LIGHT, sensorInfoParam, callback);
+                    console.info('----------------------newAmbientLight_SensorJsTest027 off end--------------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}

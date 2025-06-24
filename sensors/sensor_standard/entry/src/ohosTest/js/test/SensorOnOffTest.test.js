@@ -132,4 +132,78 @@ describe('SystemParameterTest', function () {
         }
         console.info(TAG + ' end');
     })
+
+    /**
+     * @tc.number:SUB_SENSORS_Sensor_OnOff_JSTest_001
+     * @tc.name:testOnOffSensorStatusChange001
+     * @tc.desc:test stop listening on device status changes
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testOnOffSensorStatusChange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'testOnOffSensorStatusChange001'
+        console.info(TAG + ' in');
+        const onCallback = (statusEvent) => {
+            console.info(TAG + ' Callback should not be triggered!');
+            console.info(TAG + " statusEvent.timestamp:" + statusEvent.timestamp);
+            console.info(TAG + " statusEvent.sensorId:" + statusEvent.sensorId);
+            console.info(TAG + " statusEvent.sensorIndex:" + statusEvent.sensorIndex);
+            console.info(TAG + " statusEvent.isSensorOnline:" + statusEvent.isSensorOnline);
+            console.info(TAG + " statusEvent.deviceId:" + statusEvent.deviceId);
+            console.info(TAG + " statusEvent.deviceName:" + statusEvent.deviceName);
+        };
+        try {
+            sensor.on('sensorStatusChange', onCallback);
+            setTimeout(() => {
+                sensor.off('sensorStatusChange', onCallback);
+                console.info(TAG + ' Successfully stopped listening');
+                done();
+            }, 1000);
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(false).assertTrue();
+            done();
+        }
+        console.info(TAG + ' end');
+    })
+
+    /**
+     * @tc.number:SUB_SENSORS_Sensor_OnOff_JSTest_002
+     * @tc.name:testOnOffSensorStatusChange002
+     * @tc.desc:test get sensor status event by wrong prameter
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+
+    it('testOnOffSensorStatusChange002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'testOnOffSensorStatusChange002';
+        console.info(TAG + ' in');
+        const invalidEventType = ' ';
+        const callback = (statusEvent) => {
+            console.info(TAG + ' Callback should not be triggered!');
+            console.info(TAG + " statusEvent.timestamp:" + statusEvent.timestamp);
+            console.info(TAG + " statusEvent.sensorId:" + statusEvent.sensorId);
+            console.info(TAG + " statusEvent.sensorIndex:" + statusEvent.sensorIndex);
+            console.info(TAG + " statusEvent.isSensorOnline:" + statusEvent.isSensorOnline);
+            console.info(TAG + " statusEvent.deviceId:" + statusEvent.deviceId);
+            console.info(TAG + " statusEvent.deviceName:" + statusEvent.deviceName);
+        };
+        try {
+            sensor.on(invalidEventType, callback);
+            console.info(TAG + ' Registration with invalid type unexpectedly succeeded');
+            expect(false).assertTrue('Registration should have failed');
+            setTimeout(() => {
+                sensor.off(invalidEventType, callback);
+                done();
+            }, 500);
+            done();
+        } catch (error) {
+            console.info(TAG + ' Caught expected error: ' + error.code + ', ' + error.message);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            done();
+        }
+        console.info(TAG + ' end');
+    })
 })}

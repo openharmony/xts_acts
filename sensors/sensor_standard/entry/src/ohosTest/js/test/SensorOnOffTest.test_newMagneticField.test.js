@@ -1142,4 +1142,45 @@ describe("SensorJsTest_sensor_37", function () {
             done();
         }
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_NEWMAGNETIC_FIELD_JSTest_0260
+     * @tc.name: newMagneticField_SensorJsTest026
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newMagneticField_SensorJsTest026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newMagneticField_SensorJsTest026--------------');
+        const TAG = 'newMagneticField_SensorJsTest026'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.MAGNETIC_FIELD, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.MAGNETIC_FIELD, callback, options);
+                setTimeout(() => {
+                    console.info('-------------------newMagneticField_SensorJsTest026 off in------------');
+                    sensor.off(sensor.SensorId.MAGNETIC_FIELD, sensorInfoParam, callback);
+                    console.info('-------------------newMagneticField_SensorJsTest026 off end-----------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}

@@ -1129,4 +1129,45 @@ describe("SensorJsTest_sensor_49", function () {
             done();
         }
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_NEWROTATION_VECTOR_JSTest_0250
+     * @tc.name: newRotatingVector_SensorJsTest025
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newRotatingVector_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newRotatingVector_SensorJsTest025--------------');
+        const TAG = 'newRotatingVector_SensorJsTest025'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ROTATION_VECTOR, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.ROTATION_VECTOR, callback, options);
+                setTimeout(() => {
+                    console.info('-------------------newRotatingVector_SensorJsTest025 off in------------');
+                    sensor.off(sensor.SensorId.ROTATION_VECTOR, sensorInfoParam, callback);
+                    console.info('-------------------newRotatingVector_SensorJsTest025 off end-----------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}

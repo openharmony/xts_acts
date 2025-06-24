@@ -1147,4 +1147,45 @@ describe("SensorJsTest_sensor_48", function () {
             done();
         }
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0260
+     * @tc.name: newOrientating_SensorJsTest026
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newOrientating_SensorJsTest026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newOrientating_SensorJsTest026--------------');
+        const TAG = 'newOrientating_SensorJsTest026'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ORIENTATION, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.ORIENTATION, callback, options);
+                setTimeout(() => {
+                    console.info('-------------------newOrientating_SensorJsTest026 off in------------');
+                    sensor.off(sensor.SensorId.ORIENTATION, sensorInfoParam, callback);
+                    console.info('-------------------newOrientating_SensorJsTest026 off end-----------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}
