@@ -358,7 +358,7 @@ export default function fileIORandomAccessFileRead() {
         let bytesWritten = await randomaccessfile.write(new ArrayBuffer(length));
         expect(bytesWritten == length).assertTrue();
         randomaccessfile.setFilePointer(0);
-        randomaccessfile.read(new ArrayBuffer(length), (err: BusinessError, readLength: number) => {
+        randomaccessfile.read(new ArrayBuffer(length), (err: BusinessError | null, readLength: number | undefined) => {
           expect(readLength == length).assertTrue();
           randomaccessfile.close();
           fs.unlinkSync(fpath);
@@ -385,7 +385,7 @@ export default function fileIORandomAccessFileRead() {
       expect(res).assertTrue();
 
       try {
-        fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, async (err: BusinessError, randomaccessfile: fs.RandomAccessFile) => {
+        fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, async (err: BusinessError | null, randomaccessfile: fs.RandomAccessFile | undefined) => {
           let length = 20;
           let bytesWritten = await randomaccessfile.write(new ArrayBuffer(length));
           expect(bytesWritten == length).assertTrue();
@@ -455,7 +455,7 @@ export default function fileIORandomAccessFileRead() {
         let bytesWritten = await randomaccessfile.write(new ArrayBuffer(length));
         expect(bytesWritten == length).assertTrue();
         randomaccessfile.setFilePointer(0);
-        randomaccessfile.read(new ArrayBuffer(length), { offset: 1, length: 5 }, (err: BusinessError, readLength: number) => {
+        randomaccessfile.read(new ArrayBuffer(length), { offset: 1, length: 5 }, (err: BusinessError | null, readLength: number | undefined) => {
           expect(readLength == 5).assertTrue();
           randomaccessfile.close();
           fs.unlinkSync(fpath);
@@ -514,7 +514,7 @@ export default function fileIORandomAccessFileRead() {
       let randomaccessfile = await fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
 
       try {
-        randomaccessfile.read(new ArrayBuffer(4096), { offset: -1 }, (err: BusinessError, readLength: number) => {
+        randomaccessfile.read(new ArrayBuffer(4096), { offset: -1 }, (err: BusinessError | null, readLength: number | undefined) => {
           expect(err.code == 13900020 && err.message == "Invalid argument").assertTrue();
           randomaccessfile.close();
           fs.unlinkSync(fpath);
@@ -599,7 +599,7 @@ export default function fileIORandomAccessFileRead() {
 
       try {
         let length = 4096;
-        randomaccessfile.read(new ArrayBuffer(length), { offset: length + 1 }, (err: BusinessError, readLength: number) => {
+        randomaccessfile.read(new ArrayBuffer(length), { offset: length + 1 }, (err: BusinessError | null, readLength: number | undefined) => {
           expect(readLength == 0).assertTrue();
           randomaccessfile.close();
           fs.closeSync(file.fd);
@@ -719,7 +719,7 @@ export default function fileIORandomAccessFileRead() {
         expect(bytesWritten == length).assertTrue();
         expect(randomaccessfile.filePointer == bytesWritten).assertTrue();
         randomaccessfile.setFilePointer(0);
-        randomaccessfile.read(new ArrayBuffer(length), (err: BusinessError, readLength: number) => {
+        randomaccessfile.read(new ArrayBuffer(length), (err: BusinessError | null, readLength: number | undefined) => {
           expect(readLength == length).assertTrue();
           expect(randomaccessfile.filePointer == readLength).assertTrue();
           randomaccessfile.close();
@@ -747,7 +747,7 @@ export default function fileIORandomAccessFileRead() {
       expect(res).assertTrue();
 
       try {
-        fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, async (err: BusinessError, randomaccessfile: fs.RandomAccessFile) => {
+        fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, async (err: BusinessError | null, randomaccessfile: fs.RandomAccessFile | undefined) => {
           let length = 20;
           let bytesWritten = await randomaccessfile.write(new ArrayBuffer(length));
           expect(bytesWritten == length).assertTrue();

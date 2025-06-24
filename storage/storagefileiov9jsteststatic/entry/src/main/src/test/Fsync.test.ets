@@ -130,7 +130,7 @@ export default function fileIOFsync() {
 
       try {
         let file = fs.openSync(fpath, fs.OpenMode.READ_WRITE);
-        fs.fsync(file.fd, (err: BusinessError) => {
+        fs.fsync(file.fd, (err: BusinessError<void> | null) => {
           fs.closeSync(file);
           fs.unlinkSync(fpath);
         });
@@ -176,10 +176,10 @@ export default function fileIOFsync() {
     it('fileIO_test_fsync_async_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
 
       try {
-        fs.fsync(-1, (err: BusinessError) => {
-          if (err) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fsync_async_static_004 error: {message: ' + err.message + ', code: ' + err.code + '}')
-            expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
+        fs.fsync(-1, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fsync_async_static_004 error: {message: ' + err?.message + ', code: ' + err?.code + '}')
+            expect(err?.code == 13900008 && err?.message == 'Bad file descriptor').assertTrue();
             done();
           }
         });
@@ -205,9 +205,11 @@ export default function fileIOFsync() {
         fs.fsync(-1).then(() => {
           expect(false).assertTrue();
         }).catch((err: BusinessError): Promise<void> => {
-          hilog.info(domain, tag, '%{public}s', 'fileIO_test_fsync_async_static_005 error: {message: ' + JSON.stringify(err) + '}');
-          expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
-          done();
+          if(err?.code != 0){
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fsync_async_static_005 error: {message: ' + JSON.stringify(err) + '}');
+            expect(err?.code == 13900008 && err?.message == 'Bad file descriptor').assertTrue();
+            done();
+          }
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_fsync_async_static_005 end error' + JSON.stringify(e))

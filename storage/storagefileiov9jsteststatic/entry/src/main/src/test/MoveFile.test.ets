@@ -239,7 +239,7 @@ export default function fileIOMoveFile() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        fs.moveFile(fpath, ffpath, (err: BusinessError) => {
+        fs.moveFile(fpath, ffpath, (err: BusinessError<void> | null) => {
           let stat = fs.statSync(ffpath);
           expect(stat.size == FILE_CONTENT.length).assertTrue();
           fs.rmdirSync(dpath);
@@ -303,11 +303,11 @@ export default function fileIOMoveFile() {
 
       try {
         fs.copyFileSync(fpath, ffpath);
-        fs.moveFile(fpath, ffpath, 1, (err: BusinessError) => {
-          if (err) {
+        fs.moveFile(fpath, ffpath, 1, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
             fs.rmdirSync(dpath);
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_moveFile_async_static_003 error: {message: ' + err.message + ', code: ' + err.code + '}');
-            expect(err.code == 13900015 && err.message == 'File exists').assertTrue();
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_moveFile_async_static_003 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
+            expect(err?.code == 13900015 && err?.message == 'File exists').assertTrue();
             done();
           }
         });
@@ -365,11 +365,11 @@ export default function fileIOMoveFile() {
       fs.mkdirSync(ddpath);
 
       try {
-        fs.moveFile(fpath, ffpath, (err: BusinessError) => {
-          if (err) {
+        fs.moveFile(fpath, ffpath, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
             fs.rmdirSync(dpath);
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_moveFile_async_static_005 error: {message: ' + err.message + ', code: ' + err.code + '}');
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_moveFile_async_static_005 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -422,10 +422,10 @@ export default function fileIOMoveFile() {
       fs.mkdirSync(dpath);
 
       try {
-        fs.moveFile(dpath, ddpath, (err: BusinessError) => {
-          if (err) {
+        fs.moveFile(dpath, ddpath, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_moveFile_async_static_007 error1' + JSON.stringify(err));
-            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
             fs.rmdirSync(dpath);
             done();
           }
@@ -490,7 +490,7 @@ export default function fileIOMoveFile() {
       expect(await Utils.prepareFile(ffpath, '')).assertTrue();
 
       try {
-        fs.moveFile(fpath, ffpath, 0, (err: BusinessError) => {
+        fs.moveFile(fpath, ffpath, 0, (err: BusinessError<void> | null) => {
           let stat = fs.statSync(ffpath);
           expect(stat.size == FILE_CONTENT.length).assertTrue();
           fs.rmdirSync(dpath);

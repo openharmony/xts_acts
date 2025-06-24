@@ -417,10 +417,10 @@ export default function fileIOCreateStream() {
       let fpath = await Utils.nextFileName('fileIO_test_create_stream_async_static_003');
 
       try {
-        fs.createStream(fpath, 'r', (err: BusinessError) => {
-          if (err) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_003 error: {message: ' + err.message + ', code: ' + err.code + '}');
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+        fs.createStream(fpath, 'r', (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_003 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -474,7 +474,7 @@ export default function fileIOCreateStream() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        fs.createStream(fpath, 'r+', (err: BusinessError, sr: fs.Stream) => {
+        fs.createStream(fpath, 'r+', (err: BusinessError | null, sr: fs.Stream | undefined) => {
           expect(sr !== null).assertTrue();
           expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
           expect(sr.writeSync(FILE_CONTENT, { offset: 0 }) == FILE_CONTENT.length).assertTrue();
@@ -525,10 +525,12 @@ export default function fileIOCreateStream() {
       let fpath = await Utils.nextFileName('fileIO_test_create_stream_async_static_007');
 
       try {
-        fs.createStream(fpath, 'r+', (err: BusinessError) => {
-          hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_007 error: {message: ' + err.message + ', code: ' + err.code + '}');
-          expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
-          done();
+        fs.createStream(fpath, 'r+', (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_007 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
+            done();
+          }
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_007 end error' + JSON.stringify(e));
@@ -609,19 +611,19 @@ export default function fileIOCreateStream() {
       let fpath = await Utils.nextFileName('fileIO_test_create_stream_async_static_012');
 
       try {
-        fs.createStream(fpath, 'w', (err: BusinessError, sw: fs.Stream) => {
+        fs.createStream(fpath, 'w', (err: BusinessError | null, sw: fs.Stream | undefined) => {
           expect(sw !== null).assertTrue();
           expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_012 start');
           sw.read(new ArrayBuffer(4096), {
             length: 5
-          }, (err: BusinessError) => {
-            if (err) {
+          }, (err: BusinessError<void> | null) => {
+            if (err?.code != 0) {
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_012 start111');
               sw.closeSync();
               fs.unlinkSync(fpath);
-              hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_012 error: {message: ' + err.message + ', code: ' + err.code + '}');
-              expect(err.code == 13900005 && err.message == 'I/O error').assertTrue();
+              hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_012 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
+              expect(err?.code == 13900005 && err?.message == 'I/O error').assertTrue();
               done();
             } else {
               expect(false).assertTrue();
@@ -704,7 +706,7 @@ export default function fileIOCreateStream() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        fs.createStream(fpath, 'w+', (err: BusinessError, sw: fs.Stream) => {
+        fs.createStream(fpath, 'w+', (err: BusinessError | null, sw: fs.Stream | undefined) => {
           expect(sw !== null).assertTrue();
           expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
           expect(sw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
@@ -791,19 +793,19 @@ export default function fileIOCreateStream() {
       let fpath = await Utils.nextFileName('fileIO_test_create_stream_async_static_018');
 
       try {
-        fs.createStream(fpath, 'a', (err: BusinessError, sa: fs.Stream) => {
+        fs.createStream(fpath, 'a', (err: BusinessError | null, sa: fs.Stream | undefined) => {
           expect(sa !== null).assertTrue();
           expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_018 read start ');
           sa.read(new ArrayBuffer(4096), {
             length: 5
-          }, (err: BusinessError) => {
+          }, (err: BusinessError<void> | null) => {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_018 read 1111');
-            if (err) {
+            if (err?.code != 0) {
               sa.closeSync();
               fs.unlinkSync(fpath);
-              hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_018 error: {message: ' + err.message + ', code: ' + err.code + '}');
-              expect(err.code == 13900005 && err.message == 'I/O error').assertTrue();
+              hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_018 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
+              expect(err?.code == 13900005 && err?.message == 'I/O error').assertTrue();
               done();
             } else {
               expect(false).assertTrue();
@@ -886,7 +888,7 @@ export default function fileIOCreateStream() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        fs.createStream(fpath, 'a+', (err: BusinessError, sa: fs.Stream) => {
+        fs.createStream(fpath, 'a+', (err: BusinessError | null, sa: fs.Stream | undefined) => {
           expect(sa !== null).assertTrue();
           expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
           expect(sa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();

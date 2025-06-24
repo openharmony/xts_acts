@@ -42,16 +42,16 @@ export async function IOfunc(file: fs.File, bf: number, total: number, rand: boo
           }
         } else {
           if (read) {
-            fs.read(file.fd, array, { length: bf, offset: offset }, (err: BusinessError, readLen: number) => {
-              if (err.code != 0) {
-                hilog.info(domain, tag, '%{public}s', 'fileIO_test_read_callback has failed for ' + err.message + ', code: ' + err.code);
+            fs.read(file.fd, array, { length: bf, offset: offset }, (err: BusinessError | null, readLen: number | undefined) => {
+              if (err?.code != 0) {
+                hilog.info(domain, tag, '%{public}s', 'fileIO_test_read_callback has failed for ' + err?.message + ', code: ' + err?.code);
                 resolve(-1);
               }
             });
           } else {
-            fs.write(file.fd, array, { length: bf, offset: offset, encoding: 'utf-8' }, (err: BusinessError, writeLen: number) => {
-              if (err.code != 0) {
-                hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_callback has failed for ' + err.message + ', code: ' + err.code);
+            fs.write(file.fd, array, { length: bf, offset: offset, encoding: 'utf-8' }, (err: BusinessError | null, writeLen: number | undefined) => {
+              if (err?.code != 0) {
+                hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_callback has failed for ' + err?.message + ', code: ' + err?.code);
                 resolve(-1);
               }
             });

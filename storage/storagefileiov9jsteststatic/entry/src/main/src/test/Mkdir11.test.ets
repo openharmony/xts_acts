@@ -318,17 +318,17 @@ export default function fileIOMkdir11() {
       let dpath1 = dpath + '/d1/d2';
 
       try {
-        fs.mkdir(dpath, false, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.mkdir(dpath, false, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_008 error1 package: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
           expect(fs.accessSync(dpath)).assertTrue();
-          fs.mkdir(dpath1, false, (err: BusinessError) => {
-            if(err.code != 0) {
+          fs.mkdir(dpath1, false, (err: BusinessError<void> | null) => {
+            if(err?.code != 0) {
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_008 error package: ' + JSON.stringify(err));
               fs.rmdirSync(dpath);
-              expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+              expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
               done();
             }
           });
@@ -354,14 +354,14 @@ export default function fileIOMkdir11() {
       let dpath1 = dpath + '/d1/d2';
 
       try {
-        fs.mkdir(dpath, true, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.mkdir(dpath, true, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_009 error1 package: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
           expect(fs.accessSync(dpath)).assertTrue();
-          fs.mkdir(dpath1, true, (err: BusinessError) => {
-            if(err.code != 0) {
+          fs.mkdir(dpath1, true, (err: BusinessError<void> | null) => {
+            if(err?.code != 0) {
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_009 error package: ' + JSON.stringify(err));
               expect(false).assertTrue();
             }
@@ -391,17 +391,17 @@ export default function fileIOMkdir11() {
       let dpath1 = dpath + '/d1/d2';
 
       try {
-        fs.mkdir(dpath, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.mkdir(dpath, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_010 error1 package: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
           expect(fs.accessSync(dpath)).assertTrue();
-          fs.mkdir(dpath1, (err: BusinessError) => {
-            if(err.code != 0) {
+          fs.mkdir(dpath1, (err: BusinessError<void> | null) => {
+            if(err?.code != 0) {
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_010 error package: ' + JSON.stringify(err));
               fs.rmdirSync(dpath);
-              expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+              expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
               done();
             }
           });
@@ -427,11 +427,11 @@ export default function fileIOMkdir11() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        fs.mkdir(fpath, true, (err: BusinessError) => {
-          if(err.code != 0) {
+        fs.mkdir(fpath, true, (err: BusinessError<void> | null) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_012 error package: ' + JSON.stringify(err));
             fs.unlinkSync(fpath);
-            expect(err.code == 13900015 && err.message == 'File exists').assertTrue();
+            expect(err?.code == 13900015 && err?.message == 'File exists').assertTrue();
             done();
           }
         });
@@ -453,10 +453,10 @@ export default function fileIOMkdir11() {
      */
     it('fileIO_test_mkdir_async_new_static_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       try {
-        fs.mkdir('/', false, (err: BusinessError) => {
-          if(err.code != 0) {
+        fs.mkdir('/', false, (err: BusinessError<void> | null) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_013 error package: ' + JSON.stringify(err));
-            expect(err.code == 13900015 && err.message == 'File exists').assertTrue();
+            expect(err?.code == 13900015 && err?.message == 'File exists').assertTrue();
             done();
           }
         });
@@ -478,10 +478,10 @@ export default function fileIOMkdir11() {
      */
     it('fileIO_test_mkdir_async_new_static_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       try {
-        fs.mkdir('', false, (err: BusinessError) => {
-          if(err.code != 0) {
+        fs.mkdir('', false, (err: BusinessError<void> | null) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_new_static_014 error package: ' + JSON.stringify(err));
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });

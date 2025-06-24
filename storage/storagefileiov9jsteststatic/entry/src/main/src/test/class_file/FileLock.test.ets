@@ -321,7 +321,7 @@ export default function fileIOFileLock() {
       try {
         let file = fs.openSync(fpath, fs.OpenMode.READ_WRITE);
         expect(await Utils.isIntNum(file.fd)).assertTrue();
-        file.lock((err: BusinessError) => {
+        file.lock((err: BusinessError<void> | null) => {
           file.unlock();
           expect(true).assertTrue();
           fs.closeSync(file);
@@ -351,7 +351,7 @@ export default function fileIOFileLock() {
       try {
         let file = fs.openSync(fpath, fs.OpenMode.READ_WRITE);
         expect(await Utils.isIntNum(file.fd)).assertTrue();
-        file.lock(true, (err: BusinessError) => {
+        file.lock(true, (err: BusinessError<void> | null) => {
           file.unlock();
           expect(true).assertTrue();
           fs.closeSync(file);
@@ -381,7 +381,7 @@ export default function fileIOFileLock() {
       try {
         let file = fs.openSync(fpath, fs.OpenMode.READ_WRITE);
         expect(await Utils.isIntNum(file.fd)).assertTrue();
-        file.lock(false, (err: BusinessError) => {
+        file.lock(false, (err: BusinessError<void> | null) => {
           file.unlock();
           expect(true).assertTrue();
           fs.closeSync(file);

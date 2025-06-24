@@ -425,8 +425,8 @@ export default function fileIOOpen() {
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_001');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fs.open(fpath, fs.OpenMode.READ_ONLY, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.READ_ONLY, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_001 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -490,8 +490,8 @@ export default function fileIOOpen() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let length = 20;
       try {
-        fs.open(fpath, fs.OpenMode.WRITE_ONLY, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.WRITE_ONLY, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_003 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -546,10 +546,10 @@ export default function fileIOOpen() {
       hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_005 start');
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_005');
       try {
-        fs.open(fpath, fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_005 has error for' + JSON.stringify(err));
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -625,8 +625,8 @@ export default function fileIOOpen() {
       hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_008 start');
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_008');
       try {
-        fs.open(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_008 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -685,8 +685,8 @@ export default function fileIOOpen() {
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_010');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fs.open(fpath, fs.OpenMode.TRUNC | fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.TRUNC | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_010 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -751,8 +751,8 @@ export default function fileIOOpen() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let length = 100;
       try {
-        fs.open(fpath, fs.OpenMode.APPEND | fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.APPEND | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_012 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -812,8 +812,8 @@ export default function fileIOOpen() {
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_014');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fs.open(fpath, fs.OpenMode.NONBLOCK | fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.NONBLOCK | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_014 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -868,8 +868,8 @@ export default function fileIOOpen() {
       let dpath = await Utils.nextFileName('fileIO_test_open_async_static_016');
       fs.mkdirSync(dpath);
       try {
-        fs.open(dpath, fs.OpenMode.DIR, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(dpath, fs.OpenMode.DIR, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_016 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -923,11 +923,11 @@ export default function fileIOOpen() {
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_018');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fs.open(fpath, fs.OpenMode.DIR, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.DIR, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             fs.unlinkSync(fpath);
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_018 has error for' + JSON.stringify(err));
-            expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
+            expect(err?.code == 13900018 && err?.message == 'Not a directory').assertTrue();
             done();
           }
         });
@@ -1007,8 +1007,8 @@ export default function fileIOOpen() {
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_021');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fs.open(fpath, fs.OpenMode.NOFOLLOW | fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.NOFOLLOW | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_021 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -1064,8 +1064,8 @@ export default function fileIOOpen() {
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_023');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fs.open(fpath, fs.OpenMode.SYNC | fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath, fs.OpenMode.SYNC | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_023 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -1120,11 +1120,11 @@ export default function fileIOOpen() {
       let dpath = await Utils.nextFileName('fileIO_test_open_async_static_025');
       fs.mkdirSync(dpath);
       try {
-        fs.open(dpath, fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(dpath, fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             fs.rmdirSync(dpath);
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_025 has error for' + JSON.stringify(err));
-            expect(err.code == 13900019 && err.message == 'Is a directory').assertTrue();
+            expect(err?.code == 13900019 && err?.message == 'Is a directory').assertTrue();
             done();
           }
         });
@@ -1204,10 +1204,10 @@ export default function fileIOOpen() {
       let fpath = await Utils.nextFileName('fileIO_test_open_async_static_029');
       let fpath1 = fpath + await Utils.randomString(250);
       try {
-        fs.open(fpath1, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, (err: BusinessError, file: fs.File) => {
-          if(err.code != 0) {
+        fs.open(fpath1, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
+          if(err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_029 has error for' + JSON.stringify(err));
-            expect(err.code == 13900030 && err.message == 'File name too long').assertTrue();
+            expect(err?.code == 13900030 && err?.message == 'File name too long').assertTrue();
             done();
           }
         });

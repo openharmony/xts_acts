@@ -179,7 +179,7 @@ export default function fileIORename() {
         let fpath = await Utils.nextFileName('fileIO_test_rename_async_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         let newf = fpath + 'aaa';
-        fs.rename(fpath, newf, (err: BusinessError) => {
+        fs.rename(fpath, newf, (err: BusinessError<void> | null) => {
           expect(fs.accessSync(newf)).assertTrue();
           fs.unlinkSync(newf);
           done();
@@ -229,7 +229,7 @@ export default function fileIORename() {
       try {
         let fpath = await Utils.nextFileName('fileIO_test_rename_async_static_003');
         let newf = fpath + 'test';
-        fs.rename(fpath, newf, (err: BusinessError) => {
+        fs.rename(fpath, newf, (err: BusinessError<void> | null) => {
           if(err.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_rename_async_static_003 has error for' + JSON.stringify(err));
             expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
@@ -290,7 +290,7 @@ export default function fileIORename() {
         fs.mkdirSync(dpath + '/dir_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         let newf = dpath + '/dir_001/newFileName';
-        fs.rename(fpath, newf, (err: BusinessError) => {
+        fs.rename(fpath, newf, (err: BusinessError<void> | null) => {
           expect(fs.accessSync(newf)).assertTrue();
           fs.rmdirSync(dpath);
           done();
@@ -343,11 +343,11 @@ export default function fileIORename() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
         let fpathTarget = fpath + await Utils.randomString(250);
-        fs.rename(fpath, fpathTarget, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.rename(fpath, fpathTarget, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             fs.unlinkSync(fpath);
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_rename_async_static_007 has error for' + JSON.stringify(err));
-            expect(err.code == 13900030 && err.message == 'File name too long').assertTrue();
+            expect(err?.code == 13900030 && err?.message == 'File name too long').assertTrue();
             done();
           }
         });

@@ -446,14 +446,14 @@ export default function fileIOWrite() {
         let file = fs.openSync(fpath, fs.OpenMode.READ_WRITE);
         expect(await Utils.isIntNum(file.fd)).assertTrue();
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_001 file.fd ' + file.fd);
-        fs.write(file.fd, FILE_CONTENT, {}, (err: BusinessError, bytesWritten1: number) => {
-          if (err.code != 0) {
+        fs.write(file.fd, FILE_CONTENT, {}, (err: BusinessError | null, bytesWritten1: number | undefined) => {
+          if (err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_001 has error1 for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
           expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
-          fs.write(file.fd, FILE_CONTENT, {}, (err: BusinessError, bytesWritten2: number) => {
-            if (err.code != 0) {
+          fs.write(file.fd, FILE_CONTENT, {}, (err: BusinessError | null, bytesWritten2: number | undefined) => {
+            if (err?.code != 0) {
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_001 has error2 for' + JSON.stringify(err));
               expect(false).assertTrue();
             }
@@ -516,12 +516,12 @@ export default function fileIOWrite() {
       let file = fs.openSync(fpath, fs.OpenMode.READ_ONLY);
       try {
         expect(await Utils.isIntNum(file.fd)).assertTrue();
-        fs.write(file.fd, FILE_CONTENT, {length: 3},(err: BusinessError) => {
-          if(err.code != 0){
+        fs.write(file.fd, FILE_CONTENT, {length: 3},(err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             fs.closeSync(file);
             fs.unlinkSync(fpath);
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_003 has failed for' + JSON.stringify(err));
-            expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
+            expect(err?.code == 13900008 && err?.message == 'Bad file descriptor').assertTrue();
             done();
           }
         });
@@ -580,8 +580,8 @@ export default function fileIOWrite() {
         expect(await Utils.isIntNum(file.fd)).assertTrue();
         fs.write(file.fd, FILE_CONTENT, {
           length: 3,
-        }, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        }, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_005 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -645,8 +645,8 @@ export default function fileIOWrite() {
         expect(await Utils.isIntNum(file.fd)).assertTrue();
         fs.write(file.fd, FILE_CONTENT, {
           offset: 5,
-        }, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        }, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_007 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -712,8 +712,8 @@ export default function fileIOWrite() {
         fs.write(file.fd, FILE_CONTENT, {
           length: 3,
           offset: 5,
-        }, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        }, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_009 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -781,8 +781,8 @@ export default function fileIOWrite() {
           length: 5,
           offset: 5,
           encoding: 'utf-8',
-        }, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        }, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_011 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -842,8 +842,8 @@ export default function fileIOWrite() {
       try {
         let file = fs.openSync(fpath, fs.OpenMode.WRITE_ONLY);
         expect(await Utils.isIntNum(file.fd)).assertTrue();
-        fs.write(file.fd, new ArrayBuffer(4096), {}, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        fs.write(file.fd, new ArrayBuffer(4096), {}, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_013 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -904,8 +904,8 @@ export default function fileIOWrite() {
         let file = fs.openSync(fpath, fs.OpenMode.WRITE_ONLY);
         expect(await Utils.isIntNum(file.fd)).assertTrue();
         fs.write(file.fd, new ArrayBuffer(4096), {
-        }, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        }, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_015 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -955,10 +955,10 @@ export default function fileIOWrite() {
     it('fileIO_test_write_async_static_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_017 start');
       try {
-        fs.write(-1, FILE_CONTENT, {length: 5},(err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        fs.write(-1, FILE_CONTENT, {length: 5},(err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_017 has error for' + JSON.stringify(err));
-            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
             done();
           }
         });
@@ -988,12 +988,12 @@ export default function fileIOWrite() {
         expect(await Utils.isIntNum(file.fd)).assertTrue();
         fs.write(file.fd, FILE_CONTENT, {
           length: invalidLength,
-        }, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        }, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             fs.closeSync(file);
             fs.unlinkSync(fpath);
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_018 has error for' + JSON.stringify(err));
-            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
             done();
           }
         });
@@ -1023,12 +1023,12 @@ export default function fileIOWrite() {
         expect(await Utils.isIntNum(file.fd)).assertTrue();
         fs.write(file.fd, new ArrayBuffer(4096), {
           length: invalidLength,
-        }, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        }, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             fs.closeSync(file);
             fs.unlinkSync(fpath);
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_019 has error for' + JSON.stringify(err));
-            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
             done();
           }
         });
@@ -1058,12 +1058,12 @@ export default function fileIOWrite() {
         expect(await Utils.isIntNum(file.fd)).assertTrue();
         fs.write(file.fd, new ArrayBuffer(4096), {
           offset: invalidOffset,
-        }, (err: BusinessError, bytesWritten: number) => {
-          if(err.code != 0){
+        }, (err: BusinessError | null, bytesWritten: number | undefined) => {
+          if(err?.code != 0){
             fs.closeSync(file);
             fs.unlinkSync(fpath);
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_020 has error for' + JSON.stringify(err));
-            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
             done();
           }
         });
@@ -1166,8 +1166,8 @@ export default function fileIOWrite() {
           length: undefined,
           offset: undefined,
           encoding: undefined,
-        }, (err: BusinessError, bytesWritten1: number) => {
-          if (err.code != 0) {
+        }, (err: BusinessError | null, bytesWritten1: number | undefined) => {
+          if (err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_024 has error1 for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -1176,8 +1176,8 @@ export default function fileIOWrite() {
             length: undefined,
             offset: undefined,
             encoding: undefined,
-          }, (err: BusinessError, bytesWritten2: number) => {
-            if (err.code != 0) {
+          }, (err: BusinessError | null, bytesWritten2: number | undefined) => {
+            if (err?.code != 0) {
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_write_async_static_024 has error2 for' + JSON.stringify(err));
               expect(false).assertTrue();
             }

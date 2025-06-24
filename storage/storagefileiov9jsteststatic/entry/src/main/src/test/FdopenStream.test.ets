@@ -422,21 +422,21 @@ export default function fileIOFdopenStream() {
       try {
         res = await Utils.isIntNum(file.fd);
         expect(res).assertTrue();
-        fs.fdopenStream(file.fd, 'r', (err: BusinessError, fpr: fs.Stream) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_001 error package: ' + err.message + ', code: ' + err.code);
+        fs.fdopenStream(file.fd, 'r', (err: BusinessError | null, fpr: fs.Stream | undefined) => {
+          if (err?.code !== 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_001 error package: ' + err?.message + ', code: ' + err?.code);
             expect(false).assertTrue();
           }
           expect(fpr !== null).assertTrue();
           expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-          fpr.write(FILE_CONTENT, (e: BusinessError, writeLen: number) => {
-            if (e.code !== 0) {
+          fpr.write(FILE_CONTENT, (e: BusinessError | null, writeLen: number | undefined) => {
+            if (e?.code !== 0) {
               fpr.closeSync();
               fs.unlinkSync(fpath);
               hilog.info(domain, tag, '%{public}s',
-                'fileIO_test_fdopenstream_async_static_001 error: {message: ' + e.message + ', code: ' + e.code + '}'
+                'fileIO_test_fdopenstream_async_static_001 error: {message: ' + e?.message + ', code: ' + e?.code + '}'
               );
-              expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
+              expect(e?.code == 13900005 && e?.message == 'I/O error').assertTrue();
               done();
             } else {
               expect(false).assertTrue();
@@ -483,9 +483,11 @@ export default function fileIOFdopenStream() {
      */
     it('fileIO_test_fdopenstream_async_static_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       try {
-        fs.fdopenStream(-1, 'r', (err: BusinessError, fpr: fs.Stream) => {
-          expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
-          done();
+        fs.fdopenStream(-1, 'r', (err: BusinessError | null, fpr: fs.Stream | undefined) => {
+          if(err?.code != 0){
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
+            done();
+          }
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_003 has failed for ' + e.message + ', code: ' + e.code);
@@ -544,9 +546,9 @@ export default function fileIOFdopenStream() {
       try {
         res = await Utils.isIntNum(file.fd);
         expect(res).assertTrue();
-        fs.fdopenStream(file.fd, 'r+', (err: BusinessError, fpr: fs.Stream) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_005 error package: ' + err.message + ', code: ' + err.code);
+        fs.fdopenStream(file.fd, 'r+', (err: BusinessError | null, fpr: fs.Stream | undefined) => {
+          if (err?.code !== 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_005 error package: ' + err?.message + ', code: ' + err?.code);
             expect(false).assertTrue();
           }
           expect(fpr !== null).assertTrue();
@@ -643,21 +645,21 @@ export default function fileIOFdopenStream() {
       try {
         res = await Utils.isIntNum(file.fd);
         expect(res).assertTrue();
-        fs.fdopenStream(file.fd, 'w', (err: BusinessError, fpw: fs.Stream) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_009 error package: ' + err.message + ', code: ' + err.code);
+        fs.fdopenStream(file.fd, 'w', (err: BusinessError | null, fpw: fs.Stream | undefined) => {
+          if (err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_009 error package: ' + err?.message + ', code: ' + err?.code);
             expect(false).assertTrue();
           }
           expect(fpw !== null).assertTrue();
           expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          fpw.read(new ArrayBuffer(4096), (e: BusinessError, readLen: number) => {
-            if (e.code !== 0) {
+          fpw.read(new ArrayBuffer(4096), (e: BusinessError | null, readLen: number | undefined) => {
+            if (e?.code !== 0) {
               fpw.closeSync();
               fs.unlinkSync(fpath);
               hilog.info(domain, tag, '%{public}s',
-                'fileIO_test_fdopenstream_async_static_009 error: {message: ' + e.message + ', code: ' + e.code + '}'
+                'fileIO_test_fdopenstream_async_static_009 error: {message: ' + e?.message + ', code: ' + e?.code + '}'
               );
-              expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
+              expect(e?.code == 13900005 && e?.message == 'I/O error').assertTrue();
               done();
             } else {
               expect(false).assertTrue();
@@ -755,9 +757,9 @@ export default function fileIOFdopenStream() {
       try {
         res = await Utils.isIntNum(file.fd);
         expect(res).assertTrue();
-        fs.fdopenStream(file.fd, 'w+', (err: BusinessError, fpw: fs.Stream) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_012 error package: ' + err.message + ', code: ' + err.code);
+        fs.fdopenStream(file.fd, 'w+', (err: BusinessError | null, fpw: fs.Stream | undefined) => {
+          if (err?.code !== 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_012 error package: ' + err?.message + ', code: ' + err?.code);
             expect(false).assertTrue();
           }
           expect(fpw !== null).assertTrue();
@@ -859,21 +861,21 @@ export default function fileIOFdopenStream() {
       expect(res).assertTrue();
 
       try {
-        fs.fdopenStream(file.fd, 'a', (err: BusinessError, fpa: fs.Stream) => {
-          if (err.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_015 error package: ' + err.message + ', code: ' + err.code);
+        fs.fdopenStream(file.fd, 'a', (err: BusinessError | null, fpa: fs.Stream | undefined) => {
+          if (err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_015 error package: ' + err?.message + ', code: ' + err?.code);
             expect(false).assertTrue();
           }
           expect(fpa !== null).assertTrue();
           expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          fpa.read(new ArrayBuffer(4096), (e: BusinessError, readLen: number) => {
-            if (e.code != 0) {
+          fpa.read(new ArrayBuffer(4096), (e: BusinessError | null, readLen: number | undefined) => {
+            if (e?.code != 0) {
               fpa.closeSync();
               fs.unlinkSync(fpath);
               hilog.info(domain, tag, '%{public}s',
-                'fileIO_test_fdopenstream_async_static_015 error: {message: ' + e.message + ', code: ' + e.code + '}'
+                'fileIO_test_fdopenstream_async_static_015 error: {message: ' + e?.message + ', code: ' + e?.code + '}'
               );
-              expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
+              expect(e?.code == 13900005 && e?.message == 'I/O error').assertTrue();
               done();
             } else {
               expect(false).assertTrue();
@@ -937,9 +939,9 @@ export default function fileIOFdopenStream() {
       try {
         res = await Utils.isIntNum(file.fd);
         expect(res).assertTrue();
-        fs.fdopenStream(file.fd, 'a+', (err: BusinessError, fpa: fs.Stream) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_017 error package: ' + err.message + ', code: ' + err.code);
+        fs.fdopenStream(file.fd, 'a+', (err: BusinessError | null, fpa: fs.Stream | undefined) => {
+          if (err?.code !== 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_017 error package: ' + err?.message + ', code: ' + err?.code);
             expect(false).assertTrue();
           }
           expect(fpa !== null).assertTrue();
@@ -1005,10 +1007,10 @@ export default function fileIOFdopenStream() {
 
       try {
         fs.closeSync(file.fd);
-        fs.fdopenStream(file.fd, 'a', (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_019 error package: ' + err.message + ', code: ' + err.code);
-            expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
+        fs.fdopenStream(file.fd, 'a', (err: BusinessError<void> | null) => {
+          if (err?.code !== 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_fdopenstream_async_static_019 error package: ' + err?.message + ', code: ' + err?.code);
+            expect(err?.code == 13900008 && err?.message == 'Bad file descriptor').assertTrue();
             done();
           }
         });

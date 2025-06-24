@@ -254,7 +254,7 @@ export default function fileIOCopyfile() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        fs.copyFile(fpath, fpathTarget, (err: BusinessError) => {
+        fs.copyFile(fpath, fpathTarget, (err: BusinessError<void> | null) => {
           let stat1 = fs.statSync(fpath);
           let stat2 = fs.statSync(fpathTarget);
           expect(stat1.size == stat2.size).assertTrue();
@@ -338,10 +338,10 @@ export default function fileIOCopyfile() {
       let fpathTarget = fpath + 'tgt';
 
       try {
-        fs.copyFile(fpath, fpathTarget, (err: BusinessError) => {
-          if (err) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_copy_file_async_static_004 error: {message: ' + err.message + ', code: ' + err.code + '}');
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+        fs.copyFile(fpath, fpathTarget, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_copy_file_async_static_004 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -396,7 +396,7 @@ export default function fileIOCopyfile() {
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        fs.copyFile(fpath, fpathTarget, 0, (err: BusinessError) => {
+        fs.copyFile(fpath, fpathTarget, 0, (err: BusinessError<void> | null) => {
           let stat1 = fs.statSync(fpath);
           let stat2 = fs.statSync(fpathTarget);
           expect(stat1.size == stat2.size).assertTrue();
@@ -461,7 +461,7 @@ export default function fileIOCopyfile() {
 
       try {
         let file = fs.openSync(fpath, fs.OpenMode.READ_WRITE);
-        fs.copyFile(file.fd, fileTgt.fd, (err: BusinessError) => {
+        fs.copyFile(file.fd, fileTgt.fd, (err: BusinessError<void> | null) => {
           let stat1 = fs.statSync(fpath);
           let stat2 = fs.statSync(fpathTarget);
           expect(stat1.size == stat2.size).assertTrue();
@@ -526,7 +526,7 @@ export default function fileIOCopyfile() {
       let file = fs.openSync(fpathTarget, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
 
       try {
-        fs.copyFile(fpath, file.fd, 0, (err: BusinessError) => {
+        fs.copyFile(fpath, file.fd, 0, (err: BusinessError<void> | null) => {
           let stat1 = fs.statSync(fpath);
           let stat2 = fs.statSync(fpathTarget);
           expect(stat1.size == stat2.size).assertTrue();

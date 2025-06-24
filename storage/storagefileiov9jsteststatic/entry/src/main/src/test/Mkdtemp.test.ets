@@ -99,7 +99,7 @@ export default function fileIOMkdtemp() {
 
       try {
         dpath = dpath + 'XXXXXX';
-        fs.mkdtemp(dpath, (err: BusinessError, res: string) => {
+        fs.mkdtemp(dpath, (err: BusinessError | null, res: string | undefined) => {
           expect(fs.accessSync(res)).assertTrue();
           fs.rmdirSync(res);
           done();
@@ -147,10 +147,10 @@ export default function fileIOMkdtemp() {
       let dpath = await Utils.nextFileName('fileIO_test_mkdtemp_async_static_003');
 
       try {
-        fs.mkdtemp(dpath, (err: BusinessError) => {
-          if (err) {
+        fs.mkdtemp(dpath, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdtemp_async_static_003 error package: ' + JSON.stringify(err));
-            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
             done();
           }
         });

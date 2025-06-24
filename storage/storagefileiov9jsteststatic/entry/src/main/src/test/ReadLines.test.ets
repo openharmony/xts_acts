@@ -232,7 +232,7 @@ export default function fileIOReadLines() {
         let fpath = await Utils.nextFileName('fileIO_test_readLines_async_static_002');
         expect(await Utils.prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
-        fs.readLines(fpath, { encoding: 'utf-8' }, (err: BusinessError, readerIterator: fs.ReaderIterator) => {
+        fs.readLines(fpath, { encoding: 'utf-8' }, (err: BusinessError | null, readerIterator: fs.ReaderIterator | undefined) => {
           for (let i = 0; i < arr.length; i++) {
             let it = readerIterator.next();
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_readLines_async_static_002 readLen1: ' + it.value + it.done);
@@ -299,7 +299,7 @@ export default function fileIOReadLines() {
         let arr = FILE_CONTENTS.split("\n");
         fs.readLines(fpath, {
           encoding : 'utf-8'
-        },  (err: BusinessError, readerIterator: fs.ReaderIterator) => {
+        },  (err: BusinessError | null, readerIterator: fs.ReaderIterator | undefined) => {
           for (let i = 0; i < arr.length; i++) {
             let it = readerIterator.next();
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_readLines_async_static_004 readLen1: ' + it.value + it.done);

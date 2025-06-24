@@ -259,7 +259,7 @@ export default function fileIOAccess() {
       await Utils.prepareFile(fpath, FILE_CONTENT);
 
       try {
-        fs.access(fpath, (err: BusinessError, ret: boolean) => {
+        fs.access(fpath, (err: BusinessError | null, ret: boolean | undefined) => {
           hilog.info(domain, tag, '%{public}s', 'test_FileIO_Access_Async_Static_001 ret：' + ret);
           expect(ret === true).assertTrue();
           let file = fs.openSync(fpath);
@@ -314,7 +314,7 @@ export default function fileIOAccess() {
       let fpath = await Utils.nextFileName('test_FileIO_Access_Async_Static_003');
 
       try {
-        fs.access(fpath, (err: BusinessError, ret: boolean) => {
+        fs.access(fpath, (err: BusinessError | null, ret: boolean | undefined) => {
           expect(ret === false).assertTrue();
           done();
         });

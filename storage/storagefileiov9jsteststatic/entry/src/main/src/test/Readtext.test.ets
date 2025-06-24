@@ -339,7 +339,7 @@ export default function fileIOReadtext() {
       try {
         let fpath = await Utils.nextFileName('fileIO_test_readtext_async_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-        fs.readText(fpath, { length: 11 }, (err: BusinessError, str: string) => {
+        fs.readText(fpath, { length: 11 }, (err: BusinessError | null, str: string | undefined) => {
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_001 readLen1: ' + str);
           expect(str == FILE_CONTENT).assertTrue();
           fs.unlinkSync(fpath);
@@ -393,7 +393,7 @@ export default function fileIOReadtext() {
       try {
         let fpath = await Utils.nextFileName('fileIO_test_readtext_async_static_003');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-        fs.readText(fpath, { offset: 1 }, (err: BusinessError, str: string) => {
+        fs.readText(fpath, { offset: 1 }, (err: BusinessError | null, str: string | undefined) => {
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_003 readLen1: ' + str);
           expect(str == FILE_CONTENT.substr(1, FILE_CONTENT.length - 1)).assertTrue();
           fs.unlinkSync(fpath);
@@ -452,7 +452,7 @@ export default function fileIOReadtext() {
         fs.readText(fpath, {
           offset: 1,
           length: 2
-        },  (err: BusinessError, str: string) => {
+        },  (err: BusinessError | null, str: string | undefined) => {
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_005 readLen1: ' + str);
           expect(str == FILE_CONTENT.substr(1, 2)).assertTrue();
           fs.unlinkSync(fpath);
@@ -549,7 +549,7 @@ export default function fileIOReadtext() {
           offset: 1,
           length: FILE_CONTENT.length,
           encoding: 'utf-8'
-        },  (err: BusinessError, str: string) => {
+        },  (err: BusinessError | null, str: string | undefined) => {
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_008 readLen1: ' + str);
           expect(str == FILE_CONTENT.slice(1, FILE_CONTENT.length + 1)).assertTrue();
           fs.unlinkSync(fpath);
@@ -603,7 +603,7 @@ export default function fileIOReadtext() {
       try {
         let fpath = await Utils.nextFileName('fileIO_test_readtext_async_static_010');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-        fs.readText(fpath, {},  (err: BusinessError, str: string) => {
+        fs.readText(fpath, {},  (err: BusinessError | null, str: string | undefined) => {
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_010 readLen1: ' + str);
           expect(str == FILE_CONTENT).assertTrue();
           fs.unlinkSync(fpath);
@@ -652,10 +652,10 @@ export default function fileIOReadtext() {
       hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_012 start');
       try {
         let fpath = await Utils.nextFileName('fileIO_test_readtext_async_static_012');
-        fs.readText(fpath, { length: 2 },  (err: BusinessError, str: string) => {
+        fs.readText(fpath, { length: 2 },  (err: BusinessError | null, str: string | undefined) => {
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_012 readLen1: ' + JSON.stringify(err));
-          if(err.code != 0){
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+          if(err?.code != 0){
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -791,7 +791,7 @@ export default function fileIOReadtext() {
           offset: undefined,
           length: undefined,
           encoding: undefined
-        },  (err: BusinessError, str: string) => {
+        },  (err: BusinessError | null, str: string | undefined) => {
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_019 has error for' + JSON.stringify(err));
           expect(str == FILE_CONTENT).assertTrue();
           fs.unlinkSync(fpath);
@@ -843,11 +843,11 @@ export default function fileIOReadtext() {
       try {
         let fpath = await Utils.nextFileName('fileIO_test_readtext_async_static_021');
         fs.mkdirSync(fpath);
-        fs.readText(fpath, {},  (err: BusinessError, str: string) => {
-          hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_021 fpath: ' + err);
-          if(err.code != 0){
+        fs.readText(fpath, {},  (err: BusinessError | null, str: string | undefined) => {
+          hilog.info(domain, tag, '%{public}s', 'fileIO_test_readtext_async_static_021 fpath: ' + JSON.stringify(err));
+          if(err?.code != 0){
             fs.rmdirSync(fpath);
-            expect(err.code == 13900019 && err.message == 'Is a directory').assertTrue();
+            expect(err?.code == 13900019 && err?.message == 'Is a directory').assertTrue();
             done();
           }
         });

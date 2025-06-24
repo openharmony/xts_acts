@@ -68,7 +68,7 @@ export default function fileIOTruncate() {
         let res = await Utils.isIntNum(file.fd);
         hilog.info(domain, tag, '%{public}s', 'fileIO_truncate_async_static_001 res: ' + res);
         expect(res).assertTrue();
-        fs.truncate(file.fd, truncateLen, (err: BusinessError) => {
+        fs.truncate(file.fd, truncateLen, (err: BusinessError<void> | null) => {
           let readLen = fs.readSync(file.fd, new ArrayBuffer(4096));
           expect(readLen == truncateLen).assertTrue();
           fs.closeSync(file);
@@ -168,10 +168,10 @@ export default function fileIOTruncate() {
         let fpath = await Utils.nextFileName('fileIO_truncate_async_static_004');
         hilog.info(domain, tag, '%{public}s', 'fileIO_truncate_async_static_004 fpath: ' + fpath);
         let truncateLen = 2;
-        fs.truncate(fpath, truncateLen, (err: BusinessError) => {
-          if (err.code != 0){
+        fs.truncate(fpath, truncateLen, (err: BusinessError<void> | null) => {
+          if (err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_truncate_async_static_004 has failed for' + JSON.stringify(err));
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -228,7 +228,7 @@ export default function fileIOTruncate() {
         let res = await Utils.isIntNum(file.fd);
         hilog.info(domain, tag, '%{public}s', 'fileIO_truncate_async_static_006 res: ' + res);
         expect(res).assertTrue();
-        fs.truncate(file.fd, truncateLen, (err: BusinessError) => {
+        fs.truncate(file.fd, truncateLen, (err: BusinessError<void> | null) => {
           let readLen = fs.readSync(file.fd, new ArrayBuffer(4096));
           expect(readLen == truncateLen).assertTrue();
           fs.closeSync(file);
@@ -258,7 +258,7 @@ export default function fileIOTruncate() {
         hilog.info(domain, tag, '%{public}s', 'fileIO_truncate_async_static_007 fpath: ' + fpath);
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         let truncateLen = 0;
-        fs.truncate(fpath, truncateLen, (err: BusinessError) => {
+        fs.truncate(fpath, truncateLen, (err: BusinessError<void> | null) => {
           let file = fs.openSync(fpath,fs.OpenMode.READ_WRITE);
           let res = await Utils.isIntNum(file.fd);
           hilog.info(domain, tag, '%{public}s', 'fileIO_truncate_async_static_007 res: ' + res);
@@ -330,10 +330,10 @@ export default function fileIOTruncate() {
         hilog.info(domain, tag, '%{public}s', 'fileIO_truncate_async_static_011 res: ' + res);
         expect(res).assertTrue();
         fs.closeSync(file.fd);
-        fs.truncate(file.fd, truncateLen, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.truncate(file.fd, truncateLen, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_truncate_async_static_011 has failed for' + JSON.stringify(err));
-            expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
+            expect(err?.code == 13900008 && err?.message == 'Bad file descriptor').assertTrue();
             fs.unlinkSync(fpath);
             done();
           }

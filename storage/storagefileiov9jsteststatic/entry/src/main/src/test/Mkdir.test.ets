@@ -135,8 +135,8 @@ export default function fileIOMkdir() {
       let dpath = await Utils.nextFileName('fileIO_test_mkdir_async_static_001');
 
       try {
-        fs.mkdir(dpath, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.mkdir(dpath, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_static_001 error: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -183,10 +183,10 @@ export default function fileIOMkdir() {
      */
     it('fileIO_test_mkdir_async_static_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
       try {
-        fs.mkdir('/', (err: BusinessError) => {
-          if(err.code != 0){
+        fs.mkdir('/', (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_mkdir_async_static_003 error: ' + JSON.stringify(err));
-            expect(err.code == 13900015 && err.message == 'File exists').assertTrue();
+            expect(err?.code == 13900015 && err?.message == 'File exists').assertTrue();
             done();
           }
         });

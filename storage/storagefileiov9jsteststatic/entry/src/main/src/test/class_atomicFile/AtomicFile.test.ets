@@ -66,6 +66,36 @@ export default function atomicFileTest() {
     });
 
     /**
+     * @tc.number SUB_DF_ATOMIC_FILE_0200
+     * @tc.name fileIO_test_atomicFile_static_002
+     * @tc.desc Test the startWrite() interface of class AtomicFile
+     * Create a file when file is not exist, create a new file
+     * @tc.size MEDIUM
+     * @tc.type Functoin
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileIO_test_atomicFile_static_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
+      let fpath = await Utils.nextFileName('fileIO_test_atomicFile_static_002');
+
+      try {
+        let file = new fileIO.AtomicFile(fpath);
+        let ws = file.startWrite();
+        ws.write("fileIO_test_atomicFile_static_002");
+        await sleep(WAIT_ONE_SECOND);
+        file.finishWrite();
+
+        let data = file.readFully();
+        let decoder = util.TextDecoder.create('utf-8');
+        let str = decoder.decodeToString(new Uint8Array(data));
+        expect(str === "fileIO_test_atomicFile_static_002").assertTrue();
+      } catch(e: BusinessError) {
+        hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_002 has failed for ' + e.message);
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
      * @tc.number SUB_DF_ATOMIC_FILE_0300
      * @tc.name fileIO_test_atomicFile_static_003
      * @tc.desc Test the startWrite() interface of class AtomicFile

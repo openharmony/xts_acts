@@ -125,7 +125,7 @@ export default function fileIOClose() {
 
       try {
         let file = fs.openSync(fpath, fs.OpenMode.READ_WRITE);
-        fs.close(file.fd, (err: BusinessError) => {
+        fs.close(file.fd, (err: BusinessError<void> | null) => {
           fs.unlinkSync(fpath);
           done();
         });
@@ -151,7 +151,7 @@ export default function fileIOClose() {
 
       try {
         let file = fs.openSync(fpath, fs.OpenMode.READ_WRITE);
-        fs.close(file, (err: BusinessError) => {
+        fs.close(file, (err: BusinessError<void> | null) => {
           fs.unlinkSync(fpath);
           done();
         });
@@ -283,11 +283,11 @@ export default function fileIOClose() {
             console.log('fileIO_test_close_async_static_009 error package: ' + JSON.stringify(err));
           }
         })
-        fs.close(fd, (err: BusinessError) => {
-          if (err) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_close_async_static_009  error：' + err.message + ', code: ' + err.code + '}');
+        fs.close(fd, (err: BusinessError<void> | null) => {
+          if (err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_close_async_static_009  error：' + err?.message + ', code: ' + err?.code + '}');
             fs.unlinkSync(fpath);
-            expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
+            expect(err?.code == 13900008 && err?.message == 'Bad file descriptor').assertTrue();
             done();
           }
         });

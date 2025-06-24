@@ -131,7 +131,7 @@ export default function fileIOUnlink() {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_unlink_async_static_001 fpath: ' + fpath);
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         expect(fs.accessSync(fpath)).assertTrue();
-        fs.unlink(fpath, (err: BusinessError) => {
+        fs.unlink(fpath, (err: BusinessError<void> | null) => {
           expect(!fs.accessSync(fpath)).assertTrue();
           done();
         });
@@ -156,10 +156,10 @@ export default function fileIOUnlink() {
       try {
         let fpath = await Utils.nextFileName('fileIO_test_unlink_async_static_002');
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_unlink_async_static_002 fpath: ' + fpath);
-        fs.unlink(fpath, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.unlink(fpath, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_unlink_async_static_002 has failed for' + JSON.stringify(err));
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });
@@ -234,11 +234,11 @@ export default function fileIOUnlink() {
       hilog.info(domain, tag, '%{public}s', 'fileIO_test_unlink_async_static_005 fpath: ' + fpath);
       fs.mkdirSync(fpath);
       try {
-        fs.unlink(fpath, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.unlink(fpath, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             fs.rmdirSync(fpath);
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_unlink_async_static_005 has failed for' + JSON.stringify(err));
-            expect(err.code == 13900019 && err.message == 'Is a directory').assertTrue();
+            expect(err?.code == 13900019 && err?.message == 'Is a directory').assertTrue();
             done();
           }
         });

@@ -157,7 +157,7 @@ export default function fileIORmdir() {
         expect(await Utils.prepareFile(fffpath, FILE_CONTENT)).assertTrue();
         expect(fs.accessSync(ddpath)).assertTrue();
         expect(fs.accessSync(fffpath)).assertTrue();
-        fs.rmdir(dpath, (err: BusinessError) => {
+        fs.rmdir(dpath, (err: BusinessError<void> | null) => {
           expect(!fs.accessSync(dpath)).assertTrue();
           expect(!fs.accessSync(ddpath)).assertTrue();
           expect(!fs.accessSync(fffpath)).assertTrue();
@@ -206,10 +206,10 @@ export default function fileIORmdir() {
       hilog.info(domain, tag, '%{public}s', 'fileIO_test_rmdir_async_static_003 start');
       try {
         let dpath = await Utils.nextFileName('fileIO_test_rmdir_async_static_003');
-        fs.rmdir(dpath, (err: BusinessError) => {
-          if(err.code != 0){
+        fs.rmdir(dpath, (err: BusinessError<void> | null) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_rmdir_async_static_003 has error for' + JSON.stringify(err));
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });

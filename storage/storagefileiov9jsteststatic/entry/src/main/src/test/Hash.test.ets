@@ -56,8 +56,8 @@ export default function fileIOHash() {
       let fpath = await Utils.nextFileName('fileIO_test_hash_async_static_001');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fileHash.hash(fpath, "md5", (err: BusinessError, str: string) => {
-          if(err.code != 0){
+        fileHash.hash(fpath, "md5", (err: BusinessError | null, str: string | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_async_static_001 error package: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -113,8 +113,8 @@ export default function fileIOHash() {
       let fpath = await Utils.nextFileName('fileIO_test_hash_async_static_003');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fileHash.hash(fpath, "sha1", (err: BusinessError, str: string) => {
-          if(err.code != 0){
+        fileHash.hash(fpath, "sha1", (err: BusinessError | null, str: string | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_async_static_003 error package: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -170,8 +170,8 @@ export default function fileIOHash() {
       let fpath = await Utils.nextFileName('fileIO_test_hash_async_static_005');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fileHash.hash(fpath, "sha256", (err: BusinessError, str: string) => {
-          if(err.code != 0){
+        fileHash.hash(fpath, "sha256", (err: BusinessError | null, str: string | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_async_static_005 error package: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
@@ -226,10 +226,10 @@ export default function fileIOHash() {
       let fpath = await Utils.nextFileName('fileIO_test_hash_async_static_007');
       expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
-        fileHash.hash(fpath, "256", (err: BusinessError, str: string) => {
-          if(err.code != 0){
+        fileHash.hash(fpath, "256", (err: BusinessError | null, str: string | undefined) => {
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_async_static_007 has error for' + JSON.stringify(err));
-            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
             fs.unlinkSync(fpath);
             done();
           }
@@ -239,130 +239,6 @@ export default function fileIOHash() {
         expect(false).assertTrue();
       }
     });
-
-    /**
-     * @tc.number SUB_DF_FILEIO_HASH_ASYNC_0800
-     * @tc.name fileIO_test_hash_createHash_static_008
-     * @tc.desc Test createHash() interface.
-     * Calculate file summary using HashStream (MD5)
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_test_hash_createHash_static_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
-    //   hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_createHash_static_008 start');
-    //   let fpath = await Utils.nextFileName('fileIO_test_hash_createHash_static_008');
-    //   expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    //   try {
-    //     let rs = fs.createReadStream(fpath);
-    //     let hsMd5 = fileHash.createHash('md5');
-    //     rs.on('data', (emitData) => {
-    //       const data = emitData?.data;
-    //       hsMd5.update(new Uint8Array(data?.split('').map((x) => x.charCodeAt(0))).buffer);
-    //       hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_createHash_static_008 readlen ' + data?.length + ', content: ' + data?.slice(0, 10));
-    //     });
-    //     rs.on('close', async () => {
-    //       const fileHash = await Hash.hash(fpath, 'md5');
-    //       const streamHash = hsMd5.digest();
-    //       hilog.info(`domain, tag, '%{public}s', 'fileIO_test_hash_createHash_static_008 ' + hashResult: ${streamHash}, fileHash: ${fileHash}`);
-    //       expect(streamHash == fileHash).assertTrue();
-    //     });
-    //   } catch (e: BusinessError) {
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_createHash_static_008 has failed for' + JSON.stringify(e));
-    //     expect(false).assertTrue();
-    //   }
-    // });
-
-    /**
-     * @tc.number SUB_DF_FILEIO_HASH_ASYNC_0900
-     * @tc.name fileIO_test_hash_createHash_static_009
-     * @tc.desc Test createHash() interface.
-     * Calculate file summary using HashStream (SHA1)
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_test_hash_createHash_static_009', Level.LEVEL0, async function () {
-    //   let fpath = await nextFileName('fileIO_test_hash_createHash_static_009');
-    //   expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    //
-    //   try {
-    //     let rs = fs.createReadStream(fpath);
-    //     let hsSha1 = Hash.createHash('sha1');
-    //     rs.on('data', (emitData) => {
-    //       const data = emitData?.data;
-    //       hsSha1.update(new Uint8Array(data?.split('').map((x) => x.charCodeAt(0))).buffer);
-    //       console.log('fileIO_test_hash_createHash_static_009 readlen ' + data?.length + ', content: ' + data?.slice(0, 10));
-    //     });
-    //     rs.on('close', async () => {
-    //       const fileHash = await Hash.hash(fpath, 'sha1');
-    //       const streamHash = hsSha1.digest();
-    //       console.info(`hashResult: ${streamHash}, fileHash: ${fileHash}`);
-    //       expect(streamHash == fileHash).assertTrue();
-    //     });
-    //   } catch (e: BusinessError) {
-    //     console.log('fileIO_test_hash_createHash_static_009 has failed for ' + e.message + ', code: ' + e.code);
-    //     expect(false).assertTrue();
-    //   }
-    // });
-
-    /**
-     * @tc.number SUB_DF_FILEIO_HASH_ASYNC_1000
-     * @tc.name fileIO_test_hash_createHash_static_010
-     * @tc.desc Test createHash() interface.
-     * Calculate file summary using HashStream (SHA256)
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_test_hash_createHash_static_010', Level.LEVEL0, async function () {
-    //   let fpath = await nextFileName('fileIO_test_hash_createHash_static_010');
-    //   expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    //
-    //   try {
-    //     let rs = fs.createReadStream(fpath);
-    //     let hsSha256 = Hash.createHash('sha256');
-    //     rs.on('data', (emitData) => {
-    //       const data = emitData?.data;
-    //       hsSha256.update(new Uint8Array(data?.split('').map((x) => x.charCodeAt(0))).buffer);
-    //       console.log('fileIO_test_hash_createHash_static_010 readlen ' + data?.length + ', content: ' + data?.slice(0, 10));
-    //     });
-    //     rs.on('close', async () => {
-    //       const fileHash = await Hash.hash(fpath, 'sha256');
-    //       const streamHash = hsSha256.digest();
-    //       console.info(`fileIO_test_hash_createHash_static_010 hashResult: ${streamHash}, fileHash: ${fileHash}`);
-    //       expect(streamHash == fileHash).assertTrue();
-    //     });
-    //   } catch (e: BusinessError) {
-    //     console.log('fileIO_test_hash_createHash_static_010 has failed for ' + e.message + ', code: ' + e.code);
-    //     expect(false).assertTrue();
-    //   }
-    // });
-
-    /**
-     * @tc.number SUB_DF_FILEIO_HASH_ASYNC_1100
-     * @tc.name fileIO_test_hash_createHash_static_011
-     * @tc.desc Test createHash() interface.
-     * Invalid mode.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    // it('fileIO_test_hash_createHash_static_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
-    //   hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_createHash_static_011 start');
-    //   try {
-    //     fileHash.createHash('123');
-    //     expect(false).assertTrue();
-    //   } catch (e: BusinessError) {
-    //     hilog.info(domain, tag, '%{public}s', 'fileIO_test_hash_createHash_static_011 has failed for' + JSON.stringify(e));
-    //     expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
-    //     done();
-    //   }
-    // });
 
   })
   hilog.info(domain, tag, '%{public}s', 'fileIO_fs_hash end');
