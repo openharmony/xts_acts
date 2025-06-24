@@ -17500,7 +17500,7 @@ static napi_value NapiWrapEnhanceTest1(napi_env env, napi_callback_info info)
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
     void* finalizeHint;
-    size_t testStrSize = sizeof(testStr);
+    size_t testStrSize = sizeof(char) * (strlen(testStr) + 1);
     napi_status status = napi_wrap_enhance(env, obj, (void*)testStr, 
                       [](napi_env env, void* data, void* hint) {}, false, finalizeHint, testStrSize, &wrappedRef);
     NAPI_ASSERT(env, status == napi_ok, "napi_wrap_enhance is normal, return status napi_ok.");
@@ -17570,7 +17570,7 @@ static napi_value NapiWrapEnhanceTest4(napi_env env, napi_callback_info info)
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
     void* finalizeHint;
-    size_t testStrSize = sizeof(testStr);
+    size_t testStrSize = sizeof(char) * (strlen(testStr) + 1);
     // env is null
     napi_status status = napi_wrap_enhance(nullptr, obj, (void*)testStr, 
                       [](napi_env env, void* data, void* hint) {}, false, finalizeHint, testStrSize, &wrappedRef);
@@ -17607,7 +17607,7 @@ static napi_value NapiWrapEnhanceTest5(napi_env env, napi_callback_info info)
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
     void* finalizeHint;
-    size_t testStrSize = sizeof(testStr);
+    size_t testStrSize = sizeof(char) * (strlen(testStr) + 1);
 
     // finalize_hint is null
     napi_status status = napi_wrap_enhance(nullptr, obj, (void*)testStr, 
