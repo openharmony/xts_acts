@@ -18,7 +18,7 @@ import { stringTouInt8Array, uInt8ArrayToShowStr, uInt8ArrayToString } from "../
 
 async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<crypto.SymKey> {
   return new Promise<crypto.SymKey>((resolve, reject) => {
-    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey) => {
+    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: crypto.SymKey|undefined) => {
       if (err?.code != 0) {
         console.error(`[Callback]generateSymKey failed. error is: ${err}`);
         reject(err as Error);
@@ -39,7 +39,7 @@ async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<
 
 async function convertSymKey(symKeyGenerator: crypto.SymKeyGenerator, dataBlob: crypto.DataBlob): Promise<crypto.SymKey> {
   return new Promise<crypto.SymKey>((resolve, reject) => {
-    symKeyGenerator.convertKey(dataBlob, (err: BusinessError<void>|null, symKey) => {
+    symKeyGenerator.convertKey(dataBlob, (err: BusinessError<void>|null, symKey: crypto.SymKey|undefined) => {
       if (err?.code != 0) {
         console.error(`[Callback]convertSymKey failed. error is: ${err}`);
         reject(err as Error);
@@ -88,7 +88,7 @@ async function updateMac(macGenerator: crypto.Mac, dataBlob: crypto.DataBlob): P
 
 async function doFinalMac(macGenerator: crypto.Mac): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
-    macGenerator.doFinal((err: BusinessError<void>|null, output) => {
+    macGenerator.doFinal((err: BusinessError<void>|null, output: crypto.DataBlob|undefined) => {
       if (err?.code != 0 || output === undefined) {
         console.error(`[Callback]macGenerator doFinal failed. error is: ${err}`);
         reject(err as Error);

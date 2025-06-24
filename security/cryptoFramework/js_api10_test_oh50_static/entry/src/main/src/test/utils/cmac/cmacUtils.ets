@@ -168,7 +168,7 @@ async function doUpdateMacCallback(mac: cryptoFramework.Mac,
 
 async function doFinalMacCallback(mac: cryptoFramework.Mac): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
-    mac.doFinal((err: BusinessError<void>|null, rawData) => {
+    mac.doFinal((err: BusinessError<void>|null, rawData: cryptoFramework.DataBlob|undefined) => {
       if (err?.code != 0 || rawData === undefined) {
         reject(err as Error)
       } else {

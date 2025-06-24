@@ -155,13 +155,7 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
       try {
         let rand = cryptoFramework.createRandom();
         console.info("[createRandom success]");
-        rand.generateRandom(2147483647, (err, randData) => {
-          if (err) {
-            console.error('[Callback] err: , errCode: ' + err.code + ', errMsg: ' + err.message);
-          } else {
-            console.info('[Callback]: generate random result: ' + randData.data);
-          }
-        });
+        rand.generateRandom(2147483647, (err: BusinessError<void>|null, randData:cryptoFramework.DataBlob|undefined) => {});
       } catch (error: BusinessError) {
         console.error(`SUB_Security_CryptoFramework_ErrCode_Func_0600 “${error}“, error code: ${error.code}`);
         expect(error.code).assertEqual(cryptoFramework.Result.ERR_OUT_OF_MEMORY);

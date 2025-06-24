@@ -21,7 +21,7 @@ import { createGcmParam } from '../common/gcmParamsSpec.test';
 
 async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<crypto.SymKey> {
   return new Promise<crypto.SymKey>((resolve, reject) => {
-    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey) => {
+    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: crypto.SymKey|undefined) => {
       if (err?.code != 0) {
         console.error("[Callback]generateSymKey failed. error is " + err);
         reject(err as Error);
@@ -59,7 +59,7 @@ async function initCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMod
 async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMode,
   plainText: crypto.DataBlob): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
-    cipherGenerator.update(plainText, (err: BusinessError<void>|null, updateData) => {
+    cipherGenerator.update(plainText, (err: BusinessError<void>|null, updateData: crypto.DataBlob|undefined) => {
       if (err?.code != 0 || updateData === undefined) {
         console.error("[Callback]cipherGenerator update failed. error is " + err + "mode is " + mode);
         reject(err as Error);
@@ -74,7 +74,7 @@ async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoM
 async function doFinalCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMode,
   dataBlob: crypto.DataBlob|null): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
-    cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, finalData>) => {
+    cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, finalData: crypto.DataBlob|undefined) => {
       if (err?.code != 0 || finalData === undefined) {
         console.error("[Callback]cipherGenerator doFinal failed. error is " + err + "mode is " + mode);
         reject(err as Error);
