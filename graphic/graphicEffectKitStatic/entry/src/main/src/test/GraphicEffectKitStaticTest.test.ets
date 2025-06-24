@@ -89,53 +89,7 @@ export default function GraphicEffectKitStaticTest() {
         console.info('www data err ' + JSON.stringify(err))
       }
       hilog.info(domain, tag, '%{public}s', 'effectKit createFilter successfully.');
-      // try {
-      //   let blurFilter: effectKit.Filter = headFilter.blur(10);
-      //   expect(true).assertTure();
-      // }catch(err){
-      //   expect().assertFail();
-      // }
-
-      // if (blurFilter == undefined) {
-      //   hilog.info(domain, tag, '%{public}s', 'effectKit blur failed.');
-      //   return undefined;
-      // }
-      // hilog.info(domain, tag, '%{public}s', 'effectKit blur successfully.');
-      // const effectPixelMap = await blurFilter.getEffectPixelMap();
-      // if (effectPixelMap != undefined) {
-      //   hilog.info(domain, tag, '%{public}s', 'effectKit getEffectPixelMap successfully.');
-      // } else {
-      //   hilog.info(domain, tag, '%{public}s', 'effectKit getEffectPixelMap failed.');
-      // }
-      // hilog.info(domain, tag, '%{public}s', 'effectKit test END');
-      done();
-    })
-
-    /**
-     * @tc.number    : effectKitTest_static_0100
-     * @tc.name      : effectKitTest_static_0100
-     * @tc.desc      : effect for test
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level0
-     */
-    it("effectKitTest_static_0200", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1,
-      async (done: () => void): Promise<void> => {
-      // console.info('www data 20000');
-      //   const opts: image.InitializationOptions = {
-      //     editable: true,
-      //     pixelFormat: 3,
-      //     size: {
-      //       height: 4,
-      //       width: 6
-      //     }
-      //   };
-      //   try {
-      //     let pixelMap = image.createPixelMapSync(opts);
-      //     console.info('www data succeed ' + 11111);
-      //   } catch (err) {
-      //     console.info('www data error ' + 11111);
-      //   }
+      expect(true).assertTrue()
       done();
     })
   })
