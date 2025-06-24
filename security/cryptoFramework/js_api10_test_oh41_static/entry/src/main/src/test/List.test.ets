@@ -1,4 +1,3 @@
-import abilityTest from "./Ability.test";
 import SecurityCryptoFwCipherSM2TestUnit from './SecurityCryptoFwCipherSM2.test'
 import SecurityCryptoFwGenECCCommonSpecTestUnit from './SecurityCryptoFwGenECCCommonSpec.test'
 import SecurityCryptoFwKeyGenerateECCTestUnit from './SecurityCryptoFwKeyGenerateECC.test'
@@ -12,7 +11,6 @@ import SecurityCryptoFwSignVerifyECCTestUnit from './SecurityCryptoFwSignVerifyE
 import SecurityCryptoFwSignVerifyECCBrainPoolTestUnit from './SecurityCryptoFwSignVerifyECCBrainPool.test'
 import SecurityCryptoFwSignVerifySM2TestUnit from './SecurityCryptoFwSignVerifySM2.test'
 export default function testsuite() {
-  abilityTest();
   SecurityCryptoFwCipherSM2TestUnit();
   SecurityCryptoFwGenECCCommonSpecTestUnit();
   SecurityCryptoFwKeyGenerateECCTestUnit();

@@ -1,4 +1,3 @@
-import abilityTest from "./Ability.test";
 import SecurityCryptoFwSignRecoverRSARecoverTestUnit from './SecurityCryptoFwSignVerifyRSARecover.test'
 import SecurityCryptoFwSymKeyGeneratorTestUnit from './SecurityCryptoFwSymKeyGenerator.test'
 import SecurityCryptoFwSymEncryptAndDecryptTestUnit from './SecurityCryptoFwSymEncryptAndDecrypt.test'
@@ -21,7 +20,6 @@ import SecurityCryptoFwScryptKdfTestUnit from './SecurityCryptoFwScryptKdf.test'
 import SecurityCryptoFwErrCodeTestUnit from './SecurityCryptoErrCode.test'
 import SecurityCryptoFwDESTestUnit from './SecurityCryptoFwDes.test'
 export default function testsuite() {
-  abilityTest();
   SecurityCryptoFwSignRecoverRSARecoverTestUnit();
   SecurityCryptoFwSymKeyGeneratorTestUnit();
   SecurityCryptoFwSymEncryptAndDecryptTestUnit();
