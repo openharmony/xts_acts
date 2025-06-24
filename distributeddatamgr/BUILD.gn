@@ -32,6 +32,7 @@ group("distributeddatamgr") {
       "dataShareEts_static:ActsDataShareStaticTest",
       "dataSharejstest/hap:dataShare_js_test",
       "distributedKVStoretest:distributedKVStoretest",
+      "KvStoreEtsTestStatic:ActsKvStoreEtsStaticTest",
       "kvStoretest:kvStoretest",
       "preferencesEtstest:ActsPreferencesEtsTest",
       "preferencesNdktestHvigor:ActsPreferencesNdkTest",
