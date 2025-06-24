@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,15 +13,5 @@
  * limitations under the License.
  */
 
-{
-  "license": "",
-  "devDependencies": {
-    "@ohos/hypium": "1.0.6"
-  },
-  "author": "",
-  "name": "com.acts.cloud.ad.test",
-  "description": "XTS",
-  "main": "",
-  "version": "1.0.0",
-  "dependencies": {}
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';

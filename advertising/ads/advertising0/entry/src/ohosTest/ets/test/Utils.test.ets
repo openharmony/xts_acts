@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,15 +13,14 @@
  * limitations under the License.
  */
 
-{
-  "license": "",
-  "devDependencies": {
-    "@ohos/hypium": "1.0.6"
-  },
-  "author": "",
-  "name": "com.acts.cloud.ad.test",
-  "description": "XTS",
-  "main": "",
-  "version": "1.0.0",
-  "dependencies": {}
+export default class Utils {
+  static sleep(time) {
+    return new Promise<void>((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
 }

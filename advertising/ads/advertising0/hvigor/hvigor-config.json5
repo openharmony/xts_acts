@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,8 @@
  */
 
 {
-  "license": "",
-  "devDependencies": {
-    "@ohos/hypium": "1.0.6"
-  },
-  "author": "",
-  "name": "com.acts.cloud.ad.test",
-  "description": "XTS",
-  "main": "",
-  "version": "1.0.0",
-  "dependencies": {}
+  "hvigorVersion": "4.0.5",
+  "dependencies": {
+    "@ohos/hvigor-ohos-plugin": "4.0.5"
+  }
 }

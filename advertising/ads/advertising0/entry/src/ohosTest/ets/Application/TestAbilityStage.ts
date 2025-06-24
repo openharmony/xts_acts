@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+/*
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,15 +13,13 @@
  * limitations under the License.
  */
 
-{
-  "license": "",
-  "devDependencies": {
-    "@ohos/hypium": "1.0.6"
-  },
-  "author": "",
-  "name": "com.acts.cloud.ad.test",
-  "description": "XTS",
-  "main": "",
-  "version": "1.0.0",
-  "dependencies": {}
+import hilog from '@ohos.hilog';
+import AbilityStage from "@ohos.app.ability.AbilityStage"
+
+export default class TestAbilityStage extends AbilityStage {
+    onCreate() {
+        globalThis.appContext = this.context.getApplicationContext();
+        hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbilityStage onCreate');
+    }
 }
