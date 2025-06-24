@@ -4,7 +4,8 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Startup.SystemInfo",
+                    "SystemCapability.Graphic.Graphic2D.GL4"
                 ]
             }
         ]
