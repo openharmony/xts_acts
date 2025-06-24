@@ -13,9 +13,9 @@
 * limitations under the License.
 */
 
-import uriTest1 from "./uri/Uri1.test";
-import uriTest2 from "./uri/Uri2.test";
+import urlTest1 from "./url/Url1.test";
+import urlTest2 from "./url/Url2.test";
 export default function testsuite() {
-    uriTest1();
-    uriTest2();
+    urlTest1();
+    urlTest2();
 }
