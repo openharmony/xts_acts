@@ -79,6 +79,13 @@ export default function NavigationBindToNestedScrollable() {
       await driver.assertComponentExist(ON.type('TitleBar'));
       await driver.assertComponentExist(ON.type('ToolBar'));
 
+      let component3: Component  = await driver.findComponent(ON.type('ToolBar'));
+      let toolBarRect = await component3.getBounds();
+      let tooBarTop1 = toolBarRect.top;
+      let tooBarBottom1 = toolBarRect.bottom;
+      console.info('NavigationBindToNestedScrollable_0100 tooBarTop1: ', tooBarTop1);
+      console.info('NavigationBindToNestedScrollable_0100 tooBarBottom1: ', tooBarBottom1);
+
       await driver.swipe(Math.round(right - vp2px(11)), Math.round(bottom - vp2px(12)), Math.round(right - vp2px(11)), Math.round(top));
       await driver.delayMs(500)
       let list: Component = await driver.findComponent(ON.type('List'));
@@ -96,7 +103,7 @@ export default function NavigationBindToNestedScrollable() {
       let x = point.x;
       let y = point.y;
       console.info('NavigationBindToNestedScrollable_0100 x', x);
-      console.info('NavigationBindToNestedScrollable_0100 x', y);
+      console.info('NavigationBindToNestedScrollable_0100 y', y);
 
       let nav: Component = await driver.findComponent(ON.id('navId'));
       let rect = await nav.getBounds();
@@ -105,7 +112,16 @@ export default function NavigationBindToNestedScrollable() {
       expect(y < windowTop).assertTrue();
      
       let component2: Component  = await driver.findComponent(ON.type('ToolBar'));
-      expect(component2).assertEqual(null);
+      if (component2) {
+        let toolBarRect2 = await component2.getBounds();
+        let tooBarTop2 = toolBarRect2.top;
+        let tooBarBottom2 = toolBarRect2.bottom;
+        console.info('NavigationBindToNestedScrollable_0100 tooBarTop2: ', tooBarTop2);
+        console.info('NavigationBindToNestedScrollable_0100 tooBarBottom2: ', tooBarBottom2);
+        expect(Math.abs(Math.round(tooBarTop2 - tooBarTop1) - Math.round(tooBarBottom1 - tooBarTop1)) <= 1 ).assertTrue();
+      } else {
+        expect(component2).assertEqual(null); 
+      }
 
       console.info('NavigationBindToNestedScrollable_0100 END');
       done();
