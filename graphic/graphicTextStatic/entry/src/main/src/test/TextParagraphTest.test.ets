@@ -416,14 +416,14 @@ export default function ParagraphTest() {
       })
 
     /**
-     * @tc.number    : testPaintOnPathStatic
-     * @tc.name      : testPaintOnPathStatic
+     * @tc.number    : testPaintOnPathStatic_01
+     * @tc.name      : testPaintOnPathStatic_01
      * @tc.desc      : To test method paintOnPath for paragraph.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : LEVEL1
      */
-    it('testPaintOnPathStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testPaintOnPathStatic_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         try {
           hilog.error(0x0000, 'Text', 'MM_LOG print maxLines: %{public}f', globalParagraphStyle.maxLines);

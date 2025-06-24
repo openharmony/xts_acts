@@ -31,14 +31,14 @@ export default function GraphicTextFontCollection() {
     })
 
     /**
-     * @tc.number    : testGetGlobalInstanceStatic
-     * @tc.name      : testGetGlobalInstanceStatic
+     * @tc.number    : testGetGlobalInstanceStatic_01
+     * @tc.name      : testGetGlobalInstanceStatic_01
      * @tc.desc      : To test interface getGlobalInstance of FontCollection.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : LEVEL1
      */
-    it('testGetGlobalInstanceStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testGetGlobalInstanceStatic_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         try {
           let fontCollection = text.FontCollection.getGlobalInstance();
