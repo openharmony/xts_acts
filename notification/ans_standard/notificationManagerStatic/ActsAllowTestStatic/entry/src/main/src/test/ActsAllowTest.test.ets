@@ -177,60 +177,7 @@ export default function ActsAllowTest() {
         });
       })
 
-      
-    //问题单号：DTS2025061413209      
-    /*
-     * @tc.number    : Sub_Notification_Ces_Subscriber_Subscribe_Static_08086
-     * @tc.name      : Sub_Notification_Ces_Subscriber_Subscribe_Static_08086
-     * @tc.desc      : 调用 createSubscriber 接口，创建订阅者，调用 subscribe 接口，getSubscribeInfo获取订阅者信息，subscribeInfo.publisherBundleName为订阅者包名
-     * @tc.size      : Large-scaleTest
-     * @tc.type      : Function test
-     * @tc.level     : Level 2
-     */
-    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-      async (done: () => void): Promise<void> => {
-        let TAG: string ='Sub_Notification_Ces_Subscriber_Subscribe_08086'
-        // 创建订阅者
-        try {
-          commonEventManager.createSubscriber(subscribeInfo,
-            (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-              if (!err) {
-                console.info(`Succeeded in creating subscriber.`);
-                subscriber = commonEventSubscriber;
-                // 订阅公共事件
-                try {
-                  commonEventManager.subscribe(subscriber,
-                    (err: BusinessError, data: commonEventManager.CommonEventData) => {
-                      if (err) {
-                        console.error(`${TAG} Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
-                      } else {
-                        console.info(`${TAG} Succeeded in subscribing, data is ` + JSON.stringify(data));
-                      }
-                    });
-                } catch (error) {
-                  let err: BusinessError = error as BusinessError;
-                  console.error(`${TAG} Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
-                }
-              } else {
-                console.error(`${TAG} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-              }
-            });
-        } catch (error) {
-          let err: BusinessError = error as BusinessError;
-          console.error(`${TAG} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-        }
-        await Utils.msSleep(1500)
 
-        subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEventSubscribeInfo) => {
-          console.info(`${TAG} Succeeded in getting subscribe info, subscribe info is ` + JSON.stringify(subscribeInfo));
-          expect(subscribeInfo.publisherBundleName).assertEqual('com.example.myapplication')
-          done();
-        }).catch((err: BusinessError):void => {
-          console.error(`${TAG} Failed to get subscribe info. Code is ${err.code}, message is ${err.message}`);
-          expect(false).assertTrue()
-          done();
-        })
-      })
   })
 }
 

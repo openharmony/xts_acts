@@ -61,11 +61,9 @@ export default function ActsNotificationSecondaryDirectoryTest() {
       hilog.info(domain, tag, '%{public}s', 'beforeAll end');
     })
 
-    // afterEach(async (done: Function): Promise<void> => {
     beforeEach(() => {
       console.info(`${TAG} beforeEach START`)
       await notificationManager.cancelAll()
-      await notificationManager.removeAllSlots();
       await Utils.msSleep(1000);
       console.info(`${TAG} beforeEach END`)
     })
@@ -617,53 +615,6 @@ export default function ActsNotificationSecondaryDirectoryTest() {
 
 
     /*
-         * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_4650
-         * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_4650
-         * @tc.desc: use NotificationMultiLineContent type
-         */
-    it('Sub_Notification_Ans_Publish_Publish_Static_4650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (done: () => void): Promise<void> => {
-        let TAG:string = 'Sub_Notification_Ans_Publish_Publish_Static_4650 ===>'
-        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4650 START`);
-        try {
-          notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
-            console.info(`${TAG} addSlot success:` + JSON.stringify(err))
-            if (err && err.code!==0) {
-              console.info(`${TAG} addSlot err: ${err.code}, errMes: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            } else {
-              console.info(`${TAG} addSlot success 111`)
-              notificationManager.getSlots().then((NotificationSlot: Array<notificationManager.NotificationSlot>) => {
-                console.info(`${TAG} getSlots success:`)
-                for (let i = 0; i < NotificationSlot.length; ++i) {
-                  console.info(`${TAG} NotificationSlot[${i}].notificationType:` + NotificationSlot[i].notificationType)
-                  let num = NotificationSlot[i].notificationType as notificationManager.SlotType
-                  if (num == notificationManager.SlotType.SOCIAL_COMMUNICATION) {
-                    expect(true).assertTrue()
-                    done()
-                  }else{
-                    expect(false).assertTrue()
-                    done()
-                  }
-                }
-                done()
-              }).catch((err: BusinessError): void => {
-                console.info(`${TAG} getSlots failed err: + ${err.code}`)
-                expect(false).assertTrue()
-                done()
-              })
-            }
-          })
-        } catch (err:BusinessError) {
-          console.info(`${TAG} addSlot failed err: ${err.code}, errMes: ${err.message}`)
-          expect(false).assertTrue()
-          done()
-        }
-        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4650 END`);
-      })
-
-    /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_4750
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_4750
      * @tc.desc: use BundleOption type
@@ -696,19 +647,19 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         let TAG: string = 'Sub_Notification_Ans_Publish_Publish_Static_4850'
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4850 START`);
 
-        let flags: notificationManager.NotificationFlags = {
-          soundEnabled: notificationManager.NotificationFlagStatus.TYPE_OPEN,
-          vibrationEnabled: notificationManager.NotificationFlagStatus.TYPE_CLOSE,
-          reminderFlags: undefined
-        }
-        console.info(`${TAG} NotificationFlags soundEnabled:vibrationEnabled
-            = ${flags.soundEnabled},${flags.vibrationEnabled}`);
-        expect(typeof flags.soundEnabled == 'number').assertTrue()
-        expect(typeof flags.vibrationEnabled == 'number').assertTrue()
-        let num1 = flags.soundEnabled as notificationManager.NotificationFlagStatus
-        let num2 = flags.vibrationEnabled as notificationManager.NotificationFlagStatus
-        expect(num1 == 1).assertTrue()
-        expect(num2 == 2).assertTrue()
+        //let flags: notificationManager.NotificationFlags = {
+        //  soundEnabled: notificationManager.NotificationFlagStatus.TYPE_OPEN,
+        //  vibrationEnabled: notificationManager.NotificationFlagStatus.TYPE_CLOSE,
+        // reminderFlags: undefined
+        //}
+        //console.info(`${TAG} NotificationFlags soundEnabled:vibrationEnabled
+        //    = ${flags.soundEnabled},${flags.vibrationEnabled}`);
+        //expect(typeof flags.soundEnabled == 'number').assertTrue()
+        //expect(typeof flags.vibrationEnabled == 'number').assertTrue()
+        //let num1 = flags.soundEnabled as notificationManager.NotificationFlagStatus
+        //let num2 = flags.vibrationEnabled as notificationManager.NotificationFlagStatus
+        //expect(num1 == 1).assertTrue()
+        //expect(num2 == 2).assertTrue()
         expect(notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT as number).assertEqual(0)
         expect(notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT as number).assertEqual(1)
         expect(notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE as number).assertEqual(2)

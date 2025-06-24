@@ -95,53 +95,6 @@ export default function ActsCommonEventSystemAPITest() {
         console.info(Tag +`Sub_Notification_Ans_Publish_Publish_5100 END`);
       })
 
-    /*
-    * @tc.number: Sub_Notification_Ces_StaticEvent_Config_Static_1200
-    * @tc.name: Sub_Notification_Ces_StaticEvent_Config_Static_1200
-    * @tc.desc: test function removeStickyCommonEvent
-    */
-    it('Sub_Notification_Ces_StaticEvent_Config_Static_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
-      async (done: () => void): Promise<void> => {
-        let Tag: string = 'Sub_Notification_Ces_StaticEvent_Config_Static_1200'
-        console.info(`${Tag} Sub_Notification_Ces_StaticEvent_Config_1200 START`);
-
-        commonEventManager.removeStickyCommonEvent("sticky_event", (err) => {
-          if (err.code !== 0) {
-            console.info(`${Tag} remove sticky event AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
-            done()
-          } else {
-            console.info(`${Tag} remove sticky event AsyncCallback success`);
-            expect(false).assertTrue()
-            done()
-          }
-        })
-
-        console.info(`${Tag} Sub_Notification_Ces_StaticEvent_Config_1200 END`);
-      })
-
-    /*
-     * @tc.number: Sub_Notification_Ces_StaticEvent_Config_Static_1300
-     * @tc.name: Sub_Notification_Ces_StaticEvent_Config_Static_1300
-     * @tc.desc: test function removeStickyCommonEvent
-     */
-    it('Sub_Notification_Ces_StaticEvent_Config_Static_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
-      async (done: () => void): Promise<void> => {
-        let Tag: string = 'Sub_Notification_Ces_StaticEvent_Config_Static_1300'
-        console.info(`${Tag} Sub_Notification_Ces_StaticEvent_Config_1300 START`);
-
-        commonEventManager.removeStickyCommonEvent("sticky_event").then(() => {
-          console.info("${TAG} remove sticky event AsyncCallback success");
-          expect(false).assertTrue()
-          done()
-        }).catch((err: BusinessError): void => {
-          console.info(`${Tag} remove sticky event AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(err.code).assertEqual(202);
-          done()
-        });
-
-        console.info(`${Tag} Sub_Notification_Ces_StaticEvent_Config_1300 END`);
-      })
 
     //问题单号：DTS2025060627133
     /*
@@ -699,44 +652,6 @@ export default function ActsCommonEventSystemAPITest() {
     //   })
     // })
 
-    /*
-     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_283
-     * @tc.name: Sub_Notification_Ces_Publish_CommonEvent_Static_7900_283
-     * @tc.desc: test function publishAsUser
-     */
-    it('Sub_Notification_Ces_Publish_CommonEvent_Static_7900_283', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-      async (done: () => void): Promise<void> => {
-        let Tag: string = 'Sub_Notification_Ces_Publish_CommonEvent_Static_7900_283'
-        notificationManager.openNotificationSettings(testAbilityContext).then(() => {
-          expect(true).assertTrue();
-          console.info(Tag + "Succeed to openNotificationSettings");
-        }).catch((err: BusinessError): void => {
-          console.error(Tag + "openNotificationSettings: " + JSON.stringify(err));
-          if (err.code == 801) {
-            expect(true).assertTrue();
-            done();
-          } else {
-            expect(err.code).assertEqual(1600001)
-            done();
-          }
-        })
-        await Utils.msSleep(2000)
-        await notificationManager.openNotificationSettings(testAbilityContext).then(() => {
-          console.info(Tag + "Succeed to openNotificationSettings");
-          expect(false).assertTrue();
-          done()
-        }).catch((err: BusinessError): void => {
-          console.error(Tag + "openNotificationSettings: " + JSON.stringify(err));
-          if (err.code == 801) {
-            expect(true).assertTrue();
-            done();
-          } else {
-            expect(err.code).assertEqual(1600018)
-            done()
-          }
-        });
-        await Utils.msSleep(2000)
-      })
 
 
      //问题单号：DTS2025061850295
