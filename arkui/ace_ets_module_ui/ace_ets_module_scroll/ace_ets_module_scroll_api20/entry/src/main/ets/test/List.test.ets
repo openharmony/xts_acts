@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import barHeightNoMinHeightLimit from './TabsTest/barHeightNoMinHeightLimit.test';
 import maintainPosition from './SwiperTest/maintainPosition.test';
 import barMarginGrid from './GridTest/barMarginGrid.test';
 import barMarginList from './ListTest/barMarginList.test';
@@ -25,6 +26,7 @@ import canOverList from './ListTest/canOverList.test';
 import canOverScroll from './ScrollTest/canOverScroll.test';
 
 export default function testsuite() {
+  barHeightNoMinHeightLimit();
   maintainPosition()
   barMarginGrid()
   barMarginList()
