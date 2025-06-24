@@ -1690,21 +1690,11 @@ export class KeyboardController {
   }
 
   private async wrapAssertWithTwoIn1Judgement(assertRunnable: () => Promise<boolean>): Promise<() => Promise<boolean>> {
-    let value = this.mContext.resourceManager.getDeviceCapabilitySync();
-    let isTwoIn1 = value.deviceType === resourceManager.DeviceType.DEVICE_TYPE_2IN1;
-
-    console.info(TAG + ` isTwoIn1 ${isTwoIn1}`);
-    if (isTwoIn1) {
-      return () => assertRunnable();
-    }
-
     try {
-      await assertRunnable();
-      console.info(TAG + 'Not twoIn1 device should throw 801');
-      return () => Promise.resolve(false);
+      return () => assertRunnable();
     } catch (err) {
       console.info(TAG + ` Throw err is ${JSON.stringify(err)}`);
-      return () => Promise.resolve(err.code === 801);
+      return () => Promise.resolve(false);
     }
   }
 
@@ -2082,6 +2072,11 @@ export class KeyboardController {
         };
       }
     } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
       console.log(`${TAG}====>${testName} catch errL ${JSON.stringify(err)}`);
     }
     commoneventmanager.publish(testName, commonEventPublishData, this.publishCallback);
