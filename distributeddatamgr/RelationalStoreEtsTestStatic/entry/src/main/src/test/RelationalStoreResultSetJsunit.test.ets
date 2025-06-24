@@ -96,7 +96,7 @@ export default function rdbResultSetTest() {
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate enddatabaseDir:' + context.databaseDir);
 
         },
-      }, (err : BusinessError) : void => {
+      }, (err : BusinessError <void> | null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }
