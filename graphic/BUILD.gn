@@ -44,6 +44,7 @@ group("graphic") {
       "graphicImage:ActsGraphicImageTest",
       "graphicImageStatic:ActsGraphicImageStaticTest",
       "graphicText:ActsGraphicTextTest",
+      "graphicTextStatic:ActsGraphicTextStaticTest",
       "graphicUiEffect:ActsGraphicUiEffectTest",
       "graphicUiEffectStatic:ActsGraphicUiEffectStaticTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
