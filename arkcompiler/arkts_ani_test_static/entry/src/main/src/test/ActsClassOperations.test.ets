@@ -36,22 +36,41 @@ export default function classOperationsTest() {
     })
 
     /*
-     * @tc.number    : class_FindStaticMethod_0100
-     * @tc.name      : class_FindStaticMethod_0100
+     * @tc.number    : class_FindStaticMethodBoolean_0100
+     * @tc.name      : class_FindStaticMethodBoolean_0100
      * @tc.desc      : MediumTest
      * @tc.size      : Function
      * @tc.type      : Function test
      * @tc.level     : Level 3
      */
-    it("class_FindStaticMethod_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it("class_FindStaticMethodBoolean_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
       async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, 'class_FindStaticMethod_0100 start');
+      hilog.info(domain, tag, 'class_FindStaticMethodBoolean_0100 start');
       let cls = new Foo();
-      let result = cls.test_Class_FindStaticMethod();
+      let result = cls.test_Class_FindStaticMethodBoolean();
       expect(result).assertTrue();
-      hilog.info(domain, tag, 'class_FindStaticMethod_0100 done');
+      hilog.info(domain, tag, 'class_FindStaticMethodBoolean_0100 done');
       done();
-      hilog.info(domain, tag, 'class_FindStaticMethod_0100 end');
+      hilog.info(domain, tag, 'class_FindStaticMethodBoolean_0100 end');
+    })
+
+    /*
+     * @tc.number    : class_FindStaticMethodInt_0100
+     * @tc.name      : class_FindStaticMethodInt_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("class_FindStaticMethodInt_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'class_FindStaticMethodInt_0100 start');
+      let cls = new Foo();
+      let result = cls.test_Class_FindStaticMethodInt();
+      expect(result).assertTrue();
+      hilog.info(domain, tag, 'class_FindStaticMethodInt_0100 done');
+      done();
+      hilog.info(domain, tag, 'class_FindStaticMethodInt_0100 end');
     })
   })
 }

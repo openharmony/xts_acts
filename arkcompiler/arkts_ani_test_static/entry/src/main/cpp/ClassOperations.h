@@ -27,7 +27,7 @@ ani_boolean test_FindClass([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_o
     return ANI_TRUE;
 }
 
-ani_boolean test_Class_FindStaticMethod([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object)
+ani_boolean test_Class_FindStaticMethodBoolean([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object)
 {
     ani_class cls = {};
     auto status = env->FindClass("Lentry/src/main/src/ets/Index/Foo;", &cls);
@@ -36,6 +36,19 @@ ani_boolean test_Class_FindStaticMethod([[maybe_unused]] ani_env *env, [[maybe_u
 
     ani_static_method method = nullptr;
     status = env->Class_FindStaticMethod(cls, "or", "ZZ:Z", &method);
+    ASSERT_EQ(status, ANI_OK);
+    ASSERT_NE(method, nullptr);
+    return ANI_TRUE;
+}
+
+ani_boolean test_Class_FindStaticMethodInt([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object)
+{
+    ani_class cls = {};
+    ani_object obj = {};
+    ASSERT_EQ(GetClsData(env, &obj, &cls), ANI_TRUE);
+
+    ani_static_method method = nullptr;
+    auto status = env->Class_FindStaticMethod(cls, "sum", "II:I", &method);
     ASSERT_EQ(status, ANI_OK);
     ASSERT_NE(method, nullptr);
     return ANI_TRUE;

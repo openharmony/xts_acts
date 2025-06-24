@@ -28,8 +28,6 @@ const uint32_t ANI_RES_OUT_OF_REF = 9;
 #define ASSERT_EQ(a, b) \
     do { \
         if ((a) != (b)) { \
-            OH_LOG_INFO(LOG_APP, "Assertion failed at %{public}s : %{public}s", __FILE__, __LINE__); \
-            OH_LOG_INFO(LOG_APP, "strval1: {public}s & strval2: {public}s,", (a), (b)); \
             return ANI_FALSE; \
         } \
     } while (0)
@@ -37,35 +35,36 @@ const uint32_t ANI_RES_OUT_OF_REF = 9;
 #define ASSERT_NE(a, b) \
     do { \
         if ((a) == (b)) { \
-            OH_LOG_INFO(LOG_APP, "Assertion failed at %{public}s : %{public}s", __FILE__, __LINE__); \
-            OH_LOG_INFO(LOG_APP, "strval1: {public}s & strval2: {public}s,", (a), (b)); \
             return ANI_FALSE; \
         } \
     } while (0)
 
-void GetClsData(ani_env *env, ani_object *objectResult, ani_class *outCls)
+ani_boolean GetClsData(ani_env *env, ani_object *objectResult, ani_class *outCls)
 {
     ani_class cls {};
     if (env->FindClass("Lentry/src/main/src/ets/Index/Foo;", &cls) != ANI_OK) {
         OH_LOG_INFO(LOG_APP, " FindClass Failed");
+        return ANI_FALSE;
     }
     if (cls == nullptr) {
         OH_LOG_INFO(LOG_APP, " FindClass cls is nullptr");
+        return ANI_FALSE;
     }
 
     ani_static_method newMethod;
     if (env->Class_FindStaticMethod(cls, "new_Foo", ":Lentry/src/main/src/ets/Index/Foo;", &newMethod) != ANI_OK) {
         OH_LOG_INFO(LOG_APP, " Class_FindStaticMethod Failed");
-        return;
+        return ANI_FALSE;
     }
 
     ani_ref ref;
     if (env->Class_CallStaticMethod_Ref(cls, newMethod, &ref) != ANI_OK) {
         OH_LOG_INFO(LOG_APP, " Class_CallStaticMethod_Ref Failed");
-        return;
+        return ANI_FALSE;
     }
 
     *objectResult = static_cast<ani_object>(ref);
     *outCls = cls;
+    return ANI_TRUE;
 }
 #endif //ARKTS_ANI_TEST_COMMON_H
