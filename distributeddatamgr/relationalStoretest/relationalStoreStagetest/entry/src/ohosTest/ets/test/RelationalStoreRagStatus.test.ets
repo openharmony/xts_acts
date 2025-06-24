@@ -95,7 +95,8 @@ describe('relationalStoreRagStatusTest', () => {
 		   expect(store != undefined).assertEqual(true);
 		   
         } catch (e) {
-            expect(e.code).assertEqual(801);
+            expect(e.code).assertEqual("801");
+            console.info(TAG + 'SUB_DDM_RELATIONALETS_RAGSTATUSTEST_0010 err.code' + e.code);
         } 
         done();
         console.info(TAG + '************* SUB_DDM_RELATIONALETS_RAGSTATUSTEST_0010 end *************');
