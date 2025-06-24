@@ -16,10 +16,10 @@
 import cpFw from '@ohos.security.cryptoFramework';
 import { BusinessError } from '@ohos.base';
 
-async function genKeyPair(isSpec: boolean, spec: cpFw.AsyKeySpec, algName: string): Promise<cpFw.KeyPair|undefined> {
-  return new Promise<cpFw.KeyPair|undefined>((resolve, reject) => {
+async function genKeyPair(isSpec: boolean, spec: cpFw.AsyKeySpec, algName: string): Promise<cpFw.KeyPair> {
+  return new Promise<cpFw.KeyPair>((resolve, reject) => {
     if (!isSpec) {
-      cpFw.createAsyKeyGenerator(algName).generateKeyPair((err: BusinessError<void>|null, keyPair: cpFw.KeyPair|undefined) => {
+      cpFw.createAsyKeyGenerator(algName).generateKeyPair((err: BusinessError<void>|null, keyPair) => {
         if (err?.code != 0) {
           console.log("Callback genKeyPair failed. catch error " + err);
           reject(err as Error);
@@ -28,7 +28,7 @@ async function genKeyPair(isSpec: boolean, spec: cpFw.AsyKeySpec, algName: strin
         }
       });
     } else {
-      cpFw.createAsyKeyGeneratorBySpec(spec).generateKeyPair((err: BusinessError<void>|null, keyPair: cpFw.KeyPair|undefined) => {
+      cpFw.createAsyKeyGeneratorBySpec(spec).generateKeyPair((err: BusinessError<void>|null, keyPair) => {
         if (err?.code != 0) {
           console.log("Callback genKeyPair failed. catch error " + err);
           reject(err as Error);
@@ -40,9 +40,9 @@ async function genKeyPair(isSpec: boolean, spec: cpFw.AsyKeySpec, algName: strin
   });
 }
 
-async function genPubKey(spec: cpFw.AsyKeySpec): Promise<cpFw.PubKey|undefined> {
-  return new Promise<cpFw.PubKey|undefined>((resolve, reject) => {
-    cpFw.createAsyKeyGeneratorBySpec(spec).generatePubKey((err: BusinessError<void>|null, pubKey: cpFw.PubKey|undefined) => {
+async function genPubKey(spec: cpFw.AsyKeySpec): Promise<cpFw.PubKey> {
+  return new Promise<cpFw.PubKey>((resolve, reject) => {
+    cpFw.createAsyKeyGeneratorBySpec(spec).generatePubKey((err: BusinessError<void>|null, pubKey) => {
       if (err?.code != 0) {
         console.log("Callback genPubKey failed. catch error " + err);
         reject(err as Error);
@@ -53,9 +53,9 @@ async function genPubKey(spec: cpFw.AsyKeySpec): Promise<cpFw.PubKey|undefined> 
   });
 }
 
-async function genPriKey(spec: cpFw.AsyKeySpec): Promise<cpFw.PriKey|undefined> {
-  return new Promise<cpFw.PriKey|undefined>((resolve, reject) => {
-    cpFw.createAsyKeyGeneratorBySpec(spec).generatePriKey((err: BusinessError<void>|null, priKey: cpFw.PriKey|undefined) => {
+async function genPriKey(spec: cpFw.AsyKeySpec): Promise<cpFw.PriKey> {
+  return new Promise<cpFw.PriKey>((resolve, reject) => {
+    cpFw.createAsyKeyGeneratorBySpec(spec).generatePriKey((err: BusinessError<void>|null, priKey) => {
       if (err?.code != 0) {
         console.log("Callback genPriKey failed. catch error " + err);
         reject(err as Error);
@@ -97,7 +97,7 @@ async function convertDHKey(algName: string): Promise<boolean> {
     };
     let keyPair: cpFw.KeyPair = await genKeyPair(false, spec, algName);
     console.log("Callback convertKey: generatePriKey succeed.");
-    generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded(), (err: BusinessError<void>|null, keyPairNew: cpFw.KeyPair|undefined) => {
+    generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded(), (err: BusinessError<void>|null, keyPairNew) => {
       if (err?.code != 0) {
         console.log("Callback convertKey failed. catch error " + err);
         reject(err as Error);
@@ -126,7 +126,7 @@ async function convertX25519Key(algName: string): Promise<boolean> {
     };
     let keyPair: cpFw.KeyPair = await genKeyPair(false, spec, algName);
     console.log("Callback convertKey: generatePriKey succeed.");
-    generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded(), (err: BusinessError<void>|null, keyPairNew: cpFw.KeyPair|undefined) => {
+    generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded(), (err: BusinessError<void>|null, keyPairNew) => {
       if (err?.code != 0) {
         console.log("Callback convertKey failed. catch error " + err);
         reject(err as Error);
@@ -152,7 +152,7 @@ async function convertEd25519Key(algName: string): Promise<boolean> {
     };
     let keyPair: cpFw.KeyPair = await genKeyPair(false, spec, algName);
     console.log("Callback convertKey: generatePriKey succeed.");
-    generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded(), (err: BusinessError<void>|null, keyPairNew: cpFw.KeyPair|undefined) => {
+    generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded(), (err: BusinessError<void>|null, keyPairNew) => {
       if (err?.code != 0) {
         console.log("Callback convertKey failed. catch error " + err);
         reject(err as Error);

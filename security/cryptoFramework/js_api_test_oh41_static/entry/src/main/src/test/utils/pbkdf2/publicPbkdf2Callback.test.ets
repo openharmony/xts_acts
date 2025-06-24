@@ -16,9 +16,9 @@ import { BusinessError } from '@ohos.base';
 import crypto from "@ohos.security.cryptoFramework";
 import { stringTouInt8Array, uInt8ArrayToShowStr, uInt8ArrayToString } from "../common/publicDoString.test";
 
-async function kdfGenerateSecret(kdfObj: crypto.Kdf, params: crypto.KdfSpec): Promise<crypto.DataBlob|undefined> {
-  return new Promise<crypto.DataBlob|undefined>((resolve, reject) => {
-    kdfObj.generateSecret(params, (err: BusinessError<void>|null, dataBlob: crypto.DataBlob|undefined) => {
+async function kdfGenerateSecret(kdfObj: crypto.Kdf, params: crypto.KdfSpec): Promise<crypto.DataBlob> {
+  return new Promise<crypto.DataBlob>((resolve, reject) => {
+    kdfObj.generateSecret(params, (err: BusinessError<void>|null, dataBlob) => {
       if (err?.code != 0) {
         console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
         reject(err as Error);
@@ -29,10 +29,10 @@ async function kdfGenerateSecret(kdfObj: crypto.Kdf, params: crypto.KdfSpec): Pr
   });
 }
 
-async function kdfParamSpecWithNull(kdfObj: crypto.Kdf): Promise<crypto.DataBlob|undefined> {
-  return await new Promise<crypto.DataBlob|undefined>((resolve, reject) => {
+async function kdfParamSpecWithNull(kdfObj: crypto.Kdf): Promise<crypto.DataBlob> {
+  return await new Promise<crypto.DataBlob>((resolve, reject) => {
     let paramSpec: crypto.KdfSpec;
-    kdfObj.generateSecret(paramSpec, (err: BusinessError<void>|null, dataBlob: crypto.DataBlob|undefined) => {
+    kdfObj.generateSecret(paramSpec, (err: BusinessError<void>|null, dataBlob) => {
       if (err?.code != 0) {
         reject(err as Error);
       } else {

@@ -85,11 +85,11 @@ async function createSymKeyPromise(algName: string): Promise<cryptoFramework.Sym
   }
 }
 
-async function createSymKeyCallback(algName: string): Promise<cryptoFramework.SymKey|undefined> {
+async function createSymKeyCallback(algName: string): Promise<cryptoFramework.SymKey> {
   try {
     let symKeyGenerator: cryptoFramework.SymKeyGenerator = cryptoFramework.createSymKeyGenerator(algName);
-    return new Promise<cryptoFramework.SymKey|undefined>((resolve, reject) => {
-      symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: cryptoFramework.SymKey|undefined) => {
+    return new Promise<cryptoFramework.SymKey>((resolve, reject) => {
+      symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey) => {
         if (err?.code != 0) {
           reject(err as Error);
         } else {
@@ -140,11 +140,11 @@ async function convertSymKeyPromise(algName: string, data: cryptoFramework.DataB
   }
 }
 
-async function convertSymKeyCallback(algName: string, data: cryptoFramework.DataBlob): Promise<cryptoFramework.SymKey|undefined> {
+async function convertSymKeyCallback(algName: string, data: cryptoFramework.DataBlob): Promise<cryptoFramework.SymKey> {
   try {
     let symKeyGenerator: cryptoFramework.SymKeyGenerator = cryptoFramework.createSymKeyGenerator(algName);
-    return new Promise<cryptoFramework.SymKey|undefined>((resolve, reject) => {
-      symKeyGenerator.convertKey(data, (err: BusinessError<void>|null, symKey: cryptoFramework.SymKey|undefined) => {
+    return new Promise<cryptoFramework.SymKey>((resolve, reject) => {
+      symKeyGenerator.convertKey(data, (err: BusinessError<void>|null, symKey) => {
         if (err?.code != 0) {
           reject(err as Error);
         } else {
@@ -256,9 +256,9 @@ async function initCallback(cipher: cryptoFramework.Cipher, symKey:cryptoFramewo
 }
 
 async function finalCallback(cipher: cryptoFramework.Cipher,
-  data: cryptoFramework.DataBlob): Promise<cryptoFramework.DataBlob|undefined> {
-  return new Promise<cryptoFramework.DataBlob|undefined>((resolve, reject) => {
-    cipher.doFinal(data, (err: BusinessError<void>|null, cipherText: cryptoFramework.DataBlob|undefined) => {
+  data: cryptoFramework.DataBlob): Promise<cryptoFramework.DataBlob> {
+  return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
+    cipher.doFinal(data, (err: BusinessError<void>|null, cipherText) => {
       if (err?.code != 0) {
         reject(err as Error);
       } else {

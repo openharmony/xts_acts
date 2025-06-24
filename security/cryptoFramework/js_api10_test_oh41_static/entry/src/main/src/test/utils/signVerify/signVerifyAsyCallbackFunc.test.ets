@@ -42,9 +42,9 @@ async function signUpdate(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<string>
   });
 }
 
-async function signSign(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<cpFw.DataBlob|undefined> {
-  return new Promise<cpFw.DataBlob|undefined>((resolve, reject) => {
-    sign.sign(data, (err: BusinessError<void>|null, signedData: cpFw.DataBlob|undefined) => {
+async function signSign(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<cpFw.DataBlob> {
+  return new Promise<cpFw.DataBlob>((resolve, reject) => {
+    sign.sign(data, (err: BusinessError<void>|null, signedData) => {
       if (err?.code != 0) {
         reject(err as Error);
       } else {
@@ -78,9 +78,9 @@ async function verifyUpdate(verify: cpFw.Verify, data: cpFw.DataBlob): Promise<s
   });
 }
 
-async function verifyVerify(verify: cpFw.Verify, data: cpFw.DataBlob, signatureData: cpFw.DataBlob): Promise<boolean|undefined> {
-  return new Promise<boolean|undefined>((resolve, reject) => {
-    verify.verify(data, signatureData, (err: BusinessError<void>|null, res: boolean|undefined) => {
+async function verifyVerify(verify: cpFw.Verify, data: cpFw.DataBlob, signatureData: cpFw.DataBlob): Promise<boolean> {
+  return new Promise<boolean>((resolve, reject) => {
+    verify.verify(data, signatureData, (err: BusinessError<void>|null, res) => {
       if (err?.code != 0) {
         reject(err as Error);
       } else {
