@@ -34,6 +34,7 @@ group("bundlemanager") {
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",
       "actsbundlemanagerstagetest:ActsBundleMgrStageEtsTest",
+      "actsbundlemanagerstageteststatic:ActsBundleMgrStageEtsStaticTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanagertestcaseAddition:ActsbundlemgrcaseAdditionEtsTest",
       "actsbundlenativeninthapitest:ActsBundleNativeNinthApiTest",
