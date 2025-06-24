@@ -28,6 +28,7 @@ import wifiManagerTest from './wifiManager/wifiManager.test';
 import deviceControlTest from './deviceControl/deviceControl.test.ets';
 import locationManagerTest from './locationManager/locationManager.test.ets';
 import usbManagerTest from './usbManager/usbManager.test.ets';
+import telephonyManagerTest from './telephonyManager/telephonyManager.test.ets';
 
 export default function testsuite() {
   networkManagerTest();
@@ -46,4 +47,5 @@ export default function testsuite() {
   applicationManagerTest();
   bundleManagerTest();
   restrictionsTest();
+  telephonyManagerTest();
 }
