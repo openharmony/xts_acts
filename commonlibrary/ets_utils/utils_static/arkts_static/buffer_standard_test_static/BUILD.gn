@@ -17,7 +17,7 @@ ohos_js_app_static_suite("ActsBufferStaticTest") {
 #   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActBufferStatic"
+  hap_name = "ActsBufferStaticTest"
   part_name = "ets_utils"
   subsystem_name = "commonlibrary"
 }
