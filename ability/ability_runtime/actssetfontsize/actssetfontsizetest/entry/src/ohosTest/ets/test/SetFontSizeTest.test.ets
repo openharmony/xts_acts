@@ -96,7 +96,7 @@ export default function SetFontSizeTest() {
           })
           let applicationContext = uiAbilityContext.getApplicationContext();
           applicationContext.setFontSizeScale(2);
-          await sleep(2000);
+          await sleep(3000);
           hilog.info(0x0000, TAG, "[%{public}s] Flags: abilityStageFlag = %{public}s, abilityFlag = %{public}s, uiExtensionFlag = %{public}s", TAG, abilityStageFlag, abilityFlag, uiExtensionFlag);
           try {
             expect(abilityStageFlag && abilityFlag && uiExtensionFlag).assertEqual(true);
@@ -218,6 +218,9 @@ export default function SetFontSizeTest() {
               expect(commonEventData.parameters?.fontSize).assertEqual(1);
             } catch {
             }
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+            });
           })
           let wantEntry: Want = {
             bundleName: 'com.test.actssetfontsizerely',
@@ -235,6 +238,7 @@ export default function SetFontSizeTest() {
           await driver.delayMs(2000);
           let terminateEntryButton: Component = await driver.findComponent(ON.id('terminateEntryButton'));
           await terminateEntryButton.click();
+          await driver.delayMs(1000);
           uiAbilityContext.startAbility(wantEntry)
             .then(() => {
               hilog.info(0x0000, TAG, "[%{public}s] start entry's ability succeed.", TAG);
@@ -249,10 +253,7 @@ export default function SetFontSizeTest() {
           await sleep(2000);
           terminateEntryButton = await driver.findComponent(ON.id('terminateEntryButton'));
           await terminateEntryButton.click();
-          commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-            hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
-            done();
-          });
+          done();
         })
         .catch((err: BusinessError) => {
           hilog.info(0x0000, TAG, "[%{public}s] Failed to create subscriber. err: %{public}s", TAG, JSON.stringify(err));

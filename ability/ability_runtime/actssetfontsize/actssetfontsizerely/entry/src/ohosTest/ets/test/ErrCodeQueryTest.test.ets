@@ -39,24 +39,5 @@ export default function errCodeQueryTest() {
 
     })
 
-    /*
-     * @tc.number  SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100
-     * @tc.name    SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100
-     * @tc.desc    Passing null to the setFont interface results in a 401 error code
-     * @tc.level   0
-     */
-    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100', Level.LEVEL0, async (done: Function) => {
-      TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100';
-      hilog.info(0x0000, TAG, "[%{public}s] case start.", TAG);
-      try {
-        expect(1).assertEqual(1);
-        done();
-      } catch (paramError) {
-        hilog.info(0x0000, TAG, '[%{public}s] paramError: %{public}s', TAG, JSON.stringify(paramError));
-        expect(paramError.code).assertEqual(401);
-        done();
-      }
-    })
-
   })
 }
