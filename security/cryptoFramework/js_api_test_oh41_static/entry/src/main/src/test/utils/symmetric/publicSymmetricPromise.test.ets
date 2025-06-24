@@ -22,7 +22,7 @@ import { createGcmParam } from '../common/gcmParamsSpec.test';
 async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<crypto.SymKey> {
   return new Promise<crypto.SymKey>((resolve, reject) => {
     symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || symKey === undefined) {
         console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
         reject(err as Error);
       } else {
@@ -50,7 +50,7 @@ async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoM
   plainText: crypto.DataBlob): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     cipherGenerator.update(plainText, (err: BusinessError<void>|null, data) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || data === undefined) {
         console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
         reject(err as Error);
       } else {
@@ -64,7 +64,7 @@ async function doFinalCipher(cipherGenerator: crypto.Cipher, mode: crypto.Crypto
   dataBlob: crypto.DataBlob|null): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, data) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || data === undefined) {
         console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
         reject(err as Error);
       } else {

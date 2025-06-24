@@ -28,8 +28,10 @@ async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<
           console.log("[Callback]symkey format:" + symKey.format);
           let encodeKey = symKey.getEncoded();
           console.log(`[Callback]symkey length is: ${encodeKey.data.length}`);
+          resolve(symKey);
+        } else {
+          reject(err as Error);
         }
-        resolve(symKey);
       }
     });
   });
@@ -47,8 +49,10 @@ async function convertSymKey(symKeyGenerator: crypto.SymKeyGenerator, dataBlob: 
           console.log("[Callback]symkey format:" + symKey.format);
           let encodeKey = symKey.getEncoded();
           console.log(`[Callback]symkey length is: ${encodeKey.data.length}`);
+          resolve(symKey);
+        } else {
+          reject(err as Error);
         }
-        resolve(symKey);
       }
     });
   });
@@ -85,7 +89,7 @@ async function updateMac(macGenerator: crypto.Mac, dataBlob: crypto.DataBlob): P
 async function doFinalMac(macGenerator: crypto.Mac): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     macGenerator.doFinal((err: BusinessError<void>|null, output) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || output === undefined) {
         console.error(`[Callback]macGenerator doFinal failed. error is: ${err}`);
         reject(err as Error);
       } else {

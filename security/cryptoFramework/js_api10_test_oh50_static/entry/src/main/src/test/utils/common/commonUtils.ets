@@ -173,7 +173,7 @@ async function doScryptCallback(kdf: cryptoFramework.Kdf,
   spec: cryptoFramework.ScryptSpec): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
     kdf.generateSecret(spec, (err: BusinessError<void>|null, rawData) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || rawData === undefined) {
         reject(err as Error);
       } else {
         resolve(rawData);

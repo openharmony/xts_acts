@@ -32,8 +32,10 @@ async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<
           console.log("[Callback]key format:" + symKey.format);
           let encodeKey = symKey.getEncoded();
           console.log("[Callback]key getEncoded hex: " + uInt8ArrayToShowStr(encodeKey.data));
+          resolve(symKey);
+        } else {
+          reject(err as Error);
         }
-        resolve(symKey);
       }
     });
   });
@@ -58,7 +60,7 @@ async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoM
   plainText: crypto.DataBlob): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     cipherGenerator.update(plainText, (err: BusinessError<void>|null, updateData) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || updateData === undefined) {
         console.error("[Callback]cipherGenerator update failed. error is " + err + "mode is " + mode);
         reject(err as Error);
       } else {
@@ -73,7 +75,7 @@ async function doFinalCipher(cipherGenerator: crypto.Cipher, mode: crypto.Crypto
   dataBlob: crypto.DataBlob|null): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, finalData>) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || finalData === undefined) {
         console.error("[Callback]cipherGenerator doFinal failed. error is " + err + "mode is " + mode);
         reject(err as Error);
       } else {

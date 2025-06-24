@@ -224,7 +224,7 @@ async function createAsyKeyCallback(algName: string): Promise<cryptoFramework.Ke
   return new Promise<cryptoFramework.KeyPair>((resolve, reject) => {
     let asyKeyGenerator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
     asyKeyGenerator.generateKeyPair((err: BusinessError<void>|null, keyPair) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || keyPair === undefined) {
         reject(err as Error);
       } else {
         resolve(keyPair);
@@ -264,7 +264,7 @@ async function convertAsyKeyCallback(algName: string, pubKeyData: cryptoFramewor
   return new Promise<cryptoFramework.KeyPair>((resolve, reject) => {
     let asyKeyGenerator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
     asyKeyGenerator.convertKey(pubKeyData, priKeyData, (err: BusinessError<void>|null, keyPair) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || keyPair === undefined) {
         reject(err as Error);
       } else {
         resolve(keyPair);
@@ -375,7 +375,7 @@ async function doAgreementCallback(algName: string, pubKey: cryptoFramework.PubK
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
     let agreement: cryptoFramework.KeyAgreement = cryptoFramework.createKeyAgreement(algName);
     agreement.generateSecret(priKey, pubKey, (err: BusinessError<void>|null, secret) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || secret === undefined) {
         reject(err as Error)
       } else {
         resolve(secret)
@@ -413,7 +413,7 @@ async function doSignSignCallback(sign: cryptoFramework.Sign,
   msg: cryptoFramework.DataBlob|null): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
     sign.sign(msg, (err: BusinessError<void>|null, rawData) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || rawData === undefined) {
         reject(err as Error)
       } else {
         resolve(rawData)
@@ -438,7 +438,7 @@ async function doVerifyVerifyCallback(verify: cryptoFramework.Verify,
   msg: cryptoFramework.DataBlob|null, rawData: cryptoFramework.DataBlob): Promise<boolean> {
   return new Promise<boolean>((resolve, reject) => {
     verify.verify(msg, rawData, (err: BusinessError<void>|null, ret) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || ret === undefined) {
         reject(err as Error)
       } else {
         resolve(ret)

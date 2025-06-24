@@ -19,7 +19,7 @@ import { stringTouInt8Array, uInt8ArrayToShowStr, uInt8ArrayToString } from "../
 async function kdfGenerateSecret(kdfObj: crypto.Kdf, params: crypto.KdfSpec): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     kdfObj.generateSecret(params, (err: BusinessError<void>|null, dataBlob) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || dataBlob === undefined) {
         console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
         reject(err as Error);
       } else {
@@ -33,7 +33,7 @@ async function kdfParamSpecWithNull(kdfObj: crypto.Kdf): Promise<crypto.DataBlob
   return await new Promise<crypto.DataBlob>((resolve, reject) => {
     let paramSpec: crypto.KdfSpec;
     kdfObj.generateSecret(paramSpec, (err: BusinessError<void>|null, dataBlob) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || dataBlob === undefined) {
         reject(err as Error);
       } else {
         resolve(dataBlob);

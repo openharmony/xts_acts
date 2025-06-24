@@ -45,7 +45,7 @@ async function signUpdate(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<string>
 async function signSign(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<cpFw.DataBlob> {
   return new Promise<cpFw.DataBlob>((resolve, reject) => {
     sign.sign(data, (err: BusinessError<void>|null, signedData) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || signedData === undefined) {
         reject(err as Error);
       } else {
         resolve(signedData);
@@ -81,7 +81,7 @@ async function verifyUpdate(verify: cpFw.Verify, data: cpFw.DataBlob): Promise<s
 async function verifyVerify(verify: cpFw.Verify, data: cpFw.DataBlob, signatureData: cpFw.DataBlob): Promise<boolean> {
   return new Promise<boolean>((resolve, reject) => {
     verify.verify(data, signatureData, (err: BusinessError<void>|null, res) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || res === undefined) {
         reject(err as Error);
       } else {
         resolve(res);

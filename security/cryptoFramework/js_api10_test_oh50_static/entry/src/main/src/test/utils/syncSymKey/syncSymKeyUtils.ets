@@ -90,7 +90,7 @@ async function createSymKeyCallback(algName: string): Promise<cryptoFramework.Sy
     let symKeyGenerator: cryptoFramework.SymKeyGenerator = cryptoFramework.createSymKeyGenerator(algName);
     return new Promise<cryptoFramework.SymKey>((resolve, reject) => {
       symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey) => {
-        if (err?.code != 0) {
+        if (err?.code != 0 || symKey === undefined) {
           reject(err as Error);
         } else {
           resolve(symKey)
@@ -145,7 +145,7 @@ async function convertSymKeyCallback(algName: string, data: cryptoFramework.Data
     let symKeyGenerator: cryptoFramework.SymKeyGenerator = cryptoFramework.createSymKeyGenerator(algName);
     return new Promise<cryptoFramework.SymKey>((resolve, reject) => {
       symKeyGenerator.convertKey(data, (err: BusinessError<void>|null, symKey) => {
-        if (err?.code != 0) {
+        if (err?.code != 0 || symKey === undefined) {
           reject(err as Error);
         } else {
           resolve(symKey)
@@ -259,7 +259,7 @@ async function finalCallback(cipher: cryptoFramework.Cipher,
   data: cryptoFramework.DataBlob): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
     cipher.doFinal(data, (err: BusinessError<void>|null, cipherText) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || cipherText === undefined) {
         reject(err as Error);
       } else {
         resolve(cipherText);

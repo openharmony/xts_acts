@@ -36,7 +36,7 @@ async function hkdfCallback(algName: string, spec: cryptoFramework.HKDFSpec): Pr
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
     let kdf = cryptoFramework.createKdf(algName);
     kdf.generateSecret(spec, (err: BusinessError<void>|null, dataBlob) => {
-      if (err?.code != 0) {
+      if (err?.code != 0 || dataBlob === undefined) {
         reject(err as Error);
       } else {
         resolve(dataBlob);
