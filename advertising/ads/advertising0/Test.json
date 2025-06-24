@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "bundle-name": "com.acts.cloud.ad.test",
+        "bundle-name": "com.acts.cloud.ad.level.test",
         "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 30000
@@ -11,8 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsCloudAdTest.hap",
-                "ActsAdsKitTest.hap"
+                "ActsCloudAdLevel0Test.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
