@@ -210,6 +210,19 @@ export default function inputMethodAuthorityJSUnit() {
             hilog.info(domain, tag, "====>************* inputMethod_test_switchCurrentInputMethodSubtype_static_002 Test start*************");
             let inputMS = inputMethod.getCurrentInputMethodSubtype()
             hilog.info(domain, tag, "inputMethod_test_switchCurrentInputMethodSubtype_static_002 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
+            let extras: Record<string, string> ={}
+            let inputMethodSubProperty: inputMethodSubtype = {
+                id: inputMS.id,
+                label: "",
+                labelId: 123,
+                name: inputMS.name,
+                mode: "lower",
+                locale: "",
+                language: "",
+                icon: "",
+                iconId: 0,
+                extra: extras
+            };
             try {
                 inputMethod.switchCurrentInputMethodSubtype(inputMS).then((data: boolean) => {
                     hilog.info(domain, tag, "====>inputMethod_test_switchCurrentInputMethodSubtype_static_002 data: " + JSON.stringify(data));
