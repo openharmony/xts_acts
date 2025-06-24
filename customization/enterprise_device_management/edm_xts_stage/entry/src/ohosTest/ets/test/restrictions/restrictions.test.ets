@@ -43,6 +43,7 @@ const LABEL_REMOTE_DIAGNOSIS = "remoteDiagnosis";
 const LABEL_SET_APN = "setApn";
 const LABEL_SET_ETHERNET_IP = "setEthernetIp";
 const LABEL_USB_STORAGE_DEVICE_WRITE = "usbStorageDeviceWrite";
+const LABEL_POWER_LONG_PRESS = "powerLongPress";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -2255,6 +2256,71 @@ function testSetUserRestrictionPolicy() {
       expect(error.code == 801).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0404
+   * @tc.name      : test_set_user_restriction_0404
+   * @tc.desc      : test setUserRestriction with unActiveadmin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0404", Level.LEVEL2, async (done: Function) => {
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_POWER_LONG_PRESS, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info(' --- test_set_user_restriction_0100 error 9200001 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0405
+   * @tc.name      : test_set_user_restriction_0405
+   * @tc.desc      : test setUserRestriction with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0405", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_POWER_LONG_PRESS, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info(' --- test_set_user_restriction_0200 error 9200002 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0406
+   * @tc.name      : test_set_user_restriction_0406
+   * @tc.desc      : test setUserRestriction with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0406", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_POWER_LONG_PRESS, true);
+      restrictions.setUserRestriction(SELFWANT, LABEL_POWER_LONG_PRESS, false);
+    } catch (error) {
+      console.info(' --- test_set_user_restriction_0300 error 801 is expected, actually catch: ' + error.code);
+      expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
     }
     done();
   });
