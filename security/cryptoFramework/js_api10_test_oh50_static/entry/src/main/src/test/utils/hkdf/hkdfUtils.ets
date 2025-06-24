@@ -35,9 +35,9 @@ interface kdfVector {
 async function hkdfCallback(algName: string, spec: cryptoFramework.HKDFSpec): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
     let kdf = cryptoFramework.createKdf(algName);
-    kdf.generateSecret(spec, (err: BusinessError<void>|null, dataBlob: cryptoFramework.DataBlob|undefined) => {
+    kdf.generateSecret(spec, (err: BusinessError<void>|null, dataBlob: cryptoFramework.DataBlob|PromiseLike<cryptoFramework.DataBlob>) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve(dataBlob);
       }

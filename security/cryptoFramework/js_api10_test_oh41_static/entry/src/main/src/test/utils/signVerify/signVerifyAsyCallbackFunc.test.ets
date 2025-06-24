@@ -22,7 +22,7 @@ async function signInit(sign: cpFw.Sign, priKey: cpFw.PriKey): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     sign.init(priKey, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve("init success");
       }
@@ -34,7 +34,7 @@ async function signUpdate(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<string>
   return new Promise<string>((resolve, reject) => {
     sign.update(data, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve("update success");
       }
@@ -44,9 +44,9 @@ async function signUpdate(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<string>
 
 async function signSign(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<cpFw.DataBlob> {
   return new Promise<cpFw.DataBlob>((resolve, reject) => {
-    sign.sign(data, (err: BusinessError<void>|null, signedData: cpFw.DataBlob|undefined) => {
+    sign.sign(data, (err: BusinessError<void>|null, signedData: cpFw.DataBlob|PromiseLike<cpFw.DataBlob>) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve(signedData);
       }
@@ -58,7 +58,7 @@ async function verifyInit(verify: cpFw.Verify, priKey: cpFw.PubKey): Promise<str
   return new Promise<string>((resolve, reject) => {
     verify.init(priKey, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve("init success");
       }
@@ -70,7 +70,7 @@ async function verifyUpdate(verify: cpFw.Verify, data: cpFw.DataBlob): Promise<s
   return new Promise<string>((resolve, reject) => {
     verify.update(data, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve("update success");
       }
@@ -80,9 +80,9 @@ async function verifyUpdate(verify: cpFw.Verify, data: cpFw.DataBlob): Promise<s
 
 async function verifyVerify(verify: cpFw.Verify, data: cpFw.DataBlob, signatureData: cpFw.DataBlob): Promise<boolean> {
   return new Promise<boolean>((resolve, reject) => {
-    verify.verify(data, signatureData, (err: BusinessError<void>|null, res: boolean|undefined) => {
+    verify.verify(data, signatureData, (err: BusinessError<void>|null, res: boolean|PromiseLike<boolean>) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve(res);
       }

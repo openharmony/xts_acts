@@ -63,9 +63,9 @@ function doScryptKdfSync(spec: cryptoFramework.KdfSpec): cryptoFramework.DataBlo
 async function doScryptKdfCallback(kdf: cryptoFramework.Kdf,
   spec: cryptoFramework.ScryptSpec): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
-    kdf.generateSecret(spec, (err: BusinessError<void>|null, rawData: cryptoFramework.DataBlob|undefined) => {
+    kdf.generateSecret(spec, (err: BusinessError<void>|null, rawData: cryptoFramework.DataBlob|PromiseLike<cryptoFramework.DataBlob>) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve(rawData);
       }

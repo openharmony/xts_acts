@@ -18,10 +18,10 @@ import { stringTouInt8Array, uInt8ArrayToShowStr, uInt8ArrayToString } from "../
 
 async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<crypto.SymKey> {
   return new Promise<crypto.SymKey>((resolve, reject) => {
-    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: crypto.SymKey|undefined) => {
+    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: crypto.SymKey|PromiseLike<crypto.SymKey>) => {
       if (err?.code != 0) {
         console.error(`[Callback]generateSymKey failed. error is: ${err}`);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]symkey algName:" + symKey.algName);
         console.log("[Callback]symkey format:" + symKey.format);
@@ -35,10 +35,10 @@ async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<
 
 async function convertSymKey(symKeyGenerator: crypto.SymKeyGenerator, dataBlob: crypto.DataBlob): Promise<crypto.SymKey> {
   return new Promise<crypto.SymKey>((resolve, reject) => {
-    symKeyGenerator.convertKey(dataBlob, (err: BusinessError<void>|null, symKey: crypto.SymKey|undefined) => {
+    symKeyGenerator.convertKey(dataBlob, (err: BusinessError<void>|null, symKey: crypto.SymKey|PromiseLike<crypto.SymKey>) => {
       if (err?.code != 0) {
         console.error(`[Callback]convertSymKey failed. error is: ${err}`);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]symkey algName:" + symKey.algName);
         console.log("[Callback]symkey format:" + symKey.format);
@@ -55,7 +55,7 @@ async function initMac(macGenerator: crypto.Mac, symKey: crypto.SymKey): Promise
     macGenerator.init(symKey, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
         console.error(`[Callback]macGenerator init failed. error is: ${err}`);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]macGenerator init success!");
         resolve("init success");
@@ -69,7 +69,7 @@ async function updateMac(macGenerator: crypto.Mac, dataBlob: crypto.DataBlob): P
     macGenerator.update(dataBlob, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
         console.error(`[Callback]macGenerator update failed. error is: ${err}`);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]macGenerator update success!");
         resolve("update success");
@@ -80,10 +80,10 @@ async function updateMac(macGenerator: crypto.Mac, dataBlob: crypto.DataBlob): P
 
 async function doFinalMac(macGenerator: crypto.Mac): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
-    macGenerator.doFinal((err: BusinessError<void>|null, output: crypto.DataBlob|undefined) => {
+    macGenerator.doFinal((err: BusinessError<void>|null, output: crypto.DataBlob|PromiseLike<crypto.DataBlob>) => {
       if (err?.code != 0) {
         console.error(`[Callback]macGenerator doFinal failed. error is: ${err}`);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log(`[Callback]macGenerator doFinal success! output is: ${output}`);
         resolve(output);

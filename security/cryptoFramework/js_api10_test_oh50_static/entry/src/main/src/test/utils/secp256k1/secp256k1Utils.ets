@@ -223,9 +223,9 @@ function createAsyKeySync(algName: string): cryptoFramework.KeyPair {
 async function createAsyKeyCallback(algName: string): Promise<cryptoFramework.KeyPair> {
   return new Promise<cryptoFramework.KeyPair>((resolve, reject) => {
     let asyKeyGenerator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
-    asyKeyGenerator.generateKeyPair((err: BusinessError<void>|null, keyPair: cryptoFramework.KeyPair|undefined) => {
+    asyKeyGenerator.generateKeyPair((err: BusinessError<void>|null, keyPair: cryptoFramework.KeyPair|PromiseLike<cryptoFramework.KeyPair>) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve(keyPair);
       }
@@ -263,9 +263,9 @@ async function convertAsyKeyCallback(algName: string, pubKeyData: cryptoFramewor
   priKeyData: cryptoFramework.DataBlob|null): Promise<cryptoFramework.KeyPair> {
   return new Promise<cryptoFramework.KeyPair>((resolve, reject) => {
     let asyKeyGenerator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
-    asyKeyGenerator.convertKey(pubKeyData, priKeyData, (err: BusinessError<void>|null, keyPair: cryptoFramework.KeyPair|undefined) => {
+    asyKeyGenerator.convertKey(pubKeyData, priKeyData, (err: BusinessError<void>|null, keyPair: cryptoFramework.KeyPair|PromiseLike<cryptoFramework.KeyPair>) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve(keyPair);
       }
@@ -374,9 +374,9 @@ async function doAgreementCallback(algName: string, pubKey: cryptoFramework.PubK
   priKey: cryptoFramework.PriKey): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
     let agreement: cryptoFramework.KeyAgreement = cryptoFramework.createKeyAgreement(algName);
-    agreement.generateSecret(priKey, pubKey, (err: BusinessError<void>|null, secret: cryptoFramework.DataBlob|undefined) => {
+    agreement.generateSecret(priKey, pubKey, (err: BusinessError<void>|null, secret: cryptoFramework.DataBlob|PromiseLike<cryptoFramework.DataBlob>) => {
       if (err?.code != 0) {
-        reject(err)
+        reject(err as Error)
       } else {
         resolve(secret)
       }
@@ -401,7 +401,7 @@ async function doSignInitCallback(sign: cryptoFramework.Sign, keyPair: cryptoFra
   return new Promise<string>((resolve, reject) => {
     sign.init(keyPair.priKey, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        reject(err)
+        reject(err as Error)
       } else {
         resolve("init success")
       }
@@ -412,9 +412,9 @@ async function doSignInitCallback(sign: cryptoFramework.Sign, keyPair: cryptoFra
 async function doSignSignCallback(sign: cryptoFramework.Sign,
   msg: cryptoFramework.DataBlob|null): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
-    sign.sign(msg, (err: BusinessError<void>|null, rawData: cryptoFramework.DataBlob|undefined) => {
+    sign.sign(msg, (err: BusinessError<void>|null, rawData: cryptoFramework.DataBlob|PromiseLike<cryptoFramework.DataBlob>) => {
       if (err?.code != 0) {
-        reject(err)
+        reject(err as Error)
       } else {
         resolve(rawData)
       }
@@ -426,7 +426,7 @@ async function doVerifyInitCallback(verify: cryptoFramework.Verify, keyPair: cry
   return new Promise<string>((resolve, reject) => {
     verify.init(keyPair.pubKey, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        reject(err)
+        reject(err as Error)
       } else {
         resolve("init success")
       }
@@ -437,9 +437,9 @@ async function doVerifyInitCallback(verify: cryptoFramework.Verify, keyPair: cry
 async function doVerifyVerifyCallback(verify: cryptoFramework.Verify,
   msg: cryptoFramework.DataBlob|null, rawData: cryptoFramework.DataBlob): Promise<boolean> {
   return new Promise<boolean>((resolve, reject) => {
-    verify.verify(msg, rawData, (err: BusinessError<void>|null, ret: boolean|undefined) => {
+    verify.verify(msg, rawData, (err: BusinessError<void>|null, ret: boolean|PromiseLike<boolean>) => {
       if (err?.code != 0) {
-        reject(err)
+        reject(err as Error)
       } else {
         resolve(ret)
       }
@@ -511,7 +511,7 @@ async function doVerifyUpdateCallback(verify: cryptoFramework.Verify, msg: crypt
   return new Promise<string>((resolve, reject) => {
     verify.update(msg, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve("update success")
       }
@@ -553,7 +553,7 @@ async function doSignUpdateCallback(sign: cryptoFramework.Sign, msg: cryptoFrame
   return new Promise<string>((resolve, reject) => {
     sign.update(msg, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        reject(err);
+        reject(err as Error);
       } else {
         resolve("update success")
       }
