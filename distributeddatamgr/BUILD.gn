@@ -41,6 +41,7 @@ group("distributeddatamgr") {
       "preferencesjstest/hap:preferences_js_test",
       "relationalStoretest:relationalStoretest",
       "relationalstoredatagroupidtest:ActsRelationalstoreDataGroupIdTest",
+      "RelationalStoreEtsTestStatic:ActsRelationalStoreEtsStaticTest",
     ]
   } else {
     deps = [
