@@ -953,7 +953,7 @@ export default function ActsNotificationPublishTest() {
 
     // /*
     //      * @tc.number    : SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300
-    //      * @tc.name      : function cancelAll(undefined): Promise<void>
+    //      * @tc.name      : SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300
     //      * @tc.desc      : Cancels all notifications of the current application
     //      */
     //     //问题单号：DTS2025060627133

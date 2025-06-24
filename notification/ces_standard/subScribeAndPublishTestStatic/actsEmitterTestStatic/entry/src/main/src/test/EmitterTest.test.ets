@@ -1243,7 +1243,7 @@ export default function EmitterTest() {
 
     // /*
     //  * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3200
-    //  * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+    //  * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_3200
     //  * @tc.desc      : The parameter op in Emit is empty
     //  */
     //问题单号：DTS2025060627133

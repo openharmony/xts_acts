@@ -25,14 +25,14 @@ const TAG = 'NotificationActs'
 const TEST_SUITE_NAME = 'testNotificationLiveNotification'
 export default function ActsNotificationSystemLiveViewTest() {
   describe('ActsNotificationSystemLiveViewTest', () => {
-    /*
-     * @tc.number: Sub_Notification_Ans_Live_Publish_Static_2200
-     * @tc.name: Sub_Notification_Ans_Live_Publish_Static_2200
-     * @tc.desc: test publish interface fail
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level Level 3
-     */
+    ///*
+    // * @tc.number: Sub_Notification_Ans_Live_Publish_Static_2200
+    // * @tc.name: Sub_Notification_Ans_Live_Publish_Static_2200
+    // * @tc.desc: test publish interface fail
+    // * @tc.size: LargeTest
+    // * @tc.type: Function
+    // * @tc.level Level 3
+    // */
     //问题单号：DTS2025060627133
     // it(' Sub_Notification_Ans_Live_Publish_Static_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> => {
     //   const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForNull'
@@ -119,7 +119,7 @@ export default function ActsNotificationSystemLiveViewTest() {
      * @tc.desc: test publish interface fail
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
     //问题单号：DTS2025060627133
     it('Sub_Notification_Ans_Live_Publish_Static_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> => {
@@ -198,14 +198,14 @@ export default function ActsNotificationSystemLiveViewTest() {
       }
     })
 
-    /*
-     * @tc.number: Sub_Notification_Ans_Live_Publish_Static_2600
-     * @tc.name: Sub_Notification_Ans_Live_Publish_Static_2600
-     * @tc.desc: test publish interface fail
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level Level 3
-     */
+    ///*
+    // * @tc.number: Sub_Notification_Ans_Live_Publish_Static_2600
+    // * @tc.name: Sub_Notification_Ans_Live_Publish_Static_2600
+    // * @tc.desc: test publish interface fail
+    // * @tc.size: LargeTest
+    // * @tc.type: Function
+    // * @tc.level Level 2
+    // */
     //问题单号：DTS2025060627133
     // it('Sub_Notification_Ans_Live_Publish_Static_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> =>{
     //   const TEST_CASE_NAME = 'testLiveNotificationCapsuleIconForNull'
@@ -682,14 +682,14 @@ export default function ActsNotificationSystemLiveViewTest() {
       }
     })
 
-    /*
-    * @tc.number: Sub_Notification_Ans_Live_Publish_Static_5000
-    * @tc.name: Sub_Notification_Ans_Live_Publish_Static_5000
-    * @tc.desc: test publish interface fail
-    * @tc.size: LargeTest
-    * @tc.type: Function
-    * @tc.level Level 3
-    */
+    // /*
+    // * @tc.number: Sub_Notification_Ans_Live_Publish_Static_5000
+    // * @tc.name: Sub_Notification_Ans_Live_Publish_Static_5000
+    // * @tc.desc: test publish interface fail
+    // * @tc.size: LargeTest
+    // * @tc.type: Function
+    // * @tc.level Level 3
+    // */
     //问题单号：DTS2025060627133
     // it('Sub_Notification_Ans_Live_Publish_Static_5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> => {
     //   const TEST_CASE_NAME = 'testLiveNotificationTimeinitialTimeForNull'
@@ -1259,7 +1259,7 @@ export default function ActsNotificationSystemLiveViewTest() {
 
     /*
     * @tc.number: Sub_Notification_Ans_Live_Publish_Static_6600
-    * @tc.name: testLiveNotificationProgressMaxvalueForUndefined
+    * @tc.name: Sub_Notification_Ans_Live_Publish_Static_6600
     * @tc.desc: test publish interface fail
     * @tc.size: LargeTest
     * @tc.type: Function
@@ -1326,14 +1326,14 @@ export default function ActsNotificationSystemLiveViewTest() {
       }
     })
 
-    /*
-   * @tc.number: Sub_Notification_Ans_Live_Publish_Static_6900
-   * @tc.name: Sub_Notification_Ans_Live_Publish_Static_6900
-   * @tc.desc: test publish interface fail
-   * @tc.size: LargeTest
-   * @tc.type: Function
-   * @tc.level Level 3
-   */
+    ///*
+    //* @tc.number: Sub_Notification_Ans_Live_Publish_Static_6900
+    //* @tc.name: Sub_Notification_Ans_Live_Publish_Static_6900
+    //* @tc.desc: test publish interface fail
+    //* @tc.size: LargeTest
+    //* @tc.type: Function
+    //* @tc.level Level 3
+    //*/
     //问题单号：DTS2025060627133
     //  it('Sub_Notification_Ans_Live_Publish_Static_6900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> =>{
     //    const TEST_CASE_NAME = 'testLiveNotificationProgressCurrentValueForNull'
@@ -1518,13 +1518,13 @@ export default function ActsNotificationSystemLiveViewTest() {
 
 
     /*
-  * @tc.number: Sub_Notification_Ans_Live_Publish_Static_7400
-  * @tc.name: testLiveNotificationProgressisPercentageForUndefined
-  * @tc.desc: test publish interface fail
-  * @tc.size: LargeTest
-  * @tc.type: Function
-  * @tc.level Level 3
-  */
+    * @tc.number: Sub_Notification_Ans_Live_Publish_Static_7400
+    * @tc.name: Sub_Notification_Ans_Live_Publish_Static_7400
+    * @tc.desc: test publish interface fail
+    * @tc.size: LargeTest
+    * @tc.type: Function
+    * @tc.level Level 3
+    */
     //问题单号：DTS2025060627133
     it('Sub_Notification_Ans_Live_Publish_Static_7400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> => {
       const TEST_CASE_NAME = 'testLiveNotificationProgressisPercentageForUndefined'
