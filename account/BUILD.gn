@@ -20,6 +20,7 @@ group("account") {
       "OsAccountTest_js_static:ActsOsAccountJSApiStaticTest",
       "account_ndk:account_ndk_test",
       "account_nopermissiontest:ActsAccountNoPermissionTest",
+      "account_nopermissiontest_static:ActsAccountNoPermissionStaticTest",
       "appaccount:appaccount_hap",
       "osaccount:osaccount_hap",
     ]

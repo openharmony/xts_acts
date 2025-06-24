@@ -3,14 +3,14 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "ohos.acts.account.osaccount.static",
+        "bundle-name": "com.acts.osaccounttest.static",
         "module-name": "entry",
         "shell-timeout": "600000",
-        "testcase-timeout": "180000"
+        "testcase-timeout": "50000"
     },
     "kits": [{
         "test-file-name": [
-            "ActsOsAccountJSApiStaticTest.hap"
+            "ActsOsAccountStaticTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
