@@ -86,11 +86,13 @@ export default function rdbResultSetTest() {
   describe('rdbResultSetTest', ():void => {
     beforeAll(async () : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '[RELATIONAL_STORE_JSKITS_TEST] beforeAll');
+      let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
       abilityDelegator.addAbilityMonitor({
         abilityName: "EntryAbility",
         moduleName:"entry",
         onAbilityCreate: (abilitys : UIAbility) : void => {
           context = abilitys.context
+          context.stageMode = true;
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate enddatabaseDir:' + context.databaseDir);
 
         },
