@@ -66,6 +66,8 @@ function userAuthPromise(...args: (userAuth.AuthParam | userAuth.WidgetParam | s
         }
       });
       userAuthInstance.start();
+      await Utils.msSleep(2000);
+      userAuthInstance.cancel();
     } catch (e: BusinessError) {
       hilog.info(domain, tag, format, `${args[2]} fail ${e.code}`);
       expect(null).assertFail();
@@ -99,6 +101,8 @@ function userAuthPromiseFace(...args: (userAuth.AuthParam | userAuth.WidgetParam
         }
       });
       userAuthInstance.start();
+      await Utils.msSleep(2000);
+      userAuthInstance.cancel();
     } catch (e: BusinessError) {
       hilog.info(domain, tag, format, `${args[2]} fail ${e.code}`);
       expect(null).assertFail();
@@ -203,6 +207,7 @@ export default function signNormalAccessBiometricExecute() {
               'Security_IAM_getUserAuthInstance_Func_Static_0043 step' + stepIndex,
               userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
             stepIndex++;
+            await Utils.msSleep(2000);
           }
 
           const notSupportTLParams: userAuth.AuthParam = {
@@ -217,6 +222,7 @@ export default function signNormalAccessBiometricExecute() {
             userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT,
             userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
           stepIndex++;
+          await Utils.msSleep(2000);
           const notSupportTLParams1: userAuth.AuthParam = {
             challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
             authType: [userAuth.UserAuthType.FACE],
@@ -229,6 +235,7 @@ export default function signNormalAccessBiometricExecute() {
             userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT,
             userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
           stepIndex++;
+          await Utils.msSleep(2000);
 
           // 补充到60个字符
           let widgetParams:userAuth.WidgetParam[] = [
@@ -257,6 +264,7 @@ export default function signNormalAccessBiometricExecute() {
               'Security_IAM_getUserAuthInstance_Func_Static_0043 step' + stepIndex,
               userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
             stepIndex++;
+            await Utils.msSleep(2000);
           }
         }
         done();
