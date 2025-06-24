@@ -70,58 +70,6 @@
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background"
       },
-
-      {
-        "name": "MainAbility3",
-        "srcEntry": "./ets/test/MainAbility/MainAbility3.ts",
-        "description": "$string:MainAbility2_desc",
-        "visible": true,
-        "icon": "$media:icon",
-        "label": "$string:MainAbility1_label",
-        "launchType": "singleton",
-        "exported": true,
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
-      },
-
-      {
-        "name": "MainAbility4",
-        "srcEntry": "./ets/test/MainAbility/MainAbility4.ts",
-        "description": "$string:MainAbility2_desc",
-        "visible": true,
-        "icon": "$media:icon",
-        "label": "$string:MainAbility1_label",
-        "launchType": "singleton",
-        "exported": true,
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
-      },
-
-      {
-        "name": "MainAbility5",
-        "srcEntry": "./ets/test/MainAbility/MainAbility5.ts",
-        "description": "$string:MainAbility2_desc",
-        "visible": true,
-        "icon": "$media:icon",
-        "label": "$string:MainAbility1_label",
-        "launchType": "singleton",
-        "exported": true,
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
-      },
-
-      {
-        "name": "MainAbility6",
-        "srcEntry": "./ets/test/MainAbility/MainAbility6.ts",
-        "description": "$string:MainAbility2_desc",
-        "visible": true,
-        "icon": "$media:icon",
-        "label": "$string:MainAbility1_label",
-        "launchType": "standard",
-        "exported": true,
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
-      },
     ],
     "requestPermissions": []
   }

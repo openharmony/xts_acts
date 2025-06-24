@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 @Entry
 @Component
-struct MainAbility1_pages {
+struct MainAbility2_pages {
   @State message: string = 'Hello World';
 
   build() {

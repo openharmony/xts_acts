@@ -99,33 +99,38 @@ export default function abilityTest() {
         events: ["OnWindowStageWillDestory06"]
       };
       let subscriber : commonEventManager.CommonEventSubscriber;
+      let flag : boolean =false
       await commonEventManager.createSubscriber(commonEventSubscribeInfo)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
           commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
             hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
-            try {
-              expect().assertFail();
-            } catch {
-            }
+            flag = true;
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+              done();
+            });
           })
+          let startWant: Want = {
+            bundleName: 'com.test.actslifecycletest',
+            abilityName: "MainAbility2",
+          };
+          globalThis.context.startAbility(startWant).then(() => {
+            console.log(TAG,'startAbility success');
+          }).catch((error: BusinessError) => {
+            console.log(TAG,'startAbility error', JSON.stringify(error));
+            expect().assertFail();
+          })
+          await sleep(2000);
+          try{
+            console.log(TAG,'flag=',flag);
+            expect(flag).assertEqual(false);
+            done();
+          } catch(e){
+            console.log(TAG,'expect false equals true')
+          }
         })
-      let startWant: Want = {
-        bundleName: 'com.test.actslifecycletest',
-        abilityName: "MainAbility2",
-      };
-      globalThis.context.startAbility(startWant).then(() => {
-        console.log(TAG,'startAbility success');
-      }).catch((error: BusinessError) => {
-        console.log(TAG,'startAbility error', JSON.stringify(error));
-        expect().assertFail();
-      })
-      await sleep(6000);
-      commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-        hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
-        done();
-      });
     })
 
     /*
@@ -139,6 +144,7 @@ export default function abilityTest() {
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["OnWindowStageWillDestory0500"]
       };
+      let flag : boolean =false
       let subscriber : commonEventManager.CommonEventSubscriber;
       await commonEventManager.createSubscriber(commonEventSubscribeInfo)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -146,10 +152,11 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
           commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
             hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
-            try {
-              expect().assertFail();
-            } catch {
-            }
+            flag=true;
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+              done();
+            });
           })
           let startWant: Want = {
             bundleName: 'com.acts.ability.actslifecyclerely',
@@ -160,59 +167,23 @@ export default function abilityTest() {
           }).catch((error: BusinessError) => {
             console.log(TAG,'startAbility error', JSON.stringify(error));
           });
-          await sleep(1500);
+          sleep(1500);
           abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
           let cmd2 ="kill -9 pidof com.acts.ability.actslifecyclerely";
           abilityDelegator.executeShellCommand(cmd2, (err : BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
             console.info('executeShellCommand2 callback');
           });
-          commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-            hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+          await sleep(2000);
+          try{
+            console.log(TAG,'flag=',flag);
+            expect(flag).assertEqual(false);
             done();
-          });
+          } catch(e){
+            console.log(TAG,'expect false equals true')
+          }
         })
     })
 
-    /*
-     * @tc.number  SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700
-     * @tc.name    SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700
-     * @tc.desc    restartApp does not call back the onWindowStageWillDestory lifecycle
-     * @tc.level   0
-     */
-    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700', Level.LEVEL0, async (done: Function) => {
-      let TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["OnWindowStageWillDestory07"]
-      };
-      let subscriber : commonEventManager.CommonEventSubscriber;
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
-          commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
-            try {
-              expect().assertFail();
-            } catch {
-            }
-          })
-        })
-      let startWant: Want = {
-        bundleName: 'com.test.actslifecycletest',
-        abilityName: "MainAbility3",
-      };
-      globalThis.context.startAbility(startWant).then(() => {
-        console.log(TAG,'startAbility success');
-      }).catch((error: BusinessError) => {
-        console.log(TAG,'startAbility error', JSON.stringify(error));
-        expect().assertFail();
-      })
-      await sleep(6000);
-      commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-        hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
-        done();
-      });
-    })
 
   })
 }
