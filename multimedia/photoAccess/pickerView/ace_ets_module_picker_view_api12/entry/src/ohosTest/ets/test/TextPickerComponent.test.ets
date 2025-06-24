@@ -1918,7 +1918,7 @@ export default function TextPicker() {
       try {
         phAccessHelper.getPhotoPickerComponentDefaultAlbumName().then((defaultAlbumName: string) => {
           console.info("testPicer40 getPhotoPickerComponentDefaultAlbumName, defaultAlbumName = " + defaultAlbumName);
-          let hasDefaultAlbumName= defaultAlbumName !== undefined && defaultAlbumName !== '';
+          let hasDefaultAlbumName: boolean = defaultAlbumName !== undefined && defaultAlbumName !== '';
           expect(hasDefaultAlbumName).assertTrue();
         })
       } catch(error) {
