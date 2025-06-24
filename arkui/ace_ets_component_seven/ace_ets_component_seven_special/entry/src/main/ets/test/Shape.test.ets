@@ -48,7 +48,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_001',0,async (done: Function) => {
+    it('ShapeJsunit_001', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_001] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -71,7 +71,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_002',0,async (done: Function) => {
+    it('ShapeJsunit_002', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_002] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -91,7 +91,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_003',0,async (done: Function) => {
+    it('ShapeJsunit_003', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_003] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -111,7 +111,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_004',0,async (done: Function) => {
+    it('ShapeJsunit_004', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_004] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -131,7 +131,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_005',0,async (done: Function) => {
+    it('ShapeJsunit_005', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_005] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -150,7 +150,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_006',0,async (done: Function) => {
+    it('ShapeJsunit_006', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_006] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -170,7 +170,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_007',0,async (done: Function) => {
+    it('ShapeJsunit_007', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_007] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -190,7 +190,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_008',0,async (done: Function) => {
+    it('ShapeJsunit_008', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_008] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -210,7 +210,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_009',0,async (done: Function) => {
+    it('ShapeJsunit_009', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_009] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -230,7 +230,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_0010',0,async (done: Function) => {
+    it('ShapeJsunit_0010', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_0010] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -252,7 +252,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_0011',0,async (done: Function) => {
+    it('ShapeJsunit_0011', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_0011] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -272,7 +272,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_0012',0,async (done: Function) => {
+    it('ShapeJsunit_0012', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_0012] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -292,7 +292,7 @@ export default function shape(){
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ShapeJsunit_0013',0,async (done: Function) => {
+    it('ShapeJsunit_0013', Level.LEVEL0, async (done: Function) => {
       console.info('[ShapeJsunit_0013] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj: ESObject = JSON.parse(strJson);

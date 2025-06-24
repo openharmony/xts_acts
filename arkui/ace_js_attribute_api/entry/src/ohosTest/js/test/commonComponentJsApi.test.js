@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 
 export default function aceJsApiAndAttr() {
@@ -63,7 +63,7 @@ describe('aceJsApiAndAttr', function () {
      * @tc.name      testVideoComponent
      * @tc.desc      ACE
      */
-    it('testVideoComponent', 0, async function (done) {
+    it('testVideoComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/video/router/index'
@@ -86,7 +86,7 @@ describe('aceJsApiAndAttr', function () {
       * @tc.name      testAnimateComponent
       * @tc.desc      ACE
       */
-    it('testAnimateComponent', 0, async function (done) {
+    it('testAnimateComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/animate/router/index'
@@ -110,7 +110,7 @@ describe('aceJsApiAndAttr', function () {
       * @tc.name      testCameraComponent
       * @tc.desc      ACE
       */
-    it('testCameraComponent', 0, async function (done) {
+    it('testCameraComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/camera/router/index'
@@ -134,7 +134,7 @@ describe('aceJsApiAndAttr', function () {
       * @tc.name      testCanvasComponent
       * @tc.desc      ACE
       */
-    it('testCanvasComponent', 0, async function (done) {
+    it('testCanvasComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/canvas/router/index'
@@ -157,7 +157,7 @@ describe('aceJsApiAndAttr', function () {
       * @tc.name      testDivComponent
       * @tc.desc      ACE
       */
-    it('testDivComponent', 0, async function (done) {
+    it('testDivComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/div/router/index'
@@ -181,7 +181,7 @@ describe('aceJsApiAndAttr', function () {
       * @tc.name      testInputComponent
       * @tc.desc      ACE
       */
-    it('testInputComponent', 0, async function (done) {
+    it('testInputComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/input/router/index'
@@ -204,7 +204,7 @@ describe('aceJsApiAndAttr', function () {
       * @tc.name      testListComponent
       * @tc.desc      ACE
       */
-    it('testListComponent', 0, async function (done) {
+    it('testListComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/list/router/index'
@@ -227,7 +227,7 @@ describe('aceJsApiAndAttr', function () {
       * @tc.name      testTextComponent
       * @tc.desc      ACE
       */
-    it('testTextComponent', 0, async function (done) {
+    it('testTextComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/text/router/index'
