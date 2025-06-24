@@ -67,9 +67,6 @@ group("graphic") {
         "vktest:cpVulkan",
       ]
     }
-    if (graphic_2d_feature_enable_opengl_to_vulkan) {
-      deps += [ "graphicGL4:ActsGraphicGl4Test" ]
-    }
   } else {
     deps = [
       "appaccount:appaccount_hap",
