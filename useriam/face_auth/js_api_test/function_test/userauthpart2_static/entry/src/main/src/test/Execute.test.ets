@@ -67,7 +67,6 @@ function userAuthPromise(...args: (userAuth.AuthParam | userAuth.WidgetParam | s
       });
       userAuthInstance.start();
       await Utils.msSleep(2000);
-      userAuthInstance.cancel();
     } catch (e: BusinessError) {
       hilog.info(domain, tag, format, `${args[2]} fail ${e.code}`);
       expect(null).assertFail();
@@ -102,7 +101,6 @@ function userAuthPromiseFace(...args: (userAuth.AuthParam | userAuth.WidgetParam
       });
       userAuthInstance.start();
       await Utils.msSleep(2000);
-      userAuthInstance.cancel();
     } catch (e: BusinessError) {
       hilog.info(domain, tag, format, `${args[2]} fail ${e.code}`);
       expect(null).assertFail();
