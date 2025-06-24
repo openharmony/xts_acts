@@ -101,8 +101,7 @@ export default function windowEventTest() {
         await subWindowClass.moveWindowTo(200, 0);
         await subWindowClass.showWindow();
         await sleep(1000);
-        let windowProperties = subWindowClass.getWindowProperties();
-        console.log(`${caseName} windowProperties: ${JSON.stringify(windowProperties)}`);
+        
         const callback = () => {
           timer++;
           console.log(`${caseName} timer: ${timer}`);
@@ -110,7 +109,9 @@ export default function windowEventTest() {
         subWindowClass.on('touchOutside', callback);
         await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
 
-        await sleep(1000);
+        await sleep(3000);
+        let windowProperties = subWindowClass.getWindowProperties();
+        console.log(`${caseName} windowProperties: ${JSON.stringify(windowProperties)}`);
         let driver: Driver = Driver.create();
         await sleep(200);
         // await driver.click(Math.round((windowLimits.minWidth as number+200)/2), 0);
@@ -176,7 +177,7 @@ export default function windowEventTest() {
           console.log(`${caseName} timer: ${timer}`);
           expect(timer).assertEqual(1);
           await sleep(300);
-          subWindowClass.off('touchOutside');
+          mainWindow.off('touchOutside');
 
           await subWindowClass.destroyWindow();
           done();

@@ -27,6 +27,7 @@ const PUBLISH_BUNDLE_NAME = 'com.example.menuprovider';
 const ERROR_CODE = 16501000;
 const ERROR_CODE2 = 16500100;
 const ERROR_CODE3 = 801;
+const ERROR_CODE4 = 202
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 let sleep = async (delay: number = 1000): Promise<void> => {
@@ -139,7 +140,7 @@ export default function formProviderTest() {
     /**
      * @tc.number: Test_Form_Provider_0300
      * @tc.name: promise form openFormManager system interface interception test
-     * @tc.desc:  Open the card management page
+     * @tc.desc:  Open the card management page 
      * @tc.level   3
      */
     it('Test_Form_Provider_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
@@ -170,6 +171,36 @@ export default function formProviderTest() {
           `${TAG} formProvider openFormManager, error: ${JSON.stringify(error)}`);
           expect().assertFail();
         }
+      }
+      hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} end`);
+    })
+
+    /**
+     * @tc.number: Test_Form_Provider_0400
+     * @tc.name: Test_Form_Provider_0400
+     * @tc.desc:  Open the card management page belonging to the specified bundle 
+     * @tc.level   3
+     */
+    it('Test_Form_Provider_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let TAG = 'Test_Form_Provider_0400';
+      hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} start`);
+      let want: Want = {
+        bundleName: PUBLISH_BUNDLE_NAME,
+        abilityName: "TestAbility",
+        parameters: {
+          "ohos.extra.param.key.form_dimension": 2,
+          "ohos.extra.param.key.form_name": "widget",
+          "ohos.extra.param.key.module_name": "entry_test"
+        }
+      };
+      try {
+        formProvider.openFormManagerCrossBundle(want)
+        hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} formProvider openFormManagerCrossBundle success`);
+        done();
+      } catch (error) {
+        hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `error: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(ERROR_CODE4);
+        done();
       }
       hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} end`);
     })

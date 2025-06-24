@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "napi/native_api.h"
 #include "asset/asset_api.h"
+#include "napi/native_api.h"
 #include <bits/alltypes.h>
 #include <cstring>
 
@@ -210,7 +210,7 @@ static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info i
 
     Asset_Attr attr3[] = {};
     result += AssetPreAndPostQuerySuccess(attr3, sizeof(attr3) / sizeof(attr3[0]));
-    
+
     napi_value result_real;
     napi_create_uint32(env, result, &result_real);
     return result_real;
@@ -343,7 +343,7 @@ static napi_value Asset_PreAndPostQuery(napi_env env, napi_callback_info info)
             ret = -1;
         }
     }
-    
+
     napi_create_uint32(env, ret, &result);
     return result;
 }
@@ -846,6 +846,19 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
     return result_real;
 }
 
+static napi_value Asset_QuerySyncResult(napi_env env, napi_callback_info info)
+{
+    Asset_SyncResult syncResult = {0};
+    int32_t result = OH_Asset_QuerySyncResult(NULL, 0, &syncResult);
+    napi_value result_real = nullptr;
+    if (result == ASSET_SUCCESS) {
+        napi_create_uint32(env, 0, &result_real);
+    } else {
+        napi_create_uint32(env, -1, &result_real);
+    }
+    return result_real;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -872,6 +885,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"asset_preQuery", nullptr, Asset_PreQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_preAndPostQuery", nullptr, Asset_PreAndPostQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_postQuery", nullptr, Asset_PostQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"asset_querySyncResult", nullptr, Asset_QuerySyncResult, nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -886,7 +900,7 @@ static napi_module g_module = {.nm_version = 1,
                                .nm_flags = 0,
                                .nm_filename = nullptr,
                                .nm_register_func = Init,
-                               .nm_modname = "assetNdkTest",
+                               .nm_modname = "assetndktest",
                                .nm_priv = ((void *)0),
                                .reserved = {0}};
 

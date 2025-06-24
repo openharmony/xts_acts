@@ -102,7 +102,7 @@ export default function getAudioSceneApi12() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOSCENCE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOSCENCE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let value = await audioManager.getAudioScene();
         if (value === AudioSceneRinging) {

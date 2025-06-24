@@ -318,7 +318,7 @@ export default function AudioRoutingManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETAVAILABLEDEVICES_1000', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETAVAILABLEDEVICES_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let devices: ESObject = audioRoutingManager.getAvailableDevices();
         console.info(`${Tag}: getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);

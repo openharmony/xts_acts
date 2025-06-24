@@ -58,3 +58,7 @@ export const oHHuksImportWrappedKeyItem: () => number;
 export const oHHuksImportKeyItem: () => Promise<number>;
 export const oHHuksExportPublicKeyItem: () => Promise<number>;
 export const oHHuksAnonAttestKeyItem: () => number;
+export const oHHuksListAliases: () => number;
+export const oHHuksFreeKeyAliasSet: () => number;
+export const oHHuksWrapKey: () => number;
+export const oHHuksUnwrapKey: () => number;

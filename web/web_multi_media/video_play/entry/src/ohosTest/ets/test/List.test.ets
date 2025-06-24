@@ -15,11 +15,12 @@
 
 import webViewControllerVideoMedia from './WebViewControllerVideoMedia.test'
 import rectEvent from './rectEvent.test'
+import AudioSessionType from './AudioSessionType.test'
 
 
 export default function testsuite() {
     webViewControllerVideoMedia()
-	rectEvent()
-
+	  rectEvent()
+    AudioSessionType()
 
 }

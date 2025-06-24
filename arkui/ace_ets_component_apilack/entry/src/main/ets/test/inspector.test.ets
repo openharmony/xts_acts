@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function inspectorJsunit() {
@@ -49,7 +49,7 @@ export default function inspectorJsunit() {
      * @tc.name         testlazyForEachOnDataAdd0001
      * @tc.desic         acelazyForEachOnDataAddEtsTest0001
      */
-    it('testInspectorTestAdd0001', 0, async () => {
+    it('testInspectorTestAdd0001', Level.LEVEL0, async () => {
       console.info('Inspector testInspectorTestAdd0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
@@ -66,7 +66,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0002
      * @tc.desic         aceTestInspectorTestAdd0002
      */
-    it('testInspectorTestAdd0002', 0, async () => {
+    it('testInspectorTestAdd0002', Level.LEVEL0, async () => {
       console.info('Inspector testInspectorTestAdd0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
@@ -83,7 +83,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0003
      * @tc.desic         aceTestInspectorTestAdd0003
      */
-    it('testInspectorTestAdd0003', 0, async () => {
+    it('testInspectorTestAdd0003', Level.LEVEL0, async () => {
       console.info("testInspectorTestAdd0003 start test");
       let innerEvent1: events_emitter.InnerEvent = {
         eventId: 60208,
@@ -118,7 +118,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0004
      * @tc.desic         aceTestInspectorTestAdd0004
      */
-    it('testInspectorTestAdd0004', 0, async () => {
+    it('testInspectorTestAdd0004', Level.LEVEL0, async () => {
       let innerEvent2: events_emitter.InnerEvent = {
         eventId: 60209,
         priority: events_emitter.EventPriority.LOW
@@ -150,7 +150,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0005
      * @tc.desic         aceTestInspectorTestAdd0005
      */
-    it('testInspectorTestAdd0005', 0, async () => {
+    it('testInspectorTestAdd0005', Level.LEVEL0, async () => {
       console.info('testInspectorTestAdd0005 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -174,7 +174,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0006
      * @tc.desic         aceTestInspectorTestAdd0006
      */
-    it('testInspectorTestAdd0006', 0, async () => {
+    it('testInspectorTestAdd0006', Level.LEVEL0, async () => {
       let innerEvent3: events_emitter.InnerEvent = {
         eventId: 60210,
         priority: events_emitter.EventPriority.LOW

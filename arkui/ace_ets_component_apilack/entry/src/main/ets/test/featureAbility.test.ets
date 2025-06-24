@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function featureAbilityStartAbilityJsunit() {
@@ -49,7 +49,7 @@ export default function featureAbilityStartAbilityJsunit() {
      * @tc.name         testfeatureAbilityStartAbility0001
      * @tc.desic         acefeatureAbilityStartAbilityEtsTest0001
      */
-    it('testfeatureAbilityStartAbility0001', 0, async () => {
+    it('testfeatureAbilityStartAbility0001', Level.LEVEL0, async () => {
       console.info('featureAbilityStartAbility testfeatureAbilityStartAbility0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('startAbilityText');

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function gaugeColorsJsunit() {
@@ -49,7 +49,7 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0001
      * @tc.desic         acegaugeColorsEtsTest0001
      */
-    it('testgaugeColors0001', 0, async () => {
+    it('testgaugeColors0001', Level.LEVEL0, async () => {
       console.info('gaugeColors testgaugeColors0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
@@ -66,7 +66,7 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0002
      * @tc.desic         acegaugeColorsEtsTest0002
      */
-    it('testgaugeColors0002', 0, async () => {
+    it('testgaugeColors0002', Level.LEVEL0, async () => {
       console.info('gaugeColors testgaugeColors0002 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
@@ -83,7 +83,7 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0003
      * @tc.desic         acegaugeColorsEtsTest0003
      */
-    it('testgaugeColors0003', 0, async () => {
+    it('testgaugeColors0003', Level.LEVEL0, async () => {
       console.info('gaugeColors testgaugeColors0003 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
@@ -100,7 +100,7 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0004
      * @tc.desic         acegaugeColorsEtsTest0004
      */
-    it('testgaugeColors0004', 0, async () => {
+    it('testgaugeColors0004', Level.LEVEL0, async () => {
       console.info('gaugeColors testgaugeColors0004 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
@@ -117,7 +117,7 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0005
      * @tc.desic         acegaugeColorsEtsTest0005
      */
-    it('testgaugeColors0005', 0, async () => {
+    it('testgaugeColors0005', Level.LEVEL0, async () => {
       console.info('gaugeColors testgaugeColors0005 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
@@ -134,7 +134,7 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0006
      * @tc.desic         acegaugeColorsEtsTest0006
      */
-    it('testgaugeColors0006', 0, async () => {
+    it('testgaugeColors0006', Level.LEVEL0, async () => {
       console.info('gaugeColors testgaugeColors0006 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');

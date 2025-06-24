@@ -91,5 +91,23 @@ describe('AccessibleRegisterState', function () {
       expect(true).assertTrue();
       done();
     })
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0400
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0400
+    * @tc.desc    on(touchModeChange)
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+        console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0400');
+        let callbackdata = (data) => {
+        }
+        accessibility.on('touchModeChange', callbackdata);
+        accessibility.off('touchModeChange', callbackdata);
+        expect(true).assertTrue();
+        done();
+    })
 })
 }

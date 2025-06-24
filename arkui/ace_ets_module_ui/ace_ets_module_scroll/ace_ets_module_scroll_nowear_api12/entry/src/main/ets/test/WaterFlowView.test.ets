@@ -48,7 +48,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0100',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0100',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0100] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -67,7 +67,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0200',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0200',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0200] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -86,7 +86,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0300',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0300',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0300] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -105,7 +105,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0400',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0400',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0400] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -124,7 +124,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0500',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0500',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0500] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -145,7 +145,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0600',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0600',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0600] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -164,7 +164,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0700',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0700',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0700] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -183,7 +183,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0800',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0800',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0800] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -202,7 +202,7 @@ export default function waterFlowView() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('waterFlowViewJsunit_0900',0,async (done: Function) => {
+    it('waterFlowViewJsunit_0900',Level.LEVEL0,async (done: Function) => {
       console.info('[waterFlowViewJsunit_0900] START');
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);

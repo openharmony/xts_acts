@@ -669,5 +669,58 @@ export default function huksNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number   : SUB_Security_HUKS_ListAliases_Native_Func_0100
+     * @tc.name     : SUB_Security_HUKS_ListAliases_Native_Func_0100
+     * @tc.desc     : test ListAliases
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_Security_HUKS_ListAliases_Native_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result: number = huksndk.oHHuksListAliases();
+      expect(result).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number   : SUB_Security_HUKS_ListAliases_Native_Func_0200
+     * @tc.name     : SUB_Security_HUKS_ListAliases_Native_Func_0200
+     * @tc.desc     : test FreeKeyAliasSet
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_Security_HUKS_ListAliases_Native_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result: number = huksndk.oHHuksFreeKeyAliasSet();
+      expect(result).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number   : SUB_Security_HUKS_WrapKey_Native_Func_0100
+     * @tc.name     : SUB_Security_HUKS_WrapKey_Native_Func_0100
+     * @tc.desc     : test WrapKey
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_Security_HUKS_WrapKey_Native_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result: number = huksndk.oHHuksWrapKey();
+      expect(result).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number   : SUB_Security_HUKS_UnwrapKey_Native_Func_0100
+     * @tc.name     : SUB_Security_HUKS_UnwrapKey_Native_Func_0100
+     * @tc.desc     : test UnwrapKey
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_Security_HUKS_UnwrapKey_Native_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result: number = huksndk.oHHuksUnwrapKey();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
@@ -50,7 +50,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0001
      * @tc.desic         acescrollOnScrollBeginEtsTest0001
      */
-    it('testscrollOnScrollBegin0001', 0, async () => {
+    it('testscrollOnScrollBegin0001', Level.LEVEL0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
@@ -67,7 +67,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0002
      * @tc.desic         acescrollOnScrollBeginEtsTest0002
      */
-    it('testscrollOnScrollBegin0002', 0, async () => {
+    it('testscrollOnScrollBegin0002', Level.LEVEL0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
@@ -84,7 +84,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0003
      * @tc.desic         acescrollOnScrollBeginEtsTest0003
      */
-    it('testscrollOnScrollBegin0003', 0, async () => {
+    it('testscrollOnScrollBegin0003', Level.LEVEL0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
@@ -101,7 +101,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0004
      * @tc.desic         acescrollOnScrollBeginEtsTest0004
      */
-    it('testscrollOnScrollBegin0004', 0, async () => {
+    it('testscrollOnScrollBegin0004', Level.LEVEL0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
@@ -118,7 +118,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0005
      * @tc.desic         acescrollOnScrollBeginEtsTest0005
      */
-    it('testscrollOnScrollBegin0005', 0, async () => {
+    it('testscrollOnScrollBegin0005', Level.LEVEL0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
@@ -135,7 +135,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0005
      * @tc.desic         acescrollOnScrollBeginEtsTest0006
      */
-    it('testscrollOnScrollBegin0006', 0, async () => {
+    it('testscrollOnScrollBegin0006', Level.LEVEL0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0006 START');
       await Utils.sleep(2000);
 
@@ -165,7 +165,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testscrollOnScrollBegin0007', 0, async () => {
+    it('testscrollOnScrollBegin0007', Level.LEVEL0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
@@ -184,7 +184,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testscrollOnScrollBegin0008', 0, async () => {
+    it('testscrollOnScrollBegin0008', Level.LEVEL0, async () => {
       console.info('testEdgeEffectOptions testscrollOnScrollBegin0008 START');
       await Utils.sleep(2000);
       try {

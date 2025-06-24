@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
@@ -50,7 +50,7 @@ export default function xcomponentGetXComponentContextJsunit() {
      * @tc.name         testxcomponentGetXComponentContext0010
      * @tc.desic         acexcomponentGetXComponentContextEtsTest0010
      */
-    it('testxcomponentGetXComponentContext0010', 0, async () => {
+    it('testxcomponentGetXComponentContext0010', Level.LEVEL0, async () => {
       console.info('xcomponentGetXComponentContext testxcomponentGetXComponentContext0010 START');
       await Utils.sleep(1000);
       try {
@@ -78,7 +78,7 @@ export default function xcomponentGetXComponentContextJsunit() {
      * @tc.name         testxcomponentSetXComponentSurfaceSize0001
      * @tc.desic         acexcomponentSetXComponentSurfaceSizeEtsTest0001
      */
-    it('testxcomponentSetXComponentSurfaceSize0001', 0, async () => {
+    it('testxcomponentSetXComponentSurfaceSize0001', Level.LEVEL0, async () => {
       console.info('xcomponentSetXComponentContext testxcomponentSetXComponentSurfaceSize0001 START');
       await Utils.sleep(2000);
       console.info("setXComponentSurfaceSize0001 click result is: " + JSON.stringify(sendEventByKey('setXComponentSurfaceSizeText', 10, "")));
@@ -97,7 +97,7 @@ export default function xcomponentGetXComponentContextJsunit() {
      * @tc.name         testxcomponentSetXComponentSurfaceSize0002
      * @tc.desic         acexcomponentSetXComponentSurfaceSizeEtsTest0002
      */
-    it('testxcomponentSetXComponentSurfaceSize0002', 0, async () => {
+    it('testxcomponentSetXComponentSurfaceSize0002', Level.LEVEL0, async () => {
       console.info('xcomponentSetXComponentContext testxcomponentSetXComponentSurfaceSize0002 START');
       await Utils.sleep(2000);
       console.info("testxcomponentSetXComponentSurfaceSize0002 click result is: " + JSON.stringify(sendEventByKey('setXComponentSurfaceSizeText', 10, "")))

@@ -747,3 +747,16 @@ export const UseMutilContext: () => boolean;
 export const SwitchEnv: () => boolean;
 export const SwitchEnvByNull: () => boolean;
 export const SwitchEnvByNewEnv: () => boolean;
+export const NapiWrapEnhanceTest1: () => boolean;
+export const NapiWrapEnhanceTest2: () => boolean;
+export const NapiWrapEnhanceTest3: () => boolean;
+export const NapiWrapEnhanceTest4: () => boolean;
+export const NapiWrapEnhanceTest5: () => boolean;
+export const NapiWrapEnhanceTest6: () => boolean;
+export const NapiWrapEnhanceTest7: () => boolean;
+export const NapiWrapEnhanceTest8: () => boolean;
+export const NapiWrapEnhanceTest9: () => boolean;
+export const NapiWrapEnhanceTest10: () => boolean;
+export const NapiWrapEnhanceTest11: () => boolean;
+export const NapiWrapEnhanceTest12: () => boolean;
+

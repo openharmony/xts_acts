@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function shapeJsunit() {
       console.info("shape after each called");
     });
 
-    it('shapeTest_0100', 0, async (done: Function) => {
+    it('shapeTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0100 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -55,7 +55,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_0200', 0, async (done: Function) => {
+    it('shapeTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0200 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -66,7 +66,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_0300', 0, async (done: Function) => {
+    it('shapeTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0300 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -77,7 +77,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_0400', 0, async (done: Function) => {
+    it('shapeTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0400 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -88,7 +88,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_0500', 0, async (done: Function) => {
+    it('shapeTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0500 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -99,7 +99,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_0600', 0, async (done: Function) => {
+    it('shapeTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0600 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -110,7 +110,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_0700', 0, async (done: Function) => {
+    it('shapeTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0700 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -121,7 +121,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_0800', 0, async (done: Function) => {
+    it('shapeTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0800 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -132,7 +132,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_0900', 0, async (done: Function) => {
+    it('shapeTest_0900', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_0900 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -143,7 +143,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1000', 0, async (done: Function) => {
+    it('shapeTest_1000', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1000 START');
       await Utils.sleep(1000);
       try {
@@ -171,7 +171,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1100', 0, async (done: Function) => {
+    it('shapeTest_1100', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1100 START');
       await Utils.sleep(1000);
       try {
@@ -198,7 +198,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1200', 0, async (done: Function) => {
+    it('shapeTest_1200', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1200 START');
       await Utils.sleep(1000);
       try {
@@ -225,7 +225,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1300', 0, async (done: Function) => {
+    it('shapeTest_1300', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1300 START');
       await Utils.sleep(1000);
       try {
@@ -253,7 +253,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1400', 0, async (done: Function) => {
+    it('shapeTest_1400', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1400 START');
       await Utils.sleep(1000);
       try {
@@ -281,7 +281,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1500', 0, async (done: Function) => {
+    it('shapeTest_1500', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1500 START');
       await Utils.sleep(1000);
       try {
@@ -309,7 +309,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1600', 0, async (done: Function) => {
+    it('shapeTest_1600', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1600 START');
       await Utils.sleep(1000);
       try {
@@ -337,7 +337,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1700', 0, async (done: Function) => {
+    it('shapeTest_1700', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1700 START');
       await Utils.sleep(1000);
       try {
@@ -365,7 +365,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1800', 0, async (done: Function) => {
+    it('shapeTest_1800', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1800 START');
       await Utils.sleep(1000);
       try {
@@ -393,7 +393,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2100', 0, async (done: Function) => {
+    it('shapeTest_2100', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2100 START');
       await Utils.sleep(1000);
       try {
@@ -421,7 +421,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_3200', 0, async (done: Function) => {
+    it('shapeTest_3200', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_3200 START');
       await Utils.sleep(1000);
       try {
@@ -449,7 +449,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_3300', 0, async (done: Function) => {
+    it('shapeTest_3300', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_3300 START');
       await Utils.sleep(1000);
       try {
@@ -477,7 +477,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2200', 0, async (done: Function) => {
+    it('shapeTest_2200', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1300 START');
       await Utils.sleep(1000);
       try {
@@ -505,7 +505,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_1900', 0, async (done: Function) => {
+    it('shapeTest_1900', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_1900 START');
       await Utils.sleep(1000);
       try {
@@ -533,7 +533,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2000', 0, async (done: Function) => {
+    it('shapeTest_2000', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2000 START');
       await Utils.sleep(1000);
       try {
@@ -562,7 +562,7 @@ export default function shapeJsunit() {
     });
 
 
-    it('shapeTest_2300', 0, async (done: Function) => {
+    it('shapeTest_2300', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2300 START');
       await Utils.sleep(1000);
       try {
@@ -590,7 +590,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2400', 0, async (done: Function) => {
+    it('shapeTest_2400', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2400 START');
       await Utils.sleep(1000);
       try {
@@ -618,7 +618,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2500', 0, async (done: Function) => {
+    it('shapeTest_2500', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2500 START');
       await Utils.sleep(1000);
       try {
@@ -646,7 +646,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2600', 0, async (done: Function) => {
+    it('shapeTest_2600', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2600 START');
       await Utils.sleep(1000);
       try {
@@ -674,7 +674,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2700', 0, async (done: Function) => {
+    it('shapeTest_2700', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2700 START');
       await Utils.sleep(1000);
       try {
@@ -702,7 +702,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2800', 0, async (done: Function) => {
+    it('shapeTest_2800', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2800 START');
       await Utils.sleep(1000);
       try {
@@ -730,7 +730,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_2900', 0, async (done: Function) => {
+    it('shapeTest_2900', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_2900 START');
       await Utils.sleep(1000);
       try {
@@ -758,7 +758,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_3000', 0, async (done: Function) => {
+    it('shapeTest_3000', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_3000 START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('shape');
@@ -769,7 +769,7 @@ export default function shapeJsunit() {
       done();
     });
 
-    it('shapeTest_3100', 0, async (done: Function) => {
+    it('shapeTest_3100', Level.LEVEL0, async (done: Function) => {
       console.info('shapeTest_3100 START');
       await Utils.sleep(1000);
       try {

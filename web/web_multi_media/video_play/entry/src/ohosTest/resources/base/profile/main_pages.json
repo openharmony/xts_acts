@@ -2,6 +2,7 @@
   "src": [
     "testability/pages/Index",
     "testability/pages/WebViewControllerVideoMedia",
-	"testability/pages/rectEvent"
+	"testability/pages/rectEvent",
+    "testability/pages/AudioSessionType"
   ]
 }

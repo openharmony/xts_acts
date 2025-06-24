@@ -6700,17 +6700,18 @@ export default function windowPropertiesTest() {
         try {
           let properties = mainWindow.getWindowProperties();
           console.log(`${caseName} properties: ${JSON.stringify(properties)}`);
-          if (!properties.isFullScreen) {
-            await mainWindow.maximize();
-            isMaximized = true;
-            await sleep(200);
-          }
+          
           pipController = await pipWindow.create(config);
           await sleep(200);
           if(!pipController.isPiPSupported()){
             console.info(`${caseName} pipController.isPiPSupported(). data: ${pipController.isPiPSupported()}`);
             done();
           } else {
+            if (!properties.isFullScreen) {
+            await mainWindow.maximize();
+            isMaximized = true;
+            await sleep(200);
+          }
             await pipController.startPiP();
             await sleep(200);
             subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_FullScreeen_Pip_And_Float');

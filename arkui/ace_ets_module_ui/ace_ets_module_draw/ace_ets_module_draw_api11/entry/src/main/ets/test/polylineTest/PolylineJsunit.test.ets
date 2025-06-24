@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';;
 
@@ -44,7 +44,7 @@ export default function polylineJsunit() {
       console.info("polyline after each called");
     });
 
-    it('testPolyline001', 0, async (done: Function) => {
+    it('testPolyline001', Level.LEVEL0, async (done: Function) => {
       console.info('[testPolyline001] START');
       await Utils.sleep(4000);
       let strJson: string = getInspectorByKey('polyline');

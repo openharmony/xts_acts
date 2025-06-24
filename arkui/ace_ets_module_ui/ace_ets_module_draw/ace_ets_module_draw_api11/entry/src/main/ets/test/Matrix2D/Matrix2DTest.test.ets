@@ -45,7 +45,7 @@ export default function Matrix2DTest() {
       console.info("Matrix2D after each called");
     });
 
-    it('testMatrix2D_0010', Level.LEVEL1, async (done:Function) => {
+    it('testMatrix2D_0010', Level.LEVEL0, async (done:Function) => {
       console.info('[testMatrix2D_0010] START');
       await Utils.sleep(2000);
 

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
 export default function pathNewTest() {
@@ -49,7 +49,7 @@ export default function pathNewTest() {
      * @tc.name         testpathNe0001
      * @tc.desic         acepathNeEtsTest0001
      */
-    it('testpathNe0001', 0, async () => {
+    it('testpathNe0001', Level.LEVEL0, async () => {
       console.info('pathNe testpathNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Path');
@@ -66,7 +66,7 @@ export default function pathNewTest() {
      * @tc.name         testpathNe0002
      * @tc.desic         acepathNeEtsTest0002
      */
-    it('testpathNe0002', 0, async () => {
+    it('testpathNe0002', Level.LEVEL0, async () => {
       console.info('pathNe testpathNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Path');
@@ -83,7 +83,7 @@ export default function pathNewTest() {
      * @tc.name         testpathNe0003
      * @tc.desic         acepathNeEtsTest0003
      */
-    it('testpathNe0003', 0, async () => {
+    it('testpathNe0003', Level.LEVEL0, async () => {
       console.info('pathNe testpathNe0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Path');

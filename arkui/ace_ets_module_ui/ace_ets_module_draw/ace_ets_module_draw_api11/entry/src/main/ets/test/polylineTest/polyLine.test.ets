@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
 export default function polyLineNeJsunit() {
@@ -49,7 +49,7 @@ export default function polyLineNeJsunit() {
      * @tc.name         testpolyLineNe0001
      * @tc.desic         acepolyLineNeEtsTest0001
      */
-    it('testpolyLineNe0001', 0, async () => {
+    it('testpolyLineNe0001', Level.LEVEL0, async () => {
       console.info('polyLineNe testpolyLineNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Polyline');
@@ -66,7 +66,7 @@ export default function polyLineNeJsunit() {
      * @tc.name         testpolyLineNe0002
      * @tc.desic         acepolyLineNeEtsTest0002
      */
-    it('testpolyLineNe0002', 0, async () => {
+    it('testpolyLineNe0002', Level.LEVEL0, async () => {
       console.info('polyLineNe testpolyLineNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Polyline');

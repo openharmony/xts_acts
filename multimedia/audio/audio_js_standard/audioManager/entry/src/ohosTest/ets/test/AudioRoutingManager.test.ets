@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import { BusinessError } from '@ohos.base';
 
@@ -60,7 +60,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_MIC,
         capturerFlags: 0
@@ -97,7 +97,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_VOICE_RECOGNITION,
         capturerFlags: 0
@@ -134,7 +134,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_PLAYBACK_CAPTURE,
         capturerFlags: 0
@@ -172,7 +172,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
         capturerFlags: 0
@@ -210,7 +210,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_MIC,
         capturerFlags: 0
@@ -248,7 +248,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_VOICE_RECOGNITION,
         capturerFlags: 0
@@ -286,7 +286,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_PLAYBACK_CAPTURE,
         capturerFlags: 0
@@ -324,7 +324,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
         capturerFlags: 0
@@ -363,7 +363,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: ESObject = 'abc';
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       try {
@@ -393,7 +393,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: 9,
         capturerFlags: 0
@@ -426,7 +426,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       try {
@@ -454,7 +454,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETPREFEROUTUTDEVICEFORRENDERERINFOTEST_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETPREFEROUTUTDEVICEFORRENDERERINFOTEST_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let rendererInfo: audio.AudioRendererInfo = {
         content: audio.ContentType.CONTENT_TYPE_MUSIC,
         usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
@@ -483,7 +483,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
         let data = await routingManager.getPreferOutputDeviceForRendererInfo(params);
@@ -509,7 +509,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       let rendererInfo: audio.AudioRendererInfo = {
         usage: 123,
@@ -544,7 +544,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
         let data = await routingManager.getPreferOutputDeviceForRendererInfo(stringParameter);
@@ -571,7 +571,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let rendererInfo: audio.AudioRendererInfo = {
         content: audio.ContentType.CONTENT_TYPE_MUSIC,
         usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
@@ -598,7 +598,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let rendererInfo: ESObject = {
         usage: 123,
         rendererFlags: 0
@@ -633,7 +633,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
         routingManager.getPreferOutputDeviceForRendererInfo(stringParameter, (e, data) => {
@@ -667,7 +667,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let rendererInfo: ESObject = {
         usage: 123,
       }
@@ -697,7 +697,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
 
       try {
@@ -724,7 +724,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
         routingManager.on('preferOutputDeviceChangeForRendererInfo', params, (data) => {
@@ -746,7 +746,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_OFF_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_OFF_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
         routingManager.off('preferOutputDeviceChangeForRendererInfo', (data) => {
@@ -769,7 +769,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let rendererInfo: audio.AudioRendererInfo = {
         content: audio.ContentType.CONTENT_TYPE_MUSIC,
         usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
@@ -800,7 +800,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
         let AudioDeviceDescriptors = routingManager.getPreferredOutputDeviceForRendererInfoSync(null);
@@ -828,7 +828,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let rendererInfo: audio.AudioRendererInfo = {
         usage: 123,
         rendererFlags: 0
@@ -854,7 +854,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       let rendererInfo: ESObject = '123'
       try {
@@ -882,7 +882,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let routingManager = audio.getAudioManager().getRoutingManager();
       let rendererInfo: audio.AudioRendererInfo = {
         usage: audio.StreamUsage.STREAM_USAGE_GAME,
@@ -913,7 +913,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: audio.SourceType.SOURCE_TYPE_MIC,
         capturerFlags: 0
@@ -942,7 +942,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       try {
         let AudioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync(params);
@@ -964,7 +964,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capturerInfo: audio.AudioCapturerInfo = {
         source: 123,
         capturerFlags: 0
@@ -990,7 +990,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       try {
         let AudioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync(undefined);
@@ -1013,7 +1013,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       let data: ESObject = '123';
       try {
@@ -1036,7 +1036,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       try {
         audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', undefined, (desc: ESObject) => {
@@ -1063,7 +1063,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       let capturerInfo: audio.AudioCapturerInfo = {
         source: 123,
@@ -1094,7 +1094,7 @@ export default function audioRoutingManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       let rendererInfo: ESObject = '123';
       try {

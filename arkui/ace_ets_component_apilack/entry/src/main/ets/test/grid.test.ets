@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils'
 
 export default function gridMaxCountJsunit() {
@@ -45,7 +45,7 @@ export default function gridMaxCountJsunit() {
       console.info("gridMaxCount after each called");
     });
 
-    it('testcheckgridMaxCount0001', 0, async () => {
+    it('testcheckgridMaxCount0001', Level.LEVEL0, async () => {
       console.info('testcheckgridMaxCount testcheckgridMaxCount0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('maxCountTest');
@@ -57,7 +57,7 @@ export default function gridMaxCountJsunit() {
 
     });
 
-    it('testEdgeEffectOptions0002', 0, async () => {
+    it('testEdgeEffectOptions0002', Level.LEVEL0, async () => {
       console.info('testEdgeEffectOptions testEdgeEffectOptions0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('maxCountTest');
@@ -66,7 +66,7 @@ export default function gridMaxCountJsunit() {
       console.info("edgeEffectOptions value :" + JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled);
     });
 
-    it('testEdgeEffectOptions0003', 0, async () => {
+    it('testEdgeEffectOptions0003', Level.LEVEL0, async () => {
       console.info('testEdgeEffectOptions testEdgeEffectOptions0003 START');
       await Utils.sleep(2000);
       try {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -45,7 +45,7 @@ export default function circleJsunit() {
       console.info("circle after each called");
     });
 
-    it('circleTest_0100', 0, async (done: Function) => {
+    it('circleTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('circleTest_0100 START');
       let strJson = getInspectorByKey('circle');
       console.info("circleTest_0100 component strJson:" + strJson);
@@ -56,7 +56,7 @@ export default function circleJsunit() {
       done();
     });
 
-    it('circleTest_0200', 0, async (done: Function) => {
+    it('circleTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[circleTest_0200] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -84,7 +84,7 @@ export default function circleJsunit() {
       done();
     });
 
-    it('circleTest_0300', 0, async (done: Function) => {
+    it('circleTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[circleTest_0300] START');
       try {
         let eventData: events_emitter.EventData = {

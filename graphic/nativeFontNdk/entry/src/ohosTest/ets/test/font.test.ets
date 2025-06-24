@@ -1282,5 +1282,23 @@ export default function fontTest() {
       expect(result[2]).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetRun_001
+     * @tc.name       : testOHDrawingGetRun001
+     * @tc.desc       : test OHDrawingGetRun001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingGetRun001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingGetRun001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
   })
 }

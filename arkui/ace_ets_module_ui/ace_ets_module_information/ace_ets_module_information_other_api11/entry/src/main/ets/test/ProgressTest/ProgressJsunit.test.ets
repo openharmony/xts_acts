@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -61,7 +61,7 @@ export default function progressJsunit() {
      * @tc.name testGetProgressAttr010
      * @tc.desc aceEtsTest
      */
-    it('testGetProgressAttr010', 0, async (done: Function) => {
+    it('testGetProgressAttr010', Level.LEVEL0, async (done: Function) => {
       console.info('testGetProgressAttr START');
       let strJson = getInspectorByKey('progress');
       let obj: ESObject = JSON.parse(strJson);
@@ -83,7 +83,7 @@ export default function progressJsunit() {
      * @tc.name testGetProgressAttr020
      * @tc.desc aceEtsTest
      */
-    it('testGetProgressAttr020', 0, async (done: Function) => {
+    it('testGetProgressAttr020', Level.LEVEL0, async (done: Function) => {
       console.info('testGetProgressAttr2 START');
       let strJson = getInspectorByKey('progress2');
       let obj: ESObject = JSON.parse(strJson);
@@ -100,7 +100,7 @@ export default function progressJsunit() {
      * @tc.name testGetProgressAttr030
      * @tc.desc aceEtsTest
      */
-    it('testGetProgressAttr030', 0, async (done: Function) => {
+    it('testGetProgressAttr030', Level.LEVEL0, async (done: Function) => {
       console.info('testGetProgressAttr3 START');
       let strJson: ESObject = getInspectorByKey('progress3');
       let obj: ESObject = JSON.parse(strJson);
@@ -117,7 +117,7 @@ export default function progressJsunit() {
      * @tc.name testGetProgressAttr040
      * @tc.desc aceEtsTest
      */
-    it('testGetProgressAttr040', 0, async (done: Function) => {
+    it('testGetProgressAttr040', Level.LEVEL0, async (done: Function) => {
       console.info('testGetProgressAttr4 START');
       let strJson = getInspectorByKey('progress4');
       let obj: ESObject = JSON.parse(strJson);
@@ -134,7 +134,7 @@ export default function progressJsunit() {
      * @tc.name testGetProgressAttr050
      * @tc.desc aceEtsTest
      */
-    it('testGetProgressAttr050', 0, async (done: Function) => {
+    it('testGetProgressAttr050', Level.LEVEL0, async (done: Function) => {
       console.info('testGetProgressAttr5 START');
       let strJson = getInspectorByKey('progress5');
       let obj: ESObject = JSON.parse(strJson);

@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("socket") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "sockettest:ActsNetworkMgrSocketTest" ]
+    deps = [ 
+    "socketHasNetTest:ActsNetworkMgrSocketHasNetTest",
+    "sockettest:ActsNetworkMgrSocketTest" 
+    ]
   }
 }

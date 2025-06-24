@@ -472,5 +472,27 @@ export default function MultimodalInputKeyCodeTest() {
         done();
       }
     });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_KEYCODE_DIV_0100
+     * @tc.name: SUB_MMI_Input_Api_KEYCODE_DIV_0100
+     * @tc.desc: Test keycode KEYCODE_DIV.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_KEYCODE_DIV_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_KEYCODE_DIV_0100";
+      try {
+        let KEYCODE_DIV = KeyCode.KEYCODE_DIV;
+        console.info(`${caseName} success, keyCode value ${JSON.stringify(KEYCODE_DIV)}`);
+        ExpectTrue(KEYCODE_DIV == 3220);
+        done();
+      } catch (error) {
+        console.info(`${caseName} fail, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
   });
 }

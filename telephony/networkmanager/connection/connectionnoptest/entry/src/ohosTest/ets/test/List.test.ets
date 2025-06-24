@@ -14,7 +14,9 @@
  */
 
 import ConnectionPublicNopTest from './ConnectionPublicNop.test';
+import Multicastconnection201Test from './ConnectionNoP.test';
 
 export default function testsuite() {
   ConnectionPublicNopTest();
+  Multicastconnection201Test();
 }
