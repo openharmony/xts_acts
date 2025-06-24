@@ -32,10 +32,10 @@ interface kdfVector {
   expectSecret: number[]
 }
 
-async function hkdfCallback(algName: string, spec: cryptoFramework.HKDFSpec): Promise<cryptoFramework.DataBlob> {
-  return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
+async function hkdfCallback(algName: string, spec: cryptoFramework.HKDFSpec): Promise<cryptoFramework.DataBlob|undefined> {
+  return new Promise<cryptoFramework.DataBlob|undefined>((resolve, reject) => {
     let kdf = cryptoFramework.createKdf(algName);
-    kdf.generateSecret(spec, (err: BusinessError<void>|null, dataBlob: cryptoFramework.DataBlob|PromiseLike<cryptoFramework.DataBlob>) => {
+    kdf.generateSecret(spec, (err: BusinessError<void>|null, dataBlob: cryptoFramework.DataBlob|undefined) => {
       if (err?.code != 0) {
         reject(err as Error);
       } else {

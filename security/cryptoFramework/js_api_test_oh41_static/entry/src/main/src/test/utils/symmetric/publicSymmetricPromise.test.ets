@@ -19,9 +19,9 @@ import { stringTouInt8Array, uInt8ArrayToShowStr, uInt8ArrayToString } from "../
 import { createSymKeyGenerator, createSymCipher } from "./publicSymmetricCommon.test";
 import { createGcmParam } from '../common/gcmParamsSpec.test';
 
-async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<crypto.SymKey> {
-  return new Promise<crypto.SymKey>((resolve, reject) => {
-    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: crypto.SymKey|PromiseLike<crypto.SymKey>) => {
+async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<crypto.SymKey|undefined> {
+  return new Promise<crypto.SymKey|undefined>((resolve, reject) => {
+    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: crypto.SymKey|undefined) => {
       if (err?.code != 0) {
         console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
         reject(err as Error);
@@ -47,9 +47,9 @@ async function initCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMod
 }
 
 async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMode,
-  plainText: crypto.DataBlob): Promise<crypto.DataBlob> {
-  return new Promise<crypto.DataBlob>((resolve, reject) => {
-    cipherGenerator.update(plainText, (err: BusinessError<void>|null, data: crypto.DataBlob|PromiseLike<crypto.DataBlob>) => {
+  plainText: crypto.DataBlob): Promise<crypto.DataBlob|undefined> {
+  return new Promise<crypto.DataBlob|undefined>((resolve, reject) => {
+    cipherGenerator.update(plainText, (err: BusinessError<void>|null, data: crypto.DataBlob|undefined) => {
       if (err?.code != 0) {
         console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
         reject(err as Error);
@@ -61,9 +61,9 @@ async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoM
 }
 
 async function doFinalCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMode,
-  dataBlob: crypto.DataBlob|null): Promise<crypto.DataBlob> {
-  return new Promise<crypto.DataBlob>((resolve, reject) => {
-    cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, data: crypto.DataBlob|PromiseLike<crypto.DataBlob>) => {
+  dataBlob: crypto.DataBlob|null): Promise<crypto.DataBlob|undefined> {
+  return new Promise<crypto.DataBlob|undefined>((resolve, reject) => {
+    cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, data: crypto.DataBlob|undefined) => {
       if (err?.code != 0) {
         console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
         reject(err as Error);
