@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import ActsBackgroundProcessManagerTest from './ActsBackgroundProcessManagerTest.test';
+import ActsBackgroundProcessManagerNapTest from './ActsBackgroundProcessManagerNapTest.test';
 
 export default function testsuite() {
   ActsBackgroundProcessManagerTest();
+  ActsBackgroundProcessManagerNapTest();
 }
