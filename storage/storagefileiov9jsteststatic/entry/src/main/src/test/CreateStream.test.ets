@@ -476,9 +476,9 @@ export default function fileIOCreateStream() {
       try {
         fs.createStream(fpath, 'r+', (err: BusinessError | null, sr: fs.Stream | undefined) => {
           expect(sr !== null).assertTrue();
-          expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-          expect(sr.writeSync(FILE_CONTENT, { offset: 0 }) == FILE_CONTENT.length).assertTrue();
-          sr.closeSync();
+          expect(sr?.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+          expect(sr?.writeSync(FILE_CONTENT, { offset: 0 }) == FILE_CONTENT.length).assertTrue();
+          sr?.closeSync();
           fs.unlinkSync(fpath);
           done();
         });
@@ -613,9 +613,9 @@ export default function fileIOCreateStream() {
       try {
         fs.createStream(fpath, 'w', (err: BusinessError | null, sw: fs.Stream | undefined) => {
           expect(sw !== null).assertTrue();
-          expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          expect(sw?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_012 start');
-          sw.read(new ArrayBuffer(4096), {
+          sw?.read(new ArrayBuffer(4096), {
             length: 5
           }, (err: BusinessError<void> | null) => {
             if (err?.code != 0) {
@@ -708,9 +708,9 @@ export default function fileIOCreateStream() {
       try {
         fs.createStream(fpath, 'w+', (err: BusinessError | null, sw: fs.Stream | undefined) => {
           expect(sw !== null).assertTrue();
-          expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          expect(sw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
-          sw.closeSync();
+          expect(sw?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          expect(sw?.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
+          sw?.closeSync();
           fs.unlinkSync(fpath);
           done();
         });
@@ -795,9 +795,9 @@ export default function fileIOCreateStream() {
       try {
         fs.createStream(fpath, 'a', (err: BusinessError | null, sa: fs.Stream | undefined) => {
           expect(sa !== null).assertTrue();
-          expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          expect(sa?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
           hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_018 read start ');
-          sa.read(new ArrayBuffer(4096), {
+          sa?.read(new ArrayBuffer(4096), {
             length: 5
           }, (err: BusinessError<void> | null) => {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_018 read 1111');
@@ -890,9 +890,9 @@ export default function fileIOCreateStream() {
       try {
         fs.createStream(fpath, 'a+', (err: BusinessError | null, sa: fs.Stream | undefined) => {
           expect(sa !== null).assertTrue();
-          expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          expect(sa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
-          sa.closeSync();
+          expect(sa?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          expect(sa?.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
+          sa?.closeSync();
           fs.unlinkSync(fpath);
           done();
         });

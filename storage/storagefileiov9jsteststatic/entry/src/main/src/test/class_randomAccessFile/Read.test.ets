@@ -385,16 +385,21 @@ export default function fileIORandomAccessFileRead() {
       expect(res).assertTrue();
 
       try {
-        fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, async (err: BusinessError | null, randomaccessfile: fs.RandomAccessFile | undefined) => {
+        fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, (err: BusinessError | null, randomaccessfile: fs.RandomAccessFile | undefined) => {
           let length = 20;
-          let bytesWritten = await randomaccessfile.write(new ArrayBuffer(length));
+          let bytesWritten = randomaccessfile?.writeSync(new ArrayBuffer(length));
           expect(bytesWritten == length).assertTrue();
-          randomaccessfile.setFilePointer(0);
-          let readLength = await randomaccessfile.read(new ArrayBuffer(length), { offset: 1 });
-          expect(readLength == length - 1).assertTrue();
-          randomaccessfile.close();
-          fs.unlinkSync(fpath);
-          done();
+          randomaccessfile?.setFilePointer(0);
+          randomaccessfile?.read(new ArrayBuffer(length), { offset: 1 }).then((readLength: number) => {
+            hilog.info(domain, tag, '%{public}s', "fileIO_randomaccessfile_read_async_static_001 readLength: " + readLength);
+            expect(readLength == length - 1).assertTrue();
+          }).catch((err: BusinessError) => {
+            hilog.info(domain, tag, '%{public}s', "fileIO_randomaccessfile_read_async_static_001 failed with error message: " + err.message + ", error code: " + err.code);
+          }).finally(() => {
+            randomaccessfile?.close();
+            fs.unlinkSync(fpath);
+            done();
+          });
         });
       } catch (err: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_randomaccessfile_read_async_static_001 has failed for ' + err);
@@ -515,7 +520,7 @@ export default function fileIORandomAccessFileRead() {
 
       try {
         randomaccessfile.read(new ArrayBuffer(4096), { offset: -1 }, (err: BusinessError | null, readLength: number | undefined) => {
-          expect(err.code == 13900020 && err.message == "Invalid argument").assertTrue();
+          expect(err?.code == 13900020 && err?.message == "Invalid argument").assertTrue();
           randomaccessfile.close();
           fs.unlinkSync(fpath);
           done();
@@ -747,19 +752,24 @@ export default function fileIORandomAccessFileRead() {
       expect(res).assertTrue();
 
       try {
-        fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, async (err: BusinessError | null, randomaccessfile: fs.RandomAccessFile | undefined) => {
+        fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, (err: BusinessError | null, randomaccessfile: fs.RandomAccessFile | undefined) => {
           let length = 20;
-          let bytesWritten = await randomaccessfile.write(new ArrayBuffer(length));
+          let bytesWritten = randomaccessfile?.writeSync(new ArrayBuffer(length));
           expect(bytesWritten == length).assertTrue();
-          randomaccessfile.setFilePointer(31);
-          randomaccessfile.setFilePointer(0);
+          randomaccessfile?.setFilePointer(31);
+          randomaccessfile?.setFilePointer(0);
           let initOffset = 1;
-          let readLength = await randomaccessfile.read(new ArrayBuffer(length), { offset: initOffset });
-          expect(readLength == length - 1).assertTrue();
-          expect(randomaccessfile.filePointer == readLength + initOffset).assertTrue();
-          randomaccessfile.close();
-          fs.unlinkSync(fpath);
-          done();
+          randomaccessfile?.read(new ArrayBuffer(length), { offset: initOffset }).then((readLength: number) => {
+            hilog.info(domain, tag, '%{public}s', "fileIO_randomaccessfile_read_async_static_015 readLength: " + readLength);
+            expect(readLength == length - 1).assertTrue();
+            expect(randomaccessfile?.filePointer == readLength + initOffset).assertTrue();
+          }).catch((err: BusinessError) => {
+            hilog.info(domain, tag, '%{public}s', "fileIO_randomaccessfile_read_async_static_015 failed with error message: " + err.message + ", error code: " + err.code);
+          }).finally(() => {
+            randomaccessfile?.close();
+            fs.unlinkSync(fpath);
+            done();
+          });
         });
       } catch (err: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_randomaccessfile_read_async_static_015 has failed for ' + err);

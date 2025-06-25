@@ -234,7 +234,7 @@ export default function fileIOReadLines() {
         let arr = FILE_CONTENTS.split("\n");
         fs.readLines(fpath, { encoding: 'utf-8' }, (err: BusinessError | null, readerIterator: fs.ReaderIterator | undefined) => {
           for (let i = 0; i < arr.length; i++) {
-            let it = readerIterator.next();
+            let it = readerIterator?.next();
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_readLines_async_static_002 readLen1: ' + it.value + it.done);
             expect(it.value.trim() == arr[i]).assertTrue();
             expect(it.done == false).assertTrue();
@@ -301,7 +301,7 @@ export default function fileIOReadLines() {
           encoding : 'utf-8'
         },  (err: BusinessError | null, readerIterator: fs.ReaderIterator | undefined) => {
           for (let i = 0; i < arr.length; i++) {
-            let it = readerIterator.next();
+            let it = readerIterator?.next();
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_readLines_async_static_004 readLen1: ' + it.value + it.done);
             expect(it.value.trim() == arr[i]).assertTrue();
             expect(it.done == false).assertTrue();

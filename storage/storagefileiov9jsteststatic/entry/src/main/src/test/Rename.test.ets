@@ -230,9 +230,9 @@ export default function fileIORename() {
         let fpath = await Utils.nextFileName('fileIO_test_rename_async_static_003');
         let newf = fpath + 'test';
         fs.rename(fpath, newf, (err: BusinessError<void> | null) => {
-          if(err.code != 0){
+          if(err?.code != 0){
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_rename_async_static_003 has error for' + JSON.stringify(err));
-            expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+            expect(err?.code == 13900002 && err?.message == 'No such file or directory').assertTrue();
             done();
           }
         });

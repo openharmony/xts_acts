@@ -506,7 +506,7 @@ export default function fileIOListfile() {
 
       try {
         fs.listFile(dpath, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 3).assertTrue();
+          expect(dirents?.length == 3).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (e: BusinessError) {
@@ -571,7 +571,7 @@ export default function fileIOListfile() {
           listNum: 2,
           recursion: false
         }, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 2).assertTrue();
+          expect(dirents?.length == 2).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (e: BusinessError) {
@@ -646,7 +646,7 @@ export default function fileIOListfile() {
           recursion: false,
           filter: filter
         }, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 3).assertTrue();
+          expect(dirents?.length == 3).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (e: BusinessError) {
@@ -728,7 +728,7 @@ export default function fileIOListfile() {
           recursion: false,
           filter: filter
         }, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 3).assertTrue();
+          expect(dirents?.length == 3).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (e: BusinessError) {
@@ -829,7 +829,7 @@ export default function fileIOListfile() {
           recursion: true,
           filter: filter
         }, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 6).assertTrue();
+          expect(dirents?.length == 6).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (e: BusinessError) {
@@ -933,7 +933,7 @@ export default function fileIOListfile() {
           recursion: false,
           filter: filter
         }, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 2).assertTrue();
+          expect(dirents?.length == 2).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (e: BusinessError) {
@@ -1107,7 +1107,7 @@ export default function fileIOListfile() {
           recursion: false,
           filter: filter
         }, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 0).assertTrue();
+          expect(dirents?.length == 0).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (e: BusinessError) {
@@ -1193,7 +1193,7 @@ export default function fileIOListfile() {
           recursion: false,
           filter: filter
         }, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 2).assertTrue();
+          expect(dirents?.length == 2).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (err: BusinessError) {
@@ -1363,7 +1363,7 @@ export default function fileIOListfile() {
           recursion: false,
           filter: filter
         }, (err: BusinessError | null, dirents: Array<string> | undefined) => {
-          expect(dirents.length == 3).assertTrue();
+          expect(dirents?.length == 3).assertTrue();
           fs.rmdirSync(dpath);
         });
       } catch (e: BusinessError) {
