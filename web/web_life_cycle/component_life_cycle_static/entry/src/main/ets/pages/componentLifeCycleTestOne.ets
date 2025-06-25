@@ -20,6 +20,7 @@ import { setTimeout } from '@internal.full.global';
 import Utils from '../../src/test/Util.test';
 import events_emitter from '@ohos.events.emitter';
 import { Callback } from '@ohos.base'
+import { UIContext, Router } from '@ohos.arkui.UIContext'
 
 @Entry
 @Component
@@ -279,6 +280,12 @@ struct httpAuthHandler {
               break;
             }
 
+            case 'emitonSwitchNextPage': {
+              let uiContext: UIContext = this.getUIContext();
+              let router: Router = uiContext.getRouter();
+              // 根据测试套的运行次序，调整加载的页面
+              router.pushUrl({ url: "pages/webViewSharedRenderProcessToken" })
+            }
           }
         })
       }
