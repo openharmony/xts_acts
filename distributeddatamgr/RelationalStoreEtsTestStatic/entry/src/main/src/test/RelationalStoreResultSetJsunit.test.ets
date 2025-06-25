@@ -405,7 +405,7 @@ export default function rdbResultSetTest() {
     })
     /**
      * @tc.name       : testclose0001
-     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_1100
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_2400
      * @tc.desc       : close success test
      * @tc.size       : MediumTest
      * @tc.type       : Function
