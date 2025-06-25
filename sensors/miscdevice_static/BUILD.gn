@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_static_suite("MiscDeviceStaticTest") {
+ohos_js_app_static_suite("ActsMiscdeviceStaticTest") {
 #  test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "MiscDeviceStaticTest"
-  part_name = "init"
-  subsystem_name = "startup"
+  hap_name = "ActsMiscdeviceStaticTest"
+  part_name = "miscdevice"
+  subsystem_name = "sensors"
 }
