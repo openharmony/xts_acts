@@ -112,6 +112,14 @@ export default function avVideoRecorderTestTWO() {
       console.info('afterAll case');
     })
 
+    /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_MPEG4_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_MPEG4_0100
+            * @tc.desc      : Recorder video start-pause-resume
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level2
+        */
     it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_MPEG4_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
@@ -2458,65 +2466,6 @@ export default function avVideoRecorderTestTWO() {
 
       // mediaTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
       console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1100 end')
-    })
-
-    /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200
-            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200
-            * @tc.desc      : 1.create 2.prepare (videoFrameRate -1)
-            * @tc.size      : MediumTest
-            * @tc.type      : Function
-            * @tc.level     : Level 2
-        */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200', Level.LEVEL0, async (done: Function) => {
-      if (!avRecorderBase.isSupportCameraVideoProfiles) {
-        console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
-        expect(true).assertTrue();
-        done();
-      }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200 start')
-      let avNewProfile: media.AVRecorderProfile = {
-        audioBitrate: 48000,
-        audioChannels: 2,
-        audioCodec: media.CodecMimeType.AUDIO_AAC,
-        audioSampleRate: 48000,
-        fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
-        videoBitrate: 280000, // 视频比特率
-        videoCodec: media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
-        videoFrameWidth: 640, // 视频分辨率的宽
-        videoFrameHeight: 480, // 视频分辨率的高
-        videoFrameRate: -1 // 视频帧率
-      }
-      let avNewConfig: media.AVRecorderConfig = {
-        audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-        videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
-        profile: avNewProfile,
-        url: 'fd://35',
-        rotation: 0,
-        location: {
-          latitude: 30, longitude: 130
-        }
-      }
-      let fileName = mediaTestBase.resourceName()
-      avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
-      avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
-      avNewConfig.url = avRecorderBase.fdPath;
-      avRecorderBase.checkDevice(avNewConfig)
-      let mySteps = new Array(
-        // setAvRecorderCallback
-        CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
-        // ????SETONCALLBACK_EVENT,
-        // ????preparePromise--->ERR
-        PREPARE_PROMISE_ERR_EVENT,
-        // AVRecorderTestBase.releasePromise
-        RELEASECORDER_PROMISE_EVENT,
-        // end
-        END_EVENT
-      );
-      avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
-
-      // mediaTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200 end')
     })
 
     // Promise getInputSurface

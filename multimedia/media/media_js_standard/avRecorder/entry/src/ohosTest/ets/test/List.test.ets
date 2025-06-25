@@ -16,7 +16,7 @@
 import AVRecorderFuncAccTest from './AVRecorderFuncAccTest.test'
 import avRecorderTest from './AVRecorderFuncTest.test'
 import {avVideoRecorderTestOne,executeAVVideoRecorder} from './AvVideoRecorderFuncTestOne.test'
-import avVideoRecorderTestTWO from './AvVideoRecorderTestTWO.test'
+import avVideoRecorderTestTWO from './AvVideoRecorderFuncTestTWO.test'
 let isExecuteAVVideoRecorder = executeAVVideoRecorder();
 
 export default function testsuite() {
