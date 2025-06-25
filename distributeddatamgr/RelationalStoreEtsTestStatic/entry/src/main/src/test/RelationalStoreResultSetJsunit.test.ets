@@ -23,9 +23,6 @@ import Utils from './Util.test';
 import { AppStorage } from '@ohos.arkui.stateManagement';
 import common from '@ohos.app.ability.common';
 
-let context:common.UIAbilityContext;
-let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-
 let domain: number = 0x0000;
 let tag: string = 'testTag';
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -50,6 +47,8 @@ let STORE_CONFIG1 :data_relationalStore.StoreConfig = {
   securityLevel: data_relationalStore.SecurityLevel.S1,
   encrypt:false,
 }
+
+
 const CREATE_TABLE_TESTERRCODE = "CREATE TABLE IF NOT EXISTS testerrcode (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
   "data1 TEXT NOT NULL," + "data2 long, " + "data3 double," + "data4 blob," + "data5 ASSET," + "data6 ASSETS," +
   "data7 floatvector(128)," + "data8 UNLIMITED INT" + ")";
@@ -60,6 +59,8 @@ let STORE_CONFIG2 :data_relationalStore.StoreConfig = {
   name: "test2.db",
   securityLevel: data_relationalStore.SecurityLevel.S1,
 }
+let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+let context:common.UIAbilityContext;
 let rdbStore : data_relationalStore.RdbStore
 let rdbStore1 : data_relationalStore.RdbStore
 let rdbStore2 : data_relationalStore.RdbStore
@@ -242,18 +243,21 @@ export default function rdbResultSetTest() {
     /**
      * @tc.name       : testRdbTransactionInsert0001
      * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_0800
-     * @tc.desc       : beginTransaction normal test
+     * @tc.desc       : createTransaction normal test
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
     it('testRdbTransactionInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* testRdbTransactionInsert0001 start *************');
-      await rdbStore1.executeSql(CREATE_TABLE_TESTTRANS);
+      await rdbStore1.execute(CREATE_TABLE_TESTTRANS);
       let vbs :Array<data_relationalStore.ValuesBucket> = new Array<data_relationalStore.ValuesBucket>(1);
       let u8 = new Uint8Array([1, 2, 3])
       try {
-        rdbStore1.beginTransaction()
+        let transaction = await rdbStore1.createTransaction({
+          transactionType: data_relationalStore.TransactionType.DEFERRED
+        });
+
         const valueBucket :data_relationalStore.ValuesBucket = {
           "name": "lisi",
           "age": 180 as long,
@@ -261,37 +265,40 @@ export default function rdbResultSetTest() {
           "blobType": u8,
         }
         vbs[0] = valueBucket
-        let num = await rdbStore1.batchInsert(TABLE_NAME, vbs);
-        hilog.info(domain, tag, 'Insert %{public}d rows.', num)
-
-        rdbStore1.commit()
-
+        let num = await transaction.batchInsert(TABLE_NAME, vbs);
+        hilog.info(domain, tag, 'Insert %{public}d rows.'+num)
+        transaction.commit()
+        hilog.info(domain, tag, '%{public}s', "11111 failed");
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
+        hilog.info(domain, tag, '%{public}s', "2222 failed");
         num = await rdbStore1.delete(predicates)
+        hilog.info(domain, tag, '%{public}s', "333 failed"+num);
         expect(true).assertEqual(num==1)
       } catch (e: BusinessError) {
         expect(null).assertFail()
-        hilog.info(domain, tag, '%{public}s', "testRdbTransactionInsert0001 failed");
+        hilog.info(domain, tag, '%{public}s', "testRdbTransactionInsert0001 failed"+e.code+e.message);
       }
-      await rdbStore1.executeSql(DROP_TABLE_TESTTRANS);
+      await rdbStore1.execute(DROP_TABLE_TESTTRANS);
       done();
       hilog.info(domain, tag, '%{public}s', '************* testRdbTransactionInsert0001 end *************');
     })
     /**
      * @tc.name       : testRdbTransactionInsert0002
      * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_0900
-     * @tc.desc       : beginTransaction normal test
+     * @tc.desc       : createTransaction normal test
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
     it('testRdbTransactionInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* testRdbTransactionInsert0002 start *************');
-      await rdbStore1.executeSql(CREATE_TABLE_TESTTRANS);
+      await rdbStore1.execute(CREATE_TABLE_TESTTRANS);
       let vbs :Array<data_relationalStore.ValuesBucket> = new Array<data_relationalStore.ValuesBucket>(3);
       let u8 = new Uint8Array([1, 2, 3])
       try {
-        rdbStore1.beginTransaction()
+        let transaction = await rdbStore1.createTransaction({
+          transactionType: data_relationalStore.TransactionType.DEFERRED
+        });
         const valueBucket :data_relationalStore.ValuesBucket = {
           "name": "lisi",
           "age": 180 as long,
@@ -316,10 +323,10 @@ export default function rdbResultSetTest() {
         }
         vbs[2] = valueBucket2
 
-        let num = await rdbStore1.batchInsert(TABLE_NAME, vbs);
+        let num = await transaction.batchInsert(TABLE_NAME, vbs);
         hilog.info(domain, tag, 'Insert %{public}d rows.', num)
 
-        rdbStore1.commit()
+        transaction.commit()
 
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
         num = await rdbStore1.delete(predicates)
@@ -328,7 +335,7 @@ export default function rdbResultSetTest() {
         expect(null).assertFail()
         hilog.info(domain, tag, '%{public}s', "testRdbTransactionInsert0002 failed");
       }
-      await rdbStore1.executeSql(DROP_TABLE_TESTTRANS);
+      await rdbStore1.execute(DROP_TABLE_TESTTRANS);
       done();
       hilog.info(domain, tag, '%{public}s', '************* testRdbTransactionInsert0002 end *************');
     })
@@ -342,20 +349,22 @@ export default function rdbResultSetTest() {
      */
     it('testRdbTransactionRollBack0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* testRdbTransactionRollBack0001 start *************');
-      await rdbStore1.executeSql(CREATE_TABLE_TESTTRANS);
+      await rdbStore1.execute(CREATE_TABLE_TESTTRANS);
       let u8 = new Uint8Array([1, 2, 3])
       const insertSqlArgs = "INSERT INTO testTrans (name, age, salary, blobType) VALUES (?, ?, ?, ?)";
       try {
-        rdbStore1.beginTransaction()
+        let transaction = await rdbStore1.createTransaction({
+          transactionType: data_relationalStore.TransactionType.DEFERRED
+        });
 
         let bind_args :Array<data_relationalStore.ValueType> = new Array<data_relationalStore.ValueType>(4);
         bind_args[0] = 'lisi'
         bind_args[1] = 180 as long
         bind_args[2] = 100.5
         bind_args[3] = u8
-        await rdbStore1.executeSql(insertSqlArgs, bind_args)
-        rdbStore1.rollBack()
-        rdbStore1.commit()
+        await transaction.execute(insertSqlArgs, bind_args)
+        transaction.rollback()
+        transaction.commit()
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
         let num = await rdbStore1.delete(predicates)
         expect(true).assertEqual(num==0)
@@ -363,9 +372,36 @@ export default function rdbResultSetTest() {
         expect(null).assertFail()
         hilog.info(domain, tag, '%{public}s', "testRdbTransactionRollBack0001 failed");
       }
-      await rdbStore1.executeSql(DROP_TABLE_TESTTRANS);
+      await rdbStore1.execute(DROP_TABLE_TESTTRANS);
       done();
       hilog.info(domain, tag, '%{public}s', '************* testRdbTransactionRollBack0001 end *************');
+    })
+    /**
+     * @tc.name       : testdeleteSync0001
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_2400
+     * @tc.desc       : deleteSync success test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testdeleteSync0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
+      hilog.info(domain, tag, '%{public}s', '************* testdeleteSync0001 start *************');
+      await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
+      let num = rdbStore2.batchInsertSync("testerrcode", vbs);
+      hilog.info(domain, tag, 'batchInsert %{public}d rows.', num)
+      let predicates = new data_relationalStore.RdbPredicates('testerrcode');
+      predicates.equalTo("data1", "hello");
+      try {
+        let number1 = rdbStore2.deleteSync(predicates);
+        hilog.info(domain, tag, '%{public}s', 'delete success,num:'+number1);
+        expect(number1).assertEqual(-1);
+      }catch(err:BusinessError){
+        hilog.info(domain, tag, '%{public}s', 'delete failed'+err.code);
+        expect().assertFail();
+      }
+      await rdbStore2.execute(DROP_TABLE_TESTERRCODE);
+      done();
+      hilog.info(domain, tag, '%{public}s', '************* testdeleteSync0001 end *************');
     })
     /**
      * @tc.name       : testdeleteSync0001
@@ -375,24 +411,38 @@ export default function rdbResultSetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testdeleteSync0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', '************* testdeleteSync0001 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
-      let num = rdbStore2.batchInsertSync("testerrcode", vbs);
-      hilog.info(domain, tag, 'batchInsert %{public}d rows.', num)
+    it('testclose0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
+      hilog.info(domain, tag, '%{public}s', '************* testclose0001 start *************');
+      let STORE_CONFIGCLOSE :data_relationalStore.StoreConfig = {
+        name: "test2.db",
+        securityLevel: data_relationalStore.SecurityLevel.S1,
+        encrypt:false,
+      }
+      const valueBucket :data_relationalStore.ValuesBucket = {
+        "data1": "hello",
+        "data2": 10 as long,//
+        "data3": 1.0,
+        "data4": new Uint8Array([1, 2, 3]),
+      }
+      let rdbStoreClose : data_relationalStore.RdbStore;
+      rdbStoreClose = await data_relationalStore.getRdbStore(context,STORE_CONFIGCLOSE);
+      await rdbStoreClose.execute(CREATE_TABLE_TESTERRCODE);
+      let num = await rdbStoreClose.batchInsert("testerrcode", vbs);
+      hilog.info(domain, tag, 'batchInsert %{public}d rows.', num);
+      await rdbStoreClose.close();
       let predicates = new data_relationalStore.RdbPredicates('testerrcode');
       predicates.equalTo("data1", "hello");
       try {
-        let number1 = rdbStore2.deleteSync(predicates);
-        hilog.info(domain, tag, '%{public}s', 'delete success,num:',number1);
-        expect(number1).assertEqual(1);
+        let number1 = await rdbStoreClose.insert("testerrcode", valueBucket);
+        hilog.info(domain, tag, '%{public}s', 'delete success,num:'+number1);
+        expect(number1).assertEqual(-1);
       }catch(err:BusinessError){
-        hilog.info(domain, tag, '%{public}s', 'delete failed',err.code);
+        hilog.info(domain, tag, '%{public}s', 'delete failed'+err.code+err.message);
         expect().assertFail();
       }
-      await rdbStore2.executeSql(DROP_TABLE_TESTERRCODE);
+      await rdbStoreClose.execute(DROP_TABLE_TESTERRCODE);
       done();
-      hilog.info(domain, tag, '%{public}s', '************* testdeleteSync0001 end *************');
+      hilog.info(domain, tag, '%{public}s', '************* testclose0001 end *************');
     })
     /**
      * @tc.name       : errcode002
@@ -404,7 +454,7 @@ export default function rdbResultSetTest() {
      */
     it('errcode002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode002 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
+      await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       let num = rdbStore2.batchInsertSync("testerrcode", vbs);
       hilog.info(domain, tag, 'batchInsert %{public}d rows.', num)
       let resultSet = rdbStore2.querySqlSync("SELECT * FROM testerrcode");
@@ -416,7 +466,7 @@ export default function rdbResultSetTest() {
         hilog.info(domain, tag, "business error code %{public}d", err.code)
         expect(true).assertEqual(err.code == 14800013)
       }
-      await rdbStore2.executeSql(DROP_TABLE_TESTERRCODE);
+      await rdbStore2.execute(DROP_TABLE_TESTERRCODE);
       done();
       hilog.info(domain, tag, '%{public}s', '************* errcode002 end *************');
     })
@@ -430,7 +480,7 @@ export default function rdbResultSetTest() {
      */
     it('errcode003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode002 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
+      await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       let num = rdbStore2.batchInsertSync("testerrcode", vbs);
       hilog.info(domain, tag, 'batchInsert %{public}d rows.', num)
       let resultSet = rdbStore2.querySqlSync("SELECT * FROM testerrcode");
@@ -442,7 +492,7 @@ export default function rdbResultSetTest() {
         hilog.info(domain, tag, "business error code %{public}d", err.code)
         expect(true).assertEqual(err.code == 14800013)
       }
-      await rdbStore2.executeSql(DROP_TABLE_TESTERRCODE);
+      await rdbStore2.execute(DROP_TABLE_TESTERRCODE);
       done();
       hilog.info(domain, tag, '%{public}s', '************* errcode003 end *************');
     })
@@ -456,7 +506,7 @@ export default function rdbResultSetTest() {
      */
     it('errcode004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode004 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
+      await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       let num = rdbStore2.batchInsertSync("testerrcode", vbs);
       hilog.info(domain, tag, 'batchInsert %{public}d rows.', num)
       let resultSet = rdbStore2.querySqlSync("SELECT * FROM testerrcode");
@@ -467,7 +517,7 @@ export default function rdbResultSetTest() {
         hilog.info(domain, tag, "business error code %{public}d", err.code)
         expect(true).assertEqual(err.code == 14800012)
       }
-      await rdbStore2.executeSql(DROP_TABLE_TESTERRCODE);
+      await rdbStore2.execute(DROP_TABLE_TESTERRCODE);
       done();
       hilog.info(domain, tag, '%{public}s', '************* errcode004 end *************');
     })
@@ -481,7 +531,7 @@ export default function rdbResultSetTest() {
      */
     it('errcode005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode005 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
+      await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       let num = rdbStore2.batchInsertSync("testerrcode", vbs);
       hilog.info(domain, tag, 'batchInsert %{public}d rows.', num)
       let resultSet = rdbStore2.querySqlSync("SELECT * FROM testerrcode");
@@ -492,7 +542,7 @@ export default function rdbResultSetTest() {
         hilog.info(domain, tag, "business error code %{public}d", err.code)
         expect(true).assertEqual(err.code == 14800012)
       }
-      await rdbStore2.executeSql(DROP_TABLE_TESTERRCODE);
+      await rdbStore2.execute(DROP_TABLE_TESTERRCODE);
       done();
       hilog.info(domain, tag, '%{public}s', '************* errcode005 end *************');
     })
@@ -506,7 +556,7 @@ export default function rdbResultSetTest() {
      */
     it('errcode006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode006 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
+      await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       let resultSet = rdbStore2.querySqlSync("SELECT * FROM testerrcode1")
       try{
         resultSet.goToFirstRow();
@@ -515,7 +565,7 @@ export default function rdbResultSetTest() {
         hilog.info(domain, tag, "business error code %{public}d", err.code)
         expect(true).assertEqual(err.code == 14800021)
       }
-      await rdbStore2.executeSql(DROP_TABLE_TESTERRCODE);
+      await rdbStore2.execute(DROP_TABLE_TESTERRCODE);
       done();
       hilog.info(domain, tag, '%{public}s', '************* errcode006 end *************');
     })
@@ -577,71 +627,11 @@ export default function rdbResultSetTest() {
       done();
       hilog.info(domain, tag, '%{public}s', '************* errcode018 end *************');
     })
-    /**
-     * @tc.name       : errcode019
-     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_1900
-     * @tc.desc       : delete callback 14800021 test
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('errcode019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', '************* errcode019 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
-      let predicates = new data_relationalStore.RdbPredicates('testerrcode4444');
-      predicates.equalTo("data1", "xiiiiiiiiii");
-      try {
-        rdbStore2.delete(predicates,(err:BusinessError<void> | null, rows:Long | undefined):void => {
-          if (err == null) {
-            hilog.info(domain, tag, '%{public}s', 'delete successfully');
-            expect().assertFail();
-            done();
-          } else {
-            hilog.info(domain, tag, '%{public}s', 'delete failed' + err.code);
-            expect(err?.code == 14800021).assertTrue();
-            done();
-          }
-        })
-      }catch(err:BusinessError){
-        hilog.info(domain, tag, '%{public}s', 'delete failed'+err.code);
-        expect().assertFail();
-        done();
-      }
-      hilog.info(domain, tag, '%{public}s', '************* errcode019 end *************');
-    })
-    /**
-     * @tc.name       : errcode020
-     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_2000
-     * @tc.desc       : executeSql callback 14800021 test
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('errcode020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', '************* errcode020 start *************');
-      try {
-          rdbStore2.executeSql("select * FROM employee", (err:BusinessError<void> | null) :void => {
-            if (err == null) {
-              hilog.info(domain, tag, '%{public}s', 'executeSql successfully');
-              expect().assertFail();
-              done();
-            } else {
-              hilog.info(domain, tag, '%{public}s', 'delete failed' + err.code);
-              expect(err?.code == 14800021).assertTrue();
-              done();
-            }
-        })
-      } catch (err:BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'executeSql failed',err.code,err.message);
-        expect().assertFail();
-        done();
-      }
-      hilog.info(domain, tag, '%{public}s', '************* errcode020 end *************');
-    })
+
     /**
      * @tc.name       : errcode022
      * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_2100
-     * @tc.desc       : executeSql promise 14800021 test
+     * @tc.desc       : execute promise 14800021 test
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
@@ -649,11 +639,11 @@ export default function rdbResultSetTest() {
     it('errcode022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode022 start *************');
       try {
-        await rdbStore2.executeSql("select * FROM employee",  undefined);
+        await rdbStore2.execute("select * FROM employee",  undefined);
         expect().assertFail();
         done();
       } catch (err:BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'executeSql failed'+ err.code);
+        hilog.info(domain, tag, '%{public}s', 'execute failed'+ err.code);
         expect(err.code == 14800021).assertTrue();
         done();
       }
@@ -662,46 +652,46 @@ export default function rdbResultSetTest() {
     /**
      * @tc.name       : errcode028
      * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_2200
-     * @tc.desc       : executeSql promise 14800032 test
+     * @tc.desc       : execute promise 14800032 test
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
     it('errcode028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode028 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
+      await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       try {
-        await rdbStore2.executeSql("INSERT INTO testerrcode(data2, data3,data4) VALUES (?,?,?)",  [80 as long, 111188.1, new Uint8Array(0)])
-        hilog.info(domain, tag, '%{public}s', 'executeSql suceess');
+        await rdbStore2.execute("INSERT INTO testerrcode(data2, data3,data4) VALUES (?,?,?)",  [80 as long, 111188.1, new Uint8Array(0)])
+        hilog.info(domain, tag, '%{public}s', 'execute suceess');
         expect().assertFail();
       } catch (err:BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'executeSql failed'+err.code);
+        hilog.info(domain, tag, '%{public}s', 'execute failed'+err.code);
         expect(err.code).assertEqual(14800032);
       }
-      await rdbStore2.executeSql(DROP_TABLE_TESTERRCODE);
+      await rdbStore2.execute(DROP_TABLE_TESTERRCODE);
       done();
       hilog.info(domain, tag, '%{public}s', '************* errcode028 end *************');
     })
     /**
      * @tc.name       : errcode031
      * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_2300
-     * @tc.desc       : executeSql promise 14800033 test
+     * @tc.desc       : execute promise 14800033 test
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
     it('errcode031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode031 start *************');
-      await rdbStore2.executeSql(CREATE_TABLE_TESTERRCODE);
+      await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       try {
-        await rdbStore2.executeSql("INSERT INTO testerrcode(id, data1, data2, data3,data4) VALUES (?,?,?,?,?)",  ['abc','hello',80 as long, 111188.1, new Uint8Array(0)])
-        hilog.info(domain, tag, '%{public}s', 'executeSql success');
+        await rdbStore2.execute("INSERT INTO testerrcode(id, data1, data2, data3,data4) VALUES (?,?,?,?,?)",  ['abc','hello',80 as long, 111188.1, new Uint8Array(0)])
+        hilog.info(domain, tag, '%{public}s', 'execute success');
         expect().assertFail();
       } catch (err:BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'executeSql failed'+err.code);
+        hilog.info(domain, tag, '%{public}s', 'execute failed'+err.code);
         expect(err.code).assertEqual(14800033);
       }
-      await rdbStore2.executeSql(DROP_TABLE_TESTERRCODE);
+      await rdbStore2.execute(DROP_TABLE_TESTERRCODE);
       done();
       hilog.info(domain, tag, '%{public}s', '************* errcode031 end *************');
     })
