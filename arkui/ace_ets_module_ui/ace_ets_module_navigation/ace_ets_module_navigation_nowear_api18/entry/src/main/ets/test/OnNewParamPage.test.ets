@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function OnNewParamPage() {
      * @tc.desc      Test OnNewParamPage LaunchMode.STANDARD\LaunchMode.NEW_INSTANCE\LaunchMode.POP_TO_SINGLETON\LaunchMode.MOVE_TO_TOP_SINGLETON
      * @tc.level     Level 2
      */
-    it('OnNewParamPage_0100', 0, async (done: Function) => {
+    it('OnNewParamPage_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('OnNewParamPage_0100 START');
       await CommonFunc.sleep(500);
 
