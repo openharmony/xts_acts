@@ -321,40 +321,58 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo) // 创建订阅SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event事件的Subscriber
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => { // 接收公共事件数据的回调函数
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo) // 创建订阅SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event事件的Subscriber
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => { // 接收公共事件数据的回调函数
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000005);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            // 启动测试用的入口ability
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000005);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          // 启动测试用的入口ability
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -365,39 +383,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000010);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000010);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -408,39 +444,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000005);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000005);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -451,39 +505,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000005);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000005);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -494,39 +566,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000010);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000010);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -537,39 +627,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000005);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000005);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -580,39 +688,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000010);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000010);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -623,39 +749,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000005);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000005);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -666,39 +810,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000005);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000005);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
@@ -709,39 +871,57 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+      if (mpEnable === 'true') {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            sub = commonEventSubscriber;
+            console.info(`[${TAG}] createSubscriber succeed`);
+            commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+              console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+              try {
+                expect(commonEventData.parameters?.result).assertEqual(16000010);
+              } catch {
+              }
+              commonEventManager.publish("terminateEntryAbility1",() => {});
+              commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
+                done();
+              });
+            })
+            let entryWant: Want = {
+              bundleName: "com.test.actsabilityerrcodequerysecondtest",
+              abilityName: "EntryAbility1",
+              parameters: {
+                "case": TAG
+              }
+            }
+            testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+              if (err.code) {
+                console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+              } else {
+                console.info(`[${TAG}] startEntryAbility succeed`);
+              }
+            })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
             try {
-              expect(commonEventData.parameters?.result).assertEqual(16000010);
+              expect().assertFail();
             } catch {
             }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
+            done();
           })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerysecondtest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
+      } else if (mpEnable === 'false') {
+        console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      } else {
+        console.info(`${TAG} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
     })
 
     /*
