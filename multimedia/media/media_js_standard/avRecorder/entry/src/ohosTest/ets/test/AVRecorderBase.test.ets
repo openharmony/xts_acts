@@ -65,7 +65,7 @@ export default class AVRecorderBase {
   cameraOutputCap: camera.CameraOutputCapability | undefined = undefined;
   videoSurfaceId: string | null = null;
   myProfile: ESObject;
-  myVideoProfile: camera.VideoProfile | undefined = undefined;
+  videoProfile: camera.VideoProfile | undefined = undefined;
   myPreviewProfile: camera.Profile | undefined = undefined;
   isInitCamera = false;
   recorderTime = 3000;
@@ -268,8 +268,8 @@ export default class AVRecorderBase {
   isSupportCameraVideoProfiles = true;
 
   setProfileSize(videoProfiles: Array<camera.VideoProfile>, previewProfiles: Array<camera.Profile>) {
-    console.log('Selected videoProfiles: ' + JSON.stringify(videoProfiles));
-    console.log('Selected previewProfiles: ' + JSON.stringify(previewProfiles));
+    console.log('已选择的视频配置文件: ' + JSON.stringify(videoProfiles));
+    console.log('已选择的预览配置文件: ' + JSON.stringify(previewProfiles));
 
     let chosenVideoProfile: Array<camera.VideoProfile> = [];
     let chosenPreviewProfile: Array<camera.Profile> = [];
@@ -284,10 +284,10 @@ export default class AVRecorderBase {
         }
       }
     }
-    this.myVideoProfile = chosenVideoProfile[0];
+    this.videoProfile = chosenVideoProfile[0];
     this.myPreviewProfile = chosenPreviewProfile[0];
-    console.log('Selected myVideoProfile: ' + JSON.stringify(this.myVideoProfile));
-    console.log('Selected myPreviewProfile: ' + JSON.stringify(this.myPreviewProfile));
+    console.log('已选择的视频配置: ' + JSON.stringify(this.videoProfile));
+    console.log('已选择的预览配置: ' + JSON.stringify(this.myPreviewProfile));
   }
 
   checkIfRatiosAreEqual(videoProfileSize: camera.VideoProfile, previewProfileSize: camera.Profile) {
@@ -332,8 +332,8 @@ export default class AVRecorderBase {
     } else {
       avConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV
     }
-    avConfig.profile.videoFrameWidth = this.myVideoProfile?.size.width;
-    avConfig.profile.videoFrameHeight = this.myVideoProfile?.size.height;
+    avConfig.profile.videoFrameWidth = this.videoProfile?.size.width;
+    avConfig.profile.videoFrameHeight = this.videoProfile?.size.height;
   }
 
   async initCamera(avConfig: media.AVRecorderConfig, recorderTime: number,
@@ -360,7 +360,7 @@ export default class AVRecorderBase {
 
     // 创建VideoOutput对象
     // let profile = cameraOutputCapability.videoProfiles[0];
-    let profile = this.myVideoProfile;
+    let profile = this.videoProfile;
     console.log('Selected[0] createVideoOutput profile: ' + JSON.stringify(profile));
     try {
       this.videoOutput = this.cameraManager?.createVideoOutput(profile, this.videoSurfaceId)

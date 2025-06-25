@@ -16,7 +16,7 @@
 import deviceInfo from '@ohos.deviceInfo'
 import media from '@ohos.multimedia.media'
 import Common from './Common';
-import AVRecorderBase from './AVRecorderBase';
+import AVRecorderBase from './AVRecorderBase.test';
 import { BusinessError } from '@ohos.base';
 import { Permissions } from '@kit.AbilityKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
@@ -3641,7 +3641,7 @@ export default function avVideoRecorderTestTWO() {
 
     /* *
             * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0300
-            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0300
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
