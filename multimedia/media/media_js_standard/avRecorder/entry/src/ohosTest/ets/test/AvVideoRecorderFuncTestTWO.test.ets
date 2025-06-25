@@ -19,7 +19,7 @@ import Common from './Common';
 import AVRecorderBase from './AVRecorderBase';
 import { BusinessError } from '@ohos.base';
 import { Permissions } from '@kit.AbilityKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 let mediaTestBase = new Common();
 let avRecorderBase = new AVRecorderBase();
@@ -75,7 +75,7 @@ export default function avVideoRecorderTestTWO() {
       console.info('beforeAll in1');
       let permissionNames: Array<Permissions> =
         ['ohos.permission.MICROPHONE', 'ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA',
-          'ohos.permission.WRITE_MEDIA','ohos.permission.CAMERA'];
+          'ohos.permission.WRITE_MEDIA', 'ohos.permission.CAMERA'];
       await mediaTestBase.getPermission(permissionNames);
       await mediaTestBase.driveFn(4)
       avRecorderBase.isSupportCamera()
@@ -112,13 +112,13 @@ export default function avVideoRecorderTestTWO() {
       console.info('afterAll case');
     })
 
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_MPEG4_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_MPEG4_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_MPEG4_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_MPEG4_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -143,24 +143,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_MPEG4_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_MPEG4_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0400
-            * @tc.name      : 001.test start-pause-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0400
             * @tc.desc      : Recorder video start-pause-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -185,24 +185,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0400 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0500
-            * @tc.name      : 001.test start-stop-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0500
             * @tc.desc      : Recorder video start-stop-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -227,24 +227,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0600
-            * @tc.name      : 001.test start-reset-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0600
             * @tc.desc      : Recorder video start-reset-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -269,24 +269,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0800
-            * @tc.name      : 001.test create-prepare-getInputSurface-start-pause-resume-resume-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0800
             * @tc.desc      : Recorder create-prepare-getInputSurface-start-pause-resume-resume-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -315,24 +315,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0800 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0400
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0400
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -357,24 +357,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0400 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0500
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0500
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -399,24 +399,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0600
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0600
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -441,24 +441,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0800
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0800
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -487,24 +487,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0800 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0500
-            * @tc.name      : 001.test start-pause-resume-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0500
             * @tc.desc      : Recorder start-pause-resume-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -529,24 +529,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0500
-            * @tc.name      : 001.test resume-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0500
             * @tc.desc      : Recorder video resume-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -571,24 +571,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0500
-            * @tc.name      : 001.test start-resume-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0500
             * @tc.desc      : Recorder video start-resume-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -613,24 +613,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0100
-            * @tc.name      : 001.test create-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0100
             * @tc.desc      : Recorder video create-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -648,24 +648,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0200
-            * @tc.name      : 001.test prepare-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0200
             * @tc.desc      : Recorder video prepare-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -682,24 +682,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0300
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0300
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -722,24 +722,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0700
-            * @tc.name      : 001.test create-prepare-getInputSurface-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0700
             * @tc.desc      : Recorder create-prepare-getInputSurface-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -758,25 +758,25 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_CALLBACK_0700 end')
     })
 
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0100
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0100
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -799,24 +799,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0200
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0200
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -839,24 +839,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0300
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0300
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -879,24 +879,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0700
-            * @tc.name      : 001.test start-resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0700
             * @tc.desc      : Recorder video start-resume
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -917,25 +917,25 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESUME_PROMISE_0700 end')
     })
 
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0300
-            * @tc.name      : 001.test start-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0300
             * @tc.desc      : Recorder video start-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -956,24 +956,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0400
-            * @tc.name      : 001.test start-pause-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0400
             * @tc.desc      : Recorder video start-pause-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -996,25 +996,25 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0400 end')
     })
 
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0600
-            * @tc.name      : 001.test start-reset-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0600
             * @tc.desc      : Recorder start-reset-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1037,24 +1037,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0800
-            * @tc.name      : 001.test start-stop-stop-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0800
             * @tc.desc      : Recorder start-stop-stop-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1079,24 +1079,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_CALLBACK_0800 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0100
-            * @tc.name      : 001.test create-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0100
             * @tc.desc      : Recorder video create-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1113,24 +1113,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0200
-            * @tc.name      : 001.test prepare-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0200
             * @tc.desc      : Recorder video prepare-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1147,24 +1147,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0300
-            * @tc.name      : 001.test start-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0300
             * @tc.desc      : Recorder video start-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1185,25 +1185,25 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0300 end')
     })
 
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0400
-            * @tc.name      : 001.test pause-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0400
             * @tc.desc      : Recorder video pause-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1226,25 +1226,25 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0400 end')
     })
 
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0600
-            * @tc.name      : 001.test reset-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0600
             * @tc.desc      : Recorder video reset-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1267,24 +1267,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0700
-            * @tc.name      : 001.test getInputSurface-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0700
             * @tc.desc      : Recorder video getInputSurface-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1305,24 +1305,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0700 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0800
-            * @tc.name      : 001.test start-stop-stop-stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0800
             * @tc.desc      : Recorder video start-stop-stop-stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1349,24 +1349,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_STOP_PROMISE_0800 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0100
-            * @tc.name      : 001.test create-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0100
             * @tc.desc      : Recorder video create-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1384,24 +1384,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0200
-            * @tc.name      : 001.test prepare-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0200
             * @tc.desc      : Recorder video prepare-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1418,24 +1418,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0300
-            * @tc.name      : 001.test start-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0300
             * @tc.desc      : Recorder video start-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1458,24 +1458,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0400
-            * @tc.name      : 001.test start-pause-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0400
             * @tc.desc      : Recorder video start-pause-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1498,24 +1498,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0400 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0500
-            * @tc.name      : 001.test start-resume-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0500
             * @tc.desc      : Recorder video start-resume-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1538,24 +1538,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0600
-            * @tc.name      : 001.test start-stop-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0600
             * @tc.desc      : Recorder video start-stop-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1578,24 +1578,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0700
-            * @tc.name      : 001.test create-prepare-getInputSurface-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0700
             * @tc.desc      : Recorder create-prepare-getInputSurface-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1614,24 +1614,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0700 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0800
-            * @tc.name      : 001.test create-prepare-getInputSurface-start-reset-reset-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0800
             * @tc.desc      : Recorder create-prepare-getInputSurface-start-reset-reset-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1656,24 +1656,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_CALLBACK_0800 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0100
-            * @tc.name      : 001.test create-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0100
             * @tc.desc      : Recorder video create-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1690,24 +1690,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0200
-            * @tc.name      : 001.test prepare-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0200
             * @tc.desc      : Recorder video prepare-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1724,24 +1724,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0300
-            * @tc.name      : 001.test start-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0300
             * @tc.desc      : Recorder video start-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1762,24 +1762,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0400
-            * @tc.name      : 001.test start-pause-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0400
             * @tc.desc      : Recorder video start-pause-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1802,25 +1802,25 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0400 end')
     })
 
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0600
-            * @tc.name      : 001.test start-stop-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0600
             * @tc.desc      : Recorder video start-stop-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1843,24 +1843,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0700
-            * @tc.name      : 001.test create-prepare-getInputSurface-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0700
             * @tc.desc      : Recorder create-prepare-getInputSurface-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1879,24 +1879,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0700 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0800
-            * @tc.name      : 001.test create-prepare-getInputSurface-start-reset-reset-reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0800
             * @tc.desc      : Recorder create-prepare-getInputSurface-start-reset-reset-reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1923,25 +1923,25 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_RESET_PROMISE_0800 end')
     })
 
     // promise prepare
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0100
-            * @tc.name      : 01. create->prepare
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0100
             * @tc.desc      : 1.create 2.prepare
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -1960,24 +1960,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2PreparePromise(avConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0200
-            * @tc.name      : 02. start->prepare
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0200
             * @tc.desc      : 1.create 2.prepare 3.start 4.prepare
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2006,24 +2006,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.start2PreparePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0200 end')
     })
 
     /* *
-           * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0300
-           * @tc.name      : 03. pause->prepare
+           * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0300
+           * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0300
            * @tc.desc      : 1.create 2.prepare 3.start 4.pause 5.prepare
            * @tc.size      : MediumTest
            * @tc.type      : Function
            * @tc.level     : Level 2
        */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2053,24 +2053,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.pause2PreparePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0300 end')
     })
 
     /* *
-           * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0400
-           * @tc.name      : 04. resume->prepare
+           * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0400
+           * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0400
            * @tc.desc      : 1.create 2.prepare 3.start 4.pause 5.resume 6.prepare
            * @tc.size      : MediumTest
            * @tc.type      : Function
            * @tc.level     : Level 2
        */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2102,24 +2102,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.resume2PreparePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0400 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0500
-            * @tc.name      : 05. stop->prepare
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0500
             * @tc.desc      : 1.create 2.prepare 3.start 4.stop 5.prepare
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2149,24 +2149,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.stop2PreparePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0600
-            * @tc.name      : 06. reset->prepare
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0600
             * @tc.desc      : 1.create 2.prepare 3.start 4.reset 5.prepare
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2196,24 +2196,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.reset2PreparePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0700
-            * @tc.name      : 07. getInputSurface->prepare
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0700
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.prepare
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2238,24 +2238,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.getInputSurface2PreparePromise(avConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0700 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0800
-            * @tc.name      : 08. prepare 3 times
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0800
             * @tc.desc      : 1.create 2.prepare 3.prepare 4.prepare
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2283,24 +2283,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.prepare3TimesPromise(avConfig, avRecorder, loopTimes, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0800 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0900
-            * @tc.name      : 09.audioBitrate -1
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0900
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0900
             * @tc.desc      : 1.create 2.prepare (audioBitrate -1)
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0900', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0900 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0900 start')
       let avNewProfile: media.AVRecorderProfile = {
         audioBitrate: -1,
         audioChannels: 2,
@@ -2340,24 +2340,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
       // mediaTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0900 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_0900 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1000
-            * @tc.name      : 10.audioSampleRate -1
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1000
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1000
             * @tc.desc      : 1.create 2.prepare (audioSampleRate -1)
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1000', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1000 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1000 start')
       let avNewProfile: media.AVRecorderProfile = {
         audioBitrate: 48000,
         audioChannels: 2,
@@ -2398,24 +2398,24 @@ export default function avVideoRecorderTestTWO() {
       avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
 
       // mediaTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1000 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1000 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1100
-            * @tc.name      : 11.videoBitrateRange -1
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1100
             * @tc.desc      : 1.create 2.prepare (videoBitrateRange -1)
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1100 start')
       let avNewProfile: media.AVRecorderProfile = {
         audioBitrate: 48000,
         audioChannels: 2,
@@ -2457,24 +2457,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1200
-            * @tc.name      : 12.videoFrameRate -1
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200
             * @tc.desc      : 1.create 2.prepare (videoFrameRate -1)
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200 start')
       let avNewProfile: media.AVRecorderProfile = {
         audioBitrate: 48000,
         audioChannels: 2,
@@ -2516,25 +2516,25 @@ export default function avVideoRecorderTestTWO() {
       avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
 
       // mediaTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PREPARE_PROMISE_1200 end')
     })
 
     // Promise getInputSurface
     /* *
-             * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0100
-             * @tc.name      : 01. create->getInputSurface
+             * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0100
+             * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0100
              * @tc.desc      : 1.create 2.getInputSurface
              * @tc.size      : MediumTest
              * @tc.type      : Function
              * @tc.level     : Level 2
          */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2553,24 +2553,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2GetInputSurfacePromise(avConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0200
-            * @tc.name      : 02. prepare->getInputSurface
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0200
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2593,24 +2593,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2GetInputSurfacePromise2(avConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0300
-            * @tc.name      : 03. start->getInputSurface
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0300
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.getInputSurface
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2637,24 +2637,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2GetInputSurfacePromise3(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0400
-            * @tc.name      : 04. pause->getInputSurface
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0400
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.pause 6.getInputSurface
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2685,24 +2685,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2GetInputSurfacePromise4(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0400 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0500
-            * @tc.name      : 05. resume->getInputSurface
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0500
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.getInputSurface
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2735,24 +2735,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2GetInputSurfacePromise5(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0600
-            * @tc.name      : 06. stop->getInputSurface
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0600
             * @tc.desc      :1.create 2.prepare 3.getInputSurface 4.start 5.stop 6.getInputSurface
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2783,24 +2783,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2GetInputSurfacePromise6(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0700
-            * @tc.name      : 07. reset->getInputSurface
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0700
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.reset 6.getInputSurface
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2831,24 +2831,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2GetInputSurfacePromise7(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0700 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0800
-            * @tc.name      : 08. getInputSurface 3 times
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0800
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.getInputSurface 5.getInputSurface
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2877,25 +2877,25 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.getInputSurface3TimesPromise(avConfig, avRecorder, loopTimes, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_GETSURFACE_PROMISE_0800 end')
     })
 
     // Promise start
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0100
-            * @tc.name      : 01. create->start
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0100
             * @tc.desc      : 1.create 2.start
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2914,24 +2914,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2StartPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0200
-            * @tc.name      : 02. prepare->start
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0200
             * @tc.desc      : 1.create 2.prepare 4.start
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -2952,24 +2952,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.prepare2StartPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0300
-            * @tc.name      : 03. pause->start
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0300
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.pause 6.start
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3000,24 +3000,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.pause2StartPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0400
-            * @tc.name      : 04. resume->start
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0400
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.start
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3050,24 +3050,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.resume2StartPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0400 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0500
-            * @tc.name      : 05. stop->start
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0500
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.stop 6.start
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3098,24 +3098,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.stop2StartPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0600
-            * @tc.name      : 06. reset->start
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0600
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.reset 6.start
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3146,24 +3146,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.reset2StartPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0700
-            * @tc.name      : 07. getInputSurface->start
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0700
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3188,24 +3188,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.getInputSurface2StartPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0700 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0800
-            * @tc.name      : 08. start 3 times
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0800
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.start 6.start
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3243,25 +3243,25 @@ export default function avVideoRecorderTestTWO() {
       )
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_START_PROMISE_0800 end')
     })
 
     // Promise pause
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0100
-            * @tc.name      : 01. create->pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0100
             * @tc.desc      : 1.create 2.pause
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3280,24 +3280,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.create2PausePromise(avConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0200
-            * @tc.name      : 02. prepare->pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0200
             * @tc.desc      : 1.create 2.prepare 3.pause
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3318,24 +3318,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.prepare2PausePromise(avConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0300
-            * @tc.name      : 03. start->pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0300
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.pause
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3362,24 +3362,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.start2PausePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0400
-            * @tc.name      : 04. resume->pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0400
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.pause
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3410,24 +3410,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.resume2PausePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0400 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0500
-            * @tc.name      : 05. stop->pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0500
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.stop 6.pause
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3458,24 +3458,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.stop2PausePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0600
-            * @tc.name      : 06. reset->pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0600
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.reset 6.pause
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3506,24 +3506,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.reset2PausePromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0700
-            * @tc.name      : 07. getInputSurface->pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0700
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.pause
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3548,24 +3548,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.getInputSurface2PausePromise(avConfig, avRecorder, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0700 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0800
-            * @tc.name      : 08. pause 3 times
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0800
             * @tc.desc      : 1.create 2.prepare 3.getInputSurface 4.start 5.pause 6.pause 7.pause
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3599,26 +3599,26 @@ export default function avVideoRecorderTestTWO() {
       )
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_PAUSE_PROMISE_0800 end')
     })
 
     // 状态切换
     // 01.promise回调方式
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0100
-            * @tc.name      : 01.AVRecorder test recording 3 seconds
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0100
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3643,24 +3643,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2ReleaseWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0200
-            * @tc.name      : 02.AVRecorder test recording 3 seconds to pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0200
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3687,24 +3687,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2PauseWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0300
-            * @tc.name      : 03.AVRecorder test recording 3 seconds to pause to resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0200
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3735,24 +3735,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2ResumeWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0400
-            * @tc.name      : 04.AVRecorder test recording 3 seconds to stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0400
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.stop 6.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3779,24 +3779,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2StopWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0400 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0500
-            * @tc.name      : 05.AVRecorder test recording 3 seconds to reset
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0500
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0500
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.reset 6.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0500 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0500 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3823,24 +3823,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2ResetWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0500 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0500 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0600
-            * @tc.name      : 06.AVRecorder test stop recording after recording 3 seconds
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0600
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0600
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.stop 7.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0600 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0600 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3869,24 +3869,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2Pause2StopWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0600 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0600 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0700
-            * @tc.name      : 07.AVRecorder test reset recording after recording 3 seconds
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0700
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0700
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.reset 7.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0700 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0700 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3915,24 +3915,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2Pause2ResetWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0700 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0700 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0800
-            * @tc.name      : 08.AVRecorder test resume recording after pause and stop recording
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0800
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0800
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.stop 8.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0800 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0800 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -3963,24 +3963,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2Resume2WithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0800 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0800 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0900
-            * @tc.name      : 09.AVRecorder test resume recording after pause and reset recording
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0900
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0900
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.reset 8.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0900', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0900 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0900 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -4011,24 +4011,24 @@ export default function avVideoRecorderTestTWO() {
         mySteps, done);
 
       // mediaTestBase.recordStart2reset2WithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0900 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_0900 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1000
-            * @tc.name      : 10.AVRecorder test recording 3 seconds (only video)
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1000
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1000
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1000', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1000 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1000 start')
       let avNewProfile: media.AVRecorderProfile = {
         fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
         videoBitrate: 280000, // 视频比特率
@@ -4070,24 +4070,24 @@ export default function avVideoRecorderTestTWO() {
         END_EVENT
       );
       avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1000 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1000 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1100
-            * @tc.name      : 11.AVRecorder test recording 3 seconds to pause (only video)
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1100
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1100 start')
       let avNewProfile: media.AVRecorderProfile = {
         fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
         videoBitrate: 280000, // 视频比特率
@@ -4131,24 +4131,24 @@ export default function avVideoRecorderTestTWO() {
       avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
 
       // mediaTestBase.recordStart2PauseWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1200
-            * @tc.name      : 12.AVRecorder test recording 3 seconds to pause to resume (only video)
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1200
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1200 start')
       let avNewProfile: media.AVRecorderProfile = {
         fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
         videoBitrate: 280000, // 视频比特率
@@ -4194,24 +4194,24 @@ export default function avVideoRecorderTestTWO() {
         END_EVENT
       );
       avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1300
-            * @tc.name      : 13.AVRecorder test recording 3 seconds to stop (only video)
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1300
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.stop 6.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1300 start')
       let avNewProfile: media.AVRecorderProfile = {
         fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
         videoBitrate: 280000, // 视频比特率
@@ -4255,24 +4255,24 @@ export default function avVideoRecorderTestTWO() {
       avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
 
       // mediaTestBase.recordStart2StopWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1400
-            * @tc.name      : 14.AVRecorder test recording 3 seconds to reset (only video)
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1400
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.reset 6.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1400 start')
       let avNewProfile: media.AVRecorderProfile = {
         fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
         videoBitrate: 280000, // 视频比特率
@@ -4316,25 +4316,25 @@ export default function avVideoRecorderTestTWO() {
       avRecorderBase.toNextStep(avNewConfig, avRecorderBase.recorderTime, mySteps, done);
 
       // mediaTestBase.recordStart2ResetWithPromise(avConfig, avRecorder, recorderTime, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_PROMISE_1400 end')
     })
 
     // 02.callback回调
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0100
-            * @tc.name      : 01.AVRecorder test recording 3 seconds
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0100
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0100
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0100 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0100 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -4355,24 +4355,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0100 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0100 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0200
-            * @tc.name      : 02.AVRecorder test recording 3 seconds to pause
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0200
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0200
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0200 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0200 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -4393,24 +4393,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0200 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0200 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0300
-            * @tc.name      : 03.AVRecorder test recording 3 seconds to pause to resume
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0300
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0300
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.pause 6.resume 7.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0300 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0300 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -4435,24 +4435,24 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0300 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0300 end')
     })
 
     /* *
-            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0400
-            * @tc.name      : 04.AVRecorder test recording 3 seconds to stop
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0400
+            * @tc.name      : SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0400
             * @tc.desc      : 1.createAVRecorder 2.prepare 3.getInputSurface 4.start 5.stop 6.release
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 2
         */
-    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0400', Level.LEVEL0, async (done: Function) => {
       if (!avRecorderBase.isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
       }
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0400 start')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0400 start')
       let fileName = mediaTestBase.resourceName()
       avRecorderBase.fdObject = await mediaTestBase.getFd(fileName);
       avRecorderBase.fdPath = "fd://" + avRecorderBase.fdObject.fdNumber;
@@ -4473,7 +4473,7 @@ export default function avVideoRecorderTestTWO() {
       );
       avRecorderBase.toNextStep(avRecorderBase.avConfig, avRecorderBase.recorderTime,
         mySteps, done);
-      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0400 end')
+      console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_TWO_FUNCTION_CALLBACK_0400 end')
     })
   })
 }
