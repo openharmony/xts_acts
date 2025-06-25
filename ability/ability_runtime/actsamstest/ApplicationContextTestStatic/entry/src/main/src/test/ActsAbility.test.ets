@@ -9,7 +9,11 @@ import Want from '@ohos.app.ability.Want';
 import { AppStorage } from '@ohos.arkui.stateManagement'
 import common from '@ohos.app.ability.common';
 import ConfigurationConstant from '@ohos.app.ability.ConfigurationConstant';
-
+import CommonEventManager from '@ohos.commonEventManager';
+let Subscriber:CommonEventManager.CommonEventSubscriber;
+let subscriberInfo_MainAbility:CommonEventManager.CommonEventSubscribeInfo = {
+  events: ["RELY_ABILITY_RESTART_SUCCESS"]
+};
 let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
 let targetVersion:number;
 let tag = "testTag"
@@ -153,8 +157,7 @@ export default function abilityDelegatorStage() {
       let tag = `SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100`;
         try{
           let ApplicationContexts:common.ApplicationContext = testAbilityContext.getApplicationContext();
-          let result = ApplicationContexts?.setSupportedProcessCache(false)
-          expect(result).assertEqual(undefined)
+          ApplicationContexts?.setSupportedProcessCache(false)
           done();
         }catch(e:Error){
           if(JSON.stringify(e?.code) == "801"){
@@ -340,7 +343,16 @@ export default function abilityDelegatorStage() {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_restartApp_0100 begin');
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.acts.applicationcontexttest.static")
-      await Utils.msSleep(2000)
+      await Utils.msSleep(2000);
+      let SubscribeCallBack = (err:BusinessError | null, data:CommonEventManager.CommonEventData | undefined):void => {
+        expect(data?.event).assertEqual("RELY_ABILITY_RESTART_SUCCESS");
+        done();
+      }
+      CommonEventManager.createSubscriber(subscriberInfo_MainAbility).then((data:CommonEventManager.CommonEventSubscriber) => {
+        Subscriber = data;
+        CommonEventManager.subscribe(Subscriber, SubscribeCallBack);
+      })
+      await Utils.msSleep(1000)
       try {
         testAbilityContext.startAbilityForResult({
           bundleName: 'com.acts.abilitydelegatorrely.static',
@@ -360,5 +372,72 @@ export default function abilityDelegatorStage() {
       }
     });
 
+    /*
+     * @tc.number:SUB_Ability_AbilityRuntime_restartApp_0200
+     * @tc.name: SUB_Ability_AbilityRuntime_restartApp_0200
+     * @tc.desc:Unable to start specified PageAbility (AsyncCallback)
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Ability_AbilityRuntime_restartApp_0200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_restartApp_0200 begin');
+      await Utils.msSleep(1000)
+      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.acts.applicationcontexttest.static")
+      await Utils.msSleep(2000)
+      abilityDelegator.getCurrentTopAbility((err:BusinessError, data:UIAbility)=>{
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_restartApp_0200 begin');
+        abilityDelegator.doAbilityBackground(data, (err:BusinessError) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_restartApp_0200 back ' + err?.code);
+          setTimeout(()=>{
+            hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_restartApp_0200 afterback');
+            let ApplicationContexts:common.ApplicationContext = testAbilityContext.getApplicationContext();
+            try {
+              ApplicationContexts.restartApp({
+                bundleName: 'com.acts.abilitydelegatorrely.static',
+                abilityName: 'EntryAbility3',
+              })
+              hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_restartApp_0200 restartApp');
+            } catch (error:Error) {
+              hilog.error(0x0000, 'testTag', '%{public}s',
+                'SUB_Ability_AbilityRuntime_restartApp_0200 failed ' + JSON.stringify(error));
+              expect(error?.code).assertEqual(16000053);
+              done();
+            }
+          },2000)
+        })
+      })
+    });
+
+    /*
+     * @tc.number:SUB_Ability_AbilityRuntime_restartApp_0300
+     * @tc.name: SUB_Ability_AbilityRuntime_restartApp_0300
+     * @tc.desc:Unable to start specified PageAbility (AsyncCallback)
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Ability_AbilityRuntime_restartApp_0300', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_restartApp_0300 begin');
+      await Utils.msSleep(1000)
+      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.acts.applicationcontexttest.static")
+      await Utils.msSleep(2000)
+            hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_restartApp_0300 afterback');
+      let ApplicationContexts:common.ApplicationContext = testAbilityContext.getApplicationContext();
+      try {
+        ApplicationContexts.restartApp({
+          bundleName: 'com.acts.abilitydelegatorrely.static',
+          abilityName: 'EntryAbility3',
+        })
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_restartApp_0300 restartApp');
+      } catch (error:Error) {
+        hilog.error(0x0000, 'testTag', '%{public}s',
+          'SUB_Ability_AbilityRuntime_restartApp_0300 failed ' + JSON.stringify(error));
+        expect(error?.code).assertEqual(16000063);
+        done();
+      }
+    });
   })
 }

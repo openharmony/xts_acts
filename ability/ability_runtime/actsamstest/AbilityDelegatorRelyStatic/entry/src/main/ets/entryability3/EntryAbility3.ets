@@ -18,10 +18,10 @@ import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog';
-
+import CommonEventManager from '@ohos.commonEventManager';
 class EntryAbility3 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag EntryAbility3', 'EntryAbility onCreate');
+    hilog.info(0x0000, 'testTag EntryAbility3', 'EntryAbility onCreate ' + want?.action);
     if(want?.action == 'killAllProcess-callback'){
       setTimeout(()=>{
         this.context.getApplicationContext().killAllProcesses((err:BusinessError | null):void=>{
@@ -71,6 +71,9 @@ class EntryAbility3 extends UIAbility {
         })
       },1000)
     }else{
+      CommonEventManager.publish("RELY_ABILITY_RESTART_SUCCESS", ()=>{
+        hilog.info(0x0000, 'testTag MainAbility3', 'EntryAbility RELY_ABILITY_RESTART_SUCCESS end ');
+      });
       setTimeout(()=>{
         this.context.terminateSelf();
       },2000)
