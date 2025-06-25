@@ -16,6 +16,11 @@ import("//test/xts/tools/build/suite.gni")
 group("actsuiabilitycontext") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "actsmoveabilitytobackgroundtest:ActsMoveAbilityToBackgroundTest" ]
+    deps = [ 
+      "actsmoveabilitytobackgroundtest:ActsMoveAbilityToBackgroundTest",
+      "actsmoveabilitytobackgroundteststatic:ActsMoveAbilityToBackgroundStaticTest",
+      "actsstartabilityforsultteststatic:ActsStartAbilityForResultStaticTest",
+      "actsstartabilityteststatic:ActsStartAbilityStaticTest",
+    ]
   }
 }
