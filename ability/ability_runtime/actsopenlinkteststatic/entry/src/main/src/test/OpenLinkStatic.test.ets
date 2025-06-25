@@ -236,10 +236,12 @@ export default function openLinkStaticTest() {
       hilog.info(domain, tag, 'AbilityRuntime_OpenLink_static_0800 begin');
       await Utils.msSleep(1000);
       try {
-        context.openLink(link, paramOptions, (err: BusinessError, result: common.AbilityResult) => {
-          hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
-          hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
-          expect(result.resultCode).assertEqual(resultCode);
+        context.openLink(link, paramOptions, (err: BusinessError<void> | null, result: common.AbilityResult | undefined) => {
+          if (result !== undefined) {
+            hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
+            hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
+            expect(result.resultCode).assertEqual(resultCode);
+          }
           done();
         }).then(() => {
           hilog.info(domain, tag, `AbilityRuntime_OpenLink_static_0800 open link successful`);
@@ -268,10 +270,12 @@ export default function openLinkStaticTest() {
       hilog.info(domain, tag, 'AbilityRuntime_OpenLink_static_0900 begin');
       await Utils.msSleep(1000);
       try {
-        context.openLink(link, trueParamOptions, (err: BusinessError, result: common.AbilityResult) => {
-          hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
-          hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
-          expect(result.resultCode).assertEqual(resultCode);
+        context.openLink(link, trueParamOptions, (err: BusinessError<void> | null, result: common.AbilityResult | undefined) => {
+          if (result !== undefined) {
+            hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
+            hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
+            expect(result.resultCode).assertEqual(resultCode);
+          }
           done();
         }).then(() => {
           hilog.info(domain, tag, `AbilityRuntime_OpenLink_static_0800 open link successful`);
@@ -301,10 +305,12 @@ export default function openLinkStaticTest() {
       hilog.info(domain, tag, 'AbilityRuntime_OpenLink_static_1000 begin');
       await Utils.msSleep(1000);
       try {
-        context.openLink(link, falseParamOptions, (err: BusinessError, result: common.AbilityResult) => {
-          hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
-          hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
-          expect(result.resultCode).assertEqual(resultCode);
+        context.openLink(link, falseParamOptions, (err: BusinessError<void> | null, result: common.AbilityResult | undefined) => {
+          if (result !== undefined) {
+            hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
+            hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
+            expect(result.resultCode).assertEqual(resultCode);
+          }
           done();
         }).then(() => {
           hilog.info(domain, tag, `AbilityRuntime_OpenLink_static_0800 open link successful`);
