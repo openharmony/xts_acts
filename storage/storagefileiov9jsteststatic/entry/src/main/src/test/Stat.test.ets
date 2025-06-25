@@ -907,18 +907,14 @@ export default function fileIOStat() {
         let fpath = await Utils.nextFileName('fileIO_stat_async_ino_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          if(statres) {
-            expect(Utils.isBigInt(statres.ino)).assertTrue();
-          }
+          expect(typeof statres?.ino == 'bigint').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          if(stat2) {
-            expect(Utils.isBigInt(stat2.ino)).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.ino == 'bigint').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_ino_static_001 has failed for' + JSON.stringify(e));
@@ -972,18 +968,14 @@ export default function fileIOStat() {
         let fpath = await Utils.nextFileName('fileIO_stat_async_mode_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          if(statres){
-            expect(Utils.isIntNum(statres.mode)).assertTrue();
-          }
+          expect(typeof statres?.mode == 'number').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          if(stat2) {
-            expect(Utils.isIntNum(stat2.mode)).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.mode == 'number').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_mode_static_001 has failed for' + JSON.stringify(e));
@@ -1037,18 +1029,14 @@ export default function fileIOStat() {
         let fpath = await Utils.nextFileName('fileIO_stat_async_uid_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          if(statres) {
-            expect(Utils.isIntNum(statres.uid)).assertTrue();
-          }
+          expect(typeof statres?.uid == 'number').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          if(stat2) {
-            expect(Utils.isIntNum(stat2.uid)).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.uid == 'number').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_uid_static_001 has failed for' + JSON.stringify(e));
@@ -1102,18 +1090,14 @@ export default function fileIOStat() {
         let fpath = await Utils.nextFileName('fileIO_stat_async_gid_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          if(statres) {
-            expect(Utils.isIntNum(statres.gid)).assertTrue();
-          }
+          expect(typeof statres?.gid == 'number').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          if(stat2) {
-            expect(Utils.isIntNum(stat2.gid)).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.gid == 'number').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_gid_static_001 has failed for' + JSON.stringify(e));
@@ -1167,18 +1151,14 @@ export default function fileIOStat() {
         let fpath = await Utils.nextFileName('fileIO_stat_async_size_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          if(statres) {
-            expect(Utils.isIntNum(statres.size)).assertTrue();
-          }
+          expect(typeof statres?.size == 'number').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          if(stat2) {
-            expect(Utils.isIntNum(stat2.size)).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.size == 'number').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_size_static_001 has failed for' + JSON.stringify(e));
@@ -1232,18 +1212,14 @@ export default function fileIOStat() {
         let fpath = await Utils.nextFileName('fileIO_stat_async_atime_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          if(statres) {
-            expect(Utils.isIntNum(statres.atime)).assertTrue();
-          }
+          expect(typeof statres?.atime == 'number').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          if(stat2) {
-            expect(Utils.isIntNum(stat2.atime)).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.atime == 'number').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_atime_static_001 has failed for' + JSON.stringify(e));
@@ -1297,18 +1273,14 @@ export default function fileIOStat() {
         let fpath = await Utils.nextFileName('fileIO_stat_async_mtime_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          if(statres) {
-            expect(Utils.isIntNum(statres.mtime)).assertTrue();
-          }
+          expect(typeof statres?.mtime == 'number').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          if(stat2) {
-            expect(Utils.isIntNum(stat2.mtime)).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.mtime == 'number').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_mtime_static_001 has failed for' + JSON.stringify(e));
@@ -1362,18 +1334,14 @@ export default function fileIOStat() {
         let fpath = await Utils.nextFileName('fileIO_stat_async_ctime_static_001');
         expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
         fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          if(statres) {
-            expect(Utils.isIntNum(statres.ctime)).assertTrue();
-          }
+          expect(typeof statres?.ctime == 'number').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          if(stat2) {
-            expect(Utils.isIntNum(stat2.ctime)).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.ctime == 'number').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_ctime_static_001 has failed for' + JSON.stringify(e));
@@ -1431,9 +1399,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_block_device_static_001 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(statres.isBlockDevice() === false).assertTrue();
-          }
+          expect(statres?.isBlockDevice() === false).assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -1441,12 +1407,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_block_device_static_001 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(stat2.isBlockDevice() === false).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat2?.isBlockDevice() === false).assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_block_device_static_001 has failed for' + JSON.stringify(e));
@@ -1504,9 +1468,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_character_device_static_001 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(statres.isCharacterDevice() === false).assertTrue();
-          }
+          expect(statres?.isCharacterDevice() === false).assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -1514,12 +1476,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_character_device_static_001 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(stat2.isCharacterDevice() === false).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat2?.isCharacterDevice() === false).assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_character_device_static_001 has failed for' + JSON.stringify(e));
@@ -1607,9 +1567,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_directory_static_002 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(statres.isDirectory() === true).assertTrue();
-          }
+          expect(statres?.isDirectory() === true).assertTrue();
         })
         let file = fs.openSync(dpath, fs.OpenMode.DIR);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -1617,12 +1575,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_directory_static_002 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(stat2.isDirectory() === true).assertTrue();
-            fs.closeSync(file);
-            fs.rmdirSync(dpath);
-            done();
-          }
+          expect(stat2?.isDirectory() === true).assertTrue();
+          fs.closeSync(file);
+          fs.rmdirSync(dpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_character_device_static_001 has failed for' + JSON.stringify(e));
@@ -1680,9 +1636,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_fifo_static_001 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(statres.isFIFO() === false).assertTrue();
-          }
+          expect(statres?.isFIFO() === false).assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -1690,12 +1644,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_fifo_static_001 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(stat2.isFIFO() === false).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat2?.isFIFO() === false).assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_fifo_static_001 has failed for' + JSON.stringify(e));
@@ -1753,9 +1705,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_file_static_001 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(statres.isFile() === true).assertTrue();
-          }
+          expect(statres?.isFile() === true).assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -1763,12 +1713,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_file_static_001 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(stat2.isFile() === true).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat2?.isFile() === true).assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_file_static_001 has failed for' + JSON.stringify(e));
@@ -1856,9 +1804,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_socket_static_001 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(statres.isSocket() === false).assertTrue();
-          }
+          expect(statres?.isSocket() === false).assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -1866,12 +1812,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_socket_static_001 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(stat2.isSocket() === false).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat2?.isSocket() === false).assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_socket_static_001 has failed for' + JSON.stringify(e));
@@ -1929,9 +1873,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_symbolic_link_static_001 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(statres.isSymbolicLink() === false).assertTrue();
-          }
+          expect(statres?.isSymbolicLink() === false).assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -1939,12 +1881,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_symbolic_link_static_001 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(stat2.isSymbolicLink() === false).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat2?.isSymbolicLink() === false).assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_symbolic_link_static_001 has failed for' + JSON.stringify(e));
@@ -2015,48 +1955,6 @@ export default function fileIOStat() {
         done();
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_append_file_sync_static_001 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number SUB_DF_fileIO_stat_async_location_static_0100
-     * @tc.name fileIO_stat_async_location_static_001
-     * @tc.desc Test the location member of class Stat. Callback.
-     * Enter the path or fd parameter to get stat.location is LOCAl.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_stat_async_location_static_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_001 start');
-      try {
-        let fpath = await Utils.nextFileName('fileIO_stat_async_location_static_001');
-        expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-        fs.stat(fpath, (err: BusinessError | null, statres: fs.Stat | undefined) => {
-          hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_001 statres.location: ' + JSON.stringify(statres));
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_001 error1: ' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          // expect(statres?.location == 1).assertTrue();
-        })
-        let file = fs.openSync(fpath);
-        fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
-          hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_001 stat2.location: ' + stat2?.location);
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_location_static_001 error2: ' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          // expect(stat2?.location == 1).assertTrue();
-          fs.closeSync(file);
-          fs.unlinkSync(fpath);
-          done();
-        })
-        done();
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_symbolic_link_static_001 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
     });
@@ -2140,9 +2038,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_atimeNs_static_002 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(typeof statres.atimeNs == 'bigint').assertTrue();
-          }
+          expect(typeof statres?.atimeNs == 'bigint').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -2150,12 +2046,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_atimeNs_static_002 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(typeof stat2.atimeNs == 'bigint').assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.atimeNs == 'bigint').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_atimeNs_static_002 has failed for' + JSON.stringify(e));
@@ -2242,9 +2136,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_mtimeNs_static_002 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(typeof statres.mtimeNs == 'bigint').assertTrue();
-          }
+          expect(typeof statres?.mtimeNs == 'bigint').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -2252,12 +2144,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_mtimeNs_static_002 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(typeof stat2.mtimeNs == 'bigint').assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.mtimeNs == 'bigint').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_mtimeNs_static_002 has failed for' + JSON.stringify(e));
@@ -2344,9 +2234,7 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_ctimeNs_static_002 error1: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(statres) {
-            expect(typeof statres.ctimeNs == 'bigint').assertTrue();
-          }
+          expect(typeof statres?.ctimeNs == 'bigint').assertTrue();
         })
         let file = fs.openSync(fpath);
         fs.stat(file.fd, (err: BusinessError | null, stat2: fs.Stat | undefined) => {
@@ -2354,12 +2242,10 @@ export default function fileIOStat() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_ctimeNs_static_002 error2: ' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          if(stat2) {
-            expect(typeof stat2.ctimeNs == 'bigint').assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat2?.ctimeNs == 'bigint').assertTrue();
+          fs.closeSync(file);
+          fs.unlinkSync(fpath);
+          done();
         })
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_ctimeNs_static_002 has failed for' + JSON.stringify(e));

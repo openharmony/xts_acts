@@ -637,11 +637,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat){
-            expect(Utils.isBigInt(stat.ino)).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat?.ino == 'bigint').assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_ino_static_001 end error' + JSON.stringify(e));
@@ -690,11 +688,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(Utils.isIntNum(stat.mode)).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat?.mode == 'number').assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_mode_static_001 end error' + JSON.stringify(e));
@@ -743,11 +739,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(Utils.isIntNum(stat.uid)).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat?.uid == 'number').assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_uid_static_001 end error' + JSON.stringify(e));
@@ -796,11 +790,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(Utils.isIntNum(stat.gid)).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat?.gid == 'number').assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_gid_static_001 end error' + JSON.stringify(e));
@@ -849,11 +841,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(Utils.isIntNum(stat.size)).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat?.size == 'number').assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_size_static_001 end error' + JSON.stringify(e));
@@ -902,11 +892,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(Utils.isIntNum(stat.atime)).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat?.atime == 'number').assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_atime_static_001 end error' + JSON.stringify(e));
@@ -955,11 +943,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(Utils.isIntNum(stat.mtime)).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat?.mtime == 'number').assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_mtime_static_001 end error' + JSON.stringify(e));
@@ -1008,11 +994,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(Utils.isIntNum(stat.ctime)).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(typeof stat?.ctime == 'number').assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_ctime_static_001 end error' + JSON.stringify(e));
@@ -1061,11 +1045,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(stat.isBlockDevice() === false).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat?.isBlockDevice() === false).assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_is_block_device_static_001 end error' + JSON.stringify(e));
@@ -1114,11 +1096,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(stat.isCharacterDevice() === false).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat?.isCharacterDevice() === false).assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_is_character_device_static_001 end error' + JSON.stringify(e));
@@ -1193,11 +1173,9 @@ export default function fileIOLstat() {
       try {
         fs.mkdirSync(dpath);
         fs.lstat(dpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(stat.isDirectory() === true).assertTrue();
-            fs.rmdirSync(dpath);
-            done();
-          }
+          expect(stat?.isDirectory() === true).assertTrue();
+          fs.rmdirSync(dpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_is_directory_static_002 end error' + JSON.stringify(e));
@@ -1246,11 +1224,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(stat.isFIFO() === false).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat?.isFIFO() === false).assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_is_fifo_static_001 end error' + JSON.stringify(e));
@@ -1299,11 +1275,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(stat.isFile() === true).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat?.isFile() === true).assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_is_file_static_001 end error' + JSON.stringify(e));
@@ -1377,11 +1351,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(stat.isSocket() === false).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat?.isSocket() === false).assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_is_socket_static_001 end error' + JSON.stringify(e));
@@ -1430,11 +1402,9 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          if(stat) {
-            expect(stat.isSymbolicLink() === false).assertTrue();
-            fs.unlinkSync(fpath);
-            done();
-          }
+          expect(stat?.isSymbolicLink() === false).assertTrue();
+          fs.unlinkSync(fpath);
+          done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_lstat_async_is_symbolic_link_static_001 end error' + JSON.stringify(e));
