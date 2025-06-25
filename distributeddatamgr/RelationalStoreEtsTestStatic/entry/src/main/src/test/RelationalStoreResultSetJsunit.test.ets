@@ -98,8 +98,8 @@ export default function rdbResultSetTest() {
       rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
       rdbStore1 = await data_relationalStore.getRdbStore(context, STORE_CONFIG1);
       rdbStore2 = await data_relationalStore.getRdbStore(context, STORE_CONFIG2);
-      await rdbStore.executeSql(DROP_TABLE_TEST);
-      await rdbStore.executeSql(CREATE_TABLE_TEST);
+      await rdbStore.execute(DROP_TABLE_TEST);
+      await rdbStore.execute(CREATE_TABLE_TEST);
       let num = await rdbStore.batchInsert("test", vbs);
       hilog.info(domain, tag, 'batchInsert %{public}d rows.', num)
     })
@@ -267,7 +267,7 @@ export default function rdbResultSetTest() {
         vbs[0] = valueBucket
         let num = await transaction.batchInsert(TABLE_NAME, vbs);
         hilog.info(domain, tag, 'Insert %{public}d rows.'+num)
-        transaction.commit()
+        await transaction.commit()
         hilog.info(domain, tag, '%{public}s', "11111 failed");
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
         hilog.info(domain, tag, '%{public}s', "2222 failed");
@@ -326,7 +326,7 @@ export default function rdbResultSetTest() {
         let num = await transaction.batchInsert(TABLE_NAME, vbs);
         hilog.info(domain, tag, 'Insert %{public}d rows.', num)
 
-        transaction.commit()
+        await transaction.commit()
 
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
         num = await rdbStore1.delete(predicates)
@@ -363,8 +363,8 @@ export default function rdbResultSetTest() {
         bind_args[2] = 100.5
         bind_args[3] = u8
         await transaction.execute(insertSqlArgs, bind_args)
-        transaction.rollback()
-        transaction.commit()
+        await transaction.rollback()
+        await transaction.commit()
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
         let num = await rdbStore1.delete(predicates)
         expect(true).assertEqual(num==0)
@@ -404,9 +404,9 @@ export default function rdbResultSetTest() {
       hilog.info(domain, tag, '%{public}s', '************* testdeleteSync0001 end *************');
     })
     /**
-     * @tc.name       : testdeleteSync0001
+     * @tc.name       : testclose0001
      * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_1100
-     * @tc.desc       : deleteSync success test
+     * @tc.desc       : close success test
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
