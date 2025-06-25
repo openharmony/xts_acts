@@ -46,14 +46,14 @@ export default function userauthTest_API9() {
           testAbilityContext = abilitys.context
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
         },
-      }, (err : BusinessError) : void => {
+      }, (err: BusinessError<void> | null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }
         hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
       });
       await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.helloworld")
+      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.myapplication102.static");
       await Utils.msSleep(2000)
       hilog.info(domain, tag, '%{public}s', 'beforeAll end');
     })

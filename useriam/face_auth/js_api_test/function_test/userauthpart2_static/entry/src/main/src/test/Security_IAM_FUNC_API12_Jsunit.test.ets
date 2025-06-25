@@ -76,14 +76,14 @@ export default function userauthTest_API12() {
           testAbilityContext = abilitys.context
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
         },
-      }, (err : BusinessError) : void => {
+      }, (err: BusinessError<void> | null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }
         hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
       });
       await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.helloworld")
+      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.myapplication102.static");
       await Utils.msSleep(2000)
       hilog.info(domain, tag, '%{public}s', 'beforeAll end');
     })
@@ -117,7 +117,7 @@ export default function userauthTest_API12() {
     })
     /*
     * @tc.number    : SUB_Security_IAM_authWidget_API_Static_0120
-    * @tc.name      : SUB_Security_IAM_authWidget_API_Static_0130
+    * @tc.name      : SUB_Security_IAM_authWidget_API_Static_0120
     * @tc.desc      : ReuseUnlockResultDuration: 120000. ReuseUnlockResultMode: 2.
     * @tc.size      : MediumTest
     * @tc.type      : Function
