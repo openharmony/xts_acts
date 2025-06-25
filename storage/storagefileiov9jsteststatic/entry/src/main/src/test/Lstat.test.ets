@@ -637,7 +637,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(await Utils.isBigInt(stat.ino)).assertTrue();
+          expect(await Utils.isBigInt(stat?.ino)).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -688,7 +688,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(await Utils.isIntNum(stat.mode)).assertTrue();
+          expect(await Utils.isIntNum(stat?.mode)).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -739,7 +739,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(await Utils.isIntNum(stat.uid)).assertTrue();
+          expect(await Utils.isIntNum(stat?.uid)).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -790,7 +790,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(await Utils.isIntNum(stat.gid)).assertTrue();
+          expect(await Utils.isIntNum(stat?.gid)).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -841,7 +841,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(await Utils.isIntNum(stat.size)).assertTrue();
+          expect(await Utils.isIntNum(stat?.size)).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -892,7 +892,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(await Utils.isIntNum(stat.atime)).assertTrue();
+          expect(await Utils.isIntNum(stat?.atime)).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -943,7 +943,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(await Utils.isIntNum(stat.mtime)).assertTrue();
+          expect(await Utils.isIntNum(stat?.mtime)).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -994,7 +994,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(await Utils.isIntNum(stat.ctime)).assertTrue();
+          expect(await Utils.isIntNum(stat?.ctime)).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -1045,7 +1045,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(stat.isBlockDevice() === false).assertTrue();
+          expect(stat?.isBlockDevice() === false).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -1096,7 +1096,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(stat.isCharacterDevice() === false).assertTrue();
+          expect(stat?.isCharacterDevice() === false).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -1173,7 +1173,7 @@ export default function fileIOLstat() {
       try {
         fs.mkdirSync(dpath);
         fs.lstat(dpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(stat.isDirectory() === true).assertTrue();
+          expect(stat?.isDirectory() === true).assertTrue();
           fs.rmdirSync(dpath);
           done();
         });
@@ -1224,7 +1224,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(stat.isFIFO() === false).assertTrue();
+          expect(stat?.isFIFO() === false).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -1275,7 +1275,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(stat.isFile() === true).assertTrue();
+          expect(stat?.isFile() === true).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -1351,7 +1351,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(stat.isSocket() === false).assertTrue();
+          expect(stat?.isSocket() === false).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });
@@ -1402,7 +1402,7 @@ export default function fileIOLstat() {
 
       try {
         fs.lstat(fpath, (err: BusinessError | null, stat: fs.Stat | undefined) => {
-          expect(stat.isSymbolicLink() === false).assertTrue();
+          expect(stat?.isSymbolicLink() === false).assertTrue();
           fs.unlinkSync(fpath);
           done();
         });

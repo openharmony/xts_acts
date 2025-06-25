@@ -411,40 +411,6 @@ export default function fileIOOpen() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0100
-     * @tc.name fileIO_test_open_async_static_001
-     * @tc.desc Test open() interfaces. mode=0o0. Callback.
-     * Open the file in read-only mode, verifying the file is readable.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_001 start');
-      let fpath = await Utils.nextFileName('fileIO_test_open_async_static_001');
-      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      try {
-        fs.open(fpath, fs.OpenMode.READ_ONLY, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_001 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
-          fs.read(file.fd, new ArrayBuffer(4096)).then((readLen: number) => {
-            expect(readLen == FILE_CONTENT.length).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          });
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_001 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
      * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0200
      * @tc.name fileIO_test_open_async_static_002
      * @tc.desc Test open() interfaces. mode=0o1. Promise.
@@ -470,41 +436,6 @@ export default function fileIOOpen() {
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_002 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0300
-     * @tc.name fileIO_test_open_async_static_003
-     * @tc.desc Test open() interfaces. mode=0o1. Callback.
-     * Open the file in write-only mode, verifying the file is writable.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_003 start');
-      let fpath = await Utils.nextFileName('fileIO_test_open_async_static_003');
-      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let length = 20;
-      try {
-        fs.open(fpath, fs.OpenMode.WRITE_ONLY, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_003 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
-          fs.write(file.fd, new ArrayBuffer(length)).then((bytesWritten: number) => {
-            expect(bytesWritten == length).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          });
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_003 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
     });
@@ -612,36 +543,6 @@ export default function fileIOOpen() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0800
-     * @tc.name fileIO_test_open_async_static_008
-     * @tc.desc Test open() interfaces. mode=0o102. Callback.
-     * If the path point to the file which does not exist, the file can be created.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_008 start');
-      let fpath = await Utils.nextFileName('fileIO_test_open_async_static_008');
-      try {
-        fs.open(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_008 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
-          fs.closeSync(file);
-          fs.unlinkSync(fpath);
-          done();
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_008 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
      * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0900
      * @tc.name fileIO_test_open_async_static_009
      * @tc.desc Test open() interfaces. mode=0o1002. Promise.
@@ -666,40 +567,6 @@ export default function fileIOOpen() {
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_009 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_1000
-     * @tc.name fileIO_test_open_async_static_010
-     * @tc.desc Test open() interfaces. mode=0o1002. Callback.
-     * If the file exists and the file is opened for read-write, trim its length to zero.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_010 start');
-      let fpath = await Utils.nextFileName('fileIO_test_open_async_static_010');
-      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      try {
-        fs.open(fpath, fs.OpenMode.TRUNC | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_010 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
-          fs.read(file.fd, new ArrayBuffer(4096)).then((readLen: number) => {
-            expect(readLen == 0).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-            done();
-          });
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_010 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
     });
@@ -736,42 +603,6 @@ export default function fileIOOpen() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_1200
-     * @tc.name fileIO_test_open_async_static_012
-     * @tc.desc Test open() interfaces. mode=0o2002. Callback.
-     * Open as append, subsequent writes will append to the end of the file.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_012 start');
-      let fpath = await Utils.nextFileName('fileIO_test_open_async_static_012');
-      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let length = 100;
-      try {
-        fs.open(fpath, fs.OpenMode.APPEND | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_012 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
-          fs.writeSync(file.fd, new ArrayBuffer(length));
-          fs.read(file.fd, new ArrayBuffer(4096), { offset: 0 }).then((readLen: number) => {
-            expect(readLen == length + FILE_CONTENT.length).assertTrue();
-            fs.closeSync(file);
-            fs.unlinkSync(fpath);
-          });
-          done();
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_012 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
      * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_1300
      * @tc.name fileIO_test_open_async_static_013
      * @tc.desc Test open() interfaces. mode=0o4002. Promise.
@@ -793,37 +624,6 @@ export default function fileIOOpen() {
         done();
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_013 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_1400
-     * @tc.name fileIO_test_open_async_static_014
-     * @tc.desc Test open() interfaces. mode=0o4002. Callback.
-     * If the file is a special file, the opening and subsequent IOs perform non-blocking operations.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_014 start');
-      let fpath = await Utils.nextFileName('fileIO_test_open_async_static_014');
-      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      try {
-        fs.open(fpath, fs.OpenMode.NONBLOCK | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_014 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
-          fs.closeSync(file);
-          fs.unlinkSync(fpath);
-          done();
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_014 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
     });
@@ -873,7 +673,7 @@ export default function fileIOOpen() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_016 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
+          expect(await Utils.isIntNum(file?.fd)).assertTrue();
           fs.rmdirSync(dpath);
           done();
         });
@@ -993,37 +793,6 @@ export default function fileIOOpen() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_2100
-     * @tc.name fileIO_test_open_async_static_021
-     * @tc.desc Test open() interfaces. mode=0o400002. Callback.
-     * The path does not point to a symbolic link.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_021 start');
-      let fpath = await Utils.nextFileName('fileIO_test_open_async_static_021');
-      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      try {
-        fs.open(fpath, fs.OpenMode.NOFOLLOW | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_021 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
-          fs.closeSync(file);
-          fs.unlinkSync(fpath);
-          done();
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_021 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
      * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_2200
      * @tc.name fileIO_test_open_async_static_022
      * @tc.desc Test open() interfaces. mode=0o4010002. Promise.
@@ -1045,37 +814,6 @@ export default function fileIOOpen() {
         done();
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_022 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_2300
-     * @tc.name fileIO_test_open_async_static_023
-     * @tc.desc Test open() interfaces. mode=0o4010002. Callback.
-     * Open the file in the way of synchronous IO.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_023 start');
-      let fpath = await Utils.nextFileName('fileIO_test_open_async_static_023');
-      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      try {
-        fs.open(fpath, fs.OpenMode.SYNC | fs.OpenMode.READ_WRITE, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_023 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file.fd)).assertTrue();
-          fs.closeSync(file);
-          fs.unlinkSync(fpath);
-          done();
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_023 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
     });

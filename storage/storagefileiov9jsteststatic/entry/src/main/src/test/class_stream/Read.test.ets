@@ -267,7 +267,7 @@ export default function fileIOStreamRead() {
       try {
         let sr = fs.createStreamSync(fpath, 'r+');
         expect(sr !== null).assertTrue();
-        sr.read(new ArrayBuffer(16), (err: BusinessError | null, readLen1: number | null) => {
+        sr.read(new ArrayBuffer(16), (err: BusinessError | null, readLen1: number | undefined) => {
           expect(readLen1 == FILE_CONTENT.length).assertTrue();
           sr.read(new ArrayBuffer(8), (err, readLen2) => {
             expect(readLen2 == 0).assertTrue();
@@ -331,7 +331,7 @@ export default function fileIOStreamRead() {
         expect(sr !== null).assertTrue();
         sr.read(new ArrayBuffer(4096), {
           length: 5
-        }, (err: BusinessError | null, readLen: number | null) => {
+        }, (err: BusinessError | null, readLen: number | undefined) => {
           expect(readLen == 5).assertTrue();
           sr.closeSync();
           fs.unlinkSync(fpath);
@@ -392,7 +392,7 @@ export default function fileIOStreamRead() {
         expect(sr !== null).assertTrue();
         sr.read(new ArrayBuffer(4096), {
           offset: 5
-        }, (err: BusinessError | null, readLen: number | null) => {
+        }, (err: BusinessError | null, readLen: number | undefined) => {
           expect(readLen == FILE_CONTENT.length - 5).assertTrue();
           sr.closeSync();
           fs.unlinkSync(fpath);
@@ -518,7 +518,7 @@ export default function fileIOStreamRead() {
         sr.read(new ArrayBuffer(4096), {
           offset: 1,
           length: FILE_CONTENT.length
-        }, (err: BusinessError | null, readLen: number | null) => {
+        }, (err: BusinessError | null, readLen: number | undefined) => {
           expect(readLen == FILE_CONTENT.length - 1).assertTrue();
           sr.closeSync();
           fs.unlinkSync(fpath);
@@ -576,7 +576,7 @@ export default function fileIOStreamRead() {
         let sr = fs.createStreamSync(fpath, 'r+');
         expect(sr !== null).assertTrue();
         sr.read(new ArrayBuffer(4096), {
-        }, (err: BusinessError | null, readLen: number | null) => {
+        }, (err: BusinessError | null, readLen: number | undefined) => {
           expect(readLen == FILE_CONTENT.length).assertTrue();
           sr.closeSync();
           fs.unlinkSync(fpath);
@@ -679,7 +679,7 @@ export default function fileIOStreamRead() {
           sr.read(new ArrayBuffer(8), {
             offset: undefined,
             length: undefined
-          }, (err: BusinessError | null, readLen2: number | null) => {
+          }, (err: BusinessError | null, readLen2: number | undefined) => {
             expect(readLen2 == 0).assertTrue();
             sr.closeSync();
             fs.unlinkSync(fpath);

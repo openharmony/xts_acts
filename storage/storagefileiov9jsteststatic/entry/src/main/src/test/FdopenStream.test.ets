@@ -428,8 +428,8 @@ export default function fileIOFdopenStream() {
             expect(false).assertTrue();
           }
           expect(fpr !== null).assertTrue();
-          expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-          fpr.write(FILE_CONTENT, (e: BusinessError | null, writeLen: number | undefined) => {
+          expect(fpr?.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+          fpr?.write(FILE_CONTENT, (e: BusinessError | null, writeLen: number | undefined) => {
             if (e?.code !== 0) {
               fpr.closeSync();
               fs.unlinkSync(fpath);
@@ -552,9 +552,9 @@ export default function fileIOFdopenStream() {
             expect(false).assertTrue();
           }
           expect(fpr !== null).assertTrue();
-          expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          expect(fpr.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
-          fpr.closeSync();
+          expect(fpr?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          expect(fpr?.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
+          fpr?.closeSync();
           fs.unlinkSync(fpath);
           done();
         });
@@ -651,8 +651,8 @@ export default function fileIOFdopenStream() {
             expect(false).assertTrue();
           }
           expect(fpw !== null).assertTrue();
-          expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          fpw.read(new ArrayBuffer(4096), (e: BusinessError | null, readLen: number | undefined) => {
+          expect(fpw?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          fpw?.read(new ArrayBuffer(4096), (e: BusinessError | null, readLen: number | undefined) => {
             if (e?.code !== 0) {
               fpw.closeSync();
               fs.unlinkSync(fpath);
@@ -763,9 +763,9 @@ export default function fileIOFdopenStream() {
             expect(false).assertTrue();
           }
           expect(fpw !== null).assertTrue();
-          expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          expect(fpw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
-          fpw.closeSync();
+          expect(fpw?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          expect(fpw?.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
+          fpw?.closeSync();
           fs.unlinkSync(fpath);
           done();
         });
@@ -867,8 +867,8 @@ export default function fileIOFdopenStream() {
             expect(false).assertTrue();
           }
           expect(fpa !== null).assertTrue();
-          expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          fpa.read(new ArrayBuffer(4096), (e: BusinessError | null, readLen: number | undefined) => {
+          expect(fpa?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          fpa?.read(new ArrayBuffer(4096), (e: BusinessError | null, readLen: number | undefined) => {
             if (e?.code != 0) {
               fpa.closeSync();
               fs.unlinkSync(fpath);
@@ -945,9 +945,9 @@ export default function fileIOFdopenStream() {
             expect(false).assertTrue();
           }
           expect(fpa !== null).assertTrue();
-          expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          expect(fpa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
-          fpa.closeSync();
+          expect(fpa?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+          expect(fpa?.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
+          fpa?.closeSync();
           fs.unlinkSync(fpath);
           done();
         });
