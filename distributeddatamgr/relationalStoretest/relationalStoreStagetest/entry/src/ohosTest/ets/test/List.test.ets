@@ -21,6 +21,7 @@ import relationalStoreDifferenceCustomDirMultipleTest from './relationalStoreDif
 import relationalStoreAsyncDownloadAssetTest from './relationalStoreAsyncDownloadAssetEts.test'
 import relationalStoreSetDistributedTablesTest from './relationalStoreSetDistributedTables.test'
 import cloudDataSetStrategyEtsTest from './CloudDataSetStrategyEts.test'
+import relationalStoreRagStatusTest from './RelationalStoreRagStatus.test'
 export default function testsuite() {
   relationalStoreCloudSyncEtsTest()
   relationalStoreDistributedTest()
@@ -31,4 +32,5 @@ export default function testsuite() {
   relationalStoreAsyncDownloadAssetTest()
   relationalStoreSetDistributedTablesTest()
   cloudDataSetStrategyEtsTest()
+  relationalStoreRagStatusTest()
 }
