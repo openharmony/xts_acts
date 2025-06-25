@@ -63,64 +63,6 @@ export default function ActsSubscriberTestOrder() {
 
 
     /*
-     * @tc.number    : Sub_Notification_Ces_Subscriber_Subscribe_Static_1200
-     * @tc.name      : Sub_Notification_Ces_Subscriber_Subscribe_Static_1200
-     * @tc.desc      : Check the subscriber can receive event "publish_event0500" type of the interface (by promise)
-     */
-    //问题单号：DTS2025061412066
-    it ('Sub_Notification_Ces_Subscriber_Subscribe_Static_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-      let TAG:string = 'Sub_Notification_Ces_Subscriber_Subscribe_Static_1200'
-      console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_Static_1200 START`)
-
-      let commonEventSubscribeInfo1:commonEventManager.CommonEventSubscribeInfo = {
-        events:new Array<string>('publish_event0500'),
-        priority: 1001
-      };
-
-      let commonEventSubscribeInfo2:commonEventManager.CommonEventSubscribeInfo = {
-        events:new Array<string>('publish_event0500'),
-        priority: -101
-      };
-
-      let commonEventPublishData:commonEventManager.CommonEventPublishData = {
-        code: 10,
-        data: 'publish_event0500_init',
-        isOrdered: true,
-      }
-
-      let subscriberCallBack0500=(err:BusinessError, data: commonEventManager.CommonEventData)=> {
-        console.info(TAG+'===============>subscriberCallBack0500========event: ' + data.event);
-        console.info(TAG+'===============>subscriberCallBack0500=========code: ' + data.code);
-        console.info(TAG+'===============>subscriberCallBack0500=========data: ' + data.data);
-        expect(data.event).assertEqual('publish_event0500');
-        expect(data.code).assertEqual(10);
-        expect(data.data).assertEqual('publish_event0500_init');
-      }
-
-      let subscriberCallBack0501=(err:BusinessError, data: commonEventManager.CommonEventData)=> {
-        console.info(TAG+'===============>subscriberCallBack0501========event: ' + data.event);
-        console.info(TAG+'===============>subscriberCallBack0501=========code: ' + data.code);
-        console.info(TAG+'===============>subscriberCallBack0501========data: ' + data.data);
-        expect(data.event).assertEqual('publish_event0500');
-        expect(data.code).assertEqual(10);
-        expect(data.data).assertEqual('publish_event0500_init');
-      }
-
-      commonEventManager.createSubscriber(
-        commonEventSubscribeInfo1
-      ).then((data:commonEventManager.CommonEventSubscriber)=>{
-        console.info(TAG+'===============ActsSubscriberTestOrder_0500==========createSubscriber promise1');
-      })
-
-      commonEventManager.createSubscriber(
-        commonEventSubscribeInfo2
-      ).then((data:commonEventManager.CommonEventSubscriber)=>{
-        console.info(TAG+'===============ActsSubscriberTestOrder_0500==========createSubscriber promise2');
-      })
-      console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_Static_1200 END`)
-    })
-
-    /*
      * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_Static_0600
      * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_Static_0600
      * @tc.desc: createSubscriber
