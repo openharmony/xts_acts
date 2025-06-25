@@ -71,9 +71,9 @@ export default function writeTest() {
           "key_array_str": ["a", "b", "c"], "key_array_bool": [true, false],"key_array_int2": [1, 2, 3],
           "key_arr_float2": [1.1, 2.2, 3.3], "key_arr_str2": ["a", "b", "c"], "key_array_bool2": [true, false]
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (error: BusinessError) => {
-        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error.code);
-        expect(0).assertEqual(error.code);
+      }, (error: BusinessError<void> | null) => {
+        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error?.code);
+        expect(0).assertEqual(error?.code);
         done();
       });
       hilog.info(domain, tag, 'testHiAppEvent002 end');
@@ -93,9 +93,9 @@ export default function writeTest() {
         params: {
           "key_max": Number.MAX_VALUE, "key_min": Number.MIN_VALUE, "key_chinese": "中文"
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (error: BusinessError) => {
-        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error.code);
-        expect(0).assertEqual(error.code);
+      }, (error: BusinessError<void> | null) => {
+        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error?.code);
+        expect(0).assertEqual(error?.code);
         done();
       });
       hilog.info(domain, tag, 'testHiAppEvent003 end');
@@ -115,9 +115,9 @@ export default function writeTest() {
         params: {
           "kEy9_int": 100, "KEy99_strinG_KEY": "demo", "$kEy9_bool9":true
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (error: BusinessError) => {
-        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error.code);
-        expect(0).assertEqual(error.code);
+      }, (error: BusinessError<void> | null) => {
+        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error?.code);
+        expect(0).assertEqual(error?.code);
         done();
       });
       hilog.info(domain, tag, 'testHiAppEvent004 end');
@@ -137,9 +137,9 @@ export default function writeTest() {
         params: {
           "key_int": 100, "key_string": "demo"
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (error: BusinessError) => {
-        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error.code);
-        expect(0).assertEqual(error.code);
+      }, (error: BusinessError<void> | null) => {
+        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error?.code);
+        expect(0).assertEqual(error?.code);
         done();
       });
       hilog.info(domain, tag, 'testHiAppEvent005 end');
@@ -159,9 +159,9 @@ export default function writeTest() {
         params: {
           "key_int": 100, "key_string": "demo"
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (error: BusinessError) => {
-        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error.code);
-        expect(0).assertEqual(error.code);
+      }, (error: BusinessError<void> | null) => {
+        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error?.code);
+        expect(0).assertEqual(error?.code);
         done();
       });
       hilog.info(domain, tag, 'testHiAppEvent006 end');
@@ -181,9 +181,9 @@ export default function writeTest() {
         params: {
           "key_int": 100, "key_string": "demo"
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (error: BusinessError) => {
-        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error.code);
-        expect(0).assertEqual(error.code);
+      }, (error: BusinessError<void> | null) => {
+        hilog.info(domain, tag, 'HiAppEvent json-callback code=' + error?.code);
+        expect(0).assertEqual(error?.code);
         done();
       });
       hilog.info(domain, tag, 'testHiAppEvent007 end');
@@ -208,10 +208,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub33 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101001).assertTrue()
+            expect(err?.code == 11101001).assertTrue()
             done()
             return;
           }
@@ -244,10 +244,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub34 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101001).assertTrue()
+            expect(err?.code == 11101001).assertTrue()
             done()
             return;
           }
@@ -280,10 +280,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub35 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101001).assertTrue()
+            expect(err?.code == 11101001).assertTrue()
             done()
             return;
           }
@@ -313,10 +313,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub36 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101001).assertTrue()
+            expect(err?.code == 11101001).assertTrue()
             done()
             return;
           }
@@ -348,7 +348,7 @@ export default function writeTest() {
           params: {
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub37 > code: ${err.code}, message: ${err.message}`);
             expect(true).assertTrue()
@@ -387,10 +387,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub38 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101002).assertTrue()
+            expect(err?.code == 11101002).assertTrue()
             done()
             return;
           }
@@ -423,10 +423,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub39 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101002).assertTrue()
+            expect(err?.code == 11101002).assertTrue()
             done()
             return;
           }
@@ -459,10 +459,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub40 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101002).assertTrue()
+            expect(err?.code == 11101002).assertTrue()
             done()
             return;
           }
@@ -495,10 +495,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub41 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101002).assertTrue()
+            expect(err?.code == 11101002).assertTrue()
             done()
             return;
           }
@@ -531,10 +531,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub42 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101002).assertTrue()
+            expect(err?.code == 11101002).assertTrue()
             done()
             return;
           }
@@ -568,10 +568,10 @@ export default function writeTest() {
           name: "test_event",
           eventType: hiAppEvent.EventType.FAULT,
           params: largeParams
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub43 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101003).assertTrue()
+            expect(err?.code == 11101003).assertTrue()
             done()
             return;
           }
@@ -605,10 +605,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data":longStr
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub44 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101004).assertTrue()
+            expect(err?.code == 11101004).assertTrue()
             done()
             return;
           }
@@ -641,10 +641,10 @@ export default function writeTest() {
             "int_?data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub45 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101005).assertTrue()
+            expect(err?.code == 11101005).assertTrue()
             done()
             return;
           }
@@ -677,10 +677,10 @@ export default function writeTest() {
             "int_data_": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub46 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101005).assertTrue()
+            expect(err?.code == 11101005).assertTrue()
             done()
             return;
           }
@@ -713,10 +713,10 @@ export default function writeTest() {
             "": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub47 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101005).assertTrue()
+            expect(err?.code == 11101005).assertTrue()
             done()
             return;
           }
@@ -749,10 +749,10 @@ export default function writeTest() {
             "int_data_int_data_int_data_int_da": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub48 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101005).assertTrue()
+            expect(err?.code == 11101005).assertTrue()
             done()
             return;
           }
@@ -785,10 +785,10 @@ export default function writeTest() {
             "9Int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub49 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101005).assertTrue()
+            expect(err?.code == 11101005).assertTrue()
             done()
             return;
           }
@@ -827,10 +827,10 @@ export default function writeTest() {
           name: "test_event",
           eventType: hiAppEvent.EventType.FAULT,
           params
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub50 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11101006).assertTrue()
+            expect(err?.code == 11101006).assertTrue()
             done()
             return;
           }
@@ -1377,10 +1377,10 @@ export default function writeTest() {
             "int_data": 100,
             "str_data": "strValue"
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           if (err) {
             hilog.error(domain, tag, `HiAppEventSub32 > code: ${err.code}, message: ${err.message}`);
-            expect(err.code == 11100001).assertTrue()
+            expect(err?.code == 11100001).assertTrue()
             return;
           }
           hilog.info(domain, tag, `success to write event`);

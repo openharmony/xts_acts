@@ -50,10 +50,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 70
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (err: BusinessError) => {
-            hilog.info(logDomain, tag, `testHiAppEventSub70 write event: ${err.code}`);
-            hilog.info(logDomain, tag, `testHiAppEventSub70 write event: ${err.message}`);
-            expect(0).assertEqual(err.code);
+          }, (err: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `testHiAppEventSub70 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `testHiAppEventSub70 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
         }
         setTimeout(() => {
@@ -115,10 +115,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 71
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (err: BusinessError) => {
-            hilog.info(logDomain, tag, `testHiAppEventSub71 write event: ${err.code}`);
-            hilog.info(logDomain, tag, `testHiAppEventSub71 write event: ${err.message}`);
-            expect(0).assertEqual(err.code);
+          }, (err: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `testHiAppEventSub71 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `testHiAppEventSub71 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
         }
         setTimeout(() => {
@@ -211,10 +211,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 73
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (err: BusinessError) => {
-            hilog.info(logDomain, tag, `testHiAppEventSub73 write event: ${err.code}`);
-            hilog.info(logDomain, tag, `testHiAppEventSub73 write event: ${err.message}`);
-            expect(0).assertEqual(err.code);
+          }, (err: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `testHiAppEventSub73 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `testHiAppEventSub73 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
         }
         setTimeout(() => {
@@ -285,10 +285,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 100, "key_string": "appcrash",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-              hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${error.code}`);
-              hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${error.message}`);
-              expect(0).assertEqual(error.code);
+          }, (err: BusinessError<void> | null) => {
+              hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${err?.code}`);
+              hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${err?.message}`);
+              expect(0).assertEqual(err?.code);
           });
         }, 500)
         setTimeout(() => {
@@ -299,10 +299,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 100, "key_string": "appfreeze",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-              hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${error.code}`);
-              hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${error.message}`);
-              expect(0).assertEqual(error.code);
+          }, (err: BusinessError<void> | null) => {
+              hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${err?.code}`);
+              hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${err?.message}`);
+              expect(0).assertEqual(err?.code);
           });
         }, 800)
         setTimeout(() => {
@@ -313,10 +313,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 100, "key_string": "userlogin",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${error.message}`);
-            expect(0).assertEqual(error.code);
+          }, (err: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
         }, 1000)
         setTimeout(() => {
@@ -327,10 +327,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 100, "key_string": "userlogout",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${error.message}`);
-            expect(0).assertEqual(error.code);
+          }, (err: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub67 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
         }, 1200)
 
@@ -397,10 +397,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 100, "key_string": "distributed_service_start",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `HiAppEventSub68 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub68 write event: ${error.message}`);
-            expect(0).assertEqual(error.code);
+          }, (err: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `HiAppEventSub68 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub68 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
         }, 500)
 
@@ -454,10 +454,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 100, "key_string": "appcrash",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `HiAppEventSub69 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub69 write event: ${error.message}`);
-            expect(0).assertEqual(error.code);
+          }, (err: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `HiAppEventSub69 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub69 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
         }, 500)
         setTimeout(() => {
@@ -468,10 +468,10 @@ export default function addWatcherTest() {
             params: {
               "key_int": 100, "key_string": "appfreeze",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `HiAppEventSub69 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub69 write event: ${error.message}`);
-            expect(0).assertEqual(error.code);
+          }, (err: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `HiAppEventSub69 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub69 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
         }, 800)
 
@@ -528,11 +528,11 @@ export default function addWatcherTest() {
           params: {
             "key_int": 100
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
             hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err.message}`);
-            expect(0).assertEqual(err.code);
+            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
       }, 500)
 
@@ -544,11 +544,11 @@ export default function addWatcherTest() {
           params: {
             "key_int": 100
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
             hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err.message}`);
-            expect(0).assertEqual(err.code);
+            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
       }, 1000)
 
@@ -560,11 +560,11 @@ export default function addWatcherTest() {
           params: {
             "key_int": 100
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
             hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err.message}`);
-            expect(0).assertEqual(err.code);
+            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
       }, 1500)
       setTimeout(() => {
@@ -575,11 +575,11 @@ export default function addWatcherTest() {
           params: {
             "key_int": 100
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
             hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err.code}`);
-            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err.message}`);
-            expect(0).assertEqual(err.code);
+            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err?.code}`);
+            hilog.info(logDomain, tag, `HiAppEventSub01 write event: ${err?.message}`);
+            expect(0).assertEqual(err?.code);
           });
       }, 2000)
 
@@ -611,11 +611,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -624,11 +624,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -637,11 +637,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -650,11 +650,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub02 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       Utils.msSleep(3000);
       if (holder != null) {
@@ -720,11 +720,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -733,11 +733,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -746,11 +746,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -759,11 +759,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub06 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
 
       setTimeout(() => {
@@ -825,11 +825,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub07 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub07 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub07 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub07 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
 
       setTimeout(() => {
@@ -886,11 +886,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub08 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub08 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub08 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub08 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
 
       setTimeout(() => {
@@ -945,11 +945,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -958,11 +958,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -971,11 +971,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -984,11 +984,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub09 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
 
       setTimeout(() => {
@@ -1043,11 +1043,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1056,11 +1056,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1069,11 +1069,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1082,11 +1082,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub10 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -1141,11 +1141,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1154,11 +1154,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1167,11 +1167,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1180,11 +1180,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub11 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -1239,11 +1239,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1252,11 +1252,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1265,11 +1265,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1278,11 +1278,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub12 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -1337,11 +1337,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1350,11 +1350,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1363,11 +1363,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1376,11 +1376,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub13 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -1431,11 +1431,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1444,11 +1444,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1457,11 +1457,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub16 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       Utils.msSleep(3000)
 
@@ -1513,11 +1513,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1526,11 +1526,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       hiAppEvent.write({
         domain: hiAppEvent.domain.OS,
@@ -1539,11 +1539,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub17 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       Utils.msSleep(3000)
 
@@ -1601,11 +1601,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub18 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub18 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub18 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub18 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -1659,11 +1659,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub19 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub19 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub19 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub19 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -1717,11 +1717,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub20 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub20 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub20 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub20 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -1778,11 +1778,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub21 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub21 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub21 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub21 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -1837,11 +1837,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub22 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub22 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub22 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub22 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       Utils.msSleep(30000)
       setTimeout(() => {
@@ -1896,11 +1896,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub23 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub23 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub23 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub23 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       Utils.msSleep(1000)
       setTimeout(() => {
@@ -1951,11 +1951,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub24 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub24 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub24 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub24 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       Utils.msSleep(1000)
       setTimeout(() => {
@@ -2012,11 +2012,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub28 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub28 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub28 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub28 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
       Utils.msSleep(30000)
       setTimeout(() => {
@@ -2070,11 +2070,11 @@ export default function addWatcherTest() {
         params: {
           "key_int": 100
         } as Record<string, number|string|boolean|(number|string|boolean)[]>
-      }, (err: BusinessError) => {
+      }, (err: BusinessError<void> | null) => {
         hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-        hilog.info(logDomain, tag, `HiAppEventSub29 write event: ${err.code}`);
-        hilog.info(logDomain, tag, `HiAppEventSub29 write event: ${err.message}`);
-        expect(0).assertEqual(err.code);
+        hilog.info(logDomain, tag, `HiAppEventSub29 write event: ${err?.code}`);
+        hilog.info(logDomain, tag, `HiAppEventSub29 write event: ${err?.message}`);
+        expect(0).assertEqual(err?.code);
       });
 
       setTimeout(() => {
@@ -2106,11 +2106,11 @@ export default function addWatcherTest() {
           params: {
             "key_int": 100
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub25 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub25 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub25 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub25 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
         done()
       }, 500)
@@ -2149,11 +2149,11 @@ export default function addWatcherTest() {
           params: {
             "key_int": 100
           } as Record<string, number|string|boolean|(number|string|boolean)[]>
-        }, (err: BusinessError) => {
+        }, (err: BusinessError<void> | null) => {
           hilog.info(logDomain, tag, 'HiAppEvent into json-callback');
-          hilog.info(logDomain, tag, `HiAppEventSub26 write event: ${err.code}`);
-          hilog.info(logDomain, tag, `HiAppEventSub26 write event: ${err.message}`);
-          expect(0).assertEqual(err.code);
+          hilog.info(logDomain, tag, `HiAppEventSub26 write event: ${err?.code}`);
+          hilog.info(logDomain, tag, `HiAppEventSub26 write event: ${err?.message}`);
+          expect(0).assertEqual(err?.code);
         });
         done()
       }, 500)

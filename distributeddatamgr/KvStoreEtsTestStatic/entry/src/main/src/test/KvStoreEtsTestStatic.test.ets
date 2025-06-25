@@ -340,12 +340,14 @@ export default function KvStoreEtsTestStatic() {
     it('KvStoreTest009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void) => {
       hilog.info(domain, tag, '%{public}s', "============KvStoreTest009 start ");
       try {
-        kvManager.getKVStore(TEST_SINGLE_STORE_ID, singleOptions, (err: BusinessError, store: distributedKVStore.SingleKVStore) => {
-          let fileName : string = "test";
-          store.backup(fileName, (err: BusinessError) => {
-            hilog.info(domain, tag, '%{public}s', "============KvStoreTest009 done ");
-            done();
-          });
+        kvManager.getKVStore(TEST_SINGLE_STORE_ID, singleOptions, (err: BusinessError<void> | null, store: distributedKVStore.SingleKVStore | undefined) => {
+          if (store !== undefined) {
+            let fileName : string = "test";
+            store.backup(fileName, (err: BusinessError<void> | null) => {
+              hilog.info(domain, tag, '%{public}s', "============KvStoreTest009 done ");
+              done();
+            });
+          }
         });
       }catch (e) {
         hilog.info(domain, tag, '%{public}s', "============KvStoreTest009 fail on exception: " + e);
@@ -477,16 +479,18 @@ export default function KvStoreEtsTestStatic() {
       const VALUE_TEST_BOOL_ELEMENT : Boolean = false;
 
       try {
-        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError, store: distributedKVStore.DeviceKVStore) => {
-          store.put(KEY_TEST_BOOL_ELEMENT, VALUE_TEST_BOOL_ELEMENT, (err: BusinessError) => {
-            hilog.info(domain, tag, '%{public}s', "============KvStoreTest014 put ");
-            store.get(KEY_TEST_BOOL_ELEMENT, (err: BusinessError, value) => {
-              hilog.info(domain, tag, '%{public}s', "============KvStoreTest014 get ");
-              expect(VALUE_TEST_BOOL_ELEMENT == (value as boolean)).assertTrue();
-              done();
-              hilog.info(domain, tag, '%{public}s', "============done ");
+        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError<void> | null, store: distributedKVStore.DeviceKVStore | undefined) => {
+          if (store !== undefined) {
+            store.put(KEY_TEST_BOOL_ELEMENT, VALUE_TEST_BOOL_ELEMENT, (err: BusinessError<void> | null) => {
+              hilog.info(domain, tag, '%{public}s', "============KvStoreTest014 put ");
+              store.get(KEY_TEST_BOOL_ELEMENT, (err: BusinessError<void> | null, value) => {
+                hilog.info(domain, tag, '%{public}s', "============KvStoreTest014 get ");
+                expect(VALUE_TEST_BOOL_ELEMENT == (value as boolean)).assertTrue();
+                done();
+                hilog.info(domain, tag, '%{public}s', "============done ");
+              });
             });
-          });
+          }
         });
       } catch (e) {
         hilog.info(domain, tag, '%{public}s', "============fail on exception: " + e);
@@ -509,17 +513,18 @@ export default function KvStoreEtsTestStatic() {
       let VALUE_TEST_DOUBLE_ELEMENT : double = 11;
 
       try {
-        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError, store: distributedKVStore.DeviceKVStore) => {
-          store.put(KEY_TEST_DOUBLE_ELEMENT, VALUE_TEST_DOUBLE_ELEMENT, (err: BusinessError) => {
-            hilog.info(domain, tag, '%{public}s', "============KvStoreTest015 put ");
-            store.get(KEY_TEST_DOUBLE_ELEMENT, (err: BusinessError, value) => {
-              hilog.info(domain, tag, '%{public}s', "============KvStoreTest015 get ");
-              expect(VALUE_TEST_DOUBLE_ELEMENT == (value as double)).assertTrue();
-              done();
-              hilog.info(domain, tag, '%{public}s', "============done ");
+        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError<void> | null, store: distributedKVStore.DeviceKVStore | undefined) => {
+          if (store !== undefined) {
+            store.put(KEY_TEST_DOUBLE_ELEMENT, VALUE_TEST_DOUBLE_ELEMENT, (err: BusinessError<void> | null) => {
+              hilog.info(domain, tag, '%{public}s', "============KvStoreTest015 put ");
+              store.get(KEY_TEST_DOUBLE_ELEMENT, (err: BusinessError<void> | null, value) => {
+                hilog.info(domain, tag, '%{public}s', "============KvStoreTest015 get ");
+                expect(VALUE_TEST_DOUBLE_ELEMENT == (value as double)).assertTrue();
+                done();
+                hilog.info(domain, tag, '%{public}s', "============done ");
+              });
             });
-
-          });
+          }
         });
       } catch (e) {
         hilog.info(domain, tag, '%{public}s', "============fail on exception: " + e);
@@ -542,15 +547,17 @@ export default function KvStoreEtsTestStatic() {
       const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
 
       try {
-        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError, store: distributedKVStore.DeviceKVStore) => {
-          store.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError) => {
-            store.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError, value) => {
-              hilog.info(domain, tag, '%{public}s', "============KvStoreTest016 put ");
-              expect(VALUE_TEST_STRING_ELEMENT == (value as string)).assertTrue();
-              hilog.info(domain, tag, '%{public}s', "============done ");
-              done();
+        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError<void> | null, store: distributedKVStore.DeviceKVStore | undefined) => {
+          if (store !== undefined) {
+            store.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError<void> | null) => {
+              store.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError<void> | null, value) => {
+                hilog.info(domain, tag, '%{public}s', "============KvStoreTest016 put ");
+                expect(VALUE_TEST_STRING_ELEMENT == (value as string)).assertTrue();
+                hilog.info(domain, tag, '%{public}s', "============done ");
+                done();
+              });
             });
-          });
+          }
         });
       } catch (e) {
         hilog.info(domain, tag, '%{public}s', "============fail on exception: " + e);
@@ -573,14 +580,16 @@ export default function KvStoreEtsTestStatic() {
       const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
 
       try {
-        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError, store: distributedKVStore.DeviceKVStore) => {
-          store.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError) => {
-            store.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError, value) => {
-              expect(VALUE_TEST_STRING_ELEMENT == (value as string)).assertTrue();
-              hilog.info(domain, tag, '%{public}s', "============done ");
-              done();
+        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError<void> | null, store: distributedKVStore.DeviceKVStore | undefined) => {
+          if (store !== undefined) {
+            store.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError<void> | null) => {
+              store.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError<void> | null) => {
+                expect(VALUE_TEST_STRING_ELEMENT == (value as string)).assertTrue();
+                hilog.info(domain, tag, '%{public}s', "============done ");
+                done();
+              });
             });
-          });
+          }
         });
       } catch (e) {
         hilog.info(domain, tag, '%{public}s', "fail on exception: " + e);
@@ -604,14 +613,16 @@ export default function KvStoreEtsTestStatic() {
       const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
 
       try {
-        kvManager.getKVStore(TEST_SINGLE_STORE_ID, singleOptions, (err: BusinessError, store: distributedKVStore.SingleKVStore) => {
-          store.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError) => {
-            store.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError, value) => {
-              expect(VALUE_TEST_STRING_ELEMENT == (value as string)).assertTrue();
-              hilog.info(domain, tag, '%{public}s', "============done ");
-              done();
+        kvManager.getKVStore(TEST_SINGLE_STORE_ID, singleOptions, (err: BusinessError<void> | null, store: distributedKVStore.SingleKVStore | undefined) => {
+          if (store !== undefined) {
+            store.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError<void> | null) => {
+              store.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError<void> | null, value) => {
+                expect(VALUE_TEST_STRING_ELEMENT == (value as string)).assertTrue();
+                hilog.info(domain, tag, '%{public}s', "============done ");
+                done();
+              });
             });
-          });
+          }
         });
       } catch (e) {
         hilog.info(domain, tag, '%{public}s', "fail on exception: " + e);
@@ -659,11 +670,13 @@ export default function KvStoreEtsTestStatic() {
       let deviceId : string = "000000000000000000";
       const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
       try {
-        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError, store: distributedKVStore.DeviceKVStore) => {
-          store.get(deviceId, VALUE_TEST_STRING_ELEMENT, (err: BusinessError, value) => {
-            hilog.info(domain, tag, '%{public}s', "============done ");
-            done();
-          });
+        kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError<void> | null, store: distributedKVStore.DeviceKVStore | undefined) => {
+          if (store !== undefined) {
+            store.get(deviceId, VALUE_TEST_STRING_ELEMENT, (err: BusinessError<void> | null) => {
+              hilog.info(domain, tag, '%{public}s', "============done ");
+              done();
+            });
+          }
         });
       } catch (e) {
         hilog.info(domain, tag, '%{public}s', "fail on exception: " + e);

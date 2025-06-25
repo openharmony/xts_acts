@@ -111,10 +111,10 @@ export default function setEventParamTest() {
             params: {
               "key_int": 100, "key_string": "string1",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-              hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error.code}`);
-              hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error.message}`)
-              expect(0).assertEqual(error.code);
+          }, (error: BusinessError<void> | null) => {
+              hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error?.code}`);
+              hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error?.message}`)
+              expect(0).assertEqual(error?.code);
           });
         }, 500)
         setTimeout(() => {
@@ -125,10 +125,10 @@ export default function setEventParamTest() {
             params: {
               "key_int": 100, "key_string": "string2",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error.message}`)
-            expect(0).assertEqual(error.code);
+          }, (error: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error?.code}`);
+            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error?.message}`)
+            expect(0).assertEqual(error?.code);
           });
         }, 800)
 
@@ -140,10 +140,10 @@ export default function setEventParamTest() {
             params: {
               "key_int": 100, "key_string": "string2",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error.message}`)
-            expect(0).assertEqual(error.code);
+          }, (error: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error?.code}`);
+            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error?.message}`)
+            expect(0).assertEqual(error?.code);
           });
         }, 1000)
 
@@ -155,10 +155,10 @@ export default function setEventParamTest() {
             params: {
               "key_int": 100, "key_string": "string2",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error.message}`)
-            expect(0).assertEqual(error.code);
+          }, (error: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error?.code}`);
+            hilog.info(logDomain, tag, `testHiAppEventSetPam01 write event: ${error?.message}`)
+            expect(0).assertEqual(error?.code);
           });
         }, 1200)
 
@@ -233,10 +233,10 @@ export default function setEventParamTest() {
             params: {
               "key_int": 100, "key_string": "string1",
             } as Record<string, number|string|boolean|(number|string|boolean)[]>
-          }, (error: BusinessError) => {
-            hilog.info(logDomain, tag, `testHiAppEventSetPam02 write event: ${error.code}`);
-            hilog.info(logDomain, tag, `testHiAppEventSetPam02 write event: ${error.message}`)
-            expect(0).assertEqual(error.code);
+          }, (error: BusinessError<void> | null) => {
+            hilog.info(logDomain, tag, `testHiAppEventSetPam02 write event: ${error?.code}`);
+            hilog.info(logDomain, tag, `testHiAppEventSetPam02 write event: ${error?.message}`)
+            expect(0).assertEqual(error?.code);
           });
         }, 500)
 

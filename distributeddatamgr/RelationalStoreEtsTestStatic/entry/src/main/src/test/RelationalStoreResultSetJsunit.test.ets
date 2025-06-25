@@ -602,7 +602,7 @@ export default function rdbResultSetTest() {
       let predicates = new data_relationalStore.RdbPredicates('testerrcode4444');
       predicates.equalTo("data1", "xiiiiiiiiii");
       try {
-        rdbStore2.delete(predicates,(err:BusinessError, rows)=> {
+        rdbStore2.delete(predicates,(err:BusinessError<void> | null, rows)=> {
           if (err == null) {
             hilog.info(domain, tag, '%{public}s', 'delete successfully');
             expect().assertFail();
@@ -631,7 +631,7 @@ export default function rdbResultSetTest() {
     it('errcode020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode020 start *************');
       try {
-          rdbStore2.executeSql("select * FROM employee", (err:BusinessError) => {
+          rdbStore2.executeSql("select * FROM employee", (err:BusinessError<void> | null) => {
             if (err == null) {
               hilog.info(domain, tag, '%{public}s', 'executeSql successfully');
               expect().assertFail();

@@ -37,11 +37,11 @@ export default function ActsDANoPermissionTestStatic() {
         hilog.info(domain, tag, "====>SUB_Account_DistributedAccount_NoPermission_0100 start====");
         let accountAbility: account.DistributedAccountAbility = account.getDistributedAccountAbility();
         try {
-          accountAbility.getOsAccountDistributedInfo((err: BusinessError, data: account.DistributedInfo) => {
+          accountAbility.getOsAccountDistributedInfo((err: BusinessError<void> | null, data: account.DistributedInfo | undefined) => {
             hilog.info(domain, tag, "====>getOsAccountDistributedInfo err: " + JSON.stringify(err));
             hilog.info(domain, tag, "====>getOsAccountDistributedInfo data: " + JSON.stringify(data));
             try {
-              expect(err.code + '' == '201').assertTrue();
+              expect(err?.code + '' == '201').assertTrue();
             } catch (err) {
               hilog.info(domain, tag, "====>Assert err: " + JSON.stringify(err));
             }
