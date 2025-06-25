@@ -68,7 +68,7 @@ export default class EntryAbility extends UIAbility {
       this.context.setAbilityInstanceInfo('111111', pixelMap).then(() => {
         commonEventManager.publish('setAbilityInstanceInfo_success', () => {});
       }).catch((err: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', "setAbilityInstanceInfo failed: " + JSON.stringify(err))
+        hilog.info(DOMAIN, 'testTag', 'setAbilityInstanceInfo failed: '+ JSON.stringify(err))
         commonEventManager.publish('setAbilityInstanceInfo_fail', {code: err?.code}, () => {});
       });
       this.context.terminateSelf();
@@ -80,9 +80,9 @@ export default class EntryAbility extends UIAbility {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
   }
 
-  onWindowStageWillDestroy(){
-    num+=1;
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageWillDestroy')
+  onWindowStageWillDestroy(): void {
+    num += 1;
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageWillDestroy');
     let options: commonEventManager.CommonEventPublishData = {
       code: 1,
       parameters: {
@@ -91,9 +91,9 @@ export default class EntryAbility extends UIAbility {
   };
   commonEventManager.publish('OnWindowStageWillDestory0500', options, (err: BusinessError) => {
       if (err) {
-          hilog.info(0x0000, TAG, "[%{public}s] PublishCallBack err: %{public}s", TAG, JSON.stringify(err));
+          hilog.info(0x0000, TAG, '[%{public}s] PublishCallBack err: %{public}s', TAG, JSON.stringify(err));
       } else {
-          hilog.info(0x0000, TAG, "[%{public}s] Publish success", TAG);
+          hilog.info(0x0000, TAG, '[%{public}s] Publish success', TAG);
       }
   });
 }

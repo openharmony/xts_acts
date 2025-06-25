@@ -50,8 +50,7 @@ export default class MainAbility1 extends UIAbility {
 
     onForeground(): void {
         console.log('[Demo] MainAbility1 onForeground');
-        setTimeout(()=>{
-            try {
+            setTimeout(() => {
                 this.context.terminateSelf((err: BusinessError) => {
                     if (err.code) {
                         // 处理业务逻辑错误
@@ -61,13 +60,7 @@ export default class MainAbility1 extends UIAbility {
                     // 执行正常业务
                     console.info('terminateSelf succeed');
                 });
-            } catch (err) {
-                // 捕获同步的参数错误
-                let code = (err as BusinessError).code;
-                let message = (err as BusinessError).message;
-                console.error(`terminateSelf failed, code is ${code}, message is ${message}`);
-            }
-        },1000);
+            }, 1000);
     }
 
     onBackground(): void {
