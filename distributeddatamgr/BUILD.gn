@@ -39,6 +39,7 @@ group("distributeddatamgr") {
       "preferencesSendabletest:preferencesSendable_ets_test",
       "preferencesdatagroupidtest:ActsPreferencesDataGroupIdTest",
       "preferencesjstest/hap:preferences_js_test",
+	    "preferenceEts_static:ActsPreferenceStaticTest",
       "relationalStoretest:relationalStoretest",
       "relationalstoredatagroupidtest:ActsRelationalstoreDataGroupIdTest",
       "RelationalStoreEtsTestStatic:ActsRelationalStoreEtsStaticTest",
