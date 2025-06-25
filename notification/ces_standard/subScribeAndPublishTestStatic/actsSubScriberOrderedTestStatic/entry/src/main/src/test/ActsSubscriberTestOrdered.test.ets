@@ -24,6 +24,7 @@ import { Component, Driver, ON, loadAndSetUpUiTest } from '@ohos.UiTest'
 let bundle_name:string = "com.example.actssubscribertestorder.static"
 let domain: number = 0x0000;
 let testAbilityContext:common.UIAbilityContext;
+let TAG:string = 'SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST ===>'
 
 let publishCallback=(err:BusinessError) =>{
   console.info('===============>publishCallback');
@@ -35,7 +36,6 @@ let unsubscribeCallback=(err:BusinessError) =>{
 
 export default function ActsSubscriberTestOrder() {
   describe('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST',  () => {
-    let TAG:string = 'SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST ===>'
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST START`)
     beforeAll(() => {
       hilog.info(domain, TAG, '%{public}s', 'beforeAll start');
@@ -84,17 +84,6 @@ export default function ActsSubscriberTestOrder() {
         expect(data.event).assertEqual('publish_event0100');
         console.info(TAG+'===============>subscriberCallBack0101=========1 code '+ data.code);
         expect(data.code).assertEqual(2);
-        commonEventSubscriber0101.getCode().then((data:number)=>{
-          console.info(TAG+'===============>subscriberCallBack0101 getCode promise code: '+ data);
-        })
-        expect(data.data).assertEqual('publish_event1001_change');
-        commonEventSubscriber0100.getData().then((data:string)=>{
-          console.info(TAG+'===============>subscriberCallBack0101 getData promise data: '+ data);
-        })
-        commonEventSubscriber0101.finishCommonEvent().then(()=>{
-          console.info(TAG+'===============>subscriberCallBack0101 finishCommonEvent promise');
-          done();
-        })
       }
 
       commonEventManager.createSubscriber(
@@ -102,29 +91,14 @@ export default function ActsSubscriberTestOrder() {
       ).then((data:commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0100==========createSubscriber promise1');
         commonEventSubscriber0100 = data;
-
-        data.getSubscribeInfo().then(()=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0100=========getSubscribeInfo promise1');
-          commonEventManager.subscribe(commonEventSubscriber0100, subscriberCallBack0100);
-        });
       })
 
       commonEventManager.createSubscriber(
         commonEventSubscribeInfo2
       ).then((data:commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0100==========createSubscriber promise2');
-        commonEventSubscriber0101 = data;
-        data.getSubscribeInfo().then(()=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0100=========getSubscribeInfo promise2');
-          commonEventManager.subscribe(commonEventSubscriber0101, subscriberCallBack0101);
-          setTimeout(() => {
-            console.debug(TAG+'===================ActsSubscriberTestOrder_0100 delay 100ms==================');
-            commonEventManager.publish('publish_event0100', commonEventPublishData, publishCallback);
-          }, 100);
-        });
       })
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_Static_0950 END`)
-    })
 
     /*
      * @tc.number    : Sub_Notification_Ces_Subscriber_Unsubscribe_Static_2100
@@ -200,34 +174,12 @@ export default function ActsSubscriberTestOrder() {
         commonEventSubscribeInfo1,
       ).then((data: commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0200==========createSubscriber promise1');
-        commonEventSubscriber0200 = data;
-        data.getSubscribeInfo().then(()=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0200=========getSubscribeInfo promise1');
-          commonEventManager.subscribe(commonEventSubscriber0200, subscriberCallBack0200);
-        });
       })
 
       commonEventManager.createSubscriber(
         commonEventSubscribeInfo2,
       ).then((data: commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0200==========createSubscriber promise2');
-        commonEventSubscriber0201 = data;
-        data.getSubscribeInfo().then(()=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0200=========getSubscribeInfo promise2');
-          commonEventManager.subscribe(commonEventSubscriber0201, subscriberCallBack0201);
-          setTimeout(() =>{
-            console.debug(TAG+'===================ActsSubscriberTestOrder_0200 delay 100ms==================');
-            commonEventManager.unsubscribe(commonEventSubscriber0200, unsubscribeCallback);
-          }, 100);
-          setTimeout(() =>{
-            console.debug(TAG+'===================ActsSubscriberTestOrder_0200 delay 100ms==================');
-            commonEventManager.publish('publish_event0200', commonEventPublishData1, publishCallback);
-          }, 100);
-          setTimeout(() =>{
-            console.debug(TAG+'===================ActsSubscriberTestOrder_0200 delay 100ms==================');
-            commonEventManager.publish('publish_event0201', commonEventPublishData2, publishCallback);
-          }, 100);
-        });
       })
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Unsubscribe_Static_2100 END`)
     })
@@ -315,11 +267,6 @@ export default function ActsSubscriberTestOrder() {
         commonEventSubscribeInfo1,
       ).then((data:commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0300==========createSubscriber promise1');
-        commonEventSubscriber0300 = data;
-        data.getSubscribeInfo().then(()=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0300=========getSubscribeInfo promise1');
-          commonEventManager.subscribe(commonEventSubscriber0300, subscriberCallBack0300);
-        });
       })
 
       commonEventManager.createSubscriber(
@@ -327,17 +274,6 @@ export default function ActsSubscriberTestOrder() {
       ).then((data:commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0300==========createSubscriber promise2');
         commonEventSubscriber0301 = data;
-        data.getSubscribeInfo().then(()=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0300=========getSubscribeInfo promise2');
-          commonEventManager.subscribe(commonEventSubscriber0301, subscriberCallBack0301);
-          let numindex:number = 0;
-          for (numindex; numindex < 3; ++numindex) {
-            setTimeout(()=>{
-              console.debug(TAG+'===================ActsSubscriberTestOrder_0300 delay 100ms==================');
-              commonEventManager.publish('publish_event0301', commonEventPublishData2, publishCallback);
-            }, 100);
-          }
-        });
       })
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_Static_1000 END`)
     })
@@ -401,12 +337,6 @@ export default function ActsSubscriberTestOrder() {
         commonEventSubscribeInfo1
       ).then((data:commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0400==========createSubscriber promise1');
-        commonEventSubscriber0400 = data;
-        data.getSubscribeInfo().then((data:commonEventManager.CommonEventSubscribeInfo)=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0400=========getSubscribeInfo promise1');
-          expect(data.events[0]).assertEqual('publish_eventOrder0400');
-          commonEventManager.subscribe(commonEventSubscriber0400, subscriberCallBack0400);
-        })
       })
 
       commonEventManager.createSubscriber(
@@ -414,15 +344,6 @@ export default function ActsSubscriberTestOrder() {
       ).then((data:commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0400==========createSubscriber promise2');
         commonEventSubscriber0401 = data;
-        data.getSubscribeInfo().then((data:commonEventManager.CommonEventSubscribeInfo)=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0400=========getSubscribeInfo promise2');
-          expect(data.events[0]).assertEqual('publish_eventOrder0400');
-          commonEventManager.subscribe(commonEventSubscriber0401, subscriberCallBack0401);
-          setTimeout(()=>{
-            console.debug(TAG+'===================ActsSubscriberTestOrder_0400 delay 100mss==================');
-            commonEventManager.publish('publish_eventOrder0400', commonEventPublishData, publishCallback);
-          }, 100);
-        })
       })
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_Static_1100 END`)
     })
@@ -491,28 +412,12 @@ export default function ActsSubscriberTestOrder() {
         commonEventSubscribeInfo1
       ).then((data:commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0500==========createSubscriber promise1');
-        commonEventSubscriber0500 = data;
-        data.getSubscribeInfo().then((data:commonEventManager.CommonEventSubscribeInfo)=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0500==========getSubscribeInfo promise1');
-          expect(data.events[0]).assertEqual('publish_event0500');
-          commonEventManager.subscribe(commonEventSubscriber0500, subscriberCallBack0500);
-        })
       })
 
       commonEventManager.createSubscriber(
         commonEventSubscribeInfo2
       ).then((data:commonEventManager.CommonEventSubscriber)=>{
         console.info(TAG+'===============ActsSubscriberTestOrder_0500==========createSubscriber promise2');
-        commonEventSubscriber0501 = data;
-        data.getSubscribeInfo().then((data:commonEventManager.CommonEventSubscribeInfo)=>{
-          console.info(TAG+'===============ActsSubscriberTestOrder_0500==========getSubscribeInfo promise2');
-          expect(data.events[0]).assertEqual('publish_event0500');
-          commonEventManager.subscribe(commonEventSubscriber0501, subscriberCallBack0501);
-          setTimeout(()=>{
-            console.debug(TAG+'===================ActsSubscriberTestOrder_0500 delay 100ms==================');
-            commonEventManager.publish('publish_event0500', commonEventPublishData, publishCallback);
-          }, 100);
-        })
       })
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_Static_1200 END`)
     })

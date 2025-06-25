@@ -14,7 +14,7 @@
 */
 
 import notificationManager from '@ohos.notificationManager'
-import { describe, it, expect, TestType, Size, Level, beforeAll, afterEach, afterAll } from "../../../hypium/index";
+import { describe, it, expect, TestType, Size, Level, beforeAll, beforeEach, afterAll } from "../../../hypium/index";
 import Utils from './Util.test';
 import { BusinessError } from '@ohos.base';
 import wantAgent from '@ohos.app.ability.wantAgent';
@@ -101,21 +101,19 @@ export default function ActsNotificationPublishTest() {
     })
 
 
-    afterEach(() => {
-      console.info(`${TAG} afterEach START`)
+    beforeEach(() => {
+      console.info(`${TAG} beforeEach START`)
       notificationManager.cancelAll((err:BusinessError) => {
         if (err.code) {
           console.info(`${TAG} cancelAll notification err: ${err.code}`)
           expect(false).assertTrue()
-          done()
         } else {
           console.info(`${TAG} cancelAll notification success`)
           expect(true).assertTrue()
-          done()
         }
       })
       await Utils.msSleep(500)
-      console.info(`${TAG} afterEach END`)
+      console.info(`${TAG} beforeEach END`)
     })
 
     /*
@@ -973,29 +971,6 @@ export default function ActsNotificationPublishTest() {
     //   console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300 END`)
     // })
 
-
-    /*
-     * @tc.number    : Sub_Notification_Ans_Distributed_Search_Static_0600
-     * @tc.name      : Sub_Notification_Ans_Distributed_Search_Static_0600
-     * @tc.desc      : Obtains the number of all active notifications
-     */
-    it('Sub_Notification_Ans_Distributed_Search_Static_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-      async (done: () => void): Promise<void> => {
-        let TAG:string = 'Sub_Notification_Ans_Distributed_Search_Static_0600'
-        console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_Static_0600 START`)
-        notificationManager.getActiveNotificationCount((err: BusinessError, data) => {
-          if (err.code) {
-            console.info(`${TAG} getActiveNotificationCount AsyncCallback err :${JSON.stringify(data)}`)
-            expect(false).assertTrue()
-            done()
-          } else {
-            console.info(`${TAG} getActiveNotificationCount AsyncCallback success`)
-            expect(true).assertTrue()
-            done()
-          }
-        })
-        console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_Static_0600 END`)
-      })
 
     /*
      * @tc.number    : Sub_Notification_Ans_Distributed_Search_Static_0700

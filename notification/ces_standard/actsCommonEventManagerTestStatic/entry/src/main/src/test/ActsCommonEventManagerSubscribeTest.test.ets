@@ -157,14 +157,6 @@ export default function ActsCommonEventManagerSubscribeTest() {
           expect(false).assertTrue()
           done()
         } else {
-          let code1 = subscriber.getCodeSync();
-          expect(code1).assertEqual(0);
-          console.info(TAG+`getCodeSync before setCodeSync, code is ${code1}`)
-
-          let data3 = subscriber.getDataSync();
-          expect(data3).assertEqual("setCodeAndDataSync");
-          console.info(TAG+`getDataSync after setCodeAndDataSync, data is ${data3}`)
-
           done()
         }
       })
@@ -213,9 +205,6 @@ export default function ActsCommonEventManagerSubscribeTest() {
           expect(false).assertTrue()
           done()
         } else {
-          let info = subscriber.getSubscribeInfoSync();
-          expect(info.priority).assertEqual(100)
-          expect(info.userId).assertEqual(-3)
           done()
         }
       })

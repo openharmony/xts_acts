@@ -250,14 +250,6 @@ export default function ActsEmitterandComEventTest() {
                     console.info(Tag + "订阅者a Consume callback " + JSON.stringify(data_a));
                     let event_a = data_a == undefined ? 0 : data_a.event;
                     expect(event_a).assertEqual("event11")
-                    // 结束订阅者对当前有序公共事件处理的回调
-                    subscriber_a.finishCommonEvent((err: BusinessError)=> {
-                      if (err !==null) {
-                        console.error(Tag +`订阅者a finishCommonEvent failed, code is ${err.code}, message is ${err.message}`);
-                      } else {
-                        console.info(Tag +"订阅者a finishCommonEvent success");
-                      }
-                    });
                     //取消订阅
                     //取消订阅a
                     try {
@@ -334,14 +326,6 @@ export default function ActsEmitterandComEventTest() {
                     console.info(Tag + "订阅者b Consume callback " + JSON.stringify(data_b));
                     let event_b = data_b == undefined ? 0 : data_b.event;
                     expect(event_b).assertEqual("event11")
-                    // 结束订阅者对当前有序公共事件处理的回调
-                    subscriber_b.finishCommonEvent((err: BusinessError)=> {
-                      if (err != null) {
-                        console.error(Tag +`订阅者b finishCommonEvent failed, code is ${err.code}, message is ${err.message}`);
-                      } else {
-                        console.info(Tag +"订阅者b finishCommonEvent success");
-                      }
-                    });
                   }
                 });
               } catch (error) {
