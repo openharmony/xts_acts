@@ -40,7 +40,10 @@ export default function inputMethodAttachTest() {
                 end:2
             }
             const ATTRIBUTE: inputMethod.TextConfig = {
-                inputAttribute: attribute
+                inputAttribute: attribute,
+                cursorInfo:info,
+                selection:range,
+                windowId:100
             }
             let CallBack = (error: BusinessError) => {
                 expect(error.code == 0).assertTrue();

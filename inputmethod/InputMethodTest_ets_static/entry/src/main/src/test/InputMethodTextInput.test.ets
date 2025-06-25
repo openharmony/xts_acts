@@ -68,7 +68,7 @@ export default function inputMethodTest() {
             async () => {
                 try {
                     await inputMethod.getController().detach();
-                    console.info(`clsoe inputMethod success}`);
+                    console.info(`clsoe inputMethod success`);
                 } catch (error: BusinessError) {
                     console.info(`clsoe inputMethod fial, error: [${error.code}, ${error.message}]`);
                 };
@@ -353,6 +353,37 @@ export default function inputMethodTest() {
                 expectFalse();
                 done();
                 
+            }
+        });
+
+        /**
+         * @tc.number SUB_Misc_inputMethod_showTextInput_Promise_static_0101
+         * @tc.name SUB_Misc_inputMethod_showTextInput_Promise_static_0101
+         * @tc.desc Do not bind the input method keyboard, and call the showTextInput interface in Promise mode
+         */
+        it('SUB_Misc_inputMethod_showTextInput_Promise_static_0101', Level.LEVEL2, async (done: () => void) => {
+            const CASE_NAME = 'SUB_Misc_inputMethod_showTextInput_Promise_static_0101';
+            try {
+                let data = await inputMethod.getController().detach();
+                console.info(`${CASE_NAME} clsoe inputMethod success, data: ${JSON.stringify(data)}`);
+            } catch (error:BusinessError) {
+                console.info(`${CASE_NAME} clsoe inputMethod fial, error: [${error.code}, ${error.message}]`);
+                expectFalse();
+                done();
+                
+            }
+            const reason = inputMethod.RequestKeyboardReason.NONE;
+            try {
+                await inputMethod.getController().showTextInput(reason);
+                console.info(`${CASE_NAME} execution success`);
+                expectFalse();
+                done();
+
+            } catch (error:BusinessError) {
+                console.info(`${CASE_NAME} catch error, expect error: [${error.code}, ${error.message}]`);
+                expect(error.code === INVALID_INPUT_METHOD_CLIENT_DETACHED).assertTrue();
+                done();
+
             }
         });
     })
