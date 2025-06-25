@@ -67,7 +67,7 @@ export default function UDMFApiTest() {
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', 'SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100 start');
-      let unifiedRecord = new unifiedDataChannel.UnifiedRecord("string",true);
+      let unifiedRecord = new unifiedDataChannel.UnifiedRecord("general.composite-object",string);
       let unifiedData = new unifiedDataChannel.UnifiedData(unifiedRecord);
       let records = unifiedData.getRecords();
       let record:unifiedDataChannel.UnifiedRecord = (records[0]) as unifiedDataChannel.UnifiedRecord;
