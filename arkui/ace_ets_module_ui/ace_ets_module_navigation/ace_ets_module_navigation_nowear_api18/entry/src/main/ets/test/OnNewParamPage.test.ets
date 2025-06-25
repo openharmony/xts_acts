@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function OnNewParamPage() {
      * @tc.desc      Test OnNewParamPage LaunchMode.STANDARD\LaunchMode.NEW_INSTANCE\LaunchMode.POP_TO_SINGLETON\LaunchMode.MOVE_TO_TOP_SINGLETON
      * @tc.level     Level 2
      */
-    it('OnNewParamPage_0100',  Level.LEVEL0, async (done: Function) => {
+    it('OnNewParamPage_0100', 0, async (done: Function) => {
       console.info('OnNewParamPage_0100 START');
       await CommonFunc.sleep(500);
 
@@ -64,12 +64,12 @@ export default function OnNewParamPage() {
       let btn1: Component = await driver.findComponent(ON.id('pushId'));
       await btn1.click()
       console.info('[OnNewParamPage_0100] btn1 click');
-      await driver.delayMs(500);
+      await driver.delayMs(1000);
 
       let btn2: Component = await driver.findComponent(ON.id('standardId'));
       await btn2.click()
       console.info('[OnNewParamPage_0100] btn2 click');
-      await driver.delayMs(500);
+      await driver.delayMs(1000);
 
       let strJson: string = getInspectorByKey('paramId');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -80,31 +80,31 @@ export default function OnNewParamPage() {
       let btn3: Component = await driver.findComponent(ON.id('instanceId'));
       await btn3.click()
       console.info('[OnNewParamPage_0100] btn3 click');
-      await driver.delayMs(500);
+      await driver.delayMs(1000);
 
       let strJson1: string = getInspectorByKey('paramId');
       let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       console.info('[OnNewParamPage_0100] component obj1 is: ' + JSON.stringify(obj1));
       console.info('[OnNewParamPage_0100] content obj1 is: ' + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('');
-      await driver.delayMs(500);
+      await driver.delayMs(1000);
 
       let btn4: Component = await driver.findComponent(ON.id('moveId'));
       await btn4.click()
       console.info('[OnNewParamPage_0100] btn4 click');
-      await driver.delayMs(500);
+      await driver.delayMs(1000);
 
       let strJson2: string = getInspectorByKey('paramId');
       let obj2: Record<string, ESObject> = JSON.parse(strJson2);
       console.info('[OnNewParamPage_0100] component obj2 is: ' + JSON.stringify(obj2));
       console.info('[OnNewParamPage_0100] content obj2 is: ' + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual('{"msg":"MOVE_TO_TOP_SINGLETON"}');
-      await driver.delayMs(500);
+      await driver.delayMs(1000);
 
       let btn5: Component = await driver.findComponent(ON.id('popId'));
       await btn5.click()
       console.info('[OnNewParamPage_0100] btn5 click');
-      await driver.delayMs(500);
+      await driver.delayMs(1000);
 
       let strJson3: string = getInspectorByKey('paramId');
       let obj3: Record<string, ESObject> = JSON.parse(strJson3);
