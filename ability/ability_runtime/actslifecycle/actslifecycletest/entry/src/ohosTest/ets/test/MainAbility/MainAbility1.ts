@@ -20,23 +20,22 @@ import { Want } from '@kit.AbilityKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
 const TAG: string = 'testTag-MainAbility1 ';
-let num:number=0
 export default class MainAbility1 extends UIAbility {
-    onCreate(want, launchParam) {
-        console.log("[Demo] MainAbility1 onCreate");
+    onCreate(want, launchParam): void {
+        hilog.info(0x0000, TAG, '%{public}s', 'MainAbility1 onCreate');
 
     }
 
-    onDestroy() {
-        console.log("[Demo] MainAbility1 onDestroy");
-    }
+    onDestroy(): void {
+        hilog.info(0x0000, TAG, '%{public}s', 'MainAbility1 onDestroy');
+      }
 
-    onWindowStageCreate(windowStage) {
+    onWindowStageCreate(windowStage): void {
         // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility1 onWindowStageCreate");
+        console.log('[Demo] MainAbility1 onWindowStageCreate');
         windowStage.loadContent('testability/pages/MainAbility1_pages', (err, data) => {
             if (err.code) {
-                hilog.error(0x0000, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+                hilog.error(0x0000, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
                 return;
             }
             hilog.info(0x0000, TAG, 'Succeeded in loading the content. Data: %{public}s',
@@ -44,13 +43,12 @@ export default class MainAbility1 extends UIAbility {
         });
     }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("[Demo] MainAbility1 onWindowStageDestroy");
-    }
+    onWindowStageDestroy(): void {
+        hilog.info(0x0000, TAG, '%{public}s', 'MainAbility1 onWindowStageDestroy');
+      }
 
-    onForeground() {
-        console.log("[Demo] MainAbility1 onForeground");
+    onForeground(): void {
+        console.log('[Demo] MainAbility1 onForeground');
         setTimeout(()=>{
             try {
                 this.context.terminateSelf((err: BusinessError) => {
@@ -71,25 +69,20 @@ export default class MainAbility1 extends UIAbility {
         },1000);
     }
 
-    onBackground() {
-        // Ability has back to background
-        console.log("[Demo] MainAbility1 onBackground");
-    }
+    onBackground(): void {
+        hilog.info(0x0000, TAG, '%{public}s', 'MainAbility1 onBackground');
+      }
 
-    onWindowStageWillDestroy(){
-        num+=1;
-        console.log("[Demo] MainAbility1 onWindowStageWillDestroy");
+    onWindowStageWillDestroy(): void {
+        console.log('[Demo] MainAbility1 onWindowStageWillDestroy');
         let options: commonEventManager.CommonEventPublishData = {
             code: 1,
-            parameters: {
-                'result': num
-            }
         };
         commonEventManager.publish('OnWindowStageWillDestory01', options, (err: BusinessError) => {
             if (err) {
-                hilog.info(0x0000, TAG, "[%{public}s] PublishCallBack err: %{public}s", TAG, JSON.stringify(err));
+                hilog.info(0x0000, TAG, '[%{public}s] PublishCallBack err: %{public}s', TAG, JSON.stringify(err));
             } else {
-                hilog.info(0x0000, TAG, "[%{public}s] Publish success", TAG);
+                hilog.info(0x0000, TAG, '[%{public}s] Publish success', TAG);
             }
         });
     }
