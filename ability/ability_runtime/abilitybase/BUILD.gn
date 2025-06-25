@@ -18,8 +18,10 @@ group("abilitybase") {
   if (is_standard_system) {
     deps = [
       "ActsBaseErrorCodeMethodTest:ActsBaseErrorCodeMethodTest",
+      "ActsBaseErrorCodeMethodTestStatic:ActsBaseErrorCodeMethodStaticTest",
       "actsbaseerrorappclonerely:ActsBaseErrorAppcloneRely",
       "actsbaseerrorrely:ActsBaseErrorRely",
+      "actsbaseerrorrelystatic:ActsBaseErrorRelyStatic",
       "actsmultiinstaceerrcodetest:ActsMultiInstancEerrCodeTest",
       "uiextensioncontext:ActsUIExtensionErrocodeTest",
     ]
