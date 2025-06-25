@@ -13,12 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_static_suite("ActsBufferStaticTest") {
+ohos_js_app_static_suite("ActsUrlStaticTest") {
 #   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsBufferStaticTest"
-  part_name = "ets_utils"
-  subsystem_name = "commonlibrary"
+  hap_name = "ActsUrlStaticTest"
+  part_name = "ability_runtime"
+  subsystem_name = "ability"
 }
 
