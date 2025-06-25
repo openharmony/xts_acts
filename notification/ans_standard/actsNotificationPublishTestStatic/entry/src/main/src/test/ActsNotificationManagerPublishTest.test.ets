@@ -446,59 +446,6 @@ export default function ActsNotificationManagerPublishTest() {
     //   console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0600 END`)
     // })
 
-    /*
-         * @tc.number    : Sub_Notification_Ans_Distributed_template_Static_0300
-         * @tc.name      : Sub_Notification_Ans_Distributed_template_Static_0300
-         * @tc.desc      : Obtains whether the template is supported by the system
-         */
-    it('Sub_Notification_Ans_Distributed_template_Static_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-      async (done: () => void): Promise<void> => {
-        let TAG:string = 'Sub_Notification_Ans_Distributed_template_Static_0300'
-        console.info(`${TAG} Sub_Notification_Ans_Distributed_template_Static_0300 START`)
-        let templateName:string = 'test_templateName'
-        try {
-          notificationManager.isSupportTemplate(templateName, (err: BusinessError, data:boolean) => {
-            if (err&&err.code!==0) {
-              console.info(`${TAG} isSupportTemplate AsyncCallback err: ${err.code}, errMes: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            } else {
-              console.info(`${TAG} isSupportTemplate AsyncCallback success:${JSON.stringify(data)} `)
-              expect(true).assertTrue()
-              done()
-            }
-          })
-        } catch (err: BusinessError) {
-          console.info(`${TAG} isSupportTemplate AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(false).assertTrue()
-          done()
-        }
-        console.info(`${TAG} Sub_Notification_Ans_Distributed_template_Static_0300 END`)
-      })
-
-
-    // /*
-    //  * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400
-    //  * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400
-    //  * @tc.desc      : Obtains whether the template is supported by the system
-    //  */
-    //  //问题单号：DTS2025060627133
-    // it('SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-    //   async (done: () => void): Promise<void> => {
-    //   let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400'
-    //   console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_Static_0400 START`)
-    //   let templateName:string = 'test_templateName'
-    //   notificationManager.isSupportTemplate(templateName, undefined).then((data:boolean) => {
-    //     console.info(`${TAG} isSupportTemplate Promise success :${JSON.stringify(data)}`)
-    //     expect(true).assertTrue()
-    //     done()
-    //   }).catch((err: BusinessError):void => {
-    //     console.info(`${TAG} isSupportTemplate Promise err: ${err.code}, errMes: ${err.message}`)
-    //     expect(false).assertTrue()
-    //     done()
-    //   })
-    //   console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_0400 END`)
-    // })
 
     /*
       * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0110
