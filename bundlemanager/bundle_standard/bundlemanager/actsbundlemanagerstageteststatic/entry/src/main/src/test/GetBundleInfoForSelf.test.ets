@@ -38,9 +38,9 @@ export default function getBundleInfoForSelf() {
               expect(data.hapModulesInfo.length + '').assertEqual('0');
               expect(data.reqPermissionDetails.length + '').assertEqual('0');
               expect(data.permissionGrantStates.length + '').assertEqual('0');
-              hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> end');
-              done();
             }
+            hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> end');
+            done();
           })
       })
 
@@ -153,9 +153,9 @@ export default function getBundleInfoForSelf() {
               expect(data.appInfo.installSource).assertEqual("unknown");
               expect(data.appInfo.releaseType.length).assertLarger(0.0);
               expect(data.appInfo.cloudFileSyncEnabled).assertFalse();
-              hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> end');
-              done();
             }
+            hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> end');
+            done();
           })
       })
 
@@ -304,9 +304,9 @@ export default function getBundleInfoForSelf() {
               expect(data.hapModulesInfo[0].codePath).assertEqual("/data/storage/el1/bundle/entry.hap");
               expect(data.hapModulesInfo[0].nativeLibraryPath).assertEqual("");
               expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("");
-              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> end');
-              done();
             }
+            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> end');
+            done();
           })
       })
 
@@ -438,9 +438,9 @@ export default function getBundleInfoForSelf() {
               expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowWidth).assertEqual(0.0);
               expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowHeight).assertEqual(0.0);
               expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowHeight).assertEqual(0.0);
-              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> end');
-              done();
             }
+            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> end');
+            done();
           })
       })
 

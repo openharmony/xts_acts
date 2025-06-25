@@ -19,7 +19,7 @@ export default function getBundleInfo() {
       */
     it('getBundleInfoTestWithUserIdCallBack17700001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100, (err: BusinessError<void>, data : BundleInfo) => {
+        bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100, (err: BusinessError<void> | null, data : BundleInfo | undefined) => {
           hilog.info(domain, tag,
             'getBundleInfoTestWithUserIdCallBack17700001 err ====> ' + JSON.stringify(err));
           if (err) {
@@ -39,7 +39,7 @@ export default function getBundleInfo() {
       */
     it('getBundleInfoTestWithUserIdCallBack17700004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 1010, (err: BusinessError<void>, data : BundleInfo) => {
+        bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 1010, (err: BusinessError<void> | null, data : BundleInfo | undefined) => {
           hilog.info(domain, tag,
             'getBundleInfoTestWithUserIdCallBack17700004 err ====> ' + JSON.stringify(err));
           if (err) {
@@ -59,7 +59,7 @@ export default function getBundleInfo() {
       */
     it('getBundleInfoTestCallBack17700001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, (err: BusinessError<void>, data : BundleInfo) => {
+        bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, (err: BusinessError<void> | null, data : BundleInfo | undefined) => {
           hilog.info(domain, tag,
             'getBundleInfoTestCallBack17700001 err ====> ' + JSON.stringify(err));
           if (err) {
