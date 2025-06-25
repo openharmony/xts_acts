@@ -81,11 +81,38 @@ class MySequenceable implements rpc.Parcelable {
   }
 }
 
-function isEqualArray(arr1: number[], arr2: number[]){
+function isEqualArray(arr1: number[] | boolean[] | string[], arr2: number[] | boolean[] | string[]){
   return Array.isArray(arr1) &&
   Array.isArray(arr2) &&
     arr1.length === arr2.length &&
     JSON.stringify(arr1) === JSON.stringify(arr2)
+}
+
+function isEqualArrayBuffer(
+    arr1: Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array,
+    arr2: Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array
+): boolean {
+    // 检查两个参数是否都是 TypedArray
+    if (!ArrayBuffer.isView(arr1) || !ArrayBuffer.isView(arr2)) {
+        return false;
+    }
+
+    // 检查长度是否相同
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+
+    // 直接比较底层字节数据
+    const view1 = new Uint8Array(arr1.buffer, arr1.byteOffset, arr1.byteLength);
+    const view2 = new Uint8Array(arr2.buffer, arr2.byteOffset, arr2.byteLength);
+
+    // 逐个字节比较
+    for (let i = 0; i < view1.length; i++) {
+        if (view1[i] !== view2[i]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 class TestProxy {
@@ -3581,7 +3608,7 @@ export default function ActsRpcClientEtsTest() {
         await gIRemoteObject.sendMessageRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
           expect(result.errCode).assertEqual(0);
           let newArr: number[] = [];
-          result.reply.readByteArray(newArr)
+          result.reply.readByteArray(newArr);
           let assertE = isEqualArray(ByteArraylet,newArr);
           expect(assertE).assertTrue();
         });
@@ -4824,8 +4851,7 @@ export default function ActsRpcClientEtsTest() {
           expect(result.errCode).assertEqual(0);
           let rBooleanArryData: boolean[] = [];
           result.reply.readBooleanArray(rBooleanArryData);
-          let assertE: boolean = Array.isArray(wBooleanArryData) && Array.isArray(rBooleanArryData) &&
-            wBooleanArryData.length === rBooleanArryData.length && JSON.stringify(wBooleanArryData) === JSON.stringify(rBooleanArryData)
+          let assertE = isEqualArray(wBooleanArryData,rBooleanArryData);
           expect(assertE).assertTrue();
         });
       } catch (error) {
@@ -5149,8 +5175,7 @@ export default function ActsRpcClientEtsTest() {
           expect(result.errCode).assertEqual(0);
           let rStringArryData: string[] = [];
           result.reply.readStringArray(rStringArryData);
-          let assertE: boolean = Array.isArray(wStringArryData) && Array.isArray(rStringArryData) &&
-            wStringArryData.length === rStringArryData.length && JSON.stringify(wStringArryData) === JSON.stringify(rStringArryData)
+          let assertE = isEqualArray(wStringArryData,rStringArryData);
           expect(assertE).assertTrue();
         });
       } catch (error) {
@@ -6557,10 +6582,8 @@ export default function ActsRpcClientEtsTest() {
         data.writeRawDataBuffer(buffer, size);
         let readBuffer = data.readRawDataBuffer(size);
         let readInt32Arr = new Int32Array(readBuffer);
-        expect(readInt32Arr.length == int32View.length).assertTrue();
-        for (let i = 0; i < readInt32Arr.length; i++) {
-          expect(readInt32Arr[i]).assertEqual(int32View[i]);
-        }
+        let assertE = isEqualArrayBuffer(readInt32Arr,int32View);
+        expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
         expect(error).assertEqual(null);
@@ -6591,8 +6614,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeRawDataBuffer(buffer, size);
         let readBuffer = data.readRawDataBuffer(size);
         let readInt32Arr = new Int32Array(readBuffer);
-        let assertE: boolean =  JSON.stringify(readInt32Arr) === JSON.stringify(int32View) &&
-          readInt32Arr.length === int32View.length;
+        let assertE = isEqualArrayBuffer(readInt32Arr,int32View);
         expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
@@ -6785,7 +6807,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeArrayBuffer(buffer, rpc.TypeCode.UINT8_ARRAY);
         let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.UINT8_ARRAY);
         let uInt8Array = new Uint8Array(arrayBuffer);
-        let assertE: boolean = uInt8View.length === uInt8Array.length && JSON.stringify(uInt8View) === JSON.stringify(uInt8Array);
+        let assertE = isEqualArrayBuffer(uInt8View,uInt8Array);
         expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
@@ -6817,7 +6839,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeArrayBuffer(buffer, rpc.TypeCode.INT16_ARRAY);
         let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.INT16_ARRAY);
         let int16Array = new Int16Array(arrayBuffer);
-        let assertE: boolean = int16View.length === int16Array.length && JSON.stringify(int16View) === JSON.stringify(int16Array);
+        let assertE = isEqualArrayBuffer(int16View,int16Array);
         expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
@@ -6849,7 +6871,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeArrayBuffer(buffer, rpc.TypeCode.UINT16_ARRAY);
         let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.UINT16_ARRAY);
         let uInt16Array = new Uint16Array(arrayBuffer);
-        let assertE: boolean = uInt16View.length === uInt16Array.length && JSON.stringify(uInt16View) === JSON.stringify(uInt16Array);
+        let assertE = isEqualArrayBuffer(uInt16View,uInt16Array);
         expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
@@ -6881,7 +6903,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeArrayBuffer(buffer, rpc.TypeCode.INT32_ARRAY);
         let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.INT32_ARRAY);
         let int32Array = new Int32Array(arrayBuffer);
-        let assertE: boolean = int32View.length === int32Array.length && JSON.stringify(int32View) === JSON.stringify(int32Array);
+        let assertE = isEqualArrayBuffer(int32Array,int32View);
         expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
@@ -6913,7 +6935,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeArrayBuffer(buffer, rpc.TypeCode.UINT32_ARRAY);
         let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.UINT32_ARRAY);
         let uInt32Array = new Uint32Array(arrayBuffer);
-        let assertE: boolean = uInt32View.length === uInt32Array.length && JSON.stringify(uInt32View) === JSON.stringify(uInt32Array);
+        let assertE = isEqualArrayBuffer(uInt32View,uInt32Array);
         expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
@@ -6945,7 +6967,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeArrayBuffer(buffer, rpc.TypeCode.FLOAT32_ARRAY);
         let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.FLOAT32_ARRAY);
         let float32Array = new Float32Array(arrayBuffer);
-        let assertE: boolean = float32View.length === float32Array.length && JSON.stringify(float32View) === JSON.stringify(float32Array);
+        let assertE = isEqualArrayBuffer(float32View,float32Array);
         expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
@@ -6977,7 +6999,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeArrayBuffer(buffer, rpc.TypeCode.FLOAT64_ARRAY);
         let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.FLOAT64_ARRAY);
         let float64Array = new Float64Array(arrayBuffer);
-        let assertE: boolean = float64View.length === float64Array.length && JSON.stringify(float64View) === JSON.stringify(float64Array);
+        let assertE = isEqualArrayBuffer(float64View,float64Array);
         expect(assertE).assertTrue();
       } catch (error) {
         console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_MessageSequence_testcase error is:" + error);
@@ -7232,7 +7254,7 @@ export default function ActsRpcClientEtsTest() {
         data.writeArrayBuffer(buffer, rpc.TypeCode.INT16_ARRAY);
         let arrayBuffer = data.readArrayBuffer(rpc.TypeCode.INT16_ARRAY);
         let int16Array = new Int16Array(arrayBuffer);
-        let assertE: boolean = int16View.length === int16Array.length && JSON.stringify(int16View) === JSON.stringify(int16Array);
+        let assertE = isEqualArrayBuffer(int16View,int16Array);
         expect(assertE).assertTrue();
         data.rewindRead(0);
         data.reclaim();
@@ -7282,9 +7304,9 @@ export default function ActsRpcClientEtsTest() {
           let int8Array = new Int8Array(reply1);
           let reply2 = result.reply.readArrayBuffer(rpc.TypeCode.INT16_ARRAY);
           let int16Array = new Int16Array(reply2);
-          let assertE1: boolean = int8View.length === int8Array.length && JSON.stringify(int8View) === JSON.stringify(int8Array);
+          let assertE1 = isEqualArrayBuffer(int8View,int8Array);
           expect(assertE1).assertTrue();
-          let assertE2: boolean = int16View.length === int16Array.length && JSON.stringify(int16View) === JSON.stringify(int16Array);
+          let assertE2 = isEqualArrayBuffer(int16View,int16Array);
           expect(assertE2).assertTrue();
         });
       } catch (error) {
@@ -8849,9 +8871,8 @@ export default function ActsRpcClientEtsTest() {
             let readBuffuer = ashmem.readDataFromAshmem(size, 0);
             let readInt32Arr = new Int32Array(readBuffuer);
             expect(readInt32Arr.length == ashnenInt32Arr.length).assertTrue();
-            for (let i = 0; i < readInt32Arr.length; i++) {
-                expect(readInt32Arr[i]).assertEqual(ashnenInt32Arr[i]);
-            }
+            let assertE = isEqualArrayBuffer(readInt32Arr,ashnenInt32Arr);
+            expect(assertE).assertTrue();
         } catch (error) {
             console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0310 error is:" + error);
             expect(error== null).assertTrue();
@@ -8886,10 +8907,8 @@ export default function ActsRpcClientEtsTest() {
             data.writeAshmem(ashmem);
             let readBuffuer = ashmem.readDataFromAshmem(size, 0);
             let readInt32Arr = new Int32Array(readBuffuer);
-            expect(readInt32Arr.length == ashnenInt32Arr.length).assertTrue();
-            for (let i = 0; i < readInt32Arr.length; i++) {
-                expect(readInt32Arr[i]).assertEqual(ashnenInt32Arr[i]);
-            }
+            let assertE = isEqualArrayBuffer(readInt32Arr,ashnenInt32Arr);
+            expect(assertE).assertTrue();
         } catch (error) {
             console.info("SUB_DSoftbus_IPC_API_Stage_Ashmem_0320 error is:" + error);
             expect(error== null).assertTrue();
