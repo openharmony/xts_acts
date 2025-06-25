@@ -42,7 +42,7 @@ export default function AppAccountAuthenticatorStage2Stage() {
         console.info("====>startAbilityForResult result: " + JSON.stringify(result));
         done();
       });
-      await driver.delayMs(500);
+      await driver.delayMs(2000);
       try {
         let allowed = await driver.findComponent(ON.text("允许"));
         let allowed1 = await driver.findComponent(ON.text("本次允许"));
