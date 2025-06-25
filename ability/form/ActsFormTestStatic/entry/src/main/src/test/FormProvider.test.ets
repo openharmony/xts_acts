@@ -38,7 +38,7 @@ export default function formProviderTest() {
 
             let formId: string = '3610022740'; //用hap包装好的应用的卡片id
             try {
-                formProvider.setFormNextRefreshTime(formId, 2, (error: BusinessError | null) => {
+                formProvider.setFormNextRefreshTime(formId, 2, (error: BusinessError<void> | null) => {
                     if (error?.code) {
                         hilog.info(DOMAIN, TAG, `FormProviderStaticTest001 callback error, code:${error?.code}`);
                     }
