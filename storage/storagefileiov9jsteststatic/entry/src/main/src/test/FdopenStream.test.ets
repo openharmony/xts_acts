@@ -431,7 +431,7 @@ export default function fileIOFdopenStream() {
           expect(fpr?.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
           fpr?.write(FILE_CONTENT, (e: BusinessError | null, writeLen: number | undefined) => {
             if (e?.code !== 0) {
-              fpr.closeSync();
+              fpr?.closeSync();
               fs.unlinkSync(fpath);
               hilog.info(domain, tag, '%{public}s',
                 'fileIO_test_fdopenstream_async_static_001 error: {message: ' + e?.message + ', code: ' + e?.code + '}'
@@ -654,7 +654,7 @@ export default function fileIOFdopenStream() {
           expect(fpw?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
           fpw?.read(new ArrayBuffer(4096), (e: BusinessError | null, readLen: number | undefined) => {
             if (e?.code !== 0) {
-              fpw.closeSync();
+              fpw?.closeSync();
               fs.unlinkSync(fpath);
               hilog.info(domain, tag, '%{public}s',
                 'fileIO_test_fdopenstream_async_static_009 error: {message: ' + e?.message + ', code: ' + e?.code + '}'
@@ -870,7 +870,7 @@ export default function fileIOFdopenStream() {
           expect(fpa?.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
           fpa?.read(new ArrayBuffer(4096), (e: BusinessError | null, readLen: number | undefined) => {
             if (e?.code != 0) {
-              fpa.closeSync();
+              fpa?.closeSync();
               fs.unlinkSync(fpath);
               hilog.info(domain, tag, '%{public}s',
                 'fileIO_test_fdopenstream_async_static_015 error: {message: ' + e?.message + ', code: ' + e?.code + '}'

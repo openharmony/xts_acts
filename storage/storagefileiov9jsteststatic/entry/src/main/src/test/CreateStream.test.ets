@@ -620,7 +620,7 @@ export default function fileIOCreateStream() {
           }, (err: BusinessError<void> | null) => {
             if (err?.code != 0) {
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_012 start111');
-              sw.closeSync();
+              sw?.closeSync();
               fs.unlinkSync(fpath);
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_012 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
               expect(err?.code == 13900005 && err?.message == 'I/O error').assertTrue();
@@ -802,7 +802,7 @@ export default function fileIOCreateStream() {
           }, (err: BusinessError<void> | null) => {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_018 read 1111');
             if (err?.code != 0) {
-              sa.closeSync();
+              sa?.closeSync();
               fs.unlinkSync(fpath);
               hilog.info(domain, tag, '%{public}s', 'fileIO_test_create_stream_async_static_018 error: {message: ' + err?.message + ', code: ' + err?.code + '}');
               expect(err?.code == 13900005 && err?.message == 'I/O error').assertTrue();

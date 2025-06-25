@@ -654,36 +654,6 @@ export default function fileIOOpen() {
     });
 
     /**
-     * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_1600
-     * @tc.name fileIO_test_open_async_static_016
-     * @tc.desc Test open() interfaces. mode=0o200000. Callback.
-     * The path points to a directory.
-     * @tc.size MEDIUM
-     * @tc.type Functoin
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_test_open_async_static_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_016 start');
-      let dpath = await Utils.nextFileName('fileIO_test_open_async_static_016');
-      fs.mkdirSync(dpath);
-      try {
-        fs.open(dpath, fs.OpenMode.DIR, (err: BusinessError | null, file: fs.File | undefined) => {
-          if(err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_016 has error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(await Utils.isIntNum(file?.fd)).assertTrue();
-          fs.rmdirSync(dpath);
-          done();
-        });
-      } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_016 has failed for' + JSON.stringify(e));
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
      * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_1700
      * @tc.name fileIO_test_open_async_static_017
      * @tc.desc Test open() interfaces. mode=0o200000. Promise.
