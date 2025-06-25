@@ -20,6 +20,7 @@ import dsPredicates from '@ohos.data.dataSharePredicates'
 import { BusinessError } from '@ohos.base';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import Utils from './Util.test';
+import { AppStorage } from '@ohos.arkui.stateManagement'
 
 let domain: number = 0x0000;
 let tag: string = 'testTag';
@@ -55,8 +56,6 @@ let STORE_CONFIG2 :data_relationalStore.StoreConfig = {
   name: "test2.db",
   securityLevel: data_relationalStore.SecurityLevel.S1,
 }
-let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-let context = abilityDelegator.getAppContext()
 let rdbStore : data_relationalStore.RdbStore
 let rdbStore1 : data_relationalStore.RdbStore
 let rdbStore2 : data_relationalStore.RdbStore
@@ -86,25 +85,11 @@ export default function rdbResultSetTest() {
   describe('rdbResultSetTest', ():void => {
     beforeAll(async () : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '[RELATIONAL_STORE_JSKITS_TEST] beforeAll');
-      let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName:"entry",
-        onAbilityCreate: (abilitys : UIAbility) : void => {
-          context = abilitys.context
-          context.stageMode = true;
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate enddatabaseDir:' + context.databaseDir);
-
-        },
-      }, (err : BusinessError <void> | null) : void => {
-        if (err != null ) {
-          hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
       await Utils.msSleep(2000)
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.relationalstore")
       await Utils.msSleep(2000)
+      let context:common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("abilityContextMainAbility2") as common.UIAbilityContext;
+      hilog.info(domain, tag, '%{public}s', 'onAbilityCreate enddatabaseDir:' + context.databaseDir);
       rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
       rdbStore1 = await data_relationalStore.getRdbStore(context, STORE_CONFIG1);
       rdbStore2 = await data_relationalStore.getRdbStore(context, STORE_CONFIG2);
