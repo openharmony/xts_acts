@@ -247,7 +247,7 @@ struct GridCallbackPage {
                 .fontSize(16)
                 .backgroundColor(0xF9CF93)
                 .width('100%')
-                .height('20%')
+                .height('23%')
                 .textAlign(TextAlign.Center)
             }
           }, (day: string) => day)
@@ -255,7 +255,7 @@ struct GridCallbackPage {
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(10)
-      .rowsGap(10)
+      .rowsGap('2%')
       .key('grid2')
       .scrollBar(this.scrollBar)
       .scrollBarColor(this.scrollBarColor)

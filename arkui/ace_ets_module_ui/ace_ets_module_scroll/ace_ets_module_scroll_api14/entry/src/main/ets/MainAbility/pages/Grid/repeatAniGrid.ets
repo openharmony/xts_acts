@@ -52,20 +52,20 @@ struct totalGridRepeat {
           .template('number', (r) => {
             GridItem() {
               Text(r.index! + ":" + r.item + "Reuse")
-                .height('9%')
+                .height('13%')
             }
           })
           .each((r) => {
             GridItem() {
               Text(r.index! + ":" + r.item + "eachMessage")
-                .height('9%')
+                .height('13%')
             }
           })
       }
       .width('90%')
       .height('40%')
       .columnsTemplate('1fr 1fr')
-      .rowsGap(10)
+      .rowsGap('2%')
       .backgroundColor(0xFAEEE0)
       .scrollBar(BarState.On)
       .scrollBarColor(Color.Grey)
