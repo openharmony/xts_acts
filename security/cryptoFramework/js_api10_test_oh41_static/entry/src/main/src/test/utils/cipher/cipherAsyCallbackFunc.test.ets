@@ -40,7 +40,7 @@ async function doFinalCipher(cipherGenerator: cpFw.Cipher, mode: cpFw.CryptoMode
         reject(err as Error);
       } else {
         console.log("[Callback]cipherGenerator doFinal succeed! mode is : " + mode);
-        resolve(finalData);
+        resolve(finalData as cpFw.DataBlob);
       }
     });
   });

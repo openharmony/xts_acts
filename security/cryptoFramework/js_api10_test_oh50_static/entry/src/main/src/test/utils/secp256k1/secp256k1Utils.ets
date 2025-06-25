@@ -227,7 +227,7 @@ async function createAsyKeyCallback(algName: string): Promise<cryptoFramework.Ke
       if (err?.code != 0 || keyPair === undefined) {
         reject(err as Error);
       } else {
-        resolve(keyPair);
+        resolve(keyPair as cryptoFramework.KeyPair);
       }
     });
   });
@@ -267,7 +267,7 @@ async function convertAsyKeyCallback(algName: string, pubKeyData: cryptoFramewor
       if (err?.code != 0 || keyPair === undefined) {
         reject(err as Error);
       } else {
-        resolve(keyPair);
+        resolve(keyPair as cryptoFramework.KeyPair);
       }
     });
   });
@@ -378,7 +378,7 @@ async function doAgreementCallback(algName: string, pubKey: cryptoFramework.PubK
       if (err?.code != 0 || secret === undefined) {
         reject(err as Error)
       } else {
-        resolve(secret)
+        resolve(secret as cryptoFramework.DataBlob)
       }
     });
   });
@@ -416,7 +416,7 @@ async function doSignSignCallback(sign: cryptoFramework.Sign,
       if (err?.code != 0 || rawData === undefined) {
         reject(err as Error)
       } else {
-        resolve(rawData)
+        resolve(rawData as cryptoFramework.DataBlob)
       }
     });
   });
@@ -441,7 +441,7 @@ async function doVerifyVerifyCallback(verify: cryptoFramework.Verify,
       if (err?.code != 0 || ret === undefined) {
         reject(err as Error)
       } else {
-        resolve(ret)
+        resolve(ret as boolean)
       }
     });
   });

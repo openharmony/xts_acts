@@ -93,7 +93,7 @@ async function createSymKeyCallback(algName: string): Promise<cryptoFramework.Sy
         if (err?.code != 0 || symKey === undefined) {
           reject(err as Error);
         } else {
-          resolve(symKey)
+          resolve(symKey as cryptoFramework.SymKey)
         }
       })
     })
@@ -148,7 +148,7 @@ async function convertSymKeyCallback(algName: string, data: cryptoFramework.Data
         if (err?.code != 0 || symKey === undefined) {
           reject(err as Error);
         } else {
-          resolve(symKey)
+          resolve(symKey as cryptoFramework.SymKey)
         }
       })
     })
@@ -262,7 +262,7 @@ async function finalCallback(cipher: cryptoFramework.Cipher,
       if (err?.code != 0 || cipherText === undefined) {
         reject(err as Error);
       } else {
-        resolve(cipherText);
+        resolve(cipherText as cryptoFramework.DataBlob);
       }
     })
   })

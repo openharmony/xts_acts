@@ -23,10 +23,10 @@ async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<
   return new Promise<crypto.SymKey>((resolve, reject) => {
     symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: crypto.SymKey|undefined) => {
       if (err?.code != 0 || symKey === undefined) {
-        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
+        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err?.code}`);
         reject(err as Error);
       } else {
-        resolve(symKey);
+        resolve(symKey as crypto.SymKey);
       }
     })
   });
@@ -37,7 +37,7 @@ async function initCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMod
   return new Promise<string>((resolve, reject) => {
     cipherGenerator.init(mode, key, params, (err: BusinessError<void>|null) => {
       if (err?.code != 0) {
-        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
+        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err?.code}`);
         reject(err as Error);
       } else {
         resolve("init success");
@@ -51,10 +51,10 @@ async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoM
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     cipherGenerator.update(plainText, (err: BusinessError<void>|null, data: crypto.DataBlob|undefined) => {
       if (err?.code != 0 || data === undefined) {
-        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
+        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err?.code}`);
         reject(err as Error);
       } else {
-        resolve(data);
+        resolve(data as crypto.DataBlob);
       }
     })
   });
@@ -65,10 +65,10 @@ async function doFinalCipher(cipherGenerator: crypto.Cipher, mode: crypto.Crypto
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, data: crypto.DataBlob|undefined) => {
       if (err?.code != 0 || data === undefined) {
-        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
+        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err?.code}`);
         reject(err as Error);
       } else {
-        resolve(data);
+        resolve(data as crypto.DataBlob);
       }
     })
   });

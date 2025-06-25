@@ -20,10 +20,10 @@ async function kdfGenerateSecret(kdfObj: crypto.Kdf, params: crypto.KdfSpec): Pr
   return new Promise<crypto.DataBlob>((resolve, reject) => {
     kdfObj.generateSecret(params, (err: BusinessError<void>|null, dataBlob: crypto.DataBlob|undefined) => {
       if (err?.code != 0 || dataBlob === undefined) {
-        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err.code}`);
+        console.error(`[Callback]kdfGenerateSecret failed. error code is: ${err?.code}`);
         reject(err as Error);
       } else {
-        resolve(dataBlob);
+        resolve(dataBlob as crypto.DataBlob);
       }
     });
   });
@@ -36,7 +36,7 @@ async function kdfParamSpecWithNull(kdfObj: crypto.Kdf): Promise<crypto.DataBlob
       if (err?.code != 0 || dataBlob === undefined) {
         reject(err as Error);
       } else {
-        resolve(dataBlob);
+        resolve(dataBlob as crypto.DataBlob);
       }
     });
   });

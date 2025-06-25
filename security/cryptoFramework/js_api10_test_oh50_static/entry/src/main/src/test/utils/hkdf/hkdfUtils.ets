@@ -39,7 +39,7 @@ async function hkdfCallback(algName: string, spec: cryptoFramework.HKDFSpec): Pr
       if (err?.code != 0 || dataBlob === undefined) {
         reject(err as Error);
       } else {
-        resolve(dataBlob);
+        resolve(dataBlob as cryptoFramework.DataBlob);
       }
     });
   });

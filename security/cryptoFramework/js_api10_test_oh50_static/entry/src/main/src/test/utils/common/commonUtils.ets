@@ -176,7 +176,7 @@ async function doScryptCallback(kdf: cryptoFramework.Kdf,
       if (err?.code != 0 || rawData === undefined) {
         reject(err as Error);
       } else {
-        resolve(rawData);
+        resolve(rawData as cryptoFramework.DataBlob);
       }
     });
   });

@@ -32,7 +32,7 @@ async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<
           console.log("[Callback]key format:" + symKey.format);
           let encodeKey = symKey.getEncoded();
           console.log("[Callback]key getEncoded hex: " + uInt8ArrayToShowStr(encodeKey.data));
-          resolve(symKey);
+          resolve(symKey as crypto.SymKey);
         } else {
           reject(err as Error);
         }
@@ -65,7 +65,7 @@ async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoM
         reject(err as Error);
       } else {
         console.log("[Callback]cipherGenerator update success! mode is : " + mode);
-        resolve(updateData);
+        resolve(updateData as crypto.DataBlob);
       }
     });
   });
@@ -80,7 +80,7 @@ async function doFinalCipher(cipherGenerator: crypto.Cipher, mode: crypto.Crypto
         reject(err as Error);
       } else {
         console.log("[Callback]cipherGenerator doFinal success! mode is : " + mode);
-        resolve(finalData);
+        resolve(finalData as crypto.DataBlob);
       }
     });
   });

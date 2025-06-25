@@ -48,7 +48,7 @@ async function signSign(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<cpFw.Data
       if (err?.code != 0 || signedData === undefined) {
         reject(err as Error);
       } else {
-        resolve(signedData);
+        resolve(signedData as cpFw.DataBlob);
       }
     })
   });
@@ -84,7 +84,7 @@ async function verifyVerify(verify: cpFw.Verify, data: cpFw.DataBlob, signatureD
       if (err?.code != 0 || res === undefined) {
         reject(err as Error);
       } else {
-        resolve(res);
+        resolve(res as boolean);
       }
     })
   });

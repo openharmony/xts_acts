@@ -172,7 +172,7 @@ async function doFinalMacCallback(mac: cryptoFramework.Mac): Promise<cryptoFrame
       if (err?.code != 0 || rawData === undefined) {
         reject(err as Error)
       } else {
-        resolve(rawData)
+        resolve(rawData as cryptoFramework.DataBlob)
       }
     });
   });
