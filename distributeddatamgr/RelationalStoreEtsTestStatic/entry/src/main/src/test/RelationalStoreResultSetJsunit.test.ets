@@ -267,7 +267,7 @@ export default function rdbResultSetTest() {
         vbs[0] = valueBucket
         let num = await transaction.batchInsert(TABLE_NAME, vbs);
         hilog.info(domain, tag, 'Insert %{public}d rows.'+num)
-        await transaction.commit()
+        transaction.commit()
         hilog.info(domain, tag, '%{public}s', "11111 failed");
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
         hilog.info(domain, tag, '%{public}s', "2222 failed");
@@ -326,7 +326,7 @@ export default function rdbResultSetTest() {
         let num = await transaction.batchInsert(TABLE_NAME, vbs);
         hilog.info(domain, tag, 'Insert %{public}d rows.', num)
 
-        await transaction.commit()
+        transaction.commit()
 
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
         num = await rdbStore1.delete(predicates)
@@ -363,8 +363,8 @@ export default function rdbResultSetTest() {
         bind_args[2] = 100.5
         bind_args[3] = u8
         await transaction.execute(insertSqlArgs, bind_args)
-        await transaction.rollback()
-        await transaction.commit()
+        transaction.rollback()
+        transaction.commit()
         let predicates = new data_relationalStore.RdbPredicates(TABLE_NAME);
         let num = await rdbStore1.delete(predicates)
         expect(true).assertEqual(num==0)
