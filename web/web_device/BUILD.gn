@@ -1,4 +1,4 @@
-# Copyright (C) 2024 Huawei Device Co., Ltd.
+# Copyright (C) 2025 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,20 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("web") {
+group("WebDeviceService") {
   testonly = true
-  deps = [
-    "DFX:DFXTest",
-    "application_interworking:ActsApplicationInterworkingTest",
-    "page_interaction:pageInteraction",
-    "web_content_processing:WebContentProcessing",
-    "web_jump:WebJump",
-    "web_life_cycle:webLifeCycle",
-    "web_load:WebLoad",
-    "web_multi_media:WebMultimedia",
-    "web_page_document_processing:webPageDocumentProcessing",
-    "web_page_rendering:webPageRenderingTest",
-    "web_security_privacy:WebSecurityPrivacy",
-    "web_device:WebDeviceService",
-  ]
+  if (is_standard_system) {
+    deps = [
+      "ActsWebDeviceServiceTestStatic:ActsWebDeviceServiceStaticTest",
+    ]
+  }
 }
