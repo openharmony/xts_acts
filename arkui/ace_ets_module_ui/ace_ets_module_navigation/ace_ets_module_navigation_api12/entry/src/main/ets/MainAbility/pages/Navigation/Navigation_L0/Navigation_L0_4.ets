@@ -30,7 +30,7 @@ struct Navigation_L0_4 {
           ListItem() {
             Text('' + item)
               .width('90%')
-              .height(72)
+              .height('20%')
               .backgroundColor('#FFFFFF')
               .borderRadius(24)
               .fontSize(16)
