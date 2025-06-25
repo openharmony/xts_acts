@@ -18,6 +18,7 @@ group("ability_crossplatform_runtime") {
   if (is_standard_system) {
     deps = [
       "ActsCrossplatformAbilityTest:ActsCrossplatformAbilityTest",
+      "ActsCrossplatformAbilityTestStatic:ActsCrossplatformAbilityStaticTest",
       "ActsCrossplatformCallBackTest:ActsCrossplatformCallBackTest",
       "ActsCrossplatformFeatureATest:ActsCrossplatformFeatureATest",
       "ActsCrossplatformFeatureBTest:ActsCrossplatformFeatureBTest",
