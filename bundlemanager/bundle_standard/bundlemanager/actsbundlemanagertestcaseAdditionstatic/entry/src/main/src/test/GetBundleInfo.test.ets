@@ -23,7 +23,7 @@ export default function getBundleInfo() {
           hilog.info(domain, tag,
             'getBundleInfoTestWithUserIdCallBack17700001 err ====> ' + JSON.stringify(err));
           if (err) {
-            expect(err.code).assertEqual(17700001);
+            expect(err?.code).assertEqual(17700001);
             done();
           } else {
             expect().assertFail();
@@ -43,7 +43,7 @@ export default function getBundleInfo() {
           hilog.info(domain, tag,
             'getBundleInfoTestWithUserIdCallBack17700004 err ====> ' + JSON.stringify(err));
           if (err) {
-            expect(err.code).assertEqual(17700004);
+            expect(err?.code).assertEqual(17700004);
             done();
           } else {
             expect().assertFail();
@@ -63,7 +63,7 @@ export default function getBundleInfo() {
           hilog.info(domain, tag,
             'getBundleInfoTestCallBack17700001 err ====> ' + JSON.stringify(err));
           if (err) {
-            expect(err.code).assertEqual(17700001);
+            expect(err?.code).assertEqual(17700001);
             done();
           } else {
             expect().assertFail();

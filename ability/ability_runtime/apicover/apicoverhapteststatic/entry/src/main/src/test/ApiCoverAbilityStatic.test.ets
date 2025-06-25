@@ -147,8 +147,8 @@ export default function ApiCoverStaticTest() {
     it('SUB_AA_AbilityAppManager_Static_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       hilog.info(domain, tag, "SUB_AA_AbilityAppManager_Static_0200 begin");
       await Utils.msSleep(1000);
-      appManager.getRunningProcessInformation((err: BusinessError, data: Array<ProcessInformation>) => {
-        if (err != null) {
+      appManager.getRunningProcessInformation((err: BusinessError | null, data: Array<ProcessInformation> | undefined) => {
+        if (err != null && data !== undefined) {
           hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data.length: ' + data.length);
           for (let i = 0; i < data.length; i++) {
             hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.pid: ' + data[i].pid);

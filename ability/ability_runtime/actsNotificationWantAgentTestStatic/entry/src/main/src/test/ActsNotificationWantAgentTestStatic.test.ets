@@ -83,25 +83,29 @@ export default function ActsNotificationWantAgentStaticTest() {
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4600 START')
         WantAgentInfo.actionType = wantAgent.OperationType.START_ABILITY
         WantAgentInfo.actionFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void>, data: _WantAgent) => {
-          if (err.code !== 0) {
+        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void> | null, data: _WantAgent | undefined) => {
+          if (err && err.code !== 0) {
             hilog.info(domain, tag, 'getWantAgent AsyncCallback err:' + JSON.stringify(err))
             expect().assertFail()
             done()
           } else {
-            WantAgent = data
             hilog.info(domain, tag, 'getWantAgent AsyncCallback success:' + JSON.stringify(data))
-            wantAgent.cancel(WantAgent, (err: BusinessError<void>) => {
-              if (err.code !== 0) {
-                hilog.info(domain, tag, 'cancel AsyncCallback err:' + JSON.stringify(err))
-                expect().assertFail()
-                done()
-              } else {
-                hilog.info(domain, tag, 'cancel AsyncCallback success')
-                expect(true).assertTrue()
-                done()
-              }
-            })
+            if (data !== undefined) {
+              WantAgent = data
+              wantAgent.cancel(WantAgent, (err: BusinessError<void> | null) => {
+                if (err && err.code !== 0) {
+                  hilog.info(domain, tag, 'cancel AsyncCallback err:' + JSON.stringify(err))
+                  expect().assertFail()
+                  done()
+                } else {
+                  hilog.info(domain, tag, 'cancel AsyncCallback success')
+                  expect(true).assertTrue()
+                  done()
+                }
+              })
+            } else {
+              done()
+            }
           }
         })
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4600 END')
@@ -147,25 +151,31 @@ export default function ActsNotificationWantAgentStaticTest() {
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4700 START')
         WantAgentInfo.actionType = wantAgent.OperationType.START_ABILITY
         WantAgentInfo.actionFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void>, data: _WantAgent) => {
-          if (err.code !== 0) {
+        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void> | null, data: _WantAgent | undefined) => {
+          if (err && err.code !== 0) {
             hilog.info(domain, tag, 'getWantAgent AsyncCallback err:' + JSON.stringify(err))
             expect().assertFalse()
             done()
           } else {
-            WantAgent = data
             hilog.info(domain, tag, 'getWantAgent AsyncCallback success:' + JSON.stringify(data))
-            wantAgent.getBundleName(WantAgent, (err: BusinessError<void>, data: string) => {
-              if (err.code !== 0) {
-                hilog.info(domain, tag, 'getBundleName AsyncCallback err:' + JSON.stringify(err))
-                expect().assertFail()
-                done()
-              } else {
-                hilog.info(domain, tag, 'getBundleName AsyncCallback success:' + JSON.stringify(data))
-                expect(data + '').assertEqual('com.example.actsnotificationwantagent.static')
-                done()
-              }
-            })
+            if (data !== undefined) {
+              WantAgent = data
+              wantAgent.getBundleName(WantAgent, (err: BusinessError<void> | null, data: string | undefined) => {
+                if (err && err.code !== 0) {
+                  hilog.info(domain, tag, 'getBundleName AsyncCallback err:' + JSON.stringify(err))
+                  expect().assertFail()
+                  done()
+                } else {
+                  hilog.info(domain, tag, 'getBundleName AsyncCallback success:' + JSON.stringify(data))
+                  if (data !== undefined) {
+                    expect(data + '').assertEqual('com.example.actsnotificationwantagent.static')
+                  }
+                  done()
+                }
+              })
+            } else {
+              done()
+            }
           }
         })
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4700 END')
@@ -213,25 +223,29 @@ export default function ActsNotificationWantAgentStaticTest() {
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4800 START')
         WantAgentInfo.actionType = wantAgent.OperationType.START_ABILITY
         WantAgentInfo.actionFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void>, data: _WantAgent) => {
-          if (err.code !== 0) {
+        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void> | null, data: _WantAgent | undefined) => {
+          if (err && err.code !== 0) {
             hilog.info(domain, tag, 'getWantAgent AsyncCallback err:' + JSON.stringify(err))
             expect().assertFail()
             done()
           } else {
-            WantAgent = data
             hilog.info(domain, tag, 'getWantAgent AsyncCallback success:' + JSON.stringify(data))
-            wantAgent.getUid(WantAgent, (err, data) => {
-              if (err.code !== 0) {
-                hilog.info(domain, tag, 'getUid AsyncCallback err:' + JSON.stringify(err))
-                expect().assertFail()
-                done()
-              } else {
-                hilog.info(domain, tag, 'getUid AsyncCallback success:' + JSON.stringify(data))
-                expect(true).assertTrue()
-                done()
-              }
-            })
+            if (data !== undefined) {
+              WantAgent = data
+              wantAgent.getUid(WantAgent, (err, data) => {
+                if ((err?.code) as int !== 0) {
+                  hilog.info(domain, tag, 'getUid AsyncCallback err:' + JSON.stringify(err))
+                  expect().assertFail()
+                  done()
+                } else {
+                  hilog.info(domain, tag, 'getUid AsyncCallback success:' + JSON.stringify(data))
+                  expect(true).assertTrue()
+                  done()
+                }
+              })
+            } else {
+              done()
+            }
           }
         })
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4800 END')
@@ -247,26 +261,35 @@ export default function ActsNotificationWantAgentStaticTest() {
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4900 START')
         WantAgentInfo.actionType = wantAgent.OperationType.START_ABILITY
         WantAgentInfo.actionFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void>, data: _WantAgent) => {
-          if (err.code !== 0) {
+        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void> | null, data: _WantAgent | undefined) => {
+          if (err && err.code !== 0) {
             hilog.info(domain, tag, 'getWantAgent AsyncCallback err:' + JSON.stringify(err))
             expect().assertFail()
             done()
           } else {
-            wantAgentData1 = data
-            wantAgentData2 = data
             hilog.info(domain, tag, 'getWantAgent AsyncCallback success:' + JSON.stringify(data))
-            wantAgent.equal(wantAgentData1, wantAgentData2, (err: BusinessError<void>, data: boolean) => {
-              if (err.code !== 0) {
-                hilog.info(domain, tag, 'equal AsyncCallback err:' + JSON.stringify(err))
-                expect(data).assertTrue()
-                done()
-              } else {
-                hilog.info(domain, tag, 'equal AsyncCallback success:' + JSON.stringify(data))
-                expect(data).assertTrue()
-                done()
-              }
-            })
+            if (data !== undefined) {
+              wantAgentData1 = data
+              wantAgentData2 = data
+              wantAgent.equal(wantAgentData1, wantAgentData2,
+                (err: BusinessError<void> | null, data: boolean | undefined) => {
+                  if (err && err.code !== 0) {
+                    hilog.info(domain, tag, 'equal AsyncCallback err:' + JSON.stringify(err))
+                    if (data !== undefined) {
+                      expect(data).assertTrue()
+                    }
+                    done()
+                  } else {
+                    hilog.info(domain, tag, 'equal AsyncCallback success:' + JSON.stringify(data))
+                    if (data !== undefined) {
+                      expect(data).assertTrue()
+                    }
+                    done()
+                  }
+                })
+            } else {
+              done()
+            }
           }
         })
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4900 END')
@@ -282,24 +305,28 @@ export default function ActsNotificationWantAgentStaticTest() {
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4950 START')
         WantAgentInfo.actionType = wantAgent.OperationType.START_ABILITY
         WantAgentInfo.actionFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void>, data: _WantAgent) => {
-          if (err.code !== 0) {
+        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void> | null, data: _WantAgent | undefined) => {
+          if (err && err.code !== 0) {
             hilog.info(domain, tag, 'getWantAgent AsyncCallback err:' + JSON.stringify(err))
             expect().assertFail()
             done()
           } else {
-            wantAgentData1 = data
-            wantAgentData2 = data
             hilog.info(domain, tag, 'getWantAgent AsyncCallback success:' + JSON.stringify(data))
-            wantAgent.equal(wantAgentData1, wantAgentData2).then((data: boolean) => {
-              hilog.info(domain, tag, 'equal Promise success:' + JSON.stringify(data))
-              expect(data).assertTrue()
+            if (data !== undefined) {
+              wantAgentData1 = data
+              wantAgentData2 = data
+              wantAgent.equal(wantAgentData1, wantAgentData2).then((data: boolean) => {
+                hilog.info(domain, tag, 'equal Promise success:' + JSON.stringify(data))
+                expect(data).assertTrue()
+                done()
+              }).catch((err: BusinessError<void>): void => {
+                hilog.info(domain, tag, 'equal Promise err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+              })
+            } else {
               done()
-            }).catch((err: BusinessError<void>): void => {
-              hilog.info(domain, tag, 'equal Promise err:' + JSON.stringify(err))
-              expect().assertFail()
-              done()
-            })
+            }
           }
         })
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_4950 END')
@@ -315,26 +342,29 @@ export default function ActsNotificationWantAgentStaticTest() {
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_5000 START')
         WantAgentInfo.actionType = wantAgent.OperationType.START_ABILITY;
         WantAgentInfo.actionFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG];
-        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void>, data: _WantAgent) => {
+        wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void> | null, data: _WantAgent | undefined) => {
           hilog.info(domain, tag, 'getWantAgentCallback success: ')
-          if (err.code !== 0) {
+          if (err && err.code !== 0) {
             hilog.info(domain, tag, 'getWantAgent AsyncCallback err: ' + JSON.stringify(err))
             expect().assertFail();
             done()
           } else {
             WantAgent = data;
             hilog.info(domain, tag, 'getWantAgent AsyncCallback success: ' + JSON.stringify(data))
-            wantAgent.getOperationType(WantAgent, (err: BusinessError<void>, data: Double) => {
-              if (err.code !== 0) {
-                hilog.info(domain, tag, 'getOperationType AsyncCallback err:' + JSON.stringify(err))
-                expect().assertFail();
-                done()
-              } else {
-                hilog.info(domain, tag, 'getOperationType AsyncCallback success: ' + JSON.stringify(data))
-                expect(true).assertTrue()
-                done()
-              }
-            })
+            if (WantAgent !== undefined) {
+              wantAgent.getOperationType(WantAgent, (err: BusinessError<void> | null, data: Double | undefined) => {
+                if (err && err.code !== 0) {
+                  hilog.info(domain, tag, 'getOperationType AsyncCallback err:' + JSON.stringify(err))
+                  expect().assertFail();
+                  done()
+                } else {
+                  hilog.info(domain, tag, 'getOperationType AsyncCallback success: ' + JSON.stringify(data))
+                  expect(true).assertTrue()
+                  done()
+                }
+              })
+           }
+           done()
           }
         })
         hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_static_5000 END')

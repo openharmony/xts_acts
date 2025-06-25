@@ -14,9 +14,9 @@ class EntryAbility2 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag EntryAbility2', 'EntryAbility2 onWindowStageCreate');
     try {
-      windowStage.loadContent('pages/Index', (err: BusinessError<void>): void => {
+      windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
         hilog.info(0x0000, 'testTag EntryAbility2', 'loadContent2 entering');
-        if (err.code) {
+        if (err && err.code) {
           hilog.info(0x0000, 'testTag EntryAbility2', 'loadContent2 error');
           return;
         }
