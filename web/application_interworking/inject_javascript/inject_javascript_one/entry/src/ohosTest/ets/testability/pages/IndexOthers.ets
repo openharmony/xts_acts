@@ -16,31 +16,10 @@
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from '../../test/Utils';
+import events_emitter from '@ohos.events.emitter';
+import {waitForAssert, waitForExist} from '../../test/WaitTest.test';
 
-class TestOfflineResource {
-  public urlList: string[] | null;
-  public resource: Uint8Array | null;
-  public responseHeaders: TestWebHeader[] | null;
-  public type: webview.OfflineResourceType | null;
 
-  constructor(urlList: string[] | null, resource: Uint8Array | null, responseHeaders: webview.WebHeader[] | null,
-    type: webview.OfflineResourceType | null){
-    this.urlList = urlList;
-    this.resource = resource;
-    this.responseHeaders = responseHeaders;
-    this.type = type;
-  }
-}
-
-class TestWebHeader {
-  public headerKey: string | null | undefined;
-  public headerValue: string | null | undefined;
-
-  constructor(headerKey: string | null | undefined, headerValue: | null | undefined){
-    this.headerKey = headerKey;
-    this.headerValue = headerValue
-  }
-}
 
 class TestObj {
   constructor(){
@@ -62,6 +41,7 @@ class TestObj {
 
   asyncTestBool(testBol: boolean): void{
     console.log('Web Component boolean' + testBol);
+    Utils.emitEvent(testBol, 2025062501);
   }
 }
 
@@ -71,6 +51,7 @@ class WebObj {
 
   webTest(): string{
     console.log('Web test');
+    Utils.emitEvent(true, 2025062502);
     return 'Web test';
   }
 
@@ -85,6 +66,7 @@ class AsyncObj {
 
   asyncTest(): void{
     console.log('Async test');
+    Utils.emitEvent(true, 2025062503);
   }
 
   asyncString(testStr: string): void{
@@ -96,187 +78,101 @@ class AsyncObj {
 @Component
 struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State str: string = '';
   @State testObjTest: TestObj = new TestObj();
   @State webTestObj: WebObj = new WebObj();
   @State asyncTestObj: AsyncObj = new AsyncObj();
-  @State resourceMapArr: Array<TestOfflineResource> = [];
-  private header: string = 'https:'
-  private body: string = '//www.example.com/example.js'
-  private controllerTest: webview.WebviewController = new webview.WebviewController();
-  private buf: Uint8Array = new Uint8Array(0);
+  @State isReceive: number = -1;
+  @State isPageEnd: number = -1;
 
-  async aboutToAppear(): Promise<void>{
-    this.initData()
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
   }
 
-  async initData(){
-    this.resourceMapArr = []
-    this.buf = await readRawFile('example.html');
-    let testData: TestOfflineResource = new TestOfflineResource([this.header + this.body], this.buf,
-      [{ headerKey: 'Cross-Origin', headerValue: 'anonymous' }], webview.OfflineResourceType.CLASSIC_JS)
-    this.resourceMapArr.push(testData)
+  onPageHide() {
+    events_emitter.off(10)
+  }
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
+    console.info('web page valueChangeCallBack');
+    if (eventData != null) {
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
+      if (eventData.data != null && eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+        this.isReceive = 0;
+      }
+    }
   }
 
   build(){
     Column() {
-      Button('refresh')
-        .id('refresh')
-        .onClick(() => {
-          try {
-            this.controller.refresh();
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      Row() {
+        Button('web click').key('registerJavaScriptProxyAsyncMethodListButton').onClick(async () => {
+          await waitForExist(()=>this.isReceive, this.str, 0);
+          console.info('key==>' + this.str);
+          switch (this.str) {
+            case 'emitAsyncMethodList0100': {
+              this.controller.registerJavaScriptProxy(this.testObjTest, 'objName', ['test', 'toString', 'testNumber'],
+                ['asyncTestBool']);
+              this.isPageEnd = -1;
+              this.controller.refresh();
+              await waitForExist(()=>this.isPageEnd, this.str, 0);
+              this.controller.runJavaScript('htmlTestOne()')
+                .then((result) => {
+                  console.log(this.str + ' runJavaScript result: ' + result);
+                })
+                .catch((error: BusinessError) => {
+                  console.error(this.str + ' runJavaScript error: ' + error);
+                })
+              this.isPageEnd = -1;
+              break;
+            }
+            case 'emitAsyncMethodList0200': {
+              this.controller.registerJavaScriptProxy(this.webTestObj, 'objTestName', ['webTest', 'webString']);
+              this.isPageEnd = -1;
+              this.controller.refresh();
+              await waitForExist(()=>this.isPageEnd, this.str, 0);
+              this.controller.runJavaScript('htmlTestTwo()')
+                .then((result) => {
+                  console.log(this.str + ' runJavaScript result: ' + result);
+                })
+                .catch((error: BusinessError) => {
+                  console.error(this.str + ' runJavaScript error: ' + error);
+                })
+              this.isPageEnd = -1;
+              break;
+            }
+            case 'emitRegisterJavaScriptProxyAsyncMethodList0100': {
+              this.controller.registerJavaScriptProxy(this.asyncTestObj, 'objAsyncName', [],
+                ['asyncTest', 'asyncString']);
+              this.isPageEnd = -1;
+              this.controller.refresh();
+              await waitForExist(()=>this.isPageEnd, this.str, 0);
+              this.controller.runJavaScript('htmlTestThree()')
+                .then((result) => {
+                  console.log(this.str + ' runJavaScript result: ' + result);
+                })
+                .catch((error: BusinessError) => {
+                  console.error(this.str + ' runJavaScript error: ' + error);
+                })
+              this.isPageEnd = -1;
+              break;
+            }
           }
         })
-
-      Button('Register JavaScript To Window')
-        .id('Register')
-        .onClick(() => {
-          try {
-            this.controller.registerJavaScriptProxy(this.testObjTest, 'objName', ['test', 'toString', 'testNumber'],
-              ['asyncTestBool']);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-
-      Button('Register JavaScript To Window')
-        .id('Sub_WEB_javaScriptProxy_asyncMethodList_0200')
-        .onClick(() => {
-          try {
-            this.controller.registerJavaScriptProxy(this.webTestObj, 'objTestName', ['webTest', 'webString']);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-
-
-      Button('Register JavaScript To Window')
-        .id('Sub_WEB_registerJavaScriptProxy_asyncMethodList_0100')
-        .onClick(() => {
-          try {
-            this.controller.registerJavaScriptProxy(this.asyncTestObj, 'objAsyncName', [],
-              ['asyncTest', 'asyncString']);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-
-      Button('Invalid url')
-        .key('SetInjectOfflineUrlList')
-        .onClick(() => {
-          try {
-            this.resourceMapArr[0].urlList = ['x&x']
-            this.controller.injectOfflineResources(this.resourceMapArr)
-          } catch (e) {
-            Utils.emitEvent(e.code + e.message, 1001)
-            console.log(e.code + e.message)
-          } finally {
-            this.initData()
-          }
-        })
-
-      Button('Invalid input parameter')
-        .key('SetInjectOfflineResource')
-        .onClick(() => {
-          try {
-            this.resourceMapArr[0].resource = new Uint8Array(0)
-            this.controller.injectOfflineResources(this.resourceMapArr)
-          } catch (e) {
-            Utils.emitEvent(e.code + e.message, 1002)
-            console.log(e.code + e.message)
-          } finally {
-            this.initData()
-          }
-        })
-        .margin({ top: 30 })
-
-      Button('Invalid input parameter')
-        .key('SetInjectOfflineHeaderKey')
-        .onClick(async () => {
-          try {
-            this.resourceMapArr[0].responseHeaders = null
-            this.controller.injectOfflineResources(this.resourceMapArr)
-            console.log('success')
-          } catch (e) {
-            Utils.emitEvent(e.code + e.message, 1003)
-            console.log(e.code + e.message)
-          } finally {
-            this.initData()
-          }
-        })
-        .margin({ top: 30 })
-
-      Button('Invalid input parameter')
-        .key('SetInjectOfflineHeaderValue')
-        .onClick(async () => {
-          try {
-            this.resourceMapArr[0].responseHeaders = null
-            this.controller.injectOfflineResources(this.resourceMapArr)
-            console.log('success')
-          } catch (e) {
-            Utils.emitEvent(e.code + e.message, 1004)
-            console.log(e.code + e.message)
-          } finally {
-            this.initData()
-          }
-        })
-        .margin({ top: 30 })
-
-      Button('Invalid input parameter')
-        .key('SetInjectOfflineType')
-        .onClick(async () => {
-          try {
-            this.resourceMapArr[0].type = null
-            this.controller.injectOfflineResources(this.resourceMapArr)
-            console.log('success')
-          } catch (e) {
-            Utils.emitEvent(e.code + e.message, 1005)
-            console.log(e.code + e.message)
-          } finally {
-            this.initData()
-          }
-        })
-        .margin({ top: 30 })
-
-      Button('Initialization failed')
-        .key('InitializationFailed')
-        .onClick(async () => {
-          try {
-            this.controllerTest.injectOfflineResources(this.resourceMapArr)
-          } catch (e) {
-            Utils.emitEvent(e.code + '', 1006)
-            console.log(e.code + e.message)
-          } finally {
-            this.initData()
-          }
-        })
-        .margin({ top: 30 })
-
-      Button('correct')
-        .onClick(async () => {
-          try {
-            this.controller.injectOfflineResources(this.resourceMapArr)
-            console.log('success')
-          } catch (e) {
-            Utils.emitEvent(e.code + '', 1006)
-            console.log(e.code + e.message)
-          } finally {
-            this.initData()
-          }
-        })
-        .margin({ top: 30 })
+      }
 
       Web({ src: $rawfile('indexDemo.html'), controller: this.controller })
         .javaScriptAccess(true)
+        .onPageEnd((event) => {
+          console.log('web pageEnd==>' + event.url);
+          this.isPageEnd = 0;
+        })
     }
   }
 }
 
-async function readRawFile(url: string){
-  try {
-    return await getContext().resourceManager.getRawFileContent(url);
-  } catch (err) {
-    return new Uint8Array(0);
-  }
-}

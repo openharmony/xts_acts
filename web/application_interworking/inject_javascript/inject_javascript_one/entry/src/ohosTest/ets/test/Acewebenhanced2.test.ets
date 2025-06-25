@@ -13,6 +13,8 @@
 * limitations under the License.
 */
 
+import Utils from './Utils';
+import events_emitter from '@ohos.events.emitter';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { webview } from '@kit.ArkWeb';
@@ -65,23 +67,15 @@ export default function AceWeb() {
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      */
     it("testAsyncMethodList0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_javaScriptProxy_asyncMethodList_0100 start')
-      console.info('Sub_WEB_javaScriptProxy_asyncMethodList_0100 start')
-      let driver = await Driver.create();
-
-      let accept2 = await driver.findComponent(ON.id('Register'));
-      await accept2.click();
-      await driver.delayMs(1000);
-
-      let accept1 = await driver.findComponent(ON.id('refresh'));
-      await accept1.click();
-      await driver.delayMs(1000);
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_javaScriptProxy_asyncMethodList_0100 end')
-      console.info('Sub_WEB_javaScriptProxy_asyncMethodList_0100 end')
-      done();
+      Utils.emitEvent("emitAsyncMethodList0100", 10);
+      Utils.registerBaseEvent("testAsyncMethodList0100", true, 2025062501, done,
+        (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
+      sendEventByKey('registerJavaScriptProxyAsyncMethodListButton', 10, '');
     })
 
     /**
@@ -90,23 +84,15 @@ export default function AceWeb() {
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      */
     it("testAsyncMethodList0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_javaScriptProxy_asyncMethodList_0200 start')
-      console.info('Sub_WEB_javaScriptProxy_asyncMethodList_0200 start')
-      let driver = await Driver.create();
-
-      let accept2 = await driver.findComponent(ON.id('Sub_WEB_javaScriptProxy_asyncMethodList_0200'));
-      await accept2.click();
-      await driver.delayMs(1000);
-
-      let accept1 = await driver.findComponent(ON.id('refresh'));
-      await accept1.click();
-      await driver.delayMs(1000);
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_javaScriptProxy_asyncMethodList_0200 end')
-      console.info('Sub_WEB_javaScriptProxy_asyncMethodList_0200 end')
-      done();
+      Utils.emitEvent("emitAsyncMethodList0200", 10);
+      Utils.registerBaseEvent("testAsyncMethodList0200", true, 2025062502, done,
+        (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
+      sendEventByKey('registerJavaScriptProxyAsyncMethodListButton', 10, '');
     })
 
     /**
@@ -115,23 +101,15 @@ export default function AceWeb() {
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      */
     it("testRegisterJavaScriptProxyAsyncMethodList0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'testRegisterJavaScriptProxyAsyncMethodList0100 start')
-      console.info('testRegisterJavaScriptProxyAsyncMethodList0100 start')
-      let driver = await Driver.create();
-
-      let accept2 = await driver.findComponent(ON.id('Sub_WEB_registerJavaScriptProxy_asyncMethodList_0100'));
-      await accept2.click();
-      await driver.delayMs(1000);
-
-      let accept1 = await driver.findComponent(ON.id('refresh'));
-      await accept1.click();
-      await driver.delayMs(1000);
-      hilog.info(0x0000, 'testTag', '%{public}s', 'testRegisterJavaScriptProxyAsyncMethodList0100 end')
-      console.info('testRegisterJavaScriptProxyAsyncMethodList0100 end')
-      done();
+      Utils.emitEvent("emitRegisterJavaScriptProxyAsyncMethodList0100", 10);
+      Utils.registerBaseEvent("testRegisterJavaScriptProxyAsyncMethodList0100", true, 2025062503, done,
+        (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
+      sendEventByKey('registerJavaScriptProxyAsyncMethodListButton', 10, '');
     })
 
   })
