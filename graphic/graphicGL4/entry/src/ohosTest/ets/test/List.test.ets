@@ -14,6 +14,12 @@
  */
  
 import libGl4ApiTest from './LibGl4Api.test';
+import EmptyTest from './Empty.test';
+
 export default function testsuite() {
-  libGl4ApiTest();
+  if (canIUse("SystemCapability.Graphic.Graphic2D.GL4")){
+    libGl4ApiTest();
+  }else{
+    EmptyTest()
+  }
 }

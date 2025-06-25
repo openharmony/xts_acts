@@ -17,30 +17,28 @@ import("//foundation/arkui/napi/napi.gni")
 import("//foundation/graphic/graphic_2d/graphic_config.gni")
 import("//test/xts/tools/build/suite.gni")
 
-if (graphic_2d_feature_enable_opengl_to_vulkan) {
-  ohos_app_assist_suite("ActsGraphicGl4Test_main") {
-    testonly = true
-    certificate_profile = "./signature/openharmony_sx.p7b"
-    hap_name = "ActsGraphicGl4TestMain"
+ohos_app_assist_suite("ActsGraphicGl4Test_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsGraphicGl4TestMain"
 
-    # 部件名称，真实数据，需要子系统对应
-    part_name = "graphic_2d"
+  # 部件名称，真实数据，需要子系统对应
+  part_name = "graphic_2d"
 
-    # 子系统名称，真实数据，需要部件对应
-    subsystem_name = "graphic"
-  }
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "graphic"
+}
 
-  ohos_js_app_suite("ActsGraphicGl4Test") {
-    test_hap = true
-    testonly = true
-    certificate_profile = "./signature/openharmony_sx.p7b"
-    hap_name = "ActsGraphicGl4Test"
+ohos_js_app_suite("ActsGraphicGl4Test") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsGraphicGl4Test"
 
-    # 部件名称，真实数据，需要子系统对应
-    part_name = "graphic_2d"
+  # 部件名称，真实数据，需要子系统对应
+  part_name = "graphic_2d"
 
-    # 子系统名称，真实数据，需要部件对应
-    subsystem_name = "graphic"
-    deps = [ ":ActsGraphicGl4Test_main" ]
-  }
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "graphic"
+  deps = [ ":ActsGraphicGl4Test_main" ]
 }
