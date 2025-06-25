@@ -20,6 +20,7 @@ import { Want } from '@kit.AbilityKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
 const TAG: string = 'testTag-MainAbility1 ';
+let num:number=0;
 export default class MainAbility1 extends UIAbility {
     onCreate(want, launchParam): void {
         hilog.info(0x0000, TAG, '%{public}s', 'MainAbility1 onCreate');
@@ -74,9 +75,13 @@ export default class MainAbility1 extends UIAbility {
       }
 
     onWindowStageWillDestroy(): void {
+        num += 1;
         console.log('[Demo] MainAbility1 onWindowStageWillDestroy');
         let options: commonEventManager.CommonEventPublishData = {
             code: 1,
+            parameters: {
+                'result': num
+            }
         };
         commonEventManager.publish('OnWindowStageWillDestory01', options, (err: BusinessError) => {
             if (err) {
