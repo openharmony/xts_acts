@@ -40,6 +40,7 @@ group("bundlemanager") {
       "actsbundlemanagerstageteststatic:ActsBundleMgrStageEtsStaticTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanagertestcaseAddition:ActsbundlemgrcaseAdditionEtsTest",
+      "actsbundlemanagertestcaseAdditionstatic:ActsbundlemgrcaseAdditionEtsStaticTest",
       "actsbundlenativeninthapitest:ActsBundleNativeNinthApiTest",
       "actsbundlenativetest:ActsBundleNativeTest",
       "sceneProject/bmsaccesstokenfive:bmsAccessTokenTest5",
