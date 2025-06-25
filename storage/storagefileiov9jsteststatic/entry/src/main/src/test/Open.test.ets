@@ -673,9 +673,11 @@ export default function fileIOOpen() {
             hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_016 has error for' + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          expect(await Utils.isIntNum(file?.fd)).assertTrue();
-          fs.rmdirSync(dpath);
-          done();
+          if(file){
+            expect(Utils.isIntNum(file.fd)).assertTrue();
+            fs.rmdirSync(dpath);
+            done();
+          }
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_open_async_static_016 has failed for' + JSON.stringify(e));
