@@ -27,6 +27,7 @@ group("context") {
       "actsstageappcontext:actsstageappcontext",
       "actsstagecontext:actsstagecontext",
       "actsstagecontexttest:ActsStageContextTest",
+      "actsstagecontextteststatic:ActsStageContextStaticTest",
       "scene/contextapp:ContextApp",
       "scene/defpermission:DefPermission",
       "scene/fa8app:Fa8App",

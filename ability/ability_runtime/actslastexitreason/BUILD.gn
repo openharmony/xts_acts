@@ -19,6 +19,7 @@ group("actslastexitreason") {
     deps = [
       "actslastexitreasonrely1:ActsLastExitReasonRely1",
       "actslastexitreasontest:ActsLastExitReasonTest",
+      "actslastexitreasonteststatic:ActsLastExitReasonStaticTest",
     ]
   }
 }
