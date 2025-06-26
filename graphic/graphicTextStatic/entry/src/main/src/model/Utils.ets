@@ -12,8 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import text from "@ohos.graphics.text";
+import text from '@ohos.graphics.text';
 
 export function buildParagraph() {
     let fontCollection = new text.FontCollection();
@@ -23,8 +22,8 @@ export function buildParagraph() {
     let myParagraphStyle: text.ParagraphStyle = {
     textStyle : myTextStyle
     };
-    const ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-    ParagraphGraphBuilder.addText("123");
-    ParagraphGraphBuilder.pushStyle(myTextStyle);
-    return ParagraphGraphBuilder.build();
+    const paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+    paragraphGraphBuilder.addText('123');
+    paragraphGraphBuilder.pushStyle(myTextStyle);
+    return paragraphGraphBuilder.build();
 }

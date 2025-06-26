@@ -281,8 +281,8 @@ export default function GraphicTextEnum() {
     })
 
     /**
-     * @tc.number    : testEllipsisModeStatic
-     * @tc.name      : testEllipsisModeStatic
+     * @tc.number    : testFontWidthStatic
+     * @tc.name      : testFontWidthStatic
      * @tc.desc      : To test the enum value of EllipsisMode.
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -311,8 +311,8 @@ export default function GraphicTextEnum() {
       })
 
     /**
-     * @tc.number    : testEllipsisModeStatic
-     * @tc.name      : testEllipsisModeStatic
+     * @tc.number    : testHeightBehaviorStatic
+     * @tc.name      : testHeightBehaviorStatic
      * @tc.desc      : To test the enum value of EllipsisMode.
      * @tc.size      : MediumTest
      * @tc.type      : Function

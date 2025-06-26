@@ -103,15 +103,15 @@ export default function GraphicEffectKitStaticTest() {
     })
 
     /**
-     * @tc.number    : effectKitTest_static_0100
-     * @tc.name      : effectKitTest_static_0100
+     * @tc.number    : testBlurTileModeStatic
+     * @tc.name      : testBlurTileModeStatic
      * @tc.desc      : effect for test
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
 
-    it('testBlurTileMode', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1,
+    it('testBlurTileModeStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1,
       async (done: () => void): Promise<void> => {
       let msgStr = 'testBlurTileMode'
       console.log(msgStr + ' begin');

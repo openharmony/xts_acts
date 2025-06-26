@@ -58,8 +58,8 @@ export default function GraphicTextClass() {
     })
 
     /**
-     * @tc.number    : testPaintStatic
-     * @tc.name      : testPaintStatic
+     * @tc.number    : testPaintStatic_02
+     * @tc.name      : testPaintStatic_02
      * @tc.desc      : To test Paragraph Paint interface.
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -82,14 +82,14 @@ export default function GraphicTextClass() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_021
-     * @tc.name      : testParagraphBuilder_AonstructorAndAddText
+     * @tc.number    : testParagraphBuilder_AonstructorAndAddTextStatic
+     * @tc.name      : testParagraphBuilder_AonstructorAndAddTextStatic
      * @tc.desc      : Constructs a ParagraphBuilder object and calls its methods
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testParagraphBuilder_AonstructorAndAddText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testParagraphBuilder_AonstructorAndAddTextStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
       let msg = "testParagraphBuilder_AonstructorAndAddText"
       console.info(msg + 'begin');
@@ -154,14 +154,14 @@ export default function GraphicTextClass() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_005
-     * @tc.name      : testParagraph_GetLongestLine_Parameter
+     * @tc.number    : testGetLongestLineStatic_01
+     * @tc.name      : testGetLongestLineStatic_01
      * @tc.desc      : To test Paragraph GetLongestLine interface.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetLongestLine', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testGetLongestLineStatic_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
       let msg = "testGetLongestLine"
       console.info(msg + 'begin');
