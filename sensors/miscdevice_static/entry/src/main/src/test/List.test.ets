@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import MiscDeviceTest from "./Vibrator_newEffect.test"
+import MiscDeviceStaticTest from "./VibratorStatic.test"
 export default function testsuite() {
-    MiscDeviceTest();
+    MiscDeviceStaticTest();
 }

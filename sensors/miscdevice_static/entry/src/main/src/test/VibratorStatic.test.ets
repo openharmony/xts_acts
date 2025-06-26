@@ -6,8 +6,8 @@ import deviceInfo from '@ohos.deviceInfo'
 let domain: number = 0x0000;
 let tag: string = 'testTag';
 
-export default function VibratorJsTest_misc_8() {
-  describe("VibratorJsTest_misc_8", ():void => {
+export default function MiscDeviceStaticTest() {
+  describe("MiscDeviceStaticTest", ():void => {
 
     const EFFECT_IDSUCCESS = "haptic.notice.success"
     const EFFECT_IDFAIL = "haptic.notice.fail"
@@ -316,6 +316,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest08
+     * @tc.name      : UniversalVibratorJsTest08
+     * @tc.desc      : test VibrateTime
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest08", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest08"
       let effect1: vibrator.VibrateTime = {
