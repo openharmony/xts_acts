@@ -89,7 +89,7 @@ export default function GraphicTextClass() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testParagraphBuilder_AonstructorAndAddText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testParagraphBuilder_AonstructorAndAddTextStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
       let msg = "testParagraphBuilder_AonstructorAndAddText"
       console.info(msg + 'begin');
@@ -161,7 +161,7 @@ export default function GraphicTextClass() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetLongestLine', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testGetLongestLineStatic_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
       let msg = "testGetLongestLine"
       console.info(msg + 'begin');
