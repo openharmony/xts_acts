@@ -255,11 +255,12 @@ export default function signNormalAccessBiometricExecute() {
           for (let index = 0; index < widgetParams.length; index++) {
             hilog.info(domain, tag, format,
               `Security_IAM_getUserAuthInstance_Func_Static_0043 widgetParams: ${JSON.stringify(widgetParams[index])}`)
-            await userAuthPromise({
+            const authParam: userAuth.AuthParam = {
               challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
               authTrustLevel: userAuth.AuthTrustLevel.ATL1,
               authType: [userAuth.UserAuthType.FACE]
-            }, widgetParams[index],
+            };
+            await userAuthPromise(authParam, widgetParams[index],
               'Security_IAM_getUserAuthInstance_Func_Static_0043 step' + stepIndex,
               userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
             stepIndex++;
