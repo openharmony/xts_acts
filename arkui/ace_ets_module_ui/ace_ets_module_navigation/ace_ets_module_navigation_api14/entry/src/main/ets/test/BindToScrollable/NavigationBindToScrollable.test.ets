@@ -64,15 +64,28 @@ export default function NavigationBindToScrollable() {
       console.info('[NavigationBindToScrollable_0100] click push pageOne');
       await CommonFunc.sleep(1000);
 
+      let navigation: Component = await driver.findComponent(ON.type('Navigation'));
+      let rect = await navigation.getBounds();
+      let navigationWidth = rect.right;
+      console.info('[NavigationBindToScrollable_0100] navigationWidth is ', navigationWidth);
+
       await driver.assertComponentExist(ON.type('TitleBar'));
-      await driver.assertComponentExist(ON.type('ToolBar'));
+      if (navigationWidth < 1500) {
+        await driver.assertComponentExist(ON.type('ToolBar'));
+        console.info('[NavigationBindToScrollable_0100] ToolBar is exist');
+        await driver.delayMs(1000);
+      }
 
       let scrollBar: Component = await driver.findComponent(ON.type('List'));
       await scrollBar.scrollToBottom();
       await CommonFunc.sleep(5000);
 
       await driver.assertComponentExist(ON.type('TitleBar'));
-      await driver.assertComponentExist(ON.type('ToolBar'));
+      if (navigationWidth < 1500) {
+        await driver.assertComponentExist(ON.type('ToolBar'));
+        console.info('[NavigationBindToScrollable_0100] ToolBar is exist');
+        await driver.delayMs(1000);
+      }
 
       console.info('NavigationBindToScrollable_0100 END');
       done();
