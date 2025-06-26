@@ -17,17 +17,12 @@ group("communication") {
   if (is_standard_system) {
     deps = [
       "bluetooth_ble:ActsBluetoothBleJsTest",
-      "bluetooth_ble_static:ActsBluetoothBleJsStaticTest",
       "bluetooth_bp:ActsBluetoothBpJsTest",
-      "bluetooth_bp_static:ActsBluetoothBpJsStaticTest",
       "bluetooth_br:ActsBluetoothBrJsTest",
-      "bluetooth_br_static:ActsBluetoothBrJsStaticTest",
       "bluetooth_capi:ActsBluetoothCApiTest",
       "bluetooth_nop:ActsBlutoothNopTest",
-      "bluetooth_nop_static:ActsBlutoothNopStaticTest",
       "btmanager_errorcode401:ActsBtManagerErrorCode401JsTest",
       "btmanager_switchoff:ActsBtManagerSwitchOff003JsTest",
-      "btmanager_switchoff_static:ActsBtManagerSwitchOff003JsStaticTest",
       "dsoftbus/capi_ipc:ActsCAPIIPCTest",
       "dsoftbus/ipc_stage/ipc_stageserver:ActsIPCEtsServer",
       "dsoftbus/ipc_stage/ipc_stagetest:ActsIPCEtsTest",
@@ -44,9 +39,16 @@ group("communication") {
       "wifi_capi:ActsWifiCApiTest",
       "wifi_ets_standard:ActsEtsWifiTest",
       "wifi_manager_nop:ActsManagerNopStageOhosTest",
-      "wifi_manager_nop_static:ActsManagerNopStageOhosStaticTest",
       "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
+      "wifi_manager_nop_static:ActsManagerNopStageOhosStaticTest",
+      "wifimanager_switchoff_static:ActsManagerDisableStaticTest",
+      "wifi_standard_static:ActsWifiJSStaticTest",
+      "bluetooth_ble_static:ActsBluetoothBleJsStaticTest",
+      "bluetooth_bp_static:ActsBluetoothBpJsStaticTest",
+      "bluetooth_br_static:ActsBluetoothBrJsStaticTest",
+      "bluetooth_nop_static:ActsBlutoothNopStaticTest",
+      "btmanager_switchoff_static:ActsBtManagerSwitchOff003JsStaticTest",
     ]
   } else {
     deps = [ "wifi_standard:ActsWifiJSTest" ]
