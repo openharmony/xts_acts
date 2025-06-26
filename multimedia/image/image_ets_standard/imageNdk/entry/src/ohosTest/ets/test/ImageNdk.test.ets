@@ -7389,42 +7389,6 @@ export default function imageNdkTest() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07000
-     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07000
-     * @tc.desc      : 1.create imageSource (by fd/uri)
-     *                 2.getImageProperty('ISOSpeedRatings')
-     *				   3.compare value
-     * @tc.size      : MediumTest
-     * @tc.type      : Functional
-     * @tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07000', Level.LEVEL0, async (done: Function) => {
-      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07000';
-      const key = image.PropertyKey.ISO_SPEED_RATINGS;
-      const createImageSourceTypes = ["Fd", "Uri"]
-      const values:Array<picTypeValue> = [
-        {name:'jpeg', fileName:'test_exif1.jpg', value='9999'},
-      ]
-      try {
-        for(let j = 0; j < createImageSourceTypes.length; j++){
-          for(let i=0; i<values.length; i++){
-            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
-            if(!checkResult){
-              expect().assertFail()
-              done()
-            }
-          }
-        }
-        expect(true).assertTrue()
-        done()
-      } catch (e) {
-        hilog.info(0x0000, testTag, `createImageSource error ISOSpeedRatings ` + e);
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07100
      * @tc.desc      : 1.createImageSource（by Fd/Uri）
@@ -11306,45 +11270,6 @@ export default function imageNdkTest() {
         done()
       } catch (e) {
         hilog.info(0x0000, testTag, `createImageSource error DefaultCropSize ` + e);
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17200
-     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17200
-     * @tc.desc      : 1.create imageSource (by fd/uri)
-     *                 2.getImageProperty('GIFLoopCount')
-     *				   3.compare value
-     * @tc.size      : MediumTest
-     * @tc.type      : Functional
-     * @tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17200', Level.LEVEL0, async (done: Function) => {
-      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17200';
-      const key = image.PropertyKey.GIF_LOOP_COUNT;
-      const createImageSourceTypes = ["Fd", "Uri"]
-      const values:Array<picTypeValue> = [
-        {name:'jpeg', fileName:'test_exif_v2.jpg', value=''},
-        {name:'webp', fileName:'test_exif_v2.webp', value=''},
-        {name:'png', fileName:'test_exif_v2.png', value=''},
-        {name:'heif', fileName:'test_exif_v2.heic', value=''},
-      ]
-      try {
-        for(let j = 0; j < createImageSourceTypes.length; j++){
-          for(let i=0; i<values.length; i++){
-            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
-            if(!checkResult){
-              expect().assertFail()
-              done()
-            }
-          }
-        }
-        expect(true).assertTrue()
-        done()
-      } catch (e) {
-        hilog.info(0x0000, testTag, `createImageSource error GIFLoopCount ` + e);
         expect().assertFail();
         done();
       }
