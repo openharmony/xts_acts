@@ -87,6 +87,7 @@ export default function rdbResultSetTest() {
   describe('rdbResultSetTest', ():void => {
     beforeAll(async () : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '[RELATIONAL_STORE_JSKITS_TEST] beforeAll');
+      await Utils.msSleep(2000)
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.relationalstore")
       await Utils.msSleep(2000)
       context = AppStorage.get<common.UIAbilityContext>("abilityContextMainAbility2") as common.UIAbilityContext;
