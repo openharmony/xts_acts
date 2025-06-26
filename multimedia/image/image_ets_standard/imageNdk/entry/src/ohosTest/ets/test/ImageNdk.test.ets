@@ -1927,11 +1927,11 @@ export default function imageNdkTest() {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02200';
       const key = image.PropertyKey.DATE_TIME;
       const createImageSourceTypes = ["Fd", "Uri"]
-      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2022:06:02 15:51:34"},
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2024:12:31"},
         {name: "webp", fileName: "test_exif_v2.webp", value: "2022:06:02 15:51:35"},
-        {name: "png", fileName: "test_exif_v2.png", value: "2022:06:02 15:51:34"},
-        {name: "dng", fileName: "test_exif_v2.dng", value: "2023:01:19 10:39:58"},
-        {name: "heif", fileName: "test_exif_v2.heic", value: "2022:06:02 15:51:34"}]
+        {name: "png", fileName: "test_exif_v2.png", value: "2024:12:31"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2024:04:18 18:18:43"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2024:12:31"}]
       try {
         for(let j = 0; j < createImageSourceTypes.length; j++){
           for(let i=0; i<values.length; i++){
@@ -2386,11 +2386,11 @@ export default function imageNdkTest() {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03400';
       const key = image.PropertyKey.EXPOSURE_TIME;
       const createImageSourceTypes = ["Fd", "Uri"]
-      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "xxxw"},
-        {name: "webp", fileName: "test_exif_v2.webp", value: "123"},
-        {name: "png", fileName: "test_exif_v2.png", value: "xxxw"},
-        {name: "dng", fileName: "test_exif_v2.dng", value: "."},
-        {name: "heif", fileName: "test_exif_v2.heic", value: "xxxw"}]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1/34 sec."},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1/33 sec."},
+        {name: "png", fileName: "test_exif_v2.png", value: "1/34 sec."},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1/100 sec."},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1/34 sec."}]
       try {
         for(let j = 0; j < createImageSourceTypes.length; j++){
           for(let i=0; i<values.length; i++){
@@ -2614,11 +2614,11 @@ export default function imageNdkTest() {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04000';
       const key = image.PropertyKey.GPS_LATITUDE;
       const createImageSourceTypes = ["Fd", "Uri"]
-      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "N"},
-        {name: "webp", fileName: "test_exif_v2.webp", value: "N"},
-        {name: "png", fileName: "test_exif_v2.png", value: "N"},
-        {name: "dng", fileName: "test_exif_v2.dng", value: "N"},
-        {name: "heif", fileName: "test_exif_v2.heic", value: "N"}]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "39, 54, 20"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "39, 54, 20"},
+        {name: "png", fileName: "test_exif_v2.png", value: "39, 54, 20"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "39, 54, 20"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "39, 54, 20"}]
       try {
         for(let j = 0; j < createImageSourceTypes.length; j++){
           for(let i=0; i<values.length; i++){
@@ -2766,11 +2766,11 @@ export default function imageNdkTest() {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04400';
       const key = image.PropertyKey.GPS_ALTITUDE;
       const createImageSourceTypes = ["Fd", "Uri"]
-      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Sea level"},
-        {name: "webp", fileName: "test_exif_v2.webp", value: "Sea level reference"},
-        {name: "png", fileName: "test_exif_v2.png", value: "Sea level"},
-        {name: "dng", fileName: "test_exif_v2.dng", value: "Sea level reference"},
-        {name: "heif", fileName: "test_exif_v2.heic", value: "Sea level"}]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0.00"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "0.00"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0.00"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "0.00"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0.00"}]
       try {
         for(let j = 0; j < createImageSourceTypes.length; j++){
           for(let i=0; i<values.length; i++){
@@ -3374,11 +3374,11 @@ export default function imageNdkTest() {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06000';
       const key = image.PropertyKey.GPS_DEST_LONGITUDE;
       const createImageSourceTypes = ["Fd", "Uri"]
-      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "E"},
-        {name: "webp", fileName: "test_exif_v2.webp", value: "W"},
-        {name: "png", fileName: "test_exif_v2.png", value: "E"},
-        {name: "dng", fileName: "test_exif_v2.dng", value: "E"},
-        {name: "heif", fileName: "test_exif_v2.heic", value: "E"}]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "33, 22, 11"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "33, 22, 11"},
+        {name: "png", fileName: "test_exif_v2.png", value: "33, 22, 11"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "33, 22, 11"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "33, 22, 11"}]
       try {
         for(let j = 0; j < createImageSourceTypes.length; j++){
           for(let i=0; i<values.length; i++){
@@ -4401,11 +4401,11 @@ export default function imageNdkTest() {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08800';
       const key = image.PropertyKey.APERTURE_VALUE;
       const createImageSourceTypes = ["Fd", "Uri"]
-      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.50 EV (f/2.4)"},
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "4.00 EV (f/4.0)"},
         {name: "webp", fileName: "test_exif_v2.webp", value: "1.69 EV (f/1.8)"},
-        {name: "png", fileName: "test_exif_v2.png", value: "2.50 EV (f/2.4)"},
-        {name: "dng", fileName: "test_exif_v2.dng", value: "0.08 EV (f/1.0)"},
-        {name: "heif", fileName: "test_exif_v2.heic", value: "2.50 EV (f/2.4)"}]
+        {name: "png", fileName: "test_exif_v2.png", value: "4.00 EV (f/4.0)"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2.00 EV (f/2.0)"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "4.00 EV (f/4.0)"}]
       try {
         for(let j = 0; j < createImageSourceTypes.length; j++){
           for(let i=0; i<values.length; i++){
