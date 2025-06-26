@@ -22,6 +22,10 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import Utils from './Util.test';
 import { AppStorage } from '@ohos.arkui.stateManagement';
 import common from '@ohos.app.ability.common';
+
+let context:common.UIAbilityContext;
+let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+
 let domain: number = 0x0000;
 let tag: string = 'testTag';
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -56,8 +60,6 @@ let STORE_CONFIG2 :data_relationalStore.StoreConfig = {
   name: "test2.db",
   securityLevel: data_relationalStore.SecurityLevel.S1,
 }
-let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-let context:common.UIAbilityContext;
 let rdbStore : data_relationalStore.RdbStore
 let rdbStore1 : data_relationalStore.RdbStore
 let rdbStore2 : data_relationalStore.RdbStore
@@ -589,7 +591,7 @@ export default function rdbResultSetTest() {
       let predicates = new data_relationalStore.RdbPredicates('testerrcode4444');
       predicates.equalTo("data1", "xiiiiiiiiii");
       try {
-        rdbStore2.delete(predicates,(err:BusinessError<void>|null, rows: Long|undefined):void=> {
+        rdbStore2.delete(predicates,(err:BusinessError<void> | null, rows:Long | undefined):void => {
           if (err == null) {
             hilog.info(domain, tag, '%{public}s', 'delete successfully');
             expect().assertFail();
@@ -618,7 +620,7 @@ export default function rdbResultSetTest() {
     it('errcode020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '************* errcode020 start *************');
       try {
-          rdbStore2.executeSql("select * FROM employee", (err:BusinessError<void>|null):void => {
+          rdbStore2.executeSql("select * FROM employee", (err:BusinessError<void> | null) :void => {
             if (err == null) {
               hilog.info(domain, tag, '%{public}s', 'executeSql successfully');
               expect().assertFail();
