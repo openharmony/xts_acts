@@ -962,25 +962,6 @@ async function testSetMediaMuted(src: string | media.AVFileDescriptor, avPlayer:
   });
 }
 
-async function testSetVideoMuted(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null,
-  done: Function) {
-  console.info(`case media source: ${src}`)
-  media.createAVPlayer((err, video) => {
-    console.info(`case media err: ${err}`)
-    if (typeof (video) !== 'undefined') {
-      console.info('case createAVPlayer success');
-      avPlayer = video;
-      setVideoMuted(avPlayer, done)
-      setSource(avPlayer, src);
-    }
-    if (err != null) {
-      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
-      expect().assertFail();
-      done();
-    }
-  });
-}
-
 async function getPlaybackPosition(avPlayer: media.AVPlayer | null, done: Function) {
   let playbackPosition: number = -1;
   let stateChangeCallback = async (state: media.AVPlayerState) => {
