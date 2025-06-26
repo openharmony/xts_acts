@@ -583,7 +583,7 @@ export default function KvStoreEtsTestStatic() {
         kvManager.getKVStore(TEST_DEVICE_STORE_ID, deviceOptions, (err: BusinessError<void> | null, store: distributedKVStore.DeviceKVStore | undefined) => {
           if (store !== undefined) {
             store.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError<void> | null) => {
-              store.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError<void> | null) => {
+              store.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError<void> | null, value) => {
                 expect(VALUE_TEST_STRING_ELEMENT == (value as string)).assertTrue();
                 hilog.info(domain, tag, '%{public}s', "============done ");
                 done();

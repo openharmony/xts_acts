@@ -240,7 +240,7 @@ export default function openLinkStaticTest() {
           if (result !== undefined) {
             hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
             hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
-            expect(result.resultCode).assertEqual(resultCode);
+            expect(result!.resultCode).assertEqual(resultCode);
           }
           done();
         }).then(() => {
@@ -274,7 +274,7 @@ export default function openLinkStaticTest() {
           if (result !== undefined) {
             hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
             hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
-            expect(result.resultCode).assertEqual(resultCode);
+            expect(result!.resultCode).assertEqual(resultCode);
           }
           done();
         }).then(() => {
@@ -309,7 +309,7 @@ export default function openLinkStaticTest() {
           if (result !== undefined) {
             hilog.info(domain, tag, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
             hilog.info(domain, tag, `openLink callback result data: ${JSON.stringify(result.want)}`);
-            expect(result.resultCode).assertEqual(resultCode);
+            expect(result!.resultCode).assertEqual(resultCode);
           }
           done();
         }).then(() => {

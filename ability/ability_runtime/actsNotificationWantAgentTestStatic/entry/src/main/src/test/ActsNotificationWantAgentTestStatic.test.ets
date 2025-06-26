@@ -349,10 +349,10 @@ export default function ActsNotificationWantAgentStaticTest() {
             expect().assertFail();
             done()
           } else {
-            WantAgent = data;
-            hilog.info(domain, tag, 'getWantAgent AsyncCallback success: ' + JSON.stringify(data))
-            if (WantAgent !== undefined) {
-              wantAgent.getOperationType(WantAgent, (err: BusinessError<void> | null, data: Double | undefined) => {
+            if (data !== undefined) {
+                WantAgent = data;
+                hilog.info(domain, tag, 'getWantAgent AsyncCallback success: ' + JSON.stringify(data))
+                wantAgent.getOperationType(WantAgent, (err: BusinessError<void> | null, data: Double | undefined) => {
                 if (err && err.code !== 0) {
                   hilog.info(domain, tag, 'getOperationType AsyncCallback err:' + JSON.stringify(err))
                   expect().assertFail();

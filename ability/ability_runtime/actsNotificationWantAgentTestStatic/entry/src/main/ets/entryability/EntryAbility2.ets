@@ -46,10 +46,10 @@ class EntryAbility2 extends UIAbility {
       },
     };
     setTimeout(async () => {
-      this.context.terminateSelfWithResult(abilityResult, (err: BusinessError<void>) => {
-        if (err.code !== 0) {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'secondAbility terminateSelf errCode:' + JSON.stringify(err.code) +
-            'errMessage:' + JSON.stringify(err.message));
+      this.context.terminateSelfWithResult(abilityResult, (err: BusinessError<void> | null) => {
+        if (err?.code !== 0) {
+          hilog.info(0x0000, 'testTag', '%{public}s', 'secondAbility terminateSelf errCode:' + JSON.stringify(err?.code) +
+            'errMessage:' + JSON.stringify(err?.message));
         } else {
           hilog.info(0x0000, 'testTag', '%{public}s', 'secondAbility terminateSelf sucess');
         }

@@ -33,7 +33,7 @@ class EntryAbility extends UIAbility {
       windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
         hilog.info(0x0000, 'testTag sjd EntryAbility', 'loadContent entering');
         MyCallback.runCasesOfCallback();
-        if (err && err.code) {
+        if (err?.code) {
           hilog.info(0x0000, 'testTag sjd EntryAbility', 'loadContent error');
           return;
         }
