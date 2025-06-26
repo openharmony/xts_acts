@@ -22,9 +22,11 @@ export default function getBundleInfoForSelf() {
         bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT,
           (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
             hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> start');
-            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackDefault  ====> data' + JSON.stringify(data));
-            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackDefault  ====> err' + JSON.stringify(err));
-            if (data !== undefined) {
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackDefault  ====> data' + JSON.stringify(data));
               expect(data.name).assertEqual(BUNDLE_NAME);
               expect(data.vendor).assertEqual(VENDOR);
               expect(data.versionCode + '').assertEqual('1000000');
@@ -38,6 +40,9 @@ export default function getBundleInfoForSelf() {
               expect(data.hapModulesInfo.length + '').assertEqual('0');
               expect(data.reqPermissionDetails.length + '').assertEqual('0');
               expect(data.permissionGrantStates.length + '').assertEqual('0');
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> Fail');
+              expect().assertFail();
             }
             hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> end');
             done();
@@ -113,8 +118,11 @@ export default function getBundleInfoForSelf() {
         bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION,
           (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
             hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> start');
-            hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> data' + JSON.stringify(data));
-            if (data !== undefined) {
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> data' + JSON.stringify(data));
               expect(data.appInfo.debug).assertTrue();
               expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.APP);
               expect(data.appInfo.name).assertEqual(BUNDLE_NAME);
@@ -153,6 +161,9 @@ export default function getBundleInfoForSelf() {
               expect(data.appInfo.installSource).assertEqual("unknown");
               expect(data.appInfo.releaseType.length).assertLarger(0.0);
               expect(data.appInfo.cloudFileSyncEnabled).assertFalse();
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> Fail');
+              expect().assertFail();
             }
             hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> end');
             done();
@@ -277,8 +288,11 @@ export default function getBundleInfoForSelf() {
         bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE,
           (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
             hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> start');
-            hilog.info(0x0000, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> ' + JSON.stringify(data));
-            if (data !== undefined) {
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(0x0000, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> ' + JSON.stringify(data));
               expect(data.appInfo).assertEqual(null);
               expect(data.hapModulesInfo.length).assertEqual(1.0);
               expect(data.hapModulesInfo[0].name).assertEqual("entry");
@@ -304,6 +318,9 @@ export default function getBundleInfoForSelf() {
               expect(data.hapModulesInfo[0].codePath).assertEqual("/data/storage/el1/bundle/entry.hap");
               expect(data.hapModulesInfo[0].nativeLibraryPath).assertEqual("");
               expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("");
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> Fail');
+              expect().assertFail();
             }
             hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> end');
             done();
@@ -405,9 +422,11 @@ export default function getBundleInfoForSelf() {
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY,
           (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
             hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> start');
-            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> data' + JSON.stringify(data));
-            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> err' + JSON.stringify(err));
-            if (data !== undefined) {
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> data' + JSON.stringify(data));
               expect(data.appInfo).assertEqual(null);
               expect(data.hapModulesInfo[0].abilitiesInfo[0].bundleName).assertEqual(BUNDLE_NAME);
               expect(data.hapModulesInfo[0].abilitiesInfo[0].moduleName).assertEqual("entry");
@@ -438,6 +457,9 @@ export default function getBundleInfoForSelf() {
               expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowWidth).assertEqual(0.0);
               expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowHeight).assertEqual(0.0);
               expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowHeight).assertEqual(0.0);
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> Fail');
+              expect().assertFail();
             }
             hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> end');
             done();
