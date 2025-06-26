@@ -43,7 +43,7 @@ export default function bluetoothAccessTest() {
                 let arr: Array<Permissions> = new Array<Permissions>();
                 arr.push('ohos.permission.ACCESS_BLUETOOTH')
                 atManager.requestPermissionsFromUser(g_context, arr,
-                    (err: BusinessError, data: PermissionRequestResult) => {
+                    (err: BusinessError<void> | null, data: PermissionRequestResult) => {
                         hilog.info(0x0000, 'testTag', ' requestPermissionsFromUser end');
                         hilog.info(domain, tag, "request success permissions" + JSON.stringify(data));
                         hilog.info(domain, tag, "getPermissionRequestResult err" + JSON.stringify(err));
