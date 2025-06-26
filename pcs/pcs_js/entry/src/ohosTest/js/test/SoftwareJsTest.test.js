@@ -197,6 +197,9 @@ export default function softwareJsTest() {
          */
         it('testWeblikePrivateDirectoryPath0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let driver = Driver.create()
+            let button = await driver.findComponent(ON.text('refresh'))
+            await driver.delayMs(1000)
+            await button.click()
             await driver.delayMs(5000)
             let text = await driver.findComponent(ON.id('fileText1'))
             expect(text != undefined).assertTrue()

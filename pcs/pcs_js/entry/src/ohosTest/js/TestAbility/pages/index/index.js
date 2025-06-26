@@ -60,7 +60,7 @@ export default {
             uri: 'internal://app/test.txt',
             success: function (data) {
                 that.fileText1 = data.text
-                console.info('read file success.');
+                console.info('read file success. that.fileText1111 = ' + that.fileText1);
             },
             fail: function (data, code) {
                 console.error('read file fail , code: ' + code + ', data: ' + data);
