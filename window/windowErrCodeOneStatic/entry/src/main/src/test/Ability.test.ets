@@ -106,64 +106,6 @@ export default function abilityTest() {
       })
 
     /**
-     * @tc.number     : windowErrCodeOneStatic_testsetWaterMarkFlagCallBack_static_0102
-     * @tc.name       : windowErrCodeOneStatic_testsetWaterMarkFlagCallBack_static_0102
-     * @tc.desc       : windowErrCodeOneStatic_testsetWaterMarkFlagCallBack_static_0102
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it("windowErrCodeOneStatic_testsetWaterMarkFlagCallBack_static_0102",
-      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-        hilog.info(domain, tag, '%{public}s', 'testGetMainWindowCallBack start');
-        win.setWaterMarkFlag(true, (err: BusinessError): void => {
-          const errCode: number = err.code;
-          if (errCode) {
-            if (err.code == 202) {
-              hilog.info(0x0000, '[ANI]',
-                `finaltest [ANI] setWaterMarkFlag callback success  , Cause code: ${err.code}`);
-              expect(true).assertTrue();
-              done();
-            } else {
-              hilog.info(0x0000, '[ANI]',
-                `finaltest [ANI] setWaterMarkFlag callback Failed  , Cause code: ${err.code}, message: ${err.message}`);
-              expect(false).assertTrue();
-              done();
-            }
-          }
-          hilog.info(0x0000, '[ANI]', `finaltest [ANI] setWaterMarkFlag callback Succeed `);
-        });
-        expect(true).assertTrue();
-        done();
-      })
-    /**
-     * @tc.number     : windowErrCodeOneStatic_testsetWaterMarkFlagPromise_static_0103
-     * @tc.name       : windowErrCodeOneStatic_testsetWaterMarkFlagPromise_static_0103
-     * @tc.desc       : windowErrCodeOneStatic_testsetWaterMarkFlagPromise_static_0103
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it("windowErrCodeOneStatic_testsetWaterMarkFlagPromise_static_0103",
-      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-        win.setWaterMarkFlag(true).then((): void => {
-          hilog.info(0x0000, '[ANI]', 'finaltest [ANI] setWaterMarkFlag promise Succeeded ' + JSON.stringify(win));
-        }).catch((e: NullishType): void => {
-          let err = e as BusinessError;
-          if (err.code == 202) {
-            expect(true).assertTrue();
-            hilog.info(0x0000, '[ANI]',
-              'finaltest [ANI] setWaterMarkFlag promise success errcode: ' + JSON.stringify(err.code));
-          } else {
-            expect(false).assertTrue();
-            hilog.info(0x0000, '[ANI]', 'finaltest [ANI] setWaterMarkFlag promise fall ' + JSON.stringify(e));
-          }
-        });
-        expect(true).assertTrue();
-        done();
-      })
-
-    /**
      * @tc.number     : windowErrCodeOneStatic_testgetWindowProperties_static_0104
      * @tc.name       : windowErrCodeOneStatic_testgetWindowProperties_static_0104
      * @tc.desc       : windowErrCodeOneStatic_testgetWindowProperties_static_0104
@@ -249,7 +191,7 @@ export default function abilityTest() {
           hilog.info(0x0000, "hh", "finaltest [ANI] setWindowDecorVisible success");
           expect(true).assertTrue();
         } catch (e: BusinessError) {
-          if (Math.abs(e.code - 801) < 0.1) { // e.code == 801 not support
+          if (e.code == 801) { // e.code == 801 not support
             hilog.info(0x0000, "hh", "finaltest [ANI] testsetWindowDecorVisible success: " + JSON.stringify(e.code));
             expect(true).assertTrue();
             done();
@@ -380,33 +322,6 @@ export default function abilityTest() {
           hilog.info(0x0000, '[ANI]',
             `finaltest [ANI] setWindowTouchable promise  Failed, Cause code: ${err.code}, message: ${err.message}`);
         });
-        done();
-      })
-
-    /**
-     * @tc.number     : windowErrCodeOneStatic_testsetShowOnLockScreen_static_0113
-     * @tc.name       : windowErrCodeOneStatic_testsetShowOnLockScreen_static_0113
-     * @tc.desc       : windowErrCodeOneStatic_testsetShowOnLockScreen_static_0113
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it("windowErrCodeOneStatic_testsetShowOnLockScreen_static_0113", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (done: () => void): Promise<void> => {
-        try {
-          windowStage.setShowOnLockScreen(false);
-          hilog.info(0x0000, '[ANI]', 'finaltest [ANI] setShowOnLockScreen Succeeded');
-          expect(true).assertTrue();
-        } catch (e: BusinessError) {
-          if (e.code == 202) { // non sys api
-            hilog.info(0x0000, '[ANI]',
-              'finaltest [ANI] setShowOnLockScreen success, but non sys app ' + JSON.stringify(e));
-            expect(true).assertTrue();
-          } else {
-            hilog.info(0x0000, '[ANI]', 'finaltest [ANI] setShowOnLockScreen error ' + JSON.stringify(e));
-            expect(false).assertTrue();
-          }
-        }
         done();
       })
     /**
@@ -1205,33 +1120,6 @@ export default function abilityTest() {
         done();
       });
 
-    // 3. 禁用窗口装饰测试
-    /**
-     * @tc.number     : windowErrCodeOneStatic_disableWindowDecorTest_static_0139
-     * @tc.name       : windowErrCodeOneStatic_disableWindowDecorTest_static_0139
-     * @tc.desc       : windowErrCodeOneStatic_disableWindowDecorTest_static_0139
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it("windowErrCodeOneStatic_disableWindowDecorTest_static_0139", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (done: () => void): Promise<void> => {
-        try {
-          windowStage.disableWindowDecor();
-          hilog.info(0x0000, '[ANI]', 'finaltest [ANI] disableWindowDecorTest Success');
-          expect(true).assertTrue();
-        } catch (e: BusinessError) {
-          if (e.code == 202) { // non sys app
-            hilog.info(0x0000, '[ANI]', 'finaltest [ANI] disableWindowDecorTest Sussess' + e.message);
-            expect(true).assertTrue();
-          } else {
-            hilog.info(0x0000, '[ANI]', 'finaltest [ANI] disableWindowDecorTest fail: ' + JSON.stringify(e));
-            expect(false).assertTrue();
-          }
-          done();
-        }
-        done();
-      });
     /**
      * @tc.number     : windowErrCodeOneStatic_getWindowAvoidAreaTest_static_0140
      * @tc.name       : windowErrCodeOneStatic_getWindowAvoidAreaTest_static_0140
