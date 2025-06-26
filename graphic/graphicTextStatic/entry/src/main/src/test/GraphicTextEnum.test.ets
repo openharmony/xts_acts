@@ -281,14 +281,14 @@ export default function GraphicTextEnum() {
     })
 
     /**
-     * @tc.number    : testFontWidthStatic
-     * @tc.name      : testFontWidthStatic
+     * @tc.number    : testFontWidthStatic_01
+     * @tc.name      : testFontWidthStatic_01
      * @tc.desc      : To test the enum value of EllipsisMode.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testFontWidthStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('testFontWidthStatic_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         let msg = "testEllipsisMode"
         console.info(msg + 'begin');
