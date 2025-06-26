@@ -87,7 +87,6 @@ group("ability_runtime") {
       "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
       "apicover:apicover",
       "apitest:ActsApiTest",
-      "apiteststatic:ActsApiStaticTest",
       "appclone:appclonetest",
       "capiabilityruntime:ActsCapiAbilityRuntimeTest",
       "capichildprocess:ActsCapiChildProcessTest",
