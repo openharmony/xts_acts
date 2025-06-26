@@ -25,28 +25,28 @@ export default function toolBarModifierPage() {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/toolBar/toolBarModifierPage',
       }
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get toolBarModifierPage state pages: " + JSON.stringify(pages));
-        if (!('toolBarModifierPage' == pages.name)) {
+        if (!("toolBarModifierPage" == pages.name)) {
           console.info("get toolBarModifierPage pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push toolBarModifierPage page result successful");
         }
       } catch (err) {
         console.error("push toolBarModifierPage page error: " + err);
       }
 
-      await Utils.sleep(1000);
-      console.info('toolBarModifierPage beforeEach end');
-      done();
+      await Utils.sleep(1000)
+      console.info("toolBarModifierPage beforeEach end");
+      done()
     });
 
     afterEach(async () => {
       await Utils.sleep(1000);
-      console.info('toolBarModifierPage after each called');
+      console.info("toolBarModifierPage after each called");
     })
 
     /**

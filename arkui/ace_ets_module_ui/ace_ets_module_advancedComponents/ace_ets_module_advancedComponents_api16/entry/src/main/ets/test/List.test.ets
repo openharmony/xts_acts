@@ -65,10 +65,10 @@ export default function testsuite() {
   tipsDialogTest();
   selectDialogTest();
   confirmDialogTest();
+  composeListItemAccessibilityPageTest();
+  exceptionPromptSymbolStyleTest();
   alertDialogTest();
   loadingDialogTest();
   popoverDialogTest();
   customContentDialogTest();
-  composeListItemAccessibilityPageTest();
-  exceptionPromptSymbolStyleTest();
 }

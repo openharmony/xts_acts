@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -58,19 +58,19 @@ export default function subHeaderAccessibilityTest() {
      */
     it('subHeaderAccessibilityPage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-      console.info('[subHeaderAccessibilityPage_0100] START');
-      let driver = await Driver.create();
-      await driver.delayMs(2000);
-      // subHeaderAccessibilityPage是否存在以下入口。
-      let primaryTitle = await driver.findComponent(ON.text('一级标题'));
-      let secondaryTitle = await driver.findComponent(ON.text('二级标题'));
-      let operation = await driver.findComponent(ON.text('操作'));
-      expect(primaryTitle !== null).assertTrue();
-      expect(secondaryTitle !== null).assertTrue();
-      expect(operation !== null).assertTrue();
-      await driver.delayMs(1000);
-      console.info('[subHeaderAccessibilityPage_0100] END');
-      done();
-    });
+        console.info('[subHeaderAccessibilityPage_0100] START');
+        let driver = await Driver.create();
+        await driver.delayMs(2000);
+        // subHeaderAccessibilityPage是否存在以下入口。
+        let primaryTitle = await driver.findComponent(ON.text('一级标题'));
+        let secondaryTitle = await driver.findComponent(ON.text('二级标题'));
+        let operation = await driver.findComponent(ON.text('操作'));
+        expect(primaryTitle !== null).assertTrue();
+        expect(secondaryTitle !== null).assertTrue();
+        expect(operation !== null).assertTrue();
+        await driver.delayMs(1000);
+        console.info('[subHeaderAccessibilityPage_0100] END');
+        done();
+      });
   })
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -58,15 +58,15 @@ export default function editableTitleBarAccessibilityTest() {
      */
     it('editableTitleBarAccessibilityPage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-      console.info('[editableTitleBarAccessibilityPage_0100] START');
-      let driver = await Driver.create();
-      await driver.delayMs(2000);
-      // 点击打开editableTitleBar是否存在以下入口。
-      let title = await driver.findComponent(ON.text('编辑页面'));
-      expect(title !== null).assertTrue();
-      await driver.delayMs(1000);
-      console.info('[editableTitleBarAccessibilityPage_0100] END');
-      done();
-    });
+        console.info('[editableTitleBarAccessibilityPage_0100] START');
+        let driver = await Driver.create();
+        await driver.delayMs(2000);
+        // 点击打开editableTitleBar是否存在以下入口。
+        let title = await driver.findComponent(ON.text('编辑页面'));
+        expect(title !== null).assertTrue();
+        await driver.delayMs(1000);
+        console.info('[editableTitleBarAccessibilityPage_0100] END');
+        done();
+      });
   })
 }
