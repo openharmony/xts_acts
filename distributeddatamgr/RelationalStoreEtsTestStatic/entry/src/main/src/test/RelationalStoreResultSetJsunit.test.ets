@@ -26,7 +26,7 @@ import common from '@ohos.app.ability.common';
 let domain: number = 0x0000;
 let tag: string = 'testTag';
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-  "data1 text," + "data2 long, " + "data3 double," + "data4 blob," + "data5 ASSET," + "data6 ASSETS," +
+  "data1 text," + "data2 INTEGER, " + "data3 REAL," + "data4 BLOB," + "data5 ASSET," + "data6 ASSETS," +
   "data7 floatvector(128)," + "data8 UNLIMITED INT" + ")";
 
 const DROP_TABLE_TEST = "DROP TABLE IF EXISTS test";
@@ -50,7 +50,7 @@ let STORE_CONFIG1 :data_relationalStore.StoreConfig = {
 
 
 const CREATE_TABLE_TESTERRCODE = "CREATE TABLE IF NOT EXISTS testerrcode (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-  "data1 TEXT NOT NULL," + "data2 long, " + "data3 double," + "data4 blob," + "data5 ASSET," + "data6 ASSETS," +
+  "data1 TEXT NOT NULL," + "data2 INTEGER, " + "data3 REAL," + "data4 BLOB," + "data5 ASSET," + "data6 ASSETS," +
   "data7 floatvector(128)," + "data8 UNLIMITED INT" + ")";
 
 const DROP_TABLE_TESTERRCODE = "DROP TABLE IF EXISTS testerrcode";
@@ -67,19 +67,19 @@ let rdbStore2 : data_relationalStore.RdbStore
 let vbs :Array<data_relationalStore.ValuesBucket> = new Array<data_relationalStore.ValuesBucket>(3);
 const valueBucket0 :data_relationalStore.ValuesBucket = {
   "data1": "hello",
-  "data2": 10 as long,//
+  "data2": 10,//
   "data3": 1.0,
   "data4": new Uint8Array([1, 2, 3]),
 }
 const valueBucket1 :data_relationalStore.ValuesBucket = {
   "data1": "2",
-  "data2": 200 as long,
+  "data2": 200,
   "data3": 100000.5,
   "data4": new Uint8Array([3, 4, 5]),
 }
 const valueBucket2 :data_relationalStore.ValuesBucket = {
   "data1": "hello world",
-  "data2": 300 as long,
+  "data2": 300,
   "data3": 100000.9,
   "data4": new Uint8Array(0),
 }
@@ -260,7 +260,7 @@ export default function rdbResultSetTest() {
 
         const valueBucket :data_relationalStore.ValuesBucket = {
           "name": "lisi",
-          "age": 180 as long,
+          "age": 180,
           "salary": 100.5,
           "blobType": u8,
         }
@@ -301,7 +301,7 @@ export default function rdbResultSetTest() {
         });
         const valueBucket :data_relationalStore.ValuesBucket = {
           "name": "lisi",
-          "age": 180 as long,
+          "age": 180,
           "salary": 100.5,
           "blobType": u8,
         }
@@ -309,7 +309,7 @@ export default function rdbResultSetTest() {
 
         const valueBucket1 :data_relationalStore.ValuesBucket = {
           "name": "zhangsan",
-          "age": 200 as long,
+          "age": 200,
           "salary": 9.5,
           "blobType": u8,
         }
@@ -317,7 +317,7 @@ export default function rdbResultSetTest() {
 
         const valueBucket2 :data_relationalStore.ValuesBucket = {
           "name": "wangwu",
-          "age": 160 as long,
+          "age": 160,
           "salary": 99.0,
           "blobType": u8,
         }
@@ -342,7 +342,7 @@ export default function rdbResultSetTest() {
     /**
      * @tc.name       : testRdbTransactionRollBack0001
      * @tc.number     : SUB_DistributedData_RelationalStore_SDK_qiangjiAPITest_1000
-     * @tc.desc       : rollBack normal test
+     * @tc.desc       : rollback normal test
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
@@ -359,7 +359,7 @@ export default function rdbResultSetTest() {
 
         let bind_args :Array<data_relationalStore.ValueType> = new Array<data_relationalStore.ValueType>(4);
         bind_args[0] = 'lisi'
-        bind_args[1] = 180 as long
+        bind_args[1] = 180
         bind_args[2] = 100.5
         bind_args[3] = u8
         await transaction.execute(insertSqlArgs, bind_args)
@@ -420,7 +420,7 @@ export default function rdbResultSetTest() {
       }
       const valueBucket :data_relationalStore.ValuesBucket = {
         "data1": "hello",
-        "data2": 10 as long,//
+        "data2": 10,
         "data3": 1.0,
         "data4": new Uint8Array([1, 2, 3]),
       }
@@ -661,7 +661,7 @@ export default function rdbResultSetTest() {
       hilog.info(domain, tag, '%{public}s', '************* errcode028 start *************');
       await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       try {
-        await rdbStore2.execute("INSERT INTO testerrcode(data2, data3,data4) VALUES (?,?,?)",  [80 as long, 111188.1, new Uint8Array(0)])
+        await rdbStore2.execute("INSERT INTO testerrcode(data2, data3,data4) VALUES (?,?,?)",  [80, 111188.1, new Uint8Array(0)])
         hilog.info(domain, tag, '%{public}s', 'execute suceess');
         expect().assertFail();
       } catch (err:BusinessError) {
@@ -684,7 +684,7 @@ export default function rdbResultSetTest() {
       hilog.info(domain, tag, '%{public}s', '************* errcode031 start *************');
       await rdbStore2.execute(CREATE_TABLE_TESTERRCODE);
       try {
-        await rdbStore2.execute("INSERT INTO testerrcode(id, data1, data2, data3,data4) VALUES (?,?,?,?,?)",  ['abc','hello',80 as long, 111188.1, new Uint8Array(0)])
+        await rdbStore2.execute("INSERT INTO testerrcode(id, data1, data2, data3,data4) VALUES (?,?,?,?,?)",  ['abc','hello',80, 111188.1, new Uint8Array(0)])
         hilog.info(domain, tag, '%{public}s', 'execute success');
         expect().assertFail();
       } catch (err:BusinessError) {
