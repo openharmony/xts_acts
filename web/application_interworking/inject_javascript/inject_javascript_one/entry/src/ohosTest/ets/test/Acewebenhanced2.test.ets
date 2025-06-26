@@ -30,22 +30,36 @@ export default function AceWeb() {
 
   describe('AceWeb', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(async () => {
-      await driver.delayMs(500)
-      webview.WebviewController.initializeWebEngine()
-      router.pushUrl({
-        url: "testability/pages/IndexOthers"
-      })
-      await driver.delayMs(2000);
+    beforeAll(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'testability/pages/IndexOthers',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get IndexOthers state success " + JSON.stringify(pages));
+        if (!("IndexOthers" == pages.name)) {
+          console.info("get IndexOthers state success " + JSON.stringify(pages.name));
+          let result = await router.pushUrl(options);
+          await Utils.sleep(2000);
+          console.info("push IndexOthers page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push IndexOthers page error: " + err);
+      }
+      done()
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(() => {
+    beforeEach(async (done: Function) => {
       config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
         console.info(`enable success`);
         }).catch((err: object) => {
         console.error(`failed to enable, ${err}`);
       })
+      await Utils.sleep(2000);
+      console.info("IndexOthers beforeEach start");
+      done();
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
