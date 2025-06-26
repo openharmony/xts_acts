@@ -59,10 +59,10 @@ export default function abilityTest() {
 
     /**
      * @tc.number: ACTS_AddAbilityMonitor_Callback_0100
-     * @tc.name: Verify that the addAbilityMonitor interface functions normally.
+     * @tc.name: ACTS_AddAbilityMonitor_Callback_0100
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility to trigger onAbilityCreate (Callback).
      */
-    it('ACTS_AddAbilityMonitor_Callback_0100', 0, async (done: () => void): Promise<void> => {
+    it('ACTS_AddAbilityMonitor_Callback_0100', Level.LEVEL0, async (done: () => void): Promise<void> => {
       TAG = "ACTS_AddAbilityMonitor_Callback_0100";
       hilog.info(0x0000, tag, '%{public}s', TAG + " start");
       let onAbilityCreate = (ability: UIAbility) => {

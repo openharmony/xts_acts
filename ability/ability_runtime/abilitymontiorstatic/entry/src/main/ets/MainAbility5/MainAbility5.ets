@@ -51,7 +51,7 @@ class MainAbility5 extends UIAbility {
     }
     setTimeout(() => {
       this.context.terminateSelf().then(() => {
-        console.log("====>MainAbility4 in terminateSelf====>");
+        console.log('====>MainAbility4 in terminateSelf====>');
       })
     }, 2000)
   }
