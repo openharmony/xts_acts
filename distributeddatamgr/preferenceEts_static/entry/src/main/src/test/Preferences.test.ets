@@ -342,7 +342,7 @@ export default function preferenceTest() {
                     expect(preferences != null).assertTrue();
                 }
             })
-            dataPreferences.removePreferencesFromCache(context, NAME, <Object>(err: BusinessError<void>|null, data: Object) : void => {
+            dataPreferences.removePreferencesFromCache(context, NAME, (err: BusinessError<void>|null, data: Object) : void => {
                 if(err != null){
                     hilog.info(domain, tag, '%{public}s', TAG + "Remove preferences from cache error: " + err)
                     expect(false).assertTrue();
@@ -558,7 +558,7 @@ export default function preferenceTest() {
                     expect(preferences != null).assertTrue();
                 }
             })
-            dataPreferences.deletePreferences(context, NAME, <Object>(err: BusinessError<void>|null, data: Object) : void => {
+            dataPreferences.deletePreferences(context, NAME, (err: BusinessError<void>|null, data: Object) : void => {
                 if(err != null){
                     hilog.info(domain, tag, '%{public}s', TAG + "Delete preferences err: " + err)
                     expect(false).assertTrue();
@@ -607,7 +607,7 @@ export default function preferenceTest() {
             mPreferences.clearSync();
             mPreferences.putSync(KEY_TEST_STRING_ELEMENT, 'test')
             mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
-            mPreferences.flush(<Object>(err: BusinessError<void>|null, val: Object):void => {
+            mPreferences.flush((err: BusinessError<void>|null, val: Object):void => {
                 if (err) {
                     console.log("flush err.");
                     expect().assertFail();
