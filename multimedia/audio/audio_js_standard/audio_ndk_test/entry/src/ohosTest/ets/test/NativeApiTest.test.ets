@@ -3841,5 +3841,111 @@ export default function audioNDK() {
       expect(result).assertEqual(0)
       done()
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_001
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_001
+     * @tc.desc      : test OH_AudioManager_GetAudioStreamManager nullptr
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetAudioStreamManagerTest_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_001 audioManagerGetAudioStreamManagerTest_001: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_002
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_002
+     * @tc.desc      : test OH_AudioManager_GetAudioStreamManager
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetAudioStreamManagerTest_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_002 audioManagerGetAudioStreamManagerTest_002: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_001
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_001
+     * @tc.desc      : test OH_AudioStreamManager_GetDirectPlaybackSupport
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetDirectPlaybackSupportTest_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_001 AudioManagerGetDirectPlaybackSupportTest_001: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_002
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_002
+     * @tc.desc      : test OH_AudioStreamManager_GetDirectPlaybackSupport nullptr
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetDirectPlaybackSupportTest_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_001 AudioManagerGetDirectPlaybackSupportTest_001: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_003
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_003
+     * @tc.desc      : test OH_AudioStreamManager_GetDirectPlaybackSupport nullptr
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetDirectPlaybackSupportTest_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_001 AudioManagerGetDirectPlaybackSupportTest_001: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_004
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_004
+     * @tc.desc      : test OH_AudioStreamManager_GetDirectPlaybackSupport nullptr
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetDirectPlaybackSupportTest_004();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_001 AudioManagerGetDirectPlaybackSupportTest_001: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_005
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_005
+     * @tc.desc      : test OH_AudioStreamManager_GetDirectPlaybackSupport usage invaild
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetDirectPlaybackSupportTest_005();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAMMANAGER_GETDIRECTPLAYBACKSUPPORT_001 AudioManagerGetDirectPlaybackSupportTest_001: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
   })
 }
