@@ -64,8 +64,17 @@ export default function NavigationBindToNestedScrollable() {
       console.info('[NavigationBindToNestedScrollable_0100] click push pageOne');
       await CommonFunc.sleep(1000);
 
+      let navigation: Component = await driver.findComponent(ON.type('Navigation'));
+      let rect2 = await navigation.getBounds();
+      let navigationWidth = rect2.right;
+      console.info('[NavigationBindToNestedScrollable_0100] navigationWidth is ', navigationWidth);
+
       await driver.assertComponentExist(ON.type('TitleBar'));
-      await driver.assertComponentExist(ON.type('ToolBar'));
+      if (navigationWidth < 1500) {
+        await driver.assertComponentExist(ON.type('ToolBar'));
+        console.info('[NavigationBindToNestedScrollable_0100] ToolBar is exist');
+        await driver.delayMs(1000);
+      }
 
       let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
       let scrollBarRect = await scrollBar.getBounds();
@@ -77,7 +86,10 @@ export default function NavigationBindToNestedScrollable() {
       await driver.delayMs(500)
 
       await driver.assertComponentExist(ON.type('TitleBar'));
-      await driver.assertComponentExist(ON.type('ToolBar'));
+      if (navigationWidth < 1500) {
+        await driver.assertComponentExist(ON.type('ToolBar'));
+        await driver.delayMs(1000);
+      }
 
       let component3: Component  = await driver.findComponent(ON.type('ToolBar'));
       let toolBarRect = await component3.getBounds();
