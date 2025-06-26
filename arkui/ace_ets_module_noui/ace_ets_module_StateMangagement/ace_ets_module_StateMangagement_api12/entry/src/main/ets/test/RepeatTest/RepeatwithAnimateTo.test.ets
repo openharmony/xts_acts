@@ -65,7 +65,7 @@ export default function RepeatwithAnimateTo() {
       await CommonFunc.sleep(1000);
       let text_1 = await (await driver.findComponent(ON.id('newId'))).getText();
       console.info("[RepeatwithAnimateTo_001] component text_1: " + text_1);
-      expect(Number(text_1)).assertLess(5);
+      expect(Number(text_1)).assertLess(10);
       await CommonFunc.sleep(1000);
       console.info('[RepeatwithAnimateTo_001] END');
       done();
@@ -91,7 +91,7 @@ export default function RepeatwithAnimateTo() {
       await CommonFunc.sleep(1000);
       let text_2 = await (await driver.findComponent(ON.id('newId'))).getText();
       console.info("[RepeatwithAnimateTo_002] component text_2: " + text_2);
-      expect(Number(text_2)).assertLess(5);
+      expect(Number(text_2)).assertLess(10);
       await CommonFunc.sleep(1000);
       console.info('[RepeatwithAnimateTo_002] END');
       done();
@@ -118,7 +118,7 @@ export default function RepeatwithAnimateTo() {
       await CommonFunc.sleep(1000);
       let text_3 = await (await driver.findComponent(ON.id('newId'))).getText();
       console.info("[RepeatwithAnimateTo_003] component text_3: " + text_3);
-      expect(Number(text_3)).assertLess(5);
+      expect(Number(text_3)).assertLess(10);
       await CommonFunc.sleep(1000);
       console.info('[RepeatwithAnimateTo_003] END');
       done();

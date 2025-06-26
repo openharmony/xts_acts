@@ -1,3 +1,18 @@
+/**
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 @ObservedV2
 class GridItemInfo {
   @Trace public name: string;
@@ -49,9 +64,9 @@ struct RepeatwithAnimateTo {
     'app.media.img3',
     'app.media.img4'
   ]
-  private GridScroller: Scroller = new Scroller();
+  private scroller: Scroller = new Scroller();
   aboutToAppear(): void {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 50; i++) {
       this.itemList.push(new GridItemInfo('img' + i, this.imagesUrl[0]));
     }
   }
@@ -87,13 +102,13 @@ struct RepeatwithAnimateTo {
           .id('sliding')
           .height('3%')
           .onClick(() => {
-            this.GridScroller.fling(-3000)
+            this.scroller.fling(-3000)
           })
         Button('change')
           .id('change')
           .height('3%')
           .onClick(() => {
-            this.GridScroller.scrollToIndex(5)
+            this.scroller.scrollToIndex(5)
             this.itemList[5] = new GridItemInfo('img_change5', this.imagesUrl[1])
             this.itemList[6] = new GridItemInfo('img_change6', this.imagesUrl[1])
             this.itemList[7] = new GridItemInfo('img_change7', this.imagesUrl[1])
@@ -102,24 +117,30 @@ struct RepeatwithAnimateTo {
           .id('addButton')
           .height('3%')
           .onClick(() => {
-            this.itemList.push(new GridItemInfo('img_newPush1', this.imagesUrl[2]));
-            this.itemList.push(new GridItemInfo('img_newPush2', this.imagesUrl[2]));
-            this.itemList.push(new GridItemInfo('img_newPush3', this.imagesUrl[2]));
+            for (let x = 0; x < 50; x++) {
+              this.itemList.push(new GridItemInfo('img_newPush' + x, this.imagesUrl[2]));
+            }
           })
         Button('flag')
           .id('flag')
           .height('3%')
           .onClick(() => {
             this.flag = !this.flag;
+            count = 0;
           })
         Text(this.newId.toString())
           .id('newId')
           .height('3%')
       }
 
-      Grid(this.GridScroller) {
+      Grid(this.scroller) {
         Repeat<GridItemInfo>(this.itemList)
-          .each(() => {
+          .each((obj: RepeatItem<GridItemInfo>) => {
+            GridItem() {
+              V2Component({ name: obj.item.name, url: obj.item.url, color: Color.Blue })
+                .height('50%')
+                .margin(10)
+            }
           }
           )
           .virtualScroll({totalCount: this.itemList.length})
@@ -143,7 +164,7 @@ struct RepeatwithAnimateTo {
       .onScrollIndex((start: number, end: number) => {
         this.swipeStartIndex = start;
       })
-      .columnsTemplate('1fr')
+      .columnsTemplate('1fr 1fr')
       .cachedCount(0)
       .layoutWeight(1)
     }
