@@ -89,6 +89,34 @@ export default function atomicFileTest() {
     });
 
     /**
+     * @tc.number SUB_DF_ATOMIC_FILE_0400
+     * @tc.name fileIO_test_atomicFile_static_004
+     * @tc.desc Test the readFully() interface of class AtomicFile
+     * Open an existing file, read content
+     * @tc.size MEDIUM
+     * @tc.type Functoin
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileIO_test_atomicFile_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
+      hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_004 start');
+      let fpath = await Utils.nextFileName('fileIO_test_atomicFile_static_004');
+      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
+      try {
+        let file = new fs.AtomicFile(fpath);
+        let data = file.readFully();
+        expect(data !== null).assertTrue();
+        let decoder = util.TextDecoder.create('utf-8');
+        let str = decoder.decodeToString(new Uint8Array(data));
+        expect(str === FILE_CONTENT).assertTrue();
+        file.delete();
+      } catch (e: BusinessError) {
+        hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_004 has failed for' + JSON.stringify(e));
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
      * @tc.number SUB_DF_ATOMIC_FILE_0500
      * @tc.name fileIO_test_atomicFile_static_005
      * @tc.desc Test the openRead() interface of class AtomicFile
@@ -117,6 +145,80 @@ export default function atomicFileTest() {
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_005 has failed for' + JSON.stringify(e));
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number SUB_DF_ATOMIC_FILE_0600
+     * @tc.name fileIO_test_atomicFile_static_006
+     * @tc.desc Test the failedWrite() interface of class AtomicFile
+     * Open an existing file, create writeStream write content, call failedWrite will preserve source file
+     * @tc.size MEDIUM
+     * @tc.type Functoin
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileIO_test_atomicFile_static_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
+      hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_006 start');
+      let fpath = await Utils.nextFileName('fileIO_test_atomicFile_static_006');
+      expect(await Utils.prepareFile(fpath, "fileIO_test_atomicFile_static_006")).assertTrue();
+      try {
+        let file = new fs.AtomicFile(fpath);
+        let ws = file.startWrite();
+        ws.write("hello world");
+        await Utils.msSleep(WAIT_ONE_SECOND);
+        file.failWrite();
+
+        let data = file.readFully();
+        let decoder = util.TextDecoder.create('utf-8');
+        let str = decoder.decodeToString(new Uint8Array(data));
+        expect(str === "fileIO_test_atomicFile_static_006").assertTrue();
+        file.delete();
+      } catch (e: BusinessError) {
+        hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_006 has failed for' + JSON.stringify(e));
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number SUB_DF_ATOMIC_FILE_0700
+     * @tc.name fileIO_test_atomicFile_static_007
+     * @tc.desc Test the function interface of class AtomicFile
+     * readFully() read one file, startWrite() create a new file, write() write content, finishWrite() close file
+     * @tc.size MEDIUM
+     * @tc.type Functoin
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileIO_test_atomicFile_static_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
+      hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_007 start');
+      let fpath = await Utils.nextFileName('fileIO_test_atomicFile_static_007');
+      expect(await Utils.prepareFile(fpath, "fileIO_test_atomicFile_static_007")).assertTrue();
+      try {
+        let rFile = new fs.AtomicFile(fpath);
+        let readData = rFile.readFully();
+        let rDecoder = util.TextDecoder.create('utf-8');
+        let readStr = rDecoder.decodeToString(new Uint8Array(readData));
+        expect(readStr === "fileIO_test_atomicFile_static_007").assertTrue();
+
+        let wPath = await Utils.nextFileName('test7_write.txt');
+        let wFile = new fs.AtomicFile(wPath);
+        let ws = wFile.startWrite();
+        ws.write(readStr,"utf-8",()=> {
+          wFile.finishWrite();
+          hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_007 finishWrite');
+          setTimeout(()=>{
+            let writeData = wFile.readFully();
+            let wDecoder = util.TextDecoder.create('utf-8');
+            let writeStr = wDecoder.decodeToString(new Uint8Array(writeData));
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_007 writeStr' + writeStr);
+          },1000);
+        })
+        rFile.delete();
+        wFile.delete();
+      } catch (e: BusinessError) {
+        hilog.info(domain, tag, '%{public}s', 'fileIO_test_atomicFile_static_007 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
     });
