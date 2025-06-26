@@ -167,7 +167,7 @@ export default function abilityTest() {
           }).catch((error: BusinessError) => {
             console.log(TAG,'startAbility error', JSON.stringify(error));
           });
-          sleep(1500);
+          await sleep(1500);
           abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
           let cmd2 ="kill -9 pidof com.acts.ability.actslifecyclerely";
           abilityDelegator.executeShellCommand(cmd2, (err : BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
