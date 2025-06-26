@@ -15,13 +15,6 @@
 
 import commonEvent from '@ohos.commonEvent';
 
-var publishOptions = {
-  parameters: {
-    "assertData": "{\"group_name\":{\"data\":\"test1\",\"type\":10},"
-      + "\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}"
-  }
-};
-
 function PublishCallBack(err) {
   if (err.code) {
     console.error("callTest publish failed " + JSON.stringify(err));
@@ -38,12 +31,13 @@ export default {
     console.info('DataAbility call test000');
     console.info('call succeeded data111 ' + JSON.stringify(extras));
     var temp = JSON.stringify(extras);
-    if (temp == "\"{\\\"group_name\\\":{\\\"data\\\":\\\"test1\\\",\\\"type\\\":10}," +
-      "\\\"ringtone_modify_time\\\":{\\\"data\\\":\\\"28wTypeToString\\\",\\\"type\\\":9}}\"") {
+    if (extras != undefined || extras != null) {
       console.info('call commonEvent.publish start!!!!');
-      commonEvent.publish("call_event", publishOptions, PublishCallBack);
-    } else {
-      console.info('call not commonEvent.publish!!!');
+      commonEvent.publish("call_event", {
+        parameters: {
+          "assertData": JSON.stringify(JSON.parse(temp))
+        }
+      }, PublishCallBack);
     }
     return extras;
   }

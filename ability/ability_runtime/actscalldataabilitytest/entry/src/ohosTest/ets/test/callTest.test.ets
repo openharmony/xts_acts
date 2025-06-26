@@ -74,10 +74,15 @@ export default function callTest() {
         console.error(TAG + ' call failed, error: ' + JSON.stringify(error));
       });
       await Utils.sleep(2000);
-      expect(details['result']).assertEqual("{\"group_name\":{\"data\":\"test1\",\"type\":10}," +
-      "\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}");
-      expect(dataAssert).assertEqual("{\"group_name\":{\"data\":\"test1\",\"type\":10}" +
-      ",\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}");
+      let datas:string = JSON.stringify(details.result);
+      expect(JSON.parse(JSON.parse(datas))?.group_name?.data).assertEqual("test1");
+      expect(JSON.parse(JSON.parse(datas))?.group_name?.type).assertEqual(10);
+      expect(JSON.parse(JSON.parse(datas))?.ringtone_modify_time?.type).assertEqual(9);
+      expect(JSON.parse(JSON.parse(datas))?.ringtone_modify_time?.data).assertEqual("28wTypeToString");
+      expect(JSON.parse(JSON.parse(dataAssert))?.group_name?.data).assertEqual("test1");
+      expect(JSON.parse(JSON.parse(dataAssert))?.group_name?.type).assertEqual(10);
+      expect(JSON.parse(JSON.parse(dataAssert))?.ringtone_modify_time?.type).assertEqual(9);
+      expect(JSON.parse(JSON.parse(dataAssert))?.ringtone_modify_time?.data).assertEqual("28wTypeToString");
       console.info("------------end CallTest_0100-------------");
       done();
     });
