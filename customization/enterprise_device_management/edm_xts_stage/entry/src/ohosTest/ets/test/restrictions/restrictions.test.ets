@@ -2356,7 +2356,7 @@ function testSetUserRestrictionPolicy() {
       restrictions.setUserRestriction(SELFWANT, LABEL_POWER_LONG_PRESS, true);
       expect(false).assertTrue();
     } catch (error) {
-      console.info(' --- test_set_user_restriction_0100 error 9200001 or 801 is expected, actually catch: '
+      console.info(' --- test_set_user_restriction_0404 error 9200001 or 801 is expected, actually catch: '
         + error.code);
       expect((error.code == 9200001) || (error.code == 801)).assertTrue();
     }
@@ -2377,7 +2377,7 @@ function testSetUserRestrictionPolicy() {
       restrictions.setUserRestriction(SELFWANT, LABEL_POWER_LONG_PRESS, true);
       expect(false).assertTrue();
     } catch (error) {
-      console.info(' --- test_set_user_restriction_0200 error 9200002 or 801 is expected, actually catch: '
+      console.info(' --- test_set_user_restriction_0405 error 9200002 or 801 is expected, actually catch: '
         + error.code);
       expect((error.code == 9200002) || (error.code == 801)).assertTrue();
     } finally {
@@ -2400,7 +2400,7 @@ function testSetUserRestrictionPolicy() {
       restrictions.setUserRestriction(SELFWANT, LABEL_POWER_LONG_PRESS, true);
       restrictions.setUserRestriction(SELFWANT, LABEL_POWER_LONG_PRESS, false);
     } catch (error) {
-      console.info(' --- test_set_user_restriction_0300 error 801 is expected, actually catch: ' + error.code);
+      console.info(' --- test_set_user_restriction_0406 error 801 is expected, actually catch: ' + error.code);
       expect(error.code == 801).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
