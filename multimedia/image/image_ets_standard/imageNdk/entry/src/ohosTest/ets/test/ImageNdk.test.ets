@@ -22,6 +22,16 @@ import fs from '@ohos.file.fs';
 import resourceManager from '@ohos.resourceManager';
 import { BusinessError } from '@ohos.base';
 
+interface picTypeValue {
+  name:string
+  fileName:string
+  value?:string
+  initValue?:string
+  modifyData?:string
+  compareData?:string
+  errorData?: string
+}
+
 export default function imageNdkTest() {
   describe('ImageNdkTest', () => {
     let globalpixelmap: image.PixelMap;
@@ -65,6 +75,26 @@ export default function imageNdkTest() {
       const bufferRead = new ArrayBuffer(fileSize)
       fs.readSync(file.fd, bufferRead)
       buffer = bufferRead
+    }
+
+    const getImageSource = async(filename:string, type:string)=>{
+      let imageSourceApi:image.ImageSource
+      if(type === "Buffer"){
+        await getBuffer(filename)
+        imageSourceApi = ndkTest.CreateFromData(buffer)
+      }else if(type === "Uri"){
+        filePath = filesDir + '/' + filename
+        imageSourceApi = ndkTest.CreateFromUri(filePath)
+      }else if(type === "Rawfile"){
+        const resourceMgr: resourceManager.ResourceManager = testContext.createModuleContext("entry_test").resourceManager
+        const rawFileDescriptor = await resourceMgr.getRawFd(filename)
+        imageSourceApi = ndkTest.CreateFromRawFile(rawFileDescriptor.fd, rawFileDescriptor.offset, rawFileDescriptor.length)
+      }else{
+        await getFd(filename);
+        imageSourceApi = ndkTest.CreateFromFd(fileFd);
+        fs.closeSync(fileFd) // getFd open fd，创建ImageSource后，close fd。
+      }
+      return imageSourceApi
     }
 
     const NDK_CreatePixelMap = async (TAG: string, type:string, filename: string, width: number, height: number,done:Function) => {
@@ -1060,6 +1090,27 @@ export default function imageNdkTest() {
         done()
     }
   }
+
+  const NDK_GetImagePropertyWithNull = async (TAG: string, filename: string, type:string, key:string, compareValue:string|undefined) => {
+      let result = true
+      let imageSourceApi: image.ImageSource = await getImageSource(filename, type)
+      const imagePropertyRes: string | number = ndkTest.NewGetImagePropertyWithNull(imageSourceApi, key)
+      if(typeof imagePropertyRes === 'string'){
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG+`image info success: ${imagePropertyRes}`)
+        if(imagePropertyRes === compareValue){
+          result = true
+        }else{
+          hilog.info(0x0000, 'scaleTest', '%{public}s', TAG+`compare value error, getValue: ${imagePropertyRes}, compareValue: ${compareValue}`)
+          result = false
+        }
+      }else{
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG+`image info fail: ${imagePropertyRes}`)
+        result = false
+      }
+      ndkTest.SourceRelease(imageSourceApi)
+      return result
+    }
+	
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0100
@@ -4707,5 +4758,6893 @@ export default function imageNdkTest() {
       expect(ret == PARA_ERROR_CODE).assertTrue();
       done();
     })
+
+    	/**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('NewSubfileType')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00100';
+      const key = image.PropertyKey.NEW_SUBFILE_TYPE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "3"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "3"},
+        {name: "png", fileName: "test_exif_v2.png", value: "3"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "3"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error NewSubfileType ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SubfileType')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00200';
+      const key = image.PropertyKey.SUBFILE_TYPE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SubfileType ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ImageWidth')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00300';
+      const key = image.PropertyKey.IMAGE_WIDTH;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "3456"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "256"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ImageWidth ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ImageLength')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00400';
+      const key = image.PropertyKey.IMAGE_LENGTH;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "4608"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "192"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ImageLength ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('BitsPerSample')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00500';
+      const key = image.PropertyKey.BITS_PER_SAMPLE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name:"jpeg", fileName:"test_exif_v2.jpg", value:"1, 1, 1"},
+        {name:"webp", fileName:"test_exif_v2.webp", value:"8, 8, 8"},
+        {name:"png", fileName:"test_exif_v2.png", value:"1, 1, 1"},
+        {name:"dng", fileName:"test_exif_v2.dng", value:"8, 8, 8"},
+        {name:"heif", fileName:"test_exif_v2.heic", value:"1, 1, 1"}
+      ]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error BitsPerSample ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Compression')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00600';
+      const key = image.PropertyKey.COMPRESSION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Uncompressed"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Uncompressed"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Uncompressed"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Uncompressed"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Uncompressed"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Compression ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('PhotometricInterpretation')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00700';
+      const key = image.PropertyKey.PHOTOMETRIC_INTERPRETATION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Reversed mono"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Reversed mono"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Reversed mono"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "RGB"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Reversed mono"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error PhotometricInterpretation ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ImageDescription')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00800';
+      const key = image.PropertyKey.IMAGE_DESCRIPTION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "_cuva%s\\d"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "cuva"},
+        {name: "png", fileName: "test_exif_v2.png", value: "_cuva%s\\d"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "_cuva"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "_cuva%s\\d"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ImageDescription ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Make')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_00900';
+      const key = image.PropertyKey.MAKE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "华为"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "华为"},
+        {name: "png", fileName: "test_exif_v2.png", value: "华为"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "HUAWEI"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "华为"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Make ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Model')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01000';
+      const key = image.PropertyKey.MODEL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "TNY-AL00"},
+        {name: "webp", fileName: "test_webp_exif.webp", value: "TNY-AL00"},
+        {name: "png", fileName: "test_exif_v2.png", value: "TNY-AL00"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "MNA-AL00"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "TNY-AL00"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Model ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('StripOffsets')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01100';
+      const key = image.PropertyKey.STRIP_OFFSETS;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "123"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "123"},
+        {name: "png", fileName: "test_exif_v2.png", value: "123"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "10348"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "123"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error StripOffsets ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Orientation')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01200';
+      const key = image.PropertyKey.ORIENTATION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Top-left"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Top-right"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Top-left"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Top-left"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Top-left"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Orientation ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SamplesPerPixel')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01300';
+      const key = image.PropertyKey.SAMPLES_PER_PIXEL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "23"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "3"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SamplesPerPixel ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('RowsPerStrip')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01400';
+      const key = image.PropertyKey.ROWS_PER_STRIP;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "123"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "123"},
+        {name: "png", fileName: "test_exif_v2.png", value: "123"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "192"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "123"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error RowsPerStrip ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('StripByteCounts')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01500';
+      const key = image.PropertyKey.STRIP_BYTE_COUNTS;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "123"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "123"},
+        {name: "png", fileName: "test_exif_v2.png", value: "123"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "147456"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "123"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error StripByteCounts ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('XResolution')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01600';
+      const key = image.PropertyKey.X_RESOLUTION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: " 0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "72"},
+        {name: "png", fileName: "test_exif_v2.png", value: " 0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "72"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: " 0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error XResolution ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('YResolution')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01700';
+      const key = image.PropertyKey.Y_RESOLUTION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: " 0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "72"},
+        {name: "png", fileName: "test_exif_v2.png", value: " 0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "72"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: " 0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error YResolution ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('PlanarConfiguration')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01800';
+      const key = image.PropertyKey.PLANAR_CONFIGURATION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Chunky format"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Chunky format"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Chunky format"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Chunky format"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Chunky format"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error PlanarConfiguration ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ResolutionUnit')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_01900';
+      const key = image.PropertyKey.RESOLUTION_UNIT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Inch"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Inch"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Inch"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Inch"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Inch"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ResolutionUnit ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('TransferFunction')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02000';
+      const key = image.PropertyKey.TRANSFER_FUNCTION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "3 bytes undefined data"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1 bytes undefined data"},
+        {name: "png", fileName: "test_exif_v2.png", value: "3 bytes undefined data"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "3 bytes undefined data"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error TransferFunction ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Software')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02100';
+      const key = image.PropertyKey.SOFTWARE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "华为"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "TNY-AL00"},
+        {name: "png", fileName: "test_exif_v2.png", value: "华为"},
+        {name: "dng", fileName: "test_exif_v2.dng",
+          value: "HUAWEI/MNA-AL00/HWMNA:12/HUAWEIMNA-AL00/104.0.0.56C00:user/release-keys"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "华为"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Software ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('DateTime')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02200';
+      const key = image.PropertyKey.DATE_TIME;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2022:06:02 15:51:34"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2022:06:02 15:51:35"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2022:06:02 15:51:34"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2023:01:19 10:39:58"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2022:06:02 15:51:34"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error DateTime ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Artist')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02300';
+      const key = image.PropertyKey.ARTIST;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "None"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Bogdan Hrastnik"},
+        {name: "png", fileName: "test_exif_v2.png", value: "None"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Joseph.Xu"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "None"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Artist ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('WhitePoint')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02400';
+      const key = image.PropertyKey.WHITE_POINT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "252, 0/0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "124, 0/0"},
+        {name: "png", fileName: "test_exif_v2.png", value: "252, 0/0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "124.2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "252, 0/0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error WhitePoint ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('PrimaryChromaticities')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02500';
+      const key = image.PropertyKey.PRIMARY_CHROMATICITIES;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: " 0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "124"},
+        {name: "png", fileName: "test_exif_v2.png", value: " 0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "124"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: " 0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error PrimaryChromaticities ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('PhotoMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02600';
+      const key = image.PropertyKey.PHOTO_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "252"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "123"},
+        {name: "png", fileName: "test_exif_v2.png", value: "252"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "252"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "252"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error PhotoMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('JPEGInterchangeFormat')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02700';
+      const key = image.PropertyKey.JPEG_INTERCHANGE_FORMAT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2798"},
+        {name: "webp", fileName: "test_webp_exif.webp", value: "1252"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2798"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "10344"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2798"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error JPEGInterchangeFormat ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('JPEGInterchangeFormatLength')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02800';
+      const key = image.PropertyKey.JPEG_INTERCHANGE_FORMAT_LENGTH;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "4"},
+        {name: "webp", fileName: "test_webp_exif.webp", value: "24042"},
+        {name: "png", fileName: "test_exif_v2.png", value: "4"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "4"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "4"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error JPEGInterchangeFormatLength ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('YCbCrCoefficients')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_02900';
+      const key = image.PropertyKey.YCBCR_COEFFICIENTS;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0.299, 0.587, 0.114"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "0.299, 0.587, 0.114"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0.299, 0.587, 0.114"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "0.299, 0.587, 0.114"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0.299, 0.587, 0.114"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error YCbCrCoefficients ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('YCbCrSubSampling')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03000';
+      const key = image.PropertyKey.YCBCR_SUB_SAMPLING;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "3, 2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "3, 3"},
+        {name: "png", fileName: "test_exif_v2.png", value: "3, 2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "3, 2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "3, 2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error YCbCrSubSampling ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('YCbCrPositioning')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03100';
+      const key = image.PropertyKey.YCBCR_POSITIONING;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Centered"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Centered"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Centered"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Centered"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Centered"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error YCbCrPositioning ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ReferenceBlackWhite')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03200';
+      const key = image.PropertyKey.REFERENCE_BLACK_WHITE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "222,  0, 1.5,  0, 25.2, 25.2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "221, 255,  0, 255,  0, 255"},
+        {name: "png", fileName: "test_exif_v2.png", value: "222,  0, 1.5,  0, 25.2, 25.2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "221"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "222,  0, 1.5,  0, 25.2, 25.2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ReferenceBlackWhite ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Copyright')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03300';
+      const key = image.PropertyKey.COPYRIGHT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "undefined (Photographer) - [None] (Editor)"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "ABB (Photographer) - [None] (Editor)"},
+        {name: "png", fileName: "test_exif_v2.png", value: "undefined (Photographer) - [None] (Editor)"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Hw (Photographer) - [None] (Editor)"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "undefined (Photographer) - [None] (Editor)"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Copyright ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ExposureTime')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03400';
+      const key = image.PropertyKey.EXPOSURE_TIME;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "xxxw"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "123"},
+        {name: "png", fileName: "test_exif_v2.png", value: "xxxw"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "."},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "xxxw"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ExposureTime ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FNumber')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03500';
+      const key = image.PropertyKey.F_NUMBER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "f/1.0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "f/1.8"},
+        {name: "png", fileName: "test_exif_v2.png", value: "f/1.0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "f/2.0"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "f/1.0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FNumber ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ExposureProgram')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03600';
+      const key = image.PropertyKey.EXPOSURE_PROGRAM;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Not defined"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Normal program"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Not defined"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Normal program"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Not defined"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ExposureProgram ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SpectralSensitivity')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03700';
+      const key = image.PropertyKey.SPECTRAL_SENSITIVITY;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "abc"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "sensitivity"},
+        {name: "png", fileName: "test_exif_v2.png", value: "abc"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "sensitivity"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "abc"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SpectralSensitivity ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSVersionID')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03800';
+      const key = image.PropertyKey.GPS_VERSION_ID;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.2.0.0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2.2.0.0"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.2.0.0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2.2.0.0"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.2.0.0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSVersionID ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSLatitudeRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_03900';
+      const key = image.PropertyKey.GPS_LATITUDE_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "N"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "N"},
+        {name: "png", fileName: "test_exif_v2.png", value: "N"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "N"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "N"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSLatitudeRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSLatitude')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04000';
+      const key = image.PropertyKey.GPS_LATITUDE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "N"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "N"},
+        {name: "png", fileName: "test_exif_v2.png", value: "N"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "N"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "N"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSLatitude ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSLongitudeRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04100';
+      const key = image.PropertyKey.GPS_LONGITUDE_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "E"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "W"},
+        {name: "png", fileName: "test_exif_v2.png", value: "E"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "E"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "E"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSLongitudeRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSLongitude')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04200';
+      const key = image.PropertyKey.GPS_LONGITUDE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "120, 52, 26"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "120, 52, 26"},
+        {name: "png", fileName: "test_exif_v2.png", value: "120, 52, 26"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "120, 52, 26"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "120, 52, 26"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSLongitude ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSAltitudeRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04300';
+      const key = image.PropertyKey.GPS_ALTITUDE_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Sea level"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Sea level reference"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Sea level"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Sea level reference"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Sea level"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSAltitudeRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSAltitude')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04400';
+      const key = image.PropertyKey.GPS_ALTITUDE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Sea level"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Sea level reference"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Sea level"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Sea level reference"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Sea level"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSAltitude ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSTimeStamp')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04500';
+      const key = image.PropertyKey.GPS_TIME_STAMP;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "11:37:58.00"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "11:37:58.00"},
+        {name: "png", fileName: "test_exif_v2.png", value: "11:37:58.00"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "11:37:56.00"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "11:37:58.00"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSTimeStamp ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSSatellites')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04600';
+      const key = image.PropertyKey.GPS_SATELLITES;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "xxx"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "BBA"},
+        {name: "png", fileName: "test_exif_v2.png", value: "xxx"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xxx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "xxx"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSSatellites ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSStatus')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04700';
+      const key = image.PropertyKey.GPS_STATUS;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "A"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "A"},
+        {name: "png", fileName: "test_exif_v2.png", value: "A"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "A"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "A"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSStatus ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSMeasureMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04800';
+      const key = image.PropertyKey.GPS_MEASURE_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSMeasureMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDOP')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_04900';
+      const key = image.PropertyKey.GPS_DOP;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "182"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "182"},
+        {name: "png", fileName: "test_exif_v2.png", value: "182"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "182"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "182"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDOP ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSSpeedRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05000';
+      const key = image.PropertyKey.GPS_SPEED_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "N"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "K"},
+        {name: "png", fileName: "test_exif_v2.png", value: "N"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "K"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "N"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSSpeedRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSSpeed')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05100';
+      const key = image.PropertyKey.GPS_SPEED;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "150"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "150"},
+        {name: "png", fileName: "test_exif_v2.png", value: "150"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "150"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "150"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSSpeed ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSTrackRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05200';
+      const key = image.PropertyKey.GPS_TRACK_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "T"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "T"},
+        {name: "png", fileName: "test_exif_v2.png", value: "T"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "T"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "T"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSTrackRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSTrack')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05300';
+      const key = image.PropertyKey.GPS_TRACK;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "38.0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "111"},
+        {name: "png", fileName: "test_exif_v2.png", value: "38.0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "56"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "38.0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSTrack ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSImgDirectionRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05400';
+      const key = image.PropertyKey.GPS_IMG_DIRECTION_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "M"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "M"},
+        {name: "png", fileName: "test_exif_v2.png", value: "M"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "M"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "M"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSImgDirectionRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSImgDirection')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05500';
+      const key = image.PropertyKey.GPS_IMG_DIRECTION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.23"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2.23"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.23"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2.23214"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.23"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSImgDirection ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSMapDatum')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05600';
+      const key = image.PropertyKey.GPS_MAP_DATUM;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "xxx"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "TEST"},
+        {name: "png", fileName: "test_exif_v2.png", value: "xxx"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xxxx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "xxx"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSMapDatum ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDestLatitudeRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05700';
+      const key = image.PropertyKey.GPS_DEST_LATITUDE_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "N"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "S"},
+        {name: "png", fileName: "test_exif_v2.png", value: "N"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "N"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "N"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDestLatitudeRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDestLatitude')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05800';
+      const key = image.PropertyKey.GPS_DEST_LATITUDE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "33, 22, 11"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "33, 22, 11"},
+        {name: "png", fileName: "test_exif_v2.png", value: "33, 22, 11"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "33, 22, 11"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "33, 22, 11"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDestLatitude ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDestLongitudeRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_05900';
+      const key = image.PropertyKey.GPS_DEST_LONGITUDE_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "E"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "W"},
+        {name: "png", fileName: "test_exif_v2.png", value: "E"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "E"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "E"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDestLongitudeRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDestLongitude')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06000';
+      const key = image.PropertyKey.GPS_DEST_LONGITUDE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "E"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "W"},
+        {name: "png", fileName: "test_exif_v2.png", value: "E"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "E"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "E"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDestLongitude ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDestBearingRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06100';
+      const key = image.PropertyKey.GPS_DEST_BEARING_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "T"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "M"},
+        {name: "png", fileName: "test_exif_v2.png", value: "T"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "T"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "T"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDestBearingRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDestBearing')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06200';
+      const key = image.PropertyKey.GPS_DEST_BEARING;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2.0"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: " 0"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDestBearing ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDestDistanceRef')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06300';
+      const key = image.PropertyKey.GPS_DEST_DISTANCE_REF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "N"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "K"},
+        {name: "png", fileName: "test_exif_v2.png", value: "N"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "N"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "N"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDestDistanceRef ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDestDistance')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06400';
+      const key = image.PropertyKey.GPS_DEST_DISTANCE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "10"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "10"},
+        {name: "png", fileName: "test_exif_v2.png", value: "10"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "10"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "10"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDestDistance ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSProcessingMethod')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06500';
+      const key = image.PropertyKey.GPS_PROCESSING_METHOD;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "CELLID"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "CELLID"},
+        {name: "png", fileName: "test_exif_v2.png", value: "CELLID"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "GPS"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "CELLID"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSProcessingMethod ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSAreaInformation')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06600';
+      const key = image.PropertyKey.GPS_AREA_INFORMATION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "arexxx"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "accxx"},
+        {name: "png", fileName: "test_exif_v2.png", value: "arexxx"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "23...15...57"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "arexxx"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSAreaInformation ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDateStamp')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06700';
+      const key = image.PropertyKey.GPS_DATE_STAMP;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2025:01:11"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2022:01:11"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2025:01:11"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2023:10:19"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2025:01:11"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDateStamp ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSDifferential')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06800';
+      const key = image.PropertyKey.GPS_DIFFERENTIAL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSDifferential ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GPSHPositioningError')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_06900';
+      const key = image.PropertyKey.GPS_H_POSITIONING_ERROR;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.5"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: " 2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.5"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: " 3"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.5"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GPSHPositioningError ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07000
+     * @tc.desc      : 1.create imageSource (by fd/uri)
+     *                 2.getImageProperty('ISOSpeedRatings')
+     *				   3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07000';
+      const key = image.PropertyKey.ISO_SPEED_RATINGS;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name:'jpeg', fileName:'test_exif1.jpg', value='9999'},
+      ]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ISOSpeedRatings ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('PhotographicSensitivity')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07100';
+      const key = image.PropertyKey.PHOTOGRAPHIC_SENSITIVITY;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "200"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "205"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error PhotographicSensitivity ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('OECF')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07200';
+      const key = image.PropertyKey.OECF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "4 bytes undefined data"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2 bytes undefined data"},
+        {name: "png", fileName: "test_exif_v2.png", value: "4 bytes undefined data"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1 bytes undefined data"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "4 bytes undefined data"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error OECF ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SensitivityType')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07300';
+      const key = image.PropertyKey.SENSITIVITY_TYPE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "Standard output sensitivity (SOS) and ISO speed"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Standard output sensitivity (SOS) and ISO speed"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Standard output sensitivity (SOS) and ISO speed"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Standard output sensitivity (SOS) and ISO speed"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Standard output sensitivity (SOS) and ISO speed"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SensitivityType ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('StandardOutputSensitivity')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07400';
+      const key = image.PropertyKey.STANDARD_OUTPUT_SENSITIVITY;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "5"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "5"},
+        {name: "png", fileName: "test_exif_v2.png", value: "5"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "5"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "5"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error StandardOutputSensitivity ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('RecommendedExposureIndex')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07500';
+      const key = image.PropertyKey.RECOMMENDED_EXPOSURE_INDEX;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "123"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "241"},
+        {name: "png", fileName: "test_exif_v2.png", value: "123"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "241"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "123"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error RecommendedExposureIndex ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ISOSpeedRatings')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07600';
+      const key = image.PropertyKey.ISO_SPEED;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "200"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "205"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ISOSpeedRatings ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ISOSpeedLatitudeyyy')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07700';
+      const key = image.PropertyKey.ISO_SPEED_LATITUDE_YYY;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1456"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "3"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1456"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "3"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1456"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ISOSpeedLatitudeyyy ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ISOSpeedLatitudezzz')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07800';
+      const key = image.PropertyKey.ISO_SPEED_LATITUDE_ZZZ;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1456"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "3"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1456"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "3"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1456"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ISOSpeedLatitudezzz ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ExifVersion')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_07900';
+      const key = image.PropertyKey.EXIF_VERSION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Exif Version 1.1"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Exif Version 1.1"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Exif Version 1.1"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Exif Version 2.2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Exif Version 1.1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ExifVersion ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('DateTimeOriginal')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08000';
+      const key = image.PropertyKey.DATE_TIME_ORIGINAL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2024:01:25 05:51:34"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2022:06:02 15:51:35"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2024:01:25 05:51:34"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2024:04:18 18:18:43"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2024:01:25 05:51:34"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error DateTimeOriginal ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('DateTimeDigitized')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08100';
+      const key = image.PropertyKey.DATE_TIME_DIGITIZED;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2022:06:02 15:51:34"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2022:06:02 15:51:35"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2022:06:02 15:51:34"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2023:01:19 10:39:58"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2022:06:02 15:51:34"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error DateTimeDigitized ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('OffsetTime')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08200';
+      const key = image.PropertyKey.OFFSET_TIME;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2024:01:25"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "111"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2024:01:25"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2024:01:25"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error OffsetTime ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('OffsetTimeOriginal')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08300';
+      const key = image.PropertyKey.OFFSET_TIME_ORIGINAL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "chex"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "00xx"},
+        {name: "png", fileName: "test_exif_v2.png", value: "chex"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "chex"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error OffsetTimeOriginal ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('OffsetTimeDigitized')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08400';
+      const key = image.PropertyKey.OFFSET_TIME_DIGITIZED;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "cfh"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "abs"},
+        {name: "png", fileName: "test_exif_v2.png", value: "cfh"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "cfh"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error OffsetTimeDigitized ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ComponentsConfiguration')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08500';
+      const key = image.PropertyKey.COMPONENTS_CONFIGURATION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Y R G B"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Y R G B"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Y R G B"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "R G B -"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Y R G B"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ComponentsConfiguration ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('CompressedBitsPerPixel')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08600';
+      const key = image.PropertyKey.COMPRESSED_BITS_PER_PIXEL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "24"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "0.95"},
+        {name: "png", fileName: "test_exif_v2.png", value: "24"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1.5"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "24"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error CompressedBitsPerPixel ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ShutterSpeedValue')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08700';
+      const key = image.PropertyKey.SHUTTER_SPEED;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.50 EV (1/6 sec.)"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "14.00 EV (1/16384 sec.)"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.50 EV (1/6 sec.)"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "6.64 EV (1/100 sec.)"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.50 EV (1/6 sec.)"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ShutterSpeedValue ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ApertureValue')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08800';
+      const key = image.PropertyKey.APERTURE_VALUE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.50 EV (f/2.4)"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1.69 EV (f/1.8)"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.50 EV (f/2.4)"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "0.08 EV (f/1.0)"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.50 EV (f/2.4)"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ApertureValue ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('BrightnessValue')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_08900';
+      const key = image.PropertyKey.BRIGHTNESS_VALUE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.50 EV (19.38 cd/m^2)"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "0.00 EV (3.43 cd/m^2)"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.50 EV (19.38 cd/m^2)"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2.50 EV (19.38 cd/m^2)"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.50 EV (19.38 cd/m^2)"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error BrightnessValue ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ExposureBiasValue')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09000';
+      const key = image.PropertyKey.EXPOSURE_BIAS_VALUE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "23.00 EV"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "0.00 EV"},
+        {name: "png", fileName: "test_exif_v2.png", value: "23.00 EV"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "23.00 EV"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "23.00 EV"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ExposureBiasValue ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('MaxApertureValue')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09100';
+      const key = image.PropertyKey.MAX_APERTURE_VALUE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.50 EV (f/2.4)"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1.69 EV (f/1.8)"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.50 EV (f/2.4)"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "0.08 EV (f/1.0)"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.50 EV (f/2.4)"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error MaxApertureValue ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SubjectDistance')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09200';
+      const key = image.PropertyKey.SUBJECT_DISTANCE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.5 m"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "25.0 m"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.5 m"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2.5 m"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.5 m"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SubjectDistance ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('MeteringMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09300';
+      const key = image.PropertyKey.METERING_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Pattern"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Pattern"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Pattern"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Pattern"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Pattern"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error MeteringMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('LightSource')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09400';
+      const key = image.PropertyKey.LIGHT_SOURCE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Daylight"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Daylight"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Daylight"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Fluorescent"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Daylight"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error LightSource ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Flash')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09500';
+      const key = image.PropertyKey.FLASH;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "Strobe return light not detected"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Flash did not fire, auto mode"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Strobe return light not detected"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Strobe return light not detected"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Strobe return light not detected"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Flash ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FocalLength')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09600';
+      const key = image.PropertyKey.FOCAL_LENGTH;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0.0 mm"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "31.0 mm"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0.0 mm"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "6.3 mm"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0.0 mm"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FocalLength ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SubjectArea')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09700';
+      const key = image.PropertyKey.SUBJECT_AREA;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "(x,y) = (12,13)"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "(x,y) = (10,20)"},
+        {name: "png", fileName: "test_exif_v2.png", value: "(x,y) = (12,13)"},
+        {name: "dng", fileName: "test_exif_v2.dng",
+          value: "Within rectangle (width 2318, height 1390) around (x,y) = (2009,1506)"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "(x,y) = (12,13)"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SubjectArea ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('MakerNote')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09800';
+      const key = image.PropertyKey.MAKER_NOTE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg",
+        value: 'HwMnoteCaptureMode:1,HwMnoteBurstNumber:2,HwMnoteFrontCamera:3,HwMnoteRollAngle:4,' +
+          'HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,HwMnoteFacePointer:122,' +
+          'HwMnoteFaceVersion:1,HwMnoteFaceCount:2,HwMnoteFaceConf:3,HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,' +
+          'HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8,HwMnoteFaceLeyeCenter:1 2 3 4,HwMnoteFaceReyeCenter:5 6 7 8,' +
+          'HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8,HwMnoteScenePointer:256,HwMnoteSceneVersion:1,HwMnoteSceneFoodConf:2,' +
+          'HwMnoteSceneStageConf:3,HwMnoteSceneBlueSkyConf:4,HwMnoteSceneGreenPlantConf:5,HwMnoteSceneBeachConf:6,' +
+          'HwMnoteSceneSnowConf:7,HwMnoteSceneSunsetConf:8,HwMnoteSceneFlowersConf:9,HwMnoteSceneNightConf:10,' +
+          'HwMnoteSceneTextConf:11'},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "HwMnoteCaptureMode:1,HwMnoteBurstNumber:2," +
+          "HwMnoteFrontCamera:3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7," +
+          "HwMnoteFacePointer:122,HwMnoteFaceVersion:1,HwMnoteFaceCount:2,HwMnoteFaceConf:3," +
+          "HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8," +
+          "HwMnoteFaceLeyeCenter:1 2 3 4,HwMnoteFaceReyeCenter:5 6 7 8,HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8," +
+          "HwMnoteScenePointer:256,HwMnoteSceneVersion:1,HwMnoteSceneFoodConf:2,HwMnoteSceneStageConf:3," +
+          "HwMnoteSceneBlueSkyConf:4,HwMnoteSceneGreenPlantConf:5,HwMnoteSceneBeachConf:6,HwMnoteSceneSnowConf:7," +
+          "HwMnoteSceneSunsetConf:8,HwMnoteSceneFlowersConf:9,HwMnoteSceneNightConf:10,HwMnoteSceneTextConf:11"},
+        {name: "png", fileName: "test_exif_v2.png", value: 'HwMnoteCaptureMode:1,HwMnoteBurstNumber:2,' +
+          'HwMnoteFrontCamera:3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,' +
+          'HwMnoteFocusMode:7,HwMnoteFacePointer:122,' +
+          'HwMnoteFaceVersion:1,HwMnoteFaceCount:2,HwMnoteFaceConf:3,HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,' +
+          'HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8,HwMnoteFaceLeyeCenter:1 2 3 4,' +
+          'HwMnoteFaceReyeCenter:5 6 7 8,' + 'HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8,HwMnoteScenePointer:256,' +
+          'HwMnoteSceneVersion:1,HwMnoteSceneFoodConf:2,' +
+          'HwMnoteSceneStageConf:3,HwMnoteSceneBlueSkyConf:4,HwMnoteSceneGreenPlantConf:5,HwMnoteSceneBeachConf:6,' +
+          'HwMnoteSceneSnowConf:7,HwMnoteSceneSunsetConf:8,HwMnoteSceneFlowersConf:9,HwMnoteSceneNightConf:10,' +
+          'HwMnoteSceneTextConf:11'},
+        {name: "dng", fileName: "test_exif_v2.dng", value: 'HwMnoteCaptureMode:1,HwMnoteBurstNumber:2,' +
+          'HwMnoteFrontCamera:' +
+          '3,HwMnoteRollAngle:4,HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,HwMnoteFocusMode:7,' +
+          'HwMnoteWindSnapshotMode:8,HwMnoteFacePointer:166,HwMnoteFaceVersion:1,' +
+          'HwMnoteFaceCount:2,HwMnoteFaceConf:3,HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,' +
+          'HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8,HwMnoteFaceLeyeCenter:1 2 3 4,' +
+          'HwMnoteFaceReyeCenter:5 6 7 8,' + 'HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8,HwMnoteScenePointer:300,' +
+          'HwMnoteSceneVersion:1,' + 'HwMnoteSceneFoodConf:2,' +
+          'HwMnoteSceneStageConf:3,HwMnoteSceneBlueSkyConf:4,HwMnoteSceneGreenPlantConf:5,HwMnoteSceneBeachConf:6,' +
+          'HwMnoteSceneSnowConf:7,HwMnoteSceneSunsetConf:8,HwMnoteSceneFlowersConf:9,HwMnoteSceneNightConf:10,' +
+          'HwMnoteSceneTextConf:11'},
+        {name: "heif", fileName: "test_exif_v2.heic", value: 'HwMnoteCaptureMode:1,HwMnoteBurstNumber:2,' +
+          'HwMnoteFrontCamera:3,HwMnoteRollAngle:4,' + 'HwMnotePitchAngle:5,HwMnotePhysicalAperture:6,' +
+          'HwMnoteFocusMode:7,HwMnoteFacePointer:122,' +
+          'HwMnoteFaceVersion:1,HwMnoteFaceCount:2,HwMnoteFaceConf:3,HwMnoteFaceSmileScore:1 2 3 4 5 6 7 8,' +
+          'HwMnoteFaceRect:1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8,HwMnoteFaceLeyeCenter:1 2 3 4,' +
+          'HwMnoteFaceReyeCenter:5 6 7 8,' + 'HwMnoteFaceMouthCenter:1 2 3 4 5 6 7 8,' +
+          'HwMnoteScenePointer:256,HwMnoteSceneVersion:1,HwMnoteSceneFoodConf:2,' + 'HwMnoteSceneStageConf:3,' +
+          'HwMnoteSceneBlueSkyConf:4,HwMnoteSceneGreenPlantConf:5,HwMnoteSceneBeachConf:6,' +
+          'HwMnoteSceneSnowConf:7,HwMnoteSceneSunsetConf:8,HwMnoteSceneFlowersConf:9,HwMnoteSceneNightConf:10,' +
+          'HwMnoteSceneTextConf:11'}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error MakerNote ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteScenePointer')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_09900';
+      const key = image.PropertyKey.SCENE_POINTER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "256"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "256"},
+        {name: "png", fileName: "test_exif_v2.png", value: "256"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "300"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "256"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteScenePointer ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneVersion')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10000';
+      const key = image.PropertyKey.SCENE_VERSION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneVersion ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneFoodConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10100';
+      const key = image.PropertyKey.SCENE_FOOD_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneFoodConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneStageConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10200';
+      const key = image.PropertyKey.SCENE_STAGE_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "3"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "3"},
+        {name: "png", fileName: "test_exif_v2.png", value: "3"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "3"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "3"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneStageConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneBlueSkyConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10300';
+      const key = image.PropertyKey.SCENE_BLUE_SKY_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "4"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "4"},
+        {name: "png", fileName: "test_exif_v2.png", value: "4"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "4"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "4"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneBlueSkyConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneGreenPlantConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10400';
+      const key = image.PropertyKey.SCENE_GREEN_PLANT_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "5"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "5"},
+        {name: "png", fileName: "test_exif_v2.png", value: "5"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "5"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "5"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneGreenPlantConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneBeachConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10500';
+      const key = image.PropertyKey.SCENE_BEACH_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "6"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "6"},
+        {name: "png", fileName: "test_exif_v2.png", value: "6"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "6"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "6"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneBeachConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneSnowConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10600';
+      const key = image.PropertyKey.SCENE_SNOW_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "7"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "7"},
+        {name: "png", fileName: "test_exif_v2.png", value: "7"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "7"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "7"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneSnowConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneSunsetConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10700';
+      const key = image.PropertyKey.SCENE_SUNSET_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "8"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "8"},
+        {name: "png", fileName: "test_exif_v2.png", value: "8"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "8"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "8"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneSunsetConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneFlowersConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10800';
+      const key = image.PropertyKey.SCENE_FLOWERS_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "9"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "9"},
+        {name: "png", fileName: "test_exif_v2.png", value: "9"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "9"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "9"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneFlowersConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneNightConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_10900';
+      const key = image.PropertyKey.SCENE_NIGHT_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "10"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "10"},
+        {name: "png", fileName: "test_exif_v2.png", value: "10"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "10"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "10"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneNightConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteSceneTextConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11000';
+      const key = image.PropertyKey.SCENE_TEXT_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "11"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "11"},
+        {name: "png", fileName: "test_exif_v2.png", value: "11"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "11"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "11"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteSceneTextConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFacePointer')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11100';
+      const key = image.PropertyKey.FACE_POINTER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "122"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "122"},
+        {name: "png", fileName: "test_exif_v2.png", value: "122"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "166"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "122"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFacePointer ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFaceVersion')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11200';
+      const key = image.PropertyKey.FACE_VERSION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFaceVersion ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFaceCount')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11300';
+      const key = image.PropertyKey.FACE_COUNT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFaceCount ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFaceConf')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11400';
+      const key = image.PropertyKey.FACE_CONF;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "3"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "3"},
+        {name: "png", fileName: "test_exif_v2.png", value: "3"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "3"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "3"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFaceConf ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFaceSmileScore')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11500';
+      const key = image.PropertyKey.FACE_SMILE_SCORE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1 2 3 4 5 6 7 8"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1 2 3 4 5 6 7 8"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1 2 3 4 5 6 7 8"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1 2 3 4 5 6 7 8"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1 2 3 4 5 6 7 8"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFaceSmileScore ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFaceRect')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11600';
+      const key = image.PropertyKey.FACE_RECT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFaceRect ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFaceLeyeCenter')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11700';
+      const key = image.PropertyKey.FACE_LEYE_CENTER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1 2 3 4"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1 2 3 4"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1 2 3 4"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1 2 3 4"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1 2 3 4"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFaceLeyeCenter ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFaceReyeCenter')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11800';
+      const key = image.PropertyKey.FACE_REYE_CENTER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "5 6 7 8"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "5 6 7 8"},
+        {name: "png", fileName: "test_exif_v2.png", value: "5 6 7 8"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "5 6 7 8"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "5 6 7 8"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFaceReyeCenter ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFaceMouthCenter')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_11900';
+      const key = image.PropertyKey.FACE_MOUTH_CENTER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", errorData: "987654321", value: '1 2 3 4 5 6 7 8'},
+        {name: "png", fileName: "test_exif_v2.png", errorData: "987654321", value: '1 2 3 4 5 6 7 8'},
+        {name: "heif", fileName: "test_exif_v2.heic", errorData: "987654321", value: '1 2 3 4 5 6 7 8'},
+        {name: "webp", fileName: "test_exif_v2.webp", errorData: "987654321", value: '1 2 3 4 5 6 7 8'}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFaceMouthCenter ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteCaptureMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12000';
+      const key = image.PropertyKey.CAPTURE_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteCaptureMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteBurstNumber')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12100';
+      const key = image.PropertyKey.BURST_NUMBER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteBurstNumber ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFrontCamera')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12200';
+      const key = image.PropertyKey.FRONT_CAMERA;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "3"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "3"},
+        {name: "png", fileName: "test_exif_v2.png", value: "3"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "3"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "3"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFrontCamera ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteRollAngle')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12300';
+      const key = image.PropertyKey.ROLL_ANGLE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "4"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "4"},
+        {name: "png", fileName: "test_exif_v2.png", value: "4"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "4"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "4"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteRollAngle ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnotePitchAngle')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12400';
+      const key = image.PropertyKey.PITCH_ANGLE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "5"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "5"},
+        {name: "png", fileName: "test_exif_v2.png", value: "5"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "5"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "5"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnotePitchAngle ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnotePhysicalAperture')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12500';
+      const key = image.PropertyKey.PHYSICAL_APERTURE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "6"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "6"},
+        {name: "png", fileName: "test_exif_v2.png", value: "6"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "6"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "6"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnotePhysicalAperture ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteFocusMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12600';
+      const key = image.PropertyKey.FOCUS_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "7"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "7"},
+        {name: "png", fileName: "test_exif_v2.png", value: "7"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "7"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "7"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteFocusMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('UserComment')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12700';
+      const key = image.PropertyKey.USER_COMMENT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "place for user comments"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "place for user comments."},
+        {name: "png", fileName: "test_exif_v2.png", value: "place for user comments"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "comm"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "place for user comments"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error UserComment ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SubsecTime')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12800';
+      const key = image.PropertyKey.SUBSEC_TIME;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "123456"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "123456"},
+        {name: "png", fileName: "test_exif_v2.png", value: "123456"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "427000"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "123456"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SubsecTime ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SubsecTimeOriginal')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_12900';
+      const key = image.PropertyKey.SUBSEC_TIME_ORIGINAL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "427000"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "543792"},
+        {name: "png", fileName: "test_exif_v2.png", value: "427000"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "427000"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "427000"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SubsecTimeOriginal ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SubsecTimeDigitized')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13000';
+      const key = image.PropertyKey.SUBSEC_TIME_DIGITIZED;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "427000"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "427000"},
+        {name: "png", fileName: "test_exif_v2.png", value: "427000"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "427000"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "427000"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SubsecTimeDigitized ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FlashpixVersion')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13100';
+      const key = image.PropertyKey.FLASHPIX_VERSION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "FlashPix Version 1.0"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "FlashPix Version 1.0"},
+        {name: "png", fileName: "test_exif_v2.png", value: "FlashPix Version 1.0"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "FlashPix Version 1.0"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "FlashPix Version 1.0"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FlashpixVersion ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ColorSpace')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13200';
+      const key = image.PropertyKey.COLOR_SPACE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "sRGB"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "sRGB"},
+        {name: "png", fileName: "test_exif_v2.png", value: "sRGB"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Adobe RGB"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "sRGB"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ColorSpace ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('PixelXDimension')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13300';
+      const key = image.PropertyKey.PIXEL_X_DIMENSION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "123"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "123"},
+        {name: "png", fileName: "test_exif_v2.png", value: "123"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1000"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "123"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error PixelXDimension ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('PixelYDimension')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13400';
+      const key = image.PropertyKey.PIXEL_Y_DIMENSION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "234"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "4608"},
+        {name: "png", fileName: "test_exif_v2.png", value: "234"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2000"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "234"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error PixelYDimension ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('RelatedSoundFile')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13500';
+      const key = image.PropertyKey.RELATED_SOUND_FILE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "/usr/home"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "abb"},
+        {name: "png", fileName: "test_exif_v2.png", value: "/usr/home"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "/usr/home/sound/sea.wav"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "/usr/home"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error RelatedSoundFile ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FlashEnergy')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13600';
+      const key = image.PropertyKey.FLASH_ENERGY;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "832"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "832"},
+        {name: "png", fileName: "test_exif_v2.png", value: "832"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "832"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "832"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FlashEnergy ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SpatialFrequencyResponse')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13700';
+      const key = image.PropertyKey.SPATIAL_FREQUENCY_RESPONSE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "13"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "13"},
+        {name: "png", fileName: "test_exif_v2.png", value: "13"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "."},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "13"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SpatialFrequencyResponse ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FocalPlaneXResolution')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13800';
+      const key = image.PropertyKey.FOCAL_PLANE_X_RESOLUTION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1080"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1080"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1080"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1080"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1080"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FocalPlaneXResolution ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FocalPlaneYResolution')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_13900';
+      const key = image.PropertyKey.FOCAL_PLANE_Y_RESOLUTION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "880"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "880"},
+        {name: "png", fileName: "test_exif_v2.png", value: "880"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "880"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "880"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FocalPlaneYResolution ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FocalPlaneResolutionUnit')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14000';
+      const key = image.PropertyKey.FOCAL_PLANE_RESOLUTION_UNIT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Inch"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Centimeter"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Inch"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Centimeter"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Inch"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FocalPlaneResolutionUnit ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SubjectLocation')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14100';
+      const key = image.PropertyKey.SUBJECT_LOCATION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0, 1"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "5, 6"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0, 1"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "2009, 1506, 2318, 1390"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0, 1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SubjectLocation ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ExposureIndex')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14200';
+      const key = image.PropertyKey.EXPOSURE_INDEX;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1.5"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1.5"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1.5"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1.5"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1.5"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ExposureIndex ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SensingMethod')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14300';
+      const key = image.PropertyKey.SENSING_METHOD;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name: "jpeg", fileName: "test_exif_v2.jpg", value: "Two-chip color area sensor"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "One-chip color area sensor"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Two-chip color area sensor"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Two-chip color area sensor"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Two-chip color area sensor"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SensingMethod ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FileSource')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14400';
+      const key = image.PropertyKey.FILE_SOURCE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "DSC"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "DSC"},
+        {name: "png", fileName: "test_exif_v2.png", value: "DSC"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "DSC"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "DSC"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FileSource ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SceneType')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14500';
+      const key = image.PropertyKey.SCENE_TYPE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Directly photographed"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Directly photographed"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Directly photographed"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Directly photographed"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Directly photographed"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SceneType ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('CFAPattern')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14600';
+      const key = image.PropertyKey.CFA_PATTERN;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "1 bytes undefined data"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1 bytes undefined data"},
+        {name: "png", fileName: "test_exif_v2.png", value: "1 bytes undefined data"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1 bytes undefined data"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "1 bytes undefined data"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error CFAPattern ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('CustomRendered')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14700';
+      const key = image.PropertyKey.CUSTOM_RENDERED;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Normal process"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Custom process"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Normal process"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Custom process"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Normal process"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error CustomRendered ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ExposureMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14800';
+      const key = image.PropertyKey.EXPOSURE_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Auto exposure"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Auto exposure"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Auto exposure"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Auto exposure"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Auto exposure"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ExposureMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('WhiteBalance')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_14900';
+      const key = image.PropertyKey.WHITE_BALANCE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Manual white balance"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Auto white balance"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Manual white balance"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Manual white balance"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Manual white balance"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error WhiteBalance ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('DigitalZoomRatio')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15000';
+      const key = image.PropertyKey.DIGITAL_ZOOM_RATIO;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "321"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1.00"},
+        {name: "png", fileName: "test_exif_v2.png", value: "321"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: " 0"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "321"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error DigitalZoomRatio ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('FocalLengthIn35mmFilm')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15100';
+      const key = image.PropertyKey.FOCAL_LENGTH_IN_35_MM_FILM;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "27"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "26"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error FocalLengthIn35mmFilm ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SceneCaptureType')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15200';
+      const key = image.PropertyKey.SCENE_CAPTURE_TYPE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Standard"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Standard"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Standard"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Standard"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Standard"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SceneCaptureType ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('GainControl')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15300';
+      const key = image.PropertyKey.GAIN_CONTROL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Normal"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Normal"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Normal"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Normal"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Normal"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GainControl ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Contrast')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15400';
+      const key = image.PropertyKey.CONTRAST;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Normal"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Normal"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Normal"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Normal"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Normal"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Contrast ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Saturation')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15500';
+      const key = image.PropertyKey.SATURATION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Normal"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Normal"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Normal"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Normal"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Normal"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Saturation ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Sharpness')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15600';
+      const key = image.PropertyKey.SHARPNESS;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Normal"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Normal"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Normal"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Normal"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Normal"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Sharpness ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('DeviceSettingDescription')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15700';
+      const key = image.PropertyKey.DEVICE_SETTING_DESCRIPTION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2xxx"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2xxx"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "."},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2xxx"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error DeviceSettingDescription ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SubjectDistanceRange')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15800';
+      const key = image.PropertyKey.SUBJECT_DISTANCE_RANGE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "Unknown"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "Unknown"},
+        {name: "png", fileName: "test_exif_v2.png", value: "Unknown"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "Unknown"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "Unknown"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SubjectDistanceRange ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('ImageUniqueID')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_15900';
+      const key = image.PropertyKey.IMAGE_UNIQUE_ID;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "FXIC012"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "FXIC012"},
+        {name: "png", fileName: "test_exif_v2.png", value: "FXIC012"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "FXIC012"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "FXIC012"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error ImageUniqueID ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('CameraOwnerName')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16000';
+      const key = image.PropertyKey.CAMERA_OWNER_NAME;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "c.uec"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "c.uec"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "c.uec"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error CameraOwnerName ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('BodySerialNumber')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16100';
+      const key = image.PropertyKey.BODY_SERIAL_NUMBER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "exoch"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "x1"},
+        {name: "png", fileName: "test_exif_v2.png", value: "exoch"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "exoch"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error BodySerialNumber ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16200
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('LensSpecification')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16200';
+      const key = image.PropertyKey.LENS_SPECIFICATION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "0.8, 2.5, 1.5, 0.5"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: " 1, 2.5,  3,  2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "0.8, 2.5, 1.5, 0.5"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: " 1, 1.5,  1,  2"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "0.8, 2.5, 1.5, 0.5"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error LensSpecification ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('LensMake')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16300';
+      const key = image.PropertyKey.LENS_MAKE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "xxwx"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "aaa"},
+        {name: "png", fileName: "test_exif_v2.png", value: "xxwx"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xxx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "xxwx"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error LensMake ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('LensModel')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16400';
+      const key = image.PropertyKey.LENS_MODEL;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "txaw"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "xxx"},
+        {name: "png", fileName: "test_exif_v2.png", value: "txaw"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xxx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "txaw"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error LensModel ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('LensSerialNumber')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16500';
+      const key = image.PropertyKey.LENS_SERIAL_NUMBER;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "qxhc"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "111"},
+        {name: "png", fileName: "test_exif_v2.png", value: "qxhc"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "xxx"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "qxhc"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error LensSerialNumber ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('CompositeImage')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16600';
+      const key = image.PropertyKey.COMPOSITE_IMAGE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "2"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error CompositeImage ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SourceImageNumberOfCompositeImage')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16700';
+      const key = image.PropertyKey.SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "23, 34"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1234, 1"},
+        {name: "png", fileName: "test_exif_v2.png", value: "23, 34"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1234"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "23, 34"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SourceImageNumberOfCompositeImage ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('SourceExposureTimesOfCompositeImage')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16800';
+      const key = image.PropertyKey.SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "xxxw"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "123"},
+        {name: "png", fileName: "test_exif_v2.png", value: "xxxw"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "."},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "xxxw"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error SourceExposureTimesOfCompositeImage ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('Gamma')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_16900';
+      const key = image.PropertyKey.GAMMA;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2.5"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1.5"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2.5"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1.5"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2.5"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error Gamma ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('DNGVersion')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17000';
+      const key = image.PropertyKey.DNG_VERSION;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "2, 2, 3, 1"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "1, 1, 2, 3"},
+        {name: "png", fileName: "test_exif_v2.png", value: "2, 2, 3, 1"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "0x01, 0x01, 0x02, 0x03"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "2, 2, 3, 1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error DNGVersion ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17100
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('DefaultCropSize')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17100', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17100';
+      const key = image.PropertyKey.DEFAULT_CROP_SIZE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v2.jpg", value: "153, 841"},
+        {name: "webp", fileName: "test_exif_v2.webp", value: "12, 1"},
+        {name: "png", fileName: "test_exif_v2.png", value: "153, 841"},
+        {name: "dng", fileName: "test_exif_v2.dng", value: "1"},
+        {name: "heif", fileName: "test_exif_v2.heic", value: "153, 841"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error DefaultCropSize ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17200
+     * @tc.desc      : 1.create imageSource (by fd/uri)
+     *                 2.getImageProperty('GIFLoopCount')
+     *				   3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17200', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17200';
+      const key = image.PropertyKey.GIF_LOOP_COUNT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [
+        {name:'jpeg', fileName:'test_exif_v2.jpg', value=''},
+        {name:'webp', fileName:'test_exif_v2.webp', value=''},
+        {name:'png', fileName:'test_exif_v2.png', value=''},
+        {name:'heif', fileName:'test_exif_v2.heic', value=''},
+      ]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error GIFLoopCount ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17300
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteIsXmageSupported')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17300', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17300';
+      const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17400
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteXmageMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17400', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17400';
+      const key = image.PropertyKey.XMAGE_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17500
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17500
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteXmageLeft')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17500', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17500';
+      const key = image.PropertyKey.XMAGE_LEFT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17600
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17600
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteXmageTop')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17600', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17600';
+      const key = image.PropertyKey.XMAGE_TOP;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17700
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17700
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteXmageRight')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17700', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17700';
+      const key = image.PropertyKey.XMAGE_RIGHT;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17800
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteXmageBottom')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17800', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17800';
+      const key = image.PropertyKey.XMAGE_BOTTOM;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17900
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteCloudEnhancementMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17900', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_17900';
+      const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_18000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_18000
+     * @tc.desc      : 1.createImageSource（by Fd/Uri）
+     *                 2.getImageProperty('HwMnoteWindSnapshotMode')
+     *				         3.compare value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_18000', Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_18000';
+      const key = image.PropertyKey.WIND_SNAPSHOT_MODE;
+      const createImageSourceTypes = ["Fd", "Uri"]
+      const values:Array<picTypeValue> = [{name: "jpeg", fileName: "test_exif_v4.jpg", value: "1"},
+        {name: "webp", fileName: "test_exif_v4.webp", value: "1"},
+        {name: "png", fileName: "test_exif_v4.png", value: "1"},
+        {name: "heif", fileName: "test_exif_v4.heic", value: "1"}]
+      try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+          for(let i=0; i<values.length; i++){
+            const checkResult = await NDK_GetImagePropertyWithNull(testTag, values[i].fileName, createImageSourceTypes[j], key, values[i].value);
+            if(!checkResult){
+              expect().assertFail()
+              done()
+            }
+          }
+        }
+        expect(true).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource error HwMnoteWindSnapshotMode ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+                
   })
 }
