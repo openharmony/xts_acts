@@ -15,7 +15,10 @@
 
 import uriTest1 from "./uri/Uri1.test";
 import uriTest2 from "./uri/Uri2.test";
+import uriEmojiTest from "./uri/Emoji_Uri.test";
+
 export default function testsuite() {
     uriTest1();
     uriTest2();
+    uriEmojiTest();
 }
