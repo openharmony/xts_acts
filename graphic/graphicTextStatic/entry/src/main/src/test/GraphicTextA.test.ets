@@ -208,6 +208,7 @@ export default function GraphicTextATest() {
         let paragraph = ParagraphGraphBuilder.build();
         let arrLineMetrc =  paragraph.getLineMetrics();
         console.log(msg + ' Succeed in getLineMetrics.')
+        console.log('www data lxt Succeed in getLineMetrics.' + JSON.stringify(arrLineMetrc))
         expect(true).assertTrue()
         done()
       } catch (err) {

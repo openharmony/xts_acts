@@ -27,8 +27,8 @@ import Utils from './Util.test';
 let domain: number = 0x0000; //日志标识,0x0000作为测试框架的业务标识
 let tag: string = 'testTag'; //日志标识字符串,作为tag标识当前runner类下的测试行为
 
-export default function ParagraphTest() {
-  describe("ParagraphTest", (): void => {
+export default function TextParagraphTest() {
+  describe("TextParagraphTest", (): void => {
     let globalFontCollection: text.FontCollection;
     let globalTextStyle: text.TextStyle;
     let globalParagraphStyle: text.ParagraphStyle;
@@ -326,6 +326,10 @@ export default function ParagraphTest() {
           paragraph.layoutSync(100);
           let lineMetrics: text.LineMetrics | undefined = paragraph.getLineMetrics(2);
           if (lineMetrics !== undefined) {
+            expect(lineMetrics?.startIndex).assertEqual(2)
+            expect(lineMetrics?.endIndex).assertEqual(3)
+            console.info('www data lxt 111' + JSON.stringify(lineMetrics));
+            console.info('www data lxt 111' + lineMetrics);
             hilog.error(0x0000, 'Text', 'MM_LOG one line metrics info data: %{public}s', JSON.stringify(lineMetrics));
             expect(Math.round(Number(lineMetrics?.ascent ?? 0) * 100) / 100).assertEqual(303.39)
             expect(Math.round(Number(lineMetrics?.descent ?? 0) * 100) / 100).assertEqual(112.61)

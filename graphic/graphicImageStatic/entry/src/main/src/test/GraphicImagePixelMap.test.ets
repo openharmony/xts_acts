@@ -1074,7 +1074,28 @@ export default function graphicImagePixelMap() {
         done();
       })
 
-
+    /**
+     * @tc.number: graphicImagePixelMap_static_4500
+     * @tc.name: graphicImagePixelMap_static_4500
+     * @tc.desc: image API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('graphicImagePixelMap_static_4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+        const color: ArrayBuffer = new ArrayBuffer(96);
+        let opts: image.InitializationOptions = {
+          editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 }
+        }
+        try {
+          pixelMap.setMemoryNameSync("PixelMapName Test");
+          expect(true).assertTrue();
+        } catch (err) {
+          expect().assertFail();
+        }
+        done();
+      })
 
   })
 }
