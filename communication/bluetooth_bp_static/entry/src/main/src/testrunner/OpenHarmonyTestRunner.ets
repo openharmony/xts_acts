@@ -39,8 +39,8 @@ export class OpenHarmonyTestRunner implements TestRunner {
     abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
     if (abilityDelegatorArguments != undefined) {
       hilog.info(domain, tag, 'abilityDelegatorArguments is not undefined1');
-      Hypium.set("abilityDelegatorArguments", abilityDelegatorArguments);
-      let temp: abilityDelegatorRegistry.AbilityDelegatorArgs = Hypium.get("abilityDelegatorArguments") as abilityDelegatorRegistry.AbilityDelegatorArgs;
+      Hypium.set('abilityDelegatorArguments', abilityDelegatorArguments);
+      let temp: abilityDelegatorRegistry.AbilityDelegatorArgs = Hypium.get('abilityDelegatorArguments') as abilityDelegatorRegistry.AbilityDelegatorArgs;
       if (temp != undefined) {
         hilog.info(0x0000, 'testTag', 'temp is not undefined');
       } else {
@@ -53,15 +53,15 @@ export class OpenHarmonyTestRunner implements TestRunner {
 
     abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
     abilityDelegator.addAbilityMonitor({
-      abilityName: "EntryAbility",
-      moduleName:"entry",
+      abilityName: 'EntryAbility',
+      moduleName:'entry',
     }, (err : BusinessError<void> | null) : void => {
       if (err != null ) {
         hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
       }
       hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
     });
-    abilityDelegator.executeShellCommand("aa start -a EntryAbility -b ohos.acts.communication.bluetooth.bluetoothhost.bp.static")
+    abilityDelegator.executeShellCommand('aa start -a EntryAbility -b ohos.acts.communication.bluetooth.bluetoothhost.bp.static')
     hilog.info(domain, tag, 'onRun end');
 
   }
