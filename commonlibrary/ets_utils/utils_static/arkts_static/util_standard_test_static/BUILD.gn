@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2025 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,16 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("arkts_static") {
+ohos_js_app_static_suite("ActsUtilStaticTest") {
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "buffer_standard_test_static:ActsBufferStaticTest",
-      "com_container_standard_static:ActsContainerStaticTest",
-      "com_uri_standard_static:ActsUriStaticTest",
-      "util_standard_test_static:ActsUtilStaticTest",
-      "com_url_standard_static:ActsUrlStaticTest",
-      "stream_standard_test_static:ActsStreamStaticTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsUtilStaticTest"
+  part_name = "ets_utils"
+  subsystem_name = "commonlibrary"
 }
+
