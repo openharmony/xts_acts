@@ -55,7 +55,7 @@ export class OpenHarmonyTestRunner implements TestRunner {
     abilityDelegator.addAbilityMonitor({
       abilityName: "EntryAbility",
       moduleName:"entry",
-    }, (err : BusinessError) : void => {
+    }, (err : BusinessError<void> |null) : void => {
       if (err != null ) {
         hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
       }
