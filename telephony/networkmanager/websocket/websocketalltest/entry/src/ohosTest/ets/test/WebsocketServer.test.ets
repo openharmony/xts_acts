@@ -803,7 +803,7 @@ export default function WebsocketServerTest() {
         }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        ExpectTrue(err.code == 230006, `${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        ExpectTrue(err.code == 2302006, `${caseName} fail,errInfo->${JSON.stringify(err)}`);
         done();
         console.info(`${caseName} test end`);
       }
@@ -1279,7 +1279,7 @@ export default function WebsocketServerTest() {
           })
           let callback = (massage: webSocket.WebSocketMessage) => {
             if (massage.data == "hello server") {
-              console.info(`${caseName} test onMassage success`)
+              console.info(`${caseName} test onMassage success. connection is ${massage.clientConnection}`)
               ExpectTrue(true, `${caseName} test onMassage success`)
               done()
               console.info(`${caseName} test end`);
