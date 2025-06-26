@@ -12,7 +12,6 @@
 # limitations under the License.
 
 import("//build/ohos_var.gni")
-import("//foundation/graphic/graphic_2d/graphic_config.gni")
 group("graphic") {
   testonly = true
   if (is_standard_system) {
@@ -34,6 +33,7 @@ group("graphic") {
       "graphicDisplaySync:ActsGraphicDisplaySyncTest",
       "graphicDrawingFont:ActsGraphicDrawingFontTest",
       "graphicEGL:ActsGraphicEglTest",
+      "graphicGL4:ActsGraphicGl4Test",
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicGLES3v2:ActsGraphicGles3v2Test",
       "graphicGlesExtension:ActsGraphicGlesExtensionTest",
@@ -66,9 +66,6 @@ group("graphic") {
         "vkgl:cpvkgl",
         "vktest:cpVulkan",
       ]
-    }
-    if (graphic_2d_feature_enable_opengl_to_vulkan) {
-      deps += [ "graphicGL4:ActsGraphicGl4Test" ]
     }
   } else {
     deps = [

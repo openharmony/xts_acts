@@ -291,5 +291,46 @@ describe("SensorJsTest_sensor_59", function () {
             done();
         }
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_Wear_Detection_JSTest_0230
+     * @tc.name: newWear_Detection_SensorJsTest023
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newWear_Detection_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newWear_Detection_SensorJsTest023--------------');
+        const TAG = 'newWear_Detection_SensorJsTest023'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.WEAR_DETECTION, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.WEAR_DETECTION, callback, options);
+                setTimeout(() => {
+                    console.info('-------------------newWear_Detection_SensorJsTest023 off in------------');
+                    sensor.off(sensor.SensorId.WEAR_DETECTION, sensorInfoParam, callback);
+                    console.info('-------------------newWear_Detection_SensorJsTest023 off end-----------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })
 }

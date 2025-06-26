@@ -1078,4 +1078,45 @@ describe("SensorJsTest_sensor_39", function () {
             done();
         }
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0240
+     * @tc.name: newAccelerometer_SensorJsTest024
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newAccelerometer_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newAccelerometer_SensorJsTest024--------------');
+        const TAG = 'newAccelerometer_SensorJsTest024'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELEROMETER, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.ACCELEROMETER, callback, options);
+                setTimeout(() => {
+                    console.info('----------------------newAccelerometer_SensorJsTest024 off in--------------');
+                    sensor.off(sensor.SensorId.ACCELEROMETER, sensorInfoParam, callback);
+                    console.info('----------------------newAccelerometer_SensorJsTest024 off end--------------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}

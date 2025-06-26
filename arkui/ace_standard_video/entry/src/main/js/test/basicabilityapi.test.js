@@ -16,7 +16,7 @@
 import configuration from '@system.configuration';
 import prompt from '@system.prompt';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 export default function basicabilityapi() {
 describe('basicabilityapi', function () {
@@ -60,7 +60,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testClearInterval
      * @tc.desc      Cancel the repetitive timing tasks previously set by setInterval.
      */
-    it('testClearInterval', 0, async function(done) {
+    it('testClearInterval', Level.LEVEL0, async function(done) {
         console.info('testClearInterval START');
         let res = 0;
         let intervalID = -1;
@@ -92,7 +92,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testConsole
      * @tc.desc      Print a text message.
      */
-    it('testConsole', 0, function () {
+    it('testConsole', Level.LEVEL0, function () {
         console.info('testConsole START');
         const versionCode = 1.1;
         console.info('[console.info] versionCode: ' + versionCode);
@@ -109,7 +109,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testRouterPush
      * @tc.desc      Go to the specified page of the application.
      */
-    it('testRouterPush', 0, async function (done) {
+    it('testRouterPush', Level.LEVEL0, async function (done) {
         console.info('testRouterPush START');
         let options = {
             uri : 'pages/routerPush/index'
@@ -142,7 +142,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testRouterPushNotExist
      * @tc.desc      Test push not exist page.
      */
-    it('testRouterPushNotExist', 0, async function (done) {
+    it('testRouterPushNotExist', Level.LEVEL0, async function (done) {
         console.info('testRouterPushNotExist START');
         let promise1 = new Promise((resolve, reject) => {
             router.push({
@@ -173,7 +173,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testRouterReplace
      * @tc.desc      Replace the current page with a page in the application, and destroy the replaced page.
      */
-    it('testRouterReplace', 0, async function (done) {
+    it('testRouterReplace', Level.LEVEL0, async function (done) {
         //测试框架不允许index页面直接替换，需要先跳转到其他页面再替换
         console.info('testRouterReplace START');
         let options = {
@@ -219,7 +219,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testRouterReplaceNotExist
      * @tc.desc      Test replace not exist page.
      */
-    it('testRouterReplaceNotExist', 0, async function (done) {
+    it('testRouterReplaceNotExist', Level.LEVEL0, async function (done) {
         console.info('testRouterReplaceNotExist START');
         await setTimeout(() => {
             router.replace({
@@ -242,7 +242,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testRouterBack
      * @tc.desc      Return to the previous page or the specified page.
      */
-    it('testRouterBack', 0, async function (done) {
+    it('testRouterBack', Level.LEVEL0, async function (done) {
         console.info('testRouterBack START');
         let promise1 = new Promise((resolve, reject) => {
             router.push({
@@ -283,7 +283,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testRouterClear
      * @tc.desc      Clear all historical pages in the page stack, and only keep the current page as the top page.
      */
-    it('testRouterClear', 0, function () {
+    it('testRouterClear', Level.LEVEL0, function () {
         console.info('testRouterClear START');
         router.clear();
         console.info("[router.clear] router.getLength:" + router.getLength());
@@ -296,7 +296,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testRouterLength
      * @tc.desc      Get the number of pages currently in the page stack.
      */
-    it('testRouterLength', 0, async function (done) {
+    it('testRouterLength', Level.LEVEL0, async function (done) {
         console.info('testRouterLength START');
         let size = router.getLength();
         console.info('[router.getLength] pages stack size = ' + size);
@@ -329,7 +329,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testRouterGetState
      * @tc.desc      Get the status information of the current page.
      */
-    it('testRouterGetState', 0, async function (done) {
+    it('testRouterGetState', Level.LEVEL0, async function (done) {
         console.info('testRouterGetState START');
         await setTimeout(() => {
             let page = router.getState();
@@ -349,7 +349,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testPromptShowToast
      * @tc.desc      Show text pop-up window.
      */
-    it('testPromptShowToast', 0, function () {
+    it('testPromptShowToast', Level.LEVEL0, function () {
         console.info('testPromptShowToast START');
         const delay = 5000;
         prompt.showToast({
@@ -366,7 +366,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testPromptDialog
      * @tc.desc      Display the dialog box in the page.
      */
-    it('testPromptDialog', 0, function () {
+    it('testPromptDialog', Level.LEVEL0, function () {
         console.info('testPromptDialog START')
         prompt.showDialog({
             title: 'dialog showDialog test',
@@ -398,7 +398,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testConfigurationGetLocale
      * @tc.desc      Get the current language and region of the app. Synchronize with the language and region.
      */
-    it('testConfigurationGetLocale', 0, function () {
+    it('testConfigurationGetLocale', Level.LEVEL0, function () {
         console.info('testConfigurationGetLocale START');
         const localeInfo = configuration.getLocale();
         console.info("[configuration.getLocale] localeInfo: " + JSON.stringify(localeInfo));
@@ -415,7 +415,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testSetTimeout
      * @tc.desc      Set up a timer that executes a function or a specified piece of code after the timer expires.
      */
-    it('testSetTimeout', 0, async function (done) {
+    it('testSetTimeout', Level.LEVEL0, async function (done) {
         console.info('testSetTimeout START');
         let startTime = new Date().getTime();
         const delay = 200;
@@ -439,7 +439,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testClearTimeout
      * @tc.desc      The timer previously established by calling setTimeout() is cancelled.
      */
-    it('testClearTimeout', 0, async function (done) {
+    it('testClearTimeout', Level.LEVEL0, async function (done) {
         console.info('testClearTimeout START');
         let res = 0;
         let timeoutID = setTimeout(function () {
@@ -462,7 +462,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testSetInterval
      * @tc.desc      Call a function or execute a code segment repeatedly, with a fixed time delay between each call.
      */
-    it('testSetInterval', 0, async function (done) {
+    it('testSetInterval', Level.LEVEL0, async function (done) {
         console.info('testSetInterval START');
         let res = 0;
         let intervalID = setInterval(function () {

@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 
 export default function aceJsTest() {
@@ -63,7 +63,7 @@ describe('aceJsTest', function () {
      * @tc.name      testVideoComponent
      * @tc.desc      ACE
      */
-    it('testVideoComponent', 0, async function (done) {
+    it('testVideoComponent', Level.LEVEL0, async function (done) {
         let result;
         let options = {
             uri: 'pages/video/router/index'

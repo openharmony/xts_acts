@@ -102,7 +102,7 @@ export default function SwipeGesture1() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('SwipeGesture1_0300', 2, async (done: Function) => {
+    it('SwipeGesture1_0300', Level.LEVEL2, async (done: Function) => {
       console.info('SwipeGesture1_0300 START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);

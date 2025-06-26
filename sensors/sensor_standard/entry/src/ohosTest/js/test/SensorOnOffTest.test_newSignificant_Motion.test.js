@@ -410,4 +410,45 @@ describe("SensorJsTest_sensor_50", function () {
             done();
         }, 1000);
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0280
+     * @tc.name: newSignificant_Motion_SensorJsTest028
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newSignificant_Motion_SensorJsTest028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newSignificant_Motion_SensorJsTest028--------------');
+        const TAG = 'newSignificant_Motion_SensorJsTest028'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.SIGNIFICANT_MOTION, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, callback, options);
+                setTimeout(() => {
+                    console.info('-------------------newSignificant_Motion_SensorJsTest028 off in------------');
+                    sensor.off(sensor.SensorId.SIGNIFICANT_MOTION, sensorInfoParam, callback);
+                    console.info('-------------------newSignificant_Motion_SensorJsTest028 off end-----------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}

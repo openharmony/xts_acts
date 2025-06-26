@@ -89,7 +89,7 @@ export default function basicabilityapi() {
          * @tc.name      testConsole
          * @tc.desc      Print a text message.
          */
-        it('testConsole', 0, function() {
+        it('testConsole', Level.LEVEL0, function() {
             console.info('testConsole START');
             const versionCode = 1.1;
             console.info('[console.info] versionCode: ' + versionCode);
@@ -280,7 +280,7 @@ export default function basicabilityapi() {
          * @tc.name      testRouterClear
          * @tc.desc      Clear all historical pages in the page stack, and only keep the current page as the top page.
          */
-        it('testRouterClear', 0, function() {
+        it('testRouterClear', Level.LEVEL0, function() {
             console.info('testRouterClear START');
             router.clear();
             console.info("[router.clear] router.getLength:" + router.getLength());
@@ -346,7 +346,7 @@ export default function basicabilityapi() {
          * @tc.name      testPromptShowToast
          * @tc.desc      Show text pop-up window.
          */
-        it('testPromptShowToast', 0, function() {
+        it('testPromptShowToast', Level.LEVEL0, function() {
             console.info('testPromptShowToast START');
             const delay = 5000;
             prompt.showToast({
@@ -363,7 +363,7 @@ export default function basicabilityapi() {
          * @tc.name      testPromptDialog
          * @tc.desc      Display the dialog box in the page.
          */
-        it('testPromptDialog', 0, function() {
+        it('testPromptDialog', Level.LEVEL0, function() {
             console.info('testPromptDialog START')
             prompt.showDialog({
                 title: 'dialog showDialog test',
@@ -393,7 +393,7 @@ export default function basicabilityapi() {
          * @tc.name      testConfigurationGetLocale
          * @tc.desc      Get the current language and region of the app. Synchronize with the language and region.
          */
-        it('testConfigurationGetLocale', 0, function() {
+        it('testConfigurationGetLocale', Level.LEVEL0, function() {
             console.info('testConfigurationGetLocale START');
             const localeInfo = configuration.getLocale();
             console.info("[configuration.getLocale] localeInfo: " + JSON.stringify(localeInfo));

@@ -48,7 +48,7 @@ export default function radioGroupJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testRadioGroup001',0,async (done: Function) => {
+    it('testRadioGroup001', Level.LEVEL0, async (done: Function) => {
       console.info("[testRadioGroup001] START");
       let strJson = getInspectorByKey('RadioOne');
       let obj: ESObject = JSON.parse(strJson);
@@ -70,7 +70,7 @@ export default function radioGroupJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testRadioGroup002',0,async (done: Function) => {
+    it('testRadioGroup002', Level.LEVEL0, async (done: Function) => {
       console.info("[testRadioGroup002] START");
       let strJson = getInspectorByKey('RadioOne');
       let obj: ESObject = JSON.parse(strJson);

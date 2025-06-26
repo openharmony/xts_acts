@@ -48,7 +48,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0100',0,async (done: Function) => {
+    it('textTimerJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0100 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -73,7 +73,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0100',0,async (done: Function) => {
+    it('textTimerJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0100 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -98,7 +98,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0100',0,async (done: Function) => {
+    it('textTimerJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0100 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -123,7 +123,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0100',0,async (done: Function) => {
+    it('textTimerJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0100 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -142,7 +142,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0200',0,async (done: Function) => {
+    it('textTimerJsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0200 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -162,7 +162,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0300',0,async (done: Function) => {
+    it('textTimerJsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0300 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -182,7 +182,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0400',0,async (done: Function) => {
+    it('textTimerJsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0400 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -202,7 +202,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0500',0,async (done: Function) => {
+    it('textTimerJsunit_0500', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0500 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -222,7 +222,7 @@ export default function textTimer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('textTimerJsunit_0600',0,async (done: Function) => {
+    it('textTimerJsunit_0600', Level.LEVEL0, async (done: Function) => {
       console.info('textTimerJsunit_0600 START');
       let strJson = getInspectorByKey('TextTimerKey1');
       let obj: ESObject = JSON.parse(strJson);

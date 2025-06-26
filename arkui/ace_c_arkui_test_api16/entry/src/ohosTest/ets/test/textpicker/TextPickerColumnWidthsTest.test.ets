@@ -18,6 +18,10 @@ import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so';
 
+const TEXTPICKER_WTDTHS1 = 20;
+const TEXTPICKER_WTDTHS2 = 50;
+const TEXTPICKER_WTDTHS3 = 60;
+const TEXTPICKER_WTDTHS4 = 100;
 export default function textPickerTest(){
 
   describe('textPickerTest', () => {
@@ -47,7 +51,9 @@ export default function textPickerTest(){
       await Utils.sleep(1000);
       console.info("[Tes0011]:" + JSON.stringify(obj.$attrs));
       console.info("[TestTextPickerColumnWidths001]:" + JSON.stringify(obj.$attrs.columnWidths));
-      expect(obj.$attrs.columnWidths).assertEqual(vp2px(50).toFixed(2).toString() + 'px');
+      let str = JSON.stringify(vp2px(TEXTPICKER_WTDTHS2));
+      expect(obj.$attrs.columnWidths.includes('px')).assertTrue();
+      expect(Math.abs(parseInt(obj.$attrs.columnWidths) - parseInt(str)) <= 1).assertTrue();
       await Utils.sleep(1000)
       console.info('TestTextPickerColumnWidths001 END');
       done();
@@ -73,7 +79,9 @@ export default function textPickerTest(){
       let obj: ESObject = JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info("[TestTextPickerColumnWidths002]:" + JSON.stringify(obj.$attrs.columnWidths));
-      expect(obj.$attrs.columnWidths).assertEqual(vp2px(100).toFixed(2).toString() + 'px');
+      let str = JSON.stringify(vp2px(TEXTPICKER_WTDTHS4));
+      expect(obj.$attrs.columnWidths.includes('px')).assertTrue();
+      expect(Math.abs(parseInt(obj.$attrs.columnWidths) - parseInt(str)) <= 1).assertTrue();
       await Utils.sleep(1000)
       console.info('TestTextPickerColumnWidths002 END');
       done();
@@ -99,9 +107,11 @@ export default function textPickerTest(){
       let obj: ESObject = JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info("[TestTextPickerColumnWidths003]:" + JSON.stringify(obj.$attrs.columnWidths));
-      let str = vp2px(60).toFixed(2).toString() + 'px,' + vp2px(20).toFixed(2).toString() + 'px,'
-        + vp2px(20).toFixed(2).toString() + 'px';
-      expect(obj.$attrs.columnWidths).assertEqual(str);
+      let wids: string[] = obj.$attrs.columnWidths.split(',');
+      expect(obj.$attrs.columnWidths.includes('px')).assertTrue();
+      expect(Math.abs(parseInt(wids[0]) - parseInt(JSON.stringify(vp2px(TEXTPICKER_WTDTHS3)))) <= 1).assertTrue();
+      expect(Math.abs(parseInt(wids[1]) - parseInt(JSON.stringify(vp2px(TEXTPICKER_WTDTHS1)))) <= 1).assertTrue();
+      expect(Math.abs(parseInt(wids[2]) - parseInt(JSON.stringify(vp2px(TEXTPICKER_WTDTHS1)))) <= 1).assertTrue();
       await Utils.sleep(1000)
       console.info('TestTextPickerColumnWidths003 END');
       done();

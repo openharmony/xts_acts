@@ -33,8 +33,8 @@ bool Gl4ApiTest::InitContext(void* window)
         LOGI("eglGetDisplay: unable to get EGL display");
         return false;
     }
-    EGLint majorVersion;
-    EGLint minorVersion;
+    EGLint majorVersion = 0;
+    EGLint minorVersion = 0;
     if (!eglInitialize(eglDisplay, &majorVersion, &minorVersion)) {
         LOGI("eglInitialize: unable to get initialize EGL display");
         return false;

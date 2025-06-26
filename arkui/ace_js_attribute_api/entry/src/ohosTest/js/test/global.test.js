@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, it, expect, Level} from '@ohos/hypium';
 import router from '@system.router';
 
 export default function globalGetAppTest() {
@@ -58,7 +58,7 @@ describe('globalGetAppTest', function () {
      * @tc.name      getApp
      * @tc.desc      ACE
      */
-    it('globalGetAppTest_001', 0, function (done) {
+    it('globalGetAppTest_001', Level.LEVEL0, function (done) {
         console.log('globalGetAppTest_001 start')
         let result;
         let options = {
@@ -81,7 +81,7 @@ describe('globalGetAppTest', function () {
      * @tc.desc      ACE
      */
 
-    it('globalGetAppTest_002', 0, function (done) {
+    it('globalGetAppTest_002', Level.LEVEL0, function (done) {
         try {
             createLocalParticleAbility('com.freesonwill.facallpa.biz.MyLocalParticleAbility');
             expect(test).assertEqual('success')

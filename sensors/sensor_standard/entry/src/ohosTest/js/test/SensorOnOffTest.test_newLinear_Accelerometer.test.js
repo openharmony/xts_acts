@@ -451,4 +451,45 @@ describe("SensorJsTest_sensor_51", function () {
             done();
         }, 1000);
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_LINEAR_ACCELEROMETER_JSTest_0310
+     * @tc.name: newLinear_Accelerometer_SensorJsTest031
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newLinear_Accelerometer_SensorJsTest031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newLinear_Accelerometer_SensorJsTest031--------------');
+        const TAG = 'newLinear_Accelerometer_SensorJsTest031'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.LINEAR_ACCELEROMETER, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.LINEAR_ACCELEROMETER, callback, options);
+                setTimeout(() => {
+                    console.info('--------------------newLinear_Accelerometer_SensorJsTest031 off in------------');
+                    sensor.off(sensor.SensorId.LINEAR_ACCELEROMETER, sensorInfoParam, callback);
+                    console.info('--------------------newLinear_Accelerometer_SensorJsTest031 off end------------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}

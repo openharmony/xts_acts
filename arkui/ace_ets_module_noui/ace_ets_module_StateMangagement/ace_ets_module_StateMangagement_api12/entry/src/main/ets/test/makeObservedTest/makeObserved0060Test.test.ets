@@ -51,7 +51,7 @@ export default function makeObserved0060Test() {
      * @tc.type :    FUNC
      * @tc.size :    MEDIUM
      */
-    it('makeObserved0060Test_01', 0, async(done: Function) => {
+    it('makeObserved0060Test_01', Level.LEVEL0, async(done: Function) => {
       console.info('makeObserved0060Test_01 START');
       let testArr: testType[] = [
         {

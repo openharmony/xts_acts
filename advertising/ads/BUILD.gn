@@ -19,6 +19,7 @@ group("ActsAdTest") {
     deps = [
       "abilitydemo:ActsAdsKitTest",
       "advertising:ActsCloudAdTest",
+      "advertising0:ActsCloudAdLevel0Test",
     ]
   }
 }
