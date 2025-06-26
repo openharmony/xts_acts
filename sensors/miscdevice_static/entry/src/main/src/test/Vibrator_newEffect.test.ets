@@ -13,6 +13,16 @@ export default function VibratorJsTest_misc_8() {
     const EFFECT_IDFAIL = "haptic.notice.fail"
     const EFFECT_IDWARNING = "haptic.notice.warning"
     let TAG = ""
+
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest01
+     * @tc.name      : UniversalVibratorJsTest01
+     * @tc.desc      : test EFFECT_IDSUCCESS vibrate
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest01"
       let ret = vibrator.isSupportEffect(EFFECT_IDSUCCESS);
@@ -44,6 +54,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest02
+     * @tc.name      : UniversalVibratorJsTest02
+     * @tc.desc      : test EFFECT_IDFAIL vibrate
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest02"
       let ret1 = vibrator.isSupportEffect(EFFECT_IDFAIL);
@@ -75,6 +94,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest03
+     * @tc.name      : UniversalVibratorJsTest03
+     * @tc.desc      : test EFFECT_IDWARNING vibrate
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest03"
       let ret2 = vibrator.isSupportEffect(EFFECT_IDWARNING);
@@ -106,6 +134,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest04
+     * @tc.name      : UniversalVibratorJsTest04
+     * @tc.desc      : test EFFECT_IDFAIL vibrate
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest04", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest04"
       let ret2 = vibrator.isSupportEffect(EFFECT_IDWARNING);
@@ -152,6 +189,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest05
+     * @tc.name      : UniversalVibratorJsTest05
+     * @tc.desc      : test EFFECT_IDSUCCESS vibrate
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest05", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest05"
       let ret2 = vibrator.isSupportEffect(EFFECT_IDWARNING);
@@ -198,6 +244,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest06
+     * @tc.name      : UniversalVibratorJsTest06
+     * @tc.desc      : test EFFECT_IDWARNING vibrate
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest06", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest06"
       let ret2 = vibrator.isSupportEffect(EFFECT_IDWARNING);
@@ -244,6 +299,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest07
+     * @tc.name      : UniversalVibratorJsTest07
+     * @tc.desc      : test VibrateTime vibrate
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest07", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest07"
       let ret = vibrator.isHdHapticSupported();
@@ -277,6 +341,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest09
+     * @tc.name      : UniversalVibratorJsTest09
+     * @tc.desc      : test vibratePreset
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest09", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest09"
       let vibratePreset: vibrator.VibratePreset = {
@@ -289,6 +362,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest10
+     * @tc.name      : UniversalVibratorJsTest10
+     * @tc.desc      : test vibrateTime
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest10", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest10"
       let vibrateTime: vibrator.VibrateTime = {
@@ -299,6 +381,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest11
+     * @tc.name      : UniversalVibratorJsTest11
+     * @tc.desc      : test vibrateAttribute
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest11", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest11"
       let vibrateAttribute: vibrator.VibrateAttribute = {
@@ -310,6 +401,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest12
+     * @tc.name      : UniversalVibratorJsTest12
+     * @tc.desc      : test VibratorEvent
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest12", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest12"
       let eventType = vibrator.VibratorEventType.CONTINUOUS;
@@ -331,6 +431,15 @@ export default function VibratorJsTest_misc_8() {
       done();
     })
 
+    /**
+     *
+     * @tc.number    : UniversalVibratorJsTest13
+     * @tc.name      : UniversalVibratorJsTest13
+     * @tc.desc      : test vibrateFromFile
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("UniversalVibratorJsTest13", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void) : Promise<void> => {
       TAG = "UniversalVibratorJsTest13"
       let hapticFileDescriptor: vibrator.HapticFileDescriptor = {};
