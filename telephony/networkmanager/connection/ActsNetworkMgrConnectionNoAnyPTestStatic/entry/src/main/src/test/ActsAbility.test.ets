@@ -388,10 +388,10 @@ export default function ConnectionPublicNopTest() {
       hilog.info(domain, tag, '%{public}s', caseName+ ' start');
       try{
         let netHandle: connection.NetHandle = connection.getDefaultNetSync();
-        connection.getNetCapabilities(netHandle, (error: BusinessError, data: connection.NetCapabilities) => {
-          if (error.code != 0) {
+        connection.getNetCapabilities(netHandle, (error: BusinessError<void>|null, data: connection.NetCapabilities| undefined) => {
+          if (error?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(error));
-            ExpectTrue(error.code == 201);
+            ExpectTrue(error?.code == 201);
           }else{
             hilog.info(domain, tag, '%{public}s', caseName +' getNetCapabilities success ');
             ExpectFail();

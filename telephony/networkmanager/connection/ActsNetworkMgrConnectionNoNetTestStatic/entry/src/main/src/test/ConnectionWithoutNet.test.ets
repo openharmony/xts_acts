@@ -219,10 +219,10 @@ export default function ConnectionWithoutNetTest() {
       console.info(`${caseName} test start `);
       try {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-          connection.getConnectionProperties(netHandle, (error: BusinessError, data: connection.ConnectionProperties) => {
-            if (error.code != 0) {
+          connection.getConnectionProperties(netHandle, (error: BusinessError<void>|null, data: connection.ConnectionProperties| undefined) => {
+            if (error?.code != 0) {
               hilog.info(domain, tag, '%{public}s', caseName +'  getConnectionProperties error is '+JSON.stringify(error));
-              ExpectTrue(error.code == 2100001);
+              ExpectTrue(error?.code == 2100001);
               hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
               done();
             } else {
@@ -326,10 +326,10 @@ export default function ConnectionWithoutNetTest() {
       console.info(`${caseName} test start `);
       try {
         connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-          connection.getNetCapabilities(netHandle, (error: BusinessError, data: connection.NetCapabilities) => {
-            if (error.code != 0) {
+          connection.getNetCapabilities(netHandle, (error: BusinessError<void>|null, data: connection.NetCapabilities| undefined) => {
+            if (error?.code != 0) {
               console.info(`${caseName} getNetCapabilities: err->${JSON.stringify(error)}`);
-              ExpectTrue(error.code == 2100001);
+              ExpectTrue(error?.code == 2100001);
               hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
               done();
             } else {

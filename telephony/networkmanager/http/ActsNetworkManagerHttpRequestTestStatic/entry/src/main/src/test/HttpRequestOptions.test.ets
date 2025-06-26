@@ -397,7 +397,7 @@ export default function httpRequestOptionsTest() {
                                 done();
                             } else {
                                 console.info(`${caseName} firstResponse performanceTiming ${JSON.stringify(data?.performanceTiming)}`);
-                                httpResponseCache.flush((err: BusinessError) => {
+                                httpResponseCache.flush((err: BusinessError<void>|null) => {
                                     if (err?.code != 0) {
                                         console.info(`${caseName} flush err ---${JSON.stringify(err)}`);
                                         ExpectFail();
@@ -457,7 +457,7 @@ export default function httpRequestOptionsTest() {
                         let httpResponseCache: http.HttpResponseCache = http.createHttpResponseCache();
                         httpRequest.request('http://httpbin.org/anything', httpRequestOptions).then((data: http.HttpResponse) => {
                             console.info(`${caseName} firstResponse performanceTiming ${JSON.stringify(data?.performanceTiming)}`);
-                            httpResponseCache.flush((err: BusinessError) => {
+                            httpResponseCache.flush((err: BusinessError<void>|null) => {
                                 if (err?.code != 0) {
                                     console.info(`${caseName} flush err ---${JSON.stringify(err)}`);
                                     ExpectFail();
