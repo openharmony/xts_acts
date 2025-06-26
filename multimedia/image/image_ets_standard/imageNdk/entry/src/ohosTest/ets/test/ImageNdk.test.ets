@@ -1094,8 +1094,8 @@ export default function imageNdkTest() {
   const NDK_GetImagePropertyWithNull = async (TAG: string, filename: string, type:string, key:string, compareValue:string|undefined) => {
       let result = true
       let imageSourceApi: image.ImageSource = await getImageSource(filename, type)
-      const imagePropertyRes: string | number = ndkTest.NewGetImagePropertyWithNull(imageSourceApi, key)
-      if(typeof imagePropertyRes === 'string'){
+      const imagePropertyRes: String | number = ndkTest.NewGetImagePropertyWithNull(imageSourceApi, key)
+      if(typeof imagePropertyRes === "string"){
         hilog.info(0x0000, 'scaleTest', '%{public}s', TAG+`image info success: ${imagePropertyRes}`)
         if(imagePropertyRes === compareValue){
           result = true
