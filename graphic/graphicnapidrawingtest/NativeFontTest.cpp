@@ -35,8 +35,8 @@ using namespace testing;
 using namespace testing::ext;
 
 namespace OHOS {
-    static const char* g_fontFamily = "Roboto-Black";
-    static const char* g_fontPath = "/data/Roboto-Black.ttf";
+    static const char* FONT_FAMILY = "Roboto-Black";
+    static const char* FONT_PATH = "/data/Roboto-Black.ttf";
 namespace Rosen {
 namespace Drawing {
 class NativeFontTest : public testing::Test {
@@ -129,8 +129,8 @@ HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText017, Function | MediumTes
 HWTEST_F(NativeFontTest, NativeDrawingRegisterFontTest001, Function | MediumTest | Level1)
 {
     OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
-    uint32_t errorCode = OH_Drawing_RegisterFont(fontCollection, g_fontFamily, g_fontPath);
-    std::ifstream fileStream(g_fontPath);
+    uint32_t errorCode = OH_Drawing_RegisterFont(fontCollection, FONT_FAMILY, FONT_PATH);
+    std::ifstream fileStream(FONT_PATH);
     if (fileStream.is_open()) {
         EXPECT_EQ(errorCode, 0);
         fileStream.close();
@@ -151,8 +151,8 @@ HWTEST_F(NativeFontTest, NativeDrawingRegisterFontTest001, Function | MediumTest
 HWTEST_F(NativeFontTest, NativeDrawingRegisterFontTest002, Function | MediumTest | Level1)
 {
     OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
-    uint32_t errorCode = OH_Drawing_RegisterFontBuffer(fontCollection, g_fontFamily, nullptr, 128);
-    std::ifstream fileStream(g_fontPath);
+    uint32_t errorCode = OH_Drawing_RegisterFontBuffer(fontCollection, FONT_FAMILY, nullptr, 128);
+    std::ifstream fileStream(FONT_PATH);
     if (fileStream.is_open()) {
         EXPECT_EQ(errorCode, 0);
         fileStream.close();
@@ -353,7 +353,7 @@ HWTEST_F(NativeFontTest, OHDrawingTypographyLargeValueTest027, Function | Medium
 
 /*
  * @tc.number: SUB_GRAPHIC_GRAPHIC_2D_TypographyLargeValueTest_042
- * @tc.name  : OHDrawingTypographyLargeValueTest027
+ * @tc.name  : OHDrawingTypographyLargeValueTest042
  * @tc.desc  : test for text shadow for textstyle
  * @tc.size  : MediumTest
  * @tc.type  : Function
