@@ -29,6 +29,7 @@
 #include "ohaudio/native_audio_device_base.h"
 #include "ohaudio/native_audio_session_manager.h"
 #include "ohaudio/native_audio_volume_manager.h"
+#include "ohaudio/native_audio_stream_manager.h"
 #include "hilog/log.h"
 #include <ctime> 
 #include <set>
@@ -6621,12 +6622,227 @@ static napi_value AudioCapturerSetWillMuteWhenInterrupted(napi_env env, napi_cal
     return res;
 }
 
+static napi_value AudioManagerGetAudioStreamManagerTest_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamManager *audioStreamManager = nullptr;
+
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioStreamManager(&audioStreamManager);
+
+    napi_value res;
+    if (result == OH_AudioCommon_Result::AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_PASS, &res);
+    } else {
+        napi_create_int32(env, TEST_FAIL, &res);
+    }
+
+    return res;
+}
+
+static napi_value AudioManagerGetAudioStreamManagerTest_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamManager *audioStreamManager;
+
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioStreamManager(&audioStreamManager);
+
+    napi_value res;
+    if (result == OH_AudioCommon_Result::AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_PASS, &res);
+    } else {
+        napi_create_int32(env, TEST_FAIL, &res);
+    }
+
+    return res;
+}
+
+static napi_value AudioManagerGetDirectPlaybackSupportTest_001(napi_env env, napi_callback_info info)
+{
+    constexpr int sampleRateCur = 48000;
+    OH_AudioStreamManager *audioStreamManager;
+    OH_AudioStreamInfo streamInfo;
+    streamInfo.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+    streamInfo.encodingType = OH_AudioStream_EncodingType::AUDIOSTREAM_ENCODING_TYPE_RAW;
+    streamInfo.sampleFormat = OH_AudioStream_SampleFormat::AUDIOSTREAM_SAMPLE_F32LE;
+    streamInfo.samplingRate = sampleRateCur;
+    OH_AudioStream_Usage usage = OH_AudioStream_Usage::AUDIOSTREAM_USAGE_MUSIC;
+    OH_AudioStream_DirectPlaybackMode directPlaybackMode;
+
+    napi_value res;
+
+    OH_AudioCommon_Result getAudioStreamManagerResult = OH_AudioManager_GetAudioStreamManager(&audioStreamManager);
+    if (getAudioStreamManagerResult != OH_AudioCommon_Result::AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        LOG("OH_AudioManager_GetAudioStreamManager failed, res: %{public}d", res);
+        return res;
+    }
+
+    OH_AudioCommon_Result getDirectPlaybackSupportResult = OH_AudioStreamManager_GetDirectPlaybackSupport(
+        audioStreamManager, &streamInfo, usage, &directPlaybackMode);
+    if (getDirectPlaybackSupportResult != OH_AudioCommon_Result::AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport failed, res: %{public}d", res);
+        return res;
+    }
+    if (directPlaybackMode == OH_AudioStream_DirectPlaybackMode::AUDIOSTREAM_DIRECT_PLAYBACK_NOT_SUPPORTED) {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport success, directPlaybackMode: %{public}d",
+            static_cast<int>(directPlaybackMode));
+        napi_create_int32(env, TEST_PASS, &res);
+    } else {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport result failed, directPlaybackMode: %{public}d",
+            static_cast<int>(directPlaybackMode));
+        napi_create_int32(env, TEST_FAIL, &res);
+    }
+
+    return res;
+}
+
+static napi_value AudioManagerGetDirectPlaybackSupportTest_002(napi_env env, napi_callback_info info)
+{
+    constexpr int sampleRateCur = 48000;
+    OH_AudioStreamManager *audioStreamManager;
+    OH_AudioStreamInfo *streamInfo = nullptr;
+    OH_AudioStream_Usage usage = OH_AudioStream_Usage::AUDIOSTREAM_USAGE_MUSIC;
+    OH_AudioStream_DirectPlaybackMode directPlaybackMode;
+
+    napi_value res;
+
+    OH_AudioCommon_Result getAudioStreamManagerResult = OH_AudioManager_GetAudioStreamManager(&audioStreamManager);
+    if (getAudioStreamManagerResult != OH_AudioCommon_Result::AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        LOG("OH_AudioManager_GetAudioStreamManager failed, res: %{public}d", res);
+        return res;
+    }
+
+    OH_AudioCommon_Result getDirectPlaybackSupportResult = OH_AudioStreamManager_GetDirectPlaybackSupport(
+        audioStreamManager, streamInfo, usage, &directPlaybackMode);
+    if (getDirectPlaybackSupportResult == OH_AudioCommon_Result::AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport success, OH_AudioStreamInfo nullptr");
+        napi_create_int32(env, TEST_PASS, &res);
+    } else {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport failed, OH_AudioStreamInfo nullptr");
+        napi_create_int32(env, TEST_FAIL, &res);
+    }
+
+    return res;
+}
+
+static napi_value AudioManagerGetDirectPlaybackSupportTest_003(napi_env env, napi_callback_info info)
+{
+    constexpr int sampleRateCur = 48000;
+    OH_AudioStreamManager *audioStreamManager;
+    OH_AudioStreamInfo streamInfo;
+    streamInfo.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+    streamInfo.encodingType = OH_AudioStream_EncodingType::AUDIOSTREAM_ENCODING_TYPE_RAW;
+    streamInfo.sampleFormat = OH_AudioStream_SampleFormat::AUDIOSTREAM_SAMPLE_F32LE;
+    streamInfo.samplingRate = sampleRateCur;
+    OH_AudioStream_Usage usage = OH_AudioStream_Usage::AUDIOSTREAM_USAGE_MUSIC;
+    OH_AudioStream_DirectPlaybackMode *directPlaybackMode = nullptr;
+
+    napi_value res;
+
+    OH_AudioCommon_Result getAudioStreamManagerResult = OH_AudioManager_GetAudioStreamManager(&audioStreamManager);
+    if (getAudioStreamManagerResult != OH_AudioCommon_Result::AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        LOG("OH_AudioManager_GetAudioStreamManager failed, res: %{public}d", res);
+        return res;
+    }
+
+    OH_AudioCommon_Result getDirectPlaybackSupportResult = OH_AudioStreamManager_GetDirectPlaybackSupport(
+        audioStreamManager, &streamInfo, usage, directPlaybackMode);
+    if (getDirectPlaybackSupportResult == OH_AudioCommon_Result::AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport success, OH_AudioStreamManager nullptr");
+        napi_create_int32(env, TEST_PASS, &res);
+    } else {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport failed, OH_AudioStreamManager nullptr");
+        napi_create_int32(env, TEST_FAIL, &res);
+    }
+
+    return res;
+}
+
+static napi_value AudioManagerGetDirectPlaybackSupportTest_004(napi_env env, napi_callback_info info)
+{
+    constexpr int sampleRateCur = 48000;
+    OH_AudioStreamManager *audioStreamManager = nullptr;
+    OH_AudioStreamInfo streamInfo;
+    streamInfo.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+    streamInfo.encodingType = OH_AudioStream_EncodingType::AUDIOSTREAM_ENCODING_TYPE_RAW;
+    streamInfo.sampleFormat = OH_AudioStream_SampleFormat::AUDIOSTREAM_SAMPLE_F32LE;
+    streamInfo.samplingRate = sampleRateCur;
+    OH_AudioStream_Usage usage = OH_AudioStream_Usage::AUDIOSTREAM_USAGE_MUSIC;
+    OH_AudioStream_DirectPlaybackMode directPlaybackMode;
+
+    napi_value res;
+    OH_AudioCommon_Result getDirectPlaybackSupportResult = OH_AudioStreamManager_GetDirectPlaybackSupport(
+        audioStreamManager, &streamInfo, usage, &directPlaybackMode);
+    if (getDirectPlaybackSupportResult == OH_AudioCommon_Result::AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport success, OH_AudioStreamManager nullptr");
+        napi_create_int32(env, TEST_PASS, &res);
+    } else {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport failed, OH_AudioStreamManager nullptr");
+        napi_create_int32(env, TEST_FAIL, &res);
+    }
+
+    return res;
+}
+
+static napi_value AudioManagerGetDirectPlaybackSupportTest_005(napi_env env, napi_callback_info info)
+{
+    constexpr int sampleRateCur = 48000;
+    OH_AudioStreamManager *audioStreamManager;
+    OH_AudioStreamInfo streamInfo;
+    streamInfo.channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+    streamInfo.encodingType = OH_AudioStream_EncodingType::AUDIOSTREAM_ENCODING_TYPE_RAW;
+    streamInfo.sampleFormat = OH_AudioStream_SampleFormat::AUDIOSTREAM_SAMPLE_F32LE;
+    streamInfo.samplingRate = sampleRateCur;
+    OH_AudioStream_Usage usage = OH_AudioStream_Usage::AUDIOSTREAM_USAGE_UNKNOWN;
+    OH_AudioStream_DirectPlaybackMode directPlaybackMode;
+
+    napi_value res;
+
+    OH_AudioCommon_Result getAudioStreamManagerResult = OH_AudioManager_GetAudioStreamManager(&audioStreamManager);
+    if (getAudioStreamManagerResult != OH_AudioCommon_Result::AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        LOG("OH_AudioManager_GetAudioStreamManager failed, res: %{public}d", res);
+        return res;
+    }
+
+    OH_AudioCommon_Result getDirectPlaybackSupportResult = OH_AudioStreamManager_GetDirectPlaybackSupport(
+        audioStreamManager, &streamInfo, usage, &directPlaybackMode);
+    if (getDirectPlaybackSupportResult == OH_AudioCommon_Result::AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport success, OH_AudioStream_Usage invaild");
+        napi_create_int32(env, TEST_PASS, &res);
+    } else {
+        LOG("OH_AudioStreamManager_GetDirectPlaybackSupport failed, OH_AudioStream_Usage invaild");
+        napi_create_int32(env, TEST_FAIL, &res);
+    }
+
+    return res;
+}
+
 EXTERN_C_START
 napi_property_descriptor desc1[] = {
-    {"audioStreamBuilderSetVolumeModeTest_001", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_001, nullptr, nullptr, nullptr, napi_default, nullptr},
-    {"audioStreamBuilderSetVolumeModeTest_002", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-    {"audioStreamBuilderSetVolumeModeTest_003", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_003, nullptr, nullptr, nullptr, napi_default, nullptr},
-    {"audioStreamBuilderSetVolumeModeTest_004", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerGetAudioStreamManagerTest_001", nullptr, AudioManagerGetAudioStreamManagerTest_001,
+    nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerGetAudioStreamManagerTest_002", nullptr, AudioManagerGetAudioStreamManagerTest_002,
+    nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerGetDirectPlaybackSupportTest_001", nullptr, AudioManagerGetDirectPlaybackSupportTest_001,
+    nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerGetDirectPlaybackSupportTest_002", nullptr, AudioManagerGetDirectPlaybackSupportTest_001,
+    nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerGetDirectPlaybackSupportTest_003", nullptr, AudioManagerGetDirectPlaybackSupportTest_001,
+    nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerGetDirectPlaybackSupportTest_004", nullptr, AudioManagerGetDirectPlaybackSupportTest_001,
+    nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerGetDirectPlaybackSupportTest_005", nullptr, AudioManagerGetDirectPlaybackSupportTest_001,
+    nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetVolumeModeTest_001", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_001,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetVolumeModeTest_002", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_002,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetVolumeModeTest_003", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_003,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetVolumeModeTest_004", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_004,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
     {"createAudioStreamBuilder", nullptr, CreateAudioStreamBuilder, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioCaptureGenerate", nullptr, AudioCaptureGenerate, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioCaptureGenerateErr", nullptr, AudioCaptureGenerateErr,
