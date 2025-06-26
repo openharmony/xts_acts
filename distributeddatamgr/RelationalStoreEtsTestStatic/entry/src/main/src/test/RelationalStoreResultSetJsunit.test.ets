@@ -608,8 +608,8 @@ export default function rdbResultSetTest() {
             expect().assertFail();
             done();
           } else {
-            hilog.info(domain, tag, '%{public}s', 'delete failed' + err.code);
-            expect(err.code == 14800021).assertTrue();
+            hilog.info(domain, tag, '%{public}s', 'delete failed' + err?.code);
+            expect(err?.code == 14800021).assertTrue();
             done();
           }
         })
@@ -638,7 +638,7 @@ export default function rdbResultSetTest() {
               done();
             } else {
               hilog.info(domain, tag, '%{public}s', 'delete failed' + err.code);
-              expect(err.code == 14800021).assertTrue();
+              expect(err?.code == 14800021).assertTrue();
               done();
             }
         })
