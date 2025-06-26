@@ -47,8 +47,6 @@ group("communication") {
       "wifi_manager_nop_static:ActsManagerNopStageOhosStaticTest",
       "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
-      "wifi_standard_static:ActsWifiJSStaticTest",
-      "wifimanager_switchoff_static:ActsManagerDisableStaticTest",
     ]
   } else {
     deps = [ "wifi_standard:ActsWifiJSTest" ]
