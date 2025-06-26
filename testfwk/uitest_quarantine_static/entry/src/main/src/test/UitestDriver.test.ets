@@ -320,5 +320,35 @@ export default function uitestDriverTest() {
       expect(text == null).assertTrue();
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+     * @tc.number: uitestDriverTest_0036
+     * @tc.name: testDrag_speed_static
+     * @tc.desc: drag on the screen between the specified points.
+     */
+    it('testDrag_speed_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      let driver = Driver.create();
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(ON.id('jump'))
+      expect(button != null).assertTrue();
+      if (button != null) {
+        await button.longClick();
+        await driver.delayMs(waitUiReadyMs);
+      }
+      let text1 = await driver.findComponent(ON.text('one'))
+      let text2 = await driver.findComponent(ON.text('two'))
+      expect(text1 != null).assertTrue();
+      expect(text2 != null).assertTrue();
+      if (text1 != null && text2 != null) {
+        let point1 = await text1.getBoundsCenter()
+        let point2 = await text2.getBoundsCenter()
+        await driver.drag(point1.x, point1.y, point2.x, point2.y, 1500)
+        await driver.delayMs(waitUiReadyMs)
+      }
+      let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')));
+      expect(text == null).assertTrue();
+      await stopApplication('com.uitestScene.acts');
+    })
   })
 }
