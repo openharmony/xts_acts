@@ -3103,7 +3103,7 @@ static napi_value NewGetImagePropertyWithNull(napi_env env, napi_callback_info i
     const size_t maxKeyLen = MAX_BUFFER_SIZE;
     char key[maxKeyLen];
     size_t keySize = 0;
-    napi_get_value_string_utf_8(env, argValue[NUM_1], key, maxKeyLen, &keySize);
+    napi_get_value_string_utf8(env, argValue[NUM_1], key, maxKeyLen, &keySize);
     
     Image_String imageKey, imageValue = {nullptr, 1024};
     imageKey.data = key;
