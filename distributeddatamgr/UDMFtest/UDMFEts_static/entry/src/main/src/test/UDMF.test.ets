@@ -22,7 +22,6 @@ let tag: string = 'testTag';
 
 export default function UDMFApiTest() {
   describe("UDMFApiTest", (): void => {
-    hilog.info(domain, tag, '%{public}s', 'UDMFApiTest start');
     /**
      * @tc.name       : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100
      * @tc.number     : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100
@@ -50,11 +49,11 @@ export default function UDMFApiTest() {
      * @tc.level      : Level 1
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void) : Promise<void> => {
-      hilog.info(domain, tag, '%{public}s', 'SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100 start');
+      hilog.info(domain, tag, '%{public}s', 'SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200 start');
       let unifiedData = new unifiedDataChannel.UnifiedData();
       let records = unifiedData.getRecords();
-      expect(records.length == 0).assertEqual(true);
-      hilog.info(domain, tag, '%{public}s', 'SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100 end');
+      expect(records.length).assertEqual(1);
+      hilog.info(domain, tag, '%{public}s', 'SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200 end');
       done();
     })
     /**
