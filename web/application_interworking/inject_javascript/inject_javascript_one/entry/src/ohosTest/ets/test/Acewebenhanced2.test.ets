@@ -47,6 +47,7 @@ export default function AceWeb() {
       } catch (err) {
         console.error("push IndexOthers page error: " + err);
       }
+      await driver.waitForComponent(ON.id("registerJavaScriptProxyAsyncMethodListButton"),10000);
       done()
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
@@ -84,7 +85,7 @@ export default function AceWeb() {
      * @tc.level Level 0
      */
     it("testAsyncMethodList0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      Utils.emitEvent("emitAsyncMethodList0100", 10);
+      Utils.emitEvent("emitAsyncMethodList0100", 26);
       Utils.registerBaseEvent("testAsyncMethodList0100", true, 2025062501, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -101,7 +102,7 @@ export default function AceWeb() {
      * @tc.level Level 0
      */
     it("testAsyncMethodList0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      Utils.emitEvent("emitAsyncMethodList0200", 10);
+      Utils.emitEvent("emitAsyncMethodList0200", 26);
       Utils.registerBaseEvent("testAsyncMethodList0200", true, 2025062502, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -118,7 +119,7 @@ export default function AceWeb() {
      * @tc.level Level 0
      */
     it("testRegisterJavaScriptProxyAsyncMethodList0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      Utils.emitEvent("emitRegisterJavaScriptProxyAsyncMethodList0100", 10);
+      Utils.emitEvent("emitRegisterJavaScriptProxyAsyncMethodList0100", 26);
       Utils.registerBaseEvent("testRegisterJavaScriptProxyAsyncMethodList0100", true, 2025062503, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

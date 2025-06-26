@@ -87,14 +87,14 @@ struct Index {
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
-      eventId: 10,
+      eventId: 26,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
   }
 
   onPageHide() {
-    events_emitter.off(10)
+    events_emitter.off(26)
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
@@ -113,12 +113,14 @@ struct Index {
       Row() {
         Button('web click').key('registerJavaScriptProxyAsyncMethodListButton').onClick(async () => {
           await waitForExist(()=>this.isReceive, this.str, 0);
+          await waitForExist(()=>this.isPageEnd, this.str, 0);
           console.info('key==>' + this.str);
+          this.isReceive = -1;
+          this.isPageEnd = -1;
           switch (this.str) {
             case 'emitAsyncMethodList0100': {
               this.controller.registerJavaScriptProxy(this.testObjTest, 'objName', ['test', 'toString', 'testNumber'],
                 ['asyncTestBool']);
-              this.isPageEnd = -1;
               this.controller.refresh();
               await waitForExist(()=>this.isPageEnd, this.str, 0);
               this.controller.runJavaScript('htmlTestOne()')
@@ -128,12 +130,10 @@ struct Index {
                 .catch((error: BusinessError) => {
                   console.error(this.str + ' runJavaScript error: ' + error);
                 })
-              this.isPageEnd = -1;
               break;
             }
             case 'emitAsyncMethodList0200': {
               this.controller.registerJavaScriptProxy(this.webTestObj, 'objTestName', ['webTest', 'webString']);
-              this.isPageEnd = -1;
               this.controller.refresh();
               await waitForExist(()=>this.isPageEnd, this.str, 0);
               this.controller.runJavaScript('htmlTestTwo()')
@@ -143,13 +143,11 @@ struct Index {
                 .catch((error: BusinessError) => {
                   console.error(this.str + ' runJavaScript error: ' + error);
                 })
-              this.isPageEnd = -1;
               break;
             }
             case 'emitRegisterJavaScriptProxyAsyncMethodList0100': {
               this.controller.registerJavaScriptProxy(this.asyncTestObj, 'objAsyncName', [],
                 ['asyncTest', 'asyncString']);
-              this.isPageEnd = -1;
               this.controller.refresh();
               await waitForExist(()=>this.isPageEnd, this.str, 0);
               this.controller.runJavaScript('htmlTestThree()')
@@ -159,7 +157,6 @@ struct Index {
                 .catch((error: BusinessError) => {
                   console.error(this.str + ' runJavaScript error: ' + error);
                 })
-              this.isPageEnd = -1;
               break;
             }
           }
