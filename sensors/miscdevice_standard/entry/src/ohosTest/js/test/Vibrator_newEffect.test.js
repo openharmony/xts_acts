@@ -28,7 +28,9 @@ describe("VibratorJsTest_misc_8", function () {
         console.info('VibratorJsTest_misc_8 Device type = ' + deviceInfo.deviceType);
         console.info('VibratorJsTest_misc_8 isAvailable = ' + isAvailable);
         try {
-            if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT === false) {
+            const vibratorsList = vibrator.getVibratorInfoSync();
+            if (ABILITYJUDGMENT === false || vibratorsList.length === 0 ||
+                (vibratorsList.length !== 0 && !vibratorsList[0].isLocalVibrator)) {
                 isAvailable = false;
                 console.info('VibratorJsTest_misc_8 isAvailable ' + isAvailable);
                 done()

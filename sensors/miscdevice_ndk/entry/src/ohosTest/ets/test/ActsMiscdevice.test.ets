@@ -31,7 +31,9 @@ export default function ActsMiscdeviceNdkTest() {
       console.info('ActsMiscdeviceNdkTest Device type = ' + deviceInfo.deviceType);
       console.info('ActsMiscdeviceNdkTest isAvailable = ' + isAvailable);
       try {
-        if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT === false) {
+        const vibratorsList : Array<vibrator.VibratorInfo> = vibrator.getVibratorInfoSync();
+        if (ABILITYJUDGMENT === false || vibratorsList.length === 0 ||
+          (vibratorsList.length !== 0 && !vibratorsList[0].isLocalVibrator)) {
           isAvailable = false;
           console.info('ActsMiscdeviceNdkTest isAvailable ' + isAvailable);
           done()
