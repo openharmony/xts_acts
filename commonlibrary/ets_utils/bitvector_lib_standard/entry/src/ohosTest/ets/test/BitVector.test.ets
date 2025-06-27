@@ -1206,6 +1206,10 @@ export default function BitVectorTest() {
           let res = bitVector.getIndexOf(0, -3, 8);
           expect(true).assertEqual(false);
         } catch (err) {
+          expect(err.name).assertEqual("BusinessError");
+          expect(err.code).assertEqual(10200001);
+          expect(err.message)
+            .assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 7. Received value is: -3`);
         }
     });
     /**
@@ -1994,6 +1998,347 @@ export default function BitVectorTest() {
         expect(res2).assertEqual(false);
         let res3 = bitVector.has(0, 0, 19);
         expect(res3).assertEqual(true);
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_078
+     * @tc.name      : BitVector_constructor_Func_002
+     * @tc.desc      : A constructor used to create a BitVector object.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("BitVector_constructor_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let tmp:string = "a";
+        let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+        try {
+          let bitVector = new collections.BitVector(a);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message)
+            .assertEqual(`The type of "length" must be integer. Received value is: a`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_079
+     * @tc.name      : BitVector_push_Func_004
+     * @tc.desc      : Check if the push is non-zero
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("BitVector_push_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector = new collections.BitVector(0);
+        bitVector.push(NaN);
+        bitVector.push(Infinity);
+        bitVector.push(-2);
+        bitVector.push(-4);
+        bitVector.push(5);
+        bitVector.push(0);
+        expect(bitVector[0]).assertEqual(1);
+        expect(bitVector[1]).assertEqual(1);
+        expect(bitVector[2]).assertEqual(1);
+        expect(bitVector[3]).assertEqual(1);
+        expect(bitVector[4]).assertEqual(1);
+        expect(bitVector[5]).assertEqual(0);
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_080
+     * @tc.name      : BitVector_has_Func_009
+     * @tc.desc      : Check the situation where element is set to non-0 and non-1
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("BitVector_has_Func_009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector = new collections.BitVector(0);
+        bitVector.push(0);
+        bitVector.push(0);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(1);
+        bitVector.push(1);
+        expect(bitVector.length).assertEqual(6);
+        let res0 = bitVector.has(0, 0, 2);
+        expect(res0).assertEqual(true);
+        let res1 = bitVector.has(1, 0, 2);
+        expect(res1).assertEqual(false);
+        let res2 = bitVector.has(0, 3, 5);
+        expect(res2).assertEqual(false);
+        let res3 = bitVector.has(1, 3, 5);
+        expect(res3).assertEqual(true);
+        let res4 = bitVector.has(-3, 3, 5);
+        expect(res4).assertEqual(true);
+        let res5 = bitVector.has(7, 3, 5);
+        expect(res5).assertEqual(true);
+        let res6 = bitVector.has(NaN, 3, 5);
+        expect(res6).assertEqual(true);
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_081
+     * @tc.name      : BitVector_setBitsByRange_Func_008
+     * @tc.desc      : Check for abnormal input parameters.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_setBitsByRange_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        try {
+          let bitVector = new collections.BitVector(0);
+          let tmp:string = "test";
+          let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+          bitVector.push(0);
+          bitVector.push(0);
+          bitVector.push(0);
+          bitVector.push(0);
+          bitVector.push(0);
+          bitVector.setBitsByRange(1, a, 4);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message)
+            .assertEqual(`The type of "fromIndex" must be integer. Received value is: test`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_082
+     * @tc.name      : BitVector_setBitsByRange_Func_009
+     * @tc.desc      : Check for abnormal input parameters.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_setBitsByRange_Func_009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        try {
+          let bitVector = new collections.BitVector(2);
+          bitVector.setBitsByRange(1, 0, 3);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual("BusinessError");
+          expect(err.code).assertEqual(10200001);
+          expect(err.message)
+            .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 2. Received value is: 3`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_083
+     * @tc.name      : BitVector_getBitsByRange_Func_008
+     * @tc.desc      : Returns the bit values in a range of indices in a bit vector.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_getBitsByRange_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let old_bitVector = new collections.BitVector(0);
+        let bitVectorLength = 64;
+        for (let i = 0; i < bitVectorLength; i++) {
+          let res0 = old_bitVector.push(0);
+          expect(res0).assertEqual(true);
+        }
+        expect(old_bitVector.length).assertEqual(bitVectorLength);
+        try {
+          let tmp:string = "test";
+          let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+          let new_bitVector: collections.BitVector = old_bitVector.getBitsByRange(0, a);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message)
+            .assertEqual(`The type of "toIndex" must be integer. Received value is: test`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_084
+     * @tc.name      : BitVector_getBitCountByRange_Func_008
+     * @tc.desc      : Counts the number of times a certain bit element occurs within a range of bits in a bit vector.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_getBitCountByRange_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector: collections.BitVector = new collections.BitVector(0);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        let bitVectorLength:number = 5;
+        expect(bitVector.length).assertEqual(bitVectorLength);
+        try {
+          let tmp:string = "test";
+          let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+          let res: number = bitVector.getBitCountByRange(1, 1, a);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message)
+            .assertEqual(`The type of "toIndex" must be integer. Received value is: test`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_085
+     * @tc.name      : BitVector_getIndexOf_Func_008
+     * @tc.desc      : Locates the first occurrence of a certain bit value within a range of bits in a bit vector.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_getIndexOf_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector: collections.BitVector = new collections.BitVector(0);
+        bitVector.push(0);
+        bitVector.push(0);
+        bitVector.push(0);
+        bitVector.push(0);
+        bitVector.push(1);
+        let bitVectorLength:number = 5;
+        expect(bitVector.length).assertEqual(bitVectorLength);
+        try {
+          let tmp:string = "test";
+          let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+          let res: number = bitVector.getIndexOf(0, 0, a);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message)
+            .assertEqual(`The type of "toIndex" must be integer. Received value is: test`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_086
+     * @tc.name      : BitVector_getLastIndexOf_Func_008
+     * @tc.desc      : Locates the last occurrence of a certain bit value within a range of bits in a bit vector.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_getLastIndexOf_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector: collections.BitVector = new collections.BitVector(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(1);
+        let bitVectorLength:number = 5;
+        expect(bitVector.length).assertEqual(bitVectorLength);
+        try {
+          let tmp:string = "test";
+          let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+          let res: number = bitVector.getLastIndexOf(0, 1, a);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message)
+            .assertEqual(`The type of "toIndex" must be integer. Received value is: test`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_087
+     * @tc.name      : BitVector_flipBitByIndex_Func_006
+     * @tc.desc      : Flips the bit value by index in a bit vector.(Flip 0 to 1, flip 1 to 0).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("BitVector_flipBitByIndex_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector = new collections.BitVector(0);
+        bitVector.push(1);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(0);
+        bitVector.push(1);
+        try {
+          let res = bitVector.flipBitByIndex(-2);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual("BusinessError");
+          expect(err.code).assertEqual(10200001);
+          expect(err.message)
+            .assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 6. Received value is: -2`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_088
+     * @tc.name      : BitVector_flipBitByIndex_Func_007
+     * @tc.desc      : Flips the bit value by index in a bit vector.(Flip 0 to 1, flip 1 to 0).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("BitVector_flipBitByIndex_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector = new collections.BitVector(0);
+        bitVector.push(1);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(0);
+        bitVector.push(1);
+        try {
+          let tmp:string = "test";
+          let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+          let res = bitVector.flipBitByIndex(a);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message).assertEqual(`The type of "index" must be integer. Received value is: test`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_089
+     * @tc.name      : BitVector_flipBitsByRange_Func_008
+     * @tc.desc      : Flips a range of bit values in a bit vector.(Flip 0 to 1, flip 1 to 0).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_flipBitsByRange_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector = new collections.BitVector(0);
+        let bitVectorLength = 64;
+        for (let i = 0; i < bitVectorLength; i++) {
+          let res0 = bitVector.push(1);
+          expect(res0).assertEqual(true);
+        }
+        expect(bitVector.length).assertEqual(bitVectorLength);
+        try {
+          let tmp:string = "test";
+          let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+          bitVector.flipBitsByRange(10, a);
+          expect(true).assertEqual(false);
+        } catch (err) {
+          expect(err.name).assertEqual(`BusinessError`);
+          expect(err.code).assertEqual(401);
+          expect(err.message).assertEqual(`The type of "toIndex" must be integer. Received value is: test`);
+        }
+    });
+    /**
+     * @tc.number    : BITVECTOR_TEST_090
+     * @tc.name      : BitVector_index_Func_001
+     * @tc.desc      : Subscript access abnormal scenarios
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_index_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+        let bitVector = new collections.BitVector(0);
+        bitVector.push(1);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(1);
+        bitVector.push(0);
+        bitVector.push(0);
+        let tmp:string = "test";
+        let a:number = JSON.parse(JSON.stringify(tmp)) as number;
+        let value:number = bitVector[a];
+        expect(value).assertEqual(undefined);
     });
   });
 }
