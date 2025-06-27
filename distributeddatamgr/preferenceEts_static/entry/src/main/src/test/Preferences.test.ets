@@ -277,7 +277,7 @@ export default function preferenceTest() {
             expect(3.0).assertEqual(ret);
 
             await mPreferences.flush();
-            mPreferences.delete(KEY_TEST_FLOAT_ELEMENT, (err: BusinessError<void>) => {
+            mPreferences.delete(KEY_TEST_FLOAT_ELEMENT, (err: Error | undefined) :void => {
                 if (err) {
                     hilog.info(domain, tag, '%{public}s', "Failed to delete the key KEY_TEST_STRING_ELEMENT. err =" + err);
                     expect(!err).assertTrue();
