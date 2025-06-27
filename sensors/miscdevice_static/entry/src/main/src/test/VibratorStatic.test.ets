@@ -7,7 +7,7 @@ let domain: number = 0x0000;
 let tag: string = 'testTag';
 
 export default function MiscDeviceStaticTest() {
-  describe("MiscDeviceStaticTest", ():void => {
+  describe("MiscDeviceStaticTest", (): void => {
 
     const EFFECT_IDSUCCESS = "haptic.notice.success"
     const EFFECT_IDFAIL = "haptic.notice.fail"
