@@ -344,7 +344,7 @@ export default function httpRequestDestroyTest() {
                         let httpRequest: http.HttpRequest = http.createHttp();
                         httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, () => {
                             httpRequest.destroy();
-                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError) => {
+                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError<void>|null) => {
                                 if (err?.code != 0) {
                                     console.info(`${caseName} httpRequest.destory fail err:${JSON.stringify(err)}`);
                                     ExpectTrue(err?.code == 2300999);
