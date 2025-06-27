@@ -122,14 +122,14 @@ export default function signNormalAccessBiometricExecute() {
           testAbilityContext = abilitys.context
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
         },
-      }, (err : BusinessError) : void => {
+      }, (err: BusinessError<void> | null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }
         hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
       });
       await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.myapplication102.static")
+      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.myapplication102.static");
       await Utils.msSleep(2000)
       hilog.info(domain, tag, '%{public}s', 'beforeAll end');
     })
@@ -254,11 +254,12 @@ export default function signNormalAccessBiometricExecute() {
           for (let index = 0; index < widgetParams.length; index++) {
             hilog.info(domain, tag, format,
               `Security_IAM_getUserAuthInstance_Func_Static_0043 widgetParams: ${JSON.stringify(widgetParams[index])}`)
-            await userAuthPromise({
+            const authParam: userAuth.AuthParam = {
               challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
               authTrustLevel: userAuth.AuthTrustLevel.ATL1,
               authType: [userAuth.UserAuthType.FACE]
-            }, widgetParams[index],
+            };
+            await userAuthPromise(authParam, widgetParams[index],
               'Security_IAM_getUserAuthInstance_Func_Static_0043 step' + stepIndex,
               userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
             stepIndex++;
