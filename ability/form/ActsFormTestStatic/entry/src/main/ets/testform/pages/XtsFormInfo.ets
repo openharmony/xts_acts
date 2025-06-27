@@ -32,6 +32,11 @@ struct XtsFormInfo {
     Text('XTS FormInfo').fontSize(20)
     Button('123').onClick((event: ClickEvent) => {
       hilog.info(DOMAIN, TAG, 'XtsFormInfo Button 123');
+      let extraData: Record<string, object> = {
+        'abc1': '123',
+        'abc2': '123',
+        'abc3': '123',
+      }
       let runningFormInfoFo: formInfo.RunningFormInfo = {
         formId: 'formId',
         bundleName: 'bundleName',
@@ -44,7 +49,7 @@ struct XtsFormInfo {
         dimension: 123,
         formUsageState: formInfo.FormUsageState.UNUSED,
         formDescription: 'formDescription',
-        extraData: {},
+        extraData: extraData,
       }
       hilog.info(DOMAIN, TAG, 'XtsFormInfo Button 123456');
     })
