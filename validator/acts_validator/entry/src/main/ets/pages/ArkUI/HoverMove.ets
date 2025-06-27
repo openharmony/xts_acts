@@ -156,9 +156,6 @@ params: { result: 'None' }
         .width('100%')
         .height(200)
         .backgroundColor(Color.Blue)
-        // .onClick((event)=>{
-        //   this.Vue = true;
-        // })
 
   }.height('80%')
   .width('100%')
