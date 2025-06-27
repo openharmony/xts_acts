@@ -48,6 +48,7 @@ export default function AceWeb() {
         console.error("push IndexOthers page error: " + err);
       }
       await driver.waitForComponent(ON.id("registerJavaScriptProxyAsyncMethodListButton"),10000);
+      console.log("waitForComponent registerJavaScriptProxyAsyncMethodListButton==>");
       done()
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
