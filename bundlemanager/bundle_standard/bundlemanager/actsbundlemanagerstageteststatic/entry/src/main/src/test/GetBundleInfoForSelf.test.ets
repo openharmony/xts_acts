@@ -514,5 +514,210 @@ export default function getBundleInfoForSelf() {
         hilog.info(domain, tag, 'getBundleInfoForSelfAbilitiesInfoSync  ====> end');
         done();
       })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7100
+     * @tc.name: getBundleInfoForSelfSyncExtensionAbilitiesInfo
+     * @tc.desc: Test getBundleInfoForSelfSync with extensionAbilitiesInfo flag.
+     */
+    it('getBundleInfoForSelfSyncExtensionAbilitiesInfo', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2,
+      async (done: () => void): Promise<void> => {
+        let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY);
+        // console.info("getBundleInfoForSelfSyncExtensionAbilitiesInfo" + JSON.stringify(data.hapModulesInfo[0].extensionAbilitiesInfo));
+        console.info("checkCommonBundleInfo start");
+        expect(data.name).assertEqual(BUNDLE_NAME);
+        expect(data.vendor).assertEqual(VENDOR);
+        expect(data.versionCode + '').assertEqual('1000000');
+        expect(data.versionName).assertEqual("1.0.0");
+        expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
+        expect(data.targetVersion  + '').assertEqual('20');
+        expect(data.installTime).assertLarger(0.0);
+        expect(data.updateTime).assertLarger(0.0);
+        expect(data.firstInstallTime).assertLarger(0.0);
+        expect(data.appIndex).assertEqual(0.0);
+        console.info("checkCommonBundleInfo end");
+        expect(data.hapModulesInfo.length).assertEqual(1.0);
+        expect(data.hapModulesInfo[0].name + '').assertEqual("entry");
+        expect(data.hapModulesInfo[0].label + '').assertEqual("$string:EntryAbility_label");
+        expect(data.hapModulesInfo[0].labelId).assertLarger(0.0);
+        expect(data.hapModulesInfo[0].description + '').assertEqual("$string:module_desc");
+        expect(data.hapModulesInfo[0].descriptionId).assertLarger(0.0);
+        expect(data.hapModulesInfo[0].mainElementName + '').assertEqual("EntryAbility");
+        expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(0.0);
+        expect(data.hapModulesInfo[0].installationFree).assertFalse();
+        expect(data.hapModulesInfo[0].hashValue + '').assertEqual("");
+        console.info("checkCommonHapModuleInfo end");
+        expect(data.appInfo).assertEqual(null);
+        expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0.0);
+        let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
+        expect(extensionList.length).assertEqual(26);
+        let count = 0;
+        for (let i = 0; i < 24; i++) {
+          switch (extensionList[i].name) {
+            case "Form":
+              console.info("Form" + JSON.stringify(extensionList[i]));
+              expect(extensionList[i].bundleName).assertEqual(BUNDLE_NAME);
+              expect(extensionList[i].moduleName + '').assertEqual("entry");
+              expect(extensionList[i].name + '').assertEqual("Form");
+              expect(extensionList[i].labelId).assertLarger(0.0);
+              expect(extensionList[i].descriptionId).assertLarger(0.0);
+              expect(extensionList[i].iconId).assertLarger(0.0);
+              expect(extensionList[i].exported).assertTrue();
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM);
+              expect(extensionList[i].extensionAbilityTypeName + '').assertEqual("form");
+              expect(extensionList[i].permissions.length).assertEqual(0.0);
+              expect(extensionList[i].applicationInfo).not().assertEqual(null);
+              expect(extensionList[i].metadata.length).assertEqual(0.0);
+              expect(extensionList[i].enabled).assertTrue();
+              expect(extensionList[i].readPermission + '').assertEqual("");
+              expect(extensionList[i].writePermission + '').assertEqual("");
+              expect(extensionList[i].skills + '').assertEqual("");
+              expect(extensionList[i].appIndex).assertEqual(0.0);
+              count = count + 1;
+              break;
+            case "Form1":
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].bundleName).assertEqual(BUNDLE_NAME);
+              expect(extensionList[i].moduleName + '').assertEqual("entry");
+              expect(extensionList[i].name + '').assertEqual("Form1");
+              expect(extensionList[i].labelId).assertLarger(0.0);
+              expect(extensionList[i].descriptionId).assertLarger(0.0);
+              expect(extensionList[i].iconId).assertLarger(0.0);
+              expect(extensionList[i].exported).assertTrue();
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM);
+              expect(extensionList[i].permissions.length).assertEqual(0.0);
+              expect(extensionList[i].applicationInfo).not().assertEqual(null);
+              expect(extensionList[i].metadata.length).assertEqual(0.0);
+              expect(extensionList[i].enabled).assertTrue();
+              expect(extensionList[i].readPermission + '').assertEqual("");
+              expect(extensionList[i].writePermission + '').assertEqual("");
+              expect(extensionList[i].appIndex).assertEqual(0.0);
+              count = count + 2;
+              break;
+            case 'workScheduler':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.WORK_SCHEDULER)
+              count = count + 3;
+              break;
+            case 'inputMethod':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.INPUT_METHOD)
+              count = count + 4;
+              break;
+            case 'accessibility':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACCESSIBILITY)
+              count = count + 5;
+              break;
+            case 'fileShare':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FILE_SHARE)
+              count = count + 6;
+              break;
+            case 'staticSubscriber':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.STATIC_SUBSCRIBER)
+              count = count + 7;
+              break;
+            case 'wallpaper':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.WALLPAPER)
+              count = count + 8;
+              break;
+            case 'backup':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.BACKUP)
+              count = count + 9;
+              break;
+            case 'window':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.WINDOW)
+              count = count + 10;
+              break;
+            case 'enterpriseAdmin':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ENTERPRISE_ADMIN)
+              count = count + 11;
+              break;
+            case 'thumbnail':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.THUMBNAIL)
+              count = count + 12;
+              break;
+            case 'preview':
+              console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PREVIEW)
+              count = count + 13;
+              break;
+            case 'driver':
+              console.info("driver" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.DRIVER)
+              count = count + 14;
+              break;
+            case 'push':
+              console.info("push" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PUSH)
+              count = count + 15;
+              break;
+            case 'share':
+              console.info("share" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.SHARE)
+              count = count + 16;
+              break;
+            case 'action':
+              console.info("action" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
+              count = count + 17;
+              break;
+            case 'adsService':
+              console.info("adsService" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ADS_SERVICE)
+              count = count + 18;
+              break;
+            case 'embeddedUI':
+              console.info("embeddedUI" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.EMBEDDED_UI)
+              count = count + 19;
+              break;
+            case 'assetAcceleration':
+              console.info("assetAcceleration" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ASSET_ACCELERATION)
+              count = count + 20;
+              break;
+            case 'print':
+              console.info("print" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PRINT)
+              count = count + 21;
+              break;
+            case 'insightIntentUI':
+              console.info("insightIntentUI" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.INSIGHT_INTENT_UI)
+              count = count + 22;
+              break;
+            case 'fence':
+              console.info("fence" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FENCE)
+              count = count + 23;
+              break;
+            case 'formEdit':
+              console.info("formEdit" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM_EDIT)
+              count = count + 24;
+              break;
+            case 'distributed':
+              console.info("distributed" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.DISTRIBUTED)
+              count = count + 25;
+              break;
+          }
+          console.info("count" + JSON.stringify(count));
+        }
+        expect(count).assertEqual(312);
+        expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
+        expect(data.reqPermissionDetails.length).assertEqual(0);
+        expect(data.permissionGrantStates.length).assertEqual(0);
+        expect(data.signatureInfo).assertEqual(null);
+        done();
+    })
   })
 }

@@ -11,6 +11,24 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },{
+      "name": "form_description",
+      "value": "my form"
+    },{
+      "name": "entry_label",
+      "value": "ActsContextTest"
+    },
+    {
+      "name": "permission_reason",
+      "value": "Need permission"
+    },
+    {
+      "name": "TestAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "TestAbility_label",
+      "value": "label"
     }
   ]
 }
