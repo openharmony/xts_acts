@@ -37,9 +37,9 @@ export default function MiscDeviceStaticTest() {
         let attr: vibrator.VibrateAttribute = {
           usage: 'unknown',
         }
-        vibrator.startVibration(effect1, attr, (error: Error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect1, attr, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDSUCCESS error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDSUCCESS success');
@@ -77,9 +77,9 @@ export default function MiscDeviceStaticTest() {
         let attr2: vibrator.VibrateAttribute = {
           usage: 'unknown',
         }
-        vibrator.startVibration(effect2, attr2, (error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect2, attr2, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDFAIL error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDFAIL success');
@@ -117,9 +117,9 @@ export default function MiscDeviceStaticTest() {
         let attr3: vibrator.VibrateAttribute = {
           usage: 'unknown',
         }
-        vibrator.startVibration(effect3, attr3, (error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect3, attr3, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDWARNING error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDWARNING success');
@@ -164,17 +164,17 @@ export default function MiscDeviceStaticTest() {
         let attr4: vibrator.VibrateAttribute = {
           usage: 'unknown',
         }
-        vibrator.startVibration(effect4, attr4, (error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect4, attr4, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDFAIL error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDFAIL success');
           }
         });
-        vibrator.startVibration(effect41, attr4, (error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect41, attr4, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDWARNING error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDWARNING success');
@@ -219,17 +219,17 @@ export default function MiscDeviceStaticTest() {
         let attr5: vibrator.VibrateAttribute = {
           usage: 'unknown',
         }
-        vibrator.startVibration(effect5, attr5, (error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect5, attr5, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDSUCCESS error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDSUCCESS success');
           }
         });
-        vibrator.startVibration(effect51, attr5, (error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect51, attr5, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDWARNING error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDWARNING success');
@@ -274,17 +274,17 @@ export default function MiscDeviceStaticTest() {
         let attr6: vibrator.VibrateAttribute = {
           usage: 'unknown',
         }
-        vibrator.startVibration(effect6, attr6, (error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect6, attr6, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDWARNING error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDWARNING success');
           }
         });
-        vibrator.startVibration(effect61, attr6, (error) => {
-          expect(error.code == 0).assertTrue();
-          if (error.code != 0) {
+        vibrator.startVibration(effect61, attr6, (error: BusinessError<void> | null): void => {
+          if (error?.code != 0) {
+            expect(false).assertTrue();
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDFAIL error:' + JSON.stringify(error));
           } else {
             hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDFAIL success');
@@ -335,9 +335,9 @@ export default function MiscDeviceStaticTest() {
         id: 1,
         usage: 'alarm',
       }
-      vibrator.startVibration(effect1, attr, (error: Error) => {
-        expect(error.code == 0).assertTrue();
-        if (error.code != 0) {
+      vibrator.startVibration(effect1, attr, (error: BusinessError<void> | null): void => {
+        if (error?.code != 0) {
+          expect(false).assertTrue();
           hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDSUCCESS error:' + JSON.stringify(error));
         } else {
           hilog.info(0x0000, 'testTag', TAG + ' vibrator EFFECT_IDSUCCESS success');
