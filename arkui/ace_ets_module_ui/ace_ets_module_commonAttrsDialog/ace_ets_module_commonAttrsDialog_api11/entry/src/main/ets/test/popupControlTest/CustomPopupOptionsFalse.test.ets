@@ -81,7 +81,7 @@ export default function CustomPopupOptionsFalse() {
       expect(properties.type).assertEqual(1) //1表示系统告警窗口TYPE_SYSTEM_ALERT
 
       await CommonFunc.sleep(1000);
-      await driver.click(200, 200);
+      await driver.click(Math.round(globalThis.winLeft+20), Math.round(globalThis.winTop+200));
       await CommonFunc.sleep(1000);
       console.info('[CustomPopupOptionsFalse_0100] END');
       done();
