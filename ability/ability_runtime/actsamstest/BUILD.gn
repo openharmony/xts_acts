@@ -17,9 +17,12 @@ group("actsamstest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "AbilityDelegatorRelyStatic:ActsAbilityDelegatorStaticRely",
       "AbilityDelegatorTest:ActsAbilityDelegatorEntry",
       "AbilityDelegatorTest:ActsAbilityDelegatorTest",
+      "AbilityDelegatorTestStatic:ActsAbilityDelegatorStaticTest",
       "ApplicationContextTest:ActsApplicationContextTest",
+      "ApplicationContextTestStatic:ActsApplicationContextStaticTest",
     ]
   }
 }
