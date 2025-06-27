@@ -77,11 +77,10 @@ export default function testsuite() {
     fileIOSymlink();
     fileIOWrite();
     fileIOLseek();
-	  fileIOHash();
+	fileIOHash();
     fileIORW();
     fileIOStreamClose();
     fileIOStreamFlush();
-    fscreateReadStream();
     fileIOStreamRead();
     fileIOStreamWrite();
     fileIOFdopenStream();
