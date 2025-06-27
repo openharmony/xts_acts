@@ -46,8 +46,8 @@ export class MyCallback {
     MyCallback.myAsyncCallback((error: BusinessError<string> | null, result: string | undefined) => {
       hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error?.message}, result:${result}`);
     })
-    MyCallback.myErrorCallback((error: BusinessError<string>) => {
-      hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error.message}`);
+    MyCallback.myErrorCallback((error: BusinessError<string> | null) => {
+      hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error?.message}`);
     })
   }
 }

@@ -2,6 +2,7 @@ import { describe, it, expect, TestType, Size, Level, beforeAll, beforeEach, aft
 import hilog from '@ohos.hilog'
 import vibrator from '@ohos.vibrator'
 import deviceInfo from '@ohos.deviceInfo'
+import { BusinessError } from '@ohos.base'
 
 let domain: number = 0x0000;
 let tag: string = 'testTag';
