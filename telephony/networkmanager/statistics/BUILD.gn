@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("statistics") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "statisticswifi:ActsNetworkMgrStatisticsNetTest" ]
+    deps = [
+ "statisticswifi:ActsNetworkMgrStatisticsNetTest",
+"ActsNetworkMgrStatisticsNetTestStatic:ActsNetworkMgrStatisticsNetStaticTest",
+"ActsNetworkMgrStatisticsNoDataTestStatic:ActsNetworkMgrStatisticsNoDataStaticTest" ]
   }
 }
