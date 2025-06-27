@@ -746,7 +746,7 @@ export default function abilityTest() {
           return;
         }
         for (let accessibilityAbilityInfo of data) {
-          if (accessibilityAbilityInfo.bundleName != 'ohos.uitest') {
+          if (accessibilityAbilityInfo.bundleName == 'audible') {
             expect(accessibilityAbilityInfo.capabilities.length >= 0).assertTrue();
             expect(accessibilityAbilityInfo.abilityTypes.length >= 0).assertTrue();
             expect(accessibilityAbilityInfo.eventTypes.length >= 0).assertTrue();

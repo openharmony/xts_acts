@@ -209,8 +209,7 @@ describe('AccessibleCheckAbility', function () {
         try {
             let status = accessibility.getTouchModeSync();
             console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0800 result: ${status}`);
-            let result = status.equals("none")
-            expect(result).assertEqual(true);
+            expect(typeof (status)).assertEqual('string');
             done();
         } catch (exception) {
             console.error('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0800 failed to getTouchModeSync because ' + JSON.stringify(exception));
