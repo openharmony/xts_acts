@@ -14,10 +14,10 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_app_static_suite("ActsWebStorageStaticTest") {
-  test_hap = true
-  testonly = true
+#   test_hap = true
+#   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsWebStorageStaticTest"
-  part_name = "web_storage"
+  part_name = "webview"
   subsystem_name = "web"
 }
