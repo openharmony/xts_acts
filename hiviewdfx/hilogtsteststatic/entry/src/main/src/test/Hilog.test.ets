@@ -324,6 +324,29 @@ export default function HilogTsTest() {
     })
 
     /*
+     * @tc.number  DFX_DFT_Hiview_Libhilog_Hilog_Static_1700
+     * @tc.name    testHilogTsApiStatic17
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.desc    hilog begin interface test.
+     * @tc.level   2
+     */
+        it('testHilogTsApiStatic17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (): void => {
+          hilog.info(domain, tag, 'testHilogTsApiStatic16 start');
+          try{
+            hilog.debug(0x0000, tag, "test hilog.debug() without parameter args");
+            hilog.info(0x0000, tag, "test hilog.info() without parameter args");
+            hilog.error(0x0000, tag, "test hilog.error() without parameter args");
+            hilog.warn(0x0000, tag, "test hilog.warn() without parameter args");
+            hilog.fatal(0x0000, tag, "test hilog.fatal() without parameter args");
+          } catch (error){
+            hilog.error(domain, tag, `testHilogTsApiStatic01 got an error: ${JSON.stringify(error)}`)
+            expect().assertFail()
+          }
+          hilog.info(domain, tag, 'testHilogTsApiStatic16 end');
+        })
+
+    /*
      * @tc.number  SUB_DFX_DFT_DefaultLevel_Static_0100
      * @tc.name    SUB_DFX_DFT_DefaultLevel_Static_0100
      * @tc.size:   MediumTest

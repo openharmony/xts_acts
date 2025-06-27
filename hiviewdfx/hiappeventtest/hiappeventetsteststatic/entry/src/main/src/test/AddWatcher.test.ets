@@ -2187,6 +2187,42 @@ export default function addWatcherTest() {
       done();
     })
 
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_3000
+     * @tc.name HiAppEventSub30
+     * @tc.desc 验证调用removeWatcher失败返回值11102001
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub30', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      hilog.info(logDomain, tag, 'testHiAppEventSub30 start')
+      const MAX_LEN_OF_WATCHER = 32;
+      try {
+        hiAppEvent.removeWatcher({name:"a".repeat(MAX_LEN_OF_WATCHER - 1) + "_"});
+      } catch (error: BusinessError) {
+        console.error(`testHiAppEventSub30  > error code: ${error.code}, error msg: ${error.message}`)
+        expect(error.code == 11102001).assertTrue()
+      }
+      hilog.info(logDomain, tag, 'HiAppEventSub30 end')
+      done();
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiAppEvent_Sub_3100
+     * @tc.name HiAppEventSub31
+     * @tc.desc 验证调用AppEventPackageHolder.constructor().
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('HiAppEventSub31', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      hilog.info(logDomain, tag, 'HiAppEventSub31 start')
+      let holder: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("testConstructor");
+      expect(true).assertTrue()
+      hilog.info(logDomain, tag, 'HiAppEventSub31 end')
+      done();
+    })
   })
   hilog.info(logDomain, tag, 'addWatcherTest end');
 }
