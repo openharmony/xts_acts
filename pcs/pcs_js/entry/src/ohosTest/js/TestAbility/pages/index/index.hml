@@ -5,6 +5,7 @@
     <text class="title" id="fileText1">
         {{ fileText1 }}
     </text>
+    <input type="button" value="refresh" onclick="readtext1()" />
     <list style="flex-direction: row;">
         <list-item>
             <image id="absolutionPathImage" src="/common/test.png" oncomplete="onComplete1" style="height : 50px; width : 50px;"></image>
