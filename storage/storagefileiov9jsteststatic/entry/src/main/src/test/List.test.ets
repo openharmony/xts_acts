@@ -43,7 +43,7 @@ import fileIOWatcher from './Watcher.test';
 import fileIORandomAccessFileClose from './class_randomAccessFile/Close.test';
 import fileIORandomAccessFileRead from './class_randomAccessFile/Read.test';
 import fileIORandomAccessFileSetFilePointer from './class_randomAccessFile/SetFilePointer.test';
-import fileIORandomAccessFileWrite from './class_randomAccessFile/Write.test.test';
+import fileIORandomAccessFileWrite from './class_randomAccessFile/Write.test';
 import atomicFileTest from './class_atomicFile/AtomicFile.test';
 export default function testsuite() {
     fileIOAccess();
