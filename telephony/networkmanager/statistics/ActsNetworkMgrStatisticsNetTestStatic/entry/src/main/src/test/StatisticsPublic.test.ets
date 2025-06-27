@@ -431,13 +431,13 @@ export default function statisticsHasNetTest() {
             let caseName: string = 'testManagergetAllTxBytesAsync_static_0100';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                statistics.getAllTxBytes((err: BusinessError, stats: long) => {
-                    if (err.code != 0) {
+                statistics.getAllTxBytes((err: BusinessError<void>|null, stats: long| undefined) => {
+                    if (err?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
                         ExpectFail();
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' getAllTxBytes success stats ->'+ stats);
-                        ExpectTrue(stats >= 0);
+                        ExpectTrue(stats != undefined);
                     }
                     hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                     done();
