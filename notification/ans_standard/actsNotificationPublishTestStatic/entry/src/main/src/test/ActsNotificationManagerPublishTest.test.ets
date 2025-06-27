@@ -484,7 +484,6 @@ export default function ActsNotificationManagerPublishTest() {
         try {
           notificationManager.getActiveNotifications((err: BusinessError | null,
             data: Array<notificationManager.NotificationRequest>|undefined): void => {
-            console.info(`${TAG} getActiveNotifications AsyncCallback err: ${err.code}, errMes: ${err.message}`)
             if (err) {
               console.info(`${TAG} getActiveNotifications AsyncCallback err: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
@@ -1806,7 +1805,7 @@ export default function ActsNotificationManagerPublishTest() {
         try {
           notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
-              JSON.stringify(err.code));
+              JSON.stringify(err));
             expect().assertFail();
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
             done();

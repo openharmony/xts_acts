@@ -115,7 +115,7 @@ export default function ActsNotificationSystemAPITest() {
           notificationManager.publish(notificationRequest, 0, (err: BusinessError | null) => {
             if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             } else {
               console.info(`${TAG} publish AsyncCallback success`)
@@ -167,7 +167,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationManager.publishAsBundle(notificationRequest, "example.bundleName", 0, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} publishAsBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} publishAsBundle AsyncCallback success`)
@@ -220,7 +220,7 @@ export default function ActsNotificationSystemAPITest() {
           done()
         }).catch((err: BusinessError): void => {
           console.info(`${TAG} publishAsBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(err.code).assertEqual(202);
+          expect(err?.code).assertEqual(202);
           done()
         });
 
@@ -241,7 +241,7 @@ export default function ActsNotificationSystemAPITest() {
           (err: BusinessError | null) => {
             if (err) {
               console.info(`${TAG} cancelAsBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             } else {
               console.info(`${TAG} cancelAsBundle AsyncCallback success`)
@@ -273,7 +273,7 @@ export default function ActsNotificationSystemAPITest() {
           done()
         }).catch((err: BusinessError): void => {
           console.info(`${TAG} cancelAsBundle AsyncCallback errCode: ${err.code}, errMes: ${err}`)
-          expect(err.code).assertEqual(202);
+          expect(err?.code).assertEqual(202);
           done()
         });
 
@@ -301,7 +301,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationManager.addSlot(slot, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} addSlot AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202)
+            expect(err?.code).assertEqual(202)
             done()
           } else {
             console.info(`${TAG} addSlot AsyncCallback success`)
@@ -329,7 +329,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationManager.setNotificationEnable(bundleOpt, true, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} setNotificationEnable AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} setNotificationEnable AsyncCallback success`)
@@ -358,7 +358,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationManager.isNotificationEnabled(bundleOpt, (err: BusinessError | null, data: boolean|undefined) => {
           if (err) {
             console.info(`${TAG} isNotificationEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} isNotificationEnabled AsyncCallback success`)
@@ -407,7 +407,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationManager.isNotificationEnabled(userId, (err: BusinessError | null, data: boolean|undefined) => {
           if (err) {
             console.info(`${TAG} isNotificationEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} isNotificationEnabled AsyncCallback success`)
@@ -437,10 +437,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} displayBadge AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -470,10 +470,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} isBadgeDisplayed AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -513,10 +513,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} setSlotByBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -548,10 +548,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} getSlotsByBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -583,10 +583,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} getSlotNumByBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -611,7 +611,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationManager.getAllActiveNotifications((err: BusinessError | null, data) => {
           if (err) {
             console.info(`${TAG} getAllActiveNotifications AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} getAllActiveNotifications AsyncCallback success`)
@@ -640,7 +640,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationManager.removeGroupByBundle(bundleOpt, "groupName", (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} removeGroupByBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} removeGroupByBundle AsyncCallback success`)
@@ -671,10 +671,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} setDoNotDisturbDate AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -706,10 +706,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} setDoNotDisturbDate AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -733,14 +733,14 @@ export default function ActsNotificationSystemAPITest() {
         console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_Static_0100 START`);
 
         notificationManager.getDoNotDisturbDate((err: BusinessError | null,
-          data: notificationManager.DoNotDisturbDate) => {
+          data: notificationManager.DoNotDisturbDate|undefined) => {
           if (err) {
             console.info(`${TAG} getDoNotDisturbDate AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -764,14 +764,14 @@ export default function ActsNotificationSystemAPITest() {
         console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_Static_0200 START`);
 
         notificationManager.getDoNotDisturbDate(0,
-          (err: BusinessError | null, data: notificationManager.DoNotDisturbDate) => {
+          (err: BusinessError | null, data: notificationManager.DoNotDisturbDate|undefined) => {
             if (err) {
               console.info(`${TAG} getDoNotDisturbDate AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               if (err.code == 801) {
-                expect(err.code).assertEqual(801)
+                expect(err?.code).assertEqual(801)
                 done();
               } else {
-                expect(err.code).assertEqual(202);
+                expect(err?.code).assertEqual(202);
                 done()
               }
             } else {
@@ -794,14 +794,14 @@ export default function ActsNotificationSystemAPITest() {
         let TAG: string = 'Sub_Notification_Ans_NoDistrub_Query_Static_0100'
         console.info(`${TAG} Sub_Notification_Ans_NoDistrub_Query_0100 START`);
 
-        notificationManager.isSupportDoNotDisturbMode((err: BusinessError | null, data: boolean) => {
+        notificationManager.isSupportDoNotDisturbMode((err: BusinessError | null, data: boolean|undefined) => {
           if (err) {
             console.info(`${TAG} isSupportDoNotDisturbMode AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -828,10 +828,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} setDistributedEnable AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -862,10 +862,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} setDistributedEnableByBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -891,14 +891,14 @@ export default function ActsNotificationSystemAPITest() {
           bundle: "example.bundleName",
           uid: 0
         }
-        notificationManager.isDistributedEnabledByBundle(bundleOpt, (err: BusinessError | null, data: boolean) => {
+        notificationManager.isDistributedEnabledByBundle(bundleOpt, (err: BusinessError | null, data: boolean|undefined) => {
           if (err) {
             console.info(`${TAG} isDistributedEnabledByBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -922,14 +922,14 @@ export default function ActsNotificationSystemAPITest() {
         console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9500 START`);
 
         notificationManager.getDeviceRemindType((err: BusinessError | null,
-          data: notificationManager.DeviceRemindType) => {
+          data: notificationManager.DeviceRemindType|undefined) => {
           if (err) {
             console.info(`${TAG} getDeviceRemindType AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -961,10 +961,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} setNotificationEnableSlot AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -996,10 +996,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} isNotificationSlotEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -1026,10 +1026,10 @@ export default function ActsNotificationSystemAPITest() {
           if (err) {
             console.info(`${TAG} setSyncNotificationEnabledWithoutApp AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
-              expect(err.code).assertEqual(801)
+              expect(err?.code).assertEqual(801)
               done();
             } else {
-              expect(err.code).assertEqual(202);
+              expect(err?.code).assertEqual(202);
               done()
             }
           } else {
@@ -1055,7 +1055,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationManager.getSyncNotificationEnabledWithoutApp(0, (err: BusinessError | null, data: boolean|undefined) => {
           if (err) {
             console.info(`${TAG} getSyncNotificationEnabledWithoutApp AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} getSyncNotificationEnabledWithoutApp AsyncCallback success`)
@@ -1080,7 +1080,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationSubscribe.subscribe(subscriber, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} subscribe AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} subscribe AsyncCallback success`)
@@ -1109,7 +1109,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationSubscribe.subscribe(subscriber, subscribeInfo, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} subscribe AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} subscribe AsyncCallback success`)
@@ -1142,7 +1142,7 @@ export default function ActsNotificationSystemAPITest() {
           done()
         }).catch((err: BusinessError): void => {
           console.info(`${TAG} subscribe AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(err.code).assertEqual(202);
+          expect(err?.code).assertEqual(202);
           done()
         });
 
@@ -1162,7 +1162,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationSubscribe.unsubscribe(subscriber, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} unsubscribe AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} unsubscribe AsyncCallback success`)
@@ -1194,7 +1194,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationSubscribe.remove(bundleOpt, key, notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} remove AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} remove AsyncCallback success`)
@@ -1218,7 +1218,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationSubscribe.remove("device_0_1", notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} remove AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} remove AsyncCallback success`)
@@ -1247,7 +1247,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationSubscribe.removeAll(bundleOpt, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} removeAll AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} removeAll AsyncCallback success`)
@@ -1272,7 +1272,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationSubscribe.removeAll((err: BusinessError | null) :void=> {
           if (err) {
             console.info(`${TAG} removeAll AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} removeAll AsyncCallback success`)
@@ -1297,7 +1297,7 @@ export default function ActsNotificationSystemAPITest() {
         notificationSubscribe.removeAll(0, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} removeAll AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           } else {
             console.info(`${TAG} removeAll AsyncCallback success`)
@@ -1329,10 +1329,10 @@ export default function ActsNotificationSystemAPITest() {
           done()
         }).catch((err: BusinessError): void => {
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         });
@@ -1364,10 +1364,10 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError): void => {
           console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         });
@@ -1400,10 +1400,10 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError): void => {
           console.info(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         });
@@ -1435,10 +1435,10 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError): void => {
           console.error(`${TAG} isBadgeDisplayed failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done()
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         });
@@ -1472,11 +1472,11 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError): void => {
           console.error(`isNotificationSlotEnabled failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             console.info(`${TAG} isNotificationSlotEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             console.info(`${TAG} isNotificationSlotEnabled_1 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             done();
           }
@@ -1505,10 +1505,10 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError):void => {
           console.error(`${TAG} setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         });
@@ -1542,10 +1542,10 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError):void => {
           console.error(`${TAG} setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         });
@@ -1580,10 +1580,10 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError): void => {
           console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         });
@@ -1618,10 +1618,10 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError): void => {
           console.error(`${TAG} setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         })
@@ -1649,10 +1649,10 @@ export default function ActsNotificationSystemAPITest() {
         }).catch((err: BusinessError): void => {
           console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
           if (err.code == 801) {
-            expect(err.code).assertEqual(801)
+            expect(err?.code).assertEqual(801)
             done();
           } else {
-            expect(err.code).assertEqual(202);
+            expect(err?.code).assertEqual(202);
             done()
           }
         });

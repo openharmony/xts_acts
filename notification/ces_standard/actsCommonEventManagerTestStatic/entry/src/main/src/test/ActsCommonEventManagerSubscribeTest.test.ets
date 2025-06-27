@@ -81,7 +81,12 @@ export default function ActsCommonEventManagerSubscribeTest() {
             done()
           } else {
             console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 createSubscriber success ${commonEventSubscriber}`)
-            subscriber = commonEventSubscriber
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
             expect(true).assertTrue()
 
             subscriber.isStickyCommonEvent((err: BusinessError | null, isSticky:boolean|undefined) => {
@@ -131,7 +136,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
               }
             })
 
-            subscriber.clearAbortCommonEvent((err: BusinessError: BusinessError | null) => {
+            subscriber.clearAbortCommonEvent((err: BusinessError | null) => {
               if (err) {
                 console.info(TAG+`clearAbortCommonEvent_9 err ${err}`)
                 expect(false).assertTrue()
@@ -178,7 +183,12 @@ export default function ActsCommonEventManagerSubscribeTest() {
             done()
           } else {
             console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber success ${commonEventSubscriber}`)
-            subscriber = commonEventSubscriber
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
             expect(true).assertTrue()
 
             await subscriber.isStickyCommonEvent().then((isSticky:boolean) => {

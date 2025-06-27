@@ -54,7 +54,7 @@ export default function ActsSubscriberTestUnorder() {
       hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'beforeAll end');
     })
 
-    let CommonEventSubscriberInfo:commonEventManager.CommonEventSubscribeInfo|undefined = {
+    let CommonEventSubscriberInfo:commonEventManager.CommonEventSubscribeInfo = {
       events:new Array<string>('event'),
       publisherPermission: '',
       publisherDeviceId: '',
@@ -82,18 +82,18 @@ export default function ActsSubscriberTestUnorder() {
       }
 
       CommonEventSubscriber.getSubscribeInfo((err: BusinessError | null, CommonEventSubscriberInfo:commonEventManager.CommonEventSubscribeInfo|undefined) => {
-        if (err.code!==0) {
+        if (err) {
           console.info(TAG + ': getSubscribeInfo failed! event.Info ===> ' + JSON.stringify(err.code))
           expect(false).assertTrue()
           done()
         } else {
           console.info(TAG + ': getSubscribeInfo successed! event.Info ===> ' + JSON.stringify(CommonEventSubscriberInfo))
           expect(true).assertTrue()
-          expect(CommonEventSubscriberInfo.events[0]).assertEqual('event')
-          expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
-          expect(CommonEventSubscriberInfo.publisherDeviceId == '').assertTrue()
-          expect(CommonEventSubscriberInfo.userId).assertEqual(100)
-          expect(CommonEventSubscriberInfo.priority).assertEqual(1000)
+          expect(CommonEventSubscriberInfo?.events[0]).assertEqual('event')
+          expect(CommonEventSubscriberInfo?.publisherPermission == '').assertTrue()
+          expect(CommonEventSubscriberInfo?.publisherDeviceId == '').assertTrue()
+          expect(CommonEventSubscriberInfo?.userId).assertEqual(100)
+          expect(CommonEventSubscriberInfo?.priority).assertEqual(1000)
           done()
         }
       })
@@ -163,11 +163,11 @@ export default function ActsSubscriberTestUnorder() {
         } else {
           console.info(TAG + ': getSubscribeInfo successed! event.Info ===> ' + JSON.stringify(CommonEventSubscriberInfo))
           expect(true).assertTrue()
-          expect(CommonEventSubscriberInfo.events[0]).assertEqual('@#￥#3243adsafdf_')
-          expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
-          expect(CommonEventSubscriberInfo.publisherDeviceId == '').assertTrue()
-          expect(CommonEventSubscriberInfo.userId).assertEqual(100)
-          expect(CommonEventSubscriberInfo.priority).assertEqual(1000)
+          expect(CommonEventSubscriberInfo?.events[0]).assertEqual('@#￥#3243adsafdf_')
+          expect(CommonEventSubscriberInfo?.publisherPermission == '').assertTrue()
+          expect(CommonEventSubscriberInfo?.publisherDeviceId == '').assertTrue()
+          expect(CommonEventSubscriberInfo?.userId).assertEqual(100)
+          expect(CommonEventSubscriberInfo?.priority).assertEqual(1000)
           done()
         }
       })

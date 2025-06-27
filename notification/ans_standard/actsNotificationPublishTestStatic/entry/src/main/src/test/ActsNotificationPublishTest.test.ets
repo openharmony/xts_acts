@@ -72,7 +72,7 @@ export default function ActsNotificationPublishTest() {
       "mykey6": true,
     }
     // wantAgent
-    let WantAgentInfo = {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
       wants: [
         {
           deviceId: "deviceId",
@@ -90,16 +90,13 @@ export default function ActsNotificationPublishTest() {
       actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
     }as wantAgent.WantAgentInfo
 
-    wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError | null,data)=> {
-      if (err.code) {
-        console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code}`)
-        expect(false).assertTrue()
-      } else {
+     wantAgent.getWantAgent(wantAgentInfo)
+      .then((data) => {
         console.info(`${TAG} getWantAgent AsyncCallback success: ${data}`)
-        wantAgentData = data
-      }
-    })
-
+        wantAgentData =  data;
+      }).catch((err: BusinessError): void => {
+        console.info(TAG + "getWantAgent err = " + err);
+      })
 
     beforeEach(() => {
       console.info(`${TAG} beforeEach START`)
@@ -207,9 +204,10 @@ export default function ActsNotificationPublishTest() {
      * @tc.name      : Sub_Notification_Ans_Publish_Publish_Static_8300
      * @tc.desc      : Publishes a notification
      */
-    it('Sub_Notification_Ans_Publish_Publish_Static_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> => {
+    it('Sub_Notification_Ans_Publish_Publish_Static_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Publish_Publish_Static_8300'
-      console.info(` Sub_Notification_Ans_Publish_Publish_Static_8300 START`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_Static_8300 START`)
       let extraInfo1:Record<String,Object>= {
         'testKey': 'testValue'
       }
@@ -981,7 +979,7 @@ export default function ActsNotificationPublishTest() {
         let TAG:string = 'Sub_Notification_Ans_Publish_Cancel_Static_2650'
         console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_Static_2650 START`)
         let groupName:string = "groupName"
-        notificationManager.cancelGroup(groupName, (err: BusinessError: BusinessError | null) => {
+        notificationManager.cancelGroup(groupName, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} cancelGroup AsyncCallback err: ${err.code}`)
             expect(false).assertTrue()

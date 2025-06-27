@@ -196,15 +196,21 @@ export default function ActsAllowTest() {
             (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined) => {
               if (!err) {
                 console.info(`Succeeded in creating subscriber.`);
-                subscriber = commonEventSubscriber;
+                
+                if(commonEventSubscriber !== undefined){
+                  subscriber = commonEventSubscriber
+                }else{
+                  expect(false).assertTrue()
+                  done()
+                }
                 // 订阅公共事件
                 try {
                   commonEventManager.subscribe(subscriber,
-                    (err: BusinessError, data: commonEventManager.CommonEventData) => {
+                    (err: BusinessError| null, data: commonEventManager.CommonEventData|undefined) => {
                       if (err) {
                         console.error(`${TAG} Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
                       } else {
-                        console.info(`${TAG} Succeeded in subscribing, data is ` + JSON.stringify(data));
+                        console.info(`${TAG} Succeeded in subscribing, data is ` + data);
                       }
                     });
                 } catch (error) {

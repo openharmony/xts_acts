@@ -25,7 +25,7 @@ let bundle_name:string = "com.example.actscommoneventmanagertest.static"
 let domain: number = 0x0000;
 let testAbilityContext:common.UIAbilityContext;
 
-let subscriber: commonEventManager.CommonEventSubscriber|undefined
+let subscriber: commonEventManager.CommonEventSubscriber
 
 export default function ActsCommonEventManagerTest() {
   describe('SUB_NOTIFICATION_CES_MANAGER_TEST', () => {
@@ -108,7 +108,7 @@ export default function ActsCommonEventManagerTest() {
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_1500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_1500'
       hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Subscribe_Static_1500 START`)
-      let subscriber: commonEventManager.CommonEventSubscriber|undefined
+      let subscriber: commonEventManager.CommonEventSubscriber
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: new Array<string>('event03')
       }
@@ -120,7 +120,12 @@ export default function ActsCommonEventManagerTest() {
             done()
           } else {
             hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Subscribe_Static_1500 success `)
-            subscriber = commonEventSubscriber
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
             expect(true).assertTrue()
             done()
           }
@@ -178,7 +183,13 @@ export default function ActsCommonEventManagerTest() {
             done()
           } else {
             console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_0400 success `+commonEventSubscriber)
-            subscriber = commonEventSubscriber
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
+
             try {
               console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_0400 subscribe comein`)
               commonEventManager.subscribe(subscriber, (err: BusinessError | null,data:commonEventManager.CommonEventData|undefined) => {
@@ -218,7 +229,7 @@ export default function ActsCommonEventManagerTest() {
     it('Sub_Notification_Ans_Subscriber_Unsubscribe_Static_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Unsubscribe_Static_0200'
       hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Unsubscribe_Static_0200 START`)
-      let subscriber: commonEventManager.CommonEventSubscriber|undefined
+      let subscriber: commonEventManager.CommonEventSubscriber
 
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: new Array<string>('event06')
@@ -232,7 +243,12 @@ export default function ActsCommonEventManagerTest() {
             done()
           } else {
             hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Unsubscribe_Static_0200 success1`)
-            subscriber = commonEventSubscriber;
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
             await Utils.msSleep(2000);
             try {
               commonEventManager.subscribe(subscriber, (err: BusinessError | null,data:commonEventManager.CommonEventData|undefined) => {
@@ -287,7 +303,12 @@ export default function ActsCommonEventManagerTest() {
             done()
           } else {
             hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Unsubscribe_Static_0200 success2 ${commonEventSubscriber}`)
-            subscriber = commonEventSubscriber;
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
             await Utils.msSleep(2000);
             try {
               commonEventManager.subscribe(subscriber, (err: BusinessError | null,CommonEventData:commonEventManager.CommonEventData|undefined) => {
@@ -346,7 +367,7 @@ export default function ActsCommonEventManagerTest() {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_1700'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1700 START`)
 
-      let subscriber: commonEventManager.CommonEventSubscriber|undefined
+      let subscriber: commonEventManager.CommonEventSubscriber
 
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["event07"]
@@ -360,7 +381,12 @@ export default function ActsCommonEventManagerTest() {
             done()
           } else {
             console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1700 success`)
-            subscriber = commonEventSubscriber
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
             expect(true).assertTrue()
             done()
 
@@ -409,7 +435,7 @@ export default function ActsCommonEventManagerTest() {
               }
             })
 
-            subscriber.setCodeAndData(2, 'data02', (err: BusinessError | nullr) => {
+            subscriber.setCodeAndData(2, 'data02', (err: BusinessError | null) => {
               if (err) {
                 console.info(TAG+`setCodeAndData_1 err, error code: ${err.code}, message: ${err.message}`)
                 expect(false).assertTrue()
@@ -466,7 +492,7 @@ export default function ActsCommonEventManagerTest() {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_1800'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1800 START`)
 
-      let subscriber: commonEventManager.CommonEventSubscriber|undefined
+      let subscriber: commonEventManager.CommonEventSubscriber
 
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["event08"]
@@ -480,7 +506,12 @@ export default function ActsCommonEventManagerTest() {
             done()
           } else {
             console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1800 success ${commonEventSubscriber}`)
-            subscriber = commonEventSubscriber
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
             expect(true).assertTrue()
 
             await subscriber.setCode(3).then(() => {
