@@ -18,7 +18,7 @@ import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (sim.getMaxSimCount()!=0){
+  if (sim.getMaxSimCount()!=0 && canIUse("SystemCapability.Telephony.CellularData")){
     telephony_data_NopTest()
   }else{
     EmptyTest()
