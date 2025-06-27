@@ -45,10 +45,10 @@ export default function inputMethodAttachTest() {
                 selection:range,
                 windowId:100
             }
-            let CallBack = (error: BusinessError) => {
-                expect(error.code == 0).assertTrue();
-                if (error.code != 0) {
-                    console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
+            let CallBack = (error: BusinessError | null) => {
+                expect(error?.code == 0).assertTrue();
+                if (error?.code != 0) {
+                    console.info(`${CASE_NAME} execution fail,error: [${error?.code}, ${error?.message}]`);
                 } else {
                     console.info(`${CASE_NAME} execution success`);
                 }
@@ -76,10 +76,10 @@ export default function inputMethodAttachTest() {
                     enterKeyType: inputMethod.EnterKeyType.UNSPECIFIED
                 }
             }
-            let CallBack = (error: BusinessError) => {
-                expect(error.code == 0).assertTrue();
-                if (error.code != 0) {
-                    console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
+            let CallBack = (error: BusinessError | null) => {
+                expect(error?.code == 0).assertTrue();
+                if (error?.code != 0) {
+                    console.info(`${CASE_NAME} execution fail,error: [${error?.code}, ${error?.message}]`);
                 } else {
                     console.info(`${CASE_NAME} execution success`);
                 }

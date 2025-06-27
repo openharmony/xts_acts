@@ -19,26 +19,34 @@ export default function getBundleInfo() {
      */
     it('getBundleInfoCallbackDefault', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, (err: BusinessError<void>, data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> start');
-          hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> data' + JSON.stringify(data));
-          hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> err' + JSON.stringify(err));
-          expect(data.name).assertEqual(BUNDLE_NAME);
-          expect(data.vendor).assertEqual(VENDOR);
-          expect(data.versionCode + '').assertEqual('1000000');
-          expect(data.versionName).assertEqual("1.0.0");
-          expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
-          expect(data.targetVersion  + '').assertEqual('20');
-          expect(data.installTime).assertLarger(0.0);
-          expect(data.updateTime).assertLarger(0.0);
-          expect(data.firstInstallTime).assertLarger(0.0);
-          expect(data.appInfo).assertEqual(null);
-          expect(data.hapModulesInfo.length + '').assertEqual('0');
-          expect(data.reqPermissionDetails.length + '').assertEqual('0');
-          expect(data.permissionGrantStates.length + '').assertEqual('0');
-          hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> end');
-          done();
-        })
+        bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT,
+          (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
+            hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> start');
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> data' + JSON.stringify(data));
+              expect(data!.name).assertEqual(BUNDLE_NAME);
+              expect(data!.vendor).assertEqual(VENDOR);
+              expect(data!.versionCode + '').assertEqual('1000000');
+              expect(data!.versionName).assertEqual("1.0.0");
+              expect(data!.minCompatibleVersionCode + '').assertEqual('1000000');
+              expect(data!.targetVersion + '').assertEqual('20');
+              expect(data!.installTime).assertLarger(0.0);
+              expect(data!.updateTime).assertLarger(0.0);
+              expect(data!.firstInstallTime).assertLarger(0.0);
+              expect(data!.appInfo).assertEqual(null);
+              expect(data!.hapModulesInfo.length + '').assertEqual('0');
+              expect(data!.reqPermissionDetails.length + '').assertEqual('0');
+              expect(data!.permissionGrantStates.length + '').assertEqual('0');
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> Fail');
+              expect().assertFail();
+            }
+            hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> end');
+            done();
+          })
       })
 
     /*
@@ -48,26 +56,34 @@ export default function getBundleInfo() {
      */
     it('getBundleInfoCallbackDefaultUserID', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100, (err: BusinessError<void>, data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoCallbackDefaultUserID  ====> start');
-          hilog.info(domain, tag, 'getBundleInfoCallbackDefaultUserID  ====> data' + JSON.stringify(data));
-          hilog.info(domain, tag, 'getBundleInfoCallbackDefault  ====> err' + JSON.stringify(err));
-          expect(data.name).assertEqual(BUNDLE_NAME);
-          expect(data.vendor).assertEqual(VENDOR);
-          expect(data.versionCode + '').assertEqual('1000000');
-          expect(data.versionName).assertEqual("1.0.0");
-          expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
-          expect(data.targetVersion  + '').assertEqual('20');
-          expect(data.installTime).assertLarger(0.0);
-          expect(data.updateTime).assertLarger(0.0);
-          expect(data.firstInstallTime).assertLarger(0.0);
-          expect(data.appInfo).assertEqual(null);
-          expect(data.hapModulesInfo.length + '').assertEqual('0');
-          expect(data.reqPermissionDetails.length + '').assertEqual('0');
-          expect(data.permissionGrantStates.length + '').assertEqual('0');
-          hilog.info(domain, tag, 'getBundleInfoCallbackDefaultUserID  ====> end');
-          done();
-        })
+        bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100,
+          (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
+            hilog.info(domain, tag, 'getBundleInfoCallbackDefaultUserID  ====> start');
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoCallbackDefaultUserID   ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(domain, tag, 'getBundleInfoCallbackDefaultUserID  ====> data' + JSON.stringify(data));
+              expect(data!.name).assertEqual(BUNDLE_NAME);
+              expect(data!.vendor).assertEqual(VENDOR);
+              expect(data!.versionCode + '').assertEqual('1000000');
+              expect(data!.versionName).assertEqual("1.0.0");
+              expect(data!.minCompatibleVersionCode + '').assertEqual('1000000');
+              expect(data!.targetVersion + '').assertEqual('20');
+              expect(data!.installTime).assertLarger(0.0);
+              expect(data!.updateTime).assertLarger(0.0);
+              expect(data!.firstInstallTime).assertLarger(0.0);
+              expect(data!.appInfo).assertEqual(null);
+              expect(data!.hapModulesInfo.length + '').assertEqual('0');
+              expect(data!.reqPermissionDetails.length + '').assertEqual('0');
+              expect(data!.permissionGrantStates.length + '').assertEqual('0');
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoCallbackDefaultUserID  ====> Fail');
+              expect().assertFail();
+            }
+            hilog.info(domain, tag, 'getBundleInfoCallbackDefaultUserID  ====> end');
+            done();
+          })
       })
 
     /*
@@ -77,28 +93,30 @@ export default function getBundleInfo() {
      */
     it('getBundleInfoPromiseDefault', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        await bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100).then((data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoPromiseDefault  ====> start');
-          expect(data.name).assertEqual(BUNDLE_NAME);
-          expect(data.vendor).assertEqual(VENDOR);
-          expect(data.versionCode + '').assertEqual('1000000');
-          expect(data.versionName).assertEqual("1.0.0");
-          expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
-          expect(data.targetVersion  + '').assertEqual('20');
-          expect(data.installTime).assertLarger(0.0);
-          expect(data.updateTime).assertLarger(0.0);
-          expect(data.firstInstallTime).assertLarger(0.0);
-          expect(data.appInfo).assertEqual(null);
-          expect(data.hapModulesInfo.length + '').assertEqual('0');
-          expect(data.reqPermissionDetails.length + '').assertEqual('0');
-          expect(data.permissionGrantStates.length + '').assertEqual('0');
-          hilog.info(domain, tag, 'getBundleInfoPromiseDefault  ====> end');
-          done();
-        }).catch(err => {
-          hilog.info(domain, tag, 'getBundleInfoPromiseDefault  ====> err');
-          expect(err).assertFail();
-          done();
-        })
+        await bundle.getBundleInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100)
+          .then((data: BundleInfo) => {
+            hilog.info(domain, tag, 'getBundleInfoPromiseDefault  ====> start');
+            expect(data.name).assertEqual(BUNDLE_NAME);
+            expect(data.vendor).assertEqual(VENDOR);
+            expect(data.versionCode + '').assertEqual('1000000');
+            expect(data.versionName).assertEqual("1.0.0");
+            expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
+            expect(data.targetVersion + '').assertEqual('20');
+            expect(data.installTime).assertLarger(0.0);
+            expect(data.updateTime).assertLarger(0.0);
+            expect(data.firstInstallTime).assertLarger(0.0);
+            expect(data.appInfo).assertEqual(null);
+            expect(data.hapModulesInfo.length + '').assertEqual('0');
+            expect(data.reqPermissionDetails.length + '').assertEqual('0');
+            expect(data.permissionGrantStates.length + '').assertEqual('0');
+            hilog.info(domain, tag, 'getBundleInfoPromiseDefault  ====> end');
+            done();
+          })
+          .catch(err => {
+            hilog.info(domain, tag, 'getBundleInfoPromiseDefault  ====> err');
+            expect(err).assertFail();
+            done();
+          })
       })
 
     /*
@@ -117,7 +135,7 @@ export default function getBundleInfo() {
         expect(data.versionCode + '').assertEqual('1000000');
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
-        expect(data.targetVersion  + '').assertEqual('20');
+        expect(data.targetVersion + '').assertEqual('20');
         expect(data.installTime).assertLarger(0.0);
         expect(data.updateTime).assertLarger(0.0);
         expect(data.firstInstallTime).assertLarger(0.0);
@@ -145,7 +163,7 @@ export default function getBundleInfo() {
         expect(data.versionCode + '').assertEqual('1000000');
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
-        expect(data.targetVersion  + '').assertEqual('20');
+        expect(data.targetVersion + '').assertEqual('20');
         expect(data.installTime).assertLarger(0.0);
         expect(data.updateTime).assertLarger(0.0);
         expect(data.firstInstallTime).assertLarger(0.0);
@@ -164,17 +182,18 @@ export default function getBundleInfo() {
       */
     it('getBundleInfoTestWithUserIdCallBack201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100, (err: BusinessError<void>, data : BundleInfo) => {
-          hilog.info(domain, tag,
-            'getBundleInfoTestWithUserIdCallBack201 err ====> ' + JSON.stringify(err));
-          if (err) {
-            expect(err.code).assertEqual(201);
-            done();
-          } else {
-            expect().assertFail();
-            done();
-          }
-        });
+        bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100,
+          (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
+            if (err && err?.code !== 0) {
+              hilog.info(domain, tag,
+                'getBundleInfoTestWithUserIdCallBack201 err ====> ' + JSON.stringify(err));
+              expect(err?.code).assertEqual(201);
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
       })
 
     /*
@@ -184,17 +203,18 @@ export default function getBundleInfo() {
       */
     it('getBundleInfoTestCallBack201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, (err: BusinessError<void>, data : BundleInfo) => {
-          hilog.info(domain, tag,
-            'getBundleInfoTestCallBack201 err ====> ' + JSON.stringify(err));
-          if (err) {
-            expect(err.code).assertEqual(201);
-            done();
-          } else {
-            expect().assertFail();
-            done();
-          }
-        });
+        bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT,
+          (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
+            if (err && err?.code !== 0) {
+              hilog.info(domain, tag,
+                'getBundleInfoTestCallBack201 err ====> ' + JSON.stringify(err));
+              expect(err?.code).assertEqual(201);
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
       })
 
     /*
@@ -206,10 +226,12 @@ export default function getBundleInfo() {
       async (done: () => void): Promise<void> => {
         hilog.info(0x0000, tag, 'getBundleInfoTestWithUserIdPromise201  ====> start');
         try {
-          bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100).then((data : BundleInfo) => {
-            expect().assertFail();
-            done();
-          }).catch((err: BusinessError): void => {
+          bundle.getBundleInfo("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100)
+            .then((data: BundleInfo) => {
+              expect().assertFail();
+              done();
+            })
+            .catch((err: BusinessError): void => {
               hilog.info(0x0000, tag, 'getBundleInfoTestWithUserIdPromise201 err1 ====> ' + JSON.stringify(err));
               expect(err.code).assertEqual(201);
               done();
@@ -230,13 +252,13 @@ export default function getBundleInfo() {
     it('getBundleInfoTestSync201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         hilog.info(domain, tag, 'getBundleInfoTestSync201  ====> Start');
-        try{
+        try {
           let data: bundle.BundleInfo =
             bundle.getBundleInfoSync("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT);
           hilog.info(domain, tag, 'getBundleInfoTestSync201 data ====>' + JSON.stringify(data));
           expect().assertFail();
           done();
-        }catch (err) {
+        } catch (err) {
           hilog.info(0x0000, tag, 'getBundleInfoTestSync201 err2 ====> ' + JSON.stringify(err));
           let message = (err as BusinessError).message;
           let code = (err as BusinessError).code;
@@ -254,13 +276,13 @@ export default function getBundleInfo() {
     it('getBundleInfoTestSyncWithUserID201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         hilog.info(domain, tag, 'getBundleInfoTestSyncWithUserID201  ====> Start');
-        try{
+        try {
           let data: bundle.BundleInfo =
             bundle.getBundleInfoSync("com.example.helloworld5", bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, 100);
           hilog.info(domain, tag, 'getBundleInfoTestSyncWithUserID201 data ====>' + JSON.stringify(data));
           expect().assertFail();
           done();
-        }catch (err) {
+        } catch (err) {
           hilog.info(0x0000, tag, 'getBundleInfoTestSyncWithUserID201 err2 ====> ' + JSON.stringify(err));
           let message = (err as BusinessError).message;
           let code = (err as BusinessError).code;

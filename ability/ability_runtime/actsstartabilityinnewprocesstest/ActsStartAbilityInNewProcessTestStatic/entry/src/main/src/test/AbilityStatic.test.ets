@@ -78,10 +78,10 @@ let commonEventData: commonEvent.CommonEventPublishData = {
 };
 let commonEventDataParams = commonEventData?.parameters
 let pids = new Array<string>()
-let subscribeCallBack = async (err:BusinessError, data: commonEvent.CommonEventData, done:()=> void, tag:string, obj:Flag):Promise<void> => {
+let subscribeCallBack = async (err:BusinessError<void> | null, data: commonEvent.CommonEventData | undefined, done:()=> void, tag:string, obj:Flag):Promise<void> => {
   hilog.info(domain, testTag, '%{public}s', `${tag} subscribeCallBack err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
   let parametersPid = data?.parameters as Params
-  switch (data.event) {
+  switch (data!.event) {
     case START_ABILITY_IN_NEW_PROCESS_EVENT: {
       let numStr = parametersPid!.num
       expect(numStr).assertEqual(expectErrorCode);
@@ -106,7 +106,7 @@ let subscribeCallBack = async (err:BusinessError, data: commonEvent.CommonEventD
       obj.flag = true;
       await Utils.msSleep(500);
       (commonEventDataParams as ParametersObj)!.targetPid = parametersPid!.pid;
-      commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err: BusinessError) => {
+      commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err: BusinessError<void> | null) => {
         hilog.info(domain, testTag, '%{public}s', `${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
       });
     }
@@ -132,9 +132,9 @@ let startAssistAbility = async (tag:string, done: ()=> void):Promise<void> => {
   };
   try {
     hilog.info(domain, testTag, '%{public}s', `${tag} startAssistAbility, ${JSON.stringify(want)}`);
-    context.startAbility(want, (err: BusinessError) => {
-      if (err.code) {
-        hilog.info(domain, testTag, '%{public}s', `${tag} startAbility failed, code is ${err.code}, message is ${err.message}`);
+    context.startAbility(want, (err: BusinessError<void> | null) => {
+      if (err?.code) {
+        hilog.info(domain, testTag, '%{public}s', `${tag} startAbility failed, code is ${err?.code}, message is ${err?.message}`);
         expect().assertFail();
         done();
       }
@@ -203,7 +203,7 @@ export default function abilitystaticTest() {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_Static afterEach]';
       try {
         if (subscriber) {
-          commonEvent.unsubscribe(subscriber, (err: BusinessError) => {
+          commonEvent.unsubscribe(subscriber, (err: BusinessError<void> | null) => {
             hilog.info(domain, testTag, '%{public}s', `${tag} unsubscribe success`);
           })
         }

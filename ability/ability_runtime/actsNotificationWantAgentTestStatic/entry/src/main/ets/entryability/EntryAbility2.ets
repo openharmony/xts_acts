@@ -14,9 +14,9 @@ class EntryAbility2 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag EntryAbility2', 'EntryAbility2 onWindowStageCreate');
     try {
-      windowStage.loadContent('pages/Index', (err: BusinessError<void>): void => {
+      windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
         hilog.info(0x0000, 'testTag EntryAbility2', 'loadContent2 entering');
-        if (err.code) {
+        if (err && err.code) {
           hilog.info(0x0000, 'testTag EntryAbility2', 'loadContent2 error');
           return;
         }
@@ -46,10 +46,10 @@ class EntryAbility2 extends UIAbility {
       },
     };
     setTimeout(async () => {
-      this.context.terminateSelfWithResult(abilityResult, (err: BusinessError<void>) => {
-        if (err.code !== 0) {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'secondAbility terminateSelf errCode:' + JSON.stringify(err.code) +
-            'errMessage:' + JSON.stringify(err.message));
+      this.context.terminateSelfWithResult(abilityResult, (err: BusinessError<void> | null) => {
+        if (err?.code !== 0) {
+          hilog.info(0x0000, 'testTag', '%{public}s', 'secondAbility terminateSelf errCode:' + JSON.stringify(err?.code) +
+            'errMessage:' + JSON.stringify(err?.message));
         } else {
           hilog.info(0x0000, 'testTag', '%{public}s', 'secondAbility terminateSelf sucess');
         }

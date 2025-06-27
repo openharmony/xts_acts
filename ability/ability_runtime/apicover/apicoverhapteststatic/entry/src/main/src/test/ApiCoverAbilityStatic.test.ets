@@ -147,25 +147,25 @@ export default function ApiCoverStaticTest() {
     it('SUB_AA_AbilityAppManager_Static_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       hilog.info(domain, tag, "SUB_AA_AbilityAppManager_Static_0200 begin");
       await Utils.msSleep(1000);
-      appManager.getRunningProcessInformation((err: BusinessError, data: Array<ProcessInformation>) => {
-        if (err != null) {
-          hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data.length: ' + data.length);
-          for (let i = 0; i < data.length; i++) {
-            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.pid: ' + data[i].pid);
-            expect(typeof (data[i].pid)).assertEqual("number");
-            expect(data[i].pid).assertLarger(0.0);
-            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.uid: ' + data[i].uid);
-            expect(typeof (data[i].uid)).assertEqual("number");
-            expect(data[i].uid).assertLarger(0.0);
-            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.processName: ' + data[i].processName);
-            expect(typeof (data[i].processName)).assertEqual("string");
-            expect(data[i].processName.length).assertLarger(0.0);
-            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.bundleNames: ' + data[i].bundleNames);
-            expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
-            expect(data[i].bundleNames.length).assertLarger(0.0);
-            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.state: ' + data[i].state);
-            expect(typeof data[i].state).assertEqual("number");
-            expect(data[i].state >= -1 && data[i].state <= 5).assertTrue();
+      appManager.getRunningProcessInformation((err: BusinessError | null, data: Array<ProcessInformation> | undefined) => {
+        if (err != null && data !== undefined) {
+          hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data.length: ' + data!.length);
+          for (let i = 0; i < data!.length; i++) {
+            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.pid: ' + data![i].pid);
+            expect(typeof (data![i].pid)).assertEqual("number");
+            expect(data![i].pid).assertLarger(0.0);
+            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.uid: ' + data![i].uid);
+            expect(typeof (data![i].uid)).assertEqual("number");
+            expect(data![i].uid).assertLarger(0.0);
+            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.processName: ' + data![i].processName);
+            expect(typeof (data![i].processName)).assertEqual("string");
+            expect(data![i].processName.length).assertLarger(0.0);
+            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.bundleNames: ' + data![i].bundleNames);
+            expect(Array.isArray(data![i].bundleNames)).assertEqual(true);
+            expect(data![i].bundleNames.length).assertLarger(0.0);
+            hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation data' + i + '.state: ' + data![i].state);
+            expect(typeof data![i].state).assertEqual("number");
+            expect(data![i].state >= -1 && data![i].state <= 5).assertTrue();
           }
           hilog.info(domain, tag, 'SUB_AA_AbilityAppManager_Static_0200 getRunningProcessInformation done');
           done();

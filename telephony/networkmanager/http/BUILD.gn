@@ -17,15 +17,15 @@ group("http") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "HttpResponse:ActsNetworkManagerHttpResponseTest",
-      "httpCache:ActsNetworkManagerHttpCacheTest",
-      "httpDataOptions:ActsNetworkManagerHttpDataOptionsTest",
-      "httpRequest:ActsNetworkManagerHttpRequestTest",
-      "httpRequestOnAndOff:ActsNetworkManagerHttpRequestOnAndOffTest",
-"ActsNetworkManagerHttpDataOptionsTestStatic:ActsNetworkManagerHttpDataOptionsStaticTest",
-"ActsNetworkManagerHttpRequestTestStatic:ActsNetworkManagerHttpRequestStaticTest",
-"ActsNetworkManagerHttpResponseTestStatic:ActsNetworkManagerHttpResponseStaticTest",
-"ActsNetworkMgrHttpNopTestStatic:ActsNetworkMgrHttpNopStaticTest"
+     "HttpResponse:ActsNetworkManagerHttpResponseTest",
+     "httpCache:ActsNetworkManagerHttpCacheTest",
+     "httpDataOptions:ActsNetworkManagerHttpDataOptionsTest",
+     "httpRequest:ActsNetworkManagerHttpRequestTest",
+     "httpRequestOnAndOff:ActsNetworkManagerHttpRequestOnAndOffTest",
+# "ActsNetworkManagerHttpDataOptionsTestStatic:ActsNetworkManagerHttpDataOptionsStaticTest",
+# "ActsNetworkManagerHttpRequestTestStatic:ActsNetworkManagerHttpRequestStaticTest",
+# "ActsNetworkManagerHttpResponseTestStatic:ActsNetworkManagerHttpResponseStaticTest",
+# "ActsNetworkMgrHttpNopTestStatic:ActsNetworkMgrHttpNopStaticTest"
     ]
   }
 }

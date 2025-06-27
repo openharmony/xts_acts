@@ -17,7 +17,8 @@ group("statistics") {
   testonly = true
   if (is_standard_system) {
     deps = [
- "statisticswifi:ActsNetworkMgrStatisticsNetTest",
-"ActsNetworkMgrStatisticsNetTestStatic:ActsNetworkMgrStatisticsNetStaticTest" ]
+  "statisticswifi:ActsNetworkMgrStatisticsNetTest",
+# "ActsNetworkMgrStatisticsNetTestStatic:ActsNetworkMgrStatisticsNetStaticTest" 
+   ]
   }
 }

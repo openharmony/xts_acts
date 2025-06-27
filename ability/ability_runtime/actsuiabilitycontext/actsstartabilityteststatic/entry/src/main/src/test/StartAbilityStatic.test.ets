@@ -230,9 +230,9 @@ export default function startAbilityTestStatic() {
         abilityName: 'EntryAbility1'
       };
       try {
-        context.startAbility(want, (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag,`startAbility failed, code is ${err.code}, message is ${err.message}`);
+        context.startAbility(want, (err: BusinessError<void> | null) => {
+          if (err && err.code !== 0) {
+            hilog.info(domain, tag,`startAbility failed, code is ${err?.code}, message is ${err?.message}`);
             expect().assertFail();
             done();
           } else {
@@ -264,10 +264,10 @@ export default function startAbilityTestStatic() {
         abilityName: 'EntryAbilityerror'
       };
       try {
-        context.startAbility(want, (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag,`startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(16000001);
+        context.startAbility(want, (err: BusinessError<void> | null) => {
+          if (err && err.code !== 0) {
+            hilog.info(domain, tag,`startAbility failed, code is ${err?.code}, message is ${err?.message}`);
+            expect(err?.code).assertEqual(16000001);
             done();
           } else {
             hilog.info(domain, tag, `startAbility success`);
@@ -301,9 +301,9 @@ export default function startAbilityTestStatic() {
         displayId: 0
       };
       try {
-        context.startAbility(want, options, (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag,`startAbility failed, code is ${err.code}, message is ${err.message}`);
+        context.startAbility(want, options, (err: BusinessError<void> | null) => {
+          if (err && err.code !== 0) {
+            hilog.info(domain, tag,`startAbility failed, code is ${err?.code}, message is ${err?.message}`);
             expect().assertFail();
             done();
           } else {
@@ -338,10 +338,10 @@ export default function startAbilityTestStatic() {
         displayId: 0
       };
       try {
-        context.startAbility(want, options, (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag,`startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(16000001);
+        context.startAbility(want, options, (err: BusinessError<void> | null) => {
+          if (err && err.code !== 0) {
+            hilog.info(domain, tag,`startAbility failed, code is ${err?.code}, message is ${err?.message}`);
+            expect(err?.code).assertEqual(16000001);
             done();
           } else {
             hilog.info(domain, tag, `startAbility success`);

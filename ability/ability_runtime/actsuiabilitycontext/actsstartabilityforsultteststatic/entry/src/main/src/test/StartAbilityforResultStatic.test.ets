@@ -191,9 +191,9 @@ export default function startAbilityForResultTestStatic() {
         abilityName: 'EntryAbility1'
       };
       try {
-        context.startAbilityForResult(want, (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag,`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+        context.startAbilityForResult(want, (err: BusinessError<void> | null) => {
+          if (err && err.code !== 0) {
+            hilog.info(domain, tag,`startAbilityForResult failed, code is ${err?.code}, message is ${err?.message}`);
             expect().assertFail();
             done();
           } else {
@@ -225,10 +225,10 @@ export default function startAbilityForResultTestStatic() {
         abilityName: 'EntryAbilityerror'
       };
       try {
-        context.startAbilityForResult(want, (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag,`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(16000001);
+        context.startAbilityForResult(want, (err: BusinessError<void> | null) => {
+          if (err && err.code !== 0) {
+            hilog.info(domain, tag,`startAbilityForResult failed, code is ${err?.code}, message is ${err?.message}`);
+            expect(err?.code).assertEqual(16000001);
             done();
           } else {
             hilog.info(domain, tag, `startAbilityForResult success`);
@@ -262,9 +262,9 @@ export default function startAbilityForResultTestStatic() {
         displayId: 0
       };
       try {
-        context.startAbilityForResult(want, options, (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag,`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+        context.startAbilityForResult(want, options, (err: BusinessError<void> | null) => {
+          if (err && err.code !== 0) {
+            hilog.info(domain, tag,`startAbilityForResult failed, code is ${err?.code}, message is ${err?.message}`);
             expect().assertFail();
             done();
           } else {
@@ -299,10 +299,10 @@ export default function startAbilityForResultTestStatic() {
         displayId: 0
       };
       try {
-        context.startAbilityForResult(want, options, (err: BusinessError) => {
-          if (err.code !== 0) {
-            hilog.info(domain, tag,`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(16000001);
+        context.startAbilityForResult(want, options, (err: BusinessError<void> | null) => {
+          if (err && err.code !== 0) {
+            hilog.info(domain, tag,`startAbilityForResult failed, code is ${err?.code}, message is ${err?.message}`);
+            expect(err?.code).assertEqual(16000001);
             done();
           } else {
             hilog.info(domain, tag, `startAbilityForResult success`);

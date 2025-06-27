@@ -768,12 +768,14 @@ export default function cloudFileDownloadTest() {
       try {
         let fileSync = new cloudSync.FileSync();
         hilog.info(domain, tag, '%{public}s', 'test_Getlastsynctime_static_002 new fileSync success.');
-        fileSync.getLastSyncTime((err: BusinessError<void>, timeStamp: number) => {
-          if (err.code) {
-            hilog.info(domain, tag, '%{public}s', "test_Getlastsynctime_static_002 get last sync time failed: " + err.message + ", error code: " + err.code);
+        fileSync.getLastSyncTime((err: BusinessError<void> | null, timeStamp: number | undefined) => {
+          if (err && err.code) {
+            hilog.info(domain, tag, '%{public}s', "test_Getlastsynctime_static_002 get last sync time failed: " + err?.message + ", error code: " + err?.code);
           } else {
-            let date = new Date(timeStamp);
-            hilog.info(domain, tag, '%{public}s', "test_Getlastsynctime_static_002 get last sync time successfully:" + date);
+            if (timeStamp !== undefined) {
+              let date = new Date(timeStamp);
+              hilog.info(domain, tag, '%{public}s', "test_Getlastsynctime_static_002 get last sync time successfully:" + date);
+            }
           }
         });
         expect(true).assertTrue();

@@ -19,26 +19,34 @@ export default function getBundleInfoForSelf() {
      */
     it('getBundleInfoForSelfCallbackDefault', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, (err: BusinessError<void>, data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> start');
-          hilog.info(domain, tag, 'getBundleInfoForSelfCallbackDefault  ====> data' + JSON.stringify(data));
-          hilog.info(domain, tag, 'getBundleInfoForSelfCallbackDefault  ====> err' + JSON.stringify(err));
-          expect(data.name).assertEqual(BUNDLE_NAME);
-          expect(data.vendor).assertEqual(VENDOR);
-          expect(data.versionCode + '').assertEqual('1000000');
-          expect(data.versionName).assertEqual("1.0.0");
-          expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
-          expect(data.targetVersion  + '').assertEqual('20');
-          expect(data.installTime).assertLarger(0.0);
-          expect(data.updateTime).assertLarger(0.0);
-          expect(data.firstInstallTime).assertLarger(0.0);
-          expect(data.appInfo).assertEqual(null);
-          expect(data.hapModulesInfo.length + '').assertEqual('0');
-          expect(data.reqPermissionDetails.length + '').assertEqual('0');
-          expect(data.permissionGrantStates.length + '').assertEqual('0');
-          hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> end');
-          done();
-        })
+        bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT,
+          (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> start');
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackDefault  ====> data' + JSON.stringify(data));
+              expect(data.name).assertEqual(BUNDLE_NAME);
+              expect(data.vendor).assertEqual(VENDOR);
+              expect(data.versionCode + '').assertEqual('1000000');
+              expect(data.versionName).assertEqual("1.0.0");
+              expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
+              expect(data.targetVersion + '').assertEqual('20');
+              expect(data.installTime).assertLarger(0.0);
+              expect(data.updateTime).assertLarger(0.0);
+              expect(data.firstInstallTime).assertLarger(0.0);
+              expect(data.appInfo).assertEqual(null);
+              expect(data.hapModulesInfo.length + '').assertEqual('0');
+              expect(data.reqPermissionDetails.length + '').assertEqual('0');
+              expect(data.permissionGrantStates.length + '').assertEqual('0');
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> Fail');
+              expect().assertFail();
+            }
+            hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> end');
+            done();
+          })
       })
 
     /*
@@ -48,14 +56,14 @@ export default function getBundleInfoForSelf() {
      */
     it('getBundleInfoForSelfPromiseDefault', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).then((data : BundleInfo) => {
+        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).then((data: BundleInfo) => {
           hilog.info(domain, tag, 'getBundleInfoForSelfPromiseDefault  ====> start');
           expect(data.name).assertEqual(BUNDLE_NAME);
           expect(data.vendor).assertEqual(VENDOR);
           expect(data.versionCode + '').assertEqual('1000000');
           expect(data.versionName).assertEqual("1.0.0");
           expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
-          expect(data.targetVersion  + '').assertEqual('20');
+          expect(data.targetVersion + '').assertEqual('20');
           expect(data.installTime).assertLarger(0.0);
           expect(data.updateTime).assertLarger(0.0);
           expect(data.firstInstallTime).assertLarger(0.0);
@@ -88,7 +96,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode + '').assertEqual('1000000');
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode + '').assertEqual('1000000');
-        expect(data.targetVersion  + '').assertEqual('20');
+        expect(data.targetVersion + '').assertEqual('20');
         expect(data.installTime).assertLarger(0.0);
         expect(data.updateTime).assertLarger(0.0);
         expect(data.firstInstallTime).assertLarger(0.0);
@@ -107,49 +115,59 @@ export default function getBundleInfoForSelf() {
       */
     it('getBundleInfoForSelfApplicationCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION, (err: BusinessError<void>, data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> start');
-          hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> data' + JSON.stringify(data));
-          expect(data.appInfo.debug).assertTrue();
-          expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.APP);
-          expect(data.appInfo.name).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.description).assertEqual("$string:module_desc");
-          expect(data.appInfo.descriptionId).assertLarger(0.0);
-          expect(data.appInfo.enabled).assertTrue();
-          expect(data.appInfo.label).assertEqual("$string:app_name");
-          expect(data.appInfo.labelId).assertLarger(0.0);
-          expect(data.appInfo.icon).assertEqual("$media:app_icon");
-          expect(data.appInfo.iconId).assertLarger(0.0);
-          expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test.static");
-          expect(data.appInfo.removable).assertTrue();
-          expect(data.appInfo.accessTokenId).assertLarger(0.0);
-          expect(data.appInfo.uid).assertLarger(0.0);
-          expect(data.appInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.iconResource.moduleName).assertEqual("entry");
-          expect(data.appInfo.iconResource.id).assertEqual(data.appInfo.iconId);
-          expect(data.appInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.labelResource.moduleName).assertEqual("entry");
-          expect(data.appInfo.labelResource.id).assertLarger(0.0);
-          expect(data.appInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.descriptionResource.moduleName).assertEqual("entry");
-          expect(data.appInfo.descriptionResource.id).assertLarger(0.0);
-          expect(data.appInfo.appDistributionType).assertEqual("os_integration");
-          expect(data.appInfo.appProvisionType).assertEqual("release");
-          expect(data.appInfo.permissions.length).assertEqual(0.0);
-          expect(data.appInfo.systemApp).assertEqual(false);
-          expect(data.appInfo.dataUnclearable).assertFalse();
-          expect(data.hapModulesInfo.length + '').assertEqual('0');
-          expect(data.hapModulesInfo.length + '').assertEqual('0');
-          expect(data.reqPermissionDetails.length + '').assertEqual('0');
-          expect(data.permissionGrantStates.length + '').assertEqual('0');
-          expect(data.signatureInfo).assertEqual(null);
-          expect(data.appInfo.installSource).assertEqual("unknown");
-          expect(data.appInfo.releaseType.length).assertLarger(0.0);
-          expect(data.appInfo.cloudFileSyncEnabled).assertFalse();
-          hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> end');
-          done();
-        })
+        bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION,
+          (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> start');
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> data' + JSON.stringify(data));
+              expect(data.appInfo.debug).assertTrue();
+              expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.APP);
+              expect(data.appInfo.name).assertEqual(BUNDLE_NAME);
+              expect(data.appInfo.description).assertEqual("$string:module_desc");
+              expect(data.appInfo.descriptionId).assertLarger(0.0);
+              expect(data.appInfo.enabled).assertTrue();
+              expect(data.appInfo.label).assertEqual("$string:app_name");
+              expect(data.appInfo.labelId).assertLarger(0.0);
+              expect(data.appInfo.icon).assertEqual("$media:app_icon");
+              expect(data.appInfo.iconId).assertLarger(0.0);
+              expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
+              expect(data.appInfo.codePath)
+                .assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test.static");
+              expect(data.appInfo.removable).assertTrue();
+              expect(data.appInfo.accessTokenId).assertLarger(0.0);
+              expect(data.appInfo.uid).assertLarger(0.0);
+              expect(data.appInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME);
+              expect(data.appInfo.iconResource.moduleName).assertEqual("entry");
+              expect(data.appInfo.iconResource.id).assertEqual(data.appInfo.iconId);
+              expect(data.appInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME);
+              expect(data.appInfo.labelResource.moduleName).assertEqual("entry");
+              expect(data.appInfo.labelResource.id).assertLarger(0.0);
+              expect(data.appInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME);
+              expect(data.appInfo.descriptionResource.moduleName).assertEqual("entry");
+              expect(data.appInfo.descriptionResource.id).assertLarger(0.0);
+              expect(data.appInfo.appDistributionType).assertEqual("os_integration");
+              expect(data.appInfo.appProvisionType).assertEqual("release");
+              expect(data.appInfo.permissions.length).assertEqual(0.0);
+              expect(data.appInfo.systemApp).assertEqual(false);
+              expect(data.appInfo.dataUnclearable).assertFalse();
+              expect(data.hapModulesInfo.length + '').assertEqual('0');
+              expect(data.hapModulesInfo.length + '').assertEqual('0');
+              expect(data.reqPermissionDetails.length + '').assertEqual('0');
+              expect(data.permissionGrantStates.length + '').assertEqual('0');
+              expect(data.signatureInfo).assertEqual(null);
+              expect(data.appInfo.installSource).assertEqual("unknown");
+              expect(data.appInfo.releaseType.length).assertLarger(0.0);
+              expect(data.appInfo.cloudFileSyncEnabled).assertFalse();
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> Fail');
+              expect().assertFail();
+            }
+            hilog.info(domain, tag, 'getBundleInfoForSelfApplicationCallback  ====> end');
+            done();
+          })
       })
 
     /*
@@ -159,52 +177,54 @@ export default function getBundleInfoForSelf() {
      */
     it('getBundleInfoForSelfApplicationPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then((data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoForSelfApplicationPromise  ====> start');
-          expect(data.appInfo.debug).assertTrue();
-          expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.APP);
-          expect(data.appInfo.name).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.description).assertEqual("$string:module_desc");
-          expect(data.appInfo.descriptionId).assertLarger(0.0);
-          expect(data.appInfo.enabled).assertTrue();
-          expect(data.appInfo.label).assertEqual("$string:app_name");
-          expect(data.appInfo.labelId).assertLarger(0.0);
-          expect(data.appInfo.icon).assertEqual("$media:app_icon");
-          expect(data.appInfo.iconId).assertLarger(0.0);
-          expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test.static");
-          expect(data.appInfo.removable).assertTrue();
-          expect(data.appInfo.accessTokenId).assertLarger(0.0);
-          expect(data.appInfo.uid).assertLarger(0.0);
-          expect(data.appInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.iconResource.moduleName).assertEqual("entry");
-          expect(data.appInfo.iconResource.id).assertEqual(data.appInfo.iconId);
-          expect(data.appInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.labelResource.moduleName).assertEqual("entry");
-          expect(data.appInfo.labelResource.id).assertLarger(0.0);
-          expect(data.appInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME);
-          expect(data.appInfo.descriptionResource.moduleName).assertEqual("entry");
-          expect(data.appInfo.descriptionResource.id).assertLarger(0.0);
-          expect(data.appInfo.appDistributionType).assertEqual("os_integration");
-          expect(data.appInfo.appProvisionType).assertEqual("release");
-          expect(data.appInfo.permissions.length).assertEqual(0.0);
-          expect(data.appInfo.systemApp).assertEqual(false);
-          expect(data.appInfo.dataUnclearable).assertFalse();
-          expect(data.hapModulesInfo.length + '').assertEqual('0');
-          expect(data.hapModulesInfo.length + '').assertEqual('0');
-          expect(data.reqPermissionDetails.length + '').assertEqual('0');
-          expect(data.permissionGrantStates.length + '').assertEqual('0');
-          expect(data.signatureInfo).assertEqual(null);
-          expect(data.appInfo.installSource).assertEqual("unknown");
-          expect(data.appInfo.releaseType.length).assertLarger(0.0);
-          expect(data.appInfo.cloudFileSyncEnabled).assertFalse();
-          hilog.info(domain, tag, 'getBundleInfoForSelfApplicationPromise  ====> end');
-          done();
-        }).catch(err => {
-          hilog.info(domain, tag, 'getBundleInfoForSelfApplicationPromise  ====> err');
-          expect(err).assertFail();
-          done();
-        })
+        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION)
+          .then((data: BundleInfo) => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfApplicationPromise  ====> start');
+            expect(data.appInfo.debug).assertTrue();
+            expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.APP);
+            expect(data.appInfo.name).assertEqual(BUNDLE_NAME);
+            expect(data.appInfo.description).assertEqual("$string:module_desc");
+            expect(data.appInfo.descriptionId).assertLarger(0.0);
+            expect(data.appInfo.enabled).assertTrue();
+            expect(data.appInfo.label).assertEqual("$string:app_name");
+            expect(data.appInfo.labelId).assertLarger(0.0);
+            expect(data.appInfo.icon).assertEqual("$media:app_icon");
+            expect(data.appInfo.iconId).assertLarger(0.0);
+            expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
+            expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test.static");
+            expect(data.appInfo.removable).assertTrue();
+            expect(data.appInfo.accessTokenId).assertLarger(0.0);
+            expect(data.appInfo.uid).assertLarger(0.0);
+            expect(data.appInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME);
+            expect(data.appInfo.iconResource.moduleName).assertEqual("entry");
+            expect(data.appInfo.iconResource.id).assertEqual(data.appInfo.iconId);
+            expect(data.appInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME);
+            expect(data.appInfo.labelResource.moduleName).assertEqual("entry");
+            expect(data.appInfo.labelResource.id).assertLarger(0.0);
+            expect(data.appInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME);
+            expect(data.appInfo.descriptionResource.moduleName).assertEqual("entry");
+            expect(data.appInfo.descriptionResource.id).assertLarger(0.0);
+            expect(data.appInfo.appDistributionType).assertEqual("os_integration");
+            expect(data.appInfo.appProvisionType).assertEqual("release");
+            expect(data.appInfo.permissions.length).assertEqual(0.0);
+            expect(data.appInfo.systemApp).assertEqual(false);
+            expect(data.appInfo.dataUnclearable).assertFalse();
+            expect(data.hapModulesInfo.length + '').assertEqual('0');
+            expect(data.hapModulesInfo.length + '').assertEqual('0');
+            expect(data.reqPermissionDetails.length + '').assertEqual('0');
+            expect(data.permissionGrantStates.length + '').assertEqual('0');
+            expect(data.signatureInfo).assertEqual(null);
+            expect(data.appInfo.installSource).assertEqual("unknown");
+            expect(data.appInfo.releaseType.length).assertLarger(0.0);
+            expect(data.appInfo.cloudFileSyncEnabled).assertFalse();
+            hilog.info(domain, tag, 'getBundleInfoForSelfApplicationPromise  ====> end');
+            done();
+          })
+          .catch(err => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfApplicationPromise  ====> err');
+            expect(err).assertFail();
+            done();
+          })
       })
 
     /*
@@ -265,37 +285,46 @@ export default function getBundleInfoForSelf() {
      */
     it('getBundleInfoForSelfCallbackHapModuleInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE, (err: BusinessError<void>, data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> start');
-          hilog.info(0x0000, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> ' + JSON.stringify(data));
-          expect(data.appInfo).assertEqual(null);
-          expect(data.hapModulesInfo.length).assertEqual(1.0);
-          expect(data.hapModulesInfo[0].name).assertEqual("entry");
-          expect(data.hapModulesInfo[0].icon).assertEqual("$media:layered_image");
-          expect(data.hapModulesInfo[0].iconId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].label).assertEqual("$string:EntryAbility_label");
-          expect(data.hapModulesInfo[0].labelId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].description).assertEqual("$string:module_desc");
-          expect(data.hapModulesInfo[0].descriptionId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].mainElementName).assertEqual("EntryAbility");
-          expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].metadata.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].installationFree).assertFalse();
-          expect(data.hapModulesInfo[0].hashValue).assertEqual("");
-          expect(data.hapModulesInfo[0].dependencies.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].preloads.length).assertEqual(0.0);
-          expect(data.routerMap.length).assertEqual(0.0);
-          expect(data.reqPermissionDetails.length).assertEqual(0.0);
-          expect(data.permissionGrantStates.length).assertEqual(0.0);
-          expect(data.signatureInfo).assertEqual(null);
-          expect(data.hapModulesInfo[0].codePath).assertEqual("/data/storage/el1/bundle/entry.hap");
-          expect(data.hapModulesInfo[0].nativeLibraryPath).assertEqual("");
-          expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("");
-          hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> end');
-          done();
-        })
+        bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE,
+          (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> start');
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(0x0000, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> ' + JSON.stringify(data));
+              expect(data.appInfo).assertEqual(null);
+              expect(data.hapModulesInfo.length).assertEqual(1.0);
+              expect(data.hapModulesInfo[0].name).assertEqual("entry");
+              expect(data.hapModulesInfo[0].icon).assertEqual("$media:layered_image");
+              expect(data.hapModulesInfo[0].iconId).assertLarger(0.0);
+              expect(data.hapModulesInfo[0].label).assertEqual("$string:EntryAbility_label");
+              expect(data.hapModulesInfo[0].labelId).assertLarger(0.0);
+              expect(data.hapModulesInfo[0].description).assertEqual("$string:module_desc");
+              expect(data.hapModulesInfo[0].descriptionId).assertLarger(0.0);
+              expect(data.hapModulesInfo[0].mainElementName).assertEqual("EntryAbility");
+              expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].metadata.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].installationFree).assertFalse();
+              expect(data.hapModulesInfo[0].hashValue).assertEqual("");
+              expect(data.hapModulesInfo[0].dependencies.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].preloads.length).assertEqual(0.0);
+              expect(data.routerMap.length).assertEqual(0.0);
+              expect(data.reqPermissionDetails.length).assertEqual(0.0);
+              expect(data.permissionGrantStates.length).assertEqual(0.0);
+              expect(data.signatureInfo).assertEqual(null);
+              expect(data.hapModulesInfo[0].codePath).assertEqual("/data/storage/el1/bundle/entry.hap");
+              expect(data.hapModulesInfo[0].nativeLibraryPath).assertEqual("");
+              expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("");
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> Fail');
+              expect().assertFail();
+            }
+            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackHapModuleInfo  ====> end');
+            done();
+          })
       })
 
     /*
@@ -305,40 +334,42 @@ export default function getBundleInfoForSelf() {
      */
     it('getBundleInfoForSelfHapModuleInfoPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE).then((data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoForSelfHapModuleInfoPromise  ====> start');
-          expect(data.appInfo).assertEqual(null);
-          expect(data.hapModulesInfo.length).assertEqual(1.0);
-          expect(data.hapModulesInfo[0].name).assertEqual("entry");
-          expect(data.hapModulesInfo[0].icon).assertEqual("$media:layered_image");
-          expect(data.hapModulesInfo[0].iconId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].label).assertEqual("$string:EntryAbility_label");
-          expect(data.hapModulesInfo[0].labelId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].description).assertEqual("$string:module_desc");
-          expect(data.hapModulesInfo[0].descriptionId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].mainElementName).assertEqual("EntryAbility");
-          expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].metadata.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].installationFree).assertFalse();
-          expect(data.hapModulesInfo[0].hashValue).assertEqual("");
-          expect(data.hapModulesInfo[0].dependencies.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].preloads.length).assertEqual(0.0);
-          expect(data.routerMap.length).assertEqual(0.0);
-          expect(data.reqPermissionDetails.length).assertEqual(0.0);
-          expect(data.permissionGrantStates.length).assertEqual(0.0);
-          expect(data.signatureInfo).assertEqual(null);
-          expect(data.hapModulesInfo[0].codePath).assertEqual("/data/storage/el1/bundle/entry.hap");
-          expect(data.hapModulesInfo[0].nativeLibraryPath).assertEqual("");
-          expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("");
-          hilog.info(domain, tag, 'getBundleInfoForSelfHapModuleInfoPromise  ====> end');
-          done();
-        }).catch(err => {
-          hilog.info(domain, tag, 'getBundleInfoForSelfHapModuleInfoPromise  ====> err');
-          expect(err).assertFail();
-          done();
-        })
+        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE)
+          .then((data: BundleInfo) => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfHapModuleInfoPromise  ====> start');
+            expect(data.appInfo).assertEqual(null);
+            expect(data.hapModulesInfo.length).assertEqual(1.0);
+            expect(data.hapModulesInfo[0].name).assertEqual("entry");
+            expect(data.hapModulesInfo[0].icon).assertEqual("$media:layered_image");
+            expect(data.hapModulesInfo[0].iconId).assertLarger(0.0);
+            expect(data.hapModulesInfo[0].label).assertEqual("$string:EntryAbility_label");
+            expect(data.hapModulesInfo[0].labelId).assertLarger(0.0);
+            expect(data.hapModulesInfo[0].description).assertEqual("$string:module_desc");
+            expect(data.hapModulesInfo[0].descriptionId).assertLarger(0.0);
+            expect(data.hapModulesInfo[0].mainElementName).assertEqual("EntryAbility");
+            expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0.0);
+            expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0.0);
+            expect(data.hapModulesInfo[0].metadata.length).assertEqual(0.0);
+            expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(0.0);
+            expect(data.hapModulesInfo[0].installationFree).assertFalse();
+            expect(data.hapModulesInfo[0].hashValue).assertEqual("");
+            expect(data.hapModulesInfo[0].dependencies.length).assertEqual(0.0);
+            expect(data.hapModulesInfo[0].preloads.length).assertEqual(0.0);
+            expect(data.routerMap.length).assertEqual(0.0);
+            expect(data.reqPermissionDetails.length).assertEqual(0.0);
+            expect(data.permissionGrantStates.length).assertEqual(0.0);
+            expect(data.signatureInfo).assertEqual(null);
+            expect(data.hapModulesInfo[0].codePath).assertEqual("/data/storage/el1/bundle/entry.hap");
+            expect(data.hapModulesInfo[0].nativeLibraryPath).assertEqual("");
+            expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("");
+            hilog.info(domain, tag, 'getBundleInfoForSelfHapModuleInfoPromise  ====> end');
+            done();
+          })
+          .catch(err => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfHapModuleInfoPromise  ====> err');
+            expect(err).assertFail();
+            done();
+          })
       })
 
     /*
@@ -387,42 +418,52 @@ export default function getBundleInfoForSelf() {
      */
     it('getBundleInfoForSelfCallbackAbilitiesInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY, (err: BusinessError<void>, data : BundleInfo) => {
-          hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> start');
-          hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> data' + JSON.stringify(data));
-          hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> err' + JSON.stringify(err));
-          expect(data.appInfo).assertEqual(null);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].bundleName).assertEqual(BUNDLE_NAME);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].moduleName).assertEqual("entry");
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].name).assertEqual("EntryAbility");
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].label).assertEqual("$string:EntryAbility_label");
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].labelId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].description).assertEqual("$string:EntryAbility_desc");
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].descriptionId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].icon).assertEqual("$media:layered_image");
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].iconId).assertLarger(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].exported).assertTrue();
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].excludeFromDock).assertFalse();
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].orientationId).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].skills.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].metadata.length).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].enabled).assertTrue();
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].appIndex).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].supportWindowModes.length).assertEqual(3);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowRatio).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowRatio).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowWidth).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowWidth).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowHeight).assertEqual(0.0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowHeight).assertEqual(0.0);
-          hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> end');
-          done();
-        })
+        bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
+        bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY,
+          (err: BusinessError<void> | null, data: BundleInfo | undefined) => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> start');
+            if (err) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> err' + JSON.stringify(err));
+              expect().assertFail();
+            } else if (data !== undefined) {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> data' + JSON.stringify(data));
+              expect(data.appInfo).assertEqual(null);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].bundleName).assertEqual(BUNDLE_NAME);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].moduleName).assertEqual("entry");
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].name).assertEqual("EntryAbility");
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].label).assertEqual("$string:EntryAbility_label");
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].labelId).assertLarger(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].description).assertEqual("$string:EntryAbility_desc");
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].descriptionId).assertLarger(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].icon).assertEqual("$media:layered_image");
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].iconId).assertLarger(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].exported).assertTrue();
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].excludeFromDock).assertFalse();
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation)
+                .assertEqual(bundle.DisplayOrientation.PORTRAIT);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].orientationId).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].skills.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].metadata.length).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].enabled).assertTrue();
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].appIndex).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].supportWindowModes.length).assertEqual(3);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowRatio).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowRatio).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowWidth).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowWidth).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowHeight).assertEqual(0.0);
+              expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowHeight).assertEqual(0.0);
+            } else {
+              hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> Fail');
+              expect().assertFail();
+            }
+            hilog.info(domain, tag, 'getBundleInfoForSelfCallbackAbilitiesInfo  ====> end');
+            done();
+          })
       })
 
     /*
@@ -432,7 +473,8 @@ export default function getBundleInfoForSelf() {
      */
     it('getBundleInfoForSelfAbilitiesInfoPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY).then((data : BundleInfo) => {
+        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
+        bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY).then((data: BundleInfo) => {
           hilog.info(domain, tag, 'getBundleInfoForSelfAbilitiesInfoPromise  ====> start');
           expect(data.appInfo).assertEqual(null);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].bundleName).assertEqual(BUNDLE_NAME);
@@ -480,7 +522,8 @@ export default function getBundleInfoForSelf() {
     it('getBundleInfoForSelfAbilitiesInfoSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         let data: bundle.BundleInfo =
-          bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY);
+          bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
+          bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY);
         hilog.info(domain, tag, 'getBundleInfoForSelfAbilitiesInfoSync  ====> start');
         expect(data.appInfo).assertEqual(null);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].bundleName).assertEqual(BUNDLE_NAME);

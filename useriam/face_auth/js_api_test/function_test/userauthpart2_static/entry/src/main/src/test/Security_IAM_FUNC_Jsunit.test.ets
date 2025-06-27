@@ -46,7 +46,7 @@ export default function userauthTest_API9() {
           testAbilityContext = abilitys.context
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
         },
-      }, (err : BusinessError) : void => {
+      }, (err : BusinessError<void> | null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }

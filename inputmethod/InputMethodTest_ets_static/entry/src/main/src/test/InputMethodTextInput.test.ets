@@ -82,13 +82,13 @@ export default function inputMethodTest() {
          */
         it('SUB_Misc_inputMethod_showTextInput_Async_static_0100', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_showTextInput_Async_static_0100';
-            let CallBack = (error: BusinessError) => {
-                if (error.code != 0) {
-                    console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
+            let CallBack = (error: BusinessError | null) => {
+                if (error?.code != 0) {
+                    console.info(`${CASE_NAME} execution fail,error: [${error?.code}, ${error?.message}]`);
                 } else {
                     console.info(`${CASE_NAME} execution success`);
                 }
-                expect(error.code == 0).assertTrue();
+                expect(error?.code == 0).assertTrue();
                 done();
             };
             try {
@@ -107,10 +107,10 @@ export default function inputMethodTest() {
          */
         it('SUB_Misc_inputMethod_showTextInput_Async_static_0400', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_showTextInput_Async_static_0400';
-            let CallBack = (error: BusinessError) => {
-                if (error.code != 0) {
-                    console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
-                    expect(error.code === INVALID_INPUT_METHOD_CLIENT_DETACHED).assertTrue();
+            let CallBack = (error: BusinessError | null) => {
+                if (error?.code != 0) {
+                    console.info(`${CASE_NAME} execution fail,error: [${error?.code}, ${error?.message}]`);
+                    expect(error?.code === INVALID_INPUT_METHOD_CLIENT_DETACHED).assertTrue();
                     done();
                     
                 } else {
@@ -193,13 +193,13 @@ export default function inputMethodTest() {
          */
         it('SUB_Misc_inputMethod_hideTextInput_Async_static_0100', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_hideTextInput_Async_static_0100';
-            let CallBack = (error: BusinessError) => {
-                if (error.code != 0) {
-                    console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
+            let CallBack = (error: BusinessError | null) => {
+                if (error?.code != 0) {
+                    console.info(`${CASE_NAME} execution fail,error: [${error?.code}, ${error?.message}]`);
                 } else {
                     console.info(`${CASE_NAME} execution success`);
                 }
-                expect(error.code == 0).assertTrue();
+                expect(error?.code == 0).assertTrue();
                 done();
             };
             try {
@@ -219,10 +219,10 @@ export default function inputMethodTest() {
          */
         it('SUB_Misc_inputMethod_hideTextInput_Async_static_0400', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_hideTextInput_Async_static_0400';
-            let CallBack = (error: BusinessError) => {
-                if (error.code != 0) {
-                    console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
-                    expect(error.code === INVALID_INPUT_METHOD_CLIENT_DETACHED).assertTrue();
+            let CallBack = (error: BusinessError | null) => {
+                if (error?.code != 0) {
+                    console.info(`${CASE_NAME} execution fail,error: [${error?.code}, ${error?.message}]`);
+                    expect(error?.code === INVALID_INPUT_METHOD_CLIENT_DETACHED).assertTrue();
                     done();
 
                 } else {
@@ -316,13 +316,13 @@ export default function inputMethodTest() {
          */
         it('SUB_Misc_inputMethod_detach_Async_static_0100', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_detach_Async_static_0100';
-            let CallBack = (error: BusinessError) => {
-                if (error.code != 0) {
-                    console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
+            let CallBack = (error: BusinessError | null) => {
+                if (error?.code != 0) {
+                    console.info(`${CASE_NAME} execution fail,error: [${error?.code}, ${error?.message}]`);
                 } else {
                     console.info(`${CASE_NAME} execution success`);
                 }
-                expect(error.code == 0).assertTrue();
+                expect(error?.code == 0).assertTrue();
                 done();
             };
             try {
