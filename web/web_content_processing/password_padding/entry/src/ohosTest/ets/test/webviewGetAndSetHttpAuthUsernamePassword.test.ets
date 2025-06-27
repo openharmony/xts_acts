@@ -52,6 +52,7 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
         console.error(`failed to enable, ${err}`);
       })
       console.info("web beforeEach start");
+      await Utils.sleep(2000);
       done();
     })
     afterEach(async (done: Function) => {

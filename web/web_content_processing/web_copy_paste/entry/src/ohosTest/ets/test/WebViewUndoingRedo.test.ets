@@ -51,6 +51,7 @@ export default function ActswebviewUndoingRedo() {
         }).catch((err: object) => {
         console.error(`failed to enable, ${err}`);
       })
+      await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
     })
