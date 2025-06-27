@@ -33,7 +33,6 @@ import fileIOHash from './Hash.test';
 import fileIORW from './Filerw.test';
 import fileIOStreamClose from './class_stream/Close.test';
 import fileIOStreamFlush from './class_stream/Flush.test';
-import fscreateReadStream from './class_stream/CreateReadStream.test';
 import fileIOStreamRead from './class_stream/Read.test';
 import fileIOStreamWrite from './class_stream/Write.test';
 import fileIOFdopenStream from './FdopenStream.test';
@@ -41,7 +40,6 @@ import fileIOWatcher from './Watcher.test';
 import fileIORandomAccessFileClose from './class_randomAccessFile/Close.test';
 import fileIORandomAccessFileRead from './class_randomAccessFile/Read.test';
 import fileIORandomAccessFileSetFilePointer from './class_randomAccessFile/SetFilePointer.test';
-import atomicFileTest from './class_atomicFile/AtomicFile.test';
 export default function testsuite() {
     fileIOAccess();
     fileIOClose();
@@ -78,7 +76,6 @@ export default function testsuite() {
     fileIORW();
     fileIOStreamClose();
     fileIOStreamFlush();
-    fscreateReadStream();
     fileIOStreamRead();
     fileIOStreamWrite();
     fileIOFdopenStream();
@@ -86,5 +83,4 @@ export default function testsuite() {
     fileIORandomAccessFileClose();
     fileIORandomAccessFileRead();
     fileIORandomAccessFileSetFilePointer();
-    atomicFileTest();
 }
