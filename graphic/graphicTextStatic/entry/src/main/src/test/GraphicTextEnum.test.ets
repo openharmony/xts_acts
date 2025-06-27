@@ -280,5 +280,60 @@ export default function GraphicTextEnum() {
       }
     })
 
+    /**
+     * @tc.number    : testFontWidthStatic_01
+     * @tc.name      : testFontWidthStatic_01
+     * @tc.desc      : To test the enum value of EllipsisMode.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testFontWidthStatic_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+        let msg = "testEllipsisMode"
+        console.info(msg + 'begin');
+        try {
+          expect('1').assertEqual(text.FontWidth.ULTRA_CONDENSED + '');
+          expect('2').assertEqual(text.FontWidth.EXTRA_CONDENSED + '');
+          expect('3').assertEqual(text.FontWidth.CONDENSED + '');
+          expect('4').assertEqual(text.FontWidth.SEMI_CONDENSED + '');
+          expect('5').assertEqual(text.FontWidth.NORMAL + '');
+          expect('6').assertEqual(text.FontWidth.SEMI_EXPANDED + '');
+          expect('7').assertEqual(text.FontWidth.EXPANDED + '');
+          expect('8').assertEqual(text.FontWidth.EXTRA_EXPANDED + '');
+          expect('9').assertEqual(text.FontWidth.ULTRA_EXPANDED + '');
+          done();
+        } catch (err) {
+          console.info(msg + 'test enum value of fontWidth error ' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        }
+      })
+
+    /**
+     * @tc.number    : testHeightBehaviorStatic
+     * @tc.name      : testHeightBehaviorStatic
+     * @tc.desc      : To test the enum value of EllipsisMode.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testHeightBehaviorStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+        let msg = "testEllipsisMode"
+        console.info(msg + 'begin');
+        try {
+          expect('0').assertEqual(text.TextHeightBehavior.ALL + '');
+          expect('1').assertEqual(text.TextHeightBehavior.DISABLE_FIRST_ASCENT + '');
+          expect('2').assertEqual(text.TextHeightBehavior.DISABLE_LAST_ASCENT + '');
+          expect('3').assertEqual(text.TextHeightBehavior.DISABLE_ALL + '');
+          done();
+        } catch (err) {
+          console.info(msg + 'test enum value of testHeightBehaviorStatic error ' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        }
+      })
+
   })
 }

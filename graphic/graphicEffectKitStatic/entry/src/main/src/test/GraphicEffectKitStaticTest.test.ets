@@ -85,13 +85,73 @@ export default function GraphicEffectKitStaticTest() {
           hilog.info(domain, tag, '%{public}s', 'effectKit createFilter failed.');
           return undefined;
         }
+        let blurFilter: effectKit.Filter = headFilter.blur(10);
+        expect(true).assertTrue();
+        hilog.info(domain, tag, '%{public}s', 'effectKit createFilter successfully.');
+        const effectPixelMap = await blurFilter.getEffectPixelMap();
+        if (effectPixelMap != undefined) {
+          hilog.info(domain, tag, '%{public}s', 'effectKit getEffectPixelMap successfully.');
+        } else {
+          hilog.info(domain, tag, '%{public}s', 'effectKit getEffectPixelMap failed.');
+        }
+        hilog.info(domain, tag, '%{public}s', 'effectKit test END');
+        expect(true).assertTrue();
       } catch(err){
         console.info('www data err ' + JSON.stringify(err))
       }
-      hilog.info(domain, tag, '%{public}s', 'effectKit createFilter successfully.');
-      expect(true).assertTrue()
       done();
     })
-  })
 
+    /**
+     * @tc.number    : testBlurTileModeStatic
+     * @tc.name      : testBlurTileModeStatic
+     * @tc.desc      : effect for test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+
+    it('testBlurTileModeStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+      let msgStr = 'testBlurTileMode'
+      console.log(msgStr + ' begin');
+      const color = new ArrayBuffer(96);
+      let opts : image.InitializationOptions = {
+        editable: true,
+        pixelFormat: image.PixelMapFormat.RGBA_8888,
+        size: {
+          height: 4,
+          width: 6
+        }
+      };
+
+      image.createPixelMap(color, opts).then((pixelMap) => {
+        effectKit.createEffect(pixelMap).grayscale().getEffectPixelMap().then(data => {
+          console.info('getPixelBytesNumber = ', data.getPixelBytesNumber());
+        })
+      })
+
+      console.info('www data lxt ' + 1111)
+      image.createPixelMap(color, opts).then((pixelMap) => {
+        console.info(msgStr + ' Succeed in createPixelMap. ');
+        let radius = 30;
+        console.info('www data lxt ' + 222)
+        let headFilter = effectKit.createEffect(pixelMap);
+        console.info('www data lxt ' + 333)
+        if (headFilter != null) {
+          headFilter.blur(radius);
+          console.info('www data lxt ' + 444)
+          console.info(msgStr + ' Succeed in headFilter.blur. ');
+          expect(true).assertTrue()
+          console.info('www data lxt ' + 555)
+          done()
+        }
+      }).catch((err) => {
+        console.info('www data lxt ' + 666)
+        console.info(msgStr + ' Failed in createPixelMap. ');
+        expect().assertFail()
+        done()
+      })
+    })
+  })
 }

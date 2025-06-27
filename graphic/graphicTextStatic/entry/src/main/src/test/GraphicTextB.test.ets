@@ -232,6 +232,7 @@ export default function GraphicTextBTest() {
       console.info(msg + ' myFontFeature ready go');
       let myStrutStyle: text.StrutStyle = {
         fontWidth: text.FontWidth.CONDENSED,
+        fontFamilies: Array<string>('123'),
         forceHeight: true,
         heightOverride: true
       }
@@ -319,7 +320,14 @@ export default function GraphicTextBTest() {
         let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888,
           size: { height: 200, width: 200 } }
         let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
-        expect(true).assertTrue();
+        let canvas = new drawing.Canvas(pixelMap);
+        let path = new drawing.Path();
+        console.log(msg + ' Succeed in every Variable!')
+        path.arcTo(20, 20, 180, 180, 180, 90);
+        console.log(msg + ' Succeed in arcTo!')
+        paragraph.paintOnPath(canvas, path, 0, 0);
+        console.log(msg + ' Succeed in paragraph.paintOnPath')
+        expect(true).assertTrue()
         done()
       }catch(err){
         console.info(msg + 'test paragraph.paintOnPath error ' + JSON.stringify(err));
@@ -527,6 +535,7 @@ export default function GraphicTextBTest() {
         let myStrutStyle: text.StrutStyle = {
           fontWidth: text.FontWidth.CONDENSED,
           forceHeight: true,
+          fontFamilies: Array<string>('字体'),
           heightOverride: true,
           leading: 0.5
         }
