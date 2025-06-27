@@ -1,4 +1,4 @@
-import { describe, it, expect, TestType, Size, Level, beforeAll, beforeEach, afterEach, afterAll } from "../../index";
+import { describe, it, expect, TestType, Size, Level, beforeAll, beforeEach, afterEach, afterAll } from "../../../hypium/index";
 import hilog from '@ohos.hilog'
 import vibrator from '@ohos.vibrator'
 import deviceInfo from '@ohos.deviceInfo'
