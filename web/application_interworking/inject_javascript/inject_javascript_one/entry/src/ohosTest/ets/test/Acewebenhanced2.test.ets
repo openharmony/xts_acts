@@ -41,7 +41,6 @@ export default function AceWeb() {
         if (!("IndexOthers" == pages.name)) {
           console.info("get IndexOthers state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
           console.info("push IndexOthers page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -59,7 +58,6 @@ export default function AceWeb() {
         }).catch((err: object) => {
         console.error(`failed to enable, ${err}`);
       })
-      await Utils.sleep(2000);
       console.info("IndexOthers beforeEach start");
       done();
       // Presets an action, which is performed before each unit test case starts.
