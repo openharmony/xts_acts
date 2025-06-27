@@ -690,7 +690,7 @@ export default function abilityTest() {
       if (deviceSupport != 'false') {
         let hap3MainAbility3onForegroundCount: number = 0;
         let isFirstMainAbility4onForeground = true;
-        let eventCallback = (event: string) => {
+        let eventCallback = async (event: string) => {
           console.log(TAG + " eventCallback, event is :" + event);
           if (event === 'MainAbility4onForeground' && isFirstMainAbility4onForeground) {
             isFirstMainAbility4onForeground = false;
@@ -702,6 +702,7 @@ export default function abilityTest() {
               JSON.stringify(error) + ",data: " + JSON.stringify(data));
             })
           } else if (event === 'Hap2MainAbility10onForeground') {
+            await sleep(100);
             globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap3MainAbility3",
@@ -716,7 +717,6 @@ export default function abilityTest() {
               let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
               console.log(TAG + " listTemp is :" + listTemp);
               console.log(TAG + " globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-
               expect(listTemp.indexOf("Hap2MainAbility10 onWindowStageCreate") !== -1).assertTrue();
               expect(listTemp.split("Hap2MainAbility10 onWindowStageActive").length - 1).assertEqual(3);
               expect(listTemp.split("Hap2MainAbility10 onWindowStageInactive").length - 1).assertEqual(3);
@@ -738,6 +738,7 @@ export default function abilityTest() {
                   done();
                 });
             } else {
+              await sleep(100);
               globalThis.abilityContext.startAbility({
                 bundleName: "com.example.lifecycletest",
                 abilityName: "Hap2MainAbility10",
