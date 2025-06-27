@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-
 class MyDataSourceT5 implements IDataSource {
   private list: number[] = []
   private count:number  = 0
+  private listeners: DataChangeListener[] = [];
   constructor(list: number[]) {
     this.list = list
   }
@@ -32,15 +30,36 @@ class MyDataSourceT5 implements IDataSource {
   add() {
 
     this.list.push(this.totalCount() + 1)
-
+    this.notifyDataAdd(this.totalCount() - 1)
   }
   delete() {
     this.list.pop();
+    this.notifyDataAdd(this.totalCount())
   }
   registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      console.info('add listener');
+      this.listeners.push(listener);
+    }
   }
 
-  unregisterDataChangeListener() {
+  unregisterDataChangeListener(listener: DataChangeListener) {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      console.info('remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
   }
 }
 
@@ -59,8 +78,8 @@ struct SwiperExampleT5 {
   }
 
   build() {
-    Column({ space: 5 }) {
-      Row({ space: 2 }) {
+    Column() {
+      Row() {
         Button('showNext')
           .onClick(() => {
             this.swiperController.showNext()
@@ -77,7 +96,7 @@ struct SwiperExampleT5 {
           console.log('change Index 8')
         })
 
-      Row({ space: 2 }) {
+      Row() {
         Button('add')
           .onClick(() => {
             this.data.add();

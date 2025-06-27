@@ -84,7 +84,7 @@ class MyDataSource <T> extends BasicDataSource<T> {
 
   public addData(index: number, data: string): void {
     this.dataArray.splice(index, 0, data);
-    this.notifyDataAdd(index);
+    this.notifyDataAdd(this.totalCount() - 1)
   }
 
   public dataReload(): void {
@@ -98,7 +98,7 @@ class MyDataSource <T> extends BasicDataSource<T> {
 
   public deleteData(index: number): void {
     this.dataArray.splice(index, 1);
-    this.notifyDataDelete(index);
+    this.notifyDataAdd(this.totalCount())
   }
 }
 
