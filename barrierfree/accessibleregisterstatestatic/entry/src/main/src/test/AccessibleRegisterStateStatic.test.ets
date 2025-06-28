@@ -1,14 +1,8 @@
 import { describe, it, expect, TestType, Size, Level } from "../../../hypium/index";
 import hilog from '@ohos.hilog'
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import common from '@ohos.app.ability.common';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Utils from './Util.test';
-import { AppStorage } from '@ohos.arkui.stateManagement';
-import abilityConstant from '@ohos.app.ability.AbilityConstant';
 import accessibility from '@ohos.accessibility'
 import { Rect } from '@ohos.application.AccessibilityExtensionAbility';
-
 let domain: number = 0x0000;
 let tag: string = 'testTag';
 
@@ -89,5 +83,4 @@ export default function abilityTest() {
       }
     })
   })
-
 }

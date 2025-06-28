@@ -1,11 +1,6 @@
 import { describe, it, expect, TestType, Size, Level } from "../../../hypium/index";
 import hilog from '@ohos.hilog'
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import common from '@ohos.app.ability.common';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Utils from './Util.test';
-import { AppStorage } from '@ohos.arkui.stateManagement';
-import abilityConstant from '@ohos.app.ability.AbilityConstant';
 import accessibility from '@ohos.accessibility'
 
 let domain: number = 0x0000;
@@ -40,7 +35,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0100  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0100 has error`);
           result = false;
         } else {
@@ -97,7 +92,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0300  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0300 has error`);
           result = false;
         } else {
@@ -156,7 +151,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0500  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0500 has error`);
           result = false;
         } else {
@@ -215,7 +210,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0700  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0700 has error`);
           result = false;
         } else {
@@ -274,7 +269,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0900  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_0900 has error`);
           result = false;
         } else {
@@ -333,7 +328,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1100  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1100 has error`);
           result = false;
         } else {
@@ -392,7 +387,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1300  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1300 has error`);
           result = false;
         } else {
@@ -451,7 +446,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1500  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1500 has error`);
           result = false;
         } else {
@@ -510,7 +505,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1700  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1700 has error`);
           result = false;
         } else {
@@ -569,7 +564,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1900  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_1900 has error`);
           result = false;
         } else {
@@ -628,7 +623,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2100  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_2100 has error`);
           result = false;
         } else {
@@ -939,7 +934,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3300  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3300 has error`);
           result = false;
         } else {
@@ -998,7 +993,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3500  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3500 has error`);
           result = false;
         } else {
@@ -1057,7 +1052,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3700  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3700 has error`);
           result = false;
         } else {
@@ -1116,7 +1111,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3900  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_3900 has error`);
           result = false;
         } else {
@@ -1175,7 +1170,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4100  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4100 has error`);
           result = false;
         } else {
@@ -1234,7 +1229,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4300  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4300 has error`);
           result = false;
         } else {
@@ -1293,7 +1288,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4500  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4500 has error`);
           result = false;
         } else {
@@ -1352,7 +1347,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4700  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4700 has error`);
           result = false;
         } else {
@@ -1411,7 +1406,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4900  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_4900 has error`);
           result = false;
         } else {
@@ -1470,7 +1465,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5100  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5100 has error`);
           result = false;
         } else {
@@ -1529,7 +1524,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5300  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5300 has error`);
           result = false;
         } else {
@@ -1588,7 +1583,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5500  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5500 has error`);
           result = false;
         } else {
@@ -1647,7 +1642,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5700  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5700 has error`);
           result = false;
         } else {
@@ -1706,7 +1701,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5900  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_5900 has error`);
           result = false;
         } else {
@@ -1765,7 +1760,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6100  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6100 has error`);
           result = false;
         } else {
@@ -1824,7 +1819,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6300  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6300 has error`);
           result = false;
         } else {
@@ -1911,7 +1906,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6600  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6600 has error`);
           result = false;
         } else {
@@ -1970,7 +1965,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6800  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_6800 has error`);
           result = false;
         } else {
@@ -2029,7 +2024,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7000  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7000 has error`);
           result = false;
         } else {
@@ -2097,33 +2092,6 @@ export default function abilityTest() {
       };
     })
 
-    /*
-    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7300
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7300
-    * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
-    *             The function sendAccessibilityEvent in promise mode and result should be undefined.
-    * @tc.size    MEDIUMTEST
-    * @tc.type    User
-    * @tc.level   Level 1
-    */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7300', TestType.FUNCTION | Size.MEDIUMTEST| Level.LEVEL1, async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, 'SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7300');
-      let pageId = 1;
-
-
-
-      let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
-      event.pageId = pageId;
-      try {
-        await accessibility.sendAccessibilityEvent(event);
-        hilog.info(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7300 has successed`);
-        done();
-      } catch (error) {
-        hilog.error(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7300 has error`);
-        expect(null).assertFail();
-        done();
-      };
-    })
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7400
@@ -2210,112 +2178,28 @@ export default function abilityTest() {
     })
 
     /*
-    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7700
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8100
     * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
     *             The function sendAccessibilityEvent in promise mode and result should be undefined.
     * @tc.size    MEDIUMTEST
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7700', TestType.FUNCTION | Size.MEDIUMTEST| Level.LEVEL1, async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, 'SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7700');
-      let beginIndex = 1;
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8100', TestType.FUNCTION | Size.MEDIUMTEST| Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8100');
+      let bundleName1 = "com.example.accessibilitysendaccessibilityevent";
 
 
 
       let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
-      event.beginIndex = beginIndex;
+      event.bundleName = bundleName1;
       try {
         await accessibility.sendAccessibilityEvent(event);
-        hilog.info(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7700 has successed`);
+        hilog.info(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8100 has successed`);
         done();
       } catch (error) {
-        hilog.error(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7700 has error`);
-        expect(null).assertFail();
-        done();
-      };
-    })
-
-    /*
-    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7800
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7800
-    * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
-    *             The function sendAccessibilityEvent in promise mode and result should be undefined.
-    * @tc.size    MEDIUMTEST
-    * @tc.type    User
-    * @tc.level   Level 1
-    */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7800', TestType.FUNCTION | Size.MEDIUMTEST| Level.LEVEL1, async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, 'SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7800');
-      let currentIndex = 1;
-
-
-
-      let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
-      event.currentIndex = currentIndex;
-      try {
-        await accessibility.sendAccessibilityEvent(event);
-        hilog.info(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7800 has successed`);
-        done();
-      } catch (error) {
-        hilog.error(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7800 has error`);
-        expect(null).assertFail();
-        done();
-      };
-    })
-
-    /*
-    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7900
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7900
-    * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
-    *             The function sendAccessibilityEvent in promise mode and result should be undefined.
-    * @tc.size    MEDIUMTEST
-    * @tc.type    User
-    * @tc.level   Level 1
-    */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7900', TestType.FUNCTION | Size.MEDIUMTEST| Level.LEVEL1, async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, 'SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7900');
-      let endIndex = 1;
-
-
-
-      let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
-      event.endIndex = endIndex;
-      try {
-        await accessibility.sendAccessibilityEvent(event);
-        hilog.info(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7900 has successed`);
-        done();
-      } catch (error) {
-        hilog.error(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_7900 has error`);
-        expect(null).assertFail();
-        done();
-      };
-    })
-
-    /*
-    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8000
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8000
-    * @tc.desc    The parameter input eventType is scroll, test the sendAccessibilityEvent() function
-    *             The function sendAccessibilityEvent in promise mode and result should be undefined.
-    * @tc.size    MEDIUMTEST
-    * @tc.type    User
-    * @tc.level   Level 1
-    */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8000', TestType.FUNCTION | Size.MEDIUMTEST| Level.LEVEL1, async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, 'SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8000');
-      let itemCount = 1;
-
-
-
-      let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
-      event.itemCount = itemCount;
-      try {
-        await accessibility.sendAccessibilityEvent(event);
-        hilog.info(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8000 has successed`);
-        done();
-      } catch (error) {
-        hilog.error(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8000 has error`);
+        hilog.error(domain, tag, `AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8100 has error`);
         expect(null).assertFail();
         done();
       };
@@ -2339,7 +2223,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8700  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8700 has error`);
           result = false;
         } else {
@@ -2396,7 +2280,7 @@ export default function abilityTest() {
 
       accessibility.sendAccessibilityEvent(event, (err) => {
         hilog.info(domain, tag, "AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8900  start ");
-        if (err && err.code != 0) {
+        if (err != null && err.code != 0) {
           hilog.error(domain, tag,`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_static_8900 has error`);
           result = false;
         } else {
@@ -2435,5 +2319,6 @@ export default function abilityTest() {
         done();
       };
     })
+
   })
 }

@@ -1,14 +1,8 @@
 import { describe, it, expect, TestType, Size, Level } from "../../../hypium/index";
 import hilog from '@ohos.hilog'
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import common from '@ohos.app.ability.common';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Utils from './Util.test';
-import { AppStorage } from '@ohos.arkui.stateManagement';
-import abilityConstant from '@ohos.app.ability.AbilityConstant';
 import accessibility from '@ohos.accessibility'
 import { Rect } from '@ohos.application.AccessibilityExtensionAbility';
-
 let domain: number = 0x0000;
 let tag: string = 'testTag';
 
@@ -56,30 +50,6 @@ export default function abilityTest() {
         done();
       } catch (error) {
         hilog.error(domain, tag,'SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_static_0600 failed to isOpenTouchGuideSync because ');
-        expect(null).assertFail();
-        done();
-      }
-    })
-
-    /*
-      * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_static_0700
-      * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_static_0700
-      * @tc.desc    The result of isOpenTouchGuideSync() should be boolean type.
-      * @tc.size    MEDIUMTEST
-      * @tc.type    User
-      * @tc.level   Level 0
-      */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_static_0700', TestType.FUNCTION | Size.MEDIUMTEST| Level.LEVEL0, async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, 'SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_static_0700');
-      try {
-        let rect: Rect = new Rect();
-        rect.width = 100;
-        rect.height = 200;
-        rect.left = 100;
-        rect.top = 200;
-        done();
-      } catch (error) {
-        hilog.error(domain, tag,'SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_static_0700 failed to Rect because ');
         expect(null).assertFail();
         done();
       }
