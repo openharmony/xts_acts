@@ -17,10 +17,12 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.test';
 import router from '@ohos.router';
 import { accessibility, config } from '@kit.AccessibilityKit';
+import { Driver, ON, MouseButton } from '@ohos.UiTest';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
 const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ""
+
 
 export default function ActswebviewUndoingRedo() {
   describe('ActswebviewUndoingRedoTest', () => {
@@ -33,7 +35,7 @@ export default function ActswebviewUndoingRedo() {
         router.clear();
         let pages = router.getState();
         console.info("get webviewUndoingRedo state success " + JSON.stringify(pages));
-        if (!("webviewUndoingRedo" == pages.name)) {
+        if (!("WebViewUndoingRedo" == pages.name)) {
           console.info("get webviewUndoingRedo state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
@@ -42,6 +44,8 @@ export default function ActswebviewUndoingRedo() {
       } catch (err) {
         console.error("push webviewUndoingRedo page error: " + err);
       }
+      let driver: Driver = Driver.create();
+      await driver.waitForComponent(ON.id("webviewUndoingRedoButton"),10000);
       done()
     });
 

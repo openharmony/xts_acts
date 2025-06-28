@@ -16,6 +16,7 @@ import events_emitter from '@ohos.events.emitter';
 import webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import JSON from '@ohos.util.json';
+import { waitForExist} from '../../test/WaitTest';
 
 @Entry
 @Component
@@ -30,6 +31,8 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
   realm: string = 'protected example';
   usernamePassword: string[] = [];
   @State emitKey: string = '';
+  @State isReceive: number = -1;
+  @State isPageEnd: number = -1;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -44,6 +47,7 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
       console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.emitKey = eventData.data.ACTION;
+        this.isReceive = 0;
       }
     }
   }
@@ -58,6 +62,10 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
           await Utils.sleep(2000)
 
           webview.WebDataBase.deleteHttpAuthCredentials();
+          await waitForExist(()=>this.isReceive, this.emitKey, 0);
+          await waitForExist(()=>this.isPageEnd, this.emitKey, 0);
+          this.isReceive = -1;
+          this.isPageEnd = -1;
           switch (this.emitKey) {
             case 'emitWebviewGetAndSetHttpAuthUsernamePassword': {
               try {
@@ -201,6 +209,10 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
       }
       Web({ src: 'www.example.com', controller: this.controller })
         .databaseAccess(true)
+        .onPageEnd((event) => {
+          console.log('web pageEnd==>' + event.url);
+          this.isPageEnd = 0;
+        })
     }
   }
 }

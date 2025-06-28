@@ -38,6 +38,7 @@ struct WebComponent {
   // @State str:string = 'emitWebviewUndoingRedo'
   @State isReceive: number = -1;
   @State str:string = ''
+  @State isPageEnd: number = -1;
   aboutToAppear() {
 
   }
@@ -137,6 +138,9 @@ struct WebComponent {
           .onClick(async () => {
             console.info("key==>" + this.str)
             await waitForExist(()=>this.isReceive, this.str, 0);
+            await waitForExist(()=>this.isPageEnd, this.str, 0);
+            this.isReceive = -1;
+            this.isPageEnd = -1;
             switch (this.str) {
               case "emitWebviewUndoingRedo": {
                 try {
@@ -220,6 +224,10 @@ struct WebComponent {
 
 
       Web({ src: $rawfile("index.html"), controller: this.controller })
+        .onPageEnd((event) => {
+          console.log('web pageEnd==>' + event.url);
+          this.isPageEnd = 0;
+        })
         .key('webviewundoingredokey')
         .javaScriptAccess(true)
           // 触发自定义弹窗
