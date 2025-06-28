@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,9 +13,16 @@
  * limitations under the License.
  */
 
-import { appTasks } from '@ohos/hvigor-ohos-plugin';
+import { Text Row, Column, Component } from '@ohos.arkui.component'  // TextAttribute should be insert by ui-plugins
 
-export default {
-    system: appTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
-    plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
+@Component
+struct WidgetCard {
+  build(){
+    Row() {
+      Column() {
+        Text('Origin')
+        }
+      }
+    .size({width:'100%',height:'100%'})
+  }
 }

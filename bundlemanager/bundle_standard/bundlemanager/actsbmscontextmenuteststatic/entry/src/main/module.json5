@@ -23,11 +23,6 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
-      }
-    ],
     "abilities": [
       {
         "name": "EntryAbility",

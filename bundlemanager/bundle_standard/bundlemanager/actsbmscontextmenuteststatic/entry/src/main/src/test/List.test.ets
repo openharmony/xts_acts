@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import abilityTest from "./AbilityStatic.test";
 
-import { appTasks } from '@ohos/hvigor-ohos-plugin';
-
-export default {
-    system: appTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
-    plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
+export default function testsuite() {
+  abilityTest();
 }
