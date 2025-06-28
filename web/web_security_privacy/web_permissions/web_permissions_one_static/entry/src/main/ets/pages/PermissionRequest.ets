@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { OnConsoleEvent, OnPermissionRequestEvent, Text, PermissionRequest, Entry, Component, Column, Row, Button, ClickEvent, Web } from "@ohos.arkui.component"
+import { OnConsoleEvent, OnPermissionRequestEvent, Text, PermissionRequest, Entry, Component, Column, Row, Button, ClickEvent, Web } from '@ohos.arkui.component'
 import { Utils } from '../../src/test/Util.test';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
