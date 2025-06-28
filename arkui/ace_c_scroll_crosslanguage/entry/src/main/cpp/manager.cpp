@@ -37,12 +37,6 @@ Manager Manager::manager_;
 
 Manager::~Manager() {
     OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "~Manager");
-    for (auto iter = nativeXComponentMap_.begin(); iter != nativeXComponentMap_.end(); ++iter) {
-        if (iter->second != nullptr) {
-            delete iter->second;
-            iter->second = nullptr;
-        }
-    }
     nativeXComponentMap_.clear();
 
     for (auto iter = containerMap_.begin(); iter != containerMap_.end(); ++iter) {
@@ -585,17 +579,7 @@ void Manager::SetNativeXComponent(std::string &id, OH_NativeXComponent *nativeXC
         return;
     }
 
-    if (nativeXComponentMap_.find(id) == nativeXComponentMap_.end()) {
-        nativeXComponentMap_[id] = nativeXComponent;
-        return;
-    }
-
-    if (nativeXComponentMap_[id] != nativeXComponent) {
-        OH_NativeXComponent *tmp = nativeXComponentMap_[id];
-        delete tmp;
-        tmp = nullptr;
-        nativeXComponentMap_[id] = nativeXComponent;
-    }
+    nativeXComponentMap_[id] = nativeXComponent;
 }
 
 OH_NativeXComponent *Manager::GetNativeXComponent(const std::string &id) { return nativeXComponentMap_[id]; }
