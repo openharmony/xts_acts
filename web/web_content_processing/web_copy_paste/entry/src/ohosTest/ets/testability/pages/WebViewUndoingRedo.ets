@@ -20,8 +20,8 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter';
 import webview from '@ohos.web.webview';
-import Utils from '../../test/Utils';
-import { waitForExist} from '../../test/WaitTest';
+import Utils from '../../test/Utils.test';
+import { waitForExist} from '../../test/WaitTest.test';
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 const TAG = 'ContextMenu';
 
