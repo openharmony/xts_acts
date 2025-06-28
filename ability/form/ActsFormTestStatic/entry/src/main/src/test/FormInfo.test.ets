@@ -122,6 +122,11 @@ export default function formInfoTest() {
             await Utils.msSleep(1000);
             hilog.info(DOMAIN, TAG, 'FormInfoStaticTest002 start');
 
+            let customizeData: Record<string, string> = {
+                'abc1': '123',
+                'abc2': '123',
+                'abc3': '123',
+            }
             let formInfoFo: formInfo.FormInfo = {
                 bundleName: 'bundleName',
                 moduleName: 'moduleName',
@@ -142,7 +147,7 @@ export default function formInfoTest() {
                 updateDuration: 123,
                 defaultDimension: 123,
                 supportDimensions: [1,2,3],
-                customizeData: {},
+                customizeData: customizeData,
                 isDynamic: true,
                 transparencyEnabled: true,
                 supportedShapes: [1,2,3],
@@ -169,20 +174,12 @@ export default function formInfoTest() {
             expect(123).assertEqual(formInfoFo.updateDuration as number);
             expect(123).assertEqual(formInfoFo.defaultDimension as number);
             expect(JSON.stringify([1,2,3])).assertEqual(JSON.stringify(formInfoFo.supportedShapes));
-            expect(JSON.stringify({} as Object)).assertEqual(JSON.stringify(formInfoFo.customizeData));
+            expect('123').assertEqual(formInfoFo.customizeData['abc1'] as string);
             expect(formInfoFo.isDynamic).assertTrue();
             expect(formInfoFo.transparencyEnabled).assertTrue();
             expect(JSON.stringify([1,2,3])).assertEqual(JSON.stringify(formInfoFo.previewImages));
             expect(formInfoFo.enableBlurBackground).assertTrue();
             expect(0).assertEqual(formInfo.RenderingMode.AUTO_COLOR as number);
-            // let isCo: number = 0;
-            // if (formInfoFo.enableBlurBackground) {
-            //     isCo = isCo + 1; //1
-            // }
-            // if (formInfoFo.renderingMode === formInfo.RenderingMode.AUTO_COLOR) {
-            //     isCo = isCo + 1; //2
-            // }
-            // expect(isCo === 2).assertTrue();
 
             done();
             hilog.info(DOMAIN, TAG, 'FormInfoStaticTest002 end');
@@ -235,6 +232,11 @@ export default function formInfoTest() {
             expect('abilityName').assertEqual(formProviderFilterFo.abilityName as string);
             expect(true).assertEqual(formProviderFilterFo.isUnusedIncluded as boolean);
 
+            let extraData: Record<string, object> = {
+                'abc1': '123',
+                'abc2': '123',
+                'abc3': '123',
+            }
             let runningFormInfoFo: formInfo.RunningFormInfo = {
                 formId: 'formId',
                 bundleName: 'bundleName',
@@ -247,7 +249,7 @@ export default function formInfoTest() {
                 dimension: 123,
                 formUsageState: formInfo.FormUsageState.UNUSED,
                 formDescription: 'formDescription',
-                extraData: {},
+                extraData: extraData,
             }
             expect('formId').assertEqual(runningFormInfoFo.formId as string);
             expect('bundleName').assertEqual(runningFormInfoFo.bundleName as string);
@@ -260,7 +262,7 @@ export default function formInfoTest() {
             expect(123).assertEqual(runningFormInfoFo.dimension as number);
             expect(1).assertEqual(runningFormInfoFo.formUsageState as number);
             expect('formDescription').assertEqual(runningFormInfoFo.formDescription as string);
-            expect(JSON.stringify({} as Object)).assertEqual(JSON.stringify(runningFormInfoFo.extraData));
+            expect('123').assertEqual(runningFormInfoFo.extraData!['abc1'] as string);
 
             done();
             hilog.info(DOMAIN, TAG, 'FormInfoStaticTest003 end');
