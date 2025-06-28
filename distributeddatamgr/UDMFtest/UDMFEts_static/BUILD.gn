@@ -12,16 +12,12 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-group("UDMFtest") {
+
+ohos_js_app_static_suite("ActsUDMFStaticTest") {
+ # test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "UDMFEts_static:ActsUDMFStaticTest",
-      "UDMFndktestHvigor:ActsUDMFNdkTest",
-      "UDMFndktestProgressBar:ActsUDMFndktestProgressBarTest",
-      "UDMFtest:UDMF_ets_test",
-      "UDMFwithOutPermissiontest:UDMF_drag_ets_test",
-      "UDMFwithPermissiontest:UDMF_drag_test",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsUDMFStaticTest"
+  part_name = "udmf"
+  subsystem_name = "distributeddatamgr"
 }
