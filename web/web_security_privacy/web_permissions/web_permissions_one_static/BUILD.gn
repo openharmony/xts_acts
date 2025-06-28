@@ -11,14 +11,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("webPermissions") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "web_permissions_one:ActsWebPermissionsOneTest",
-      "web_permissions_three:ActsWebPermissionsThreeTest",
-      "web_permissions_two:ActsWebPermissionsTwoTest",
-      "web_permissions_one_static:ActsWebPermissionsOneStaticTest",
-    ]
-  }
+import("//test/xts/tools/build/suite.gni")
+
+# xts_acts_arkts1.2/ability/ability_runtime/actsAbilitytest2
+ohos_js_app_static_suite("ActsWebPermissionsOneStaticTest") {
+#   test_hap = true
+#   testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsWebPermissionsOneStaticTest"
+  part_name = "webview"
+  subsystem_name = "web"
 }
+
