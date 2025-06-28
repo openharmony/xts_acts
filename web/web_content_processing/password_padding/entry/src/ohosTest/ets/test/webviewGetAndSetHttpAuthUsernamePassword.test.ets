@@ -17,6 +17,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import { accessibility, config } from '@kit.AccessibilityKit';
+import { Driver, ON, MouseButton } from '@ohos.UiTest';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
 const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
@@ -42,6 +43,8 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
       } catch (err) {
         console.error("push webviewGetAndSetHttpAuthUsernamePassword page error: " + err);
       }
+      let driver: Driver = Driver.create();
+      await driver.waitForComponent(ON.id("webviewGetAndSetHttpAuthUsernamePasswordButton"),10000);
       done()
     });
 
@@ -52,7 +55,6 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
         console.error(`failed to enable, ${err}`);
       })
       console.info("web beforeEach start");
-      await Utils.sleep(2000);
       done();
     })
     afterEach(async (done: Function) => {

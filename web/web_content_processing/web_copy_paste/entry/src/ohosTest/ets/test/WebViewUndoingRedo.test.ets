@@ -14,19 +14,21 @@
  */
 import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.test';
+import Utils from './Utils';
 import router from '@ohos.router';
 import { accessibility, config } from '@kit.AccessibilityKit';
+import { Driver, ON, MouseButton } from '@ohos.UiTest';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
 const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ""
 
+
 export default function ActswebviewUndoingRedo() {
   describe('ActswebviewUndoingRedoTest', () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/WebViewUndoingRedo',
+        url: 'testability/pages/webviewUndoingRedo',
       }
       try {
         await Utils.sleep(1000)
@@ -42,6 +44,8 @@ export default function ActswebviewUndoingRedo() {
       } catch (err) {
         console.error("push webviewUndoingRedo page error: " + err);
       }
+      let driver: Driver = Driver.create();
+      await driver.waitForComponent(ON.id("webviewUndoingRedoButton"),10000);
       done()
     });
 
@@ -51,7 +55,6 @@ export default function ActswebviewUndoingRedo() {
         }).catch((err: object) => {
         console.error(`failed to enable, ${err}`);
       })
-      await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
     })
@@ -78,8 +81,8 @@ export default function ActswebviewUndoingRedo() {
 
     /*
     * @tc.number      : SUB_ACE_WEBVIEWUNDOINGREDO_API_0001
-    * @tc.name        : testWebviewUndoingRedo
-    * @tc.desc        : testWebviewUndoingRedo
+    * @tc.name        : test testWebviewUndoingRedo
+    * @tc.desc        : test testWebviewUndoingRedo
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 0
@@ -93,8 +96,8 @@ export default function ActswebviewUndoingRedo() {
 
     /*
     * @tc.number      : SUB_ACE_WEBVIEWUNDOINGREDO_API_0002
-    * @tc.name        : testWebviewUndoingRedo002
-    * @tc.desc        : testWebviewUndoingRedo002
+    * @tc.name        : test testWebviewUndoingRedo
+    * @tc.desc        : test testWebviewUndoingRedo
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 0
