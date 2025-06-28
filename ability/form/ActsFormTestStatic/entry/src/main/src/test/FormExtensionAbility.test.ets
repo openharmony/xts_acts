@@ -45,10 +45,10 @@ export default function formExtensionAbilityTest() {
             };
             let isChecked: boolean = false;
             subscriberForm = CommonEventManager.createSubscriberSync(FormExtensionAbilityOnStopTest_Event);
-            let onStopCallBack = (_: BusinessError | null, data: CommonEventManager.CommonEventData) => {
+            let onStopCallBack = (_: BusinessError | null, data: CommonEventManager.CommonEventData | undefined) => {
                 isChecked = true;
-                hilog.info(DOMAIN, TAG, 'OnStopStaticTest001 onStopCallBack' + JSON.stringify(data));
-                expect(data.event).assertEqual("XTS_FormExtensionAbilityOnStopTest_commonEvent");
+                hilog.info(DOMAIN, TAG, 'OnStopStaticTest001 onStopCallBack');
+                expect(data?.event).assertEqual("XTS_FormExtensionAbilityOnStopTest_commonEvent");
                 CommonEventManager.unsubscribe(subscriberForm, () => unsubscribeCallback("OnStopStaticTest001"));
             }
 

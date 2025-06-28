@@ -16,5 +16,6 @@ group("print") {
   deps = [
     "print_nopermission_xts:print_nopermission_xts_test",
     "print_xts:print_xts_test",
+    "PrintXtsTestStatic:ActsPrintXtsStaticTest",
   ]
 }

@@ -41,6 +41,14 @@ group("communication") {
       "wifi_manager_nop:ActsManagerNopStageOhosTest",
       "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
+      "wifi_manager_nop_static:ActsManagerNopStageOhosStaticTest",
+      "wifimanager_switchoff_static:ActsManagerDisableStaticTest",
+      "wifi_standard_static:ActsWifiJSStaticTest",
+      "bluetooth_ble_static:ActsBluetoothBleJsStaticTest",
+      "bluetooth_bp_static:ActsBluetoothBpJsStaticTest",
+      "bluetooth_br_static:ActsBluetoothBrJsStaticTest",
+      "bluetooth_nop_static:ActsBlutoothNopStaticTest",
+      "btmanager_switchoff_static:ActsBtManagerSwitchOff003JsStaticTest",
     ]
   } else {
     deps = [ "wifi_standard:ActsWifiJSTest" ]

@@ -1,0 +1,36 @@
+{
+    "entry": {
+        "plugins": {
+            "ui-syntax-plugins": "D:\\OpenHarmony\\SDK\\20\\ets\\ets1.2\\build-tools\\ui-plugins\\lib\\ui-syntax-plugins\\index",
+            "ui-plugins": "D:\\OpenHarmony\\SDK\\20\\ets\\ets1.2\\build-tools\\ui-plugins\\lib\\ui-plugins\\index",
+            "memo-plugins": "D:\\OpenHarmony\\SDK\\20\\ets\\ets1.2\\build-tools\\ui-plugins\\lib\\memo-plugins\\index"
+        },
+        "arkts": {},
+        "arktsGlobal": {},
+        "compileFiles": [
+            "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\src\\main\\ets\\entryability\\EntryAbility.ets",
+            "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\src\\main\\ets\\models\\MyCallback.ets",
+            "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\src\\main\\ets\\pages\\Index.ets",
+            "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\src\\main\\src\\test\\List.test.ets",
+            "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\src\\main\\src\\test\\TaskPoolSendable.test.ets",
+            "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\src\\main\\src\\testrunner\\OpenHarmonyTestRunner.ets",
+            "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\src\\main\\src\\utils\\SendAbleClass.ets"
+        ],
+        "packageName": "entry",
+        "moduleType": "entry",
+        "buildType": "build",
+        "buildMode": "Debug",
+        "moduleRootPath": "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry",
+        "sourceRoots": [
+            "./"
+        ],
+        "hasMainModule": true,
+        "loaderOutPath": "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\build\\default\\cache",
+        "cachePath": "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\.idea\\.deveco",
+        "buildSdkPath": "D:\\OpenHarmony\\SDK\\20\\ets\\ets1.2",
+        "enableDeclgenEts2Ts": false,
+        "declgenDtsOutPath": "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\build\\default\\cache",
+        "declgenTsOutPath": "D:\\CODE\\xts_acts\\commonlibrary\\ets_utils\\utils_static\\concurrency_static\\taskpool_sendable_test_static\\entry\\build\\default\\cache",
+        "dependentModuleList": []
+    }
+}

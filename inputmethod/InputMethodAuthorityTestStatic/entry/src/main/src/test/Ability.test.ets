@@ -28,7 +28,7 @@ export default function inputMethodAuthorityJSUnit() {
                     console.info('%{public}s', 'onAbilityCreate end');
 
                 },
-            }, (err : BusinessError) : void => {
+            }, (err : BusinessError | null) : void => {
                 if (err != null ) {
                     console.info('%{public}s', '-----'+ err.code);
                 }
@@ -71,9 +71,9 @@ export default function inputMethodAuthorityJSUnit() {
             hilog.info(domain, tag, "====>************* SUB_Misc_inputMethod_switchInputMethod__static_0200 Test start*************");
             let inputM = inputMethod.getCurrentInputMethod()
             hilog.info(domain, tag, "SUB_Misc_inputMethod_switchInputMethod__static_0200 getCurrentInputMethod: " + JSON.stringify(inputM));
-            inputMethod.switchInputMethod(inputM, (err, data) => {
+            inputMethod.switchInputMethod(inputM, (err : BusinessError | null, data : boolean | undefined) => {
                 try {
-                    if (err.code != 0) {
+                    if (err != null && err.code != 0) {
                         hilog.info(domain, tag, "====>SUB_Misc_inputMethod_switchInputMethod__static_0200 switchInputMethod permission fail: " + JSON.stringify(err));
                         expect().assertFail();
                         done();
@@ -115,13 +115,14 @@ export default function inputMethodAuthorityJSUnit() {
                 expect().assertFail();
                 done();
             }
-            inputMethodCtrl.hideSoftKeyboard((error) => {
+            inputMethodCtrl.hideSoftKeyboard((error : BusinessError | null) => {
                 try {
-                    expect(error.code == 0).assertTrue();
-                    if (error.code != 0) {
+                    if (error != null) {
                         hilog.info(domain, tag, "====>inputmethodNomal_test_hideSoftKeyboard_static_001 hideSoftKeyboard permission fail: " + JSON.stringify(error));
+                        expect(error?.code == 0).assertTrue();
                     } else {
                         hilog.info(domain, tag, '====>inputmethodNomal_test_hideSoftKeyboard_static_001 success: ');
+                        expect(true).assertTrue();
                     }
                     done();
                 } catch (err: BusinessError) {
@@ -182,9 +183,9 @@ export default function inputMethodAuthorityJSUnit() {
             let inputMS = inputMethod.getCurrentInputMethodSubtype()
             hilog.info(domain, tag, "inputMethod_test_switchCurrentInputMethodSubtype_static_001 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
 
-            inputMethod.switchCurrentInputMethodSubtype(inputMS, (err, data) => {
+            inputMethod.switchCurrentInputMethodSubtype(inputMS, (err : BusinessError | null, data : boolean | undefined) => {
                 try {
-                    if (err.code != 0) {
+                    if (err?.code != 0) {
                         hilog.error(domain, tag, 'inputMethod_test_switchCurrentInputMethodSubtype_static_001 err: ' + JSON.stringify(err));
                         expect().assertFail();
                         done();
@@ -210,6 +211,19 @@ export default function inputMethodAuthorityJSUnit() {
             hilog.info(domain, tag, "====>************* inputMethod_test_switchCurrentInputMethodSubtype_static_002 Test start*************");
             let inputMS = inputMethod.getCurrentInputMethodSubtype()
             hilog.info(domain, tag, "inputMethod_test_switchCurrentInputMethodSubtype_static_002 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
+            let extras: Record<string, string> ={}
+            let inputMethodSubProperty: inputMethodSubtype = {
+                id: inputMS.id,
+                label: "",
+                labelId: 123,
+                name: inputMS.name,
+                mode: "lower",
+                locale: "",
+                language: "",
+                icon: "",
+                iconId: 0,
+                extra: extras
+            };
             try {
                 inputMethod.switchCurrentInputMethodSubtype(inputMS).then((data: boolean) => {
                     hilog.info(domain, tag, "====>inputMethod_test_switchCurrentInputMethodSubtype_static_002 data: " + JSON.stringify(data));

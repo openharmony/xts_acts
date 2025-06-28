@@ -552,13 +552,15 @@ describe('cloud_sync_test', () => {
      
      try {
       let fileSync = new cloudSync.FileSync();
-      fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
+      fileSync.getLastSyncTime((err: BusinessError | null, timeStamp: number | undefined) => {
         if (err) {
-          console.error("test_cloudSync_State_020 get last sync time: " + err.message + ", error code: " + err.code);
-          expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+          console.error("test_cloudSync_State_020 get last sync time: " + err?.message + ", error code: " + err?.code);
+          expect(err?.code == 13600001 && err?.message =='IPC error').assertTrue();
         } else {
-          let date = new Date(timeStamp);
-          console.info("get last sync time successfully:"+ date);
+            if (timeStamp !== undefined) {
+                let date = new Date(timeStamp);
+                console.info("get last sync time successfully:"+ date);
+            }
         }
       });
      } catch (err) {
@@ -670,8 +672,8 @@ describe('cloud_sync_test', () => {
         console.info("download state：" + pg.state);
       };
       fileCache.on('progress', callback);
-      fileCache.start(uri, (err: BusinessError) => {
-        if (err) {
+      fileCache.start(uri, (err: BusinessError<void> | null) => {
+        if (err && err.code) {
           console.error("test_cloudSync_State_024 start download failed: " + err.message + ", error code: " + err.code);
           expect(false).assertTrue();
         } else {
@@ -728,8 +730,8 @@ describe('cloud_sync_test', () => {
      
      try {
       let fileCache = new cloudSync.CloudFileCache();
-      fileCache.stop(uri, (err: BusinessError) => {
-        if (err) {
+      fileCache.stop(uri, (err: BusinessError<void> | null) => {
+        if (err && err.code) {
           console.error("test_cloudSync_State_026 stop download failed: " + err.message + ", error code: " + err.code);
           expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
         } else {

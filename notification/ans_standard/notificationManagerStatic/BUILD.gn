@@ -10,16 +10,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//test/xts/tools/build/suite.gni")
+import("//build/ohos_var.gni")
 
-group("NotificationManagerStaticTest") {
+group("notificationManagerStatic") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ActsCallbackTestStatic:ActsNotificationCallbackStaticTest",
-      "ActsDenyTestStatic:ActsNotificationDenyStaticTest",
-      "ActsAllowTestStatic:ActsNotificationAllowStaticTest",
+      "requestEnableNotificationStatic:notificationManagerStatic_requestEnableNotificationStatic",
     ]
   }
 }
-

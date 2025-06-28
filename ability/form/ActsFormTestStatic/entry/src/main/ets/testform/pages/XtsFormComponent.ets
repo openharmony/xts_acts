@@ -15,7 +15,6 @@
 
 import { Text, Column, FormComponent, Component, Entry } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
-import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog';
 
 

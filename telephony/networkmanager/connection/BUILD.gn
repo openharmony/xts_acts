@@ -19,6 +19,9 @@ group("connection") {
     deps = [
       "connectionnoptest:ActsNetworkMgrConnectionNopTest",
       "connectiontest:ActsNetworkMgrConnectionTest",
+"ActsNetworkMgrConnectionNoAnyPTestStatic:ActsNetworkMgrConnectionNopStaticTest",
+"ActsNetworkMgrConnectionNoNetTestStatic:ActsNetworkMgrConnectionNoNetStaticTest",
+"ActsNetworkMgrConnectionTestStatic:ActsNetworkMgrConnectionStaticTest",
     ]
   }
 }

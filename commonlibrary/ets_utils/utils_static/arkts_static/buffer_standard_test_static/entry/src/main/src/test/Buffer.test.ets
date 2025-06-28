@@ -45,6 +45,7 @@ export default function BufferTest() {
       let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
       encodeArr.forEach((encode )=> {
         let buf = buffer.alloc(10).fill("ab$#", 0, undefined, encode as buffer.BufferEncoding);
+        console.log("testAlloc0011" + buf.length)
         expect(String(buf.length)).assertEqual('10');
       });
     });

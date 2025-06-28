@@ -13,18 +13,15 @@ class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onWindowStageCreate');
-    try {
-      windowStage.loadContent('pages/Index', (err: BusinessError<void>): void => {
-        hilog.info(0x0000, 'testTag EntryAbility', 'loadContent entering');
-        if (err.code) {
-          hilog.info(0x0000, 'testTag EntryAbility', 'loadContent error');
-          return;
-        }
-        hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok');
-      });
-    } catch (e: Error) {
-      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent catch error：-----------' + e.message);
-    }
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent entering');
+      if (err?.code) {
+        hilog.info(0x0000, 'testTag EntryAbility', 'loadContent error');
+        return;
+      }
+      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok'+JSON.stringify(this.context));
+      hilog.info(0x0000, 'testTag EntryAbility', 'onWindowStageCreate ok');
+    });
   }
 
   onDestroy() {

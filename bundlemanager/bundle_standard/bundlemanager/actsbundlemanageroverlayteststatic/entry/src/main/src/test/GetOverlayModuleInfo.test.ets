@@ -37,10 +37,10 @@ export default function getOverlayModuleInfo() {
           done();
         });
         await Utils.msSleep(1000);
-        overlay.getOverlayModuleInfo("", (err: BusinessError<void>, result: OverlayModuleInfo) => {
-          if (err.code != 0) {
+        overlay.getOverlayModuleInfo("", (err: BusinessError<void> | null, result: OverlayModuleInfo | undefined) => {
+          if (err?.code != 0) {
             hilog.error(0x0000, 'testParamTag', 'o5 getOverlayModuleInfo callback failed: %{public}s', JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect(err?.code).assertEqual(401);
             done();
           } else {
             hilog.info(0x0000, 'testParamTag', 'o5 getOverlayModuleInfo success');
@@ -57,10 +57,10 @@ export default function getOverlayModuleInfo() {
      */
     it("Sub_Bms_Framework_Overlay_Query_static_0410", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        overlay.getOverlayModuleInfo(MODULE_NAME1, (err: BusinessError<void>, result: OverlayModuleInfo) => {
-          if (err.code != 0) {
+        overlay.getOverlayModuleInfo(MODULE_NAME1, (err: BusinessError<void> | null, result: OverlayModuleInfo | undefined) => {
+          if (err?.code != 0) {
             hilog.error(0x0000, 'testParamTag', 'o5 getOverlayModuleInfo callback failed: %{public}s', JSON.stringify(err));
-            expect(err.code).assertEqual(17700032);
+            expect(err?.code).assertEqual(17700032);
             done();
           } else {
             hilog.info(0x0000, 'testParamTag', 'o5 getOverlayModuleInfo success');

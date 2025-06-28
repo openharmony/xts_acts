@@ -17,8 +17,13 @@ group("arkts_static") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "buffer_standard_test_static:ActBufferStatic",
+      "util_types_standard_static:ActsUtilTypesStaticTest",
+      "buffer_standard_test_static:ActsBufferStaticTest",
       "com_container_standard_static:ActsContainerStaticTest",
+      "com_uri_standard_static:ActsUriStaticTest",
+      "util_standard_test_static:ActsUtilStaticTest",
+      "com_url_standard_static:ActsUrlStaticTest",
+      "stream_standard_test_static:ActsStreamStaticTest",
     ]
   }
 }

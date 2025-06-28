@@ -392,7 +392,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.desc   : test once interface success
      * @tc.size   : Large-scaleTest
      * @tc.type   : Interface
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
     it('testEmitterOncetwoEmittwo', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOncetwoEmittwo';
@@ -641,7 +641,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.desc   : test off interface success
      * @tc.size   : Large-scaleTest
      * @tc.type   : Interface
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
     it('testEmitterOntwoOfftwo', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwoOfftwo';
@@ -2804,7 +2804,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
     * @tc.type   : Interface
-    * @tc.level  : Level 3
+    * @tc.level  : Level 0
     */
     it('testDeserializeEmitterTwoOnTwoEmitNoEventData', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitNoEventData';

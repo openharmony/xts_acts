@@ -26,7 +26,7 @@ export default function inputMethodTest() {
                     console.info('%{public}s', 'onAbilityCreate end');
 
                 },
-            }, (err : BusinessError) : void => {
+            }, (err : BusinessError | null) : void => {
                 if (err != null ) {
                     console.info('%{public}s', '-----'+ err.code);
                 }
@@ -84,11 +84,11 @@ export default function inputMethodTest() {
             console.info("====>************* inputmethodNomal_test_switchInputMethod_static_002 Test start*************");
             let inputM = inputMethod.getCurrentInputMethod()
             console.info("inputmethodNomal_test_switchInputMethod_static_002 getCurrentInputMethod: " + JSON.stringify(inputM));
-            inputMethod.switchInputMethod(inputM, (err, data) => {
+            inputMethod.switchInputMethod(inputM, (err : BusinessError | null, data : boolean | undefined) => {
                 try {
-                    if (err.code) {
+                    if (err?.code) {
                         console.info("====>inputmethodNomal_test_switchInputMethod_static_002 switchInputMethod permission fail: " + JSON.stringify(err));
-                        expect(err.code).assertEqual(201);
+                        expect(err?.code).assertEqual(201);
                         done();
                     } else {
                         console.info('====>inputmethodNomal_test_switchInputMethod_static_002 success: ' + data);
@@ -115,11 +115,11 @@ export default function inputMethodTest() {
         it('inputmethodNomal_test_hideSoftKeyboard_static_001', Level.LEVEL2, async (done: () => void)  => {
             console.info("====>*********inputmethodNomal_test_hideSoftKeyboard_static_001 start************");
             let inputMethodCtrl = inputMethod.getController()
-            inputMethodCtrl.hideSoftKeyboard((err) => {
+            inputMethodCtrl.hideSoftKeyboard((err : BusinessError | null) => {
                 try {
-                    if (err) {
+                    if (err != null) {
                         console.info("====>inputmethodNomal_test_hideSoftKeyboard_static_001 hideSoftKeyboard permission fail: " + JSON.stringify(err));
-                        expect(err.code).assertEqual(201);
+                        expect(err?.code).assertEqual(201);
                         done();
                     } else {
                         console.info('====>inputmethodNomal_test_hideSoftKeyboard_static_001 success: ');
@@ -190,16 +190,16 @@ export default function inputMethodTest() {
         it('inputmethod_test_getInputMethods_static_001', Level.LEVEL2, async (done: () => void)  => {
             let inputMethodSetting = inputMethod.getSetting();
             console.info("====>inputmethod_test_getInputMethods_static_001 result:" + JSON.stringify(inputMethodSetting));
-            inputMethodSetting.getInputMethods(false, (err, arr) => {
+            inputMethodSetting.getInputMethods(false, (err : BusinessError | null, arr : inputMethod.InputMethodProperty[] | undefined) => {
                 console.info("====>inputmethod_test_getInputMethods_static_001 start:" + JSON.stringify(arr));
                 try {
-                    if (err.code != 0) {
+                    if (err?.code != 0) {
                         console.error("inputmethod_test_getInputMethods_static_001 failed because: " + JSON.stringify(err));
                         expect().assertFail();
                         done();
                     };
                     console.info("====>inputmethod_test_getInputMethods_static_001 listInputMethod result---" + JSON.stringify(arr));
-                    expect(arr != null).assertTrue();
+                    expect(arr != undefined).assertTrue();
                     console.info("====>************* inputmethod_test_getInputMethods_static_001 Test end*************");
                     done();
                 } catch (err) {
@@ -221,16 +221,16 @@ export default function inputMethodTest() {
         it('inputmethod_test_getInputMethods_static_002', Level.LEVEL2, async (done: () => void)  => {
             let inputMethodSetting = inputMethod.getSetting();
             console.info("====>inputmethod_test_getInputMethods_static_002 result:" + JSON.stringify(inputMethodSetting));
-            inputMethodSetting.getInputMethods(true, (err, arr) => {
+            inputMethodSetting.getInputMethods(true, (err : BusinessError | null, arr : inputMethod.InputMethodProperty[] | undefined) => {
                 try {
                     console.info("====>inputmethod_test_getInputMethods_static_002 start:");
-                    if (err.code != 0) {
+                    if (err?.code != 0) {
                         console.error("inputmethod_test_getInputMethods_static_002 failed because: " + JSON.stringify(err));
                         expect().assertFail();
                         done();
                     };
                     console.info("====>inputmethod_test_getInputMethods_static_002 listInputMethod result---");
-                    expect(arr != null).assertTrue();
+                    expect(arr != undefined).assertTrue();
                     done();
                 } catch (err) {
                     console.error("inputmethod_test_getInputMethods_static_002 catch error: " + err);
@@ -351,18 +351,20 @@ export default function inputMethodTest() {
             console.info("-----------------------SUB_InputMethod_IMF_Enable_static_0400 start-----------------------");
             let bool: boolean = false;
             let inputMethodSetting = inputMethod.getSetting();
-            inputMethodSetting.getAllInputMethods((err, Enable_List) => {
+            inputMethodSetting.getAllInputMethods((err : BusinessError | null, Enable_List : inputMethod.InputMethodProperty[] | undefined) => {
                 console.info("-----------------------SUB_InputMethod_IMF_Enable_static_0400 start 1-----------------------");
                 try {
-                    if (err.code != 0) {
+                    if (err?.code != 0 || Enable_List == undefined) {
                         console.info("====>SUB_InputMethod_IMF_Enable_static_0400 getAllInputMethods fail because: " + JSON.stringify(err));
                         expect().assertFail();
                         done();
                     }
                     console.info('====>SUB_InputMethod_IMF_Enable_static_0400 getAllInputMethods success: ' + JSON.stringify(Enable_List));
                     let arr = Array<string>();
-                    for (let i = 0; i < Enable_List.length; i++) {
-                        arr.push(Enable_List[i].name);
+                    if (Enable_List != undefined && Enable_List.length > 0) {
+                        for (let i = 0; i < Enable_List.length; i++) {
+                            arr.push(Enable_List[i].name);
+                        }
                     }
                     let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
                     bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
@@ -518,15 +520,15 @@ export default function inputMethodTest() {
             console.info("====>-----------------inputMethod_test_listCurrentInputMethodSubtype_static_001 start---------------------");
             let inputMethodSetting = inputMethod.getSetting();
             console.info("====>inputMethod_test_listCurrentInputMethodSubtype_static_001 getSetting result:" + inputMethodSetting);
-            inputMethodSetting.listCurrentInputMethodSubtype((err, data) => {
+            inputMethodSetting.listCurrentInputMethodSubtype((err : BusinessError | null, data : InputMethodSubtype[] | undefined) => {
                 try {
-                    if (err.code != 0) {
+                    if (err?.code != 0) {
                         console.info("====>inputMethod_test_listCurrentInputMethodSubtype_static_001  failed" + JSON.stringify(err));
                         expect().assertFail();
                         done();
                     };
                     console.info("====>inputMethod_test_listCurrentInputMethodSubtype_static_001 listCurrentInputMethodSubtype: " + JSON.stringify(data));
-                    expect(data != null).assertTrue();
+                    expect(data != undefined).assertTrue();
                     done();
                 } catch (error) {
                     console.info("====>inputMethod_test_listCurrentInputMethodSubtype_static_001 listCurrentInputMethodSubtype catch error" + JSON.stringify(error));
@@ -577,15 +579,15 @@ export default function inputMethodTest() {
             console.info("inputMethod_test_listInputMethodSubtype_static_001 getCurrentInputMethod: " + JSON.stringify(inputM));
             let inputMethodSetting = inputMethod.getSetting();
             console.info("====>inputMethod_test_listInputMethodSubtype_static_001 getSetting result:" + inputMethodSetting);
-            inputMethodSetting.listInputMethodSubtype(inputM, (err, data) => {
+            inputMethodSetting.listInputMethodSubtype(inputM, (err : BusinessError | null, data : InputMethodSubtype[] | undefined) => {
                 try {
-                    if (err.code != 0) {
+                    if (err?.code != 0) {
                         console.info("====>inputMethod_test_listInputMethodSubtype_static_001  failed" + JSON.stringify(err));
                         expect().assertFail();
                         done();
                     }
                     console.info("====>inputMethod_test_listInputMethodSubtype_static_001 listInputMethodSubtype: " + JSON.stringify(data));
-                    expect(data != null).assertTrue();
+                    expect(data != undefined).assertTrue();
                     done();
                 } catch (error) {
                     console.info("====>inputMethod_test_listInputMethodSubtype_static_001 listInputMethodSubtype catch error" + JSON.stringify(error));
@@ -610,16 +612,16 @@ export default function inputMethodTest() {
             console.info("inputMethod_test_listInputMethodSubtype_static_002 getCurrentInputMethod: " + JSON.stringify(inputM));
             let inputMethodSetting = inputMethod.getSetting();
             console.info("====>inputMethod_test_listInputMethodSubtype_static_002 getSetting result:" + inputMethodSetting);
-            inputMethodSetting.listInputMethodSubtype(inputM, (err, data) => {
+            inputMethodSetting.listInputMethodSubtype(inputM, (err : BusinessError | null, data : InputMethodSubtype[] | undefined) => {
                 try {
-                    if (err.code != 0) {
+                    if (err?.code != 0) {
                         console.info("====>inputMethod_test_listInputMethodSubtype_static_002  failed" + JSON.stringify(err));
                         expect().assertFail();
                         done()
                     }
                     ;
                     console.info("====>inputMethod_test_listInputMethodSubtype_static_002 listInputMethodSubtype:" + JSON.stringify(data));
-                    if (data.length >= 1) {
+                    if (data != undefined && data.length >= 1) {
                         let inputMethodSubtype = data[0]
                         console.info("====>inputMethod_test_listInputMethodSubtype_static_002 inputMethodSubtype" + JSON.stringify(inputMethodSubtype));
                         expect(inputMethodSubtype.id != null).assertTrue();
