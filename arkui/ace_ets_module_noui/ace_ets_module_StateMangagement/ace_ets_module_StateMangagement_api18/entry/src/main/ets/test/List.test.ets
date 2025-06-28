@@ -22,6 +22,9 @@ import VTwoToVOneTest0070 from './v2tov1/VTwoToVOneTest0070.test';
 import ArrayLikeStringTest from './ArrayLikeTest/ArrayLikeStringTest.test';
 import repeatReusableFalse from './ReusableTest/repeatReusableFalse.test';
 import repeatReusableTrue from './ReusableTest/repeatReusableTrue.test';
+import Consumer0130Test from './consumerTest/Consumer0130Test.test';
+import Consumer0140Test from './consumerTest/Consumer0140Test.test';
+import Consumer0170Test from './consumerTest/Consumer0170Test.test';
 
 export default function testsuite() {
     PerGlobalConnectTest();
@@ -33,4 +36,7 @@ export default function testsuite() {
 	ArrayLikeStringTest()
 	repeatReusableFalse();
 	repeatReusableTrue();
+    Consumer0130Test();
+    Consumer0140Test();
+    Consumer0170Test();
 }
