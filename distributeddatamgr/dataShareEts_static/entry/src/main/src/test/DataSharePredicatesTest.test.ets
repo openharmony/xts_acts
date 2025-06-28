@@ -41,7 +41,7 @@ export default function dataSharePredicatesTest() {
   describe('dataSharePredicatesTest', (): void => {
     beforeAll(async (): Promise<void> => {
       hilog.info(domain, tag, 'beforeAll')
-      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
+      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext", Type.from<common.UIAbilityContext>()) as common.UIAbilityContext
     })
 
     /**
