@@ -83,14 +83,14 @@ export default function GraphicTextClass() {
     })
 
     /**
-     * @tc.number    : testPaintOnPathStatic_01
-     * @tc.name      : testPaintOnPathStatic_01
+     * @tc.number    : testPaintOnPathStatic_02
+     * @tc.name      : testPaintOnPathStatic_02
      * @tc.desc      : To test Paragraph Paint interface.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPaintOnPathStatic_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testPaintOnPathStatic_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         const msg = 'testCanvasConstructorNormalStatic';
         let canvas = new drawing.Canvas(pixel)
