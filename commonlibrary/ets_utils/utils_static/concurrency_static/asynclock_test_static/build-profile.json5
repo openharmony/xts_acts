@@ -19,13 +19,13 @@
       {
         "name": "default",
         "material": {
-          "certpath": "C:/Users/Administrator/.ohos/config/openharmony/default_taskpool_sendable_test_static_LA_xsJKzE0t3NM3ZjnVzal6E9Xu4_lrsw9_k5UASEws=.cer",
+          "certpath": "C:/Users/Administrator/.ohos/config/openharmony/default_asynclock_test_static_h0_APyzKepT5XKTUdvM6rGtMmzeM-rCm01CcB3uUNIw=.cer",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001A36BE4984E60E73ED6FAF1FC1D8A1710B446ADABF470CDD96ACCFB763AD35AC638F10E78BC9C5",
-          "profile": "C:/Users/Administrator/.ohos/config/openharmony/default_taskpool_sendable_test_static_LA_xsJKzE0t3NM3ZjnVzal6E9Xu4_lrsw9_k5UASEws=.p7b",
+          "keyPassword": "0000001AAA520B74194C5C2E5335EF8EBB1B1BBD7CD9F71057ABAB13A607C155DA38607D38E21374CFE2",
+          "profile": "C:/Users/Administrator/.ohos/config/openharmony/default_asynclock_test_static_h0_APyzKepT5XKTUdvM6rGtMmzeM-rCm01CcB3uUNIw=.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:/Users/Administrator/.ohos/config/openharmony/default_taskpool_sendable_test_static_LA_xsJKzE0t3NM3ZjnVzal6E9Xu4_lrsw9_k5UASEws=.p12",
-          "storePassword": "0000001AC01A74397057FCFDF4654E09397ACBE7905B7507782E3FEE126DDE947D2D1CA65654D3F5741A"
+          "storeFile": "C:/Users/Administrator/.ohos/config/openharmony/default_asynclock_test_static_h0_APyzKepT5XKTUdvM6rGtMmzeM-rCm01CcB3uUNIw=.p12",
+          "storePassword": "0000001A6090BC958CF8F16444672EC9D2C1CED15C6A3195A3487D77372EC24608B33C13F576865EA2A4"
         }
       }
     ],
