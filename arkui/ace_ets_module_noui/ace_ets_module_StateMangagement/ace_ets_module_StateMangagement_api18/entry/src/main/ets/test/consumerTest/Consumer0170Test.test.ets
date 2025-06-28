@@ -47,7 +47,7 @@ export default function Consumer0170Test() {
     });
 
     /**
-     * @tc.number Consumer0170Test
+     * @tc.number Consumer0170Test_001
      * @tc.name Consumer0170Test_001
      * @tc.desc Persistently store UI related data
      * @tc.level Level 1
@@ -65,7 +65,7 @@ export default function Consumer0170Test() {
     });
 
     /**
-     * @tc.number Consumer0170Test
+     * @tc.number Consumer0170Test_002
      * @tc.name Consumer0170Test_002
      * @tc.desc Persistently store UI related data
      * @tc.level Level 1
