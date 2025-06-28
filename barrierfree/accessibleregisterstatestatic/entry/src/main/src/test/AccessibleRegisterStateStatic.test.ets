@@ -2,7 +2,6 @@ import { describe, it, expect, TestType, Size, Level } from "../../../hypium/ind
 import hilog from '@ohos.hilog'
 import Utils from './Util.test';
 import accessibility from '@ohos.accessibility'
-import { Rect } from '@ohos.application.AccessibilityExtensionAbility';
 let domain: number = 0x0000;
 let tag: string = 'testTag';
 

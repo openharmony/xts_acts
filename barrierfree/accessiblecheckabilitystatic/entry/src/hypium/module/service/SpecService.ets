@@ -86,7 +86,7 @@ class SpecService {
     const regex = new RegExp('^[0123456789]$', 'g');
     let count:string = '';
     for (let c of funcStr) {
-      let str = new String(c);
+      let str: String = new String(c);
       if (regex.test(str)) {
         count = str;
       }
