@@ -178,7 +178,6 @@ struct WebComponent {
               }
 
               case "emitWebviewUndoingRedo002": {
-                await waitForExist(()=>this.isPageEnd, this.str, 0);
                 try {
                   if(!canIUse('SystemCapability.UIDesign.HDSPattern.Standard')) {
                     console.log('pbbbnetment0000');
