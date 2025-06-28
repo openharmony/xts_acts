@@ -42,7 +42,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testAlloc0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,(): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       encodeArr.forEach((encode )=> {
         let buf = buffer.alloc(10).fill("ab$#", 0, undefined, encode as buffer.BufferEncoding);
         expect(String(buf.length)).assertEqual('10');
@@ -85,7 +85,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testAlloc0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       encodeArr.forEach((encode )=> {
         let buf = buffer.alloc(0).fill("ab$#", 0, undefined, encode as buffer.BufferEncoding);
         expect(String(buf.length)).assertEqual('0');
@@ -133,7 +133,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testAlloc0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       encodeArr.forEach((encode )=> {
         let buf = buffer.alloc(10, "ab$#", encode as buffer.BufferEncoding);
         expect(buf.length).assertEqual(10);
@@ -149,7 +149,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testAlloc0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       encodeArr.forEach((encode )=> {
         let buf = buffer.alloc(0, "ab$#", encode as buffer.BufferEncoding);
         expect(buf.length).assertEqual(0);
@@ -191,7 +191,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testAllocUninitializedFromPool0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,(): void =>{
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       encodeArr.forEach((encode )=> {
         let buf = buffer.allocUninitializedFromPool(10).fill("abcd", 0, undefined, encode as buffer.BufferEncoding);
         expect(String(buf.length)).assertEqual('10');
@@ -234,7 +234,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testAllocUninitializedFromPool0024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       encodeArr.forEach((encode )=> {
         let buf = buffer.alloc(10).fill("ab$#", 0, undefined, encode as buffer.BufferEncoding);
         expect(String(buf.length)).assertEqual('0');
@@ -342,7 +342,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testByteLength0033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       let result:Array<number> = new Array<number>(4, 4, 8, 8, 4, 4, 4, 8, 8, 3, 3, 2)
       for (let i = 0, len = encodeArr.length; i< len; i++) {
         let byteLen = buffer.byteLength("abcd", encodeArr[i] as buffer.BufferEncoding);
@@ -439,7 +439,7 @@ export default function BufferTest() {
      */
     it("testIsEncoding0053", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
-        'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
+        'utf16le', 'base64', 'base64url', 'hex'];
       for (const encode of encodeArr) {
         let flag = buffer.isEncoding(encode);
         expect(flag).assertEqual(true);
@@ -1579,7 +1579,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testIndexOf0177", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       let buf = buffer.from("13236");
       encodeArr.forEach((encode )=> {
         let index = buf.indexOf("ab", 0, encode as buffer.BufferEncoding);
@@ -1704,7 +1704,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testLastIndexOf0187", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       let buf = buffer.from("13236");
       encodeArr.forEach((encode )=> {
         let index = buf.lastIndexOf("ab", 0 , encode as buffer.BufferEncoding);
@@ -1846,7 +1846,7 @@ export default function BufferTest() {
      * @tc.level: Level 1
      */
     it("testIncludes0197", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'utf-16le', 'base64', 'base64url', 'hex')
+      let encodeArr: Array< String > = new Array < String > ('utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary', 'utf16le', 'base64', 'base64url', 'hex')
       encodeArr.forEach((encode )=> {
           let buf = buffer.from("13236");
           let flag = buf.includes("abc", 0, encode as buffer.BufferEncoding);
