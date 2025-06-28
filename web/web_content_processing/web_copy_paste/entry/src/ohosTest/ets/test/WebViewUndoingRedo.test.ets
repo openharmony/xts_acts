@@ -28,14 +28,14 @@ export default function ActswebviewUndoingRedo() {
   describe('ActswebviewUndoingRedoTest', () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/webviewUndoingRedo',
+        url: 'testability/pages/WebViewUndoingRedo',
       }
       try {
         await Utils.sleep(1000)
         router.clear();
         let pages = router.getState();
         console.info("get webviewUndoingRedo state success " + JSON.stringify(pages));
-        if (!("webviewUndoingRedo" == pages.name)) {
+        if (!("WebViewUndoingRedo" == pages.name)) {
           console.info("get webviewUndoingRedo state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
@@ -96,8 +96,8 @@ export default function ActswebviewUndoingRedo() {
 
     /*
     * @tc.number      : SUB_ACE_WEBVIEWUNDOINGREDO_API_0002
-    * @tc.name        : testWebviewUndoingRedo
-    * @tc.desc        : testWebviewUndoingRedo
+    * @tc.name        : testWebviewUndoingRedo002
+    * @tc.desc        : testWebviewUndoingRedo002
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 0
