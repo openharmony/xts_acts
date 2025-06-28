@@ -42,6 +42,64 @@ export default function GraphicTextBTest() {
     })
 
     /**
+     * @tc.number    : testFontWidthStatic
+     * @tc.name      : testFontWidthStatic
+     * @tc.desc      : To test interface loadFontSync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testFontWidthStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+      let msg = "====testFontWidth===="
+      try{
+        expect(text.FontWidth.ULTRA_CONDENSED).assertEqual(1)
+        expect(text.FontWidth.EXTRA_CONDENSED).assertEqual(2)
+        expect(text.FontWidth.CONDENSED).assertEqual(3)
+        expect(text.FontWidth.SEMI_CONDENSED).assertEqual(4)
+        expect(text.FontWidth.NORMAL).assertEqual(5)
+        expect(text.FontWidth.SEMI_EXPANDED).assertEqual(6)
+        expect(text.FontWidth.EXPANDED).assertEqual(7)
+        expect(text.FontWidth.EXTRA_EXPANDED).assertEqual(8)
+        expect(text.FontWidth.ULTRA_EXPANDED).assertEqual(9)
+        console.log(msg + 'Succeed in Enum ')
+        done()
+      }catch(err){
+        console.log(msg + 'Failed in Enum ' + err)
+        console.log(msg + 'Failed in Enum ' + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : testTextHeightBehaviorStatic
+     * @tc.name      : testTextHeightBehaviorStatic
+     * @tc.desc      : To test interface loadFontSync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextHeightBehaviorStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+      let msg = "====testTextHeightBehavior===="
+      try{
+        expect(text.TextHeightBehavior.ALL).assertEqual(0)
+        expect(text.TextHeightBehavior.DISABLE_FIRST_ASCENT).assertEqual(1)
+        expect(text.TextHeightBehavior.DISABLE_LAST_ASCENT).assertEqual(2)
+        expect(text.TextHeightBehavior.DISABLE_ALL).assertEqual(3)
+        console.log(msg + ' Succeed in Enum ')
+        expect(true).assertTrue()
+        done()
+      }catch(err){
+        console.log(msg + ' Failed in Enum ' + err)
+        console.log(msg + ' Failed in Enum ' + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
      * @tc.number    : testTextStyleStatic_3
      * @tc.name      : testTextStyleStatic_3
      * @tc.desc      : To test interface loadFontSync of FontCollection.
@@ -174,6 +232,7 @@ export default function GraphicTextBTest() {
       console.info(msg + ' myFontFeature ready go');
       let myStrutStyle: text.StrutStyle = {
         fontWidth: text.FontWidth.CONDENSED,
+        fontFamilies: Array<string>('123'),
         forceHeight: true,
         heightOverride: true
       }
@@ -261,7 +320,12 @@ export default function GraphicTextBTest() {
         let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888,
           size: { height: 200, width: 200 } }
         let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
-        expect(true).assertTrue();
+        let canvas = new drawing.Canvas(pixelMap);
+        let path = new drawing.Path();
+        console.log(msg + ' Succeed in every Variable!')
+        paragraph.paintOnPath(canvas, path, 0, 0);
+        console.log(msg + ' Succeed in paragraph.paintOnPath')
+        expect(true).assertTrue()
         done()
       }catch(err){
         console.info(msg + 'test paragraph.paintOnPath error ' + JSON.stringify(err));
@@ -469,6 +533,7 @@ export default function GraphicTextBTest() {
         let myStrutStyle: text.StrutStyle = {
           fontWidth: text.FontWidth.CONDENSED,
           forceHeight: true,
+          fontFamilies: Array<string>('字体'),
           heightOverride: true,
           leading: 0.5
         }

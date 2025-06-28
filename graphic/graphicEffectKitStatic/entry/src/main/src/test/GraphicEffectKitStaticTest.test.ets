@@ -34,25 +34,6 @@ export default function GraphicEffectKitStaticTest() {
   describe("graphicEffectKitStaticTest", (): void => {
     hilog.info(domain, tag, '%{public}s', 'describe start');
     beforeAll(() => {
-      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
-      let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName: "entry",
-        onAbilityCreate: (abilitys: UIAbility): void => {
-          testAbilityContext = abilitys.context
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
-        },
-      }, (err: BusinessError | null): void => {
-        if (err != null) {
-          hilog.info(domain, tag, '%{public}s', '-----' + err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
-      await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.effect.static")
-      await Utils.msSleep(2000)
-      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
     })
     /**
      * @tc.number    : effectKitTest_static_0100
@@ -85,13 +66,23 @@ export default function GraphicEffectKitStaticTest() {
           hilog.info(domain, tag, '%{public}s', 'effectKit createFilter failed.');
           return undefined;
         }
+        let blurFilter: effectKit.Filter = headFilter.blur(10);
+        expect(true).assertTrue();
+        hilog.info(domain, tag, '%{public}s', 'effectKit createFilter successfully.');
+        const effectPixelMap = await blurFilter.getEffectPixelMap();
+        if (effectPixelMap != undefined) {
+          hilog.info(domain, tag, '%{public}s', 'effectKit getEffectPixelMap successfully.');
+        } else {
+          hilog.info(domain, tag, '%{public}s', 'effectKit getEffectPixelMap failed.');
+        }
+        hilog.info(domain, tag, '%{public}s', 'effectKit test END');
+        expect(true).assertTrue();
       } catch(err){
         console.info('www data err ' + JSON.stringify(err))
       }
-      hilog.info(domain, tag, '%{public}s', 'effectKit createFilter successfully.');
-      expect(true).assertTrue()
       done();
     })
+
   })
 
 }

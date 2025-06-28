@@ -34,26 +34,6 @@ export default function graphicImagePixelMap() {
   describe("graphicImagePixelMap", (): void => {
     hilog.info(domain, tag, '%{public}s', 'describe start');
     beforeAll(() => {
-      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
-      let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName: "entry",
-        onAbilityCreate: (abilitys: UIAbility): void => {
-          testAbilityContext = abilitys.context
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
-        },
-      }, (err: BusinessError | null): void => {
-        if (err != null) {
-          hilog.info(domain, tag, '%{public}s', '-----' + err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
-      await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.image.static")
-      await Utils.msSleep(2000)
-      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
-
       let opts: image.InitializationOptions = {
         editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 }
       }
@@ -1070,6 +1050,30 @@ export default function graphicImagePixelMap() {
           expect(true).assertTrue();
         } catch (err) {
           expect().assertFail();
+        }
+        done();
+      })
+
+    /**
+     * @tc.number: graphicImagePixelMap_static_4500
+     * @tc.name: graphicImagePixelMap_static_4500
+     * @tc.desc: image API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('graphicImagePixelMap_static_4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+        const color: ArrayBuffer = new ArrayBuffer(96);
+        let opts: image.InitializationOptions = {
+          editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 }
+        }
+        try {
+          pixelMap.setMemoryNameSync("PixelMapName Test");
+          expect().assertFail();
+        } catch (err: BusinessError) {
+          console.info('www data graphicImagePixelMap_static_4500 error ' + JSON.stringify(err))
+          expect(err.code == 62980286).assertTrue();
         }
         done();
       })

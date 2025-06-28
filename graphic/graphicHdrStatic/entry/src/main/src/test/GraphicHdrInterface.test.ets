@@ -33,25 +33,6 @@ export default function GraphicHdrInterface() {
   describe("graphicHdrInterface", (): void => {
     hilog.info(domain, tag, '%{public}s', 'describe start');
     beforeAll(() => {
-      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
-      let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName: "entry",
-        onAbilityCreate: (abilitys: UIAbility): void => {
-          testAbilityContext = abilitys.context
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
-        },
-      }, (err: BusinessError | null): void => {
-        if (err != null) {
-          hilog.info(domain, tag, '%{public}s', '-----' + err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
-      await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.hdr.static")
-      await Utils.msSleep(2000)
-      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
     })
     /**
      * @tc.number    : testHDRFormat_static_0100

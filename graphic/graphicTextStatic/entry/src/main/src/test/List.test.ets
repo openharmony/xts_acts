@@ -18,6 +18,7 @@ import TextParagraphTest from './TextParagraphTest.test';
 import GraphicTextEnum from './GraphicTextEnum.test';
 import GraphicTextATest from './GraphicTextA.test';
 import GraphicTextBTest from './GraphicTextB.test';
+import GraphicTextClass from './GraphicTextClass.test';
 export default function testsuite() {
   GraphicTextInterface();
   GraphicTextParagraphBuilder();
@@ -25,4 +26,5 @@ export default function testsuite() {
   GraphicTextEnum();
   GraphicTextATest();
   GraphicTextBTest();
+  GraphicTextClass();
 }
