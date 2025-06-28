@@ -85,13 +85,23 @@ export default function GraphicEffectKitStaticTest() {
           hilog.info(domain, tag, '%{public}s', 'effectKit createFilter failed.');
           return undefined;
         }
+        let blurFilter: effectKit.Filter = headFilter.blur(10);
+        expect(true).assertTrue();
+        hilog.info(domain, tag, '%{public}s', 'effectKit createFilter successfully.');
+        const effectPixelMap = await blurFilter.getEffectPixelMap();
+        if (effectPixelMap != undefined) {
+          hilog.info(domain, tag, '%{public}s', 'effectKit getEffectPixelMap successfully.');
+        } else {
+          hilog.info(domain, tag, '%{public}s', 'effectKit getEffectPixelMap failed.');
+        }
+        hilog.info(domain, tag, '%{public}s', 'effectKit test END');
+        expect(true).assertTrue();
       } catch(err){
         console.info('www data err ' + JSON.stringify(err))
       }
-      hilog.info(domain, tag, '%{public}s', 'effectKit createFilter successfully.');
-      expect(true).assertTrue()
       done();
     })
+
   })
 
 }

@@ -27,8 +27,8 @@ import Utils from './Util.test';
 let domain: number = 0x0000; //日志标识,0x0000作为测试框架的业务标识
 let tag: string = 'testTag'; //日志标识字符串,作为tag标识当前runner类下的测试行为
 
-export default function ParagraphTest() {
-  describe("ParagraphTest", (): void => {
+export default function TextParagraphTest() {
+  describe("TextParagraphTest", (): void => {
     let globalFontCollection: text.FontCollection;
     let globalTextStyle: text.TextStyle;
     let globalParagraphStyle: text.ParagraphStyle;
@@ -128,18 +128,7 @@ export default function ParagraphTest() {
           textHeightBehavior: text.TextHeightBehavior.DISABLE_LAST_ASCENT,
           tab: textTab
         };
-
-        // const opts: image.InitializationOptions = {
-        //   size: { width: 480, height: 360 },
-        //   editable: true,
-        //   pixelFormat: image.PixelMapFormat.BGRA_8888,
-        // };
-        // let pixelMap: image.PixelMap = image.createPixelMapSync(opts);
-        // if (pixelMap == undefined) {
-        //   hilog.error(domain, tag, `Create image.createPixelMapSync failed`);
-        //   return;
-        // }
-        // globalCanvas = new drawing.Canvas(pixelMap)
+        expect(true).assertTrue();
       } catch (err) {
         hilog.error(domain, tag, `Failed in ParagraphTest init global params. Cause:${JSON.stringify(err)}`);
       }
@@ -157,7 +146,6 @@ export default function ParagraphTest() {
       async (done: () => void): Promise<void> => {
         try {
           let paragraphBuilder = new text.ParagraphBuilder(globalParagraphStyle, globalFontCollection)
-          // let paragraphBuilder = new text.ParagraphBuilder()
           expect(paragraphBuilder !== undefined).assertTrue()
           paragraphBuilder.pushStyle(globalTextStyle);
           paragraphBuilder.addText("Hello World!");
@@ -166,6 +154,143 @@ export default function ParagraphTest() {
           done()
         } catch (err) {
           hilog.error(domain, tag, `Failed in create a paragraph. Cause:${JSON.stringify(err)}`);
+          expect().assertFail();
+          done()
+        }
+      })
+
+    /**
+     * @tc.number    : testGetLongestLineStatic
+     * @tc.name      : testGetLongestLineStatic
+     * @tc.desc      : To test method getLongestLine for paragraph.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : LEVEL1
+     */
+    it('testGetLongestLineStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        try {
+          let paragraphBuilder = new text.ParagraphBuilder(globalParagraphStyle, globalFontCollection)
+          expect(paragraphBuilder !== undefined).assertTrue()
+          paragraphBuilder.pushStyle(globalTextStyle);
+          paragraphBuilder.addText("Hello World!");
+          let paragraph = paragraphBuilder.build();
+          expect(paragraph !== undefined).assertTrue()
+          paragraph.layoutSync(100);
+          let longestLine = paragraph.getLongestLine();
+          console.info('www data lxt ' + JSON.stringify(longestLine));
+          expect(true).assertTrue();
+          done();
+        } catch (err) {
+          hilog.error(domain, tag, `Failed in getLongestLine. Cause:${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        }
+      })
+
+    /**
+     * @tc.number    : testGetLineMetricsStatic
+     * @tc.name      : testGetLineMetricsStatic
+     * @tc.desc      : To test method getLineMetrics for paragraph.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : LEVEL1
+     */
+    it('testGetLineMetricsStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        try {
+          hilog.error(0x0000, 'Text', 'MM_LOG print maxLines: %{public}f', globalParagraphStyle.maxLines);
+          let paragraphBuilder = new text.ParagraphBuilder(globalParagraphStyle, globalFontCollection)
+          expect(paragraphBuilder !== undefined).assertTrue()
+          paragraphBuilder.pushStyle(globalTextStyle);
+          paragraphBuilder.addText("The quick brown fox jumps over the lazy dog.");
+          let paragraph = paragraphBuilder.build();
+          expect(paragraph !== undefined).assertTrue()
+          paragraph.layoutSync(100);
+          let lineMetrics: Array<text.LineMetrics> = paragraph.getLineMetrics();
+          console.info('www data lxt ' + JSON.stringify(lineMetrics))
+          console.info('www data lxt ' + JSON.stringify(lineMetrics.length))
+          expect(true).assertTrue();
+
+          let preBaseLine: number = 0;
+          let preHeight: number = 0;
+          let tempHeight: number = 0;
+          for (let i = 0; i < lineMetrics.length; i++) {
+            const item = lineMetrics[i];
+            hilog.error(0x0000, 'Text', 'MM_LOG line metrics info [%{public}d] data: %{public}s', i,
+              JSON.stringify(item));
+            if (i == 0) {
+              preHeight = item.ascent;
+            }
+            expect(Math.round(item.ascent * 100) / 100).assertEqual(303.39)
+            expect(Math.round(item.descent * 100) / 100).assertEqual(112.61)
+            if (i == 9) {
+              expect(item.height).assertEqual(324)
+            } else {
+              expect(item.height).assertEqual(416)
+            }
+            expect(Math.round((item.baseline - preBaseLine))).assertEqual(Math.round(preHeight
+
+            ))
+            expect(item.lineNumber).assertEqual(i)
+            expect(item.topHeight).assertEqual(tempHeight)
+
+            tempHeight += item.height;
+            preHeight = item.height;
+            preBaseLine = item.baseline;
+            let runMetrics: Map<number, text.RunMetrics> = item.runMetrics;
+            runMetrics.forEach((value, key) => {
+              let textStyle: text.TextStyle = value.textStyle;
+              let fontMetrics: drawing.FontMetrics = value.fontMetrics;
+              hilog.error(0x0000, 'Text', 'MM_LOG run metrics textStyle data: %{public}s', JSON.stringify(textStyle));
+              hilog.error(0x0000, 'Text', 'MM_LOG run metrics fontMetrics data: %{public}s', JSON.stringify(fontMetrics));
+              if (textStyle.decoration && globalTextStyle.decoration) {
+                expect(textStyle.decoration?.textDecoration).assertEqual(globalTextStyle.decoration?.textDecoration)
+                expect(textStyle.decoration?.decorationStyle).assertEqual(globalTextStyle.decoration?.decorationStyle)
+              }
+              expect(textStyle.fontWeight).assertEqual(globalTextStyle.fontWeight)
+              expect(textStyle.fontStyle).assertEqual(checkFontStyle)
+              expect(textStyle.baseline).assertEqual(globalTextStyle.baseline)
+              expect(textStyle.fontFamilies?.length ?? 0).assertEqual(2)
+              expect(textStyle.fontSize).assertEqual(globalTextStyle.fontSize)
+              expect(textStyle.letterSpacing).assertEqual(globalTextStyle.letterSpacing)
+              expect(textStyle.wordSpacing).assertEqual(globalTextStyle.wordSpacing)
+              expect(textStyle.heightScale).assertEqual(globalTextStyle.heightScale)
+              expect(textStyle.halfLeading).assertEqual(globalTextStyle.halfLeading)
+              expect(textStyle.ellipsis).assertEqual("")
+              expect(textStyle.ellipsisMode).assertEqual(globalTextStyle.ellipsisMode)
+              expect(textStyle.locale).assertEqual(globalTextStyle.locale)
+              expect(textStyle.baselineShift).assertEqual(globalTextStyle.baselineShift)
+              expect(textStyle.fontFeatures?.length?? 0).assertEqual(globalTextStyle.fontFeatures?.length?? 0)
+              expect(textStyle.textShadows?.length?? 0).assertEqual(globalTextStyle.textShadows?.length?? 0)
+              if (textStyle.backgroundRect && globalTextStyle.backgroundRect) {
+                expect(textStyle.backgroundRect?.leftTopRadius).assertEqual(globalTextStyle.backgroundRect?.leftTopRadius)
+                expect(textStyle.backgroundRect?.rightTopRadius).assertEqual(globalTextStyle.backgroundRect?.rightTopRadius)
+                expect(textStyle.backgroundRect?.rightBottomRadius).assertEqual(globalTextStyle.backgroundRect?.rightBottomRadius)
+                expect(textStyle.backgroundRect?.leftBottomRadius).assertEqual(globalTextStyle.backgroundRect?.leftBottomRadius)
+              }
+              if ((Math.round(fontMetrics.ascent * 100) / 100) == -29.70) {
+                expect(Math.round(fontMetrics.ascent * 100) / 100).assertEqual(-29.70)
+                expect(Math.round(fontMetrics.descent * 100) / 100).assertEqual(7.81)
+                expect(Math.round(fontMetrics.top * 100) / 100).assertEqual(-33.79)
+                expect(Math.round(fontMetrics.bottom * 100) / 100).assertEqual(8.67)
+                expect(Math.round(fontMetrics.leading * 100) / 100).assertEqual(0)
+              } else if ((Math.round(fontMetrics.ascent * 100) / 100) == -29.65) {
+                expect(Math.round(fontMetrics.ascent * 100) / 100).assertEqual(-29.65)
+                expect(Math.round(fontMetrics.descent * 100) / 100).assertEqual(7.93)
+                expect(Math.round(fontMetrics.top * 100) / 100).assertEqual(-29.65)
+                expect(Math.round(fontMetrics.bottom * 100) / 100).assertEqual(7.93)
+                expect(Math.round(fontMetrics.leading * 100) / 100).assertEqual(0)
+              } else {
+                hilog.error(0x0000, 'Text', 'MM_LOG fontMetrics.ascent: %{public}d',
+                  (Math.round(fontMetrics.ascent * 100) / 100));
+                expect().assertFail();
+              }
+            });
+          }
+          done()
+        } catch (err) {
+          hilog.error(domain, tag, `Failed in getLineMetrics. Cause:${JSON.stringify(err)}`);
           expect().assertFail();
           done()
         }
@@ -192,6 +317,10 @@ export default function ParagraphTest() {
           paragraph.layoutSync(100);
           let lineMetrics: text.LineMetrics | undefined = paragraph.getLineMetrics(2);
           if (lineMetrics !== undefined) {
+            expect(lineMetrics?.startIndex).assertEqual(2)
+            expect(lineMetrics?.endIndex).assertEqual(3)
+            console.info('www data lxt 111' + JSON.stringify(lineMetrics));
+            console.info('www data lxt 111' + lineMetrics);
             hilog.error(0x0000, 'Text', 'MM_LOG one line metrics info data: %{public}s', JSON.stringify(lineMetrics));
             expect(Math.round(Number(lineMetrics?.ascent ?? 0) * 100) / 100).assertEqual(303.39)
             expect(Math.round(Number(lineMetrics?.descent ?? 0) * 100) / 100).assertEqual(112.61)
