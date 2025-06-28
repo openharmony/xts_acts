@@ -32,7 +32,6 @@ struct LiveForm {
 
   aboutToAppear(): void {
     hilog.info(0x0000, TAG, '%{public}s', 'LiveForm aboutToAppear');
-    this.setBackgroundImage($r('app.media.background'));
   }
 
   aboutToDisappear(): void {
@@ -48,20 +47,6 @@ struct LiveForm {
       this.columnTranslate = END_TRANSLATE;
       this.columnBackgroundColor = Color.Red;
     })
-  }
-
-  private setBackgroundImage(res: Resource): void {
-    try {
-      this.context?.setBackgroundImage(res)
-        .then(() => {
-          hilog.info(0x0000, TAG, `setBackgroundImage succeed`);
-        })
-        .catch((err: BusinessError) => {
-          hilog.error(0x0000, TAG, `setBackgroundImage failed, code is ${err?.code}, message is ${err?.message}`);
-        });
-    } catch (err) {
-      hilog.error(0x0000, TAG, `setBackgroundImage failed, code is ${err?.code}, message is ${err?.message}`);
-    }
   }
 
   build() {
