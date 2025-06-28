@@ -19,6 +19,7 @@ import Utils from './Util.test';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { AppStorage } from '@ohos.arkui.stateManagement'
 import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
 
 let domain: number = 0x0000;
 let tag: string = 'testTag';
@@ -36,17 +37,19 @@ export default function verificationStaticTest() {
     })
 
     /*
-     * @tc.number  SUB_AA_OpenHarmony_AbilityConstant_0200
-     * @tc.name    SUB_AA_OpenHarmony_AbilityConstant_0200
+     * @tc.number  SUB_AA_OpenHarmony_AbilityConstant_Static_0200
+     * @tc.name    SUB_AA_OpenHarmony_AbilityConstant_Static_0200
      * @tc.desc    The startAbility interface starts the ability, not the start of call or continue.
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_AbilityConstant_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      tag = 'SUB_AA_OpenHarmony_AbilityConstant_0200 ==>';
+    it('SUB_AA_OpenHarmony_AbilityConstant_Static_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
+      tag = 'SUB_AA_OpenHarmony_AbilityConstant_Static_0200 ==>';
       let launchWant: Want = AppStorage.get<Want>("launchWant") as Want;
       let lastRequestWant: Want = AppStorage.get<Want>("lastRequestWant") as Want;
+      let windowStage: window.WindowStage = AppStorage.get<window.WindowStage>("windowStage") as window.WindowStage;
       expect(launchWant.bundleName).assertEqual("com.example.apicoverhaptest.static");
       expect(lastRequestWant.bundleName).assertEqual("com.example.apicoverhaptest.static");
+      expect(windowStage).not().assertNull();
       done();
     })
   })

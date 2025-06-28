@@ -60,5 +60,47 @@ export default function moveAbilityToBackgroundTestStatic() {
         done();
       }
     })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_MoveAbilityToBackground_Static_0200
+     * @tc.name   : SUB_Ability_AbilityRuntime_MoveAbilityToBackground_Static_0200
+     * @tc.desc   : Call UIAbilityContext moveAbilityToBackground twice, expecting to return 16000065 on the second attempt.
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_MoveAbilityToBackground_Static_0200', Level.LEVEL1, async (done: () => void): Promise<void> => {
+      tag = `SUB_Ability_AbilityRuntime_MoveAbilityToBackground_Static_0200`;
+      hilog.info(domain, tag, `it begin`);
+      try {
+        let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+        hilog.info(domain, tag, 'getAbilityDelegator success');
+        abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.acts.moveabilitytobgtest.static")
+        await Utils.msSleep(2000);
+        hilog.info(domain, tag, 'start success');
+        let context: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
+        hilog.info(domain, tag, 'getcontext success, context: ' + context);
+        context.moveAbilityToBackground().then(() => {
+          hilog.info(domain, tag, `moveAbilityToBackground success.`);
+          let result = AppStorage.get<string>("onBackground")
+          expect(result + '').assertEqual('SUCCESS');
+        }).catch((err: BusinessError<void>): void => {
+          hilog.info(domain, tag, `moveAbilityToBackground error: ${JSON.stringify(err)}.`)
+        });
+        context.moveAbilityToBackground().then(() => {
+          hilog.info(domain, tag, `moveAbilityToBackground success.`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError<void>): void => {
+          hilog.info(domain, tag, `moveAbilityToBackground error: ${JSON.stringify(err)}.`)
+          expect(err.code).assertEqual(16000065);
+          done();
+        });
+      } catch (err) {
+        hilog.info(domain, tag, `moveAbilityToBackground fail: ` + err);
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
