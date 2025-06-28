@@ -14,7 +14,7 @@
  */
 import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils';
+import Utils from './Utils.test';
 import router from '@ohos.router';
 import { accessibility, config } from '@kit.AccessibilityKit';
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
