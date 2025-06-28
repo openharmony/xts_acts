@@ -189,6 +189,34 @@ export default function HitraceMeterTest() {
         }
         console.info("------DFX_DFR_HitraceMeter_Static_0700 end------");
         done();
-      })
+    })
+
+    /*
+     * @tc.number  DFX_DFR_HitraceMeter_Static_0800
+     * @tc.name    DFX_DFR_HitraceMeter_Static_0800
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.desc    Test hiviewdfx.hiTraceMeter api.
+     * @tc.level   3
+     */
+    it("DFX_DFR_HitraceMeter_Static_0800", Level.LEVEL3, async (done:()=>void) : Promise<void> => {
+      console.info("-------DFX_DFR_HitraceMeter_Static_0800 start--------");
+      let traceCount = 1;
+      try {
+        console.info("DFX_DFR_HitraceMeter_Static_0800 1 start")
+        hiTraceMeter.startSyncTrace(hiTraceMeter.HiTraceOutputLevel.DEBUG, 'myTestAsyncTrace1','key=value');
+        hiTraceMeter.finishSyncTrace(hiTraceMeter.HiTraceOutputLevel.DEBUG);
+        hiTraceMeter.startSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL, 'myTestAsyncTrace2');
+        hiTraceMeter.finishSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL);
+        expect(true).assertTrue();
+        console.info("DFX_DFR_HitraceMeter_Static_0800 1 success");
+      } catch (err) {
+        console.info("DFX_DFR_HitraceMeter_Static_0800 1 fail!");
+        console.info("DFX_DFR_HitraceMeter_Static_0800 1 err = " + err);
+        expect(false).assertTrue();
+      }
+      console.info("------DFX_DFR_HitraceMeter_Static_0800 end------");
+      done();
+    })
   })
 }

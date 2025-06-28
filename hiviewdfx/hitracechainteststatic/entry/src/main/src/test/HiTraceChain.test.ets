@@ -687,5 +687,35 @@ export default function hiTraceChainJsTest() {
       hilog.info(0x0000, 'testTag', 'testHitraceApiStatic027 end');
       done();
     })
+
+    /**
+     * @tc.name testHitraceApiStatic028
+     * @tc.number DFX_DFT_Hitrace_JS_Static_02800
+     * @tc.function A01010
+     * @tc.feature DFX_DFT_Hitrace
+     * @tc.desc 接口测试-tracepoint接口参数msg为空
+     * @tc.level Level3
+     * @tc.type FUNC
+     */
+    it('testHitraceApiStatic028', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      hilog.info(0x0000, 'testTag', 'testHitraceApiStatic028 start');
+      try{
+        let traceId = hiTraceChain.begin("testHitraceApiStatic028", hiTraceChain.HiTraceFlag.TP_INFO);
+        let curTraceId = hiTraceChain.getId();
+        if(traceId.chainId != curTraceId.chainId){
+          expect().assertFail();
+        }
+        hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEVICE,
+          hiTraceChain.HiTraceTracepointType.GENERAL, traceId);
+        hiTraceChain.end(traceId);
+      } catch (err: BusinessError){
+        hilog.info(0x0000, 'testTag', 'testHitraceApiStatic028 got an error:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      console.info('testHitraceApiStatic028 end');
+      hilog.info(0x0000, 'testTag', 'testHitraceApiStatic028 end');
+      done();
+    })
   })
 }
