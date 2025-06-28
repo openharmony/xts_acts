@@ -61,57 +61,36 @@ export default function drawingTsCanvasPart4Test() {
      */
     it('testCanvasSaveLayerNormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const msg = 'testCanvasSaveLayerNormalStatic';
-      try {
-        const canvas = new drawing.Canvas(pixel);
-        const rect: common2D.Rect = {
-          left: 0,
-          right: 100,
-          top: 0,
-          bottom: 100
-        };
-        const brush = new drawing.Brush();
-        canvas.saveLayer(rect, brush)
-        canvas.saveLayer(null, brush)
-        canvas.saveLayer(rect, null)
-        console.info(msg + 'test successed');
-      } catch (e: BusinessError) {
-        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail();
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_2501
-     * @tc.name      : testCanvasSaveLayerUndefinedStatic
-     * @tc.desc      : testCanvasSaveLayerUndefined
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testCanvasSaveLayerUndefinedStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testCanvasSaveLayerUndefinedStatic';
       const canvas = new drawing.Canvas(pixel);
-      const brush = new drawing.Brush();
       const rect: common2D.Rect = {
         left: 0,
         right: 100,
         top: 0,
         bottom: 100
       };
+      const brush = new drawing.Brush();
       try {
-        canvas.saveLayer(undefined, brush)
-        console.info(msg + `test error`);
-        expect().assertFail()
+        canvas.saveLayer(rect, brush)
+        canvas.saveLayer(null, brush)
+        canvas.saveLayer(rect, null)
+        console.info(msg + 'saveLayer 1 successed');
       } catch (e: BusinessError) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
+        console.info(msg + `saveLayer 1 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
       }
       try {
-        canvas.saveLayer(rect, undefined)
-        console.info(msg + `test error`);
-        expect().assertFail()
+        canvas.saveLayer()
+        console.info(msg + 'saveLayer 2 successed');
       } catch (e: BusinessError) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
+        console.info(msg + `saveLayer 2 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        canvas.saveLayer(null, null)
+        console.info(msg + 'saveLayer 3 successed');
+      } catch (e: BusinessError) {
+        console.info(msg + `saveLayer 3 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
       }
     })
   })
