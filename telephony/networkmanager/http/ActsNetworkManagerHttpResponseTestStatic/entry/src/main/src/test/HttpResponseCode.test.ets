@@ -813,8 +813,8 @@ export default function HttpResponseCodeTest() {
             let caseName: string = 'testNetworkMgrHttpResponseCode_static_3600';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -822,8 +822,8 @@ export default function HttpResponseCodeTest() {
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError, data: http.HttpResponse) => {
-                            if (err.code != 0) {
+                        httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if (err?.code != 0) {
                                 hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
                                 httpRequest.destroy();
                                 ExpectFail();
@@ -831,7 +831,7 @@ export default function HttpResponseCodeTest() {
                                 done();
                             } else {
                                 hilog.info(domain, tag, '%{public}s', caseName +': data ->'+JSON.stringify(data));
-                                ExpectTrue(data.responseCode == 200);
+                                ExpectTrue(data?.responseCode == 200);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -859,8 +859,8 @@ export default function HttpResponseCodeTest() {
             let caseName: string = 'testNetworkMgrHttpResponseCode_static_3700';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -870,7 +870,7 @@ export default function HttpResponseCodeTest() {
                         let httpRequest: http.HttpRequest = http.createHttp();
                         httpRequest.request(XTS_TEST_HTTP_URL).then((data: http.HttpResponse) => {
                             hilog.info(domain, tag, '%{public}s', caseName +'request success: data ->'+JSON.stringify(data));
-                            ExpectTrue(data.responseCode == 200);
+                            ExpectTrue(data?.responseCode == 200);
                             httpRequest.destroy();
                             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                             done();
@@ -905,8 +905,8 @@ export default function HttpResponseCodeTest() {
             let caseName: string = 'testNetworkMgrHttpResponseCode_static_3800';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -914,8 +914,8 @@ export default function HttpResponseCodeTest() {
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request(`${XTS_TEST_HTTP_URL}openHarmonyXts`, (err: BusinessError, data: http.HttpResponse) => {
-                            if (err.code != 0) {
+                        httpRequest.request(`${XTS_TEST_HTTP_URL}openHarmonyXts`, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if (err?.code != 0) {
                                 hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
                                 httpRequest.destroy();
                                 ExpectFail();
@@ -923,7 +923,7 @@ export default function HttpResponseCodeTest() {
                                 done();
                             } else {
                                 hilog.info(domain, tag, '%{public}s', caseName +'request success: data ->'+JSON.stringify(data));
-                                ExpectTrue(data.responseCode == 404);
+                                ExpectTrue(data?.responseCode == 404);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -951,8 +951,8 @@ export default function HttpResponseCodeTest() {
             let caseName: string = 'testNetworkMgrHttpResponseCode_static_3900';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -962,7 +962,7 @@ export default function HttpResponseCodeTest() {
                         let httpRequest: http.HttpRequest = http.createHttp();
                         httpRequest.request(`${XTS_TEST_HTTP_URL}openHarmonyXts`).then((data: http.HttpResponse) => {
                            hilog.info(domain, tag, '%{public}s', caseName +': data ->'+JSON.stringify(data));
-                            ExpectTrue(data.responseCode == 404);
+                            ExpectTrue(data?.responseCode == 404);
                             httpRequest.destroy();
                             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                             done();

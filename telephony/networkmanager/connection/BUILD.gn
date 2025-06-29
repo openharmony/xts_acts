@@ -17,11 +17,11 @@ group("connection") {
   testonly = true
   if (is_standard_system) {
     deps = [
- "connectionnoptest:ActsNetworkMgrConnectionNopTest",
- "connectiontest:ActsNetworkMgrConnectionTest",
-# "ActsNetworkMgrConnectionNoAnyPTestStatic:ActsNetworkMgrConnectionNopStaticTest",
-# "ActsNetworkMgrConnectionNoNetTestStatic:ActsNetworkMgrConnectionNoNetStaticTest",
-# "ActsNetworkMgrConnectionTestStatic:ActsNetworkMgrConnectionStaticTest",
+      "connectionnoptest:ActsNetworkMgrConnectionNopTest",
+      "connectiontest:ActsNetworkMgrConnectionTest",
+"ActsNetworkMgrConnectionNoAnyPTestStatic:ActsNetworkMgrConnectionNopStaticTest",
+"ActsNetworkMgrConnectionNoNetTestStatic:ActsNetworkMgrConnectionNoNetStaticTest",
+"ActsNetworkMgrConnectionTestStatic:ActsNetworkMgrConnectionStaticTest",
     ]
   }
 }

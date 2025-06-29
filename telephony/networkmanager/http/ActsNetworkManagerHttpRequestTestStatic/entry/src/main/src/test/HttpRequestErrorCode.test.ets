@@ -77,8 +77,8 @@ export default function httpRequestErrorCodeTest() {
             let caseName: string = 'testHttpRequestMethodErrorCode_static_0100';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -86,10 +86,10 @@ export default function httpRequestErrorCodeTest() {
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request('', (err: BusinessError, data: http.HttpResponse) => {
-                            if(err.code != 0){
+                        httpRequest.request('', (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if(err?.code != 0){
                                 hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
-                                ExpectTrue(err.code == 2300003);
+                                ExpectTrue(err?.code == 2300003);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -123,8 +123,8 @@ export default function httpRequestErrorCodeTest() {
             let caseName: string = 'testHttpRequestMethodErrorCode_static_0200';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -133,10 +133,10 @@ export default function httpRequestErrorCodeTest() {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
 
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request('', {method: http.RequestMethod.POST}, (err: BusinessError, data: http.HttpResponse) => {
-                            if(err.code != 0){
+                        httpRequest.request('', {method: http.RequestMethod.POST}, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if(err?.code != 0){
                                 hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
-                                ExpectTrue(err.code == 2300003);
+                                ExpectTrue(err?.code == 2300003);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -170,8 +170,8 @@ export default function httpRequestErrorCodeTest() {
             let caseName: string = 'test03testHttpRequestMethodErrorCode_static_030000';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -191,7 +191,7 @@ export default function httpRequestErrorCodeTest() {
                         }).catch((error: Error) => {
                             let err = error as BusinessError;
                             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
-                            ExpectTrue(err.code == 2300003);
+                            ExpectTrue(err?.code == 2300003);
                             httpRequest.destroy();
                             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                             done();
@@ -221,8 +221,8 @@ export default function httpRequestErrorCodeTest() {
             let caseName: string = 'testHttpRequestMethodErrorCode_static_0700';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -230,10 +230,10 @@ export default function httpRequestErrorCodeTest() {
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request('ws://baidu.com', (err: BusinessError, data: http.HttpResponse) => {
-                            if(err.code != 0){
+                        httpRequest.request('ws://baidu.com', (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if(err?.code != 0){
                                 hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
-                                ExpectTrue(err.code == 2300001);
+                                ExpectTrue(err?.code == 2300001);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -267,8 +267,8 @@ export default function httpRequestErrorCodeTest() {
             let caseName: string = 'testHttpRequestMethodErrorCode_static_0800';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -276,10 +276,10 @@ export default function httpRequestErrorCodeTest() {
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request('ws://baidu.com', {method: http.RequestMethod.POST}, (err: BusinessError, data: http.HttpResponse) => {
-                           if(err.code != 0){
+                        httpRequest.request('ws://baidu.com', {method: http.RequestMethod.POST}, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                           if(err?.code != 0){
                                hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
-                               ExpectTrue(err.code == 2300001);
+                               ExpectTrue(err?.code == 2300001);
                                httpRequest.destroy();
                                hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                done();

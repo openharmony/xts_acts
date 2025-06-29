@@ -44,8 +44,8 @@ export default function httpRequestDestroyTest() {
             const caseName: string = "testNetworkMgrHttpCreateHttp_static_0100";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
                         ExpectFail();
                         done();
@@ -77,23 +77,23 @@ export default function httpRequestDestroyTest() {
             const caseName: string = "testNetworkMgrHttpRequest_static_0200";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
                         ExpectFail();
                         done();
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError, data: http.HttpResponse) => {
-                            if (err.code != 0) {
+                        httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if (err?.code != 0) {
                                 hilog.info(domain, tag, '%{public}s', caseName +'  httpRequest fail   error is '+JSON.stringify(err));
                                 ExpectFail();
                                 httpRequest.destroy();
                                 done();
                             } else {
                                 hilog.info(domain, tag, '%{public}s', caseName +' httpRequest success : data ->'+JSON.stringify(data));
-                                ExpectTrue(data.responseCode == 200);
+                                ExpectTrue(data?.responseCode == 200);
                                 httpRequest.destroy();
                                 done();
                             }
@@ -121,8 +121,8 @@ export default function httpRequestDestroyTest() {
             const caseName: string = "testNetworkMgrHttpRequest_static_0400";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
                         ExpectFail();
                         done();
@@ -133,10 +133,11 @@ export default function httpRequestDestroyTest() {
                 let httpRequest: http.HttpRequest = http.createHttp();
                 httpRequest.request(ADDR_TEST_DOMAIN_HTTPS).then((data: http.HttpResponse) => {
                     hilog.info(domain, tag, '%{public}s', caseName +' httpRequest success : data ->'+JSON.stringify(data));
-                    ExpectTrue(data.responseCode == 200);
+                    ExpectTrue(data?.responseCode == 200);
                     httpRequest.destroy();
                     done();
-                }).catch((error: Error) => {  let err = error as BusinessError;
+                }).catch((error: Error) => {
+                    let err = error as BusinessError;
                     hilog.info(domain, tag, '%{public}s', caseName +'  httpRequest fail   error is '+JSON.stringify(err));
                     ExpectFail();
                     httpRequest.destroy();
@@ -164,18 +165,18 @@ export default function httpRequestDestroyTest() {
             const caseName: string = "testHttpRequest_static_0600";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
                         ExpectFail();
                         done();
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request(ADDR_TEST_ILLEGAL, (err: BusinessError, data: http.HttpResponse) => {
-                            if (err.code != 0) {
+                        httpRequest.request(ADDR_TEST_ILLEGAL, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if (err?.code != 0) {
                                 hilog.info(domain, tag, '%{public}s', caseName +'  httpRequest fail   error is '+JSON.stringify(err));
-                                ExpectTrue(err.code == 2300006);
+                                ExpectTrue(err?.code == 2300006);
                                 httpRequest.destroy();
                                 done();
                             } else {
@@ -208,8 +209,8 @@ export default function httpRequestDestroyTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             let httpRequest: http.HttpRequest = http.createHttp();
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
                         ExpectFail()
                         done();
@@ -220,9 +221,10 @@ export default function httpRequestDestroyTest() {
                             ExpectFail();
                             httpRequest.destroy();
                             done();
-                        }).catch((error: Error) => {  let err = error as BusinessError;
+                        }).catch((error: Error) => {
+                            let err = error as BusinessError;
                             console.info(`${caseName} httpRequest fail err: ${JSON.stringify(data)}`);
-                            ExpectTrue(err.code == 2300006);
+                            ExpectTrue(err?.code == 2300006);
                             httpRequest.destroy();
                             done();
                         });
@@ -249,18 +251,18 @@ export default function httpRequestDestroyTest() {
             const caseName: string = "testHttpDestroy_static_0800";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
                         ExpectFail();
                         done();
                     } else {
                         hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
                         let httpRequest: http.HttpRequest = http.createHttp();
-                        httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError, data: http.HttpResponse) => {
-                            if (err.code != 0) {
+                        httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if (err?.code != 0) {
                                 hilog.info(domain, tag, '%{public}s', caseName +' httpRequest.destory fail  error is '+JSON.stringify(err));
-                                ExpectTrue(err.code == 2300023);
+                                ExpectTrue(err?.code == 2300023);
                                 done();
                             } else {
                                 hilog.info(domain, tag, '%{public}s', caseName +' httpRequest.destory success : data ->'+JSON.stringify(data));
@@ -292,8 +294,8 @@ export default function httpRequestDestroyTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             let httpRequest: http.HttpRequest = http.createHttp();
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
                         ExpectFail();
                         done();
@@ -306,7 +308,7 @@ export default function httpRequestDestroyTest() {
                             done();
                         }).catch((error: Error) => {  let err = error as BusinessError;
                             hilog.info(domain, tag, '%{public}s', caseName +'   httpRequest.destory fail err: '+JSON.stringify(err));
-                            ExpectTrue(err.code == 2300999)
+                            ExpectTrue(err?.code == 2300999)
                             done();
                         });
                     }
@@ -319,51 +321,6 @@ export default function httpRequestDestroyTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
         });
 
-        /* *
-         * @tc.number:  SUB_NetworkMgr_Http_Destroy_1000
-         * @tc.name:    testHttpDestroy_static_1000
-         * @tc.desc:    test destroy in lifecycle 'headersReceive'
-         * @tc.size:    MediumTest
-         * @tc.type:    Function
-         * @tc.level:   level 2
-         */
-        // it('testHttpDestroy_static_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> => {
-        //     const caseName: string = "testHttpDestroy_static_1000";
-        //     hilog.info(domain, tag, '%{public}s', caseName+ ' start');
-        //     try {
-        //         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-        //             if (data.netId == 0) {
-        //                 hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
-        //                 ExpectFail();
-        //                 done();
-        //             } else {
-        //                 hilog.info(domain, tag, '%{public}s', caseName +' Network connected ');
-        //                 let httpRequest: http.HttpRequest = http.createHttp();
-        //                 httpRequest.on('headersReceive', () => {
-        //                     httpRequest.destroy();
-        //                 });
-        //                 httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError, res: http.HttpResponse) => {
-        //                     if (err.code != 0) {
-        //                         console.info(`${caseName} httpRequest.destory success ${JSON.stringify(err)}`);
-        //                         ExpectFail()
-        //                         httpRequest.destroy();
-        //                         done();
-        //                     } else {
-        //                         console.info(`${caseName} httpRequest.destory fail err:${JSON.stringify(res)}`);
-        //                         ExpectTrue(res.responseCode == 200)
-        //                         httpRequest.destroy();
-        //                         done();
-        //                     }
-        //                 });
-        //             }
-        //         });
-        //     } catch (err) {
-        //         console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
-        //         ExpectFail();
-        //         done();
-        //     }
-        //     hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
-        // });
 
         /* *
          * @tc.number:  SUB_NetworkMgr_Http_Destroy_1100
@@ -377,8 +334,8 @@ export default function httpRequestDestroyTest() {
             const caseName: string = "testHttpDestroy_static_1100";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  Please connect to the network ');
                         ExpectFail();
                         done();
@@ -387,10 +344,10 @@ export default function httpRequestDestroyTest() {
                         let httpRequest: http.HttpRequest = http.createHttp();
                         httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, () => {
                             httpRequest.destroy();
-                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError) => {
-                                if (err.code != 0) {
+                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError<void>|null) => {
+                                if (err?.code != 0) {
                                     console.info(`${caseName} httpRequest.destory fail err:${JSON.stringify(err)}`);
-                                    ExpectTrue(err.code == 2300999);
+                                    ExpectTrue(err?.code == 2300999);
                                     httpRequest.destroy();
                                     done();
                                 } else {

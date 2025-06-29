@@ -48,15 +48,15 @@ export default function ConnectionTest() {
           username: "admin",
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
-          if(error.code != 0) {
+        connection.getDefaultHttpProxy((error:BusinessError<void>|null,data:connection.HttpProxy| undefined) => {
+          if(error?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(error));
             ExpectFail();
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }else{
             hilog.info(domain, tag, '%{public}s', caseName +':succeeded data ->'+JSON.stringify(data));
-            ExpectTrue(data.host == httpProxy.host);
+            ExpectTrue(data?.host == httpProxy.host);
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }
@@ -88,15 +88,15 @@ export default function ConnectionTest() {
           username: "",
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
-          if(error.code != 0) {
+        connection.getDefaultHttpProxy((error:BusinessError<void>|null,data:connection.HttpProxy| undefined) => {
+          if(error?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(error));
             ExpectFail();
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }else{
             hilog.info(domain, tag, '%{public}s', caseName +': data ->'+JSON.stringify(data));
-            ExpectTrue(data.host == httpProxy.host);
+            ExpectTrue(data?.host == httpProxy.host);
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }
@@ -129,15 +129,15 @@ export default function ConnectionTest() {
           password: '123456',
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
-          if(error.code != 0) {
+        connection.getDefaultHttpProxy((error:BusinessError<void>|null,data:connection.HttpProxy| undefined) => {
+          if(error?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(error));
             ExpectFail();
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }else{
             hilog.info(domain, tag, '%{public}s', caseName +': data ->'+JSON.stringify(data));
-            ExpectTrue(data.host == httpProxy.host );
+            ExpectTrue(data?.host == httpProxy.host );
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }
@@ -169,15 +169,15 @@ export default function ConnectionTest() {
           password: '',
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
-          if(error.code != 0) {
+        connection.getDefaultHttpProxy((error:BusinessError<void>|null,data:connection.HttpProxy| undefined) => {
+          if(error?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(error));
             ExpectFail();
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }else{
             hilog.info(domain, tag, '%{public}s', caseName +': data ->'+JSON.stringify(data));
-            ExpectTrue(data.host == httpProxy.host);
+            ExpectTrue(data?.host == httpProxy.host);
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done()
           }
@@ -211,15 +211,15 @@ export default function ConnectionTest() {
           password: '',
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
-          if(error.code != 0) {
+        connection.getDefaultHttpProxy((error:BusinessError<void>|null,data:connection.HttpProxy| undefined) => {
+          if(error?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(error));
             ExpectFail();
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }else{
             hilog.info(domain, tag, '%{public}s', caseName +': data ->'+JSON.stringify(data));
-            ExpectTrue(data.host == httpProxy.host );
+            ExpectTrue(data?.host == httpProxy.host );
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done()
           }
@@ -252,15 +252,15 @@ export default function ConnectionTest() {
           password: '123456',
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
-          if(error.code != 0) {
+        connection.getDefaultHttpProxy((error:BusinessError<void>|null,data:connection.HttpProxy| undefined) => {
+          if(error?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(error));
             ExpectFail();
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }else{
             console.log(`${caseName} succeeded to get data ${JSON.stringify(data)}`)
-            ExpectTrue(data.host == httpProxy.host);
+            ExpectTrue(data?.host == httpProxy.host);
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           }

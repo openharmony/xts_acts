@@ -39,10 +39,10 @@ export default function httpNoPTest() {
       let caseName: string = 'testNetMgrHttpRequestNop_static__0100';
       hilog.info(domain, tag, '%{public}s', caseName+ ' start');
       try{
-        httpRequest.request("xxx", (err: BusinessError, data: http.HttpResponse) => {
-          if (err.code != 0) {
+        httpRequest.request("xxx", (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+          if (err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
-            ExpectTrue(err.code == 201);
+            ExpectTrue(err?.code == 201);
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           } else {
@@ -54,7 +54,7 @@ export default function httpNoPTest() {
         });
       }catch (err:BusinessError) {
         hilog.info(domain, tag, '%{public}s', caseName+ ' catch error in '+ JSON.stringify(err))
-        ExpectTrue(err.code == 201);
+        ExpectTrue(err?.code == 201);
         hilog.info(domain, tag, '%{public}s', caseName+ '--test end');
         done();
       }
@@ -74,10 +74,10 @@ export default function httpNoPTest() {
       try{
         httpRequest.request("xxx", {
           method: http.RequestMethod.GET
-        }, (err: BusinessError, data: http.HttpResponse) => {
-          if (err.code != 0) {
+        }, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+          if (err?.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
-            ExpectTrue(err.code == 201);
+            ExpectTrue(err?.code == 201);
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
             done();
           } else {
@@ -89,7 +89,7 @@ export default function httpNoPTest() {
         })
       }catch (err:BusinessError) {
         hilog.info(domain, tag, '%{public}s', caseName+ ' catch error in '+ JSON.stringify(err))
-        ExpectTrue(err.code == 201);
+        ExpectTrue(err?.code == 201);
         hilog.info(domain, tag, '%{public}s', caseName+ '--test end');
         done();
       }
