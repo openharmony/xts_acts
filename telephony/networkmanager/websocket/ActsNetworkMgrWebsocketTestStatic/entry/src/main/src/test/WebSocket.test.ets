@@ -46,8 +46,8 @@ export default function WebSocketTest() {
       try {
         let ws: webSocket.WebSocket= webSocket.createWebSocket();
         hilog.info(domain, tag, '%{public}s', caseName+ '---test ');
-        ws.connect(availableWebSocketAddress, {}, (err: BusinessError, value: boolean) => {
-          if (err.code != 0) {
+        ws.connect(availableWebSocketAddress, {}, (err: BusinessError<void> | null, value: boolean | undefined) => {
+          if (err && err.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  connect fail  error  is '+JSON.stringify(err));
             ExpectFail();
             await ws.close();
@@ -55,7 +55,7 @@ export default function WebSocketTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
           } else {
             hilog.info(domain, tag, '%{public}s', caseName +': test connect success and value is ->'+value);
-            ExpectTrue(value);
+            ExpectTrue(value!);
             done();
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
           }
@@ -146,18 +146,18 @@ export default function WebSocketTest() {
       hilog.info(domain, tag, '%{public}s', caseName+ ' start');
       try {
         let ws: webSocket.WebSocket= webSocket.createWebSocket();
-        ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
-          if (err.code != 0) {
+        ws.connect(activeUrl, (err: BusinessError<void> | null, value: boolean | undefined) => {
+          if (err && err.code != 0) {
             hilog.info(domain, tag, '%{public}s', caseName +'  test connect1 fail error is '+JSON.stringify(err));
             ExpectTrue(false)
             done();
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
           } else {
             hilog.info(domain, tag, '%{public}s', caseName +': test connect1 success and value is ->'+ value);
-            ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
-              if (err.code != 0) {
+            ws.connect(activeUrl, (err: BusinessError<void> | null, value: boolean | undefined) => {
+              if (err && err.code != 0) {
                 hilog.info(domain, tag, '%{public}s', caseName +' test connect2 fail  error is '+JSON.stringify(err));
-                ExpectTrue(err.code == 2302003);
+                ExpectTrue(err?.code == 2302003);
                 done();
                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
               } else {
