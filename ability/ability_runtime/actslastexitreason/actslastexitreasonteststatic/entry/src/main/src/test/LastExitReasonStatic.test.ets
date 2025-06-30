@@ -46,7 +46,7 @@ export default function lastExitReasonStaticTest() {
       hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7900 begin');
       try {
         let launchParam = AppStorage.get<AbilityConstant.LaunchParam>("launchParam");
-        hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7900 launchReason: ' + JSON.stringify(launchParam));
+        hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7900 launchParam: ' + JSON.stringify(launchParam));
         if (launchParam) {
           let launchReason = launchParam.launchReason as number
           hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7900 launchReason: ' + launchReason);
@@ -86,6 +86,7 @@ export default function lastExitReasonStaticTest() {
         abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.lastexitreasontest.static")
         await Utils.msSleep(2000)
         hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7901 start EntryAbility');
+        let launchParam = AppStorage.get<AbilityConstant.LaunchParam>("launchParam");
         let lastExitDetailInfo = AppStorage.get<AbilityConstant.LastExitDetailInfo>("lastExitDetailInfo");
         hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7901 lastExitDetailInfo: ' + JSON.stringify(lastExitDetailInfo));
         expect(lastExitDetailInfo?.exitMsg).assertEqual("");
@@ -96,6 +97,9 @@ export default function lastExitReasonStaticTest() {
         expect(lastExitDetailInfo?.rss).assertEqual(0);
         expect(lastExitDetailInfo?.timestamp).assertEqual(0);
         expect(lastExitDetailInfo?.uid).assertEqual(0);
+        // let launchReasonMessage = launchParam?.launchReasonMessage as string
+        // hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7900 launchReasonMessage: ' + launchReasonMessage);
+        // expect(launchReasonMessage).assertEqual("");
         done();
       } catch (err) {
         hilog.info(domain, tag, `error, errorCode: ${JSON.stringify(err)}`);

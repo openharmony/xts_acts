@@ -7,6 +7,7 @@ import hilog from '@ohos.hilog';
 import { MyCallback } from '../models/MyCallback';
 import { AppStorage } from '@ohos.arkui.stateManagement'
 import common from '@ohos.app.ability.common';
+import ConfigurationConstant from '@ohos.app.ability.ConfigurationConstant';
 
 class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -24,8 +25,11 @@ class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok');
       hilog.info(0x0000, 'testTag EntryAbility', 'onWindowStageCreate ok');
     });
-    hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility windowStage' + windowStage);
-    AppStorage.setOrCreate<window.WindowStage>('windowStage', windowStage)
+  }
+
+  onDestroy() {
+    hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onDestroy');
+
   }
 
   onWindowStageDestroy() {
@@ -34,48 +38,12 @@ class EntryAbility extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onForeground');
-    hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility context' + this.context);
-    AppStorage.setOrCreate<common.UIAbilityContext>('abilityContext', this.context)
-    hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility launchWant' + this.launchWant);
-    AppStorage.setOrCreate<Want>('launchWant', this.launchWant)
-    hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility lastRequestWant' + this.lastRequestWant);
-    AppStorage.setOrCreate<Want>('lastRequestWant', this.lastRequestWant)
-  }
-
-  onDestroy() {
-    hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onDestroy');
+    AppStorage.setOrCreate<common.UIAbilityContext>("UIAbilityContext", this.context)
+    AppStorage.setOrCreate<ConfigurationConstant.ColorMode>("colorMode", this.context.config.colorMode!);
+    AppStorage.setOrCreate<ConfigurationConstant.Direction>("direction", this.context.config.direction!);
   }
 
   onBackground() {
     hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onBackground');
   }
-
-  onWindowStageWillDestroy() {
-    hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onWindowStageWillDestroy');
-  }
-
-  onWindowStageRestore() {
-    hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onWindowStageRestore');
-  }
-
-  onNewWant() {
-    hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onNewWant');
-  }
-
-  onDump() {
-    hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onDump');
-  }
-
-  onShare() {
-    hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onShare');
-  }
-
-  onBackPressed() {
-    hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onBackPressed');
-    return true;
-  }
-
-  // onDestroyAsync() {
-  //   hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onDestroyAsync');
-  // }
 }
