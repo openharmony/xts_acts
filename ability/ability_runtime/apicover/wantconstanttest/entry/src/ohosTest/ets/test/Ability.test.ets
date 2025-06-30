@@ -106,13 +106,13 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  SUB_AA_OpenHarmony_WantConstantCover_0600
-     * @tc.name    test_ability_abilityBase_wantConstant_0600
+     * @tc.number  Sub_Ability_AbilityRuntime_AtomicserviceShareRouter_0100
+     * @tc.name    Sub_Ability_AbilityRuntime_AtomicserviceShareRouter_0100
      * @tc.desc    Function test
-     * @tc.level   3
+     * @tc.level   0
      */
-    it('test_ability_abilityBase_wantConstant_0600', Level.LEVEL0, async (done: Function) => {
-      TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0600 ==>';
+    it('Sub_Ability_AbilityRuntime_AtomicserviceShareRouter_0100', Level.LEVEL0, async (done: Function) => {
+      TAG = 'Sub_Ability_AbilityRuntime_AtomicserviceShareRouter_0100 ==>';
       expect(wantConstant.Params.ATOMIC_SERVICE_SHARE_ROUTER)
         .assertEqual('ohos.params.atomicservice.shareRouter');
       done();
