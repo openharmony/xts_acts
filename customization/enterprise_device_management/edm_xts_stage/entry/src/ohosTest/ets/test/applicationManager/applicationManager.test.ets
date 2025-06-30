@@ -1073,7 +1073,7 @@ export default function applicationManagerTest() {
     it("test_addKeepAliveAppsWithDisallowModify_001", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
-        let disallowModifty: bool = true;
+        let disallowModifty: boolean = true;
         applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID, disallowModifty);
         expect(false).assertTrue();
       } catch (error) {
@@ -1093,7 +1093,7 @@ export default function applicationManagerTest() {
     it("test_addKeepAliveAppsWithDisallowModify_002", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
-        let disallowModifty: bool = true;
+        let disallowModifty: boolean = true;
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID, disallowModifty);
         expect(false).assertTrue();
@@ -1116,7 +1116,7 @@ export default function applicationManagerTest() {
     it("test_addKeepAliveAppsWithDisallowModify_003", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
-        let disallowModifty: bool = true;
+        let disallowModifty: boolean = true;
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, INVALID_USER_ID, disallowModifty);
         expect(false).assertTrue();
@@ -1143,7 +1143,7 @@ export default function applicationManagerTest() {
       }
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
-        let disallowModifty: bool = true;
+        let disallowModifty: boolean = true;
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID, disallowModifty);
         expect(false).assertTrue();
@@ -1166,7 +1166,7 @@ export default function applicationManagerTest() {
     it("test_addKeepAliveAppsWithDisallowModify_005", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
-        let disallowModifty: bool = true;
+        let disallowModifty: boolean = true;
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
         applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID, disallowModifty);
@@ -1190,7 +1190,7 @@ export default function applicationManagerTest() {
     it("test_isModifyKeepAliveAppsDisallowed_001", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApp: string = TEST_BUNDLENAME;
-        let disallowModifty: bool = true;
+        let disallowModifty: boolean = true;
         disallowModifty = applicationManager.isModifyKeepAliveAppsDisallowed(SELFWANT, DEFAULT_USER_ID, keepAliveApp);
         expect(false).assertTrue();
       } catch (error) {
@@ -1210,7 +1210,7 @@ export default function applicationManagerTest() {
     it("test_isModifyKeepAliveAppsDisallowed_002", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApp: string = TEST_BUNDLENAME;
-        let disallowModifty: bool = true;
+        let disallowModifty: boolean = true;
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         disallowModifty = applicationManager.isModifyKeepAliveAppsDisallowed(SELFWANT, DEFAULT_USER_ID, keepAliveApp);
         expect(false).assertTrue();
@@ -1233,7 +1233,7 @@ export default function applicationManagerTest() {
     it("test_isModifyKeepAliveAppsDisallowed_003", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApp: string = TEST_BUNDLENAME;
-        let disallowModifty: bool = true;
+        let disallowModifty: boolean = true;
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         disallowModifty = applicationManager.isModifyKeepAliveAppsDisallowed(SELFWANT, DEFAULT_USER_ID, keepAliveApp);
         expect(false).assertTrue();
