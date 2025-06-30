@@ -1010,7 +1010,7 @@ export default function AVPlayerSetPlaybackRateTest() {
             operationRecord[RELEASED] = async () => {
                 avPlayer.setPlaybackRate(setrate)
             }
-            operationRecord[INITIALIZED] = async () => {
+            operationRecord[PLAYING] = async () => {
                 await avPlayer.release().then(() => {
                     console.info('case release AVPlayer success');
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
