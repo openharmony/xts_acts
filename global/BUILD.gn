@@ -27,6 +27,8 @@ group("global") {
       "i18n_stage_static:i18nStageStaticTest",
       "i18n_standard/intljsStatic:intljs_static_test",
       "i18n_standard/intljsTestStatic:intljs_static2_test",
+      "global_stage_static:global_stage_static_hap",
+      "resmgr_standard/resmgrjsStatic:resmgrjs_test_static",
     ]
   } else {
     deps = [
