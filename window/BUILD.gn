@@ -16,7 +16,7 @@ group("window") {
   testonly = true
   deps = [
      "windowErrCode:ActsWindowErrCodeTest",
-  #   "windowOneStatic:ActsWindowOneStaticTest",
-  #   "windowTwoStatic:ActsWindowTwoStaticTest",
+     "windowOneStatic:ActsWindowOneStaticTest",
+     "windowTwoStatic:ActsWindowTwoStaticTest",
   ]
 }

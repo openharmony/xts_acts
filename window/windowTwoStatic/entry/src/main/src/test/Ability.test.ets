@@ -188,7 +188,7 @@ export default function abilityTest() {
       async (done: () => void): Promise<void> => {
         // callback
         try {
-          win.snapshot((err: BusinessError, data: image.PixelMap): void => {
+          win.snapshot((err: BusinessError<void> | null, data: image.PixelMap | undefined): void => {
           });
           expect(true).assertTrue();
         } catch (e: BusinessError) {
@@ -214,11 +214,11 @@ export default function abilityTest() {
      */
     it("setWindowFocusableCallbackTest_static_0206",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-        win.setWindowFocusable(true, (err: BusinessError) => {
-          const errCode: number = err.code;
+        win.setWindowFocusable(true, (err: BusinessError<void> | null) => {
+          const errCode: number = err?.code as double;
           if (errCode) {
             hilog.info(0x0000, '[ANI]',
-              `finaltest [ANI] setWindowFocusable callback Failed. Cause code: ${err.code}, message: ${err.message}`);
+              `finaltest [ANI] setWindowFocusable callback Failed. Cause code: ${err?.code}, message: ${err?.message}`);
             expect(false).assertTrue();
             done();
           }
@@ -295,11 +295,11 @@ export default function abilityTest() {
      */
     it("showWindowCallbackTest_static_0209", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        win.showWindow((err: BusinessError) => {
-          const errCode: number = err.code;
+        win.showWindow((err: BusinessError<void> | null) => {
+          const errCode: number = err?.code as double;
           if (errCode) {
             hilog.info(0x0000, '[ANI]',
-              `finaltest [ANI] showWindow callback Failed. Cause code: ${err.code}, message: ${err.message}`);
+              `finaltest [ANI] showWindow callback Failed. Cause code: ${err?.code}, message: ${err?.message}`);
             expect(false).assertTrue();
             done();
           }
@@ -342,11 +342,11 @@ export default function abilityTest() {
      */
     it("destroyWindowCallbackTest_static_0211",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-        win.destroyWindow((err: BusinessError) => {
-          const errCode: number = err.code;
+        win.destroyWindow((err: BusinessError<void> | null) => {
+          const errCode: number = err?.code as double;
           if (errCode) {
             hilog.info(0x0000, '[ANI]',
-              `finaltest [ANI] destroyWindow callback Failed. Cause code: ${err.code}, message: ${err.message}`);
+              `finaltest [ANI] destroyWindow callback Failed. Cause code: ${err?.code}, message: ${err?.message}`);
             expect(false).assertTrue();
             done();
           }
@@ -484,10 +484,10 @@ export default function abilityTest() {
     it("resizeCallbackTest_static_0228", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
         try {
-          win.resize(500, 1000, (err: BusinessError) => {
-            const errCode: number = err.code;
+          win.resize(500, 1000, (err: BusinessError<void> | null) => {
+            const errCode: number = err?.code as double;
             if (errCode) {
-              console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+              console.error(`Failed to change the window size. Cause code: ${err?.code}, message: ${err?.message}`);
             }
             console.info('Succeeded in changing the window size.');
           });
@@ -534,10 +534,10 @@ export default function abilityTest() {
     it("moveWindowToCallbackTest_static_0230",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
         try {
-          win.moveWindowTo(300, 300, (err: BusinessError) => {
-            const errCode: number = err.code;
+          win.moveWindowTo(300, 300, (err: BusinessError<void> | null) => {
+            const errCode: number = err?.code as double;
             if (errCode) {
-              console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+              console.error(`Failed to move the window. Cause code: ${err?.code}, message: ${err?.message}`);
             }
             console.info('Succeeded in moving the window.');
           });

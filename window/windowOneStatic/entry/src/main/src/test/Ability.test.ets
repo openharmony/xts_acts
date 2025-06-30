@@ -68,16 +68,16 @@ export default function abilityTest() {
     it("testGetMainWindowCallBack_static_0100",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
         hilog.info(domain, tag, '%{public}s', 'testGetMainWindowCallBack start');
-        windowStage.getMainWindow((err: BusinessError, data: window.Window) => {
-          const errCode: number = err.code;
+        windowStage.getMainWindow((err: BusinessError<void> | null, data: window.Window | undefined) => {
+          const errCode: number = err?.code as double;
           if (errCode) {
-            console.error(`finaltest [ANI] getMainWindow callback fail . Cause code: ${err.code}, message: ${err.message}`);
+            console.error(`finaltest [ANI] getMainWindow callback fail . Cause code: ${err?.code}, message: ${err?.message}`);
             expect(false).assertTrue();
             done();
           }
           let win2 = data;
           hilog.info(0x0000, '[ANI]', 'finaltest [ANI] getMainWindow callback success' + JSON.stringify(win2));
-          expect(win2 != null).assertTrue();
+          expect(win2 != null && win2 !== undefined).assertTrue();
           done();
         });
       })
@@ -236,11 +236,11 @@ export default function abilityTest() {
     it("testsetWindowKeepScreenOnCallBack_static_0109",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
         try {
-          win.setWindowKeepScreenOn(false, (err: BusinessError): void => {
-            const errCode: number = err.code;
+          win.setWindowKeepScreenOn(false, (err: BusinessError<void> | null): void => {
+            const errCode: number = err?.code as double;
             if (errCode) {
               hilog.info(0x0000, '[ANI]',
-                `finaltest [ANI] setWindowKeepScreenOn callback Failed, Cause code: ${err.code}, message: ${err.message}`);
+                `finaltest [ANI] setWindowKeepScreenOn callback Failed, Cause code: ${err?.code}, message: ${err?.message}`);
               expect(false).assertTrue();
               done();
             }
@@ -286,11 +286,11 @@ export default function abilityTest() {
     it("testSetWindowTouchableCallBack_static_0111",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
         try {
-          win.setWindowTouchable(false, (err: BusinessError): void => {
-            const errCode: number = err.code;
+          win.setWindowTouchable(false, (err: BusinessError<void> | null): void => {
+            const errCode: number = err?.code as double;
             if (errCode) {
               hilog.info(0x0000, '[ANI]',
-                `finaltest [ANI] setWindowTouchable callback Failed, Cause code: ${err.code}, message: ${err.message}`);
+                `finaltest [ANI] setWindowTouchable callback Failed, Cause code: ${err?.code}, message: ${err?.message}`);
               expect(false).assertTrue();
               done();
             }
@@ -357,8 +357,8 @@ export default function abilityTest() {
     it("testisWindowSupportWideGamutCallBack_static_0115",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
         try {
-          win.isWindowSupportWideGamut((err: BusinessError, data: boolean) => {
-            const errCode: number = err.code;
+          win.isWindowSupportWideGamut((err: BusinessError<void> | null, data: boolean | undefined) => {
+            const errCode: number = err?.code as double;
             if (errCode) {
               hilog.info(0x0000, '[ANI]', 'finaltest [ANI] isWindowSupportWideGamut callback Failed ' + errCode);
               expect(false).assertTrue();
@@ -620,9 +620,9 @@ export default function abilityTest() {
      */
     it("testMinimize_static_0125", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: () => void): Promise<void> => {
-        win.minimize((err: BusinessError) => {
+        win.minimize((err: BusinessError<void> | null) => {
           if (err?.code) {
-            const errCode: number = err.code;
+            const errCode: number = err?.code as double;
             if (errCode == 801) {
               hilog.info(0x0000, '[ANI]', 'finaltest [ANI] minimize callback Succeeded');
               expect(true).assertTrue();
@@ -1202,10 +1202,10 @@ export default function abilityTest() {
      */
     it("setWindowColorSpaceCallbackTest_static_0143",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-        win.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => {
+        win.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError<void> | null) => {
           if (err?.code) {
             hilog.info(0x0000, '[ANI]',
-              `finaltest [ANI] setWindowColorSpaceTest callback Failed. Cause code: ${err.code}, message: ${err.message}`);
+              `finaltest [ANI] setWindowColorSpaceTest callback Failed. Cause code: ${err?.code}, message: ${err?.message}`);
             expect(false).assertTrue();
             done();
           }
@@ -1251,11 +1251,11 @@ export default function abilityTest() {
      */
     it("setPreferredOrientationCallbackTest_static_0145",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-        win.setPreferredOrientation(window.Orientation.AUTO_ROTATION, (err: BusinessError) => {
-          const errCode: number = err.code;
+        win.setPreferredOrientation(window.Orientation.AUTO_ROTATION, (err: BusinessError<void> | null) => {
+          const errCode: number = err?.code as double;
           if (errCode) {
             hilog.info(0x0000, '[ANI]',
-              `finaltest [ANI] setPreferredOrientation callback Failed. Cause code : ${err.code}, message: ${err.message}`);
+              `finaltest [ANI] setPreferredOrientation callback Failed. Cause code : ${err?.code}, message: ${err?.message}`);
             expect(false).assertTrue();
             done();
           }
@@ -1301,11 +1301,11 @@ export default function abilityTest() {
      */
     it("setWindowPrivacyModeCallbackTest_static_0147",
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-        win.setWindowPrivacyMode(true, (err: BusinessError) => {
-          const errCode: number = err.code;
+        win.setWindowPrivacyMode(true, (err: BusinessError<void> | null) => {
+          const errCode: number = err?.code as double;
           if (errCode) {
             hilog.info(0x0000, '[ANI]',
-              `finaltest [ANI] setWindowPrivacyMode callback Failed. Cause code: ${err.code}, message: ${err.message}`);
+              `finaltest [ANI] setWindowPrivacyMode callback Failed. Cause code: ${err?.code}, message: ${err?.message}`);
             expect(false).assertTrue();
             done();
           }
@@ -1512,8 +1512,8 @@ export default function abilityTest() {
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
         try {
           let displayClass: Array<display.Display>;
-          display.getAllDisplays((err: BusinessError, data: Array<display.Display>): void => {
-            if (err.code) {
+          display.getAllDisplays((err: BusinessError<void> | null, data: Array<display.Display> | undefined): void => {
+            if (err && err.code) {
               hilog.error(0x0000, '[ANI]',
                 `finaltest [ANI] getAllDisplays ayncCallback fail. Err: ${JSON.stringify(err)}`);
               expect(false).assertTrue();
