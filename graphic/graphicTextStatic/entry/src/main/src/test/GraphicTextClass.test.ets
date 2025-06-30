@@ -24,7 +24,9 @@ export default function GraphicTextClass() {
 
   describe('GraphicTextClass', () => {
     let pixel: image.PixelMap;
+    let myColor: common2D.Color;
     beforeAll(async () => {
+      myColor = { alpha: 255, red: 255, green: 0, blue: 0 };
       const color: ArrayBuffer = new ArrayBuffer(40000);
       let opts: image.InitializationOptions = {
         editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888,
@@ -121,12 +123,12 @@ export default function GraphicTextClass() {
       let msg = "testParagraphBuilder_AonstructorAndAddText"
       console.info(msg + 'begin');
       let myTextStyle: text.TextStyle = {
-        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        color : myColor,
         fontSize: 66,
       };
 
       let myTextStyleTwo: text.TextStyle = {
-        color : {alpha: 255, red: 255, green: 0, blue: 0},
+        color : myColor,
         fontSize : 33,
       };
       let myParagraphStyle: text.ParagraphStyle = {

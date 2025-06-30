@@ -38,7 +38,11 @@ async function loadFontByPromiseInvalidParameter(msg: string | null | undefined,
 export default function GraphicTextBTest() {
 
   describe('GraphicTextBTest', () => {
+    let myColor: common2D.Color;
+    let myPoint: common2D.Point;
     beforeAll(() => {
+      myColor = { alpha: 255, red: 255, green: 0, blue: 0 };
+      myPoint = { x: 11, y: 12 };
     })
 
     /**
@@ -112,19 +116,13 @@ export default function GraphicTextBTest() {
       let msg = "====testTextStyle_3===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
-        point: {
-          x: 15, y: 20
-        },
+        color: myColor,
+        point: myPoint,
         blurRadius: 0.8
       };
       console.info(msg + ' myTextShadow ready go');
       let myRectStyle: text.RectStyle = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
+        color: myColor,
         leftTopRadius: 15,
         rightTopRadius: 15,
         rightBottomRadius: 15,
@@ -139,9 +137,7 @@ export default function GraphicTextBTest() {
       try {
         console.info(msg + ' Details are ready, carried out!');
         let myTextStyle : text.TextStyle = {
-          color: {
-            alpha: 255, red: 255, green: 0, blue: 0
-          },
+          color: myColor,
           fontWeight : text.FontWeight.W100,
           fontStyle : text.FontStyle.ITALIC,
           baseline : text.TextBaseline.ALPHABETIC,
@@ -206,19 +202,13 @@ export default function GraphicTextBTest() {
       let msg = "====testParagraphStyle_2===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
-        point: {
-          x: 15, y: 20
-        },
+        color: myColor,
+        point: myPoint,
         blurRadius: 0.8
       };
       console.info(msg + ' myTextShadow ready go');
       let myRectStyle: text.RectStyle = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
+        color: myColor,
         leftTopRadius: 15,
         rightTopRadius: 15,
         rightBottomRadius: 15,
@@ -241,9 +231,7 @@ export default function GraphicTextBTest() {
       try {
         console.info(msg + ' Details are ready, carried out!');
         let myTextStyle : text.TextStyle = {
-          color: {
-            alpha: 255, red: 255, green: 0, blue: 0
-          },
+          color: myColor,
           fontWeight : text.FontWeight.W100,
           fontStyle : text.FontStyle.ITALIC,
           baseline : text.TextBaseline.ALPHABETIC,
@@ -376,19 +364,13 @@ export default function GraphicTextBTest() {
       let msg = "====testTextStyle_FontVariation===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
-        point: {
-          x: 15, y: 20
-        },
+        color: myColor,
+        point: myPoint,
         blurRadius: 0.8
       };
       console.info(msg + ' myTextShadow ready go');
       let myRectStyle: text.RectStyle = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
+        color: myColor,
         leftTopRadius: 15,
         rightTopRadius: 15,
         rightBottomRadius: 15,
@@ -408,9 +390,7 @@ export default function GraphicTextBTest() {
       try {
         console.info(msg + ' Details are ready, carried out!');
         let myTextStyle : text.TextStyle = {
-          color: {
-            alpha: 255, red: 255, green: 0, blue: 0
-          },
+          color: myColor,
           fontWeight : text.FontWeight.W100,
           fontStyle : text.FontStyle.ITALIC,
           baseline : text.TextBaseline.ALPHABETIC,
@@ -476,19 +456,13 @@ export default function GraphicTextBTest() {
       let msg = "====testStrutStyle_leading===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
-        point: {
-          x: 15, y: 20
-        },
+        color: myColor,
+        point: myPoint,
         blurRadius: 0.8
       };
       console.info(msg + ' myTextShadow ready go');
       let myRectStyle: text.RectStyle = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
+        color: myColor,
         leftTopRadius: 15,
         rightTopRadius: 15,
         rightBottomRadius: 15,
@@ -508,9 +482,7 @@ export default function GraphicTextBTest() {
       try {
         console.info(msg + ' Details are ready, carried out!');
         let myTextStyle : text.TextStyle = {
-          color: {
-            alpha: 255, red: 255, green: 0, blue: 0
-          },
+          color: myColor,
           fontWeight : text.FontWeight.W100,
           fontStyle : text.FontStyle.ITALIC,
           baseline : text.TextBaseline.ALPHABETIC,
@@ -585,19 +557,13 @@ export default function GraphicTextBTest() {
       let msg = "====testGetLongestLineWithIndent===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
-        point: {
-          x: 15, y: 20
-        },
+        color: myColor,
+        point: myPoint,
         blurRadius: 0.8
       };
       console.info(msg + ' myTextShadow ready go');
       let myRectStyle: text.RectStyle = {
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
+        color: myColor,
         leftTopRadius: 15,
         rightTopRadius: 15,
         rightBottomRadius: 15,
@@ -617,9 +583,7 @@ export default function GraphicTextBTest() {
       try {
         console.info(msg + ' Details are ready, carried out!');
         let myTextStyle : text.TextStyle = {
-          color: {
-            alpha: 255, red: 255, green: 0, blue: 0
-          },
+          color: myColor,
           fontWeight : text.FontWeight.W100,
           fontStyle : text.FontStyle.ITALIC,
           baseline : text.TextBaseline.ALPHABETIC,

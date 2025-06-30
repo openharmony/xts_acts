@@ -14,12 +14,15 @@
  */
 import { describe, it, expect, TestType, Size, Level, beforeAll } from "../../../hypium/index";
 import { BusinessError } from '@ohos.base';
-import text from "@ohos.graphics.text"
+import text from "@ohos.graphics.text";
+import common2D from '@ohos.graphics.common2D';
 
 export default function GraphicTextATest() {
 
   describe('GraphicTextATest', () => {
+    let myColor: common2D.Color;
     beforeAll(() => {
+      myColor = { alpha: 255, red: 255, green: 0, blue: 0 };
     })
 
     /**
@@ -61,18 +64,14 @@ export default function GraphicTextATest() {
       console.info(msg + 'begin');
       let decoration : text.Decoration = {
         textDecoration: text.TextDecorationType.UNDERLINE,
-        color: {
-          alpha: 255, red: 255, green: 0, blue: 0
-        },
+        color: myColor,
         decorationStyle : text.TextDecorationStyle.SOLID,
         decorationThicknessScale : 20
       };
       try {
         let myTextStyle : text.TextStyle = {
           decoration: decoration,
-          color: {
-            alpha: 255, red: 255, green: 0, blue: 0
-          },
+          color: myColor,
           fontWeight : text.FontWeight.W100,
           fontStyle : text.FontStyle.ITALIC,
           baseline : text.TextBaseline.ALPHABETIC,
@@ -160,7 +159,7 @@ export default function GraphicTextATest() {
       let msg = "====testGetActualTextRange===="
       console.info(msg + ' begin ');
       let myTextStyle: text.TextStyle = {
-        color: { alpha: 255, red: 255, green: 0, blue: 0 },
+        color: myColor,
         fontSize: 33,
       };
       let myParagraphStyle: text.ParagraphStyle = {
@@ -195,7 +194,7 @@ export default function GraphicTextATest() {
       let msg = "====testGetLineMetrics_1===="
       console.info(msg + ' begin ');
       let myTextStyle: text.TextStyle = {
-        color: { alpha: 255, red: 255, green: 0, blue: 0 },
+        color: myColor,
         fontSize: 33,
       };
       let myParagraphStyle: text.ParagraphStyle = {
@@ -231,7 +230,7 @@ export default function GraphicTextATest() {
       let msg = "====testGetLineMetrics_2===="
       console.info(msg + ' begin ');
       let myTextStyle: text.TextStyle = {
-        color: { alpha: 255, red: 255, green: 0, blue: 0 },
+        color: myColor,
         fontSize: 33,
       };
       let myParagraphStyle: text.ParagraphStyle = {
@@ -266,7 +265,7 @@ export default function GraphicTextATest() {
       async (done: () => void): Promise<void> => {
       let msg = "====testAddSymbol===="
       let myTextStyle: text.TextStyle = {
-        color: { alpha: 255, red: 255, green: 0, blue: 0 },
+        color: myColor,
         fontSize: 33,
       };
       let myParagraphStyle: text.ParagraphStyle = {
