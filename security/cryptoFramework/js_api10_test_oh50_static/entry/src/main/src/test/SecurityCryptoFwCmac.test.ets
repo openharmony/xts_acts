@@ -163,35 +163,6 @@ async function doCmacSyncStub(algName: string, msgLen: int): Promise<boolean> {
 export default function SecurityCryptoFwCmacTestUnit() {
   describe("SecurityCryptoFwCmacTestUnit", (): void => {
     hilog.info(domain, tag, '%{public}s', 'describe start');
-    beforeAll(() => {
-      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
-      let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName:"entry",
-        onAbilityCreate: (abilitys : UIAbility) : void => {
-          // let str1:string = abilitys.context.filesDir
-          // hilog.info(domain, tag, '%{public}s', 'beforeAll fileDir' + str1);
-          // if (abilitys.context) {
-          //     hilog.info(domain, tag, '%{public}s', 'beforeAll context');
-          //     if (abilitys.context.resourceManager) {}
-          // }
-          // abilityss.context.terminateSelf()
-          testAbilityContext = abilitys.context
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
-
-        },
-      }, (err : BusinessError) : void => {
-        if (err != null ) {
-          hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
-      await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.helloworld")
-      await Utils.msSleep(2000)
-      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
-    })
 
     it("SUB_Security_CryptoFramework_Cmac_Func_0000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       try {

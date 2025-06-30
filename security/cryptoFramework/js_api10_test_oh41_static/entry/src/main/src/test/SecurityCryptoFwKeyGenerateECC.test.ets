@@ -24,35 +24,6 @@ export default function SecurityCryptoFwKeyGenerateECCTestUnit() {
 
   describe("SecurityCryptoFwKeyGenerateECCTestUnit", (): void => {
     hilog.info(domain, tag, '%{public}s', 'describe start');
-    beforeAll(() => {
-      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
-      let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName:"entry",
-        onAbilityCreate: (abilitys : UIAbility) : void => {
-          // let str1:string = abilitys.context.filesDir
-          // hilog.info(domain, tag, '%{public}s', 'beforeAll fileDir' + str1);
-          // if (abilitys.context) {
-          //     hilog.info(domain, tag, '%{public}s', 'beforeAll context');
-          //     if (abilitys.context.resourceManager) {}
-          // }
-          // abilityss.context.terminateSelf()
-          testAbilityContext = abilitys.context
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
-
-        },
-      }, (err : BusinessError) : void => {
-        if (err != null ) {
-          hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
-      await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.helloworld")
-      await Utils.msSleep(2000)
-      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
-    })
 
     /**
      * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_ECC_Func_0100
@@ -1725,14 +1696,16 @@ export default function SecurityCryptoFwKeyGenerateECCTestUnit() {
         let priData: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
         expect(pubData.data.toString()).assertEqual(specUtil.unCompressedKeyBlob(algName).data.toString());
         console.log(testNumber + `: ${algName} getEncodedDer success`);
-        generator.convertKey(pubData, priData, (err, data) => {
-          if (err.code != 0) {
+        generator.convertKey(pubData, priData, (err: BusinessError<void>|null, data: cryptoFramework.KeyPair|undefined) => {
+          if (err?.code != 0 || data === undefined) {
             console.error(testNumber + `: catch error ${err}`);
             expect(null).assertFail();
           } else {
-            let res: boolean = compareSpecFunc.ECCKey(keyPair, data);
-            expect(res).assertEqual(true);
-            console.log(testNumber + ": success");
+            if (data !== undefined) {
+              let res: boolean = compareSpecFunc.ECCKey(keyPair, data as cryptoFramework.KeyPair);
+              expect(res).assertEqual(true);
+              console.log(testNumber + ": success");
+            }
             done();
           }
         });

@@ -20,10 +20,10 @@ import { stringToUint8Array } from "../common/commonUtils.test"
 async function initCipher(cipherGenerator: cpFw.Cipher, mode: cpFw.CryptoMode, key: cpFw.Key, params: cpFw.ParamsSpec | null):
   Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    cipherGenerator.init(mode, key, params, (err) => {
-      if (err.code != 0) {
+    cipherGenerator.init(mode, key, params, (err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
         console.error("[Callback]cipherGenerator init failed. error is " + err + ". mode is " + mode);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]cipherGenerator init succeed! mode is : " + mode);
         resolve("init success");
@@ -34,13 +34,13 @@ async function initCipher(cipherGenerator: cpFw.Cipher, mode: cpFw.CryptoMode, k
 
 async function doFinalCipher(cipherGenerator: cpFw.Cipher, mode: cpFw.CryptoMode, dataBlob: cpFw.DataBlob): Promise<cpFw.DataBlob> {
   return new Promise<cpFw.DataBlob>((resolve, reject) => {
-    cipherGenerator.doFinal(dataBlob, (err, finalData: cpFw.DataBlob) => {
-      if (err.code != 0) {
+    cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, finalData: cpFw.DataBlob|undefined) => {
+      if (err?.code != 0 || finalData === undefined) {
         console.error("[Callback]cipherGenerator doFinal failed. error is " + err + ". mode is " + mode);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]cipherGenerator doFinal succeed! mode is : " + mode);
-        resolve(finalData);
+        resolve(finalData as cpFw.DataBlob);
       }
     });
   });

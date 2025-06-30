@@ -22,36 +22,7 @@ let testAbilityContext:common.UIAbilityContext;
 export default function SecurityCryptoFwSignVerifySM2TestUnit() {
   describe("SecurityCryptoFwSignVerifySM2TestUnit", (): void => {
     hilog.info(domain, tag, '%{public}s', 'describe start');
-    beforeAll(() => {
-      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
-      let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName:"entry",
-        onAbilityCreate: (abilitys : UIAbility) : void => {
-          // let str1:string = abilitys.context.filesDir
-          // hilog.info(domain, tag, '%{public}s', 'beforeAll fileDir' + str1);
-          // if (abilitys.context) {
-          //     hilog.info(domain, tag, '%{public}s', 'beforeAll context');
-          //     if (abilitys.context.resourceManager) {}
-          // }
-          // abilityss.context.terminateSelf()
-          testAbilityContext = abilitys.context
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
-
-        },
-      }, (err : BusinessError) : void => {
-        if (err != null ) {
-          hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
-      await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.helloworld")
-      await Utils.msSleep(2000)
-      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
-    })
-
+    
     /**
      * @tc.number Security_CryptoFramework_SignVerify_SM2_Func_0100
      * @tc.name Test signVerify with SM2|SM3, process is successful

@@ -143,9 +143,9 @@ async function doCmacPromiseSpilt(spec: cryptoFramework.MacSpec, message: crypto
 async function doInitMacCallback(mac: cryptoFramework.Mac,
   symKey: cryptoFramework.SymKey): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    mac.init(symKey, (err) => {
-      if (err.code != 0) {
-        reject(err)
+    mac.init(symKey, (err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
+        reject(err as Error)
       } else {
         resolve("init success")
       }
@@ -156,9 +156,9 @@ async function doInitMacCallback(mac: cryptoFramework.Mac,
 async function doUpdateMacCallback(mac: cryptoFramework.Mac,
   msg: cryptoFramework.DataBlob): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    mac.update(msg, (err) => {
-      if (err.code != 0) {
-        reject(err);
+    mac.update(msg, (err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
+        reject(err as Error);
       } else {
         resolve("update success")
       }
@@ -168,11 +168,11 @@ async function doUpdateMacCallback(mac: cryptoFramework.Mac,
 
 async function doFinalMacCallback(mac: cryptoFramework.Mac): Promise<cryptoFramework.DataBlob> {
   return new Promise<cryptoFramework.DataBlob>((resolve, reject) => {
-    mac.doFinal((err, rawData) => {
-      if (err.code != 0) {
-        reject(err)
+    mac.doFinal((err: BusinessError<void>|null, rawData: cryptoFramework.DataBlob|undefined) => {
+      if (err?.code != 0 || rawData === undefined) {
+        reject(err as Error)
       } else {
-        resolve(rawData)
+        resolve(rawData as cryptoFramework.DataBlob)
       }
     });
   });

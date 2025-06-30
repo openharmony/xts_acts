@@ -20,35 +20,6 @@ let testAbilityContext:common.UIAbilityContext;
 export default function SecurityCryptoFwErrCodeTestUnit() {
   describe("SecurityCryptoFwErrCodeTestUnit", (): void => {
     hilog.info(domain, tag, '%{public}s', 'describe start');
-    beforeAll(() => {
-      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
-      let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-      abilityDelegator.addAbilityMonitor({
-        abilityName: "EntryAbility",
-        moduleName:"entry",
-        onAbilityCreate: (abilitys : UIAbility) : void => {
-          // let str1:string = abilitys.context.filesDir
-          // hilog.info(domain, tag, '%{public}s', 'beforeAll fileDir' + str1);
-          // if (abilitys.context) {
-          //     hilog.info(domain, tag, '%{public}s', 'beforeAll context');
-          //     if (abilitys.context.resourceManager) {}
-          // }
-          // abilityss.context.terminateSelf()
-          testAbilityContext = abilitys.context
-          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
-
-        },
-      }, (err : BusinessError) : void => {
-        if (err != null ) {
-          hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
-        }
-        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
-      });
-      await Utils.msSleep(2000)
-      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.helloworld")
-      await Utils.msSleep(2000)
-      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
-    })
 
     /**
      * @tc.number SUB_Security_CryptoFramework_ErrCode_Func_0100
@@ -184,13 +155,7 @@ export default function SecurityCryptoFwErrCodeTestUnit() {
       try {
         let rand = cryptoFramework.createRandom();
         console.info("[createRandom success]");
-        rand.generateRandom(2147483647, (err, randData) => {
-          if (err) {
-            console.error('[Callback] err: , errCode: ' + err.code + ', errMsg: ' + err.message);
-          } else {
-            console.info('[Callback]: generate random result: ' + randData.data);
-          }
-        });
+        rand.generateRandom(2147483647, (err: BusinessError<void>|null, randData:cryptoFramework.DataBlob|undefined) => {});
       } catch (error: BusinessError) {
         console.error(`SUB_Security_CryptoFramework_ErrCode_Func_0600 “${error}“, error code: ${error.code}`);
         expect(error.code).assertEqual(cryptoFramework.Result.ERR_OUT_OF_MEMORY);

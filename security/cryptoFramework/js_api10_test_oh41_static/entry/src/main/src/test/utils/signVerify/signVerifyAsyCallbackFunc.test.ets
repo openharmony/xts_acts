@@ -20,9 +20,9 @@ import * as asyKeyGenCallbackFunc from '../keyGenerate/asyKeyGenCallbackFunc.tes
 
 async function signInit(sign: cpFw.Sign, priKey: cpFw.PriKey): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    sign.init(priKey, (err) => {
-      if (err.code != 0) {
-        reject(err);
+    sign.init(priKey, (err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
+        reject(err as Error);
       } else {
         resolve("init success");
       }
@@ -32,9 +32,9 @@ async function signInit(sign: cpFw.Sign, priKey: cpFw.PriKey): Promise<string> {
 
 async function signUpdate(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    sign.update(data, (err) => {
-      if (err.code != 0) {
-        reject(err);
+    sign.update(data, (err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
+        reject(err as Error);
       } else {
         resolve("update success");
       }
@@ -44,11 +44,11 @@ async function signUpdate(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<string>
 
 async function signSign(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<cpFw.DataBlob> {
   return new Promise<cpFw.DataBlob>((resolve, reject) => {
-    sign.sign(data, (err, signedData) => {
-      if (err.code != 0) {
-        reject(err);
+    sign.sign(data, (err: BusinessError<void>|null, signedData: cpFw.DataBlob|undefined) => {
+      if (err?.code != 0 || signedData === undefined) {
+        reject(err as Error);
       } else {
-        resolve(signedData);
+        resolve(signedData as cpFw.DataBlob);
       }
     })
   });
@@ -56,9 +56,9 @@ async function signSign(sign: cpFw.Sign, data: cpFw.DataBlob): Promise<cpFw.Data
 
 async function verifyInit(verify: cpFw.Verify, priKey: cpFw.PubKey): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    verify.init(priKey, (err) => {
-      if (err.code != 0) {
-        reject(err);
+    verify.init(priKey, (err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
+        reject(err as Error);
       } else {
         resolve("init success");
       }
@@ -68,9 +68,9 @@ async function verifyInit(verify: cpFw.Verify, priKey: cpFw.PubKey): Promise<str
 
 async function verifyUpdate(verify: cpFw.Verify, data: cpFw.DataBlob): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    verify.update(data, (err) => {
-      if (err.code != 0) {
-        reject(err);
+    verify.update(data, (err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
+        reject(err as Error);
       } else {
         resolve("update success");
       }
@@ -80,11 +80,11 @@ async function verifyUpdate(verify: cpFw.Verify, data: cpFw.DataBlob): Promise<s
 
 async function verifyVerify(verify: cpFw.Verify, data: cpFw.DataBlob, signatureData: cpFw.DataBlob): Promise<boolean> {
   return new Promise<boolean>((resolve, reject) => {
-    verify.verify(data, signatureData, (err, res) => {
-      if (err.code != 0) {
-        reject(err);
+    verify.verify(data, signatureData, (err: BusinessError<void>|null, res: boolean|undefined) => {
+      if (err?.code != 0 || res === undefined) {
+        reject(err as Error);
       } else {
-        resolve(res);
+        resolve(res as boolean);
       }
     })
   });

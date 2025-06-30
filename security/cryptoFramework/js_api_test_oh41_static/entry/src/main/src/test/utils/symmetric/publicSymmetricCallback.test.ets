@@ -21,17 +21,21 @@ import { createGcmParam } from '../common/gcmParamsSpec.test';
 
 async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<crypto.SymKey> {
   return new Promise<crypto.SymKey>((resolve, reject) => {
-    symKeyGenerator.generateSymKey((err, symKey) => {
-      if (err.code != 0) {
+    symKeyGenerator.generateSymKey((err: BusinessError<void>|null, symKey: crypto.SymKey|undefined) => {
+      if (err?.code != 0) {
         console.error("[Callback]generateSymKey failed. error is " + err);
-        reject(err);
+        reject(err as Error);
       } else {
-        console.log("[Callback]generateSymKey success. symKey is " + symKey);
-        console.log("[Callback]key algName:" + symKey.algName);
-        console.log("[Callback]key format:" + symKey.format);
-        let encodeKey = symKey.getEncoded();
-        console.log("[Callback]key getEncoded hex: " + uInt8ArrayToShowStr(encodeKey.data));
-        resolve(symKey);
+        if (symKey !== undefined) {
+          console.log("[Callback]generateSymKey success. symKey is " + symKey);
+          console.log("[Callback]key algName:" + symKey.algName);
+          console.log("[Callback]key format:" + symKey.format);
+          let encodeKey = symKey.getEncoded();
+          console.log("[Callback]key getEncoded hex: " + uInt8ArrayToShowStr(encodeKey.data));
+          resolve(symKey as crypto.SymKey);
+        } else {
+          reject(err as Error);
+        }
       }
     });
   });
@@ -40,10 +44,10 @@ async function generateSymKey(symKeyGenerator: crypto.SymKeyGenerator): Promise<
 async function initCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMode,
   key: crypto.SymKey, params: crypto.ParamsSpec): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    cipherGenerator.init(mode, key, params, (err) => {
-      if (err.code != 0) {
+    cipherGenerator.init(mode, key, params, (err: BusinessError<void>|null) => {
+      if (err?.code != 0) {
         console.error("[Callback]cipherGenerator init failed. error is " + err + "mode is " + mode);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]cipherGenerator init success! mode is : " + mode);
         resolve("init success");
@@ -55,13 +59,13 @@ async function initCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMod
 async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMode,
   plainText: crypto.DataBlob): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
-    cipherGenerator.update(plainText, (err, updateData) => {
-      if (err.code != 0) {
+    cipherGenerator.update(plainText, (err: BusinessError<void>|null, updateData: crypto.DataBlob|undefined) => {
+      if (err?.code != 0 || updateData === undefined) {
         console.error("[Callback]cipherGenerator update failed. error is " + err + "mode is " + mode);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]cipherGenerator update success! mode is : " + mode);
-        resolve(updateData);
+        resolve(updateData as crypto.DataBlob);
       }
     });
   });
@@ -70,13 +74,13 @@ async function updateCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoM
 async function doFinalCipher(cipherGenerator: crypto.Cipher, mode: crypto.CryptoMode,
   dataBlob: crypto.DataBlob|null): Promise<crypto.DataBlob> {
   return new Promise<crypto.DataBlob>((resolve, reject) => {
-    cipherGenerator.doFinal(dataBlob, (err, finalData) => {
-      if (err.code != 0) {
+    cipherGenerator.doFinal(dataBlob, (err: BusinessError<void>|null, finalData: crypto.DataBlob|undefined) => {
+      if (err?.code != 0 || finalData === undefined) {
         console.error("[Callback]cipherGenerator doFinal failed. error is " + err + "mode is " + mode);
-        reject(err);
+        reject(err as Error);
       } else {
         console.log("[Callback]cipherGenerator doFinal success! mode is : " + mode);
-        resolve(finalData);
+        resolve(finalData as crypto.DataBlob);
       }
     });
   });
