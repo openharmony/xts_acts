@@ -3086,6 +3086,39 @@ static napi_value testCropAndScaleStrategyErr(napi_env env, napi_callback_info i
     }
 }
 
+static napi_value NewGetImagePropertyWithNull(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok) {
+        return result;
+    }
+    
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_ImageSourceNative *imageSource = reinterpret_cast<OH_ImageSourceNative *>(ptr);
+    
+    const size_t maxKeyLen = MAX_BUFFER_SIZE;
+    char key[maxKeyLen];
+    size_t keySize = 0;
+    napi_get_value_string_utf8(env, argValue[NUM_1], key, maxKeyLen, &keySize);
+    
+    Image_String imageKey, imageValue = {nullptr, 1024};
+    imageKey.data = key;
+    imageKey.size = keySize;
+    
+    Image_ErrorCode errCode = OH_ImageSourceNative_GetImagePropertyWithNull(imageSource, &imageKey, &imageValue);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "GetImagePropertyWithNull failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    napi_create_string_utf8(env, (const char *)imageValue.data, imageValue.size, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -3200,6 +3233,8 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"GetImagePackerSupportedFormatsError", nullptr, GetImagePackerSupportedFormatsError,
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetImageSourceSupportedFormatsError", nullptr, GetImageSourceSupportedFormatsError,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"NewGetImagePropertyWithNull", nullptr, NewGetImagePropertyWithNull, 
             nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
