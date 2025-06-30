@@ -16,7 +16,7 @@ group("UDMFtest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-     # "UDMFEts_static:ActsUDMFStaticTest",
+      "UDMFEts_static:ActsUDMFStaticTest",
       "UDMFndktestHvigor:ActsUDMFNdkTest",
       "UDMFndktestProgressBar:ActsUDMFndktestProgressBarTest",
       "UDMFtest:UDMF_ets_test",

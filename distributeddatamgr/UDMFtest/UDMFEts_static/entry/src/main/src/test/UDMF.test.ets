@@ -52,7 +52,7 @@ export default function UDMFApiTest() {
       hilog.info(domain, tag, '%{public}s', 'SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200 start');
       let unifiedData = new unifiedDataChannel.UnifiedData();
       let records = unifiedData.getRecords();
-      expect(records.length).assertEqual(1);
+      expect(records.length).assertEqual(0);
       hilog.info(domain, tag, '%{public}s', 'SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200 end');
       done();
     })
