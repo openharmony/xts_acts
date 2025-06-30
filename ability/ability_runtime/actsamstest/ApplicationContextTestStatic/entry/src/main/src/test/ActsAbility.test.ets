@@ -201,7 +201,7 @@ export default function abilityDelegatorStage() {
           bundleName: 'com.acts.abilitydelegatorrely.static',
           abilityName: 'EntryAbility3',
           action: 'killAllProcess-callback'
-        }, (err: BusinessError<void>, data:common.AbilityResult):void => {
+        }, (err: BusinessError<void> | null, data:common.AbilityResult | undefined):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback success ' + JSON.stringify(data));
           expect(data?.resultCode).assertEqual(-1);
@@ -233,7 +233,7 @@ export default function abilityDelegatorStage() {
           bundleName: 'com.acts.abilitydelegatorrely.static',
           abilityName: 'EntryAbility3',
           action: 'killAllProcess-clearPageStack'
-        }, (err: BusinessError<void>, data:common.AbilityResult):void => {
+        }, (err: BusinessError<void> | null, data:common.AbilityResult | undefined):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback success ' + JSON.stringify(data));
           expect(data?.resultCode).assertEqual(-1);
@@ -265,7 +265,7 @@ export default function abilityDelegatorStage() {
           bundleName: 'com.acts.abilitydelegatorrely.static',
           abilityName: 'EntryAbility3',
           action: 'killAllProcess-promise'
-        }, (err: BusinessError<void>, data:common.AbilityResult):void => {
+        }, (err: BusinessError<void> | null, data:common.AbilityResult | undefined):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback success ' + JSON.stringify(data));
           expect(data?.resultCode).assertEqual(-1);
@@ -297,7 +297,7 @@ export default function abilityDelegatorStage() {
           bundleName: 'com.acts.abilitydelegatorrely.static',
           abilityName: 'EntryAbility3',
           action: 'clearUpApplicationData-callback'
-        }, (err: BusinessError<void>, data:common.AbilityResult):void => {
+        }, (err: BusinessError<void> | null, data:common.AbilityResult | undefined):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback success ' + JSON.stringify(data));
           expect(data?.resultCode).assertEqual(-1);
@@ -330,7 +330,7 @@ export default function abilityDelegatorStage() {
           bundleName: 'com.acts.abilitydelegatorrely.static',
           abilityName: 'EntryAbility3',
           action: 'clearUpApplicationData-promise'
-        }, (err: BusinessError<void>, data:common.AbilityResult):void => {
+        }, (err: BusinessError<void> | null, data:common.AbilityResult | undefined):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback success ' + JSON.stringify(data));
           expect(data?.resultCode).assertEqual(-1);
@@ -372,7 +372,7 @@ export default function abilityDelegatorStage() {
           bundleName: 'com.acts.abilitydelegatorrely.static',
           abilityName: 'EntryAbility3',
           action: 'restartApp-success'
-        }, (err: BusinessError<void>, data:common.AbilityResult):void => {
+        }, (err: BusinessError<void> | null, data:common.AbilityResult | undefined):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback success ' + JSON.stringify(data));
           expect(data?.resultCode).assertEqual(-1);

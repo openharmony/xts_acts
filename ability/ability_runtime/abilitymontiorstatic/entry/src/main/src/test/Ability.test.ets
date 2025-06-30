@@ -104,8 +104,8 @@ export default function abilityTest() {
       await delegator.addAbilityMonitor(monitor).then(() => {
         hilog.info(0x0000, tag, '%{public}s', TAG + "====>ACTS_AddAbilityMonitor_0800 success====>");
       })
-      delegator.addAbilityMonitor(monitor, ((err): void => {
-        hilog.info(0x0000, tag, '%{public}s', TAG + "====>ACTS_AddAbilityMonitor_0100 addAbilityMonitor err: " + err.code);
+      delegator.addAbilityMonitor(monitor, ((err: BusinessError<void> | null): void => {
+        hilog.info(0x0000, tag, '%{public}s', TAG + "====>ACTS_AddAbilityMonitor_0100 addAbilityMonitor err: " + err?.code);
         delegator.startAbility(
           {
             bundleName: 'com.example.abilitymonitortest.static',

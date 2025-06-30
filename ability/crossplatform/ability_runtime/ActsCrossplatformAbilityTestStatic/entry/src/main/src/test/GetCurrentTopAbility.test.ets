@@ -52,7 +52,7 @@ export default function GetCurrentTopAbilityTest() {
           moduleName: "entry",
         }, () => {
           setTimeout(() => {
-            abilityDelegator.getCurrentTopAbility((err: BusinessError, ability2: UIAbility) => {
+            abilityDelegator.getCurrentTopAbility((err: BusinessError | null, ability2: UIAbility | undefined) => {
               if (ability2 != null) {
                 abilityDelegator.printSync(
                   "ACTS_GetCurrentTopAbility_CALLBACK_0001 getCurrentTopAbility2: " +

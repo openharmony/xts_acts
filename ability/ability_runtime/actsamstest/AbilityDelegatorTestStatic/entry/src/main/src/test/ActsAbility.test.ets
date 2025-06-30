@@ -59,7 +59,7 @@ export default function abilityDelegatorStage() {
         abilityDelegator.startAbility({
           bundleName: 'com.acts.abilitydelegatortest',
           abilityName: 'abilityName'
-        }, (err: BusinessError<void>):void => {
+        }, (err: BusinessError<void> | null):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           if (err) {
             expect(err?.code).assertEqual(16000001);
@@ -162,7 +162,7 @@ export default function abilityDelegatorStage() {
         abilityDelegator.startAbility({
           bundleName: 'com.acts.abilitydelegatorrely.static',
           abilityName: 'EntryAbility'
-        }, (err: BusinessError<void>):void => {
+        }, (err: BusinessError<void> | null):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           if (err) {
             expect(err?.code).assertEqual(16000004);
@@ -231,7 +231,7 @@ export default function abilityDelegatorStage() {
         abilityDelegator.startAbility({
           bundleName: 'com.acts.abilitydelegatorrely.static',
           abilityName: 'EntryAbility2'
-        }, (err: BusinessError<void>):void => {
+        }, (err: BusinessError<void> | null):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           if (err) {
             expect(err?.code).assertEqual(16000005);
@@ -295,7 +295,7 @@ export default function abilityDelegatorStage() {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12700 begin');
       try {
-        abilityDelegator.startAbility({}, (err: BusinessError<void>):void => {
+        abilityDelegator.startAbility({}, (err: BusinessError<void> | null):void => {
           hilog.info(0x0000, 'testTag EntryAbility', 'startAbility callback err ' + JSON.stringify(err?.code));
           if (err) {
             expect(err?.code).assertEqual(16000019);

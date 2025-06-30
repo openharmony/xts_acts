@@ -6,16 +6,16 @@ import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog';
 import { MyCallback } from '../models/MyCallback';
 
-class EntryAbility extends UIAbility {
+class EntryAbility1 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onCreate');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onWindowStageCreate');
-    windowStage.loadContent('pages/Index', (err: BusinessError<void>): void => {
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
       hilog.info(0x0000, 'testTag EntryAbility', 'loadContent entering');
-      if (err.code) {
+      if (err?.code) {
         hilog.info(0x0000, 'testTag EntryAbility', 'loadContent error');
         return;
       }
