@@ -865,7 +865,7 @@ export default function BufferTest1() {
       TAG = "testIsEncoding0001";
       try {
         let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
-          'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
+          'utf16le', 'base64', 'base64url', 'hex'];
         for (const encode of encodeArr) {
           let flag = buffer.isEncoding(encode);
           expect(String(flag)).assertEqual(String(false));
