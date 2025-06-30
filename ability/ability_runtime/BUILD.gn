@@ -84,6 +84,7 @@ group("ability_runtime") {
       "actsstartabilitygetdisplayidtest:actsstartabilitygetdisplayidtest",
       "actsstartabilityinnewprocesstest:actsstartabilityinnewprocesstest",
       "actsstartabilitywantparamtest:ActsStartAbilityWantParamTest",
+      "actsstartmanager:ActsStartManager",
       "actsstartrunnertest:ActsStartRunnerTest",
       "actsstartuiserviceextensiontest:ActsStartuiServiceExtension",
       "actsstartupruleoptimizetest:actsstartupruleoptimizetest",
