@@ -31,7 +31,9 @@ describe("VibratorJsTest_misc_7", function () {
         console.info('VibratorJsTest_misc_7 Device type = ' + deviceInfo.deviceType);
         console.info('VibratorJsTest_misc_7 isAvailable = ' + isAvailable);
         try {
-            if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT === false) {
+            const vibratorsList = vibrator.getVibratorInfoSync();
+            if (ABILITYJUDGMENT === false || vibratorsList.length === 0 ||
+                (vibratorsList.length !== 0 && !vibratorsList[0].isLocalVibrator)) {
                 isAvailable = false;
                 console.info('VibratorJsTest_misc_7 isAvailable ' + isAvailable);
                 done()
@@ -1735,7 +1737,7 @@ describe("VibratorJsTest_misc_7", function () {
     it("VibratorJsTest110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest110"
         console.info(TAG + ' isAvailable ' + isAvailable);
-        if (isAvailable && vibrator.getVibratorInfoSync() !== null) {
+        if (isAvailable) {
             try {
                 const vibrators = vibrator.getVibratorInfoSync();
                 expect(vibrators[0].deviceId >= -1).assertEqual(true);
@@ -1768,7 +1770,7 @@ describe("VibratorJsTest_misc_7", function () {
     it("VibratorJsTest111", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest111"
         console.info(TAG + ' isAvailable ' + isAvailable);
-        if (isAvailable && vibrator.getVibratorInfoSync() !== null) {
+        if (isAvailable) {
             try {
                 const vibratorInfoParam = {
                     deviceId: -1,
@@ -1839,7 +1841,7 @@ describe("VibratorJsTest_misc_7", function () {
     it("VibratorJsTest113", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest113"
         console.info(TAG + ' isAvailable ' + isAvailable);
-        if (isAvailable && vibrator.getVibratorInfoSync() !== null) {
+        if (isAvailable) {
             try {
                 const vibrators = vibrator.getVibratorInfoSync();
                 await vibrator.startVibration({
@@ -1881,7 +1883,7 @@ describe("VibratorJsTest_misc_7", function () {
     it("VibratorJsTest114", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest114"
         console.info(TAG + ' isAvailable ' + isAvailable);
-        if (isAvailable && vibrator.getVibratorInfoSync() !== null) {
+        if (isAvailable) {
             try {
                 const vibrators = vibrator.getVibratorInfoSync();
                 vibrator.startVibration({
@@ -1927,7 +1929,7 @@ describe("VibratorJsTest_misc_7", function () {
     it("VibratorJsTest115", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest115"
         console.info(TAG + ' isAvailable ' + isAvailable);
-        if (isAvailable && vibrator.getVibratorInfoSync() !== null) {
+        if (isAvailable) {
             try {
                 const effectId = "haptic.clock.timer";
                 const vibrators = vibrator.getVibratorInfoSync();
@@ -1964,7 +1966,7 @@ describe("VibratorJsTest_misc_7", function () {
     it("VibratorJsTest116", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest116"
         console.info(TAG + ' isAvailable ' + isAvailable);
-        if (isAvailable && vibrator.getVibratorInfoSync() !== null) {
+        if (isAvailable) {
             try {
                 const effectId = "haptic.clock.timer";
                 const jsEffectInfo = vibrator.getEffectInfoSync(effectId);
@@ -1995,7 +1997,7 @@ describe("VibratorJsTest_misc_7", function () {
     it("VibratorJsTest117", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest117"
         console.info(TAG + ' isAvailable ' + isAvailable);
-        if (isAvailable && vibrator.getVibratorInfoSync() !== null) {
+        if (isAvailable) {
             try {
                 await vibrator.startVibration({
                     type: "time",
