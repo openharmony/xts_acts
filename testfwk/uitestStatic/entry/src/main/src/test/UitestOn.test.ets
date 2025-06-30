@@ -638,6 +638,17 @@ export default function uitestOnTest() {
         hilog.info(domain, tag, `testEnabled_static enable, ${ JSON.stringify(enable) }`);
         expect(enable).assertTrue();
       }
+      let button1 = await driver.findComponent(ON.text('next page').enabled(false));
+      hilog.info(domain, tag, `testEnabled_static button1, ${ JSON.stringify(button1) }`);
+      expect(button1 == null).assertTrue();
+      let button2 = await driver.findComponent(ON.text('next page').enabled(true));
+      hilog.info(domain, tag, `testEnabled_static button2, ${ JSON.stringify(button2) }`);
+      expect(button2 != null).assertTrue();
+      if (button2 != null) {
+        let enable2 = await button2.isEnabled();
+        hilog.info(domain, tag, `testEnabled_static enable2, ${ JSON.stringify(enable2) }`);
+        expect(enable2).assertTrue();
+      }
       hilog.info(domain, tag, "testEnabled_static over!!!!!!!!!");
       await stopApplication('com.uitestScene.acts');
     })
@@ -690,6 +701,12 @@ export default function uitestOnTest() {
         hilog.info(domain, tag, `testChecked_static checked, ${ JSON.stringify(checked) }`);
         expect(!checked).assertTrue();
       }
+      let button1 = await driver.findComponent(ON.type('Checkbox').checked(true));
+      hilog.info(domain, tag, `testChecked_static button1, ${ JSON.stringify(button1) }`);
+      expect(button1 == null).assertTrue();
+      let button2 = await driver.findComponent(ON.type('Checkbox').checked());
+      hilog.info(domain, tag, `testChecked_static button2, ${ JSON.stringify(button2) }`);
+      expect(button2 == null).assertTrue();
       hilog.info(domain, tag, "testChecked_static over!!!!!!!!!");
       await stopApplication('com.uitestScene.acts');
     })

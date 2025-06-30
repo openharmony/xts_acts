@@ -45,7 +45,7 @@ export default function uitestDriverTest() {
       hilog.info(domain, tag, "uitestDriverTest loadup over!!!!!")
     })
     beforeEach(async () => {
-    //  await stopApplication('com.uitestScene.acts');
+      await stopApplication('com.uitestScene.acts');
     })
 
 
@@ -194,6 +194,23 @@ export default function uitestDriverTest() {
             await driver.delayMs(waitUiReadyMs);
           }
         }
+        let button1 = await driver.findComponent(ON.text('next page'));
+        hilog.info(domain, tag, `test_penLongClick_function_static button1, ${  JSON.stringify(button1) }`);
+        expect(button1 != null).assertTrue();
+        if (button1 != null) {
+          let btnPoint1 = await button1.getBoundsCenter();
+          hilog.info(domain, tag, `test_penLongClick_function_static btnPoint1, ${  JSON.stringify(btnPoint1) }`);
+          await driver.penLongClick(btnPoint1);
+          await driver.delayMs(waitUiReadyMs);
+          let newButton1 = await driver.findComponent(ON.text('longClick'));
+          expect(newButton1 != null).assertTrue();
+          if (newButton1 != null) {
+            let text1 = await newButton1.getText();
+            expect(text1 == 'longClick').assertTrue();
+            await newButton1.click();
+            await driver.delayMs(waitUiReadyMs);
+          }
+        }
       } catch(error) {
         hilog.info(domain, tag, `test_penLongClick_function_static error, ${ JSON.stringify(error)} `);
         expect().assertFail();
@@ -281,11 +298,41 @@ export default function uitestDriverTest() {
     })
 
     /*
-    * @tc.number: uitestDriverTest_0010
-    * @tc.name: testMouseScroll_static
+    * @tc.number: uitestDriverTest_0071
+    * @tc.name: testMouseScroll_default_static
     * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
     */
-    it('testMouseScroll_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('testMouseScroll_default_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      let driver = Driver.create();
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      await driver.delayMs(waitUiReadyMs);
+      try {
+        let scrollBar = await driver.findComponent(ON.type('Scroll'))
+        hilog.info(domain, tag, `testMouseScroll_default_static scrollBar, ${  JSON.stringify(scrollBar) }`);
+        expect(scrollBar != null).assertTrue();
+        if (scrollBar != null) {
+          let center = await scrollBar.getBoundsCenter();
+          hilog.info(domain, tag, `testMouseScroll_default_static center, ${  JSON.stringify(center) }`);
+          await driver.mouseScroll(center,true,30);
+          await driver.delayMs(1000);
+        }
+        let button1 = await driver.findComponent(ON.text('next page'));
+        hilog.info(domain, tag, `testMouseScroll_default_static button1 , ${  JSON.stringify(button1) }`);
+        expect(button1 == null).assertTrue();
+      } catch(error) {
+        hilog.info(domain, tag, `testMouseScroll_default_static error, ${ JSON.stringify(error)}`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, "testMouseScroll_default_static over!!!!");
+      await stopApplication('com.uitestScene.acts');
+    })
+
+    /*
+    * @tc.number: uitestDriverTest_0010
+    * @tc.name: testMouseScroll_key_static
+    * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+    */
+    it('testMouseScroll_key_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       let driver = Driver.create();
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       await driver.delayMs(waitUiReadyMs);
@@ -297,54 +344,146 @@ export default function uitestDriverTest() {
             btn = await scrollBar.scrollSearch(ON.id('jump'))
           }
         }
-        hilog.info(domain, tag, `testMouseScroll_static btn, ${  JSON.stringify(btn) }`);
+        hilog.info(domain, tag, `testMouseScroll_key_static btn, ${  JSON.stringify(btn) }`);
         expect(btn != null).assertTrue();
         if (btn != null) {
           await btn.click();
         }
         await driver.delayMs(1000);
         let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
-        hilog.info(domain, tag, `testMouseScroll_static img1, ${  JSON.stringify(img1) }`);
+        hilog.info(domain, tag, `testMouseScroll_key_static img1, ${  JSON.stringify(img1) }`);
         expect(img1 != null).assertTrue();
         if (img1 != null) {
           let bounds1 = await img1.getBounds();
-          hilog.info(domain, tag, `testMouseScroll_static bounds1, ${  JSON.stringify(bounds1) }`);
+          hilog.info(domain, tag, `testMouseScroll_key_static bounds1, ${  JSON.stringify(bounds1) }`);
           let center1 = await img1.getBoundsCenter();
-          hilog.info(domain, tag, `testMouseScroll_static center1, ${  JSON.stringify(center1) }`);
+          hilog.info(domain, tag, `testMouseScroll_key_static center1, ${  JSON.stringify(center1) }`);
           await driver.click(center1.x, center1.y);
           await driver.delayMs(1000);
-          await driver.mouseScroll(center1,false,5,2072,0);
-          hilog.info(domain, tag, `testMouseScroll_static mouseScroll`);
+          await driver.mouseScroll(center1,false,5,2072);
+          hilog.info(domain, tag, `testMouseScroll_key_static mouseScroll`);
           await driver.delayMs(1000);
           let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
           hilog.info(domain, tag, `testMouseScroll_static img2, ${  JSON.stringify(img2) }`);
           expect(img2 != null).assertTrue();
           if (img2 != null) {
             let bounds2 = await img2.getBounds();
-            hilog.info(domain, tag, `testMouseScroll_static bounds2, ${  JSON.stringify(bounds2) }`);
+            hilog.info(domain, tag, `testMouseScroll_key_static bounds2, ${  JSON.stringify(bounds2) }`);
             expect(bounds1 != bounds2).assertTrue()
           }
-          await driver.pressBack();
-          hilog.info(domain, tag, `testMouseScroll_static pressBack`);
-          await driver.delayMs(1000);
-          let scroll = await driver.findComponent(ON.text('1'))
-          hilog.info(domain, tag, `testMouseScroll_static scroll success, ${  JSON.stringify(scroll) }`);
-          expect(scroll != null).assertTrue();
-          if (scroll != null) {
-            let center = await scroll.getBoundsCenter();
-            hilog.info(domain, tag, `testMouseScroll_static center, ${  JSON.stringify(center) }`);
-            await driver.mouseScroll(center,true,30);
-            await driver.delayMs(1000);
-          }
         }
-        let button1 = await driver.findComponent(ON.text('next page'));
-        hilog.info(domain, tag, `testMouseScroll_static button1 , ${  JSON.stringify(button1) }`);
-        expect(button1 == null).assertTrue();
       } catch(error) {
-        hilog.info(domain, tag, `testMouseScroll_static error, ${ JSON.stringify(error)}`);
+        hilog.info(domain, tag, `testMouseScroll_key_static error, ${ JSON.stringify(error)}`);
         expect().assertFail();
       }
-      hilog.info(domain, tag, "testMouseScroll_static over!!!!");
+      hilog.info(domain, tag, "testMouseScroll_key_static over!!!!");
+      await stopApplication('com.uitestScene.acts');
+    })
+
+    /*
+    * @tc.number: uitestDriverTest_0073
+    * @tc.name: testMouseScroll_key2_static
+    * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+    */
+    it('testMouseScroll_key2_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      let driver = Driver.create();
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      await driver.delayMs(waitUiReadyMs);
+      try {
+        let btn = await driver.findComponent(ON.id('jump'));
+        if (btn == null) {
+          let scrollBar = await driver.findComponent(ON.type('Scroll'))
+          if (scrollBar != null) {
+            btn = await scrollBar.scrollSearch(ON.id('jump'))
+          }
+        }
+        hilog.info(domain, tag, `testMouseScroll_key2_static btn, ${  JSON.stringify(btn) }`);
+        expect(btn != null).assertTrue();
+        if (btn != null) {
+          await btn.click();
+        }
+        await driver.delayMs(1000);
+        let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
+        hilog.info(domain, tag, `testMouseScroll_key2_static img1, ${  JSON.stringify(img1) }`);
+        expect(img1 != null).assertTrue();
+        if (img1 != null) {
+          let bounds1 = await img1.getBounds();
+          hilog.info(domain, tag, `testMouseScroll_key2_static bounds1, ${  JSON.stringify(bounds1) }`);
+          let center1 = await img1.getBoundsCenter();
+          hilog.info(domain, tag, `testMouseScroll_key2_static center1, ${  JSON.stringify(center1) }`);
+          await driver.click(center1.x, center1.y);
+          await driver.delayMs(1000);
+          await driver.mouseScroll(center1,false,5,2072, 0);
+          hilog.info(domain, tag, `testMouseScroll_key2_static mouseScroll`);
+          await driver.delayMs(1000);
+          let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
+          hilog.info(domain, tag, `testMouseScroll_key2_static img2, ${  JSON.stringify(img2) }`);
+          expect(img2 != null).assertTrue();
+          if (img2 != null) {
+            let bounds2 = await img2.getBounds();
+            hilog.info(domain, tag, `testMouseScroll_key2_static bounds2, ${  JSON.stringify(bounds2) }`);
+            expect(bounds1 != bounds2).assertTrue()
+          }
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `testMouseScroll_key2_static error, ${ JSON.stringify(error)}`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, "testMouseScroll_key2_static over!!!!");
+      await stopApplication('com.uitestScene.acts');
+    })
+
+
+    /*
+    * @tc.number: uitestDriverTest_0073
+    * @tc.name: testMouseScroll_speed_static
+    * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+    */
+    it('testMouseScroll_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      let driver = Driver.create();
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      await driver.delayMs(waitUiReadyMs);
+      try {
+        let btn = await driver.findComponent(ON.id('jump'));
+        if (btn == null) {
+          let scrollBar = await driver.findComponent(ON.type('Scroll'))
+          if (scrollBar != null) {
+            btn = await scrollBar.scrollSearch(ON.id('jump'))
+          }
+        }
+        hilog.info(domain, tag, `testMouseScroll_speed_static btn, ${  JSON.stringify(btn) }`);
+        expect(btn != null).assertTrue();
+        if (btn != null) {
+          await btn.click();
+        }
+        await driver.delayMs(1000);
+        let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
+        hilog.info(domain, tag, `testMouseScroll_speed_static img1, ${  JSON.stringify(img1) }`);
+        expect(img1 != null).assertTrue();
+        if (img1 != null) {
+          let bounds1 = await img1.getBounds();
+          hilog.info(domain, tag, `testMouseScroll_speed_static bounds1, ${  JSON.stringify(bounds1) }`);
+          let center1 = await img1.getBoundsCenter();
+          hilog.info(domain, tag, `testMouseScroll_speed_static center1, ${  JSON.stringify(center1) }`);
+          await driver.click(center1.x, center1.y);
+          await driver.delayMs(1000);
+          await driver.mouseScroll(center1,false,5,2072, 0, 30);
+          hilog.info(domain, tag, `testMouseScroll_speed_static mouseScroll`);
+          await driver.delayMs(1000);
+          let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
+          hilog.info(domain, tag, `testMouseScroll_speed_static img2, ${  JSON.stringify(img2) }`);
+          expect(img2 != null).assertTrue();
+          if (img2 != null) {
+            let bounds2 = await img2.getBounds();
+            hilog.info(domain, tag, `testMouseScroll_speed_static bounds2, ${  JSON.stringify(bounds2) }`);
+            expect(bounds1 != bounds2).assertTrue()
+          }
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `testMouseScroll_speed_static error, ${ JSON.stringify(error)}`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, "testMouseScroll_speed_static over!!!!");
       await stopApplication('com.uitestScene.acts');
     })
 
@@ -355,7 +494,7 @@ export default function uitestDriverTest() {
     */
     it('testDriverClick_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, "testDriverClick_static start!!!!")
-    //  await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs)
       let Button = await driver.findComponent(ON.text('next page'))
@@ -1375,9 +1514,8 @@ export default function uitestDriverTest() {
       } catch(error) {
         hilog.info(domain, tag, `testInjectMultiPointerAction_speed_static error, ${ JSON.stringify(error) }`);
         expect().assertFail();
-      }finally {
-        await stopApplication('com.uitestScene.acts');
       }
+      await stopApplication('com.uitestScene.acts');
       hilog.info(domain, tag, "testInjectMultiPointerAction_speed_static over!!!!")
     })
 

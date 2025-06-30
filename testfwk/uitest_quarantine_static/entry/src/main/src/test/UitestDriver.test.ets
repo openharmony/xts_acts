@@ -154,7 +154,7 @@ export default function uitestDriverTest() {
         await driver.delayMs(1000);
         await driver.triggerCombineKeys(2072, 2017);
         await driver.delayMs(1000);
-        await driver.triggerCombineKeys(2072, 2019);
+        await driver.triggerCombineKeys(2072, 2019, 0);
         let text2 = await driver.findComponent(ON.type('TextInput'));
         hilog.info(domain, tag, `testTriggerCombineKeys_static text2, ${ JSON.stringify(text2) }`);
         expect(text2 != null).assertTrue();
