@@ -26,7 +26,7 @@ export default function actsGetLauncherAbilityInfoTest() {
      * @tc.name: Sub_Bms_Framework_GetLauncherAbilityInfoSync_static_0100
      * @tc.desc: Test getLauncherAbilityInfoSync with valid value.
      */
-    it("Sub_Bms_Framework_GetLauncherAbilityInfoSync_static_0100", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
+    it("Sub_Bms_Framework_GetLauncherAbilityInfoSync_static_0100", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
       const TEST_CASE_NAME = 'Sub_Bms_Framework_GetLauncherAbilityInfoSync_static_0100';
       try {
         hilog.info(0x0000, `${tag}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}`+'test case start');
@@ -64,7 +64,7 @@ export default function actsGetLauncherAbilityInfoTest() {
      * @tc.name: Sub_Bms_Framework_GetLauncherAbilityInfoSync_2000
      * @tc.desc: Test getLauncherAbilityInfoSync with parameter error return errcode 401.
      */
-    it("Sub_Bms_Framework_GetLauncherAbilityInfoSync_2000", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1,
+    it("Sub_Bms_Framework_GetLauncherAbilityInfoSync_2000", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         const TEST_CASE_NAME = 'Sub_Bms_Framework_GetLauncherAbilityInfoSync_2000';
         try {
@@ -94,7 +94,7 @@ export default function actsGetLauncherAbilityInfoTest() {
      * @tc.name: Sub_Bms_Framework_GetLauncherAbilityInfoSync_0200
      * @tc.desc: Test getLauncherAbilityInfoSync with bundle name is not found return errcode 17700001.
      */
-    it("Sub_Bms_Framework_GetLauncherAbilityInfoSync_0200", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1,
+    it("Sub_Bms_Framework_GetLauncherAbilityInfoSync_0200", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         const TEST_CASE_NAME = 'Sub_Bms_Framework_GetLauncherAbilityInfoSync_0200';
         try {
@@ -124,7 +124,7 @@ export default function actsGetLauncherAbilityInfoTest() {
      * @tc.name: Sub_Bms_Framework_GetLauncherAbilityInfoSync_0300
      * @tc.desc: Test getLauncherAbilityInfoSync with user ID is not found return errcode 17700004.
      */
-    it("Sub_Bms_Framework_GetLauncherAbilityInfoSync_0300", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1,
+    it("Sub_Bms_Framework_GetLauncherAbilityInfoSync_0300", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         const TEST_CASE_NAME = 'Sub_Bms_Framework_GetLauncherAbilityInfoSync_0300';
         try {

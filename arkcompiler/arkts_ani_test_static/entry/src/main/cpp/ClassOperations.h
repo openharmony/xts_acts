@@ -66,7 +66,6 @@ ani_boolean test_Class_FindMethod([[maybe_unused]] ani_env *env, [[maybe_unused]
     return ANI_TRUE;
 }
 
-
 ani_int NativeMethodsFooNative(ani_env *, ani_class)
 {
     const ani_int answer = 42U;
@@ -79,7 +78,7 @@ ani_boolean test_Class_BindNativeMethods([[maybe_unused]] ani_env *env, [[maybe_
     auto status = env->FindClass("Lentry/src/main/src/ets/ClassOperations/Person;", &cls);
     ASSERT_EQ(status, ANI_OK);
     std::array methods = {
-        ani_native_function {"foo", ":I", reinterpret_cast<void *>(NativeMethodsFooNative)},
+        ani_native_function{"foo", ":I", reinterpret_cast<void *>(NativeMethodsFooNative)},
     };
     status = env->Class_BindNativeMethods(cls, methods.data(), methods.size());
     ASSERT_EQ(status, ANI_OK);
@@ -113,7 +112,7 @@ ani_boolean test_Type_IsAssignableFrom([[maybe_unused]] ani_env *env, [[maybe_un
 
 ani_boolean test_FindModule([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object)
 {
-    ani_module module {};
+    ani_module module{};
     ASSERT_EQ(env->FindModule("Lentry/src/main/src/ets/ClassOperations;", &module), ANI_OK);
     ASSERT_NE(module, nullptr);
     return ANI_TRUE;
@@ -121,7 +120,7 @@ ani_boolean test_FindModule([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_
 
 ani_boolean test_FindNamespace([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object)
 {
-    ani_namespace ns {};
+    ani_namespace ns{};
     ASSERT_EQ(env->FindNamespace("Lentry/src/main/src/ets/ClassOperations/test001;", &ns), ANI_OK);
     ASSERT_NE(ns, nullptr);
     return ANI_TRUE;
@@ -129,10 +128,10 @@ ani_boolean test_FindNamespace([[maybe_unused]] ani_env *env, [[maybe_unused]] a
 
 ani_boolean test_FindEnum([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object)
 {
-    ani_enum aniEnum {};
+    ani_enum aniEnum{};
     ASSERT_EQ(env->FindEnum("Lentry/src/main/src/ets/ClassOperations/Color;", &aniEnum), ANI_OK);
     ASSERT_NE(aniEnum, nullptr);
     return ANI_TRUE;
 }
 
-#endif //ARKTS_ANI_TEST_CLASSOPERATIONS_H
+#endif // ARKTS_ANI_TEST_CLASSOPERATIONS_H

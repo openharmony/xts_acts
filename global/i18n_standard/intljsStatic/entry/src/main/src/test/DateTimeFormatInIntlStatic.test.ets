@@ -481,7 +481,7 @@ export default function DateTimeFormatInIntlTest() {
       expect(datefmt.resolvedOptions().era).assertEqual('short');
       expect(datefmt.resolvedOptions().month).assertEqual('long');
       expect(datefmt.resolvedOptions().day).assertEqual('numeric');
-      expect(datefmt.resolvedOptions().minute).assertEqual(undefined);
+      expect(datefmt.resolvedOptions().minute).assertEqual('2-digit');
       expect(datefmt.resolvedOptions().second).assertEqual('numeric');
       expect(datefmt.resolvedOptions().dayPeriod).assertEqual('short');
       expect(datefmt.resolvedOptions().formatMatcher).assertEqual('basic');
