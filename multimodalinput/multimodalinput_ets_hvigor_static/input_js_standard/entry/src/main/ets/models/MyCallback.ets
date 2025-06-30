@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,8 +43,8 @@ export class MyCallback {
     MyCallback.myCallback((data: string) => {
       hilog.info(0x0000, 'testTag', 'MyCallback' + data);
     })
-    MyCallback.myAsyncCallback((error: BusinessError<string>, result: string) => {
-      hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error.message}, result:${result}`);
+    MyCallback.myAsyncCallback((error: BusinessError<string> | null, result: string | undefined) => {
+      hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error?.message}, result:${result}`);
     })
     MyCallback.myErrorCallback((error: BusinessError<string>) => {
       hilog.info(0x0000, 'testTag', `myAsyncCallback, error: ${error.message}`);

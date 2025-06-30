@@ -25,7 +25,7 @@ let COMMON_PARAMETER_CODE: number = 401;
 let PARAMETER_DEVICEID_TYPE_MSG: string = 'Parameter error. The type of deviceId must be number.';
 let PARAMETER_CALLBACK_TYPE_MSG: string = 'Parameter error. The type of callback must be function.';
 
-export default function InputDevice_test() {
+export default function MultimodalInputDeviceTest() {
   describe("MultimodalInputDeviceTest", (): void => {
     const ExpectTrue = (n: boolean) => {
       try {
@@ -64,7 +64,7 @@ export default function InputDevice_test() {
             done();
           }
         });
-      } catch (error) {
+      } catch (error: BusinessError) {
         hilog.info(domain, tag,`${caseName} Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
@@ -87,7 +87,7 @@ export default function InputDevice_test() {
           ExpectTrue(typeof(deviceData) == 'object');
           done();
         });
-      } catch (error) {
+      } catch (error: BusinessError) {
         hilog.info(domain, tag, `${caseName} Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
@@ -116,7 +116,7 @@ export default function InputDevice_test() {
             done();
           }
         });
-      } catch (error) {
+      } catch (error: BusinessError) {
         hilog.info(domain, tag, `${caseName} Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
@@ -139,7 +139,7 @@ export default function InputDevice_test() {
           ExpectTrue(Array.isArray(ids));
           done();
         });
-      } catch (error) {
+      } catch (error: BusinessError) {
         hilog.info(domain, tag, `${caseName} Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();

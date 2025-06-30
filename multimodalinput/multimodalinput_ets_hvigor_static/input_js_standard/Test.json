@@ -5,7 +5,7 @@
         "test-timeout": "180000",
         "shell-timeout": "180000",
         "bundle-name": "com.open.harmony.inputtest.Static",
-        "module-name": "entry"
+        "package-name": "entry"
     },
     "kits": [
         {

@@ -22,22 +22,44 @@ let domain: number = 0x0000;
 let tag: string = 'testTag';
 
 export default function inputDeviceOnTest() {
-  describe("InputDevice_on_test", async (): Promise<void> => {
-    hilog.info(domain, tag, '%{public}s', 'describe start');
-    it("InputDevice_on_test", 0, async (done: () => void): Promise<void> => {
-      hilog.info(domain, tag, `InputDevice_on_test enter`);
+  describe("inputDeviceOnTest", async (): Promise<void> => {
+    const ExpectTrue = (n: boolean) => {
       try {
-        let isPhysicalKeyboardExist = true;
+        expect(n).assertTrue();
+      } catch (err) {
+        console.info("expectInfo", `test failed`);
+      }
+    }
+    const ExpectFalse = (n: boolean) => {
+      try {
+        expect(n).assertFail();
+      } catch (err) {
+        console.info("expectInfo", `test failed`);
+      }
+    }
+      
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_inputDeviceOn_0100
+     * @tc.name: SUB_MMI_Input_Api_IptDev_inputDeviceOn_0100
+     * @tc.desc: Test inputDevice on interface
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_inputDeviceOn_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_inputDeviceOn_0100";
+      try {
+        let ifinputDeviceSuccess = 0;
         inputDevice.on("change", (data) => {
           hilog.info(domain, tag, `InputDevice_on_test type: ${data.type}, deviceId: ${data.deviceId}`);
+	  ifinputDeviceSuccess++;
+          ExpectTrue(ifinputDeviceSuccess == 1);
         });
-      } catch (error) {
+      } catch (error : BusinessError) {
         hilog.info(domain, tag, `InputDevice_on_test error`);
         expect(false).assertTrue();
       }
       hilog.info(domain, tag, `InputDevice_on_test exit`);
       done();
-    })
-  })
-  hilog.info(domain, tag, '%{public}s', 'describe end');
+    });
 }

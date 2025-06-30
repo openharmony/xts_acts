@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import InputDevice_test from "./InputDevice.test";
+import MultimodalInputDeviceTest from "./InputDevice.test";
 export default function testsuite() {
-    InputDevice_test();
+    MultimodalInputDeviceTest();
 }

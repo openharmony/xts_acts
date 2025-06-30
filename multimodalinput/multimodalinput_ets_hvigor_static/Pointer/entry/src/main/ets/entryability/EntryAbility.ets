@@ -24,23 +24,39 @@ import { MyCallback } from '../models/MyCallback';
 
 class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', 'EntryAbility onCreate');
+    hilog.info(0x0000, 'testTag sjd EntryAbility', 'EntryAbility onCreate');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    hilog.info(0x0000, 'testTag', 'EntryAbility onWindowStageCreate');
+    hilog.info(0x0000, 'testTag sjd EntryAbility', 'EntryAbility onWindowStageCreate');
     try {
-      windowStage.loadContent('pages/Index', (err: BusinessError<void>): void => {
-        hilog.info(0x0000, 'testTag', 'loadContent entering');
+      windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
+        hilog.info(0x0000, 'testTag sjd EntryAbility', 'loadContent entering');
         MyCallback.runCasesOfCallback();
-        if (err.code) {
-          hilog.info(0x0000, 'testTag', 'loadContent error');
+        if (err?.code) {
+          hilog.info(0x0000, 'testTag sjd EntryAbility', 'loadContent error');
           return;
         }
-        hilog.info(0x0000, 'testTag', 'loadContent ok');
+        hilog.info(0x0000, 'testTag sjd EntryAbility', 'loadContent ok');
       });
     } catch (e: Error) {
-      hilog.info(0x0000, 'testTag', 'loadContent catch error：-----------' + e.message);
+      hilog.info(0x0000, 'testTag sjd EntryAbility', 'loadContent catch error：-----------' + e.message);
     }
+  }
+
+  onDestroy() {
+    hilog.info(0x0000, 'testTag sjd EntryAbility', '%{public}s', 'TestAbility onDestroy');
+  }
+
+  onWindowStageDestroy() {
+    hilog.info(0x0000, 'testTag sjd EntryAbility', '%{public}s', 'TestAbility onWindowStageDestroy');
+  }
+
+  onForeground() {
+    hilog.info(0x0000, 'testTag sjd EntryAbility', '%{public}s', 'TestAbility onForeground');
+  }
+
+  onBackground() {
+    hilog.info(0x0000, 'testTag sjd EntryAbility', '%{public}s', 'TestAbility onBackground');
   }
 }

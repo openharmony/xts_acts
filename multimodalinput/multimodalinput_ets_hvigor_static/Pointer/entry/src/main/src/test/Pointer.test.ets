@@ -28,7 +28,7 @@ let DEVICE_NOT_SUPPORT: number = 401;
 let PARAMETER_CALLBACK_TYPE_MSG: string = 'Parameter error. The type of callback must be function.';
 let PARAMETER_WINDOWID_TYPE_MSG: string = 'Parameter error. The type of windowId must be number.';
 
-export default function Pointer_test() {
+export default function MultimodalInputPointerTest() {
   describe("MultimodalInputPointerTest", (): void => {
     const ExpectTrue = (n: boolean) => {
       try {
@@ -45,7 +45,15 @@ export default function Pointer_test() {
       }
     }
 
-    it("SUB_MMI_Input_Api_Pointer_setPointerStyle_0100", 0, async (done: () => void): Promise<void> => {
+    /**
+     * @tc.number SUB_MMI_Input_Api_Pointer_setPointerStyle_0100
+     * @tc.name SUB_MMI_Input_Api_Pointer_setPointerStyle_0100
+     * @tc.desc Test SUB_MMI_Input_Api_Pointer_setPointerStyle_0100
+     * @tc.level: Level 2
+     * @tc.type: Function
+     * @tc.size: MediumTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setPointerStyle_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> => {
       hilog.info(domain, tag, 'SUB_MMI_Input_Api_Pointer_setPointerStyle_0100 enter');
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerStyle_0100";
       let ifSetPointerStyleSuccess = 0;
@@ -56,11 +64,11 @@ export default function Pointer_test() {
           ExpectTrue(ifSetPointerStyleSuccess == 1);
           done();
         });
-      } catch (error: Error) {
+      } catch (error: BusinessError) {
         hilog.info(domain, tag, `${caseName} Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
       }
-    });
+    })
   })
 }

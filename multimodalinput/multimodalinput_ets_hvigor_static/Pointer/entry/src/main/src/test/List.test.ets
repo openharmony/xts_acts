@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Pointer_test from "./Pointer.test";
+import MultimodalInputPointerTest from "./Pointer.test";
 export default function testsuite() {
-    Pointer_test();
+    MultimodalInputPointerTest();
 }
