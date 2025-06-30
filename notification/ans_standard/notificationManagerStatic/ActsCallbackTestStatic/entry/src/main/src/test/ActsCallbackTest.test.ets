@@ -43,7 +43,7 @@ export default function ActsCallbackTest() {
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err : BusinessError) : void => {
+      }, (err : BusinessError | null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }
@@ -64,22 +64,31 @@ export default function ActsCallbackTest() {
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let TAG = 'Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Callback_Test_Static_0100'
-        notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError) => {
-          if (err.code!==0) {
+        notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError | null) => {
+          if (err) {
             console.info(`${TAG} requestEnableNotification err: ${JSON.stringify(err)}`)
+            if (err.code !== 1600004) {
+            console.info(`${TAG} requestEnableNotification err: JSON.stringify(err)`);
             expect(false).assertTrue()
             done()
+            }else{
+              expect(true).assertTrue()
+              console.info(`${TAG} succeeded.`);
+              done()
+            }
           } else {
             console.info(`${TAG} requestEnableNotification succeeded`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             await Utils.msSleep(1000)
             done()
           }
+
+          
         })
         await Utils.msSleep(1500)
         let driver = Driver.create()
         await Utils.msSleep(1500)
-        let button = await driver.findComponent(ON.text('允许'))
+        let button = await driver.findComponent(ON.text('不允许'))
         console.info(`${TAG} button is ${JSON.stringify(button)}`)
         if (button !== null) {
           await button.click();

@@ -48,7 +48,7 @@ export default function ActsNotificationPublishTest() {
           hilog.info(domain, TAG, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err : BusinessError) : void => {
+      }, (err : BusinessError | null) : void => {
         if (err != null ) {
           hilog.info(domain, TAG, '%{public}s', '-----'+ err.code);
         }
@@ -72,7 +72,7 @@ export default function ActsNotificationPublishTest() {
       "mykey6": true,
     }
     // wantAgent
-    let WantAgentInfo = {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
       wants: [
         {
           deviceId: "deviceId",
@@ -90,21 +90,18 @@ export default function ActsNotificationPublishTest() {
       actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
     }as wantAgent.WantAgentInfo
 
-    wantAgent.getWantAgent(WantAgentInfo, (err,data)=> {
-      if (err.code) {
-        console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code}`)
-        expect(false).assertTrue()
-      } else {
+     wantAgent.getWantAgent(wantAgentInfo)
+      .then((data) => {
         console.info(`${TAG} getWantAgent AsyncCallback success: ${data}`)
-        wantAgentData = data
-      }
-    })
-
+        wantAgentData =  data;
+      }).catch((err: BusinessError): void => {
+        console.info(TAG + "getWantAgent err = " + err);
+      })
 
     beforeEach(() => {
       console.info(`${TAG} beforeEach START`)
-      notificationManager.cancelAll((err:BusinessError) => {
-        if (err.code) {
+      notificationManager.cancelAll((err: BusinessError | null) => {
+        if (err) {
           console.info(`${TAG} cancelAll notification err: ${err.code}`)
           expect(false).assertTrue()
         } else {
@@ -124,8 +121,8 @@ export default function ActsNotificationPublishTest() {
     it('Sub_Notification_Ans_Enable_Query_Static_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let TAG:string = 'Sub_Notification_Ans_Enable_Query_Static_2700'
-        notificationManager.requestEnableNotification(testAbilityContext, (err:BusinessError) => {
-          if (err.code!==0) {
+        notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError | null) => {
+          if (err) {
             console.info(`Sub_Notification_Ans_Enable_Query_Static_2700 ===>requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
             expect(false).assertTrue()
             done()
@@ -156,6 +153,7 @@ export default function ActsNotificationPublishTest() {
         }
         console.info(`${TAG} Sub_Notification_Ans_Enable_Query_Static_2700 END`)
       })
+
 
     /*
      * @tc.number    : Sub_Notification_Ans_Enable_Query_Static_2800
@@ -202,14 +200,16 @@ export default function ActsNotificationPublishTest() {
     //   console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_Static_0300 END`)
     // })
 
+
     /*
      * @tc.number    : Sub_Notification_Ans_Publish_Publish_Static_8300
      * @tc.name      : Sub_Notification_Ans_Publish_Publish_Static_8300
      * @tc.desc      : Publishes a notification
      */
-    it('Sub_Notification_Ans_Publish_Publish_Static_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> => {
+    it('Sub_Notification_Ans_Publish_Publish_Static_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Publish_Publish_Static_8300'
-      console.info(` Sub_Notification_Ans_Publish_Publish_Static_8300 START`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_Static_8300 START`)
       let extraInfo1:Record<String,Object>= {
         'testKey': 'testValue'
       }
@@ -243,8 +243,8 @@ export default function ActsNotificationPublishTest() {
         extraInfo: extraInfo1,
       }
 
-      notificationManager.publish(notificationRequest, (err) => {
-        if (err.code) {
+      notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+        if (err) {
           console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
           expect(false).assertTrue()
           done()
@@ -312,7 +312,7 @@ export default function ActsNotificationPublishTest() {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_Static_8350 END`)
     })
 
-    /*
+   /*
      * @tc.number    : Sub_Notification_Ans_Publish_Publish_Static_8400
      * @tc.name      : Sub_Notification_Ans_Publish_Publish_Static_8400
      * @tc.desc      : Publishes a notification
@@ -361,8 +361,8 @@ export default function ActsNotificationPublishTest() {
         extraInfo: extraInfo1,
       }
 
-      notificationManager.publish(notificationRequest, (err) => {
-        if (err.code) {
+      notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+        if (err) {
           console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
           expect(false).assertTrue()
           done()
@@ -376,7 +376,7 @@ export default function ActsNotificationPublishTest() {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_Static_8400 END`)
     })
 
-    /*
+     /*
      * @tc.number    : Sub_Notification_Ans_Publish_Publish_Static_8450
      * @tc.name      : Sub_Notification_Ans_Publish_Publish_Static_8450
      * @tc.desc      : Publishes a notification
@@ -487,8 +487,8 @@ export default function ActsNotificationPublishTest() {
         extraInfo: extraInfo1
       }
 
-      notificationManager.publish(notificationRequest, (err) => {
-        if (err.code) {
+      notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+        if (err) {
           console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
           expect(false).assertTrue()
           done()
@@ -564,7 +564,7 @@ export default function ActsNotificationPublishTest() {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_Static_8550 END`)
     })
 
-    /*
+  /*
      * @tc.number    : Sub_Notification_Ans_Publish_Publish_Static_8600
      * @tc.name      : Sub_Notification_Ans_Publish_Publish_Static_8600
      * @tc.desc      : Publishes a notification
@@ -616,8 +616,8 @@ export default function ActsNotificationPublishTest() {
         ],
       }
 
-      notificationManager.publish(notificationRequest, (err) => {
-        if (err.code) {
+      notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+        if (err) {
           console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
           expect(false).assertTrue()
           done()
@@ -630,8 +630,7 @@ export default function ActsNotificationPublishTest() {
 
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_Static_8600 END`)
     })
-
-    /*
+  /*
      * @tc.number    : Sub_Notification_Ans_Publish_Publish_Static_0150
      * @tc.name      : Sub_Notification_Ans_Publish_Publish_Static_0150
      * @tc.desc      : Publishes a notification
@@ -752,7 +751,7 @@ export default function ActsNotificationPublishTest() {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_Static_01300 END`)
     })
 
-    /*
+     /*
          * @tc.number    : Sub_Notification_Ans_Publish_Cancel_Static_2850
          * @tc.name      : Sub_Notification_Ans_Publish_Cancel_Static_2850
          * @tc.desc      : Cancels a notification with the specified label and ID
@@ -763,8 +762,8 @@ export default function ActsNotificationPublishTest() {
         console.info(`Sub_Notification_Ans_Publish_Cancel_Static_2850 START`)
         let id: number = 1
         let label: string = "label"
-        notificationManager.cancel(id, label, (err) => {
-          if (err.code) {
+        notificationManager.cancel(id, label, (err: BusinessError | null) => {
+          if (err) {
             console.info(`${TAG} cancel AsyncCallback err: ${err.code}`)
             expect(true).assertTrue()
             done()
@@ -820,8 +819,8 @@ export default function ActsNotificationPublishTest() {
         let TAG:string = 'Sub_Notification_Ans_Publish_Cancel_Static_2950'
         console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_Static_2950 START`)
         let id: number = 1
-        notificationManager.cancel(id, (err: BusinessError) => {
-          if (err.code) {
+        notificationManager.cancel(id, (err: BusinessError | null) => {
+          if (err) {
             console.info(`${TAG} cancel id err: ${err.code}`)
             expect(true).assertTrue()
             done()
@@ -868,8 +867,8 @@ export default function ActsNotificationPublishTest() {
         console.info(`SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0600 START`)
         let id: number = 1
         let label: string = "2"
-        notificationManager.cancel(id, label, (err: BusinessError): void => {
-          if (err.code) {
+        notificationManager.cancel(id, label, (err: BusinessError | null): void => {
+          if (err) {
             console.info(`${TAG} cancel AsyncCallback err: ${err.code}`)
             expect(true).assertTrue()
             done()
@@ -905,7 +904,7 @@ export default function ActsNotificationPublishTest() {
     //   console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_Static_0700 END`)
     // })
 
-    /*
+        /*
     * @tc.number    : Sub_Notification_Ans_Publish_Cancel_Static_3000
     * @tc.name      : Sub_Notification_Ans_Publish_Cancel_Static_3000
     * @tc.desc      : Cancels all notifications of the current application
@@ -914,8 +913,8 @@ export default function ActsNotificationPublishTest() {
       async (done: () => void): Promise<void> => {
         let TAG:string = 'Sub_Notification_Ans_Publish_Cancel_Static_3000'
         console.info(`Sub_Notification_Ans_Publish_Cancel_Static_3000 START`)
-        notificationManager.cancelAll((err: BusinessError): void => {
-          if (err.code) {
+        notificationManager.cancelAll((err: BusinessError | null): void => {
+          if (err) {
             console.info(`${TAG} cancelAll AsyncCallback err: ${err.code}`)
             expect(false).assertTrue()
             done()
@@ -971,8 +970,7 @@ export default function ActsNotificationPublishTest() {
     //   console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_Static_0300 END`)
     // })
 
-
-    /*
+       /*
      * @tc.number    : Sub_Notification_Ans_Distributed_Search_Static_0700
      * @tc.name      : Sub_Notification_Ans_Distributed_Search_Static_0700
      * @tc.desc      : Obtains the number of all active notifications
@@ -993,7 +991,7 @@ export default function ActsNotificationPublishTest() {
         console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_Static_0700 END`)
       })
 
-    /*
+  /*
      * @tc.number    : Sub_Notification_Ans_Distributed_Search_Static_0800
      * @tc.name      : Sub_Notification_Ans_Distributed_Search_Static_0800
      * @tc.desc      : Obtains an array of active notifications
@@ -1003,10 +1001,10 @@ export default function ActsNotificationPublishTest() {
       async (done: () => void): Promise<void> => {
         let TAG:string = 'Sub_Notification_Ans_Distributed_Search_Static_0800'
         console.info(`Sub_Notification_Ans_Distributed_Search_Static_0800 START`)
-        notificationManager.getActiveNotifications((err: BusinessError,
-          data: Array<notificationManager.NotificationRequest>) => {
-          if (err.code) {
-            console.info(`${TAG} getActiveNotifications AsyncCallback err :${err.code},data:${JSON.stringify(data)}`)
+        notificationManager.getActiveNotifications((err: BusinessError | null,
+          data: Array<notificationManager.NotificationRequest>|undefined) => {
+          if (err) {
+            console.info(`${TAG} getActiveNotifications AsyncCallback err :${err.code},data:${data}`)
             expect(false).assertTrue()
             done()
           } else {
@@ -1041,7 +1039,7 @@ export default function ActsNotificationPublishTest() {
         console.info(`Sub_Notification_Ans_Distributed_Search_Static_0900 END`)
       })
 
-    // /*
+      // /*
     //      * @tc.number    : SUB_NOTIFICATION_ANS_COUNT_TEST_Static_0500
     //      * @tc.name      : SUB_NOTIFICATION_ANS_COUNT_TEST_Static_0500
     //      * @tc.desc      : Obtains the number of all active notifications

@@ -43,7 +43,7 @@ export default function ActsNotificationRequestTest() {
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err : BusinessError) : void => {
+      }, (err : BusinessError | null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }
@@ -65,7 +65,7 @@ export default function ActsNotificationRequestTest() {
       async (done: () => void): Promise<void> => {
         const TEST_CASE_NAME:string = 'Acts_NotificationRequest_Static_0100';
 
-        notificationManager.requestEnableNotification(testAbilityContext,(err) => {
+        notificationManager.requestEnableNotification(testAbilityContext,(err: BusinessError | null) => {
           if (err) {
             console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
           } else {
@@ -110,7 +110,7 @@ export default function ActsNotificationRequestTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (data) => {
+          notificationManager.publish(notificationRequest, (data: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
             expect(data).assertEqual(null);
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
@@ -161,7 +161,7 @@ export default function ActsNotificationRequestTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (data) => {
+          notificationManager.publish(notificationRequest, (data: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
             expect(data).assertEqual(null);
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
@@ -232,7 +232,7 @@ export default function ActsNotificationRequestTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
         try {
           await Utils.msSleep(2500);
-          notificationManager.publish(notificationRequest, (data) => {
+          notificationManager.publish(notificationRequest, (data: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
             expect(data).assertEqual(null);
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
@@ -284,7 +284,7 @@ export default function ActsNotificationRequestTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
         try {
           await Utils.msSleep(2500);
-          notificationManager.publish(notificationRequest, (data) => {
+          notificationManager.publish(notificationRequest, (data: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
             expect(data).assertEqual(null);
             hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
