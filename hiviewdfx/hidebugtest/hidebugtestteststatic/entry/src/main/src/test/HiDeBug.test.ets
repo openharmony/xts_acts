@@ -2,6 +2,7 @@ import { describe, it, expect, TestType, Size, Level} from "../../../hypium/inde
 import hilog from '@ohos.hilog'
 import { BusinessError } from '@ohos.base';
 import hidebug from '@ohos.hidebug'
+import fileIo from '@ohos.file.fs';
 
 export default function HidebugJsTest() {
     describe("HidebugJsTest", (): void => {
@@ -525,5 +526,32 @@ export default function HidebugJsTest() {
             hilog.error(0x0000, 'HIDEBUGTEST', "%{public}s", 'testHiDebugJsStatic29 end');
             done();
         })
+
+        /*
+         * @tc.number    : DFX_DFR_Hiprofiler_Interface_Static_1000
+         * @tc.name      : DFX_DFR_Hiprofiler_Interface_Static_1000
+         * @tc.desc      : getServiceDump with check system ability failed
+         * @tc.number: test_1000
+         * @tc.level: Level 2
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         */
+        it('DFX_DFR_Hiprofiler_Interface_Static_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, ():void => {
+            console.log('************* DFX_DFR_Hiprofiler_Interface_Static_1000 Test start*************');
+            let path: string = "/data/storage/el2/base/files/serviceInfo3.txt";
+            let file = fileIo.openSync(path, 0o102);
+            let serviceId = -10
+            let args: Array<string> = new Array<string>("allInfo");
+            try {
+                hidebug.getServiceDump(serviceId, file.fd, args)
+                expect().assertFail();
+            } catch (error: BusinessError) {
+                console.info(error.code)
+                console.info(error.message)
+                expect(error.code == 11400101).assertTrue();
+            }
+            fileIo.closeSync(file.fd);
+            console.log('************* DFX_DFR_Hiprofiler_Interface_Static_1000 Test end*************');
+        });
     })
 }
