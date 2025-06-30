@@ -46,14 +46,14 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             let resultType: http.HttpDataType ;
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -62,9 +62,9 @@ export default function HttpResponsePropertiesTest() {
                             hilog.info(domain, tag, '%{public}s', caseName +'  Network connected ');
                             const httpRequest: http.HttpRequest = http.createHttp();
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS).then((res: http.HttpResponse) => {
-                                resultType = res.resultType;
+
                                 hilog.info(domain, tag, '%{public}s', caseName +':  res.resultType:->'+JSON.stringify(res));
-                                ExpectTrue(resultType == http.HttpDataType.STRING);
+                                ExpectTrue(res?.resultType ==http.HttpDataType.STRING);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -101,14 +101,14 @@ export default function HttpResponsePropertiesTest() {
             let resultType: http.HttpDataType ;
             const expectDataType: http.HttpDataType = http.HttpDataType.STRING;
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -119,9 +119,8 @@ export default function HttpResponsePropertiesTest() {
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType,
                             }).then((res: http.HttpResponse) => {
-                                resultType = res.resultType;
                                 hilog.info(domain, tag, '%{public}s', caseName +': HttpResponse  ->'+JSON.stringify(res));
-                                ExpectTrue(resultType == expectDataType);
+                                ExpectTrue(res?.resultType ==expectDataType);
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 httpRequest.destroy();
                                 done();
@@ -158,14 +157,14 @@ export default function HttpResponsePropertiesTest() {
             let resultType: http.HttpDataType ;
             const expectDataType: http.HttpDataType = http.HttpDataType.OBJECT;
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -176,7 +175,7 @@ export default function HttpResponsePropertiesTest() {
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType,
                             }).then((res: http.HttpResponse) => {
-                                resultType = res.resultType;
+
                                 hilog.info(domain, tag, '%{public}s', caseName +': HttpResponse  ->'+JSON.stringify(res));
                                 const flag: boolean = [http.HttpDataType.OBJECT, http.HttpDataType.STRING].includes(resultType);
                                 ExpectTrue(flag);
@@ -216,14 +215,14 @@ export default function HttpResponsePropertiesTest() {
             let resultType: http.HttpDataType ;
             const expectDataType: http.HttpDataType = http.HttpDataType.ARRAY_BUFFER;
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -234,9 +233,9 @@ export default function HttpResponsePropertiesTest() {
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType,
                             }).then((res: http.HttpResponse) => {
-                                resultType = res.resultType;
+
                                 hilog.info(domain, tag, '%{public}s', caseName +': HttpResponse  ->'+JSON.stringify(res));
-                                ExpectTrue(resultType == expectDataType);
+                                ExpectTrue(res?.resultType ==expectDataType);
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 httpRequest.destroy();
                                 done();
@@ -274,13 +273,13 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             let resultType: http.HttpDataType ;
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -292,9 +291,9 @@ export default function HttpResponsePropertiesTest() {
                                     "content-type": "application/json"
                                 }as Record<string,string>,
                             }).then((res: http.HttpResponse) => {
-                                resultType = res.resultType;
+
                                 hilog.info(domain, tag, '%{public}s', caseName +': HttpResponse  ->'+JSON.stringify(res));
-                                ExpectTrue(resultType == http.HttpDataType.STRING);
+                                ExpectTrue(res?.resultType ==http.HttpDataType.STRING);
                                 httpRequest.destroy();
                                 done();
                             }).catch((error: Error) => {
@@ -312,7 +311,7 @@ export default function HttpResponsePropertiesTest() {
                 ExpectFail();
                 done();
             }
-             
+
         });
 
         /* *
@@ -328,13 +327,13 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             let resultType: http.HttpDataType ;
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -346,9 +345,9 @@ export default function HttpResponsePropertiesTest() {
                                     "content-type": "application/octet-stream"
                                 }as Record<string,string>,
                             }).then((res: http.HttpResponse) => {
-                                resultType = res.resultType;
+
                                 hilog.info(domain, tag, '%{public}s', caseName +': HttpResponse  ->'+JSON.stringify(res));
-                                ExpectTrue(resultType == http.HttpDataType.ARRAY_BUFFER);
+                                ExpectTrue(res?.resultType ==http.HttpDataType.ARRAY_BUFFER);
                                 httpRequest.destroy();
                                 done();
                             }).catch((error: Error) => {
@@ -381,13 +380,13 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             let resultType: http.HttpDataType ;
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -399,9 +398,9 @@ export default function HttpResponsePropertiesTest() {
                                     "content-type": "image/svg+xml"
                                 }as Record<string,string>,
                             }).then((res: http.HttpResponse) => {
-                                resultType = res.resultType;
+
                                 hilog.info(domain, tag, '%{public}s', caseName +': res ->'+JSON.stringify(res));
-                                ExpectTrue(resultType == http.HttpDataType.ARRAY_BUFFER);
+                                ExpectTrue(res?.resultType ==http.HttpDataType.ARRAY_BUFFER);
                                 httpRequest.destroy();
                                 done();
                             }).catch((error: Error) => {
@@ -435,13 +434,13 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             let resultType: http.HttpDataType ;
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -453,9 +452,9 @@ export default function HttpResponsePropertiesTest() {
                                     "content-type": "text/html"
                                 }as Record<string,string>,
                             }).then((res: http.HttpResponse) => {
-                                resultType = res.resultType;
+
                                 hilog.info(domain, tag, '%{public}s', caseName +': HttpResponse  ->'+JSON.stringify(res));
-                                ExpectTrue(resultType == http.HttpDataType.STRING);
+                                ExpectTrue(res?.resultType ==http.HttpDataType.STRING);
                                 httpRequest.destroy();
                                 done();
                             }).catch((error: Error) => {
@@ -488,13 +487,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testNetworkMgrHttpResponse_static_1000";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -502,16 +501,15 @@ export default function HttpResponsePropertiesTest() {
                             hilog.info(domain, tag, '%{public}s', caseName +'  Network connected ');
                             let resultType: http.HttpDataType ;
                             const httpRequest: http.HttpRequest = http.createHttp();
-                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
                                     hilog.info(domain, tag, '%{public}s', caseName +' : request  data ->'+JSON.stringify(data));
-                                    resultType = res.resultType;
-                                    ExpectTrue(resultType == http.HttpDataType.STRING);
+                                    ExpectTrue(res?.resultType ==http.HttpDataType.STRING);
                                     httpRequest.destroy();
                                     done();
                                 }
@@ -539,13 +537,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_1100";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -556,16 +554,15 @@ export default function HttpResponsePropertiesTest() {
                             const expectDataType: http.HttpDataType = http.HttpDataType.STRING;
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType,
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
                                     hilog.info(domain, tag, '%{public}s', caseName +' : request  data ->'+JSON.stringify(data));
-                                    resultType = res.resultType;
-                                    ExpectTrue(resultType == expectDataType);
+                                    ExpectTrue(res?.resultType ==expectDataType);
                                     httpRequest.destroy();
                                     done();
                                 }
@@ -593,13 +590,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_1200";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -610,18 +607,23 @@ export default function HttpResponsePropertiesTest() {
                             const expectDataType: http.HttpDataType = http.HttpDataType.OBJECT;
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType,
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
-                                    hilog.info(domain, tag, '%{public}s', caseName +' : request  data ->'+JSON.stringify(data));
-                                    resultType = res.resultType;
-                                    const flag: boolean = [http.HttpDataType.OBJECT, http.HttpDataType.STRING].includes(resultType);
-                                    ExpectTrue(flag);
+                                    if(res == undefined){
+                                        hilog.info(domain, tag, '%{public}s', caseName +': HttpResponse is ->'+JSON.stringify(res));
+                                        ExpectFail();
+                                    }else{
+                                        hilog.info(domain, tag, '%{public}s', caseName +' : HttpResponse is ->'+JSON.stringify(res));
+                                        const flag: boolean = [http.HttpDataType.OBJECT, http.HttpDataType.STRING, undefined].includes(res?.resultType);
+                                        ExpectTrue(flag);
+                                    }
                                     httpRequest.destroy();
+                                    hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                     done();
                                 }
                             });
@@ -647,13 +649,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_1300";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -664,16 +666,15 @@ export default function HttpResponsePropertiesTest() {
                             const expectDataType: http.HttpDataType = http.HttpDataType.ARRAY_BUFFER;
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType,
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
                                     hilog.info(domain, tag, '%{public}s', caseName +' : request  data ->'+JSON.stringify(data));
-                                    resultType = res.resultType;
-                                    ExpectTrue(resultType == expectDataType);
+                                    ExpectTrue(res?.resultType ==expectDataType);
                                     httpRequest.destroy();
                                     done();
                                 }
@@ -701,13 +702,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_1500";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -719,16 +720,15 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "application/json"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
                                     hilog.info(domain, tag, '%{public}s', caseName +' : request  data ->'+JSON.stringify(data));
-                                    resultType = res.resultType;
-                                    ExpectTrue(resultType == http.HttpDataType.STRING);
+                                    ExpectTrue(res?.resultType ==http.HttpDataType.STRING);
                                     httpRequest.destroy();
                                     done();
                                 }
@@ -756,13 +756,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_1600";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -774,16 +774,16 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "application/octet-stream"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
                                     hilog.info(domain, tag, '%{public}s', caseName +' : request  data ->'+JSON.stringify(data));
-                                    resultType = res.resultType;
-                                    ExpectTrue(resultType == http.HttpDataType.ARRAY_BUFFER);
+
+                                    ExpectTrue(res?.resultType ==http.HttpDataType.ARRAY_BUFFER);
                                     httpRequest.destroy();
                                     done();
                                 }
@@ -810,13 +810,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_1700";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -828,16 +828,16 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "image/svg+xml"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
                                     hilog.info(domain, tag, '%{public}s', caseName +' : request  data ->'+JSON.stringify(data));
-                                    resultType = res.resultType;
-                                    ExpectTrue(resultType == http.HttpDataType.ARRAY_BUFFER);
+
+                                    ExpectTrue(res?.resultType ==http.HttpDataType.ARRAY_BUFFER);
                                     httpRequest.destroy();
                                     done();
                                 }
@@ -864,13 +864,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_1800";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -882,16 +882,16 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "text/html"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
                                     hilog.info(domain, tag, '%{public}s', caseName +' : request  data ->'+JSON.stringify(data));
-                                    resultType = res.resultType;
-                                    ExpectTrue(resultType == http.HttpDataType.STRING);
+
+                                    ExpectTrue(res?.resultType ==http.HttpDataType.STRING);
                                     httpRequest.destroy();
                                     done();
                                 }
@@ -919,13 +919,13 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             const httpRequest: http.HttpRequest = http.createHttp();
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -969,13 +969,13 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             const httpRequest: http.HttpRequest = http.createHttp();
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1020,13 +1020,13 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             const httpRequest: http.HttpRequest = http.createHttp();
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1069,13 +1069,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_2300";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1122,13 +1122,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_2400";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1174,13 +1174,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_2500";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1225,13 +1225,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_2600";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1277,13 +1277,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_2700";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1292,8 +1292,8 @@ export default function HttpResponsePropertiesTest() {
                             const httpRequest: http.HttpRequest = http.createHttp();
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType: http.HttpDataType.STRING,
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -1328,13 +1328,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_2800";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1343,8 +1343,8 @@ export default function HttpResponsePropertiesTest() {
                             const httpRequest: http.HttpRequest = http.createHttp();
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType: http.HttpDataType.OBJECT,
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -1365,7 +1365,7 @@ export default function HttpResponsePropertiesTest() {
                 ExpectFail();
                 done();
             }
-             
+
         });
 
         /* *
@@ -1380,13 +1380,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_2900";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1395,8 +1395,8 @@ export default function HttpResponsePropertiesTest() {
                             const httpRequest: http.HttpRequest = http.createHttp();
                             httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                                 expectDataType: http.HttpDataType.ARRAY_BUFFER,
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -1430,13 +1430,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_3100";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1447,8 +1447,8 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "application/json"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -1468,7 +1468,7 @@ export default function HttpResponsePropertiesTest() {
                 ExpectFail();
                 done();
             }
-             
+
         });
 
         /* *
@@ -1483,13 +1483,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_3200";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1500,8 +1500,8 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "application/octet-stream"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -1536,13 +1536,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_3300";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1553,8 +1553,8 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "image/svg+xml"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -1589,13 +1589,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_3400";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1606,8 +1606,8 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "text/html"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -1642,13 +1642,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_3600";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1690,23 +1690,23 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_3800";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
                         } else {
                             hilog.info(domain, tag, '%{public}s', caseName +'  Network connected ');
                             const httpRequest: http.HttpRequest = http.createHttp();
-                            httpRequest.request("abc", (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
-                                    console.info(`${caseName} request error code: ${err.code}, msg: ${err.message}`);
-                                    ExpectTrue(err.code == 2300006);
+                            httpRequest.request("abc", (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
+                                    console.info(`${caseName} request error code: ${err?.code}, msg: ${err?.message}`);
+                                    ExpectTrue(err?.code == 2300006);
                                     httpRequest.destroy();
                                     done();
                                 } else {
@@ -1738,13 +1738,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_3900";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1785,27 +1785,27 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_4000";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
                         } else {
                             hilog.info(domain, tag, '%{public}s', caseName +'  Network connected ');
                             const httpRequest: http.HttpRequest = http.createHttp();
-                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
-                                    console.log(`${caseName} res.header: ${JSON.stringify(res.header)}`)
+                                    console.log(`${caseName} res.header: ${JSON.stringify(res?.header)}`)
                                     ExpectTrue(res?.header instanceof Object);
                                     httpRequest.destroy();
                                     done();
@@ -1833,13 +1833,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_4100";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1879,21 +1879,21 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_4200";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
                         } else {
                             hilog.info(domain, tag, '%{public}s', caseName +'  Network connected ');
                             const httpRequest: http.HttpRequest = http.createHttp();
-                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -1928,13 +1928,13 @@ export default function HttpResponsePropertiesTest() {
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             const httpRequest: http.HttpRequest = http.createHttp();
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -1983,37 +1983,28 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_4400";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
                         } else {
                             hilog.info(domain, tag, '%{public}s', caseName +'  Network connected ');
                             const httpRequest: http.HttpRequest = http.createHttp();
-                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
                                     done();
                                 } else {
-                                    console.info(`${caseName} res.performanceTiming:${JSON.stringify(res.performanceTiming)}`);
-                                    ExpectTrue(res.performanceTiming.dnsTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.tcpTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.tlsTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.firstSendTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.firstReceiveTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.totalFinishTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.redirectTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.responseHeaderTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.responseBodyTiming >= 0);
-                                    ExpectTrue(res.performanceTiming.totalTiming >= 0);
+                                    console.info(`${caseName} res.performanceTiming:${JSON.stringify(res?.performanceTiming)}`);
+                                    ExpectTrue(res?.performanceTiming != undefined);
                                     httpRequest.destroy();
                                     done();
                                 }
@@ -2042,13 +2033,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_4500";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -2060,8 +2051,8 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "application/octet-stream"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -2096,13 +2087,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_4600";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -2114,8 +2105,8 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "application/json"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -2151,13 +2142,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_4800";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -2169,8 +2160,8 @@ export default function HttpResponsePropertiesTest() {
                                 header: {
                                     "content-type": "application/json"
                                 }as Record<string,string>
-                            }, (err: BusinessError, res: http.HttpResponse) => {
-                                if (err.code != 0) {
+                            }, (err: BusinessError<void>|null, res: http.HttpResponse| undefined) => {
+                                if (err?.code != 0) {
                                     hilog.info(domain, tag, '%{public}s', caseName +'  request failerror is '+JSON.stringify(err));
                                     httpRequest.destroy();
                                     ExpectFail();
@@ -2204,13 +2195,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_5100";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -2256,13 +2247,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_5200";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();
@@ -2294,7 +2285,7 @@ export default function HttpResponsePropertiesTest() {
                 ExpectFail();
                 done();
             }
-             
+
         });
 
         /* *
@@ -2309,13 +2300,13 @@ export default function HttpResponsePropertiesTest() {
             const caseName: string = "testHttpResponse_static_5400";
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try {
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (error.code != 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (error?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  getDefaultNet error is '+JSON.stringify(error));
                         ExpectFail();
                         done();
                     } else {
-                        if (data.netId == 0) {
+                        if (data?.netId == 0) {
                             hilog.info(domain, tag, '%{public}s', caseName +' no Network connected ');
                             ExpectFail();
                             done();

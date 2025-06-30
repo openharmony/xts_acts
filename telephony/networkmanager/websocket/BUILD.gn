@@ -17,7 +17,7 @@ group("websocket") {
   testonly = true
   deps = [
    "websocketalltest:ActsNetworkMgrWebsocketTest",
- # "ActsNetworkMgrWebsocketTestStatic:ActsNetworkMgrWebsocketStaticTest",
- # "ActsNetworkMgrWsNoPermissionTestStatic:ActsNetworkMgrWsNoPermissionStaticTest"
+   "ActsNetworkMgrWebsocketTestStatic:ActsNetworkMgrWebsocketStaticTest",
+   "ActsNetworkMgrWsNoPermissionTestStatic:ActsNetworkMgrWsNoPermissionStaticTest"
  ]
 }

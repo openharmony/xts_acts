@@ -42,9 +42,9 @@ export default function webSocketNoPTest() {
       hilog.info(domain, tag, '%{public}s', caseName+ ' start');
       try{
         let url: string = 'ws://';
-        ws.connect(url, (error: BusinessError, value: boolean) => {
+        ws.connect(url, (error: BusinessError<void> | null, value: boolean | undefined) => {
           hilog.info(domain, tag, '%{public}s', caseName +': test result error ->'+JSON.stringify(error)+' and value is '+value);
-          ExpectTrue(error !== undefined && error.code === 201);
+          ExpectTrue(error !== null && error?.code === 201);
           hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
           done();
         });
@@ -70,9 +70,9 @@ export default function webSocketNoPTest() {
       try{
         let url: string = 'ws://';
         let options: webSocket.WebSocketRequestOptions = {};
-        ws.connect(url, options, (error: BusinessError, value: boolean) => {
+        ws.connect(url, options, (error: BusinessError<void> | null, value: boolean | undefined) => {
           hilog.info(domain, tag, '%{public}s', caseName +' value -> '+value +' err -> '+JSON.stringify(error));
-          ExpectTrue(error !== undefined && error.code === 201);
+          ExpectTrue(error !== null && error?.code === 201);
           hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
           done();
         });

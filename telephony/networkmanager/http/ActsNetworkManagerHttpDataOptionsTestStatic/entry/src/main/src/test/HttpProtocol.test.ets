@@ -43,8 +43,8 @@ export default function httpRequestProtocolTest() {
             let caseName: string = 'testHttpProtocolHTTP_static_0100';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -54,15 +54,15 @@ export default function httpRequestProtocolTest() {
                         let httpRequest: http.HttpRequest = http.createHttp();
                         httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                             usingProtocol: http.HttpProtocol.HTTP1_1
-                        }, (err: BusinessError, data: http.HttpResponse) => {
-                            if (err.code != 0) {
+                        }, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if (err?.code != 0) {
                                 hilog.info(domain, tag, '%{public}s', caseName +' httpRequest fail, get error is '+JSON.stringify(err));
                                 ExpectFail();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
                             } else {
                                 hilog.info(domain, tag, '%{public}s', caseName +'httpRequest success: data ->'+JSON.stringify(data));
-                                ExpectTrue(data.responseCode == 200);
+                                ExpectTrue(data?.responseCode == 200);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -90,8 +90,8 @@ export default function httpRequestProtocolTest() {
             let caseName: string = 'testHttpProtocolHTTP_static_0200';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -136,8 +136,8 @@ export default function httpRequestProtocolTest() {
             let caseName: string = 'testHttpProtocolHTTP_static_0300';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -147,15 +147,15 @@ export default function httpRequestProtocolTest() {
                         let httpRequest: http.HttpRequest = http.createHttp();
                         httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                             usingProtocol: http.HttpProtocol.HTTP2
-                        }, (err: BusinessError, data: http.HttpResponse) => {
-                            if (err.code != 0) {
+                        }, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if (err?.code != 0) {
                                 hilog.info(domain, tag, '%{public}s', caseName +' httpRequest get error is '+JSON.stringify(err));
                                 ExpectFail();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
                             } else {
                                 hilog.info(domain, tag, '%{public}s', caseName +' httpRequest success : data ->'+JSON.stringify(data));
-                                ExpectTrue(data.responseCode == 200);
+                                ExpectTrue(data?.responseCode == 200);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -183,8 +183,8 @@ export default function httpRequestProtocolTest() {
             let caseName: string = 'testHttpProtocolHTTP_static_0400';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -229,8 +229,8 @@ export default function httpRequestProtocolTest() {
             let caseName: string = 'testHttpProtocolHTTP_static_0500';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -240,16 +240,16 @@ export default function httpRequestProtocolTest() {
                         let httpRequest: http.HttpRequest = http.createHttp();
                         httpRequest.request(ADDR_TEST_DOMAIN_HTTPS, {
                             usingProtocol: http.HttpProtocol.HTTP3
-                        }, (err: BusinessError, data: http.HttpResponse) => {
-                            if (err.code != 0) {
+                        }, (err: BusinessError<void>|null, data: http.HttpResponse| undefined) => {
+                            if (err?.code != 0) {
                                 hilog.info(domain, tag, '%{public}s', caseName +' httpRequest fail, get error is '+JSON.stringify(err));
-                                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
+                                ExpectTrue(err?.code == 2300999);//The device does not support HTTP3
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
                             } else {
                                 hilog.info(domain, tag, '%{public}s', caseName +' httpRequest success : data ->'+JSON.stringify(data));
                                 console.info(`${caseName} ${JSON.stringify(data)}`);
-                                ExpectTrue(data.responseCode == 200);
+                                ExpectTrue(data?.responseCode == 200);
                                 httpRequest.destroy();
                                 hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
                                 done();
@@ -277,8 +277,8 @@ export default function httpRequestProtocolTest() {
             let caseName: string = 'testHttpProtocolHTTP_static_0600';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-                    if (data.netId == 0) {
+                connection.getDefaultNet((error: BusinessError<void>|null, data: connection.NetHandle| undefined) => {
+                    if (data?.netId == 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +' Please connect to the network');
                         ExpectFail();
                         hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
