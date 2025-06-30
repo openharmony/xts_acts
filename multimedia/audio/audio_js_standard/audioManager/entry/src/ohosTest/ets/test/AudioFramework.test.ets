@@ -1394,7 +1394,9 @@ export default function audioFramework() {
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
-        await audioManager.setVolume(audio.AudioVolumeType.RINGTONE, maxVol)
+        if (canIUse("SystemCapability.Multimedia.Audio.Tone")){
+          await audioManager.setVolume(audio.AudioVolumeType.RINGTONE, maxVol)
+        }
         let data = await audioManager.getVolume(audio.AudioVolumeType.MEDIA);
         if (data == lowVol) {
           console.info(`${TagFrmwk}: Media getVolume Promise: ENAME : PASS :${data}`);
