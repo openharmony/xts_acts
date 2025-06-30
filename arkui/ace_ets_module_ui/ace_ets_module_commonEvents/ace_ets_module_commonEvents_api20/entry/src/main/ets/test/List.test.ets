@@ -24,5 +24,5 @@ export default function testsuite() {
   tapLocationTest();
   PanGestureTest();
   colorMetricsTest();
-  TouchTestDoneTest();
+  onTouchTestDoneTest();
 }
