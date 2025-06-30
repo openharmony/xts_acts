@@ -34,7 +34,7 @@ export default function GraphicTextClass() {
           height: 100, width: 100//100为创建的PixelMap的宽高
         }
       }
-      pixel = await image.createPixelMap(color, opts);
+      pixel = image.createPixelMapSync(color, opts);
     })
 
     /**
