@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,31 +18,48 @@ import hilog from '@ohos.hilog';
 @Component
 struct Index {
   aboutToAppear() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
+    console.info('TestAbility index aboutToAppear')
   }
- @State message: string = 'Hello World'
-   build() {
-         Row() {
-           Column() {
-             Text(this.message)
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-             Button() {
-               Text('next page')
-                 .fontSize(20)
-                 .fontWeight(FontWeight.Bold)
-             }.type(ButtonType.Capsule)
-             .margin({
-               top: 20
-             })
-             .backgroundColor('#0D9FFB')
-             .width('35%')
-             .height('5%')
-             .onClick(()=>{
-             })
-           }
-             .width('100%')
-         }
-             .height('100%')
-   }
- }
+  @State message: string = 'Hello World'
+  private surfaceId: string = ''
+  private xComponentContext: Record<string, () => void> = {}
+  xComponentController: XComponentController = new XComponentController()
+  private surfaceId2: string = ''
+  private xComponentContext2: Record<string, () => void> = {}
+  xComponentController2: XComponentController = new XComponentController()
+  build() {
+    Row() {
+      XComponent({
+        id: 'xcomponent',
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+        .onLoad(() => {
+          this.xComponentController.setXComponentSurfaceSize({ surfaceWidth: 640, surfaceHeight: 480 })
+          this.surfaceId = this.xComponentController.getXComponentSurfaceId()
+          this.xComponentContext = this.xComponentController.getXComponentContext() as Record<string, () => void>
+          globalThis.value = this.surfaceId
+        })
+        .width('640px')
+        .height('480px')
+        .backgroundColor(Color.Red)
+
+      XComponent({
+        id: 'xcomponent2',
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController2
+      })
+        .onLoad(() => {
+          this.xComponentController2.setXComponentSurfaceSize({ surfaceWidth: 640, surfaceHeight: 480 })
+          this.surfaceId2 = this.xComponentController2.getXComponentSurfaceId()
+          this.xComponentContext2 = this.xComponentController2.getXComponentContext() as Record<string, () => void>
+          globalThis.value2 = this.surfaceId2
+        })
+        .width('640px')
+        .height('480px')
+        .backgroundColor(Color.Yellow)
+    }
+    .backgroundColor(Color.Black)
+    .position({ x: 0, y: 48 })
+  }
+}
