@@ -38,7 +38,7 @@ group("bundlemanager") {
       "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",
       "actsbundlemanageroverlayteststatic:ActsBundleMgrOverlayEtsDemoStaticTest",
       "actsbundlemanagerstagetest:ActsBundleMgrStageEtsTest",
-      # "actsbundlemanagerstageteststatic:ActsBundleMgrStageEtsStaticTest",
+      "actsbundlemanagerstageteststatic:ActsBundleMgrStageEtsStaticTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanagertestcaseAddition:ActsbundlemgrcaseAdditionEtsTest",
       "actsbundlemanagertestcaseAdditionstatic:ActsbundlemgrcaseAdditionEtsStaticTest",

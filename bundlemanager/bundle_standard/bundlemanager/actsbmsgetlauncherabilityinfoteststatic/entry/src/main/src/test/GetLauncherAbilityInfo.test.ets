@@ -41,6 +41,8 @@ export default function actsGetLauncherAbilityInfoTest() {
         expect(data[0].elementName.bundleName).assertEqual(BUNDLE_NAME2);
         expect(data[0].elementName.moduleName).assertEqual("entry");
         expect(data[0].elementName.abilityName).assertEqual('EntryAbility');
+        expect(data[0].elementName.shortName).assertEqual('');
+        expect(data[0].elementName.uri).assertEqual('/ohos.acts.bms.getlauncherabilityinfo.test.static/entry/EntryAbility');
         done();
         hilog.info(0x0000, `${tag}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}`+'test case end');
       } catch (errData) {

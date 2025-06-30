@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import { Text Row, Column, Component } from '@ohos.arkui.component'  // TextAttribute should be insert by ui-plugins
+// import { Text Row, Column, Component } from '@ohos.arkui.component'  // TextAttribute should be insert by ui-plugins
 
-@Component
-struct WidgetCard {
-  build(){
-    Row() {
-      Column() {
-        Text('Origin')
-        }
-      }
-    .size({width:'100%',height:'100%'})
-  }
-}
+// @Component
+// struct WidgetCard {
+//   build(){
+//     Row() {
+//       Column() {
+//         Text('Origin')
+//         }
+//       }
+//     .size({width:'100%',height:'100%'})
+//   }
+// }
