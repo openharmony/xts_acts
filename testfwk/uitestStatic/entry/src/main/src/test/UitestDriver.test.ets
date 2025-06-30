@@ -435,7 +435,7 @@ export default function uitestDriverTest() {
 
 
     /*
-    * @tc.number: uitestDriverTest_0073
+    * @tc.number: uitestDriverTest_0075
     * @tc.name: testMouseScroll_speed_static
     * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
     */
