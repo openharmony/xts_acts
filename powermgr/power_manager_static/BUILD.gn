@@ -13,12 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-# xts_acts_arkts1.2/powermgr/power_manager/ActsPowerMgrPowerStaticTest
-ohos_js_app_static_suite("ActsPowerMgrPowerStaticTest") {
+# xts_acts_arkts1.2/powermgr/power_manager/ActsPowermgrPowerStaticTest
+ohos_js_app_static_suite("powermgr_power_static_test") {
 #   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsPowerMgrPowerStaticTest"
+  hap_name = "ActsPowermgrPowerStaticTest"
   part_name = "power_manager"
   subsystem_name = "powermgr"
 }
