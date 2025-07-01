@@ -566,5 +566,49 @@ export default function inputMethodAuthorityJSUnit() {
       };
     });
 
+    /**
+     * @tc.number  Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0100
+     * @tc.name    Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0100
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0100', Level.LEVEL2, async (done: Function) => {
+      try{
+        let enable = true;
+        inputMethod.setSimpleKeyboardEnabled(enable);
+        console.info("====>Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0100 setSimpleKeyboardEnabled is success");
+        expect(enable).assertEqual(true);
+        done();
+      }catch(err){
+        console.info(`====>Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0100 errCode:${err.code}, errMessage is ${err.message}`)
+        expect().assertFail();
+        done();
+      };
+    });
+
+    /**
+     * @tc.number  Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0200
+     * @tc.name    Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0200
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0200', Level.LEVEL2, async (done: Function) => {
+      try{
+        let enable = false;
+        inputMethod.setSimpleKeyboardEnabled(enable);
+        console.info("====>Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0200 setSimpleKeyboardEnabled is success");
+        expect(enable).assertEqual(false);
+        done();
+      }catch(err){
+        console.info(`====>Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0200 errCode:${err.code}, errMessage is ${err.message}`)
+        expect().assertFail();
+        done();
+      };
+    });
+
   });
 };
