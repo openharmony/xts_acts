@@ -912,9 +912,9 @@ export default function uitestUiWindowErrorTest() {
    */
     it('test_UiWindow_close_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiWindow_close_17000004 start`);
+      let driver:Driver = Driver.create();
       let isSupportClose = true;
       try {
-        let driver:Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
         let window = await driver.findWindow({bundleName: 'com.uitestScene.acts'});
