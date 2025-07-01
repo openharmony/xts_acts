@@ -13,22 +13,11 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect, TestType,Size, Level} from '@ohos/hypium';
 import data from '@ohos.telephony.data';
 
 export default function CallUXUsabilityOptimizationTest() {
   describe('CallUXUsabilityOptimizationTest', () => {
-    beforeAll(async (done: Function) => {
-      await data.setDefaultCellularDataSlotId(0);
-      await data.enableCellularData();
-      done();
-    });
-    afterAll(async (done: Function) => {
-      await data.setDefaultCellularDataSlotId(0);
-      await data.enableCellularData();
-      await data.disableCellularDataRoaming(0);
-      done();
-    });
 
      /**
      * @tc.number : SUB_Telephony_Data_IsCellularDataRoamingEnabledSync_0100
@@ -38,13 +27,13 @@ export default function CallUXUsabilityOptimizationTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testTelephonyDataIsCellularDataEnabledSync0100', 0, (done: Function) => {
+    it('testTelephonyDataIsCellularDataEnabledSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataEnabledSync0100';
       console.info(`${caseName} test start `);
       try {
         let isEnabled: boolean = data.isCellularDataEnabledSync();
         console.info(`${caseName} cardSlot`);
-        expect(isEnabled).assertEqual(1);
+        expect(isEnabled).assertTrue();
         done();
       } catch (error) {
         console.info(`${caseName} catchError`);
@@ -63,7 +52,7 @@ export default function CallUXUsabilityOptimizationTest() {
      * @tc.size   : MediumTest
      */
 
-    it('testTelephonyDataIsCellularDataRoamingEnabledSync0100', 0, (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabledSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabledSync0100';
       console.info(`${caseName} test start `);
       try {
