@@ -91,11 +91,9 @@ export function readFunction(container: BufferContainer): number[] {
 
 
 export declare class ArkTools {
-  //static forceFullGC(): void;
 }
 
 export function gc() {
-  //ArkTools.forceFullGC()
 }
 
 
@@ -203,34 +201,3 @@ export class MemoryMonitor {
     this.referenceObjects = [];
   }
 }
-
-/**
- * Performs buffer operations for the ArrayBuffer performance test
- * Used in ArrayBufferTest2100 - Tests multi-threaded (10 threads) operations on ArrayBuffer
- * Each thread performs 1000 iterations of buffer creation, typed array usage, and slice operations
- *
- * @returns The sum of all processed array values across all iterations
- */
-// export function performBufferOperations(): number {
-//   let threadSum: number = 0;
-//   for (let i = 0; i < 1000; i++) {
-//     const sab = new ArrayBuffer(64);
-//     const int32Array = new Int32Array(sab);
-//     for (let j = 0; j < int32Array.length; j++) {
-//       int32Array[j] = j;
-//     }
-//
-//     let sum: number = 0;
-//     for (let j = 0; j < int32Array.length; j++) {
-//       sum += int32Array[j];
-//     }
-//     threadSum += sum;
-//
-//     const sabSlice = sab.slice(0, 32);
-//     const checkByteLength = sabSlice.byteLength === 32;
-//     if (!checkByteLength) {
-//       threadSum -= 1;
-//     }
-//   }
-//   return threadSum;
-// }
