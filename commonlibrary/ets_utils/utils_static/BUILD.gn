@@ -19,7 +19,6 @@ group("utils_static") {
     deps = [
       "arkts_static:arkts_static",
       "concurrency_static:concurrency_static",
-      "sharedarraybuffer_test_static:sharedarraybuffer_test_static",
     ]
   }
 }
