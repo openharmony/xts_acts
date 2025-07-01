@@ -64,7 +64,6 @@ export default function ActsNotificationSecondaryDirectoryTest() {
     beforeEach(() => {
       console.info(`${TAG} beforeEach START`)
       await notificationManager.cancelAll()
-      await notificationManager.removeAllSlots();
       await Utils.msSleep(1000);
       console.info(`${TAG} beforeEach END`)
     })

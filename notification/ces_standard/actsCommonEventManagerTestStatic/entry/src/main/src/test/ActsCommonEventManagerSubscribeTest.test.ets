@@ -80,161 +80,163 @@ export default function ActsCommonEventManagerSubscribeTest() {
             expect(false).assertTrue()
             done()
           } else {
-            console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 createSubscriber success ${commonEventSubscriber}`)
-            if(commonEventSubscriber !== undefined){
+            console.info(TAG +
+              `Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 createSubscriber success ${commonEventSubscriber}`)
+            if (commonEventSubscriber !== undefined) {
               subscriber = commonEventSubscriber
-            }else{
+            } else {
               expect(false).assertTrue()
               done()
             }
-        })
-      } catch (err: BusinessError) {
-        console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 failed, code is ${err.code}, message is ${err.message}`)
-        expect(false).assertTrue()
-        done()
-      }
-
-      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 END`)
-    })
-
-    //问题单号：DTS2025061412066
-    /*
-     * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
-     * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
-     * @tc.desc: verify the promise function
-     */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_Static_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_2000'
-      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 START`)
-
-      let subscriber:commonEventManager.CommonEventSubscriber
-
-      let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
-        events: ["event10"]
-      }
-
-      try {
-        commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined) => {
-          if (err) {
-            console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber err, error code: ${err.code}, message: ${err.message}`)
-            expect(false).assertTrue()
-            done()
-          } else {
-            console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber success ${commonEventSubscriber}`)
-            expect(true).assertTrue()
           }
-        })
-      } catch (err: BusinessError) {
-        console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 failed, code is ${err.code}, message is ${err.message}`)
-        expect(false).assertTrue()
-        done()
-      }
-      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 END`)
-    })
-
-    //问题单号：DTS2025061412066
-    /*
-     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
-     * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
-     * @tc.desc: verify the callback function
-     */
-    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100 START`)
-
-      let options:commonEventManager.CommonEventPublishData = {
-        code: 0,
-        data: "initial data",
-        isOrdered: true,
-        isSticky: false,
-      }
-
-      let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
-        events: ["eventname"],
-        priority:100
-      };
-
-      let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
-      commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
-        if (err) {
+          })
+        } catch (err: BusinessError) {
+          console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 failed, code is ${err.code}, message is ${err.message}`)
           expect(false).assertTrue()
           done()
-        } else {
-          done()
         }
+
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 END`)
       })
 
-      try {
-        setTimeout(()=>{
-          commonEventManager.publish("eventname", options, (err: BusinessError|null)=> {
+      //问题单号：DTS2025061412066
+      /*
+       * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
+       * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
+       * @tc.desc: verify the promise function
+       */
+      it('Sub_Notification_Ans_Subscriber_Subscribe_Static_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
+        let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_2000'
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 START`)
+
+        let subscriber:commonEventManager.CommonEventSubscriber
+
+        let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
+          events: ["event10"]
+        }
+
+        try {
+          commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined) => {
             if (err) {
-              console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+              console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber err, error code: ${err.code}, message: ${err.message}`)
               expect(false).assertTrue()
               done()
             } else {
-              console.info(TAG+`publish success`)
+              console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber success ${commonEventSubscriber}`)
+              expect(true).assertTrue()
             }
-          });
-        }, 1000);
-      } catch (err: BusinessError) {
-        console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
-      }
-    })
-
-    //问题单号：DTS2025061412066
-    /*
-     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
-     * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
-     * @tc.desc: verify the callback function
-     */
-
-    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 START`)
-
-      let options:commonEventManager.CommonEventPublishData = {
-        code: 0,
-        data: "initial data",
-      }
-
-      let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
-        events: ["eventname2"],
-        priority: 100
-      };
-
-      let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
-      commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
-        if (err) {
-          console.error(TAG+`subscribe failed, code is ${err.code}, message is ${err.message}`)
+          })
+        } catch (err: BusinessError) {
+          console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 failed, code is ${err.code}, message is ${err.message}`)
           expect(false).assertTrue()
           done()
-        } else {
-          done()
+        }
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 END`)
+      })
+
+      //问题单号：DTS2025061412066
+      /*
+       * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
+       * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
+       * @tc.desc: verify the callback function
+       */
+      it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100 START`)
+
+        let options:commonEventManager.CommonEventPublishData = {
+          code: 0,
+          data: "initial data",
+          isOrdered: true,
+          isSticky: false,
+        }
+
+        let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
+          events: ["eventname"],
+          priority:100
+        };
+
+        let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
+        commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
+          if (err) {
+            expect(false).assertTrue()
+            done()
+          } else {
+            done()
+          }
+        })
+
+        try {
+          setTimeout(()=>{
+            commonEventManager.publish("eventname", options, (err: BusinessError|null)=> {
+              if (err) {
+                console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+                expect(false).assertTrue()
+                done()
+              } else {
+                console.info(TAG+`publish success`)
+              }
+            });
+          }, 1000);
+        } catch (err: BusinessError) {
+          console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
         }
       })
 
-      let publishCB=(err: BusinessError | null)=> {
-        if (err) {
+      //问题单号：DTS2025061412066
+      /*
+       * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
+       * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
+       * @tc.desc: verify the callback function
+       */
+
+      it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 START`)
+
+        let options:commonEventManager.CommonEventPublishData = {
+          code: 0,
+          data: "initial data",
+        }
+
+        let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
+          events: ["eventname2"],
+          priority: 100
+        };
+
+        let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
+        commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
+          if (err) {
+            console.error(TAG+`subscribe failed, code is ${err.code}, message is ${err.message}`)
+            expect(false).assertTrue()
+            done()
+          } else {
+            done()
+          }
+        })
+
+        let publishCB=(err: BusinessError | null)=> {
+          if (err) {
+            console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+            expect(false).assertTrue()
+            done()
+          } else {
+            console.info(TAG+`publish success`)
+          }
+        }
+
+        try {
+          setTimeout(()=>{
+            commonEventManager.publish("eventname2", options, publishCB);
+          }, 1000);
+        } catch (err: BusinessError) {
           console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
           expect(false).assertTrue()
           done()
-        } else {
-          console.info(TAG+`publish success`)
         }
-      }
 
-      try {
-        setTimeout(()=>{
-          commonEventManager.publish("eventname2", options, publishCB);
-        }, 1000);
-      } catch (err: BusinessError) {
-        console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
-        expect(false).assertTrue()
-        done()
-      }
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 END`)
+      })
 
-      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 END`)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST END`)
     })
-
-    console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST END`)
-  })
-}
+  }
 
