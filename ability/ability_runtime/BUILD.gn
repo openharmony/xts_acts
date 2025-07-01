@@ -60,6 +60,7 @@ group("ability_runtime") {
       "actsnfcselecttypes:actsnfcselecttypes",
       "actsondestroytest:actsondestroytest",
       "actsopenlinktest:actsopenlinktest",
+      "actsopenlinktestrelystatic:actsopenlinkRelyStaticTest",
       "actsopenlinkteststatic:actsopenlinkStaticTest",
       "actsparsingparameterstest:actsparsingparameterstest",
       "actsphotoeditorextensiontest:ActsPhotoEditorExtensionTest",

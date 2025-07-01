@@ -32,6 +32,7 @@
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
+        "permissions": ["START_ABILITY_SUCCESS"],
         "skills": [
           {
             "entities": [
@@ -39,30 +40,15 @@
             ],
             "actions": [
               "action.system.home"
+            ],
+            "uris": [
+              {
+                "scheme": "example",
+                "host": "www.example1.com"
+              }
             ]
           }
         ]
-      },
-      {
-        "name": "EntryAbility1",
-        "srcEntry": "./ets/entryability1/EntryAbility1.ets",
-        "description": "$string:EntryAbility1_desc",
-        "icon": "$media:layered_image",
-        "label": "$string:EntryAbility1_label",
-        "startWindowIcon": "$media:startIcon",
-        "startWindowBackground": "$color:start_window_background",
-        "exported": false
-      },
-      {
-        "name": "EntryAbility2",
-        "srcEntry": "./ets/entryability2/EntryAbility2.ets",
-        "description": "$string:EntryAbility1_desc",
-        "icon": "$media:layered_image",
-        "label": "$string:EntryAbility1_label",
-        "startWindowIcon": "$media:startIcon",
-        "startWindowBackground": "$color:start_window_background",
-        "exported": true,
-        "permissions": ["START ABILITY SUCCESS"]
       }
     ]
   }

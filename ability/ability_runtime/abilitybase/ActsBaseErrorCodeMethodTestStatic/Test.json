@@ -2,15 +2,16 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "bundle-name": "com.example.actstemplatetest.static",
+        "test-timeout": "300000",
+        "bundle-name": "com.acts.actsbaseerrrocodemethodtest.static",
         "module-name": "entry",
-        "shell-timeout": "600000",
-        "testcase-timeout": "180000"
+        "shell-timeout": "300000",
+        "testcase-timeout": "15000"
     },
     "kits": [{
         "test-file-name": [
-            "ActsTemplateStaticTest.hap"
+            "ActsBaseErrorCodeMethodStaticTest.hap",
+            "ActsBaseErrorRelyStaticTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
