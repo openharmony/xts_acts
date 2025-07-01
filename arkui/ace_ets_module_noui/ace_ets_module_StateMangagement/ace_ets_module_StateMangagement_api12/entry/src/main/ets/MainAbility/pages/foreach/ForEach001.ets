@@ -15,7 +15,7 @@
 @Entry
 @ComponentV2
 struct ForEachwithAnimateTo {
-  @Local simpleList: Array<string> = new Array<string>();
+  @Local simpleList: string[] = [];
   @Local rotateAngle: number = 0;
   @Local arrLast: string = this.simpleList[this.simpleList.length - 1];
   aboutToAppear(): void {

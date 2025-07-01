@@ -113,7 +113,7 @@ class MyCusDataSource extends MyBasicDataSource {
     });
   }
 }
-let childV1_count = 0;
+let childV1Count = 0;
 @Reusable
 @Component
 struct ChildV1 {
@@ -125,7 +125,7 @@ struct ChildV1 {
     this.newId = this.myId;
   }
   aboutToAppear(): void {
-    this.myId = childV1_count++;
+    this.myId = childV1Count++;
     this.newId = this.myId;
   }
   build() {
@@ -199,7 +199,6 @@ struct MyComponent {
           .onClick(() => {
             this.scroller.scrollToIndex(4);
             this.data.changeMultipleData([4,5,6], `update${this.changeNum++}`);
-            // this.data.changeData("change_1",5);
           })
       }
       List({ space: 3 ,scroller: this.scroller}) {

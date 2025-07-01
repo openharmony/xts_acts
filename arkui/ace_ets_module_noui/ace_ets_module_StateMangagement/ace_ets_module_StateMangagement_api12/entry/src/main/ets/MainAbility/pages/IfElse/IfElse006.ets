@@ -35,7 +35,7 @@ struct IfElseChild {
 @Entry
 @ComponentV2
 struct IfElsewithAnimateTo {
-  @Local simpleList: Array<string> = new Array<string>();
+  @Local simpleList: string[] = [];
   @Local rotateAngle: number = 0;
   @Local flag: boolean = true;
   @Provider('fontColor') fontColor: string = 'red';
