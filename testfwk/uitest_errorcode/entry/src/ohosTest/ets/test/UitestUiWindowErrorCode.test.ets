@@ -915,7 +915,9 @@ export default function uitestUiWindowErrorTest() {
       let isSupportClose = true;
       try {
         let driver:Driver = Driver.create();
-        let window: UiWindow = await driver.findWindow({actived: true});
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let window = await driver.findWindow({bundleName: 'com.uitestScene.acts'});
         await window.close();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_close_17000004 isSupportClose error is: ${JSON.stringify(e)}`);
@@ -923,6 +925,8 @@ export default function uitestUiWindowErrorTest() {
           isSupportClose = false;
         }
       }
+      await stopApplication('com.uitestScene.acts');
+      await driver.delayMs(waitUiReadyMs);
       console.log(`${TestTag}, test_UiWindow_close_17000004 isSupportClose is: ${ isSupportClose }`);
       if (isSupportClose) {
         try {
@@ -953,12 +957,16 @@ export default function uitestUiWindowErrorTest() {
       console.log(`${TestTag}, test_UiWindow_close_17000005 start`);
       try {
         let driver = Driver.create();
-        let window = await driver.findWindow({actived: true});
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let window = await driver.findWindow({bundleName: 'com.uitestScene.acts'});
+        await driver.delayMs(waitUiReadyMs);
         await window.close();
       }catch (e) {
         console.log(`${TestTag}, test_UiWindow_close_17000005 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(DeviceErrorCode);
       }
+      await stopApplication('com.uitestScene.acts');
       await sleep(waitUiReadyMs);
       console.log(`${TestTag}, test_UiWindow_close_17000005 end`);
     })
