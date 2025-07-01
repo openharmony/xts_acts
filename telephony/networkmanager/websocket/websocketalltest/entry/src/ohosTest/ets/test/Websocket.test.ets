@@ -47,7 +47,7 @@ let options: webSocket.WebSocketRequestOptions = {
   }
 };
 let ws: webSocket.WebSocket;
-let availableWebSocketAddress: string = 'ws://124.222.6.60:8800';
+let availableWebSocketAddress: string = 'wss://whale.tooly.top/ws';
 
 export default function WebSocketTest() {
   describe('webSocketTest', () => {
