@@ -193,6 +193,9 @@
     "MainAbility/pages/LazyForEach/LazyForEachInterface",
     "MainAbility/pages/Repeat/Repeat0010",
     "MainAbility/pages/Repeat/Repeat0400",
-    "MainAbility/pages/Repeat/RepeatwithAnimateTo"
+    "MainAbility/pages/Repeat/RepeatwithAnimateTo",
+    "MainAbility/pages/foreach/ForEach001",
+    "MainAbility/pages/IfElse/IfElse006",
+    "MainAbility/pages/LazyForEach/LazyForEach001"
   ]
 }
