@@ -851,5 +851,119 @@ export default function callingStaticMethodsTest() {
         done();
         hilog.info(domain, tag, 'Class_CallStaticMethod_Float_0100 end');
       })
+
+    /*
+     * @tc.number    : Class_CallStaticMethod_Ref_0100
+     * @tc.name      : Class_CallStaticMethod_Ref_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("Class_CallStaticMethod_Ref_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Class_CallStaticMethod_Ref();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_0100 done');
+        done();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_0100 end');
+      })
+
+    /*
+     * @tc.number    : Class_CallStaticMethod_Ref_V_0100
+     * @tc.name      : Class_CallStaticMethod_Ref_V_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("Class_CallStaticMethod_Ref_V_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_V_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Class_CallStaticMethod_Ref_V();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_V_0100 done');
+        done();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_V_0100 end');
+      })
+
+    /*
+     * @tc.number    : Class_CallStaticMethod_Ref_A_0100
+     * @tc.name      : Class_CallStaticMethod_Ref_A_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("Class_CallStaticMethod_Ref_A_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_A_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Class_CallStaticMethod_Ref_A();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_A_0100 done');
+        done();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Ref_A_0100 end');
+      })
+
+    /*
+     * @tc.number    : Class_CallStaticMethod_Boolean_0100
+     * @tc.name      : Class_CallStaticMethod_Boolean_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("Class_CallStaticMethod_Boolean_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Class_CallStaticMethod_Boolean();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_0100 done');
+        done();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_0100 end');
+      })
+
+    /*
+     * @tc.number    : Class_CallStaticMethod_Boolean_A_0100
+     * @tc.name      : Class_CallStaticMethod_Boolean_A_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("Class_CallStaticMethod_Boolean_A_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_A_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Class_CallStaticMethod_Boolean_A();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_A_0100 done');
+        done();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_A_0100 end');
+      })
+
+    /*
+     * @tc.number    : Class_CallStaticMethod_Boolean_V_0100
+     * @tc.name      : Class_CallStaticMethod_Boolean_V_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("Class_CallStaticMethod_Boolean_V_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_V_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Class_CallStaticMethod_Boolean_V();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_V_0100 done');
+        done();
+        hilog.info(domain, tag, 'Class_CallStaticMethod_Boolean_V_0100 end');
+      })
   })
 }

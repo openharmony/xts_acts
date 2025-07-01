@@ -116,3 +116,20 @@
 
   static count: int = 0;
  }
+
+ export class FooStatic {
+   constructor() {
+   }
+
+   static get_button_names(): string {
+     return "up";
+   }
+
+   static get_button_names_v(a: int): string {
+     return "get "+a;
+   }
+
+   static funcA(a0: boolean, a1: boolean): boolean {
+     return a0 || a1;
+   }
+ }

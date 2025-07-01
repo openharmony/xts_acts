@@ -299,6 +299,67 @@ export class Foo {
   native test_PromiseResolver_Resolve(): boolean;
   native test_PromiseResolver_Reject(): boolean;
 
+  native test_Variable_SetValue_Long(): boolean;
+  native test_Variable_SetValue_Int(): boolean;
+  native test_Variable_SetValue_Double(): boolean;
+  native test_Variable_GetValue_Ref(): boolean;
+  native test_Variable_GetValue_Double(): boolean;
+  native test_Variable_GetValue_Boolean(): boolean;
+  native test_Variable_GetValue_Int(): boolean;
+  native test_Variable_GetValue_Long(): boolean;
+  native test_Namespace_FindVariable(): boolean;
+  native test_Variable_SetValue_Boolean(): boolean;
+  native test_Variable_SetValue_Char(): boolean;
+  native test_Variable_SetValue_Byte(): boolean;
+  native test_Variable_SetValue_Short(): boolean;
+  native test_Variable_SetValue_Float(): boolean;
+  native test_Variable_SetValue_Ref(): boolean;
+  native test_Variable_GetValue_Char(): boolean;
+  native test_Variable_GetValue_Byte(): boolean;
+  native test_Variable_GetValue_Short(): boolean;
+  native test_Variable_GetValue_Float(): boolean;
+  native test_Module_FindNamespace(): boolean;
+  native test_Module_FindClass(): boolean;
+  native test_Module_FindEnum(): boolean;
+  native test_Module_FindFunction(): boolean;
+  native test_Module_FindVariable(): boolean;
+  native test_Namespace_FindNamespace(): boolean;
+  native test_Namespace_FindClass(): boolean;
+  native test_Namespace_FindEnum(): boolean;
+  native test_Namespace_FindFunction(): boolean;
+  native test_Enum_GetEnumItemByName(): boolean;
+  native test_Enum_GetEnumItemByIndex(): boolean;
+  native test_EnumItem_GetEnum(): boolean;
+  native test_EnumItem_GetValue_Int(): boolean;
+  native test_EnumItem_GetValue_String(): boolean;
+  native test_EnumItem_GetName(): boolean;
+  native test_EnumItem_GetIndex(): boolean;
+  native test_TupleValue_GetItem_Boolean(): boolean;
+  native test_TupleValue_GetItem_Char(): boolean;
+  native test_TupleValue_GetItem_Byte(): boolean;
+  native test_TupleValue_GetItem_Short(): boolean;
+  native test_TupleValue_GetItem_Int(): boolean;
+  native test_TupleValue_GetItem_Long(): boolean;
+  native test_TupleValue_GetItem_Float(): boolean;
+  native test_TupleValue_GetItem_Double(): boolean;
+  native test_TupleValue_GetItem_Ref(): boolean;
+  native test_TupleValue_SetItem_Boolean(): boolean;
+  native test_TupleValue_SetItem_Char(): boolean;
+  native test_TupleValue_SetItem_Byte(): boolean;
+  native test_TupleValue_SetItem_Short(): boolean;
+  native test_TupleValue_SetItem_Int(): boolean;
+  native test_TupleValue_SetItem_Long(): boolean;
+  native test_TupleValue_SetItem_Float(): boolean;
+  native test_TupleValue_SetItem_Double(): boolean;
+  native test_TupleValue_SetItem_Ref(): boolean;
+  native test_TupleValue_GetNumberOfItems(): boolean;
+  native test_Class_CallStaticMethod_Ref(): boolean;
+  native test_Class_CallStaticMethod_Ref_V(): boolean;
+  native test_Class_CallStaticMethod_Ref_A(): boolean;
+  native test_Class_CallStaticMethod_Boolean(): boolean;
+  native test_Class_CallStaticMethod_Boolean_A(): boolean;
+  native test_Class_CallStaticMethod_Boolean_V(): boolean;
+
   constructor() {
   }
 
