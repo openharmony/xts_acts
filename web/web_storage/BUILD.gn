@@ -11,21 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("web") {
+group("WebStorage") {
   testonly = true
-  deps = [
-    "DFX:DFXTest",
-    "application_interworking:ActsApplicationInterworkingTest",
-    "page_interaction:pageInteraction",
-    "web_content_processing:WebContentProcessing",
-    "web_jump:WebJump",
-    "web_life_cycle:webLifeCycle",
-    "web_load:WebLoad",
-    "web_multi_media:WebMultimedia",
-    "web_page_document_processing:webPageDocumentProcessing",
-    "web_page_rendering:webPageRenderingTest",
-    "web_security_privacy:WebSecurityPrivacy",
-    "web_storage:WebStorage",
-    "web_device:WebDeviceService",
-  ]
+  if (is_standard_system) {
+    deps = [
+      "web_storage_static:ActsWebStorageStaticTest",
+    ]
+  }
 }
