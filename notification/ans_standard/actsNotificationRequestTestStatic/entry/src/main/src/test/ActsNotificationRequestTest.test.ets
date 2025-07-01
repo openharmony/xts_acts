@@ -111,7 +111,7 @@ export default function ActsNotificationRequestTest() {
           appInstanceKey: undefined,
         }
         hilog.info(0x000, `${TEST_CASE_NAME}`, `${TEST_CASE_NAME} test case start`);
-
+        await Utils.msSleep(3000)
         try {
           notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TEST_CASE_NAME}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));

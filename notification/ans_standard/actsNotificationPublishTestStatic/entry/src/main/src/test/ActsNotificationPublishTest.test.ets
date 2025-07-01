@@ -27,14 +27,41 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import { Component, Driver, ON, loadAndSetUpUiTest } from '@ohos.UiTest'
 let bundle_name:string = "com.example.actsnotificationpublish.static"
 let domain: number = 0x0000;
+let wantAgentData : Object = {}
 
+let parameters1 : Record<String,Object> = {
+  "mykey0": 2222,
+  "mykey1": [1, 2, 3],
+  "mykey2": "[1, 2, 3]",
+  "mykey3": "ssssssssssssssssssssssssss",
+  "mykey4": [false, true, false],
+  "mykey5": ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
+  "mykey6": true,
+}
+// wantAgent
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: "deviceId",
+      bundleName: bundle_name,
+      abilityName: "com.example.actsnotificationpublish.static.MainAbility",
+      action: "action1",
+      entities: ["entity1"],
+      type: "MIMETYPE",
+      uri: "key={true,true,false}",
+      parameters:parameters1,
+    }
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+  actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+}as wantAgent.WantAgentInfo
 
 export default function ActsNotificationPublishTest() {
   describe('ActsNotificationPublishTest', () => {
     let TAG:string = 'SUB_NOTIFICATION_ANS_Publish_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_Publish_TEST START')
     let testAbilityContext:common.UIAbilityContext;
-
 
     beforeAll(() => {
       hilog.info(domain, TAG, '%{public}s', 'beforeAll start');
@@ -54,49 +81,17 @@ export default function ActsNotificationPublishTest() {
         }
         hilog.info(domain, TAG, '%{public}s', 'BusinessError  end');
       });
-      await Utils.msSleep(2000)
+      await Utils.msSleep(1000)
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b " + bundle_name )
-      await Utils.msSleep(2000)
+      await Utils.msSleep(1000)
+      wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+        wantAgentData = data;
+      }).catch((err: BusinessError) :void => {
+        console.error('getWantAgent failed! ${err.code} ${err.message}');
+      });
+      await Utils.msSleep(1000)
       hilog.info(domain, TAG, '%{public}s', 'beforeAll end');
     })
-
-    let wantAgentData : Object = {}
-
-    let parameters1 : Record<String,Object> = {
-      "mykey0": 2222,
-      "mykey1": [1, 2, 3],
-      "mykey2": "[1, 2, 3]",
-      "mykey3": "ssssssssssssssssssssssssss",
-      "mykey4": [false, true, false],
-      "mykey5": ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
-      "mykey6": true,
-    }
-    // wantAgent
-    let wantAgentInfo: wantAgent.WantAgentInfo = {
-      wants: [
-        {
-          deviceId: "deviceId",
-          bundleName: bundle_name,
-          abilityName: "com.example.actsnotificationpublish.static.MainAbility",
-          action: "action1",
-          entities: ["entity1"],
-          type: "MIMETYPE",
-          uri: "key={true,true,false}",
-          parameters:parameters1,
-        }
-      ],
-      actionType: wantAgent.OperationType.START_ABILITIES,
-      requestCode: 0,
-      actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-    }as wantAgent.WantAgentInfo
-
-     wantAgent.getWantAgent(wantAgentInfo)
-      .then((data) => {
-        console.info(`${TAG} getWantAgent AsyncCallback success: ${data}`)
-        wantAgentData =  data;
-      }).catch((err: BusinessError): void => {
-        console.info(TAG + "getWantAgent err = " + err);
-      })
 
     beforeEach(() => {
       console.info(`${TAG} beforeEach START`)

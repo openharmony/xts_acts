@@ -869,7 +869,7 @@ export default function ActsNotificationManagerPublishTest() {
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0410
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0410
      * @tc.desc: test publish fail
-  */
+     */
     it('Sub_Notification_Ans_Publish_Publish_Static_0410', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_0410'
@@ -1041,7 +1041,7 @@ export default function ActsNotificationManagerPublishTest() {
    * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0710
    * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0710
    * @tc.desc: test publish fail
-*/
+   */
     it(" Sub_Notification_Ans_Publish_Publish_Static_0710", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_0710'

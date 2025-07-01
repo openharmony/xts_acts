@@ -76,7 +76,7 @@ export default function ActsDenyTest() {
         let TAG = 'Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Deny_Test_Static_0100'
         notificationManager.requestEnableNotification(testAbilityContext).then(() => {
           console.info(`${TAG} requestEnableNotification should failed`);
-          expect(true).assertTrue()
+          expect(false).assertTrue()
           done()
         }).catch((err: BusinessError):void => {
           console.info(`${TAG} requestEnableNotification err: JSON.stringify(err)`);

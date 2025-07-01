@@ -67,19 +67,28 @@ export default function ActsCallbackTest() {
         notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} requestEnableNotification err: ${JSON.stringify(err)}`)
+            if (err.code !== 1600004) {
+            console.info(`${TAG} requestEnableNotification err: JSON.stringify(err)`);
             expect(false).assertTrue()
             done()
+            }else{
+              expect(true).assertTrue()
+              console.info(`${TAG} succeeded.`);
+              done()
+            }
           } else {
             console.info(`${TAG} requestEnableNotification succeeded`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             await Utils.msSleep(1000)
             done()
           }
+
+          
         })
         await Utils.msSleep(1500)
         let driver = Driver.create()
         await Utils.msSleep(1500)
-        let button = await driver.findComponent(ON.text('允许'))
+        let button = await driver.findComponent(ON.text('不允许'))
         console.info(`${TAG} button is ${JSON.stringify(button)}`)
         if (button !== null) {
           await button.click();
