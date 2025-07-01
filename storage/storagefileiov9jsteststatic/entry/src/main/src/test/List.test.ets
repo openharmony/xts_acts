@@ -1,6 +1,7 @@
 import fileIOAccess from "./Access.test";
 import fileIOClose from "./Close.test";
 import fileIOCopy from "./Copy.test";
+import fileIOCopyDir from "./CopyDir.test";
 import fileIOCopyfile from "./CopyFile.test";
 import fileIOCreateStream from "./CreateStream.test";
 import fileIOCreateRandomAccessFile from "./CreateRandomAccessFile.test";
@@ -13,6 +14,7 @@ import fileIOLstat from "./Lstat.test";
 import fileIOMkdir from "./Mkdir.test";
 import fileIOMkdir11 from "./Mkdir11.test";
 import fileIOMkdtemp from "./Mkdtemp.test";
+import fileIOMoveDir from "./MoveDir.test";
 import fileIORead from "./Read.test";
 import fileIOReadtext from './Readtext.test';
 import fileIOReadLines from './ReadLines.test';
@@ -40,10 +42,12 @@ import fileIOWatcher from './Watcher.test';
 import fileIORandomAccessFileClose from './class_randomAccessFile/Close.test';
 import fileIORandomAccessFileRead from './class_randomAccessFile/Read.test';
 import fileIORandomAccessFileSetFilePointer from './class_randomAccessFile/SetFilePointer.test';
+import fileIORandomAccessFileWrite from './class_randomAccessFile/Write.test';
 export default function testsuite() {
     fileIOAccess();
     fileIOClose();
     fileIOCopy();
+    fileIOCopyDir();
     fileIOCopyfile();
     fileIOCreateStream();
     fileIOCreateRandomAccessFile();
@@ -56,6 +60,7 @@ export default function testsuite() {
     fileIOMkdir();
     fileIOMkdir11();
     fileIOMkdtemp();
+    fileIOMoveDir();
     fileIORead();
     fileIOReadtext();
     fileIOReadLines();
@@ -72,7 +77,7 @@ export default function testsuite() {
     fileIOSymlink();
     fileIOWrite();
     fileIOLseek();
-	  fileIOHash();
+	fileIOHash();
     fileIORW();
     fileIOStreamClose();
     fileIOStreamFlush();
@@ -83,4 +88,5 @@ export default function testsuite() {
     fileIORandomAccessFileClose();
     fileIORandomAccessFileRead();
     fileIORandomAccessFileSetFilePointer();
+    fileIORandomAccessFileWrite();
 }
