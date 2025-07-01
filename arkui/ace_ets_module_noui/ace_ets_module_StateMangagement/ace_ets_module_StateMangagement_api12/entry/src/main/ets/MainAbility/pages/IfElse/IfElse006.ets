@@ -14,7 +14,7 @@
  */
 @ComponentV2
 struct IfElseChild {
-  @Param str: string = "ww";
+  @Param str: string = 'ww';
   @Param color: Color = Color.Blue;
   @Consumer('fontColor') fontColor: string = 'blue';
 
