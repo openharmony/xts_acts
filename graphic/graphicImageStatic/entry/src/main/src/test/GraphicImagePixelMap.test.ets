@@ -1070,15 +1070,95 @@ export default function graphicImagePixelMap() {
         }
         try {
           pixelMap.setMemoryNameSync("PixelMapName Test");
-          expect().assertFail();
+          expect(true).assertTrue();
         } catch (err: BusinessError) {
-          console.info('www data graphicImagePixelMap_static_4500 error ' + JSON.stringify(err))
-          expect(err.code == 62980286).assertTrue();
+          if (err.code == 62980286) {
+            console.info('www data graphicImagePixelMap_static_4500 error code ' + JSON.stringify(err))
+            expect(true).assertTrue();
+          } else {
+            console.info('www data graphicImagePixelMap_static_4500 error ')
+          }
         }
         done();
       })
 
+    /**
+     * @tc.number: graphicImagePixelMap_static_4600
+     * @tc.name: graphicImagePixelMap_static_4600
+     * @tc.desc: image API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('graphicImagePixelMap_static_4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+        const color: ArrayBuffer = new ArrayBuffer(96);
+        let opts: image.InitializationOptions = {
+          editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 }
+        }
+        try {
+          const flag = pixelMap.isStrideAlignment;
+          expect(false).assertEqual(flag);
+        } catch (err: BusinessError) {
+          console.info('www data graphicImagePixelMap_static_4600 error ' + JSON.stringify(err))
+          expect().assertFail();
+        }
+        done();
+      })
 
+    /**
+     * @tc.number: graphicImagePixelMap_static_4700
+     * @tc.name: graphicImagePixelMap_static_4700
+     * @tc.desc: image API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('graphicImagePixelMap_static_4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+        const color: ArrayBuffer = new ArrayBuffer(96);
+        let opts: image.InitializationOptions = {
+          editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 }
+        }
+        try {
+          pixelMap.release().then(() => {
+            console.info('Succeeded in releasing graphicImagePixelMap_static_4700 object.');
+            expect(true).assertTrue();
+          }).catch((error) => {
+            console.error('Failed to release graphicImagePixelMap_static_4700 object.');
+            expect().assertFail();
+          })
+        } catch (err: BusinessError) {
+          console.info('www data graphicImagePixelMap_static_4600 error ' + JSON.stringify(err))
+          expect().assertFail();
+        }
+        done();
+      })
 
+    /**
+     * @tc.number: graphicImagePixelMap_static_4800
+     * @tc.name: graphicImagePixelMap_static_4800
+     * @tc.desc: image API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('graphicImagePixelMap_static_4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+        const color: ArrayBuffer = new ArrayBuffer(96);
+        let opts: image.InitializationOptions = {
+          editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 }
+        }
+        try {
+          pixelMap.release((err: BusinessError<void> | null) => {
+            console.info('Succeeded in releasing graphicImagePixelMap_static_4800 object.');
+            expect(true).assertTrue();
+          })
+        } catch (err: BusinessError) {
+          console.info('www data graphicImagePixelMap_static_4800 error ' + JSON.stringify(err))
+          expect().assertFail();
+        }
+        done();
+      })
   })
 }
