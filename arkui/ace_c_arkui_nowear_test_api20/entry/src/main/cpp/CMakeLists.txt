@@ -17,6 +17,10 @@ add_library(nativerender SHARED
     drag/GetDisplayIdTest.cpp
     drag/GetDragSourceTest.cpp
     dropBadge/EnableDropDisallowedBadgeTest.cpp
+    component/ComponentTest.cpp
+    component/GridComponentTest.cpp
+    component/TextComponentTest.cpp
+    grid/FocusWrapModeTest.cpp
 )
 
 add_library(nativefunc SHARED

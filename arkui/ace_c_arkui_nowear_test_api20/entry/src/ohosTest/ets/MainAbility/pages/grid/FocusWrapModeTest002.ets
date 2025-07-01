@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,16 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const buttonGetTypeTest: (a: string) => void;
 
-export const FocusWrapModeTest001: (a: string) => void;
+import render from 'libnativerender.so';
+import { CommonView } from '../../componet/CommonView';
 
-export const FocusWrapModeTest002: (a: string) => void;
+@Entry
+@Component
+struct FocusDefaultWrap002 {
+  PAGE_TAG: string = 'FocusWrapModeTest002';
 
-export const FocusWrapModeTest003: (a: string) => void;
-
-export const dragEventGetDisplayId: (a: string) => void;
-
-export const dragEventGetDragSource: (a: string) => void;
-
-export const enableDropDisallowedBadge: (a: string) => void;
+  build() {
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.FocusWrapModeTest002(this.PAGE_TAG);
+      })
+    }
+  }
+}
