@@ -17,6 +17,12 @@ struct MyStateSample {
       Button('start').backgroundColor('#FFFF00FF')
         .onClick((e: ClickEvent) => {
           hilog.info(0x0000, 'testTag', 'Start');
+          let range: ExpectedFrameRateRange = {
+            expected: 60,
+            min: 0,
+            max: 120
+          }
+          this.ds.setExpectedFrameRateRange(range);
           this.ds.on("frame", (info: displaySync.IntervalInfo) => {
             this.timestamp = info.timestamp;
             this.targetTimestamp = info.targetTimestamp;
