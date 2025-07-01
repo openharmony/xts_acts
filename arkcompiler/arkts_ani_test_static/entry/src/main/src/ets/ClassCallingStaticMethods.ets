@@ -90,5 +90,46 @@
    }
  }
 
+  class OperationsMedLong {
+   static sum(a0: long, a1: long): long {
+     return a0 + a1 as long;
+   }
+ }
 
+  class OperationsMedFloat {
+   static sum(a0: float, a1: float): float {
+    return a0 + a1 as float;
+   }
+ }
 
+  class TestDouble {
+   static funcA(a0: double, a1: double): double {
+    return a0 + a1 as double;
+   }
+ }
+
+  class TestVoid {
+   static funcA(a0: int, a1: int): void {
+    TestVoid.count += a0;
+    TestVoid.count += a1;
+  }
+
+  static count: int = 0;
+ }
+
+ export class FooStatic {
+   constructor() {
+   }
+
+   static get_button_names(): string {
+     return "up";
+   }
+
+   static get_button_names_v(a: int): string {
+     return "get "+a;
+   }
+
+   static funcA(a0: boolean, a1: boolean): boolean {
+     return a0 || a1;
+   }
+ }

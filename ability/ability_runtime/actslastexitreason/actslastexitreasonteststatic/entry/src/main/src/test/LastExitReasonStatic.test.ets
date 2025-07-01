@@ -45,7 +45,7 @@ export default function lastExitReasonStaticTest() {
       tag = `SUB_Ability_AbilityRuntime_FaultManagement_Static_7900`;
       hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7900 begin');
       try {
-        let launchParam = AppStorage.get<AbilityConstant.LaunchParam>("launchParam");
+        let launchParam = AppStorage.get<AbilityConstant.LaunchParam>("launchParam", Type.from<AbilityConstant.LaunchParam>());
         hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7900 launchReason: ' + JSON.stringify(launchParam));
         if (launchParam) {
           let launchReason = launchParam.launchReason as number
@@ -86,7 +86,7 @@ export default function lastExitReasonStaticTest() {
         abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.lastexitreasontest.static")
         await Utils.msSleep(2000)
         hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7901 start EntryAbility');
-        let lastExitDetailInfo = AppStorage.get<AbilityConstant.LastExitDetailInfo>("lastExitDetailInfo");
+        let lastExitDetailInfo = AppStorage.get<AbilityConstant.LastExitDetailInfo>("lastExitDetailInfo", Type.from<AbilityConstant.LastExitDetailInfo>());
         hilog.info(domain, tag, 'SUB_Ability_AbilityRuntime_FaultManagement_Static_7901 lastExitDetailInfo: ' + JSON.stringify(lastExitDetailInfo));
         expect(lastExitDetailInfo?.exitMsg).assertEqual("");
         expect(lastExitDetailInfo?.exitSubReason).assertEqual(0);

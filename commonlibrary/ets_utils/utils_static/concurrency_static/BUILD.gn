@@ -17,6 +17,7 @@ group("concurrency_static") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "sharedarraybuffer_test_static:ActsSharedArrayBufferStaticTest",
       "taskpool_sendable_test_static:ActsTaskpoolSendableStaticTest",
       "asynclock_test_static:ActsAsyncLockStaticTest",
     ]

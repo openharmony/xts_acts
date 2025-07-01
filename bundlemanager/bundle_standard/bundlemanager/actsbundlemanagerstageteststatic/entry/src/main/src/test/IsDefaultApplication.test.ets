@@ -23,7 +23,7 @@ export default function isDefaultApplicationTest() {
      * @tc.desc: No default image application is set. Query and return false
      */
 
-    it("Sub_Bms_Framework_Status_DefaultApp_static_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it("Sub_Bms_Framework_Status_DefaultApp_static_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         try {
           defaultAppManager.isDefaultApplication(type, (err: BusinessError<void> | null, result: boolean | undefined) => {
@@ -70,7 +70,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: Sub_Bms_Framework_Status_DefaultApp_static_2550
      * @tc.desc: The parameter type is correct, the string format is incorrect, return false
      */
-    it("Sub_Bms_Framework_Status_DefaultApp_static_2550", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it("Sub_Bms_Framework_Status_DefaultApp_static_2550", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         try {
           boolResult = defaultAppManager.isDefaultApplicationSync(type);
@@ -91,7 +91,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: Sub_Bms_Framework_Status_DefaultApp_static_1200
      * @tc.desc: ApplicationType is string
      */
-    it("Sub_Bms_Framework_Status_DefaultApp_static_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it("Sub_Bms_Framework_Status_DefaultApp_static_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         expect(typeof (defaultAppManager.ApplicationType.BROWSER)).assertEqual('string');
         expect(defaultAppManager.ApplicationType.BROWSER + '').assertEqual('Web Browser');

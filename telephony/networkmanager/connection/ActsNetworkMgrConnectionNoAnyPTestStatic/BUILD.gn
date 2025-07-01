@@ -19,7 +19,7 @@ ohos_js_app_static_suite("ActsNetworkMgrConnectionNopStaticTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNetworkMgrConnectionNopStaticTest"
-  part_name = "ability_runtime"
-  subsystem_name = "ability"
+  part_name = "netmanager_base"
+  subsystem_name = "communication"
 }
 
