@@ -64,7 +64,7 @@ export default function BackgroundProcessManager() {
             expect(error.code == 801).assertTrue();
             done();
           }else{
-            expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+            expect(error.code == PERMISSION_DENIED_CODE).assertTrue();
             done();
           }
         }
@@ -92,7 +92,7 @@ export default function BackgroundProcessManager() {
             expect(error.code == 801).assertTrue();
             done();
           }else{
-            expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+            expect(error.code == PERMISSION_DENIED_CODE).assertTrue();
             done();
           }
         }

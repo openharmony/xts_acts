@@ -15,6 +15,7 @@
 
 import { BusinessError } from '@kit.BasicServicesKit'
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit'
+import { process } from '@kit.ArkTS'
 import hilog from '@ohos.hilog';
 import { describe, it, TestType, Size, Level, beforeAll, afterAll, beforeEach, afterEach, expect } from '@ohos/hypium'
 
@@ -54,7 +55,8 @@ export default function ActsBackgroundProcessManagerNapTest() {
         hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_001 begin---');
 
         try {
-          let pid = 33333;
+          let pid = process.pid;
+          console.info('SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_001 backgroundTaskManager pid: ' + pid);
           backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE);
           expect(true).assertTrue();
           done();
@@ -122,9 +124,12 @@ export default function ActsBackgroundProcessManagerNapTest() {
         hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_004 begin---');
 
         try {
-          let pid = 55555;
+          let pid = process.pid;
+          console.info('SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_004 backgroundTaskManager pid: ' + pid);
           backgroundProcessManager.isPowerSaveMode(pid).then((res) => {
           hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_004 isPowerSaveMode promise res: %{public}s', JSON.stringify(res));
+          expect(res).assertInstanceOf('Boolean');
+          done();
           }).catch((error: BusinessError) => {
             hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_004 isPowerSaveMode promise error: %{public}s', JSON.stringify(error));
           })
@@ -139,6 +144,34 @@ export default function ActsBackgroundProcessManagerNapTest() {
           }}
 
         hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_004 end---');
+      })
+
+    /*
+     * @tc.number:SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_005
+     * @tc.name:SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_005
+     * @tc.desc:Test that the setPowerSaveMode function call with errcode is 31800002
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
+        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_005 begin---');
+
+        try {
+          let pid = 55555;
+          backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE);
+        } catch (error) {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_005 has failed for' + error.message + ' code: ' + error.code);
+          if (error.code == 801) {
+            expect(error.code == 801).assertTrue();
+            done();
+          }else{
+            expect(error.code == 31800002).assertTrue();
+            done();
+          }}
+
+        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_BACKGROUND_PROCESS_MANAGER_NAP_XTS_005 end---');
       })
 
   })
