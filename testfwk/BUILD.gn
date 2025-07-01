@@ -19,6 +19,7 @@ group("testfwk") {
     deps = [
       "uitest:ActsUiTest",
       "uitestScene:ActsUiTestScene",
+      "uitestStatic:ActsUiStaticTest",
     ]
   } else {
     deps = [

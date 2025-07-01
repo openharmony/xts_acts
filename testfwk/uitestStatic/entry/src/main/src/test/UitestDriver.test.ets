@@ -194,6 +194,23 @@ export default function uitestDriverTest() {
             await driver.delayMs(waitUiReadyMs);
           }
         }
+        let button1 = await driver.findComponent(ON.text('next page'));
+        hilog.info(domain, tag, `test_penLongClick_function_static button1, ${  JSON.stringify(button1) }`);
+        expect(button1 != null).assertTrue();
+        if (button1 != null) {
+          let btnPoint1 = await button1.getBoundsCenter();
+          hilog.info(domain, tag, `test_penLongClick_function_static btnPoint1, ${  JSON.stringify(btnPoint1) }`);
+          await driver.penLongClick(btnPoint1);
+          await driver.delayMs(waitUiReadyMs);
+          let newButton1 = await driver.findComponent(ON.text('longClick'));
+          expect(newButton1 != null).assertTrue();
+          if (newButton1 != null) {
+            let text1 = await newButton1.getText();
+            expect(text1 == 'longClick').assertTrue();
+            await newButton1.click();
+            await driver.delayMs(waitUiReadyMs);
+          }
+        }
       } catch(error) {
         hilog.info(domain, tag, `test_penLongClick_function_static error, ${ JSON.stringify(error)} `);
         expect().assertFail();
@@ -281,11 +298,41 @@ export default function uitestDriverTest() {
     })
 
     /*
-    * @tc.number: uitestDriverTest_0010
-    * @tc.name: testMouseScroll_static
+    * @tc.number: uitestDriverTest_0071
+    * @tc.name: testMouseScroll_default_static
     * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
     */
-    it('testMouseScroll_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('testMouseScroll_default_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      let driver = Driver.create();
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      await driver.delayMs(waitUiReadyMs);
+      try {
+        let scrollBar = await driver.findComponent(ON.type('Scroll'))
+        hilog.info(domain, tag, `testMouseScroll_default_static scrollBar, ${  JSON.stringify(scrollBar) }`);
+        expect(scrollBar != null).assertTrue();
+        if (scrollBar != null) {
+          let center = await scrollBar.getBoundsCenter();
+          hilog.info(domain, tag, `testMouseScroll_default_static center, ${  JSON.stringify(center) }`);
+          await driver.mouseScroll(center,true,30);
+          await driver.delayMs(1000);
+        }
+        let button1 = await driver.findComponent(ON.text('next page'));
+        hilog.info(domain, tag, `testMouseScroll_default_static button1 , ${  JSON.stringify(button1) }`);
+        expect(button1 == null).assertTrue();
+      } catch(error) {
+        hilog.info(domain, tag, `testMouseScroll_default_static error, ${ JSON.stringify(error)}`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, "testMouseScroll_default_static over!!!!");
+      await stopApplication('com.uitestScene.acts');
+    })
+
+    /*
+    * @tc.number: uitestDriverTest_0010
+    * @tc.name: testMouseScroll_key_static
+    * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+    */
+    it('testMouseScroll_key_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       let driver = Driver.create();
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       await driver.delayMs(waitUiReadyMs);
@@ -297,54 +344,146 @@ export default function uitestDriverTest() {
             btn = await scrollBar.scrollSearch(ON.id('jump'))
           }
         }
-        hilog.info(domain, tag, `testMouseScroll_static btn, ${  JSON.stringify(btn) }`);
+        hilog.info(domain, tag, `testMouseScroll_key_static btn, ${  JSON.stringify(btn) }`);
         expect(btn != null).assertTrue();
         if (btn != null) {
           await btn.click();
         }
         await driver.delayMs(1000);
         let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
-        hilog.info(domain, tag, `testMouseScroll_static img1, ${  JSON.stringify(img1) }`);
+        hilog.info(domain, tag, `testMouseScroll_key_static img1, ${  JSON.stringify(img1) }`);
         expect(img1 != null).assertTrue();
         if (img1 != null) {
           let bounds1 = await img1.getBounds();
-          hilog.info(domain, tag, `testMouseScroll_static bounds1, ${  JSON.stringify(bounds1) }`);
+          hilog.info(domain, tag, `testMouseScroll_key_static bounds1, ${  JSON.stringify(bounds1) }`);
           let center1 = await img1.getBoundsCenter();
-          hilog.info(domain, tag, `testMouseScroll_static center1, ${  JSON.stringify(center1) }`);
+          hilog.info(domain, tag, `testMouseScroll_key_static center1, ${  JSON.stringify(center1) }`);
           await driver.click(center1.x, center1.y);
           await driver.delayMs(1000);
-          await driver.mouseScroll(center1,false,5,2072,0);
-          hilog.info(domain, tag, `testMouseScroll_static mouseScroll`);
+          await driver.mouseScroll(center1,false,5,2072);
+          hilog.info(domain, tag, `testMouseScroll_key_static mouseScroll`);
           await driver.delayMs(1000);
           let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
           hilog.info(domain, tag, `testMouseScroll_static img2, ${  JSON.stringify(img2) }`);
           expect(img2 != null).assertTrue();
           if (img2 != null) {
             let bounds2 = await img2.getBounds();
-            hilog.info(domain, tag, `testMouseScroll_static bounds2, ${  JSON.stringify(bounds2) }`);
+            hilog.info(domain, tag, `testMouseScroll_key_static bounds2, ${  JSON.stringify(bounds2) }`);
             expect(bounds1 != bounds2).assertTrue()
           }
-          await driver.pressBack();
-          hilog.info(domain, tag, `testMouseScroll_static pressBack`);
-          await driver.delayMs(1000);
-          let scroll = await driver.findComponent(ON.text('1'))
-          hilog.info(domain, tag, `testMouseScroll_static scroll success, ${  JSON.stringify(scroll) }`);
-          expect(scroll != null).assertTrue();
-          if (scroll != null) {
-            let center = await scroll.getBoundsCenter();
-            hilog.info(domain, tag, `testMouseScroll_static center, ${  JSON.stringify(center) }`);
-            await driver.mouseScroll(center,true,30);
-            await driver.delayMs(1000);
-          }
         }
-        let button1 = await driver.findComponent(ON.text('next page'));
-        hilog.info(domain, tag, `testMouseScroll_static button1 , ${  JSON.stringify(button1) }`);
-        expect(button1 == null).assertTrue();
       } catch(error) {
-        hilog.info(domain, tag, `testMouseScroll_static error, ${ JSON.stringify(error)}`);
+        hilog.info(domain, tag, `testMouseScroll_key_static error, ${ JSON.stringify(error)}`);
         expect().assertFail();
       }
-      hilog.info(domain, tag, "testMouseScroll_static over!!!!");
+      hilog.info(domain, tag, "testMouseScroll_key_static over!!!!");
+      await stopApplication('com.uitestScene.acts');
+    })
+
+    /*
+    * @tc.number: uitestDriverTest_0073
+    * @tc.name: testMouseScroll_key2_static
+    * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+    */
+    it('testMouseScroll_key2_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      let driver = Driver.create();
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      await driver.delayMs(waitUiReadyMs);
+      try {
+        let btn = await driver.findComponent(ON.id('jump'));
+        if (btn == null) {
+          let scrollBar = await driver.findComponent(ON.type('Scroll'))
+          if (scrollBar != null) {
+            btn = await scrollBar.scrollSearch(ON.id('jump'))
+          }
+        }
+        hilog.info(domain, tag, `testMouseScroll_key2_static btn, ${  JSON.stringify(btn) }`);
+        expect(btn != null).assertTrue();
+        if (btn != null) {
+          await btn.click();
+        }
+        await driver.delayMs(1000);
+        let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
+        hilog.info(domain, tag, `testMouseScroll_key2_static img1, ${  JSON.stringify(img1) }`);
+        expect(img1 != null).assertTrue();
+        if (img1 != null) {
+          let bounds1 = await img1.getBounds();
+          hilog.info(domain, tag, `testMouseScroll_key2_static bounds1, ${  JSON.stringify(bounds1) }`);
+          let center1 = await img1.getBoundsCenter();
+          hilog.info(domain, tag, `testMouseScroll_key2_static center1, ${  JSON.stringify(center1) }`);
+          await driver.click(center1.x, center1.y);
+          await driver.delayMs(1000);
+          await driver.mouseScroll(center1,false,5,2072, 0);
+          hilog.info(domain, tag, `testMouseScroll_key2_static mouseScroll`);
+          await driver.delayMs(1000);
+          let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
+          hilog.info(domain, tag, `testMouseScroll_key2_static img2, ${  JSON.stringify(img2) }`);
+          expect(img2 != null).assertTrue();
+          if (img2 != null) {
+            let bounds2 = await img2.getBounds();
+            hilog.info(domain, tag, `testMouseScroll_key2_static bounds2, ${  JSON.stringify(bounds2) }`);
+            expect(bounds1 != bounds2).assertTrue()
+          }
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `testMouseScroll_key2_static error, ${ JSON.stringify(error)}`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, "testMouseScroll_key2_static over!!!!");
+      await stopApplication('com.uitestScene.acts');
+    })
+
+
+    /*
+    * @tc.number: uitestDriverTest_0075
+    * @tc.name: testMouseScroll_speed_static
+    * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+    */
+    it('testMouseScroll_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      let driver = Driver.create();
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      await driver.delayMs(waitUiReadyMs);
+      try {
+        let btn = await driver.findComponent(ON.id('jump'));
+        if (btn == null) {
+          let scrollBar = await driver.findComponent(ON.type('Scroll'))
+          if (scrollBar != null) {
+            btn = await scrollBar.scrollSearch(ON.id('jump'))
+          }
+        }
+        hilog.info(domain, tag, `testMouseScroll_speed_static btn, ${  JSON.stringify(btn) }`);
+        expect(btn != null).assertTrue();
+        if (btn != null) {
+          await btn.click();
+        }
+        await driver.delayMs(1000);
+        let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
+        hilog.info(domain, tag, `testMouseScroll_speed_static img1, ${  JSON.stringify(img1) }`);
+        expect(img1 != null).assertTrue();
+        if (img1 != null) {
+          let bounds1 = await img1.getBounds();
+          hilog.info(domain, tag, `testMouseScroll_speed_static bounds1, ${  JSON.stringify(bounds1) }`);
+          let center1 = await img1.getBoundsCenter();
+          hilog.info(domain, tag, `testMouseScroll_speed_static center1, ${  JSON.stringify(center1) }`);
+          await driver.click(center1.x, center1.y);
+          await driver.delayMs(1000);
+          await driver.mouseScroll(center1,false,5,2072, 0, 30);
+          hilog.info(domain, tag, `testMouseScroll_speed_static mouseScroll`);
+          await driver.delayMs(1000);
+          let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'));
+          hilog.info(domain, tag, `testMouseScroll_speed_static img2, ${  JSON.stringify(img2) }`);
+          expect(img2 != null).assertTrue();
+          if (img2 != null) {
+            let bounds2 = await img2.getBounds();
+            hilog.info(domain, tag, `testMouseScroll_speed_static bounds2, ${  JSON.stringify(bounds2) }`);
+            expect(bounds1 != bounds2).assertTrue()
+          }
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `testMouseScroll_speed_static error, ${ JSON.stringify(error)}`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, "testMouseScroll_speed_static over!!!!");
       await stopApplication('com.uitestScene.acts');
     })
 
@@ -354,7 +493,7 @@ export default function uitestDriverTest() {
     * @tc.desc: click in the specified location on the screen.
     */
     it('testDriverClick_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, "testDriverClick_static over!!!!")
+      hilog.info(domain, tag, "testDriverClick_static start!!!!")
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs)
@@ -522,7 +661,7 @@ export default function uitestDriverTest() {
         expect(button != null).assertTrue();
         if (button != null) {
           let center = await button.getBoundsCenter();
-          await driver.mouseClick({x:center.x, y:center.y}, MouseButton.MOUSE_BUTTON_LEFT);
+          await driver.mouseClick({x:center.x, y:center.y}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
           await driver.delayMs(waitUiReadyMs * 3);
           let Button3 = await driver.findComponent(ON.id('jump'));
           hilog.info(domain, tag, `testMouseClick_LEFT Button3, ${ JSON.stringify(Button3)}`);
@@ -863,25 +1002,96 @@ export default function uitestDriverTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
         await driver.delayMs(waitUiReadyMs)
         // 垂直滑动
-        await driver.penSwipe({x: 500, y: 1100},
-          {x: 500, y: 300 },600, 0.5);
-        let text = await driver.findComponent(ON.text('toast'));
-        await driver.delayMs(waitUiReadyMs);
-        expect(text == null).assertTrue();
-        await driver.delayMs(waitUiReadyMs);
-        let pressureCom = await driver.findComponent(ON.id('pressure'));
-        await driver.delayMs(waitUiReadyMs);
-        expect(pressureCom != null).assertTrue();
-        if (pressureCom != null) {
-          let pressure = await pressureCom.getText();
+        let scroll = await driver.findComponent(ON.type('Scroll'));
+        expect(scroll != null).assertTrue();
+        if (scroll != null) {
+          let scrollRect = await scroll.getBounds()
+          let screenWidth = scrollRect.right - scrollRect.left;
+          let screenHeight = scrollRect.bottom - scrollRect.top;
+          await driver.penSwipe({x: Math.floor(screenWidth / 2), y: Math.floor(screenHeight / 2 + screenHeight / 4)},
+            {x: Math.floor(screenWidth / 2), y: Math.floor(screenHeight / 2 - screenHeight / 4) },600, 0.5);
+          let text = await driver.findComponent(ON.text('toast'));
           await driver.delayMs(waitUiReadyMs);
-          expect(pressure).assertEqual('0.5');
+          expect(text == null).assertTrue();
+          await driver.delayMs(waitUiReadyMs);
+          let pressureCom = await driver.findComponent(ON.id('pressure'));
+          await driver.delayMs(waitUiReadyMs);
+          expect(pressureCom != null).assertTrue();
+          if (pressureCom != null) {
+            let pressure = await pressureCom.getText();
+            await driver.delayMs(waitUiReadyMs);
+            expect(pressure).assertEqual('0.5');
+          }
         }
       } catch(error) {
         hilog.info(domain, tag, `test_penSwipe_function_static error, ${ JSON.stringify(error) }`);
         expect().assertFail()
       }
       hilog.info(domain, tag, "test_penSwipe_function_static over!!!!")
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uitestDriverTest_0057
+     * @tc.name: test_penSwipe_function_pressure_static
+     * @tc.desc: penSwipe function test.
+     */
+    it('test_penSwipe_function_pressure_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, "test_penSwipe_function_pressure_static start !!!!")
+      try {
+        let driver = Driver.create()
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+        await driver.delayMs(waitUiReadyMs)
+        // 垂直滑动
+        let scroll = await driver.findComponent(ON.type('Scroll'));
+        expect(scroll != null).assertTrue();
+        if (scroll != null) {
+          let scrollRect = await scroll.getBounds()
+          let screenWidth = scrollRect.right - scrollRect.left;
+          let screenHeight = scrollRect.bottom - scrollRect.top;
+          await driver.penSwipe({x: Math.floor(screenWidth / 2), y: Math.floor(screenHeight / 2 + screenHeight / 4)},
+            {x: Math.floor(screenWidth / 2), y: Math.floor(screenHeight / 2 - screenHeight / 4) },600);
+          let text = await driver.findComponent(ON.text('toast'));
+          await driver.delayMs(waitUiReadyMs);
+          expect(text == null).assertTrue();
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `test_penSwipe_function_pressure_static error, ${ JSON.stringify(error) }`);
+        expect().assertFail()
+      }
+      hilog.info(domain, tag, "test_penSwipe_function_pressure_static over!!!!")
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uitestDriverTest_0059
+     * @tc.name: test_penSwipe_function_speed_static
+     * @tc.desc: penSwipe function test.
+     */
+    it('test_penSwipe_function_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, "test_penSwipe_function_speed_static start !!!!")
+      try {
+        let driver = Driver.create()
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+        await driver.delayMs(waitUiReadyMs)
+        // 垂直滑动
+        let scroll = await driver.findComponent(ON.type('Scroll'));
+        expect(scroll != null).assertTrue();
+        if (scroll != null) {
+          let scrollRect = await scroll.getBounds()
+          let screenWidth = scrollRect.right - scrollRect.left;
+          let screenHeight = scrollRect.bottom - scrollRect.top;
+          await driver.penSwipe({x: Math.floor(screenWidth / 2), y: Math.floor(screenHeight / 2 + screenHeight / 4)},
+            {x: Math.floor(screenWidth / 2), y: Math.floor(screenHeight / 2 - screenHeight / 4) });
+          let text = await driver.findComponent(ON.text('toast'));
+          await driver.delayMs(waitUiReadyMs);
+          expect(text == null).assertTrue();
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `test_penSwipe_function_speed_static error, ${ JSON.stringify(error) }`);
+        expect().assertFail()
+      }
+      hilog.info(domain, tag, "test_penSwipe_function_speed_static over!!!!")
       await stopApplication('com.uitestScene.acts')
     })
 
@@ -897,11 +1107,18 @@ export default function uitestDriverTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
         // 垂直滑动
-        await driver.fling({x:500, y:1100},{x:500, y:300}, 20, 600);
-        await driver.delayMs(waitUiReadyMs);
-        let text = await driver.findComponent(ON.text('toast'));
-        expect(text == null).assertTrue();
-        hilog.info(domain, tag, `testFling_static fling success`);
+        let scroll = await driver.findComponent(ON.type('Scroll'));
+        expect(scroll != null).assertTrue();
+        if (scroll != null) {
+          let rect = await scroll.getBounds()
+          let center = await scroll.getBoundsCenter()
+          await driver.fling({x: center.x, y:Math.floor(center.y + (rect.bottom - rect.top) / 4)},
+            {x: center.x, y:Math.floor(center.y - (rect.bottom - rect.top) / 4)}, 20, 600)
+          await driver.delayMs(waitUiReadyMs);
+          let text = await driver.findComponent(ON.text('toast'));
+          expect(text == null).assertTrue();
+          hilog.info(domain, tag, `testFling_static fling success`);
+        }
       } catch(error) {
         hilog.info(domain, tag, `testFling_static error, ${ JSON.stringify(error) }`);
         expect().assertFail();
@@ -1070,6 +1287,43 @@ export default function uitestDriverTest() {
 
     })
 
+
+    /*
+     * @tc.number: UiTest_API16_002
+     * @tc.name: test_touchPadMultiFingerSwipe_Up_Down_Stay_3_static
+     * @tc.desc: Swipe Up or Down with three point then  in more task statue
+     */
+    it('test_touchPadMultiFingerSwipe_Up_Down_Stay_3_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      hilog.info(domain, tag, `test_touchPadMultiFingerSwipe_Up_Down_Stay_3_static start`);
+      let driver = Driver.create();
+      try {
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(1000);
+        // 三指上划停留, 进入多任务中心。
+        await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {stay: true, speed: 3000});
+        let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+        await driver.delayMs(1000);
+        expect(mainPageCom).assertNull();
+      } catch (error: BusinessError) {
+        hilog.info(domain, tag, `test_touchPadMultiFingerSwipe_Up_Down_Stay_3_static up, error is, ${JSON.stringify(error)}`);
+        expect(error.code == 17000005).assertTrue();
+      }
+      await driver.delayMs(1000);
+      try {
+        // 三指下划,应用返回前台。
+        await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN, {stay: true, speed: 3000});
+        await driver.delayMs(1000);
+        let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+        await driver.delayMs(1000);
+        expect(mainPageCom).not().assertNull();
+      } catch (error: BusinessError) {
+        hilog.info(domain, tag, `test_touchPadMultiFingerSwipe_Up_Down_Stay_3_static down, error is, ${JSON.stringify(error)}`);
+        expect(error.code == 17000005).assertTrue();
+      }
+      await driver.delayMs(1000);
+      await stopApplication('com.uitestScene.acts');
+      hilog.info(domain, tag, `test_touchPadMultiFingerSwipe_Up_Down_Stay_3_static end`);
+    })
     /*
      * @tc.number: uitestDriverTest_0041
      * @tc.name: testMouseMoveWithTrack_static
@@ -1165,17 +1419,42 @@ export default function uitestDriverTest() {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let pointer = PointerMatrix.create(1,8);
-        for (let step = 0; step < 8; step++) {
-          hilog.info(domain, tag, `testInjectMultiPointerAction, y: ${1100 - 100 *step}`);
-          pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+        let button = await driver.findComponent(ON.id('jump'))
+        if (button == null) {
+          let scroll = await driver.findComponent(ON.type('Scroll'))
+          if (scroll != null) {
+            button = await scroll.scrollSearch(ON.id('jump'))
+          }
         }
-        await driver.injectMultiPointerAction(pointer, 600);
-        hilog.info(domain, tag, `testInjectMultiPointerAction_static successful`);
-        await driver.delayMs(waitUiReadyMs);
-        let text = await driver.findComponent(ON.text('toast'));
-        expect(text == null).assertTrue();
-        await driver.delayMs(waitUiReadyMs);
+        expect(button != null).assertTrue();
+        if (button != null) {
+          await button.click()
+          await driver.delayMs(waitUiReadyMs)
+        }
+        let image1 = await driver.findComponent(ON.id('test_pict'))
+        expect(image1 != null).assertTrue();
+        if (image1 != null) {
+          let bounds1 = await image1.getBounds()
+          let left = bounds1.left
+          let right = bounds1.right
+          let centerY = Math.floor((bounds1.top + bounds1.bottom) / 2)
+          let pointer = PointerMatrix.create(2,11)
+          await driver.delayMs(300)
+          for (let step = 0; step < 11; step++) {
+            pointer.setPoint(0, step, {x: left + 200 - (step + 1) *20, y: centerY + step * 20})
+          }
+          for (let step = 0; step < 11; step++) {
+            pointer.setPoint(1, step, {x: right - 200 + (step + 1) *20, y: centerY - step * 20})
+          }
+          await driver.injectMultiPointerAction(pointer, 400)
+          await driver.delayMs(3000)
+          let image2 = await driver.findComponent(ON.id('test_pict'))
+          expect(image2 != null).assertTrue()
+          if (image2 != null) {
+            let bounds2= await image2.getBounds()
+            expect(bounds2 != bounds1).assertTrue()
+          }
+        }
       } catch(error) {
         hilog.info(domain, tag, `testInjectMultiPointerAction_static error, ${ JSON.stringify(error) }`);
         expect().assertFail();
@@ -1183,6 +1462,61 @@ export default function uitestDriverTest() {
         await stopApplication('com.uitestScene.acts');
       }
       hilog.info(domain, tag, "testInjectMultiPointerAction_static over!!!!")
+    })
+
+    /*
+     * @tc.number: uitestDriverTest_0066
+     * @tc.name: testInjectMultiPointerAction_speed_static
+     * @tc.desc: inject multi-pointer action on the device display.
+     */
+    it('testInjectMultiPointerAction_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (): Promise<void> => {
+      hilog.info(domain, tag, "testInjectMultiPointerAction_speed_static start !!!!");
+      try {
+        let driver = Driver.create();
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let button = await driver.findComponent(ON.id('jump'))
+        if (button == null) {
+          let scroll = await driver.findComponent(ON.type('Scroll'))
+          if (scroll != null) {
+            button = await scroll.scrollSearch(ON.id('jump'))
+          }
+        }
+        expect(button != null).assertTrue();
+        if (button != null) {
+          await button.click()
+          await driver.delayMs(waitUiReadyMs)
+        }
+        let image1 = await driver.findComponent(ON.id('test_pict'))
+        expect(image1 != null).assertTrue();
+        if (image1 != null) {
+          let bounds1 = await image1.getBounds()
+          let left = bounds1.left
+          let right = bounds1.right
+          let centerY = Math.floor((bounds1.top + bounds1.bottom) / 2)
+          let pointer = PointerMatrix.create(2,11)
+          await driver.delayMs(300)
+          for (let step = 0; step < 11; step++) {
+            pointer.setPoint(0, step, {x: left + 200 - (step + 1) *20, y: centerY + step * 20})
+          }
+          for (let step = 0; step < 11; step++) {
+            pointer.setPoint(1, step, {x: right - 200 + (step + 1) *20, y: centerY - step * 20})
+          }
+          await driver.injectMultiPointerAction(pointer)
+          await driver.delayMs(3000)
+          let image2 = await driver.findComponent(ON.id('test_pict'))
+          expect(image2 != null).assertTrue()
+          if (image2 != null) {
+            let bounds2= await image2.getBounds()
+            expect(bounds2 != bounds1).assertTrue()
+          }
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `testInjectMultiPointerAction_speed_static error, ${ JSON.stringify(error) }`);
+        expect().assertFail();
+      }
+      await stopApplication('com.uitestScene.acts');
+      hilog.info(domain, tag, "testInjectMultiPointerAction_speed_static over!!!!")
     })
 
     /*
@@ -1196,31 +1530,115 @@ export default function uitestDriverTest() {
       try {
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let pointer = PointerMatrix.create(1,8);
-        for (let step = 0; step < 8; step++) {
-          pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
-        }
-        await driver.injectPenPointerAction(pointer, 600, 0.5);
-        await driver.delayMs(2000);
-        let text = await driver.findComponent(ON.text('toast'));
-        hilog.info(domain, tag, `test_injectPenPointAction_function_static text, ${ JSON.stringify(text)}`);
-        expect(text == null).assertTrue();
-        await driver.delayMs(waitUiReadyMs);
-        let pressureCom = await driver.findComponent(ON.id('pressure'));
-        hilog.info(domain, tag, `test_injectPenPointAction_function_static pressureCom, ${ JSON.stringify(pressureCom)}`);
-        await driver.delayMs(waitUiReadyMs);
-        if (pressureCom != null) {
-          let pressure = await pressureCom.getText();
+        let scroll = await driver.findComponent(ON.type('Scroll'))
+        expect(scroll != null).assertTrue();
+        if (scroll != null) {
+          let scrollRect = await scroll.getBounds()
+          let screenWidth = scrollRect.right - scrollRect.left;
+          let screenHeight = scrollRect.bottom - scrollRect.top;
+          let stepLength = Math.floor((screenHeight / 4) * 2 / 8);
+          let startX = Math.floor(screenWidth / 2);
+          let pointer = PointerMatrix.create(1,8);
+          for (let step = 0; step < 8; step++) {
+            let startY = Math.floor((screenHeight / 2 + screenHeight / 4) - stepLength * step);
+            pointer.setPoint(0, step, {x: startX, y: startY });
+          }
+          await driver.injectPenPointerAction(pointer, 600, 0.5);
+          await driver.delayMs(2000);
+          let text = await driver.findComponent(ON.text('toast'));
+          hilog.info(domain, tag, `test_injectPenPointAction_function_static text, ${ JSON.stringify(text)}`);
+          expect(text == null).assertTrue();
           await driver.delayMs(waitUiReadyMs);
-          expect(pressure).assertEqual('0.5');
+          let pressureCom = await driver.findComponent(ON.id('pressure'));
+          hilog.info(domain, tag, `test_injectPenPointAction_function_static pressureCom, ${ JSON.stringify(pressureCom)}`);
+          await driver.delayMs(waitUiReadyMs);
+          if (pressureCom != null) {
+            let pressure = await pressureCom.getText();
+            await driver.delayMs(waitUiReadyMs);
+            expect(pressure).assertEqual('0.5');
+          }
         }
       } catch(error) {
         hilog.info(domain, tag, `test_injectPenPointAction_function_static error, ${ JSON.stringify(error) }`);
         expect().assertFail();
-      } finally {
-        await stopApplication('com.uitestScene.acts');
       }
       hilog.info(domain, tag, "test_injectPenPointAction_function_static over!!!!");
+      await stopApplication('com.uitestScene.acts');
+    })
+
+    /*
+     * @tc.number: uitestDriverTest_0061
+     * @tc.name: test_injectPenPointAction_speed_function_static
+     * @tc.desc: injectPenPointAction function test.
+     */
+    it('test_injectPenPointAction_speed_function_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, "test_injectPenPointAction_speed_function_static start !!!!");
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      try {
+        let driver = Driver.create();
+        await driver.delayMs(waitUiReadyMs);
+        let scroll = await driver.findComponent(ON.type('Scroll'))
+        expect(scroll != null).assertTrue();
+        if (scroll != null) {
+          let scrollRect = await scroll.getBounds()
+          let screenWidth = scrollRect.right - scrollRect.left;
+          let screenHeight = scrollRect.bottom - scrollRect.top;
+          let stepLength = Math.floor((screenHeight / 4) * 2 / 8);
+          let startX = Math.floor(screenWidth / 2);
+          let pointer = PointerMatrix.create(1,8);
+          for (let step = 0; step < 8; step++) {
+            let startY = Math.floor((screenHeight / 2 + screenHeight / 4) - stepLength * step);
+            pointer.setPoint(0, step, {x: startX, y: startY });
+          }
+          await driver.injectPenPointerAction(pointer, 600);
+          await driver.delayMs(2000);
+          let text = await driver.findComponent(ON.text('toast'));
+          hilog.info(domain, tag, `test_injectPenPointAction_speed_function_static text, ${ JSON.stringify(text)}`);
+          expect(text == null).assertTrue();
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `test_injectPenPointAction_speed_function_static error, ${ JSON.stringify(error) }`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, "test_injectPenPointAction_speed_function_static over!!!!");
+      await stopApplication('com.uitestScene.acts');
+    })
+
+    /*
+     * @tc.number: uitestDriverTest_0063
+     * @tc.name: test_injectPenPointAction_static
+     * @tc.desc: injectPenPointAction function test.
+     */
+    it('test_injectPenPointAction_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, "test_injectPenPointAction_static start !!!!");
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      try {
+        let driver = Driver.create();
+        await driver.delayMs(waitUiReadyMs);
+        let scroll = await driver.findComponent(ON.type('Scroll'))
+        expect(scroll != null).assertTrue();
+        if (scroll != null) {
+          let scrollRect = await scroll.getBounds()
+          let screenWidth = scrollRect.right - scrollRect.left;
+          let screenHeight = scrollRect.bottom - scrollRect.top;
+          let stepLength = Math.floor((screenHeight / 4) * 2 / 8);
+          let startX = Math.floor(screenWidth / 2);
+          let pointer = PointerMatrix.create(1,8);
+          for (let step = 0; step < 8; step++) {
+            let startY = Math.floor((screenHeight / 2 + screenHeight / 4) - stepLength * step);
+            pointer.setPoint(0, step, {x: startX, y: startY });
+          }
+          await driver.injectPenPointerAction(pointer);
+          await driver.delayMs(2000);
+          let text = await driver.findComponent(ON.text('toast'));
+          hilog.info(domain, tag, `test_injectPenPointAction_static text, ${ JSON.stringify(text)}`);
+          expect(text == null).assertTrue();
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `test_injectPenPointAction_static error, ${ JSON.stringify(error) }`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, "test_injectPenPointAction_static over!!!!");
       await stopApplication('com.uitestScene.acts');
     })
 
@@ -1361,6 +1779,38 @@ export default function uitestDriverTest() {
         expect().assertFail();
       }
       hilog.info(domain, tag, `testSwipe end !!!`);
+      await stopApplication('com.uitestScene.acts');
+    })
+
+    /*
+     * @tc.number: uitestDriverTest_0056
+     * @tc.name: testSwipe_speed_static
+     * @tc.desc: swipe on the screen between the specified points.
+     */
+    it('testSwipe_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testSwipe_speed_static start`);
+      try {
+        let driver = Driver.create();
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        await driver.delayMs(1000);
+        let scroll = await driver.findComponent(ON.type('Scroll'));
+        hilog.info(domain, tag, `testSwipe_speed_static scroll success, ${JSON.stringify(scroll)}`);
+        expect(scroll != null).assertTrue();
+        if (scroll != null ) {
+          let rect = await scroll.getBounds();
+          let center = await scroll.getBoundsCenter();
+          await driver.swipe(center.x, Math.floor(center.y + (rect.bottom - rect.top) / 4),
+            center.x, Math.floor(center.y - (rect.bottom - rect.top) / 4), 3000)
+          await driver.delayMs(1000);
+          let text = await driver.findComponent(ON.text('toast'));
+          expect(text == null).assertTrue();
+        }
+      } catch(error) {
+        hilog.info(domain, tag, `testSwipe_speed_static error, ${ JSON.stringify(error) }`);
+        expect().assertFail();
+      }
+      hilog.info(domain, tag, `testSwipe_speed_static end !!!`);
       await stopApplication('com.uitestScene.acts');
     })
 
