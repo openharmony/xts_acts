@@ -1235,7 +1235,7 @@ export default function applicationManagerTest() {
         let keepAliveApp: string = TEST_BUNDLENAME;
         let disallowModifty: boolean = true;
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        disallowModifty = applicationManager.isModifyKeepAliveAppsDisallowed(SELFWANT, DEFAULT_USER_ID, keepAliveApp);
+        disallowModifty = applicationManager.isModifyKeepAliveAppsDisallowed(null, DEFAULT_USER_ID, keepAliveApp);
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
