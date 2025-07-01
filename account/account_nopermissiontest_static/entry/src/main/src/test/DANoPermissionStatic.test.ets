@@ -38,16 +38,21 @@ export default function ActsDANoPermissionTestStatic() {
         let accountAbility: account.DistributedAccountAbility = account.getDistributedAccountAbility();
         try {
           accountAbility.getOsAccountDistributedInfo((err: BusinessError<void> | null, data: account.DistributedInfo | undefined) => {
-            hilog.info(domain, tag, "====>getOsAccountDistributedInfo err: " + JSON.stringify(err));
-            hilog.info(domain, tag, "====>getOsAccountDistributedInfo data: " + JSON.stringify(data));
+            hilog.info(domain, tag, "====>0100 getOsAccountDistributedInfo err: " + JSON.stringify(err));
+            hilog.info(domain, tag, "====>0100 getOsAccountDistributedInfo data: " + JSON.stringify(data));
             try {
-              expect(err?.code + '' == '201').assertTrue();
-            } catch (err) {
+              if (err) {
+                expect(err?.code + '' == '201').assertTrue();
+              } else {
+                hilog.info(domain, tag, '====>getOsAccountDistributedInfo fail');
+                expect().assertFail();
+              }
+            } catch (err: BusinessError<void>) {
               hilog.info(domain, tag, "====>Assert err: " + JSON.stringify(err));
             }
             done();
           });
-        } catch (err: BusinessError) {
+        } catch (err: BusinessError<void>) {
           hilog.info(domain, tag, "====>getOsAccountDistributedInfo catch err: " + JSON.stringify(err));
           expect(err.code + '' == '201').assertTrue();
           done();
@@ -70,8 +75,8 @@ export default function ActsDANoPermissionTestStatic() {
           await accountAbility.getOsAccountDistributedInfo();
           expect().assertFail();
           done();
-        } catch (err: BusinessError<void>) {
-          hilog.info(domain, tag, "====>getOsAccountDistributedInfo err: " + JSON.stringify(err));
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, "====>0200 getOsAccountDistributedInfo err: " + JSON.stringify(err));
           expect(err.code + '' == '201').assertTrue();
           done();
         }
