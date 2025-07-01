@@ -34,7 +34,6 @@ export default function cloudCloudSyncTest() {
         fileSync.start().then(() => {
           hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_001 start sync successfully');
           expect(true).assertTrue();
-          done();
         }).catch((err: BusinessError): Promise<void> => {
           hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_001 sync failed : " + err.message + ", error code: " + err.code);
         });
@@ -42,6 +41,7 @@ export default function cloudCloudSyncTest() {
         hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_001 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
+      done();
     });
 
     /**
@@ -66,13 +66,13 @@ export default function cloudCloudSyncTest() {
           } else {
             hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_002 start sync successfully");
             expect(true).assertTrue();
-            done();
           }
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_002 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
+      done();
     });
 
     /**
@@ -445,14 +445,14 @@ export default function cloudCloudSyncTest() {
         fileSync.stop().then(() => {
           hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_017 stop sync successfully');
           expect(true).assertTrue();
-          done();
-        }).catch((err: BusinessError): Promise<void> => {
+        }).catch((err: BusinessError): void => {
           hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_017 sync failed : " + err.message + ", error code: " + err.code);
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_017 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
+      done();
     });
 
     /**
@@ -473,13 +473,13 @@ export default function cloudCloudSyncTest() {
           } else {
             hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_018 stop sync successfully");
             expect(true).assertTrue();
-            done();
           }
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_018 has failed for' + JSON.stringify(e));
         expect(false).assertTrue();
       }
+      done();
     });
 
     /**
@@ -497,7 +497,7 @@ export default function cloudCloudSyncTest() {
         fileSync.getLastSyncTime().then((timeStamp: number) => {
           let date = new Date(timeStamp);
           hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_019 get last sync time' + date);
-        }).catch((err: BusinessError): Promise<void> => {
+        }).catch((err: BusinessError): void => {
           hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_019 get last sync time failed : " + err.message + ", error code: " + err.code);
           expect(err.code == 401 && err.message =='The input parameter is invalid').assertTrue();
 
@@ -610,7 +610,7 @@ export default function cloudCloudSyncTest() {
         fileCache.start(uri).then(() => {
           hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_023 start download successfully');
           expect(true).assertTrue();
-        }).catch((err: BusinessError): Promise<void> => {
+        }).catch((err: BusinessError): void => {
           hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_023 start download failed: " + err.message + ", error code: " + err.code);
         });
       } catch (e: BusinessError) {
@@ -669,7 +669,7 @@ export default function cloudCloudSyncTest() {
         let fileCache = new cloudSync.CloudFileCache();
         fileCache.stop(uri, true).then(() => {
           hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_025 stop download successfully");
-        }).catch((err: BusinessError): Promise<void> => {
+        }).catch((err: BusinessError): void => {
           hilog.info(domain, tag, '%{public}s', "test_cloudSync_State_static_025 stop download failed: " + err.message + ", error code: " + err.code);
           expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
         });
