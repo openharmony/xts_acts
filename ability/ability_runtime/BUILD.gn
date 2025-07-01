@@ -63,6 +63,7 @@ group("ability_runtime") {
       "actsintent:actsintent",
       "actsjsdataabilitytest:ActsJsDataAbilityTest",
       "actslastexitreason:actslastexitreason",
+      "actslifecycle:actslifecycle",
       "actsmultiplecall:actsmultiplecall",
       "actsnfcselecttypes:actsnfcselecttypes",
       "actsondestroytest:actsondestroytest",
