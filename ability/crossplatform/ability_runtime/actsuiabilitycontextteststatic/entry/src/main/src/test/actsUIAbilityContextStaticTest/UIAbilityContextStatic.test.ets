@@ -33,7 +33,7 @@ export default function UIAbilityContextStatic() {
       hilog.info(domain, tag, 'beforeAll AbilityDelegator');
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.uiabilitycontexttest.static")
       await Utils.msSleep(2000);
-      context = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
+      context = AppStorage.get<common.UIAbilityContext>("UIAbilityContext", Type.from<common.UIAbilityContext>()) as common.UIAbilityContext
       hilog.info(domain, tag, 'beforeAll end');
     })
 

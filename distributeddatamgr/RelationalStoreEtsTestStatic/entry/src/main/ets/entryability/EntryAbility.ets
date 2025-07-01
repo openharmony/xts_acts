@@ -12,7 +12,7 @@ import common from '@ohos.app.ability.common';
 class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag sjd EntryAbility', 'EntryAbility onCreate');
-    AppStorage.setOrCreate<common.UIAbilityContext>("abilityContextMainAbility2", this.context)
+    AppStorage.setOrCreate<common.UIAbilityContext>("abilityContextMainAbility2", this.context, Type.from<common.UIAbilityContext>())
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {

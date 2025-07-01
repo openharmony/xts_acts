@@ -92,7 +92,7 @@ export default function rdbResultSetTest() {
       await Utils.msSleep(2000)
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.relationalstore")
       await Utils.msSleep(2000)
-      context = AppStorage.get<common.UIAbilityContext>("abilityContextMainAbility2") as common.UIAbilityContext;
+      context = AppStorage.get<common.UIAbilityContext>("abilityContextMainAbility2", Type.from<common.UIAbilityContext>()) as common.UIAbilityContext;
       hilog.info(domain, tag, '%{public}s', 'onAbilityCreate enddatabaseDir:' + context.databaseDir);
       rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
       rdbStore1 = await data_relationalStore.getRdbStore(context, STORE_CONFIG1);
