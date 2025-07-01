@@ -43,10 +43,6 @@ export default function formInfoTest() {
             expect(1).assertEqual(formInfo.FormType.JS as int);
             expect(2).assertEqual(formInfo.FormType.eTS as int);
 
-            expect(-1).assertEqual(formInfo.ColorMode.MODE_AUTO as int);
-            expect(0).assertEqual(formInfo.ColorMode.MODE_DARK as int);
-            expect(1).assertEqual(formInfo.ColorMode.MODE_LIGHT as int);
-
             expect(-1).assertEqual(formInfo.FormState.UNKNOWN as int);
             expect(0).assertEqual(formInfo.FormState.DEFAULT as int);
             expect(1).assertEqual(formInfo.FormState.READY as int);
@@ -74,7 +70,6 @@ export default function formInfoTest() {
             expect(2).assertEqual(formInfo.FormDimension.Dimension_2_2 as int);
             expect(3).assertEqual(formInfo.FormDimension.Dimension_2_4 as int);
             expect(4).assertEqual(formInfo.FormDimension.Dimension_4_4 as int);
-            expect(5).assertEqual(formInfo.FormDimension.Dimension_2_1 as int);
             expect(6).assertEqual(formInfo.FormDimension.DIMENSION_1_1 as int);
             expect(7).assertEqual(formInfo.FormDimension.DIMENSION_6_4 as int);
             expect(8).assertEqual(formInfo.FormDimension.DIMENSION_2_3 as int);
@@ -137,7 +132,6 @@ export default function formInfoTest() {
                 descriptionId: 123,
                 type: formInfo.FormType.eTS,
                 jsComponentName: 'jsComponentName',
-                colorMode: formInfo.ColorMode.MODE_AUTO,
                 isDefault: true,
                 updateEnabled: true,
                 formVisibleNotify: true,
@@ -164,7 +158,6 @@ export default function formInfoTest() {
             expect(123).assertEqual(formInfoFo.descriptionId as int);
             expect(2).assertEqual(formInfoFo.type as int);
             expect('jsComponentName').assertEqual(formInfoFo.jsComponentName as string);
-            expect(-1).assertEqual(formInfoFo.colorMode as int);
             expect(formInfoFo.isDefault).assertTrue();
             expect(formInfoFo.updateEnabled).assertTrue();
             expect(formInfoFo.formVisibleNotify).assertTrue();
