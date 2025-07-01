@@ -16,7 +16,7 @@
 import { describe, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import webSocket from '@ohos.net.webSocket';
-let activeUrl: string = 'ws://124.222.6.60:8800';
+let activeUrl: string = 'wss://whale.tooly.top/ws';
 
 const ExpectTrue: (n: boolean) => void = (n: boolean) => {
   try {
@@ -56,7 +56,7 @@ let options: webSocket.WebSocketRequestOptions = {
   }
 };
 let ws: webSocket.WebSocket;
-let availableWebSocketAddress: string = 'ws://124.222.6.60:8800';
+let availableWebSocketAddress: string = 'wss://whale.tooly.top/ws';
 
 export default function WebSocketTest() {
   describe('webSocketTest', () => {
