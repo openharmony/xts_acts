@@ -14,7 +14,7 @@
  */
 {
   "app": {
-    "bundleName": "com.test.powerPermission.static",
+    "bundleName": "com.test.power.permission.static",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
