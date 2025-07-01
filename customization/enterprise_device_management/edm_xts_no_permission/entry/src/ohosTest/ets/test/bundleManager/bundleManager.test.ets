@@ -534,5 +534,72 @@ export default function bundleManagerTest() {
       }
       done();
     })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0100
+     * @tc.name      : test_add_installation_allowed_app_distribution_types_0100
+     * @tc.desc      : test addInstallationAllowedAppDistributionTypes with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_add_installation_allowed_app_distribution_types_0100", Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.addInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0100
+     * @tc.name      : test_remove_installation_allowed_app_distribution_types_0100
+     * @tc.desc      : test removeInstallationAllowedAppDistributionTypes with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_remove_installation_allowed_app_distribution_types_0100", Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        let allowedAppDistributionTypes:
+          Array<bundleManager.AppDistributionType>  = [bundleManager.AppDistributionType.APP_GALLERY];
+        bundleManager.removeInstallationAllowedAppDistributionTypes(SELFWANT, allowedAppDistributionTypes);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_INSTALLATION_ALLOWED_APP_DISTRIBUTION_TYPES_0100
+     * @tc.name      : test_get_installation_allowed_app_distribution_types_0100
+     * @tc.desc      : test getInstallationAllowedAppDistributionTypes with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_get_installation_allowed_app_distribution_types_0100", Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        bundleManager.getInstallationAllowedAppDistributionTypes(SELFWANT);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    });
   })
 }
