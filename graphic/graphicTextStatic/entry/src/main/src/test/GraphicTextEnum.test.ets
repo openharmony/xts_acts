@@ -127,6 +127,7 @@ export default function GraphicTextEnum() {
         expect('0').assertEqual(text.WordBreak.NORMAL + '');
         expect('1').assertEqual(text.WordBreak.BREAK_ALL + '');
         expect('2').assertEqual(text.WordBreak.BREAK_WORD + '');
+        expect('3').assertEqual(text.WordBreak.BREAK_HYPHEN + '');
         done();
       } catch (err) {
         console.info(msg + 'test enum value of WordBreak error ' + JSON.stringify(err));
