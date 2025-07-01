@@ -40,7 +40,7 @@ class EntryAbility extends UIAbility {
     }else{
       hilog.info(0x0000, 'testTag EntryAbility', 'context is undefined');
     }
-    AppStorage.setOrCreate<common.UIAbilityContext>("UIAbilityContext", this.context)
+    AppStorage.setOrCreate<common.UIAbilityContext>("UIAbilityContext", this.context, Type.from<common.UIAbilityContext>())
   }
 
   onBackground() {
