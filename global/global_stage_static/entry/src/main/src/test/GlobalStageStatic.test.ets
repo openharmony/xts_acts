@@ -60,17 +60,440 @@ export default function globalStageTest() {
       console.info("afterAll case");
     });
 
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_GETCOLOR_JS_static_0100
-    * @tc.name    getColor_test_static_0100
-    * @tc.desc    get the color in callback mode
-    */
-    it('getColor_test_static_0100', Level.LEVEL0, async (): Promise<void> => {
-      res.getColor(0x2000010, (err: BusinessError<void> | null, value: number | undefined) => {
+    /**
+     * @tc.number    : SUB_GLOBAL_GETSTRINGSYNC_STAGE_static_0100
+     * @tc.name      : getStringSync_stagetest_static_0100
+     * @tc.desc      : getStringSync
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getStringSync_stagetest_static_0100', Level.LEVEL2, async (done: () => void): Promise<void> => {
+      let value: string = res.getStringSync(
+        {
+          bundleName: "com.example.global_stage.static",
+          moduleName: "entry",
+          id: 0x01000000
+        }, 100);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'getStringSync_stagetest_static_0100 1' + value);
+      expect(value).assertEqual('global_stage_static');
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GETSTRINGSYNC_STAGE_static_0200
+     * @tc.name      : getStringSync_stagetest_static_0200
+     * @tc.desc      : getStringSync
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getStringSync_stagetest_static_0200', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      let value: string = res.getStringSync(
+        {
+          bundleName: "com.example.global_stage.static",
+          moduleName: "entry",
+          id: 0x01000000
+        });
+      hilog.info(0x0000, 'testTag', '%{public}s', 'getStringSync_stagetest_static_0200 1' + value);
+      expect(value).assertEqual('global_stage_static');
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GETSTRINGVALUE_STAGE_static_0100
+     * @tc.name      : getStringValue_stage_test_static_0100
+     * @tc.desc      : getStringValue
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getStringValue_stage_test_static_0100', Level.LEVEL2, async (done: () => void): Promise<void> => {
+      res.getStringValue({
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x01000000
+      }, (err: BusinessError<void> | null, value: string | undefined) => {
         expect(value !== null).assertTrue();
-        console.log('getColor_test_static_001 ' + value);
-        expect(value).assertEqual(-1);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringValue_stage_test_static_0100 ' + value);
+        expect(value).assertEqual('global_stage_static');
+        done();
       })
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GETSTRINGVALUE_STAGE_static_0200
+     * @tc.name      : getStringValue_stage_test_static_0200
+     * @tc.desc      : getStringValue
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getStringValue_stage_test_static_0200', Level.LEVEL2, async (done: () => void): Promise<void> => {
+      await res.getStringValue({
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x01000000
+      }).then((value: string) => {
+        expect(value !== null).assertTrue();
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringValue_stage_test_static_0200 ' + value);
+        expect(value).assertEqual('global_stage_static');
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_0100
+     * @tc.name     : getStringArrayValue_stage_test_static_0100
+     * @tc.desc     : errcode 9001002 in promise mode by resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_0100', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: "com.example.global_stage.static2",
+        moduleName: "entry",
+        id: 0x01234567
+      };
+      res.getStringArrayValue(resource).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringArrayValue promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_0200
+     * @tc.name     : getStringArrayValue_stage_test_static_0200
+     * @tc.desc     : errcode 9001001 in promise mode by resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_0200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayValue({
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x01234567
+      }).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringArrayValue promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_0100
+     * @tc.name     : getMediaContent_stage_test_static_0100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContent_stage_test_static_0100", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getStringArrayValue_callback_res_9001001 start');
+      try {
+        res.getMediaContent(0x01234567, (err: BusinessError<void> | null, data: Uint8Array | undefined): void => {
+          hilog.info(domain, tag, 'getMediaContent callback 9001001 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContent callback 9001001 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001001);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContent callback 9001001 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getMediaContent callback 9001001 end');
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_0200
+     * @tc.name     : getMediaContent_stage_test_static_0200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContent_stage_test_static_0200", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getMediaContent_callback_9001002 start');
+      try {
+        res.getMediaContent(0x01000014, (err: BusinessError<void> | null, data: Uint8Array | undefined): void => {
+          hilog.info(domain, tag, 'getMediaContent callback 9001002 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContent callback 9001002 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001002);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContent callback 9001002 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getMediaContent callback 9001002 end');
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_0300
+     * @tc.name     : getMediaContent_stage_test_static_0300
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContent_stage_test_static_0300", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getMediaContent_callback_9001002 start');
+      try {
+        res.getMediaContent(0x01000014, (err: BusinessError<void> | null, data: Uint8Array | undefined): void => {
+          hilog.info(domain, tag, 'getMediaContent callback 9001002 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContent callback 9001002 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001002);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContent callback 9001002 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getMediaContent callback 9001002 end');
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_0400
+     * @tc.name     : getMediaContent_stage_test_static_0400
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_0400', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x01234567).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getMediaContent  promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getMediaContent  promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_0100
+     * @tc.name     : getMediaContentBase64_stage_test_static_0100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_0100', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x01234567
+      };
+      res.getMediaContentBase64(resource).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getMediaContentBase64 promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContentBase64 promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_0200
+     * @tc.name     : getMediaContentBase64_stage_test_static_0200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_0200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContentBase64({
+        bundleName: "com.example.globalBasic11",
+        moduleName: "entry_test",
+        id: 0x01000007
+      }).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getMediaContentBase64 promise 9001002 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContentBase64 promise 9001002 error.message' + error.message);
+        expect(error.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_0300
+     * @tc.name     : getMediaContentBase64_stage_test_static_0300
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContentBase64_stage_test_static_0300", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getMediaContentBase64_stage_test_static_0300 start');
+      try {
+        let resource: resourceManager.Resource = {
+          bundleName: "com.example.global_stage.static",
+          moduleName: "entry",
+          id: 0x01234567
+        };
+        res.getMediaContentBase64(resource, (err: BusinessError<void> | null, data: string | undefined) => {
+          hilog.info(domain, tag, 'getMediaContentBase64 callback 9001001 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContentBase64 callback 9001001 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001001);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContentBase64 callback 9001001 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getMediaContentBase64 callback 9001001 end');
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_0400
+     * @tc.name     : getMediaContentBase64_stage_test_static_0400
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContentBase64_stage_test_static_0400", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getMediaContentBase64_stage_test_static_0400 callback err code 9001002 start');
+      try {
+        let resource: resourceManager.Resource = {
+          bundleName: "com.example.global_stage.static",
+          moduleName: "entry",
+          id: 0x0100002b
+        };
+        res.getMediaContentBase64(resource, (err: BusinessError<void> | null, data: string | undefined) => {
+          hilog.info(domain, tag, 'getMediaContentBase64 callback 9001002 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContentBase64 callback 9001002 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001002);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContentBase64 callback 9001002 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getStringArrayValue callback 9001002 end');
+    })
+
+
+    /* *
+     * @tc.number  SUB_GLOBAL_GETCOLORSYNC_STAGE_JS_static_0100
+     * @tc.name    getColorSync_test_static_0100
+     * @tc.desc    get the sync color in promise mode
+     */
+    it('getColorSync_test_static_0100', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      try {
+        res.getColorSync({
+          bundleName: "com.example.global_stage.static",
+          moduleName: "entry_test",
+          id: 0x21000014
+        });
+      } catch (err: BusinessError) {
+        console.log('getColorByNameSync_test_static_006 err.code' + err.code);
+        console.log('getColorByNameSync_test_static_006 err.message' + err.message);
+        expect(JSON.stringify(err.code)).assertEqual('9001002');
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GETRAWFILECONTENTSYNC_STAGE_static_0100
+     * @tc.name      : getRawFileContentSync_stagetest_static_0100
+     * @tc.desc      : getRawFileContentSync
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getRawFileContentSync_stagetest_static_0100', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      let value: Uint8Array =
+        res.getRawFileContentSync('rawfiletest.xml');
+      hilog.info(0x0000, 'testTag', '%{public}s', 'getRawFileContentSync_stagetest_static_0100 1' + value);
+      expect(value !== null).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GETMEDIABYNAMESYNC_STAGE_static_0100
+     * @tc.name      : getMediaByNameSync_stagetest_static_0100
+     * @tc.desc      : getMediaByNameSync
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getMediaByNameSync_stagetest_static_0100', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      let value: Uint8Array = res.getMediaByNameSync('app_icon');
+      console.log('getMediaByNameSync_stagetest_static_0100 1' + value);
+      expect(value !== null).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GETCONFIGURATIONSYNC_STAGE_static_0100
+     * @tc.name      : getConfigurationSync_stagetest_static_0100
+     * @tc.desc      : getConfigurationSync
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getConfigurationSync_stagetest_static_0100', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      let value: resourceManager.Configuration = res.getConfigurationSync();
+      console.log('getConfigurationSync_stagetest_static_0100 1' + JSON.stringify(value));
+      expect(value !== null).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GETDEVICECAPABILITYSYNC_STAGE_static_0100
+     * @tc.name      : getDeviceCapabilitySync_stagetest_static_0100
+     * @tc.desc      : getDeviceCapabilitySync
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getDeviceCapabilitySync_stagetest_static_0100', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      let value: resourceManager.DeviceCapability = res.getDeviceCapabilitySync();
+      console.log('getDeviceCapabilitySync_stagetest_static_0100 1' + JSON.stringify(value));
+      expect(value !== null).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GetLocales_static_0010
+     * @tc.name      : SUB_GLOBAL_GetLocales_static_0010
+     * @tc.desc      : getLocales
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_GLOBAL_GetLocales_static_0010', Level.LEVEL2, async (done: () => void): Promise<void> => {
+      let value: string = res.getLocales().toString();
+      console.log('SUB_GLOBAL_GetLocales_static_0010' + value);
+      expect(value).assertEqual("");
+      done();
     })
 
     /**
@@ -100,6 +523,7 @@ export default function globalStageTest() {
       console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_static_0010_value' + value.mnc);
       expect(value.mnc == 0).assertTrue();
     })
+
 
     /**
      * @tc.number    : SUB_GOLBAL_REMSGR_getOverrideResourceManager_static_0010
@@ -1197,6 +1621,816 @@ export default function globalStageTest() {
     })
 
     /**
+     * @tc.number   : getStringArrayValue_stage_test_static_0400
+     * @tc.name     : getStringArrayValue_stage_test_static_0400
+     * @tc.desc     : errcode 9001002 in promise mode by Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_0400', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: "com.example.globalBasic11",
+        moduleName: "entry",
+        id: 0x01234567
+      };
+      res.getStringArrayValue(resource).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringArrayValue promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_static_0500
+     * @tc.name      : getStringArrayValue_stage_test_static_0500
+     * @tc.desc      : errcode 9001006 in callback mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_0500', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayValue({
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x0100002e
+      }, (err: BusinessError<void> | null) => {
+        console.log('getStringArrayValue_stage_test_static_0500 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_0700
+     * @tc.name     : getStringArrayValue_stage_test_static_0700
+     * @tc.desc     : errcode 9001001 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getStringArrayValue_stage_test_static_0700", Level.LEVEL3, async (done: () => void): Promise<void> => {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'getStringArrayValue_callback_9001001 start');
+      try {
+        let resource: resourceManager.Resource = {
+          bundleName: "com.example.global_stage.static",
+          moduleName: "entry",
+          id: 0x01234567
+        };
+        res.getStringArrayValue(resource, (err: BusinessError<void> | null, data: Array<string> | undefined) => {
+          hilog.info(domain, tag, 'getStringArrayValue callback 9001001 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getStringArrayValue callback 9001001 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001001);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getStringArrayValue callback 9001001 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(0x0000, 'testTag', '%{public}s', 'getStringArrayValue_callback_9001001 end');
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_0800
+     * @tc.name     : getStringArrayValue_stage_test_static_0800
+     * @tc.desc     : errcode 9001002 in promise mode by Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getStringArrayValue_stage_test_static_0800", Level.LEVEL3, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getBundleNameByUid callback err code 9001002 start');
+      try {
+        let resource: resourceManager.Resource = {
+          bundleName: "com.example.globalBasic11",
+          moduleName: "entry_test",
+          id: 0x01234567
+        };
+        res.getStringArrayValue(resource, (err: BusinessError<void> | null, data: Array<string> | undefined) => {
+          hilog.info(domain, tag, 'getStringArrayValue callback 9001002 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getStringArrayValue callback 9001002 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001002);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getStringArrayValue callback 9001002 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getStringArrayValue callback 9001002 end');
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_0900
+     * @tc.name     : getStringArrayValue_stage_test_static_0900
+     * @tc.desc     : errcode 9001002 in promise mode by Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_0900', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x0100002e
+      };
+      res.getStringArrayValue(resource).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringArrayValue promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_1000
+     * @tc.name     : getStringArrayValue_stage_test_static_1000
+     * @tc.desc     : errcode 9001001 in promise
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_1000', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayValue(0x01234567).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue resId promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue resId promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_1011
+     * @tc.name     : getStringArrayValue_stage_test_static_1011
+     * @tc.desc     : errcode 9001002 in promise
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_1011', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayValue(0x01000008).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue_resId_promise_9001002 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue_resId_promise_9001002 error.message' + error.message);
+        expect(error.code).assertEqual(9001002);
+        done();
+      })
+    })
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_1012
+     * @tc.name     : getStringArrayValue_stage_test_static_1012
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_1012', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayValue(0x0100002e).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue_resId_promise_9001002 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getStringArrayValue_resId_promise_9001002 error.message' + error.message);
+        expect(error.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_1013
+     * @tc.name     : getStringArrayValue_stage_test_static_1013
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getStringArrayValue_stage_test_static_1013", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getStringArrayValue_callback_9001001 start');
+      try {
+        res.getStringArrayValue(0x01234567, (err: BusinessError<void> | null, data: Array<string> | undefined) => {
+          hilog.info(domain, tag, 'getStringArrayValue resId callback 9001001 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getStringArrayValue resId callback 9001001 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001001);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getStringArrayValue resId callback 9001001 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getStringArrayValue resId callback 9001001 end');
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_1014
+     * @tc.name     : getStringArrayValue_stage_test_static_1014
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getStringArrayValue_stage_test_static_1014", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getStringArrayValue_callback_res_9001002 start');
+      try {
+        res.getStringArrayValue(0x01000007, (err: BusinessError<void> | null, data: Array<string> | undefined) => {
+          hilog.info(domain, tag, 'getStringArrayValue resId callback 9001002 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getStringArrayValue resId callback 9001002 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001002);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getStringArrayValue resId callback 9001002 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getStringArrayValue resId callback 9001002 end');
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_0500
+     * @tc.name     : getMediaContent_stage_test_static_0500
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContent_stage_test_static_0500", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getMediaContent  callback err code 9001001 start');
+      try {
+        res.getMediaContent(0x01234567, 0, (err: BusinessError<void> | null, data: Uint8Array | undefined): void => {
+          hilog.info(domain, tag, 'getMediaContent density callback 9001001 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContent density callback 9001001 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001001);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContent density callback 9001001 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getMediaContent density callback 9001001 end');
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_0600
+     * @tc.name     : getMediaContent_stage_test_static_0600
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_0600', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x0100000c).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getMediaContent  promise 9001002 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getMediaContent  promise 9001002 error.message' + error.message);
+        expect(error.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_0800
+     * @tc.name     : getMediaContent_stage_test_static_0800
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_0800', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x01234567, 0).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getMediaContent density  promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContent  density promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_0900
+     * @tc.name     : getMediaContent_stage_test_static_0900
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContent_stage_test_static_0900", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getMediaContent  density callback err code 9001002 start');
+      try {
+        res.getMediaContent(0x0100000c, 0, (err: BusinessError<void> | null, data: Uint8Array | undefined): void => {
+          hilog.info(domain, tag, 'getMediaContent density callback 9001002 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContent density callback 9001002 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001002);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContent density callback 9001002 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getMediaContent density callback 9001002 end');
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_1200
+     * @tc.name     : getMediaContent_stage_test_static_1200
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_1200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x0100000c, 0).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContent density promise 9001002 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContent density promise 9001002 error.message' + error.message);
+        expect(error.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_static_1400
+     * @tc.name     : getStringArrayValue_stage_test_static_1400
+     * @tc.desc     : errcode 9001001 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_static_1400', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayValue(0x01234567).then(() => {
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringValue_test_static_009 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringValue_test_static_009 error.message' + error.message);
+        expect(JSON.stringify(error.code) == '9001001').assertTrue();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_1700
+     * @tc.name     : getMediaContent_stage_test_static_1700
+     * @tc.desc     : errcode 9001001 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_1700', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x01234567, (err: BusinessError<void> | null) => {
+        console.log('getMediaContent_stage_test_static_1700 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_1800
+     * @tc.name     : getMediaContent_stage_test_static_1800
+     * @tc.desc     : errcode 9001002 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_1800', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x01000005, (err: BusinessError<void> | null) => {
+        console.log('getMediaContent_stage_test_static_1800 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_1900
+     * @tc.name     : getMediaContent_stage_test_static_1900
+     * @tc.desc     : errcode 9001001 in callback mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_1900', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x01234567, 0, (err: BusinessError<void> | null) => {
+        console.log('getMediaContent_stage_test_static_1900 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_2000
+     * @tc.name     : getMediaContent_stage_test_static_2000
+     * @tc.desc     : errcode 9001002 in callback mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_2000', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x01000005, 0, (err: BusinessError<void> | null) => {
+        console.log('getMediaContent_stage_test_static_2000 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_2100
+     * @tc.name     : getMediaContent_stage_test_static_2100
+     * @tc.desc     : errcode 9001001 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_2100', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContent(0x01234567).then(() => {
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringValue_test_static_009 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getStringValue_test_static_009 error.message' + error.message);
+        expect(JSON.stringify(error.code) == '9001001').assertTrue();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_2200
+     * @tc.name     : getMediaContent_stage_test_static_2200
+     * @tc.desc     : errcode 9001002 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_2200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let data = await res.getMediaContent(0x01000005)
+      } catch (err: BusinessError) {
+        console.log('getMediaContent_stage_test_static_2200 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_2300
+     * @tc.name     : getMediaContent_stage_test_static_2300
+     * @tc.desc     : errcode 9001001 in promise mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_2300', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let data = await res.getMediaContent(0x01234567, 0)
+      } catch (err: BusinessError) {
+        console.log('getMediaContent_stage_test_static_2300 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_static_2400
+     * @tc.name     : getMediaContent_stage_test_static_2400
+     * @tc.desc     : errcode 9001002 in promise mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_static_2400', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let data = await res.getMediaContent(0x01000005, 0)
+      } catch (err: BusinessError) {
+        console.log('getMediaContent_stage_test_static_2400 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_1100
+     * @tc.name     : getMediaContentBase64_stage_test_static_1100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_1100', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContentBase64(0x01234567).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContentBase64 resId promise 9001001 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContentBase64 resId promise 9001001 error.message' + error.message);
+        expect(error.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_1200
+     * @tc.name     : getMediaContentBase64_stage_test_static_1200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_1200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContentBase64(0x01000031).then(() => {
+        expect().assertFail();
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContentBase64 resId promise 9001002 error.code' + error.code);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'getMediaContentBase64 resId promise 9001002 error.message' + error.message);
+        expect(error.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_1300
+     * @tc.name     : getMediaContentBase64_stage_test_static_1300
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContentBase64_stage_test_static_1300", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getMediaContentBase64 resId callback err code 201 start');
+      try {
+        res.getMediaContentBase64(0x01234567, (err: BusinessError<void> | null, data: string | undefined) => {
+          hilog.info(domain, tag, 'getMediaContentBase64 resId callback 9001001 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContentBase64 resId callback 9001001 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001001);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContentBase64 resId callback 9001001 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getMediaContentBase64 resId callback 9001001 end');
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_1400
+     * @tc.name     : getMediaContentBase64_stage_test_static_1400
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it("getMediaContentBase64_stage_test_static_1400", Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, 'getMediaContentBase64 resId callback err code 9001002 start');
+      try {
+        res.getMediaContentBase64(0x01000031, (err: BusinessError<void> | null, data: string | undefined) => {
+          hilog.info(domain, tag, 'getMediaContentBase64 resId callback 9001002 data ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'getMediaContentBase64 resId callback 9001002 err ' + JSON.stringify(err));
+          expect(err?.code).assertEqual(9001002);
+          done();
+        })
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, 'getMediaContentBase64 resId callback 9001002 ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      hilog.info(domain, tag, 'getStringArrayValue callback 9001002 end');
+    })
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_1700
+     * @tc.name     : getMediaContentBase64_stage_test_static_1700
+     * @tc.desc     : errcode 9001001 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_1700', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContentBase64(0x01234567, (err: BusinessError<void> | null) => {
+        console.log('getMediaContentBase64_stage_test_static_1700 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_1800
+     * @tc.name     : getMediaContentBase64_stage_test_static_1800
+     * @tc.desc     : errcode 9001002 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_1800', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContentBase64(0x01000031, (err: BusinessError<void> | null) => {
+        console.log('getMediaContentBase64_stage_test_static_1800 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_1900
+     * @tc.name     : getMediaContentBase64_stage_test_static_1900
+     * @tc.desc     : errcode 9001001 in callback mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_1900', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContentBase64(0x01234567, 0, (err: BusinessError<void> | null) => {
+        console.log('getMediaContentBase64_stage_test_static_1900 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_2000
+     * @tc.name     : getMediaContentBase64_stage_test_static_2000
+     * @tc.desc     : errcode 9001002 in callback mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_2000', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaContentBase64(0x01000031, 0, (err: BusinessError<void> | null) => {
+        console.log('getMediaContentBase64_stage_test_static_2000 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_2100
+     * @tc.name     : getMediaContentBase64_stage_test_static_2100
+     * @tc.desc     : errcode 9001001 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_2100', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let data = await res.getMediaContentBase64(0x01234567)
+      } catch (err: BusinessError) {
+        console.log('getMediaContentBase64_stage_test_static_2100 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_2200
+     * @tc.name     : getMediaContentBase64_stage_test_static_2200
+     * @tc.desc     : errcode 9001002 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_2200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let data = await res.getMediaContentBase64(0x01000031)
+      } catch (err: BusinessError) {
+        console.log('getMediaContentBase64_stage_test_static_2200 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_2300
+     * @tc.name     : getMediaContentBase64_stage_test_static_2300
+     * @tc.desc     : errcode 9001001 in promise mode by resId with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_2300', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let data = await res.getMediaContentBase64(0x01234567, 0)
+      } catch (err: BusinessError) {
+        console.log('getMediaContentBase64_stage_test_static_2300 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_static_2400
+     * @tc.name     : getMediaContentBase64_stage_test_static_2400
+     * @tc.desc     : errcode 9001002 in promise mode by resId with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_static_2400', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let data = await res.getMediaContentBase64(0x01000031, 0)
+      } catch (err: BusinessError) {
+        console.log('getMediaContentBase64_stage_test_static_2400 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : getStringByName_stage_test_static_0100
+     * @tc.name     : getStringByName_stage_test_static_0100
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByName_stage_test_static_0100', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringByName('', (err: BusinessError<void> | null) => {
+        console.log('getStringByName_stage_test_static_0100 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayByName_stage_test_static_0100
+     * @tc.name     : getStringArrayByName_stage_test_static_0100
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayByName_stage_test_static_0100', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayByName('', (err: BusinessError<void> | null) => {
+        console.log('getStringArrayByName_stage_test_static_0100 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaByName_test_static_0300
+     * @tc.name     : getMediaByName_test_static_0300
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaByName_test_static_0300', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaByName('', (err: BusinessError<void> | null) => {
+        console.log('getMediaByName_test_static_0300 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaBase64ByName_test_static_0400
+     * @tc.name     : getMediaBase64ByName_test_static_0400
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaBase64ByName_test_static_0400', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaBase64ByName('', 0, (err: BusinessError<void> | null) => {
+        console.log('getMediaBase64ByName_test_static_0400 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
      * @tc.number   : getStringSync_test_static_0100
      * @tc.name     : getStringSync_test_static_0100
      * @tc.desc     : errcode 9001002
@@ -1654,6 +2888,40 @@ export default function globalStageTest() {
     })
 
     /**
+     * @tc.number   : getRawFileContent_test_static_0100
+     * @tc.name     : getRawFileContent_test_static_0100
+     * @tc.desc     : errcode 9001005 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileContent_test_static_0100', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getRawFileContent('plural_name_loop', (err: BusinessError<void> | null) => {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getRawFileContent_test_static_0100 error code:' + err?.code);
+        expect(JSON.stringify(err?.code)).assertEqual('9001005');
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getRawFileContent_test_static_0200
+     * @tc.name     : getRawFileContent_test_static_0200
+     * @tc.desc     : errcode 9001005 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileContent_test_static_0200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getRawFileContent('plural_name_loop').then(() => {
+      }).catch((err: Object | null | undefined) => {
+        let error = err as BusinessError
+        hilog.info(0x0000, 'testTag', '%{public}s', 'getRawFileContent_test_static_0200 error code:' + error.code);
+        expect(JSON.stringify(error.code)).assertEqual('9001005');
+        done();
+      })
+    })
+
+    /**
      * @tc.number   : getDrawableDescriptor_stage_test_static_0200
      * @tc.name     : getDrawableDescriptor_stage_test_static_0200
      * @tc.desc     : errcode 9001001
@@ -1682,7 +2950,7 @@ export default function globalStageTest() {
     it('getDrawableDescriptor_stage_test_static_0800', Level.LEVEL3, async (): Promise<void> => {
       let resource: resourceManager.Resource = {
         bundleName: "com.example.global_stage.static",
-        moduleName: "entry_test",
+        moduleName: "entry",
         id: 0x01234567
       }
       try {

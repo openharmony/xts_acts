@@ -336,6 +336,25 @@ export default function FivePointOne_i18nStageTest() {
     })
 
     /**
+     * @tc.number   : SUB_GLOBAL_refinedFormat_static_0310
+     * @tc.name     : SUB_GLOBAL_refinedFormat_static_0310
+     * @tc.desc     : maximumFractionDigits: 2 & maximumSignificantDigits: 6 & roundingPriority: "lessPrecision"
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_GLOBAL_refinedFormat_static_0310', Level.LEVEL2, async (done: () => void): Promise<void> => {
+      let numOptions: intl.NumberOptions = {
+        maximumFractionDigits: 2, maximumSignificantDigits: 6, roundingPriority: "lessPrecision"
+      };
+      let numfmt: intl.NumberFormat = new intl.NumberFormat("zh-hans-CN", numOptions);
+      let numberFormatted: string = numfmt.format(123.456);
+      console.log('numberFormatted:'+numberFormatted);
+      expect(numberFormatted == "123.456").assertTrue();
+      done();
+    })
+
+    /**
      * @tc.number   : SUB_GLOBAL_FilePathMirroring_static_0100
      * @tc.name     : SUB_GLOBAL_FilePathMirroring_static_0100
      * @tc.desc     : path /data/out/tmp & delimiter /
