@@ -121,6 +121,7 @@ export default function ActsNotificationEmitterPublishTest() {
           * @tc.type   : Function
           * @tc.level  : Level 2
           */
+        //问题单号：DTS2025060711369
         it('Sub_Notification_Emitter_Publish_Emit_Static_0700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
             const TEST_CASE_NAME = 'Sub_Notification_Emitter_Publish_Emit_0700'
             let eventId03: string = '3';
@@ -170,6 +171,7 @@ export default function ActsNotificationEmitterPublishTest() {
           * @tc.type   : Function
           * @tc.level  : Level 2
           */
+        //问题单号：DTS2025060711369
         it('Sub_Notification_Emitter_Publish_Emit_Static_0800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
             const TEST_CASE_NAME = 'Sub_Notification_Emitter_Publish_Emit_0800'
             let eventId04: string = '4';

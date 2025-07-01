@@ -126,7 +126,7 @@ export default function ActsEmitterandComEventTest() {
       done()
     })
 
-   /**
+    /**
      * @tc.number     : Sub_NotificationAns_CommonEvent_Basic_Static_0001
      * @tc.name       : Sub_NotificationAns_CommonEvent_Basic_Static_0001
      * @tc.desc       : 公共事件基础用例验证
@@ -161,8 +161,8 @@ export default function ActsEmitterandComEventTest() {
                     done()
                   } else {
                     console.info(Tag + " subscribe success");
-                    console.info(Tag + " Consume callback " + JSON.stringify(data));
                     let event = data == undefined ? 0 : data.event;
+                    console.error(Tag + `Consume callback , event is ${JSON.stringify(event)}`);
                     expect(event).assertEqual("event")
                   }
                 });
@@ -257,8 +257,8 @@ export default function ActsEmitterandComEventTest() {
                     console.error(Tag + `订阅者a subscribe failed, code is , message is ${err}`);
                   } else {
                     console.info(Tag + "订阅者a subscribe success");
-                    console.info(Tag + "订阅者a Consume callback " + JSON.stringify(data_a));
                     let event_a = data_a == undefined ? 0 : data_a.event;
+                    console.error(Tag + `Consume callback , event is ${JSON.stringify(event_a)}`);
                     expect(event_a).assertEqual("event11")
                     // 结束订阅者对当前有序公共事件处理的回调
                     subscriber_a.finishCommonEvent((err: BusinessError | null)=> {
@@ -346,8 +346,8 @@ export default function ActsEmitterandComEventTest() {
                     console.error(Tag + `订阅者b subscribe failed, code is , message is ${err}`);
                   } else {
                     console.info(Tag + "订阅者b subscribe success");
-                    console.info(Tag + "订阅者b Consume callback " + JSON.stringify(data_b));
                     let event_b = data_b == undefined ? 0 : data_b.event;
+                    console.error(Tag + `Consume callback , event is ${JSON.stringify(event_b)}`);
                     expect(event_b).assertEqual("event11")
                     // 结束订阅者对当前有序公共事件处理的回调
                     subscriber_b.finishCommonEvent((err: BusinessError | null)=> {
@@ -403,7 +403,7 @@ export default function ActsEmitterandComEventTest() {
         }
       })
 
-      
+
     /**
      * @tc.number     : Sub_Notification_Emitter_Publish_Emit_Static_0100
      * @tc.name       : Sub_Notification_Emitter_Publish_Emit_Static_0100
@@ -640,7 +640,7 @@ export default function ActsEmitterandComEventTest() {
       done()
     })
 
-     //问题单号：DTS2025051640226
+    //问题单号：DTS2025051640226
     /**
      * @tc.number     : Sub_Notification_Emitter_Publish_Sendable_Static_0003
      * @tc.name       : Sub_Notification_Emitter_Publish_Sendable_Static_0003

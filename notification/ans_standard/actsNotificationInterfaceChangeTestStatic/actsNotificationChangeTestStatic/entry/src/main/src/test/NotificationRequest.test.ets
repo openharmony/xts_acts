@@ -297,7 +297,76 @@ export default function ActsNotificationRequestTest() {
           done();
         }
       })
+    
+    
+    //DTS2025060627133
+    /**
+     * @tc.number: Acts_NotificationRequest_Static_0600
+     * @tc.name: Acts_NotificationRequest_Static_0600
+     * @tc.desc: Construct the notificationRequest.
+     */
+    it('Acts_NotificationRequest_Static_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: () => void): Promise<void> => {
+        const TEST_CASE_NAME:string = 'Acts_NotificationRequest_Static_0600';
 
+        const color = new ArrayBuffer(60000);
+        let bufferArr = new Uint8Array(color);
+        for (let i = 0; i < bufferArr.byteLength; i++) {
+          bufferArr[i++] = 60;
+          bufferArr[i++] = 20;
+          bufferArr[i++] = 220;
+          bufferArr[i] = 100;
+        }
+        let opts: image.InitializationOptions = {
+          editable: true, pixelFormat: image.PixelMapFormat.RGB_565, size: { height: 100, width: 150 }
+        };
+        let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+        pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) =>{
+          console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+        }).catch((err:BusinessError):void  => {
+          console.error(0x000, `${TAG}`, `${TEST_CASE_NAME}` + "Failed to obtain the image pixel map information.");
+        })
+        let notificationRequest: notificationManager.NotificationRequest = {
+          id: 1,
+          appMessageId: "appMessageId",
+          sound: "sound",
+          content: {
+            notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+            normal: {
+              title: 'text_title',
+              text: 'text_text',
+              additionalText: '',
+              lockscreenPicture: pixelMap
+            }as notificationManager.NotificationBasicContent
+          } as notificationManager.NotificationContent,
+          creatorBundleName: "creatorBundleName",
+          creatorUid: 100,
+          creatorPid: 101,
+          creatorUserId: 100,
+          hashCode: "hashCode",
+          source: 0,
+          deviceId: undefined,
+          notificationFlags: undefined,
+          agentBundle: undefined,
+          appInstanceKey: undefined,
+          notificationSlotType: notificationManager.SlotType.OTHER_TYPES
+        }
+
+        try {
+          await Utils.msSleep(1000);
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+            hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+            expect(err).assertEqual(null);
+            hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
+            done();
+          })
+        } catch (err:BusinessError) {
+          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result1 is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case end`);
+          done();
+        }
+      })
 
   })
 }
