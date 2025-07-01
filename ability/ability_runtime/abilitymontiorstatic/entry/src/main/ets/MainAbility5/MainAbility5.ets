@@ -37,10 +37,10 @@ class MainAbility5 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag MainAbility5', 'EntryAbility onWindowStageCreate');
     try {
-      windowStage.loadContent('pages/Index', (err: BusinessError<void>): void => {
+      windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
         hilog.info(0x0000, 'testTag sjd EntryAbility', 'loadContent entering');
         MyCallback.runCasesOfCallback();
-        if (err.code) {
+        if (err?.code) {
           hilog.info(0x0000, 'testTag sjd EntryAbility', 'loadContent error');
           return;
         }

@@ -42,8 +42,8 @@ export default function UIAbilityContextteststatic() {
           abilityName: 'EntryAbility1'
         };
         try {
-          context.startAbilityForResult(want,(err: BusinessError, data)=>{
-            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_0100`, err.message);
+          context.startAbilityForResult(want,(err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_0100`, err?.message);
             expect(err?.code).assertEqual(16000004);
             done();
           })
@@ -72,7 +72,7 @@ export default function UIAbilityContextteststatic() {
           action: 'zzabc'
         };
         try {
-          context.startAbilityForResult(want, (err: BusinessError, data) => {
+          context.startAbilityForResult(want, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
             hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_0200 ${err?.code}`);
             expect(err?.code).assertEqual(16000019);
             done();
@@ -110,7 +110,7 @@ export default function UIAbilityContextteststatic() {
           parameters: parameters
         };
         try {
-          context.startAbilityForResult(want, (err: BusinessError, data) => {
+          context.startAbilityForResult(want, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
             hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_1000 ${err?.code}`);
             expect(err?.code).assertEqual(16000050);
             done();
@@ -142,8 +142,8 @@ export default function UIAbilityContextteststatic() {
           displayId: 0
         };
         try {
-          context.startAbilityForResult(want,options, (err: BusinessError, data) => {
-            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_1100`, err.message);
+          context.startAbilityForResult(want,options, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_1100`, err?.message);
             expect(err?.code).assertEqual(16000004);
             done();
           })
@@ -175,8 +175,8 @@ export default function UIAbilityContextteststatic() {
           displayId: 0
         };
         try {
-          context.startAbilityForResult(want,options, (err: BusinessError, data) => {
-            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_1100`, err.message);
+          context.startAbilityForResult(want,options, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_1100`, err?.message);
             expect(err?.code).assertEqual(16000019);
             done();
           })
@@ -217,8 +217,8 @@ export default function UIAbilityContextteststatic() {
           displayId: 0
         };
         try {
-          context.startAbilityForResult(want,options, (err: BusinessError, data) => {
-            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2000`, err.message);
+          context.startAbilityForResult(want,options, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2000`, err?.message);
             expect(err?.code).assertEqual(16000050);
             done();
           })
