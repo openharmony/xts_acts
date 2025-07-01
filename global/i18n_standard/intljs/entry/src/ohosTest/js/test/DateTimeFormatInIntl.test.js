@@ -278,32 +278,26 @@ describe('DateTimeFormatInIntlTest', function () {
     it('dateTimeFormat_test_1300', Level.LEVEL2, function () {
         let startdate = new Date(2020, 11, 20, 14, 23, 16);
         let enddate = new Date(2020, 11, 21, 14, 23, 16);
-        let datefmt = new Intl.DateTimeFormat('en-GB');
+        let datefmt = new Intl.DateTimeFormat('en-GB', {
+            dateStyle: 'full'
+        });
         console.log('dateTimeFormat_test_1300 ' + datefmt.formatRange(startdate, enddate));
-        let devType = deviceInfo.deviceType;
-        if (devType == '2in1'){
-            expect(datefmt.formatRange(startdate, enddate)).assertEqual('20–21 Dec 2020');
-        }else{
-            expect(datefmt.formatRange(startdate, enddate)).assertEqual('20/12/2020 – 21/12/2020');
-        }
+        expect(datefmt.formatRange(startdate, enddate)).assertEqual('Sunday, 20 – Monday, 21 December 2020');
     })
 
     /* *
     * @tc.number  SUB_GLOBAL_INTL_JS_DATETIME_1400
     * @tc.name    format the date with daterange when the start and end date is equal
-    * @tc.desc    check the daterange when the start and end date is equal
+    * @tc.desc    check the daterange when the start and end date is equal.
     */
     it('dateTimeFormat_test_1400', Level.LEVEL2, function () {
         let startdate = new Date(2020, 11, 20, 14, 23, 16);
         let enddate = new Date(2020, 11, 20, 14, 23, 16);
-        let datefmt = new Intl.DateTimeFormat('en-GB');
+        let datefmt = new Intl.DateTimeFormat('en-GB', {
+            dateStyle: 'full'
+        });
         console.log('dateTimeFormat_test_1400 ' + datefmt.formatRange(startdate, enddate));
-        let devType = deviceInfo.deviceType;
-        if (devType == '2in1'){
-            expect(datefmt.formatRange(startdate, enddate)).assertEqual('20 Dec 2020');
-        }else{
-            expect(datefmt.formatRange(startdate, enddate)).assertEqual('20/12/2020');
-        }
+        expect(datefmt.formatRange(startdate, enddate)).assertEqual('Sunday, 20 December 2020');
     })
 
     /* *

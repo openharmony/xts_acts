@@ -599,7 +599,7 @@ export default function i18nStageTest() {
     /**
      * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0010
      * @tc.name     : dateTimeFormatAdapt_test_0010
-     * @tc.desc     : check the dateStyle is adapt to auto
+     * @tc.desc     : check the dateStyle is adapt to full
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 2
@@ -607,21 +607,16 @@ export default function i18nStageTest() {
     it('dateTimeFormatAdapt_test_0010', Level.LEVEL2, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
-        dateStyle: 'auto'
+        dateStyle: 'full'
       });
       console.log('dateTimeFormatAdapt_test_0010:' + dateFmt.format(data));
-      let devType = deviceInfo.deviceType;
-      if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(data)).assertEqual('2020年12月20日');
-      } else {
-        expect(dateFmt.format(data)).assertEqual('2020/12/20');
-      }
+      expect(dateFmt.format(data)).assertEqual('2020年12月20日星期日');
     })
 
     /**
      * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0020
      * @tc.name     : dateTimeFormatAdapt_test_0020
-     * @tc.desc     : check the timeStyle is adapt to auto
+     * @tc.desc     : check the timeStyle is adapt to full
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 1
@@ -629,21 +624,16 @@ export default function i18nStageTest() {
     it('dateTimeFormatAdapt_test_0020', Level.LEVEL1, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
-        timeStyle: 'auto'
+        timeStyle: 'full'
       });
       console.log('dateTimeFormatAdapt_test_0020:' + dateFmt.format(data));
-      let devType = deviceInfo.deviceType;
-      if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(data)).assertEqual('下午2:23:16');
-      } else {
-        expect(dateFmt.format(data)).assertEqual('下午2:23');
-      }
+      expect(dateFmt.format(data)).assertEqual('中国标准时间 下午2:23:16');
     })
 
     /**
      * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0030
      * @tc.name     : dateTimeFormatAdapt_test_0030
-     * @tc.desc     : check the weekday is adapt to auto
+     * @tc.desc     : check the weekday is adapt to long
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 1
@@ -651,21 +641,16 @@ export default function i18nStageTest() {
     it('dateTimeFormatAdapt_test_0030', Level.LEVEL1, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
-        weekday: 'auto'
+        weekday: 'long'
       });
       console.log('dateTimeFormatAdapt_test_0030:' + dateFmt.format(data));
-      let devType = deviceInfo.deviceType;
-      if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(data)).assertEqual('星期日');
-      } else {
-        expect(dateFmt.format(data)).assertEqual('周日');
-      }
+      expect(dateFmt.format(data)).assertEqual('星期日');
     })
 
     /**
      * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0040
      * @tc.name     : dateTimeFormatAdapt_test_0040
-     * @tc.desc     : check the month is adapt to auto
+     * @tc.desc     : check the month is adapt to long
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 1
@@ -673,21 +658,16 @@ export default function i18nStageTest() {
     it('dateTimeFormatAdapt_test_0040', Level.LEVEL1, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
       let dateFmt = new Intl.DateTimeFormat("en-gb", {
-        month: 'auto'
+        month: 'long'
       });
       console.log('dateTimeFormatAdapt_test_0040:' + dateFmt.format(data));
-      let devType = deviceInfo.deviceType;
-      if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(data)).assertEqual('December');
-      } else {
-        expect(dateFmt.format(data)).assertEqual('Dec');
-      }
+      expect(dateFmt.format(data)).assertEqual('December');
     })
 
     /**
      * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0050
      * @tc.name     : dateTimeFormatAdapt_test_0050
-     * @tc.desc     : check the timeZoneName is adapt to auto
+     * @tc.desc     : check the timeZoneName is adapt to long
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 1
@@ -695,15 +675,10 @@ export default function i18nStageTest() {
     it('dateTimeFormatAdapt_test_0050', Level.LEVEL1, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
-        timeZoneName: 'auto'
+        timeZoneName: 'long'
       });
       console.log('dateTimeFormatAdapt_test_0050:' + dateFmt.format(data));
-      let devType = deviceInfo.deviceType;
-      if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(data)).assertEqual('2020/12/20 中国标准时间');
-      } else {
-        expect(dateFmt.format(data)).assertEqual('2020/12/20 GMT+8');
-      }
+      expect(dateFmt.format(data)).assertEqual('2020/12/20 中国标准时间');
     })
 
     /**
@@ -726,21 +701,18 @@ export default function i18nStageTest() {
     /**
      * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0070
      * @tc.name     : dateTimeFormatAdapt_test_0070
-     * @tc.desc     : check the option is null
+     * @tc.desc     : check the option dateStyle is full
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
     it('dateTimeFormatAdapt_test_0070', Level.LEVEL1, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
-      let dateFmt = new Intl.DateTimeFormat("zh-CN");
+      let dateFmt = new Intl.DateTimeFormat("zh-CN", {
+        dateStyle: 'full'
+      });
       console.log('dateTimeFormatAdapt_test_0070:' + dateFmt.format(data));
-      let devType = deviceInfo.deviceType;
-      if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(data)).assertEqual('2020年12月20日');
-      } else {
-        expect(dateFmt.format(data)).assertEqual('2020/12/20');
-      }
+      expect(dateFmt.format(data)).assertEqual('2020年12月20日星期日');
     })
 
     /**
@@ -832,23 +804,19 @@ export default function i18nStageTest() {
     /**
      * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0110
      * @tc.name     : relativeTimeFormatAdapt_test_0110
-     * @tc.desc     : format the timeStyle is null
+     * @tc.desc     : format the timeStyle is short
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
     it('relativeTimeFormatAdapt_test_0110', Level.LEVEL1, () => {
       console.log('relativeTimeFormatAdapt_test_0110:' + 'start');
-      let relativeTimeFmt = new Intl.RelativeTimeFormat("en");
+      let relativeTimeFmt = new Intl.RelativeTimeFormat("en", {
+        style: 'short'
+      });
       let value = relativeTimeFmt.format(100, 'second');
       console.log('relativeTimeFormatAdapt_test_0110' + value);
-      let devTyp = deviceInfo.deviceType;
-      console.log('relativeTimeFormatAdapt_test_0110 device' + devTyp);
-      if (devTyp == '2in1' || devTyp == 'tablet' || devTyp == 'phone' || devTyp == 'default') {
-        expect(value).assertEqual('in 100 seconds');
-      } else {
-        expect(value).assertEqual('in 100 sec.');
-      }
+      expect(value).assertEqual('in 100 sec.');
     })
 
     /**
