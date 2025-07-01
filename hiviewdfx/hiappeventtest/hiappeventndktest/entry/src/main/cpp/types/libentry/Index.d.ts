@@ -65,3 +65,4 @@ export const SetReportUserProperty: (processor: Processor, userPropertyNames: st
 export const AddProcessor: (processor: Processor) => number;
 export const RemoveProcessor: (processorId: number) => number;
 export const DestroyProcessor: (processor: Processor) => void;
+export const SetConfigName: (processor: Processor, configName: string) => number;

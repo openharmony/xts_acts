@@ -20,7 +20,7 @@ export default function processorNDKTest() {
   describe('processorNDKTest', () => {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0100
-     * @tc.name testHiAppEventProcessoCode01
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0100
      * @tc.desc 验证OH_HiAppEvent_SetReportRoute正常参数入参
      * @tc.size MediumTest
      * @tc.type Function
@@ -36,7 +36,7 @@ export default function processorNDKTest() {
     })
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0200
-     * @tc.name testHiAppEventProcessoCode02
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0200
      * @tc.desc 验证OH_HiAppEvent_SetReportRoute-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -52,7 +52,7 @@ export default function processorNDKTest() {
     })
       /**
        * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0300
-       * @tc.name testHiAppEventProcessoCode03
+       * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0300
        * @tc.desc 验证OH_HiAppEvent_SetReportRoute-appId为空
        * @tc.size MediumTest
        * @tc.type Function
@@ -68,7 +68,7 @@ export default function processorNDKTest() {
     })
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0400
-     * @tc.name testHiAppEventProcessoCode04
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0400
      * @tc.desc 验证OH_HiAppEvent_SetReportRoute-routeInfo为空
      * @tc.size MediumTest
      * @tc.type Function
@@ -84,7 +84,7 @@ export default function processorNDKTest() {
     })
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0500
-     * @tc.name testHiAppEventProcessoCode05
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0500
      * @tc.desc 验证OH_HiAppEvent_SetReportRoute-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -100,7 +100,7 @@ export default function processorNDKTest() {
     })
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0600
-     * @tc.name testHiAppEventProcessoCode06
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0600
      * @tc.desc 验证OH_HiAppEvent_SetReportRoute-routeInfo长度超最大值
      * @tc.size MediumTest
      * @tc.type Function
@@ -117,7 +117,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0700
-     * @tc.name testHiAppEventProcessoCode07
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0700
      * @tc.desc 验证OH_HiAppEvent_SetReportRoute-appId长度超最大值
      * @tc.size MediumTest
      * @tc.type Function
@@ -134,7 +134,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0800
-     * @tc.name testHiAppEventProcessoCode08
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0800
      * @tc.desc 验证OH_HiAppEvent_SetReportPolicy正常入参
      * @tc.size MediumTest
      * @tc.type Function
@@ -149,7 +149,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_0900
-     * @tc.name testHiAppEventProcessoCode09
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_0900
      * @tc.desc 验证OH_HiAppEvent_SetReportPolicy-periodReport小于0
      * @tc.size MediumTest
      * @tc.type Function
@@ -164,7 +164,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1000
-     * @tc.name testHiAppEventProcessoCode10
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1000
      * @tc.desc 验证OH_HiAppEvent_SetReportPolicy-batchReport小于0
      * @tc.size MediumTest
      * @tc.type Function
@@ -179,7 +179,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1100
-     * @tc.name testHiAppEventProcessoCode11
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1100
      * @tc.desc 验证OH_HiAppEvent_SetReportPolicy-batchReport大于1000
      * @tc.size MediumTest
      * @tc.type Function
@@ -194,7 +194,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1200
-     * @tc.name testHiAppEventProcessoCode12
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1200
      * @tc.desc 验证OH_HiAppEvent_SetReportPolicy-batchReport无效指针
      * @tc.size MediumTest
      * @tc.type Function
@@ -209,7 +209,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1300
-     * @tc.name testHiAppEventProcessoCode13
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1300
      * @tc.desc 验证OH_HiAppEvent_SetReportEvent正常入参
      * @tc.size MediumTest
      * @tc.type Function
@@ -227,7 +227,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1400
-     * @tc.name testHiAppEventProcessoCode14
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1400
      * @tc.desc 验证OH_HiAppEvent_SetReportEvent参数值无效
      * @tc.size MediumTest
      * @tc.type Function
@@ -245,7 +245,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1500
-     * @tc.name testHiAppEventProcessoCode15
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1500
      * @tc.desc 验证OH_HiAppEvent_SetReportEvent-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -263,7 +263,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1600
-     * @tc.name testHiAppEventProcessoCode16
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1600
      * @tc.desc 验证OH_HiAppEvent_SetReportEvent-domain为空
      * @tc.size MediumTest
      * @tc.type Function
@@ -281,7 +281,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1700
-     * @tc.name testHiAppEventProcessoCode17
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1700
      * @tc.desc 验证OH_HiAppEvent_SetReportEvent-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -299,7 +299,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1800
-     * @tc.name testHiAppEventProcessoCode18
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1800
      * @tc.desc 验证OH_HiAppEvent_SetReportEvent-isRealTime为false
      * @tc.size MediumTest
      * @tc.type Function
@@ -317,7 +317,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_1900
-     * @tc.name testHiAppEventProcessoCode19
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_1900
      * @tc.desc 验证OH_HiAppEvent_SetCustomConfig正常入参
      * @tc.size MediumTest
      * @tc.type Function
@@ -334,7 +334,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2000
-     * @tc.name testHiAppEventProcessoCode20
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2000
      * @tc.desc 验证OH_HiAppEvent_SetCustomConfig-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -351,7 +351,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2100
-     * @tc.name testHiAppEventProcessoCode21
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2100
      * @tc.desc 验证OH_HiAppEvent_SetCustomConfig-key超最大值
      * @tc.size MediumTest
      * @tc.type Function
@@ -368,7 +368,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2200
-     * @tc.name testHiAppEventProcessoCode22
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2200
      * @tc.desc 验证OH_HiAppEvent_SetCustomConfig-value超最大值
      * @tc.size MediumTest
      * @tc.type Function
@@ -384,7 +384,7 @@ export default function processorNDKTest() {
       })
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2300
-     * @tc.name testHiAppEventProcessoCode23
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2300
      * @tc.desc 验证OH_HiAppEvent_SetConfigId正常入参
      * @tc.size MediumTest
      * @tc.type Function
@@ -399,7 +399,7 @@ export default function processorNDKTest() {
       })
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2400
-     * @tc.name testHiAppEventProcessoCode24
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2400
      * @tc.desc 验证OH_HiAppEvent_SetConfigId-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -415,7 +415,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2500
-     * @tc.name testHiAppEventProcessoCode25
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2500
      * @tc.desc 验证OH_HiAppEvent_SetConfigId-configId小于0
      * @tc.size MediumTest
      * @tc.type Function
@@ -431,7 +431,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2700
-     * @tc.name testHiAppEventProcessoCode27
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2700
      * @tc.desc 验证OH_HiAppEvent_SetReportUserId正常入参
      * @tc.size MediumTest
      * @tc.type Function
@@ -448,7 +448,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2800
-     * @tc.name testHiAppEventProcessoCode28
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2800
      * @tc.desc 验证OH_HiAppEvent_SetReportUserId-size值大于数组长度
      * @tc.size MediumTest
      * @tc.type Function
@@ -465,7 +465,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_2900
-     * @tc.name testHiAppEventProcessoCode29
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_2900
      * @tc.desc 验证OH_HiAppEvent_SetReportUserId-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -482,7 +482,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3000
-     * @tc.name testHiAppEventProcessoCode30
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_3000
      * @tc.desc 验证OH_HiAppEvent_SetReportUserProperty正常入参
      * @tc.size MediumTest
      * @tc.type Function
@@ -499,7 +499,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3100
-     * @tc.name testHiAppEventProcessoCode31
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_3100
      * @tc.desc 验证OH_HiAppEvent_SetReportUserProperty-size值大于数组长度
      * @tc.size MediumTest
      * @tc.type Function
@@ -516,7 +516,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3200
-     * @tc.name testHiAppEventProcessoCode32
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_3200
      * @tc.desc 验证OH_HiAppEvent_SetReportUserId-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -533,7 +533,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3400
-     * @tc.name testHiAppEventProcessoCode34
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_3400
      * @tc.desc 验证OH_HiAppEvent_AddProcessor-Processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -548,7 +548,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3500
-     * @tc.name testHiAppEventProcessoCode35
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_3500
      * @tc.desc 验证OH_HiAppEvent_AddProcessor-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -563,7 +563,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3700
-     * @tc.name testHiAppEventProcessoCode37
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_3700
      * @tc.desc 验证OH_HiAppEvent_Remove-事件处理者不存在
      * @tc.size MediumTest
      * @tc.type Function
@@ -579,7 +579,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3800
-     * @tc.name testHiAppEventProcessoCode38
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_3800
      * @tc.desc 验证OH_HiAppEvent_DestroyProcessor正常入参
      * @tc.size MediumTest
      * @tc.type Function
@@ -594,7 +594,7 @@ export default function processorNDKTest() {
 
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3900
-     * @tc.name testHiAppEventProcessoCode39
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_3900
      * @tc.desc 验证OH_HiAppEvent_DestroyProcessor-processor异常
      * @tc.size MediumTest
      * @tc.type Function
@@ -606,5 +606,101 @@ export default function processorNDKTest() {
         expect(false).assertFalse();
         done();
       })
-   })
+
+      /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_4000
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_4000
+     * @tc.desc 验证OH_HiAppEvent_SetConfigName正常参数入参
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
+      const processor = hiappevent.CreateProcessor("test_processor");
+      const configName= "SDK_OCG";
+      const result = hiappevent.SetConfigName(processor, configName);
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_4100
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_4100
+     * @tc.desc 验证OH_HiAppEvent_SetConfigName-configName异常入参
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
+      const processor = hiappevent.CreateProcessor("test_processor");
+      const configName= "undefined_name";
+      const result = hiappevent.SetConfigName(processor, configName);
+      expect(result).assertEqual(-9);
+      done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_4200
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_4200
+     * @tc.desc 验证OH_HiAppEvent_SetConfigName-configName为空
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
+      const processor = hiappevent.CreateProcessor("test_processor");
+      const configName= "";
+      const result = hiappevent.SetConfigName(processor, configName);
+      expect(result).assertEqual(4);
+      done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_4300
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_4300
+     * @tc.desc 验证OH_HiAppEvent_SetConfigName-configName为特殊字符
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
+      const processor = hiappevent.CreateProcessor("test_processor");
+      const configName= "xxx***";
+      const result = hiappevent.SetConfigName(processor, configName);
+      expect(result).assertEqual(-9);
+      done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_4400
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_4400
+     * @tc.desc 验证OH_HiAppEvent_SetConfigName-configName为数字开头
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
+      const processor = hiappevent.CreateProcessor("test_processor");
+      const configName= "123_processor";
+      const result = hiappevent.SetConfigName(processor, configName);
+      expect(result).assertEqual(-9);
+      done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_4500
+     * @tc.name SUB_DFX_DFT_HiAppEvent_Processor_Code_4500
+     * @tc.desc 验证OH_HiAppEvent_SetConfigName-configName为超过256的字符串
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
+      const processor = hiappevent.CreateProcessor("test_processor");
+      const configName= "a".repeat(257);
+      const result = hiappevent.SetConfigName(processor, configName);
+      expect(result).assertEqual(4);
+      done();
+    })
+  })
 }
