@@ -622,7 +622,7 @@ export default function imageDecodeOptions() {
                     let decodingOptions: Options = {
                         sampleSize: 1,
                         editable: true,
-                        desiredSize: { width: 1000, height: 1000 },
+                        desiredSize: { width: 10000, height: 10000 },
                         rotate: 10,
                         desiredPixelFormat: 2,
                         desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
@@ -679,7 +679,7 @@ export default function imageDecodeOptions() {
                         desiredSize: { width: 1, height: 2 },
                         rotate: 10,
                         desiredPixelFormat: 2,
-                        desiredRegion: { size: { height: 1000, width: 1000 }, x: 0, y: 0 },
+                        desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
                         index: 0,
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
@@ -798,7 +798,7 @@ export default function imageDecodeOptions() {
                         desiredSize: { width: 1, height: 2 },
                         rotate: 10,
                         desiredPixelFormat: 2,
-                        desiredRegion: { size: { height: 1, width: 2 }, x: 1000, y: 1000 },
+                        desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 10000 },
                         index: 0,
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
@@ -1414,7 +1414,7 @@ export default function imageDecodeOptions() {
                 let decodingOptions: Options = {
                     sampleSize: 1,
                     editable: true,
-                    desiredSize: { width: 1000, height: 1000 },
+                    desiredSize: { width: 10000, height: 10000 },
                     rotate: 10,
                     desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
@@ -1463,7 +1463,7 @@ export default function imageDecodeOptions() {
                     desiredSize: { width: 1, height: 2 },
                     rotate: 10,
                     desiredPixelFormat: 2,
-                    desiredRegion: { size: { height: 1000, width: 1000 }, x: 0, y: 0 },
+                    desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
                     index: 0,
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
@@ -1568,11 +1568,10 @@ export default function imageDecodeOptions() {
                     desiredSize: { width: 1, height: 2 },
                     rotate: 10,
                     desiredPixelFormat: 2,
-                    desiredRegion: { size: { height: 1, width: 2 }, x: 200, y: 210 },
+                    desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 10000 },
                     index: 0,
                 };
-                try {
-                    imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 success ");
                         console.info(
@@ -1586,12 +1585,7 @@ export default function imageDecodeOptions() {
                         expect(false).assertTrue();
                         done();
                     }
-                    });
-                } catch (error) {
-                    console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 error: " + error);                  
-                    expect(false).assertTrue();                                   
-                    done(); 
-                }               
+                });
             }
         });
 
@@ -2207,7 +2201,7 @@ export default function imageDecodeOptions() {
                     desiredSize: { width: 1, height: 2 },
                     rotate: 10,
                     desiredPixelFormat: 2,
-                    desiredRegion: { size: { height: 1000, width: 1000 }, x: 0, y: 0 },
+                    desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
                     index: 0,
                 };
 
@@ -2313,7 +2307,7 @@ export default function imageDecodeOptions() {
                     desiredSize: { width: 1, height: 2 },
                     rotate: 10,
                     desiredPixelFormat: 2,
-                    desiredRegion: { size: { height: 1, width: 2 }, x: 1000, y: 1000 },
+                    desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 10000 },
                     index: 0,
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
@@ -2891,7 +2885,7 @@ export default function imageDecodeOptions() {
                     desiredSize: { width: 1, height: 2 },
                     rotate: 10,
                     desiredPixelFormat: 2,
-                    desiredRegion: { size: { height: 1000, width: 1000 }, x: 0, y: 0 },
+                    desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
                     index: 0,
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
@@ -2998,7 +2992,7 @@ export default function imageDecodeOptions() {
                     desiredSize: { width: 1, height: 2 },
                     rotate: 10,
                     desiredPixelFormat: 2,
-                    desiredRegion: { size: { height: 1, width: 2 }, x: 1000, y: 1000 },
+                    desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 10000 },
                     index: 0,
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
@@ -3344,5 +3338,3 @@ export default function imageDecodeOptions() {
         });
     });
 }
-
-
