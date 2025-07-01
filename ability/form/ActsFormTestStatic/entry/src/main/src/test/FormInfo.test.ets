@@ -36,20 +36,20 @@ export default function formInfoTest() {
             await Utils.msSleep(1000);
             hilog.info(DOMAIN, TAG, 'FormInfoStaticTest001 start');
 
-            expect(0).assertEqual(formInfo.RenderingMode.AUTO_COLOR as number);
-            expect(1).assertEqual(formInfo.RenderingMode.FULL_COLOR as number);
-            expect(2).assertEqual(formInfo.RenderingMode.SINGLE_COLOR as number);
+            expect(0).assertEqual(formInfo.RenderingMode.AUTO_COLOR as int);
+            expect(1).assertEqual(formInfo.RenderingMode.FULL_COLOR as int);
+            expect(2).assertEqual(formInfo.RenderingMode.SINGLE_COLOR as int);
 
-            expect(1).assertEqual(formInfo.FormType.JS as number);
-            expect(2).assertEqual(formInfo.FormType.eTS as number);
+            expect(1).assertEqual(formInfo.FormType.JS as int);
+            expect(2).assertEqual(formInfo.FormType.eTS as int);
 
-            expect(-1).assertEqual(formInfo.ColorMode.MODE_AUTO as number);
-            expect(0).assertEqual(formInfo.ColorMode.MODE_DARK as number);
-            expect(1).assertEqual(formInfo.ColorMode.MODE_LIGHT as number);
+            expect(-1).assertEqual(formInfo.ColorMode.MODE_AUTO as int);
+            expect(0).assertEqual(formInfo.ColorMode.MODE_DARK as int);
+            expect(1).assertEqual(formInfo.ColorMode.MODE_LIGHT as int);
 
-            expect(-1).assertEqual(formInfo.FormState.UNKNOWN as number);
-            expect(0).assertEqual(formInfo.FormState.DEFAULT as number);
-            expect(1).assertEqual(formInfo.FormState.READY as number);
+            expect(-1).assertEqual(formInfo.FormState.UNKNOWN as int);
+            expect(0).assertEqual(formInfo.FormState.DEFAULT as int);
+            expect(1).assertEqual(formInfo.FormState.READY as int);
 
             expect('ohos.extra.param.key.form_identity').assertEqual(formInfo.FormParam.IDENTITY_KEY as string);
             expect('ohos.extra.param.key.form_dimension').assertEqual(formInfo.FormParam.DIMENSION_KEY as string);
@@ -70,44 +70,43 @@ export default function formInfoTest() {
             expect('ohos.extra.param.key.permission_name').assertEqual(formInfo.FormParam.FORM_PERMISSION_NAME_KEY as string);
             expect('ohos.extra.param.key.permission_granted').assertEqual(formInfo.FormParam.FORM_PERMISSION_GRANTED_KEY as string);
 
-            expect(1).assertEqual(formInfo.FormDimension.Dimension_1_2 as number);
-            expect(2).assertEqual(formInfo.FormDimension.Dimension_2_2 as number);
-            expect(3).assertEqual(formInfo.FormDimension.Dimension_2_4 as number);
-            expect(4).assertEqual(formInfo.FormDimension.Dimension_4_4 as number);
-            expect(5).assertEqual(formInfo.FormDimension.Dimension_2_1 as number);
-            expect(6).assertEqual(formInfo.FormDimension.DIMENSION_1_1 as number);
-            expect(7).assertEqual(formInfo.FormDimension.DIMENSION_6_4 as number);
-            expect(8).assertEqual(formInfo.FormDimension.DIMENSION_2_3 as number);
-            expect(9).assertEqual(formInfo.FormDimension.DIMENSION_3_3 as number);
-            expect(10).assertEqual(formInfo.FormDimension.DIMENSION_3_4 as number);
+            expect(1).assertEqual(formInfo.FormDimension.Dimension_1_2 as int);
+            expect(2).assertEqual(formInfo.FormDimension.Dimension_2_2 as int);
+            expect(3).assertEqual(formInfo.FormDimension.Dimension_2_4 as int);
+            expect(4).assertEqual(formInfo.FormDimension.Dimension_4_4 as int);
+            expect(5).assertEqual(formInfo.FormDimension.Dimension_2_1 as int);
+            expect(6).assertEqual(formInfo.FormDimension.DIMENSION_1_1 as int);
+            expect(7).assertEqual(formInfo.FormDimension.DIMENSION_6_4 as int);
+            expect(8).assertEqual(formInfo.FormDimension.DIMENSION_2_3 as int);
+            expect(9).assertEqual(formInfo.FormDimension.DIMENSION_3_3 as int);
 
-            expect(1).assertEqual(formInfo.FormShape.RECT as number);
-            expect(2).assertEqual(formInfo.FormShape.CIRCLE as number);
+            expect(1).assertEqual(formInfo.FormShape.RECT as int);
+            expect(2).assertEqual(formInfo.FormShape.CIRCLE as int);
 
-            expect(0).assertEqual(formInfo.VisibilityType.UNKNOWN as number);
-            expect(1).assertEqual(formInfo.VisibilityType.FORM_VISIBLE as number);
-            expect(2).assertEqual(formInfo.VisibilityType.FORM_INVISIBLE as number);
+            expect(0).assertEqual(formInfo.VisibilityType.UNKNOWN as int);
+            expect(1).assertEqual(formInfo.VisibilityType.FORM_VISIBLE as int);
+            expect(2).assertEqual(formInfo.VisibilityType.FORM_INVISIBLE as int);
 
-            expect(1).assertEqual(formInfo.LaunchReason.FORM_DEFAULT as number);
-            expect(2).assertEqual(formInfo.LaunchReason.FORM_SHARE as number);
+            expect(1).assertEqual(formInfo.LaunchReason.FORM_DEFAULT as int);
+            expect(2).assertEqual(formInfo.LaunchReason.FORM_SHARE as int);
 
-            expect(0).assertEqual(formInfo.PublishFormErrorCode.SUCCESS as number);
-            expect(1).assertEqual(formInfo.PublishFormErrorCode.NO_SPACE as number);
-            expect(2).assertEqual(formInfo.PublishFormErrorCode.PARAM_ERROR as number);
-            expect(3).assertEqual(formInfo.PublishFormErrorCode.INTERNAL_ERROR as number);
+            expect(0).assertEqual(formInfo.PublishFormErrorCode.SUCCESS as int);
+            expect(1).assertEqual(formInfo.PublishFormErrorCode.NO_SPACE as int);
+            expect(2).assertEqual(formInfo.PublishFormErrorCode.PARAM_ERROR as int);
+            expect(3).assertEqual(formInfo.PublishFormErrorCode.INTERNAL_ERROR as int);
 
-            expect(0).assertEqual(formInfo.FormUsageState.USED as number);
-            expect(1).assertEqual(formInfo.FormUsageState.UNUSED as number);
+            expect(0).assertEqual(formInfo.FormUsageState.USED as int);
+            expect(1).assertEqual(formInfo.FormUsageState.UNUSED as int);
 
-            expect(-1).assertEqual(formInfo.FormLocation.OTHER as number);
-            expect(0).assertEqual(formInfo.FormLocation.DESKTOP as number);
-            expect(1).assertEqual(formInfo.FormLocation.FORM_CENTER as number);
-            expect(2).assertEqual(formInfo.FormLocation.FORM_MANAGER as number);
-            expect(3).assertEqual(formInfo.FormLocation.NEGATIVE_SCREEN as number);
-            expect(4).assertEqual(formInfo.FormLocation.FORM_CENTER_NEGATIVE_SCREEN as number);
-            expect(5).assertEqual(formInfo.FormLocation.FORM_MANAGER_NEGATIVE_SCREEN as number);
-            expect(6).assertEqual(formInfo.FormLocation.SCREEN_LOCK as number);
-            expect(7).assertEqual(formInfo.FormLocation.AI_SUGGESTION as number);
+            expect(-1).assertEqual(formInfo.FormLocation.OTHER as int);
+            expect(0).assertEqual(formInfo.FormLocation.DESKTOP as int);
+            expect(1).assertEqual(formInfo.FormLocation.FORM_CENTER as int);
+            expect(2).assertEqual(formInfo.FormLocation.FORM_MANAGER as int);
+            expect(3).assertEqual(formInfo.FormLocation.NEGATIVE_SCREEN as int);
+            expect(4).assertEqual(formInfo.FormLocation.FORM_CENTER_NEGATIVE_SCREEN as int);
+            expect(5).assertEqual(formInfo.FormLocation.FORM_MANAGER_NEGATIVE_SCREEN as int);
+            expect(6).assertEqual(formInfo.FormLocation.SCREEN_LOCK as int);
+            expect(7).assertEqual(formInfo.FormLocation.AI_SUGGESTION as int);
 
             done();
             hilog.info(DOMAIN, TAG, 'FormInfoStaticTest001 end');
@@ -160,26 +159,26 @@ export default function formInfoTest() {
             expect('abilityName').assertEqual(formInfoFo.abilityName as string);
             expect('name').assertEqual(formInfoFo.name as string);
             expect('displayName').assertEqual(formInfoFo.displayName as string);
-            expect(123).assertEqual(formInfoFo.displayNameId as number);
+            expect(123).assertEqual(formInfoFo.displayNameId as int);
             expect('description').assertEqual(formInfoFo.description as string);
-            expect(123).assertEqual(formInfoFo.descriptionId as number);
-            expect(2).assertEqual(formInfoFo.type as number);
+            expect(123).assertEqual(formInfoFo.descriptionId as int);
+            expect(2).assertEqual(formInfoFo.type as int);
             expect('jsComponentName').assertEqual(formInfoFo.jsComponentName as string);
-            expect(-1).assertEqual(formInfoFo.colorMode as number);
+            expect(-1).assertEqual(formInfoFo.colorMode as int);
             expect(formInfoFo.isDefault).assertTrue();
             expect(formInfoFo.updateEnabled).assertTrue();
             expect(formInfoFo.formVisibleNotify).assertTrue();
             expect('scheduledUpdateTime').assertEqual(formInfoFo.scheduledUpdateTime as string);
             expect('formConfigAbility').assertEqual(formInfoFo.formConfigAbility as string);
-            expect(123).assertEqual(formInfoFo.updateDuration as number);
-            expect(123).assertEqual(formInfoFo.defaultDimension as number);
+            expect(123).assertEqual(formInfoFo.updateDuration as int);
+            expect(123).assertEqual(formInfoFo.defaultDimension as int);
             expect(JSON.stringify([1,2,3])).assertEqual(JSON.stringify(formInfoFo.supportedShapes));
             expect('123').assertEqual(formInfoFo.customizeData['abc1'] as string);
             expect(formInfoFo.isDynamic).assertTrue();
             expect(formInfoFo.transparencyEnabled).assertTrue();
             expect(JSON.stringify([1,2,3])).assertEqual(JSON.stringify(formInfoFo.previewImages));
             expect(formInfoFo.enableBlurBackground).assertTrue();
-            expect(0).assertEqual(formInfo.RenderingMode.AUTO_COLOR as number);
+            expect(0).assertEqual(formInfo.RenderingMode.AUTO_COLOR as int);
 
             done();
             hilog.info(DOMAIN, TAG, 'FormInfoStaticTest002 end');
@@ -198,7 +197,7 @@ export default function formInfoTest() {
                 formState: formInfo.FormState.UNKNOWN,
                 want: { bundleName: 'bundleName' },
             }
-            expect(-1).assertEqual(formStateFo.formState as number);
+            expect(-1).assertEqual(formStateFo.formState as int);
             expect('bundleName').assertEqual(formStateFo.want.bundleName as string);
 
             let formInfoFilterFo: formInfo.FormInfoFilter = {
@@ -216,7 +215,7 @@ export default function formInfoTest() {
                 code: formInfo.PublishFormErrorCode.SUCCESS,
                 message: 'message',
             }
-            expect(0).assertEqual(publishFormResultFo.code as number);
+            expect(0).assertEqual(publishFormResultFo.code as int);
             expect('message').assertEqual(publishFormResultFo.message as string);
 
             let formProviderFilterFo: formInfo.FormProviderFilter = {
@@ -254,13 +253,13 @@ export default function formInfoTest() {
             expect('formId').assertEqual(runningFormInfoFo.formId as string);
             expect('bundleName').assertEqual(runningFormInfoFo.bundleName as string);
             expect('hostBundleName').assertEqual(runningFormInfoFo.hostBundleName as string);
-            expect(0).assertEqual(runningFormInfoFo.formLocation as number);
-            expect(1).assertEqual(runningFormInfoFo.visibilityType as number);
+            expect(0).assertEqual(runningFormInfoFo.formLocation as int);
+            expect(1).assertEqual(runningFormInfoFo.visibilityType as int);
             expect('moduleName').assertEqual(runningFormInfoFo.moduleName as string);
             expect('abilityName').assertEqual(runningFormInfoFo.abilityName as string);
             expect('formName').assertEqual(runningFormInfoFo.formName as string);
-            expect(123).assertEqual(runningFormInfoFo.dimension as number);
-            expect(1).assertEqual(runningFormInfoFo.formUsageState as number);
+            expect(123).assertEqual(runningFormInfoFo.dimension as int);
+            expect(1).assertEqual(runningFormInfoFo.formUsageState as int);
             expect('formDescription').assertEqual(runningFormInfoFo.formDescription as string);
             expect('123').assertEqual(runningFormInfoFo.extraData!['abc1'] as string);
 
