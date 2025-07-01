@@ -41,7 +41,7 @@ export default function ActsNotificationManagerSlotTest() {
           hilog.info(domain, TAG, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err : BusinessError) : void => {
+      }, (err : BusinessError | null) : void => {
         if (err != null ) {
           hilog.info(domain, TAG, '%{public}s', '-----'+ err.code);
         }

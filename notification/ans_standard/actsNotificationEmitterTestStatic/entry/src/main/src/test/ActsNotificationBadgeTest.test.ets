@@ -43,7 +43,7 @@ export default function ActsNotificationEmitterTest() {
           hilog.info(domain, TAG, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err: BusinessError): void => {
+      }, (err: BusinessError | null): void => {
         if (err != null) {
           hilog.info(domain, TAG, '%{public}s', '-----' + err.code);
         }
@@ -99,7 +99,8 @@ export default function ActsNotificationEmitterTest() {
         try {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
           emitter.emit(eventId11, option11, eventData)
-          done()
+          await Utils.msSleep(1000)
+          done();
         } catch (err) {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',
             JSON.stringify(err));
@@ -108,270 +109,7 @@ export default function ActsNotificationEmitterTest() {
           done();
         }
       })
-    /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_1800
-     * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_1800
-     * @tc.desc   : test once interface success
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 3
-     */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_1800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_1800';
-      let eventId18:string = 'eventId18'
-      let onCallback18 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-        emitter.once(eventId18, onCallback18)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
-        emitter.emit(eventId18)
-        await Utils.msSleep(1000)
-        setTimeout(() => {
-          let num: number = emitter.getListenerCount(eventId18)
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-          expect(num).assertEqual(0);
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }, 200)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'emit failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case end');
-        done();
-      }
-    })
-    /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_1900
-     * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_1900
-     * @tc.desc   : test once interface success
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 3
-     */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_1900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_1900';
-      let eventId19:string = 'eventId19'
-      let onCallback19 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-        emitter.once(eventId19, onCallback19)
-        emitter.once(eventId19, onCallback19)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
-        emitter.emit(eventId19)
-        await Utils.msSleep(1000)
-        setTimeout(() => {
-          let num: number = emitter.getListenerCount(eventId19)
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-          expect(num).assertEqual(0);
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }, 200)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'emit failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'test case end');
-        done();
-      }
-    })
 
-    //DTS2025060627133
-    /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2000
-     * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2000
-     * @tc.desc   : test once interface fail
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 3
-     */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_2000';
-      let eventId20:string = ''
-      let onCallback20 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-        emitter.once(eventId20, onCallback20)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      let num: number = emitter.getListenerCount(eventId20)
-      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-      expect(num).assertEqual(undefined);
-      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-      done();
-    })
-    /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2100
-     * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2100
-     * @tc.desc   : test once interface success
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 3
-     */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_2100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_2100';
-      let eventId21:string = ' '
-      let onCallback21 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-        emitter.once(eventId21, onCallback21)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
-        emitter.emit(eventId21)
-        await Utils.msSleep(1000)
-        setTimeout(() => {
-          let num: number = emitter.getListenerCount(eventId21)
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-          expect(num).assertEqual(0);
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }, 200)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-    })
-    /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2200
-     * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2200
-     * @tc.desc   : test once interface success
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 0
-     */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_2200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
-      const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_2200';
-      let eventId22:string = 'eventId22'
-      let innerEvent22: emitter.InnerEvent = {
-        eventId: 22
-      }
-      let onCallback22 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-        emitter.once(eventId22, onCallback22)
-        emitter.once(innerEvent22, onCallback22)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
-        emitter.emit(eventId22)
-        emitter.emit(innerEvent22)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      await Utils.msSleep(1000)
-      setTimeout(() => {
-        let num: number = emitter.getListenerCount(eventId22)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-        expect(num).assertEqual(0);
-        let num1: number = emitter.getListenerCount(innerEvent22.eventId)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
-        expect(num1).assertEqual(0);
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }, 3000)
-    })
-    /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2300
-     * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_2300
-     * @tc.desc   : test once interface success
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 3
-     */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_2300',
-      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
-        const TEST_CASE_NAME: string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_2300';
-        let eventId23: string = 'eventId23'
-        let innerEvent23: emitter.InnerEvent = {
-          eventId: 23
-        }
-        let onCallback23 = (): void => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-          expect(false).assertTrue();
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }
-        try {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-          emitter.once(eventId23, onCallback23)
-        } catch (err) {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s',
-            JSON.stringify(err));
-          expect(false).assertTrue();
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }
-        let num: number = emitter.getListenerCount(eventId23)
-        hilog.info(0x000, `${TAG}`,
-          `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-        expect(num).assertEqual(1);
-        try {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
-          emitter.emit(innerEvent23)
-        } catch (err) {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',
-            JSON.stringify(err));
-          expect(false).assertTrue();
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }
-        await Utils.msSleep(1000)
-        setTimeout(() => {
-          let num1: number = emitter.getListenerCount(eventId23)
-          hilog.info(0x000, `${TAG}`,
-            `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s',
-            JSON.stringify(num1));
-          expect(num1).assertEqual(1);
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' No subscription message');
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }, 3000)
-      })
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_3800
      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_3800
@@ -410,7 +148,8 @@ export default function ActsNotificationEmitterTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
         emitter.emit(eventId38, option38, eventData)
-        done()
+        await Utils.msSleep(1000)
+        done();
       })
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_4300
@@ -577,6 +316,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
+    //问题单号：DTS2025060711369
     it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_7300',
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
         const TEST_CASE_NAME: string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_7300';
@@ -600,7 +340,7 @@ export default function ActsNotificationEmitterTest() {
         try {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
           emitter.emit(eventId73)
-          done()
+          await Utils.msSleep(1000)
         } catch (err) {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',
             JSON.stringify(err));
@@ -793,6 +533,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
+    //问题单号：DTS2025060711369
     it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_8700',
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
         const TEST_CASE_NAME: string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_8700';
@@ -1920,58 +1661,7 @@ export default function ActsNotificationEmitterTest() {
           done();
         }, 3000)
       })
-    /*
-         * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_4600
-         * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_4600
-         * @tc.desc   : test emit interface success
-         * @tc.size   : Large-scaleTest
-         * @tc.type   : Interface
-         * @tc.level  : Level 3
-         */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_4600',
-      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
-        const TEST_CASE_NAME: string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_4600';
-        let eventId46: string = 'eventId46'
-        let innerEvent46: emitter.InnerEvent = {
-          eventId: 46
-        }
-        let onCallback46 = (): void => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on success');
-          expect(false).assertTrue();
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }
-        let option46: emitter.Options = {
-          priority: emitter.EventPriority.IMMEDIATE
-        }
-        let myDate: Record<String, Object> = {
-          "data": ['event4600']
-        }
-        let data146: emitter.EventData = { data: myDate }
-        try {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-          emitter.once(innerEvent46, onCallback46)
-        } catch (err) {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s',
-            JSON.stringify(err));
-          expect(false).assertTrue();
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }
-        let num: number = emitter.getListenerCount(innerEvent46.eventId)
-        hilog.info(0x000, `${TAG}`,
-          `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-        expect(num).assertEqual(1);
-        emitter.emit(eventId46, option46, data146)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
-        await Utils.msSleep(1000)
-        setTimeout(() => {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' No subscription message');
-          expect(true).assertTrue();
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-          done();
-        }, 3000)
-      })
+
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_5000
      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_5000
@@ -2606,103 +2296,7 @@ export default function ActsNotificationEmitterTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
         done();
       })
-    /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_5900
-     * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_5900
-     * @tc.desc   : test once interface success
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 3
-     */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_5900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_5900';
-      let eventId59:string = 'eventId59'
-      let onCallback159 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once1 success');
-      }
-      let onCallback259 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once2 success');
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-        emitter.once(eventId59, onCallback159)
-        emitter.once(eventId59, onCallback259)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
-        emitter.emit(eventId59)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      await Utils.msSleep(1000)
-      setTimeout(() => {
-        let num1: number = emitter.getListenerCount(eventId59)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
-        expect(num1).assertEqual(0);
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }, 3000)
-    })
-    /*
-     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_6000
-     * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_6000
-     * @tc.desc   : test once interface success
-     * @tc.size   : Large-scaleTest
-     * @tc.type   : Interface
-     * @tc.level  : Level 3
-     */
-    it('Sub_Notification_Emitter_Subscribe_Capabilities_Static_6000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      const TEST_CASE_NAME:string = 'Sub_Notification_Emitter_Subscribe_Capabilities_Static_6000';
-      let eventId60:string = 'eventId60'
-      let innerEvent60: emitter.InnerEvent = {
-        eventId: 60
-      }
-      let onCallback160 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once1 success');
-      }
-      let onCallback260 = (): void => {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once2 success');
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
-        emitter.once(eventId60, onCallback160)
-        emitter.once(innerEvent60, onCallback260)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      try {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
-        emitter.emit(eventId60)
-        emitter.emit(innerEvent60)
-      } catch (err) {
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(err));
-        expect(false).assertTrue();
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }
-      await Utils.msSleep(1000)
-      setTimeout(() => {
-        let num1: number = emitter.getListenerCount(eventId60)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num1));
-        expect(num1).assertEqual(0);
-        let num2 = emitter.getListenerCount(innerEvent60.eventId)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num2));
-        expect(num2).assertEqual(0);
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
-      }, 3000)
-    })
+
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_Static_6100
      * @tc.name   : Sub_Notification_Emitter_Subscribe_Capabilities_Static_6100

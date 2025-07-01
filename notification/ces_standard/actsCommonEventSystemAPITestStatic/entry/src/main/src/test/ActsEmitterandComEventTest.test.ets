@@ -143,21 +143,26 @@ export default function ActsEmitterandComEventTest() {
         //调用commonEventManager.subscribe接口，以回调形式订阅公共事件
         //创建订阅者
         try {
-          commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-            if (err.code == 0) {
+          commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined) => {
+            if (!err) {
               console.info(Tag + " createSubscriber success");
-              subscriber = commonEventSubscriber;
+              if(commonEventSubscriber !== undefined){
+                subscriber = commonEventSubscriber
+              }else{
+                expect(false).assertTrue()
+                done()
+              }
               //订阅公共事件
               try {
-                commonEventManager.subscribe(subscriber, (err: BusinessError|null, data: commonEventManager.CommonEventData) => {
+                commonEventManager.subscribe(subscriber, (err: BusinessError|null, data: commonEventManager.CommonEventData|undefined) => {
                   if (err) {
                     console.error(Tag + ` subscribe failed, err is ${JSON.stringify(err)}`);
                     expect(false).assertTrue()
                     done()
                   } else {
                     console.info(Tag + " subscribe success");
-                    console.info(Tag + " Consume callback " + JSON.stringify(data));
                     let event = data == undefined ? 0 : data.event;
+                    console.error(Tag + `Consume callback , event is ${JSON.stringify(event)}`);
                     expect(event).assertEqual("event")
                   }
                 });
@@ -182,10 +187,10 @@ export default function ActsEmitterandComEventTest() {
         await Utils.msSleep(100)
         //调用commonEventManager.publish接口，发布公共事件
         try {
-          commonEventManager.publish("event", (err: BusinessError) =>{
-            if (err.code!==0) {
+          commonEventManager.publish("event", (err: BusinessError | null) =>{
+            if (err) {
               console.error(Tag+` publish failed, code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(0)
+              expect(err?.code).assertEqual(0)
               done()
             } else {
               console.info(Tag+" publish Success");
@@ -200,10 +205,10 @@ export default function ActsEmitterandComEventTest() {
         await Utils.msSleep(1000)
         //调用commonEventManager.unsubscribe接口，回调形式取消订阅公共事件
         try {
-          commonEventManager.unsubscribe(subscriber, (err: BusinessError) =>{
-            if (err.code!==0) {
+          commonEventManager.unsubscribe(subscriber, (err: BusinessError | null) =>{
+            if (err) {
               console.error(Tag+`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(0)
+              expect(err?.code).assertEqual(0)
               done()
             } else {
               console.info(Tag+" unsubscribe Success");
@@ -237,26 +242,39 @@ export default function ActsEmitterandComEventTest() {
           priority: 1
         };
         try {
-          commonEventManager.createSubscriber(subscribeInfo_a, (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-            if (err.code==0) {
+          commonEventManager.createSubscriber(subscribeInfo_a, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined) => {
+            if (!err) {
               console.info(Tag + "订阅者a createSubscriber success");
-              subscriber_a = commonEventSubscriber;
+              if(commonEventSubscriber !== undefined){
+                subscriber_a = commonEventSubscriber
+              }else{
+                expect(false).assertTrue()
+                done()
+              }
               try {
-                commonEventManager.subscribe(subscriber_a, (err: BusinessError|null, data_a: commonEventManager.CommonEventData) => {
+                commonEventManager.subscribe(subscriber_a, (err: BusinessError|null, data_a: commonEventManager.CommonEventData|undefined) => {
                   if (err) {
                     console.error(Tag + `订阅者a subscribe failed, code is , message is ${err}`);
                   } else {
                     console.info(Tag + "订阅者a subscribe success");
-                    console.info(Tag + "订阅者a Consume callback " + JSON.stringify(data_a));
                     let event_a = data_a == undefined ? 0 : data_a.event;
+                    console.error(Tag + `Consume callback , event is ${JSON.stringify(event_a)}`);
                     expect(event_a).assertEqual("event11")
+                    // 结束订阅者对当前有序公共事件处理的回调
+                    subscriber_a.finishCommonEvent((err: BusinessError | null)=> {
+                      if (err !==null) {
+                        console.error(Tag +`订阅者a finishCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+                      } else {
+                        console.info(Tag +"订阅者a finishCommonEvent success");
+                      }
+                    });
                     //取消订阅
                     //取消订阅a
                     try {
-                      commonEventManager.unsubscribe(subscriber_a, (err: BusinessError) =>{
-                        if (err.code!==0) {
+                      commonEventManager.unsubscribe(subscriber_a, (err: BusinessError | null) =>{
+                        if (err) {
                           console.error(Tag+`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
-                          expect(err.code).assertEqual(0)
+                          expect(err?.code).assertEqual(0)
                           done()
                         } else {
                           console.info(Tag+" unsubscribe Success");
@@ -269,10 +287,10 @@ export default function ActsEmitterandComEventTest() {
                       done()
                     }
                     try {
-                      commonEventManager.unsubscribe(subscriber_b, (err: BusinessError) =>{
-                        if (err.code!==0) {
+                      commonEventManager.unsubscribe(subscriber_b, (err: BusinessError | null) =>{
+                        if (err) {
                           console.error(Tag+`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
-                          expect(err.code).assertEqual(0)
+                          expect(err?.code).assertEqual(0)
                           done()
                         } else {
                           console.info(Tag+" unsubscribe Success");
@@ -313,19 +331,32 @@ export default function ActsEmitterandComEventTest() {
           priority: 2
         };
         try {
-          commonEventManager.createSubscriber(subscribeInfo_b, (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-            if (err.code==0) {
+          commonEventManager.createSubscriber(subscribeInfo_b, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined) => {
+            if (!err) {
               console.info(Tag + "订阅者b createSubscriber success");
-              subscriber_b = commonEventSubscriber;
+              if(commonEventSubscriber !== undefined){
+                subscriber_b = commonEventSubscriber
+              }else{
+                expect(false).assertTrue()
+                done()
+              }
               try {
-                commonEventManager.subscribe(subscriber_b, (err: BusinessError|null, data_b: commonEventManager.CommonEventData) => {
+                commonEventManager.subscribe(subscriber_b, (err: BusinessError|null, data_b: commonEventManager.CommonEventData|undefined) => {
                   if (err) {
                     console.error(Tag + `订阅者b subscribe failed, code is , message is ${err}`);
                   } else {
                     console.info(Tag + "订阅者b subscribe success");
-                    console.info(Tag + "订阅者b Consume callback " + JSON.stringify(data_b));
                     let event_b = data_b == undefined ? 0 : data_b.event;
+                    console.error(Tag + `Consume callback , event is ${JSON.stringify(event_b)}`);
                     expect(event_b).assertEqual("event11")
+                    // 结束订阅者对当前有序公共事件处理的回调
+                    subscriber_b.finishCommonEvent((err: BusinessError | null)=> {
+                      if (err != null) {
+                        console.error(Tag +`订阅者b finishCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+                      } else {
+                        console.info(Tag +"订阅者b finishCommonEvent success");
+                      }
+                    });
                   }
                 });
               } catch (error) {
@@ -356,10 +387,10 @@ export default function ActsEmitterandComEventTest() {
         }
         // 发布公共事件
         try {
-          commonEventManager.publish("event11", options, (err: BusinessError) =>{
-            if (err.code!==0) {
+          commonEventManager.publish("event11", options, (err: BusinessError | null) =>{
+            if (err) {
               console.error(Tag+` publish failed, code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(0)
+              expect(err?.code).assertEqual(0)
               done()
             } else {
               console.info(Tag+" publish Success");
@@ -371,6 +402,7 @@ export default function ActsEmitterandComEventTest() {
           done()
         }
       })
+
 
     /**
      * @tc.number     : Sub_Notification_Emitter_Publish_Emit_Static_0100
@@ -608,7 +640,7 @@ export default function ActsEmitterandComEventTest() {
       done()
     })
 
-     //问题单号：DTS2025051640226
+    //问题单号：DTS2025051640226
     /**
      * @tc.number     : Sub_Notification_Emitter_Publish_Sendable_Static_0003
      * @tc.name       : Sub_Notification_Emitter_Publish_Sendable_Static_0003

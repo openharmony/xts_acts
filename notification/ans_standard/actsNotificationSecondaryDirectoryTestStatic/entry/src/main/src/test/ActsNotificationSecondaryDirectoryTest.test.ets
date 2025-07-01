@@ -49,7 +49,7 @@ export default function ActsNotificationSecondaryDirectoryTest() {
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err: BusinessError): void => {
+      }, (err: BusinessError | null): void => {
         if (err != null) {
           hilog.info(domain, tag, '%{public}s', '-----' + err.code);
         }
@@ -104,8 +104,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
           }
           console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 PUBLISH`);
           try {
-            notificationManager.publish(notificationRequest, (err: BusinessError) => {
-              if (err && err.code !== 0) {
+            notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+              if (err) {
                 console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                 expect(false).assertTrue()
                 done()
@@ -139,6 +139,7 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         }
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 END`);
       });
+
 
     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_3950
@@ -181,8 +182,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         }
 
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
-            if (err && err.code !== 0) {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+            if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -200,7 +201,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3950 END`);
       });
 
-    /*
+
+  /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_4050
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_4050
      * @tc.desc: use NotificationBasicContent type
@@ -238,8 +240,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4050 PUBLISH`);
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
-            if (err && err.code !== 0) {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+            if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -257,7 +259,7 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4050 END`);
       });
 
-    /*
+     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_4150
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_4150
      * @tc.desc: use NotificationMultiLineContent type
@@ -297,8 +299,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4150 PUBLISH`);
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
-            if (err && err.code !== 0) {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+            if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -316,7 +318,7 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4150 END`);
       });
 
-    /*
+     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_4250
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_4250
      * @tc.desc: use NotificationActionButton type
@@ -382,8 +384,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4250 PUBLISH`);
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
-            if (err && err.code !== 0) {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+            if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -451,8 +453,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4350 PUBLISH`);
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
-            if (err && err.code !== 0) {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+            if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -470,7 +472,7 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4350 END`);
       });
 
-    /*
+     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_4450
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_4450
      * @tc.desc: use DistributedOptions type
@@ -516,8 +518,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4450 PUBLISH`);
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
-            if (err && err.code !== 0) {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+            if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -535,7 +537,7 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4450 END`);
       });
 
-    /*
+     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_4550
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_4550
      * @tc.desc: use NotificationBasicContent type
@@ -594,8 +596,8 @@ export default function ActsNotificationSecondaryDirectoryTest() {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4550 PUBLISH`);
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
-            if (err && err.code !== 0) {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
+            if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -612,6 +614,7 @@ export default function ActsNotificationSecondaryDirectoryTest() {
         }
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4550 END`)
       })
+
 
 
     /*

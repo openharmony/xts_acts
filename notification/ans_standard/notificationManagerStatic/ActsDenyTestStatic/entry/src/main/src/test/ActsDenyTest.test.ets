@@ -55,7 +55,7 @@ export default function ActsDenyTest() {
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err : BusinessError) : void => {
+      }, (err: BusinessError | null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }
@@ -76,7 +76,7 @@ export default function ActsDenyTest() {
         let TAG = 'Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Deny_Test_Static_0100'
         notificationManager.requestEnableNotification(testAbilityContext).then(() => {
           console.info(`${TAG} requestEnableNotification should failed`);
-          expect(true).assertTrue()
+          expect(false).assertTrue()
           done()
         }).catch((err: BusinessError):void => {
           console.info(`${TAG} requestEnableNotification err: JSON.stringify(err)`);

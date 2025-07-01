@@ -33,7 +33,8 @@ export default function ActsNotificationManagerPublishTest() {
     hilog.info(DOMAIN_NUMBER, TAG, 'SUB_NOTIFICATION_ANS_MANAGER_Publish_TEST START')
     let testAbilityContext:common.UIAbilityContext;
 
-    /*
+
+  /*
    * @tc.number    : Sub_Notification_Ans_Publish_Cancel_Static_3200
    * @tc.name      : Sub_Notification_Ans_Publish_Cancel_Static_3200
    * @tc.desc      : Cancels a notification with the specified label and ID
@@ -45,7 +46,7 @@ export default function ActsNotificationManagerPublishTest() {
         let id: number = 1
         let label: string = "label"
         try {
-          notificationManager.cancel(id, label, (err: BusinessError): void => {
+          notificationManager.cancel(id, label, (err: BusinessError | null): void => {
             if (err) {
               hilog.info(DOMAIN_NUMBER, TAG,
                 `Sub_Notification_Ans_Publish_Cancel_Static_3200 cancel AsyncCallback err: ${err.code}, errMes: ${err.message}`)
@@ -101,7 +102,7 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Publish_Cancel_Static_3300 START`)
         let id: number = 1
         try {
-          notificationManager.cancel(id, (err: BusinessError): void => {
+          notificationManager.cancel(id, (err: BusinessError | null): void => {
             if (err) {
               console.info(`${TAG} cancel id err: ${err.code}, errMes: ${err.message}`)
               expect(true).assertTrue()
@@ -157,10 +158,10 @@ export default function ActsNotificationManagerPublishTest() {
     // })
 
     /*
-         * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0500
-         * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0500
-         * @tc.desc      : Cancels a notification with the specified label and ID
-         */
+    * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0500
+    * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0500
+    * @tc.desc      : Cancels a notification with the specified label and ID
+    */
     it('SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let TAG:string = 'SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0500'
@@ -179,7 +180,7 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_Static_0500 END`)
       })
 
-    /*
+     /*
          * @tc.number    : Sub_Notification_Ans_Publish_Cancel_Static_3350
          * @tc.name      : Sub_Notification_Ans_Publish_Cancel_Static_3350
          * @tc.desc      : Cancels all notifications of the current application
@@ -189,8 +190,8 @@ export default function ActsNotificationManagerPublishTest() {
         let TAG:string = 'Sub_Notification_Ans_Publish_Cancel_Static_3350'
         console.info(`Sub_Notification_Ans_Publish_Cancel_Static_3350 START`)
         try {
-          notificationManager.cancelAll((err: BusinessError) => {
-            if (err && err.code !== 0) {
+          notificationManager.cancelAll((err: BusinessError | null) => {
+            if (err) {
               console.info(`${TAG} cancelAll AsyncCallback err: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -252,6 +253,7 @@ export default function ActsNotificationManagerPublishTest() {
     // })
 
     
+   
     /*
     * @tc.number    : Sub_Notification_Ans_Enable_Query_Static_2500
     * @tc.name      : Sub_Notification_Ans_Enable_Query_Static_2500
@@ -263,9 +265,9 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Enable_Query_Static_2500 START`)
         try {
           console.info(`Sub_Notification_Ans_Enable_Query_Static_2500 AA11`)
-          notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError) => {
+          notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError | null) => {
             console.info(`Sub_Notification_Ans_Enable_Query_Static_2500 AA`)
-            if (err&&err.code!==0) {
+            if (err) {
               console.info(`${TAG} requestEnableNotification AsyncCallback err: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -283,6 +285,7 @@ export default function ActsNotificationManagerPublishTest() {
         await Utils.msSleep(2000)
         console.info(`Sub_Notification_Ans_Enable_Query_Static_2500 END`)
       })
+
     /*
      * @tc.number    : Sub_Notification_Ans_Enable_Query_Static_2600
      * @tc.name      : Sub_Notification_Ans_Enable_Query_Static_2600
@@ -304,7 +307,7 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Enable_Query_Static_2600 END`)
       })
 
-    // /*
+   // /*
     //      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_Static_0300
     //      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_REQUEST_ENABLE_TEST_Static_0300
     //      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
@@ -358,10 +361,9 @@ export default function ActsNotificationManagerPublishTest() {
         let TAG:string = 'Sub_Notification_Ans_Distributed_Search_Static_1500'
         console.info(`Sub_Notification_Ans_Distributed_Search_Static_1500 START`)
         try {
-          notificationManager.getActiveNotifications((err: BusinessError,
-            data: Array<notificationManager.NotificationRequest>): void => {
-            console.info(`${TAG} getActiveNotifications AsyncCallback err: ${err.code}, errMes: ${err.message}`)
-            if (err && err.code !== 0) {
+          notificationManager.getActiveNotifications((err: BusinessError | null,
+            data: Array<notificationManager.NotificationRequest>|undefined): void => {
+            if (err) {
               console.info(`${TAG} getActiveNotifications AsyncCallback err: ${err.code}, errMes: ${err.message}`)
               expect(false).assertTrue()
               done()
@@ -379,7 +381,8 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Distributed_Search_Static_1500 END`)
       })
 
-    /*
+
+   /*
      * @tc.number    : Sub_Notification_Ans_Distributed_Search_Static_1600
      * @tc.name      : Sub_Notification_Ans_Distributed_Search_Static_1600
      * @tc.desc      : Obtains an array of active notifications
@@ -402,6 +405,7 @@ export default function ActsNotificationManagerPublishTest() {
         console.info(`Sub_Notification_Ans_Distributed_Search_Static_1600 END`)
       })
 
+  
     // /*
     //      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500
     //      * @tc.name      : SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0500
@@ -446,8 +450,7 @@ export default function ActsNotificationManagerPublishTest() {
     //   console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_COUNT_TEST_Static_0600 END`)
     // })
 
-
-    /*
+   /*
       * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0110
       * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0110
       * @tc.desc: test publish fail
@@ -479,7 +482,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :%{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -516,7 +519,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest1, (err) => {
+          notificationManager.publish(notificationRequest1, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :%{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -532,7 +535,8 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+
+   /*
       * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0210
       * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0210
       * @tc.desc: test publish fail
@@ -564,7 +568,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -580,7 +584,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+ /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0310
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0310
      * @tc.desc: test publish success
@@ -590,7 +594,7 @@ export default function ActsNotificationManagerPublishTest() {
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_0310'
         const TEST_CASE_NAME:string = 'testPublishadditionalTextForNull';
-        let requestEnableNotificationCallback = (err: BusinessError): void => {
+        let requestEnableNotificationCallback = (err: BusinessError | null): void => {
           if (err) {
             console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
           } else {
@@ -623,7 +627,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             if (err) {
               hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
                 JSON.stringify(err));
@@ -646,11 +650,11 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0410
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0410
      * @tc.desc: test publish fail
-  */
+     */
     it('Sub_Notification_Ans_Publish_Publish_Static_0410', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_0410'
@@ -682,7 +686,7 @@ export default function ActsNotificationManagerPublishTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
           await Utils.msSleep(2500);
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :',
               JSON.stringify(err));
             expect().assertFail();
@@ -697,7 +701,8 @@ export default function ActsNotificationManagerPublishTest() {
           done();
         }
       })
-    /*
+
+     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0510
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0510
      * @tc.desc: test publish fail
@@ -732,7 +737,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -748,6 +753,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
+
     /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0610
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0610
@@ -759,7 +765,7 @@ export default function ActsNotificationManagerPublishTest() {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_0610'
         const TEST_CASE_NAME:string = 'testPublishLongtextadditionalTextForNull';
 
-        let requestEnableNotificationCallback = (err: BusinessError) => {
+        let requestEnableNotificationCallback = (err: BusinessError | null) => {
           if (err) {
             console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
           } else {
@@ -795,7 +801,7 @@ export default function ActsNotificationManagerPublishTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
           await Utils.msSleep(2500);
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             if (err) {
               hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
                 JSON.stringify(err));
@@ -818,11 +824,11 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+   /*
    * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0710
    * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0710
    * @tc.desc: test publish fail
-*/
+   */
     it(" Sub_Notification_Ans_Publish_Publish_Static_0710", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_0710'
@@ -853,7 +859,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -869,7 +875,8 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+
+     /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_0810
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_0810
      * @tc.desc: test publish fail
@@ -904,7 +911,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -955,7 +962,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -970,7 +977,7 @@ export default function ActsNotificationManagerPublishTest() {
           done();
         }
       })
-    /*
+     /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1010
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1010
     * @tc.desc: test publish fail
@@ -1005,7 +1012,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -1020,7 +1027,6 @@ export default function ActsNotificationManagerPublishTest() {
           done();
         }
       })
-
     /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1110
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1110
@@ -1056,7 +1062,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -1072,7 +1078,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+      /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1210
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1210
     * @tc.desc: test publish success
@@ -1082,7 +1088,7 @@ export default function ActsNotificationManagerPublishTest() {
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_1210'
         const TEST_CASE_NAME:string = 'testPublishLongtextTitleForNull';
-        let requestEnableNotificationCallback = (err: BusinessError) => {
+        let requestEnableNotificationCallback = (err: BusinessError | null) => {
           if (err) {
             console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
           } else {
@@ -1118,7 +1124,7 @@ export default function ActsNotificationManagerPublishTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
           await Utils.msSleep(2500);
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             if (err) {
               hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
                 JSON.stringify(err));
@@ -1141,7 +1147,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+     /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1310
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1310
     * @tc.desc: test publish fail
@@ -1176,7 +1182,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -1192,7 +1198,8 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+
+      /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1410
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1410
     * @tc.desc: test publish fail
@@ -1227,7 +1234,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{publish}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -1279,7 +1286,7 @@ export default function ActsNotificationManagerPublishTest() {
     //        }
     //        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
     //        try {
-    //          notificationManager.publish(notificationRequest, (err) => {
+    //          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
     //            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
     //              JSON.stringify(err));
     //            expect().assertFail();
@@ -1295,7 +1302,7 @@ export default function ActsNotificationManagerPublishTest() {
     //        }
     //      })
 
-    /*
+  /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1610
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1610
      * @tc.desc: test publish fail
@@ -1350,7 +1357,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -1366,7 +1373,8 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+
+   /*
      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1710
      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1710
      * @tc.desc: test publish fail
@@ -1423,7 +1431,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -1438,8 +1446,7 @@ export default function ActsNotificationManagerPublishTest() {
           done();
         }
       })
-
-    /*
+ /*
        * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1810
        * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1810
        * @tc.desc: test publish success
@@ -1449,7 +1456,7 @@ export default function ActsNotificationManagerPublishTest() {
       async (done: () => void): Promise<void> => {
         const TEST_SUITE_NAME:string = 'Sub_Notification_Ans_Publish_Publish_Static_1810'
         const TEST_CASE_NAME:string = 'testPublishPictureadditionalTextForNull';
-        let requestEnableNotificationCallback = (err: BusinessError): void => {
+        let requestEnableNotificationCallback = (err: BusinessError | null): void => {
           if (err) {
             console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
           } else {
@@ -1505,7 +1512,7 @@ export default function ActsNotificationManagerPublishTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
           await Utils.msSleep(2500);
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             if (err) {
               hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
                 JSON.stringify(err));
@@ -1528,7 +1535,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+     /*
     * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_1910
     * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_1910
     * @tc.desc: test publish fail
@@ -1584,9 +1591,9 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err: BusinessError) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
-              JSON.stringify(err.code));
+              JSON.stringify(err));
             expect().assertFail();
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
             done();
@@ -1600,7 +1607,8 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    /*
+
+   /*
   * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_2010
   * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_2010
   * @tc.desc: test publish fail
@@ -1656,7 +1664,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
         try {
-          notificationManager.publish(notificationRequest, (err) => {
+          notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
               JSON.stringify(err));
             expect().assertFail();
@@ -1672,7 +1680,7 @@ export default function ActsNotificationManagerPublishTest() {
         }
       })
 
-    // /*
+   // /*
     //      * @tc.number: Sub_Notification_Ans_Publish_Publish_Static_2110
     //      * @tc.name: Sub_Notification_Ans_Publish_Publish_Static_2110
     //      * @tc.desc: test publish fail
@@ -1729,7 +1737,7 @@ export default function ActsNotificationManagerPublishTest() {
     //     }
     //     hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
     //     try {
-    //       notificationManager.publish(notificationRequest, (err) => {
+    //       notificationManager.publish(notificationRequest, (err: BusinessError | null) => {
     //         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s',
     //           JSON.stringify(err));
     //         expect().assertFail();

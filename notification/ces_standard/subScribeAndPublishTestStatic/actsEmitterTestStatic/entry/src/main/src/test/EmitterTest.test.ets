@@ -48,7 +48,7 @@ export default function EmitterTest() {
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err: BusinessError): void => {
+      }, (err: BusinessError|null): void => {
         if (err != null) {
           hilog.info(domain, tag, '%{public}s', '-----' + err.code);
         }
@@ -905,6 +905,7 @@ export default function EmitterTest() {
      * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2200
      * @tc.desc      : emitter.getListenerCount('23')
      */
+     //问题单号：DTS2025060711369
     it('SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let TAG: string = 'SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2200'
@@ -929,6 +930,7 @@ export default function EmitterTest() {
      * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2300
      * @tc.desc      : emitter.EventPriority.IMMEDIATE
      */
+     //问题单号：DTS2025060711369
     it('SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let TAG: string = 'SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2300'
@@ -1008,6 +1010,7 @@ export default function EmitterTest() {
      * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2600
      * @tc.desc      : Register three identical string ID
      */
+     //问题单号：DTS2025060711369
     it('SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let TAG: string = 'SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2600'
@@ -1037,6 +1040,7 @@ export default function EmitterTest() {
      * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2700
      * @tc.desc      : Register three different string ID
      */
+     //问题单号：DTS2025060711369
     it('SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let TAG: string = 'SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2700'
@@ -1066,6 +1070,7 @@ export default function EmitterTest() {
      * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2800
      * @tc.desc      : emitter.EventPriority.IMMEDIATE
      */
+     //问题单号：DTS2025060711369
     it('SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
 
@@ -1129,6 +1134,7 @@ export default function EmitterTest() {
      * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2900
      * @tc.desc      : emitter.EventPriority.IMMEDIATE
      */
+     //问题单号：DTS2025060711369
     it('SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         console.info(` SUB_NOTIFICATION_CES_EMITTER_TEST_Static_2900 START`)
@@ -1294,6 +1300,7 @@ export default function EmitterTest() {
      * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_Static_3400
      * @tc.desc      : Emit and GetListenerCount type is string
      */
+     //问题单号：DTS2025060711369
     it('SUB_NOTIFICATION_CES_EMITTER_TEST_Static_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         console.info(`SUB_NOTIFICATION_CES_EMITTER_TEST_Static_3400 START`)
@@ -1320,6 +1327,7 @@ export default function EmitterTest() {
      * @tc.name      : SUB_NOTIFICATION_CES_EMITTER_TEST_Static_3500
      * @tc.desc      : emitter.EventPriority.IMMEDIATE
      */
+     //问题单号：DTS2025060711369
     it('SUB_NOTIFICATION_CES_EMITTER_TEST_Static_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         console.info(`${tag} SUB_NOTIFICATION_CES_EMITTER_TEST_Static_3500 START`)
