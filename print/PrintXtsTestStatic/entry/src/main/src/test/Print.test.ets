@@ -113,26 +113,24 @@ export default function printTest() {
      * @tc.level Level 0
      */
     it('print_function_0200', Level.LEVEL0, () => {
+      hilog.info(domain, tag, '%{public}s', 'print_function_0200 start');
       try {
         let printDuplexMode = [
           print.PrintDuplexMode.DUPLEX_MODE_NONE,
           print.PrintDuplexMode.DUPLEX_MODE_LONG_EDGE,
           print.PrintDuplexMode.DUPLEX_MODE_SHORT_EDGE,
         ];
-        hilog.info(domain, tag, 'printDuplexMode:%{public}s', JSON.stringify(printDuplexMode));
 
         let printColorMode = [
           print.PrintColorMode.COLOR_MODE_MONOCHROME,
           print.PrintColorMode.COLOR_MODE_COLOR,
         ];
-        hilog.info(domain, tag, 'printColorMode:%{public}s', JSON.stringify(printColorMode));
 
         let printDirectionMode = [
           print.PrintDirectionMode.DIRECTION_MODE_AUTO,
           print.PrintDirectionMode.DIRECTION_MODE_PORTRAIT,
           print.PrintDirectionMode.DIRECTION_MODE_LANDSCAPE,
         ];
-        hilog.info(domain, tag, 'printDirectionMode:%{public}s', JSON.stringify(printDirectionMode));
 
         let printPageType = [
           print.PrintPageType.PAGE_ISO_A3,
@@ -148,7 +146,6 @@ export default function printTest() {
           print.PrintPageType.PAGE_INT_DL_ENVELOPE,
           print.PrintPageType.PAGE_B_TABLOID,
         ];
-        hilog.info(domain, tag, 'printPageType:%{public}s', JSON.stringify(printPageType));
 
         let printDocumentAdapterState = [
           print.PrintDocumentAdapterState.PREVIEW_DESTROY,
@@ -157,14 +154,12 @@ export default function printTest() {
           print.PrintDocumentAdapterState.PRINT_TASK_CANCEL,
           print.PrintDocumentAdapterState.PRINT_TASK_BLOCK,
         ];
-        hilog.info(domain, tag, 'printDocumentAdapterState:%{public}s', JSON.stringify(printDocumentAdapterState));
 
         let printFileCreationState = [
           print.PrintFileCreationState.PRINT_FILE_CREATED,
           print.PrintFileCreationState.PRINT_FILE_CREATION_FAILED,
           print.PrintFileCreationState.PRINT_FILE_CREATED_UNRENDERED,
         ];
-        hilog.info(domain, tag, 'printFileCreationState:%{public}s', JSON.stringify(printFileCreationState));
       } catch (err) {
         hilog.error(domain, tag, 'print_function_0200 error');
         expect().assertFail();
