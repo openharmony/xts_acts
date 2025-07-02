@@ -11,7 +11,8 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsOpenLinkStaticTest.hap"
+                "ActsOpenLinkStaticTest.hap",
+                "ActsopenlinkRelyStaticTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

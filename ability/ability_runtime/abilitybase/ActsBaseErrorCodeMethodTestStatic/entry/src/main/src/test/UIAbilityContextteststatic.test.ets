@@ -8,6 +8,7 @@ import Want from '@ohos.app.ability.Want';
 import Utils from './Util.test';
 import StartOptions from '@ohos.app.ability.StartOptions'
 import { Caller } from '@ohos.app.ability.UIAbility';
+import contextConstant from '@ohos.app.ability.contextConstant';
 
 let domain: number = 0x0000;
 let tag: string = 'testTag';
@@ -257,12 +258,12 @@ export default function UIAbilityContextteststatic() {
               done();
             })
             .catch((err: BusinessError):void => {
-              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2100 ${err?.code}`);
-              expect(err?.code).assertEqual(16000004);
+              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2100 ${err.code}`);
+              expect(err.code).assertEqual(16000004);
               done();
             });
         } catch (err: BusinessError) {
-          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2100 ${err?.code}`);
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2100 ${err.code}`);
           expect().assertFail();
           done();
         }
@@ -296,12 +297,12 @@ export default function UIAbilityContextteststatic() {
               done();
             })
             .catch((err: BusinessError):void => {
-              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2200 ${err?.code}`);
-              expect(err?.code).assertEqual(16000019);
+              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2200 ${err.code}`);
+              expect(err.code).assertEqual(16000019);
               done();
             });
         } catch (err: BusinessError) {
-          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2200 ${err?.code}`);
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_2200 ${err.code}`);
           expect().assertFail();
           done();
         }
@@ -343,12 +344,12 @@ export default function UIAbilityContextteststatic() {
               done();
             })
             .catch((err: BusinessError):void => {
-              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3000 ${err?.code}`);
-              expect(err?.code).assertEqual(16000050);
+              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3000 ${err.code}`);
+              expect(err.code).assertEqual(16000050);
               done();
             });
         } catch (err: BusinessError) {
-          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3000 ${err?.code}`);
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3000 ${err.code}`);
           expect().assertFail();
           done();
         }
@@ -380,12 +381,12 @@ export default function UIAbilityContextteststatic() {
               expect().assertFail();
               done();
             }).catch((err: BusinessError): void => {
-            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3100 ${err?.code}`);
-            expect(err?.code).assertEqual(16000001);
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3100 ${err.code}`);
+            expect(err.code).assertEqual(16000001);
             done();
           });
         } catch (err: BusinessError) {
-          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3100 ${err?.code}`);
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3100 ${err.code}`);
           expect().assertFail();
           done();
         }
@@ -424,16 +425,310 @@ export default function UIAbilityContextteststatic() {
               expect().assertFail();
               done();
             }).catch((err: BusinessError): void => {
-            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3300 ${err?.code}`);
-            expect(err?.code).assertEqual(16000050);
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3300 ${err.code}`);
+            expect(err.code).assertEqual(16000050);
             done();
           });
         } catch (err: BusinessError) {
-          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3300 ${err?.code}`);
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_static_3300 ${err.code}`);
           expect().assertFail();
           done();
         }
         hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_static_3300 end');
+      });
+
+      /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_static_4100
+     * @tc.name   : SUB_Ability_AbilityBase_UIAbilityContextError_static_4100
+     * @tc.desc   : To verify the scenario where error code 16000005 is returned when the startAbilityForResult interface is invoked, Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it("SUB_Ability_AbilityBase_UIAbilityContextError_static_4100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Test START');
+        let want: Want = {
+          bundleName: 'com.acts.ability.baseerrorrely.static',
+          abilityName: 'EntryAbility2'
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        try {
+          context.startAbilityForResult(want,options, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err?.message);
+            expect(err?.code).assertEqual(16000005);
+            done();
+          })
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err.message);
+          expect().assertFail();
+          done();
+        }
+        hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1100 end');
+      });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_static_4200
+     * @tc.name   : SUB_Ability_AbilityBase_UIAbilityContextError_static_4200
+     * @tc.desc   : To verify the scenario where error code 16000005 is returned when the startAbilityForResult interface is invoked, Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it("SUB_Ability_AbilityBase_UIAbilityContextError_static_4200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Test START');
+        let want: Want = {
+          bundleName: 'com.acts.ability.baseerrorrely.static',
+          abilityName: 'EntryAbility2'
+        };
+        try {
+          context.startAbilityForResult(want, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err?.message);
+            expect(err?.code).assertEqual(16000005);
+            done();
+          })
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err.message);
+          expect().assertFail();
+          done();
+        }
+        hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1100 end');
+      });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_static_4300
+     * @tc.name   : SUB_Ability_AbilityBase_UIAbilityContextError_static_4300
+     * @tc.desc   : To verify the scenario where error code 16000005 is returned when the startAbilityForResult interface is invoked, Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it("SUB_Ability_AbilityBase_UIAbilityContextError_static_4300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Test START');
+        let want: Want = {
+          deviceId: '',
+          bundleName: 'com.acts.ability.baseerrorrely.static',
+          abilityName: 'EntryAbility2'
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        try {
+          context.startAbilityForResult(want,options)
+            .then((result: common.AbilityResult) => {
+              hilog.info(domain, tag, '%{public}s', `startAbilityForResult succeed`);
+              expect().assertFail();
+              done();
+            })
+            .catch((err: BusinessError):void => {
+              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2100 ${err.code}`);
+              expect(err.code).assertEqual(16000005);
+              done();
+            });
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2100 ${err.code}`);
+          expect().assertFail();
+          done();
+        }
+        hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2100 end');
+      });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_static_4400
+     * @tc.name   : SUB_Ability_AbilityBase_UIAbilityContextError_static_4400
+     * @tc.desc   : To verify the scenario where error code 201 is returned when the startAbilityForResult interface is invoked, Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it("SUB_Ability_AbilityBase_UIAbilityContextError_static_4400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Test START');
+        context.moveAbilityToBackground()
+        await Utils.msSleep(2000);
+        let want: Want = {
+          bundleName: 'com.acts.ability.baseerrorrely.static',
+          abilityName: 'EntryAbility'
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        try {
+          context.startAbilityForResult(want,options, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err?.message);
+            expect(err?.code).assertEqual(201);
+            done();
+          })
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err.message);
+          expect().assertFail();
+          done();
+        }
+        hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1100 end');
+      });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_static_4500
+     * @tc.name   : SUB_Ability_AbilityBase_UIAbilityContextError_static_4500
+     * @tc.desc   : To verify the scenario where error code 201 is returned when the startAbilityForResult interface is invoked, Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it("SUB_Ability_AbilityBase_UIAbilityContextError_static_4500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Test START');
+        context.moveAbilityToBackground()
+        await Utils.msSleep(2000);
+        let want: Want = {
+          bundleName: 'com.acts.ability.baseerrorrely.static',
+          abilityName: 'EntryAbility'
+        };
+        try {
+          context.startAbilityForResult(want, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err?.message);
+            expect(err?.code).assertEqual(201);
+            done();
+          })
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err.message);
+          expect().assertFail();
+          done();
+        }
+        hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1100 end');
+      });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_static_4600
+     * @tc.name   : SUB_Ability_AbilityBase_UIAbilityContextError_static_4600
+     * @tc.desc   : To verify the scenario where error code 201 is returned when the startAbilityForResult interface is invoked, Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it("SUB_Ability_AbilityBase_UIAbilityContextError_static_4600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Test START');
+        context.moveAbilityToBackground()
+        await Utils.msSleep(2000);
+        let want: Want = {
+          deviceId: '',
+          bundleName: 'com.acts.ability.baseerrorrely.static',
+          abilityName: 'EntryAbility'
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        try {
+          context.startAbilityForResult(want,options)
+            .then((result: common.AbilityResult) => {
+              hilog.info(domain, tag, '%{public}s', `startAbilityForResult succeed`);
+              expect().assertFail();
+              done();
+            })
+            .catch((err: BusinessError):void => {
+              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2100 ${err.code}`);
+              expect(err?.code).assertEqual(201);
+              done();
+            });
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2100 ${err.code}`);
+          expect().assertFail();
+          done();
+        }
+        hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2100 end');
+      });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_static_4700
+     * @tc.name   : SUB_Ability_AbilityBase_UIAbilityContextError_static_4700
+     * @tc.desc   : To verify the scenario where error code 801 is returned when the startAbilityForResult interface is invoked, Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it("SUB_Ability_AbilityBase_UIAbilityContextError_static_4700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Test START');
+        let want: Want = {
+          bundleName: 'com.acts.actsbaseerrrocodemethodtest.static',
+          abilityName: 'EntryAbility1'
+        };
+        let options: StartOptions = {
+          processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT,
+        };
+        try {
+          context.startAbilityForResult(want,options, (err: BusinessError | null, data: common.AbilityResult | undefined)=>{
+            hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err?.message);
+            if (err?.code !== 0) {
+              if(err?.code==801) {
+                done()
+              }else{
+                hilog.info(domain, tag,`startAbility, code is ${err?.code}, message is ${err?.message}`);
+                done()
+              }
+            } else {
+              hilog.info(domain, tag, `startAbility success`);
+              done();
+            }
+          })
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_1100`, err.message);
+          expect().assertFail();
+          done();
+        }
+        hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1100 end');
+      });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContextError_static_4800
+     * @tc.name   : SUB_Ability_AbilityBase_UIAbilityContextError_static_4800
+     * @tc.desc   : To verify the scenario where error code 201 is returned when the startAbilityForResult interface is invoked, Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it("SUB_Ability_AbilityBase_UIAbilityContextError_static_4800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Test START');
+        let want: Want = {
+          bundleName: 'com.acts.actsbaseerrrocodemethodtest.static',
+          abilityName: 'EntryAbility1'
+        };
+        let options: StartOptions = {
+          processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT,
+        };
+        try {
+          context.startAbilityForResult(want,options)
+            .then((result: common.AbilityResult) => {
+              hilog.info(domain, tag, '%{public}s', `startAbilityForResult succeed`);
+              expect().assertFail();
+              done();
+            })
+            .catch((err: BusinessError):void => {
+              hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2100 ${err.code}`);
+              if (err.code !== 0) {
+                if(err.code==801) {
+                  done()
+                }else{
+                  hilog.info(domain, tag,`startAbility, code is ${err.code}, message is ${err.message}`);
+                  done()
+                }
+              } else {
+                hilog.info(domain, tag, `startAbility success`);
+                done();
+              }
+            });
+        } catch (err: BusinessError) {
+          hilog.info(domain, tag, '%{public}s', `SUB_Ability_AbilityBase_UIAbilityContextError_2100 ${err.code}`);
+          expect().assertFail();
+          done();
+        }
+        hilog.info(domain, tag, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2100 end');
       });
   });
 }

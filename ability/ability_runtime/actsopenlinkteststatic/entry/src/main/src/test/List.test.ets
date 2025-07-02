@@ -14,7 +14,9 @@
  */
 
 import openLinkStaticTest from "./OpenLinkStatic.test";
+import openLinkPatchStaticTest from "./OpenLinkPatchStatic.test";
 
 export default function testsuite() {
     openLinkStaticTest();
+    openLinkPatchStaticTest();
 }
