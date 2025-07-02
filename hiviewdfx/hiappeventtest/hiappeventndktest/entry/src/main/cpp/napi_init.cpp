@@ -737,6 +737,25 @@ napi_value DestroyProcessor(napi_env env, napi_callback_info info)
     return Result;
 }
 
+napi_value SetConfigName(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    napi_valuetype processorType, configNameType;
+    napi_typeof(env, args[0], &processorType);
+    napi_typeof(env, args[1], &configNameType);
+    HiAppEvent_Processor* processor;
+    napi_get_value_external(env, args[0], reinterpret_cast<void**>(&processor));
+    size_t configNameSize;
+    napi_get_value_string_utf8(env, args[1], nullptr, 0, &configNameSize);
+    char* configName = new char[configNameSize + 1];
+    napi_get_value_string_utf8(env, args[1], configName, configNameSize + 1, nullptr);
+    int result =  OH_HiAppEvent_SetConfigName(processor, configName);
+    napi_value napiResult;
+    napi_create_int32(env, result, &napiResult);
+    return napiResult;
+}
+
 static napi_value Add(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
@@ -842,6 +861,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "AddProcessor", nullptr, AddProcessor, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "RemoveProcessor", nullptr, RemoveProcessor, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "DestroyProcessor", nullptr, DestroyProcessor, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "SetConfigName", nullptr, SetConfigName, nullptr, nullptr, nullptr, napi_default, nullptr },
         {"add", nullptr, NAPI_Global_add, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

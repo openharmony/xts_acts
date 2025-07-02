@@ -668,5 +668,167 @@ export default function HiAppEventJSTest() {
                 done();
             }
         });
+
+        /**
+         * @tc.number SUB_DFX_DFT_HiAppEvent_Js_2900
+         * @tc.name SUB_DFX_DFT_HiAppEvent_Js_2900
+         * @tc.desc验证添加数据处理者addProcessor-configName入参正常，返回对应代理id
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level3
+         */
+        it('SUB_DFX_DFT_HiAppEvent_Js_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            console.info('SUB_DFX_DFT_HiAppEvent_Js_2900 start');
+            let processor = {
+                name: "ha_app_event",
+                configName: "SDK_OCG"
+            }
+            try {
+                let processorId = hiAppEvent.addProcessor(processor)
+                console.info(`SUB_DFX_DFT_HiAppEvent_Js_2900 > processorId: ${processorId}`)
+                expect(processorId).assertLarger(0)
+                done()
+            }
+            catch (err) {
+                console.error(`SUB_DFX_DFT_HiAppEvent_Js_2900 > error code: ${err.code}, error msg: ${err.message}`);
+                expect(false).assertTrue()
+                done();
+            }
+        });
+
+        /**
+         * @tc.number SUB_DFX_DFT_HiAppEvent_Js_2901
+         * @tc.name SUB_DFX_DFT_HiAppEvent_Js_2901
+         * @tc.desc 验证添加数据处理者addProcessor-configName为异常字符串，返回-1
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level3
+         */
+        it('SUB_DFX_DFT_HiAppEvent_Js_2901', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            console.info('SUB_DFX_DFT_HiAppEvent_Js_2901 start');
+            let processor = {
+                name: "test_processor",
+                configName: "undefined_name"
+            }
+            try {
+                let processorId = hiAppEvent.addProcessor(processor)
+                expect(processorId == -1).assertTrue()
+                hiAppEvent.removeProcessor(processorId)
+                done()
+            }
+            catch (err) {
+                console.error(`SUB_DFX_DFT_HiAppEvent_Js_2901 > error code: ${err.code}, error msg: ${err.message}`);
+                expect(false).assertTrue()
+                done();
+            }
+        });
+
+        /**
+         * @tc.number SUB_DFX_DFT_HiAppEvent_Js_2902
+         * @tc.name SUB_DFX_DFT_HiAppEvent_Js_2902
+         * @tc.desc 验证添加数据处理者addProcessor-configName为异常字符串，返回-1
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level3
+         */
+        it('SUB_DFX_DFT_HiAppEvent_Js_2902', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            console.info('SUB_DFX_DFT_HiAppEvent_Js_2902 start');
+            let processor = {
+                name: "test_processor",
+                configName: ""
+            }
+            try {
+                let processorId = hiAppEvent.addProcessor(processor)
+                expect(processorId == -1).assertTrue()
+                hiAppEvent.removeProcessor(processorId)
+                done()
+            }
+            catch (err) {
+                console.error(`SUB_DFX_DFT_HiAppEvent_Js_2902 > error code: ${err.code}, error msg: ${err.message}`);
+                expect(false).assertTrue()
+                done();
+            }
+        });
+
+        /**
+         * @tc.number SUB_DFX_DFT_HiAppEvent_Js_2903
+         * @tc.name SUB_DFX_DFT_HiAppEvent_Js_2903
+         * @tc.desc 验证添加数据处理者addProcessor-configName为特殊符号，返回-1
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level3
+         */
+        it('SUB_DFX_DFT_HiAppEvent_Js_2903', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            console.info('SUB_DFX_DFT_HiAppEvent_Js_2903 start');
+            let processor = {
+                name: "test_processor",
+                configName: "xxx***"
+            }
+            try {
+                let processorId = hiAppEvent.addProcessor(processor)
+                expect(processorId == -1).assertTrue()
+                hiAppEvent.removeProcessor(processorId)
+                done()
+            }
+            catch (err) {
+                console.error(`SUB_DFX_DFT_HiAppEvent_Js_2903 > error code: ${err.code}, error msg: ${err.message}`);
+                expect(false).assertTrue()
+                done();
+            }
+        });
+
+        /**
+         * @tc.number SUB_DFX_DFT_HiAppEvent_Js_2904
+         * @tc.name SUB_DFX_DFT_HiAppEvent_Js_2904
+         * @tc.desc 验证添加数据处理者addProcessor-configName为数字开头，返回-1
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level3
+         */
+        it('SUB_DFX_DFT_HiAppEvent_Js_2904', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            console.info('SUB_DFX_DFT_HiAppEvent_Js_2904 start');
+            let processor = {
+                name: "test_processor",
+                configName: "23_processor"
+            }
+            try {
+                let processorId = hiAppEvent.addProcessor(processor)
+                expect(processorId == -1).assertTrue()
+                hiAppEvent.removeProcessor(processorId)
+                done()
+            }
+            catch (err) {
+                console.error(`SUB_DFX_DFT_HiAppEvent_Js_2904 > error code: ${err.code}, error msg: ${err.message}`);
+                expect(false).assertTrue()
+                done();
+            }
+        });
+
+        /**
+         * @tc.number SUB_DFX_DFT_HiAppEvent_Js_2905
+         * @tc.name SUB_DFX_DFT_HiAppEvent_Js_2905
+         * @tc.desc 验证添加数据处理者addProcessor-configName为257字节，返回-1
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level3
+         */
+        it('SUB_DFX_DFT_HiAppEvent_Js_2905', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+            console.info('SUB_DFX_DFT_HiAppEvent_Js_2905 start');
+            let processor = {
+                name: "test_processor",
+                configName: 'a'.repeat(256 +1)
+            }
+            try {
+                let processorId = hiAppEvent.addProcessor(processor)
+                expect(processorId == -1).assertTrue()
+                hiAppEvent.removeProcessor(processorId)
+                done()
+            }
+            catch (err) {
+                console.error(`SUB_DFX_DFT_HiAppEvent_Js_2905 > error code: ${err.code}, error msg: ${err.message}`);
+                expect(false).assertTrue()
+                done();
+            }
+        });
     })
 }
