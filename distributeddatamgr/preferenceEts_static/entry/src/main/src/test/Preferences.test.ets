@@ -378,7 +378,7 @@ export default function preferenceTest() {
             mPreferences.putSync(KEY_TEST_STRING_ELEMENT, 'test');
             mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue");
 
-            mPreferences.flush((err: BusinessError<void> | undefined) => {
+            mPreferences.flush((err: BusinessError<void> | null) => {
                 if (err) {
                     console.log("flush err.");
                     expect().assertFail();
@@ -582,7 +582,7 @@ export default function preferenceTest() {
             dataPreferences.getPreferences(context, NAME1).then(async (preferences : dataPreferences.Preferences) => {
                 hilog.info(domain, tag, '%{public}s', TAG + "Get preferences success" + preferences);
                 await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-                preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err: BusinessError<void>|undefined, ret: Object|undefined) => {
+                preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err: BusinessError<void>|null, ret: Object|undefined) => {
                     expect("test").assertEqual(ret);
                 });
                 await dataPreferences.deletePreferences(context, NAME1).then<void, void>((): void => {});
