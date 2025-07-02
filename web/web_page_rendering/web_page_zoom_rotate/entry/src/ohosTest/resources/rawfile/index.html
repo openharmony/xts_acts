@@ -1,24 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <style>
-	#pageHeight{
-	  height:1300px
-	}
+        #pageHeight{
+          height:1300px
+        }
     </style>
 </head>
 <body>
-    <div id="container">首页</div>
-    <div id="pageHeight"></div>
-    <a href="second.html" id="fileAccess">打开rawfile文件</a>
-    <img src="icon.png" alt="icon" id="imgs">
-</body>
+<div id="test" style="width:100px;background-color:black">
+    test
+</div>
+<div id="container">首页</div>
+<div id="pageHeight"></div>
+<a href="second.html" id="fileAccess">打开rawfile文件</a>
+<img src="icon.png" alt="icon" id="imgs">
 <script>
-    let ele=document.getElementById("imgs");
+    document.getElementById("test").style.width = window.outerWidth * 10 + "px"
+      let ele=document.getElementById("imgs");
     let loadImage;
     ele.onload=function(){
         loadImage="load complete"
@@ -70,4 +74,5 @@
         return document.title
     }
 </script>
+</body>
 </html>
