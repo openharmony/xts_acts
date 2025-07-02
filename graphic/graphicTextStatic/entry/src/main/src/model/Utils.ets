@@ -13,14 +13,17 @@
  * limitations under the License.
  */
 import text from '@ohos.graphics.text';
+import common2D from '@ohos.graphics.common2D';
 
 export function buildParagraph() {
+    let myColor: common2D.Color;
+    myColor = { alpha: 255, red: 255, green: 0, blue: 0 };
     let fontCollection = new text.FontCollection();
     let myTextStyle: text.TextStyle = {
-    color : {alpha: 255, red: 255, green: 0, blue: 0}
+      color: myColor
     };
     let myParagraphStyle: text.ParagraphStyle = {
-    textStyle : myTextStyle
+      textStyle : myTextStyle
     };
     const paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
     paragraphGraphBuilder.addText('123');
