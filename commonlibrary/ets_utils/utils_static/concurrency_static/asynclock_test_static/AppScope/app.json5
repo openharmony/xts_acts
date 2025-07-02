@@ -13,9 +13,13 @@
  * limitations under the License.
  */
 
-import { appTasks } from '@ohos/hvigor-ohos-plugin';
-
-export default {
-    system: appTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
-    plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
+{
+  "app": {
+    "bundleName": "com.asynclock.standard.static",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
 }
