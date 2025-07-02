@@ -579,7 +579,7 @@ export default function inputMethodAuthorityJSUnit() {
         let enable = true;
         inputMethod.setSimpleKeyboardEnabled(enable);
         console.info("====>Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0100 setSimpleKeyboardEnabled is success");
-        expect(enable).assertEqual(true);
+        expect(enable == true).assertTrue();
         done();
       }catch(err){
         console.info(`====>Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0100 errCode:${err.code}, errMessage is ${err.message}`)
@@ -601,7 +601,7 @@ export default function inputMethodAuthorityJSUnit() {
         let enable = false;
         inputMethod.setSimpleKeyboardEnabled(enable);
         console.info("====>Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0200 setSimpleKeyboardEnabled is success");
-        expect(enable).assertEqual(false);
+        expect(enable == false).assertTrue();
         done();
       }catch(err){
         console.info(`====>Sub_InputMethod_IMF_setSimpleKeyboardEnabled_0200 errCode:${err.code}, errMessage is ${err.message}`)
