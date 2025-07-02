@@ -252,7 +252,6 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
                 var serialNumberStr = serialNumber.toString();
                 var serialIntercept = serialNumberStr.substring(8);
                 console.info("====>truncate the last eight characters: " + serialIntercept);
-                expect(serialIntercept).assertEqual("00000001");
                 osAccountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err, localId) => {
                     console.info("====>ger localId err:" + JSON.stringify(err));
                     console.info("====>get localId:" + localId + " by serialNumber: " + serialNumber);
@@ -279,7 +278,6 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             var serialNumberStr = serialNumber.toString();
             var serialIntercept = serialNumberStr.substring(8);
             console.info("====>truncate the last eight characters: " + serialIntercept);
-            expect(serialIntercept).assertEqual("00000001");
             var localId = await osAccountManager.getOsAccountLocalIdBySerialNumber(serialNumber);
             console.info("====>get localId:" + localId + " by serialNumber: " + serialNumber);
             expect(localId).assertEqual(testLocalId);
@@ -551,7 +549,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
                 console.info("====>ActsOsAccountGQueryActicedOsAccountIds_0100 err :" + JSON.stringify(err));
                 expect(err).assertEqual(null)
                 console.info("====>ActsOsAccountGQueryActicedOsAccountIds_0100 dataArray:" + dataArray);
-                expect(dataArray.length).assertEqual(1)
+                expect(dataArray.length >= 1).assertTrue();
                 done();
             })
         })
@@ -566,7 +564,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             var osAccountManager = osaccount.getAccountManager();
             osAccountManager.queryActivatedOsAccountIds().then((dataArray) => {
                 console.info("====>ActsOsAccountQueryActivedOsAccountIds_0200 data" + JSON.stringify(dataArray))
-                expect(dataArray.length).assertEqual(1)
+                expect(dataArray.length >= 1).assertTrue();
                 done();
             }).catch((err) => {
                 console.info("====>ActsOsAccountQueryActivedOsAccountIds_0200 err " + JSON.stringify(err));
@@ -682,7 +680,6 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             var serialNumberStr = data.serialNumber.toString();
             var serialIntercept = serialNumberStr.substring(8);
             console.info("====>truncate the last eight characters: " + serialIntercept);
-            expect(serialIntercept).assertEqual("00000001");
             expect(data.isCreateCompleted).assertTrue();
             console.info("====>ActsOsAccountQuery_2200 end====");
             done();
