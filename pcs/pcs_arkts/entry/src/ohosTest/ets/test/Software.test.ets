@@ -123,6 +123,7 @@ export default function softwareTest() {
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
       let driver = Driver.create()
       await driver.delayMs(1000)
+      let scroll = await driver.findComponent(ON.id('scroll').inWindow('com.acts.pcs.arktstest'))
       try {
         i18n.System.setAppPreferredLanguage('zh')
         expect(i18n.System.getAppPreferredLanguage()).assertEqual('zh')
@@ -130,22 +131,22 @@ export default function softwareTest() {
         expect(false).assertTrue()
       }
       await driver.delayMs(1000)
-      let text = await driver.findComponent(ON.id('multilingualText').inWindow('com.acts.pcs.arktstest'))
+      let text = await scroll.scrollSearch(ON.id('multilingualText').inWindow('com.acts.pcs.arktstest'));
       expect(text != undefined).assertTrue()
       expect(await text.getText()).assertEqual('中文文本')
       try {
         i18n.System.setAppPreferredLanguage('en')
         expect(i18n.System.getAppPreferredLanguage()).assertEqual('en')
       } catch (error) {
-        expect(false).assertTrue()
+        expect(false).assertTrue()q
       }
       await driver.delayMs(1000)
-      text = await driver.findComponent(ON.id('multilingualText').inWindow('com.acts.pcs.arktstest'))
+      text = await scroll.scrollSearch(ON.id('multilingualText').inWindow('com.acts.pcs.arktstest'))
       expect(text != undefined).assertTrue()
       expect(await text.getText()).assertEqual('EnglishText')
-      let image = await driver.findComponent(ON.id('image').inWindow('com.acts.pcs.arktstest'))
+      let image = await scroll.scrollSearch(ON.id('image').inWindow('com.acts.pcs.arktstest'))
       expect(image != undefined).assertTrue()
-      let imageLoadSuccess = await driver.findComponent(ON.id('imageLoadSuccess').inWindow('com.acts.pcs.arktstest'))
+      let imageLoadSuccess = await scroll.scrollSearch(ON.id('imageLoadSuccess').inWindow('com.acts.pcs.arktstest'))
       expect(imageLoadSuccess != undefined).assertTrue()
       expect(await imageLoadSuccess.getText()).assertEqual("LoadSuccess")
       done()
