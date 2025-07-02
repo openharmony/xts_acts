@@ -317,7 +317,6 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
         let wrappedKeyData: Uint8Array = await BuildWrappedKeyData(deviceAPubKeyData);
         let importWrappedKeyOption: huks.HuksOptions = GetAesGenerateOption(wrappedKeySize);
         SetParam(importWrappedKeyOption, huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE, huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING);
-        MergeOption(importWrappedKeyOption, GetAccessControlOptions());
         importWrappedKeyOption.inData = wrappedKeyData;
         try {
           DeleteParam(importWrappedKeyOption, huks.HuksTag.HUKS_TAG_ALGORITHM);
