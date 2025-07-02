@@ -363,7 +363,7 @@ function testIsSimDisabled() {
       telephonyManager.isSimDisabled(SELFWANT, 3);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200007 || error.code == 801).assertTrue();
+      expect(error.code == 401 || error.code == 801).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
