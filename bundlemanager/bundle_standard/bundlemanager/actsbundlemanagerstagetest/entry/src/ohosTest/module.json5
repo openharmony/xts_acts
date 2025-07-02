@@ -436,6 +436,15 @@
         "srcEntrance": "./ets/FormAbility/FormAbility.ts",
         "type": "appService",
         "visible": true
+    },
+    {
+        "description": "$string:form_description",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "name": "distributed",
+        "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+        "type": "distributed",
+        "visible": true
     }
   ],
   "requestPermissions": [
