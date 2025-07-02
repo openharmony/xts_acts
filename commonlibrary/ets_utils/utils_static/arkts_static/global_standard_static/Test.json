@@ -1,17 +1,17 @@
 {
-    "description": "buffer test",
+    "description": "global test",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
         "shell-timeout": "800000",
 		"testcase-timeout": "800000",
-        "bundle-name": "com.buffer.standard.static",
+        "bundle-name": "com.global.standard.static",
 		"module-name": "entry"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsBufferStaticTest.hap"
+                "ActsGlobalStaticTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
