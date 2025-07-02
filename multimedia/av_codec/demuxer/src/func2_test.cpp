@@ -442,7 +442,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0010, TestSize.Level2)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0010, TestSize.Level1)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -465,7 +465,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0010, TestSize.Level1)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0020, TestSize.Level1)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -499,7 +499,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0020, TestSize.Level1)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0030, TestSize.Level1)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -533,7 +533,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0030, TestSize.Level1)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0040, TestSize.Level1)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -583,7 +583,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0050, TestSize.Level0)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0060, TestSize.Level0)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -606,7 +606,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0060, TestSize.Level0)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0061, TestSize.Level0)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -637,7 +637,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0061, TestSize.Level0)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0070, TestSize.Level2)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -669,7 +669,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0070, TestSize.Level2)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0080, TestSize.Level2)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -701,7 +701,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0080, TestSize.Level2)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0090, TestSize.Level2)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -741,7 +741,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0090, TestSize.Level2)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0130, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -837,7 +837,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0130, TestSize.Level3)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0140, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_01.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_01.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -926,7 +926,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0140, TestSize.Level3)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0150, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -974,7 +974,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0150, TestSize.Level3)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0160, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1023,7 +1023,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0160, TestSize.Level3)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0170, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_04.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_04.mp4";
     int fd = 0;
     bool initResult = false;
     unSelect = 0;
@@ -1073,7 +1073,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0170, TestSize.Level3)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0180, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1123,7 +1123,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0180, TestSize.Level3)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0190, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_04.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_04.mp4";
     int fd = 0;
     bool initResult = false;
     unSelect = 0;
@@ -1173,7 +1173,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0190, TestSize.Level3)
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0010, TestSize.Level1)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1196,7 +1196,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0010, TestSize.Level1
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0020, TestSize.Level1)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1230,7 +1230,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0020, TestSize.Level1
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0030, TestSize.Level1)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1264,7 +1264,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0030, TestSize.Level1
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0040, TestSize.Level1)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1314,7 +1314,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0050, TestSize.Level0
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0060, TestSize.Level0)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1337,7 +1337,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0060, TestSize.Level0
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0061, TestSize.Level0)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1368,7 +1368,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0061, TestSize.Level0
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0070, TestSize.Level2)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1400,7 +1400,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0070, TestSize.Level2
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0080, TestSize.Level2)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1432,7 +1432,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0080, TestSize.Level2
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0090, TestSize.Level2)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1472,7 +1472,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0090, TestSize.Level2
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0130, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1568,7 +1568,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0130, TestSize.Level3
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0140, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_03.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_03.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1657,7 +1657,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0140, TestSize.Level3
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0150, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1705,7 +1705,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0150, TestSize.Level3
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0160, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1754,7 +1754,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0160, TestSize.Level3
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0170, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1804,7 +1804,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0170, TestSize.Level3
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0180, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
@@ -1854,7 +1854,7 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0180, TestSize.Level3
  */
 HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0190, TestSize.Level3)
 {
-    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    const char *file = "/data/test/media/Muxer_Auxiliary_02.mp4";
     int fd = 0;
     bool initResult = false;
     InitFile(file, 4, fd, initResult);
