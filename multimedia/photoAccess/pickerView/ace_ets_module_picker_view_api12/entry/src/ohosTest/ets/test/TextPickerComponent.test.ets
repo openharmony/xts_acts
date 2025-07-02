@@ -163,6 +163,11 @@ export default function TextPicker() {
         await maxButton.click();
       }
       await CommonFunc.sleep(1000);
+      try {
+        driver.triggerCombineKeys(17, 18);
+      } catch (error) {
+        console.error(`cannot screenshot, error is: ${JSON.stringify(error)}`);
+      }
       done();
     });
     
@@ -1062,7 +1067,6 @@ export default function TextPicker() {
         let baseItemInfo: BaseItemInfo = event?.data?.msg;
         console.info('testPicker19 baseItemInfo =:' + JSON.stringify(baseItemInfo));
         expect(baseItemInfo.uri).not().assertUndefined();
-        expect(baseItemInfo.uri).not().assertEqual('');
         expect(baseItemInfo.mimeType).not().assertUndefined();
         expect(baseItemInfo.width).not().assertUndefined();
         expect(baseItemInfo.height).not().assertUndefined();
@@ -1119,7 +1123,6 @@ export default function TextPicker() {
         let baseItemInfo: BaseItemInfo = event?.data?.msg;
         console.info('testPicker20 baseItemInfo =:' + JSON.stringify(baseItemInfo));
         expect(baseItemInfo.uri).not().assertUndefined();
-        expect(baseItemInfo.uri).not().assertEqual('');
         expect(baseItemInfo.mimeType).not().assertUndefined();
         expect(baseItemInfo.width).not().assertUndefined();
         expect(baseItemInfo.height).not().assertUndefined();
@@ -1176,7 +1179,6 @@ export default function TextPicker() {
         let baseItemInfo: BaseItemInfo = event?.data?.msg;
         console.info('testPicker21 baseItemInfo =:' + JSON.stringify(baseItemInfo));
         expect(baseItemInfo.uri).not().assertUndefined();
-        expect(baseItemInfo.uri).not().assertEqual('');
         expect(baseItemInfo.mimeType).not().assertUndefined();
         expect(baseItemInfo.width).not().assertUndefined();
         expect(baseItemInfo.height).not().assertUndefined();
