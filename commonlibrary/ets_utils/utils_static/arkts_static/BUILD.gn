@@ -17,7 +17,6 @@ group("arkts_static") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "bitVector_standard_test_static:ActsBitVectorStaticTest",
       "buffer_standard_test_static:ActsBufferStaticTest",
       "com_container_standard_static:ActsContainerStaticTest",
       "com_uri_standard_static:ActsUriStaticTest",
