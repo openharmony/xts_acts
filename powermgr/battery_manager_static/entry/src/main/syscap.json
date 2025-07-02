@@ -5,7 +5,7 @@
             {
                 "xts": [
                     "SystemCapability.PowerManager.BatteryManager.Core",
-                    "SystemCapability.PowerManager.BatteryManager.Extension"
+                    "SystemCapability.PowerManager.BatteryStatistics"
                 ]
             }
         ]

@@ -13,12 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-# xts_acts_arkts1.2/powermgr/thermal_manager/ActsPowerMgrThermalStaticTest
-ohos_js_app_static_suite("ActsPowerMgrThermalStaticTest") {
+# xts_acts_arkts1.2/powermgr/thermal_manager/ActsPowermgrThermalStaticTest
+ohos_js_app_static_suite("powermgr_thermal_static_test") {
 #   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsPowerMgrThermalStaticTest"
+  hap_name = "ActsPowermgrThermalStaticTest"
   part_name = "thermal_manager"
   subsystem_name = "powermgr"
 }

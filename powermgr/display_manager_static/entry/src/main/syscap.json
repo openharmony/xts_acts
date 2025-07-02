@@ -4,8 +4,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.PowerManager.DisplayPowerManager",
-                    "SystemCapability.PowerManager.DisplayPowerManager.Lite"
+                    "SystemCapability.PowerManager.DisplayPowerManager"
                 ]
             }
         ]
