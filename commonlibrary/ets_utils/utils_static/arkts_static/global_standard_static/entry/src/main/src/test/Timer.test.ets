@@ -120,8 +120,8 @@ export default function TimerTest() {
         add();
       },);
       await waitForSeconds(3000);
-      expect(result1 === undefined).assertFalse();
-      expect(result2 === undefined).assertFalse();
+      expect(new Number(result1) === undefined).assertFalse();
+      expect(new Number(result2) === undefined).assertFalse();
       expect(count).assertEqual(4);
       done();
     });
@@ -140,7 +140,7 @@ export default function TimerTest() {
         flag = 'b';
       },);
       await waitForSeconds(1000);
-      expect(result1 === undefined).assertFalse();
+      expect(new Number(result1) === undefined).assertFalse();
       done();
     });
 
@@ -164,8 +164,8 @@ export default function TimerTest() {
       }, 2500);
       await waitForSeconds(4000);
       expect(flag).assertEqual('c');
-      expect(result1 === undefined).assertFalse();
-      expect(result2 === undefined).assertFalse();
+      expect(new Number(result1) === undefined).assertFalse();
+      expect(new Number(result2) === undefined).assertFalse();
       done();
     });
 
@@ -183,8 +183,8 @@ export default function TimerTest() {
       let result2 = setTimeout(() => {
       },);
       await waitForSeconds(1000);
-      expect(result1 === undefined).assertFalse();
-      expect(result2 === undefined).assertFalse();
+      expect(new Number(result1) === undefined).assertFalse();
+      expect(new Number(result2) === undefined).assertFalse();
       clearTimeout(result1);
       clearTimeout(result2);
       expect(true).assertTrue();
@@ -249,8 +249,8 @@ export default function TimerTest() {
         add();
       }, 900);
       await waitForSeconds(3000);
-      expect(result1 === undefined).assertFalse();
-      expect(result2 === undefined).assertFalse();
+      expect(new Number(result1) === undefined).assertFalse();
+      expect(new Number(result2) === undefined).assertFalse();
       clearInterval(result1);
       clearInterval(result2);
       expect(count).assertEqual(12);
@@ -272,7 +272,7 @@ export default function TimerTest() {
       }, 700);
       await waitForSeconds(1000);
       clearInterval(result1);
-      expect(result1 === undefined).assertFalse();
+      expect(new Number(result1) === undefined).assertFalse();
       expect(flag).assertEqual('b');
       done();
     });
@@ -297,8 +297,8 @@ export default function TimerTest() {
         flag = 'c';
       }, 2500);
       await waitForSeconds(4000);
-      expect(result1 === undefined).assertFalse();
-      expect(result2 === undefined).assertFalse();
+      expect(new Number(result1) === undefined).assertFalse();
+      expect(new Number(result2) === undefined).assertFalse();
       clearInterval(result2);
       expect(flag).assertEqual('c');
       done();
@@ -319,8 +319,8 @@ export default function TimerTest() {
       let result2 = setInterval(() => {
       }, 1000);
       await waitForSeconds(1000);
-      expect(result1 === undefined).assertFalse();
-      expect(result2 === undefined).assertFalse();
+      expect(new Number(result1) === undefined).assertFalse();
+      expect(new Number(result2) === undefined).assertFalse();
       clearInterval(result1);
       clearInterval(result2);
       expect(true).assertTrue();
