@@ -295,7 +295,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2");
 
       let i = 0;
-      let arr = [];
+      let arr:string[] = [];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -316,7 +316,7 @@ export default function urlTest2() {
     it('testParamsEntries002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
       let i=0;
-      const arr=[];
+      const arr:string[] = [];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -338,7 +338,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2")
       params.append("foo","jk")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -359,7 +359,7 @@ export default function urlTest2() {
     it('testParamsEntries004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -381,7 +381,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2")
       params.append("jss","txt")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -402,7 +402,7 @@ export default function urlTest2() {
     it('testParams[Symbol.iterator]001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2");
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -423,7 +423,7 @@ export default function urlTest2() {
     it('testParams[Symbol.iterator]002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -445,7 +445,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2")
       params.append("foo","jk")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -466,7 +466,7 @@ export default function urlTest2() {
     it('testParams[Symbol.iterator]004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
       let i=0;
-      const arr=[];
+      const arr:string[] = [];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -488,7 +488,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2")
       params.append("jss","txt")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -508,7 +508,7 @@ export default function urlTest2() {
      */
     it('testParamsForEach001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
-      const arr=[];
+      const arr:string[] = [];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -527,7 +527,7 @@ export default function urlTest2() {
      */
     it('testParamsForEach002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -547,7 +547,7 @@ export default function urlTest2() {
     it('testParamsForEach003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2");
       params.append("foo","jk");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -566,7 +566,7 @@ export default function urlTest2() {
      */
     it('testParamsForEach004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("foo=bar&jss=txt");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -586,7 +586,7 @@ export default function urlTest2() {
     it('testParamsForEach005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("foo=bar&jss=txt");
       params.append("foo","jk");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -606,7 +606,7 @@ export default function urlTest2() {
     // it('testParamsForEach006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
     //   try {
     //     let params = new Url.URLParams("foo=bar&jss=txt");
-    //     const arr=[];
+    //     const arr:string[]=[];
     //     let i = 0;
     //     const func = [0, 2, 4, 6, 8];
     //     params.forEach(func);
@@ -628,7 +628,7 @@ export default function urlTest2() {
     //  */
     // it('testParamsForEach007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
     //   let params = new Url.URLParams("key1=value1&key2=value2")
-    //   let arr = [];
+    //   let arr:string[] = [];
     //   let i = 0;
     //   params.forEach((value, key, SearchParams) => {
     //     arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -935,7 +935,7 @@ export default function urlTest2() {
      */
     it('testParamsKeys001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -954,7 +954,7 @@ export default function urlTest2() {
      */
     it('testParamsKeys002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -973,7 +973,7 @@ export default function urlTest2() {
      */
     it('testParamsKeys003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -992,7 +992,7 @@ export default function urlTest2() {
      */
     it('testParamsKeys004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大&key4=六");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -1011,7 +1011,7 @@ export default function urlTest2() {
      */
     it('testParamsKeys005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大&key4=六&key5=发");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -1258,7 +1258,7 @@ export default function urlTest2() {
      */
     it('testParamsValues001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -1277,7 +1277,7 @@ export default function urlTest2() {
      */
     it('testParamsValues002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -1297,7 +1297,7 @@ export default function urlTest2() {
     it('testParamsValues003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大")
       params.append("a","ACA")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -1316,7 +1316,7 @@ export default function urlTest2() {
      */
     it('testParamsValues004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大&4=key4")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -1335,7 +1335,7 @@ export default function urlTest2() {
      */
     it('testParamsValues005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大&4=key4&5=key5")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -1786,7 +1786,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2");
 
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -1807,7 +1807,7 @@ export default function urlTest2() {
     it('testUrlEntries002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -1829,7 +1829,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2")
       params.append("foo","jk")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -1850,7 +1850,7 @@ export default function urlTest2() {
     it('testUrlEntries004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -1872,7 +1872,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2")
       params.append("jss","txt")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.entries()) {
         arr[i]=pair[0];
         i++;
@@ -1893,7 +1893,7 @@ export default function urlTest2() {
     it('testUrl[Symbol.iterator]001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2");
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -1914,7 +1914,7 @@ export default function urlTest2() {
     it('testUrl[Symbol.iterator]002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -1936,7 +1936,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2")
       params.append("foo","jk")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -1957,7 +1957,7 @@ export default function urlTest2() {
     it('testUrl[Symbol.iterator]004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -1979,7 +1979,7 @@ export default function urlTest2() {
       let params = new Url.URLParams("key1=value1&key2=value2")
       params.append("jss","txt")
       let i=0;
-      const arr=[];
+      const arr:string[]=[];
       for(const pair of params.$_iterator()) {
         arr[i]=pair[0];
         i++;
@@ -1999,7 +1999,7 @@ export default function urlTest2() {
      */
     it('testUrlForEach001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -2018,7 +2018,7 @@ export default function urlTest2() {
      */
     it('testUrlForEach002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -2038,7 +2038,7 @@ export default function urlTest2() {
     it('testUrlForEach003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2");
       params.append("foo","jk");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -2057,7 +2057,7 @@ export default function urlTest2() {
      */
     it('testUrlForEach004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("foo=bar&jss=txt");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -2077,7 +2077,7 @@ export default function urlTest2() {
     it('testUrlForEach005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("foo=bar&jss=txt");
       params.append("foo","jk");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams);
@@ -2096,7 +2096,7 @@ export default function urlTest2() {
      */
     it('testUrlForEach006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("key1=value1&key2=value2")
-      let arr = [];
+      let arr:string[] = [];
       let i = 0;
       params.forEach((value, key, SearchParams) => {
         arr[i] = value + " " + key + " " + (params === SearchParams)
@@ -2359,7 +2359,7 @@ export default function urlTest2() {
      */
     it('testUrlKeys001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -2378,7 +2378,7 @@ export default function urlTest2() {
      */
     it('testUrlKeys002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -2397,7 +2397,7 @@ export default function urlTest2() {
      */
     it('testUrlKeys003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -2416,7 +2416,7 @@ export default function urlTest2() {
      */
     it('testUrlKeys004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大&key4=六");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -2435,7 +2435,7 @@ export default function urlTest2() {
      */
     it('testUrlKeys005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("小=value1&￥=value2&key3=大&key4=六&key5=发");
-      const arr=[];
+      const arr:string[]=[];
       let i = 0;
       for(const key of params.keys()) {
         arr[i] = key
@@ -2656,7 +2656,7 @@ export default function urlTest2() {
      */
     it('testUrlValues001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -2675,7 +2675,7 @@ export default function urlTest2() {
      */
     it('testUrlValues002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -2695,7 +2695,7 @@ export default function urlTest2() {
     it('testUrlValues003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大")
       params.append("a","ACA")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -2714,7 +2714,7 @@ export default function urlTest2() {
      */
     it('testUrlValues004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大&4=key4")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
@@ -2733,7 +2733,7 @@ export default function urlTest2() {
      */
     it('testUrlValues005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
       let params = new Url.URLParams("d=value1&c=value2&b=大&4=key4&5=key5")
-      const arr=[]
+      const arr:string[]=[]
       let i = 0
       for(const value  of params.values()) {
         arr[i] = value
