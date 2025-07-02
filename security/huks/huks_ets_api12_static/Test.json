@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsHuksEtsApi12StaticFuncTest.hap"
+                "ActsHuksEtsApi12FuncStaticTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

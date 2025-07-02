@@ -14,11 +14,11 @@
 import("//test/xts/tools/build/suite.gni")
 
 # xts_acts_arkts1.2/ability/ability_runtime/actsAbilitytest2
-ohos_js_app_static_suite("ActsHuksEtsApi12StaticFuncTest") {
+ohos_js_app_static_suite("ActsHuksEtsApi12FuncStaticTest") {
 #  test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsHuksEtsApi12StaticFuncTest"
+  hap_name = "ActsHuksEtsApi12FuncStaticTest"
   subsystem_name = "security"
   part_name = "huks"
 }
