@@ -24,7 +24,9 @@ export default function GraphicTextClass() {
 
   describe('GraphicTextClass', () => {
     let pixel: image.PixelMap;
+    let myColor: common2D.Color;
     beforeAll(async () => {
+      myColor = { alpha: 255, red: 255, green: 0, blue: 0 };
       const color: ArrayBuffer = new ArrayBuffer(40000);
       let opts: image.InitializationOptions = {
         editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888,
@@ -32,7 +34,7 @@ export default function GraphicTextClass() {
           height: 100, width: 100//100为创建的PixelMap的宽高
         }
       }
-      pixel = await image.createPixelMap(color, opts);
+      pixel = image.createPixelMapSync(color, opts);
     })
 
     /**
@@ -69,6 +71,7 @@ export default function GraphicTextClass() {
       async (done: () => void): Promise<void> => {
         const msg = 'testCanvasConstructorNormalStatic';
         let canvas = new drawing.Canvas(pixel)
+        expect(true).assertTrue();
         let paragraph: text.Paragraph = buildParagraph();
         try {
           paragraph.paint(canvas, 10, 10);
@@ -80,6 +83,32 @@ export default function GraphicTextClass() {
         }
         done();
     })
+
+    /**
+     * @tc.number    : testPaintOnPathStatic_02
+     * @tc.name      : testPaintOnPathStatic_02
+     * @tc.desc      : To test Paragraph Paint interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testPaintOnPathStatic_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        const msg = 'testCanvasConstructorNormalStatic';
+        let canvas = new drawing.Canvas(pixel)
+        expect(true).assertTrue();
+        let paragraph: text.Paragraph = buildParagraph();
+        let path = new drawing.Path();
+        try {
+          paragraph.paintOnPath(canvas, path, 0, 0);
+          console.info(msg + 'canvasConstructor successed');
+          expect(true).assertTrue();
+        } catch (e: BusinessError) {
+          console.info(msg + `canvasConstructor errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+        done();
+      })
 
     /**
      * @tc.number    : testParagraphBuilder_AonstructorAndAddTextStatic
@@ -94,12 +123,12 @@ export default function GraphicTextClass() {
       let msg = "testParagraphBuilder_AonstructorAndAddText"
       console.info(msg + 'begin');
       let myTextStyle: text.TextStyle = {
-        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        color : myColor,
         fontSize: 66,
       };
 
       let myTextStyleTwo: text.TextStyle = {
-        color : {alpha: 255, red: 255, green: 0, blue: 0},
+        color : myColor,
         fontSize : 33,
       };
       let myParagraphStyle: text.ParagraphStyle = {
