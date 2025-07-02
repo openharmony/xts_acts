@@ -13724,6 +13724,58 @@ export default function audioRendererTest() {
       }
       done();
     })
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIOTIMESTAMPINFO_0100
+     *@tc.name      : SUB_MULTIMEDIA_AUDIO_AUDIOTIMESTAMPINFO_0100
+     *@tc.desc      : AudioTimestampInfo framePos and timestamp
+     *@tc.size      : Medium
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOTIMESTAMPINFO_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1, 
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, 
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW 
+      }
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try{
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        console.info(`AudioRender create : SUCCESS`);
+      }catch(err){
+        console.info(`AudioRender create : ERROR`);
+        expect(false).assertTrue();
+      }
+      try{
+        await audioRenderer.start();
+        console.info(`AudioRender start : SUCCESS`);
+      }catch(err){
+        console.info(`AudioRender start : ERROR`);
+        expect(false).assertTrue();
+      }
+      let AudioTimestampInfo:audio.AudioTimestampInfo = await audioRenderer.getAudioTimestampInfo();
+      console.info(`Current timestamp: ${AudioTimestampInfo.framePos}`);
+      console.info(`Current timestamp: ${AudioTimestampInfo.timestamp}`);
+      expect(AudioTimestampInfo.framePos).assertLargerOrEqual(0);
+      expect(AudioTimestampInfo.timestamp).assertLargerOrEqual(0);
 
+      await audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+      });
+      console.info('afterAll called')
+      done();
+    })
   })
 }
