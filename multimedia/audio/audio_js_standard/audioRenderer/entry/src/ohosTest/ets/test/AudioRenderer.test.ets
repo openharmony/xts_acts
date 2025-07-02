@@ -13740,7 +13740,7 @@ export default function audioRendererTest() {
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW 
       }
       let audioRendererInfo = {
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION;
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
         rendererFlags: 0
       }
       let audioRendererOptions = {
