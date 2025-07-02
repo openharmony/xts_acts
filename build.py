@@ -121,9 +121,9 @@ class XtsBuild:
         return ret.returncode
 
     def get_accurate_targets(self):
-        if os.environ.get("XTS_SUITETYPE") == "hap_static":
-            logging.info("hap_static task use full build")
-            return self._build_target
+        # if os.environ.get("XTS_SUITETYPE") == "hap_static":
+        #     logging.info("hap_static task use full build")
+        #     return self._build_target
         accurate_dir = "{}/test/xts/tools/ci".format(self._code_root_dir)
         sys.path.append(accurate_dir)
         import generate_accurate_targets as gat
